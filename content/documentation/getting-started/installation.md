@@ -21,7 +21,19 @@ Probably a recent Macbook.
 
 ## Prerequisites
 
-You should have Docker installed which, on a Macbook with OSX, means [Boot2Docker](http://boot2docker.io/) and its dependencies. 
+You should have Docker installed which, on a Macbook with OSX, also means [Boot2Docker](http://boot2docker.io/) and its dependencies. 
+
+Please make double sure Boot2Docker is installed correctly and up & running!
+
+    $ boot2docker status
+    running
+
+Please make double sure the Docker command can reach Boot2Docker. You set this by exporting the DOCKER_HOST
+environment variable, for example:
+
+    $ export DOCKER_HOST=tcp://192.168.59.103:2375
+    
+
 For Docker compositions, you should have [Docker compose](https://docs.docker.com/compose/install/) installed. 
 Luckily, that's a two-liner:
 {{% copyable %}}
@@ -50,6 +62,23 @@ to Java dependencies. Luckily, you'll only have to do this once. After that is c
 You will run into cpu, memory and storage issues pretty soon though. Also, random ports are assigned by the Vamp which
 you might not have exposed.
 {{% /alert%}}
+
+Now check if Vamp is home by doing a GET on the `hi` endpoint, i.e.: `http://192.168.59.103:8081/api/v1/hi`
+
+<pre class="prettyprint lang-json">
+{
+  "message":"Hi, I'm Vamp! How are you?",
+  "vitals":{
+    "operating_system":{
+      "name":"Linux",
+      "architecture":"amd64",
+      "version":"3.16.1-tinycore64",
+      "available_processors":4.0,
+      "system_load_average":0.06
+    }
+  }
+}
+</pre>
 
 ## Run Vamp with an external Mesos cluster
 
@@ -104,7 +133,7 @@ Ocean really easily using the great wizards at [Mesosphere.com](https://mesosphe
 <pre>docker run -i -t -p 81:80 -p 8081:8080 -p 10002:10001 -p 8084:8083 -e VAMP_MARATHON_URL=http://10.143.22.49:8080 -e VAMP_ROUTER_URL=http://10.16.107.232:10001 -e VAMP_ROUTER_HOST=10.16.107.232 magneticio/vamp:latest</pre>    
 {{% /copyable %}}
 
-5. Now check if Vamp says "Hi!" by  doing a GET on `/api/v1/hi`
+5. Now check if Vamp is home by doing a GET on the `hi` endpoint, i.e.: `http://192.168.59.103:8081/api/v1/hi`
 
     <pre class="prettyprint lang-json">
     {
@@ -116,34 +145,6 @@ Ocean really easily using the great wizards at [Mesosphere.com](https://mesosphe
           "version":"3.16.1-tinycore64",
           "available_processors":4.0,
           "system_load_average":0.06
-        },
-        "runtime":{
-          "process":"12@e221586513b0",
-          "virtual_machine_name":"Java HotSpot(TM) 64-Bit Server VM",
-          "virtual_machine_vendor":"Oracle Corporation",
-          "virtual_machine_version":"25.40-b25",
-          "start_time":1427595771672,
-          "up_time":552920
-        },
-        "memory":{
-          "heap":{
-            "init":33554432,
-            "max":469762048,
-            "committed":61865984,
-            "used":12665144
-          },
-          "non_heap":{
-            "init":2555904,
-            "max":-1,
-            "committed":80084992,
-            "used":78949296
-          }
-        },
-        "threads":{
-          "count":29,
-          "peak_count":29,
-          "daemon_count":11,
-          "total_started_count":38
         }
       }
     }
