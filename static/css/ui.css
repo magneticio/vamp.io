@@ -1271,6 +1271,7 @@ section * {
 .header-3 .navbar {
   top: 0;
   margin-top: 10px;
+  margin-bottom: 0px;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
 }
 .header-3 .navbar.navbar-fixed-top {
