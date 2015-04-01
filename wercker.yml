@@ -2,7 +2,7 @@ box: wercker/default
 build:
   steps:
     - arjen/hugo-build:
-        version: 0.12
+        version: 0.13
         flags: --buildDrafts=false
 deploy:
   steps:
