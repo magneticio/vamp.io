@@ -1,0 +1,100 @@
+.docs {
+  pre {
+    border-radius: 3px;
+    padding-left: 35px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+//    margin: 30px 0px 30px;
+    border: 1px solid #e1e1e8;
+    font-size: 13px;
+    color: #333;
+    font-family: @font-family-monospace;
+    background-color: #f7f7f9;
+    width: 100%;
+    overflow-x: auto;
+    overflow-wrap: normal;
+//    white-space: nowrap
+  }
+
+  .copy-button {
+      position: relative;
+      top: 38px;
+      border-radius: 0 3px 0 5px;
+      background-color: #ffffff;
+      color: @text-secondary-color;
+      border: 1px solid #e1e1e8;
+      font-size: 13px;
+      padding: 7px 13px;
+    &.zeroclipboard-is-hover {
+      background-color: @brand-accent;
+      border: 1px solid @brand-accent;
+      color: #ffffff;
+    }
+  }
+
+  ul, ol {
+    li {
+      .copy-button {
+        top: 55px
+      }
+    }
+  }
+
+
+
+  .tooltip {
+
+    &.in {
+      opacity: 1;
+    }
+    &.top {
+      padding-bottom: 9px;
+
+      .tooltip-arrow {
+        border-top-color: @brand-info;
+        border-width: 9px 9px 0;
+        bottom: 0;
+        margin-left: -9px;
+      }
+    }
+  }
+
+  .tooltip-inner {
+    background-color: @brand-info;
+    padding: 5px 5px;
+    text-align: center;
+    margin-right: 40px;
+    width: 150px;
+    border-radius: @border-radius-large;
+    font-size: 13px;
+  }
+
+
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: @font-family-monospace;
+  }
+
+  .com {
+    color: #AEAEAE;
+    font-style: normal;
+  }
+  .pln, .typ, .lit {
+    color: #4f9fcf;
+  }
+
+  .kwd, .str, .pun {
+    color: #C30;
+  }
+
+  blockquote {
+    p {
+      font-family: @font-family-monospace;
+      font-size: 18px;
+      color: @headings-color;
+    }
+
+  }
+}

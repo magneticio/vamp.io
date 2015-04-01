@@ -1,0 +1,13 @@
+box: wercker/default
+build:
+  steps:
+    - arjen/hugo-build:
+        version: 0.12
+        theme: herring-cove
+        flags: --buildDrafts=false
+deploy:
+  steps:
+    - lukevivier/gh-pages@0.2.1:
+        token: $GIT_TOKEN
+        domain: vamp.io
+        basedir: dist

@@ -1,0 +1,27 @@
+/**
+ * Content 12 stylesheet  
+ * */
+ .content-12 {
+    position:relative;
+    .wide {
+        .box-sizing(border-box);
+        display: block;
+    }
+    .btn-wide {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        text-align: center;
+        .font(40px);
+        font-family: @font-family-demo;
+        .a-color(#7f8c8d, #fff);
+        background: @brand-secondary;
+        font-weight: 300;
+        .transition(~'0.25s color, 0.25s background-color');
+        &:hover, &:active {
+            background: @brand-danger;
+        }
+        @media (max-width: 767px) {
+            font-size: 30px;
+        }
+    }
+}

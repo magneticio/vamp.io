@@ -1,0 +1,55 @@
+/**
+ * Content 2 stylesheet  
+ * */
+ .content-2 {
+    padding-top: 130px;
+    padding-bottom: 130px;
+    position:relative;
+    h3 {
+        .font(30px, @text-color-heading);
+        font-family:@font-family-demo;
+        margin-bottom: 35px;
+        font-weight: 300;
+    }
+    p {
+        .font(18px);
+        font-family:@font-family-demo;
+        .line-height(30px);
+    }
+    .btns {
+        margin-top: 50px;
+        .font(15px);
+        .btn {
+            padding: 9px 17px 10px 15px;
+            margin-right: 28px;
+            >[class^="fui-"] {
+                .font(26px, white);
+                margin: -2px 12px 0 0;
+            }
+        }
+    }
+    @media (max-width: 767px) {
+        .btns {
+            margin-top: 35px;
+        }
+        .col-sm-5.col-sm-offset-1 {
+            margin-top: 45px;
+        }
+    }
+    .player {
+        .border-radius(6px);
+        background: #f2f3f4;
+        position: relative;
+        overflow: hidden;
+        height: 250px;
+        .btn-play {
+            .box-sizing(border-box);
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            width: 60px;
+            padding-left: 16px;
+            .border-radius(3px);
+        }
+    }
+}

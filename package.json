@@ -1,0 +1,11 @@
+{
+    "name": "vamp.io",
+    "devDependencies": {
+        "grunt": "~0.4.2",
+        "grunt-contrib-less": "~0.8.2",
+        "grunt-contrib-watch": "~0.6.1",
+        "grunt-asset-cachebuster": "~0.3.1",
+        "grunt-contrib-cssmin": "~0.12.1",
+        "grunt-contrib-clean": "~0.6.0"
+    }
+}

@@ -1,0 +1,89 @@
+{{ partial "head.html" . }}
+{{ partial "top_nav.html" . }}
+{{ partial "sub_head.html" . }}
+
+<section class="content-wrapper downloads">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-2">
+                {{ .Content }}
+            </div>
+            <div class="col-sm-10 col-sm-offset-2">
+            <h2>Pre-build packages</h2>
+            <p>Vamp consists of the three core packages. You'll find the latest pre-build packages below. You'll need
+            <a href="http://www.oracle.com/technetwork/java/javase/8u40-relnotes-2389089.html">Java SDK 8u40</a> to run
+            the Scala parts.</p>
+                <div class="table-responsive">
+                    <span class="muted pull-right">Build {{ .Site.Data.downloads.dist.stableCodeName }} ({{ .Site.Data.downloads.dist.stableReleaseDate }})</span>
+                    <table class="table table-striped packages-table">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Latest version</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{ $prefix := .Site.Data.downloads.dist.packagePrefix }}
+                        {{ $scalaVersion := .Site.Data.downloads.dist.scalaVersion }}
+                        {{ $bintrayBase := .Site.Data.downloads.dist.bintrayBaseUrl }}
+                        {{ $downloads := .Site.Data.downloads.dist.bintrayDownloadApiUrl }}
+                        {{ $coreVersion := .Site.Data.downloads.dist.stableCore }}
+                        {{ $pulseVersion := .Site.Data.downloads.dist.stablePulse }}
+                        {{ $routerVersion := .Site.Data.downloads.dist.stableRouter }}
+                        <tr>
+                            <td><a href="{{ $bintrayBase }}downloads/vamp-core/view" target="_blank">Vamp-core</a></td>
+                            <td>{{ $coreVersion  }}</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{{ $bintrayBase }}downloads/vamp-pulse/view" target="_blank">Vamp-pulse</a></td>
+                            <td>{{ $pulseVersion }}</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{{ $bintrayBase }}downloads/vamp-router/view" target="_blank">Vamp-router</a></td>
+                            <td>{{ $routerVersion }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            <p>
+            </p>
+             <h2>Scala source & Maven</h2>
+            <p>All of Vamp's components and artifacts are split into separate repo's, libraries Go packages/Maven artifacts
+            where applicable</p>
+                <div class="table-responsive">
+                    <table class="table table-striped packages-table">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Latest version</th>
+                            <th>Description</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{ $mavenApi := .Site.Data.downloads.dist.bintrayMavenApiUrl }}
+                        {{ $sonatype := .Site.Data.downloads.dist.sonatypeBaseUrl }}
+                        {{ $scalaVersion := .Site.Data.downloads.dist.scalaVersion }}
+                        {{ range $package := .Site.Data.downloads.dist.libraries }}
+                        {{ $r := getJson $mavenApi $package }}
+                        <tr>
+                            <td><a href="{{ $bintrayBase }}vamp/{{ $r.name }}/view" target="_blank">{{ index $r.name }}</a></td>
+                            <td>{{ index $r.latest_version }}</td>
+                            <td>{{ index $r.desc }}</td>
+                            <td><a href="{{ index $r.vcs_url }}" target="_blank">source</a></td>
+                            <td><a href="{{ index $r.issue_tracker_url }}" target="_blank">issues</a></td>
+                            <td><a href="{{ $sonatype }}{{ $package }}_{{$scalaVersion}}/{{index $r.latest_version}}/" target="_blank">maven</a></td>
+                        </tr>
+                        {{end}}
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+
+        </div>
+    </div>
+</section>
+
+{{ partial "footer.html" . }}

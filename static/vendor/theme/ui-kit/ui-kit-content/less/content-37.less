@@ -1,0 +1,39 @@
+.content-37 {
+    border-top: 0;
+    padding-top: 130px;
+    padding-bottom: 130px;
+    @media (max-width: 767px) {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    h3 {
+        .font(30px, @text-color-heading);
+        font-weight: 300;
+        margin: 0 0 38px;
+        text-align: center;
+    }
+    .signup-form {
+        form {
+            margin: 30px auto 0;
+            input {
+                border: 2px solid #dee1e3;
+            }
+            input, button {
+                float: left;
+                width: 23%;
+                margin: 0 1%;
+                @media (max-width: 480px) {
+                    width: 100%;
+                    margin: 10px 0 0;
+                    display: block;
+                    float: none;
+                    height: 41px;
+                    .box-sizing(border-box);
+                }
+            }
+            input:focus {
+                border-color: @brand-info !important;
+            }
+        }
+    }
+}

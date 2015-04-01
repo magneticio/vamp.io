@@ -1,0 +1,111 @@
+/**
+ * Header 2 stylesheet  
+ * */
+ .header-2 {
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding-top:0;
+    padding-bottom:0;
+    > .container {
+        position: relative;
+    }
+    .navbar {
+        position: absolute;
+        z-index: 2;
+        top: 55px;
+        font-family: @font-family-demo;
+        &.navbar-fixed-top {
+            position:fixed;
+        }
+        .brand {
+            .font(25px, white);
+            font-weight: 800;
+            font-family:@font-family-demo;
+            img:first-child {
+                float: left;
+                margin: -10px 15px 0 0;
+            }
+        }
+        .nav {
+            > li {
+                margin-left: 35px;
+                &:first-child {
+                    margin-left: 0;
+                }
+                > a {
+                    padding: 32px 0 30px;
+                    .font(17px, white);
+                    font-weight: 500;
+                    letter-spacing: 1px;
+                    .a-color(white, #506e8c);
+                }
+                &.active > a {
+                    .a-color(#506e8c);
+                }
+            }
+        }
+    }
+}
+.header-2-sub {
+    z-index: 50;
+    left: 0;
+    width: 100%;
+    position:relative;
+    padding-top: 215px;
+    padding-bottom: 115px;
+    color: white;
+    text-align: center;
+    @media (max-width: 991px) {
+        padding-top: 165px;
+    }
+    .hero-unit {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        h1 {
+            margin: 0 0 18px;
+            .font(30px, white);
+            font-weight: 300;
+            line-height: 40px;
+        }
+        p {
+            .font(13px, #506e8c);
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+    }
+    .btns {
+        display: inline-block;
+        margin-top: 15px;
+        @media (max-width: 480px) {
+            margin-top: 48px;
+            display: block;
+        }
+        .btn {
+            min-width: 160px;
+            float: left;
+            @media (max-width: 480px) {
+                float: none;
+                display: block;
+                margin-top: 10px;
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+        }
+        .btn + .btn {
+            margin-left: 20px;
+            @media (max-width: 480px) {
+                margin-left: 0;
+            }
+        }
+    }
+    .btn.btn-inverse {
+        .btn-background(#3c556e);
+    }
+    .btn.btn-danger {
+        .btn-background(#c0392b);
+    }
+}

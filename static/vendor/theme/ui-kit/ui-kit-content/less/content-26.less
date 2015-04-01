@@ -1,0 +1,33 @@
+.content-26 {
+    position:relative;
+    padding-top:125px;
+    padding-bottom:125px;
+    text-align: center;
+    .lead {
+        .font(22px);
+        font-family: @font-family-demo;
+        font-weight:300;
+        margin-bottom: 0;
+    }
+    h3 {
+        .font(35px, @text-color-heading);
+        font-family:@font-family-demo;
+        font-weight:300;
+        margin: 0 0 36px;
+    }
+    .features {
+        @media (max-width: 767px) {
+            margin-top: -52px;
+        }
+        h6 {
+            text-transform: none;
+            margin-top: 37px;
+            font-family: @font-family-demo;
+            font-weight: 500;
+            font-size: 18px;
+        }
+        > * {
+            margin-top: 67px;
+        }
+    }
+}

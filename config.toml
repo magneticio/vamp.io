@@ -1,0 +1,22 @@
+baseurl = "http://vamp.io"
+languageCode = "en-us"
+publishdir = "dist"
+pluralizeListTitles = false
+canonifyurls= true
+title= "Vamp :: The Very Awesome Microservices Platform"
+
+[[menu.main]]
+    name = "Overview"
+    weight = 10
+    identifier = "overview"
+    url = "/documentation/"
+[[menu.main]]
+    name = "Getting Started"
+    weight = 20
+    identifier = "getting-started"
+    url = "/documentation/getting-started/"
+[[menu.main]]
+    name = "Reference"
+    weight = 200
+    identifier = "reference"
+    url = "/documentation/reference/"

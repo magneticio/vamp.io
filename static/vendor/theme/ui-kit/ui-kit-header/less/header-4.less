@@ -1,0 +1,53 @@
+/**
+ * Header 4 stylesheet  
+ * */
+ .header-4 {
+    padding-top:358px;
+    padding-bottom:360px;
+    .v-center;
+    color: white;
+    .hero-unit {
+        margin: 0 0 35px;
+        padding: 0;
+        background: transparent;
+        font-family: @font-family-demo;
+        h1 {
+            margin: 0 0 17px;
+            .font(41px, white);
+            .line-height(44px);
+            font-weight: 500;
+        }
+        p {
+            .font(28px, white);
+            .line-height(38px);
+            font-weight:300;
+        }
+    }
+    .btn.btn-gray {
+        .btn-background(@asbestos);
+        color: #fff;
+    }
+    .btns .btn {
+        padding-left: 30px;
+        padding-right: 30px;
+        font-weight: 500;
+        & + .btn {
+            margin-left: 20px;
+        }
+    }
+    .background {
+        background-image: url("@{startup-basePath}common-files/img/Hawaii_001.jpg");
+        .opacity(100);
+        @media (max-width: 768px) {
+            .background-size(auto 200%);
+        }
+    }
+    @media (max-width: 480px) {
+        .btns .btn {
+            display: block;
+            & + .btn {
+                margin: 10px 0 0;
+            }
+        }
+    }
+}

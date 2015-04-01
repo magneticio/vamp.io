@@ -1,0 +1,234 @@
+<div id="home">
+    <!--the landing page has a separate header because of the colors and maybe some other adjustments         -->
+
+<header class="header-3">
+    <div class="container">
+        <div class="row">
+            <div class="navbar col-sm-12 navbar-inverted" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"></button>
+                    <a class="logo" href="/"><img src="/img/vamp_logo_blue.svg" alt="vamp"></a>
+                    <span id="alpha">alpha</span>
+                </div>
+                <div class="collapse navbar-collapse pull-right">
+                    <ul class="nav pull-left">
+                        <li><a href="/getting-started/" >GETTING STARTED</a></li>
+                        <li><a href="/documentation/">DOCS</a></li>
+                        <li><a href="/blog/">BLOG</a></li>
+                        <li><a href="/download/">DOWNLOAD</a></li>
+                        <li><a href="https://github.com/magneticio/vamp/" target="_blank">GITHUB</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-background"></div>
+</header>
+<section class="content-5 header-3-sub">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1 hero-text">
+                <h1>Build, deploy and manage microservices with power and ease.</h1>
+                <p class="lead">Vamp, or the <em>Very Awesome Microservices Platform</em>, takes
+                    the pain out of running complex and critical service based architectures.
+                    Vamp's core features are a platform-agnostic microservices DSL, A-B
+                    testing/canary releasing on everything and a deep metrics & event engine
+                    monitoring everything and directly feeds back into your services.<br>
+                    We are currently in alpha but you can already start kicking the tires!
+                </p>
+                <p class="btn-row">
+                    <a class="btn btn-info btn-getting-started" href="/getting-started">Get Started</a>
+                    <a class="btn btn-info btn-docs" href="/documentation">Docs & Help</a>
+                    </p>
+                <a href="/download/" class="version-link">Vamp-core {{ $.Site.Data.downloads.dist.stableCore }} "{{ $.Site.Data.downloads.dist.stableCodeName }}" licensed under {{ $.Site.Data.downloads.dist.license }}</a>
+
+            </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="bar">
+        <div class="container">
+            <div class="row">
+                <div class="subscribe-form col-sm-12">
+                    <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate>
+                        <div class="mc-field-group input-group">
+                            <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Email">
+                                <span class="input-group-btn">
+                                    <button type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe-1" class="btn btn-info">SIGN UP</button>
+                                </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+</div>
+    <section class="content-5 bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <h3>Manage all services in your topology, as a topology.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <p class="lead">
+                        Complex service architectures have complex dependencies and specific requirements
+                        when it comes to managing versions, performance, scale and availability. Vamp gives
+                        you the tools to manage service chains of arbitrary complexity and control the
+                        scale, health, version and topology of your services in real time.
+                    </p>
+                        <img src="img/topology.svg" alt="topology">
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="content-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <h3>Easy A/B testing and Canary Releasing on everything</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <p class="lead">
+                    Vamp has a deeply ingrained support for A/B-testing, Canary and Blue/Green releases. Vamp's DSL and API has full support
+                    for many common (and not so common) scenarios for either bringing your changes to production safely
+                    or just trying out new things without the associated risks.
+                </p>
+            </div>
+        </div>
+        <div class="row features">
+            <div class="col-sm-6 col-sm-offset-1">
+                <img src="img/feat1.svg">
+            </div>
+            <div class="col-sm-4">
+                <h4>Transition from 0% to 100%</h4>
+                <p>
+                    Manually adjusting load balancers or web servers on every release?
+                    Vamp gives you a straight DSL and API to plan
+                    your canary releases, blue/green deployments and A/B tests.
+                </p>
+            </div>
+        </div>
+        <div class="row features">
+            <div class="col-sm-4 col-sm-offset-1">
+                <h4>Define test groups with filters</h4>
+                <p>
+                Test out a new service with just your IOS users? Expose
+                a service to specific part of your company? Set up simple (or complex)
+                test groups with the DSL or the API.
+                </p>
+            </div>
+            <div class="col-sm-6 col-sm-offset-1 right-image">
+                <img src="img/feat2.svg">
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="content-5 bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <h3>
+                    Finally, a true microservices DSL
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <p class="lead">Using Vamp blueprints, you specify all of your dependencies and runtime behaviour, like
+                    what traffic should go where and what SLA levels your service should stick to. Think platform independent
+                    AWS Cloudformation with added fairy dust.</p>
+                <div class="screen">
+<pre><span class="kwd">name: </span><span class="pln">my-blueprint</span><span class="kwd">
+  endpoints:
+    frontend.ports.port: </span><span class="pln">$PORT
+</span><span class="kwd">clusters:
+</span><span class="pln">  </span><span class="kwd">frontend:
+</span><span class="pln">    </span><span class="kwd">services:
+</span><span class="pln">      </span><span class="pun">-</span><span class="pln">
+        </span><span class="kwd">breed: </span><span class="pln">apache/final
+        </span><span class="kwd">scale:
+</span><span class="pln">          </span><span class="kwd">cpu: </span><span class="pln">0.2
+          </span><span class="kwd">memory: </span><span class="pln">120
+          </span><span class="kwd">instances: </span><span class="pln">2
+        </span><span class="kwd">routing:
+</span><span class="pln">          </span><span class="kwd">weight: </span><span class="pln">95
+      </span><span class="pun">-</span><span class="pln">
+        </span><span class="kwd">breed: </span><span class="pln">apache/experimental
+        </span><span class="kwd">scale:
+</span><span class="pln">          </span><span class="kwd">cpu: </span><span class="pln">0.2
+          </span><span class="kwd">memory: </span><span class="pln">120
+          </span><span class="kwd">instances: </span><span class="pln">2
+        </span><span class="kwd">routing:
+</span><span class="pln">          </span><span class="kwd">weight: </span><span class="pln">5
+          </span><span class="kwd">filters:
+</span><span class="pln">            </span><span class="pun">-</span><span class="pln"> </span><span class="kwd">condition: </span><span class="pln">user-agent = android
+    </span><span class="kwd">sla:
+</span><span class="pln">      </span><span class="kwd">type: </span><span class="pln">sliding_window
+      </span><span class="kwd">metric: </span><span class="pln">response_time
+        </span><span class="kwd">threshold:
+</span><span class="pln">          </span><span class="kwd">upper: </span><span class="pln">1000
+          </span><span class="kwd">lower: </span><span class="pln">100
+        </span><span class="kwd">window:
+</span><span class="pln">          </span><span class="kwd">interval: </span><span class="pln">10
+          </span><span class="kwd">cooldown: </span><span class="pln">10
+        </span><span class="kwd">reset:
+</span><span class="pln">          </span><span class="kwd">time: </span><span class="pln">20
+      </span><span class="kwd">escalation:
+</span><span class="pln">        </span><span class="kwd">scale_instances:
+</span><span class="pln">          </span><span class="kwd">minimum: </span><span class="pln">1
+          </span><span class="kwd">maximum: </span><span class="pln">3
+          </span><span class="kwd">scale_by: </span><span class="pln">1
+                    </span></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-5">
+    <div class="container">
+        <div class="row features">
+            <div class="col-sm-10 col-sm-offset-1">
+                <h3>
+                Use a Container Manager or PaaS of your choice</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <p class="lead">
+                    Vamp leverages the power of existing container management solutions and/or PaaS-platforms:
+                    <a href="https://mesosphere.com/product/" target="_blank">Mesosphere</a>,
+                    <a href="http://aws.amazon.com/ecs/" target="_blank">AWS EC2 Container Service</a>, <a href="https://cloud.google.com/container-engine/" target="_blank">Google Container Engine</a>
+                    and <a href="http://kubernetes.io/" target="_blank">Kubernetes</a> are all solutions that take care of scheduling, running and destroying containers on
+                    fleets of hardware or VM's.<br>
+                </p>
+
+                <div class="integrations-row  row">
+                    <div class="col-sm-4 integration">
+                        <h5>Mesosphere Marathon</h5>
+                        <img src="img/mesosphere.png">
+                        <button class="btn btn-info btn-wide">Supported!</button>
+                    </div>
+                    <div class="col-sm-4 integration middle">
+                        <h5>Google Container Engine</h5>
+                        <img src="img/gce.png">
+                        <button class="btn btn-info btn-wide disabled ">Coming soon!</button>
+                    </div>
+                    <div class="col-sm-4 integration">
+                        <h5>AWS Container Service</h5>
+                        <img src="img/aws.png">
+                        <button class="btn btn-info btn-wide disabled">Coming soon!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>

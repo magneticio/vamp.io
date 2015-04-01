@@ -1,0 +1,54 @@
+/**
+ * Content 6 stylesheet  
+ * */
+ .content-6 {
+    position:relative;
+    padding-top:130px;
+    padding-bottom:120px;
+    @media (max-width: 768px) {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    h3 {
+        margin: 0 0 21px;
+        text-align: center;
+        .font(35px, @text-color-heading);
+        font-family:@font-family-demo;
+        img {
+            .center-block;
+            margin-bottom: 35px;
+        }
+        @media (max-width: 767px) {
+            margin-bottom: 15px;
+        }
+    }
+    p {
+        .font(16px);
+        .line-height(26px);
+    }
+    .lead {
+        text-align: center;
+        .font(25px);
+        font-family: @font-family-demo;
+        font-weight: 300;
+        @media (max-width: 767px) {
+            line-height: 1.25;
+        }
+    }
+    .v-center;
+    @media (max-width: 480px) {
+        padding-bottom: 210px;
+    }
+    .features {
+        > * {
+            margin-top: 40px;
+        }
+        h6 {
+            .font(22px, @base);
+            font-family:@font-family-demo;
+            font-weight:500;
+            margin-bottom: 14px;
+            text-transform: none;
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{{ partial "head.html" . }}
+{{ partial "top_nav.html" . }}
+{{ partial "sub_head.html" . }}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div>
+                    <h1 id="title">{{ .Title }}</h1>
+
+                    <ul>
+                        {{ $data := .Data }}
+                        {{ range $key, $value := .Data.Terms }}
+                        <li><a href="/{{ $data.Plural }}/{{ $key | urlize }}">{{ $key }}</a> ({{ len $value }})</li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{ partial "footer.html" . }}

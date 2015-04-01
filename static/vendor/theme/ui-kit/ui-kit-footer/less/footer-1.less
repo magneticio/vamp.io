@@ -1,0 +1,130 @@
+/**
+ * Footer 1 stylesheet  
+ * */
+ .footer-1 {
+    padding-top: 85px;
+    padding-bottom: 85px;
+    font-size: 14px;
+    color: @silver;
+    .lead {
+        margin-bottom: 15px;
+        margin-top: -10px;
+        .font(22px, white);
+        font-weight: 300;
+        letter-spacing: -1px;
+        b {
+            font-weight: 500;
+        }
+    }
+    .social-btns {
+        white-space: nowrap;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        > * {
+            display: inline-block;
+            vertical-align: top;
+            margin-left: 15px;
+            .font(20px, mix(@silver, black, 80%));
+            width: 20px;
+            height: 25px;
+            overflow: hidden;
+            text-align: center;
+            &:first-child {
+                margin-left: 0;
+            }
+            > * {
+                display: block;
+                position: relative;
+                top: 0;
+                .transition(0.25s top);
+                &:first-child {
+                    color: @silver;
+                }
+            }
+            &:hover > * {
+                top: -100%;
+            }
+        }
+    }
+    .btn.btn-danger {
+        .btn-background(@pomegranate);
+    }
+    a {
+        .a-color(@silver);
+        font-weight: normal;
+    }
+    nav {
+        h6 {
+            margin: 0 0 20px;
+            .font(16px, white);
+            .line-height(16px);
+            font-family:@font-family-demo;
+            text-transform: none;
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            .font(16px, @silver);
+            li {
+                margin-bottom: 5px;
+            }
+        }
+    }
+    .buy-btn {
+        text-align: center;
+        a.btn {
+            .font(15px, white);
+        }
+        .btn {
+            margin-bottom: 17px;
+        }
+    }
+    .additional-links {
+        border-top: 1px solid #374859;
+        padding-top: 17px;
+        .font(14px, @concrete);
+        @media (max-width: 767px) {
+            margin-top: 17px;
+            margin-bottom: 0;
+        }
+        a {
+            margin-right: 10px;
+            .a-color(@concrete);
+        }
+    }
+    @media (max-width: 767px) {
+        .col-sm-6 {
+            margin-bottom: 20px;
+        }
+        nav .col-sm-2, .buy-btn {
+            float: left;
+            width: 30%;
+            margin-left: 5%;
+        }
+        nav .col-sm-2:first-child {
+            margin-left: 0;
+        }
+    }
+    @media (max-width: 480px) {
+        padding-top: 35px;
+        padding-bottom: 35px;
+        .buy-btn {
+            float: none;
+            clear: both;
+            width: auto;
+            padding-top: 15px;
+            margin: 0;
+            .btn {
+                margin: 0 0 10px;
+            }
+        }
+        nav .col-sm-2 {
+            width: 47%;
+            margin-left: 6%;
+        }
+    }
+    .fb_iframe_widget {
+        vertical-align: top;
+    }
+}

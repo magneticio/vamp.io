@@ -1,0 +1,18 @@
+stableCore = "0.7.0-RC2"
+stablePulse = "0.7.0-RC2"
+stableRouter = "0.7.0-RC2"
+stableCodeName = "Northmann"
+stableReleaseDate = "31-05-2015"
+
+
+
+license = "Apache 2.0"
+
+
+libraries = [ "common","pulse","pulse-api"]
+packagePrefix = "vamp-"
+scalaVersion = "2.11"
+sonatypeBaseUrl = "https://oss.sonatype.org/content/repositories/releases/io/vamp/"
+bintrayMavenApiUrl = "http://api.bintray.com/packages/magnetic-io/vamp/"
+bintrayBaseUrl = "http://bintray.com/magnetic-io/"
+bintrayDownloadApiUrl = "http://api.bintray.com/packages/magnetic-io/downloads/"

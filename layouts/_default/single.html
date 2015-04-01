@@ -1,0 +1,18 @@
+{{ partial "head.html" . }}
+{{ partial "top_nav.html" . }}
+{{ partial "sub_head.html" . }}
+
+<section class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                {{ partial "side_nav.html" . }}
+            </div>
+            <div class="col-sm-10 docs">
+                {{ .Content }}
+            </div>
+        </div>
+    </div>
+</section>
+
+{{ partial "footer.html" . }}

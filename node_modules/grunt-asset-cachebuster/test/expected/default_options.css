@@ -1,0 +1,19 @@
+h1 {
+  background-image: url(hello.png?v=123456);
+}
+
+h2 {
+  background-image: url(//cdn.1.test.com/hello.png?v=123456);
+}
+
+h3 {
+  background-image: url(//cdn.2.test.com/hello.png?v=123456);
+}
+
+h4 {
+  background-image: url(data:image/png;base64,TEST==);
+}
+
+h5 {
+  background-image: url('data:image/png;base64,TEST==');
+}

@@ -1,0 +1,104 @@
+/**
+ * Header 22 stylesheet  
+ * */
+ .header-22 {
+    position:relative;
+    z-index:100;
+    width:100%;
+    padding-top:78px;
+    padding-bottom:0;
+    height: 240px;
+    .header-background {
+        background: #fff;
+    }
+    >[class*="fui-"] {
+        .center-block;
+        text-align: center;
+        .font(24px, @brand-danger);
+        position: relative;
+        z-index: 2;
+    }
+    .navbar {
+        font-family: @font-family-demo;
+        font-size: 13px;
+        &.navbar-fixed-top {
+            top: 110px !important;
+        }
+        .brand {
+            display: none;
+            padding: 23px 28px 5px 0;
+            .font(25px, @base);
+            font-weight: 800;
+            img:first-child {
+                float: left;
+                margin: -10px 15px 0 0;
+            }
+            @media (max-width: 991px) {
+                display: block;
+            }
+        }
+        .nav {
+            @media (min-width: 992px) {
+                width: 100%;
+                text-align: center;
+                > li {
+                    float: none;
+                    display: inline-block;
+                }
+            }
+            > li {
+                margin-left: 40px;
+                &:first-child {
+                    margin-left: 0;
+                }
+                > a {
+                    padding: 40px 0;
+                    .font(13px, @silver);
+                    font-weight: 800;
+                    letter-spacing:1px;
+                    .a-color(@silver);
+                }
+            }
+        }
+        .navbar-toggle {
+            background-image: url("@{startup-basePath}common-files/icons/menu-icon-dark@2x.png");
+            .background-size(17px 12px);
+            margin-top: 26px;
+        }
+    }
+}
+.header-22-sub {
+    position:relative;
+    padding-top:190px;
+    padding-bottom: 150px;
+    .v-center;
+    h3 {
+        margin-bottom: 68px;
+        .font(37px, @base);
+        font-weight: 300;
+        text-align: center;
+        line-height: 50px;
+        @media (max-width: 767px) {
+            .font(30px, @text-color-heading);
+            font-weight: 300;
+            text-align: center;
+        }
+    }
+    .container {
+        .opacity(0);
+        .loaded & {
+            .transition(~'1.2s opacity');
+            .opacity(100);
+        }
+    }
+    @media (max-width: 480px) {
+        padding-top:50px;
+        h3 {
+            .font(30px, @base);
+            font-weight: 300;
+            text-align: center;
+            line-height: 50px;
+            margin-bottom: 30px;
+        }
+    }
+}

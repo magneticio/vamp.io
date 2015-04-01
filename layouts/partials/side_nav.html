@@ -1,0 +1,33 @@
+<!--sidebar start-->
+<aside>
+    <div id="sidenav">
+        <!-- sidebar menu start-->
+        <ul class="sidenav-menu">
+            {{ $currentNode := . }}
+            {{ range .Site.Menus.main }}
+            {{ if .HasChildren }}
+
+            <li class="sub-menu{{if $currentNode.HasMenuCurrent "main" . }} active {{end}}">
+            <a href="#" data-target=".collapse_{{.Identifier}}" class="sub-menu-header collapsed" data-toggle="collapse">
+                {{ .Pre }}
+                <span>{{ .Name }}</span>
+            </a>
+            <ul class="collapse_{{.Identifier}} sub collapse{{if $currentNode.HasMenuCurrent "main" . }} in {{end}}">
+                {{ range .Children }}
+                <li{{if $currentNode.IsMenuCurrent "main" . }} class="active"{{end}}><a href="{{.Url}}" class="sub-menu-link"> {{ .Name }} </a></li>
+                {{ end }}
+            </ul>
+            {{else}}
+            <li>
+                <a href="{{.Url}}">
+                    {{ .Pre }}
+                    <span>{{ .Name }}</span>
+                </a>
+                {{end}}
+            </li>
+            {{end}}
+        </ul>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+<!--sidebar end-->

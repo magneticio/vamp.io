@@ -1,0 +1,14 @@
+<section class="subheader">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                {{ if eq .IsPage true }}
+                <h4>{{ .Section }}</h4>
+                {{end}}
+                {{ if eq .IsNode true }}
+                <h4>{{ .Title }}</h4>
+                {{end}}
+            </div>
+        </div>
+    </div>
+</section>

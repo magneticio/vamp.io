@@ -1,0 +1,98 @@
+/**
+ * Header 8 stylesheet  
+ * */
+ .header-8-startup-antiflicker {
+    border-bottom:1px @silver solid;
+}
+.header-8 {
+    padding-top:0;
+    padding-bottom:0;
+    z-index:100;
+    width: 100%;
+    height: 110px;
+    .header-background {
+        background: #fff;
+    }
+    .navbar {
+        position:relative;
+        top: 0;
+        z-index: 2;
+        margin: 18px 0 10px;
+        font-family: @font-family-demo;
+        &.navbar-fixed-top {
+            top: 0 !important;
+        }
+        .brand {
+            padding-top: 18px;
+            .font(25px, @base);
+            font-weight: 800;
+            img:first-child {
+                float: left;
+                margin: -10px 15px 0 0;
+            }
+        }
+        .nav {
+            position: absolute;
+            width: 100%;
+            height: 0;
+            overflow: visible;
+            text-align: center;
+            > li {
+                float: none;
+                display: inline-block;
+                .line-height(15px);
+                margin-left: 50px;
+                &:first-child {
+                    margin-left: 0;
+                }
+                > a {
+                    padding: 30px 0 22px;
+                    .font(16px);
+                    font-weight:800;
+                    font-family:@font-family-demo;
+                    .a-color(@concrete, @base);
+                }
+                &.active > a {
+                    .a-color(@base, @base);
+                }
+            }
+        }
+        .navbar-header {
+            position: relative;
+            z-index: 2;
+        }
+        .navbar-toggle {
+            background-image: url("@{startup-basePath}common-files/icons/menu-icon-header-8@2x.png");
+            .background-size(17px 12px);
+            margin-top: 22px;
+        }
+    }
+}
+.header-8-sub {
+    position: relative;
+    padding-top: 95px;
+    padding-bottom: 0;
+    h3 {
+        .font(35px, @text-color-heading);
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: 300;
+        color: @text-color-heading;
+    }
+    .lead {
+        .font(24px, @text-color-heading);
+        font-family:@font-family-demo;
+        text-align: center;
+        font-weight: 300;
+        color: @text-color-heading;
+    }
+    .background {
+        background-image: url("@{startup-basePath}common-files/img/Italy_001.jpg");
+        background-position: 50% 0;
+        .opacity(100);
+    }
+    img {
+        .center-block;
+        margin-top: 60px;
+    }
+}

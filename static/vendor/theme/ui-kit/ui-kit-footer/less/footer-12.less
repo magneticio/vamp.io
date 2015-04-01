@@ -1,0 +1,52 @@
+/**
+ * Footer 12 stylesheet  
+ * */
+ .footer-12 {
+    padding-top: 190px;
+    padding-bottom: 110px;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 110px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        overflow: hidden;
+        background: #ebedee;
+    }
+    text-align: center;
+    .font(84.3px, rgba(44, 62, 80, 0.2));
+    font-family: @font-family-demo;
+    font-weight: 800;
+    letter-spacing: -2px;
+    [class*="fui-"] {
+        .font(60px, @brand-danger);
+        vertical-align: baseline;
+    }
+    @media (min-width: 1200px) {
+        .font(84px, rgba(44, 62, 80, 0.2));
+        font-weight: 800;
+    }
+    @media (max-width: 1199px) {
+        font-size: 82px;
+    }
+    @media (max-width: 991px) and (min-width: 768px) {
+        .font(56px, rgba(44, 62, 80, 0.2));
+        font-weight: 800;
+    }
+    @media (max-width: 767px) {
+        .font(36px, rgba(44, 62, 80, 0.2));
+        font-weight: 800;
+        [class*="fui-"] {
+            font-size: 32px;
+        }
+    }
+    @media (max-width: 480px) {
+        .font(26px, rgba(44, 62, 80, 0.2));
+        padding-top: 150px;
+        font-weight: 800;
+        [class*="fui-"] {
+            .font(18px, @brand-danger);
+        }
+    }
+}

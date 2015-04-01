@@ -1,0 +1,102 @@
+/**
+ * Header 13 stylesheet  
+ * */
+ .header-13 {
+    position: absolute;
+    width:100%;
+    margin:140px auto;
+    z-index: 5;
+    padding-top:0;
+    padding-bottom:0;
+    @media (max-width: 767px) {
+        text-align: center;
+        .brand {
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            margin-left: -50px;
+            @media (max-width: 480px) {
+                top: 0;
+            }
+        }
+    }
+    .brand img {
+        width:100px !important;
+        height:100px !important;
+        margin-top: 10px !important;
+    }
+    .opacity(0);
+    .loaded & {
+        .transition(~'.6s 1.4s top, 1.2s 1.4s opacity');
+        .opacity(100);
+    }
+    @media (max-width: 480px) {
+        text-align: left;
+        .transition-duration(0)!important;
+        .transition-delay(0)!important;
+    }
+}
+.header-13-sub {
+    position:relative;
+    .v-center;
+    padding-top:140px;
+    padding-bottom: 130px;
+    color: @silver;
+    h3 {
+        .font(29px, white);
+        font-family: @font-family-demo;
+        margin-bottom:26px;
+        font-weight:300;
+    }
+    .lead {
+        .font(22px, @silver);
+        font-family: @font-family-demo;
+        font-weight:300;
+    }
+    .col-sm-5.col-sm-offset-1 {
+        margin-top: 220px;
+        @media (max-width: 767px) {
+            margin-top: 0;
+        }
+    }
+    .btn {
+        font-size: 22px;
+        line-height: 21px;
+        padding: 15px 20px 16px;
+        display: block;
+    }
+    .background {
+        background-image:url("@{startup-basePath}common-files/img/header/img-1.jpg");
+        .opacity(90);
+    }
+    .col-sm-5.col-sm-offset-1 {
+        position: relative;
+        left: -15%;
+        .opacity(0);
+        .loaded & {
+            .transition(~'.8s .4s left, 1.2s .4s opacity');
+            left: 0;
+            .opacity(100);
+        }
+    }
+    .col-sm-4.col-sm-offset-1 {
+        position: relative;
+        right: -100px;
+        .opacity(0);
+        .loaded & {
+            .transition(~'.8s right, 1.2s opacity');
+            right: 0;
+            .opacity(100);
+        }
+    }
+    @media (max-width: 480px) {
+        padding-top: 90px;
+        > div > .container {
+            padding-top:180px;
+        }
+        .col-sm-5.col-sm-offset-1, .col-sm-4.offset-1 {
+            .transition-duration(0)!important;
+            .transition-delay(0)!important;
+        }
+    }
+}

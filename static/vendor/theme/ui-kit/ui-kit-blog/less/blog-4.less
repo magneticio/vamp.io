@@ -1,0 +1,120 @@
+/**
+ * Blog 4 stylesheet  
+ * */
+.blog-4 {
+  padding-top: 130px;
+  padding-bottom: 130px;
+  p {
+    margin: 0;
+    & + p {
+      margin-top: 30px;
+    }
+  }
+  h3 {
+    font-size: 35px;
+    margin: 0 0 35px;
+  }
+  h6 {
+    font-size: 20px;
+    font-family: @font-family-demo;
+    font-weight: 500;
+    margin: 0 0 25px;
+    text-transform: none;
+  }
+  .img {
+    max-height: 242px;
+    max-width: 538px;
+    margin: 70px 0;
+    .border-radius(6px);
+    overflow: hidden;
+    display: inline-block;
+    @media(max-width:560px){
+      display: block;
+    }
+    > img {
+      display: block;
+      .border-radius(6px);
+      max-height: 100%;
+    }
+  }
+  .quote {
+    position: relative;
+    margin: 60px 0 55px 40px;
+    font-size: 37px;
+    line-height: 50px;
+    font-family: @font-family-demo;
+    color: #2c3e50;
+    font-weight: 300;
+    letter-spacing: -1px;
+    &:before {
+      content: url('@{startup-basePath}common-files/icons/quote-up.png');
+      position: absolute;
+      top: -17px;
+      left: -40px;
+    }
+    @media (max-width: 767px) {
+      font-size: 29px;
+      line-height: 38px;
+    }
+  }
+  .tags {
+    margin-top: 70px;
+    font-size: 12px;
+    font-family: @font-family-demo;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.19em;
+    color: #bdc3c7;
+    a {
+      .a-color(#bdc3c7);
+    }
+    ul, ol {
+      list-style: none;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+  .related-articles {
+    margin-top: 82px;
+    font-size: 15px;
+    color: #bdc3c7;
+    h6 {
+      font-size: 19px;
+      font-family: @font-family-demo;
+      font-weight: 500;
+      margin: 0 0 30px;
+    }
+    ul, ol {
+      list-style: none;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      display: block;
+      line-height: 1.45;
+      & + li {
+        margin-top: 30px;
+      }
+    }
+    a {
+      .a-color(#1abc9c);
+      font-size: 17px;
+      font-weight: 500;
+      & + div {
+        margin-top: 4px;
+      }
+    }
+    @media (max-width: 767px) {
+      margin-top: 60px;
+    }
+  }
+}
