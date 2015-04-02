@@ -11,7 +11,26 @@ menu:
     
 ---
 
-# Getting Started
+
+# Before you install...
+<img src="/img/vamp_services.svg" id="get_started_overview">
+
+Before we really get started, you should know that Vamp is truly modular and
+consists of three separate services: Core, Pulse and Router. Each of these services has their own
+role and purpose:
+
+- **Vamp Core**: Core is the brains of the system. It contains the REST API you send your request to,
+it speaks to the underlying PaaS/Container Manager and ties together the other two services. 
+- **Vamp Router**: All routing duties are taken care of by Vamp Router. It is a perfectly usable component
+by itself, but really comes together when Vamp Core is in charge of what it routes and where.
+- **Vamp Pulse**: Pulse is the metrics and event store for the whole Vamp platform. Core and Router both store
+data in it and Core also uses it as the input for SLA management and events storage.
+
+Knowing that this is how Vamp works under the hood can maybe help you troubleshoot any teething problems and
+in general help you better understand what's going on.
+
+
+# Now let's install!
 
 By far the easiest way to get started with Vamp is by spining up one of the pre-baked Docker images stored
 in the [vamp-docker repo](https://github.com/magneticio/vamp-docker). This repo contains a number of 
@@ -41,9 +60,9 @@ Luckily, that's a two-liner:
 chmod +x /usr/local/bin/docker-compose</pre>
 {{% /copyable %}}
 
-With the prerequisites sorted, pick the thing you want to do...
+With the prerequisites sorted, pick one of the following options:
 
-## Run Vamp with a Mesos cluster all-in-one
+## Option 1: Run Vamp with a Mesos cluster all-in-one
 
 This command will create a full Mesosphere stack on your laptop and connect Vamp to it.
 {{% copyable %}}
@@ -80,7 +99,7 @@ Now check if Vamp is home by doing a GET on the `hi` endpoint, i.e.: `http://192
 }
 </pre>
 
-## Run Vamp with an external Mesos cluster
+## Option 3: Run Vamp with an external Mesos cluster
 
 If you want to tweak things a bit more, grab the Vamp all-in-one Docker image and provide your own Mesosphere stack.
    

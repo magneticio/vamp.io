@@ -19,5 +19,7 @@ Of these three, the blueprint is the center of attention. Why?
 -   Because you create deployments by `POST`-ing a blueprint.
 -   Because they have information on scale, filters and sla's.
 
+This means you will probably start out just using blueprints.
+
 
 

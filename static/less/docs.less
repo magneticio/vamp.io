@@ -1,10 +1,35 @@
 .docs {
+
+h1,h2,h3 {
+  font-size: 1.75em;
+  font-weight: bold;
+  line-height: 1.225;
+  padding-bottom: 0.3em;
+  margin-bottom: 16px;
+  margin-top: 1em;  
+  border-bottom: 1px solid @divider;
+}
+
+h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+  border-bottom: none;
+
+}
+
+  img {
+    margin: 20px;
+  }
+
   pre {
     border-radius: 3px;
-    padding-left: 35px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-//    margin: 30px 0px 30px;
+    padding: 16px;
     border: 1px solid #e1e1e8;
     font-size: 13px;
     color: #333;
@@ -97,4 +122,24 @@
     }
 
   }
+
+// some special items for aligning images in some parts of the docs
+
+#get_started_overview {
+  float: right;
+}
+
+  @media (max-width: 480px) {
+    img {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+  #get_started_overview {
+    float: none;
+    text-align: middle;
+  }
+}
+
 }

@@ -12,15 +12,17 @@
     list-style-type: none;
     li {
       > a {
-        .font(15px);
-        font-weight: 300;
+        .font(14px);
+        text-transform: uppercase;
+        font-weight: 400;
         .a-color(@asbestos, @link-color);
         &:hover{
           color: @brand-info;
           text-decoration: underline;
         }
         &.sub-menu-link {
-          font-size: 13px;
+          text-transform: none;
+          font-size: 15px;
         }
       }
     }

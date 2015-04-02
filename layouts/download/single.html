@@ -2,19 +2,19 @@
 {{ partial "top_nav.html" . }}
 {{ partial "sub_head.html" . }}
 
-<section class="content-wrapper downloads">
+<section class="content-wrapper downloads docs">
     <div class="container">
         <div class="row">
-            <div class="col-sm-10 col-sm-offset-2">
+            <div class="col-sm-8 col-sm-offset-2">
                 {{ .Content }}
             </div>
-            <div class="col-sm-10 col-sm-offset-2">
-            <h2>Pre-build packages</h2>
+            <div class="col-sm-8 col-sm-offset-2">
+            <h2>Packages: build {{ .Site.Data.downloads.dist.stableCodeName }} ({{ .Site.Data.downloads.dist.stableReleaseDate}})</h2>
             <p>Vamp consists of the three core packages. You'll find the latest pre-build packages below. You'll need
             <a href="http://www.oracle.com/technetwork/java/javase/8u40-relnotes-2389089.html">Java SDK 8u40</a> to run
             the Scala parts.</p>
                 <div class="table-responsive">
-                    <span class="muted pull-right">Build {{ .Site.Data.downloads.dist.stableCodeName }} ({{ .Site.Data.downloads.dist.stableReleaseDate }})</span>
+                    <span class="muted pull-right">)</span>
                     <table class="table table-striped packages-table">
                         <thead>
                         <tr>

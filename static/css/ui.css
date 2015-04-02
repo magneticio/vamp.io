@@ -3,26 +3,26 @@
   margin-top: 12px;
 }
 body {
-  color: #212121;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-  font-size: 15px;
+  color: #333333;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.722169;
   /* 31px */
 }
 body ul li,
 body ol li {
-  font-size: 15px;
+  font-size: 16px;
 }
 strong {
-  color: #727272;
+  color: #333333;
   font-weight: 500;
 }
 input,
 button,
 select,
 textarea {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
 }
 a {
@@ -78,10 +78,10 @@ h6,
 .h6 {
   line-height: 1.2em;
   font-weight: 400;
-  color: #303747;
+  color: #333333;
 }
 p {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.722169;
   /* 31px */
   font-weight: 300;
@@ -215,7 +215,7 @@ footer {
   border-radius: 6px 0 0 6px;
 }
 .bg-light-gray {
-  background-color: #f7f7f7;
+  background-color: #ededed;
 }
 .bg-white {
   background-color: #ffffff;
@@ -530,7 +530,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: normal;
   color: #727272;
@@ -793,7 +793,7 @@ header .brand {
   font-size: 25px;
   font-weight: normal;
   color: #34495e;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 800;
   letter-spacing: -1px;
   color: #2c3e50;
@@ -834,11 +834,17 @@ section * {
 .blog header {
   padding: 0px 0px 16px 0px;
 }
+.blog.post h1 {
+  border-bottom: none;
+}
+.blog.post img {
+  margin: 20px auto 20px auto;
+}
 .blog #disqus_thread {
   margin-top: 16px;
 }
 .blog.summary {
-  border-bottom: 1px solid #f7f7f7;
+  border-bottom: 1px solid #ededed;
   padding-bottom: 20px;
 }
 .blog.summary .date {
@@ -853,11 +859,11 @@ section * {
   font-size: 13px;
 }
 .blog.post {
-  border-bottom: 1px solid #f7f7f7;
+  border-bottom: 1px solid #ededed;
   padding-bottom: 28px;
 }
 .blog.post header {
-  border-bottom: 1px solid #f7f7f7;
+  border-bottom: 1px solid #ededed;
   margin-bottom: 16px;
 }
 .blog.post header h1 {
@@ -868,7 +874,7 @@ section * {
   margin: 60px 0 55px 40px;
   font-size: 37px;
   line-height: 50px;
-  color: #727272;
+  color: #333333;
   font-weight: 300;
   letter-spacing: -1px;
 }
@@ -904,7 +910,7 @@ section * {
   padding-top: 60px;
   padding-bottom: 30px;
   font-size: 15px;
-  color: #f7f7f7;
+  color: #ededed;
   background-color: #303747;
 }
 .footer-1 .brand img {
@@ -920,7 +926,6 @@ section * {
   font-weight: normal;
   color: #ffffff;
   font-weight: 300;
-  letter-spacing: -1px;
 }
 .footer-1 .lead b {
   font-weight: 500;
@@ -956,7 +961,7 @@ section * {
 }
 .footer-1 nav h6 {
   margin: 0 0 20px;
-  color: #f7f7f7;
+  color: #ededed;
   text-transform: none;
 }
 .footer-1 nav ul {
@@ -973,9 +978,6 @@ section * {
 .footer-1 .subscribe-form {
   margin-bottom: 20px;
 }
-.footer-1 .subscribe-form p {
-  margin-bottom: 20px;
-}
 .footer-1 .subscribe-form form {
   margin: 40px 0 10px;
 }
@@ -984,8 +986,8 @@ section * {
   border: 0px;
   font-size: 13px;
   font-weight: 300;
-  background-color: #f7f7f7;
-  border: 1px solid #f7f7f7;
+  background-color: #ededed;
+  border: 1px solid #ededed;
 }
 .footer-1 .subscribe-form form .input-group input[type="email"]::-webkit-input-placeholder {
   color: #727272;
@@ -1133,7 +1135,7 @@ section * {
   font-size: 28px;
   font-weight: normal;
   color: #2c3e50;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-align: center;
 }
 .content-5 h3 > [class*="icon-"] {
@@ -1160,9 +1162,10 @@ section * {
   font-size: 18px;
   font-weight: normal;
   color: #727272;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   text-align: center;
+  letter-spacing: 0.3px;
 }
 @media (max-width: 767px) {
   .content-5 .lead {
@@ -1208,7 +1211,7 @@ section * {
   font-size: 22px;
   font-weight: normal;
   color: #34495e;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   margin-bottom: 14px;
   text-transform: none;
@@ -1241,8 +1244,8 @@ section * {
   background-color: #ff4081;
 }
 .content-5 .integrations-row .integration.middle {
-  border-left: 3px solid #f7f7f7;
-  border-right: 3px solid #f7f7f7;
+  border-left: 3px solid #ededed;
+  border-right: 3px solid #ededed;
 }
 .content-5 .features {
   margin-top: 70px;
@@ -1275,7 +1278,7 @@ section * {
   top: 0;
   margin-top: 10px;
   margin-bottom: 0px;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .header-3 .navbar.navbar-fixed-top {
   top: 0 !important;
@@ -1418,9 +1421,10 @@ section * {
   list-style-type: none;
 }
 #sidenav ul li > a {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: normal;
-  font-weight: 300;
+  text-transform: uppercase;
+  font-weight: 400;
   color: #727272;
 }
 #sidenav ul li > a:hover,
@@ -1433,7 +1437,8 @@ section * {
   text-decoration: underline;
 }
 #sidenav ul li > a.sub-menu-link {
-  font-size: 13px;
+  text-transform: none;
+  font-size: 15px;
 }
 #sidenav .sub-menu a.sub-menu-header.collapsed::before {
   color: #bdc3c7;
@@ -1481,11 +1486,33 @@ section * {
   vertical-align: middle;
   -webkit-font-smoothing: antialiased;
 }
+.docs h1,
+.docs h2,
+.docs h3 {
+  font-size: 1.75em;
+  font-weight: bold;
+  line-height: 1.225;
+  padding-bottom: 0.3em;
+  margin-bottom: 16px;
+  margin-top: 1em;
+  border-bottom: 1px solid #ededed;
+}
+.docs h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+}
+.docs h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+  border-bottom: none;
+}
+.docs img {
+  margin: 20px;
+}
 .docs pre {
   border-radius: 3px;
-  padding-left: 35px;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding: 16px;
   border: 1px solid #e1e1e8;
   font-size: 13px;
   color: #333;
@@ -1558,7 +1585,21 @@ section * {
 .docs blockquote p {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   font-size: 18px;
-  color: #303747;
+  color: #333333;
+}
+.docs #get_started_overview {
+  float: right;
+}
+@media (max-width: 480px) {
+  .docs img {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .docs #get_started_overview {
+    float: none;
+    text-align: middle;
+  }
 }
 .subheader {
   height: 53px;
@@ -1568,6 +1609,7 @@ section * {
   line-height: 34px;
   color: #FFFFFF;
   text-transform: capitalize;
+  letter-spacing: 0.5px;
 }
 .downloads .packages-table.table {
   margin-top: 16px;
@@ -1726,7 +1768,7 @@ small[class*="icon-"] {
 }
 #home ul.lead-list {
   font-size: 20px;
-  color: #f7f7f7;
+  color: #ededed;
 }
 #home .hero-text h1 {
   text-align: center;
@@ -1737,7 +1779,7 @@ small[class*="icon-"] {
 }
 #home .version-link {
   text-align: center;
-  font-size: 14px;
+  font-size: 15px;
   margin: 15px auto 37px auto;
   max-width: 430px;
   display: block;
@@ -1753,7 +1795,7 @@ small[class*="icon-"] {
   margin-top: 20px;
   padding: 15px 32px;
   width: 280px;
-  font-size: 22px;
+  font-size: 20px;
 }
 #home .btn-row .btn:hover {
   box-shadow: inset 0px 0px 0px 2px #03a9f4;
@@ -1822,9 +1864,9 @@ small[class*="icon-"] {
 }
 #home .bar .subscribe-form form .input-group input[type="email"] {
   height: 35px;
-  font-size: 13px;
-  font-weight: 300;
-  background: #f7f7f7;
+  font-size: 15px;
+  font-weight: 400;
+  background: #ededed;
   border: 1px solid #727272;
 }
 #home .bar .subscribe-form form .input-group input[type="email"]::-webkit-input-placeholder {
@@ -1942,11 +1984,11 @@ body {
 }
 body > .navbar-collapse {
   background: #ffffff;
-  box-shadow: 2px 0px 9px #f7f7f7;
+  box-shadow: 2px 0px 9px #ededed;
 }
 body > .navbar-collapse .nav > li > a {
   color: #727272;
-  border-bottom: 2px solid #f7f7f7;
+  border-bottom: 2px solid #ededed;
 }
 body > .navbar-collapse .nav > li > a:hover,
 body > .navbar-collapse .nav > li > a:focus,
