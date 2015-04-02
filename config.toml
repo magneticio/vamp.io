@@ -4,6 +4,8 @@ publishdir = "dist"
 pluralizeListTitles = false
 canonifyurls= true
 title= "Vamp :: The Very Awesome Microservices Platform"
+[permalinks]
+    blog = "/:year/:month/:filename/"
 
 [[menu.main]]
     name = "Overview"

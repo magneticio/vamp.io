@@ -970,6 +970,9 @@ section * {
 .footer-1 nav ul li {
   margin-bottom: 5px;
 }
+.footer-1 .subscribe-form {
+  margin-bottom: 20px;
+}
 .footer-1 .subscribe-form p {
   margin-bottom: 20px;
 }
