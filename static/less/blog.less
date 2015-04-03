@@ -20,12 +20,22 @@
 
   &.summary {
 
+    .tweet-button {
+      float: right !important;
+    }
+
     border-bottom: 1px solid @divider;
     padding-bottom: 20px;
 
-    .social-bar {
 
-    }
+    @media (max-width: 480px) {
+        .tweet-button {
+          float: none !important;
+          display: block;
+          margin-top: 20px;
+        }     
+      }
+
 
     .date {
       display: inline;
@@ -98,6 +108,10 @@
       flat: right;
     }
 
+  }
+
+  .read-more {
+    margin-top: 10px;
   }
 
 }

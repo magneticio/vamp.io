@@ -847,6 +847,16 @@ section * {
   border-bottom: 1px solid #ededed;
   padding-bottom: 20px;
 }
+.blog.summary .tweet-button {
+  float: right !important;
+}
+@media (max-width: 480px) {
+  .blog.summary .tweet-button {
+    float: none !important;
+    display: block;
+    margin-top: 20px;
+  }
+}
 .blog.summary .date {
   display: inline;
   margin-right: 14px;
@@ -901,6 +911,9 @@ section * {
 }
 .blog.prev-next .next {
   flat: right;
+}
+.blog .read-more {
+  margin-top: 10px;
 }
 /**
  * Footer 1 stylesheet  
