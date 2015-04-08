@@ -1,6 +1,6 @@
 stableCore = "0.7.0-RC2"
 stablePulse = "0.7.0-RC2"
-stableRouter = "0.7.0-RC2"
+stableRouter = "0.7.1-RC2"
 stableCodeName = "Northmann"
 stableReleaseDate = "31-05-2015"
 
