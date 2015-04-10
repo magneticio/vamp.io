@@ -1,8 +1,7 @@
 ---
-title: Canary releases
+title: Doing a canary release
 type: documentation
 weight: 30
-series: "tuts"
 draft: true
 menu:
     main:
@@ -10,7 +9,7 @@ menu:
     
 ---
     
-# Example 1: Merging
+# Doing a canary release
 
 Adding a new version to something that is already running
 

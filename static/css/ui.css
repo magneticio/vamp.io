@@ -991,6 +991,9 @@ section * {
 .footer-1 .subscribe-form {
   margin-bottom: 20px;
 }
+.footer-1 .subscribe-form .subscribe-lead {
+  margin-bottom: 20px;
+}
 .footer-1 .subscribe-form form {
   margin: 40px 0 10px;
 }
@@ -1430,8 +1433,11 @@ section * {
   }
 }
 #sidenav ul {
-  padding-left: 15px;
+  padding-left: 5px;
   list-style-type: none;
+}
+#sidenav ul.top-level {
+  padding-left: 0px;
 }
 #sidenav ul li > a {
   font-size: 14px;
@@ -1451,7 +1457,7 @@ section * {
 }
 #sidenav ul li > a.sub-menu-link {
   text-transform: none;
-  font-size: 15px;
+  font-size: 14px;
 }
 #sidenav .sub-menu a.sub-menu-header.collapsed::before {
   color: #bdc3c7;

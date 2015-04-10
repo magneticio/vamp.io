@@ -14,7 +14,6 @@
             <a href="http://www.oracle.com/technetwork/java/javase/8u40-relnotes-2389089.html">Java SDK 8u40</a> to run
             the Scala parts.</p>
                 <div class="table-responsive">
-                    <span class="muted pull-right">)</span>
                     <table class="table table-striped packages-table">
                         <thead>
                         <tr>
@@ -74,7 +73,7 @@
                             <td>{{ index $r.desc }}</td>
                             <td><a href="{{ index $r.vcs_url }}" target="_blank">source</a></td>
                             <td><a href="{{ index $r.issue_tracker_url }}" target="_blank">issues</a></td>
-                            <td><a href="{{ $sonatype }}{{ $package }}_{{$scalaVersion}}/{{index $r.latest_version}}/" target="_blank">maven</a></td>
+                            <td><a href="{{ $sonatype }}{{ $package }}_{{$scalaVersion}}/" target="_blank">maven</a></td>
                         </tr>
                         {{end}}
                         </tbody>

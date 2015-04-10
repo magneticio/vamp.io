@@ -2,7 +2,6 @@
 title: Installation
 type: documentation
 weight: 10
-series: "tuts"
 aliases:
   - /getting-started/
 menu:
@@ -19,12 +18,11 @@ Before we really get started, you should know that Vamp is truly modular and
 consists of three separate services: Core, Pulse and Router. Each of these services has their own
 role and purpose:
 
-- **Vamp Core**: Core is the brains of the system. It contains the REST API you send your request to,
+- **Vamp Core**: Core is the brains of the system. It contains the REST API you send your requests to,
 it speaks to the underlying PaaS/Container Manager and ties together the other two services. 
 - **Vamp Router**: All routing duties are taken care of by Vamp Router. It is a perfectly usable component
 by itself, but really comes together when Vamp Core is in charge of what it routes and where.
-- **Vamp Pulse**: Pulse is the metrics and event store for the whole Vamp platform. Core and Router both store
-data in it and Core also uses it as the input for SLA management and events storage.
+- **Vamp Pulse**: Pulse is the metrics and event store for the whole Vamp platform. Core and Router both store data in it and Core also uses it as the input for SLA management and events storage.
 
 Knowing that this is how Vamp works under the hood can maybe help you troubleshoot any teething problems and
 in general help you better understand what's going on.
@@ -78,8 +76,7 @@ to Java dependencies. Luckily, you'll only have to do this once. After that is c
 
 {{% alert warn %}}
 **Note 2:** This runs all of Vamp's components in one container. This is definitely not ideal, but works fine for kicking the tires.
-You will run into cpu, memory and storage issues pretty soon though. Also, random ports are assigned by the Vamp which
-you might not have exposed.
+You will run into cpu, memory and storage issues pretty soon though. Also, random ports are assigned by the Vamp which you might not have exposed on either Docker or your Boot2Docker Vagrant box.
 {{% /alert%}}
 
 Now check if Vamp is home by doing a GET on the `hi` endpoint, i.e.: `http://192.168.59.103:8081/api/v1/hi`
@@ -99,7 +96,8 @@ Now check if Vamp is home by doing a GET on the `hi` endpoint, i.e.: `http://192
 }
 </pre>
 
-## Option 3: Run Vamp with an external Mesos cluster
+
+## Option 2: Run Vamp with an external Mesos cluster
 
 If you want to tweak things a bit more, grab the Vamp all-in-one Docker image and provide your own Mesosphere stack.
    
@@ -115,7 +113,7 @@ Ocean really easily using the great wizards at [Mesosphere.com](https://mesosphe
     We are going to pass this in as an environment variable to our Vamp Docker container
     
     b) Deploy vamp-router to the Mesosphere stack. You can use the piece of JSON below for this. Just `POST` it to 
-    the Marathon endpoint and note the IP number of the host it gets deployed to eventually. In our case this 
+    the Marathon `/v2/apps` endpoint and note the IP number of the host it gets deployed to eventually. In our case this 
     was `10.16.107.232`
     
     ![](/img/marathon_router.png)
@@ -168,3 +166,4 @@ Ocean really easily using the great wizards at [Mesosphere.com](https://mesosphe
       }
     }
     </pre>
+
