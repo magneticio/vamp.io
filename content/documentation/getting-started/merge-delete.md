@@ -2,7 +2,6 @@
 title: 4. Merging and deleting services
 type: documentation
 weight: 50
-draft: true
 menu:
     main:
       parent: getting-started
