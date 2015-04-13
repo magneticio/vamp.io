@@ -66,12 +66,10 @@ After testing/migration is done old or new version can be removed from the clust
 
 ### Merge
 
-Merge of new services is done as a deployment update.
-Using the common REST API (PUT with deployment name) together with the new blueprint as request body will trigger the merge.
-If a service already exists then only routing & scale update will be done. Otherwise a new service will be added. If a new cluster doesn't exist in the deployment, it will be added.
+Merge of new services is done as a deployment update. Using the REST API (PUT with deployment name) together with the new blueprint as request body will trigger the merge. If a service already exists then only routing & scale update will be done. Otherwise a new service will be added. If a new cluster doesn't exist in the deployment, it will be added.
 
-### Removal
+### Delete
 
-Removal is done using REST API Delete request together with the new blueprint as request body.
-If service exists it will be removed otherwise request is ignored. If cluster has no more services it will be removed, if deployment has no more clusters it will be completely removed (destroyed).
+Deleting is done using a REST API Delete request together with a blueprint as request body.
+If the service or cluster exists it will be removed, otherwise the request is ignored. If the cluster has no more services it will be removed, if the deployment has no more clusters it will be completely removed.
 

@@ -1,5 +1,17 @@
 module.exports = function(grunt) {
     grunt.initConfig({
+        cacheBust: {
+          options: {
+            encoding: 'utf8',
+            algorithm: 'md5',
+            length: 16
+          },
+          assets: {
+              files: [{
+                  src: ['static/css/*.css']
+              }]
+          }
+        },        
         clean: ["dist/css","public/css/*"],
         less: {
             production: {
@@ -15,7 +27,7 @@ module.exports = function(grunt) {
         watch: {
             styles: {
                 files: ['static/less/*.less'],
-                tasks: ['clean','less','cssmin'],
+                tasks: ['clean','less','cssmin','cacheBust'],
                 options: {
                     nospawn: true
                 }
@@ -37,6 +49,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-cache-bust');
     grunt.registerTask('default', ['watch']);
 };
 

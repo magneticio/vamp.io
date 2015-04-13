@@ -602,7 +602,7 @@ button:active {
   padding: 0;
   width: 30px;
   height: 30px;
-  background: url("../vendor/theme/common-files/icons/menu-icon@2x.png") 50% no-repeat;
+  background: url("../vendor/theme/common-files/icons/menu-icon@2x.a294a8e4d52c0453.png") 50% no-repeat;
   -webkit-background-size: 17px 12px;
   -moz-background-size: 17px 12px;
   -o-background-size: 17px 12px;
@@ -1457,7 +1457,7 @@ section * {
 }
 #sidenav ul li > a.sub-menu-link {
   text-transform: none;
-  font-size: 14px;
+  font-size: 13px;
 }
 #sidenav .sub-menu a.sub-menu-header.collapsed::before {
   color: #bdc3c7;
@@ -1540,6 +1540,10 @@ section * {
   width: 100%;
   overflow-x: auto;
   overflow-wrap: normal;
+}
+.docs code {
+  color: #333;
+  background-color: #f7f7f9;
 }
 .docs .copy-button {
   position: relative;
@@ -1636,8 +1640,8 @@ section * {
 @charset "UTF-8";
 @font-face {
   font-family: pictonic;
-  src: url("../fonts/pictonic.eot");
-  src: url("../fonts/pictonic.eot?#iefix") format("embedded-opentype"), url("../fonts/pictonic.ttf") format("truetype"), url("../fonts/pictonic.woff") format("woff"), url("../fonts/pictonic.svg") format("svg");
+  src: url("../fonts/pictonic.5cd1b6c50f310a59.eot");
+  src: url("../fonts/pictonic.5cd1b6c50f310a59.eot?#iefix") format("embedded-opentype"), url("../fonts/pictonic.8aedef37cb9db861.ttf") format("truetype"), url("../fonts/pictonic.fb7d4ebd584d172c.woff") format("woff"), url("../fonts/pictonic.fc5f104b31d14c92.svg") format("svg");
   font-weight: normal;
   font-style: normal;
 }

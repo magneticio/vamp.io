@@ -23,39 +23,43 @@ h3 {
 
 }
 
-  img {
-    margin: 20px auto 20px auto  
-  }
+img {
+  margin: 20px auto 20px auto  
+}
 
-  pre {
-    border-radius: 3px;
-    padding: 16px;
+pre {
+  border-radius: 3px;
+  padding: 16px;
+  border: 1px solid #e1e1e8;
+  font-size: 13px;
+  color: #333;
+  font-family: @font-family-monospace;
+  background-color: #f7f7f9;
+  width: 100%;
+  overflow-x: auto;
+  overflow-wrap: normal;
+}
+
+code {
+  color: #333;
+  background-color: #f7f7f9;
+}
+
+.copy-button {
+    position: relative;
+    top: 38px;
+    border-radius: 0 3px 0 5px;
+    background-color: #ffffff;
+    color: @text-secondary-color;
     border: 1px solid #e1e1e8;
     font-size: 13px;
-    color: #333;
-    font-family: @font-family-monospace;
-    background-color: #f7f7f9;
-    width: 100%;
-    overflow-x: auto;
-    overflow-wrap: normal;
-//    white-space: nowrap
+    padding: 7px 13px;
+  &.zeroclipboard-is-hover {
+    background-color: @brand-accent;
+    border: 1px solid @brand-accent;
+    color: #ffffff;
   }
-
-  .copy-button {
-      position: relative;
-      top: 38px;
-      border-radius: 0 3px 0 5px;
-      background-color: #ffffff;
-      color: @text-secondary-color;
-      border: 1px solid #e1e1e8;
-      font-size: 13px;
-      padding: 7px 13px;
-    &.zeroclipboard-is-hover {
-      background-color: @brand-accent;
-      border: 1px solid @brand-accent;
-      color: #ffffff;
-    }
-  }
+}
 
   .tooltip {
 

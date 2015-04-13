@@ -7,6 +7,8 @@ menu:
 ---
 # Overview
 
+> The reference docs are not complete yet. We are working on it!
+
 Vamp has three basic entities you can work with:
 
 -   **Breeds**: static artifacts that describe single services and their dependencies.  
@@ -17,7 +19,7 @@ Of these three, the blueprint is the center of attention. Why?
  
 -   Because you can inline breeds into blueprints.
 -   Because you create deployments by `POST`-ing a blueprint.
--   Because they have information on scale, filters and sla's.
+-   Because they have information on scale, filters and SLA's.
 
 This means you will probably start out just using blueprints.
 
