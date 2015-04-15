@@ -88,7 +88,8 @@ routing:
 
 Notice two things:
 
-1. We dialed back the weight to 0%.
+1. We dialed back the weight to 0%. This is important and might feel counter intuitive, but Vamp first
+checks filters and then weight. This means we explicitlydo not send 'just some percentage of traffic' to this service but only traffic that matches the filter.
 2. We inserted a list of conditions (with only one condition for now)
 
 Our full blueprint now looks as follows:

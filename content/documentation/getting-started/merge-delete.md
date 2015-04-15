@@ -20,7 +20,7 @@ blueprints and canary releasing methods.
 What we are going to do is create a new blueprint that is completely valid by itself and merge it
 with the already running deployment. This might sound strange at first, but it makes sense. Why? Because
 this will enable us to slowly move from the previous solution to the next solution. Once moved over, we can
-remove parts we no longer need, i.e. the former over-engineerd topology.
+remove parts we no longer need, i.e. the former over-engineered topology.
 
 ![](/img/services_atob.svg)
 
@@ -167,7 +167,7 @@ blueprint of that specific deployment. You can then use that to update any value
 
 {{% alert info %}}
 **Tip**: By appending `?as_blueprint=true` to any deployment URI Vamp spits out a perfectly valid
-blueprint of that specific deployment. This way you can clone whole deployment in seconds. Pretty awesome.  
+blueprint of that specific deployment. This way you can clone whole deployments in seconds. Pretty awesome.  
 {{% /alert %}}
 
 In this specific example, we could export the deployment as a blueprint and update the weight to a 95% to 
@@ -205,7 +205,7 @@ below:
 
 Vamp helps you transition between states and avoid "hard" switches, so deleting parts of a deployment is somewhat different than you might expect. In essence, a delete is just another update of the deployment: you specify what you want to remove using a blueprint and send it to the deployment's URI using the `DELETE`HTTP verb: yes, it is HTTP Delete with a body, not just a URI and some id.
 
-This means you can specifically target parts of your deployment to be removed instead of deleting the whole thing. For this tutorial we are going to delete the over-engineered "old" part of our deployment by grabbing the "old" blueprint, cleaning it up a bit (see below) and sending it in the body of the `DELETE` to the deployment resource, e.g. `/api/v1/deployments/125fd95c-a756-4635-8e1a-361085037870`
+This means you can specifically target parts of your deployment to be removed instead of deleting the whole thing. For this tutorial we are going to delete the "over-engineered" old part of our deployment by grabbing the "old" blueprint, cleaning it up a bit (see below) and sending it in the body of the `DELETE` to the deployment resource, e.g. `/api/v1/deployments/125fd95c-a756-4635-8e1a-361085037870`
 
 <pre class="prettyprint lang-yaml">
 name: sava_fe_be_1_2
@@ -228,6 +228,16 @@ clusters:
 **Note**: We removed the `deployable`, `environment_variables`, `ports` and some other parts of the blueprint. These are actually not necessary for deletion. Besides that, this actually exactly the same blueprint we used to initially deploy
 the "old" topology.
 {{% /alert %}}
+
+## Step 5: When would I use this?
+
+Sounds cool, but when would I use this in practice? Well, basically anytime you release something new!
+For example a bugfix release for a mobile API that "didn't change anything significantly"? You could test
+this separately and describe it in its own blueprint. After testing, you would merge that exact same blueprint
+with your already running production version (the one without the bugfix) and slowly move over to new version.
+
+New major release of your customer facing app? You probably also have some new dependencies that come with that
+release. You create some containers and write up a blueprint that describes this new situation, run it in acceptance and test and what have you. Later, you merge it into your production setup, effectively putting it next to it and then slowly move from the old situation to the new situation, including dependencies.
 
 This is the end of this initial getting started tutorial. We haven't done anything with Vamp's SLA's yet, scaling or dictionary system, so there is much more to come!
 

@@ -17,7 +17,7 @@ our Sava application into separate services.
 
 ## Step 1: Defining a new service topology
 
-To prove our point, we are going to slightly over-engineer our services solution. This will also help
+To prove our point, we are going to slightly "over-engineer" our services solution. This will also help
 us demonstrate how we can later remove parts of our solution using Vamp. For now, we'll split the 
 monolith into a topology of one frontend and two separate backend services. After our engineers
 are done with coding, we can catch this new topology in the following blueprint. Please notice a couple 
