@@ -10,7 +10,7 @@ menu:
 
 # 4. Merging a changed topology
 
-In the [previous part](/documentation/getting-started/splitting-services/) we over-engineered our
+In the [previous part](/documentation/getting-started/splitting-services/) we "over-engineered" our
 service based solution a bit: on purpose of course. We don't really need two backends services.
 So in this part we will introduce our newly engineered solution and transition to it using Vamp's
 blueprints and canary releasing methods.
@@ -20,7 +20,7 @@ blueprints and canary releasing methods.
 What we are going to do is create a new blueprint that is completely valid by itself and merge it
 with the already running deployment. This might sound strange at first, but it makes sense. Why? Because
 this will enable us to slowly move from the previous solution to the next solution. Once moved over, we can
-remove parts we no longer need, i.e. the former over-engineered topology.
+remove parts we no longer need, i.e. the former "over-engineered" topology.
 
 ![](/img/services_atob.svg)
 
@@ -82,7 +82,7 @@ clusters:
           direction: OUT
 </pre>
 
-A `PUT` to our deployment (e.g. `/api/v1/deployments/125fd95c-a756-4635-8e1a-361085037870`) that was based on [the blueprint from the previous part of the tutorial](/documentation/getting-started/splitting-services/) should yield a deployment JSON structure with the following properties (we left some irrelevant
+A `PUT` to our deployment (e.g. `/api/v1/deployments/125fd95c-a756-4635-8e1a-361085037870`) that was based on [the blueprint from the previous part of the tutorial](/documentation/getting-started/splitting-services/) should yield a deployment with the following properties (we left some irrelevant
 parts out):
 
 1. Two `services` in the sava `cluster`: the old one at 100% and the new one at 0% weight.
@@ -151,7 +151,7 @@ parts out):
 }
 </pre>  
 
-So what happened here? Vamp has worked out what parts were already there and what parts should be merged or added. This is done based on naming, i.e. the save cluster already existed, so Vamp added a service to it at 0% weight. A cluster named "backend" didn't exist yet, so it was created. Effectively, we have merged
+So what happened here? Vamp has worked out what parts were already there and what parts should be merged or added. This is done based on naming, i.e. the sava cluster already existed, so Vamp added a service to it at 0% weight. A cluster named "backend" didn't exist yet, so it was created. Effectively, we have merged
 the running deployment with a new blueprint.
 
 ## Step 3: Transitioning from blueprints to deployments and back
@@ -160,13 +160,13 @@ Moving from the old to the new topology is now just a question of "turning the w
 could do this in one go, or slowly adjust it. The easiest and neatest way is to just update the blueprint
 as you go and `PUT` it to the deployment. 
 
-Vamp has a convenient option for this: you can export any deployment as a blueprint! It will be in JSON format but is functionally 100% equivalent to the YAML version. By appending `?as_blueprint=true` to any deployment URI Vamp strips all runtime info like servers and start time and output a perfectly valid
+Vamp has a convenient option for this: you can export any deployment as a blueprint! It will be in JSON format but is functionally 100% equivalent to the YAML version. By appending `?as_blueprint=true` to any deployment URI, Vamp strips all runtime info and output a perfectly valid
 blueprint of that specific deployment. You can then use that to update any values as you see fit and re-`PUT` it again for changes to take effect. 
 
 ![](/img/screencap_asblueprint.gif)
 
 {{% alert info %}}
-**Tip**: By appending `?as_blueprint=true` to any deployment URI Vamp spits out a perfectly valid
+**Tip**: By appending `?as_blueprint=true` to any deployment URI, Vamp spits out a perfectly valid
 blueprint of that specific deployment. This way you can clone whole deployments in seconds. Pretty awesome.  
 {{% /alert %}}
 
@@ -225,7 +225,7 @@ clusters:
 </pre>
 
 {{% alert info %}}
-**Note**: We removed the `deployable`, `environment_variables`, `ports` and some other parts of the blueprint. These are actually not necessary for deletion. Besides that, this actually exactly the same blueprint we used to initially deploy
+**Note**: We removed the `deployable`, `environment_variables`, `ports` and some other parts of the blueprint. These are actually not necessary for deletion. Besides that, this is actually exactly the same blueprint we used to initially deploy
 the "old" topology.
 {{% /alert %}}
 

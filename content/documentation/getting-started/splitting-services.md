@@ -11,7 +11,7 @@ menu:
 # 3. Splitting the monolith into services
 
 In the [previous part](/documentation/getting-started/canary-release/) of this getting started we
-did some basic canary releasing on two version of a monolithic application. Very nice, but Vamp isn't
+did some basic canary releasing on two versions of a monolithic application. Very nice, but Vamp isn't
 called the *Very Awesome Microservices Platform* for nothing. For that reason, we will be splitting
 our Sava application into separate services.
 

@@ -89,7 +89,7 @@ routing:
 Notice two things:
 
 1. We dialed back the weight to 0%. This is important and might feel counter intuitive, but Vamp first
-checks filters and then weight. This means we explicitlydo not send 'just some percentage of traffic' to this service but only traffic that matches the filter.
+checks filters and then weight. This means we explicitly do not send 'just some percentage of traffic' to this service but only traffic that matches the filter.
 2. We inserted a list of conditions (with only one condition for now)
 
 Our full blueprint now looks as follows:
@@ -160,7 +160,7 @@ User-Agent=Android            # upper case, no white space
 user-agent = Android          # lower case, white space
 </pre>
 
-Having multiple conditions in on filter is perfectly possible. In this case all filters are implicitly
+Having multiple conditions in a filter is perfectly possible. In this case all filters are implicitly
 "OR"-ed together, as in "if the first filter doesn't match, procede to the next". For example, the following filter would firt checking whether the string "Chrome" exists in the User-Agent header of a
 request. If that doesn't result in a match, it would check whether the request has the header 
 "X-VAMP-TUTORIAL". So any request matching either condition would go to this service.
