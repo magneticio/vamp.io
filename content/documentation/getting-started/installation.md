@@ -98,14 +98,11 @@ Now check if Vamp is home on port 8081 (Marathon is on port 8080) by doing a GET
 ## Option 2: Run Vamp with an external Mesos cluster
 
 If you want to tweak things a bit more, grab the Vamp all-in-one Docker image and provide your own Mesosphere stack.
-   
-1. Pull the latest Vamp image.
-{{% copyable %}}<pre> docker pull magneticio/vamp:latest</pre>{{% /copyable %}}
 
-2. Now set up a Mesosphere stack on Google Compute Engine or Digital
+1. Set up a Mesosphere stack on Google Compute Engine or Digital
 Ocean really easily using the great wizards at [Mesosphere.com](https://mesosphere.com/downloads/).
 
-3. After the wizard is finished, we are going to do two things:
+2. After the wizard is finished, we are going to do two things:
 
     a) Make a note of the Marathon endpoint, typically something like `http://10.143.22.49:8080`
     We are going to pass this in as an environment variable to our Vamp Docker container
@@ -147,7 +144,9 @@ Ocean really easily using the great wizards at [Mesosphere.com](https://mesosphe
 is 100% true. We just use this simple setup for this getting started tutorial. Any serious setup
 would have Router assigned to at least a dedicated box, IP, DNS etc.
     {{% /alert %}}
-    
+
+1. Pull the latest Vamp image.
+{{% copyable %}}<pre> docker pull magneticio/vamp:latest</pre>{{% /copyable %}}    
 
 4. Start up Vamp while providing it with the necessary external inputs. Note: these are examples from our test!
 
