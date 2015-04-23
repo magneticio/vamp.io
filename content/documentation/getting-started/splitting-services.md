@@ -31,66 +31,43 @@ are checked and rolled out in the right order.
 services to the "customer facing" `sava` service. 
 4. We've change the endpoint port to `9060` so it doesn't collide with the  monolithic deployment.
 
-<pre class="prettyprint lang-yaml">
-name: sava_fe_be_1_2
-
+{{% copyable %}}<pre class="prettyprint lang-yaml">name: sava:1.2
 endpoints:
-  sava.ports.port: 9060
+  sava.port: 9060
 
 clusters:
 
   sava:
     services:
       breed:
-        name: sava_frontend_1_2
-        deployable: magneticio/sava-1.2_frontend:0.7.0
+        name: sava-frontend:1.2.0
+        deployable: magneticio/sava-frontend:1.2.0
         ports:
-          name: port
-          value: 80/http
-          direction: OUT
+          port: 80/http
 
         environment_variables:
-
-          - name: backend1.host
-            direction: IN
-            alias: BACKEND_1_HOST
-
-          - name: backend1.ports.port
-            direction: IN
-            alias: BACKEND_1_PORT
-
-          - name: backend2.host
-            direction: IN
-            alias: BACKEND_2_HOST
-
-          - name: backend2.ports.port
-            direction: IN
-            alias: BACKEND_2_PORT
+          BACKEND_1: http://$backend1.host:$backend1.ports.port/api/message
+          BACKEND_2: http://$backend2.host:$backend2.ports.port/api/message
 
         dependencies:
-          backend1: sava_backend1_1_2
-          backend2: sava_backend2_1_2
+          backend1: sava-backend1:1.2.0
+          backend2: sava-backend2:1.2.0
 
   backend1:
     services:
       breed:
-        name: sava_backend1_1_2
-        deployable: magneticio/sava-1.2_backend:0.7.0
+        name: sava-backend1:1.2.0
+        deployable: magneticio/sava-backend1:1.2.0
         ports:
-          name: port
-          value: 80/http
-          direction: OUT
+          port: 80/http
 
   backend2:
     services:
       breed:
-        name: sava_backend2_1_2
-        deployable: magneticio/sava-1.2_backend:0.7.0
+        name: sava-backend2:1.2.0
+        deployable: magneticio/sava-backend2:1.2.0
         ports:
-          name: port
-          value: 80/http
-          direction: OUT
-</pre>
+          port: 80/http</pre>{{% /copyable %}}
 
 Deploy this blueprint to the `/api/v1/deployments` endpoint with a `POST` request. Again, don't forget to set the header `Content-Type: application/x-yaml`.
 
@@ -100,13 +77,9 @@ Checking out the new topology in your browser (on port 9060 this time) should yi
 
 ## Step 2: Learning about environment variables & service discovery
 
-If you were to check out the Marathon console, you would see the environment variables show up that
-we defined as `alias` in the blueprint. Your service/app should pick up these variables to configure itself. Luckily, this is quite easy and common in almost all languages and frameworks.
+If you were to check out the Marathon console, you would see the environment variables that we set in the blueprint. Host names and ports are configured at runtime and injected in the right parts of your running deployment. Your service/app should pick up these variables to configure itself. Luckily, this is quite easy and common in almost all languages and frameworks.
 
 ![](/img/screenshots/services_envvars.png)
-
-The YAML syntax for setting environment variables can be a little tricky (`IN`, `OUT`, `direction`,`alias` etc.) That's why we are currently changing this into something simpler but equally powerful. Expect updates
-in the coming releases.
 
 Good to know is that there is no "point-to-point" wiring: the exposed host and port are actually service
 endpoints. The location, amount and version of containers running behind that service endpoint can vary.

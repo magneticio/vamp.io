@@ -22,24 +22,22 @@ To quickly show of some of Vamp's core features, we've created a set of showcase
 Imagine you or the company you work for still use monolithic applications. I know, it sounds far fetched..
 This application is conveniently called *Sava monolith* and is at version 1.0.  
 
-You've managed to wrap your monolith in a Docker container, which lives in the Docker hub under `magneticio/sava-1.0_monolith:0.7.0`. Your app normaly runs on port `80` but you want to expose it under port `9050` in this case. Let's deploy this to Vamp using the following simple blueprint. Don't worry too much about what means what: we'll get there.
+You've managed to wrap your monolith in a Docker container, which lives in the Docker hub under `magneticio/sava:1.0.0`. Your app normaly runs on port `80` but you want to expose it under port `9050` in this case. Let's deploy this to Vamp using the following simple blueprint. Don't worry too much about what means what: we'll get there.
 
-{{% copyable %}}<pre class="prettyprint lang-yaml">name: sava_monolith_1_0
+{{% copyable %}}<pre class="prettyprint lang-yaml">name: sava:1.0
 
 endpoints:
-  sava.ports.port: 9050
+  sava.port: 9050
 
 clusters:
 
   sava:
     services:
       breed:
-        name: sava_monolith_1_0
-        deployable: magneticio/sava-1.0_monolith:0.7.0
+        name: sava:1.0.0
+        deployable: magneticio/sava:1.0.0
         ports:
-          name: port
-          value: 80/http
-          direction: OUT</pre>{{% /copyable %}}
+          port: 80/http</pre>{{% /copyable %}}
 
 Use your favorite tools like Postman, HTTPie or Curl to post this to the `api/v1/deployments` endpoint of Vamp. 
 {{% alert info %}}
@@ -53,9 +51,9 @@ like a default scale, a default routing and of course a UUID as a name.
 
 <pre class="prettyprint lang-json">
 {
-    "name": "8f458c5e-7c97-4bee-a93a-858379a7c2b0",
+    "name": "e1c99ca3-dc1f-4577-aa1b-27f37dba0325",
     "endpoints": {
-        "sava.ports.port": 9050
+        "sava.port": "9050"
     },
     "clusters": {
         "sava": {
@@ -63,24 +61,21 @@ like a default scale, a default routing and of course a UUID as a name.
                 {
                     "state": {
                         "name": "ReadyForDeployment",
-                        "started_at": "2015-04-09T05:55:20.873Z"
+                        "started_at": "2015-04-23T08:18:03.956Z"
                     },
                     "breed": {
-                        "name": "sava_monolith_1_0",
-                        "deployable": "magneticio/sava-1.0_monolith:0.7.0",
-                        "ports": [
-                            {
-                                "name": "port",
-                                "value": "80/http",
-                                "direction": "OUT"
-                            }
-                        ],
-                        "environment_variables": [],
+                        "name": "sava:1.0.0",
+                        "deployable": "magneticio/sava:1.0.0",
+                        "ports": {
+                            "port": "80/http"
+                        },
+                        "environment_variables": {},
+                        "constants": {},
                         "dependencies": {}
                     },
                     "scale": {
-                        "cpu": 1,
-                        "memory": 1024,
+                        "cpu": 0.5,
+                        "memory": 512,
                         "instances": 1
                     },
                     "routing": {
@@ -92,13 +87,15 @@ like a default scale, a default routing and of course a UUID as a name.
                 }
             ],
             "routes": {
-                "80": 33000
+                "80": 33003
             }
         }
     },
-    "environment_variables": {
-        "sava.ports.port": 80,
-        "sava.host": "localhost"
+    "ports": {},
+    "environment_variables": {},
+    "constants": {},
+    "hosts": {
+        "sava": "10.26.184.254"
     }
 }
 </pre>
