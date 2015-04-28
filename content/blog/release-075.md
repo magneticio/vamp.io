@@ -4,7 +4,6 @@ tags = ["releases", "news"]
 category = ["news"]
 date = "2015-04-22"
 author = "Tim Nolet"
-draft = true
 +++
 
 We just tagged release 0.7.5 and I'm excited about what we achieved this sprint and managed to cram into Vamp 0.7.5. Some of the highlights are below, but you can check the [full release note on Github](https://github.com/magneticio/vamp/releases/tag/untagged-f1638431f1825163a4d0). There are some breaking changes in this release,

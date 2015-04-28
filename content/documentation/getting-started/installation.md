@@ -145,23 +145,24 @@ is 100% true. We just use this simple setup for this getting started tutorial. A
 would have Router assigned to at least a dedicated box, IP, DNS etc.
     {{% /alert %}}
 
-1. Pull the latest Vamp image.
+3. Pull the latest Vamp image.
 {{% copyable %}}<pre> docker pull magneticio/vamp:latest</pre>{{% /copyable %}}    
 
 4. Start up Vamp while providing it with the necessary external inputs. Note: these are examples from our test!
+{{% copyable %}}
+<pre>export MARATHON_MASTER=10.143.22.49 
+export VAMP_MARATHON_URL=http://$MARATHON_MASTER:8080
+export VAMP_ROUTER_HOST=10.16.107.232
+export VAMP_ROUTER_URL=http://$VAMP_ROUTER_HOST:10001 
+</pre>{{% /copyable %}}
 
-    <pre>
-    export MARATHON_MASTER=10.143.22.49 
-    export VAMP_MARATHON_URL=http://$MARATHON_MASTER:8080
-    export VAMP_ROUTER_HOST=10.16.107.232
-    export VAMP_ROUTER_URL=http://$VAMP_ROUTER_HOST:10001 
-    </pre> 
     Copy & paste these into a `docker run` command, like this
 {{% copyable %}}
 <pre>docker run -d --name=vamp -p 81:80 -p 8081:8080 -p 10002:10001 -p 8084:8083 -e VAMP_MARATHON_URL=http://$MARATHON_MASTER:8080 -e VAMP_ROUTER_URL=http://$VAMP_ROUTER_HOST:10001 -e VAMP_ROUTER_HOST=$VAMP_ROUTER_HOST magneticio/vamp:latest</pre>    
 {{% /copyable %}}
 
-5. Now check if Vamp is home by doing a GET on the `hi` endpoint, i.e.: `http://192.168.59.103:8081/api/v1/hi`
+
+5. You should now check the log output using `docker log -f vamp` and check if Vamp is home by doing a GET on the `hi` endpoint, i.e.: `http://192.168.59.103:8081/api/v1/info`
 
     <pre class="prettyprint lang-json">
     {
