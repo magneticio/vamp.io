@@ -2,11 +2,11 @@
 title = "Vamp 0.7.5: Archiving and redesigned environment variable DSL" 
 tags = ["releases", "news"]
 category = ["news"]
-date = "2015-04-22"
+date = "2015-04-28"
 author = "Tim Nolet"
 +++
 
-We just tagged release 0.7.5 and I'm excited about what we achieved this sprint and managed to cram into Vamp 0.7.5. Some of the highlights are below, but you can check the [full release note on Github](https://github.com/magneticio/vamp/releases/tag/untagged-f1638431f1825163a4d0). There are some breaking changes in this release,
+We just tagged release 0.7.5 and I'm excited about what we achieved this sprint and managed to cram into Vamp 0.7.5. Some of the highlights are below, but you can check the [full release note on Github](https://github.com/magneticio/vamp/releases/tag/0.7.5). There are some breaking changes in this release,
 so please update where necessary. We've updated our [getting started tutorial](/getting-started/) to reflect the latest changes.
 
 ## Archiving of everything
@@ -82,7 +82,5 @@ https://bintray.com/magnetic-io/downloads
 
 Closed issues:  
 https://github.com/magneticio/vamp/issues?q=is%3Aissue+milestone%3A0.7.5+is%3Aclosed
-
-Kind regards and have a good weekend. If you're in the Netherlads, have a good King's day!
 
 Tim Nolet, CTO
