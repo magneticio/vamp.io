@@ -3,7 +3,13 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{ if .IsPage }} {{.Title }} - {{ .Section}} - {{ end }} {{ .Site.Title }}</title>
+        <meta property="og:title" content="{{.Title }}">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="http://vamp.io">
+        <meta property="og:image" content="http://vamp.io/img/vamp_logo_blue.svg">
+        <meta property="og:site_name" content="Vamp">
+        <meta property="og:description" content="Vamp, or the Very Awesome Microservices Platform, takes the pain out of running complex and critical service based architectures. Vamp's core features are a platform-agnostic microservices DSL, A-B testing/canary releasing on everything and a deep metrics">
+        <title>{{ if .IsPage }}{{.Title }} - {{ .Section}} - {{ end }} {{ .Site.Title }}</title>
         <link rel="stylesheet" href="/vendor/theme/flat-ui/bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="/css/flat-ui.min.css">
         <link rel="stylesheet" href="/vendor/theme/common-files/css/icon-font.css">
