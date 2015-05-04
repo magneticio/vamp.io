@@ -44,10 +44,10 @@ clusters:
         deployable: magneticio/sava-frontend:1.2.0
         ports:
           port: 80/http
-        scale:
-          cpu: 0.5       
-          memory: 512  
-          instances: 1                     
+      scale:
+        cpu: 0.5       
+        memory: 512  
+        instances: 1                     
 
         environment_variables:
           BACKEND_1: http://$backend1.host:$backend1.ports.port/api/message
@@ -64,10 +64,10 @@ clusters:
         deployable: magneticio/sava-backend1:1.2.0
         ports:
           port: 80/http
-        scale:
-          cpu: 0.5       
-          memory: 512  
-          instances: 1              
+      scale:
+        cpu: 0.5       
+        memory: 512  
+        instances: 1              
 
   backend2:
     services:
@@ -76,10 +76,10 @@ clusters:
         deployable: magneticio/sava-backend2:1.2.0
         ports:
           port: 80/http
-        scale:
-          cpu: 0.5       
-          memory: 512  
-          instances: 1</pre>{{% /copyable %}}
+      scale:
+        cpu: 0.5       
+        memory: 512  
+        instances: 1</pre>{{% /copyable %}}
 
 Deploy this blueprint to the `/api/v1/deployments` endpoint with a `POST` request. Again, don't forget to set the header `Content-Type: application/x-yaml`.
 

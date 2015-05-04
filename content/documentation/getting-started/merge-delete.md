@@ -54,10 +54,10 @@ clusters:
         deployable: magneticio/sava-frontend:1.3.0
         ports:
           port: 80/http
-        scale:
-          cpu: 0.5       
-          memory: 512  
-          instances: 1              
+      scale:
+        cpu: 0.5       
+        memory: 512  
+        instances: 1              
 
         environment_variables:
           # using alias feature, instead of only "BACKEND: http://..."
@@ -70,9 +70,13 @@ clusters:
     services:
       breed:
         name: sava-backend:1.3.0
-        deployable: magneticio/sava-backend:1.3.0
+        deployable: magneticio/sava-backend:1.3.0         
         ports:
           port: 80/http
+      scale:
+        cpu: 0.5       
+        memory: 512  
+        instances: 1            
 </pre>{{% /copyable %}}
 
 A `PUT` to our deployment (e.g. `/api/v1/deployments/1abf809e-dbbd-42a6-87a2-e25ddede67cb`) that was based on [the blueprint from the previous part of the tutorial](/documentation/getting-started/splitting-services/) should yield a deployment with the following properties (we left some irrelevant

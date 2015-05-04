@@ -38,10 +38,10 @@ clusters:
         deployable: magneticio/sava:1.0.0
         ports:
           port: 80/http
-      scale:
-        cpu: 0.5       
-        memory: 512  
-        instances: 1</pre>{{% /copyable %}}
+    scale:
+      cpu: 0.5       
+      memory: 512  
+      instances: 1</pre>{{% /copyable %}}
 
 Use your favorite tools like [Postman](https://www.getpostman.com/), [HTTPie](https://github.com/jakubroztocil/httpie) or Curl to post this to the `api/v1/deployments` endpoint of Vamp. 
 {{% alert info %}}
