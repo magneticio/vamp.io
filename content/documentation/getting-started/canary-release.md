@@ -37,6 +37,10 @@ clusters:
           deployable: magneticio/sava:1.0.0
           ports:
             port: 80/http
+          scale:
+            cpu: 0.5       
+            memory: 512  
+            instances: 1          
         routing: 
           weight: 50  # weight in percentage           
       -
@@ -45,6 +49,10 @@ clusters:
           deployable: magneticio/sava:1.1.0
           ports:
             port: 80/http
+          scale:
+            cpu: 0.5       
+            memory: 512  
+            instances: 1  
         routing: 
           weight: 50            
 </pre>{{% /copyable %}}
@@ -107,13 +115,22 @@ clusters:
           deployable: magneticio/sava:1.0.0
           ports:
             port: 80/http
+          scale:
+            cpu: 0.5       
+            memory: 512  
+            instances: 1              
         routing: 
           weight: 100
+      -    
         breed:
           name: sava:1.1.0
           deployable: magneticio/sava:1.1.0
           ports:
             port: 80/http
+          scale:
+            cpu: 0.5       
+            memory: 512  
+            instances: 1              
         routing: 
           weight: 0
           filters:
