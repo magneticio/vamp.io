@@ -89,7 +89,7 @@ Notice two things:
 checks filters and then weight. This means we explicitly do not send 'just some percentage of traffic' to this service but only traffic that matches the filter.
 2. We inserted a list of conditions (with only one condition for now)
 
-Our full blueprint now looks as follows:
+Our full blueprint now looks as follows:  
 
 {{% copyable %}}<pre class="prettyprint lang-yaml">
 name: sava:1.0

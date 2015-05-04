@@ -39,11 +39,19 @@ clusters:
         ports:
           port: 80/http</pre>{{% /copyable %}}
 
-Use your favorite tools like Postman, HTTPie or Curl to post this to the `api/v1/deployments` endpoint of Vamp. 
+Use your favorite tools like [Postman](https://www.getpostman.com/), [HTTPie](https://github.com/jakubroztocil/httpie) or Curl to post this to the `api/v1/deployments` endpoint of Vamp. 
 {{% alert info %}}
 **Note**: Take care to set the correct `Content-Type: application/x-yaml` header on the POST request. Vamp is kinda
 strict with regard to content types, because we support JSON and YAML so we need to know what you are sending. 
-{{% /alert %}}  
+{{% /alert %}} 
+
+Using `curl`:
+
+<pre>curl -v -X POST --data-binary @sava.yaml -H "Content-Type: application/x-yaml" http://192.168.59.103:8081/api/v1/deployments</pre>
+
+Using `httpie`
+
+<pre>http POST http://192.168.59.103:8081/api/v1/deployments Content-Type:application/x-yaml < sava.yaml</pre>
 
 After POST-ing, Vamp should respond with a `202 Accepted` message and return a JSON blob similar to the blob 
 below. This means Vamp is trying to deploy your container. You'll notice some parts are filled in for you,
