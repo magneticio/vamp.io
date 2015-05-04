@@ -92,38 +92,6 @@ checks filters and then weight. This means we explicitly do not send 'just some 
 Our full blueprint now looks as follows:
 
 {{% copyable %}}<pre class="prettyprint lang-yaml">
-name: sava_monolith_1_0
-endpoints: 
-  sava.ports.port: 9050
-clusters: 
-  sava: 
-    services:
-      -               
-        breed:
-          name: sava_monolith_1_0
-          deployable: "magneticio/sava-1.0_monolith:0.7.0"
-          ports: 
-            direction: OUT
-            name: port
-            value: 80/http
-        routing: 
-          weight: 100
-      - 
-        breed:
-          name: sava_monolith_1_1 # a new version of our service         
-          deployable: "magneticio/sava-1.1_monolith:0.7.0"
-          ports: 
-            direction: OUT
-            name: port
-            value: 80/http
-        routing:
-          weight: 0
-          filters:
-            - condition: User-Agent = Chrome
-</pre>{{% /copyable %}}
-
-
-{{% copyable %}}<pre class="prettyprint lang-yaml">
 name: sava:1.0
 
 endpoints:
