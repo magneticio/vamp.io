@@ -1,18 +1,6 @@
 module.exports = function(grunt) {
-    grunt.initConfig({
-        cacheBust: {
-          options: {
-            encoding: 'utf8',
-            algorithm: 'md5',
-            length: 16
-          },
-          assets: {
-              files: [{
-                  src: ['static/css/*.css']
-              }]
-          }
-        },        
-        clean: ["dist/css","public/css/*"],
+    grunt.initConfig({        
+        clean: ["dist/css","public/css/*","dist/fonts"],
         less: {
             production: {
                 options: {
@@ -24,10 +12,16 @@ module.exports = function(grunt) {
                 ]
             }
         },
+        copy: {
+          main: {
+            src: 'static/fonts/*',
+            dest: 'dist/fonts',
+          },
+        },
         watch: {
             styles: {
                 files: ['static/less/*.less'],
-                tasks: ['clean','less','cssmin','cacheBust'],
+                tasks: ['clean','less','cssmin','copy'],
                 options: {
                     nospawn: true
                 }
@@ -49,7 +43,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-cache-bust');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.registerTask('default', ['watch']);
 };
 

@@ -5,14 +5,14 @@
 body {
   color: #333333;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 300;
   line-height: 1.722169;
   /* 31px */
 }
 body ul li,
 body ol li {
-  font-size: 16px;
+  font-size: 15px;
 }
 strong {
   color: #333333;
@@ -81,7 +81,7 @@ h6,
   color: #333333;
 }
 p {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.722169;
   /* 31px */
   font-weight: 300;
@@ -602,7 +602,7 @@ button:active {
   padding: 0;
   width: 30px;
   height: 30px;
-  background: url("../vendor/theme/common-files/icons/menu-icon@2x.a294a8e4d52c0453.png") 50% no-repeat;
+  background: url("../vendor/theme/common-files/icons/menu-icon@2x.png") 50% no-repeat;
   -webkit-background-size: 17px 12px;
   -moz-background-size: 17px 12px;
   -o-background-size: 17px 12px;
@@ -1603,7 +1603,7 @@ section * {
 }
 .docs blockquote p {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 18px;
+  font-size: 17px;
   color: #333333;
 }
 .docs #get_started_overview {
@@ -1640,8 +1640,8 @@ section * {
 @charset "UTF-8";
 @font-face {
   font-family: pictonic;
-  src: url("../fonts/pictonic.5cd1b6c50f310a59.eot");
-  src: url("../fonts/pictonic.5cd1b6c50f310a59.eot?#iefix") format("embedded-opentype"), url("../fonts/pictonic.8aedef37cb9db861.ttf") format("truetype"), url("../fonts/pictonic.fb7d4ebd584d172c.woff") format("woff"), url("../fonts/pictonic.fc5f104b31d14c92.svg") format("svg");
+  src: url("../../../fonts/pictonic.eot");
+  src: url("../../../fonts/pictonic.eot?#iefix") format("embedded-opentype"), url("../../../fonts/pictonic.ttf") format("truetype"), url("../../../fonts/pictonic.woff") format("woff"), url("../../../fonts/pictonic.svg") format("svg");
   font-weight: normal;
   font-style: normal;
 }
