@@ -48,7 +48,7 @@ Please make double sure Boot2Docker is installed correctly and up & running!
 Please make double sure the Docker command can reach Boot2Docker. You set this by exporting the DOCKER_HOST
 environment variable, for example:
 
-    $ export DOCKER_HOST=tcp://192.168.59.103:2375
+    $ export DOCKER_HOST=tcp://192.168.59.103:2376
     
 
 For Docker compositions, you should have [Docker compose](https://docs.docker.com/compose/install/) installed. 
@@ -77,7 +77,7 @@ to Java dependencies. Luckily, you'll only have to do this once. After that it's
 You will run into cpu, memory and storage issues pretty soon though. Also, random ports are assigned by Vamp which you might not have exposed on either Docker or your Boot2Docker Vagrant box.
 {{% /alert%}}
 
-Now check if Vamp is home on port 8081 (Marathon is on port 8080) by doing a GET on the `hi` endpoint, i.e.: `http://192.168.59.103:8081/api/v1/hi`
+Now check if Vamp is home on port 8081 (Marathon is on port 8080) by doing a GET on the `info` endpoint, i.e.: `http://192.168.59.103:8081/api/v1/info`
 
 <pre class="prettyprint lang-json">
 {
