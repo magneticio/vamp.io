@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
     grunt.initConfig({        
-        clean: ["dist/css","public/css/*","dist/fonts"],
+        clean: ["dist/css","public/css/*","dist/fonts/*"],
         less: {
             production: {
                 options: {

@@ -6,44 +6,46 @@ menu:
     parent: reference
 ---
 # Blueprints
+Blueprints are execution plans - they describe how your services should be hooked up and what the topology should look like at the runtime. All dependencies and parameter values will be resolved at deployment time.
 
-> endpoint: /api/v1/blueprints
-
-Bleuprint are execution plans - they describe how you system should look like at the runtime. 
-All dependency availability and parameter values will be resolved at deployment time. 
-
+This example shows some of the key concepts of of blueprints:
+ 
 <pre class="prettyprint lang-yaml">
 name: nomadic-frostbite
 
 # Endpoints are stable ports mapped to concrete breed ports.
-# Breed ports are resolved to port values available during 
-# the runtime. 
+# Breed ports are resolved to port values available during runtime.
+ 
 endpoints:
-  notorious.ports.port: 8080
+  notorious.port: 8080
 
-# Blueprint defines collection of clusters.
-# Cluster is a group of different services which 
-# will appear as a single service. Common use case 
-# are service A and B in A/B testing - usually just deferent 
+# A blueprint defines collection of clusters.
+# A cluster is a group of different services which 
+# will appear as a single service. Common use cases 
+# are service A and B in A/B testing - usually just different 
 # versions of the same service (e.g. canary release).
+
 clusters:
   notorious: # Custom cluster name.
     services: # List of service, at least a breed reference.
       -
         breed:
           name: nocturnal-viper
-        # Scale for this service (breed).
-        scale: large
+        # Scale for this service.
+        scale:
+          cpu: 2        # Number of CPUs per instance.
+          memory: 2048  # Memory in MB per instance.
+          instances: 2  # Number of instances.
         # Routing for this service.
-        # Makes sense only with multiple service cluster.
+        # This Makes sense only with multiple services per cluster.
         routing:
           weight: 95
           filters:
-            - condition: User-Agent = Android
+            - condition: ua = android
       -
         # Another service (breed) in the same cluster.
         breed: remote-venus
-        scale: worthy
+        scale: large # Notice we used a reference to a "scale". More on this later
 
     # SLA (reference) defined on cluster level. 
     sla: strong-mountain 
@@ -54,7 +56,18 @@ clusters:
 # concrete parameter value.
 # By default dictionary will resolve value as being the 
 # same as key provided. 
-parameters:
-  notorious.ports.aspect: thorium
+environment_variables:
+  notorious.aspect: thorium
 </pre>
     
+## Scale
+
+Scale is the "size" of a deployed service. Usually that means the number of instances (servers) and allocated cpu and memory. Scales can be defined inline in a blueprint or they can defined separately and given a unique name. The following example is a scale named "small". `POST`-ing this scale to the `/scales` REST API endpoint will store it under that name so it can be referenced from other blueprints.
+
+<pre class="prettyprint lang-yaml">
+name: small   # Custom name.
+
+cpu: 2        # Number of CPUs per instance.
+memory: 2048  # Memory in MB per instance.
+instances: 2  # Number of instances.
+</pre>

@@ -22,6 +22,3 @@ Of these three, the blueprint is the center of attention. Why?
 -   Because they have information on scale, filters and SLA's.
 
 This means you will probably start out just using blueprints.
-
-
-

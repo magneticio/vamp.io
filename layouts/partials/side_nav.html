@@ -14,7 +14,8 @@
             </a>
             <ul class="collapse_{{.Identifier}} sub collapse{{if $currentNode.HasMenuCurrent "main" . }} in {{end}}">
                 {{ range .Children }}
-                <li{{if $currentNode.IsMenuCurrent "main" . }} class="active"{{end}}><a href="{{.Url}}" class="sub-menu-link"> {{ .Name }} </a></li>
+                <li{{if $currentNode.IsMenuCurrent "main" . }} class="active"{{end}}><a href="{{.Url}}" class="sub-menu-link"> {{ .Name }} </a>
+                </li>
                 {{ end }}
             </ul>
             {{else}}

@@ -22,3 +22,8 @@ title= "Vamp :: The Very Awesome Microservices Platform"
     weight = 200
     identifier = "reference"
     url = "/documentation/reference/"
+[[menu.main]]
+    name = "REST API"
+    weight = 300
+    identifier = "rest-api"
+    url = "/documentation/rest-api/"    

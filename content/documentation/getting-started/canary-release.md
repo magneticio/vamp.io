@@ -173,7 +173,7 @@ user-agent = Android          # lower case, white space
 </pre>
 
 Having multiple conditions in a filter is perfectly possible. In this case all filters are implicitly
-"OR"-ed together, as in "if the first filter doesn't match, procede to the next". For example, the following filter would firt checking whether the string "Chrome" exists in the User-Agent header of a
+"OR"-ed together, as in "if the first filter doesn't match, proceed to the next". For example, the following filter would first check whether the string "Chrome" exists in the User-Agent header of a
 request. If that doesn't result in a match, it would check whether the request has the header 
 "X-VAMP-TUTORIAL". So any request matching either condition would go to this service.
 

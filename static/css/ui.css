@@ -1459,6 +1459,11 @@ section * {
   text-transform: none;
   font-size: 13px;
 }
+#sidenav ul li > a.sub-sub-menu-link {
+  text-transform: none;
+  padding-left: 5px;
+  font-size: 13px;
+}
 #sidenav .sub-menu a.sub-menu-header.collapsed::before {
   color: #bdc3c7;
   content: "\e002";
@@ -1525,6 +1530,12 @@ section * {
   font-size: 1.5em;
   line-height: 1.43;
   border-bottom: none;
+}
+.docs h4 {
+  font-size: 1.4em;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .docs img {
   margin: 20px auto 20px auto;
