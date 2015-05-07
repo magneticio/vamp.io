@@ -1,5 +1,5 @@
 ---
-title: Routing &  filters
+title: Routing & filters
 weight: 30
 menu:
   main:
@@ -33,7 +33,7 @@ filters:    # Anonymous with condition.
 When defining weights, please make sure the total weight always adds up to 100%. This means that when doing a straight three-way split you give one service 34% as `33+33+34=100`. Vamp has to account for all traffic and 1% can be a lot in high volume environments.
 
 ## Defining filters
-Create filters is quite easy. Checking Headers, Cookies, Hosts etc. is all possible. Under the hood, Vamp uses [Haproxy's ACL's](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#7.1) and you can use the exact ACL definition right in the blueprint in the `condition` field of a filter.
+Create filters is quite easily. Checking Headers, Cookies, Hosts etc. is all possible. Under the hood, Vamp uses [Haproxy's ACL's](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#7.1) and you can use the exact ACL definition right in the blueprint in the `condition` field of a filter.
 
 However, ACL's can be somewhat opaque and cryptic. That's why Vamp has a set of convenient "short codes"
 to address common use cases. Currently, we support the following:
@@ -68,7 +68,7 @@ routing:
   weight: 0
   filters:
     - condition: User-Agent = Chrome
-    - condition: Has Header = X-VAMP-MY-COOL-HEADER
+    - condition: Has Header X-VAMP-MY-COOL-HEADER
 </pre>
 
 Using a tool like [httpie](https://github.com/jakubroztocil/httpie) makes testing this a breeze.

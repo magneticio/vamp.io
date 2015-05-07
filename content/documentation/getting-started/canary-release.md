@@ -182,7 +182,7 @@ routing:
   weight: 0
   filters:
     - condition: User-Agent = Chrome
-    - condition: Has Header = X-VAMP-TUTORIAL
+    - condition: Has Header X-VAMP-TUTORIAL
 </pre>
 
 Using a tool like [httpie](https://github.com/jakubroztocil/httpie) makes testing this a breeze.
