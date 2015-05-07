@@ -40,11 +40,12 @@ constants:
                         # inside the container as a hard-coded value 
                         # and it's exposed to any other breed as is.
                         # This will come in handy when we start composing blueprints.
+
 </pre>
 
 Now, let's look at a breed with dependencies:
 
-<pre class="prettyprint lang-yaml"> 
+<pre class="prettyprint lang-yaml">
 name: monarch
 deployable: magneticio/monarch:latest
 
@@ -81,4 +82,53 @@ dependencies:
     # someone could use db1 & db2, or XX & XY etc.
 </pre>
 
-The above examples should give you an example of what is possible using breeds.
+## Environment variables
+
+The above examples should give you an example of what is possible using breeds. Here are some more use cases for the way Vamp handles environment variables and interpolation of those variables
+
+### 'Hard' set a variable
+
+You want to "hard set" an environment variable, just like doing an `export MY_VAR=some_value` in a shell. This  variable could be some external dependency you have no direct control over: the endpoint of some service you use that is out of your control. 
+
+You may also want to define a placeholder for a variable of which you do not know the actual value yet, but should be filled in when this breed is used in a blueprint: the following deployment will not run without it and you want Vamp to check that dependency. This placeholder is designated with a `~` character.
+
+<pre class="prettyprint lang-yaml">
+name: my_breed
+deployable: repo/container:version
+
+environment_variables:
+    MY_ENV_VAR1: some_string_value  # hard set
+    MY_ENV_VAR1: ~                  # placeholder
+</pre>
+
+### Resolve a reference at deploy time
+
+You might want to resolve a reference and set it as the value for an environment variable. This reference can either be dynamically resolved at deploy-time, like ports and hosts names we don't know till a deployment is done, or be a reference to a hardcoded and published constant from some other part of the blueprint or breed, typically a dependency.
+
+You would use this to hook up services at runtime based on host/port combinations or to use a hard dependency that never changes but should be provided by another breed. 
+
+**Notice**: you use the `$` sign to reference other statements in a blueprint and you use the `constants` keyword
+to create a list of constant values.
+
+Have a look at this example blueprint. We are describing a frontend service that has a dependency on a backend service. We pick up the actual address of the backend service using references to variables in the blueprint that are filled in at runtime. However, we also want to pick up a value that is set by "us humans": the api path, in this case "/v2/api/customers".
+
+<pre class="prettyprint lang-yaml">
+name: my_blueprint
+clusters:
+
+  frontend:
+    breed:
+      name: frontend_service
+    environment_variables:
+        # resolves to a host and port at runtime
+        BACKEND_URL: http://$backend.host:$backend.ports.port
+        # resolves to the "published" constant value
+        BACKEND_URI_PATH: $backend.constants.uri_path        
+      dependencies:
+        backend: my_other_breed
+  backend:
+    breed:
+      name: my_other_breed
+    constants:
+      uri_path: /v2/api/customers   
+</pre>
