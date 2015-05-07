@@ -9,7 +9,7 @@ menu:
 
 For more information on how to use the Vamp Router REST API check [the Github repo (https://github.com/magneticio/vamp-router)
 
-**routes**
+**Routes**
 ```
 - get all             : GET    /v1/routes
 - create new          : POST   /v1/routes
@@ -18,7 +18,7 @@ For more information on how to use the Vamp Router REST API check [the Github re
 - delete by name      : DELETE /v1/routes/{name}
 ```
 
-**services**
+**Services**
 ```
 - get all             : GET    /v1/routes/{name}/services
 - create new          : POST   /v1/routes/{name}/services
@@ -27,7 +27,7 @@ For more information on how to use the Vamp Router REST API check [the Github re
 - delete by name      : DELETE /v1/routes/{name}/services/{name}
 ```
 
-**servers**
+**Servers**
 ```
 - get all             : GET    /v1/routes/{name}/services/{name}/servers
 - create new          : POST   /v1/routes/{name}/services/{name}/servers
@@ -36,8 +36,14 @@ For more information on how to use the Vamp Router REST API check [the Github re
 - delete by name      : DELETE /v1/routes/{name}/services/{name}/servers/{name}
 ```
 
-**full configuration**
+**Full configuration**
 ```
 - get                 : GET    /v1/config
 - update              : POST   /v1/config
+```
+
+**Debug Routes**
+```
+- runtime info        : GET   /v1/info
+- stats reset         : GET   /v1/debug/reset
 ```
