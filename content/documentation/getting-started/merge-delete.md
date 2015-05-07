@@ -53,18 +53,17 @@ clusters:
         name: sava-frontend:1.3.0
         deployable: magneticio/sava-frontend:1.3.0
         ports:
-          port: 80/http
-      scale:
-        cpu: 0.5       
-        memory: 512  
-        instances: 1              
-
+          port: 80/http        
         environment_variables:
           # using alias feature, instead of only "BACKEND: http://..."
           backend[BACKEND]: http://$backend.host:$backend.ports.port/api/message
 
         dependencies:
           backend: sava-backend:1.3.0
+      scale:
+        cpu: 0.5       
+        memory: 512  
+        instances: 1            
 
   backend:
     services:
