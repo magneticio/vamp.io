@@ -162,7 +162,7 @@ export VAMP_ROUTER_URL=http://$VAMP_ROUTER_HOST:10001
 {{% /copyable %}}
 
 
-5. You should now check the log output using `docker log -f vamp` and check if Vamp is home by doing a GET on the `hi` endpoint, i.e.: `http://192.168.59.103:8081/api/v1/info`
+5. You should now check the log output using `docker logs -f vamp` and check if Vamp is home by doing a GET on the `hi` endpoint, i.e.: `http://192.168.59.103:8081/api/v1/info`
 
     <pre class="prettyprint lang-json">
     {
