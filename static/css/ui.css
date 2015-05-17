@@ -5,14 +5,14 @@
 body {
   color: #333333;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 400;
   line-height: 1.722169;
   /* 31px */
 }
 body ul li,
 body ol li {
-  font-size: 15px;
+  font-size: 16px;
 }
 strong {
   color: #333333;
@@ -81,10 +81,10 @@ h6,
   color: #333333;
 }
 p {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.722169;
   /* 31px */
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.1px;
 }
 .lead {
@@ -105,6 +105,9 @@ small {
   border: 0px transparent;
   border-bottom-left-radius: 0px;
   border-top-left-radius: 0px;
+}
+.alert p {
+  font-size: 16px;
 }
 .alert.alert-info {
   border-left: 5px solid #03a9f4;
@@ -564,7 +567,7 @@ button:active {
   font-size: 15px;
   line-height: 1.722169;
   /* 31px */
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.1px;
 }
 .navbar {
@@ -1544,7 +1547,7 @@ section * {
   border-radius: 3px;
   padding: 16px;
   border: 1px solid #e1e1e8;
-  font-size: 12px;
+  font-size: 13px;
   color: #333;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   background-color: #f7f7f9;
@@ -1986,7 +1989,6 @@ small[class*="icon-"] {
 }
 body {
   overflow-y: scroll;
-  font-size: 14px;
 }
 .teaser_image {
   padding: 30px;

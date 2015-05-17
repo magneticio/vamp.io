@@ -5,13 +5,14 @@ menu:
   main:
     parent: reference
 ---
+
 # Deployments
 
 A deployment is a "running" blueprint. Over time, new blueprints can be merged with existing deployments or parts of the running blueprint can be removed from it. Each deployment can be exported as a blueprint and 
 copy & pasted to another environment or even to the same environment to function as a clone.
 
 Creating a deployment is done by sending a POST request to the `/deployments` endpoint.
-Here is an example of blueprint:
+Here is an example of a blueprint:
 
 <pre class="prettyprint lang-yaml">
 name: my_monarch_blueprint
@@ -37,7 +38,7 @@ Notice that we have distributed the weight between the two services.
 
 Example with multiple service version (within the same cluster):
 
-<pre class="prettyprint lang-yaml">
+<pre class="prettyprint lang-yaml"> 
 name: my_monarch_blueprint
 
 endpoints:
@@ -58,9 +59,7 @@ clusters:
 
 ## Canary Releases & A/B Testing
 
-A common scenario is to introduce a new version of the service to an existing cluster - **merge**.
-After testing/migration is done, the old or new version can be removed from the cluster - **removal**.
-Let's look at each in turn.
+A common scenario is to introduce a new version of the service to an existing cluster, this is what we call a **merge**. After testing/migration is done, the old or new version can be removed from the cluster, simply called a **removal**. Let's look at each in turn.
 
 ### Merge
 
@@ -70,7 +69,7 @@ If a service already exists then only the routing and scale will be updated. Oth
 
 Let's deploy a simple service:
 
-<pre class="prettyprint lang-yaml">
+<pre class="prettyprint lang-yaml"> 
 name: monarch_1.0
 
 clusters:
@@ -82,7 +81,7 @@ clusters:
 
 After this point we may have another version ready for deployment and now instead of only one service, we have added another one:
 
-<pre class="prettyprint lang-yaml">
+<pre class="prettyprint lang-yaml"> 
 name: monarch_1.1
 
 environment_variables:
@@ -104,7 +103,7 @@ clusters:
 
 Now our deployment (in simplified blueprint format) looks like this:
 
-<pre class="prettyprint lang-yaml">
+<pre class="prettyprint lang-yaml"> 
 name: monarch_1.0
 
 environment_variables:
@@ -135,7 +134,7 @@ clusters:
 Note that the route weight for monarch_1.1 is 0, i.e. no traffic is sent to it.
 Let's redirect some traffic to our new monarch_1.1 (e.g. 10%):
 
-<pre class="prettyprint lang-yaml">
+<pre class="prettyprint lang-yaml"> 
 clusters:
   monarch:
     services:
@@ -164,7 +163,7 @@ If a service exists it will be removed, otherwise the request is ignored. If a c
 
 Let's use the example from the previous section. Notice the weight is evenly distributed (50/50). 
 
-<pre class="prettyprint lang-yaml">
+<pre class="prettyprint lang-yaml"> 
 name: monarch_1.0
 
 environment_variables:
@@ -195,7 +194,8 @@ If we are happy with the new monarch version 1.1, we can proceed with the remova
 This change is applied on the running deployment. We send the following YAML as the body of the `DELETE` request
 to the `/deployments/<deployment_UUID>` endpoint.
 
-<pre class="prettyprint lang-yaml">
+<pre class="prettyprint lang-yaml"> 
+
 name: monarch_1.0
 
 clusters:
@@ -207,7 +207,7 @@ clusters:
 Note that this is the same original blueprint we started with. What we are doing here is basically "subtracting" one blueprint from the other, although "the other" is a running deployment.
 After this operation our deployment is:
 
-<pre class="prettyprint lang-yaml">
+<pre class="prettyprint lang-yaml"> 
 name: monarch_1.0
 
 environment_variables:
