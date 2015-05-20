@@ -4,11 +4,7 @@ build:
     - script:
         name: config status
         code: >
-          if [ -e "config" ]; then
-          echo "config exists";
-          else
-          echo "config does not exist";
-          fi;
+          git clone --depth=50 --quiet --no-single-branch https://github.com/magneticio/vamp.io.git 
     - arjen/hugo-build:
         version: 0.13
         flags: --buildDrafts=false
