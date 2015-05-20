@@ -24,7 +24,10 @@ This application is conveniently called *Sava monolith* and is at version 1.0.
 
 You've managed to wrap your monolith in a Docker container, which lives in the Docker hub under `magneticio/sava:1.0.0`. Your app normaly runs on port `80` but you want to expose it under port `9050` in this case. Let's deploy this to Vamp using the following simple blueprint. Don't worry too much about what means what: we'll get there.
 
-{{% copyable %}}<pre class="prettyprint lang-yaml">name: sava:1.0
+{{% copyable %}}
+```yaml
+---
+name: sava:1.0
 
 endpoints:
   sava.port: 9050
@@ -41,7 +44,9 @@ clusters:
     scale:
       cpu: 0.5       
       memory: 512  
-      instances: 1</pre>{{% /copyable %}}
+      instances: 1
+```
+{{% /copyable %}}
 
 Use your favorite tools like [Postman](https://www.getpostman.com/), [HTTPie](https://github.com/jakubroztocil/httpie) or Curl to post this to the `api/v1/deployments` endpoint of Vamp. 
 {{% alert info %}}
@@ -51,17 +56,21 @@ strict with regard to content types, because we support JSON and YAML so we need
 
 Using `curl`:
 
-<pre>curl -v -X POST --data-binary @sava.yaml -H "Content-Type: application/x-yaml" http://192.168.59.103:8081/api/v1/deployments</pre>
+```
+curl -v -X POST --data-binary @sava.yaml -H "Content-Type: application/x-yaml" http://192.168.59.103:8081/api/v1/deployments
+```
 
 Using `httpie`
 
-<pre>http POST http://192.168.59.103:8081/api/v1/deployments Content-Type:application/x-yaml < sava.yaml</pre>
+```
+http POST http://192.168.59.103:8081/api/v1/deployments Content-Type:application/x-yaml < sava.yaml
+```
 
 After POST-ing, Vamp should respond with a `202 Accepted` message and return a JSON blob similar to the blob 
 below. This means Vamp is trying to deploy your container. You'll notice some parts are filled in for you,
 like a default scale, a default routing and of course a UUID as a name.
 
-<pre class="prettyprint lang-json">
+```json
 {
     "name": "e1c99ca3-dc1f-4577-aa1b-27f37dba0325",
     "endpoints": {
@@ -110,8 +119,7 @@ like a default scale, a default routing and of course a UUID as a name.
         "sava": "10.26.184.254"
     }
 }
-</pre>
-
+```
 ## Step 2: Checking out our application
 
 You can follow the deployment process of our container by checking the `/api/v1/deployments` endpoint and checking when the `state` field changes from `ReadyForDeployment` to `Deployed`. You can also check Marathon's GUI.

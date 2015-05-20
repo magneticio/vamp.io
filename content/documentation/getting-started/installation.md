@@ -54,8 +54,10 @@ environment variable, for example:
 For Docker compositions, you should have [Docker compose](https://docs.docker.com/compose/install/) installed. 
 Luckily, that's a two-liner:
 {{% copyable %}}
-<pre>curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose  
-chmod +x /usr/local/bin/docker-compose</pre>
+```
+curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose  
+chmod +x /usr/local/bin/docker-compose
+```
 {{% /copyable %}}
 
 With the prerequisites sorted, pick one of the following options:
@@ -64,9 +66,11 @@ With the prerequisites sorted, pick one of the following options:
 
 This command will create a full Mesosphere stack on your laptop and connect Vamp to it.
 {{% copyable %}}
-<pre>git clone https://github.com/magneticio/vamp-docker.git && \
+```
+git clone https://github.com/magneticio/vamp-docker.git && \
 cd vamp-docker/docker-compositions/vamp-marathon-mesos/ && \
-docker-compose up</pre>
+docker-compose up
+```
 {{% /copyable %}}
 
 Now grab a coffee while everything gets installed on the first run. The containers are somewhat large due
@@ -79,7 +83,7 @@ You will run into cpu, memory and storage issues pretty soon though. Also, rando
 
 Now check if Vamp is home on port 8081 (Marathon is on port 8080) by doing a GET on the `info` endpoint, i.e.: `http://192.168.59.103:8081/api/v1/info`
 
-<pre class="prettyprint lang-json">
+```json
 {
   "message":"Hi, I'm Vamp! How are you?",
   "vitals":{
@@ -92,8 +96,7 @@ Now check if Vamp is home on port 8081 (Marathon is on port 8080) by doing a GET
     }
   }
 }
-</pre>
-
+```
 
 ## Option 2: Run Vamp with an external Mesos cluster
 
@@ -109,73 +112,85 @@ Ocean really easily using the great wizards at [Mesosphere.com](https://mesosphe
     
     b) Deploy vamp-router to the Mesosphere stack. You can use the piece of JSON below for this. Save it as
     `vamp-router.json` and just `POST` it to the Marathon `/v2/apps` endpoint, for example using curl:
+
 {{% copyable %}}
-<pre>curl -v -H "Content-Type: application/json" -X POST --data @vamp-router.json http://10.143.22.49:8080/v2/apps</pre>    
+
+    curl -v -H "Content-Type: application/json" -X POST --data @vamp-router.json http://10.143.22.49:8080/v2/apps
+
 {{% /copyable %}}
 
-    {{% copyable %}}<pre class="prettyprint lang-json">{
-    "id": "main-router",
-    "container": {
-        "docker": {
-            "image": "magneticio/vamp-router:latest",
-            "network": "HOST"
-        },
-        "type": "DOCKER"
-    },
-    "instances": 1,
-    "cpus": 0.5,
-    "mem": 512,
-    "env": {},
-    "ports": [
-        0
-    ],
-    "args": [
-        ""
-    ]
-}</pre>{{% /copyable %}}        
+{{% copyable %}}
+```json
+    {
+      "id": "main-router",
+      "container": {
+          "docker": {
+              "image": "magneticio/vamp-router:latest",
+              "network": "HOST"
+          },
+          "type": "DOCKER"
+      },
+      "instances": 1,
+      "cpus": 0.5,
+      "mem": 512,
+      "env": {},
+      "ports": [
+          0
+      ],
+      "args": [
+          ""
+      ]
+    }
 
-    Now, check the IP number of the host it gets deployed to eventually. In our case this 
-    was `10.16.107.232`
-    
-    ![](/img/marathon_router.png)
+```
+{{% /copyable %}}        
 
-    {{% alert warn %}}
+  Now, check the IP number of the host it gets deployed to eventually. In our case this 
+  was `10.16.107.232`
+  
+  ![](/img/marathon_router.png)
+
+  {{% alert warn %}}
 **Note**: Astute readers will instantly spot a weakness here: in this setup the IP address of our Router can change as Marathon/Mesos decides to reassign our container to some other machine. This
 is 100% true. We just use this simple setup for this getting started tutorial. Any serious setup
 would have Router assigned to at least a dedicated box, IP, DNS etc.
-    {{% /alert %}}
+  {{% /alert %}}
+
 
 3. Pull the latest Vamp image.
 {{% copyable %}}<pre> docker pull magneticio/vamp:latest</pre>{{% /copyable %}}    
 
 4. Start up Vamp while providing it with the necessary external inputs. Note: these are examples from our test!
 {{% copyable %}}
-<pre>export MARATHON_MASTER=10.143.22.49 
+```
+export MARATHON_MASTER=10.143.22.49 
 export VAMP_MARATHON_URL=http://$MARATHON_MASTER:8080
 export VAMP_ROUTER_HOST=10.16.107.232
 export VAMP_ROUTER_URL=http://$VAMP_ROUTER_HOST:10001 
-</pre>{{% /copyable %}}
-
+```
+{{% /copyable %}}
     Copy & paste these into a `docker run` command, like this
 {{% copyable %}}
-<pre>docker run -d --name=vamp -p 81:80 -p 8081:8080 -p 10002:10001 -p 8084:8083 -e VAMP_MARATHON_URL=http://$MARATHON_MASTER:8080 -e VAMP_ROUTER_URL=http://$VAMP_ROUTER_HOST:10001 -e VAMP_ROUTER_HOST=$VAMP_ROUTER_HOST magneticio/vamp:latest</pre>    
+
+```
+docker run -d --name=vamp -p 81:80 -p 8081:8080 -p 10002:10001 -p 8084:8083 -e VAMP_MARATHON_URL=http://$MARATHON_MASTER:8080 -e VAMP_ROUTER_URL=http://$VAMP_ROUTER_HOST:10001 -e VAMP_ROUTER_HOST=$VAMP_ROUTER_HOST magneticio/vamp:latest
+```  
 {{% /copyable %}}
 
 
 5. You should now check the log output using `docker logs -f vamp` and check if Vamp is home by doing a GET on the `hi` endpoint, i.e.: `http://192.168.59.103:8081/api/v1/info`
 
-    <pre class="prettyprint lang-json">
-    {
-      "message":"Hi, I'm Vamp! How are you?",
-      "vitals":{
-        "operating_system":{
-          "name":"Linux",
-          "architecture":"amd64",
-          "version":"3.16.1-tinycore64",
-          "available_processors":4.0,
-          "system_load_average":0.06
-        }
+```json
+  {
+    "message":"Hi, I'm Vamp! How are you?",
+    "vitals":{
+      "operating_system":{
+        "name":"Linux",
+        "architecture":"amd64",
+        "version":"3.16.1-tinycore64",
+        "available_processors":4.0,
+        "system_load_average":0.06
       }
     }
-    </pre>
-
+  }
+```

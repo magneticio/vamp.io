@@ -14,7 +14,8 @@ copy & pasted to another environment or even to the same environment to function
 Creating a deployment is done by sending a POST request to the `/deployments` endpoint.
 Here is an example of a blueprint:
 
-<pre class="prettyprint lang-yaml">
+```yaml
+---
 name: my_monarch_blueprint
 
 endpoints:
@@ -28,7 +29,7 @@ clusters:
     breed: crown
     # Scale and routing are not specified: a default
     # environment configuration will be used.
-</pre>
+```
 
 The name of the deployment is automatically assigned as a UUID (e.g. `123e4567-e89b-12d3-a456-426655440000`).
 Here is an example with two versions of the same service within the one cluster. 
@@ -38,7 +39,8 @@ Notice that we have distributed the weight between the two services.
 
 Example with multiple service version (within the same cluster):
 
-<pre class="prettyprint lang-yaml"> 
+```yaml
+---
 name: my_monarch_blueprint
 
 endpoints:
@@ -55,7 +57,7 @@ clusters:
         breed: crown2
         routing:                    
           weight: 20        # 20% of traffic handled by this service.
-</pre>
+```
 
 ## Canary Releases & A/B Testing
 
@@ -69,19 +71,20 @@ If a service already exists then only the routing and scale will be updated. Oth
 
 Let's deploy a simple service:
 
-<pre class="prettyprint lang-yaml"> 
+```yaml
+---
 name: monarch_1.0
 
 clusters:
   monarch:
     # Specifying only a reference to the breed.
-    breed: monarch_1.0
-      
-</pre>
+    breed: monarch_1.0   
+```
 
 After this point we may have another version ready for deployment and now instead of only one service, we have added another one:
 
-<pre class="prettyprint lang-yaml"> 
+```yaml
+---
 name: monarch_1.1
 
 environment_variables:
@@ -99,11 +102,12 @@ clusters:
   recommendation:
     breed: recommendation_1.0
  
-</pre>
+```
 
 Now our deployment (in simplified blueprint format) looks like this:
 
-<pre class="prettyprint lang-yaml"> 
+```yaml
+---
 name: monarch_1.0
 
 environment_variables:
@@ -129,12 +133,13 @@ clusters:
         routing: 
           weight: 100
 
-</pre>
+```
 
 Note that the route weight for monarch_1.1 is 0, i.e. no traffic is sent to it.
 Let's redirect some traffic to our new monarch_1.1 (e.g. 10%):
 
-<pre class="prettyprint lang-yaml"> 
+```yaml
+---
 clusters:
   monarch:
     services:
@@ -146,7 +151,7 @@ clusters:
         breed: monarch_1.1
         routing: 
           weight: 10
-</pre>
+```
 
 Note that we can omit other fields like name, parameters and even other clusters (e.g. recommendation) if the change is not relevant to them. In this example we just wanted to update the weights.
 
@@ -163,7 +168,8 @@ If a service exists it will be removed, otherwise the request is ignored. If a c
 
 Let's use the example from the previous section. Notice the weight is evenly distributed (50/50). 
 
-<pre class="prettyprint lang-yaml"> 
+```yaml
+---
 name: monarch_1.0
 
 environment_variables:
@@ -188,26 +194,27 @@ clusters:
         breed: recommendation_1.0
         routing: 
           weight: 100
-</pre>
+```
 
 If we are happy with the new monarch version 1.1, we can proceed with the removal of the old version.
 This change is applied on the running deployment. We send the following YAML as the body of the `DELETE` request
 to the `/deployments/<deployment_UUID>` endpoint.
 
-<pre class="prettyprint lang-yaml"> 
-
+```yaml
+---
 name: monarch_1.0
 
 clusters:
   monarch:
     breed: monarch_1.0
 
-</pre>
+```
 
 Note that this is the same original blueprint we started with. What we are doing here is basically "subtracting" one blueprint from the other, although "the other" is a running deployment.
 After this operation our deployment is:
 
-<pre class="prettyprint lang-yaml"> 
+```yaml
+---
 name: monarch_1.0
 
 environment_variables:
@@ -227,7 +234,7 @@ clusters:
         routing: 
           weight: 100
 
-</pre>
+```
 
 In a nutshell: If we say that the first version was A and the second B, then we just did the migration from A to B without downtime:
 * **A** -> A + B -> A + B - A -> **B**

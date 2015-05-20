@@ -27,9 +27,9 @@ This is a "warn" alert
 
 ## Header 2
 
-Some Yaml code, pretty printed with the following classes `<pre class="prettyprint lang-yaml">`
+Some Yaml code, pretty printed with the following classes ````yaml`
 
-<pre class="prettyprint lang-yaml">
+```yaml
 ## Unique designator (name) consist of group, artifact and version.
 group: tutum
 artifact: mysql
@@ -54,23 +54,23 @@ traits:
     ## In this example with an existing docker image
     ## from public Docker repository.
     alias: MYSQL_PASS
-</pre>
+```
 
-If you don't want any code highlighting, just use `<pre>` tags without any extra classes.
+If you don't want any code highlighting, just use ````` tags without any extra classes.
 
-<pre>
+```
 $ java -version
 $ java -DMem=20001 -jar ../mesk/havav-war
-</pre>
+```
 
 You can also add a copy-to-clipboard button when you have some code people will need to copy & paste.
-This is handy in tutorials and examples. Just wrap a standard `<pre>` tag with `{{bla% copyable %}}`
+This is handy in tutorials and examples. Just wrap a standard ````` tag with `{{bla% copyable %}}`
 short codes. Of course, leave out the "bla":
 
 {{% copyable %}}
-<pre>
+```
 java --version
-</pre>
+```
 {{% /copyable %}}
 
 ### Header 3
@@ -79,10 +79,10 @@ We have some straight inline code `like this`
 
 ## Blueprints
 
-Bleuprint are execution plans - they describe how you system should look like at the runtime. All dependency availability and parameter values will be resolved at the deployment time. 
+Blueprints are execution plans - they describe how you system should look like at the runtime. All dependency availability and parameter values will be resolved at the deployment time. 
 
 {{% copyable %}}
-<pre class="prettyprint lang-yaml">
+```yaml
 group: vamp
 artifact: wordpress_stackable
 version: 1
@@ -123,7 +123,7 @@ filials:
       cpu: 1
       memory: 1024
       instances: 1
-</pre>
+```
 {{% /copyable %}}
 
 
@@ -137,17 +137,16 @@ markdown file: `![](/img/scaling_poc.png)`. The actual file should be in the `/s
 
 And here is some Json:
 
-<pre class="prettyprint lang-js">
+```json
     {
         "key" : "value",
         "key1" : 132
     } 
-</pre>
+```
 
 Here is some Scala code
 
-<pre class="prettyprint lang-scala">
-
+```scala
 package io.magnetic.vamp_core.rest_api
 
 import io.magnetic.vamp_core.model.Artifact
@@ -211,4 +210,4 @@ trait InMemoryResourceStoreProvider extends ResourceStoreProvider with RestApiNo
   }
 
 }
-</pre>
+```

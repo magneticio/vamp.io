@@ -1558,6 +1558,113 @@ section * {
 .docs code {
   color: #333;
   background-color: #f7f7f9;
+  font-family: Menlo, Monaco, 'Andale Mono', monospace;
+}
+.docs code[class*="language-"],
+.docs pre[class*="language-"] {
+  color: #183691;
+  font-family: Menlo, Monaco, 'Andale Mono', monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.72;
+  font-size: 13px;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+.docs pre[class*="language-"]::-moz-selection,
+.docs pre[class*="language-"] ::-moz-selection,
+.docs code[class*="language-"]::-moz-selection,
+.docs code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: #F7F7F7;
+}
+.docs pre[class*="language-"]::selection,
+.docs pre[class*="language-"] ::selection,
+.docs code[class*="language-"]::selection,
+.docs code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: #F7F7F7;
+}
+.docs pre[class*="language-"] {
+  padding: 16px;
+  margin: .5em 0;
+  overflow: auto;
+}
+:not(pre) .docs > code[class*="language-"],
+.docs pre[class*="language-"] {
+  background: #F7F7F7;
+}
+.docs :not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+}
+.docs .token.comment,
+.docs .token.prolog,
+.docs .token.doctype,
+.docs .token.cdata {
+  color: #AEAEAE;
+}
+.docs .token.punctuation {
+  color: #63a35c;
+}
+.docs .namespace {
+  opacity: .7;
+}
+.docs .token.property,
+.docs .token.tag,
+.docs .token.boolean,
+.docs .token.number,
+.docs .token.constant,
+.docs .token.symbol,
+.docs .token.deleted {
+  color: #0086b3;
+}
+.docs .token.selector,
+.docs .token.attr-name,
+.docs .token.string,
+.docs .token.char,
+.docs .token.builtin,
+.docs .token.inserted {
+  color: #690;
+}
+.docs .token.operator,
+.docs .token.entity,
+.docs .token.url,
+.docs .language-css .token.string,
+.docs .style .token.string {
+  color: #a67f59;
+  background: rgba(255, 255, 255, 0.5);
+}
+.docs .token.atrule,
+.docs .token.attr-value,
+.docs .token.keyword {
+  color: #63a35c;
+}
+.docs .token.function {
+  color: #DD4A68;
+}
+.docs .token.regex,
+.docs .token.important,
+.docs .token.variable {
+  color: #e90;
+}
+.docs .token.important,
+.docs .token.bold {
+  font-weight: bold;
+}
+.docs .token.italic {
+  font-style: italic;
+}
+.docs .token.entity {
+  cursor: help;
 }
 .docs .copy-button {
   position: relative;
@@ -1594,12 +1701,6 @@ section * {
   width: 150px;
   border-radius: 6px;
   font-size: 13px;
-}
-.docs code,
-.docs kbd,
-.docs pre,
-.docs samp {
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 .docs .com {
   color: #AEAEAE;

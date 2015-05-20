@@ -42,7 +42,9 @@ topology. Notice the following:
 - The blueprint only has one backend cluster with one service.
 - The blueprint does not specify and endpoint using the `endpoints` key because we are going to use the endpoint already present and configured in the running deployment.
 
-{{% copyable %}}<pre class="prettyprint lang-yaml">
+{{% copyable %}}
+```yaml
+---
 name: sava:1.3
 
 clusters:
@@ -76,7 +78,8 @@ clusters:
         cpu: 0.5       
         memory: 512  
         instances: 1            
-</pre>{{% /copyable %}}
+```
+{{% /copyable %}}
 
 A `PUT` to our deployment (e.g. `/api/v1/deployments/1abf809e-dbbd-42a6-87a2-e25ddede67cb`) that was based on [the blueprint from the previous part of the tutorial](/documentation/getting-started/splitting-services/) should yield a deployment with the following properties (we left some irrelevant
 parts out):
@@ -84,7 +87,7 @@ parts out):
 1. Two `services` in the sava `cluster`: the old one at 100% and the new one at 0% weight.
 2. Three backends in the `cluster` list: two old ones and one new one.
 
-<pre class="prettyprint lang-json"> 
+```json
 {
     "name": "1abf809e-dbbd-42a6-87a2-e25ddede67cb",
     "endpoints": {
@@ -334,7 +337,7 @@ parts out):
         "backend": "10.26.184.254"
     }
 }
-</pre>  
+```
 
 So what happened here? Vamp has worked out what parts were already there and what parts should be merged or added. This is done based on naming, i.e. the sava cluster already existed, so Vamp added a service to it at 0% weight. A cluster named "backend" didn't exist yet, so it was created. Effectively, we have merged
 the running deployment with a new blueprint.
@@ -359,7 +362,7 @@ In this specific example, we could export the deployment as a blueprint and upda
 5% split. Then we could do this again, but with a 80% to 20% split and so on. See the abbreviated example
 below:
 
-<pre class="prettyprint lang-json">
+```json
  ... 
  "sava": {
       "services": [
@@ -384,7 +387,7 @@ below:
       ]
     }
 ...
-</pre>
+```
 
 ## Step 4: Deleting parts of the deployment
 
@@ -392,7 +395,9 @@ Vamp helps you transition between states and avoid "hard" switches, so deleting 
 
 This means you can specifically target parts of your deployment to be removed instead of deleting the whole thing. For this tutorial we are going to delete the "over-engineered" old part of our deployment by grabbing the "old" blueprint, cleaning it up a bit (see below) and sending it in the body of the `DELETE` to the deployment resource, e.g. `/api/v1/deployments/125fd95c-a756-4635-8e1a-361085037870`
 
-{{% copyable %}}<pre class="prettyprint lang-yaml">
+{{% copyable %}}
+```yaml
+---
 name: sava:1.2
 clusters:
   sava:
@@ -407,7 +412,8 @@ clusters:
     services:
       breed:
         name: sava-backend2:1.2.0
-</pre>{{% /copyable %}}
+```
+{{% /copyable %}}
 
 {{% alert info %}}
 **Note**: We removed the `deployable`, `environment_variables`, `ports` and some other parts of the blueprint. These are actually not necessary for deletion. Besides that, this is actually exactly the same blueprint we used to initially deploy

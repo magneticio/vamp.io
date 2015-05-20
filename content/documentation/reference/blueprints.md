@@ -10,7 +10,8 @@ Blueprints are execution plans - they describe how your services should be hooke
 
 This example shows some of the key concepts of of blueprints:
  
-<pre class="prettyprint lang-yaml">
+```yaml
+---
 name: nomadic-frostbite
 
 # Endpoints are stable ports mapped to concrete breed ports.
@@ -58,16 +59,17 @@ clusters:
 # same as key provided. 
 environment_variables:
   notorious.aspect: thorium
-</pre>
-    
+```
+
 ## Scale
 
 Scale is the "size" of a deployed service. Usually that means the number of instances (servers) and allocated cpu and memory. Scales can be defined inline in a blueprint or they can defined separately and given a unique name. The following example is a scale named "small". `POST`-ing this scale to the `/scales` REST API endpoint will store it under that name so it can be referenced from other blueprints.
 
-<pre class="prettyprint lang-yaml">
+```yaml
+---
 name: small   # Custom name.
 
 cpu: 2        # Number of CPUs per instance.
 memory: 2048  # Memory in MB per instance.
 instances: 2  # Number of instances.
-</pre>
+```

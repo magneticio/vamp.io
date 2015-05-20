@@ -21,7 +21,10 @@ Vamp allows you to do canary releases using blueprints. Take a look at the YAML 
 2. We've added the `routing` key which holds the weight of each service as a percentage of all requests. 
 
 Notice we assigned 50% to our current version 1.0.0 and 50% to the new version 1.1.0 We could also start with a 100% to 0% split, a 99% to 1% split or whatever combination you want as long as all percentages add up to 100% in total.
-{{% copyable %}}<pre class="prettyprint lang-yaml">
+{{% copyable %}}
+
+```yaml
+---
 name: sava:1.0
 
 endpoints:
@@ -55,7 +58,7 @@ clusters:
           instances: 1  
         routing: 
           weight: 50            
-</pre>{{% /copyable %}}
+```{{% /copyable %}}
 
 {{% alert info %}}
 **Note**: There is nothing stopping you from deploying three or more versions and distributing the weight
@@ -84,12 +87,13 @@ from an internal service? Vamp allows you to do this right from the blueprint DS
 
 Let's start simple: We will allow only Chrome users to access v1.1.0 of our application by inserting this routing scheme:
 
-<pre class="prettyprint lang-yaml">
+```yaml
+---
 routing:
   weight: 0
   filters:
     - condition: User-Agent = Chrome
-</pre>
+```
 
 Notice two things:
 
@@ -99,7 +103,10 @@ checks filters and then weight. This means we explicitly do not send 'just some 
 
 Our full blueprint now looks as follows:  
 
-{{% copyable %}}<pre class="prettyprint lang-yaml">
+{{% copyable %}}
+
+```yaml
+---
 name: sava:1.0
 
 endpoints:
@@ -135,7 +142,8 @@ clusters:
           weight: 0
           filters:
             - condition: User-Agent = Chrome                   
-</pre>{{% /copyable %}}
+```
+{{% /copyable %}}
 
 Again, use a `PUT` request to the right deployment. As we are not actually deploying anything but just reconfiguring routes, the update should be almost instantaneous. You can fire up a Chrome browser and
 a Safari browser and check the results. A hard refresh might be necessary because of your browser's 
@@ -152,7 +160,7 @@ Under the hood, Vamp uses [Haproxy's ACL's](http://cbonte.github.io/haproxy-dcon
 However, ACL's can be somewhat opaque and cryptic. That's why Vamp has a set of convenient "short codes"
 to address common use cases. Currently, we support the following, but we will be expanding on this in the future:
 
-<pre>
+```
 User-Agent = *string*
 Host = *string*
 Cookie *cookie name* Contains *string*
@@ -161,29 +169,30 @@ Misses Cookie *cookie name*
 Header *header name* Contains *string*
 Has Header *header name*
 Misses Header *header name*
-</pre>
+```
 
 Vamp is also quite flexible when it comes to the exact syntax. This means the following are all equivalent:
 
-<pre>
+```
 hdr_sub(user-agent) Android   # straight ACL
 user-agent=Android            # lower case, no white space
 User-Agent=Android            # upper case, no white space
 user-agent = Android          # lower case, white space
-</pre>
+```
 
 Having multiple conditions in a filter is perfectly possible. In this case all filters are implicitly
 "OR"-ed together, as in "if the first filter doesn't match, proceed to the next". For example, the following filter would first check whether the string "Chrome" exists in the User-Agent header of a
 request. If that doesn't result in a match, it would check whether the request has the header 
 "X-VAMP-TUTORIAL". So any request matching either condition would go to this service.
 
-<pre class="prettyprint lang-yaml">
+```yaml
+---
 routing:
   weight: 0
   filters:
     - condition: User-Agent = Chrome
     - condition: Has Header X-VAMP-TUTORIAL
-</pre>
+```
 
 Using a tool like [httpie](https://github.com/jakubroztocil/httpie) makes testing this a breeze.
 

@@ -31,7 +31,11 @@ are checked and rolled out in the right order.
 services to the "customer facing" `sava` service. 
 4. We've change the endpoint port to `9060` so it doesn't collide with the  monolithic deployment.
 
-{{% copyable %}}<pre class="prettyprint lang-yaml">name: sava:1.2
+{{% copyable %}}
+
+```yaml
+---
+name: sava:1.2
 endpoints:
   sava.port: 9060
 
@@ -78,7 +82,9 @@ clusters:
       scale:
         cpu: 0.5       
         memory: 512  
-        instances: 1</pre>{{% /copyable %}}
+        instances: 1
+```
+{{% /copyable %}}
 
 Deploy this blueprint to the `/api/v1/deployments` endpoint with a `POST` request. Again, don't forget to set the header `Content-Type: application/x-yaml`.
 

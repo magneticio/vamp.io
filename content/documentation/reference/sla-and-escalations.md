@@ -30,7 +30,8 @@ Vamp currently ships with the following SLA types:
 
 The `response_time_sliding_window` SLA triggers events based on response times. This is how you define one with an inline definition in a blueprint:
 
-<pre class="prettyprint lang-yaml">
+```yaml
+---
 name: monarch
 
 endpoints:
@@ -72,7 +73,7 @@ clusters:
           minimum: 1
           maximum: 3
           scale_by: 1
-</pre>
+```          
 
 **Notice** how the SLA is defined separately from the escalations. This is key to how Vamp approaches SLA's and how modular and extendable the system is.
 
@@ -91,7 +92,8 @@ Vamp ships with the following set of escalation handlers. These handlers can be 
 #### scale_instances
 Scales up the number of running instances. It is applied only to the first service in the cluster (old or "A" version). You can set upper limits to how far you want to scale out or in, effectively guaranteeing a minimum set of running instances. This is very much like AWS auto-scaling.
 
-<pre class="prettyprint lang-yaml">
+```yaml
+---
 type: scale_instances
 target: monarch  # Target cluster for the scale up/down.
                  # If it's not specified, by default it's the 
@@ -101,29 +103,31 @@ minimum: 1       # Minimum number of instances.
 maximum: 3       # Maximum number of instances.
 scale_by: 1      # Increment/decrement to use on current 
                  # number of running instances.
-</pre>
+```
 
 #### scale_cpu
 Scales up the number of CPUs per instances. It is applied only on the first service in the cluster (old or "A" version).
 
-<pre class="prettyprint lang-yaml">
+```yaml
+---
 type: scale_cpu
 target: monarch  
 minimum: 1
 maximum: 3 
 scale_by: 0.5
-</pre>
+```
 
 #### scale_memory
 Scales up the memory per instance. It is applied only on the first service in the cluster (old or "A" version).
 
-<pre class="prettyprint lang-yaml">
+```yaml
+---
 type: scale_memory
 target: monarch  
 minimum: 512     # In MB.
 maximum: 4096    # In MB.
 scale_by: 512    # In MB.
-</pre>
+```
 
 ### Composing escalation handlers
 
@@ -132,31 +136,34 @@ Vamp has a set of predefined escalation handler types that deal with escalations
 #### to_all
 This is a "group" escalation handler that contains a list of escalations. On each escalation event it will propagate the escalation to **all** escalation handlers from its list. No order or hierarchy.
 
-<pre class="prettyprint lang-yaml">
+```yaml
+---
 to_all:
   escalations:
     # Scale up/down.
     - scale_instances
     # And notify for each event.
     - notify
-</pre>
+```
 
 #### to_one
 This is a group escalation handler that contains a list of escalations. On each escalation event it will propagate the escalation to each escalation handler (from its list) until one can handle it. On an `Escalate` event, it will start at the head of the list. During a `DeEscalate` event is will start at the rear.
 When is this useful? Well, Vamp could try to scale up the service and if that;s not possible anymore (e.g. reached the upper limit of allowed scale) then an email can be sent.
 
-<pre class="prettyprint lang-yaml">
+```yaml
+---
 to_one:
   escalations:
     # First try to escalate.
     - scale_instances
     # If it's not possible, proceed with notifying.
     - notify
-</pre>
+```
 
 A more complex example is:
 
-<pre class="prettyprint lang-yaml">
+```yaml
+---
 name: monarch
 
 endpoints:
@@ -227,4 +234,4 @@ clusters:
       cpu: 1
       memory: 1024
       instances: 1
-</pre>
+```

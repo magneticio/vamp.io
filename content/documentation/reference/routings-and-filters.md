@@ -15,7 +15,8 @@ Vamp allows you to determine this in two ways:
 
 You can define routings inline in a blueprint or store them separately under a unique name and just use that name to reference them from a blueprint. Just `POST` them to the `/routings` endpoint. For instance:
 
-<pre class="prettyprint lang-yaml">
+```yaml
+---
 name: red   # Custom name, can be referenced later on.
             # Amount of traffic for this service in percents.
 weight: 10
@@ -24,7 +25,7 @@ filters:    # Anonymous with condition.
   - condition: user-agent != ios
             # As a reference, shortened of "name: my_filter_1"
   - my_filter_1
-</pre>
+```
 
 *Notice* we referenced a filter named `my_filter_1` here. This filter is actually a reference to a separately stored filter definition we stored under a unique name on the `/filters` endpoint.
 
@@ -38,7 +39,7 @@ Creating filters is quite eas y. Checking Headers, Cookies, Hosts etc. is all po
 However, ACL's can be somewhat opaque and cryptic. That's why Vamp has a set of convenient "short codes"
 to address common use cases. Currently, we support the following:
 
-<pre>
+```
 User-Agent = *string*
 Host = *string*
 Cookie *cookie name* Contains *string*
@@ -47,29 +48,29 @@ Misses Cookie *cookie name*
 Header *header name* Contains *string*
 Has Header *header name*
 Misses Header *header name*
-</pre>
-
+```
 Vamp is also quite flexible when it comes to the exact syntax. This means the following are all equivalent:
 
-<pre>
+```
 hdr_sub(user-agent) Android   # straight ACL
 user-agent=Android            # lower case, no white space
 User-Agent=Android            # upper case, no white space
 user-agent = Android          # lower case, white space
-</pre>
+```
 
 Having multiple conditions in a filter is perfectly possible. In this case all filters are implicitly
 "OR"-ed together, as in "if the first filter doesn't match, proceed to the next". For example, the following filter would first check whether the string "Chrome" exists in the User-Agent header of a
 request. If that doesn't result in a match, it would check whether the request has the header 
 "X-VAMP-MY-COOL-HEADER". So any request matching either condition would go to this service.
 
-<pre class="prettyprint lang-yaml">
+```yaml
+---
 routing:
   weight: 0
   filters:
     - condition: User-Agent = Chrome
     - condition: Has Header X-VAMP-MY-COOL-HEADER
-</pre>
+```
 
 Using a tool like [httpie](https://github.com/jakubroztocil/httpie) makes testing this a breeze.
 
