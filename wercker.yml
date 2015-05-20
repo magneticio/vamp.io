@@ -4,8 +4,9 @@ build:
     - script:
         name: config status
         code: >
-          cd  $WERCKER_STEP_TEMP
+          cd  $WERCKER_STEP_TEMP;
           git clone --depth=50 --quiet https://github.com/magneticio/vamp.git;
+          ls -ltr vamp;
           cp -r vamp/docs/content/* $WERCKER_SOURCE_DIR/content/documentation/;
     - arjen/hugo-build:
         version: 0.13
