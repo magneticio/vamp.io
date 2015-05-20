@@ -3,10 +3,12 @@ build:
   steps:
     - script:
         name: config status
-          code: >
-            git clone --depth=50 --quiet --no-single-branch https://github.com/magneticio/vamp.git;
-            cd vamp;
-            git ckeckout HEAD;
+        code: >
+          if [ -e "config" ]; then
+          echo "config exists";
+          else
+          echo "config does not exist";
+          fi;
     - arjen/hugo-build:
         version: 0.13
         flags: --buildDrafts=false
