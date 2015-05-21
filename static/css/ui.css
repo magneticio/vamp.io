@@ -2130,6 +2130,12 @@ body {
 .screen pre .kwd {
   color: #ff4081;
 }
+.screen pre .pln {
+  color: white !important;
+}
+.screen pre .pun {
+  color: #ff4081;
+}
 @media (max-width: 480px) {
   .screen pre {
     font-size: 11px;
