@@ -1,8 +1,8 @@
-stableCore = "0.7.5"
-stablePulse = "0.7.5"
-stableRouter = "0.7.5"
+stableCore = "0.7.6"
+stablePulse = "0.7.6"
+stableRouter = "0.7.6"
 stableCodeName = "Northmann"
-stableReleaseDate = "28-04-2015"
+stableReleaseDate = "21-05-2015"
 license = "Apache 2.0"
 libraries = [ "common","pulse","pulse-api"]
 packagePrefix = "vamp-"

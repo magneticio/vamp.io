@@ -4,6 +4,8 @@ publishdir = "dist"
 pluralizeListTitles = false
 canonifyurls= true
 title= "Vamp :: The Very Awesome Microservices Platform"
+[blackfriday]
+  plainIdAnchors = false
 [permalinks]
     blog = "/:year/:month/:filename/"
 
