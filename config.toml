@@ -5,10 +5,9 @@ pluralizeListTitles = false
 canonifyurls= true
 title= "Vamp :: The Very Awesome Microservices Platform"
 [blackfriday]
-  plainIdAnchors = false
+    plainIdAnchors = true
 [permalinks]
     blog = "/:year/:month/:filename/"
-
 [[menu.main]]
     name = "Overview"
     weight = 10

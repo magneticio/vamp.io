@@ -1460,12 +1460,12 @@ section * {
 }
 #sidenav ul li > a.sub-menu-link {
   text-transform: none;
-  font-size: 13px;
+  font-size: 14px;
 }
 #sidenav ul li > a.sub-sub-menu-link {
   text-transform: none;
   padding-left: 5px;
-  font-size: 13px;
+  font-size: 14px;
 }
 #sidenav .sub-menu a.sub-menu-header.collapsed::before {
   color: #bdc3c7;
