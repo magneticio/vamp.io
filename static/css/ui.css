@@ -1446,7 +1446,7 @@ section * {
   font-size: 14px;
   font-weight: normal;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
   color: #727272;
 }
 #sidenav ul li > a:hover,
@@ -1461,31 +1461,15 @@ section * {
 #sidenav ul li > a.sub-menu-link {
   text-transform: none;
   font-size: 14px;
+  font-weight: 400;
 }
-#sidenav ul li > a.sub-sub-menu-link {
+#sidenav ul li > a.sub-menu-header-link {
   text-transform: none;
   padding-left: 5px;
   font-size: 14px;
 }
-#sidenav .sub-menu a.sub-menu-header.collapsed::before {
-  color: #bdc3c7;
-  content: "\e002";
-  display: inline-block;
-  font-family: 'Flat-UI-Icons';
-  font-size: 9.75px;
-  margin: -2px 2px 0 -15px;
-  vertical-align: middle;
-  -webkit-font-smoothing: antialiased;
-}
-#sidenav .sub-menu a.sub-menu-header::before {
-  color: #bdc3c7;
-  content: "\e004";
-  display: inline-block;
-  font-family: 'Flat-UI-Icons';
-  font-size: 12.75px;
-  margin: -2px 2px 0 -18px;
-  vertical-align: middle;
-  -webkit-font-smoothing: antialiased;
+#sidenav .sub-menu {
+  margin-top: 15px;
 }
 #sidenav .sub-menu .active > a {
   color: #03a9f4;
@@ -1572,8 +1556,6 @@ section * {
   border-bottom: 1px solid #e1e1e8;
 }
 .docs code {
-  color: #333;
-  background-color: #f7f7f9;
   font-family: Menlo, Monaco, 'Andale Mono', monospace;
 }
 .docs code[class*="language-"],

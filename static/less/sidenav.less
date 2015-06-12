@@ -10,7 +10,7 @@
   ul {
 
     &.top-level {
-      padding-left: 0px
+      padding-left: 0px;
     }
 
     padding-left: 5px;
@@ -19,7 +19,7 @@
       > a {
         .font(14px);
         text-transform: uppercase;
-        font-weight: 400;
+        font-weight: 500;
         .a-color(@asbestos, @link-color);
         &:hover{
           color: @brand-info;
@@ -28,8 +28,9 @@
         &.sub-menu-link {
           text-transform: none;
           font-size: 14px;
+          font-weight: 400;
         }
-        &.sub-sub-menu-link {
+        &.sub-menu-header-link {
           text-transform: none;          
           padding-left: 5px;
           font-size: 14px;
@@ -38,36 +39,9 @@
     }
   }
   .sub-menu {
-
+    margin-top: 15px;
     a {
           &.sub-menu-header {
-
-            &.collapsed::before{
-
-              color: #bdc3c7;
-              content: "\e002";
-              display: inline-block;
-              font-family: 'Flat-UI-Icons';
-              font-size: 9.75px;
-              margin: -2px 2px 0 -15px;
-              vertical-align: middle;
-              -webkit-font-smoothing: antialiased;
-
-            }
-
-            &::before {
-
-              color: #bdc3c7;
-              content: "\e004";
-              display: inline-block;
-              font-family: 'Flat-UI-Icons';
-              font-size: 12.75px;
-              margin: -2px 2px 0 -18px;
-              vertical-align: middle;
-              -webkit-font-smoothing: antialiased;
-
-            }
-
           }
 
     }
