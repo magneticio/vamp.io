@@ -3,12 +3,24 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta property="og:title" content="{{.Title }}">
-        <meta property="og:type" content="website">
+        <meta property="og:title" content="{{ .Title }} | vamp.io">
+        {{ if eq .Section "blog"}}
+        <meta property="og:type" content="article">
+        {{end}}
         <meta property="og:url" content="http://vamp.io">
         <meta property="og:image" content="http://vamp.io/img/vamp_logo_blue.png">
-        <meta property="og:site_name" content="Vamp">
-        <meta property="og:description" content="{{ if eq .IsPage true }}{{ .Summary }}{{end}}">
+        <meta property="og:site_name" content="Vamp.io">
+        {{ if .IsPage }}
+            {{ if .Description }}
+                <meta property="og:description" content="{{ .Description }}">
+                <meta property="twitter:description" content="{{ .Description }}">
+            {{else}}
+                <meta property="og:description" content="{{ .Summary }}">           
+                <meta property="twitter:description" content="{{ .Summary }}">           
+            {{end}}                
+        {{end}}
+        <meta property="twitter:site" content="vamp.io">
+        <meta property="twitter:title" content="{{ .Title }}| vamp.io">
         <title>{{ if .IsPage }}{{.Title }} - {{ .Section}} - {{ end }} {{ .Site.Title }}</title>
         <link rel="stylesheet" href="/vendor/theme/flat-ui/bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="/css/flat-ui.min.css">

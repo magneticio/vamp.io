@@ -2140,14 +2140,6 @@ body > .navbar-collapse .nav > li > a.active {
 body > .navbar-collapse .nav > li > a:hover {
   color: #03a9f4;
 }
-#scala_days_banner {
-  background-color: #e05f5e;
-  color: white;
-  font-size: 36px;
-  text-align: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-#scala_days_banner a {
-  color: white;
+.social-buttons-horizontal iframe {
+  margin-left: 15px;
 }
