@@ -1497,21 +1497,26 @@ section * {
   vertical-align: middle;
   -webkit-font-smoothing: antialiased;
 }
+.docs h1 {
+  border-bottom: 1px solid #ededed;
+}
 .docs h1,
 .docs h2,
 .docs h3 {
   font-size: 1.75em;
-  font-weight: bold;
   line-height: 1.225;
   padding-bottom: 0.3em;
   margin-bottom: 16px;
   margin-top: 1em;
-  border-bottom: 1px solid #ededed;
 }
 .docs h1 {
   padding-bottom: 0.3em;
   font-size: 2.25em;
   line-height: 1.2;
+  font-weight: bold;
+}
+.docs h2 {
+  font-weight: 500;
 }
 .docs h3 {
   font-size: 1.5em;
@@ -1556,6 +1561,8 @@ section * {
   border-bottom: 1px solid #e1e1e8;
 }
 .docs code {
+  color: #333;
+  background-color: #f7f7f9;
   font-family: Menlo, Monaco, 'Andale Mono', monospace;
 }
 .docs code[class*="language-"],

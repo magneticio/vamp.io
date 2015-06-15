@@ -5,6 +5,7 @@ category = ["articles"]
 date = "2015-06-22"
 author = "Tim Nolet"
 description = "Deploy microservices to your local Docker installation using Vamp"
+draft = true
 +++
 ![](/img/vamp_docker.svg)
 
