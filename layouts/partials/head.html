@@ -12,11 +12,16 @@
         <meta property="og:site_name" content="Vamp.io">
         {{ if .IsPage }}
             {{ if .Description }}
+                <meta name="description" content="{{ .Description }}">
                 <meta property="og:description" content="{{ .Description }}">
                 <meta property="twitter:description" content="{{ .Description }}">
             {{else}}
+                <meta name="description" content="{{ .Summary }}">           
                 <meta property="og:description" content="{{ .Summary }}">           
                 <meta property="twitter:description" content="{{ .Summary }}">           
+            {{end}}
+            {{ if .Params.tags}}
+                <meta name="keywords" content="{{ range .Params.tags }}{{.}} {{end}}">
             {{end}}                
         {{end}}
         <meta property="twitter:site" content="vamp.io">
