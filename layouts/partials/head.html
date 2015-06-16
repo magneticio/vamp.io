@@ -21,6 +21,10 @@
         {{end}}
         <meta property="twitter:site" content="vamp.io">
         <meta property="twitter:title" content="{{ .Title }}| vamp.io">
+        <meta property="twitter:image" content="http://vamp.io/img/vamp_logo_blue.png">        
+        <meta property="twitter:creator" content="vamp.io">    
+        <meta property="twitter:url" content="{{.Permalink}}">    
+        <meta property="twitter:card" content="summary">    
         <title>{{ if .IsPage }}{{.Title }} - {{ .Section}} - {{ end }} {{ .Site.Title }}</title>
         <link rel="stylesheet" href="/vendor/theme/flat-ui/bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="/css/flat-ui.min.css">

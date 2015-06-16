@@ -44,7 +44,7 @@ pre {
   border-radius: 3px;
   padding: 16px;
   border: 1px solid #e1e1e8;
-  font-size: (@font-size-code);
+  font-size: @font-size-code;
   color: #333;
   font-family: @font-family-monospace;
   background-color: #f7f7f9;
@@ -74,91 +74,128 @@ table {
 }
 
 code {
-
   color: #333;
   background-color: #f7f7f9;
-  font-family: Menlo, Monaco, 'Andale Mono', monospace;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
-code[class*="language-"],pre[class*="language-"] {
-    color: #183691;
-    font-family: Menlo, Monaco, 'Andale Mono', monospace;
+// GH COLORING
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: #393A34;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: @font-size-code;
     direction: ltr;
     text-align: left;
     white-space: pre;
     word-spacing: normal;
     word-break: normal;
-    line-height: 1.72;
-    font-size: 13px;
+
     -moz-tab-size: 4;
     -o-tab-size: 4;
     tab-size: 4;
+
     -webkit-hyphens: none;
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
 }
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-    text-shadow: none;
-    background: #F7F7F7;
-}
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,code[class*="language-"]::selection, code[class*="language-"] ::selection {
-    text-shadow: none;
-    background: #F7F7F7;
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    background: #b3d4fc;
 }
 
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    background: #b3d4fc;
+}
 
+/* Code blocks */
 pre[class*="language-"] {
-    padding: 16px;
-    margin: .5em 0;
-    overflow: auto;
+    // padding: 1em;
+    // margin: .5em 0;
+    // overflow: auto;
+    // border: 1px solid #dddddd;
+    // background-color: white;
 }
-:not(pre) &>code[class*="language-"],pre[class*="language-"] {
-    background: #F7F7F7;
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
 }
-:not(pre) {
-    & > code[class*="language-"] {
-        padding: .1em;
-        border-radius: .3em;
-    }
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .2em;
+    padding-top: 1px; padding-bottom: 1px;
+    background: #f8f8f8;
+    border: 1px solid #dddddd;
 }
-.token.comment,.token.prolog,.token.doctype,.token.cdata {
-    color: #AEAEAE;
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #999988; font-style: italic;
 }
-.token.punctuation {
-    color: #63a35c;
-}
-.namespace {
+
+.token.namespace {
     opacity: .7;
 }
-.token.property,.token.tag,.token.boolean,.token.number,.token.constant,.token.symbol,.token.deleted {
-    color: #0086b3;
+
+.token.string,
+.token.attr-value {
+    color: #e3116c;
 }
-.token.selector,.token.attr-name,.token.string,.token.char,.token.builtin,.token.inserted {
-    color: #690;
+.token.punctuation,
+.token.operator {
+    color: #393A34; /* no highlight */
 }
-.token.operator,.token.entity,.token.url,.language-css .token.string,.style .token.string {
-    color: #a67f59;
-    background: hsla(0, 0%, 100%, .5);
+
+.token.entity,
+.token.url,
+.token.symbol,
+.token.number,
+.token.boolean,
+.token.variable,
+.token.constant,
+.token.property,
+.token.regex,
+.token.inserted {
+    color: #36acaa;
 }
-.token.atrule,.token.attr-value,.token.keyword {
-    color: #63a35c;
+
+.token.atrule,
+.token.keyword,
+.token.attr-name,
+.language-autohotkey .token.selector {
+    color: #00a4db;
 }
-.token.function {
-    color: #DD4A68;
+
+.token.function,
+.token.deleted,
+.language-autohotkey .token.tag {
+    color: #9a050f;
 }
-.token.regex,.token.important,.token.variable {
-    color: #e90;
+
+.token.tag,
+.token.selector,
+.language-autohotkey .token.keyword {
+    color: #00009f;
 }
-.token.important,.token.bold {
+
+.token.important,
+.token.function,
+.token.bold {
     font-weight: bold;
 }
+
 .token.italic {
     font-style: italic;
 }
-.token.entity {
-    cursor: help;
-}
+
+// GH COLORING END
 
 .copy-button {
     position: relative;
