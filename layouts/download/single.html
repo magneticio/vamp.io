@@ -1,4 +1,4 @@
-{{ partial "head.html" . }}
+    {{ partial "head.html" . }}
 {{ partial "top_nav.html" . }}
 {{ partial "sub_head.html" . }}
 
@@ -46,7 +46,7 @@
                 </div>
             <p>
             </p>
-             <h2>Scala source & Maven</h2>
+             <h2>Packages & Maven</h2>
             <p>All of Vamp's components and artifacts are split into separate repo's, libraries Go packages/Maven artifacts
             where applicable</p>
                 <div class="table-responsive">
@@ -54,7 +54,7 @@
                         <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Latest version</th>
+                            <th>Latest build</th>
                             <th>Description</th>
                             <th></th>
                             <th></th>
@@ -72,7 +72,6 @@
                             <td>{{ index $r.latest_version }}</td>
                             <td>{{ index $r.desc }}</td>
                             <td><a href="{{ index $r.vcs_url }}" target="_blank">source</a></td>
-                            <td><a href="{{ index $r.issue_tracker_url }}" target="_blank">issues</a></td>
                             <td><a href="{{ $sonatype }}{{ $package }}_{{$scalaVersion}}/" target="_blank">maven</a></td>
                         </tr>
                         {{end}}

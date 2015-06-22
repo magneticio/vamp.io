@@ -4,7 +4,21 @@ stableRouter = "0.7.7"
 stableCodeName = "Northmann"
 stableReleaseDate = "09-06-2015"
 license = "Apache 2.0"
-libraries = [ "common","pulse","pulse-api"]
+libraries = [ "common",
+"core-bootstrap",
+"core-rest_api",
+"core-cli",
+"core-container_driver",
+"core-dictionary",
+"core-model",
+"core-operation",
+"core-persistence",
+"core-pulse_driver",
+"core-router_driver",
+"core-swagger",
+"pulse-client",
+"pulse-model",
+"pulse-server"]
 packagePrefix = "vamp-"
 scalaVersion = "2.11"
 sonatypeBaseUrl = "https://oss.sonatype.org/content/repositories/releases/io/vamp/"
