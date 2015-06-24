@@ -38,3 +38,5 @@ updated docs: Fri Jun 12 15:06:07 UTC 2015
 updated docs: Fri Jun 12 15:28:27 UTC 2015
 updated docs: Fri Jun 12 21:44:25 UTC 2015
 updated docs: Fri Jun 12 22:05:26 UTC 2015
+updated docs: Thu Jun 18 10:23:21 UTC 2015
+updated docs: Fri Jun 19 11:19:38 UTC 2015
