@@ -261,9 +261,11 @@ pre[class*="language-"] {
   }
 
   blockquote {
+    &:before {
+      background-color: @brand-accent
+    }
     p {
-      font-family: @font-family-monospace;
-      font-size: 17px;
+      font-size: 16px;
       color: @headings-color;
     }
 

@@ -1711,9 +1711,11 @@ section * {
 .docs .pun {
   color: #63a35c;
 }
+.docs blockquote:before {
+  background-color: #ff4081;
+}
 .docs blockquote p {
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 17px;
+  font-size: 16px;
   color: #333333;
 }
 .docs #get_started_overview {
