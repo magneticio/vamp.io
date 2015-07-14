@@ -1,8 +1,8 @@
-stableCore = "0.7.7"
-stablePulse = "0.7.7"
-stableRouter = "0.7.7"
+stableCore = "0.7.8"
+stablePulse = "0.7.8"
+stableRouter = "0.7.8"
 stableCodeName = "Northmann"
-stableReleaseDate = "09-06-2015"
+stableReleaseDate = "03-07-2015"
 license = "Apache 2.0"
 libraries = [ "common",
 "core-bootstrap",
