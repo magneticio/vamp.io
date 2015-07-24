@@ -4,6 +4,7 @@ tags = ["articles", "news","Docker"]
 category = ["articles"]
 date = "2015-06-22"
 author = "Tim Nolet"
+type = "blog"
 description = "Deploy microservices to your local Docker installation using Vamp"
 draft = true
 +++

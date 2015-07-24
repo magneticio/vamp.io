@@ -4,6 +4,7 @@ tags = ["first", "launch"]
 category = ["news"]
 date = "2015-03-31"
 author = "Tim Nolet"
+type = "blog"
 aliases = ["/blog/epic-first-post/"] 
 
 +++

@@ -4,11 +4,11 @@
         <!-- sidebar menu start-->
         <ul class="sidenav-menu top-level">
             {{ $currentNode := . }}
-            {{ range .Site.Menus.main }}
+            {{ range .Site.Menus.main }}            
             {{ if .HasChildren }}
 
             <li class="sub-menu{{if $currentNode.HasMenuCurrent "main" . }} active {{end}}">
-            <a href="#" class="sub-menu-header">
+            <a href="{{.Url}}" class="sub-menu-header">
                 {{ .Pre }}
                 <span>{{ .Name }}</span>
             </a>

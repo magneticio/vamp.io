@@ -3,6 +3,7 @@ title = "Updates to docs and tutorial resources"
 tags = ["news"]
 category = ["news"]
 date = "2015-05-07"
+type = "blog"
 author = "Tim Nolet"
 +++
 

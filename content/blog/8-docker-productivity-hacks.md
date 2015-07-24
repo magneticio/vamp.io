@@ -4,6 +4,7 @@ tags = ["articles","Docker","tips","tricks","linux","one-liners"]
 category = ["articles"]
 date = "2015-06-16"
 author = "Tim Nolet"
+type = "blog"
 description = "8 Docker tips and tricks for daily Docker usage"
 +++
 ![](/img/docker_nyan.svg)

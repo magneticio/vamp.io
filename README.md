@@ -18,7 +18,7 @@ follow the instructions below.
 
 3. Run hugo in watch mode and start adding content under the `content/` tree
 
-    $ hugo server --watch
+        $ hugo server --watch
 
     The site is server under `localhost:1313`
 

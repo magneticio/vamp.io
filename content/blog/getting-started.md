@@ -3,6 +3,7 @@ title = "New getting started tutorial & UI sneak preview!"
 tags = ["tutorials", "ui"]
 category = ["news"]
 date = "2015-04-13"
+type = "blog"
 author = "Tim Nolet"
 +++
 

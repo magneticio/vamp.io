@@ -3,6 +3,7 @@ title = "Vamp 0.7.6: introducing the Marathon dialect"
 tags = ["releases", "news"]
 category = ["news"]
 date = "2015-05-21"
+type = "blog"
 author = "Tim Nolet"
 +++
 

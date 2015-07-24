@@ -36,6 +36,13 @@ h4 {
   margin-bottom: 15px;
 }
 
+// h2:hover::before {
+//   position: absolute; 
+//   left: -4px;
+//   content: "§";
+//   font-size: smaller;
+// }
+
 img {
   margin: 20px auto 20px auto  
 }
@@ -261,8 +268,12 @@ pre[class*="language-"] {
   }
 
   blockquote {
+    background-color: #FFF6F9;
+    padding: 18px 45px 14px 30px;
+    border-radius: 6px;
     &:before {
       width: 5px;
+      border-radius: 0px;
       background-color: @brand-accent
     }
     p {

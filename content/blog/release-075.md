@@ -3,6 +3,7 @@ title = "Vamp 0.7.5: Archiving and redesigned environment variable DSL"
 tags = ["releases", "news"]
 category = ["news"]
 date = "2015-04-28"
+type = "blog"
 author = "Tim Nolet"
 +++
 

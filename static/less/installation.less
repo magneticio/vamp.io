@@ -1,0 +1,89 @@
+.installation {
+
+  h1,h2,h3 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    padding-bottom: 0.3em;
+    margin-bottom: 16px;
+    margin-top: 1em;  
+  }
+
+  h1 {
+    padding-bottom: 0.3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-weight: 500;
+  }
+
+  h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+    border-bottom: none;
+
+  }
+
+  h4 {
+    font-size: 1.4em;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .lead-text {
+    text-align: left;
+    margin-bottom: 60px;
+    h1 {
+      margin-bottom: 25px;
+
+    }
+  }
+
+  .install-methods {
+
+        .nav {
+          > li {
+              border: 1px transparent;
+            &:active a, &.active a {
+              border: 1px transparent;
+              border-radius: 6px;
+              background-color: @gray;
+            }
+            > a {
+              margin-right: 10px;
+              .img-wrap{
+                vertical-align: middle;
+                text-align: center;
+              }
+              img {
+                height: 30px;
+              }
+              .a-color(@asbestos, @link-color);
+              border: 1px transparent;
+              border-radius: 6px;              
+              &:hover{
+                border: 1px transparent;
+              }
+              &:focus {
+                background-color: @gray;
+              }
+            }
+
+          }
+          &.nav-justified > li > a {
+            border-bottom: 0px transparent;
+            border-radius: 6px;
+          }
+        }
+
+    .tab-content {
+      border: 0px transparent;
+
+    }
+
+  }
+
+}

@@ -9,22 +9,37 @@ title= "Vamp :: The Very Awesome Microservices Platform"
 [permalinks]
     blog = "/:year/:month/:filename/"
 [[menu.main]]
-    name = "Overview"
+    name = "About Vamp"
     weight = 10
-    identifier = "overview"
-    url = "/documentation/"
+    identifier = "about-vamp"
+    url = "/documentation"
 [[menu.main]]
-    name = "Getting Started"
-    weight = 20
-    identifier = "getting-started"
-    url = "/documentation/getting-started/"
+    name = "Installing Vamp"
+    weight = 30
+    identifier = "installation"
+    url = "/installation/"    
 [[menu.main]]
-    name = "Reference"
-    weight = 200
-    identifier = "reference"
-    url = "/documentation/reference/"  
+    name = "Using Vamp"
+    weight = 40
+    identifier = "using-vamp"
+    url = "/documentation/using-vamp/"
 [[menu.main]]
-    name = "REST API"
-    weight = 300
-    identifier = "rest-api"
-    url = "/documentation/rest-api/"
+    name = "API reference"
+    weight = 50
+    identifier = "api-reference"
+    url = "/documentation/api-reference/"
+[[menu.main]]
+    name = "CLI reference"
+    weight = 60
+    identifier = "cli-reference"
+    url = "/documentation/cli-reference/"
+[[menu.main]]
+    name = "Guides"
+    weight = 70
+    identifier = "guides"
+    url = "/documentation/guides/"               
+[[menu.main]]
+    name = "Community"
+    weight = 80
+    identifier = "community"
+    url = "/documentation/community/"  

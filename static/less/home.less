@@ -1,11 +1,12 @@
 #home {
 
+
   .h1 {
     font-size: 30px;
   }
 
   .lead {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   ul.lead-list {
@@ -26,7 +27,7 @@
   .version-link {
     text-align: center;
     font-size: 15px;
-    margin: 15px auto 37px auto;
+    margin: 15px auto;
     max-width: 430px;
     display: block;
     &:hover {
@@ -51,6 +52,22 @@
       color: @brand-info;
       background-color: transparent;
     }
+  }
+
+  .btn-row .btn-getting-started {
+    padding-left: 16px;
+  }
+
+  .button-icon {
+      text-align: left;
+      vertical-align: middle;
+      display: inline-block;
+      margin-right: 14px;
+      height: 20px;
+      width: 38px;
+      margin: 0px;
+      margin-right: 12px;
+      margin-top: -4px;
   }
   .btn-row .btn-docs {
     margin-top: 20px;
@@ -78,17 +95,14 @@
         width: auto;
       }
       .btn-docs {
-        margin-left: 20px;
+        margin-right: 20px;
 
       }
     }
   }
 
   @media (min-width: 768px) {
-
-    background: url('/img/services_bg_blue.svg') right bottom repeat-y;
-//    linear-gradient(to bottom, #ffffff -40%, #ffffff   100%);
-
+    background: url("/img/services_bg_blue.svg") right bottom repeat-y;
     .btn-row {
       .btn {
         display: inline-block;
@@ -97,28 +111,40 @@
   }
 
   .hero-image {
-    height: 429px;
-    width: 321px;
+    height: 310px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 61px;
-    -webkit-animation: fadeInDown 1s both;
-    background-image: url(/img/versions.001.png);
+    background-image: url(/img/feat1.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
   }
 
-  .bar {
-    position: relative;
-    padding: 18px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
-    max-width: 500px;
-    z-index: 1;
+.social-row {
+  margin-top: 85px;
+  height: 69px;
+  background-color: #303747;
+
+  .social-btns-wrapper {
+    float: left;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 15px;
+    padding-right: 15px;   
+    .twitter-button {
+      margin-right: 20px;
+    }  
+  }
+
     .subscribe-form {
+      padding-top: 17px;
+      padding-bottom: 17px;
+      padding-left: 15px;
+      padding-right: 15px;
+      float: right;
+      width: 100%;
+      max-width: 500px;
+      z-index: 1;      
       max-width: 500px;
       form {
         margin: 40px 0 10px;
@@ -128,7 +154,7 @@
             font-size: 15px;
             font-weight: 400;
             background: @gray;
-            border:  1px solid @asbestos;
+            border:  1px solid transparent;
             &::-webkit-input-placeholder {
               color: @text-secondary-color;
             }
