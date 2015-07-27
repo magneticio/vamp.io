@@ -24,20 +24,20 @@ title= "Vamp :: The Very Awesome Microservices Platform"
     identifier = "using-vamp"
     url = "/documentation/using-vamp/"
 [[menu.main]]
-    name = "API reference"
+    name = "Guides"
     weight = 50
+    identifier = "guides"
+    url = "/documentation/guides/"    
+[[menu.main]]
+    name = "API reference"
+    weight = 60
     identifier = "api-reference"
     url = "/documentation/api-reference/"
 [[menu.main]]
     name = "CLI reference"
-    weight = 60
-    identifier = "cli-reference"
-    url = "/documentation/cli-reference/"
-[[menu.main]]
-    name = "Guides"
     weight = 70
-    identifier = "guides"
-    url = "/documentation/guides/"               
+    identifier = "cli-reference"
+    url = "/documentation/cli-reference/"               
 [[menu.main]]
     name = "Community"
     weight = 80

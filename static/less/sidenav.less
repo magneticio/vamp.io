@@ -19,7 +19,7 @@
       > a {
         .font(14px);
         text-transform: uppercase;
-        font-weight: 500;
+        font-weight: 400;
         .a-color(@asbestos, @link-color);
         &:hover{
           color: @brand-info;
@@ -39,11 +39,34 @@
     }
   }
   .sub-menu {
-    margin-top: 15px;
+    margin-top: 8px;
     a {
           &.sub-menu-header {
-          }
+              &.collapsed::before{
 
+                 color: #bdc3c7;
+                 content: "\e002";
+                 display: inline-block;
+                 font-family: 'Flat-UI-Icons';
+                 font-size: 9.75px;
+                 margin: -2px 2px 0 -15px;
+                 vertical-align: middle;
+                 -webkit-font-smoothing: antialiased;              
+              }
+              
+              &::before {
+              
+               color: #bdc3c7;
+               content: "\e004";
+               display: inline-block;
+               font-family: 'Flat-UI-Icons';
+               font-size: 12.75px;
+               margin: -2px 2px 0 -18px;
+               vertical-align: middle;
+               -webkit-font-smoothing: antialiased;
+              
+           }
+        }
     }
 
 

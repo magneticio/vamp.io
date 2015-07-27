@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="58px" height="58px" viewBox="0 0 58 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>Oval 1 + vshape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Oval-1-+-vshape" sketch:type="MSLayerGroup">
+            <path d="M29,58 C45.0162577,58 58,45.0162577 58,29 C58,12.9837423 45.0162577,0 29,0 C12.9837423,0 0,12.9837423 0,29 C0,45.0162577 12.9837423,58 29,58 Z" id="Oval-1" fill="#FF4081" sketch:type="MSShapeGroup"></path>
+            <g id="vshape" transform="translate(11.000000, 14.000000)" fill-opacity="0.485016325" fill="#FFFFFF" sketch:type="MSShapeGroup">
+                <path d="M27.1168032,24.1927198 L17.5764717,0.252064672 L36.4559831,0.252064672 L27.1168032,24.1927198 Z" id="left"></path>
+                <path d="M13.2585249,33.7437582 L0.0399932861,0.25 L13.3792797,0.25 L25.0460706,29.4014386 L23.3506503,33.7437582 L13.2585249,33.7437582 Z" id="right"></path>
+            </g>
+        </g>
+    </g>
+</svg>

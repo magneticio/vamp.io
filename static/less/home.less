@@ -1,6 +1,5 @@
 #home {
 
-
   .h1 {
     font-size: 30px;
   }
@@ -34,6 +33,9 @@
     }
   }
 
+  .spacer {
+    margin-bottom: 100px;
+  }
 
   .btn {
     width: auto;
@@ -102,7 +104,9 @@
   }
 
   @media (min-width: 768px) {
-    background: url("/img/services_bg_blue.svg") right bottom repeat-y;
+    .background-img {
+    background: url("/img/services_bg_blue.svg") right top repeat-y;
+  }
     .btn-row {
       .btn {
         display: inline-block;
@@ -120,15 +124,14 @@
     background-position: center center;
   }
 
-.social-row {
-  margin-top: 85px;
-  height: 69px;
+.social-bar{
+  min-height: 69px;
   background-color: #303747;
 
   .social-btns-wrapper {
     float: left;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 21px;
+    padding-bottom: 21px;
     padding-left: 15px;
     padding-right: 15px;   
     .twitter-button {

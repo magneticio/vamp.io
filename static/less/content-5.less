@@ -6,6 +6,9 @@
     padding-bottom: 0px;
   }
 
+  &.with-bottom-border {
+    border-bottom: 2px solid @gray;
+  }
    padding-top: 60px;
    padding-bottom: 30px;
 
@@ -86,7 +89,7 @@
             }
         }
       img {
-        max-height: 200px;
+        max-width: 200px;
         text-align: center;
         margin: 0 auto 60px auto;
         display: block;
@@ -100,8 +103,12 @@
     }
    .integrations-row {
      margin: 50px 0px 0px 0px;
+     .image-wrapper {
+      min-height: 220px;
+     }
      .integration { 
          text-align: center;
+         margin-bottom: 30px;
        h5 {
          margin-top: 50px;
          color: @text-secondary-color;
