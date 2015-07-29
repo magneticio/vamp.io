@@ -2,15 +2,12 @@
  * Content 5 stylesheet  
  * */
  .content-5 {
-  &.home {
-    padding-bottom: 0px;
-  }
+  padding-top: 60px;
+  padding-bottom: 0px;
 
   &.with-bottom-border {
     border-bottom: 2px solid @gray;
   }
-   padding-top: 60px;
-   padding-bottom: 30px;
 
     position:relative;
     .container > img {
@@ -58,10 +55,10 @@
      margin: 60px auto 60px auto;
      width: 80%;
      display: block;
+     &.home-screen {
+      margin: 60px auto 0px auto;
+     }
    }
-    @media (max-width: 480px) {
-        padding-bottom: 40px;
-    }
     .features {
         >[class*="col-sm-"] {
             position: relative;
@@ -88,12 +85,20 @@
                 text-transform: none;
             }
         }
+
+        .screenshot {
+          img {
+            max-width: 300px;
+          }
+        }
+
       img {
         max-width: 200px;
         text-align: center;
         margin: 0 auto 60px auto;
         display: block;
       }
+
 
       @media (max-width: 720px) {
         .right-image {

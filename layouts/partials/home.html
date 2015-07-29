@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <div class="header-background"></div>
+        <div class="header-background"></div>        
     </header>
     <section class="content-5 header-3-sub">
         <div class="container">
@@ -34,12 +34,14 @@
                     </p>
                     <p class="btn-row">
                         <a class="btn btn-info btn-docs" href="/documentation">Learn more</a>                    
-                        <a class="btn btn-info btn-getting-started" href="/quick-start"><img class="hidden-sm button-icon" src="img/logo-docker.svg">Quick start with Docker</a>
+                        <a class="btn btn-info btn-getting-started" href="/quick-start"><img class="hidden-sm button-icon" src="img/logo-docker.svg">Docker quick start</a>
                     </p>
                     <a href="/installation/" class="version-link">Vamp-core {{ $.Site.Data.downloads.dist.stableCore }} "{{ $.Site.Data.downloads.dist.stableCodeName }}" licensed under {{ $.Site.Data.downloads.dist.license }}</a>
-                    <div class="spacer"></div>
+                    <img class="home-screen" src="img/screenshots/deploy_detail.png"></img>  
                 </div>                          
-        </section>
+            </div>
+        </div>
+    </section>
 </div>        
 <section class="social-bar">
     <div class="container">
@@ -101,8 +103,19 @@
                 <img src="img/tl-scale.svg">
             </div>
         </div>
+        <div class="row features">
+            <div class="col-sm-4 col-sm-offset-1 screenshot">
+                <img src="img/screenshots/deploy_metrics.png"></img>
+            </div>
+            <div class="col-sm-4 col-sm-offset-1">
+                <h4>Integrated metrics and events engine</h4>
+                <p>Vamp automatically records everything that happens in your services architecture to a flexible metrics and
+                    events system (running on Elasticsearch). Use Vamp's built metric tracking or integrate with third party
+                    systems like Kibana <a href="/documentation/using-vamp/metrics-and-events/">Learn more →</a></p>
+            </div>
+        </div>
     </div>
-</section>    
+</section>
 <section class="content-5">
     <div class="container">
         <div class="row features">
