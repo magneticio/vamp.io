@@ -7,7 +7,7 @@
         {{ if eq .Section "blog"}}
         <meta property="og:type" content="article">
         {{end}}
-        <meta property="og:url" content="http://vamp.io">
+        <meta property="og:url" content="{{ .Permalink }}">
         <meta property="og:image" content="http://vamp.io/img/vamp_logo_blue.png">
         <meta property="og:site_name" content="Vamp.io">
         {{ if .IsPage }}
