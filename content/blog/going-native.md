@@ -5,22 +5,23 @@ tags: ["articles", "sbt-native-packager","vamp","debian","homebrew"]
 category: ["articles"] 
 author: "Matthijs Dekker" 
 type: blog 
-description: "Going native - building native packages for Vamp"
-draft: true
+description: "Improving you experience using Vamp starts with how you install Vamp. We decided to create native packages, which will make your life easier, without complicating ours (to much). In this technical write up we tell you how we did it."
 ---
 
-
-Okay, so we already did the hard part: We designed and created the software, performed the tests, made a zip file, put the zip file on the website and wrote some documentation.
+To give you a better experience installing Vamp, we decided to create native installers for the most common used platforms.
 
 ![](/img/packaging.png)
 
-Only thing you have to do, is download the file, unzip it, put it contents in the correct directory, change the configuration files and write some startup scripts. And repeat these steps for every Vamp module. Easy as eating pie, right?
+Okay, we already did the hard part: We designed and created the software, performed the tests, made a zip file, put the zip file on the website and wrote some documentation.
 
-We didn't think so either. <!--more--> 
+Only thing you had to do, is download the file, unzip it, put it contents in the correct directory, change the configuration files and write some startup scripts. And repeat these steps for every Vamp module. Easy as eating pie, right?
+
+We didn't think so either. 
+
+Time to go native.
+<!--more--> 
 
 ## Targeting platforms
-
-To give you a better experience installing Vamp, we needed to create some native installers for the most common used platforms.
 
 The Vamp modules will be typically installed on a server, with the exception of Vamp CLI, which is likely to be installed on desktop/laptop environments also. For servers, we'll create native installers for the [most widely used Linux flavors](http://www.serverwatch.com/columns/article.php/3900711/The-Top-10-Linux-Server-Distributions.htm); for the desktop we'll also include OSX, since thats what we are using ourself. And even for the platforms we don't target directly, we can make things a bit easier, by creating a universal install package.
 
