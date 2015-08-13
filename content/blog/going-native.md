@@ -5,22 +5,23 @@ tags: ["articles", "sbt-native-packager","vamp","debian","homebrew"]
 category: ["articles"] 
 author: "Matthijs Dekker" 
 type: blog 
-description: "Going native - building native packages for Vamp"
-draft: true
+description: "Improving you experience using Vamp starts with how you install Vamp. We decided to create native packages, which will make your life easier, without complicating ours (to much). In this technical write up we tell you how we did it."
 ---
 
-
-Okay, so we already did the hard part: We designed and created the software, performed the tests, made a zip file, put the zip file on the website and wrote some documentation.
+To give you a better experience installing Vamp, we decided to create native installers for the most common used platforms.
 
 ![](/img/packaging.png)
 
-Only thing you have to do, is download the file, unzip it, put it contents in the correct directory, change the configuration files and write some startup scripts. And repeat these steps for every Vamp module. Easy as eating pie, right?
+Okay, we already did the hard part: We designed and created the software, performed the tests, made a zip file, put the zip file on the website and wrote some documentation.
 
-We didn't think so either. <!--more--> 
+Only thing you had to do, is download the file, unzip it, put it contents in the correct directory, change the configuration files and write some startup scripts. And repeat these steps for every Vamp module. Easy as eating pie, right?
+
+We didn't think so either. 
+
+Time to go native.
+<!--more--> 
 
 ## Targeting platforms
-
-To give you a better experience installing Vamp, we needed to create some native installers for the most common used platforms.
 
 The Vamp modules will be typically installed on a server, with the exception of Vamp CLI, which is likely to be installed on desktop/laptop environments also. For servers, we'll create native installers for the [most widely used Linux flavors](http://www.serverwatch.com/columns/article.php/3900711/The-Top-10-Linux-Server-Distributions.htm); for the desktop we'll also include OSX, since thats what we are using ourself. And even for the platforms we don't target directly, we can make things a bit easier, by creating a universal install package.
 
@@ -213,7 +214,7 @@ And that wraps up all Linux packaging.
 
 A popular method of installing software on OSX is using [homebrew](http://brew.sh/). It allows you to install software from the command line, without the hassle of the Apple App Store. Creating a `brew` package is not that hard. We setup an additional github repository, [homebrew-vamp](https://github.com/magneticio/homebrew-vamp), here we could store our `formula`.
 
-Our forumula uses the Vamp CLI Universal package as a basis. For the brew package, we just add an [additional script](https://github.com/magneticio/vamp-dist/blob/master/cli/src/scripts/brew_vamp) to the Universal package
+Our forumula uses the Vamp CLI Universal package as a basis. For the brew package, we add an [additional script](https://github.com/magneticio/vamp-dist/blob/master/cli/src/scripts/brew_vamp) to the Universal package
 
 The complete formula is just a couple of lines of Ruby
 
@@ -240,4 +241,4 @@ When we release a new version of Vamp, we need to update our formula, with the l
 
 With everything setup to create packages, the next step was automating it, so we can publish all packages with the push of a button. For every release, we update the version number the build.sbt files and update the library dependencies. Once, we push these changes to [Github](https://github.com/magneticio/vamp-dist), Travis CI will start building the packages and with the help of some custom bash scripts, push it all to [Bintray](https://bintray.com/magnetic-io/).
 
-Last step is to update the brew formula on Github and we done another release!
+The final step is to update the brew formula on Github and we've done another release!
