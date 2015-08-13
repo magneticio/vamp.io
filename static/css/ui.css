@@ -1554,7 +1554,7 @@ section * {
 .docs h3 {
   font-size: 1.5em;
   line-height: 1.43;
-  border-bottom: none;
+  border-bottom: 1px solid #ededed;
 }
 .docs h4 {
   font-size: 1.4em;
