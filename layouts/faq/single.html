@@ -1,0 +1,21 @@
+{{ partial "head.html" . }} {{ partial "top_nav.html" . }} {{ partial "sub_head.html" . }}
+<!--Renders the FAQ -->
+<section class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                {{ partial "side_nav.html" . }}
+            </div>
+            <div class="col-md-9 docs">
+                <h1>FAQ</h1>
+                <div id="toc">
+                    {{ .TableOfContents }}
+                </div>
+                {{ .Content }} {{ partial "docs_footer.html" . }}
+            </div>
+            <div class="col-md-1 hidden-xs hidden-sm">
+            </div>
+        </div>
+    </div>
+</section>
+{{ partial "footer.html" . }}

@@ -42,4 +42,9 @@ title= "Vamp :: The Very Awesome Microservices Platform"
     name = "Community"
     weight = 80
     identifier = "community"
-    url = "/documentation/community/"  
+    url = "/documentation/community/"
+[[menu.main]]
+    name = "FAQ"
+    weight = 100
+    identifier = "faq" 
+    url = "/faq"     

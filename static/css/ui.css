@@ -1772,6 +1772,10 @@ section * {
     width: 80%;
   }
 }
+.docs #TableOfContents ul {
+  padding-left: 0px;
+  list-style: none;
+}
 .subheader {
   height: 53px;
   background-color: #ff4081;
