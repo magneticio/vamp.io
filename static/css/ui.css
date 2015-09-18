@@ -2100,6 +2100,9 @@ small[class*="icon-"] {
     display: inline-block;
   }
 }
+#home .home-screen {
+  height: 400px;
+}
 #home .hero-image {
   height: 310px;
   margin-left: auto;
