@@ -18,8 +18,6 @@ deploy:
         domain: vamp.io
         basedir: dist
 
-
-
     - arjen/hugo-build:
         version: 0.13
         flags: --buildDrafts=false

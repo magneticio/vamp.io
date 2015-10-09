@@ -1,4 +1,2 @@
 dist
-.DS_Store
-content/documentation/*.md
-content/documentation/*/*
+content/documentation
