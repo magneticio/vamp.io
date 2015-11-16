@@ -1,9 +1,8 @@
 # Vamp.io
----
 
 This is the source for the [vamp.io](http://vamp.io) site. This site is created using the static site generator
-[Hugo](http://gohugo.io) and published to this repo's `gh-pages` branch. The DNS then points to a specific github 
-address using a CNAME record, more info in [Github's documentation](https://github.com). However, if you want to work on the site you just need clone this repo and
+[Hugo](http://gohugo.io) and published to this repo's `gh-pages` branch. The DNS then points to a specific GitHub 
+address using a CNAME record, more info in [GitHub's documentation](https://github.com). However, if you want to work on the site you just need clone this repo and
 follow the instructions below.
 
 ## Writing content
@@ -22,7 +21,7 @@ follow the instructions below.
 
     The site is server under `localhost:1313`
 
-4. Publishing is done through Wercker. Just commit your changes to **master** and do a `git push`.
+4. Publishing is done through Travis-CI. Any commit to **master** branch will result in **gh-pages** update.
 
  
 
