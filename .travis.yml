@@ -5,7 +5,7 @@ go:
 install: go get -v github.com/spf13/hugo
 script: hugo version && hugo
 after_success: |
-  if [ -n "$GITHUB_API_KEY" ] && [ ${TRAVIS_PULL_REQUEST} == "false" ] && [ $TRAVIS_BRANCH == "develop" ]; then
+  if [ -n "$GITHUB_API_KEY" ] && [ ${TRAVIS_PULL_REQUEST} == "false" ] && [ $TRAVIS_BRANCH == "master" ]; then
     GIT_COMMIT=`git rev-parse --short HEAD`
     cd ./dist && cp ../CNAME ./CNAME && cp ../robots.txt ./robots.txt
 
@@ -13,7 +13,7 @@ after_success: |
     git add .
     git -c user.name='Travis-CI' -c user.email='travis@magnetic.io' commit -m "build ${GIT_COMMIT}" > /dev/null 2>&1
     echo "pushing dist to gh-pages"
-    git push --force --quiet "https://${GITHUB_API_KEY}@github.com/magneticio/vamp.io.git" master:gh-pages-develop > /dev/null 2>&1
+    git push --force --quiet "https://${GITHUB_API_KEY}@github.com/magneticio/vamp.io.git" master:gh-pages > /dev/null 2>&1
   fi
 env:
   matrix:
