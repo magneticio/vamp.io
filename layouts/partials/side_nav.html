@@ -8,21 +8,21 @@
             {{ range .Site.Menus.main }}            
             {{ if .HasChildren }}            
             <li class="sub-menu{{if $currentNode.HasMenuCurrent "main" . }} active {{end}}">                 
-            <a href="{{.Url}}" data-target=".collapse_{{.Identifier}}" class="sub-menu-header collapsed" data-toggle="collapse">
+            <a href="{{.URL}}" data-target=".collapse_{{.Identifier}}" class="sub-menu-header collapsed" data-toggle="collapse">
                 {{ .Pre }}
                 <span>{{ .Name }}</span>                
             </a>
             <ul class="collapse_{{.Identifier}} sub collapse {{if $currentNode.HasMenuCurrent "main" . }} in {{end}}">
                 {{ range .Children }}
                 <li{{if $currentNode.IsMenuCurrent "main" . }} class="active"{{end}}>
-                <a href="{{.Url}}" class="sub-menu-link"> {{ .Name }} 
+                <a href="{{.URL}}" class="sub-menu-link"> {{ .Name }}
                 </a>
                 </li>                
                 {{ end }}
             </ul>
             {{else}}
             <li>
-                <a href="{{.Url}}">
+                <a href="{{.URL}}">
                     {{ .Pre }}
                     <span>{{ .Name }}</span>
                 </a>
