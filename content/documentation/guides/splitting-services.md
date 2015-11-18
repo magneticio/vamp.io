@@ -2,6 +2,10 @@
 title: 3. Splitting into services
 type: documentation
 slug: /getting-started-tutorial/3-splitting-services/
+weight: 40
+menu:
+  main:
+    parent: guides
 ---
 
 # 3. Splitting the monolith into services

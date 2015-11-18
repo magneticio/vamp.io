@@ -2,6 +2,10 @@
 title: 4. Merging and deleting services
 type: documentation
 slug: /getting-started-tutorial/4-merge-delete/
+weight: 50
+menu:
+  main:
+    parent: guides
 ---
 
 # 4. Merging a changed topology

@@ -2,6 +2,10 @@
 title: 1. Deploying a blueprint
 type: documentation
 slug: /getting-started-tutorial/1-deploying/
+weight: 20
+menu:
+  main:
+    parent: guides
 ---
 
 # 1. Deploying your first blueprint

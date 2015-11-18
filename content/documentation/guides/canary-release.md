@@ -2,6 +2,10 @@
 title: 2. Doing a canary release
 type: documentation
 slug: /getting-started-tutorial/2-canary-release/
+weight: 30
+menu:
+  main:
+    parent: guides
 ---
 
 # 2. Doing a canary release

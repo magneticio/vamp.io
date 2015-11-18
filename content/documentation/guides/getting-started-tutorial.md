@@ -5,7 +5,7 @@ url: /documentation/guides/
 weight: 10
 menu:
     main:
-      parent: guides  
+      parent: guides
 ---
 
 # Getting started tutorial
