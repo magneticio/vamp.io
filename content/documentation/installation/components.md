@@ -10,14 +10,7 @@ menu:
 
 # Understanding Vamp's components
 
-To get Vamp up and running on an architecture of your choice, you first need to have a basic grip on Vamp's various components and how Vamp works with [container drivers](/documentation/installation/container_drivers/). If that's all clear, then proceed to the installation steps of your choice.
-
-- [Centos & RHEL](/installation/centos_rhel/)
-- [Ubuntu](/installation/ubuntu/)
-- [Debian](/installation/debian/)
-- [OSX](/installation/osx/)
-
-If that sounds to much like work, then just use our [Docker quickstart](/quick-start).
+To get Vamp up and running on an architecture of your choice, you first need to have a basic grip on Vamp's various components and how Vamp works with [container drivers](/documentation/installation/container_drivers/).
 
 ## Architecture and components
 

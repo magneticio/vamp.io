@@ -9,7 +9,7 @@ menu:
 
 Vamp collects metrics and events on all running services. Interaction with the API also creates events, like updating blueprints or deleting a deployment. Furthermore, Vamp allows third party applications to create events and trigger Vamp actions.
 
-All metrics and events are stored and retrieved using the Event API that is part of Vamp Pulse. Here is a JSON example of a "deployment create" event.
+All metrics and events are stored and retrieved using the Event API that is part of Vamp. Here is a JSON example of a "deployment create" event.
 
 ```JSON
 {
@@ -27,10 +27,10 @@ All metrics and events are stored and retrieved using the Event API that is part
 All events and metrics stick to some **basic rules**:
 
 
-- All data in Vamp Pulse are events. 
+- All data in Vamp are events. 
 - Values can be any JSON object or it can be empty.
 - Timestamps are in ISO8601/RFC3339.
-- Timestamps are optional. If not provided, Pulse will insert the current time.
+- Timestamps are optional. If not provided, Vamp will insert the current time.
 - Timestamps are inclusive for querying.
 - Events can be tagged with metadata. A simple tag is just single string.
 - Querying data by tag assumes "AND" behaviour when multiple tags are supplied, i.e. ["one", "two"] would only fetch records that are tagged with both.
@@ -89,33 +89,33 @@ This query gets the most recent response time metrics for the "frontend" cluster
 }
 ```
 
-**Notice** the "route:<UUID>", "metrics:rtime" and "routes" tags. This means "give me the response time of this specific route at the route level". The response will echo back the events in the time range with the original set of tags associated with the events. 
+**Notice** the "gateways:<UUID>", "metrics:responseTime" and "gateways" tags. This means "give me the response time of this specific gateway at the gateway level". The response will echo back the events in the time range with the original set of tags associated with the events. 
 
 ```json
 [
     {
         "tags": [
-            "routes",
-            "routes:d9b42796-d8f6-431b-9230-9d316defaf6d_frontend_8080",
-            "metrics:scur",
+            "gateways",
+            "gateways:d9b42796-d8f6-431b-9230-9d316defaf6d_frontend_8080",
+            "metrics:rate",
             "metrics",
-            "route"
+            "gateway"
         ],
         "value": 0,
         "timestamp": "2015-06-08T10:28:35.001Z",
-        "type": "router-metric"
+        "type": "gateway-metric"
     },
     {
         "tags": [
-            "routes",
-            "routes:d9b42796-d8f6-431b-9230-9d316defaf6d_frontend_8080",
-            "metrics:scur",
+            "gateways",
+            "gateways:d9b42796-d8f6-431b-9230-9d316defaf6d_frontend_8080",
+            "metrics:rate",
             "metrics",
-            "route"
+            "gateway"
         ],
         "value": 0,
         "timestamp": "2015-06-08T10:28:32.001Z",
-        "type": "router-metric"
+        "type": "gateway-metric"
     }
 ]    
 ```

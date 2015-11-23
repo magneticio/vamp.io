@@ -3,6 +3,7 @@ title: Debian
 type: documentation
 url: /installation/debian
 weight: 60
+draft: true
 menu:
     main:
       parent: installation

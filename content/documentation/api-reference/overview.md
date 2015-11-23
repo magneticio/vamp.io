@@ -10,16 +10,16 @@ menu:
 
 # API reference overview
 
-Vamp has three REST API's: **Core**, **Pulse** and **Router**. You will be interacting with Core 90% of the time and 10% with Pulse. In daily usage, there is no need to interact with the Router API as Core and Pulse take care of that. All API's stick to a common set of principles:
+Vamp has one REST API.
 
 ## Content types
 
-* Core requests can be in YAML format or JSON format. Set the `Content-Type` request header to `application/x-yaml` or `application/json` accordingly.
-* Core and Pulse responses can be in YAML format or JSON format. Set the `Accept` request header to `application/x-yaml` or `application/json` accordingly.
+* Vamp requests can be in YAML format or JSON format. Set the `Content-Type` request header to `application/x-yaml` or `application/json` accordingly.
+* Vamp responses can be in YAML format or JSON format. Set the `Accept` request header to `application/x-yaml` or `application/json` accordingly.
 
 ## Pagination
 
-From release 0.7.8 onwards Core and Pulse API endpoints support pagination with the following scheme:
+From release 0.7.8 onwards Vamp API endpoints support pagination with the following scheme:
 
 * Request parameters `page` (starting from 1, not 0) and `per_page` (by default 30) e.g:
 

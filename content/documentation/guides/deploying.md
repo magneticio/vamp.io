@@ -70,7 +70,7 @@ After POST-ing, Vamp should respond with a `202 Accepted` message and return a J
 
 You can follow the deployment process of our container by checking the `/api/v1/deployments` endpoint and checking when the `state` field changes from `ReadyForDeployment` to `Deployed`. You can also check Marathon's GUI.
 
-When the application is fully deployed you can check it out at Vamp Router's address + the port that was assigned in the blueprint, e.g: `http://10.26.184.254:9050/`. It should report a refreshing [hipster lorem ipsum](http://hipsterjesus.com/) upon each reload.
+When the application is fully deployed you can check it out at Vamp host address + the port that was assigned in the blueprint, e.g: `http://10.26.184.254:9050/`. It should report a refreshing [hipster lorem ipsum](http://hipsterjesus.com/) upon each reload.
 
 ![](/img/screenshots/monolith1.png)
 

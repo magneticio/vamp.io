@@ -126,7 +126,7 @@ We have configured our application to write data in a `data` directory, which we
 linuxPackageMappings += packageTemplateMapping(s"/usr/share/${name.value}/data")() withUser(name.value) withGroup(name.value)
 ```
 
-And that's it for Vamp Core & Vamp Pulse.
+And that's it for Vamp.
 
 ## Lets GO all the way
 

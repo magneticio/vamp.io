@@ -106,8 +106,5 @@ Good to know is that there is no "point-to-point" wiring: the exposed host and p
 endpoints. The location, amount and version of containers running behind that service endpoint can vary.
 Learn more about [how Vamp does service discovery →](/documentation/about-vamp/service-discovery/)
 
-{{% alert warn %}}
-**Note**: Vamp Router is the central hub for service discovery. For testing this is fine, but for serious production work you would want a multi-node setup. Currently, we are putting all things in place to handle this like Zookeeper support and probably support for other technologies like ETCD  and Consul.
-{{% /alert %}}
 
 Great! We just demonstrated that Vamp can handle dependencies between services and configuring these services with host and port information at runtime. Now let's do a [more complex migration to a new service based topology →](/documentation/guides/getting-started-tutorial/4-merge-delete/).

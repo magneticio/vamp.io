@@ -44,7 +44,7 @@ Once we have issued the deployment, Vamp will do the following:
 
 1. Update Vamps internal model.
 2. Issue and monitor deployment commands to the container platform.
-3. Update the router.
+3. Update the ZooKeeper entry.
 4. Start collecting metrics.
 5. Monitor the container platform for changes.
 

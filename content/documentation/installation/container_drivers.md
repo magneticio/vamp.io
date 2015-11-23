@@ -35,7 +35,7 @@ Vamp can even run inside Docker while deploying to Docker: check out our [quick 
 
 3. If Vamp can't find these environment variables, it falls back to using the `unix:///var/run/docker.sock` Unix socket for communicating with Docker.
 
-4. Update the container-driver section in Vamp's config file. If you use a package installer like `yum` or `apt-get` you can find this file in `/usr/share/vamp-core/conf/application.conf`:
+4. Update the container-driver section in Vamp's config file. If you use a package installer like `yum` or `apt-get` you can find this file in `/usr/share/vamp/conf/application.conf`:
 
     ```
     ...
@@ -45,7 +45,7 @@ Vamp can even run inside Docker while deploying to Docker: check out our [quick 
     }
     ...
     ```
-5. (Re)start Vamp Core with `service vamp-core restart` or by restarting the Java process by hand.   
+5. (Re)start Vamp by restarting the Java process by hand.   
 
 
 > **Note:** as of release 0.7.9, Vamp's Docker driver only supports Docker 1.7+. Please see [Github issue](https://github.com/docker/docker/issues/14365) in Docker's repo on why this is necessary.
@@ -68,7 +68,7 @@ but also pass native Marathon options by [using a dialect in a blueprint.](/docu
 
     ![](/img/marathon-screenshot.png)
 
-4. Make a note of Marathon endpoint (host:port) and update the container-driver section in Vamp's config file. If you use a package installer like `yum` or `apt-get` you can find this file in `/usr/share/vamp-core/conf/application.conf`. Set the "url" option to the Marathon endpoint.
+4. Make a note of Marathon endpoint (host:port) and update the container-driver section in Vamp's config file. If you use a package installer like `yum` or `apt-get` you can find this file in `/usr/share/vamp/conf/application.conf`. Set the "url" option to the Marathon endpoint.
 
     ```
     ...
@@ -79,5 +79,5 @@ but also pass native Marathon options by [using a dialect in a blueprint.](/docu
     }
     ...
     ```    
-5. (Re)start Vamp Core with `service vamp-core restart` or by restarting the Java process by hand.   
+5. (Re)start Vamp by restarting the Java process by hand.   
 

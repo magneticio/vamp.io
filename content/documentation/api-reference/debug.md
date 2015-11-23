@@ -14,7 +14,7 @@ Vamp provides a set of API endpoints that help with getting general health/confi
 
 ## Get runtime and config info
 
-Lists information about Vamp's JVM environment and runtime status. Also lists info on the configured persistence layer, router, pulse and container driver status.
+Lists information about Vamp's JVM environment and runtime status. Also lists info on the configured persistence layer and container driver status.
 
 ## Force sync
 

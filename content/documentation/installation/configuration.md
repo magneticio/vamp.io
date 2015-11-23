@@ -11,10 +11,10 @@ menu:
 
 Vamp comes together with an application.conf file. This file contains all the configurable settings. When installing Vamp through a package manager (yum, apt-get) you can find this file in `/usr/share/vamp/conf`. The config files are [HOCON type](https://github.com/typesafehub/config) files.
 
-The Core `application.conf` consists of the following sections. All sections are nested inside a parent `vamp.core {}` tag.
+The Vamp `application.conf` consists of the following sections. All sections are nested inside a parent `vamp {}` tag.
 
 ### rest-api
-Configure the port, host name and interface Vamp Core runs on using the `rest-api.port` 
+Configure the port, host name and interface Vamp runs on using the `rest-api.port` 
 
 ```
 vamp {
@@ -47,7 +47,7 @@ vamp {
     jdbc {
       slick-driver = "scala.slick.driver.H2Driver$"
       provider = {
-        url = "jdbc:h2:./vamp-core-db"
+        url = "jdbc:h2:./vamp-db"
         driver = org.h2.Driver
         connectionPool = disabled
         keepAliveConnection = true
@@ -99,20 +99,20 @@ vamp {
 }  
 ``` 
 
-The reason for this, is that when services are deployed, they need to able to find Vamp Router in their respective network. This can be a totally different network than where Vamp Core is running.
+The reason for this, is that when services are deployed, they need to able to find Vamp Router in their respective network. This can be a totally different network than where Vamp is running.
 
 ### operation
 
-The operation section holds all parameters that control how Vamp Core executes against "external" services: this also includes Vamp Pulse and Vamp Router.
+The operation section holds all parameters that control how Vamp executes against "external" services: this also includes Vamp Pulse and Vamp Router.
 
 ```hocon
 operation {
 	sla.period = 5 # seconds, controls how often an SLA checks against metrics
-  	escalation.period = 5 # seconds, controls how often Core checks for escalation events.
+  	escalation.period = 5 # seconds, controls how often Vamp checks for escalation events.
 	synchronization {
-		period = 1 # seconds, controls how often Core performs a sync between Vamp and the container driver.
+		period = 1 # seconds, controls how often Vamp performs a sync between Vamp and the container driver.
       	timeout {
-      		ready-for-deployment: 600		# seconds, controls how long Core waits for a 
+      		ready-for-deployment: 600		# seconds, controls how long Vamp waits for a 
         								   		# service to start. If the service is not started 
         								   		# before this time, the service is registered as "error"
         	ready-for-undeployment: 600 	# seconds, similar to "ready-for-deployment", but for

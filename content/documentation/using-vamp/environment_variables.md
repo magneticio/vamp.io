@@ -84,7 +84,7 @@ Using the `$` character, you can reference other statements in a breed/blueprint
       name: mysql:1.0
 ```
 
-Vamp provides just one *magic** variable: the `host`. This resolves to the host or ip address of the referenced service. Strictly speaking the `host` reference resolves to the router endpoint, but users do need to concern themselves with this. Users can think of *one-on-one* connections where Vamp actually does server-side service discovery to decouple services.
+Vamp provides just one *magic** variable: the `host`. This resolves to the host or ip address of the referenced service. Strictly speaking the `host` reference resolves to the gateway agent endpoint, but users do need to concern themselves with this. Users can think of *one-on-one* connections where Vamp actually does server-side service discovery to decouple services.
 
 > **Note**: The `$` value is escaped by `$$`. A more strict notation is `${some_reference}`
 

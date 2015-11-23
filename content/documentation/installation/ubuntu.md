@@ -3,6 +3,7 @@ title: Ubuntu
 type: documentation
 url: /installation/ubuntu
 weight: 50
+draft: true
 menu:
     main:
       parent: installation    

@@ -1,5 +1,5 @@
 ---
-title: OSX
+title: Mac OS X
 type: documentation
 url: /installation/osx
 weight: 70
@@ -8,7 +8,7 @@ menu:
       parent: installation
 ---
 
-# Mac OSX
+# Mac OS X
 
 Currently, we do not have native installers for running Vamp's server component on OSX. For the CLI we have Homebrew support.
 

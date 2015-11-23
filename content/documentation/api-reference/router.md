@@ -1,6 +1,7 @@
 ---
 title: Vamp Router
 weight: 900
+draft: true
 menu:
   main:
     parent: api-reference

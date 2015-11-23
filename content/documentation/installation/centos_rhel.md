@@ -3,6 +3,7 @@ title: Centos & RHEL
 type: documentation
 url: /installation/centos_rhel
 weight: 40
+draft: true
 menu:
     main:
       parent: installation

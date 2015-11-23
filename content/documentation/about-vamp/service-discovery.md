@@ -21,13 +21,13 @@ For Vamp, we recognise the following benefits of this pattern:
 
 The general workflow for creating and publishing a service is as follows.
 
-**DSL -> Vamp Core API -> Vamp Router -> HAproxy**
+**DSL -> Vamp API -> Vamp Gateway Agent -> HAproxy**
 
 
 1. The user describes a service and its desired endpoint port in the Vamp DSL.
-2. The service is deployed to the configured container manager by Vamp Core.
-3. Vamp Core instruct Vamp Router to set up service endpoints.
-4. Vamp Router takes care of configuring HAproxy, making the services available.
+2. The service is deployed to the configured container manager by Vamp.
+3. Vamp instruct Vamp Gateway Agent (via ZooKeeper) to set up service endpoints.
+4. Vamp Gateway Agent takes care of configuring HAProxy, making the services available.
 
 > **Note:** services do not register themselves. They are explicitly created, registered in the Vamp database
 and provisioned on the load balancer.

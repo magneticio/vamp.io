@@ -122,7 +122,7 @@ Commands:
   deploy              Deploys a blueprint
   help                This message
   generate            Generates an artifact
-  info                Information from Vamp Core
+  info                Information from Vamp
   inspect             Shows the details of the specified artifact
   list                Shows a list of artifacts
   merge               Merge a blueprint with an existing deployment or blueprint
