@@ -1,6 +1,4 @@
-stableCore = "0.7.11.1"
-stablePulse = "0.7.11.1"
-stableRouter = "0.7.11.1"
+stableCore = "0.8.0"
 stableCodeName = "Northmann"
 stableReleaseDate = "23-10-2015"
 license = "Apache 2.0"
