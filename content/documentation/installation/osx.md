@@ -32,7 +32,7 @@ brew install vamp
 
 
 Type `vamp version` to check if Vamp Cli has been properly installed. 
-Now export the location of the Vamp Core host and check if the CLI can talk to Vamp Core, i.e:
+Now export the location of the Vamp host and check if the CLI can talk to Vamp, i.e:
  
 
 ```bash

@@ -14,7 +14,7 @@ Vamp comes together with an application.conf file. This file contains all the co
 The Vamp `application.conf` consists of the following sections. All sections are nested inside a parent `vamp {}` tag.
 
 ### rest-api
-Configure the port, host name and interface Vamp runs on using the `rest-api.port` 
+Configure the port, host name and interface that Vamp runs on using the `rest-api.port` 
 
 ```
 vamp {
@@ -34,9 +34,9 @@ vamp {
 
 ### persistence
 
-Vamp uses a JDBC compatible database for persistent storage*. By default Vamp runs a simple, in-memory, H2 database that persists to a file on disk. This comes pre-packaged and is easy for getting started.
+Vamp uses a JDBC compatible database for it's persistent storage*. By default Vamp runs a simple, in-memory, H2 database that persists to a file on disk. This comes pre-packaged and is easy for getting started.
 
-Vamp is also tested against **Postgres**. You can configure this in the `jdbc` section of the application.conf by choosing the correct `slick-driver` and providing the typical parameters:  
+Vamp is also tested against **Postgres**. You can configure this in the `jdbc` section of the application.conf by choosing the correct `slick-driver` and by providing the following typical parameters:  
 **H2 config** (default)
 
 ```hocon
@@ -76,21 +76,20 @@ vamp {
   }
 } 
 ```
-**vamp can actually use different storage backends, but those are still experimental* 
+**Vamp can actually use different storage backends, but those are still experimental* 
 
-### container driver
+### container drivers
 
-Configuration for container drivers have their own page! Please look here [how to set up and use container drivers](/documentation/installation/container_drivers/)
+Configurations for the container drivers have their own page. Please check here [how to set up and use container drivers](/documentation/installation/container_drivers/)
 
 ### gateway-driver
 
-The gateway-driver section configures where Vamp can find ZooKeeper and how traffic should be routed through Vamp Gateway Agent. See the below example:
+The gateway-driver section configures where Vamp can find ZooKeeper and how traffic should be routed through Vamp Gateway Agent. See the below example on how to configure this:
 
 ```hocon
 vamp {
   gateway-driver {
-    url = "http://104.155.30.171:10001" # Vamp Router API endpoint, external IP.
-    host = "10.193.238.26"              # Vamp Router / Haproxy, internal IP.
+    host = "10.193.238.26"              # Vamp Gateway Agent / Haproxy, internal IP.
     response-timeout = 30               # seconds
     zookeeper {
       servers = "192.168.99.100:2181"   # ZooKeeper connection
@@ -99,11 +98,11 @@ vamp {
 }  
 ``` 
 
-The reason for this, is that when services are deployed, they need to able to find Vamp Router in their respective network. This can be a totally different network than where Vamp is running.
+The reason for the need to configure this is that when services are deployed, they need to be able to find Vamp Gateway Agent in their respective networks. This can be a totally different network than where Vamp is running.
 
 ### operation
 
-The operation section holds all parameters that control how Vamp executes against "external" services: this also includes Vamp Pulse and Vamp Router.
+The operation section holds all parameters that control how Vamp executes against "external" services: this also includes Vamp Pulse and Vamp Gateway Agent.
 
 ```hocon
 operation {
