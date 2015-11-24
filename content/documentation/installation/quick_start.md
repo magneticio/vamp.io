@@ -22,8 +22,8 @@ It is possible to run Vamp with and without [Marathon](https://mesosphere.github
 
 Please install one of the following for your platform/architecture
 
-- Docker 1.8.x (Linux), OR
-- Docker Toolbox if on Mac OS X 10.8+ or Windows 7+
+- Docker 1.9.x (Linux), OR
+- [Docker Toolbox] (https://www.docker.com/docker-toolbox) if on Mac OS X 10.8+ or Windows 7+
 
 
 ## Step 2: Run Vamp
@@ -89,5 +89,7 @@ If you run on Docker machine, use `docker-machine ip default` instead of `localh
 
 > **Note:** This runs all of Vamp's components in one container. This is definitely not ideal, but works fine for kicking the tires.
 You will run into cpu, memory and storage issues pretty soon though. Also, random ports are assigned by Vamp which you might not have exposed on either Docker or your Docker Toolbox Vagrant box.  
+
+Now proceed to our [getting started tutorial](/documentation/guides/)
 
 Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
