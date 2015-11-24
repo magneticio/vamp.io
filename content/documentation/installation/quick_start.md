@@ -14,8 +14,9 @@ menu:
 # Quick start with Docker
 
 The easiest way to get started with Vamp is by spinning up one of the Docker images stored
-in the [vamp-docker repo](https://github.com/magneticio/vamp-docker) and the [public Docker hub](https://hub.docker.com/r/magneticio/vamp-docker/).This setup will run Vamp inside a Docker container with Vamp's Docker driver.
-
+in the [vamp-docker repo](https://github.com/magneticio/vamp-docker) and the [public Docker hub](https://hub.docker.com/r/magneticio/vamp-docker/).
+This setup will run Vamp inside a Docker container with Vamp's Docker driver.
+It is possible to run Vamp with and without [Marathon](https://mesosphere.github.io/marathon/).
 
 ## Step 1: Get Docker
 
@@ -27,7 +28,7 @@ Please install one of the following for your platform/architecture
 
 ## Step 2: Run Vamp
 
-Start the `magneticio/vamp-docker:latest` (or currently `magneticio/vamp-docker:0.8.0`) container, taking care to pass in the right parameters. 
+Start the `magneticio/vamp-quick-start:0.8.0` container, taking care to pass in the right parameters. 
 
 ### Linux
 
@@ -37,12 +38,28 @@ A typical command would be:
 docker run --net=host \
            -v /var/run/docker.sock:/var/run/docker.sock \
            -v $(which docker):/bin/docker \
-           magneticio/vamp-docker:0.8.0
+           magneticio/vamp-quick-start:0.8.0
 ```
 {{% /copyable %}}
 
 Mounting volumes is important. 
 Great article about starting Docker containers from/within another Docker container can be found [here](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/).
+
+If you want to run Vamp with Marathon:
+
+{{% copyable %}}
+```
+docker run --net=host \
+           -v /var/run/docker.sock:/var/run/docker.sock \
+           -v $(which docker):/bin/docker \
+           -v "/sys/fs/cgroup:/sys/fs/cgroup" \
+           -e "DOCKER_HOST_IP=localhost" \
+           magneticio/vamp-quick-start:0.8.0-marathon
+```
+{{% /copyable %}}
+
+> **Note:** Default Marathon port is 9090 (e.g. http://localhost:9090/).
+
 
 ### Mac OS X 10.8+ or Windows 7+
 
@@ -64,7 +81,7 @@ Please notice the mounting of the docker machine certificates. Please set this t
 You can get this info by running for instance `docker-machine config default`. 
 If you don't use Docker Toolbox (or Boot2Docker), set the `DOCKER_HOST` variable to whatever is relevant to your system.
 
-> **Note 1:** When using Boot2Docker on OS X use the following command:
+> **Note:** When using Boot2Docker on OS X use the following command:
 {{% copyable %}}
 ```
 docker run --net=host \
@@ -77,6 +94,21 @@ docker run --net=host \
 {{% /copyable %}}
 
 
+If you want to run Vamp with Marathon:
+
+{{% copyable %}}
+```
+docker run --net=host \
+           -v /var/run/docker.sock:/var/run/docker.sock \
+           -v $(which docker):/bin/docker \
+           -v "/sys/fs/cgroup:/sys/fs/cgroup" \
+           -e "DOCKER_HOST_IP=`docker-machine ip default`" \
+           magneticio/vamp-quick-start:0.8.0-marathon
+```
+{{% /copyable %}}
+
+> **Note:** Default Marathon port is 9090 on `docker-machine ip default`
+
 After some downloading and booting, your Docker log should say something like:
 
 ```
@@ -88,7 +120,7 @@ Now check if Vamp is home on `http://{docker-machine ip default}:8080/` and proc
 ![](/img/screenshots/vamp_ui_home.gif)
 
 
-> **Note 2:** This runs all of Vamp's components in one container. This is definitely not ideal, but works fine for kicking the tires.
+> **Note:** This runs all of Vamp's components in one container. This is definitely not ideal, but works fine for kicking the tires.
 You will run into cpu, memory and storage issues pretty soon though. Also, random ports are assigned by Vamp which you might not have exposed on either Docker or your Docker Toolbox Vagrant box.  
 
 Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
