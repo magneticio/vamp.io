@@ -58,7 +58,7 @@ docker run --net=host \
 ```
 {{% /copyable %}}
 
-> **Note:** Default Marathon port is 9090 (e.g. http://localhost:9090/).
+> **Note:** Default Marathon port is 9090 (e.g. http://localhost:9090/). 
 
 
 ### Mac OS X 10.8+ or Windows 7+
@@ -80,19 +80,6 @@ docker run --net=host \
 Please notice the mounting of the docker machine certificates. Please set this to your specific environment. 
 You can get this info by running for instance `docker-machine config default`. 
 If you don't use Docker Toolbox (or Boot2Docker), set the `DOCKER_HOST` variable to whatever is relevant to your system.
-
-> **Note:** When using Boot2Docker on OS X use the following command:
-{{% copyable %}}
-```
-docker run --net=host \
-           -v ~/.boot2docker/certs/boot2docker-vm:/certs \
-           -e "DOCKER_TLS_VERIFY=1" \
-           -e "DOCKER_HOST=tcp://`boot2docker ip`:2376" \
-           -e "DOCKER_CERT_PATH=/certs" \
-           magneticio/vamp-docker:0.8.0
-```
-{{% /copyable %}}
-
 
 If you want to run Vamp with Marathon:
 
@@ -119,6 +106,17 @@ Now check if Vamp is home on `http://{docker-machine ip default}:8080/` and proc
 
 ![](/img/screenshots/vamp_ui_home.gif)
 
+Exposed services:
+
+- HAProxy statistics [http://localhost:1988](http://localhost:1988) (username/password: haproxy)
+- Elasticsearch HTTP [http://localhost:9200](http://localhost:9200)
+- Kibana [http://localhost:5601](http://localhost:5601)
+- Sense [http://localhost:5601/app/sense](http://localhost:5601/app/sense)
+- Mesos [http://localhost:5050](http://localhost:5050) (only for containers with Marathon)
+- Marathon [http://localhost:9090](http://localhost:9090) (only for containers with Marathon)
+- Vamp [http://localhost:8080](http://localhost:8080)
+
+If you run on Docker machine, use `docker-machine ip default` instead of `localhost`.
 
 > **Note:** This runs all of Vamp's components in one container. This is definitely not ideal, but works fine for kicking the tires.
 You will run into cpu, memory and storage issues pretty soon though. Also, random ports are assigned by Vamp which you might not have exposed on either Docker or your Docker Toolbox Vagrant box.  
