@@ -17,7 +17,7 @@ walked through that part, please do so first. Now let's say we have a new versio
 
 Vamp allows you to do canary releases using blueprints. Take a look at the YAML example below. It is quite similar to the blueprint we initially used to deploy sava 1.0.0. However, there are two big differences.
 
-1. The `services` key holds a list of breeds: one for v1.0.0 and one for v1.1.0 of our app. [Breeds](/documentation/reference/breeds/) are Vamp's way of describing static artifacts that can be used in blueprints.
+1. The `services` key holds a list of breeds: one for v1.0.0 and one for v1.1.0 of our app. [Breeds](/documentation/using-vamp/breeds/) are Vamp's way of describing static artifacts that can be used in blueprints.
 2. We've added the `routing` key which holds the weight of each service as a percentage of all requests.
 
 Notice we assigned 50% to our current version 1.0.0 and 50% to the new version 1.1.0 We could also start with a 100% to 0% split, a 99% to 1% split or whatever combination you want as long as all percentages add up to 100% in total.

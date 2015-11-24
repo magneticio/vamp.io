@@ -15,7 +15,7 @@ Currently supported:
 - [Docker](#docker)
 - [Mesosphere Marathon](#mesosphere-marathon)
 
-> **Note:** As mentioned in the [components overview](/documentation/installation/components/), Vamp Router **should always** be able to find and route traffic to addresses of any of the containers deployed, regardless of the container driver.
+> **Note:** As mentioned in the [components overview](/installation/), Vamp Router **should always** be able to find and route traffic to addresses of any of the containers deployed, regardless of the container driver.
 
 ## Docker
 
@@ -54,7 +54,7 @@ Vamp can even run inside Docker while deploying to Docker: check out our [quick 
 ## Mesosphere Marathon
 
 Vamp can use the full power of Marathon running on either a DCOS cluster or custom Mesos cluster. You can use Vamp's DLS
-but also pass native Marathon options by [using a dialect in a blueprint.](/documentation/using-vamp/blueprints/dialects)
+but also pass native Marathon options by [using a dialect in a blueprint.](/documentation/using-vamp/blueprints/#dialects)
 
 1. Set up a DCOS cluster using Mesosphere's [assisted install](https://mesosphere.com/product/) on AWS.
 

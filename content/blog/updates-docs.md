@@ -11,12 +11,12 @@ Hi,
 Just a short update from HQ. Over the last two weeks we spend some time updating, refreshing and sharpening our documentation 
 and some of the resources that go with the docs and tutorials. Here's a list!
 
-- Updated our [vamp-docker repo](https://github.com/magneticio/vamp-docker/tree/master/dockerfiles) with fresh Dockerfiles
+- Updated our [vamp-docker repo](https://github.com/magneticio/vamp-docker) with fresh Dockerfiles
 for spinning up a Mesosphere cluster and a private Docker registry. All images are also pushed to our [Docker hub](https://registry.hub.docker.com/repos/magneticio/)
 
-- Added and updated documentation on routing & filters, SLA's and the underlying event system. Check it out [here](/documentation/reference/routings-and-filters/) and [here](/documentation/reference/sla-and-escalations/).
+- Added and updated documentation on routing & filters, SLA's and the underlying event system. Check it out [here](/documentation/using-vamp/routings-and-filters/) and [here](/documentation/using-vamp/sla-and-escalations/).
 
-- Added a section on the REST API for Vamp Core and Vamp Router. Check it [here](/documentation/rest-api/common/)
+- Added a section on the REST API for Vamp Core and Vamp Router.
 
 We are slowly but surely moving to Beta! Yay!
 
