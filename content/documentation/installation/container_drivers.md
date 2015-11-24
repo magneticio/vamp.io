@@ -8,14 +8,14 @@ menu:
 ---
 # Configuring a container driver
 
-Vamp supports multiple container platforms and will expand this selection in the future. When installing Vamp, you choose your container platform and configure the appropriate driver. Think of how ORM's work: a single DSL/language with support for multiple databases through a driver system.
+Vamp supports multiple container-orchestration platforms and will expand the number of supported container-orchestration platforms in the future. When installing Vamp, you choose your container-orchestration platform and configure the appropriate driver. Think of how ORM's work: a single DSL/language with support for multiple databases through a driver system.
 
 Currently supported:
 
 - [Docker](#docker)
 - [Mesosphere Marathon](#mesosphere-marathon)
 
-> **Note:** As mentioned in the [components overview](/documentation/installation/components/), Vamp Router **should always** be able to find and route traffic to addresses of any of the containers deployed, regardless of the container driver.
+> **Note:** As mentioned in the [components overview](/documentation/installation/components/), Vamp Gateway Agent **should always** be able to find and route traffic to addresses of any of the containers deployed, regardless of the container driver.
 
 ## Docker
 
@@ -48,12 +48,12 @@ Vamp can even run inside Docker while deploying to Docker: check out our [quick 
 5. (Re)start Vamp by restarting the Java process by hand.   
 
 
-> **Note:** as of release 0.7.9, Vamp's Docker driver only supports Docker 1.7+. Please see [Github issue](https://github.com/docker/docker/issues/14365) in Docker's repo on why this is necessary.
+> **Note:** as of release 0.8.0 we tested against Docker 1.9.x and Docker Machine 0.5.x. (As of release 0.7.9, Vamp's Docker driver only supports Docker 1.7+. Please see [Github issue](https://github.com/docker/docker/issues/14365) in Docker's repo on why this is necessary.)
 
 
 ## Mesosphere Marathon
 
-Vamp can use the full power of Marathon running on either a DCOS cluster or custom Mesos cluster. You can use Vamp's DLS
+Vamp can use the full power of Marathon running on either a DCOS cluster or custom Mesos cluster. You can use Vamp's DSL
 but also pass native Marathon options by [using a dialect in a blueprint.](/documentation/using-vamp/blueprints/dialects)
 
 1. Set up a DCOS cluster using Mesosphere's [assisted install](https://mesosphere.com/product/) on AWS.
