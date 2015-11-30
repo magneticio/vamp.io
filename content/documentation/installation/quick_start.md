@@ -63,8 +63,6 @@ docker run --net=host \
 
 ### Mac OS X 10.8+ or Windows 7+
 
-NB If you installed Docker Toolbox please use "Docker Quickstart Terminal". At this moment we don't support Kitematic yet.
-
 A typical command on Mac OS X running Docker Toolbox would be:
 {{% copyable %}}
 ```
@@ -76,6 +74,8 @@ docker run --net=host \
            magneticio/vamp-docker:0.8.0
 ```
 {{% /copyable %}}
+
+> **Note:** If you installed Docker Toolbox please use "Docker Quickstart Terminal". At this moment we don't support Kitematic yet.
 
 Please notice the mounting of the docker machine certificates. Please set this to your specific environment. 
 You can get this info by running for instance `docker-machine config default`. 
