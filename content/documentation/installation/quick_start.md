@@ -30,6 +30,37 @@ Please install one of the following for your platform/architecture
 
 Start the `magneticio/vamp-docker:0.8.0` container, taking care to pass in the right parameters. 
 
+### Linux
+
+A typical command would be:
+{{% copyable %}}
+```
+docker run --net=host \
+           -v /var/run/docker.sock:/var/run/docker.sock \
+           -v $(which docker):/bin/docker \
+           magneticio/vamp-docker:0.8.0
+```
+{{% /copyable %}}
+
+Mounting volumes is important. 
+Great article about starting Docker containers from/within another Docker container can be found [here](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/).
+
+If you want to run Vamp with Marathon:
+
+{{% copyable %}}
+```
+docker run --net=host \
+           -v /var/run/docker.sock:/var/run/docker.sock \
+           -v $(which docker):/bin/docker \
+           -v "/sys/fs/cgroup:/sys/fs/cgroup" \
+           -e "DOCKER_HOST_IP=localhost" \
+           magneticio/vamp-docker:0.8.0-marathon
+```
+{{% /copyable %}}
+
+> **Note:** Default Marathon port is 9090 (e.g. http://localhost:9090/). 
+
+
 ### Mac OS X 10.8+ or Windows 7+
 
 NB If you installed Docker Toolbox please use "Docker Quickstart Terminal". At this moment we don't support Kitematic yet.
