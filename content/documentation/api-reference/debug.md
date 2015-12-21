@@ -36,6 +36,10 @@ Forces Vamp to perform an escalation check, regardless of the configured default
 
 ## Hard reset
 
-Stops and erases	all running deployment. Use with great caution!!
+Stops and erases all running deployment and gateways. Use with great caution!!
 
 	GET /api/v1/reset
+	
+## Get HAProxy configuration
+
+	GET /api/v1/haproxy

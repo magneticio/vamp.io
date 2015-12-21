@@ -24,8 +24,8 @@ You've managed to wrap your monolith in a Docker container, which lives in the D
 ```yaml
 ---
 name: sava:1.0
-endpoints:
-  sava.port: 9050/http
+gateways:
+  9050: sava/port
 clusters:
   sava:
     services:
@@ -54,13 +54,18 @@ strict with regard to content types, because we support JSON and YAML so we need
 Using `curl`:
 
 ```
-curl -v -X POST --data-binary @sava_1.0.yaml -H "Content-Type: application/x-yaml" http://192.168.59.103:8080/api/v1/deployments
+curl -v -X POST --data-binary @sava_1.0.yaml -H "Content-Type: application/x-yaml" http://localhost:8080/api/v1/deployments
 ```
 
 Using `httpie`
 
 ```
-http POST http://192.168.59.103:8080/api/v1/deployments Content-Type:application/x-yaml < sava_1.0.yaml
+http POST http://localhost:8080/api/v1/deployments Content-Type:application/x-yaml < sava_1.0.yaml
+```
+
+>**Note**: If you run on Docker machine, use `docker-machine ip default` instead of `localhost`, e.g.
+```
+http POST http://`docker-machine ip default`:8080/api/v1/deployments Content-Type:application/x-yaml < sava_1.0.yaml
 ```
 
 After POST-ing, Vamp should respond with a `202 Accepted` message and return a JSON blob. This means Vamp is trying to deploy your container. You'll notice some parts are filled in for you, like a default scale, a default routing and of course a UUID as a name.
@@ -78,6 +83,10 @@ When the application is fully deployed you can check it out at Vamp host address
 
 Using a simple tool like (Apache Bench)(https://httpd.apache.org/docs/2.2/programs/ab.html) we can put some load on our application and see some of the metrics flowing into the dashboard. Using the following command send 10000 requests using 15 threads to our Sava app.
 
+```bash
+ab -k -c 15 -n 10000 http://localhost:9050/
+```
+or
 ```bash
 ab -k -c 15 -n 10000 http://`docker-machine ip default`:9050/
 ```

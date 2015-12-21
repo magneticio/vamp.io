@@ -36,8 +36,8 @@ services to the "customer facing" `sava` service.
 ```yaml
 ---
 name: sava:1.2
-endpoints:
-  sava.port: 9060/http
+gateways:
+  9060: sava/port
 clusters:
   sava:
     services:
