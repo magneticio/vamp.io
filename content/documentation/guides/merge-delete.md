@@ -104,56 +104,60 @@ In this specific example, we could export the deployment as a blueprint and upda
 50% split. Then we could do this again, but with a 80% to 20% split and so on. See the abbreviated example
 below where we set the `weight` keys to `50` in both `routing` sections.
 
+{{% copyable %}}
 ```yaml
 ---
 name: eb2d505e-f5cf-4aed-b4ae-326a8ca54577
-endpoints:
-  sava.port: '9060/http'
 clusters:
   sava:
     services:
     - breed:
-        name: sava-frontend:1.3.0
-        deployable: magneticio/sava-frontend:1.3.0
-        ports:
-          port: 8080/http
-        environment_variables:
-          BACKEND: http://$backend.host:$backend.ports.port/api/message
-        dependencies:
-          backend:
-            name: sava-backend:1.3.0
-      scale:
-        cpu: 0.2
-        memory: 256.0
-        instances: 1
-      routing:
-        weight: 50
-        filters: []
-    - breed:
         name: sava-frontend:1.2.0
-        deployable: magneticio/sava-frontend:1.2.0
+        deployable: docker://magneticio/sava-frontend:1.2.0
         ports:
           port: 8080/http
         environment_variables:
           BACKEND_1: http://$backend1.host:$backend1.ports.port/api/message
           BACKEND_2: http://$backend2.host:$backend2.ports.port/api/message
+        constants: {}
         dependencies:
-          backend1:
-            name: sava-backend1:1.2.0
-          backend2:
-            name: sava-backend2:1.2.0
+          backend1: sava-backend1:1.2.0
+          backend2: sava-backend2:1.2.0
+      environment_variables: {}
       scale:
         cpu: 0.2
         memory: 256.0
         instances: 1
-      routing:
-        weight: 50
-        filters: []
-environment_variables:
-  sava.BACKEND_1: http://$backend1.host:$backend1.ports.port/api/message
-  sava.BACKEND_2: http://$backend2.host:$backend2.ports.port/api/message
-  sava.backend: http://$backend.host:$backend.ports.port/api/message
+      dialects: {}
+    - breed:
+        name: sava-frontend:1.3.0
+        deployable: docker://magneticio/sava-frontend:1.3.0
+        ports:
+          port: 8080/http
+        environment_variables:
+          BACKEND: http://$backend.host:$backend.ports.port/api/message
+        constants: {}
+        dependencies:
+          backend: sava-backend:1.3.0
+      environment_variables: {}
+      scale:
+        cpu: 0.2
+        memory: 256.0
+        instances: 1
+      dialects: {}
+    routing:
+      port:
+        sticky: none
+        routes:
+          sava-frontend:1.2.0:
+            weight: 50
+            filters: []
+          sava-frontend:1.3.0:
+            weight: 50
+            filters: []
+
 ```
+{{% /copyable %}}
 
 ## Step 4: Deleting parts of the deployment
 
@@ -183,24 +187,31 @@ clusters:
     services:
     - breed:
         ref: sava-backend1:1.2.0
-      routing:
-        weight: 0
+    routing:
+      routes:
+        sava-backend1:1.2.0:
+          weight: 0
   backend2:
     services:
     - breed:
         ref: sava-backend2:1.2.0
-      routing:
-        weight: 0
+    routing:
+      routes:
+        sava-backend2:1.2.0:
+          weight: 0
   sava:
     services:
     - breed:
         ref: sava-frontend:1.3.0
-      routing:
-        weight: 100
+
     - breed:
         ref: sava-frontend:1.2.0
-      routing:
-        weight: 0
+    routing:
+      routes:
+        sava-frontend:1.3.0:
+          weight: 100
+        sava-frontend:1.2.0:
+          weight: 0
 ```
 {{% /copyable %}}
 

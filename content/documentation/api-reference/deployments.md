@@ -42,6 +42,10 @@ Creates a new deployment
 
 	POST /api/v1/deployments
 
+Create a named (non UUID) deployment
+
+	PUT /api/v1/deployments/:name
+	
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
 | validate_only | true or false     | false            | validates the blueprint and returns a `202 Accepted` if the blueprint is valid for deployment. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.     

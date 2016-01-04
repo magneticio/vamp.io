@@ -31,10 +31,16 @@ You could also just leave out the whole `routing` sections and use the UI to cha
 ```yaml
 ---
 name: sava:1.0
-endpoints:
-  sava.port: 9050/http
+gateways:
+  9050: sava/port
 clusters:
   sava:
+    routing:
+      routes:
+        sava:1.0.0:
+          weight: 50  # weight in percentage
+        sava:1.1.0:
+          weight: 50
     services: # services is now a list of breeds
       -
         breed:
@@ -46,8 +52,6 @@ clusters:
           cpu: 0.2
           memory: 256
           instances: 1
-        routing:
-          weight: 50  # weight in percentage
       -
         breed:
           name: sava:1.1.0 # a new version of our service
@@ -58,8 +62,6 @@ clusters:
           cpu: 0.2
           memory: 256
           instances: 1
-        routing:
-          weight: 50
 ```{{% /copyable %}}
 
 > **Note**: There is nothing stopping you from deploying three or more versions and distributing the weight
@@ -92,9 +94,10 @@ Let's start simple: We will allow only Chrome users to access v1.1.0 of our appl
 
 ```yaml
 ---
-routing:
-  weight: 0
-  filters:
+routes:
+  sava:1.1.0:
+    weight: 0
+    filters:
     - condition: User-Agent = Chrome
 ```
 
@@ -112,11 +115,18 @@ Our full blueprint now looks as follows:
 ```yaml
 ---
 name: sava:1.0
-
-endpoints:
-  sava.port: 9050/http
+gateways:
+  9050: sava/port
 clusters:
   sava:
+    routing:
+      routes:
+        sava:1.0.0:
+          weight: 100
+        sava:1.1.0:
+          weight: 0
+          filters:
+          - condition: User-Agent = Chrome
     services: # services is now a list of breeds
       -
         breed:
@@ -128,11 +138,9 @@ clusters:
           cpu: 0.2
           memory: 256
           instances: 1
-        routing:
-          weight: 100
       -
         breed:
-          name: sava:1.1.0
+          name: sava:1.1.0 # a new version of our service
           deployable: magneticio/sava:1.1.0
           ports:
             port: 8080/http
@@ -140,10 +148,6 @@ clusters:
           cpu: 0.2
           memory: 256
           instances: 1
-        routing:
-          weight: 0
-          filters:
-            - condition: User-Agent = Chrome
 ```
 {{% /copyable %}}
 
@@ -192,9 +196,10 @@ request. If that doesn't result in a match, it would check whether the request h
 
 ```yaml
 ---
-routing:
-  weight: 0
-  filters:
+routes:
+  sava:1.1.0:
+    weight: 0
+    filters:
     - condition: User-Agent = Chrome
     - condition: Has Header X-VAMP-TUTORIAL
 ```

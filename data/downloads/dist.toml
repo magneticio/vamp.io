@@ -1,6 +1,6 @@
-stableCore = "0.8.0"
+stableCore = "0.8.1"
 stableCodeName = "Northmann"
-stableReleaseDate = "23-10-2015"
+stableReleaseDate = "01-01-2016"
 license = "Apache 2.0"
 libraries = [ "common",
 "core-bootstrap",
