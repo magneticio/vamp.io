@@ -41,7 +41,7 @@ filters:
 When defining weights, please make sure the total weight always adds up to 100%. This means that when doing a straight three-way split you give one service 34% as `33+33+34=100`. Vamp has to account for all traffic and 1% can be a lot in high volume environments.
 
 ## Defining filters
-Creating filters is quite eas y. Checking Headers, Cookies, Hosts etc. is all possible. Under the hood, Vamp uses [Haproxy's ACL's](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#7.1) and you can use the exact ACL definition right in the blueprint in the `condition` field of a filter.
+Creating filters is quite easy. Checking Headers, Cookies, Hosts etc. is all possible. Under the hood, Vamp uses [Haproxy's ACL's](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#7.1) and you can use the exact ACL definition right in the blueprint in the `condition` field of a filter.
 
 However, ACL's can be somewhat opaque and cryptic. That's why Vamp has a set of convenient "short codes"
 to address common use cases. Currently, we support the following:
@@ -75,9 +75,9 @@ user-agent = Android          # lower case, white space
 ```
 
 Having multiple conditions in a filter is perfectly possible. In this case all filters are implicitly
-"OR"-ed together, as in "if the first filter doesn't match, proceed to the next". For example, the following filter would first check whether the string "Chrome" exists in the User-Agent header of a
-request. If that doesn't result in a match, it would check whether the request has the header 
-"X-VAMP-MY-COOL-HEADER". So any request matching either condition would go to this service.
+"AND"-ed together. For example, the following filter would first check whether the string "Chrome" exists in the User-Agent header of a
+request and then it would check whether the request has the header 
+"X-VAMP-MY-COOL-HEADER". So any request matching both conditions would go to this service.
 
 ```yaml
 ---
@@ -93,3 +93,30 @@ Using a tool like [httpie](https://github.com/jakubroztocil/httpie) makes testin
     http GET http://10.26.184.254:9050/ X-VAMP-MY-COOL-HEADER:stuff
 
 **Notice** we set the weight to 0 in the above example. This means per default no traffic is send to a service that has this routing. *Only* when one of the filter conditions is met any traffic will flow to this service.
+
+## URL path rewrite
+
+Vamp also supports URL rewrite which can be powerful solution in defining service API's (e.g. RESTful) outside of application service.
+Rewrite rule is defined in filter condition:
+
+```
+rewrite NEW_PATH if CONDITION
+```
+
+- `NEW_PATH` new path to be used; HAProxy variables are supported, e.g. `%[path]`
+- `CONDITION` condition using HAProxy directives, e.g. matching path, method, headers etc.
+
+For example, only /api/v2 will be rewritten to /api and `sava:2.0.0` will serve only `/api/v2` paths:
+
+```yaml
+---
+routing:
+  routes:
+    sava:1.0.0:
+      weight: 100%
+    sava:2.0.0:
+      weight: 0%
+      filters:
+      - condition: path -i /api/v2
+      - condition: rewrite /api if path -i /api/v2
+```
