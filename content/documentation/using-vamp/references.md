@@ -23,7 +23,7 @@ name: my_blueprint
           deployable: registry.magnetic.io/app:1.0
         scale:
           cpu: 2
-          memory: 1024
+          memory: 1024MB
           instances: 4
 ```
 **reference**
@@ -73,7 +73,7 @@ You want to have a predetermined set of scales you can use per deployment per en
 ---
 name: medium_prod
 cpu: 2
-memory: 4096
+memory: 4096MB
 instances: 3
 ```
 
@@ -81,7 +81,7 @@ instances: 3
 ---
 name: medium_test
 cpu: 0.5
-memory: 1024
+memory: 1024MB
 instances: 1
 ```
 

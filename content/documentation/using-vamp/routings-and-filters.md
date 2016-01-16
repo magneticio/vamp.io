@@ -19,7 +19,7 @@ Let's have a look at a simple, inline, routing. This would be used directly insi
 
 ```yaml
 ---           
-weight: 10  # Amount of traffic for this service in percents.
+weight: 10%  # Amount of traffic for this service in percents.
 filters:    
   - condition: User-Agent = IOS
 ```
@@ -28,7 +28,7 @@ The example above could be reused by just giving it a name and storing it by usi
 
 ```yaml
 name: cool_routing   # Custom name, can be referenced later on.
-weight: 10
+weight: 10%
 filters: 
   - condition: user-agent = ios
   - really_cool_filter
@@ -82,7 +82,7 @@ request. If that doesn't result in a match, it would check whether the request h
 ```yaml
 ---
 routing:
-  weight: 0
+  weight: 0%
   filters:
     - condition: User-Agent = Chrome
     - condition: Has Header X-VAMP-MY-COOL-HEADER

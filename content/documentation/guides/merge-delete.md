@@ -60,7 +60,7 @@ clusters:
           backend: sava-backend:1.3.0
       scale:
         cpu: 0.2
-        memory: 256
+        memory: 256MB
         instances: 1
   backend:
     services:
@@ -71,7 +71,7 @@ clusters:
           port: 8080/http
       scale:
         cpu: 0.2
-        memory: 256
+        memory: 256MB
         instances: 1
 ```
 {{% /copyable %}}
@@ -102,7 +102,7 @@ The default output will be in JSON format, but you can also get a YAML format. J
 
 In this specific example, we could export the deployment as a blueprint and update the weight to a 50% to
 50% split. Then we could do this again, but with a 80% to 20% split and so on. See the abbreviated example
-below where we set the `weight` keys to `50` in both `routing` sections.
+below where we set the `weight` keys to `50%` in both `routing` sections.
 
 {{% copyable %}}
 ```yaml
@@ -126,7 +126,7 @@ clusters:
       environment_variables: {}
       scale:
         cpu: 0.2
-        memory: 256.0
+        memory: 256.0MB
         instances: 1
       dialects: {}
     - breed:
@@ -142,7 +142,7 @@ clusters:
       environment_variables: {}
       scale:
         cpu: 0.2
-        memory: 256.0
+        memory: 256.0MB
         instances: 1
       dialects: {}
     routing:
@@ -150,10 +150,10 @@ clusters:
         sticky: none
         routes:
           sava-frontend:1.2.0:
-            weight: 50
+            weight: 50%
             filters: []
           sava-frontend:1.3.0:
-            weight: 50
+            weight: 50%
             filters: []
 
 ```
@@ -168,7 +168,7 @@ In essence, a delete is just another update of the deployment: you specify what 
 This means you can specifically target parts of your deployment to be removed instead of deleting the whole thing. For this tutorial we are going to delete the "over-engineered" old part of our deployment.
 
 Currently, deleting works in two steps:
-- Set all routings to `weight: 0` of the services you want to delete with a simple update.
+- Set all routings to `weight: 0%` of the services you want to delete with a simple update.
 - Execute the delete.
 
 
@@ -190,7 +190,7 @@ clusters:
     routing:
       routes:
         sava-backend1:1.2.0:
-          weight: 0
+          weight: 0%
   backend2:
     services:
     - breed:
@@ -198,7 +198,7 @@ clusters:
     routing:
       routes:
         sava-backend2:1.2.0:
-          weight: 0
+          weight: 0%
   sava:
     services:
     - breed:
@@ -209,9 +209,9 @@ clusters:
     routing:
       routes:
         sava-frontend:1.3.0:
-          weight: 100
+          weight: 100%
         sava-frontend:1.2.0:
-          weight: 0
+          weight: 0%
 ```
 {{% /copyable %}}
 

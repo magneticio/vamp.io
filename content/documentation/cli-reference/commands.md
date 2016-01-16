@@ -42,7 +42,7 @@ Parameter | purpose
 > vamp create scale --file my_scale.yaml
 name: my_scale
 cpu: 2.0
-memory: 2048.0
+memory: 2GB
 instances: 2
 ```
 ## Deploy

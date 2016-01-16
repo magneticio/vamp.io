@@ -36,7 +36,7 @@ clusters:
           name: some_cool_breed:2.1
         scale:
           cpu: 2
-          memory: 2048
+          memory: 2048MB
           instances: 2
 ```
 
@@ -112,21 +112,22 @@ clusters:
 
   monarch:
     services:
-      - 
-        breed: monarch_1.0
-        routing: 
-          weight: 100
-      - 
-        breed: monarch_1.1
-        routing: 
-          weight: 0
+      -  breed: monarch_1.0
+      -  breed: monarch_1.1
+          
+    routing:
+      monarch_1.0:
+        weight: 100%
+      monarch_1.1:
+        weight: 0%
 
   recommendation:
     services:
-      - 
-        breed: recommendation_1.0
-        routing: 
-          weight: 100
+      - breed: recommendation_1.0
+    
+    routing:
+      recommendation_1.0:
+        weight: 100%
 
 ```
 
@@ -138,14 +139,14 @@ Let's redirect some traffic to our new monarch_1.1 (e.g. 10%):
 clusters:
   monarch:
     services:
-      - 
-        breed: monarch_1.0
-        routing: 
-          weight: 90
-      - 
-        breed: monarch_1.1
-        routing: 
-          weight: 10
+      - breed: monarch_1.0
+      - breed: monarch_1.1
+          
+    routing:
+      monarch_1.0:
+        weight: 90%
+      monarch_1.1:
+        weight: 10%
 ```
 
 Note that we can omit other fields like name, parameters and even other clusters (e.g. recommendation) if the change is not relevant to them. In this example we just wanted to update the weights.
@@ -174,21 +175,21 @@ clusters:
 
   monarch:
     services:
-      - 
-        breed: monarch_1.0
-        routing: 
-          weight: 50
-      - 
-        breed: monarch_1.1
-        routing: 
-          weight: 50
+      - breed: monarch_1.0
+      - breed: monarch_1.1
+          
+    routing:
+      monarch_1.0:
+        weight: 50%
+      monarch_1.1:
+        weight: 50%
 
   recommendation:
     services:
-      - 
-        breed: recommendation_1.0
-        routing: 
-          weight: 100
+      - breed: recommendation_1.0
+    routing: 
+      recommendation_1.0:
+        weight: 100
 ```
 
 If we are happy with the new monarch version 1.1, we can proceed with the removal of the old version.
@@ -220,14 +221,16 @@ clusters:
   monarch:
     services:
       breed: monarch_1.1
-        routing: 
-          weight: 100
+    routing:
+      monarch_1.1:
+        weight: 100%
 
   recommendation:
     services:
-        breed: recommendation_1.0
-        routing: 
-          weight: 100
+      breed: recommendation_1.0
+    routing:
+      recommendation_1.0:
+        weight: 100%
 
 ```
 

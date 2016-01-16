@@ -37,10 +37,10 @@ clusters:
           name: some_cool_breed
         scale:                            # Scale for this service.
           cpu: 2                          # Number of CPUs per instance.
-          memory: 2048                    # Memory in MB per instance.
+          memory: 2048MB                  # Memory per instance (MB/GB units).
           instances: 2                    # Number of instances
         routing:                          # Routing for this service.  
-          weight: 95                      # This makes sense only with multiple services per cluster.
+          weight: 95%                     # This makes sense only with multiple services per cluster.
           filters:
             - condition: User-Agent = Chrome
       -                                          
@@ -174,6 +174,6 @@ Scales can be defined inline in a blueprint or they can defined separately and g
 name: small   # Custom name.
 
 cpu: 2        # Number of CPUs per instance.
-memory: 2048  # Memory in MB per instance.
+memory: 2gb   # Memory per instance, MB/GB units.
 instances: 2  # Number of instances.
 ```

@@ -304,10 +304,10 @@ script: |
           "routing": {
             "routes": {
               "sava:1.0.0": {
-                "weight": 0
+                "weight": "0%"
               },
               "sava:1.1.0": {
-                "weight": 100
+                "weight": "100%"
               }
             }
           }

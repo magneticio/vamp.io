@@ -38,9 +38,9 @@ clusters:
     routing:
       routes:
         sava:1.0.0:
-          weight: 50  # weight in percentage
+          weight: 50%  # weight in percentage
         sava:1.1.0:
-          weight: 50
+          weight: 50%
     services: # services is now a list of breeds
       -
         breed:
@@ -50,7 +50,7 @@ clusters:
             port: 8080/http
         scale:
           cpu: 0.2
-          memory: 256
+          memory: 256MB
           instances: 1
       -
         breed:
@@ -60,12 +60,12 @@ clusters:
             port: 8080/http
         scale:
           cpu: 0.2
-          memory: 256
+          memory: 256MB
           instances: 1
 ```{{% /copyable %}}
 
 > **Note**: There is nothing stopping you from deploying three or more versions and distributing the weight
-among them. Just make sure that when doing a straight threeway split you give one service 34% as 33+33+34=100.
+among them. Just make sure that when doing a straight three-way split you give one service 34% as 33%+33%+34%=100%.
 
 ## Step 2: Deploying the new version next to the old one
 
@@ -96,7 +96,7 @@ Let's start simple: We will allow only Chrome users to access v1.1.0 of our appl
 ---
 routes:
   sava:1.1.0:
-    weight: 0
+    weight: 0%
     filters:
     - condition: User-Agent = Chrome
 ```
@@ -106,7 +106,7 @@ Notice two things:
 1. We inserted a list of conditions (with only one condition for now). All traffic matching the filter will hit this service, no matter what the weight is.
 2. We dialed back the weight to 0%. This is important because we want to exclude all other traffic from this service.
 
-Filters and weight distribution are evaluated two seperate phases. The filters are processed first. The first service where the filter matches the request will be used to handle the request. Weight is only evaluated if during the filtering no service was picked. All services in the cluster with a weight >0 will be used when the traffic is distributed according to the weight.
+Filters and weight distribution are evaluated two seperate phases. The filters are processed first. The first service where the filter matches the request will be used to handle the request. Weight is only evaluated if during the filtering no service was picked. All services in the cluster with a weight greater than 0 will be used when the traffic is distributed according to the weight.
 
 Our full blueprint now looks as follows:
 
@@ -122,9 +122,9 @@ clusters:
     routing:
       routes:
         sava:1.0.0:
-          weight: 100
+          weight: 100%
         sava:1.1.0:
-          weight: 0
+          weight: 0%
           filters:
           - condition: User-Agent = Chrome
     services: # services is now a list of breeds
@@ -136,7 +136,7 @@ clusters:
             port: 8080/http
         scale:
           cpu: 0.2
-          memory: 256
+          memory: 256MB
           instances: 1
       -
         breed:
@@ -146,7 +146,7 @@ clusters:
             port: 8080/http
         scale:
           cpu: 0.2
-          memory: 256
+          memory: 256MB
           instances: 1
 ```
 {{% /copyable %}}
@@ -198,7 +198,7 @@ request. If that doesn't result in a match, it would check whether the request h
 ---
 routes:
   sava:1.1.0:
-    weight: 0
+    weight: 0%
     filters:
     - condition: User-Agent = Chrome
     - condition: Has Header X-VAMP-TUTORIAL

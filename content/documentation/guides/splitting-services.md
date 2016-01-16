@@ -54,7 +54,7 @@ clusters:
           backend2: sava-backend2:1.2.0
       scale:
         cpu: 0.2      
-        memory: 256  
+        memory: 256MB
         instances: 1               
   backend1:
     services:
@@ -65,7 +65,7 @@ clusters:
           port: 8080/http
       scale:
         cpu: 0.2       
-        memory: 256  
+        memory: 256MB
         instances: 1              
   backend2:
     services:
@@ -76,7 +76,7 @@ clusters:
           port: 8080/http
       scale:
         cpu: 0.2       
-        memory: 256 
+        memory: 256MB
         instances: 1
 ```
 {{% /copyable %}}

@@ -26,9 +26,9 @@ clusters:
       sticky: service                         # setting the service level
       routes:
         sava:1.0.0:
-          weight: 50
+          weight: 50%
         sava:1.1.0:
-          weight: 50
+          weight: 50%
           
     services:
       -
@@ -42,7 +42,7 @@ clusters:
             
         scale:
           cpu: 0.2
-          memory: 256
+          memory: 256MB
           instances: 2
       -
         breed:
@@ -55,7 +55,7 @@ clusters:
             
         scale:
           cpu: 0.2
-          memory: 256
+          memory: 256MB
           instances: 2
 ```
 {{% /copyable %}}
@@ -76,9 +76,9 @@ clusters:
       sticky: instance                         # setting the instance level
       routes:
         sava:1.0.0:
-          weight: 50
+          weight: 50%
         sava:1.1.0:
-          weight: 50
+          weight: 50%
           
     services:
       -
@@ -92,7 +92,7 @@ clusters:
             
         scale:
           cpu: 0.2
-          memory: 256
+          memory: 256MB
           instances: 2
       -
         breed:
@@ -105,7 +105,7 @@ clusters:
             
         scale:
           cpu: 0.2
-          memory: 256
+          memory: 256MB
           instances: 2
 ```
 {{% /copyable %}}
@@ -124,9 +124,9 @@ gateways:
     sticky: service
     routes:           # let's say we have 2 clusters: sava1 (90%) and sava2 (10%)
       sava1/port:   
-        weight: 90
+        weight: 90%
       sava2/port:
-        weight: 10
+        weight: 10%
 clusters:
   sava1: 
     ...

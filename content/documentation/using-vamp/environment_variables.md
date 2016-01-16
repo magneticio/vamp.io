@@ -146,9 +146,7 @@ clusters:
           ports:
             port: 8080/http
           environment_variables:           
-            CONNECTION_POOL: 30
-        routing:
-          weight: 50                 
+            CONNECTION_POOL: 30                
       -
         breed:
           name: frontend_app:1.0-b              # different breed name, same deployable
@@ -157,8 +155,12 @@ clusters:
             port: 8080/http
           environment_variables:           
             CONNECTION_POOL: 60                 # different pool size
-        routing:
-          weight: 50               
+
+  routing:
+    frontend_app:1.0-a:
+      weight: 50% 
+    frontend_app:1.0-b:
+      weight: 50% 
 ```  
 
 > **Note:** we just use the breed level environment variables. We also split the traffic into a 50/50 divide between both services.
@@ -231,14 +233,16 @@ clusters:
     services:
       - breed:
           ref: frontend_app:1.0-a
-        routing:
-          weight: 50  
       - breed:
-          ref: frontend_app:1.0-b
-        routing:
-          weight: 50          
+          ref: frontend_app:1.0-b        
         environment_variables:           
           JVM_HEAP_SIZE: 1800               # overrides the breed level AND cluster level
+          
+  routing:
+    frontend_app:1.0-a:
+      weight: 50% 
+    frontend_app:1.0-b:
+      weight: 50% 
 ``` 
 
 

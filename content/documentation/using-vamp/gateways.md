@@ -26,7 +26,7 @@ active: true                   # is it running - not in case of non (yet) existi
 sticky: none
 routes:                        # routes
   vamp/sava/sava:1.0.0/port:
-    weight: 50
+    weight: 50%
     filters: []
     instances:
     - name: vamp_6fd83b1fd01f7dd9eb7f.cda3c376-ae26-11e5-91fb-0242f7e42bf3
@@ -36,7 +36,7 @@ routes:                        # routes
       host: default
       port: 31292
   vamp/sava/sava:1.1.0/port:
-    weight: 50
+    weight: 50%
     filters: []
     instances:
     - name: vamp_2e2fc6ab8a1cdbe79dc3.caa3c9e4-ae26-11e5-91fb-0242f7e42bf3
@@ -73,7 +73,7 @@ clusters:
             
         scale:
           cpu: 0.2
-          memory: 256
+          memory: 256MB
           instances: 2
 ```
 {{% /copyable %}}
@@ -97,7 +97,7 @@ clusters:
             
         scale:
           cpu: 0.2
-          memory: 256
+          memory: 256MB
           instances: 2
 ```
 {{% /copyable %}}
@@ -110,9 +110,9 @@ name: sava
 port: 9070/http
 routes:
   sava:1.0/sava/port:
-    weight: 90          # filters can be used as well
+    weight: 90%          # filters can be used as well
   sava:1.1/sava/port:
-    weight: 10
+    weight: 10%
 ```
 {{% /copyable %}}
 

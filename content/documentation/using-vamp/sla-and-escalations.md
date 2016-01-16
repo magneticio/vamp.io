@@ -48,7 +48,7 @@ clusters:
 
     scale:
       cpu: 1
-      memory: 1024
+      memory: 1024MB
       instances: 2
 
     sla:
@@ -191,7 +191,7 @@ clusters:
 
     scale:
       cpu: 1
-      memory: 1024
+      memory: 1024MB
       instances: 1
     
     sla:
@@ -231,6 +231,6 @@ clusters:
         STORAGE_PASS: password
     scale:
       cpu: 1
-      memory: 1024
+      memory: 1024MB
       instances: 1
 ```
