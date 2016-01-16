@@ -13,8 +13,8 @@ Blueprints are execution plans - they describe how your services should be hooke
 
 Blueprints allow you to add the following extra properties:
 
-- [endpoints](#endpoints): a stable port where the service can be reached.
-- [clusters & services](#clusters-services): a cluster is agrouping of services with one purpose, i.e. two versions (a/b) of one service.
+- [gateways](#gateways): a stable port where the service can be reached.
+- [clusters & services](#clusters-services): a cluster is a grouping of services with one purpose, i.e. two versions (a/b) of one service.
 - [environment variables](/documentation/using-vamp/environment_variables/): a list of variables (interpolated or not) to be made available at runtime.
 - [dialects](#dialects): a dialect is a set of native commands for the underlying container platform, i.e. Docker or Mesosphere Marathon.
 - [scale](#scale): the CPU and memory and the amount of instance allocate to a service.
@@ -27,8 +27,8 @@ This example shows some of the key concepts of of blueprints:
 ```yaml
 ---
 name: my_blueprint                        # Custom blueprint name
-endpoints:
-  my_frontend.port: 8080/http
+gateways:
+  8080/http: my_frontend/port
 clusters:
   my_frontend:                            # Custom cluster name.
     services:                             # List of services
@@ -49,13 +49,13 @@ clusters:
         scale: large                      # Notice we used a reference to a "scale". More on this later
 ```
 
-## Endpoints
+## Gateways
 
-An endpoint is a "stable" port that almost never changes. When creating the mapping, it uses the definition (my_frontend.port in this case) from the "first" service in the cluster definition you reference. This service can of course be changed, but the endpoint port normally doesn't. Under the hood, we do a fairly simple port mapping.
+A gateway is a "stable" endpoint (or port in simplified sense) that almost never changes. When creating the mapping, it uses the definition (my_frontend/port in this case) from the "first" service in the cluster definition you reference. This service can of course be changed, but the gateway port normally doesn't.
 
-Please take care of setting the `/tcp` (default) or `/http` type for the port. Using `/http` allows Vamp to records more relevant metrics like response times and metrics.
+Please take care of setting the `/tcp` or `/http` (default) type for the port. Using `/http` allows Vamp to records more relevant metrics like response times and metrics.
 
-> **Note:** endpoints are optional. You can just deploy services and have a home grown method to connect them to some stable, exposable endpoint.
+> **Note:** gateways are optional. You can just deploy services and have a home grown method to connect them to some stable, exposable endpoint.
 
 ## Clusters & Services
 

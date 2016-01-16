@@ -44,7 +44,26 @@ deployable: docker://company/my_frontend_service:0.1
 ```
 Docker images are pulled by your container manager from any of the repositories configured. This can be private repo's but by default are the public Docker hub.
 
-> **Note:** running "other" artefacts such as zips or jars heavily depend on the underlying container manager, configuration of these deployables are explained in the [blueprints](#blueprints) section.
+Running "other" artefacts such as zips or jars heavily depend on the underlying container manager.
+When Vamp is setup to run with [Marathon](https://mesosphere.github.io/marathon/), `command://` (or `cmd://`) deployable type can be used.
+In that case [cmd](https://mesosphere.github.io/marathon/docs/rest-api.html#post-v2-apps) parameter will have value of deployable.
+
+For instance running a custom jar after it has been downloaded ([uris](https://mesosphere.github.io/marathon/docs/rest-api.html#uris-array-of-strings) parameter):
+
+```yaml
+name: location
+clusters:
+  api:
+    services:
+      breed:
+        name: location
+        deployable: cmd://java -jar location.jar
+      marathon:
+        uris: ["https://my_repo_location_jar"]
+
+```
+
+For instance it can be specified `cmd://java -jar some.jar` and using Vamp Marathon dialect `uris` parameter can be used for `some.jar` can be downloaded from the remote location. 
 
 ## Ports
 
