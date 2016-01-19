@@ -34,49 +34,37 @@ vamp {
 
 ### persistence
 
-Vamp uses a JDBC compatible database for it's persistent storage*. By default Vamp runs a simple, in-memory, H2 database that persists to a file on disk. This comes pre-packaged and is easy for getting started.
-
-Vamp is also tested against **Postgres**. You can configure this in the `jdbc` section of the application.conf by choosing the correct `slick-driver` and by providing the following typical parameters:  
-**H2 config** (default)
+Vamp uses Elasticsearch for persistence and [ZooKeeper](https://zookeeper.apache.org/), [etcd](https://coreos.com/etcd/docs/latest/) or [Consul](https://www.consul.io/) for key-value store (keeping HAProxy configuration). 
 
 ```hocon
 vamp {
   persistence {
     response-timeout = 5 # seconds
-    storage-type: "jdbc"
-    jdbc {
-      slick-driver = "scala.slick.driver.H2Driver$"
-      provider = {
-        url = "jdbc:h2:./vamp-db"
-        driver = org.h2.Driver
-        connectionPool = disabled
-        keepAliveConnection = true
+
+    database {
+      type: "elasticsearch" # elasticsearch or in-memory (no persistence)
+      elasticsearch.url = ${vamp.pulse.elasticsearch.url}
+    }
+
+    key-value-store {
+      type = "zookeeper"  # zookeeper, etcd or consul
+      base-path = "/vamp" # base path for keys, e.g. /vamp/...
+
+      zookeeper {
+        servers = "192.168.99.100:2181"
+      }
+
+      etcd {
+        url = "http://192.168.99.100:2379"
+      }
+
+      consul {
+        url = "http://192.168.99.100:8500"
       }
     }
   }
 }
 ```
-**Postgres config** 
- 
-```hocon
-vamp {
-  persistence {
-    response-timeout = 5 # seconds
-    jdbc {
-      database-schema-name = ""
-      slick-driver = "scala.slick.driver.PostgresDriver$"
-      provider = {
-        url = "jdbc:postgresql://<hostname>/<database-name>"
-        user = "<db-user>"
-        password = "<db-password>"
-        connectionPool = disabled
-        keepAliveConnection = true
-      }
-    } 
-  }
-} 
-```
-**Vamp can actually use different storage backends, but those are still experimental* 
 
 ### container drivers
 
@@ -91,9 +79,6 @@ vamp {
   gateway-driver {
     host = "10.193.238.26"              # Vamp Gateway Agent / Haproxy, internal IP.
     response-timeout = 30               # seconds
-    zookeeper {
-      servers = "192.168.99.100:2181"   # ZooKeeper connection
-    }
   }
 }  
 ``` 
@@ -106,17 +91,18 @@ The operation section holds all parameters that control how Vamp executes agains
 
 ```hocon
 operation {
-	sla.period = 5 # seconds, controls how often an SLA checks against metrics
-  	escalation.period = 5 # seconds, controls how often Vamp checks for escalation events.
+	sla.period = 5      # seconds, controls how often an SLA checks against metrics
+  escalation.period = 5 # seconds, controls how often Vamp checks for escalation events.
 	synchronization {
-		period = 1 # seconds, controls how often Vamp performs a sync between Vamp and the container driver.
-      	timeout {
-      		ready-for-deployment: 600		# seconds, controls how long Vamp waits for a 
-        								   		# service to start. If the service is not started 
-        								   		# before this time, the service is registered as "error"
-        	ready-for-undeployment: 600 	# seconds, similar to "ready-for-deployment", but for
-        										# the removal of services.
-      }
+    period = 4          # seconds, controls how often Vamp performs 
+                        # a sync between Vamp and the container driver.
+    timeout {
+      ready-for-deployment: 600	    # seconds, controls how long Vamp waits for a 
+                                    # service to start. If the service is not started 
+                                    # before this time, the service is registered as "error"
+      ready-for-undeployment: 600 	# seconds, similar to "ready-for-deployment", but for
+                                    # the removal of services.
+    }
    }
 }
 ```  

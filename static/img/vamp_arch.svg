@@ -37,18 +37,18 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1888"
-     inkscape:window-height="1155"
+     inkscape:window-width="1244"
+     inkscape:window-height="755"
      id="namedview163"
      showgrid="false"
      inkscape:snap-bbox="true"
      inkscape:zoom="1.0983171"
-     inkscape:cx="267.68226"
-     inkscape:cy="327"
-     inkscape:window-x="32"
+     inkscape:cx="818.72551"
+     inkscape:cy="108.48387"
+     inkscape:window-x="36"
      inkscape:window-y="1"
      inkscape:window-maximized="1"
-     inkscape:current-layer="Rectangle-2-+-Container-" />
+     inkscape:current-layer="vector" />
   <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
   <title
      id="title4">vector</title>
@@ -507,24 +507,6 @@
          stroke="#FF4081"
          stroke-width="3"
          stroke-linecap="square" />
-      <g
-         id="Line-Copy-2-+-Line-Copy-3-Copy"
-         sketch:type="MSLayerGroup"
-         transform="translate(446.000000, 873.000000)"
-         stroke="#FF4081"
-         stroke-width="3"
-         stroke-linecap="square">
-        <path
-           d="M1.5,0.208661417 L1.5,52.3740157"
-           id="path94"
-           sketch:type="MSShapeGroup" />
-        <path
-           id="path96"
-           d="M1.5,0.208661417 L4.5,11.0086614 L-1.5,11.0086614 L1.5,0.208661417 Z" />
-        <path
-           id="path98"
-           d="M1.5,52.3740157 L4.5,41.5740157 L-1.5,41.5740157 L1.5,52.3740157 Z" />
-      </g>
       <path
          d="M448.5,417.5 L347.5,417.5"
          id="Line-Copy-15"
@@ -585,18 +567,6 @@
            x="356.76694"
            y="637.44757"
            id="tspan121">search</tspan>
-      </text>
-      <text
-         id="JDBC"
-         sketch:type="MSTextLayer"
-         font-size="20"
-         font-weight="420"
-         font-family="Helvetica Neue"
-         fill="#A3A9AF">
-        <tspan
-           x="419"
-           y="994"
-           id="tspan124">JDBC</tspan>
       </text>
       <path
          d="M814.5,717.5 L1114.5,717.5"
@@ -710,35 +680,6 @@
            y="513"
            id="tspan146">Production LAN/VLAN</tspan>
       </text>
-      <g
-         id="Group"
-         sketch:type="MSLayerGroup"
-         transform="translate(405.000000, 931.000000)"
-         stroke-width="2"
-         stroke="#A3A9AF">
-        <ellipse
-           id="Oval-1"
-           sketch:type="MSShapeGroup"
-           cx="41"
-           cy="10.2040816"
-           rx="40.322314"
-           ry="10.2040816" />
-        <path
-           d="M0.67768595,89.7959184 C0.67768595,95.431477 18.7306009,100 41,100 L41,100 C63.2693991,100 81.322314,95.431477 81.322314,89.7959184"
-           id="Oval-1-Copy"
-           sketch:type="MSShapeGroup"
-           fill="#FFFFFF" />
-        <path
-           d="M0.67768595,89.4557823 L0.67768595,10.5442177"
-           id="path151"
-           sketch:type="MSShapeGroup"
-           stroke-linecap="square" />
-        <path
-           d="M81.322314,89.4557823 L81.322314,10.5442177"
-           id="Line-Copy-3"
-           sketch:type="MSShapeGroup"
-           stroke-linecap="square" />
-      </g>
       <g
          id="Group-Copy"
          sketch:type="MSLayerGroup"

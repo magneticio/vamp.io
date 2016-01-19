@@ -20,7 +20,7 @@ Currently supported:
 ## Docker
 
 Vamp can directly talk to a Docker daemon and its driver is configured by default. This is useful for local testing.
-Vamp can even run inside Docker while deploying to Docker: check out our [quick start](/quick-start/).
+Vamp can even run inside Docker while deploying to Docker.
 
 1. Install Docker as per [Docker's installation manual](https://docs.docker.com/installation/)
 
