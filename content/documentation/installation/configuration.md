@@ -1,6 +1,6 @@
 ---
 title: Configuration
-weight: 11
+weight: 20
 type: documentation
 menu:
   main:
@@ -22,11 +22,7 @@ vamp {
     interface = 0.0.0.0
     host = localhost
     port = 8080
-    response-timeout = 10 # seconds, HTTP response time out    
-    info {
-      message = "Hi, I'm Vamp! How are you?"
-      timeout = 5 # seconds, response timeout for each components info point
-    }
+    response-timeout = 10 # seconds, HTTP response time out
   }
 }    
 ``` 
@@ -47,6 +43,7 @@ vamp {
     }
 
     key-value-store {
+    
       type = "zookeeper"  # zookeeper, etcd or consul
       base-path = "/vamp" # base path for keys, e.g. /vamp/...
 
@@ -66,13 +63,15 @@ vamp {
 }
 ```
 
+`zookeeper`, `etcd` or `consul` configuration is needed based on the type, e.g. if `type = "zookeeper"` then only `zookeeper.servers` should be set.
+
 ### container drivers
 
 Configurations for the container drivers have their own page. Please check here [how to set up and use container drivers](/documentation/installation/container_drivers/)
 
 ### gateway-driver
 
-The gateway-driver section configures where Vamp can find ZooKeeper and how traffic should be routed through Vamp Gateway Agent. See the below example on how to configure this:
+The gateway-driver section configures how traffic should be routed through Vamp Gateway Agent. See the below example on how to configure this:
 
 ```hocon
 vamp {
@@ -83,7 +82,36 @@ vamp {
 }  
 ``` 
 
-The reason for the need to configure this is that when services are deployed, they need to be able to find Vamp Gateway Agent in their respective networks. This can be a totally different network than where Vamp is running.
+The reason for the need to configure `vamp.gateway-driver.host` is that when services are deployed, they need to be able to find Vamp Gateway Agent in their respective networks. This can be a totally different network than where Vamp is running.
+Let's use an example: `frontend` and `backend` service, `frontend` depends on `backend` - in Vamp DSL that would be 2 clusters (assuming the same deployment).
+There are different ways how `frontend` can discover its dependency `backend`, and to make things simpler Vamp supports using specific environment parameters.
+ 
+```yaml
+---
+name: my-web-app
+clusters:
+  frontend:
+    services:
+      breed:
+        name: my-frontend:1.0.0
+        deployable: magneticio/my-frontend:1.0.0
+        ports:
+          port: 8080/http
+        environment_variables:
+          BACKEND: http://$backend.host:$backend.ports.port
+        dependencies:
+          backend: my-backend:1.0.0
+  backend:
+    services:
+      breed:
+        name: my-backend:1.0.0
+        deployable: magneticio/my-backend:1.0.0
+        ports:
+          port: 8080/http
+
+```
+In this example `$backend.host` will have the value of the `vamp.gateway-driver.host` configuration parameter, while `$backend.ports.port` the next available port from `vamp.operation.gateway.port-range`.
+`frontend` doesn't connect to `backend` directly but via Vamp Gateway Agent(s) - given on these host and port parameters.
 
 ### operation
 
@@ -104,5 +132,15 @@ operation {
                                     # the removal of services.
     }
    }
+  
+  gateway {
+    port-range = 40000-45000
+    response-timeout = 5 # seconds, timeout for container operations
+  }
 }
 ```  
+
+For each cluster and service port within the same cluster a gateway is created - this is exactly as one that can be created using Gateway API.
+That means specific filters and weights can be applied on traffic to/from cluster services - A/B testing and canary releases support.
+`vamp.operation.gateway.port-range` is range of port values that can be used for these cluster/port gateways. 
+These ports need to be available on all Vamp Gateway Agent hosts.

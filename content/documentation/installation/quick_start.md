@@ -1,7 +1,7 @@
 ---
 title: Quick start Marathon
 type: documentation
-weight: 20
+weight: 40
 aliases:
   - /quick-start/
   - /getting-started/
