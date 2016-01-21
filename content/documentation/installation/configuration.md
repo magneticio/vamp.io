@@ -112,6 +112,11 @@ clusters:
 ```
 In this example `$backend.host` will have the value of the `vamp.gateway-driver.host` configuration parameter, while `$backend.ports.port` the next available port from `vamp.operation.gateway.port-range`.
 `frontend` doesn't connect to `backend` directly but via Vamp Gateway Agent(s) - given on these host and port parameters.
+This is quite simmilar to common pattern to access any clustered application. 
+For instance if you want to access DB server, you will have an address string based on e.g. DNS entry or something simmilar.
+Here it is the similar but just for VGA's.
+Note that even without Vamp, you would need to setup access to `backend` in some similar way. 
+With Vamp, access is via VGA's and that allows specific routing (filters, weights) needed for A/B testing and canary releasing. 
 
 ### operation
 
