@@ -1,5 +1,5 @@
 ---
-title: Installation Details
+title: Installation details
 weight: 30
 type: documentation
 menu:
