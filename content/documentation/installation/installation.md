@@ -7,8 +7,6 @@ menu:
     parent: installation
 ---
 
-# Installation Details
-
 ## Overview
 
 The main 2 component of Vamp platform are [Vamp](https://github.com/magneticio/vamp) and [Vamp Gateway Agent](https://github.com/magneticio/vamp-gateway-agent)(VGA).
