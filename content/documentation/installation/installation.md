@@ -113,7 +113,7 @@ Vamp binaries are also available for download:
 
 - [Vamp](https://bintray.com/magnetic-io/downloads/vamp/view)
 - [Vamp CLI](https://bintray.com/magnetic-io/downloads/vamp-cli/view)
-- [vamp Gateway Agent](https://bintray.com/magnetic-io/downloads/vamp-gateway-agent/view)
+- [Vamp Gateway Agent](https://bintray.com/magnetic-io/downloads/vamp-gateway-agent/view)
 
 ## Running
 
