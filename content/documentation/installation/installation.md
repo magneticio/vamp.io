@@ -94,7 +94,7 @@ Prerequisites:
 
 Steps:
 
-- checkout the source from the official [repo](https://github.com/magneticio/vamp-gateway-agent). Current `master` branch is backward compatible with the latest 0.8.2 Vamp build. Alternatively tag `0.8.2` can be used even though it may not contain the latest changes or bug fixes.
+- checkout the source from the official [repo](https://github.com/magneticio/vamp-gateway-agent). Current `master` branch is backward compatible with the latest 0.8.2 Vamp build.
 - set Go variables depending on target environment
 - run:
 
@@ -102,10 +102,11 @@ Steps:
 go get github.com/tools/godep
 godep restore
 go install
-go build
+CGO_ENABLED=0 go build -v -a -installsuffix cgo
 ```
 
-Example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/clique-base/make.sh)
+More details can found on the [project page](https://github.com/magneticio/vamp-gateway-agent).
+Another example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/clique-base/make.sh)
 
 ## Downloading
 
@@ -113,7 +114,9 @@ Vamp binaries are also available for download:
 
 - [Vamp](https://bintray.com/magnetic-io/downloads/vamp/view)
 - [Vamp CLI](https://bintray.com/magnetic-io/downloads/vamp-cli/view)
-- [Vamp Gateway Agent](https://bintray.com/magnetic-io/downloads/vamp-gateway-agent/view)
+- [Vamp Gateway Agent (VGA)](https://bintray.com/magnetic-io/downloads/vamp-gateway-agent/view)
+
+VGA Docker images with HAProxy can be pulled from the Docker [hub](https://hub.docker.com/r/magneticio/vamp-gateway-agent/).
 
 ## Running
 
