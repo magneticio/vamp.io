@@ -92,7 +92,6 @@ Prerequisites:
 - [Go](https://golang.org/)
 - [git](https://git-scm.com/)
 
-
 Steps:
 
 - checkout the source from the official [repo](https://github.com/magneticio/vamp-gateway-agent). Current `master` branch is backward compatible with the latest 0.8.2 Vamp build. Alternatively tag `0.8.2` can be used even though it may not contain the latest changes or bug fixes.
@@ -107,6 +106,14 @@ go build
 ```
 
 Example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/clique-base/make.sh)
+
+## Downloading
+
+Vamp binaries are also available for download:
+
+- [Vamp](https://bintray.com/magnetic-io/downloads/vamp/view)
+- [Vamp CLI](https://bintray.com/magnetic-io/downloads/vamp-cli/view)
+- [vamp Gateway Agent](https://bintray.com/magnetic-io/downloads/vamp-gateway-agent/view)
 
 ## Running
 
