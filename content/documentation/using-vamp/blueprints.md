@@ -31,22 +31,29 @@ gateways:
   8080/http: my_frontend/port
 clusters:
   my_frontend:                            # Custom cluster name.
+  
+    routing:                              # Routing for this cluster services.
+      routes:                             # Makes sense only with
+        some_cool_breed:                  # multiple services per cluster.
+          weight: 95%
+          filters:
+          - condition: User-Agent = Chrome
+        some_other_breed:                 # Second service.
+          weight: 5%
+          
     services:                             # List of services
       -
         breed:
-          name: some_cool_breed
+          ref: some_cool_breed
         scale:                            # Scale for this service.
           cpu: 2                          # Number of CPUs per instance.
           memory: 2048MB                  # Memory per instance (MB/GB units).
           instances: 2                    # Number of instances
-        routing:                          # Routing for this service.  
-          weight: 95%                     # This makes sense only with multiple services per cluster.
-          filters:
-            - condition: User-Agent = Chrome
       -                                          
         breed: 
           ref: some_other_breed           # Another service in the same cluster.  
-        scale: large                      # Notice we used a reference to a "scale". More on this later
+        scale: large                      # Notice we used a reference to a "scale". 
+                                          # More on this later.
 ```
 
 ## Gateways
