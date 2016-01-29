@@ -76,6 +76,7 @@ Prerequisites:
 - OpenJDK or Oracle Java version of 1.8.0_40 or higher. Check the version with `java -version`
 - [git](https://git-scm.com/)
 - [sbt](http://www.scala-sbt.org/index.html)
+- [npm](https://www.npmjs.com/) and [Gulp](http://gulpjs.com/)
 
 Steps:
 
