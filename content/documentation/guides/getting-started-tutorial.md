@@ -16,7 +16,7 @@ Sava is a mythical vampire from Serbia ([wiki](http://en.wikipedia.org/wiki/Sava
 
 Make sure you have Vamp installed. The quickest way to do this is to check out the [quick start](/quick-start/)
 
-Please follow the tutorial in the predescribed steps:
+Please follow the tutorial in the following steps:
 
 [1. Deploying your first blueprint](/documentation/guides/getting-started-tutorial/1-deploying/)
 

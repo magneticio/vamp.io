@@ -50,7 +50,7 @@ clusters:
             port: 8080/http
         scale:
           cpu: 0.2
-          memory: 256MB
+          memory: 64MB
           instances: 1
       -
         breed:
@@ -60,7 +60,7 @@ clusters:
             port: 8080/http
         scale:
           cpu: 0.2
-          memory: 256MB
+          memory: 64MB
           instances: 1
 ```{{% /copyable %}}
 
@@ -96,18 +96,18 @@ Let's start simple: We will allow only Chrome users to access v1.1.0 of our appl
 ---
 routes:
   sava:1.1.0:
-    weight: 0%
+    weight: 100%
     filters:
     - condition: User-Agent = Chrome
 ```
 
 Notice two things:
 
-1. We inserted a list of conditions (with only one condition for now). All traffic matching the filter will hit this service, no matter what the weight is.
-2. We dialed back the weight to 0%. This is important because we want to exclude all other traffic from this service.
+1. We inserted a list of conditions (with only one condition for now).
+2. We kept the weight to 100%. This is important because we want all Chrome users to access the new service - we could also say `weight: 50%` to give access just to half of them.
 
-Filters and weight distribution are evaluated two seperate phases. The filters are processed first. The first service where the filter matches the request will be used to handle the request. Weight is only evaluated if during the filtering no service was picked. All services in the cluster with a weight greater than 0 will be used when the traffic is distributed according to the weight.
-
+The first service where the filter matches the request will be used to handle the request. 
+More information about using filters, weights, sticky sessions etc. can be found [here](/documentation/using-vamp/routings-and-filters/).
 Our full blueprint now looks as follows:
 
 {{% copyable %}}
@@ -124,7 +124,7 @@ clusters:
         sava:1.0.0:
           weight: 100%
         sava:1.1.0:
-          weight: 0%
+          weight: 100%
           filters:
           - condition: User-Agent = Chrome
     services: # services is now a list of breeds
@@ -136,7 +136,7 @@ clusters:
             port: 8080/http
         scale:
           cpu: 0.2
-          memory: 256MB
+          memory: 64MB
           instances: 1
       -
         breed:
@@ -146,7 +146,7 @@ clusters:
             port: 8080/http
         scale:
           cpu: 0.2
-          memory: 256MB
+          memory: 64MB
           instances: 1
 ```
 {{% /copyable %}}
@@ -198,7 +198,7 @@ request. If that doesn't result in a match, it would check whether the request h
 ---
 routes:
   sava:1.1.0:
-    weight: 0%
+    weight: 100%
     filters:
     - condition: User-Agent = Chrome
     - condition: Has Header X-VAMP-TUTORIAL

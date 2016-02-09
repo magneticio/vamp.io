@@ -29,7 +29,7 @@ services on which we could do separate canary releases and set separate filters.
 are checked and rolled out in the right order.
 3. Using `environment_variables` we connect the dynamically assigned ports and hostnames of the backend
 services to the "customer facing" `sava` service. 
-4. We've change the endpoint port to `9060` so it doesn't collide with the  monolithic deployment.
+4. We've change the gateway port to `9060` so it doesn't collide with the  monolithic deployment.
 
 {{% copyable %}}
 
@@ -54,7 +54,7 @@ clusters:
           backend2: sava-backend2:1.2.0
       scale:
         cpu: 0.2      
-        memory: 256MB
+        memory: 64MB
         instances: 1               
   backend1:
     services:
@@ -65,7 +65,7 @@ clusters:
           port: 8080/http
       scale:
         cpu: 0.2       
-        memory: 256MB
+        memory: 64MB
         instances: 1              
   backend2:
     services:
@@ -76,7 +76,7 @@ clusters:
           port: 8080/http
       scale:
         cpu: 0.2       
-        memory: 256MB
+        memory: 64MB
         instances: 1
 ```
 {{% /copyable %}}

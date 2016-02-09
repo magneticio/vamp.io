@@ -18,7 +18,7 @@ Vamp](/getting-started/)
 Imagine you or the company you work for still use monolithic applications. I know, it sounds far fetched...
 This application is conveniently called *Sava monolith* and is at version 1.0.  
 
-You've managed to wrap your monolith in a Docker container, which lives in the Docker hub under `magneticio/sava:1.0.0`. Your app normaly runs on port `8080` but you want to expose it under port `9050` in this case. Let's deploy this to Vamp using the following simple blueprint. Don't worry too much about what means what: we'll get there.
+You've managed to wrap your monolith in a Docker container, which lives in the Docker hub under `magneticio/sava:1.0.0`. Your app normally runs on port `8080` but you want to expose it under port `9050` in this case. Let's deploy this to Vamp using the following simple blueprint. Don't worry too much about what means what: we'll get there.
 
 {{% copyable %}}
 ```yaml
@@ -36,7 +36,7 @@ clusters:
           port: 8080/http
       scale:
         cpu: 0.2       
-        memory: 256MB
+        memory: 64MB
         instances: 1
 ```
 {{% /copyable %}}
@@ -57,7 +57,7 @@ Using `curl`:
 curl -v -X POST --data-binary @sava_1.0.yaml -H "Content-Type: application/x-yaml" http://localhost:8080/api/v1/deployments
 ```
 
-Using `httpie`
+Using `httpie`:
 
 ```
 http POST http://localhost:8080/api/v1/deployments Content-Type:application/x-yaml < sava_1.0.yaml
@@ -70,6 +70,7 @@ http POST http://`docker-machine ip default`:8080/api/v1/deployments Content-Typ
 
 After POST-ing, Vamp should respond with a `202 Accepted` message and return a JSON blob. This means Vamp is trying to deploy your container. You'll notice some parts are filled in for you, like a default scale, a default routing and of course a UUID as a name.
 
+>**Note**: Using RESTful API it is possible to created deployment with a custom name - simple `PUT` request to `http://localhost:8080/api/v1/deployments/DEPLOYMENT_CUSTOM_NAME`
 
 ## Step 2: Checking out our application
 

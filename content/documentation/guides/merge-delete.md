@@ -29,7 +29,7 @@ In the diagram above, this is visualized as follows:
 1. We have a running deployment (the blue circle with the "1"). To this we introduce a new blueprint
 which is merged with the running deployment (the pink circle with the "2").
 2. At a point, both are active as we are transitioning from blue to pink.
-3. Once we are fully on pink, we actively remove/decomission the blue part.
+3. Once we are fully on pink, we actively remove/decommission the blue part.
 
 Is this the same as a blue/green release? Yes, but we like pink better ;o)
 
@@ -40,7 +40,7 @@ valid by itself. You could just deploy it somewhere separately and not merge it 
 topology. Notice the following:
 
 - The blueprint only has one backend cluster with one service.
-- The blueprint does not specify an endpoint using the `endpoints` key because we are going to use the endpoint already present and configured in the running deployment.
+- The blueprint does not specify a gateway using the `gateways` key because we are going to use the gateway already present and configured in the running deployment. However, it would be perfectly correct to specify the old gateway - the gateway would be updated as well. 
 
 {{% copyable %}}
 ```yaml
@@ -60,7 +60,7 @@ clusters:
           backend: sava-backend:1.3.0
       scale:
         cpu: 0.2
-        memory: 256MB
+        memory: 64MB
         instances: 1
   backend:
     services:
@@ -71,7 +71,7 @@ clusters:
           port: 8080/http
       scale:
         cpu: 0.2
-        memory: 256MB
+        memory: 64MB
         instances: 1
 ```
 {{% /copyable %}}
@@ -126,7 +126,7 @@ clusters:
       environment_variables: {}
       scale:
         cpu: 0.2
-        memory: 256.0MB
+        memory: 64MB
         instances: 1
       dialects: {}
     - breed:
@@ -142,7 +142,7 @@ clusters:
       environment_variables: {}
       scale:
         cpu: 0.2
-        memory: 256.0MB
+        memory: 64MB
         instances: 1
       dialects: {}
     routing:
