@@ -8,7 +8,10 @@ menu:
 
 # How does Vamp do service discovery?
 
-Vamp uses a service discovery pattern called [server-side service discovery](http://microservices.io/patterns/server-side-discovery.html). This pattern allows service discovery without the need to change your code or run any other daemon or agent. The provided link explains the general pro's and cons in good detail. In addition to service discovery, Vamp also functions as a [service registry](http://microservices.io/patterns/service-registry.html).
+Vamp uses a service discovery pattern called [server-side service discovery](http://microservices.io/patterns/server-side-discovery.html). 
+This pattern allows service discovery without the need to change your code or run any other daemon or agent. 
+The provided link explains the general pro's and cons in good detail. 
+In addition to service discovery, Vamp also functions as a [service registry](http://microservices.io/patterns/service-registry.html).
 
 For Vamp, we recognise the following benefits of this pattern:
 
@@ -26,7 +29,7 @@ The general workflow for creating and publishing a service is as follows.
 
 1. The user describes a service and its desired endpoint port in the Vamp DSL.
 2. The service is deployed to the configured container manager by Vamp.
-3. Vamp instruct Vamp Gateway Agent (via ZooKeeper) to set up service endpoints.
+3. Vamp instruct Vamp Gateway Agent (via ZooKeeper, etcd or Consul) to set up service endpoints.
 4. Vamp Gateway Agent takes care of configuring HAProxy, making the services available.
 
 > **Note:** services do not register themselves. They are explicitly created, registered in the Vamp database
@@ -79,4 +82,5 @@ clusters:
 
 > **Note:** There is no point-to-point wiring. The `$backend.host` and `$backend.ports.jdbc` variables resolve to service endpoints Vamp automatically sets up and exposes.
 
-
+Even though Vamp provides this type of service discovery, it does not put any constraint on other possible solutions.
+For instance services can use their own approach specific approach using service registry, self-registration etc.
