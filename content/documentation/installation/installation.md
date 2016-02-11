@@ -145,10 +145,32 @@ An example of configuration can be found [here](https://github.com/magneticio/va
 
 Additional command line argument [example](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/start.sh) from Vamp quick start.
 
+#### Docker image
+
+Vamp Docker image is also [available](https://hub.docker.com/r/magneticio/vamp/).
+Default Vamp configuration used in the image is [here](https://github.com/magneticio/vamp-docker/tree/master/vamp/conf) - `application.conf` is a subset of full [configuration](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf).
+Still few parameters needs to be provided, for example:
+
+```
+java -Dvamp.persistence.key-value-store.zookeeper.servers="192.168.99.100:2181" \
+     -Dvamp.container-driver.url="http://192.168.99.100:9090" \
+     -Dvamp.gateway-driver.host="192.168.99.100" \
+     -Dvamp.pulse.elasticsearch.url="http://192.168.99.100:9200" \
+     -Dlogback.configurationFile=/usr/local/vamp/logback.xml \
+     -Dconfig.file=/usr/local/vamp/application.conf \
+     -jar /usr/local/vamp/vamp.jar
+```
+
+Alternatively using volumes:
+ 
+```
+docker run --net=host -v PATH_TO_LOCAL_CONFIG_DIR:/usr/local/vamp/conf magneticio/vamp:0.8.3
+```
+
 ### Vamp Gateway Agent (VGA)
 
-Documentation can be found on [project page](https://github.com/magneticio/vamp-gateway-agent).
+Documentation can be found on the [project page](https://github.com/magneticio/vamp-gateway-agent).
 An [example](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/supervisord.conf) of command line arguments is in `[program:VampGatewayAgent]` section.
 
-VGA instance can have different command line parameters (e.g. Logstash urls), and the common thing between them all is only the HAProxy configuration read from KV store.
+VGA instance can have different command line parameters (e.g. Logstash URLs), and the common thing between them all is only the HAProxy configuration read from KV store.
 Thus all HAProxy instances will be configured with the same configuration always.
