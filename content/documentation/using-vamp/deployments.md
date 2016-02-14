@@ -25,15 +25,14 @@ Here is an example of a simple blueprint:
 ```yaml
 ---
 name: my_cool_blueprint
-endpoints:
-  my_frontend.port: 8080/http
+gateways:
+  8080: my_frontend/port
 
 clusters:
   my_frontend:
     services:
       -
-        breed:
-          name: some_cool_breed:2.1
+        breed: some_cool_breed:2.1
         scale:
           cpu: 2
           memory: 2048MB

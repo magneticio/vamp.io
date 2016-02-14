@@ -43,8 +43,8 @@ name: java_aws_app:1.2.1
 deployable: acmecorp/tomcat:1.2.1
 
 environment_variables:
-    JVM_HEAP_SIZE: 1200
-    AWS_REGION: 'eu-west-1'     
+  JVM_HEAP_SIZE: 1200
+  AWS_REGION: 'eu-west-1'     
 ```
 
 ## Using place holders
@@ -58,9 +58,9 @@ In the below example we designated the `ORACLE_PASSWORD` as a place holder. We r
 name: java_aws_app:1.2.1
 deployable: acmecorp/tomcat:1.2.1
 environment_variables:
-    JVM_HEAP_SIZE: 1200
-    AWS_REGION: 'eu-west-1' 
-    ORACLE_PASSWORD: ~    
+  JVM_HEAP_SIZE: 1200
+  AWS_REGION: 'eu-west-1' 
+  ORACLE_PASSWORD: ~    
 ```
 
 > **Note**: A typical use case for this would be when different roles in a company work on the same project. Developers can create place holders for variables that operations should fill in: it helps with separating responsibilities.
@@ -71,17 +71,19 @@ Using the `$` character, you can reference other statements in a breed/blueprint
 
 ```yaml
 ---
+name: blueprint1
+clusters:
+  frontend:
     breed:
       name: frontend_app:1.0
       deployable: acmecorp/tomcat:1.2.1      
     environment_variables:
-        MYSQL_HOST: $backend.host        # resolves to a host at runtime
-        MYSQL_PORT: $backend.ports.port  # resolves to a port at runtime
-      dependencies:
-        backend: mysql:1.0
+      MYSQL_HOST: $backend.host        # resolves to a host at runtime
+      MYSQL_PORT: $backend.ports.port  # resolves to a port at runtime
+    dependencies:
+      backend: mysql:1.0
   backend:
-    breed:
-      name: mysql:1.0
+    breed: mysql:1.0
 ```
 
 Vamp provides just one *magic** variable: the `host`. This resolves to the host or ip address of the referenced service. Strictly speaking the `host` reference resolves to the gateway agent endpoint, but users do need to concern themselves with this. Users can think of *one-on-one* connections where Vamp actually does server-side service discovery to decouple services.
@@ -92,18 +94,20 @@ We could even extend this further. What if the backend is configured through som
 
 ```yaml
 ---
+name: blueprint1
+clusters:
+  frontend:
     breed:
       name: frontend_app:1.0
       deployable: acmecorp/tomcat:1.2.1      
     environment_variables:
-        MYSQL_HOST: $backend.host       
-        MYSQL_PORT: $backend.ports.port 
-        BACKEND_ENCODING: $backend.environment_variables.ENCODING_TYPE
-      dependencies:
-        backend: mysql:1.0
+      MYSQL_HOST: $backend.host       
+      MYSQL_PORT: $backend.ports.port 
+      BACKEND_ENCODING: $backend.environment_variables.ENCODING_TYPE
+    dependencies:
+      backend: mysql:1.0
   backend:
-    breed:
-      name: mysql:1.0
+    breed: mysql:1.0
     environment_variables:
       ENCODING_TYPE: 'UTF8'   # injected into the backend MySQL container
 ```
@@ -134,8 +138,8 @@ As a dev/ops-er you want to test one service configured in two different ways at
 ```yaml
 ---
 name: production_deployment:1.0
-endpoints:
-  frontend.port: 9050/http
+gateways:
+  9050: frontend/port
 clusters:
   frontend:
     services:
@@ -172,8 +176,8 @@ As a developer, you created your service with a default heap size you use on you
 ```yaml
 ---
 name: production_deployment:1.0
-endpoints:
-  frontend.port: 9050/http
+gateways:
+  9050: frontend/port
 environment_variables:                  # cluster level variable 
   frontend.JVM_HEAP_SIZE: 2800          # overrides the breed level
 clusters:
@@ -198,8 +202,8 @@ As a developer, you might not know some value your service needs at runtime, say
 ```yaml
 ---
 name: production_deployment:1.0
-endpoints:
-  frontend.port: 9050/http
+gateways:
+  9050: frontend/port
 environment_variables:                            # cluster level variable 
   frontend.GOOGLE_ANALYTICS_KEY: 'UA-53758816-1'  # overrides the breed level
 clusters:
@@ -212,7 +216,8 @@ clusters:
           ports:
             port: 8080/http
           environment_variables:           
-            GOOGLE_ANALYTICS_KEY: ~               # If not provided at higher scope, Vamp reports error
+            GOOGLE_ANALYTICS_KEY: ~               # If not provided at higher scope, 
+                                                  # Vamp reports error.
 ``` 
 
 ### Example 4: Combining all scopes and references
@@ -224,8 +229,8 @@ We override all `JVM_HEAP_SIZE` variables at the top scope. However, we just wan
 ```yaml
 ---
 name: production_deployment:1.0
-endpoints:
-  frontend.port: 9050/http
+gateways:
+  9050: frontend/port
 environment_variables:                            # cluster level variable 
   frontend.JVM_HEAP_SIZE: 2400                    # overrides the breed level
 clusters:
@@ -254,20 +259,22 @@ These are values that cannot be changed during deploy time.
 
 ```yaml
 ---
-breed:
-  name: frontend_app:1.0
-environment_variables:
-    MYSQL_HOST: $backend.host       
-    MYSQL_PORT: $backend.ports.port 
-    BACKEND_ENCODING: $backend.environment_variables.ENCODING_TYPE
-    SCHEMA: $backend.constants.SCHEMA_NAME
-  dependencies:
-    backend: mysql:1.0
-backend:
-breed:
-  name: mysql:1.0
-environment_variables:
-  ENCODING_TYPE: 'UTF8'
-constants:
-  SCHEMA_NAME: 'customers'    # NOT injected into the backend MySQL container
+clusters:
+  frontend:
+    breed:
+      name: frontend_app:1.0
+      environment_variables:
+        MYSQL_HOST: $backend.host       
+        MYSQL_PORT: $backend.ports.port 
+        BACKEND_ENCODING: $backend.environment_variables.ENCODING_TYPE
+        SCHEMA: $backend.constants.SCHEMA_NAME
+      dependencies:
+        backend: mysql:1.0
+  backend:
+    breed:
+      name: mysql:1.0
+      environment_variables:
+        ENCODING_TYPE: 'UTF8'
+      constants:
+        SCHEMA_NAME: 'customers'    # NOT injected into the backend MySQL container
 ```

@@ -34,8 +34,8 @@ The `response_time_sliding_window` SLA triggers events based on response times. 
 ---
 name: monarch
 
-endpoints:
-  monarch.port: 80/http
+gateways:
+  80: monarch/port
 
 clusters:
 
@@ -167,8 +167,8 @@ A more complex example is:
 ---
 name: monarch
 
-endpoints:
-  monarch1.port: 80/http
+gateways:
+  80: monarch1/port
 
 environment_variables:
   monarch2.password: secret
