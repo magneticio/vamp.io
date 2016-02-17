@@ -22,6 +22,6 @@ Lists metrics and/or events without any pagination or filtering.
     
 ## Server-sent events (SSE)
 
-    GET  /api/v1/events/sse
+    GET  /api/v1/events/stream
     
-    POST /api/v1/events/sse
+    POST /api/v1/events/stream
