@@ -158,7 +158,7 @@ This example gives you all the metrics we have for a specific service, in this c
 
 Events and metrics can be streamed back directly from Vamp. 
 
-`POST /api/v1/events/stream`
+`POST /api/v1/events/sse`
 
 In order to narrow down (filter) events, list of tags could be provided in the request body.
 
@@ -170,11 +170,11 @@ In order to narrow down (filter) events, list of tags could be provided in the r
 
 GET method can be also used (may be more convenient):
 
-`GET /api/v1/events/stream`
+`GET /api/v1/events/sse`
 
 Using tags:
 
-`GET /api/v1/events/stream?tags=archiving&tags=breeds`
+`GET /api/v1/events/sse?tags=archiving&tags=breeds`
 
 ## Archiving
 
