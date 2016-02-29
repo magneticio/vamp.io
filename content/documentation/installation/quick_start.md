@@ -39,7 +39,7 @@ docker run --net=host \
            -v /var/run/docker.sock:/var/run/docker.sock \
            -v $(which docker):/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
-           -e "DOCKER_HOST_IP=localhost" \
+           -e "DOCKER_HOST_IP=`hostname -I | awk '{print $1;}'`" \
            magneticio/vamp-docker:0.8.3-marathon
 ```
 {{% /copyable %}}
