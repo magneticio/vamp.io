@@ -21,14 +21,14 @@ This setup will run [Marathon](https://mesosphere.github.io/marathon/) and Vamp 
 
 Please install one of the following for your platform/architecture
 
-- Docker 1.9.x (Linux), OR
-- [Docker Toolbox 1.9.x] (https://github.com/docker/toolbox/releases) if on Mac OS X 10.8+ or Windows 7+
+- Docker 1.10.x (Linux), OR
+- [Docker Toolbox 1.10.x] (https://github.com/docker/toolbox/releases) if on Mac OS X 10.8+ or Windows 7+
 
-> **Note:** Running Vamp Quick Start on Docker 1.10.x requires a small change and we will provide the new Docker image soon.  
+> **Note:** Running Vamp Quick Start on earlier versions of Docker is also possible, even though it's recommended to use at least 1.9.x or above.
 
 ## Step 2: Run Vamp
 
-Start the `magneticio/vamp-docker:0.8.3-marathon` container, taking care to pass in the right parameters. 
+Start the `magneticio/vamp-docker:0.8.4-marathon` container, taking care to pass in the right parameters. 
 
 ### Linux
 
@@ -40,7 +40,7 @@ docker run --net=host \
            -v $(which docker):/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=`hostname -I | awk '{print $1;}'`" \
-           magneticio/vamp-docker:0.8.3-marathon
+           magneticio/vamp-docker:0.8.4-marathon
 ```
 {{% /copyable %}}
 
@@ -60,7 +60,7 @@ docker run --net=host \
            -v $(which docker):/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=`docker-machine ip default`" \
-           magneticio/vamp-docker:0.8.3-marathon
+           magneticio/vamp-docker:0.8.4-marathon
 ```
 {{% /copyable %}}
 
@@ -84,6 +84,7 @@ Exposed services:
 - Sense [http://localhost:5601/app/sense](http://localhost:5601/app/sense)
 - Mesos [http://localhost:5050](http://localhost:5050)
 - Marathon [http://localhost:9090](http://localhost:9090)
+- Chronos [http://localhost:4400](http://localhost:4400)
 - Vamp [http://localhost:8080](http://localhost:8080)
 
 If you run on Docker machine, use `docker-machine ip default` instead of `localhost`.

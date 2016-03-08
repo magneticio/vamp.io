@@ -23,7 +23,7 @@ There is **no direct** connection between Vamp and VGA instances - all communica
 When Vamp needs to update HAProxy configuration (e.g. new service has been deployed), Vamp generates the configuration and stores it in the KV store.
 VGA's read specific value and reload HAProxy instances.
 There should be one dedicated HAProxy for each VGA. 
-Currently Vamp doesn't support custom HAProxy configuration (any existing configuration will be overridden on change) - support for custom configuration is planned for the next 0.8.3 version.
+Vamp also supports custom HAProxy configuration - base configuration should be used as a template and HAProxy frontends and backends are appended by VGA.
 
 Since VGA (and HAPRoxy) is a single point of failure (proxy to all traffic), it is recommended for high availability to have more than one VGA instance.
 VGA instance can be added or removed any time - once VGA starts running it will pick up the HAProxy configuration from configured KV store and it will reload the HAProxy instance.
@@ -80,9 +80,9 @@ Prerequisites:
 
 Steps:
 
-- checkout the source from the official [repo](https://github.com/magneticio/vamp). `master` branch contains the latest released version (e.g. 0.8.3). Versions are tagged. 
+- checkout the source from the official [repo](https://github.com/magneticio/vamp). `master` branch contains the latest released version (e.g. 0.8.4). Versions are tagged. 
   Since `vamp-ui` is a separate project and added as a git submodule to Vamp (`ui` subdirectory) it is necessary to checkout the submodule as well:
-  `git clone --recursive git@github.com:magneticio/vamp.git` or specific branch: `git clone --recursive --branch 0.8.3 git@github.com:magneticio/vamp.git`
+  `git clone --recursive git@github.com:magneticio/vamp.git` or specific branch: `git clone --recursive --branch 0.8.4 git@github.com:magneticio/vamp.git`
 - run `./build-ui.sh && sbt test assembly`
 - after the build `./bootstrap/target/scala-2.11` directory will contain the binary with name matching `vamp-assembly-*.jar`
 
@@ -97,7 +97,7 @@ Prerequisites:
 
 Steps:
 
-- checkout the source from the official [repo](https://github.com/magneticio/vamp-gateway-agent). Current `master` branch is backward compatible with the latest 0.8.3 Vamp build.
+- checkout the source from the official [repo](https://github.com/magneticio/vamp-gateway-agent). Current `master` branch is backward compatible with the latest 0.8.4 Vamp build.
 - set Go variables depending on target environment
 - run:
 
@@ -164,7 +164,7 @@ java -Dvamp.persistence.key-value-store.zookeeper.servers="192.168.99.100:2181" 
 Alternatively using volumes:
  
 ```
-docker run --net=host -v PATH_TO_LOCAL_CONFIG_DIR:/usr/local/vamp/conf magneticio/vamp:0.8.3
+docker run --net=host -v PATH_TO_LOCAL_CONFIG_DIR:/usr/local/vamp/conf magneticio/vamp:0.8.4
 ```
 
 ### Vamp Gateway Agent (VGA)
