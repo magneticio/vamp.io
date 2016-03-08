@@ -142,6 +142,16 @@ operation {
     port-range = 40000-45000
     response-timeout = 5 # seconds, timeout for container operations
   }
+  
+  deployment {
+    scale {         # default scale, if not specified in blueprint
+      instances: 1
+      cpu: 1
+      memory: 1GB
+    }
+
+    arguments: []   # split by first '=', Dokcer command line arguments, e.g. "security-opt=seccomp:unconfined"
+  }
 }
 ```  
 
