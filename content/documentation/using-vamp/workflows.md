@@ -67,7 +67,6 @@ tags:
 - deployment
 - cluster
 
-
 # Either reference to the workflow (by name)
 workflow: logger
 # or embedded script if no workflow is referenced.
@@ -75,18 +74,6 @@ script: |
   log.debug("hi there!")
 
 ```
-
-<<?[String]("period") map { period ⇒
-
-        val repeatTimes = <<?[Int]("repeatCount") match {
-          case None        ⇒ RepeatForever
-          case Some(count) ⇒ RepeatTimesCount(count)
-        }
-
-        val startTime = <<?[Date]("startTime") map (time ⇒ OffsetDateTime.from(time.toInstant.atZone(ZoneId.of("UTC"))))
-
-        Try(TimeTrigger(period, repeatTimes, startTime)).getOrElse(throwException(IllegalPeriod(period)))
-
-      }
       
 Time trigger period is in [ISO8601](http://en.wikipedia.org/wiki/ISO_8601) repeating interval notation.
+For further reference check also [Vamp Workflow Agent](https://github.com/magneticio/vamp-workflow-agent) project.
