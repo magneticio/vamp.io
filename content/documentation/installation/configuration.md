@@ -150,7 +150,8 @@ operation {
       memory: 1GB
     }
 
-    arguments: []   # split by first '=', Dokcer command line arguments, e.g. "security-opt=seccomp:unconfined"
+    arguments: []   # split by first '=', 
+                    # Docker command line arguments, e.g. "security-opt=seccomp:unconfined"
   }
 }
 ```  
