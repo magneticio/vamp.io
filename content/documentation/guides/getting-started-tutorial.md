@@ -26,4 +26,6 @@ Please follow the tutorial in the following steps:
 
 [4. Merging and deleting services](/documentation/guides/getting-started-tutorial/4-merge-delete/)
 
+[5. SLA and escalations](/documentation/guides/getting-started-tutorial/5-sla-escalations/)
+
 
