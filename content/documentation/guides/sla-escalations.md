@@ -18,7 +18,7 @@ Here we are going to demonstrate Vamp built-in SLA monitoring and escalations. V
 ## Step 1: Vamp configuration
 
 We are going to update default quick-start configuration.
-Create a file `application.config` and store it somewhere:
+Create a file `application.conf` and store it somewhere:
 
 {{% copyable %}}
 ```yaml
@@ -38,14 +38,14 @@ vamp.operation {
 {{% /copyable %}}
 
 Now we need to use this new configuration. This is done by mounting file directory to `/usr/local/vamp/conf`.
-For instance on Mac OS X 10.8+ (replace `PATH_TO_FILE_DIR` to actual location of your new `application.config` file):
+For instance on Mac OS X 10.8+ just replace `ABS_PATH_TO_FILE_DIR` to actual location of your new `application.conf` file:
 
 ```
 docker run --net=host \
            -v /var/run/docker.sock:/var/run/docker.sock \
            -v $(which docker):/bin/docker \
-           -v "/sys/fs/cgroup:/sys/fs/cgroup" \
-           -v "PATH_TO_FILE_DIR:/usr/local/vamp/conf" \
+           -v /sys/fs/cgroup:/sys/fs/cgroup \
+           -v ABS_PATH_TO_FILE_DIR:/usr/local/vamp/conf \
            -e "DOCKER_HOST_IP=`docker-machine ip default`" \
            magneticio/vamp-docker:develop
 ```
