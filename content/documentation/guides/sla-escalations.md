@@ -38,7 +38,7 @@ vamp.operation {
 {{% /copyable %}}
 
 Now we need to use this new configuration. This is done by mounting file directory to `/usr/local/vamp/conf`.
-For instance on Mac OS X 10.8+ just replace `ABS_PATH_TO_FILE_DIR` to actual location of your new `application.conf` file:
+For instance on Mac OS X 10.8+ just replace `ABS_PATH_TO_FILE_DIR` with actual directory path of your new `application.conf` file (e.g. `/Users/vamp/sla`):
 
 ```
 docker run --net=host \
