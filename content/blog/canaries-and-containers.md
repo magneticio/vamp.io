@@ -1,11 +1,12 @@
----
-title: "Canaries & Containers - DCOS and Vamp"
-date: "2016-04-18"
-tags: ["articles", "DCOS","vamp","canary","autoscaling","mesos","marathon","docker"] 
-category: ["articles"] 
-author: "Olaf Molenveld" 
-type: blog 
-description: "Short description text."
----
++++
+title = "Canaries and Containers" 
+tags = ["blog", "vamp"]
+category = ["news"]
+date = "2016-04-18"
+type = "blog"
+author = "Olaf Molenveld"
+draft = true
+description = "Canaries and Containers."
++++
 
-placeholder for text
+Canaries and Containers.
