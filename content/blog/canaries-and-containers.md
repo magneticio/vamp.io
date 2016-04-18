@@ -13,7 +13,9 @@ description = "With the advent of container-technology innovative ways of deploy
 
 With the advent of container-technology (developed by Google in their now famous Borg project and made wildly popular by companies like Docker and Mesosphere) innovative ways of deploying, running and (auto)scaling software like microservices become possible for everybody. But “with great power also comes great responsibility” and thus these new possibilities also need a new breed of tools to really leverage the benefits of container technology in real world production environments and scenarios.
 
-DC/OS (dcos.io) and VAMP (vamp.io) are such tools that help you make it easy to get the best out of using containers when you move away from “hello world” test-setups and into real world environments.<!--more-->
+[DC/OS] (http://dcos.io) and [VAMP] (http://vamp.io) are such tools that help you make it easy to get the best out of using containers when you move away from “hello world” test-setups and into real world environments.
+
+<!--more-->
 
 To run containers in production environments, you will need a cluster manager. A single machine to run your containers on simply doesn’t give you the resilience you are aiming for. If a machine breaks down you want your containers to instantly, automatically and transparently be moved to other machines without your users experiencing any downtime. If you need more processing-power because of increased demand you want to be able to easily and quickly add machines to increase the pool of computing-resources that your containers can transparently make use of. This is where a container cluster-manager comes in.
 
@@ -131,10 +133,11 @@ VAMP does not only support horizontal scaling as described above, but also verti
 ## Getting started with VAMP and DC/OS
 What do I need to do if I want to start experimenting with all these possibilities that VAMP and DC/OS deliver as described in this blog post?
 
-<download instructions>
-<installation instructions>
-<validate everything is running correctly>
-<pointer to first tutorial(s)>
+1. First setup a cluster and download and install DC/OS as instructed: [https://docs.mesosphere.com/administration/installing/custom/automated-gui/] (https://docs.mesosphere.com/administration/installing/custom/automated-gui/)
+
+2. Now install VAMP as a DC/OS package: [http://vamp.io/documentation/installation/mesosphere_dcos/] (http://vamp.io/documentation/installation/mesosphere_dcos/)
+
+3. Now you can start with our Getting started with VAMP tutorials: [http://vamp.io/documentation/guides/] (http://vamp.io/documentation/guides/)
 
 ## TL/DR & Summing it up
 To make the best use of containers in production environments you need a container cluster manager to deliver resilience and performance. Mesos has an amazing heritage, and all this experience is now packaged into the DC/OS. This gives you an opensource container-cluster solution that is easy to install, battle-hardened, well documented, and solves real world problems by providing an extensive and growing set of solutions and frameworks that run on top of it. 
@@ -146,3 +149,6 @@ When deploying new versions of their software to production they expose these to
 These canary-test/release and autoscaling patterns require a complex and highly technical coordination and choreography between deploying, load-balancing, metric-aggregation and scaling. Until recently this was only possible to the few companies that could dedicated large amounts of research and development capabilities to this problem.  
 
 VAMP and DC/OS now make it easy to setup and leverage a container-cluster for production-grade environments and start working with containers, microservices and canary-test/release and autoscaling patterns without having to custom-build or understand the underlying technologies.
+
+Olaf Molenveld
+olaf@magnetic.io
