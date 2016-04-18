@@ -49,6 +49,8 @@ With VAMP on DC/OS this can done by simply sending these rules to VAMP (either u
   - user-agent == Chrome
 ---
 
+![](/img/weight_sliders.gif)
+
 Other use-cases are the validation and testing of different technological and architectural solutions (f.e. couchDB vs MongoDB as an embedded microservice datastore) in production and without impacting your visitors, or experimental finding of the optimal balance between allocated computing-resources (i.e. running costs) and the performance of your services.
 
 VAMP supports grouping of filters, Boolean expressions (AND/OR/NOT), and provides a built-in set of commonly used “routing short codes” like cookies, browser-types, headers and host-names in addition to supporting HAProxy ACL rules and configuration templates. VAMP also supports sticky sessions, URL path rewriting (very useful for API versioning, aggregation and routing) and makes sure that services are correctly “drained” when taken out of the routing. 
