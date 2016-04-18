@@ -50,7 +50,7 @@ With VAMP on DC/OS this can done by simply sending these rules to VAMP (either u
     weight: 5%
   filters:
   - user-agent == Chrome
----
+```  
 
 ![](/img/weight_sliders.gif)
 
@@ -76,7 +76,7 @@ name: my_VAMP_blueprint
           cpu: 2
           memory: 1024MB
           instances: 4
----
+```
 
 You can also use scale-sets and references to these, which is useful when working with several teams or environments:
 
@@ -91,7 +91,7 @@ name: medium_test
 cpu: 0.5
 memory: 1024MB
 instances: 1
----
+```
 
 and refer to them by using:
 
@@ -99,7 +99,7 @@ and refer to them by using:
 ---
 scale:
   reference: medium_test 
----
+```
 
 Even cooler and very handy is that you can use VAMP to define automated up and down scaling. It’s very easy. In the deployment definition you simply define a Service Level Agreement (SLA) and an escalation-type. VAMP provides common built-in patterns for this, and our upcoming workflow-engine enables you to easily create your own workflows with a few lines of javascript.  
 
@@ -129,7 +129,7 @@ To setup a basic auto-scaling workflow based on the aggregated response-time of 
           minimum: 1
           maximum: 3
           scale_by: 1
----
+```
 
 This will constantly measure the aggregated backend response time of the running cluster of containers, and when the response-time exceeds 1000 milliseconds for over 5 minutes the number of running instances will increase with one (1) until the maximum of three instances is reached. When the response-time becomes lower than 100 milliseconds for over 10 minutes VAMP will make sure the number of instances is scaled down one by one, until the defined minimum of one instance is reached again. VAMP will make sure that new instances are correctly load-balanced, and that removed instances will be correctly drained (of course taking into account sticky sessions and TTL settings).  
 
