@@ -42,6 +42,7 @@ Validating the performance of a new (e.g. responsive) website front-end by devel
 
 With VAMP on DC/OS this can done by simply sending these rules to VAMP (either using our Graphical UI, command-line interface or directly to the REST API):
 
+```yaml
 ---
  frontend_A: 
     weight: 95%
@@ -62,6 +63,7 @@ So now we know that VAMP makes it very easy to implement all kinds of useful can
 
 In VAMP you can set scaling parameters manually using our API, UI or CLI:
 
+```yaml
 ---
 name: my_VAMP_blueprint
   clusters:
@@ -78,6 +80,7 @@ name: my_VAMP_blueprint
 
 You can also use scale-sets and references to these, which is useful when working with several teams or environments:
 
+```yaml
 ---
 name: medium_prod
 cpu: 2
@@ -92,6 +95,7 @@ instances: 1
 
 and refer to them by using:
 
+```yaml
 ---
 scale:
   reference: medium_test 
@@ -101,6 +105,7 @@ Even cooler and very handy is that you can use VAMP to define automated up and d
 
 To setup a basic auto-scaling workflow based on the aggregated response-time of a cluster of containers we simply post the following to a VAMP cluster:
 
+```yaml
 ---
  sla:
       # Type of SLA.
