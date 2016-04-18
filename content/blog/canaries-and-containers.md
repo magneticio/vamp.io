@@ -45,13 +45,13 @@ With VAMP on DC/OS this can done by simply sending these rules to VAMP (either u
 ```yaml
 ---
  frontend_A: 
-    weight: 95%
-  frontend_B:
-    weight: 5%
-  filters:
-  - user-agent == Chrome
+   weight: 100%
+ frontend_B:
+   weight: 0%
+   filter_strength: 5%
+   filters:
+     - user-agent == Chrome
 ```  
-
 ![](/img/weight_sliders.gif)
 
 Other use-cases are the validation and testing of different technological and architectural solutions (f.e. couchDB vs MongoDB as an embedded microservice datastore) in production and without impacting your visitors, or experimental finding of the optimal balance between allocated computing-resources (i.e. running costs) and the performance of your services.
