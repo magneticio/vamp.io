@@ -9,7 +9,7 @@ draft = true
 description = "With the advent of container-technology innovative ways of deploying, running and (auto)scaling software like microservices become possible for everybody. But with great power also comes great responsibility and thus these new possibilities also need a new breed of tools to really leverage the benefits of container technology in real world production environments and scenarios."
 +++
 
-***What do canaries and containers have in common?*** 
+## ***What do canaries and containers have in common?*** 
 
 With the advent of container-technology (developed by Google in their now famous Borg project and made wildly popular by companies like Docker and Mesosphere) innovative ways of deploying, running and (auto)scaling software like microservices become possible for everybody. But “with great power also comes great responsibility” and thus these new possibilities also need a new breed of tools to really leverage the benefits of container technology in real world production environments and scenarios.
 
