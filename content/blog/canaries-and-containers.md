@@ -5,7 +5,6 @@ tags: ["articles", "DCOS","vamp","canary","autoscaling","mesos","marathon","dock
 category: ["articles"] 
 author: "Olaf Molenveld" 
 type: blog 
-draft: true
 description: "Short description text."
 ---
 
