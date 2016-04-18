@@ -3,6 +3,7 @@ title: 5. SLA and escalations
 type: documentation
 slug: /getting-started-tutorial/5-sla-escalations/
 weight: 60
+draft: true
 menu:
   main:
     parent: guides
@@ -47,7 +48,7 @@ docker run --net=host \
            -v /sys/fs/cgroup:/sys/fs/cgroup \
            -v ABS_PATH_TO_FILE_DIR:/usr/local/vamp/conf \
            -e "DOCKER_HOST_IP=`docker-machine ip default`" \
-           magneticio/vamp-docker:develop
+           magneticio/vamp-docker:0.8.5
 ```
 
 Once Vamp is running you could check if greeting message is "Hi SLA!".
