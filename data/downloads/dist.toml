@@ -1,4 +1,4 @@
-stableCore = "0.8.4"
+stableCore = "0.85"
 stableCodeName = "Northmann"
 stableReleaseDate = "10-02-2016"
 license = "Apache 2.0"

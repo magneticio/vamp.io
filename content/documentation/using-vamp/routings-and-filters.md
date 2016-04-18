@@ -8,10 +8,11 @@ menu:
 # Routing & Filters
 
 A routing defines a set of rules for routing traffic between different services within the same cluster.
-Vamp allows you to determine this in two ways:
+Vamp allows you to determine this in following ways:
 
 1. by setting a **weight** in the percentage of traffic.
 2. by setting a **filter** condition to target specific traffic.
+3. by setting a **filter strength** in the percentage of traffic matching the filter conditions.
 
 You can define routings inline in a blueprint or store them separately under a unique name and just use that name to reference them from a blueprint. 
 
@@ -19,7 +20,7 @@ Let's have a look at a simple, inline, routing. This would be used directly insi
 
 ```yaml
 ---           
-weight: 10%  # Amount of traffic for this service in percents.
+filter_strength: 10%  # Amount of traffic for this service in percents.
 filters:    
   - condition: User-Agent = IOS
 ```
@@ -28,7 +29,7 @@ The example above could be reused by just giving it a name and storing it by usi
 
 ```yaml
 name: cool_routing   # Custom name, can be referenced later on.
-weight: 10%
+weight: 10% # 10% all other traffic will go to this route as well
 filters: 
   - condition: user-agent = ios
   - really_cool_filter
@@ -36,40 +37,40 @@ filters:
 
 > **Notice:** we added a filter named `really_cool_filter` here. This filter is actually a reference to a separately stored filter definition we stored under a unique name on the `/filters` endpoint.
 
-## Defining weights and basic weight rules
-
-We can divide all routes in 2 groups:
-
-- routes with filters (conditions)
-- routes without filters or **other** routes
+## Defining weights, filter strength and basic weight rules
 
 For each route, weight can be set regardless of any filter.
-If **weight** is set on route with filters, then the weight represent the percentage of traffic that will 'follow' that route, and rest (100% - **weight**) will go to **other** (no filter) routes.
+The basic rule is the following:
+- find the first filter that matches request
+- if route exists, send the request to it depending on filter strength
+- if based on filter strength route **should not** follow that route then send request to one from all routes based on their weights.
 
-Route all `Firefox` users to route `service_B`:
-
-```yaml
-service_A: 
-  weight: 100%
-service_B:
-  weight: 100%
-  filters:
-  - user-agent == Firefox
-```
-
-Route half of `Firefox` users to route `service_B`, other half to `service_A`:
+Route all `Firefox` and only `Firefox` users to route `service_B`:
 
 ```yaml
 service_A: 
   weight: 100%
 service_B:
-  weight: 50%
+  weight: 0%
+  filter_strength: 100%
   filters:
   - user-agent == Firefox
 ```
 
+Route half of `Firefox` users to route `service_B`, other half to `service_A` (80%) or `service_B` (20%):
 
-When defining weights, please make sure the total weight of no filter routes always adds up to 100%. 
+```yaml
+service_A: 
+  weight: 80%
+service_B:
+  weight: 20%
+  filter_strength: 50%
+  filters:
+  - user-agent == Firefox
+```
+Non `Firefox` requests will be just sent to `service_A` (80%) or `service_B` (20%).
+
+When defining weights, please make sure the total weight of routes always adds up to 100%. 
 This means that when doing a straight three-way split you give one service 34% as `33+33+34=100`. 
 Vamp has to account for all traffic and 1% can be a lot in high volume environments.
 

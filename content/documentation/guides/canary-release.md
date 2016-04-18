@@ -96,7 +96,8 @@ Let's start simple: We will allow only Chrome users to access v1.1.0 of our appl
 ---
 routes:
   sava:1.1.0:
-    weight: 100%
+    weight: 0%
+    filter_strength: 100%
     filters:
     - condition: User-Agent = Chrome
 ```
@@ -104,7 +105,8 @@ routes:
 Notice two things:
 
 1. We inserted a list of conditions (with only one condition for now).
-2. We kept the weight to 100%. This is important because we want all Chrome users to access the new service - we could also say `weight: 50%` to give access just to half of them.
+2. We set the filter strength to 100% (it would be also by default set to 100%). This is important because we want all Chrome users to access the new service - we could also say `filter_strength: 50%` to give access just to half of them.
+3. We set te weight to 0% because we don't want any other users to access `sava:1.1.0`
 
 The first service where the filter matches the request will be used to handle the request. 
 More information about using filters, weights, sticky sessions etc. can be found [here](/documentation/using-vamp/routings-and-filters/).
@@ -124,7 +126,8 @@ clusters:
         sava:1.0.0:
           weight: 100%
         sava:1.1.0:
-          weight: 100%
+          weight: 0%
+          filter_strength: 100%
           filters:
           - condition: User-Agent = Chrome
     services: # services is now a list of breeds
@@ -198,7 +201,7 @@ request. If that doesn't result in a match, it would check whether the request h
 ---
 routes:
   sava:1.1.0:
-    weight: 100%
+    filter_strength: 100%
     filters:
     - condition: User-Agent = Chrome
     - condition: Has Header X-VAMP-TUTORIAL

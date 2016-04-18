@@ -28,7 +28,7 @@ Please install one of the following for your platform/architecture
 
 ## Step 2: Run Vamp
 
-Start the `magneticio/vamp-docker:0.8.4-marathon` container, taking care to pass in the right parameters. 
+Start the `magneticio/vamp-docker:0.85-marathon` container, taking care to pass in the right parameters. 
 
 ### Linux
 
@@ -40,7 +40,7 @@ docker run --net=host \
            -v $(which docker):/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=`hostname -I | awk '{print $1;}'`" \
-           magneticio/vamp-docker:0.8.4-marathon
+           magneticio/vamp-docker:0.85-marathon
 ```
 {{% /copyable %}}
 
@@ -60,7 +60,7 @@ docker run --net=host \
            -v $(which docker):/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=`docker-machine ip default`" \
-           magneticio/vamp-docker:0.8.4-marathon
+           magneticio/vamp-docker:0.85-marathon
 ```
 {{% /copyable %}}
 
