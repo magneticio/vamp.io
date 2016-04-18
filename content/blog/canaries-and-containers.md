@@ -23,7 +23,7 @@ An important feature of DC/OS is that it’s open-source. Opensource software th
 
 Because of the heritage of Mesos, DC/OS delivers a very compelling way to run containers in production. It’s opensource, easy to install, well documented, fully featured and solves real world problems with a growing ecosystem of integrated solutions and frameworks that are easy to install and experiment with.
 
-**Canary testing & releasing containers**
+## Canary testing & releasing containers
 One of the most popular and essential frameworks for Mesos and DC/OS is Marathon. Marathon is a container-orchestration framework and is designed to manage long-running jobs. Long-running jobs in containers are typically web-oriented API’s, applications and microservices.
 
 While DC/OS and Marathon make it easy to deploy, run and orchestrate these containers, you need an additional “experiment framework” to enable a process of continuously measuring, improving and scaling your container-packaged software without negatively affecting your visitors or having downtime. We call this “Continuous Improvement” and this is where VAMP comes in. 
@@ -53,7 +53,7 @@ Other use-cases are the validation and testing of different technological and ar
 
 VAMP supports grouping of filters, Boolean expressions (AND/OR/NOT), and provides a built-in set of commonly used “routing short codes” like cookies, browser-types, headers and host-names in addition to supporting HAProxy ACL rules and configuration templates. VAMP also supports sticky sessions, URL path rewriting (very useful for API versioning, aggregation and routing) and makes sure that services are correctly “drained” when taken out of the routing. 
 
-**Autoscaling**
+## Autoscaling
 So now we know that VAMP makes it very easy to implement all kinds of useful canary-testing & releasing patterns. But when you are increasing the percentage of visitors or are expanding your filter-criteria to allow more visitors, you also need to scale up the number of running instances or allocated computing resources. Of course with Marathon it’s easy to use the UI or API to set the scale of the running containers. But wouldn’t it be much more practical if you could simply change the scaling-settings at the same time when changing the routing and load-balancing rules? Or even cooler: change the scaling automatically, based on performance-criteria? We thought so too, so we made it easy to do with VAMP: 
 
 In VAMP you can set scaling parameters manually using our API, UI or CLI:
@@ -126,7 +126,7 @@ This will constantly measure the aggregated backend response time of the running
 
 VAMP does not only support horizontal scaling as described above, but also vertical scaling (changing memory or CPU scales) and the grouping of multiple escalations, both in sequence or in parallel.
 
-**Getting started with VAMP and DC/OS**
+## Getting started with VAMP and DC/OS
 What do I need to do if I want to start experimenting with all these possibilities that VAMP and DC/OS deliver as described in this blog post?
 
 <download instructions>
@@ -134,7 +134,7 @@ What do I need to do if I want to start experimenting with all these possibiliti
 <validate everything is running correctly>
 <pointer to first tutorial(s)>
 
-**TL/DR & Summing it up**
+## TL/DR & Summing it up
 To make the best use of containers in production environments you need a container cluster manager to deliver resilience and performance. Mesos has an amazing heritage, and all this experience is now packaged into the DC/OS. This gives you an opensource container-cluster solution that is easy to install, battle-hardened, well documented, and solves real world problems by providing an extensive and growing set of solutions and frameworks that run on top of it. 
 
 One of these solutions is VAMP (www.vamp.io) an opensource framework that makes canary-testing/releasing and autoscaling of containers and microservices easy and powerful. Companies like Spotify, Facebook and Booking.com have moved from linear continuous deployment pipelines to continuous improvement feedback-loops using canary-testing&releasing and autoscaling patterns. Canary-testing & releasing is an advanced version of blue-green deployments to avoid downtime when releasing new software. 
