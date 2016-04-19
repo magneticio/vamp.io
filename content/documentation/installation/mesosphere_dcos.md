@@ -9,7 +9,7 @@ menu:
 
 # Mesosphere DC/OS
 
-NB In this guide we will be using Mesosphere DC/OS as our container-manager, but this guide will also work with Mesos and Marathon.
+>**Note**: In this guide we will be using Mesosphere [DC/OS] (http://dcos.io) as our container-manager, but this guide will also work with Mesos and Marathon.
 
 Mesos, Marathon and ZooKeeper are all installed by DC/OS, additionally Vamp requires Elasticsearch and Logstash for its metrics collection and aggregation.
 One way to install Elasticsearch on DC/OS is by following the [Mesos Elasticsearch documentation](http://mesos-elasticsearch.readthedocs.org/en/latest/).
