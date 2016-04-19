@@ -5,7 +5,7 @@ category = ["news"]
 date = "2016-04-18"
 type = "blog"
 author = "Olaf Molenveld"
-draft = true
+draft = false
 description = "With the advent of container-technology innovative ways of deploying, running and (auto)scaling software like microservices become possible for everybody. But with great power also comes great responsibility and thus these new possibilities also need a new breed of tools to really leverage the benefits of container technology in real world production environments and scenarios."
 +++
 
