@@ -13,6 +13,8 @@ description = "With the advent of container-technology innovative ways of deploy
 
 With the advent of container-technology (developed by Google in their now famous Borg project and made wildly popular by companies like Docker and Mesosphere) innovative ways of deploying, running and (auto)scaling software like microservices become possible for everybody. But “with great power also comes great responsibility” and thus these new possibilities also need a new breed of tools to really leverage the benefits of container technology in real world production environments and scenarios.
 
+![](/img/weight_sliders.gif)
+
 [DC/OS] (http://dcos.io) and [VAMP] (http://vamp.io) are such tools that help you make it easy to get the best out of using containers when you move away from “hello world” test-setups and into real world environments.
 
 <!--more-->
@@ -52,7 +54,6 @@ With VAMP on DC/OS this can done by simply sending these rules to VAMP (either u
    filters:
      - user-agent == Chrome
 ```  
-![](/img/weight_sliders.gif)
 
 Other use-cases are the validation and testing of different technological and architectural solutions (f.e. couchDB vs MongoDB as an embedded microservice datastore) in production and without impacting your visitors, or experimental finding of the optimal balance between allocated computing-resources (i.e. running costs) and the performance of your services.
 
@@ -138,7 +139,7 @@ VAMP does not only support horizontal scaling as described above, but also verti
 ## Getting started with VAMP and DC/OS
 What do I need to do if I want to start experimenting with all these possibilities that VAMP and DC/OS deliver as described in this blog post?
 
-1. First setup a cluster and download and install DC/OS as instructed: [https://docs.mesosphere.com/administration/installing/custom/automated-gui/] (https://docs.mesosphere.com/administration/installing/custom/automated-gui/)
+1. First setup a cluster and download and install DC/OS as instructed: [https://dcos.io/docs/1.7/administration/installing/custom/gui/] (https://dcos.io/docs/1.7/administration/installing/custom/gui/)
 
 2. Now install VAMP as a DC/OS package: [http://vamp.io/documentation/installation/mesosphere_dcos/] (http://vamp.io/documentation/installation/mesosphere_dcos/)
 
