@@ -20,4 +20,6 @@ When submitting issues or reaching out for support, please take into account the
 
 * If you found a bug, please [report it by creating an issue](https://github.com/magneticio/vamp/issues) and provide as much info as you can, specifically what version of Vamp you are running and what container driver you are using.
 
+* For realtime chat we have a public [Gitter channel] (https://gitter.im/magneticio/vamp)
+
 For extended support, please contact us directly at [info@magnetic.io](mailto:info@magnetic.io)
