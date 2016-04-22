@@ -17,7 +17,7 @@ The easiest way to get started with Vamp is by spinning up one of the Docker ima
 in the [vamp-docker repo](https://github.com/magneticio/vamp-docker) and the [public Docker hub](https://hub.docker.com/r/magneticio/vamp-docker/).
 This setup will run [Marathon](https://mesosphere.github.io/marathon/) and Vamp inside a Docker container with Vamp's Marathon driver.
 
-If you need help you can also find us on [Gitter] (https://gitter.im/magneticio/vamp)
+> NB If you need help you can also find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
 ## Step 1: Get Docker
 
