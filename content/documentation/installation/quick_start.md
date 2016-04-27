@@ -59,7 +59,7 @@ A typical command on Mac OS X running Docker Toolbox would be:
 ```
 docker run --net=host \
            -v /var/run/docker.sock:/var/run/docker.sock \
-           -v $(which docker):/bin/docker \
+           -v `docker-machine ssh default "which docker"`:/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=`docker-machine ip default`" \
            magneticio/vamp-docker:0.8.5-marathon
