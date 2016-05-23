@@ -9,7 +9,7 @@ draft = false
 description = "Persbericht - Magnetic.io VAMP haalt €500k op in investeringsronde geleid door Volta Ventures om opensource canary test en release platform voor containers en microservices op te schalen. DevOps en business teams gebruiken VAMP om storingen te voorkomen, releases te versnellen, en performance van online software te optimaliseren."
 +++
 
-## Magnetic.io VAMP haalt €500k op in investeringsronde geleid door Volta Ventures om opensource canary test en release platform voor containers en microservices op te schalen
+### Magnetic.io VAMP haalt €500k op in investeringsronde geleid door Volta Ventures om opensource canary test en release platform voor containers en microservices op te schalen
 
 **DEVOPS EN BUSINESS TEAMS GEBRUIKEN VAMP OM STORINGEN TE VOORKOMEN, RELEASES TE VERSNELLEN, EN PERFORMANCE VAN ONLINE SOFTWARE TE OPTIMALISEREN.**
 
