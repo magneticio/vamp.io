@@ -35,14 +35,14 @@ Magnetic.io’s VAMP is an open source platform that provides features for (A/B)
 The company is headquartered in Amsterdam and was created by Olaf Molenveld.
 www.vamp.io
 
-Contact: Olaf Molenveld, CEO,
+Contact: Olaf Molenveld, CEO,  
 olaf@magnetic.io, tel +31 653 36 27 83
 
 **About Volta Ventures**  
 Volta Ventures Arkiv invests in young and ambitious internet and software companies in the Benelux. The fund has € 55 million under management and is supported by EIF and ARKimedes-Fund II.
 www.volta.ventures
 
-Contact: Frank Maene, managing partner, 
+Contact: Frank Maene, managing partner,  
 frank@voltaventures.eu, tel. +32 477 20 17 82
 
 **About Startupbootcamp**  
