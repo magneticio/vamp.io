@@ -18,6 +18,8 @@ VAMP adds powerful canary testing and releasing, and autoscaling features to (Do
 
 To solve scaling, performance and time-to-market challenges, digital-savvy organisations are quickly adopting strategies like continuous-delivery, containers and microservices. To unlock the full potential of these technologies to both IT and business, VAMP adds an "experiment system" with canary and autoscaling features that make it safe, fast and easy to release, test and scale new software versions in production. 
 
+<!--more-->
+
 Successful online companies like Netflix, AirBnB and Facebook have already demonstrated the power of canary testing and releasing. New versions of software are continually released in production to small percentages of visitors, performance is measured and improved, and the number of allowed visitors is gradually increased to achieve a risk-free and stable full release. 
 
 Until recently, it was complex and expensive to apply these canary test and release methods. With VAMP it becomes straightforward and cost effective to add these features to both new or existing architectures. VAMP can work standalone or integrate with container systems like Docker, Mesosphere DC/OS, Azure Container Service, Rancher and Kubernetes.
