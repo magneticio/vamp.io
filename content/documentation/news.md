@@ -1,7 +1,8 @@
 ---
 title: Persbericht - Magnetic.io VAMP haalt €500k op in investeringsronde geleid door Volta Ventures
 type: news
-url: /news/
+url: /documentation/news/
+aliases: /news/
 weight: 10
 tags = ["vamp", "news", "press"]
 category = ["news"]
