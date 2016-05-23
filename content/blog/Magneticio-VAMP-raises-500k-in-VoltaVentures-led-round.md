@@ -23,7 +23,7 @@ Successful online companies like Netflix, AirBnB and Facebook have already demon
 Until recently, it was complex and expensive to apply these canary test and release methods. With VAMP it becomes straightforward and cost effective to add these features to both new or existing architectures. VAMP can work standalone or integrate with container systems like Docker, Mesosphere DC/OS, Azure Container Service, Rancher and Kubernetes.
 
 Frank Maene, managing partner Volta Ventures: 
-*“We like the vision Olaf and his team have on the value add of VAMP.io in the burgeoning containers and microservices market. We believe VAMP will play an important role in enabling smarter ways of testing, delivering and scaling online software and containers, and we are excited to become a partner of the VAMP team and help to make this happen.”* 
+*“We like the vision Olaf and his team have on the value add of VAMP in the burgeoning containers and microservices market. We believe VAMP will play an important role in enabling smarter ways of testing, delivering and scaling online software and containers, and we are excited to become a partner of the VAMP team and help to make this happen.”* 
 
 Olaf Molenveld, Magnetic.io CEO and co-founder: 
 *“We are very excited to have Volta Ventures, Henri de Jong and SBC on board in our mission to help organisations test, deliver and scale software in a smarter and more effective way. The experience and track-record available in this extended team is huge. It will help us to accelerate the product, the company and the opensource community adoption and we are very much looking forward to work together!”*       
