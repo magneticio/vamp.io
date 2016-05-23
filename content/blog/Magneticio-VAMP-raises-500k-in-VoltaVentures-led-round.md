@@ -9,9 +9,9 @@ draft = true
 description = "Press Release - Magnetic.io VAMP raises €500K in round led by Volta Ventures to deliver opensource canary testing and releasing solution for container and microservice systems. DevOps and business teams use VAMP to reduce downtime, improve time-to-market and increase performance of online software."
 +++
 
-# Magnetic.io VAMP raises €500K in round led by Volta Ventures to deliver opensource canary testing and releasing solution for container and microservice systems 
+## Magnetic.io VAMP raises €500K in round led by Volta Ventures to deliver opensource canary testing and releasing solution for container and microservice systems 
 
-##DevOps and business teams use VAMP to reduce downtime, improve time-to-market and increase performance of online software.
+**DevOps and business teams use VAMP to reduce downtime, improve time-to-market and increase performance of online software.**
 
 **AMSTERDAM, May 11, 2016** — Magnetic.io, an Amsterdam-based hi-tech startup that develops opensource solution VAMP (http://vamp.io) today announced that it has raised € 500,000 in a round led by Volta Ventures. 
 VAMP adds powerful canary testing and releasing, and autoscaling features to (Docker) container and microservice based systems. These features enable DevOps teams to deliver higher quality software in a shorter time. The investment will fuel the development of VAMP’s enterprise-grade features, grow the opensource community and partner network, and boost international expansion. Existing investor Startupbootcamp (SBC) and successful entrepreneur Henri de Jong (Mijndomein) will also participate in the round. Mr. Maene, Volta Ventures’ managing partner, will join the board of directors. 
