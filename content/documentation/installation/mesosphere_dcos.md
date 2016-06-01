@@ -7,7 +7,7 @@ menu:
       parent: installation
 ---
 
-#DC/OS
+# DC/OS
 
 >**Note**: In this guide we will be using [DC/OS] (http://dcos.io) as our container-manager, but this guide will also work with Mesos and Marathon.
 
