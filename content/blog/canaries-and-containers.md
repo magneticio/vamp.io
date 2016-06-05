@@ -141,7 +141,7 @@ What do I need to do if I want to start experimenting with all these possibiliti
 
 1. First setup a cluster and download and install DC/OS as instructed: [https://dcos.io/docs/1.7/administration/installing/custom/gui/] (https://dcos.io/docs/1.7/administration/installing/custom/gui/)
 
-2. Now install VAMP as a DC/OS package: [http://vamp.io/documentation/installation/mesosphere_dcos/] (http://vamp.io/documentation/installation/mesosphere_dcos/)
+2. Now install VAMP as a DC/OS package: [http://vamp.io/documentation/installation/dcos/] (http://vamp.io/documentation/installation/dcos/)
 
 3. Now you can start with our Getting started with VAMP tutorials: [http://vamp.io/documentation/guides/] (http://vamp.io/documentation/guides/)
 

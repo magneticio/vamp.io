@@ -2,13 +2,9 @@
 title: Quick start Marathon
 type: documentation
 weight: 40
-aliases:
-  - /quick-start/
-  - /getting-started/
 menu:
     main:
       parent: installation
-    
 ---
 
 # Quick start with Marathon

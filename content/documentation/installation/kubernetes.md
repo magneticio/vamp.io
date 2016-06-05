@@ -1,5 +1,5 @@
 ---
-title: Kubernetes
+title: Quick start Kubernetes
 type: documentation
 weight: 90
 menu:

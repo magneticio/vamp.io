@@ -1,5 +1,5 @@
 ---
-title: Mesosphere DC/OS
+title: Quick start DC/OS
 type: documentation
 weight: 80
 menu:
@@ -7,9 +7,9 @@ menu:
       parent: installation
 ---
 
-# Mesosphere DC/OS
+# DC/OS
 
->**Note**: In this guide we will be using Mesosphere [DC/OS] (http://dcos.io) as our container-manager, but this guide will also work with Mesos and Marathon.
+>**Note**: In this guide we will be using [DC/OS] (http://dcos.io) as our container-manager, but this guide will also work with Mesos and Marathon.
 
 Mesos, Marathon and ZooKeeper are all installed by DC/OS, additionally Vamp requires Elasticsearch and Logstash for its metrics collection and aggregation.
 One way to install Elasticsearch on DC/OS is by following the [Mesos Elasticsearch documentation](http://mesos-elasticsearch.readthedocs.org/en/latest/).
@@ -108,3 +108,4 @@ What we did with the (`VAMP_LIFTER_VAMP_GATEWAY_AGENT_ENABLED`) setting is that 
 Note that Vamp will expose its UI on port 9090 (`network: HOST`), you may set a different port (`VAMP_REST_API_PORT`) if you want.
 
 Happy VAMP’ing! Make sure to run through our [QuickStart tutorials] (http://vamp.io/documentation/guides/)
+
