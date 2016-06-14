@@ -25,7 +25,7 @@ Lists all blueprints without any pagination or filtering.
 
 Lists all details for one specific blueprint.
 
-    GET /api/v1/blueprint/:name
+    GET /api/v1/blueprints/{blueprint_name}
 
 | parameter         | options           | default          | description       |
 | ----------------- |:-----------------:|:----------------:| -----------------:|
@@ -48,7 +48,7 @@ Accepts JSON or YAML formatted blueprints. Set the `Content-Type` request header
 
 Updates the content of a specific blueprint.
 
-    PUT /api/v1/blueprints/:name
+    PUT /api/v1/blueprints/{blueprint_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -58,7 +58,7 @@ Updates the content of a specific blueprint.
 
 Deletes a blueprint.        
 
-    DELETE /api/v1/blueprints/:name
+    DELETE /api/v1/blueprints/{blueprint_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|

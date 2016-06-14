@@ -25,7 +25,7 @@ Lists all breeds without any pagination or filtering.
 
 Lists all details for one specific breed.
 
-    GET /api/v1/breeds/:name
+    GET /api/v1/breeds/{breed_name}
 
 | parameter         | options           | default          | description       |
 | ----------------- |:-----------------:|:----------------:| -----------------:|
@@ -48,7 +48,7 @@ Accepts JSON or YAML formatted breeds. Set the `Content-Type` request header to 
 
 Updates the content of a specific breed.
 
-    PUT /api/v1/breeds/:name
+    PUT /api/v1/breeds/{breed_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -58,7 +58,7 @@ Updates the content of a specific breed.
 
 Deletes a breed.        
 
-    DELETE /api/v1/breeds/:name
+    DELETE /api/v1/breeds/{breed_name}
     
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|

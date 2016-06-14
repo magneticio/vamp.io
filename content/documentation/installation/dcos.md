@@ -107,5 +107,4 @@ What we did with the (`VAMP_LIFTER_VAMP_GATEWAY_AGENT_ENABLED`) setting is that 
 
 Note that Vamp will expose its UI on port 9090 (`network: HOST`), you may set a different port (`VAMP_REST_API_PORT`) if you want.
 
-Happy VAMP’ing! Make sure to run through our [QuickStart tutorials] (http://vamp.io/documentation/guides/)
-
+Happy VAMP’ing! Make sure to run through our [QuickStart tutorials](http://vamp.io/documentation/guides/).

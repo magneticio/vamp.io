@@ -12,7 +12,7 @@ menu:
 
 ## Get a single gateway
 
-    GET /api/v1/gateways/:name
+    GET /api/v1/gateways/{gateway_name}
 
 ## Create gateway
 
@@ -26,7 +26,7 @@ Accepts JSON or YAML formatted gateways. Set the `Content-Type` request header t
 
 ## Update a gateway
 
-    PUT /api/v1/gateways/:name
+    PUT /api/v1/gateways/{gateway_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -34,7 +34,7 @@ Accepts JSON or YAML formatted gateways. Set the `Content-Type` request header t
 
 ## Delete a gateway     
 
-    DELETE /api/v1/gateways/:name
+    DELETE /api/v1/gateways/{gateway_name}
     
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|

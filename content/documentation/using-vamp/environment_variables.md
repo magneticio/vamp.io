@@ -1,6 +1,6 @@
 ---
 title: Environment variables 
-weight: 41
+weight: 33
 menu:
   main:
     parent: using-vamp

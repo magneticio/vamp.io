@@ -118,3 +118,6 @@ routes:
 
 This is similar to putting both `sava:1.0.0` and `sava:1.1.0` in the same cluster but that is just because this is a basic example.
 It is easy to imagine having an older legacy application and the new one and doing full canary release (or A/B testing) in seamless way by using gateways like this.
+
+Further reading [Routing & filters](/documentation/using-vamp/routings-and-filters/).
+

@@ -57,7 +57,7 @@ A common scenario is to introduce a new version of the service to an existing cl
 
 Merging of new services is performed as a deployment update. You can merge in many ways:
 
-- Send a `PUT` request to the `/deployments/:id` endpoint.
+- Send a `PUT` request to the `/deployments/{deployment_name}` endpoint.
 - Use the UI to update a deployment using the "Edit deployment" button. 
 - Use the CLI with a combination of the `vamp merge` and `vamp deploy` commands.
 

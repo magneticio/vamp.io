@@ -28,7 +28,7 @@ Please check the notes on using [pagination](/documentation/api-reference/#pagin
 
 Lists all details for one specific deployment.
 
-    GET /api/v1/deployments/:id
+    GET /api/v1/deployments/{deployment_name}
 
 | parameter         | options           | default          | description      |
 | ----------------- |:-----------------:|:----------------:| ----------------:|
@@ -44,7 +44,7 @@ Creates a new deployment
 
 Create a named (non UUID) deployment
 
-	PUT /api/v1/deployments/:name
+	PUT /api/v1/deployments/{deployment_name}
 	
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -54,7 +54,7 @@ Create a named (non UUID) deployment
 
 Updates the settings of a specific deployment.
 
-    PUT /api/v1/deployments/:id
+    PUT /api/v1/deployments/{deployment_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -64,7 +64,7 @@ Updates the settings of a specific deployment.
 
 Deletes all or parts of a deployment.        
 
-    DELETE /api/v1/deployments/:id
+    DELETE /api/v1/deployments/{deployment_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -72,7 +72,7 @@ Deletes all or parts of a deployment.
 
 In contrast to most API's, doing a `DELETE` in Vamp takes a request body that designates what part of the deployment should be deleted. This allows you to remove specific services, clusters of the whole deployment.
 
-> Note: A `DELETE` on a deployment with an empty request body will not delete anything.
+> Note: `DELETE` on deployment with an empty request body will not delete anything.
 
 The most common way to specify what you want to delete is by exporting the target deployment as a blueprint using the `?as_blueprint=true` parameter. You then either programmatically or by hand edit the resulting blueprint and specify which of the services you want to delete. You can also use the blueprint as a whole in the `DELETE` request. The result is the removal of the full deployment. 
 
@@ -155,19 +155,19 @@ clusters:
 
 Lists all details for a specific SLA that's part of a specific cluster.
 
-	GET /api/v1/deployments/:id/clusters/:name/sla
+	GET /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/sla
 	
 ## Set a deployment SLA
 
 Creates or updates a specific deployment SLA.
 
-	POST|PUT /api/v1/deployments/:id/clusters/:name/sla
+	POST|PUT /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/sla
 	
 ## Delete a deployment SLA
 
 Deletes as specific deployment SLA.
 
-	DELETE /api/v1/deployments/:id/clusters/:name/sla
+	DELETE /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/sla
 
 
 # Deployment scales
@@ -178,13 +178,13 @@ Deployment scales are singular resources: you only have one scale per service. D
 
 Lists all details for a specific deployment scale that's part of a service inside a cluster.
 
-	GET /api/v1/deployments/:id/clusters/:name/services/:name/scale
+	GET /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/scale
 	
 ## Set a deployment scale	
 
 Updates a deployment scale.
 
-	POST|PUT /api/v1/deployments/:id/clusters/:name/services/:name/scale
+	POST|PUT /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/scale
 
 # Deployment routings
 
@@ -194,10 +194,10 @@ Deployment routing are singular resources: you only have one routing per service
 
 Lists all details for a specific deployment routing that's part of a service inside a cluster.
 
-	GET /api/v1/deployments/:id/clusters/:name/services/:name/routing
+	GET /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/routing
 	
 ## Set a deployment routing	
 
 Updates a deployment routing.
 
-	POST|PUT /api/v1/deployments/:id/clusters/:name/services/:name/routing
+	POST|PUT /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/routing

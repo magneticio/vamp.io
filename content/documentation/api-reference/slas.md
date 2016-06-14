@@ -20,7 +20,7 @@ Lists all slas without any pagination or filtering.
 
 Lists all details for one specific breed.
 
-    GET /api/v1/slas/:name
+    GET /api/v1/slas/{sla_name}
 
 ## Create an SLA
 
@@ -36,7 +36,7 @@ Creates a new SLA
 
 Updates the content of a specific SLA.
 
-    PUT /api/v1/slas/:name
+    PUT /api/v1/slas/{sla_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -46,7 +46,7 @@ Updates the content of a specific SLA.
 
 Deletes an SLA.        
 
-    DELETE /api/v1/slas/:name
+    DELETE /api/v1/slas/{sla_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|

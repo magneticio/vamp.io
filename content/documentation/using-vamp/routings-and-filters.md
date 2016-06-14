@@ -158,3 +158,27 @@ Path rewrite is defined in format: `path: NEW_PATH if CONDITION`:
 
 - `NEW_PATH` new path to be used; HAProxy variables are supported, e.g. `%[path]`
 - `CONDITION` condition using HAProxy directives, e.g. matching path, method, headers etc.
+
+## Vamp managed & external routes
+
+Vamp managed routes are in the format:
+
+- `gateway` - pointing to another gateway, e.g. it is possible to chain gateways
+- `deployment/cluster` - pointing to deployment cluster, i.e. services are not 'visible'
+- `deployment/cluster/service` - pointing to specific service within deployment cluster
+
+All examples above cover only Vamp managed routes.
+It is also possible to route traffic to specific IP or hostname and port.
+In that case IP or hostname and port need to be specified between brackets, e.g. `[hostname:port]` (and double quotes due to Yaml syntax).
+
+```yaml
+name: mesos
+port: 8080/http
+sticky: route
+
+routes:
+  "[192.168.99.100:5050]":
+    weight: 50%
+  "[localhost:5050]":
+    weight: 50%
+```
