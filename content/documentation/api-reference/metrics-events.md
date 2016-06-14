@@ -16,6 +16,9 @@ Lists metrics and/or events without any pagination or filtering.
 
     POST /api/v1/events/get 
 
+> Note: more information how to use this endpoint with `POST` request can be found [here](http://vamp.io/documentation/using-vamp/metrics-and-events/#query-metrics-events-using-tags).
+
+
 ## Create metrics & events
 
     POST /api/v1/events    
