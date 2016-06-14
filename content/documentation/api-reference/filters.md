@@ -20,7 +20,7 @@ Lists all filters without any pagination or filtering.
 
 Lists all details for one specific filter.
 
-    GET /api/v1/filters/:name
+    GET /api/v1/filters/{filter_name}
 
 ## Create filter
 
@@ -38,7 +38,7 @@ Accepts JSON or YAML formatted filters. Set the `Content-Type` request header to
 
 Updates the content of a specific filter.
 
-    PUT /api/v1/filters/:name
+    PUT /api/v1/filters/{filter_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -48,7 +48,7 @@ Updates the content of a specific filter.
 
 Deletes a filter.        
 
-    DELETE /api/v1/filters/:name
+    DELETE /api/v1/filters/{filter_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|

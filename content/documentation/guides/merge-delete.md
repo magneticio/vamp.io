@@ -76,7 +76,7 @@ clusters:
 ```
 {{% /copyable %}}
 
-Updating our deployment using the UI or a `PUT` to the `/api/v1/deployments/:deployment_id` should yield a deployment with the following properties (we left some irrelevant
+Updating our deployment using the UI or a `PUT` to the `/api/v1/deployments/{deployment_name}` should yield a deployment with the following properties (we left some irrelevant
 parts out):
 
 1. Two `services` in the sava `cluster`: the old one at 100% and the new one at 0% weight.

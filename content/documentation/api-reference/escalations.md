@@ -20,7 +20,7 @@ Lists all escalations without any pagination or filtering.
 
 Lists all details for one specific escalation.
 
-    GET /api/v1/escalations/:name
+    GET /api/v1/escalations/{escalation_name}
 
 ## Create escalation
 
@@ -38,7 +38,7 @@ Accepts JSON or YAML formatted escalations. Set the `Content-Type` request heade
 
 Updates the content of a specific escalation.
 
-    PUT /api/v1/escalations/:name
+    PUT /api/v1/escalations/{escalation_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -48,7 +48,7 @@ Updates the content of a specific escalation.
 
 Deletes an escalation.        
 
-    DELETE /api/v1/escalations/:name
+    DELETE /api/v1/escalations/{escalation_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|

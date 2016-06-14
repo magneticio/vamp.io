@@ -20,7 +20,7 @@ Lists all scales without any pagination or filtering.
 
 Lists all details for one specific scale.
 
-    GET /api/v1/scales/:name
+    GET /api/v1/scales/{scale_name}
 
 ## Create scale
 
@@ -38,7 +38,7 @@ Accepts JSON or YAML formatted scales. Set the `Content-Type` request header to 
 
 Updates the content of a specific scale.
 
-    PUT /api/v1/scales/:name
+    PUT /api/v1/scales/{scale_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -48,7 +48,7 @@ Updates the content of a specific scale.
 
 Deletes a scale.        
 
-    DELETE /api/v1/scales/:name
+    DELETE /api/v1/scales/{scale_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|

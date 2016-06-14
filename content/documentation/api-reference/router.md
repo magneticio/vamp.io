@@ -14,27 +14,27 @@ For more information on how to use the Vamp Router REST API check [the Github re
 ```
 - get all             : GET    /v1/routes
 - create new          : POST   /v1/routes
-- get by name         : GET    /v1/routes/{name}
-- update by name      : PUT    /v1/routes/{name}
-- delete by name      : DELETE /v1/routes/{name}
+- get by name         : GET    /v1/routes/{route_name}
+- update by name      : PUT    /v1/routes/{route_name}
+- delete by name      : DELETE /v1/routes/{route_name}
 ```
 
 **Services**
 ```
-- get all             : GET    /v1/routes/{name}/services
-- create new          : POST   /v1/routes/{name}/services
-- get by name         : GET    /v1/routes/{name}/services/{name}
-- update by name      : PUT    /v1/routes/{name}/services/{name}
-- delete by name      : DELETE /v1/routes/{name}/services/{name}
+- get all             : GET    /v1/routes/{route_name}/services
+- create new          : POST   /v1/routes/{route_name}/services
+- get by name         : GET    /v1/routes/{route_name}/services/{service_name}
+- update by name      : PUT    /v1/routes/{route_name}/services/{service_name}
+- delete by name      : DELETE /v1/routes/{route_name}/services/{service_name}
 ```
 
 **Servers**
 ```
-- get all             : GET    /v1/routes/{name}/services/{name}/servers
-- create new          : POST   /v1/routes/{name}/services/{name}/servers
-- get by name         : GET    /v1/routes/{name}/services/{name}/servers/{name}
-- update by name      : PUT    /v1/routes/{name}/services/{name}/servers/{name}
-- delete by name      : DELETE /v1/routes/{name}/services/{name}/servers/{name}
+- get all             : GET    /v1/routes/{route_name}/services/{service_name}/servers
+- create new          : POST   /v1/routes/{route_name}/services/{service_name}/servers
+- get by name         : GET    /v1/routes/{route_name}/services/{service_name}/servers/{server_name}
+- update by name      : PUT    /v1/routes/{route_name}/services/{service_name}/servers/{server_name}
+- delete by name      : DELETE /v1/routes/{route_name}/services/{service_name}/servers/{server_name}
 ```
 
 **Full configuration**
