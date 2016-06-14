@@ -38,7 +38,7 @@ In order to setup correctly Vamp with single/multiple VGA instances check out al
 HAProxy (VGA) generates logs and make them accessible via open socket - check the [configuration](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.cfg) of `log`.
 VGA is listening on log socket and any new messages is forwarded to Logstash instance.
 Log format is configurable in Vamp configuration [vamp.gateway-driver.haproxy](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf).
-Note that Logstash is listening on UDP port, but in principle any other lister can receive logs forwarded by VGA.
+Note that Logstash is listening on UDP port, but in principle any other listener can receive logs forwarded by VGA.
 Different VGA's can use different Logstash instances.
 Example of different Logstash/Elasticsearch setups can be found [here](https://www.elastic.co/guide/en/logstash/current/deploying-and-scaling.html).
 
@@ -46,7 +46,7 @@ In general for each HTTP/TCP request to HAProxy, several log messages are create
 Using one of the simplest Logstash configuration should be sufficient for dozens of request per second or even more.
 This also depends if ELK is used for custom application/service logs etc.
 
-For default `vamp.gateway-driver.haproxy` log format, Logstash configuration can be found on VGA project [page](https://github.com/magneticio/vamp-gateway-agent).
+Lagstash configuration used together with default `vamp.gateway-driver.haproxy` log format can be found [here](https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf).
 It will transform logs to plain JSON which can be parsed easily later on (e.g. for Kibana visualization).
 Logstash command line parameter example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/supervisord.conf) (Logstash section).
 
