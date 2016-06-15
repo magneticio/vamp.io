@@ -5,6 +5,9 @@ weight: 40
 menu:
     main:
       parent: installation
+aliases:
+  - /quick-start/
+  - /getting-started/
 ---
 
 # Quick start with Marathon
