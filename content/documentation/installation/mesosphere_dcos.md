@@ -63,7 +63,7 @@ Create `vamp.json` file with content:
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "magneticio/vamp:develop",
+      "image": "magneticio/vamp:0.8.5",
       "network": "HOST",
       "forcePullImage": true
     }
