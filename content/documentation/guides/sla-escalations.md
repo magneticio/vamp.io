@@ -48,7 +48,7 @@ docker run --net=host \
            -v /sys/fs/cgroup:/sys/fs/cgroup \
            -v ABS_PATH_TO_FILE_DIR:/usr/local/vamp/conf \
            -e "DOCKER_HOST_IP=`docker-machine ip default`" \
-           magneticio/vamp-docker:0.8.5
+           magneticio/vamp-docker:0.9.0
 ```
 
 Once Vamp is running you could check if greeting message is "Hi SLA!".

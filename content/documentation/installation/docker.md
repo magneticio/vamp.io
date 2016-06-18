@@ -24,7 +24,7 @@ Please install one of the following for your platform/architecture
 
 ## Step 2: Run Vamp
 
-Start the `magneticio/vamp-docker:0.8.5` container, taking care to pass in the right parameters. 
+Start the `magneticio/vamp-docker:0.9.0` container, taking care to pass in the right parameters.
 
 ### Linux
 
@@ -34,7 +34,7 @@ A typical command would be:
 docker run --net=host \
            -v /var/run/docker.sock:/var/run/docker.sock \
            -v $(which docker):/bin/docker \
-           magneticio/vamp-docker:0.8.5
+           magneticio/vamp-docker:0.9.0
 ```
 {{% /copyable %}}
 
@@ -52,7 +52,7 @@ docker run --net=host \
            -e "DOCKER_TLS_VERIFY=1" \
            -e "DOCKER_HOST=`docker-machine url default`" \
            -e "DOCKER_CERT_PATH=/certs" \
-           magneticio/vamp-docker:0.8.5
+           magneticio/vamp-docker:0.9.0
 ```
 {{% /copyable %}}
 
