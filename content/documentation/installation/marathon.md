@@ -10,7 +10,7 @@ aliases:
   - /getting-started/
 ---
 
-# Quick start with Marathon
+# Vamp with Marathon
 
 The easiest way to get started with Vamp is by spinning up one of the Docker images stored
 in the [vamp-docker repo](https://github.com/magneticio/vamp-docker) and the [public Docker hub](https://hub.docker.com/r/magneticio/vamp-docker/).

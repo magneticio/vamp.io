@@ -7,9 +7,9 @@ menu:
       parent: installation
 ---
 
-# Kubernetes on Google Container Engine
+# Vamp with Kubernetes on Google Container Engine
 
->**Note**: Rancher support is still in Alpha.
+>**Note**: Kubernetes support is still in Alpha.
 
 ## Prerequisites
 
@@ -31,12 +31,13 @@ Deploy [Elasticsearch and Logstash](https://github.com/magneticio/elastic) with 
 {{% copyable %}}
 ```
 kubectl run elastic --image=magneticio/elastic:2.2
-kubectl expose deployment elastic --protocol=UDP --port=10001 --name=logstash
 kubectl expose deployment elastic --protocol=TCP --port=9200 --name=elasticsearch
+kubectl expose deployment elastic --protocol=UDP --port=10001 --name=logstash
+kubectl expose deployment elastic --protocol=TCP --port=5601 --name=kibana
 ```
 {{% /copyable %}}
 
->**Note**: This is not a production grade setup. You would need to take care also about persistence and running multiple replicas of each application.
+>**Note**: This is not a production grade setup. You would need to take care also about persistence and running multiple replicas of each pods.
 
 ## Running Vamp
 

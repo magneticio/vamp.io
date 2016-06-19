@@ -7,7 +7,7 @@ menu:
       parent: installation
 ---
 
-# Quick start with Rancher
+# Vamp with Rancher
 
 >**Note**: Rancher support is still in Alpha.
 

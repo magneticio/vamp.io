@@ -7,7 +7,7 @@ menu:
       parent: installation
 ---
 
-# Quick start with Docker
+# Vamp with Docker
 
 The easiest way to get started with Vamp is by spinning up one of the Docker images from [vamp-docker repo](https://github.com/magneticio/vamp-docker) and the [public Docker hub](https://hub.docker.com/r/magneticio/vamp-docker/).
 This setup will run Vamp inside a Docker container with Vamp's Docker driver.
