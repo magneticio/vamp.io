@@ -9,10 +9,12 @@ menu:
 
 # Kubernetes on Google Container Engine
 
+>**Note**: Rancher support is still in Alpha.
+
 ## Prerequisites
 
 - Google Container Engine cluster
-- Key-value store like ZooKeeper, Consule or etcd
+- Key-value store like ZooKeeper, Consul or etcd
 - Elasticsearch and Logstash
 
 It is advisable to try out the official [Quickstart for Google Container Engine](https://cloud.google.com/container-engine/docs/quickstart) tutorial first.
