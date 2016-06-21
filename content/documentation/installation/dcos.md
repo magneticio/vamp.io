@@ -54,6 +54,9 @@ curl -k -XPOST -d @marathon.json -H "Content-Type: application/json" http://MARA
 ```
 
 Ok, now we are going to deploy Vamp.
+
+>**Note**: Vamp is available as DC/OS Universe package and you can proceed with Vamp deployment using also DC/OS web UI.
+
 Create `vamp.json` file with content:
 {{% copyable %}}
 ```json
