@@ -13,7 +13,7 @@ menu:
 
 Mesos, Marathon and ZooKeeper are all installed by DC/OS, additionally Vamp requires Elasticsearch and Logstash for its metrics collection and aggregation.
 One way to install Elasticsearch on DC/OS is by following the [Mesos Elasticsearch documentation](http://mesos-elasticsearch.readthedocs.org/en/latest/).
-But we also need Logstash (which is not available as a package), so we created a compatible Docker [images](https://hub.docker.com/r/magneticio/elastic/) that can be used with [How to install on Marathon](http://mesos-elasticsearch.readthedocs.org/en/latest/#how-to-install-on-marathon). 
+But we also need Logstash (which is not available as a package) and give it a [specific configuration] (https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf), so we created a compatible Docker [images](https://hub.docker.com/r/magneticio/elastic/) that can be used with [How to install on Marathon](http://mesos-elasticsearch.readthedocs.org/en/latest/#how-to-install-on-marathon). 
 Our advice is to use our custom Elasticsearch+Logstash Docker image. Let’s go!
 
 First, let's create `marathon.json` file with the following content:
@@ -29,9 +29,10 @@ First, let's create `marathon.json` file with the following content:
     }
   },
   "args": [
-    "--zookeeperMesosUrl", "zk://ZOOKEEPER_IP_ADDRESS:2181/mesos",
+    "--zookeeperMesosUrl", "zk://zk-1.zk:2181/mesos",
     "--elasticsearchDockerImage", "magneticio/elastic:2.2",
-    "--elasticsearchRam", "1024"
+    "--elasticsearchRam", "1024",
+    "--elasticsearchPorts", "9200,9300"
   ],
   "cpus": 0.2,
   "mem": 512.0,
@@ -43,7 +44,7 @@ First, let's create `marathon.json` file with the following content:
 ```
 
 This is quite similar to the normal Mesos Elasticsearch installation - notice that we use our custom Docker image `"--elasticsearchDockerImage", "magneticio/elastic:2.2"` and we also increased the amount of memory (by default it is 256MB). 
-In case you want to use the default 9200 and 9300 Elasticsearch ports, add an additional argument: `"--elasticsearchPorts", "9200,9300"`. (There are many other different arguments which can be used as well if you need them.)
+We also explicitely added the default 9200 and 9300 Elasticsearch ports by adding the additional argument: `"--elasticsearchPorts", "9200,9300"`. (There are many other different arguments which can be used as well if you need them.)
 
 Following the Mesos Elasticsearch documentation now send `marathon.json` file to Marathon:
 
@@ -70,19 +71,19 @@ Create `vamp.json` file with content:
   },
   "env": {
     "VAMP_REST_API_PORT": "9090",
-    "VAMP_PERSISTENCE_KEY_VALUE_STORE_ZOOKEEPER_SERVERS": "$ZOOKEEPER_SERVERS",
-    "VAMP_CONTAINER_DRIVER_MESOS_URL": "http://$MESOS_IP:$MESOS_PORT",
-    "VAMP_CONTAINER_DRIVER_MARATHON_URL": "http://$MARATHON_IP:$MARATHON_PORT",
-    "VAMP_GATEWAY_DRIVER_LOGSTASH_HOST": "$LOGSTASH_IP",
-    "VAMP_PULSE_ELASTICSEARCH_URL": "http://$ELASTICSEARCH_IP:$ELASTICSEARCH_PORT",
+    "VAMP_PERSISTENCE_KEY_VALUE_STORE_ZOOKEEPER_SERVERS": "zk-1.zk:2181",
+    "VAMP_CONTAINER_DRIVER_MESOS_URL": "http://leader.mesos:5050",
+    "VAMP_CONTAINER_DRIVER_MARATHON_URL": "http://marathon.mesos:8080",
+    "VAMP_GATEWAY_DRIVER_LOGSTASH_HOST": "elasticsearch-executor.elasticsearch.mesos",
+    "VAMP_PULSE_ELASTICSEARCH_URL": "http://elasticsearch-executor.elasticsearch.mesos:9200",
     "VAMP_LIFTER_VAMP_GATEWAY_AGENT_ENABLED": "true"
   }
 }
 ```
 
-Make sure to replace `$ZOOKEEPER_SERVERS` (ZooKeeper IP address and port), `$MESOS_IP`, `$MESOS_PORT`, `$MARATHON_IP`, `$MARATHON_PORT`, `$LOGSTASH_IP`, `$ELASTICSEARCH_IP` and `$ELASTICSEARCH_PORT` with your specific environment settings.
+(NB If you installed on different ports and/or locations, make sure to replace `$ZOOKEEPER_SERVERS` (ZooKeeper IP address and port), `$MESOS_IP`, `$MESOS_PORT`, `$MARATHON_IP`, `$MARATHON_PORT`, `$LOGSTASH_IP`, `$ELASTICSEARCH_IP` and `$ELASTICSEARCH_PORT` with your specific environment settings.)
 
-For instance, an environment may look like this:
+For instance, your custom environment might look like this:
 
 ```json
 "env": {
@@ -105,6 +106,6 @@ curl -k -XPOST -d @vamp.json -H "Content-Type: application/json" http://MARATHON
 Marathon will now start deploying Vamp and if all arguments are set correctly you will notice that Vamp Gateway Agent will be also be deployed automatically.
 What we did with the (`VAMP_LIFTER_VAMP_GATEWAY_AGENT_ENABLED`) setting is that we enabled Vamp to automatically deploy Vamp Gateway Agent’s on each Marathon agent(node). Handy!
 
-Note that Vamp will expose its UI on port 9090 (`network: HOST`), you may set a different port (`VAMP_REST_API_PORT`) if you want.
+Now we need to find out on what IP the public node is running, so you can access the VAMP dashboard from the outside. This IP is most often the same as where you find the Marathon dashboard. Vamp will expose its UI on port 9090 (`network: HOST`), you may set a different port (`VAMP_REST_API_PORT`) if you want.
 
 Happy VAMP’ing! Make sure to run through our [QuickStart tutorials](http://vamp.io/documentation/guides/).
