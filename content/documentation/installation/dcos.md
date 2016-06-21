@@ -13,11 +13,11 @@ menu:
 
 Mesos, Marathon and ZooKeeper are all installed by DC/OS, additionally Vamp requires Elasticsearch and Logstash for its metrics collection and aggregation.
 One way to install Elasticsearch on DC/OS is by following the [Mesos Elasticsearch documentation](http://mesos-elasticsearch.readthedocs.org/en/latest/).
-But we also need Logstash (which is not available as a package) and give it a [specific configuration] (https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf), so we created a compatible Docker [images](https://hub.docker.com/r/magneticio/elastic/) that can be used with [How to install on Marathon](http://mesos-elasticsearch.readthedocs.org/en/latest/#how-to-install-on-marathon). 
+But we also need Logstash (which is not available as a package) and give it a [specific configuration] (https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf), so we created a compatible Docker [images](https://hub.docker.com/r/magneticio/elastic/) that can be used with [How to install on Marathon](http://mesos-elasticsearch.readthedocs.org/en/latest/#how-to-install-on-marathon).
 Our advice is to use our custom Elasticsearch+Logstash Docker image. Let’s go!
 
 First, let's create `marathon.json` file with the following content:
-
+{{% copyable %}}
 ```json
 {
   "id": "elasticsearch",
@@ -42,9 +42,10 @@ First, let's create `marathon.json` file with the following content:
   "instances": 1
 }
 ```
+{{% /copyable %}}
 
-This is quite similar to the normal Mesos Elasticsearch installation - notice that we use our custom Docker image `"--elasticsearchDockerImage", "magneticio/elastic:2.2"` and we also increased the amount of memory (by default it is 256MB). 
-We also explicitely added the default 9200 and 9300 Elasticsearch ports by adding the additional argument: `"--elasticsearchPorts", "9200,9300"`. (There are many other different arguments which can be used as well if you need them.)
+This is quite similar to the normal Mesos Elasticsearch installation - notice that we use our custom Docker image `"--elasticsearchDockerImage", "magneticio/elastic:2.2"` and we also increased the amount of memory (by default it is 256MB).
+We also explicitly added the default 9200 and 9300 Elasticsearch ports by adding the additional argument: `"--elasticsearchPorts", "9200,9300"`. (There are many other different arguments which can be used as well if you need them.)
 
 Following the Mesos Elasticsearch documentation now send `marathon.json` file to Marathon:
 
@@ -54,7 +55,7 @@ curl -k -XPOST -d @marathon.json -H "Content-Type: application/json" http://MARA
 
 Ok, now we are going to deploy Vamp.
 Create `vamp.json` file with content:
-
+{{% copyable %}}
 ```json
 {
   "id": "vamp/vamp",
@@ -64,7 +65,7 @@ Create `vamp.json` file with content:
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "magneticio/vamp:0.9.0",
+      "image": "magneticio/vamp:0.8.5",
       "network": "HOST",
       "forcePullImage": true
     }
@@ -80,10 +81,9 @@ Create `vamp.json` file with content:
   }
 }
 ```
+{{% /copyable %}}
 
-(NB If you installed on different ports and/or locations, make sure to replace `$ZOOKEEPER_SERVERS` (ZooKeeper IP address and port), `$MESOS_IP`, `$MESOS_PORT`, `$MARATHON_IP`, `$MARATHON_PORT`, `$LOGSTASH_IP`, `$ELASTICSEARCH_IP` and `$ELASTICSEARCH_PORT` with your specific environment settings.)
-
-For instance, your custom environment might look like this:
+If you installed on different ports and/or hosts, make sure to update environment variables. For instance, they might look like this:
 
 ```json
 "env": {
