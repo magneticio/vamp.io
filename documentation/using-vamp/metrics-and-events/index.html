@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Metrics &amp; Events | vamp.io">
+        
+        <meta property="og:url" content="http://vamp.io/documentation/using-vamp/metrics-and-events/">
+        <meta property="og:image" content="http://vamp.io/img/vamp_logo_blue_circle.png">
+        <meta property="og:site_name" content="Vamp.io">
+        
+            
+                <meta name="description" content="Metrics &amp; Events Vamp collects metrics and events on all running services. Interaction with the API also creates events, like updating blueprints or deleting a deployment. Furthermore, Vamp allows third party applications to create events and trigger Vamp actions. All metrics and events are stored and retrieved using the Event API that is part of Vamp. Here is a JSON example of a &ldquo;deployment create&rdquo; event. { &quot;tags&quot;: [ &quot;deployments&quot;, &quot;deployments:6ce79a33-5dca-4eb2-b072-d5f65e4eef8a&quot;, &quot;archiving&quot;, &quot;archiving:create&quot; ], &quot;value&quot;: &quot;name: sava&quot;, &quot;timestamp&quot;: &quot;2015-04-21T09:15:42Z&quot; } All events and metrics stick to some basic rules: All data in Vamp are events.">           
+                <meta property="og:description" content="Metrics &amp; Events Vamp collects metrics and events on all running services. Interaction with the API also creates events, like updating blueprints or deleting a deployment. Furthermore, Vamp allows third party applications to create events and trigger Vamp actions. All metrics and events are stored and retrieved using the Event API that is part of Vamp. Here is a JSON example of a &ldquo;deployment create&rdquo; event. { &quot;tags&quot;: [ &quot;deployments&quot;, &quot;deployments:6ce79a33-5dca-4eb2-b072-d5f65e4eef8a&quot;, &quot;archiving&quot;, &quot;archiving:create&quot; ], &quot;value&quot;: &quot;name: sava&quot;, &quot;timestamp&quot;: &quot;2015-04-21T09:15:42Z&quot; } All events and metrics stick to some basic rules: All data in Vamp are events.">           
+                <meta property="twitter:description" content="Metrics &amp; Events Vamp collects metrics and events on all running services. Interaction with the API also creates events, like updating blueprints or deleting a deployment. Furthermore, Vamp allows third party applications to create events and trigger Vamp actions. All metrics and events are stored and retrieved using the Event API that is part of Vamp. Here is a JSON example of a &ldquo;deployment create&rdquo; event. { &quot;tags&quot;: [ &quot;deployments&quot;, &quot;deployments:6ce79a33-5dca-4eb2-b072-d5f65e4eef8a&quot;, &quot;archiving&quot;, &quot;archiving:create&quot; ], &quot;value&quot;: &quot;name: sava&quot;, &quot;timestamp&quot;: &quot;2015-04-21T09:15:42Z&quot; } All events and metrics stick to some basic rules: All data in Vamp are events.">           
+            
+                            
+        
+        <meta property="twitter:site" content="vamp.io">
+        <meta property="twitter:title" content="Metrics &amp; Events | vamp.io">
+        <meta property="twitter:image" content="http://vamp.io/img/vamp_logo_blue.png">        
+        <meta property="twitter:creator" content="vamp.io">    
+        <meta property="twitter:url" content="http://vamp.io/documentation/using-vamp/metrics-and-events/">    
+        <meta property="twitter:card" content="summary">    
+        <title>Metrics &amp; Events - documentation -  Vamp :: The Very Awesome Microservices Platform</title>
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/flat-ui/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="http://vamp.io/css/flat-ui.min.css">
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/common-files/css/icon-font.css">
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/common-files/css/animations.css">
+        <link rel="stylesheet" href="http://vamp.io/css/ui.min.css" >
+        <link rel="icon" type="image/png" sizes="192x192"  href="http://vamp.io/img/favicon-192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="http://vamp.io/img/favicon-32.png">
+
+        
+        <script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+        for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+    mixpanel.init("3dc73f826819c8e11d0d9898ca4291c8");</script>
+        
+    </head>
+<body>
+<div class="page-wrapper">
+
+<header class="header-3">
+    <div class="container">
+        <div class="row">
+            <div class="navbar col-sm-12" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"></button>
+                    <a class="logo" href="http://vamp.io/"><img src="http://vamp.io/img/vamp_logo_blue_circle.svg" alt="vamp"></a>
+                    <span id="alpha">alpha</span>
+                </div>
+                <div class="collapse navbar-collapse pull-right">
+                    <ul class="nav pull-left">
+                        <li><a href="http://vamp.io/documentation/">WHAT IS VAMP?</a></li>
+                        <li><a href="http://vamp.io/quick-start/">QUICK START</a></li>
+                        <li><a href="http://vamp.io/documentation/">DOCS</a></li>
+                        <li><a href="http://vamp.io/blog/">BLOG</a></li>
+                        <li><a href="https://github.com/magneticio/vamp/" target="_blank">GITHUB</a></li>
+                        <li><a href="https://gitter.im/magneticio/vamp" target="_blank">Gitter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-background"></div>
+</header>
+
+<section class="subheader">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                
+                <h4>documentation
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                
+
+<aside>
+    <div id="sidenav">
+        
+        <ul class="sidenav-menu top-level">
+            
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation" data-target=".collapse_about-vamp" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>About Vamp</span>                
+            </a>
+            <ul class="collapse_about-vamp sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation" class="sub-menu-link"> What is Vamp?
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/about-vamp/service-discovery/" class="sub-menu-link"> Service discovery
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/installation/" data-target=".collapse_installation" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Installing Vamp</span>                
+            </a>
+            <ul class="collapse_installation sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/installation" class="sub-menu-link"> Components
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/container_drivers/" class="sub-menu-link"> Container drivers
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/configuration/" class="sub-menu-link"> Configuration
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/installation/" class="sub-menu-link"> Installation details
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/quick_start/" class="sub-menu-link"> Quick start Marathon
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/installation/osx" class="sub-menu-link"> Mac OS X
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/mesosphere_dcos/" class="sub-menu-link"> DC/OS
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu active ">                 
+            <a href="http://vamp.io/documentation/using-vamp/" data-target=".collapse_using-vamp" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Using Vamp</span>                
+            </a>
+            <ul class="collapse_using-vamp sub collapse  in ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/" class="sub-menu-link"> Using Vamp
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/breeds/" class="sub-menu-link"> Breeds
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/blueprints/" class="sub-menu-link"> Blueprints
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/deployments/" class="sub-menu-link"> Deployments
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/environment_variables/" class="sub-menu-link"> Environment variables
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/gateways/" class="sub-menu-link"> Gateways
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/routings-and-filters/" class="sub-menu-link"> Routing &amp; filters
+                </a>
+                </li>                
+                
+                <li class="active">
+                <a href="http://vamp.io/documentation/using-vamp/metrics-and-events/" class="sub-menu-link"> Metrics &amp; Events
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/sla-and-escalations/" class="sub-menu-link"> SLA &amp; escalations
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/references/" class="sub-menu-link"> Referencing artefacts
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/workflows/" class="sub-menu-link"> Workflows
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/sticky-sessions/" class="sub-menu-link"> Sticky Sessions
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/virtual-hosts/" class="sub-menu-link"> Virtual Hosts
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/guides/" data-target=".collapse_guides" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Guides</span>                
+            </a>
+            <ul class="collapse_guides sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/" class="sub-menu-link"> Getting started tutorial
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/1-deploying/" class="sub-menu-link"> 1. Deploying a blueprint
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/2-canary-release/" class="sub-menu-link"> 2. Doing a canary release
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/3-splitting-services/" class="sub-menu-link"> 3. Splitting into services
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/4-merge-delete/" class="sub-menu-link"> 4. Merging and deleting services
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/api-reference/" data-target=".collapse_api-reference" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>API reference</span>                
+            </a>
+            <ul class="collapse_api-reference sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/" class="sub-menu-link"> Overview
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/breeds/" class="sub-menu-link"> Breeds
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/blueprints/" class="sub-menu-link"> Blueprints
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/deployments/" class="sub-menu-link"> Deployments
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/gateways/" class="sub-menu-link"> Gateways
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/scales/" class="sub-menu-link"> Scales
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/filters/" class="sub-menu-link"> Filters
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/slas/" class="sub-menu-link"> Slas
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/escalations/" class="sub-menu-link"> Escalations
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/metrics-events/" class="sub-menu-link"> Events
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/debug/" class="sub-menu-link"> Debug
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/cli-reference/" data-target=".collapse_cli-reference" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>CLI reference</span>                
+            </a>
+            <ul class="collapse_cli-reference sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/" class="sub-menu-link"> Overview
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/installation/" class="sub-menu-link"> Installation &amp; config
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/commands/" class="sub-menu-link"> Commands
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/community/" data-target=".collapse_community" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Community</span>                
+            </a>
+            <ul class="collapse_community sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/community/" class="sub-menu-link"> Issues &amp; Support
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/community/contribute/" class="sub-menu-link"> Contribute to Vamp
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+            
+            <li>
+                <a href="http://vamp.io/faq">
+                    
+                    <span>FAQ</span>
+                </a>
+                
+            </li>
+            
+        </ul>
+        
+    </div>
+</aside>
+
+            </div>
+            <div class="col-md-9 docs">
+                
+
+<h1 id="metrics-events">Metrics &amp; Events</h1>
+
+<p>Vamp collects metrics and events on all running services. Interaction with the API also creates events, like updating blueprints or deleting a deployment. Furthermore, Vamp allows third party applications to create events and trigger Vamp actions.</p>
+
+<p>All metrics and events are stored and retrieved using the Event API that is part of Vamp. Here is a JSON example of a &ldquo;deployment create&rdquo; event.</p>
+
+<pre><code class="language-JSON">{
+  &quot;tags&quot;: [
+    &quot;deployments&quot;,
+    &quot;deployments:6ce79a33-5dca-4eb2-b072-d5f65e4eef8a&quot;,
+    &quot;archiving&quot;,
+    &quot;archiving:create&quot;
+  ],
+  &quot;value&quot;: &quot;name: sava&quot;,
+  &quot;timestamp&quot;: &quot;2015-04-21T09:15:42Z&quot;
+}
+</code></pre>
+
+<p>All events and metrics stick to some <strong>basic rules</strong>:</p>
+
+<ul>
+<li>All data in Vamp are events.</li>
+<li>Values can be any JSON object or it can be empty.</li>
+<li>Timestamps are in ISO8601/RFC3339.</li>
+<li>Timestamps are optional. If not provided, Vamp will insert the current time.</li>
+<li>Timestamps are inclusive for querying.</li>
+<li>Events can be tagged with metadata. A simple tag is just single string.</li>
+<li>Querying data by tag assumes &ldquo;AND&rdquo; behaviour when multiple tags are supplied, i.e. [&ldquo;one&rdquo;, &ldquo;two&rdquo;] would only fetch records that are tagged with both.</li>
+<li>Supported event aggregations are: <code>average</code>, <code>min</code>, <code>max</code> and <code>count</code>.</li>
+</ul>
+
+<h2 id="how-tags-are-organized">How tags are organized</h2>
+
+<p>In all of Vamp&rsquo;s components we follow a REST (resource oriented) schema, for instance:</p>
+
+<pre><code>/deployments/{deployment_name} 
+/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}
+</code></pre>
+
+<p>Tagging is done using a very similar schema: &ldquo;{resource_group}&ldquo;, &ldquo;{resource_group}:{name}&ldquo;. Some examples:</p>
+
+<pre><code>&quot;deployments&quot;, &quot;deployments:{deployment_name}&quot;
+&quot;deployments&quot;, &quot;deployments:{deployment_name}&quot;, &quot;clusters&quot;, &quot;clusters:{cluster_name}&quot;, &quot;services&quot;, &quot;services&quot;,services:{service_name} &quot;
+</code></pre>
+
+<p>This schema allows querying per group and per specific name. Getting all events related to all deployments is done by using tag &ldquo;deployments&rdquo;. Getting events for specific deployment &ldquo;deployments:{deployment_name}&ldquo;.</p>
+
+<h2 id="query-metrics-events-using-tags">Query metrics &amp; events using tags</h2>
+
+<p>Using the tags schema and timestamps, you can do some powerful queries. Either use an exact timestamp or use special range query operators, described <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html">on the elastic.co site</a>.</p>
+
+<blockquote>
+<p><strong>Note:</strong> the default page size for a set or returned metrics is 30. From Vamp 0.7.8 onwards, we support pagination.</p>
+</blockquote>
+
+<h3 id="example-1-get-all-metrics">Example 1: get all metrics</h3>
+
+<p>This query just gets ALL metrics up till now, taking into regard the pagination.</p>
+
+<p><code>POST /api/v1/events/get</code></p>
+
+<pre><code class="language-json">{
+  &quot;tags&quot;: [&quot;metrics&quot;],
+    &quot;timestamp&quot; : {
+      &quot;lte&quot; : &quot;now&quot;
+    }
+}
+</code></pre>
+
+<h3 id="example-2-response-time-for-a-cluster">Example 2: response time for a cluster</h3>
+
+<p>This query gets the most recent response time metrics for the &ldquo;frontend&rdquo; cluster in the &ldquo;d9b42796-d8f6-431b-9230-9d316defaf6d&rdquo; deployment.</p>
+
+<p><code>POST /api/v1/events/get</code></p>
+
+<pre><code class="language-json">{
+  &quot;tags&quot;: [&quot;routes:d9b42796-d8f6-431b-9230-9d316defaf6d_frontend_8080&quot;,&quot;metrics:rtime&quot;,&quot;route&quot;],
+    &quot;timestamp&quot; : {
+      &quot;lte&quot; : &quot;now&quot;
+    }
+}
+</code></pre>
+
+<p><strong>Notice</strong> the &ldquo;gateways:<UUID>&rdquo;, &ldquo;metrics:responseTime&rdquo; and &ldquo;gateways&rdquo; tags. This means &ldquo;give me the response time of this specific gateway at the gateway level&rdquo;. The response will echo back the events in the time range with the original set of tags associated with the events.</p>
+
+<pre><code class="language-json">[
+    {
+        &quot;tags&quot;: [
+            &quot;gateways&quot;,
+            &quot;gateways:d9b42796-d8f6-431b-9230-9d316defaf6d_frontend_8080&quot;,
+            &quot;metrics:rate&quot;,
+            &quot;metrics&quot;,
+            &quot;gateway&quot;
+        ],
+        &quot;value&quot;: 0,
+        &quot;timestamp&quot;: &quot;2015-06-08T10:28:35.001Z&quot;,
+        &quot;type&quot;: &quot;gateway-metric&quot;
+    },
+    {
+        &quot;tags&quot;: [
+            &quot;gateways&quot;,
+            &quot;gateways:d9b42796-d8f6-431b-9230-9d316defaf6d_frontend_8080&quot;,
+            &quot;metrics:rate&quot;,
+            &quot;metrics&quot;,
+            &quot;gateway&quot;
+        ],
+        &quot;value&quot;: 0,
+        &quot;timestamp&quot;: &quot;2015-06-08T10:28:32.001Z&quot;,
+        &quot;type&quot;: &quot;gateway-metric&quot;
+    }
+]    
+</code></pre>
+
+<h3 id="example-3-current-sessions-for-a-service">Example 3: current sessions for a service</h3>
+
+<p>Another example is getting the current sessions for a specific service, in this case the <code>monarch_front:0.2</code> service that is part of the <code>214615ec-d5e4-473e-a98e-8aa4998b16f4</code> deployment and lives in the <code>frontend</code> cluster.</p>
+
+<p><code>POST /api/v1/events/get</code></p>
+
+<pre><code class="language-json">{
+  &quot;tags&quot;: [&quot;routes:214615ec-d5e4-473e-a98e-8aa4998b16f4_frontend_8080&quot;,&quot;metrics:scur&quot;,&quot;services:monarch_front:0.2&quot;,&quot;service&quot;],
+    &quot;timestamp&quot; : {
+      &quot;lte&quot; : &quot;now&quot;
+    }
+}
+</code></pre>
+
+<p><strong>Notice</strong> we made the search more specific by specifying the &ldquo;services&rdquo; and then &ldquo;service:<SERVICE NAME>&rdquo; tag.
+Also, we are using relative timestamps: anything later or equal (lte) than &ldquo;now&rdquo;.</p>
+
+<h3 id="example-4-all-known-metrics-for-a-service">Example 4: all known metrics for a service</h3>
+
+<p>This example gives you all the metrics we have for a specific service, in this case the same service as in example 2. In this way you can get a quick &ldquo;health snapshot&rdquo; of service, server, cluster or deployment.</p>
+
+<p><code>POST /api/v1/events/get</code></p>
+
+<pre><code class="language-json">{
+  &quot;tags&quot;: [&quot;routes:214615ec-d5e4-473e-a98e-8aa4998b16f4_frontend_8080&quot;,&quot;metrics&quot;,&quot;services:monarch_front:0.2&quot;,&quot;service&quot;],
+    &quot;timestamp&quot; : {
+      &quot;lte&quot; : &quot;now&quot;
+    }
+}
+</code></pre>
+
+<p><strong>Notice</strong> we made the search less specific by just providing the &ldquo;metrics&rdquo; tag and not telling the API which specific one we want.</p>
+
+<h2 id="server-sent-events-sse">Server-sent events (SSE)</h2>
+
+<p>Events and metrics can be streamed back directly from Vamp.</p>
+
+<p><code>POST /api/v1/events/stream</code></p>
+
+<p>In order to narrow down (filter) events, list of tags could be provided in the request body.</p>
+
+<pre><code class="language-json">{
+  &quot;tags&quot;: [&quot;routes:214615ec-d5e4-473e-a98e-8aa4998b16f4_frontend_8080&quot;,&quot;metrics&quot;]
+}
+</code></pre>
+
+<p>GET method can be also used (may be more convenient):</p>
+
+<p><code>GET /api/v1/events/stream</code></p>
+
+<p>Using tags:</p>
+
+<p><code>GET /api/v1/events/stream?tags=archiving&amp;tags=breeds</code></p>
+
+<h2 id="archiving">Archiving</h2>
+
+<p>All changes in artifacts (creation, update or deletion) triggered by REST API calls are archived. We store the type of event and the original representation of the artefact. It&rsquo;s a bit like a Git log.</p>
+
+<p>Here is an example event:</p>
+
+<pre><code class="language-json">{
+  &quot;tags&quot;: [
+    &quot;deployments&quot;,
+    &quot;deployments:6ce79a33-5dca-4eb2-b072-d5f65e4eef8a&quot;,
+    &quot;archiving&quot;,
+    &quot;archiving:delete&quot;
+  ],
+  &quot;value&quot;: &quot;&quot;,
+  &quot;timestamp&quot;: &quot;2015-04-21T09:17:31Z&quot;,
+  &quot;type&quot;: &quot;&quot;
+}
+</code></pre>
+
+<p>Searching through the archive is 100% the same as searching for metrics. The same tagging scheme applies.
+The following query gives back the last set of delete actions executed in the Vamp API, regardless of the artefact type.</p>
+
+<p><code>POST /api/v1/events/get</code></p>
+
+<pre><code class="language-json">{
+  &quot;tags&quot;: [&quot;archiving&quot;,&quot;archiving:delete&quot;],
+    &quot;timestamp&quot; : {
+      &quot;lte&quot; : &quot;now&quot;
+    }
+}
+</code></pre>
+
+                <span class="pull-right muted" style="margin-top: 15px">Found an error or a typo in these docs?<a href="https://github.com/magneticio/vamp.io/tree/master/content/documentation" target="_blank"> Submit an issue or a pull request!</a></span>
+   
+            </div>
+            <div class="col-md-1 hidden-xs hidden-sm">
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-1">
+    <div class="container">
+        <div class="row links">
+            <nav>
+                <div class="col-sm-3">
+                    <h6>Learn more</h6>
+                    <ul>
+                        <li><a href="http://vamp.io/documentation/">About Vamp</a></li>
+                        <li><a href="http://vamp.io/quick-start/">Quick start</a></li>
+                        <li><a href="http://vamp.io/documentation/using-vamp/">Using Vamp</a></li>
+                        <li><a href="http://vamp.io/documentation/guides/">Guides</a></li>
+                        <li><a href="http://vamp.io/documentation/api-reference/">API reference</a></li>
+                        <li><a href="http://vamp.io/documentation/cli-reference/">CLI reference</a></li>
+                        <li><a href="http://vamp.io/faq/">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h6>All things code</h6>
+                    <ul>
+                        <li><a href="http://vamp.io/contribute/">Contribute</a></li>
+                        <li><a href="http://vamp.io/documentation/community/">Issues & support</a></li>
+                        <li><a href="https://github.com/magneticio/vamp/" target="_blank">Github</a></li>
+                        <li><a href="https://gitter.im/magneticio/vamp" target="_blank">Gitter</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-5">
+                    <h6>Stay up to date</h6>
+                    <div class="subscribe-form">
+                        <p class="muted subscribe-lead">Leave your email for the latest news: we won't spam you and won't go off topic.</p>
+                        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate>
+                            <div class="mc-field-group input-group">
+                                <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Email">
+                                <span class="input-group-btn">
+                                <button type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe-2" class="btn btn-info">SIGN UP</button>
+                            </span>
+                            </div>
+                        </form>
+                    </div>
+                    <p>
+                        Or subscribe to our <a href="http://vamp.io/index.xml">RSS feed</a>
+                    </p>
+                </div>
+            </nav>
+        </div>
+        <div class="row licensing">
+            <div class="col-sm-3">
+                <div class="brand hidden-xs">
+                    <img src="http://vamp.io/img/magneticio_logo_gray.svg">
+                </div>
+            </div>
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-5">
+                <p class="muted pull-right">
+                    Code licensed under <a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">Apache 2</a> © 2015 <a href="http://magnetic.io/">Magnetic.io</a>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-59948816-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script src="http://vamp.io/vendor/theme/common-files/js/jquery-1.10.2.min.js"></script>
+<script src="http://vamp.io/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/modernizr.custom.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/easing.min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/startup-kit.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/prettify.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/lang-yaml.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/lang-scala.js"></script>
+<script src="http://vamp.io/vendor/prism/prism.js"></script>
+<script src="http://vamp.io/js/ZeroClipboard.min.js"></script>
+<script src="http://vamp.io/js/custom.js"></script>
+<script>
+$('document').ready(prettyPrint())
+</script>
+</div>
+</body>
+
+</html>

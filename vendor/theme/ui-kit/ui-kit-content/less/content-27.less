@@ -1,0 +1,105 @@
+.content-27 {
+    position:relative;
+    svg, .svg {
+        max-width: 100%;
+    }
+    .nosvg {
+        display:none;
+    }
+    @media (max-width: 767px) {
+        .svg, .nosvg {
+            text-align:center;
+            float:none;
+            margin-bottom:45px;
+        }
+        .svg {
+            display:block;
+        }
+    }
+    padding:120px 0;
+    h3 {
+        .font(30px, @text-color-heading);
+        font-family:@font-family-demo;
+        text-align: left;
+        margin-bottom:43px;
+        font-weight: 300;
+    }
+    p {
+        .font(16px);
+        font-family:@font-family-demo;
+        .line-height(29.6px);
+    }
+    .btn {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    @media (max-width: 991px) {
+        h3, p {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    }
+    .btns {
+        margin-top: 45px;
+        > * {
+            display: inline-block;
+            margin-left: 32px;
+            vertical-align: middle;
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+        @media (max-width: 991px) {
+            .btn {
+                display:block;
+                margin:0 5px 20px;
+                &:not(:first-child) {
+                    float: left;
+                    margin-right: 35px;
+                }
+            }
+        }
+        @media (max-width: 480px) {
+            .btn:not(:first-child) {
+                float: none;
+                color: white;
+                margin-right: 5px;
+                &:focus {
+                    outline: none;
+                }
+            }
+            [class*="fui-"] {
+                margin-top: -6px;
+            }
+        }
+        @media (min-width: 481px) {
+            > *:not(:first-child) {
+                padding: 0;
+                background: transparent;
+                color: @base;
+                &:hover, &:focus {
+                    color: mix(@base, white, 80%);
+                }
+                &:active, &.active {
+                    color: mix(@base, black, 85%);
+                }
+                [class*="fui-"] {
+                    .font(30px, inherit);
+                    margin: 0;
+                }
+                :not([class*="fui-"]) {
+                    display: none;
+                }
+            }
+        }
+        @media (max-width: 480px) {
+            > * {
+                display: block;
+                margin: 0;
+                & + * {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}

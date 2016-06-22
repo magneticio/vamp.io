@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Installation details | vamp.io">
+        
+        <meta property="og:url" content="http://vamp.io/documentation/installation/installation/">
+        <meta property="og:image" content="http://vamp.io/img/vamp_logo_blue_circle.png">
+        <meta property="og:site_name" content="Vamp.io">
+        
+            
+                <meta name="description" content="Overview The main 2 component of Vamp platform are Vamp and Vamp Gateway Agent(VGA). Persistence and Key-Value (KV) store Vamp uses Elasticsearch (ES) as main persistence (e.g. for artifacts and events). Vamp is not demanding in ES resources so either small ES installation is sufficient or Vamp indexes (index names are configurable) can be stored in an existing ES cluster. Also Vamp depends on key-value (KV) store for communication between Vamp and Vamp Gateway Agents (VGA).">           
+                <meta property="og:description" content="Overview The main 2 component of Vamp platform are Vamp and Vamp Gateway Agent(VGA). Persistence and Key-Value (KV) store Vamp uses Elasticsearch (ES) as main persistence (e.g. for artifacts and events). Vamp is not demanding in ES resources so either small ES installation is sufficient or Vamp indexes (index names are configurable) can be stored in an existing ES cluster. Also Vamp depends on key-value (KV) store for communication between Vamp and Vamp Gateway Agents (VGA).">           
+                <meta property="twitter:description" content="Overview The main 2 component of Vamp platform are Vamp and Vamp Gateway Agent(VGA). Persistence and Key-Value (KV) store Vamp uses Elasticsearch (ES) as main persistence (e.g. for artifacts and events). Vamp is not demanding in ES resources so either small ES installation is sufficient or Vamp indexes (index names are configurable) can be stored in an existing ES cluster. Also Vamp depends on key-value (KV) store for communication between Vamp and Vamp Gateway Agents (VGA).">           
+            
+                            
+        
+        <meta property="twitter:site" content="vamp.io">
+        <meta property="twitter:title" content="Installation details | vamp.io">
+        <meta property="twitter:image" content="http://vamp.io/img/vamp_logo_blue.png">        
+        <meta property="twitter:creator" content="vamp.io">    
+        <meta property="twitter:url" content="http://vamp.io/documentation/installation/installation/">    
+        <meta property="twitter:card" content="summary">    
+        <title>Installation details - documentation -  Vamp :: The Very Awesome Microservices Platform</title>
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/flat-ui/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="http://vamp.io/css/flat-ui.min.css">
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/common-files/css/icon-font.css">
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/common-files/css/animations.css">
+        <link rel="stylesheet" href="http://vamp.io/css/ui.min.css" >
+        <link rel="icon" type="image/png" sizes="192x192"  href="http://vamp.io/img/favicon-192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="http://vamp.io/img/favicon-32.png">
+
+        
+        <script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+        for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+    mixpanel.init("3dc73f826819c8e11d0d9898ca4291c8");</script>
+        
+    </head>
+<body>
+<div class="page-wrapper">
+
+<header class="header-3">
+    <div class="container">
+        <div class="row">
+            <div class="navbar col-sm-12" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"></button>
+                    <a class="logo" href="http://vamp.io/"><img src="http://vamp.io/img/vamp_logo_blue_circle.svg" alt="vamp"></a>
+                    <span id="alpha">alpha</span>
+                </div>
+                <div class="collapse navbar-collapse pull-right">
+                    <ul class="nav pull-left">
+                        <li><a href="http://vamp.io/documentation/">WHAT IS VAMP?</a></li>
+                        <li><a href="http://vamp.io/quick-start/">QUICK START</a></li>
+                        <li><a href="http://vamp.io/documentation/">DOCS</a></li>
+                        <li><a href="http://vamp.io/blog/">BLOG</a></li>
+                        <li><a href="https://github.com/magneticio/vamp/" target="_blank">GITHUB</a></li>
+                        <li><a href="https://gitter.im/magneticio/vamp" target="_blank">Gitter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-background"></div>
+</header>
+
+<section class="subheader">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                
+                <h4>documentation
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                
+
+<aside>
+    <div id="sidenav">
+        
+        <ul class="sidenav-menu top-level">
+            
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation" data-target=".collapse_about-vamp" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>About Vamp</span>                
+            </a>
+            <ul class="collapse_about-vamp sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation" class="sub-menu-link"> What is Vamp?
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/about-vamp/service-discovery/" class="sub-menu-link"> Service discovery
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu active ">                 
+            <a href="http://vamp.io/installation/" data-target=".collapse_installation" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Installing Vamp</span>                
+            </a>
+            <ul class="collapse_installation sub collapse  in ">
+                
+                <li>
+                <a href="http://vamp.io/installation" class="sub-menu-link"> Components
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/container_drivers/" class="sub-menu-link"> Container drivers
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/configuration/" class="sub-menu-link"> Configuration
+                </a>
+                </li>                
+                
+                <li class="active">
+                <a href="http://vamp.io/documentation/installation/installation/" class="sub-menu-link"> Installation details
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/quick_start/" class="sub-menu-link"> Quick start Marathon
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/installation/osx" class="sub-menu-link"> Mac OS X
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/mesosphere_dcos/" class="sub-menu-link"> DC/OS
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/using-vamp/" data-target=".collapse_using-vamp" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Using Vamp</span>                
+            </a>
+            <ul class="collapse_using-vamp sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/" class="sub-menu-link"> Using Vamp
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/breeds/" class="sub-menu-link"> Breeds
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/blueprints/" class="sub-menu-link"> Blueprints
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/deployments/" class="sub-menu-link"> Deployments
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/environment_variables/" class="sub-menu-link"> Environment variables
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/gateways/" class="sub-menu-link"> Gateways
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/routings-and-filters/" class="sub-menu-link"> Routing &amp; filters
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/metrics-and-events/" class="sub-menu-link"> Metrics &amp; Events
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/sla-and-escalations/" class="sub-menu-link"> SLA &amp; escalations
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/references/" class="sub-menu-link"> Referencing artefacts
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/workflows/" class="sub-menu-link"> Workflows
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/sticky-sessions/" class="sub-menu-link"> Sticky Sessions
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/virtual-hosts/" class="sub-menu-link"> Virtual Hosts
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/guides/" data-target=".collapse_guides" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Guides</span>                
+            </a>
+            <ul class="collapse_guides sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/" class="sub-menu-link"> Getting started tutorial
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/1-deploying/" class="sub-menu-link"> 1. Deploying a blueprint
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/2-canary-release/" class="sub-menu-link"> 2. Doing a canary release
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/3-splitting-services/" class="sub-menu-link"> 3. Splitting into services
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/4-merge-delete/" class="sub-menu-link"> 4. Merging and deleting services
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/api-reference/" data-target=".collapse_api-reference" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>API reference</span>                
+            </a>
+            <ul class="collapse_api-reference sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/" class="sub-menu-link"> Overview
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/breeds/" class="sub-menu-link"> Breeds
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/blueprints/" class="sub-menu-link"> Blueprints
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/deployments/" class="sub-menu-link"> Deployments
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/gateways/" class="sub-menu-link"> Gateways
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/scales/" class="sub-menu-link"> Scales
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/filters/" class="sub-menu-link"> Filters
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/slas/" class="sub-menu-link"> Slas
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/escalations/" class="sub-menu-link"> Escalations
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/metrics-events/" class="sub-menu-link"> Events
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/debug/" class="sub-menu-link"> Debug
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/cli-reference/" data-target=".collapse_cli-reference" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>CLI reference</span>                
+            </a>
+            <ul class="collapse_cli-reference sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/" class="sub-menu-link"> Overview
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/installation/" class="sub-menu-link"> Installation &amp; config
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/commands/" class="sub-menu-link"> Commands
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/community/" data-target=".collapse_community" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Community</span>                
+            </a>
+            <ul class="collapse_community sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/community/" class="sub-menu-link"> Issues &amp; Support
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/community/contribute/" class="sub-menu-link"> Contribute to Vamp
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+            
+            <li>
+                <a href="http://vamp.io/faq">
+                    
+                    <span>FAQ</span>
+                </a>
+                
+            </li>
+            
+        </ul>
+        
+    </div>
+</aside>
+
+            </div>
+            <div class="col-md-9 docs">
+                
+
+<h2 id="overview">Overview</h2>
+
+<p>The main 2 component of Vamp platform are <a href="https://github.com/magneticio/vamp">Vamp</a> and <a href="https://github.com/magneticio/vamp-gateway-agent">Vamp Gateway Agent</a>(VGA).</p>
+
+<h3 id="persistence-and-key-value-kv-store">Persistence and Key-Value (KV) store</h3>
+
+<p>Vamp uses Elasticsearch (ES) as main persistence (e.g. for artifacts and events).
+Vamp is not demanding in ES resources so either small ES installation is sufficient or Vamp indexes (index names are configurable) can be stored in an existing ES cluster.</p>
+
+<p>Also Vamp depends on key-value (KV) store for communication between Vamp and Vamp Gateway Agents (VGA).
+<a href="https://zookeeper.apache.org/">ZooKeeper</a>, <a href="https://coreos.com/etcd/docs/latest/">etcd</a> and <a href="https://www.consul.io/">Consul</a> are supported.
+Typically there should be one Vamp instance and one or more VGA instances.
+There is <strong>no direct</strong> connection between Vamp and VGA instances - all communication is done by managing specific KV in the store.
+When Vamp needs to update HAProxy configuration (e.g. new service has been deployed), Vamp generates the configuration and stores it in the KV store.
+VGA&rsquo;s read specific value and reload HAProxy instances.
+There should be one dedicated HAProxy for each VGA.
+Vamp also supports custom HAProxy configuration - base configuration should be used as a template and HAProxy frontends and backends are appended by VGA.</p>
+
+<p>Since VGA (and HAPRoxy) is a single point of failure (proxy to all traffic), it is recommended for high availability to have more than one VGA instance.
+VGA instance can be added or removed any time - once VGA starts running it will pick up the HAProxy configuration from configured KV store and it will reload the HAProxy instance.
+This also mean Vamp (not VGA), can be restarted, stopped etc. without main consequences on running services - there will be no HAProxy configuration update, but once Vamp is up, it will sync HAProxy configuration (e.g. if Marathon restarted some service, so hosts/ports are changed).</p>
+
+<p>Since Mesos depends on ZooKeeper, the same ZooKeeper cluster can be used for Vamp and VGA&rsquo;s.</p>
+
+<p>In order to setup correctly Vamp with single/multiple VGA instances check out also gateway driver <a href="http://vamp.io/documentation/installation/configuration/#gateway-driver">configuration</a>.</p>
+
+<h3 id="elasticsearch-logstash-and-kibana-elk">Elasticsearch, Logstash and Kibana (ELK)</h3>
+
+<p>HAProxy (VGA) generates logs and make them accessible via open socket - check the <a href="https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.cfg">configuration</a> of <code>log</code>.
+VGA is listening on log socket and any new messages is forwarded to Logstash instance.
+Log format is configurable in Vamp configuration <a href="https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf">vamp.gateway-driver.haproxy</a>.
+Note that Logstash is listening on UDP port, but in principle any other listener can receive logs forwarded by VGA.
+Different VGA&rsquo;s can use different Logstash instances.
+Example of different Logstash/Elasticsearch setups can be found <a href="https://www.elastic.co/guide/en/logstash/current/deploying-and-scaling.html">here</a>.</p>
+
+<p>In general for each HTTP/TCP request to HAProxy, several log messages are created (e.g. for gateway, service and instance level).
+Using one of the simplest Logstash configuration should be sufficient for dozens of request per second or even more.
+This also depends if ELK is used for custom application/service logs etc.</p>
+
+<p>Lagstash configuration used together with default <code>vamp.gateway-driver.haproxy</code> log format can be found <a href="https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf">here</a>.
+It will transform logs to plain JSON which can be parsed easily later on (e.g. for Kibana visualization).
+Logstash command line parameter example can be found <a href="https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/supervisord.conf">here</a> (Logstash section).</p>
+
+<p>In short:</p>
+
+<ul>
+<li>in order to have effective feedback loop, HTTP/TCP logs should be collected, stored and analyzed</li>
+<li>collection and storing is done in combination of HAProxy, VGA and Logstash setup</li>
+<li>logs can be stored in Elasticsearch and later analyzed and visualized by Kibana.</li>
+</ul>
+
+<p>Vamp can be configured to create Kibana <code>searches</code>, <code>visualisations</code> and <code>dashboards</code> automatically - <code>vamp.gateway-driver.kibana.enabled</code> configuration parameter.
+Vamp will do this by inserting ES documents to Kibana index, so only URL to access ES is needed (by default reusing the same as for persistence).</p>
+
+<h3 id="mesos-marathon-or-docker">Mesos/Marathon or Docker</h3>
+
+<p>Vamp supports via drivers Marathon and Docker (dev mode).
+There is no specific Vamp demand a part of simple configuration string that needs to specified for Marathon <code>vamp.container-driver.url</code> and <code>vamp.container-driver.type</code> for specifying the type.</p>
+
+<p>Vamp instance and VGA&rsquo;s can be managed inside Marathon - it should be taken care of port mapping, how to access them etc.
+Simpler solution (for trials etc.) is to run Vamp and VGA&rsquo;s &ldquo;outside&rdquo; of Marathon.</p>
+
+<h2 id="building-from-the-source">Building from the source</h2>
+
+<h3 id="vamp">Vamp</h3>
+
+<p>Prerequisites:</p>
+
+<ul>
+<li>OpenJDK or Oracle Java version of 1.8.0_40 or higher. Check the version with <code>java -version</code></li>
+<li><a href="https://git-scm.com/">git</a></li>
+<li><a href="http://www.scala-sbt.org/index.html">sbt</a></li>
+<li><a href="https://www.npmjs.com/">npm</a> and <a href="http://gulpjs.com/">Gulp</a></li>
+</ul>
+
+<p>Steps:</p>
+
+<ul>
+<li>checkout the source from the official <a href="https://github.com/magneticio/vamp">repo</a>. <code>master</code> branch contains the latest released version (e.g. 0.85). Versions are tagged.
+Since <code>vamp-ui</code> is a separate project and added as a git submodule to Vamp (<code>ui</code> subdirectory) it is necessary to checkout the submodule as well:
+<code>git clone --recursive git@github.com:magneticio/vamp.git</code> or specific branch: <code>git clone --recursive --branch 0.85 git@github.com:magneticio/vamp.git</code></li>
+<li>run <code>./build-ui.sh &amp;&amp; sbt test assembly</code></li>
+<li>after the build <code>./bootstrap/target/scala-2.11</code> directory will contain the binary with name matching <code>vamp-assembly-*.jar</code></li>
+</ul>
+
+<p>Example can be found <a href="https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/make.sh">here</a>.</p>
+
+<h3 id="vamp-gateway-agent-vga">Vamp Gateway Agent (VGA)</h3>
+
+<p>Prerequisites:</p>
+
+<ul>
+<li><a href="https://golang.org/">Go</a></li>
+<li><a href="https://git-scm.com/">git</a></li>
+</ul>
+
+<p>Steps:</p>
+
+<ul>
+<li>checkout the source from the official <a href="https://github.com/magneticio/vamp-gateway-agent">repo</a>. Current <code>master</code> branch is backward compatible with the latest 0.85 Vamp build.</li>
+<li>set Go variables depending on target environment</li>
+<li>run:</li>
+</ul>
+
+<pre><code>go get github.com/tools/godep
+godep restore
+go install
+CGO_ENABLED=0 go build -v -a -installsuffix cgo
+</code></pre>
+
+<p>More details can found on the <a href="https://github.com/magneticio/vamp-gateway-agent">project page</a>.
+Another example can be found <a href="https://github.com/magneticio/vamp-docker/blob/master/clique-base/make.sh">here</a></p>
+
+<h2 id="downloading">Downloading</h2>
+
+<p>Vamp binaries are also available for download:</p>
+
+<ul>
+<li><a href="https://bintray.com/magnetic-io/downloads/vamp/view">Vamp</a></li>
+<li><a href="https://bintray.com/magnetic-io/downloads/vamp-cli/view">Vamp CLI</a></li>
+<li><a href="https://bintray.com/magnetic-io/downloads/vamp-gateway-agent/view">Vamp Gateway Agent (VGA)</a></li>
+</ul>
+
+<p>VGA Docker images with HAProxy can be pulled from the Docker <a href="https://hub.docker.com/r/magneticio/vamp-gateway-agent/">hub</a>.</p>
+
+<h2 id="running">Running</h2>
+
+<h3 id="vamp-1">Vamp</h3>
+
+<p>Let&rsquo;s assume that Vamp binary is <code>vamp.jar</code>.
+OpenJDK or Oracle Java version of 1.8.0_40 or higher needs to be installed. Check the version with <code>java -version</code></p>
+
+<p>Example:</p>
+
+<pre><code>java -Dlogback.configurationFile=logback.xml -Dconfig.file=application.conf -jar vamp.jar
+</code></pre>
+
+<p><code>logback.xml</code> is log configuration.
+Vamp uses <a href="http://logback.qos.ch/">Logback</a> library and on the Logback project page can be found additional information about using the Logback and log file configuration format.
+An example file can be found <a href="https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/conf/logback.xml">here</a>.</p>
+
+<p><code>application.conf</code> is the main Vamp configuration file.
+<a href="https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf">Default values</a> are loaded on start and <code>application.conf</code> may override any of them.
+Processing configuration is based on this <a href="https://github.com/typesafehub/config">library</a>.
+Additional information about syntax and usage can be found on the library project page.
+An example of configuration can be found <a href="https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/conf/application.conf">here</a>.</p>
+
+<p>Additional command line argument <a href="https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/start.sh">example</a> from Vamp quick start.</p>
+
+<h4 id="docker-image">Docker image</h4>
+
+<p>Vamp Docker image is also <a href="https://hub.docker.com/r/magneticio/vamp/">available</a>.
+Default Vamp configuration used in the image is <a href="https://github.com/magneticio/vamp-docker/tree/master/vamp/conf">here</a> - <code>application.conf</code> is a subset of full <a href="https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf">configuration</a>.
+Still few parameters needs to be provided, for example:</p>
+
+<pre><code>java -Dvamp.persistence.key-value-store.zookeeper.servers=&quot;192.168.99.100:2181&quot; \
+     -Dvamp.container-driver.url=&quot;http://192.168.99.100:9090&quot; \
+     -Dvamp.gateway-driver.host=&quot;192.168.99.100&quot; \
+     -Dvamp.pulse.elasticsearch.url=&quot;http://192.168.99.100:9200&quot; \
+     -Dlogback.configurationFile=/usr/local/vamp/logback.xml \
+     -Dconfig.file=/usr/local/vamp/application.conf \
+     -jar /usr/local/vamp/vamp.jar
+</code></pre>
+
+<p>Alternatively using volumes:</p>
+
+<pre><code>docker run --net=host -v PATH_TO_LOCAL_CONFIG_DIR:/usr/local/vamp/conf magneticio/vamp:0.85
+</code></pre>
+
+<h3 id="vamp-gateway-agent-vga-1">Vamp Gateway Agent (VGA)</h3>
+
+<p>Documentation can be found on the <a href="https://github.com/magneticio/vamp-gateway-agent">project page</a>.
+An <a href="https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/supervisord.conf">example</a> of command line arguments is in <code>[program:VampGatewayAgent]</code> section.</p>
+
+<p>VGA instance can have different command line parameters (e.g. Logstash URLs), and the common thing between them all is only the HAProxy configuration read from KV store.
+Thus all HAProxy instances will be configured with the same configuration always.</p>
+
+                <span class="pull-right muted" style="margin-top: 15px">Found an error or a typo in these docs?<a href="https://github.com/magneticio/vamp.io/tree/master/content/documentation" target="_blank"> Submit an issue or a pull request!</a></span>
+   
+            </div>
+            <div class="col-md-1 hidden-xs hidden-sm">
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-1">
+    <div class="container">
+        <div class="row links">
+            <nav>
+                <div class="col-sm-3">
+                    <h6>Learn more</h6>
+                    <ul>
+                        <li><a href="http://vamp.io/documentation/">About Vamp</a></li>
+                        <li><a href="http://vamp.io/quick-start/">Quick start</a></li>
+                        <li><a href="http://vamp.io/documentation/using-vamp/">Using Vamp</a></li>
+                        <li><a href="http://vamp.io/documentation/guides/">Guides</a></li>
+                        <li><a href="http://vamp.io/documentation/api-reference/">API reference</a></li>
+                        <li><a href="http://vamp.io/documentation/cli-reference/">CLI reference</a></li>
+                        <li><a href="http://vamp.io/faq/">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h6>All things code</h6>
+                    <ul>
+                        <li><a href="http://vamp.io/contribute/">Contribute</a></li>
+                        <li><a href="http://vamp.io/documentation/community/">Issues & support</a></li>
+                        <li><a href="https://github.com/magneticio/vamp/" target="_blank">Github</a></li>
+                        <li><a href="https://gitter.im/magneticio/vamp" target="_blank">Gitter</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-5">
+                    <h6>Stay up to date</h6>
+                    <div class="subscribe-form">
+                        <p class="muted subscribe-lead">Leave your email for the latest news: we won't spam you and won't go off topic.</p>
+                        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate>
+                            <div class="mc-field-group input-group">
+                                <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Email">
+                                <span class="input-group-btn">
+                                <button type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe-2" class="btn btn-info">SIGN UP</button>
+                            </span>
+                            </div>
+                        </form>
+                    </div>
+                    <p>
+                        Or subscribe to our <a href="http://vamp.io/index.xml">RSS feed</a>
+                    </p>
+                </div>
+            </nav>
+        </div>
+        <div class="row licensing">
+            <div class="col-sm-3">
+                <div class="brand hidden-xs">
+                    <img src="http://vamp.io/img/magneticio_logo_gray.svg">
+                </div>
+            </div>
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-5">
+                <p class="muted pull-right">
+                    Code licensed under <a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">Apache 2</a> © 2015 <a href="http://magnetic.io/">Magnetic.io</a>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-59948816-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script src="http://vamp.io/vendor/theme/common-files/js/jquery-1.10.2.min.js"></script>
+<script src="http://vamp.io/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/modernizr.custom.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/easing.min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/startup-kit.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/prettify.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/lang-yaml.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/lang-scala.js"></script>
+<script src="http://vamp.io/vendor/prism/prism.js"></script>
+<script src="http://vamp.io/js/ZeroClipboard.min.js"></script>
+<script src="http://vamp.io/js/custom.js"></script>
+<script>
+$('document').ready(prettyPrint())
+</script>
+</div>
+</body>
+
+</html>

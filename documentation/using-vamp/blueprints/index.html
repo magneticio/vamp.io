@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Blueprints | vamp.io">
+        
+        <meta property="og:url" content="http://vamp.io/documentation/using-vamp/blueprints/">
+        <meta property="og:image" content="http://vamp.io/img/vamp_logo_blue_circle.png">
+        <meta property="og:site_name" content="Vamp.io">
+        
+            
+                <meta name="description" content="Blueprints Blueprints are execution plans - they describe how your services should be hooked up and what their topology should look like at runtime. This means you reference your breeds (or define them inline) and add runtime configuration to them. Blueprints allow you to add the following extra properties: gateways: a stable port where the service can be reached. clusters &amp; services: a cluster is a grouping of services with one purpose, i.e.">           
+                <meta property="og:description" content="Blueprints Blueprints are execution plans - they describe how your services should be hooked up and what their topology should look like at runtime. This means you reference your breeds (or define them inline) and add runtime configuration to them. Blueprints allow you to add the following extra properties: gateways: a stable port where the service can be reached. clusters &amp; services: a cluster is a grouping of services with one purpose, i.e.">           
+                <meta property="twitter:description" content="Blueprints Blueprints are execution plans - they describe how your services should be hooked up and what their topology should look like at runtime. This means you reference your breeds (or define them inline) and add runtime configuration to them. Blueprints allow you to add the following extra properties: gateways: a stable port where the service can be reached. clusters &amp; services: a cluster is a grouping of services with one purpose, i.e.">           
+            
+                            
+        
+        <meta property="twitter:site" content="vamp.io">
+        <meta property="twitter:title" content="Blueprints | vamp.io">
+        <meta property="twitter:image" content="http://vamp.io/img/vamp_logo_blue.png">        
+        <meta property="twitter:creator" content="vamp.io">    
+        <meta property="twitter:url" content="http://vamp.io/documentation/using-vamp/blueprints/">    
+        <meta property="twitter:card" content="summary">    
+        <title>Blueprints - documentation -  Vamp :: The Very Awesome Microservices Platform</title>
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/flat-ui/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="http://vamp.io/css/flat-ui.min.css">
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/common-files/css/icon-font.css">
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/common-files/css/animations.css">
+        <link rel="stylesheet" href="http://vamp.io/css/ui.min.css" >
+        <link rel="icon" type="image/png" sizes="192x192"  href="http://vamp.io/img/favicon-192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="http://vamp.io/img/favicon-32.png">
+
+        
+        <script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+        for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+    mixpanel.init("3dc73f826819c8e11d0d9898ca4291c8");</script>
+        
+    </head>
+<body>
+<div class="page-wrapper">
+
+<header class="header-3">
+    <div class="container">
+        <div class="row">
+            <div class="navbar col-sm-12" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"></button>
+                    <a class="logo" href="http://vamp.io/"><img src="http://vamp.io/img/vamp_logo_blue_circle.svg" alt="vamp"></a>
+                    <span id="alpha">alpha</span>
+                </div>
+                <div class="collapse navbar-collapse pull-right">
+                    <ul class="nav pull-left">
+                        <li><a href="http://vamp.io/documentation/">WHAT IS VAMP?</a></li>
+                        <li><a href="http://vamp.io/quick-start/">QUICK START</a></li>
+                        <li><a href="http://vamp.io/documentation/">DOCS</a></li>
+                        <li><a href="http://vamp.io/blog/">BLOG</a></li>
+                        <li><a href="https://github.com/magneticio/vamp/" target="_blank">GITHUB</a></li>
+                        <li><a href="https://gitter.im/magneticio/vamp" target="_blank">Gitter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-background"></div>
+</header>
+
+<section class="subheader">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                
+                <h4>documentation
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                
+
+<aside>
+    <div id="sidenav">
+        
+        <ul class="sidenav-menu top-level">
+            
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation" data-target=".collapse_about-vamp" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>About Vamp</span>                
+            </a>
+            <ul class="collapse_about-vamp sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation" class="sub-menu-link"> What is Vamp?
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/about-vamp/service-discovery/" class="sub-menu-link"> Service discovery
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/installation/" data-target=".collapse_installation" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Installing Vamp</span>                
+            </a>
+            <ul class="collapse_installation sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/installation" class="sub-menu-link"> Components
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/container_drivers/" class="sub-menu-link"> Container drivers
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/configuration/" class="sub-menu-link"> Configuration
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/installation/" class="sub-menu-link"> Installation details
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/quick_start/" class="sub-menu-link"> Quick start Marathon
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/installation/osx" class="sub-menu-link"> Mac OS X
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/mesosphere_dcos/" class="sub-menu-link"> DC/OS
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu active ">                 
+            <a href="http://vamp.io/documentation/using-vamp/" data-target=".collapse_using-vamp" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Using Vamp</span>                
+            </a>
+            <ul class="collapse_using-vamp sub collapse  in ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/" class="sub-menu-link"> Using Vamp
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/breeds/" class="sub-menu-link"> Breeds
+                </a>
+                </li>                
+                
+                <li class="active">
+                <a href="http://vamp.io/documentation/using-vamp/blueprints/" class="sub-menu-link"> Blueprints
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/deployments/" class="sub-menu-link"> Deployments
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/environment_variables/" class="sub-menu-link"> Environment variables
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/gateways/" class="sub-menu-link"> Gateways
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/routings-and-filters/" class="sub-menu-link"> Routing &amp; filters
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/metrics-and-events/" class="sub-menu-link"> Metrics &amp; Events
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/sla-and-escalations/" class="sub-menu-link"> SLA &amp; escalations
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/references/" class="sub-menu-link"> Referencing artefacts
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/workflows/" class="sub-menu-link"> Workflows
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/sticky-sessions/" class="sub-menu-link"> Sticky Sessions
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/virtual-hosts/" class="sub-menu-link"> Virtual Hosts
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/guides/" data-target=".collapse_guides" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Guides</span>                
+            </a>
+            <ul class="collapse_guides sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/" class="sub-menu-link"> Getting started tutorial
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/1-deploying/" class="sub-menu-link"> 1. Deploying a blueprint
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/2-canary-release/" class="sub-menu-link"> 2. Doing a canary release
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/3-splitting-services/" class="sub-menu-link"> 3. Splitting into services
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/4-merge-delete/" class="sub-menu-link"> 4. Merging and deleting services
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/api-reference/" data-target=".collapse_api-reference" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>API reference</span>                
+            </a>
+            <ul class="collapse_api-reference sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/" class="sub-menu-link"> Overview
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/breeds/" class="sub-menu-link"> Breeds
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/blueprints/" class="sub-menu-link"> Blueprints
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/deployments/" class="sub-menu-link"> Deployments
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/gateways/" class="sub-menu-link"> Gateways
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/scales/" class="sub-menu-link"> Scales
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/filters/" class="sub-menu-link"> Filters
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/slas/" class="sub-menu-link"> Slas
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/escalations/" class="sub-menu-link"> Escalations
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/metrics-events/" class="sub-menu-link"> Events
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/debug/" class="sub-menu-link"> Debug
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/cli-reference/" data-target=".collapse_cli-reference" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>CLI reference</span>                
+            </a>
+            <ul class="collapse_cli-reference sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/" class="sub-menu-link"> Overview
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/installation/" class="sub-menu-link"> Installation &amp; config
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/commands/" class="sub-menu-link"> Commands
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/community/" data-target=".collapse_community" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Community</span>                
+            </a>
+            <ul class="collapse_community sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/community/" class="sub-menu-link"> Issues &amp; Support
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/community/contribute/" class="sub-menu-link"> Contribute to Vamp
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+            
+            <li>
+                <a href="http://vamp.io/faq">
+                    
+                    <span>FAQ</span>
+                </a>
+                
+            </li>
+            
+        </ul>
+        
+    </div>
+</aside>
+
+            </div>
+            <div class="col-md-9 docs">
+                
+
+<h1 id="blueprints">Blueprints</h1>
+
+<p>Blueprints are execution plans - they describe how your services should be hooked up and what their topology should look like at runtime. This means you reference your breeds (or define them inline) and add runtime configuration to them.</p>
+
+<p>Blueprints allow you to add the following extra properties:</p>
+
+<ul>
+<li><a href="#gateways">gateways</a>: a stable port where the service can be reached.</li>
+<li><a href="#clusters-services">clusters &amp; services</a>: a cluster is a grouping of services with one purpose, i.e. two versions (a/b) of one service.</li>
+<li><a href="http://vamp.io/documentation/using-vamp/environment_variables/">environment variables</a>: a list of variables (interpolated or not) to be made available at runtime.</li>
+<li><a href="#dialects">dialects</a>: a dialect is a set of native commands for the underlying container platform, i.e. Docker or Mesosphere Marathon.</li>
+<li><a href="#scale">scale</a>: the CPU and memory and the amount of instance allocate to a service.</li>
+<li><a href="http://vamp.io/documentation/using-vamp/routings-and-filters/">routing</a>: how much and which traffic the service should receive.</li>
+<li><a href="http://vamp.io/documentation/using-vamp/routings-and-filters/">filters</a>: how traffic should be directed based on HTTP and/or TCP properties.</li>
+<li><a href="http://vamp.io/documentation/using-vamp/sla-and-escalations/">sla &amp; escalations</a>: SLA definition that controls autoscaling.</li>
+</ul>
+
+<p>This example shows some of the key concepts of of blueprints:</p>
+
+<pre><code class="language-yaml">---
+name: my_blueprint                        # Custom blueprint name
+gateways:
+  8080/http: my_frontend/port
+clusters:
+  my_frontend:                            # Custom cluster name.
+  
+    routing:                              # Routing for this cluster services.
+      routes:                             # Makes sense only with
+        some_cool_breed:                  # multiple services per cluster.
+          weight: 95%
+          filters:
+          - condition: User-Agent = Chrome
+        some_other_breed:                 # Second service.
+          weight: 5%
+          
+    services:                             # List of services
+      -
+        breed:
+          ref: some_cool_breed
+        scale:                            # Scale for this service.
+          cpu: 2                          # Number of CPUs per instance.
+          memory: 2048MB                  # Memory per instance (MB/GB units).
+          instances: 2                    # Number of instances
+      -                                          
+        breed: 
+          ref: some_other_breed           # Another service in the same cluster.  
+        scale: large                      # Notice we used a reference to a &quot;scale&quot;. 
+                                          # More on this later.
+</code></pre>
+
+<h2 id="gateways">Gateways</h2>
+
+<p>A gateway is a &ldquo;stable&rdquo; endpoint (or port in simplified sense) that almost never changes. When creating the mapping, it uses the definition (my_frontend/port in this case) from the &ldquo;first&rdquo; service in the cluster definition you reference. This service can of course be changed, but the gateway port normally doesn&rsquo;t.</p>
+
+<p>Please take care of setting the <code>/tcp</code> or <code>/http</code> (default) type for the port. Using <code>/http</code> allows Vamp to records more relevant metrics like response times and metrics.</p>
+
+<blockquote>
+<p><strong>Note:</strong> gateways are optional. You can just deploy services and have a home grown method to connect them to some stable, exposable endpoint.</p>
+</blockquote>
+
+<h2 id="clusters-services">Clusters &amp; Services</h2>
+
+<p>In essence, blueprints define a collection of clusters.
+In turn, a cluster is a group of different services which
+will appear as a single service serve a single purposes.</p>
+
+<p>Common use cases are service A and B in an A/B testing scenario - usually just different
+versions of the same service (e.g. canary release or blue/green deployment).</p>
+
+<p>As said, clusters are configured by defining an array of services. A cluster can be
+given an arbitrary name. Services are just lists or arrays of breeds.</p>
+
+<pre><code class="language-yaml">---
+my_cool_cluster
+  services
+   - breed: 
+      ref: my_cool_service_A      # reference to an existing breed
+   -
+     breed:                       # shortened inline breed
+       name: my_cool_service_B
+       deployable: some_container
+       ...
+</code></pre>
+
+<p>Clusters and services are just organisational items. Vamp uses them to order, reference and control the actual containers and routing and traffic.</p>
+
+<blockquote>
+<p><strong>This all seems redundant, right?</strong> We have a reference chain of blueprints -&gt; gateways -&gt; clusters -&gt; services -&gt; breeds -&gt; deployable. However, you need this level of control and granularity in any serious environment where DRY principles are taken seriously and where &ldquo;one size fits all&rdquo; doesn&rsquo;t fly.</p>
+</blockquote>
+
+<h2 id="dialects">Dialects</h2>
+
+<p>Vamp allows you to use container driver specific tags inside blueprints. We call this a “dialect”. We currently support:</p>
+
+<ul>
+<li><code>docker:</code></li>
+<li><code>marathon:</code></li>
+</ul>
+
+<p>This effectively enables you to make full use of, for instance, the underlying features like mounting disks, settings commands and providing access to private Docker registries.</p>
+
+<h3 id="docker-dialect">Docker dialect</h3>
+
+<p>The following example show how you can mount a volume to a Docker container using the Docker dialect:</p>
+
+<pre><code class="language-yaml">---
+name: busybox
+clusters:
+  busyboxes:
+    services:
+      breed:
+        name: busybox-breed
+        deployable: busybox:latest
+      docker:
+        Volumes:
+          &quot;/tmp&quot;: ~
+</code></pre>
+
+<p>Vamp will translate this into the proper API call. Inspecting the container after its deployed should show something similar to this:</p>
+
+<pre><code class="language-json">...
+&quot;Volumes&quot;: {
+      &quot;/tmp&quot;: &quot;/mnt/sda1/var/lib/docker/volumes/1a3923fa6108cc3e19a7fe0eeaa2a6c0454688ca6165d1919bf647f5f370d4d5/_data&quot;
+  },
+...    
+</code></pre>
+
+<h3 id="marathon-dialect">Marathon dialect</h3>
+
+<p>This is an example with Marathon that pulls an image from private repo, mounts some volumes, sets some labels and gets run with an ad hoc command: all taken care of by Marathon.</p>
+
+<pre><code class="language-yaml">---
+name: busy-top:1.0
+clusters:
+  busyboxes:
+    services:
+      breed:
+        name: busybox
+        deployable: registry.magnetic.io/busybox:latest
+      marathon:
+       cmd: &quot;top&quot;
+       uris:
+         -
+           &quot;https://some_host/some_path/some_file_with_docker_credentials&quot;
+       labels:
+         environment: &quot;staging&quot;
+         owner: &quot;buffy the vamp slayer&quot;
+       container:
+         volumes:
+           -
+             containerPath: &quot;/tmp/&quot;
+             hostPath: &quot;/tmp/&quot;
+             mode: &quot;RW&quot;
+</code></pre>
+
+<p><strong>Notice the following</strong>:</p>
+
+<ol>
+<li>Under the <code>marathon:</code> tag, we provide the command to run in the container by setting the <code>cmd:</code> tag.</li>
+<li>We provide a url to some credentials file in the <code>uri</code> array. As described <a href="https://mesosphere.github.io/marathon/docs/native-docker.html#using-a-private-docker-repository">in the Marathon docs</a> this enables Mesos
+to pull from a private registry, in this case registry.magnetic.io where these credentials are set up.</li>
+<li>We set some labels with some arbitrary metadata.</li>
+<li>We mount the <code>/tmp</code> to in Read/Write mode.</li>
+</ol>
+
+<p>We can provide the <code>marathon:</code> tag either on the service level, or the cluster level. Any <code>marathon:</code> tag set on the service level will override the cluster level as it is more specific. However, in 9 out of 10 cases the cluster level makes the most sense. Later, you can also mix dialects so you can prep your blueprint for multiple environments and run times within one description.</p>
+
+<h2 id="scale">Scale</h2>
+
+<p>Scale is the &ldquo;size&rdquo; of a deployed service. Usually that means the number of instances (servers) and allocated cpu and memory.</p>
+
+<p>Scales can be defined inline in a blueprint or they can defined separately and given a unique name. The following example is a scale named &ldquo;small&rdquo;. <code>POST</code>-ing this scale to the <code>/scales</code> REST API endpoint will store it under that name so it can be referenced from other blueprints.</p>
+
+<pre><code class="language-yaml">---
+name: small   # Custom name.
+
+cpu: 2        # Number of CPUs per instance.
+memory: 2gb   # Memory per instance, MB/GB units.
+instances: 2  # Number of instances.
+</code></pre>
+
+                <span class="pull-right muted" style="margin-top: 15px">Found an error or a typo in these docs?<a href="https://github.com/magneticio/vamp.io/tree/master/content/documentation" target="_blank"> Submit an issue or a pull request!</a></span>
+   
+            </div>
+            <div class="col-md-1 hidden-xs hidden-sm">
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-1">
+    <div class="container">
+        <div class="row links">
+            <nav>
+                <div class="col-sm-3">
+                    <h6>Learn more</h6>
+                    <ul>
+                        <li><a href="http://vamp.io/documentation/">About Vamp</a></li>
+                        <li><a href="http://vamp.io/quick-start/">Quick start</a></li>
+                        <li><a href="http://vamp.io/documentation/using-vamp/">Using Vamp</a></li>
+                        <li><a href="http://vamp.io/documentation/guides/">Guides</a></li>
+                        <li><a href="http://vamp.io/documentation/api-reference/">API reference</a></li>
+                        <li><a href="http://vamp.io/documentation/cli-reference/">CLI reference</a></li>
+                        <li><a href="http://vamp.io/faq/">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h6>All things code</h6>
+                    <ul>
+                        <li><a href="http://vamp.io/contribute/">Contribute</a></li>
+                        <li><a href="http://vamp.io/documentation/community/">Issues & support</a></li>
+                        <li><a href="https://github.com/magneticio/vamp/" target="_blank">Github</a></li>
+                        <li><a href="https://gitter.im/magneticio/vamp" target="_blank">Gitter</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-5">
+                    <h6>Stay up to date</h6>
+                    <div class="subscribe-form">
+                        <p class="muted subscribe-lead">Leave your email for the latest news: we won't spam you and won't go off topic.</p>
+                        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate>
+                            <div class="mc-field-group input-group">
+                                <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Email">
+                                <span class="input-group-btn">
+                                <button type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe-2" class="btn btn-info">SIGN UP</button>
+                            </span>
+                            </div>
+                        </form>
+                    </div>
+                    <p>
+                        Or subscribe to our <a href="http://vamp.io/index.xml">RSS feed</a>
+                    </p>
+                </div>
+            </nav>
+        </div>
+        <div class="row licensing">
+            <div class="col-sm-3">
+                <div class="brand hidden-xs">
+                    <img src="http://vamp.io/img/magneticio_logo_gray.svg">
+                </div>
+            </div>
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-5">
+                <p class="muted pull-right">
+                    Code licensed under <a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">Apache 2</a> © 2015 <a href="http://magnetic.io/">Magnetic.io</a>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-59948816-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script src="http://vamp.io/vendor/theme/common-files/js/jquery-1.10.2.min.js"></script>
+<script src="http://vamp.io/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/modernizr.custom.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/easing.min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/startup-kit.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/prettify.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/lang-yaml.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/lang-scala.js"></script>
+<script src="http://vamp.io/vendor/prism/prism.js"></script>
+<script src="http://vamp.io/js/ZeroClipboard.min.js"></script>
+<script src="http://vamp.io/js/custom.js"></script>
+<script>
+$('document').ready(prettyPrint())
+</script>
+</div>
+</body>
+
+</html>

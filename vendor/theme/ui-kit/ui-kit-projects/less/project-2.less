@@ -1,0 +1,126 @@
+/**
+ * Project 2 stylesheet  
+ * */
+ .projects-2 {
+    background: #000;
+    color: #fff;
+    .v-center;
+    .content {
+        font-family: @font-family-demo;
+        font-weight: 500;
+        letter-spacing: 1px;
+        font-size: 13px;
+    }
+    .wide-text {
+        letter-spacing: 0.5em;
+        word-spacing: 0.5em;
+        display: block;
+        margin: 18px 0 0;
+        font-size: 13px;
+        font-family: @font-family-demo;
+        ffont-weight: 500;
+        @media (max-width: 480px) {
+            letter-spacing: 0.25em;
+            word-spacing: 0.25em;
+        }
+    }
+    .hero-unit {
+        display: table;
+        border-collapse: collapse;
+        padding: 0;
+        margin: 0 auto;
+        background: transparent;
+        > * {
+            display: table-cell;
+            vertical-align: middle;
+            border: 8px solid #fff;
+            padding: 28px 30px;
+            text-align: left;
+        }
+        h1 {
+            margin: 0;
+            font-size: 46px;
+            font-weight: 700;
+        }
+        p {
+            margin: 0;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 30px;
+            }
+            p {
+                display: none;
+            }
+        }
+    }
+    > * {
+        height: 215px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        text-align: center;
+        background: 50% 50% no-repeat;
+        .background-size(cover);
+        .transition(.6s opacity);
+        .opacity(15);
+        .box-sizing(border-box);
+        &:hover {
+            .opacity(100);
+        }
+        @media (max-width: 767px) {
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+    }
+    .project-1 {
+        background-image: url('@{startup-basePath}common-files/img/Hawaii_001.jpg');
+        .container {
+            h1 {
+                .font(50px, white);
+                font-family: @font-family-demo;
+                font-weight: 800;
+                letter-spacing: 0px;
+                margin-bottom: 12px;
+                margin-top: 10px;
+            }
+            p {
+                .font(30px, white);
+                font-family: @font-family-demo;
+                font-weight: 300;
+                letter-spacing: 0px;
+                padding-top: 0;
+                margin-bottom: 10px;
+                .line-height(30px);
+            }
+            @media (max-width: 480px) {
+                h1 {
+                    font-size: 25px;
+                }
+                p {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+    .project-2 {
+        background-image: url('@{startup-basePath}common-files/img/Italy_001.jpg');
+        @media (max-width: 480px) {
+            .hero-unit h1 {
+                font-size: 24px;
+            }
+        }
+    }
+    .project-3 {
+        background-image: url('@{startup-basePath}common-files/img/NY_002.jpg');
+        [class*="fui-"] {
+            font-size: 95px;
+            .line-height(95px);
+        }
+    }
+    @media (max-width: 767px) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

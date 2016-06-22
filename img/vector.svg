@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1129px" height="654px" viewBox="0 0 1129 654" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>vector</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="vector" sketch:type="MSArtboardGroup" transform="translate(-103.000000, -383.000000)">
+            <path d="M599,544.995703 C599,540.579798 602.588583,537 606.993327,537 L1212.00667,537 C1216.42127,537 1220,540.574644 1220,544.998716 L1220,761.3849 L1220,972.002166 C1220,976.419248 1216.41142,980 1212.00667,980 L606.993327,980 C602.578734,980 599,976.417871 599,972.004297 L599,544.995703 Z" id="Rectangle-1" stroke="#A3CCF5" stroke-width="3" stroke-dasharray="10,10" sketch:type="MSShapeGroup"></path>
+            <g id="Rectangle-2-+-Vamp-Router" sketch:type="MSLayerGroup" transform="translate(753.000000, 571.000000)">
+                <rect id="Rectangle-2" fill="#03A9F4" sketch:type="MSShapeGroup" x="0" y="0" width="200" height="80" rx="8"></rect>
+                <text id="Vamp-Router" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="20" font-weight="420" fill="#FFFFFF">
+                    <tspan x="38" y="48">Vamp Router</tspan>
+                </text>
+            </g>
+            <g id="Rectangle-2-+-Vamp-Router-Copy" sketch:type="MSLayerGroup" transform="translate(346.000000, 789.000000)">
+                <rect id="Rectangle-2" fill="#03A9F4" sketch:type="MSShapeGroup" x="0" y="0" width="200" height="80" rx="8"></rect>
+                <text id="Vamp-Core" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="20" font-weight="420" fill="#FFFFFF">
+                    <tspan x="48" y="48">Vamp Core</tspan>
+                </text>
+            </g>
+            <g id="Rectangle-2-+-Vamp-Router-Copy-3" sketch:type="MSLayerGroup" transform="translate(102.500000, 735.750000)">
+                <rect id="Rectangle-2" stroke="#979797" stroke-width="2" sketch:type="MSShapeGroup" x="0" y="0" width="140" height="80" rx="8"></rect>
+                <text id="Vamp-UI" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="20" font-weight="420" fill="#333333">
+                    <tspan x="30" y="48">Vamp UI</tspan>
+                </text>
+            </g>
+            <g id="Rectangle-2-+-Vamp-Router-Copy-4" sketch:type="MSLayerGroup" transform="translate(102.500000, 841.250000)">
+                <rect id="Rectangle-2" stroke="#979797" stroke-width="2" sketch:type="MSShapeGroup" x="0" y="0" width="146" height="80" rx="8"></rect>
+                <text id="Vamp-CLI" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="20" font-weight="420" fill="#333333">
+                    <tspan x="27" y="48">Vamp CLI</tspan>
+                </text>
+            </g>
+            <g id="Rectangle-2-+-Vamp-Router-Copy-2" sketch:type="MSLayerGroup" transform="translate(346.000000, 576.000000)">
+                <rect id="Rectangle-2" fill="#03A9F4" sketch:type="MSShapeGroup" x="0" y="0" width="200" height="80" rx="8"></rect>
+                <rect id="Rectangle-2-Copy-4" fill="#03A9F4" sketch:type="MSShapeGroup" x="0" y="0" width="200" height="80" rx="8"></rect>
+                <text id="Vamp-Pulse" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="20" font-weight="420" fill="#FFFFFF">
+                    <tspan x="44" y="48">Vamp Pulse</tspan>
+                </text>
+            </g>
+            <g id="Rectangle-2-+-Container-" sketch:type="MSLayerGroup" transform="translate(650.000000, 729.000000)">
+                <rect id="Rectangle-2" fill="#A3A9AF" sketch:type="MSShapeGroup" transform="translate(41.000000, 100.000000) rotate(-90.000000) translate(-41.000000, -100.000000) " x="-59" y="60" width="200" height="80" rx="8"></rect>
+                <text id="Container-" sketch:type="MSTextLayer" transform="translate(41.000000, 100.000000) rotate(-90.000000) translate(-41.000000, -100.000000) " font-family="Helvetica Neue" font-size="20" font-weight="420" sketch:alignment="middle" fill="#FFFFFF">
+                    <tspan x="-4.01" y="95">Container </tspan>
+                    <tspan x="0.43" y="120">manager </tspan>
+                </text>
+            </g>
+            <g id="Rectangle-2-+-Container--Copy" sketch:type="MSLayerGroup" transform="translate(1090.500000, 611.000000) rotate(90.000000) translate(-1090.500000, -611.000000) translate(1050.000000, 538.000000)">
+                <g id="Rectangle-2-+--HAproxy">
+                    <g>
+                        <rect id="Rectangle-2" fill="#A3A9AF" sketch:type="MSShapeGroup" transform="translate(40.000000, 73.000000) rotate(-90.000000) translate(-40.000000, -73.000000) " x="-32" y="33" width="144" height="80" rx="8"></rect>
+                        <text id="-HAproxy" sketch:type="MSTextLayer" transform="translate(40.000000, 73.500000) rotate(-90.000000) translate(-40.000000, -73.500000) " font-family="Helvetica Neue" font-size="20" font-weight="420" sketch:alignment="middle" fill="#FFFFFF">
+                            <tspan x="-2.61" y="81"> HAproxy</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+            <rect id="Rectangle-2" stroke="#A3A9AF" stroke-width="2" sketch:type="MSShapeGroup" transform="translate(824.500000, 841.250000) rotate(-90.000000) translate(-824.500000, -841.250000) " x="784" y="801.25" width="81" height="80" rx="8"></rect>
+            <rect id="Rectangle-2-Copy" stroke="#A3A9AF" stroke-width="2" sketch:type="MSShapeGroup" transform="translate(924.000000, 841.000000) rotate(-90.000000) translate(-924.000000, -841.000000) " x="883.5" y="801" width="81" height="80" rx="8"></rect>
+            <rect id="Rectangle-2-Copy-3" stroke="#A3A9AF" stroke-width="2" sketch:type="MSShapeGroup" transform="translate(1024.000000, 841.000000) rotate(-90.000000) translate(-1024.000000, -841.000000) " x="983.5" y="801" width="81" height="80" rx="8"></rect>
+            <rect id="Rectangle-2-Copy-2" stroke="#A3A9AF" stroke-width="2" sketch:type="MSShapeGroup" transform="translate(1124.000000, 841.000000) rotate(-90.000000) translate(-1124.000000, -841.000000) " x="1083.5" y="801" width="81" height="80" rx="8"></rect>
+            <rect id="Rectangle-2-Copy-7" stroke="#A3A9AF" stroke-width="2" fill="#FFFFFF" sketch:type="MSShapeGroup" x="773.5" y="789.5" width="81" height="80" rx="8"></rect>
+            <rect id="Rectangle-2-Copy-8" stroke="#A3A9AF" stroke-width="2" fill="#FFFFFF" sketch:type="MSShapeGroup" x="873.5" y="789.5" width="81" height="80" rx="8"></rect>
+            <rect id="Rectangle-2-Copy-9" stroke="#A3A9AF" stroke-width="2" fill="#FFFFFF" sketch:type="MSShapeGroup" x="973.5" y="789.5" width="81" height="80" rx="8"></rect>
+            <rect id="Rectangle-2-Copy-10" stroke="#A3A9AF" stroke-width="2" fill="#FFFFFF" sketch:type="MSShapeGroup" x="1073.5" y="789.5" width="81" height="80" rx="8"></rect>
+            <rect id="Rectangle-2-Copy-12" stroke="#A3A9AF" stroke-width="2" sketch:type="MSShapeGroup" transform="translate(824.500000, 841.250000) rotate(-90.000000) translate(-824.500000, -841.250000) " x="784" y="801.25" width="81" height="80" rx="8"></rect>
+            <rect id="Rectangle-2-Copy-5" stroke="#A3A9AF" stroke-width="2" sketch:type="MSShapeGroup" transform="translate(924.000000, 841.000000) rotate(-90.000000) translate(-924.000000, -841.000000) " x="883.5" y="801" width="81" height="80" rx="8"></rect>
+            <rect id="Rectangle-2-Copy-6" stroke="#A3A9AF" stroke-width="2" sketch:type="MSShapeGroup" transform="translate(1024.000000, 841.000000) rotate(-90.000000) translate(-1024.000000, -841.000000) " x="983.5" y="801" width="81" height="80" rx="8"></rect>
+            <rect id="Rectangle-2-Copy-11" stroke="#A3A9AF" stroke-width="2" sketch:type="MSShapeGroup" transform="translate(1124.000000, 841.000000) rotate(-90.000000) translate(-1124.000000, -841.000000) " x="1083.5" y="801" width="81" height="80" rx="8"></rect>
+            <rect id="Rectangle-2-Copy-7" stroke="#A3A9AF" stroke-width="2" fill="#FFFFFF" sketch:type="MSShapeGroup" x="773.5" y="789.5" width="81" height="80" rx="8"></rect>
+            <rect id="Rectangle-2-Copy-8" stroke="#A3A9AF" stroke-width="2" fill="#FFFFFF" sketch:type="MSShapeGroup" x="873.5" y="789.5" width="81" height="80" rx="8"></rect>
+            <rect id="Rectangle-2-Copy-9" stroke="#A3A9AF" stroke-width="2" fill="#FFFFFF" sketch:type="MSShapeGroup" x="973.5" y="789.5" width="81" height="80" rx="8"></rect>
+            <rect id="Rectangle-2-Copy-10" stroke="#A3A9AF" stroke-width="2" fill="#FFFFFF" sketch:type="MSShapeGroup" x="1073.5" y="789.5" width="81" height="80" rx="8"></rect>
+            <path d="M546.5,830.5 L647.5,830.5" id="Line" stroke="#FF4081" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+            <path id="Line-decoration-1" d="M647.5,830.5 L636.7,827.5 L636.7,833.5 L647.5,830.5 Z" stroke="#FF4081" stroke-width="3" stroke-linecap="square"></path>
+            <path d="M550,600.5 L752.5,600.5" id="Line-Copy-4" stroke="#FF4081" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup" transform="translate(651.250000, 600.500000) scale(-1, 1) translate(-651.250000, -600.500000) "></path>
+            <path id="Line-Copy-4-decoration-1" d="M752.5,600.5 L741.7,597.5 L741.7,603.5 L752.5,600.5 Z" stroke="#FF4081" stroke-width="3" stroke-linecap="square"></path>
+            <path d="M722.5,830.5 L772.58992,830.5" id="Line-Copy-7" stroke="#A3A9AF" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+            <path id="Line-Copy-7-decoration-1" d="M772.58992,830.5 L761.78992,827.5 L761.78992,833.5 L772.58992,830.5 Z" stroke="#A3A9AF" stroke-width="3" stroke-linecap="square"></path>
+            <path d="M244,776.775206 L304,776.775206 L304,829.499998 L315,829.499998 L341,829.499998" id="Line-Copy-5" stroke="#FF4081" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+            <path id="Line-Copy-5-decoration-1" d="M341,829.499998 L330.2,826.499998 L330.2,832.499998 L341,829.499998 Z" stroke="#FF4081" stroke-width="3" stroke-linecap="square"></path>
+            <g id="Line-Copy-2-+-Line-Copy-3" sketch:type="MSLayerGroup" transform="translate(446.000000, 661.000000)" stroke="#FF4081" stroke-width="3" stroke-linecap="square">
+                <path d="M1.5,0.488188976 L1.5,122.535433" id="Line-Copy-2" sketch:type="MSShapeGroup"></path>
+                <path id="Line-Copy-2-decoration-1" d="M1.5,0.488188976 L4.5,11.288189 L-1.5,11.288189 L1.5,0.488188976 Z"></path>
+                <path id="Line-Copy-2-decoration-2" d="M1.5,122.535433 L4.5,111.735433 L-1.5,111.735433 L1.5,122.535433 Z"></path>
+            </g>
+            <g id="Line-Copy-2-+-Line-Copy-3-Copy" sketch:type="MSLayerGroup" transform="translate(446.000000, 873.000000)" stroke="#FF4081" stroke-width="3" stroke-linecap="square">
+                <path d="M1.5,0.208661417 L1.5,52.3740157" id="Line-Copy-2" sketch:type="MSShapeGroup"></path>
+                <path id="Line-Copy-2-decoration-1" d="M1.5,0.208661417 L4.5,11.0086614 L-1.5,11.0086614 L1.5,0.208661417 Z"></path>
+                <path id="Line-Copy-2-decoration-2" d="M1.5,52.3740157 L4.5,41.5740157 L-1.5,41.5740157 L1.5,52.3740157 Z"></path>
+            </g>
+            <g id="Line-Copy-2-+-Line-Copy-3-Copy-Copy" sketch:type="MSLayerGroup" transform="translate(315.500000, 616.500000) scale(-1, 1) rotate(-90.000000) translate(-315.500000, -616.500000) translate(300.000000, 590.000000)" stroke="#FF4081" stroke-width="3" stroke-linecap="square">
+                <path d="M15.5,0.208661417 L15.5,52.3740157" id="Line-Copy-2" sketch:type="MSShapeGroup"></path>
+                <path id="Line-Copy-2-decoration-1" d="M15.5,0.208661417 L18.5,11.0086614 L12.5,11.0086614 L15.5,0.208661417 Z"></path>
+                <path id="Line-Copy-2-decoration-2" d="M15.5,52.3740157 L18.5,41.5740157 L12.5,41.5740157 L15.5,52.3740157 Z"></path>
+            </g>
+            <path d="M448.5,417.5 L347.5,417.5" id="Line-Copy-15" stroke="#FF4081" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup" transform="translate(398.000000, 417.500000) scale(-1, 1) translate(-398.000000, -417.500000) "></path>
+            <path d="M955.5,609.5 L1015.5,609.5" id="Line-Copy-6" stroke="#FF4081" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup" transform="translate(985.500000, 609.500000) scale(-1, 1) translate(-985.500000, -609.500000) "></path>
+            <path id="Line-Copy-6-decoration-1" d="M955.5,609.5 L966.3,606.5 L966.3,612.5 L955.5,609.5 Z" stroke="#FF4081" stroke-width="3" stroke-linecap="square"></path>
+            <path id="Line-Copy-6-decoration-2" d="M1015.5,609.5 L1004.7,606.5 L1004.7,612.5 L1015.5,609.5 Z" stroke="#FF4081" stroke-width="3" stroke-linecap="square"></path>
+            <path d="M572,829 C572,829 572,826.305286 572,823.000796 L572,629 L621.256757,629 L748,629" id="Line-Copy" stroke="#FF4081" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+            <path id="Line-Copy-decoration-1" d="M748,629 L737.2,626 L737.2,632 L748,629 Z" stroke="#FF4081" stroke-width="3" stroke-linecap="square"></path>
+            <path d="M304,830 L304,888 L250,888" id="Line" stroke="#FF4081" stroke-width="3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+            <text id="Host(s)-with-contain" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="20" font-weight="420" fill="#A3A9AF">
+                <tspan x="773.5" y="924">Host(s) with containers</tspan>
+            </text>
+            <text id="Elastic" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="20" font-weight="420" fill="#A3A9AF">
+                <tspan x="212" y="617">Elastic</tspan>
+                <tspan x="212" y="642">search</tspan>
+            </text>
+            <text id="JDBC" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="20" font-weight="420" fill="#A3A9AF">
+                <tspan x="419" y="994">JDBC</tspan>
+            </text>
+            <path d="M814.5,717.5 L1114.5,717.5" id="Line" stroke="#A3A9AF" stroke-width="3" stroke-linecap="square" stroke-dasharray="1,6" sketch:type="MSShapeGroup"></path>
+            <path d="M814.5,788.5 L814.5,718.5" id="Line" stroke="#979797" stroke-width="3" stroke-linecap="square" stroke-dasharray="1,6" sketch:type="MSShapeGroup"></path>
+            <path d="M915.5,788.5 L915.5,718.5" id="Line-Copy-8" stroke="#A3A9AF" stroke-width="3" stroke-linecap="square" stroke-dasharray="1,6" sketch:type="MSShapeGroup"></path>
+            <path d="M446.5,463.5 L347.5,463.5" id="Line-Copy-16" stroke="#A3A9AF" stroke-width="3" stroke-linecap="square" stroke-dasharray="1,6" sketch:type="MSShapeGroup"></path>
+            <path d="M442.5,509.5 L347.5,509.5" id="Line-Copy-17" stroke="#A3CCF5" stroke-width="3" stroke-linecap="square" stroke-dasharray="10,10" sketch:type="MSShapeGroup"></path>
+            <path d="M1014.5,788.5 L1014.5,718.5" id="Line-Copy-9" stroke="#A3A9AF" stroke-width="3" stroke-linecap="square" stroke-dasharray="1,6" sketch:type="MSShapeGroup"></path>
+            <path d="M1092.5,716 L1092.5,649.5" id="Line-Copy-11" stroke="#A3A9AF" stroke-width="3" stroke-linecap="square" stroke-dasharray="1,6" sketch:type="MSShapeGroup"></path>
+            <path d="M1094.5,571 L1094.5,465" id="Line-Copy-12" stroke="#A3A9AF" stroke-width="3" stroke-linecap="square" stroke-dasharray="1,6" sketch:type="MSShapeGroup"></path>
+            <path d="M1114.5,788.5 L1114.5,716" id="Line-Copy-10" stroke="#A3A9AF" stroke-width="3" stroke-linecap="square" stroke-dasharray="1,6" sketch:type="MSShapeGroup"></path>
+            <path d="M1092.5,716 L1092.5,649.5" id="Line-Copy-13" stroke="#A3A9AF" stroke-width="3" stroke-linecap="square" stroke-dasharray="1,6" sketch:type="MSShapeGroup"></path>
+            <path d="M1076.87518,384.49588 C1086.27462,384.49588 1094.917,388.826907 1099.99398,396.081198 C1101.62842,398.416161 1104.24352,399.692239 1106.91935,399.692239 C1108.28251,399.692239 1109.66072,399.361605 1110.93365,398.670693 C1113.38928,397.338179 1116.2365,396.63387 1119.16686,396.63387 C1128.12194,396.63387 1134.87506,402.895118 1134.87506,411.198888 C1134.87506,412.604085 1134.66962,414.04662 1134.26499,415.486875 C1133.57347,417.950102 1134.02408,420.594893 1135.49082,422.687011 C1136.95897,424.779699 1139.2872,426.095966 1141.82881,426.270119 C1151.48023,426.933668 1159.04149,435.075827 1159.04149,444.804461 C1159.04149,455.052704 1150.74132,463.390108 1140.52835,463.390108 L1049.68759,463.503835 C1039.35998,463.503835 1030.95851,455.06439 1030.95851,444.690449 C1030.95851,436.474183 1036.18843,429.273192 1043.97159,426.772341 C1048.09855,425.446668 1050.56014,421.202006 1049.67397,416.942237 C1049.28238,415.059616 1049.08319,413.127399 1049.08319,411.198888 C1049.08347,396.225423 1061.29154,384.49588 1076.87518,384.49588 L1076.87518,384.49588 Z" id="Shape" stroke="#A3A9AF" stroke-width="2" sketch:type="MSShapeGroup"></path>
+            <text id="Vamp-control-message" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="20" font-weight="normal" fill="#333333">
+                <tspan x="103" y="423">Vamp control messages</tspan>
+            </text>
+            <text id="User-/-production-tr" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="20" font-weight="normal" fill="#333333">
+                <tspan x="103" y="468">User / production traffic</tspan>
+            </text>
+            <text id="Production-LAN/VLAN" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="20" font-weight="normal" fill="#333333">
+                <tspan x="103" y="513">Production LAN/VLAN</tspan>
+            </text>
+            <g id="Group" sketch:type="MSLayerGroup" transform="translate(405.000000, 931.000000)" stroke="#A3A9AF" stroke-width="2">
+                <ellipse id="Oval-1" sketch:type="MSShapeGroup" cx="41" cy="10.2040816" rx="40.322314" ry="10.2040816"></ellipse>
+                <path d="M0.67768595,89.7959184 C0.67768595,95.431477 18.7306009,100 41,100 L41,100 C63.2693991,100 81.322314,95.431477 81.322314,89.7959184" id="Oval-1-Copy" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+                <path d="M0.67768595,89.4557823 L0.67768595,10.5442177" id="Line" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                <path d="M81.322314,89.4557823 L81.322314,10.5442177" id="Line-Copy-3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+            </g>
+            <g id="Group-Copy" sketch:type="MSLayerGroup" transform="translate(202.000000, 566.000000)" stroke="#A3A9AF" stroke-width="2">
+                <ellipse id="Oval-1" sketch:type="MSShapeGroup" cx="41" cy="10.2040816" rx="40.322314" ry="10.2040816"></ellipse>
+                <path d="M0.67768595,89.7959184 C0.67768595,95.431477 18.7306009,100 41,100 L41,100 C63.2693991,100 81.322314,95.431477 81.322314,89.7959184" id="Oval-1-Copy" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+                <path d="M0.67768595,89.4557823 L0.67768595,10.5442177" id="Line" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                <path d="M81.322314,89.4557823 L81.322314,10.5442177" id="Line-Copy-3" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="715px" height="219px" viewBox="0 0 715 219" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="reference-inline" sketch:type="MSArtboardGroup" transform="translate(-188.000000, -465.000000)">
+            <g id="Group" sketch:type="MSLayerGroup" transform="translate(196.000000, 472.000000)">
+                <rect id="Rectangle-2-Copy-3" stroke="#03A9F4" stroke-width="2" sketch:type="MSShapeGroup" x="458" y="0" width="240" height="51" rx="5"></rect>
+                <text id="my_breed" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="20" font-weight="420" fill="#03A9F4">
+                    <tspan x="493" y="31">my_breed</tspan>
+                </text>
+                <text id="blueprint:-my_bluepr" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="20" font-weight="420">
+                    <tspan x="34" y="43.5" fill="#A3A9AF">blueprint: my_blueprint</tspan>
+                    <tspan x="34" y="68.5" fill="#A3A9AF">    cluster: my_cluster</tspan>
+                    <tspan x="34" y="93.5" fill="#A3A9AF">       breed:</tspan>
+                    <tspan x="34" y="118.5" fill="#A3A9AF">          ref: </tspan>
+                    <tspan x="124.82" y="118.5" fill="#03A9F4">my_breed</tspan>
+                    <tspan x="215.96" y="118.5" fill="#A3A9AF"></tspan>
+                    <tspan x="34" y="143.5" fill="#A3A9AF">       scale:</tspan>
+                    <tspan x="34" y="168.5" fill="#A3A9AF">          ref: </tspan>
+                    <tspan x="124.82" y="168.5" fill="#03A9F4">medium</tspan>
+                </text>
+                <g id="Rectangle-2-Copy-2-+-scale:-my_scale-Copy-+-scale:-medium-copy" transform="translate(458.000000, 69.000000)">
+                    <g id="Rectangle-2-Copy-2-+-scale:-my_scale-Copy" stroke="#03A9F4" stroke-width="2" sketch:type="MSShapeGroup">
+                        <rect id="Rectangle-2-Copy-2" x="0" y="0" width="240" height="114.5" rx="5"></rect>
+                    </g>
+                    <text id="medium" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="17.751938" font-weight="420" fill="#03A9F4">
+                        <tspan x="28.8084416" y="30">medium</tspan>
+                        <tspan x="28.8084416" y="52">   cpu: 2</tspan>
+                        <tspan x="28.8084416" y="74">   memory: 1024</tspan>
+                        <tspan x="28.8084416" y="96">   instances: 4</tspan>
+                    </text>
+                </g>
+                <rect id="Rectangle-31" stroke="#A3A9AF" stroke-width="2" sketch:type="MSShapeGroup" x="0" y="0" width="371" height="196" rx="8"></rect>
+                <path d="M248,164 L451,125" id="Line" stroke="#FF4081" stroke-width="2" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                <path id="Line-decoration-1" d="M451,125 L439.827954,124.091491 L440.959962,129.983737 L451,125 Z" stroke="#FF4081" stroke-width="2" stroke-linecap="square"></path>
+                <path d="M250,111 L452,24" id="Line-Copy" stroke="#FF4081" stroke-width="2" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                <path id="Line-Copy-decoration-1" d="M452,24 L440.894175,25.5167868 L443.267564,31.0274149 L452,24 Z" stroke="#FF4081" stroke-width="2" stroke-linecap="square"></path>
+            </g>
+        </g>
+    </g>
+</svg>

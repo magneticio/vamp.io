@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Gateways | vamp.io">
+        
+        <meta property="og:url" content="http://vamp.io/documentation/using-vamp/gateways/">
+        <meta property="og:image" content="http://vamp.io/img/vamp_logo_blue_circle.png">
+        <meta property="og:site_name" content="Vamp.io">
+        
+            
+                <meta name="description" content="Gateways Gateways are another non-static entities in the Vamp eco-system. They represent load balancer rules to deployment, cluster and service instances. There are 2 types of gateways: internal - created automatically for each deployment cluster, updated via Gateway/Deployment API external - explicitly declared either in deployment blueprint or using gateway API This is an example of automatically created gateway for deployment vamp, cluster sava and port port. Cluster contains 2 services sava:1.0.0 and sava:1.1.0 with 2 running instances each.">           
+                <meta property="og:description" content="Gateways Gateways are another non-static entities in the Vamp eco-system. They represent load balancer rules to deployment, cluster and service instances. There are 2 types of gateways: internal - created automatically for each deployment cluster, updated via Gateway/Deployment API external - explicitly declared either in deployment blueprint or using gateway API This is an example of automatically created gateway for deployment vamp, cluster sava and port port. Cluster contains 2 services sava:1.0.0 and sava:1.1.0 with 2 running instances each.">           
+                <meta property="twitter:description" content="Gateways Gateways are another non-static entities in the Vamp eco-system. They represent load balancer rules to deployment, cluster and service instances. There are 2 types of gateways: internal - created automatically for each deployment cluster, updated via Gateway/Deployment API external - explicitly declared either in deployment blueprint or using gateway API This is an example of automatically created gateway for deployment vamp, cluster sava and port port. Cluster contains 2 services sava:1.0.0 and sava:1.1.0 with 2 running instances each.">           
+            
+                            
+        
+        <meta property="twitter:site" content="vamp.io">
+        <meta property="twitter:title" content="Gateways | vamp.io">
+        <meta property="twitter:image" content="http://vamp.io/img/vamp_logo_blue.png">        
+        <meta property="twitter:creator" content="vamp.io">    
+        <meta property="twitter:url" content="http://vamp.io/documentation/using-vamp/gateways/">    
+        <meta property="twitter:card" content="summary">    
+        <title>Gateways - documentation -  Vamp :: The Very Awesome Microservices Platform</title>
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/flat-ui/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="http://vamp.io/css/flat-ui.min.css">
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/common-files/css/icon-font.css">
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/common-files/css/animations.css">
+        <link rel="stylesheet" href="http://vamp.io/css/ui.min.css" >
+        <link rel="icon" type="image/png" sizes="192x192"  href="http://vamp.io/img/favicon-192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="http://vamp.io/img/favicon-32.png">
+
+        
+        <script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+        for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+    mixpanel.init("3dc73f826819c8e11d0d9898ca4291c8");</script>
+        
+    </head>
+<body>
+<div class="page-wrapper">
+
+<header class="header-3">
+    <div class="container">
+        <div class="row">
+            <div class="navbar col-sm-12" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"></button>
+                    <a class="logo" href="http://vamp.io/"><img src="http://vamp.io/img/vamp_logo_blue_circle.svg" alt="vamp"></a>
+                    <span id="alpha">alpha</span>
+                </div>
+                <div class="collapse navbar-collapse pull-right">
+                    <ul class="nav pull-left">
+                        <li><a href="http://vamp.io/documentation/">WHAT IS VAMP?</a></li>
+                        <li><a href="http://vamp.io/quick-start/">QUICK START</a></li>
+                        <li><a href="http://vamp.io/documentation/">DOCS</a></li>
+                        <li><a href="http://vamp.io/blog/">BLOG</a></li>
+                        <li><a href="https://github.com/magneticio/vamp/" target="_blank">GITHUB</a></li>
+                        <li><a href="https://gitter.im/magneticio/vamp" target="_blank">Gitter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-background"></div>
+</header>
+
+<section class="subheader">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                
+                <h4>documentation
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                
+
+<aside>
+    <div id="sidenav">
+        
+        <ul class="sidenav-menu top-level">
+            
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation" data-target=".collapse_about-vamp" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>About Vamp</span>                
+            </a>
+            <ul class="collapse_about-vamp sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation" class="sub-menu-link"> What is Vamp?
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/about-vamp/service-discovery/" class="sub-menu-link"> Service discovery
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/installation/" data-target=".collapse_installation" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Installing Vamp</span>                
+            </a>
+            <ul class="collapse_installation sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/installation" class="sub-menu-link"> Components
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/container_drivers/" class="sub-menu-link"> Container drivers
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/configuration/" class="sub-menu-link"> Configuration
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/installation/" class="sub-menu-link"> Installation details
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/quick_start/" class="sub-menu-link"> Quick start Marathon
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/installation/osx" class="sub-menu-link"> Mac OS X
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/mesosphere_dcos/" class="sub-menu-link"> DC/OS
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu active ">                 
+            <a href="http://vamp.io/documentation/using-vamp/" data-target=".collapse_using-vamp" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Using Vamp</span>                
+            </a>
+            <ul class="collapse_using-vamp sub collapse  in ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/" class="sub-menu-link"> Using Vamp
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/breeds/" class="sub-menu-link"> Breeds
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/blueprints/" class="sub-menu-link"> Blueprints
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/deployments/" class="sub-menu-link"> Deployments
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/environment_variables/" class="sub-menu-link"> Environment variables
+                </a>
+                </li>                
+                
+                <li class="active">
+                <a href="http://vamp.io/documentation/using-vamp/gateways/" class="sub-menu-link"> Gateways
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/routings-and-filters/" class="sub-menu-link"> Routing &amp; filters
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/metrics-and-events/" class="sub-menu-link"> Metrics &amp; Events
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/sla-and-escalations/" class="sub-menu-link"> SLA &amp; escalations
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/references/" class="sub-menu-link"> Referencing artefacts
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/workflows/" class="sub-menu-link"> Workflows
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/sticky-sessions/" class="sub-menu-link"> Sticky Sessions
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/virtual-hosts/" class="sub-menu-link"> Virtual Hosts
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/guides/" data-target=".collapse_guides" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Guides</span>                
+            </a>
+            <ul class="collapse_guides sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/" class="sub-menu-link"> Getting started tutorial
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/1-deploying/" class="sub-menu-link"> 1. Deploying a blueprint
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/2-canary-release/" class="sub-menu-link"> 2. Doing a canary release
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/3-splitting-services/" class="sub-menu-link"> 3. Splitting into services
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/4-merge-delete/" class="sub-menu-link"> 4. Merging and deleting services
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/api-reference/" data-target=".collapse_api-reference" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>API reference</span>                
+            </a>
+            <ul class="collapse_api-reference sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/" class="sub-menu-link"> Overview
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/breeds/" class="sub-menu-link"> Breeds
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/blueprints/" class="sub-menu-link"> Blueprints
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/deployments/" class="sub-menu-link"> Deployments
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/gateways/" class="sub-menu-link"> Gateways
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/scales/" class="sub-menu-link"> Scales
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/filters/" class="sub-menu-link"> Filters
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/slas/" class="sub-menu-link"> Slas
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/escalations/" class="sub-menu-link"> Escalations
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/metrics-events/" class="sub-menu-link"> Events
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/debug/" class="sub-menu-link"> Debug
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/cli-reference/" data-target=".collapse_cli-reference" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>CLI reference</span>                
+            </a>
+            <ul class="collapse_cli-reference sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/" class="sub-menu-link"> Overview
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/installation/" class="sub-menu-link"> Installation &amp; config
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/commands/" class="sub-menu-link"> Commands
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/community/" data-target=".collapse_community" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Community</span>                
+            </a>
+            <ul class="collapse_community sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/community/" class="sub-menu-link"> Issues &amp; Support
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/community/contribute/" class="sub-menu-link"> Contribute to Vamp
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+            
+            <li>
+                <a href="http://vamp.io/faq">
+                    
+                    <span>FAQ</span>
+                </a>
+                
+            </li>
+            
+        </ul>
+        
+    </div>
+</aside>
+
+            </div>
+            <div class="col-md-9 docs">
+                
+
+<h1 id="gateways">Gateways</h1>
+
+<p>Gateways are another non-static entities in the Vamp eco-system. They represent load balancer rules to deployment, cluster and service instances.</p>
+
+<p>There are 2 types of gateways:</p>
+
+<ul>
+<li>internal - created automatically for each deployment cluster, updated via Gateway/Deployment API</li>
+<li>external - explicitly declared either in deployment blueprint or using gateway API</li>
+</ul>
+
+<p>This is an example of automatically created gateway for deployment <code>vamp</code>, cluster <code>sava</code> and port <code>port</code>.
+Cluster contains 2 services <code>sava:1.0.0</code> and <code>sava:1.1.0</code> with 2 running instances each.</p>
+
+<pre><code class="language-yaml">---
+name: vamp/sava/port           # name
+port: 40000/http               # port, either http or tcp, assigned by Vamp
+active: true                   # is it running - not in case of non (yet) existing routes
+sticky: none
+routes:                        # routes
+  vamp/sava/sava:1.0.0/port:
+    weight: 50%
+    filters: []
+    instances:
+    - name: vamp_6fd83b1fd01f7dd9eb7f.cda3c376-ae26-11e5-91fb-0242f7e42bf3
+      host: default
+      port: 31463
+    - name: vamp_6fd83b1fd01f7dd9eb7f.cda2d915-ae26-11e5-91fb-0242f7e42bf3
+      host: default
+      port: 31292
+  vamp/sava/sava:1.1.0/port:
+    weight: 50%
+    filters: []
+    instances:
+    - name: vamp_2e2fc6ab8a1cdbe79dc3.caa3c9e4-ae26-11e5-91fb-0242f7e42bf3
+      host: default
+      port: 31634
+    - name: vamp_2e2fc6ab8a1cdbe79dc3.caa37bc3-ae26-11e5-91fb-0242f7e42bf3
+      host: default
+      port: 31826
+</code></pre>
+
+<p>Gateway API allows programmable routing and having external gateways gives:</p>
+
+<ul>
+<li>entry point to clusters, e.g. specified (but not necessarily) in deployment blueprints</li>
+<li>canary release and A/B testing on cross deployment level.</li>
+</ul>
+
+<p><strong>Example of A/B testing of 2 deployments</strong></p>
+
+<p>Deployment 1: <code>PUT /api/v1/deployments/sava:1.0</code>
+<span>
+    <button class="copy-button pull-right btn" data-clipboard-text="---
+name: sava:1.0
+gateways:
+  9050/http: sava/port
+clusters:
+  sava:
+    services:
+      -
+        breed:
+          name: sava:1.0.0
+          deployable: magneticio/sava:1.0.0
+          ports:
+            port: 8080/http
+            
+        scale:
+          cpu: 0.2
+          memory: 256MB
+          instances: 2
+
+" data-toggle="tooltip">
+        Copy
+    </button>
+<pre><code class="language-yaml">---
+name: sava:1.0
+gateways:
+  9050/http: sava/port
+clusters:
+  sava:
+    services:
+      -
+        breed:
+          name: sava:1.0.0
+          deployable: magneticio/sava:1.0.0
+          ports:
+            port: 8080/http
+            
+        scale:
+          cpu: 0.2
+          memory: 256MB
+          instances: 2
+</code></pre>
+
+</span>
+</p>
+
+<p>Deployment 2: <code>PUT /api/v1/deployments/sava:1.1</code>
+<span>
+    <button class="copy-button pull-right btn" data-clipboard-text="---
+name: sava:1.1
+gateways:
+  9060/http: sava/port
+clusters:
+  sava:
+    services:
+      -
+        breed:
+          name: sava:1.1.0
+          deployable: magneticio/sava:1.1.0
+          ports:
+            port: 8080/http
+            
+        scale:
+          cpu: 0.2
+          memory: 256MB
+          instances: 2
+
+" data-toggle="tooltip">
+        Copy
+    </button>
+<pre><code class="language-yaml">---
+name: sava:1.1
+gateways:
+  9060/http: sava/port
+clusters:
+  sava:
+    services:
+      -
+        breed:
+          name: sava:1.1.0
+          deployable: magneticio/sava:1.1.0
+          ports:
+            port: 8080/http
+            
+        scale:
+          cpu: 0.2
+          memory: 256MB
+          instances: 2
+</code></pre>
+
+</span>
+</p>
+
+<p>Gateway (90% / 10%): <code>POST /api/v1/gateways</code>
+<span>
+    <button class="copy-button pull-right btn" data-clipboard-text="---
+name: sava
+port: 9070/http
+routes:
+  sava:1.0/sava/port:
+    weight: 90%          # filters can be used as well
+  sava:1.1/sava/port:
+    weight: 10%
+
+" data-toggle="tooltip">
+        Copy
+    </button>
+<pre><code class="language-yaml">---
+name: sava
+port: 9070/http
+routes:
+  sava:1.0/sava/port:
+    weight: 90%          # filters can be used as well
+  sava:1.1/sava/port:
+    weight: 10%
+</code></pre>
+
+</span>
+</p>
+
+<p>This is similar to putting both <code>sava:1.0.0</code> and <code>sava:1.1.0</code> in the same cluster but that is just because this is a basic example.
+It is easy to imagine having an older legacy application and the new one and doing full canary release (or A/B testing) in seamless way by using gateways like this.</p>
+
+<p>Further reading <a href="http://vamp.io/documentation/using-vamp/routings-and-filters/">Routing &amp; filters</a>.</p>
+
+                <span class="pull-right muted" style="margin-top: 15px">Found an error or a typo in these docs?<a href="https://github.com/magneticio/vamp.io/tree/master/content/documentation" target="_blank"> Submit an issue or a pull request!</a></span>
+   
+            </div>
+            <div class="col-md-1 hidden-xs hidden-sm">
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-1">
+    <div class="container">
+        <div class="row links">
+            <nav>
+                <div class="col-sm-3">
+                    <h6>Learn more</h6>
+                    <ul>
+                        <li><a href="http://vamp.io/documentation/">About Vamp</a></li>
+                        <li><a href="http://vamp.io/quick-start/">Quick start</a></li>
+                        <li><a href="http://vamp.io/documentation/using-vamp/">Using Vamp</a></li>
+                        <li><a href="http://vamp.io/documentation/guides/">Guides</a></li>
+                        <li><a href="http://vamp.io/documentation/api-reference/">API reference</a></li>
+                        <li><a href="http://vamp.io/documentation/cli-reference/">CLI reference</a></li>
+                        <li><a href="http://vamp.io/faq/">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h6>All things code</h6>
+                    <ul>
+                        <li><a href="http://vamp.io/contribute/">Contribute</a></li>
+                        <li><a href="http://vamp.io/documentation/community/">Issues & support</a></li>
+                        <li><a href="https://github.com/magneticio/vamp/" target="_blank">Github</a></li>
+                        <li><a href="https://gitter.im/magneticio/vamp" target="_blank">Gitter</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-5">
+                    <h6>Stay up to date</h6>
+                    <div class="subscribe-form">
+                        <p class="muted subscribe-lead">Leave your email for the latest news: we won't spam you and won't go off topic.</p>
+                        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate>
+                            <div class="mc-field-group input-group">
+                                <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Email">
+                                <span class="input-group-btn">
+                                <button type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe-2" class="btn btn-info">SIGN UP</button>
+                            </span>
+                            </div>
+                        </form>
+                    </div>
+                    <p>
+                        Or subscribe to our <a href="http://vamp.io/index.xml">RSS feed</a>
+                    </p>
+                </div>
+            </nav>
+        </div>
+        <div class="row licensing">
+            <div class="col-sm-3">
+                <div class="brand hidden-xs">
+                    <img src="http://vamp.io/img/magneticio_logo_gray.svg">
+                </div>
+            </div>
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-5">
+                <p class="muted pull-right">
+                    Code licensed under <a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">Apache 2</a> © 2015 <a href="http://magnetic.io/">Magnetic.io</a>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-59948816-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script src="http://vamp.io/vendor/theme/common-files/js/jquery-1.10.2.min.js"></script>
+<script src="http://vamp.io/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/modernizr.custom.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/easing.min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/startup-kit.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/prettify.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/lang-yaml.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/lang-scala.js"></script>
+<script src="http://vamp.io/vendor/prism/prism.js"></script>
+<script src="http://vamp.io/js/ZeroClipboard.min.js"></script>
+<script src="http://vamp.io/js/custom.js"></script>
+<script>
+$('document').ready(prettyPrint())
+</script>
+</div>
+</body>
+
+</html>

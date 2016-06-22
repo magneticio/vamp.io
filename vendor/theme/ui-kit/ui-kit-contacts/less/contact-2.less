@@ -1,0 +1,112 @@
+/**
+ * Copntact 2 stylesheet  
+ * */
+ .contacts-2 {
+    padding-top:110px;
+    padding-bottom: 110px;
+    h3 {
+        font-size: 30px;
+        margin: 0 0 40px;
+        font-weight: 300px;
+        @media (max-width: 480px) {
+            font-size: 26px;
+            margin: 0 0 30px;
+        }
+    }
+    h6, .h6 {
+        margin: 0 0 15px;
+        font-family: @font-family-demo;
+        font-weight: 500;
+        font-size: 18px;
+        text-transform: none;
+    }
+    label.h6 {
+        margin-bottom: 12px;
+    }
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    a {
+        .a-color(#1abc9c);
+    }
+    form {
+        margin: 0;
+        padding: 46px;
+        border: 2px solid #ebedee;
+        .border-radius(6px);
+        input, textarea {
+            .box-sizing(border-box);
+            width: 100%;
+            max-width: 100%;
+            min-width: 100%;
+            margin-bottom: 29px;
+            border-color: #ebedee;
+            color: #7f8c8d;
+            &:focus {
+                border-color: #1abc9c;
+            }
+        }
+        textarea {
+            height: 120px;
+        }
+        input {
+            height: 45px;
+        }
+        textarea {
+            height: 120px;
+        }
+        label {
+            margin-bottom: 18px;
+        }
+        .btn {
+            margin-top: 7px;
+            min-width: 150px;
+            [class*="fui-"] {
+                font-size: 24px;
+            }
+        }
+        .btn.btn-primary {
+            &:hover, &:focus {
+                background-color: @brand-danger;
+            }
+            &:active, &.active {
+                background-color: mix(@brand-danger, black, 85%);
+            }
+        }
+    }
+    .map {
+        height: 165px;
+        margin: 25px 0 60px;
+        .border-radius(6px);
+        overflow: hidden;
+    }
+    .links {
+        margin-top: 20px;
+        a {
+            font-size: 16px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        [class*="fui-"] {
+            font-size: 26px;
+            vertical-align: middle;
+            margin: -3px 23px 0 0;
+        }
+    }
+    @media (max-width: 767px) {
+        > .container > .row > * + * {
+            margin-top: 55px;
+        }
+    }
+    @media (max-width: 480px) {
+        form {
+            margin-bottom: 80px;
+            padding: 15px;
+            label {
+                margin-bottom: 0px;
+            }
+        }
+    }
+}

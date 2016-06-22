@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Vamp :: The Very Awesome Microservices Platform</title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://vamp.io/tags/tutorials/</link>
+    <language>en-us</language>
+    
+    <updated> Apr 13, 2015</updated>
+    
+    
+    <item>
+      <title>New getting started tutorial &amp; UI sneak preview!</title>
+      <link>http://vamp.io/2015/04/getting-started/</link>
+      <pubDate>Mon, 13 Apr 2015 00:00:00 UTC</pubDate>
+      
+      <guid>http://vamp.io/2015/04/getting-started/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m very happy to report we just added an initial set of tutorials to our &lt;a href=&#34;http://vamp.io/getting-started&#34;&gt;getting started section.&lt;/a&gt; These tutorials should get you up and running quickly and help you really kick the tires of Vamp.&lt;/p&gt;
+
+&lt;p&gt;In these tutorials, you&amp;rsquo;ll learn how to do simple deployments, do canary releases, use filters and do merges and
+deletes on deployments using blueprints. There&amp;rsquo;s a lot more coming, like tutorials on SLA&amp;rsquo;s, but the key principles are all there. We&amp;rsquo;ve also updated the installation steps, outlining some of the restrictions more clearly and adding some extra helpers.&lt;/p&gt;
+
+&lt;p&gt;Of course, we&amp;rsquo;ve also finished another sprint and pushed 0.7.0-RC3 which has some important bugfixes. More exciting
+is that we started designing and coding the UI for Vamp. Its initial release as part of Vamp Core is planned for
+release 0.8.0 at the end of next month, but here&amp;rsquo;s a little sneak peek.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: This is very early stage! Lots of things might change!
+&lt;img src=&#34;http://vamp.io/img/screenshots/vamp_ui_sneak1.png&#34; alt=&#34;&#34; /&gt;
+&lt;em&gt;manage deployments&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://vamp.io/img/screenshots/vamp_ui_sneak2.png&#34; alt=&#34;&#34; /&gt;
+&lt;em&gt;edit and deploy blueprints&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We hope these updates will help people to get started with Vamp while in alpha but also show where Vamp
+is heading in the near future.&lt;/p&gt;
+
+&lt;p&gt;Cheers!&lt;/p&gt;
+
+&lt;p&gt;Tim Nolet, CTO&lt;/p&gt;
+</description>
+    </item>
+    
+    
+  </channel>
+</rss>

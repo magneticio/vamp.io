@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Vamp :: The Very Awesome Microservices Platform</title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://vamp.io/tags/docker/</link>
+    <language>en-us</language>
+    
+    <updated> Jun 16, 2015</updated>
+    
+    
+    <item>
+      <title>8 Docker productivity hacks for better living</title>
+      <link>http://vamp.io/2015/06/8-docker-productivity-hacks/</link>
+      <pubDate>Tue, 16 Jun 2015 00:00:00 UTC</pubDate>
+      
+      <guid>http://vamp.io/2015/06/8-docker-productivity-hacks/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;http://vamp.io/img/docker_nyan.svg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;ve been building smaller and bigger tools on/for/with Docker for roughly the last 1,5 years.
+During that time I&amp;rsquo;ve found I always come back to using little productivity hacks and one-liners that
+I found on the internet or came up with myself. Here they are in one place, as much as for our own reference
+as for anybody else to enjoy.  We use this stuff every day. Here we go:&lt;/p&gt;
+
+&lt;h2 id=&#34;1-remove-images-that-are-no-longer-used-by-a-container&#34;&gt;1. Remove images that are no longer used by a container&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s free up some disk space!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker rmi `docker images -q -f dangling=true`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;2-remove-all-exited-containers&#34;&gt;2. Remove all exited containers&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s free up some more disk space!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker rm `docker ps -q -a -f status=exited`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;3-log-into-an-already-running-container&#34;&gt;3. Log into an already running container&lt;/h2&gt;
+
+&lt;p&gt;Somehow it took me ages to figure this one out. Hope I&amp;rsquo;m not the only dummy. Of course, the container should have some
+shell installed, like bash.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker exec -i -t &amp;lt;ID_OF_RUNNING_CONTAINER&amp;gt; /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;4-run-top-inside-a-container&#34;&gt;4. Run &amp;ldquo;top&amp;rdquo; inside a container&lt;/h2&gt;
+
+&lt;p&gt;This one is somewhat controversial. Resource usage in Docker is &lt;a href=&#34;https://goldmann.pl/blog/2014/09/11/resource-management-in-docker/&#34;&gt;counterintuitive&lt;/a&gt; and &lt;a href=&#34;https://docs.docker.com/articles/runmetrics/&#34;&gt;complicated&lt;/a&gt;. Having said that, just running top
+inside a container gives me a relatively good insight how things are doing in that container`s context:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker exec -t &amp;lt;ID_OF_RUNNNIG_CONTAINER&amp;gt; /bin/sh -c &amp;quot;export TERM=xterm-256color &amp;amp;&amp;amp; top -bn 2&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;P.S: Ignore the first output cycle. Why? Because &lt;a href=&#34;http://unix.stackexchange.com/questions/58539/top-and-ps-not-showing-the-same-cpu-result&#34;&gt;reasons&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;5-don-t-expect-anything-magic-from-the-latest-tag&#34;&gt;5. Don&amp;rsquo;t expect anything magic from the &amp;ldquo;:latest&amp;rdquo; tag&lt;/h2&gt;
+
+&lt;p&gt;One of the huge misconceptions among fresh Docker users. The &lt;code&gt;:latest&lt;/code&gt; tag has no special magic. It is not the &lt;code&gt;HEAD&lt;/code&gt;
+in a Git log. It is not an automatic pointer to the top of of your stack of images. It is just a convention. Getting
+the &lt;code&gt;:latest&lt;/code&gt; version of an image implies you trust the creator of the image to really tag the last one the build with the
+&lt;code&gt;:latest&lt;/code&gt; tag. More info see this post by &lt;a href=&#34;http://container-solutions.com/2015/01/docker-latest-confusion/&#34;&gt;our friends at Container Solutions&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;6-cut-container-download-time-with-export-load-in-vagrant&#34;&gt;6. Cut container download time with export/load in Vagrant&lt;/h2&gt;
+
+&lt;p&gt;Not a real one-liner, but hey! When building stuff with (CoreOS) Vagrant boxes, I destroy those boxes quite often just to get a clean slate. However, my box runs Docker and stores the images inside the box. The box now has to download some of the containers I run in that box every time I refresh my environment. Let&amp;rsquo;s fix that.&lt;/p&gt;
+
+&lt;p&gt;Just save the Docker image to disk as a tar file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker save magneticio/myimage:1.0 &amp;gt; /home/share/magneticio_myimage_10.tar
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now mount your disk to Vagrant and import it using this snippet in your Vagrantfile:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# Vagrantfile
+MY_CONTAINER=&amp;quot;magneticio_myimage_10.tar&amp;quot;
+vm.synced_folder &amp;quot;.&amp;quot;, &amp;quot;/home/share&amp;quot;, id: &amp;quot;core&amp;quot;, :nfs =&amp;gt; true, :mount_options =&amp;gt; [&#39;nolock,vers=3,udp&#39;]
+config.vm.provision :shell, :inline =&amp;gt; &amp;quot;export TMPDISK=/&amp;quot;, :privileged =&amp;gt; false
+if File.exist?(MY_CONTAINER)
+    config.vm.provision :shell, :inline =&amp;gt; &amp;quot;docker load -i /home/share/#{MY_CONTAINER}&amp;quot;, :privileged =&amp;gt; false
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;7-use-boot2docker-shellinit-to-setup-your-docker-env-variables&#34;&gt;7. Use &amp;ldquo;boot2docker shellinit&amp;rdquo; to setup your Docker ENV variables&lt;/h2&gt;
+
+&lt;p&gt;Destroying and restarting a lot of &lt;a href=&#34;http://boot2docker.io/&#34;&gt;boot2docker&lt;/a&gt; instances on OSX? Creating too many terminal sessions? Use this your Docker client setup correctly for boot2docker.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ eval $(boot2docker shellinit)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;8-read-the-dockerfile-best-practices-info&#34;&gt;8. Read the &amp;ldquo;Dockerfile best practices&amp;rdquo; info&lt;/h2&gt;
+
+&lt;p&gt;Really useful and compulsory reading: &lt;a href=&#34;https://docs.docker.com/articles/dockerfile_best-practices/&#34;&gt;https://docs.docker.com/articles/dockerfile_best-practices/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    
+  </channel>
+</rss>

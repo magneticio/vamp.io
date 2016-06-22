@@ -1,0 +1,198 @@
+/**
+ * Footer 1 stylesheet  
+ * */
+ .footer-1 {
+    margin-top: 30px;
+    padding-top: 60px;
+    padding-bottom: 30px;
+    font-size: 15px;
+    color: @footer-color;
+    background-color: @brand-info-darker;
+
+     .brand {
+       img {
+         height: 22px;
+       }
+     }
+
+   .links {
+     margin-bottom: 30px;
+   }
+
+    .lead {
+        margin-bottom: 15px;
+        margin-top: -10px;
+        .font(22px, white);
+        font-weight: 300;
+        // letter-spacing: -1px;
+        b {
+            font-weight: 500;
+        }
+    }
+    .btn.btn-danger {
+        .btn-background(@pomegranate);
+    }
+    a {
+      .font(15px);
+      font-weight: 300;
+      .a-color(#A3A9AF, @link-color);
+      &:hover{
+        color: @brand-info;
+        //                text-decoration: underline;
+      }
+      &:focus {
+        color: @brand-info;
+      }
+    }
+    nav {
+        h6 {
+            margin: 0 0 20px;
+            color: @footer-color;
+            text-transform: none;
+        }
+        ul {
+            list-style: none;
+            margin: 0 0 20px;
+            padding: 0;
+            .font(16px, @silver);
+            li {
+                margin-bottom: 5px;
+            }
+        }
+    }
+   .subscribe-form {
+
+      margin-bottom: 20px;
+
+      .subscribe-lead {
+        
+        margin-bottom: 20px;
+      }
+      
+     form {
+       margin: 40px 0 10px;
+       .input-group {
+         input[type="email"] {
+           height: 35px;
+           border: 0px;
+           font-size: 13px;
+           font-weight: 300;
+           background-color: @footer-color;
+           border: 1px solid @footer-color;
+           &::-webkit-input-placeholder {
+             color: @text-secondary-color;
+           }
+
+           &:-moz-placeholder {
+             /* Firefox 18- */
+             color: @text-secondary-color;
+           }
+
+           &::-moz-placeholder {
+             /* Firefox 19+ */
+             color: @text-secondary-color;
+           }
+
+           &:-ms-input-placeholder {
+             color: @text-secondary-color;
+           }
+           @media (max-width: 480px) {
+             min-height: 41px;
+           }
+           &:focus {
+             border: 1px solid @brand-info-light;
+           }
+         }
+
+         .btn {
+           height: 35px;
+           padding-left: 30px;
+           padding-right: 30px;
+           margin-left: 0;
+           background-color: @brand-info-dark;
+           color: #FFFFFF;
+           .border-radius(0 6px 6px 0);
+           border: 0;
+           line-height: 1px;
+           font-size: 14px;
+           font-weight: 400;
+           text-transform: uppercase;
+           @media (max-width: 480px) {
+             .border-radius(6px);
+           }
+         }
+         @media (max-width: 480px) {
+
+           .form-control {
+             float: none;
+           }
+
+           .input-group-btn {
+             display: block;
+             width: 100%;
+           }
+         }
+       }
+     }
+
+     .btn.btn-info {
+       &:hover, &:focus {
+         background-color: @brand-accent;
+       }
+       &:active, &.active {
+         background-color: mix(@brand-accent, black, 85%);
+       }
+     }
+     @media (max-width: 480px) {
+       .input-group, .input-group input[type="email"], .input-group .btn {
+         display: block;
+         width: 100%;
+         min-height: 41px;
+
+       }
+
+       .input-group input[type="email"], .input-group .btn {
+         .border-radius(6px);
+       }
+
+       .input-group .btn {
+         margin-top: 15px;
+       }
+     }
+   }
+
+    .additional-links {
+        border-top: 1px solid #374859;
+        padding-top: 17px;
+        .font(14px, @concrete);
+        @media (max-width: 767px) {
+            margin-top: 17px;
+            margin-bottom: 0;
+        }
+        a {
+            margin-right: 10px;
+            .a-color(@concrete);
+        }
+    }
+    @media (max-width: 767px) {
+        .col-sm-6 {
+            margin-bottom: 20px;
+        }
+        nav .col-sm-2, .buy-btn {
+            float: left;
+            width: 30%;
+            margin-left: 5%;
+        }
+        nav .col-sm-2:first-child {
+            margin-left: 0;
+        }
+    }
+    @media (max-width: 480px) {
+        padding-top: 35px;
+        padding-bottom: 35px;
+        nav .col-sm-2 {
+            width: 47%;
+            margin-left: 6%;
+        }
+    }
+}

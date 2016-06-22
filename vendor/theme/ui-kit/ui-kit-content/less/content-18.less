@@ -1,0 +1,114 @@
+/**
+ * Content 18 stylesheet  
+ * */
+ .content-18 {
+    padding-top: 130px;
+    padding-bottom: 130px;
+    position:relative;
+    .carousel {
+        margin-bottom: 100px;
+        text-align: center;
+        &:before {
+            content: '';
+            background: url("@{startup-basePath}common-files/icons/quote-down-mb@2x.png") no-repeat;
+            .background-size(31px 22px);
+            display: block;
+            margin: 0 auto 95px;
+            width: 31px;
+            height: 22px;
+            @media (max-width: 767px) {
+                margin-bottom: 45px;
+            }
+            text-align: center;
+        }
+        .quote-text {
+            max-width: 625px;
+            margin: 0 auto;
+            padding: 0 20px;
+            .font(30px, @text-color-heading);
+            font-family: @font-family-demo;
+            font-weight:300;
+            line-height: 40px;
+        }
+        .quote-author {
+            max-width: 625px;
+            margin: 45px auto 0;
+            padding: 0 20px;
+            .font(18px, @silver);
+            font-family:@font-family-demo;
+            font-weight:500;
+        }
+        .controls {
+            position: relative;
+            z-index:3;
+            > .carousel-control {
+                z-index: 5;
+                position: absolute;
+                top: 20px;
+                display: block;
+                .box-sizing(border-box);
+                width: 15px;
+                height: 15px;
+                margin: 0;
+                padding: 0;
+                .border-radius(50%);
+                border: 0;
+                .opacity(100);
+                overflow: hidden;
+                background: @midnight-blue;
+                &.disabled {
+                    z-index: auto;
+                    background: none;
+                    border: 3px solid #ebedee;
+                    pointer-events: none;
+                    cursor: default;
+                }
+                &.left {
+                    left: 0;
+                }
+                &.right {
+                    right: 0;
+                }
+            }
+        }
+        .carousel-inner {
+            padding-bottom: 0;
+        }
+        .item {
+            .transition(.8s ease-in-out opacity);
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0!important;
+            right: 0;
+            opacity: 0;
+            &.active.left, &.active.right {
+                opacity: 0;
+                top: 100%;
+                z-index: 2;
+            }
+            &.active, &.prev, &.next {
+                opacity: 1;
+                top: 0;
+                z-index: 1;
+            }
+        }
+        & + * {
+            position: relative;
+        }
+        @media (max-width: 767px) {
+            margin-bottom: 0;
+        }
+    }
+    .quotes {
+        > * {
+            margin-top: 48px;
+        }
+        h6 {
+            text-transform: none;
+            .font(18px, @text-color-heading);
+            font-family: @font-family-demo;
+            font-weight: 500;
+        }
+    }
+}

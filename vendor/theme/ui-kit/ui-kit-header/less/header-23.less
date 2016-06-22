@@ -1,0 +1,142 @@
+/**
+ * Header 23 stylesheet  
+ * */
+ .header-23 {
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+    > .container {
+        position: relative;
+    }
+    .navbar {
+        position: absolute;
+        z-index: 2;
+        top: 60px;
+        font-family: @font-family-demo;
+        &.navbar-fixed-top {
+            position: fixed;
+        }
+        .brand {
+            padding-left: 0;
+            .font(25px, white);
+            font-family: @font-family-demo;
+            font-weight: 800;
+        }
+        .nav {
+            > li {
+                margin-left: 20px;
+                &:first-child {
+                    margin-left: 0;
+                }
+                > a {
+                    padding: 31px 0 27px;
+                    .font(16px, white);
+                    font-weight: 500;
+                    letter-spacing: 1px;
+                    .a-color(white, #506e8c);
+                }
+                &.active > a {
+                    .a-color(#506e8c);
+                }
+            }
+        }
+        .navbar-toggle {
+            margin-top: 28px;
+        }
+    }
+}
+.header-23-sub {
+    z-index: 50;
+    left: 0;
+    width: 100%;
+    position: relative;
+    padding-top: 360px;
+    padding-bottom: 270px;
+    color: white;
+    text-align: center;
+    background: #1b1e21;
+    .background {
+        background-image: url('@{startup-basePath}common-files/img/header/img-video.jpg');
+    }
+    @media (max-width: 991px) {
+        padding-top: 260px;
+        padding-bottom: 170px;
+    }
+    .hero-unit {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        font-size: 30px;
+        letter-spacing: -1px;
+        strong {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            @media (max-width: 991px) {
+                display: block;
+            }
+        }
+        span {
+            font-weight: 300;
+            @media (max-width: 991px) {
+                display: block;
+            }
+        }
+        .btn-play {
+            display: inline-block;
+            text-indent: -9999px;
+            vertical-align: middle;
+            overflow: hidden;
+            width: 67px;
+            height: 67px;
+            margin: 0 50px;
+            background: url("@{startup-basePath}common-files/img/header/btn-play.png") no-repeat;
+            @media (max-width: 991px) {
+                margin: 35px 0;
+            }
+        }
+    }
+    .background {
+        .opacity(10);
+    }
+}
+.mask {
+  z-index: 1000;
+  background-color: #000;
+  .opacity(90);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
+}
+.popup-video {
+  z-index: 1000;
+  margin: 0 10%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+  overflow: hidden;
+  &.shown {
+    position: fixed;
+    width: 80%;
+    height: 100%;
+    overflow: visible;
+    display: none;
+  }
+  > * {
+    width: 100%;
+    height: 100%;
+  }
+}
+

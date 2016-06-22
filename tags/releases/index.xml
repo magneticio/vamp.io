@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Vamp :: The Very Awesome Microservices Platform</title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://vamp.io/tags/releases/</link>
+    <language>en-us</language>
+    
+    <updated> Aug 28, 2015</updated>
+    
+    
+    <item>
+      <title>Vamp 0.7.10: weight editing and easy A/B-testing with environment variables</title>
+      <link>http://vamp.io/2015/08/release-0710/</link>
+      <pubDate>Fri, 28 Aug 2015 00:00:00 UTC</pubDate>
+      
+      <guid>http://vamp.io/2015/08/release-0710/</guid>
+      <description>
+
+&lt;p&gt;Vamp &lt;strong&gt;release 0.7.10&lt;/strong&gt; introduces a nice addition to the UI where you can easily shift traffic between multiple services based on percentages. You can combine this with our revised way of handling environment variables.&lt;/p&gt;
+
+&lt;p&gt;Just launch two exactly the same containers and tweak them using standard &lt;code&gt;ENV&lt;/code&gt; variables. &lt;strong&gt;A/B-testing Docker containers&lt;/strong&gt; has never been easier.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://vamp.io/img/weight_sliders.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;easy-a-b-testing&#34;&gt;Easy A/B-testing&lt;/h2&gt;
+
+&lt;p&gt;During our last sprint we dedicated a lot of time to how we can make simple A/B-testing scenario&amp;rsquo;s easier. Taking in the feedback we get through Github we changed how we handle the scope of environment variables.&lt;/p&gt;
+
+&lt;p&gt;You can now just launch two (or more) of exactly the same containers and just give them different environment variables to tweak and configure the application inside the container. To this, we added a nice little extra in the UI to shift around the traffic based on percentages.&lt;/p&gt;
+
+&lt;p&gt;An extra benefit of changing how we deal with scopes is the option to override variables on different levels if you want to. This allows for a separation of concerns, i.e. have operations override settings provided by developers. &lt;a href=&#34;http://vamp.io/documentation/using-vamp/environment_variables/#environment-variable-scope&#34;&gt;Check the updated docs for more scenario&amp;rsquo;s →&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;clearer-references&#34;&gt;Clearer references&lt;/h2&gt;
+
+&lt;p&gt;In addition to changing how we deal with scopes we made using references to artefacts more explicit. You now use the &lt;code&gt;reference&lt;/code&gt; or &lt;code&gt;ref&lt;/code&gt; keyword to include artefacts by name in other artefacts. Previously, this was done using the &lt;code&gt;name&lt;/code&gt; keyword, which was confusing. &lt;a href=&#34;http://vamp.io/documentation/using-vamp/references/&#34;&gt;Check the reference docs for more info →&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: this is a breaking change. Please update blueprints and other artefacts accordingly.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;docker-dialect&#34;&gt;Docker dialect&lt;/h2&gt;
+
+&lt;p&gt;When using Vamp with Docker, you can now add Docker API specific commands to your blueprint. This means you can hook up volumes or use a private registry, or basically do anything the Docker API allows. The example below mount &amp;ldquo;/tmp&amp;rdquo;
+in every &lt;code&gt;busybox&lt;/code&gt; container:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+name: busybox
+clusters:
+  busyboxes:
+    services:
+      breed:
+        name: busybox-breed
+        deployable: busybox:latest
+      docker:
+        Volumes:
+          &amp;quot;/tmp&amp;quot;: ~
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://vamp.io/documentation/using-vamp/blueprints/#dialects&#34;&gt;Check the dialects docs for more info →&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;simple-deployment-validation-or-a-noop-run&#34;&gt;Simple deployment validation, or a NOOP run&lt;/h2&gt;
+
+&lt;p&gt;The last thing I&amp;rsquo;d like to point out is that we&amp;rsquo;ve added the &lt;code&gt;?validate_only=true&lt;/code&gt; option to de &lt;code&gt;/deployments&lt;/code&gt; endpoint. This means you can have Vamp validate whether the blueprint you are about to deploy is actually valid!
+Vamp will check if all references to other artefacts are in place and if the blueprint is semantically valid.
+This works like a &amp;ldquo;noop&amp;rdquo; (no operation) run and helps with sanity checking complex blueprints. &lt;a href=&#34;http://vamp.io/documentation/api-reference/deployments/&#34;&gt;Check the deployment API docs for more info →&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Release notes:&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&#34;https://github.com/magneticio/vamp/releases/tag/0.7.10&#34;&gt;https://github.com/magneticio/vamp/releases/tag/0.7.10&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Closed issues:&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&#34;https://github.com/magneticio/vamp/issues?q=is%3Aissue+milestone%3A0.7.10+is%3Aclosed&#34;&gt;https://github.com/magneticio/vamp/issues?q=is%3Aissue+milestone%3A0.7.10+is%3Aclosed&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tim Nolet, CTO&lt;/p&gt;
+</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Vamp 0.7.9: introducing the UI and CLI.</title>
+      <link>http://vamp.io/2015/08/release-079/</link>
+      <pubDate>Sun, 02 Aug 2015 00:00:00 UTC</pubDate>
+      
+      <guid>http://vamp.io/2015/08/release-079/</guid>
+      <description>&lt;p&gt;We just pushed &lt;strong&gt;release 0.7.9&lt;/strong&gt; which is easily the biggest Vamp release to date! With this release we focused on making Vamp &lt;strong&gt;easy to install&lt;/strong&gt; and work with.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://vamp.io/img/screenshots/deploy_detail.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;First of all, we package the first version of our &lt;strong&gt;graphical user interface&lt;/strong&gt;. With this ReactJS based UI, you can create, update and delete Vamp artefacts quickly and dive into the Vamp metrics feed. &lt;a href=&#34;http://vamp.io/quick-start&#34;&gt;Quick start →&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Secondly, we released the first version of the &lt;strong&gt;Vamp command line interface&lt;/strong&gt;. The CLI allows admins and Devops engineers to do fully automated canary releases and blue/green deployments on Docker and Mesophere&amp;rsquo;s/DCOS Marathon from CI tools like Jenkins or just from bash scripts.&lt;/p&gt;
+
+&lt;p&gt;You can install the CLI on your Mac using Homebrew, &lt;a href=&#34;http://vamp.io/documentation/cli-reference/&#34;&gt;Learn more →&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://asciinema.org/a/371lzojapwenuoxd7ihta3857?autoplay=1&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;https://asciinema.org/a/371lzojapwenuoxd7ihta3857.png&#34; width=&#34;700&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Thirdly, we&amp;rsquo;ve updated our website, the configuration and installation documentation and quick start to make using and installing Vamp easier than ever. We support native package managers &lt;strong&gt;Centos, RHEL, Debian, Ubuntu&lt;/strong&gt;. &lt;a href=&#34;http://vamp.io/installation/&#34;&gt;Check the docs →&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Closed issues:&lt;br /&gt;
+&lt;a href=&#34;https://github.com/magneticio/vamp/issues?q=is%3Aissue+milestone%3A0.7.9+is%3Aclosed&#34;&gt;https://github.com/magneticio/vamp/issues?q=is%3Aissue+milestone%3A0.7.9+is%3Aclosed&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tim Nolet, CTO&lt;/p&gt;
+</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Vamp 0.7.6: introducing the Marathon dialect</title>
+      <link>http://vamp.io/2015/05/release-076/</link>
+      <pubDate>Thu, 21 May 2015 00:00:00 UTC</pubDate>
+      
+      <guid>http://vamp.io/2015/05/release-076/</guid>
+      <description>
+
+&lt;p&gt;Release 0.7.6 is tagged and you can check the &lt;a href=&#34;https://github.com/magneticio/vamp/releases/tag/0.7.6&#34;&gt;full release note on Github&lt;/a&gt;. Notice that there are breaking changes in this release so please update where necessary. We&amp;rsquo;ve updated our &lt;a href=&#34;http://vamp.io/getting-started/&#34;&gt;getting started tutorial&lt;/a&gt; to reflect the latest changes.
+Some of the highlights are below.&lt;/p&gt;
+
+&lt;h2 id=&#34;mesosphere-marathon-dialect&#34;&gt;Mesosphere Marathon dialect&lt;/h2&gt;
+
+&lt;p&gt;Vamp now allows you to use Marathon specific tags inside Vamp blueprints by using the &lt;code&gt;marathon:&lt;/code&gt; tag. We call this a &amp;ldquo;dialect&amp;rdquo;. We will be enabling these dialects for all platforms Vamp supports (i.e. a &amp;lsquo;straight&amp;rsquo; Docker driver and Kubernetes are on the roadmap).&lt;/p&gt;
+
+&lt;p&gt;This effectively allows you to make full use of the underlying Marathon features like mounting disks, settings commands and providing access to private Docker registries.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s look at an example blueprint that pulls an image from private repo, mounts some volumes, sets some labels and gets run with an ad hoc command: all taken care of by Marathon.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;name: busy-top:1.0
+
+clusters:
+
+  busyboxes:
+    services:
+      breed:
+        name: busybox
+        deployable: registry.magnetic.io/busybox:latest
+      marathon:
+       cmd: &amp;quot;top&amp;quot;      
+       uris:
+         -
+           &amp;quot;https://some_host/some_path/some_file_with_docker_credentials&amp;quot;
+       labels:
+         environment: &amp;quot;staging&amp;quot;
+         owner: &amp;quot;buffy the vamp slayer&amp;quot;
+       container:  
+         volumes:
+           -
+             containerPath: &amp;quot;/tmp/&amp;quot;
+             hostPath: &amp;quot;/tmp/&amp;quot;
+             mode: &amp;quot;RW&amp;quot;
+      scale:
+        cpu: 0.1       
+        memory: 256  
+        instances: 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice the following:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Under the &lt;code&gt;marathon:&lt;/code&gt; tag, we provide the command to run in the container by setting the &lt;code&gt;cmd:&lt;/code&gt; tag.&lt;/li&gt;
+&lt;li&gt;We provide a url to some credentials file in the &lt;code&gt;uri&lt;/code&gt; array. As described &lt;a href=&#34;https://mesosphere.github.io/marathon/docs/native-docker.html#using-a-private-docker-repository&#34;&gt;in the Marathon docs&lt;/a&gt; this enables Mesos
+to pull from a private registry, in this case registry.magnetic.io where these credentials are set up.&lt;/li&gt;
+&lt;li&gt;We set some labels with some arbitrary metadata.&lt;/li&gt;
+&lt;li&gt;We mount the &lt;code&gt;/tmp&lt;/code&gt; to in Read/Write mode.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We can provide the &lt;code&gt;marathon:&lt;/code&gt; tag either on the service level, or the cluster level. Any &lt;code&gt;marathon:&lt;/code&gt; tag set on the service level will override the cluster level as it is more specific. However, in 9 out of 10 cases the cluster level makes the most sense. Later, you can also mix dialects so you can prep your blueprint for multiple environments and run times within one description.&lt;/p&gt;
+
+&lt;p&gt;We are convinced this is a very convenient addition and helps users to leverage their container platform while using Vamp&amp;rsquo;s powerful, higher level features.&lt;/p&gt;
+
+&lt;p&gt;Find all downloadable packages at:&lt;br /&gt;
+&lt;a href=&#34;https://bintray.com/magnetic-io/downloads&#34;&gt;https://bintray.com/magnetic-io/downloads&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Closed issues:&lt;br /&gt;
+&lt;a href=&#34;https://github.com/magneticio/vamp/issues?q=is%3Aissue+milestone%3A0.7.6+is%3Aclosed&#34;&gt;https://github.com/magneticio/vamp/issues?q=is%3Aissue+milestone%3A0.7.6+is%3Aclosed&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tim Nolet, CTO&lt;/p&gt;
+</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Vamp 0.7.5: Archiving and redesigned environment variable DSL</title>
+      <link>http://vamp.io/2015/04/release-075/</link>
+      <pubDate>Tue, 28 Apr 2015 00:00:00 UTC</pubDate>
+      
+      <guid>http://vamp.io/2015/04/release-075/</guid>
+      <description>
+
+&lt;p&gt;We just tagged release 0.7.5 and I&amp;rsquo;m excited about what we achieved this sprint and managed to cram into Vamp 0.7.5. Some of the highlights are below, but you can check the &lt;a href=&#34;https://github.com/magneticio/vamp/releases/tag/0.7.5&#34;&gt;full release note on Github&lt;/a&gt;. There are some breaking changes in this release,
+so please update where necessary. We&amp;rsquo;ve updated our &lt;a href=&#34;http://vamp.io/getting-started/&#34;&gt;getting started tutorial&lt;/a&gt; to reflect the latest changes.&lt;/p&gt;
+
+&lt;h2 id=&#34;archiving-of-everything&#34;&gt;Archiving of everything&lt;/h2&gt;
+
+&lt;p&gt;From 0.7.5 on, all CRUD actions on Vamp artifacts are fully archived to Vamp Pulse. Put in simple terms: You can track all edits, updates and deletes to your microservices architecture similar to a Git log. By tracking all actions performed on any part of your container driven architecture, we give you the ability to start using that data to track changes, solve problems and spot trends.&lt;/p&gt;
+
+&lt;p&gt;In the screencast below you can see us create, update and delete a breed on Vamp core. After that we get the archive of all those actions from Vamp pulse, together with the orginal YAML version of the breed:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://vamp.io/img/screenshots/archiving.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;environment-variables-dsl-in-blueprints-and-breeds&#34;&gt;Environment variables DSL in blueprints and breeds&lt;/h2&gt;
+
+&lt;p&gt;In this release we focussed on redesigning our initial way of handling environment variables. Some
+of our concerns were:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;how are variables used and declared in blueprints in breeds?&lt;/li&gt;
+&lt;li&gt;how simple can we make it, without making it too simple?&lt;/li&gt;
+&lt;li&gt;how can we allow inline variable interpolation?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;From 0.7.5 onwards, we allow straightforward naming of variables and constants. We looked at different
+use cases, like:&lt;/p&gt;
+
+&lt;h3 id=&#34;hard-set-a-variable&#34;&gt;&amp;lsquo;Hard&amp;rsquo; set a variable&lt;/h3&gt;
+
+&lt;p&gt;You want to &amp;ldquo;hard set&amp;rdquo; an environment variable, just like doing an &lt;code&gt;export MY_VAR=some_value&lt;/code&gt; in a shell. This  variable could be some external dependency you have no direct control over: the endpoint of some service you use that is out of your control.&lt;/p&gt;
+
+&lt;p&gt;You may also want to define a placeholder for a variable of which you do not know the actual value yet, but should be filled in when this breed is used in a blueprint: the following deployment will not run without it and you want Vamp to check that dependency. This placeholder is designated with a &lt;code&gt;~&lt;/code&gt; character.&lt;/p&gt;
+
+&lt;pre class=&#34;prettyprint lang-yaml&#34;&gt;
+name: my_breed
+deployable: repo/container:version
+
+environment_variables:
+    MY_ENV_VAR1: some_string_value  # hard set
+    MY_ENV_VAR1: ~                  # placeholder
+&lt;/pre&gt;
+
+&lt;h3 id=&#34;resolve-a-reference-at-deploy-time&#34;&gt;Resolve a reference at deploy time&lt;/h3&gt;
+
+&lt;p&gt;You might want to resolve a reference and set it as the value for an environment variable. This reference can either be dynamically resolved at deploy-time, like ports and hosts names we don&amp;rsquo;t know till a deployment is done, or be a reference to a hardcoded and published constant from some other part of the blueprint or breed, typically a dependency.&lt;/p&gt;
+
+&lt;p&gt;You would use this to hook up services at runtime based on host/port combinations or to use a hard dependency that never changes but should be provided by another breed.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Notice&lt;/strong&gt;: you use the &lt;code&gt;$&lt;/code&gt; sign to reference other statements in a blueprint and you use the &lt;code&gt;constants&lt;/code&gt; keyword
+to create a list of constant values.&lt;/p&gt;
+
+&lt;p&gt;Have a look at this example blueprint. We are describing a frontend service that has a dependency on a backend service. We pick up the actual address of the backend service using references to variables in the blueprint that are filled in at runtime. However, we also want to pick up a value that is set by &amp;ldquo;us humans&amp;rdquo;: the api path, in this case &amp;ldquo;/v2/api/customers&amp;rdquo;.&lt;/p&gt;
+
+&lt;pre class=&#34;prettyprint lang-yaml&#34;&gt;
+name: my_blueprint
+clusters:
+
+  frontend:
+    breed:
+      name: frontend_service
+    environment_variables:
+        # resolves to a host and port at runtime
+        BACKEND_URL: http://$backend.host:$backend.ports.port
+        # resolves to the &#34;published&#34; constant value
+        BACKEND_URI_PATH: $backend.constants.uri_path        
+      dependencies:
+        backend: my_other_breed
+  backend:
+    breed:
+      name: my_other_breed
+    constants:
+      uri_path: /v2/api/customers   
+&lt;/pre&gt;
+
+&lt;p&gt;Find all downloadable packages at:&lt;br /&gt;
+&lt;a href=&#34;https://bintray.com/magnetic-io/downloads&#34;&gt;https://bintray.com/magnetic-io/downloads&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Closed issues:&lt;br /&gt;
+&lt;a href=&#34;https://github.com/magneticio/vamp/issues?q=is%3Aissue+milestone%3A0.7.5+is%3Aclosed&#34;&gt;https://github.com/magneticio/vamp/issues?q=is%3Aissue+milestone%3A0.7.5+is%3Aclosed&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tim Nolet, CTO&lt;/p&gt;
+</description>
+    </item>
+    
+    
+  </channel>
+</rss>

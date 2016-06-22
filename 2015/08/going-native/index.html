@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Going native - building native packages for Vamp | vamp.io">
+        
+        <meta property="og:type" content="article">
+        
+        <meta property="og:url" content="http://vamp.io/2015/08/going-native/">
+        <meta property="og:image" content="http://vamp.io/img/vamp_logo_blue_circle.png">
+        <meta property="og:site_name" content="Vamp.io">
+        
+            
+                <meta name="description" content="Improving you experience using Vamp starts with how you install Vamp. We decided to create native packages, which will make your life easier, without complicating ours (to much). In this technical write up we tell you how we did it.">
+                <meta property="og:description" content="Improving you experience using Vamp starts with how you install Vamp. We decided to create native packages, which will make your life easier, without complicating ours (to much). In this technical write up we tell you how we did it.">
+                <meta property="twitter:description" content="Improving you experience using Vamp starts with how you install Vamp. We decided to create native packages, which will make your life easier, without complicating ours (to much). In this technical write up we tell you how we did it.">
+            
+            
+                <meta name="keywords" content="articles sbt-native-packager vamp debian homebrew ">
+                            
+        
+        <meta property="twitter:site" content="vamp.io">
+        <meta property="twitter:title" content="Going native - building native packages for Vamp | vamp.io">
+        <meta property="twitter:image" content="http://vamp.io/img/vamp_logo_blue.png">        
+        <meta property="twitter:creator" content="vamp.io">    
+        <meta property="twitter:url" content="http://vamp.io/2015/08/going-native/">    
+        <meta property="twitter:card" content="summary">    
+        <title>Going native - building native packages for Vamp - blog -  Vamp :: The Very Awesome Microservices Platform</title>
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/flat-ui/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="http://vamp.io/css/flat-ui.min.css">
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/common-files/css/icon-font.css">
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/common-files/css/animations.css">
+        <link rel="stylesheet" href="http://vamp.io/css/ui.min.css" >
+        <link rel="icon" type="image/png" sizes="192x192"  href="http://vamp.io/img/favicon-192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="http://vamp.io/img/favicon-32.png">
+
+        
+        <script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+        for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+    mixpanel.init("3dc73f826819c8e11d0d9898ca4291c8");</script>
+        
+    </head>
+<body>
+<div class="page-wrapper">
+
+<header class="header-3">
+    <div class="container">
+        <div class="row">
+            <div class="navbar col-sm-12" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"></button>
+                    <a class="logo" href="http://vamp.io/"><img src="http://vamp.io/img/vamp_logo_blue_circle.svg" alt="vamp"></a>
+                    <span id="alpha">alpha</span>
+                </div>
+                <div class="collapse navbar-collapse pull-right">
+                    <ul class="nav pull-left">
+                        <li><a href="http://vamp.io/documentation/">WHAT IS VAMP?</a></li>
+                        <li><a href="http://vamp.io/quick-start/">QUICK START</a></li>
+                        <li><a href="http://vamp.io/documentation/">DOCS</a></li>
+                        <li><a href="http://vamp.io/blog/">BLOG</a></li>
+                        <li><a href="https://github.com/magneticio/vamp/" target="_blank">GITHUB</a></li>
+                        <li><a href="https://gitter.im/magneticio/vamp" target="_blank">Gitter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-background"></div>
+</header>
+
+<section class="subheader">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                
+                <h4>blog
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+        
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-9 col-md-offset-2 docs blog post">
+                <header>
+                    <h1>Going native - building native packages for Vamp</h1>
+                    <div class="date muted">By Matthijs Dekker on  Aug 5, 2015</div>
+                    <div class="pull-right social-buttons-horizontal">
+
+  
+
+  <a href="https://twitter.com/share" class="twitter-share-button" data-text="" data-url="" data-hashtags="microservices">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+  
+
+  <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="" data-url="" data-count="horizontal" data-style="twitter">Vote on Hacker News</a> <script type="text/javascript">var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+
+</div>
+                </header>
+                <section>
+                    
+
+<p>To give you a better experience installing Vamp, we decided to create native installers for the most common used platforms.</p>
+
+<p><img src="http://vamp.io/img/packaging.png" alt="" /></p>
+
+<p>Okay, we already did the hard part: We designed and created the software, performed the tests, made a zip file, put the zip file on the website and wrote some documentation.</p>
+
+<p>Only thing you had to do, is download the file, unzip it, put it contents in the correct directory, change the configuration files and write some startup scripts. And repeat these steps for every Vamp module. Easy as eating pie, right?</p>
+
+<p>We didn&rsquo;t think so either.</p>
+
+<p>Time to go native.</p>
+
+<h2 id="targeting-platforms">Targeting platforms</h2>
+
+<p>The Vamp modules will be typically installed on a server, with the exception of Vamp CLI, which is likely to be installed on desktop/laptop environments also. For servers, we&rsquo;ll create native installers for the <a href="http://www.serverwatch.com/columns/article.php/3900711/The-Top-10-Linux-Server-Distributions.htm">most widely used Linux flavors</a>; for the desktop we&rsquo;ll also include OSX, since thats what we are using ourself. And even for the platforms we don&rsquo;t target directly, we can make things a bit easier, by creating a universal install package.</p>
+
+<h2 id="sbt-native-packager">SBT Native Packager</h2>
+
+<p>Where a Java developer uses Maven, a Scala developer uses SBT as its build system. The SBT ecosystem is quite vibrant and there a some real nice plugins available. One of them is the <a href="http://www.scala-sbt.org/sbt-native-packager/">SBT native packager plugin</a>, which promisses to package your software to run anywhere.</p>
+
+<p>We created a <a href="http://github.com/magneticio/vamp-dist">separate project</a> for the distribution aspect of Vamp, which contains a directory for each module we want to publish. Out of the box, sbt-native-packager has the ability to create a so called &lsquo;Universal&rsquo; package. This is a zip file in which you&rsquo;ll find a bin directory and a lib directory. To use a universal package, all you have to do is unzip the file and add the bin directory to your PATH statement. That is already a huge improvement.</p>
+
+<h2 id="universal-customization">Universal customization</h2>
+
+<p>Having a closer look at the Universal package, there are somethings we&rsquo;d like to change.
+First of, the contents of the lib directory. It contains all the jar files our application needs, which are quite a few file. Lets change that, by wrapping the files into one single big jar file. With the help of the <a href="https://github.com/sbt/sbt-assembly">sbt-assembly</a> plugin this can be done quite easy, as the excerpt from the CLI   <a href="https://github.com/magneticio/vamp-dist/blob/master/cli/build.sbt">build.sbt</a> file shows:</p>
+
+<pre><code class="language-scala">//Make a fat jar
+assemblyJarName in assembly := &quot;vamp-cli.jar&quot;
+
+// removes all jar mappings in universal and appends the fat jar
+mappings in Universal := {
+ val universalMappings = (mappings in Universal).value
+ val fatJar = (assembly in Compile).value
+ // removing means filtering
+ val filtered = universalMappings filter {
+   case (file, fileName) =&gt;  ! fileName.endsWith(&quot;.jar&quot;)
+ }
+ // add the fat jar
+ filtered :+ (fatJar -&gt; (&quot;lib/&quot; + fatJar.getName))
+}
+
+// the bash scripts classpath only needs the fat jar
+scriptClasspath := Seq( (assemblyJarName in assembly).value )
+</code></pre>
+
+<p>The second thing we want to change in the CLI package, is the contents of the bin directory. The scripts in the bin directory are automatically generated when the package is being build and there are methods of adding or overriding functionality. For Vamp CLI, we want the name of the executable script to be <code>vamp</code> instead of <code>vamp-cli</code> and we&rsquo;d like to include scripting to verify the installed Java version. For this, we had to add some lines to the <a href="https://github.com/magneticio/vamp-dist/blob/master/cli/build.sbt">build.sbt</a>.</p>
+
+<pre><code class="language-scala">executableScriptName := &quot;vamp&quot;
+
+// Add check for Java 8 (not for windows)
+bashScriptExtraDefines ++= IO.readLines(baseDirectory.value / &quot;scripts&quot; / &quot;java_check.sh&quot;)
+</code></pre>
+
+<h2 id="standard-linux">Standard Linux</h2>
+
+<p>For Linux, we&rsquo;d like to support Ubtuntu / Debian &amp; Red Hat / CentOS. This means, we need to create .deb and .rpm packages. To do this, we specify some values in the build.sbt, to be included in the package mata information. For .deb packages, we&rsquo;ve added:</p>
+
+<pre><code class="language-scala">description := &quot;This is the command line interface for VAMP&quot;
+packageDescription := &quot;CLI for the Very Awesome Microservices Platform&quot;
+packageSummary := &quot;The Vamp CLI&quot;
+maintainer :=  &quot;Matthijs Dekker &lt;matthijs@magnetic.io&gt;&quot;
+</code></pre>
+
+<p>For the .rpm package, we&rsquo;ve added:</p>
+
+<pre><code class="language-scala">rpmVendor := &quot;Magnetic.io&quot;
+rpmUrl := Some(&quot;http://vamp.io&quot;)
+rpmLicense := Some(&quot;Apache 2&quot;)
+</code></pre>
+
+<p>And that&rsquo;s it. Now we can create Linux packages just by executing the sbt tasks <code>debian:packageBin</code> and <code>rpm:packageBin</code></p>
+
+<p>Well not quite &hellip;</p>
+
+<h2 id="the-init-problem">The init problem</h2>
+
+<p>The .deb package for Vamp CLI was easy to setup, but for our other components, things got a little more complex. The <a href="http://www.zdnet.com/article/after-linux-civil-war-ubuntu-to-adopt-systemd/">Linux &lsquo;civil war&rsquo;</a>, which was all about which system to use for startup and shutdown routines, left a fragmented Linux world. Ubuntu 14.04 LTS uses <code>Upstart</code>, Debian 7 uses <code>SystemV</code> and Debian 8 and Ubuntu 15.04 <code>Systemd</code>. Since we want to support all 4 releases, this means we have to create 3 different .deb packages, one for each init system.</p>
+
+<p>Luckily, sbt-native-packager has support for all three init systems and by specifying the <code>serverLoading</code> system, you can tell it which one to use.
+For example, to use <code>SystemV</code> you would use:</p>
+
+<pre><code class="language-scala">serverLoading in Debian := com.typesafe.sbt.packager.archetypes.ServerLoader.SystemV
+</code></pre>
+
+<p>With some SBT trickery, defining a new task &lsquo;packageDebianAll&rsquo;, we can create packages for all three init systems.
+For full details, see the <a href="https://github.com/magneticio/vamp-dist/blob/master/core/build.sbt">build.sbt</a> file for Vamp Core.</p>
+
+<h2 id="configuration-data">Configuration &amp; data</h2>
+
+<p>Our server applications require configuration files and need to write data to disk. By adding <code>mappings</code>, we can include files into the package.</p>
+
+<pre><code class="language-scala">mappings in Universal &lt;+= (packageBin in Compile, sourceDirectory ) map { (_, src) =&gt;
+  val conf = src / &quot;main&quot; / &quot;resources&quot; / &quot;reference.conf&quot;
+  conf -&gt; &quot;conf/application.conf&quot;
+}
+</code></pre>
+
+<p>This will create a <code>conf</code> directoy in our package, with a file called <code>application.conf</code>.</p>
+
+<p>To have the configuration file picked up by the startup script, we add it to the <code>bashScriptExtraDefines</code>.</p>
+
+<pre><code class="language-scala">bashScriptExtraDefines += &quot;&quot;&quot;addJava &quot;-Dconfig.file=${app_home}/../conf/application.conf&quot;&quot;&quot;&quot;
+</code></pre>
+
+<p>We have configured our application to write data in a <code>data</code> directory, which we need to create when installing the software:</p>
+
+<pre><code class="language-scala">// Add an empty folder to mappings
+linuxPackageMappings += packageTemplateMapping(s&quot;/usr/share/${name.value}/data&quot;)() withUser(name.value) withGroup(name.value)
+</code></pre>
+
+<p>And that&rsquo;s it for Vamp.</p>
+
+<h2 id="lets-go-all-the-way">Lets GO all the way</h2>
+
+<p>One Vamp module got left out, <a href="https://github.com/magneticio/vamp-router">Vamp Router</a>. While the other Vamp modules are all written in Scala, Vamp Router is a <a href="https://golang.org/">Go</a> application and has it&rsquo;s own build process. This build process creates .zip files, based on the hardware platform it can run on. Linux .deb &amp; .rpm packages are however not created by this build, and we came up with a way to use sbt-native-packager for this purpose.</p>
+
+<p>First, we&rsquo;ll pull the vamp-router zip file from our Bintray download site in a <code>resourceGenerator</code>:</p>
+
+<pre><code class="language-scala">val vampRouterVersion = &quot;0.7.9&quot;
+
+val platform = &quot;amd64&quot;
+
+resourceGenerators in Compile += Def.task {
+  val location = url(s&quot;https://bintray.com/artifact/download/magnetic-io/downloads/vamp-router/vamp-router_${vampRouterVersion}_linux_$platform.zip&quot;)
+  IO.unzipURL(location, target.value / platform).toSeq
+}.taskValue
+
+</code></pre>
+
+<p>Next we create mappings, to include the files we&rsquo;ve extracted from the zip file.</p>
+
+<pre><code class="language-scala">// copy vamp-router from the extracted bintray zip
+linuxPackageMappings += packageMapping( (target.value / platform / &quot;vamp-router&quot;,  &quot;/usr/share/vamp-router/vamp-router&quot;) ) withPerms &quot;755&quot;
+
+// Add the config files
+mappings in Universal &lt;+= (packageBin in Compile, target ) map { (_, target) =&gt;
+  val conf = target / platform / &quot;configuration&quot; / &quot;error_pages&quot;  / &quot;500rate.http&quot;
+  conf -&gt; &quot;configuration/error_pages/500rate.http&quot;
+}
+
+mappings in Universal &lt;+= (packageBin in Compile, target ) map { (_, target) =&gt;
+  val conf = target / platform / &quot;configuration&quot; / &quot;templates&quot; / &quot;haproxy_config.template&quot;
+  conf -&gt; &quot;configuration/templates/haproxy_config.template&quot;
+}
+
+mappings in Universal &lt;+= (packageBin in Compile, target ) map { (_, target) =&gt;
+  val conf = target / platform / &quot;examples&quot; / &quot;example1.json&quot;
+  conf -&gt; &quot;examples/example1.json&quot;
+}
+</code></pre>
+
+<p>We add our own start up script, since the generated one would not work for us:</p>
+
+<pre><code class="language-scala">// Add the script file to which starts vamp-router
+mappings in Universal &lt;+= (packageBin in Compile, sourceDirectory ) map { (_, src) =&gt;
+  val bin = src / &quot;templates&quot; / &quot;bash-template&quot;
+  bin -&gt; &quot;bin/vamp-router&quot;
+}
+</code></pre>
+
+<p>And we remove the generated jar file, since there isn&rsquo;t actually anything in there.</p>
+
+<pre><code class="language-scala">// removes all jar mappings in universal
+mappings in Universal := {
+  val universalMappings = (mappings in Universal).value
+  val filtered = universalMappings filter {
+    case (file, fileName) =&gt;  ! fileName.endsWith(&quot;.jar&quot;)
+  }
+  filtered
+}
+</code></pre>
+
+<p>Since the packages we are creating have dependencies and are not architecture independent, we need to add some additional statements to reflect this in the meta data of the packages</p>
+
+<pre><code class="language-scala">val rpmArchitecture=&quot;x86_64&quot;
+val debianArchitecture = &quot;amd64&quot;
+
+debianPackageDependencies in Debian ++= Seq(&quot;haproxy&quot;, &quot;bash (&gt;= 2.05a-11)&quot;)
+packageArchitecture in Debian := debianArchitecture
+debianSection in Debian := &quot;net&quot;
+
+packageArchitecture in Rpm := rpmArchitecture
+</code></pre>
+
+<p>With this done, we can create packages by running <code>sbt rpm:packageBin</code> and <code>sbt packageDebianAll</code>. This will create the debian <code>amd64</code> and the rpm <code>x86_64</code> packages. For the Debian <code>i386</code> packages, we needed to repeat the trick, which we&rsquo;ve done by simple duplicating the whole <a href="https://github.com/magneticio/vamp-dist/tree/master/router-amd64">router-amd64</a> directory.</p>
+
+<p>And that wraps up all Linux packaging.</p>
+
+<h2 id="brewing-our-first-osx-package">Brewing our first OSX package</h2>
+
+<p>A popular method of installing software on OSX is using <a href="http://brew.sh/">homebrew</a>. It allows you to install software from the command line, without the hassle of the Apple App Store. Creating a <code>brew</code> package is not that hard. We setup an additional github repository, <a href="https://github.com/magneticio/homebrew-vamp">homebrew-vamp</a>, here we could store our <code>formula</code>.</p>
+
+<p>Our forumula uses the Vamp CLI Universal package as a basis. For the brew package, we add an <a href="https://github.com/magneticio/vamp-dist/blob/master/cli/src/scripts/brew_vamp">additional script</a> to the Universal package</p>
+
+<p>The complete formula is just a couple of lines of Ruby</p>
+
+<pre><code class="language-ruby">require &quot;formula&quot;
+
+class Vamp &lt; Formula
+  homepage &quot;http://vamp.io&quot;
+  version &quot;0.7.9&quot;
+  url &quot;https://bintray.com/artifact/download/magnetic-io/downloads/vamp-cli/vamp-cli-#{version}.zip&quot;
+  # generate the sha256 hash on your mac with the command: shasum -a 256 &lt;filename&gt;
+  sha256 &quot;c6385ceff1200c1f990bf133f5189270eca4a174ceedacb4a8e9915eda3b02ca&quot;
+
+  def install
+      inreplace &quot;brew/vamp&quot;, &quot;##PREFIX##&quot;, &quot;#{prefix}&quot;
+      prefix.install &quot;lib/vamp-cli.jar&quot;
+      bin.install &quot;brew/vamp&quot;
+  end
+end
+</code></pre>
+
+<p>When we release a new version of Vamp, we need to update our formula, with the latest version number and an updated sha256 hash.</p>
+
+<h2 id="fire-and-forget">Fire and forget</h2>
+
+<p>With everything setup to create packages, the next step was automating it, so we can publish all packages with the push of a button. For every release, we update the version number the build.sbt files and update the library dependencies. Once, we push these changes to <a href="https://github.com/magneticio/vamp-dist">Github</a>, Travis CI will start building the packages and with the help of some custom bash scripts, push it all to <a href="https://bintray.com/magnetic-io/">Bintray</a>.</p>
+
+<p>The final step is to update the brew formula on Github and we&rsquo;ve done another release!</p>
+
+                </section>
+                <ul class="tags list-inline">
+                    
+                    <li><a class="label label-default" href="http://vamp.io/tags/articles">articles</a> </li>
+                    
+                    <li><a class="label label-default" href="http://vamp.io/tags/sbt-native-packager">sbt-native-packager</a> </li>
+                    
+                    <li><a class="label label-default" href="http://vamp.io/tags/vamp">vamp</a> </li>
+                    
+                    <li><a class="label label-default" href="http://vamp.io/tags/debian">debian</a> </li>
+                    
+                    <li><a class="label label-default" href="http://vamp.io/tags/homebrew">homebrew</a> </li>
+                    
+                </ul>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+    (function() {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//vampio.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-1">
+    <div class="container">
+        <div class="row links">
+            <nav>
+                <div class="col-sm-3">
+                    <h6>Learn more</h6>
+                    <ul>
+                        <li><a href="http://vamp.io/documentation/">About Vamp</a></li>
+                        <li><a href="http://vamp.io/quick-start/">Quick start</a></li>
+                        <li><a href="http://vamp.io/documentation/using-vamp/">Using Vamp</a></li>
+                        <li><a href="http://vamp.io/documentation/guides/">Guides</a></li>
+                        <li><a href="http://vamp.io/documentation/api-reference/">API reference</a></li>
+                        <li><a href="http://vamp.io/documentation/cli-reference/">CLI reference</a></li>
+                        <li><a href="http://vamp.io/faq/">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h6>All things code</h6>
+                    <ul>
+                        <li><a href="http://vamp.io/contribute/">Contribute</a></li>
+                        <li><a href="http://vamp.io/documentation/community/">Issues & support</a></li>
+                        <li><a href="https://github.com/magneticio/vamp/" target="_blank">Github</a></li>
+                        <li><a href="https://gitter.im/magneticio/vamp" target="_blank">Gitter</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-5">
+                    <h6>Stay up to date</h6>
+                    <div class="subscribe-form">
+                        <p class="muted subscribe-lead">Leave your email for the latest news: we won't spam you and won't go off topic.</p>
+                        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate>
+                            <div class="mc-field-group input-group">
+                                <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Email">
+                                <span class="input-group-btn">
+                                <button type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe-2" class="btn btn-info">SIGN UP</button>
+                            </span>
+                            </div>
+                        </form>
+                    </div>
+                    <p>
+                        Or subscribe to our <a href="http://vamp.io/index.xml">RSS feed</a>
+                    </p>
+                </div>
+            </nav>
+        </div>
+        <div class="row licensing">
+            <div class="col-sm-3">
+                <div class="brand hidden-xs">
+                    <img src="http://vamp.io/img/magneticio_logo_gray.svg">
+                </div>
+            </div>
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-5">
+                <p class="muted pull-right">
+                    Code licensed under <a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">Apache 2</a> © 2015 <a href="http://magnetic.io/">Magnetic.io</a>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-59948816-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script src="http://vamp.io/vendor/theme/common-files/js/jquery-1.10.2.min.js"></script>
+<script src="http://vamp.io/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/modernizr.custom.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/easing.min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/startup-kit.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/prettify.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/lang-yaml.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/lang-scala.js"></script>
+<script src="http://vamp.io/vendor/prism/prism.js"></script>
+<script src="http://vamp.io/js/ZeroClipboard.min.js"></script>
+<script src="http://vamp.io/js/custom.js"></script>
+<script>
+$('document').ready(prettyPrint())
+</script>
+</div>
+</body>
+
+</html>
+

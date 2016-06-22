@@ -1,0 +1,56 @@
+/**
+ * Footer 15 stylesheet  
+ * */
+ .footer-15 {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #f4f5f6;
+    text-align: right;
+    .font(16px, inherit);
+    font-weight: 500;
+    span {
+        line-height: 41px;
+        display: inline-block;
+        vertical-align: top;
+        @media (max-width: 480px) {
+            line-height: normal;
+        }
+    }
+    .btns {
+        display: inline-block;
+        margin-left: 25px;
+        .btn {
+            margin-left: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            &:first-child {
+                margin-left: 0;
+            }
+            font-weight: 500;
+        }
+    }
+    @media (max-width: 767px) {
+        text-align: center;
+        .btns {
+            display: block;
+            margin: 10px auto 0;
+        }
+    }
+    @media (max-width: 480px) {
+        padding-top: 45px;
+        padding-bottom: 45px;
+        .btns {
+            margin: 26px auto 0;
+            .btn {
+                margin: 0;
+                display: block;
+                + .btn {
+                    margin-top: 9px;
+                }
+            }
+        }
+    }
+}

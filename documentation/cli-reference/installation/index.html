@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Installation &amp; config | vamp.io">
+        
+        <meta property="og:url" content="http://vamp.io/documentation/cli-reference/installation/">
+        <meta property="og:image" content="http://vamp.io/img/vamp_logo_blue_circle.png">
+        <meta property="og:site_name" content="Vamp.io">
+        
+            
+                <meta name="description" content="Installation &amp; configuration Please check the appropriate installation section for your platform for details on how to install the Vamp CLI. OSX After installation, set Vamp&rsquo;s host location. This location can be specified as a command line option (--host) vamp list breeds --host=http://192.168.59.103:8080 &hellip;or via the environment variable VAMP_HOST export VAMP_HOST=http://192.168.59.103:8080 Linux &amp; Windows We currently don&rsquo;t have a installer specifically for Linux or Windows, but the manual install is pretty easy.">           
+                <meta property="og:description" content="Installation &amp; configuration Please check the appropriate installation section for your platform for details on how to install the Vamp CLI. OSX After installation, set Vamp&rsquo;s host location. This location can be specified as a command line option (--host) vamp list breeds --host=http://192.168.59.103:8080 &hellip;or via the environment variable VAMP_HOST export VAMP_HOST=http://192.168.59.103:8080 Linux &amp; Windows We currently don&rsquo;t have a installer specifically for Linux or Windows, but the manual install is pretty easy.">           
+                <meta property="twitter:description" content="Installation &amp; configuration Please check the appropriate installation section for your platform for details on how to install the Vamp CLI. OSX After installation, set Vamp&rsquo;s host location. This location can be specified as a command line option (--host) vamp list breeds --host=http://192.168.59.103:8080 &hellip;or via the environment variable VAMP_HOST export VAMP_HOST=http://192.168.59.103:8080 Linux &amp; Windows We currently don&rsquo;t have a installer specifically for Linux or Windows, but the manual install is pretty easy.">           
+            
+                            
+        
+        <meta property="twitter:site" content="vamp.io">
+        <meta property="twitter:title" content="Installation &amp; config | vamp.io">
+        <meta property="twitter:image" content="http://vamp.io/img/vamp_logo_blue.png">        
+        <meta property="twitter:creator" content="vamp.io">    
+        <meta property="twitter:url" content="http://vamp.io/documentation/cli-reference/installation/">    
+        <meta property="twitter:card" content="summary">    
+        <title>Installation &amp; config - documentation -  Vamp :: The Very Awesome Microservices Platform</title>
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/flat-ui/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="http://vamp.io/css/flat-ui.min.css">
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/common-files/css/icon-font.css">
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/common-files/css/animations.css">
+        <link rel="stylesheet" href="http://vamp.io/css/ui.min.css" >
+        <link rel="icon" type="image/png" sizes="192x192"  href="http://vamp.io/img/favicon-192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="http://vamp.io/img/favicon-32.png">
+
+        
+        <script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+        for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+    mixpanel.init("3dc73f826819c8e11d0d9898ca4291c8");</script>
+        
+    </head>
+<body>
+<div class="page-wrapper">
+
+<header class="header-3">
+    <div class="container">
+        <div class="row">
+            <div class="navbar col-sm-12" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"></button>
+                    <a class="logo" href="http://vamp.io/"><img src="http://vamp.io/img/vamp_logo_blue_circle.svg" alt="vamp"></a>
+                    <span id="alpha">alpha</span>
+                </div>
+                <div class="collapse navbar-collapse pull-right">
+                    <ul class="nav pull-left">
+                        <li><a href="http://vamp.io/documentation/">WHAT IS VAMP?</a></li>
+                        <li><a href="http://vamp.io/quick-start/">QUICK START</a></li>
+                        <li><a href="http://vamp.io/documentation/">DOCS</a></li>
+                        <li><a href="http://vamp.io/blog/">BLOG</a></li>
+                        <li><a href="https://github.com/magneticio/vamp/" target="_blank">GITHUB</a></li>
+                        <li><a href="https://gitter.im/magneticio/vamp" target="_blank">Gitter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-background"></div>
+</header>
+
+<section class="subheader">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                
+                <h4>documentation
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                
+
+<aside>
+    <div id="sidenav">
+        
+        <ul class="sidenav-menu top-level">
+            
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation" data-target=".collapse_about-vamp" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>About Vamp</span>                
+            </a>
+            <ul class="collapse_about-vamp sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation" class="sub-menu-link"> What is Vamp?
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/about-vamp/service-discovery/" class="sub-menu-link"> Service discovery
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/installation/" data-target=".collapse_installation" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Installing Vamp</span>                
+            </a>
+            <ul class="collapse_installation sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/installation" class="sub-menu-link"> Components
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/container_drivers/" class="sub-menu-link"> Container drivers
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/configuration/" class="sub-menu-link"> Configuration
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/installation/" class="sub-menu-link"> Installation details
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/quick_start/" class="sub-menu-link"> Quick start Marathon
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/installation/osx" class="sub-menu-link"> Mac OS X
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/mesosphere_dcos/" class="sub-menu-link"> DC/OS
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/using-vamp/" data-target=".collapse_using-vamp" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Using Vamp</span>                
+            </a>
+            <ul class="collapse_using-vamp sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/" class="sub-menu-link"> Using Vamp
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/breeds/" class="sub-menu-link"> Breeds
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/blueprints/" class="sub-menu-link"> Blueprints
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/deployments/" class="sub-menu-link"> Deployments
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/environment_variables/" class="sub-menu-link"> Environment variables
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/gateways/" class="sub-menu-link"> Gateways
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/routings-and-filters/" class="sub-menu-link"> Routing &amp; filters
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/metrics-and-events/" class="sub-menu-link"> Metrics &amp; Events
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/sla-and-escalations/" class="sub-menu-link"> SLA &amp; escalations
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/references/" class="sub-menu-link"> Referencing artefacts
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/workflows/" class="sub-menu-link"> Workflows
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/sticky-sessions/" class="sub-menu-link"> Sticky Sessions
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/virtual-hosts/" class="sub-menu-link"> Virtual Hosts
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/guides/" data-target=".collapse_guides" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Guides</span>                
+            </a>
+            <ul class="collapse_guides sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/" class="sub-menu-link"> Getting started tutorial
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/1-deploying/" class="sub-menu-link"> 1. Deploying a blueprint
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/2-canary-release/" class="sub-menu-link"> 2. Doing a canary release
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/3-splitting-services/" class="sub-menu-link"> 3. Splitting into services
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/4-merge-delete/" class="sub-menu-link"> 4. Merging and deleting services
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/api-reference/" data-target=".collapse_api-reference" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>API reference</span>                
+            </a>
+            <ul class="collapse_api-reference sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/" class="sub-menu-link"> Overview
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/breeds/" class="sub-menu-link"> Breeds
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/blueprints/" class="sub-menu-link"> Blueprints
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/deployments/" class="sub-menu-link"> Deployments
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/gateways/" class="sub-menu-link"> Gateways
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/scales/" class="sub-menu-link"> Scales
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/filters/" class="sub-menu-link"> Filters
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/slas/" class="sub-menu-link"> Slas
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/escalations/" class="sub-menu-link"> Escalations
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/metrics-events/" class="sub-menu-link"> Events
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/debug/" class="sub-menu-link"> Debug
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu active ">                 
+            <a href="http://vamp.io/documentation/cli-reference/" data-target=".collapse_cli-reference" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>CLI reference</span>                
+            </a>
+            <ul class="collapse_cli-reference sub collapse  in ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/" class="sub-menu-link"> Overview
+                </a>
+                </li>                
+                
+                <li class="active">
+                <a href="http://vamp.io/documentation/cli-reference/installation/" class="sub-menu-link"> Installation &amp; config
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/commands/" class="sub-menu-link"> Commands
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/community/" data-target=".collapse_community" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Community</span>                
+            </a>
+            <ul class="collapse_community sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/community/" class="sub-menu-link"> Issues &amp; Support
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/community/contribute/" class="sub-menu-link"> Contribute to Vamp
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+            
+            <li>
+                <a href="http://vamp.io/faq">
+                    
+                    <span>FAQ</span>
+                </a>
+                
+            </li>
+            
+        </ul>
+        
+    </div>
+</aside>
+
+            </div>
+            <div class="col-md-9 docs">
+                
+
+<h1 id="installation-configuration">Installation &amp; configuration</h1>
+
+<p>Please check the appropriate <a href="http://vamp.io/installation">installation section</a> for your platform for details on how to install the Vamp CLI.</p>
+
+<ul>
+<li><a href="http://vamp.io/installation/osx#/#install-cli">OSX</a></li>
+</ul>
+
+<p>After installation, set Vamp&rsquo;s host location. This location can be specified as a command line option (<code>--host</code>)</p>
+
+<pre><code class="language-bash">vamp list breeds --host=http://192.168.59.103:8080
+</code></pre>
+
+<p>&hellip;or via the environment variable <code>VAMP_HOST</code></p>
+
+<pre><code class="language-bash">export VAMP_HOST=http://192.168.59.103:8080
+</code></pre>
+
+<h2 id="linux-windows">Linux &amp; Windows</h2>
+
+<p>We currently don&rsquo;t have a installer specifically for Linux or Windows, but the manual install is pretty easy.</p>
+
+<p>After confirming you&rsquo;ve got the correct Java version installed, head over to our Bintray download section to get the latest Vamp CLI release.
+It is located at <a href="https://dl.bintray.com/magnetic-io/downloads/vamp-cli/">https://dl.bintray.com/magnetic-io/downloads/vamp-cli/</a></p>
+
+<ul>
+<li>Download the release zip file</li>
+<li>Unzip it anywhere you&rsquo;d like, e.g. <code>/usr/local/vamp-cli</code> or <code>C:\Program Files\</code></li>
+<li>Inside the extracted Vamp CLI package is a <code>bin</code> directory. Add it to your PATH statement</li>
+<li>Open a Console/CMD window and type <code>vamp</code></li>
+</ul>
+
+                <span class="pull-right muted" style="margin-top: 15px">Found an error or a typo in these docs?<a href="https://github.com/magneticio/vamp.io/tree/master/content/documentation" target="_blank"> Submit an issue or a pull request!</a></span>
+   
+            </div>
+            <div class="col-md-1 hidden-xs hidden-sm">
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-1">
+    <div class="container">
+        <div class="row links">
+            <nav>
+                <div class="col-sm-3">
+                    <h6>Learn more</h6>
+                    <ul>
+                        <li><a href="http://vamp.io/documentation/">About Vamp</a></li>
+                        <li><a href="http://vamp.io/quick-start/">Quick start</a></li>
+                        <li><a href="http://vamp.io/documentation/using-vamp/">Using Vamp</a></li>
+                        <li><a href="http://vamp.io/documentation/guides/">Guides</a></li>
+                        <li><a href="http://vamp.io/documentation/api-reference/">API reference</a></li>
+                        <li><a href="http://vamp.io/documentation/cli-reference/">CLI reference</a></li>
+                        <li><a href="http://vamp.io/faq/">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h6>All things code</h6>
+                    <ul>
+                        <li><a href="http://vamp.io/contribute/">Contribute</a></li>
+                        <li><a href="http://vamp.io/documentation/community/">Issues & support</a></li>
+                        <li><a href="https://github.com/magneticio/vamp/" target="_blank">Github</a></li>
+                        <li><a href="https://gitter.im/magneticio/vamp" target="_blank">Gitter</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-5">
+                    <h6>Stay up to date</h6>
+                    <div class="subscribe-form">
+                        <p class="muted subscribe-lead">Leave your email for the latest news: we won't spam you and won't go off topic.</p>
+                        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate>
+                            <div class="mc-field-group input-group">
+                                <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Email">
+                                <span class="input-group-btn">
+                                <button type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe-2" class="btn btn-info">SIGN UP</button>
+                            </span>
+                            </div>
+                        </form>
+                    </div>
+                    <p>
+                        Or subscribe to our <a href="http://vamp.io/index.xml">RSS feed</a>
+                    </p>
+                </div>
+            </nav>
+        </div>
+        <div class="row licensing">
+            <div class="col-sm-3">
+                <div class="brand hidden-xs">
+                    <img src="http://vamp.io/img/magneticio_logo_gray.svg">
+                </div>
+            </div>
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-5">
+                <p class="muted pull-right">
+                    Code licensed under <a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">Apache 2</a> © 2015 <a href="http://magnetic.io/">Magnetic.io</a>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-59948816-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script src="http://vamp.io/vendor/theme/common-files/js/jquery-1.10.2.min.js"></script>
+<script src="http://vamp.io/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/modernizr.custom.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/easing.min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/startup-kit.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/prettify.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/lang-yaml.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/lang-scala.js"></script>
+<script src="http://vamp.io/vendor/prism/prism.js"></script>
+<script src="http://vamp.io/js/ZeroClipboard.min.js"></script>
+<script src="http://vamp.io/js/custom.js"></script>
+<script>
+$('document').ready(prettyPrint())
+</script>
+</div>
+</body>
+
+</html>

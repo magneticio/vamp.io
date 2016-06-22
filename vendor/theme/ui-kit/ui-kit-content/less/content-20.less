@@ -1,0 +1,182 @@
+.content-20 {
+    position:relative;
+    padding:200px 0;
+    .v-center;
+    h3 {
+        .font(30px, white);
+        font-family: @font-family-demo;
+        margin-bottom:35px;
+        line-height: 40px;
+        font-weight: 300;
+    }
+    h6 {
+        text-transform: none;
+        .font(18px, white);
+        font-weight: 500;
+        margin: 0 0 9px;
+    }
+    .signup-form, .signup-form + div {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .signup-form + div {
+        margin-left: 100px;
+        max-width: 300px;
+    }
+    @media (max-width: 992px) and (min-width: 768px) {
+        .signup-form + div {
+            max-width: 228px;
+        }
+    }
+    @media (max-width: 767px) {
+        padding: 80px 20px;
+        .signup-form, .signup-form + div {
+            display: block;
+            vertical-align: baseline;
+        }
+        .signup-form + div {
+            margin-top: 70px;
+            margin-left: 0;
+            max-width: none;
+        }
+    }
+    @media (max-width: 480px) {
+        display: none;
+    }
+    .signup-form {
+        width: 100%;
+        form {
+            .box-sizing(border-box);
+            position: relative;
+            display: inline-block;
+            margin: 10px 0 0;
+            padding: 37px 10.263% 76px;
+            background: white;
+            .font(15px, @base);
+            font-family:@font-family-demo;
+            .form-group {
+                margin-bottom: 23px;
+            }
+            .form-group.pull-left {
+                margin-right:3%;
+                width: 47%;
+            }
+            .form-group.pull-right {
+                margin-left:3%;
+                width: 47%;
+            }
+            label {
+                .font(15px, @base);
+                margin-bottom: 12px;
+            }
+            input[type="text"], input[type="password"] {
+                width: 100%;
+                .font(16px, @base);
+                border-color: @clouds;
+                &:hover {
+                    border-color: @silver;
+                }
+                &:focus {
+                    border-color: @peter-river;
+                }
+            }
+            .site-link {
+                width: 100%;
+                .clearfix;
+                input[type="text"],
+                input[type="password"] {
+                    width: 70%;
+                    float: left;
+                }
+                b {
+                    float: right;
+                    width: 28%;
+                    text-align: right;
+                    line-height: 42px;
+                }
+            }
+            .btn {
+                height:54px;
+                .border-radius(0);
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                .font(17px, white);
+                width:100%;
+            }
+            @media (max-width: 767px) {
+                display: block;
+                margin: 0 -20px;
+            }
+        }
+        @media (max-width: 991px) and (min-width: 768px) {
+            form {
+                width: 100%;
+                input[type="text"], input[type="password"] {
+                    .box-sizing(border-box);
+                    width: 100%;
+                    height: auto;
+                }
+                .form-group.pull-left {
+                    margin-right: 0;
+                    width: 100%;
+                    float: none;
+                }
+                .form-group.pull-right {
+                    margin-left:0;
+                    width: 100%;
+                    float: none;
+                }
+                .site-link {
+                    input[type="text"],
+                    input[type="password"] {
+                        width: 62%;
+                    }
+                    b {
+                        width: 35%;
+                    }
+                }
+            }
+        }
+        @media (max-width: 480px) {
+            form {
+                .site-link {
+                    input[type="text"],
+                    input[type="password"] {
+                        width: 55%;
+                    }
+                    b {
+                        width: 44%;
+                    }
+                }
+            }
+        }
+    }
+    .features {
+        margin-top:40px;
+        big {
+            display:block;
+            .font(22px, white);
+            font-family: @font-family-demo;
+            font-weight:300;
+            line-height: 32px;
+            margin-bottom: 8px;
+        }
+        .font(14px, @concrete);
+        font-family: @font-family-demo;
+        h6 {
+            .font(18px, white);
+            font-family: @font-family-demo;
+            margin-top:38px;
+            @media (max-width: 767px) {
+                margin-top: 0;
+            }
+        }
+        @media (max-width: 767px) {
+            > * + * {
+                margin-top: 30px;
+            }
+        }
+    }
+}

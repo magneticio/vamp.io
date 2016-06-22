@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="4. Merging and deleting services | vamp.io">
+        
+        <meta property="og:url" content="http://vamp.io/documentation/guides/getting-started-tutorial/4-merge-delete/">
+        <meta property="og:image" content="http://vamp.io/img/vamp_logo_blue_circle.png">
+        <meta property="og:site_name" content="Vamp.io">
+        
+            
+                <meta name="description" content="4. Merging a changed topology In the previous part we &ldquo;over-engineered&rdquo; our service based solution a bit: on purpose of course. We don&rsquo;t really need two backends services. So in this part we will introduce our newly engineered solution and transition to it using Vamp&rsquo;s blueprints and canary releasing methods. Step 1: Some background and theory What we are going to do is create a new blueprint that is completely valid by itself and merge it with the already running deployment.">           
+                <meta property="og:description" content="4. Merging a changed topology In the previous part we &ldquo;over-engineered&rdquo; our service based solution a bit: on purpose of course. We don&rsquo;t really need two backends services. So in this part we will introduce our newly engineered solution and transition to it using Vamp&rsquo;s blueprints and canary releasing methods. Step 1: Some background and theory What we are going to do is create a new blueprint that is completely valid by itself and merge it with the already running deployment.">           
+                <meta property="twitter:description" content="4. Merging a changed topology In the previous part we &ldquo;over-engineered&rdquo; our service based solution a bit: on purpose of course. We don&rsquo;t really need two backends services. So in this part we will introduce our newly engineered solution and transition to it using Vamp&rsquo;s blueprints and canary releasing methods. Step 1: Some background and theory What we are going to do is create a new blueprint that is completely valid by itself and merge it with the already running deployment.">           
+            
+                            
+        
+        <meta property="twitter:site" content="vamp.io">
+        <meta property="twitter:title" content="4. Merging and deleting services | vamp.io">
+        <meta property="twitter:image" content="http://vamp.io/img/vamp_logo_blue.png">        
+        <meta property="twitter:creator" content="vamp.io">    
+        <meta property="twitter:url" content="http://vamp.io/documentation/guides/getting-started-tutorial/4-merge-delete/">    
+        <meta property="twitter:card" content="summary">    
+        <title>4. Merging and deleting services - documentation -  Vamp :: The Very Awesome Microservices Platform</title>
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/flat-ui/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="http://vamp.io/css/flat-ui.min.css">
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/common-files/css/icon-font.css">
+        <link rel="stylesheet" href="http://vamp.io/vendor/theme/common-files/css/animations.css">
+        <link rel="stylesheet" href="http://vamp.io/css/ui.min.css" >
+        <link rel="icon" type="image/png" sizes="192x192"  href="http://vamp.io/img/favicon-192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="http://vamp.io/img/favicon-32.png">
+
+        
+        <script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+        for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+    mixpanel.init("3dc73f826819c8e11d0d9898ca4291c8");</script>
+        
+    </head>
+<body>
+<div class="page-wrapper">
+
+<header class="header-3">
+    <div class="container">
+        <div class="row">
+            <div class="navbar col-sm-12" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"></button>
+                    <a class="logo" href="http://vamp.io/"><img src="http://vamp.io/img/vamp_logo_blue_circle.svg" alt="vamp"></a>
+                    <span id="alpha">alpha</span>
+                </div>
+                <div class="collapse navbar-collapse pull-right">
+                    <ul class="nav pull-left">
+                        <li><a href="http://vamp.io/documentation/">WHAT IS VAMP?</a></li>
+                        <li><a href="http://vamp.io/quick-start/">QUICK START</a></li>
+                        <li><a href="http://vamp.io/documentation/">DOCS</a></li>
+                        <li><a href="http://vamp.io/blog/">BLOG</a></li>
+                        <li><a href="https://github.com/magneticio/vamp/" target="_blank">GITHUB</a></li>
+                        <li><a href="https://gitter.im/magneticio/vamp" target="_blank">Gitter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-background"></div>
+</header>
+
+<section class="subheader">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                
+                <h4>documentation
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                
+
+<aside>
+    <div id="sidenav">
+        
+        <ul class="sidenav-menu top-level">
+            
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation" data-target=".collapse_about-vamp" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>About Vamp</span>                
+            </a>
+            <ul class="collapse_about-vamp sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation" class="sub-menu-link"> What is Vamp?
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/about-vamp/service-discovery/" class="sub-menu-link"> Service discovery
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/installation/" data-target=".collapse_installation" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Installing Vamp</span>                
+            </a>
+            <ul class="collapse_installation sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/installation" class="sub-menu-link"> Components
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/container_drivers/" class="sub-menu-link"> Container drivers
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/configuration/" class="sub-menu-link"> Configuration
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/installation/" class="sub-menu-link"> Installation details
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/quick_start/" class="sub-menu-link"> Quick start Marathon
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/installation/osx" class="sub-menu-link"> Mac OS X
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/installation/mesosphere_dcos/" class="sub-menu-link"> DC/OS
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/using-vamp/" data-target=".collapse_using-vamp" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Using Vamp</span>                
+            </a>
+            <ul class="collapse_using-vamp sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/" class="sub-menu-link"> Using Vamp
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/breeds/" class="sub-menu-link"> Breeds
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/blueprints/" class="sub-menu-link"> Blueprints
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/deployments/" class="sub-menu-link"> Deployments
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/environment_variables/" class="sub-menu-link"> Environment variables
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/gateways/" class="sub-menu-link"> Gateways
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/routings-and-filters/" class="sub-menu-link"> Routing &amp; filters
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/metrics-and-events/" class="sub-menu-link"> Metrics &amp; Events
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/sla-and-escalations/" class="sub-menu-link"> SLA &amp; escalations
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/references/" class="sub-menu-link"> Referencing artefacts
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/workflows/" class="sub-menu-link"> Workflows
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/sticky-sessions/" class="sub-menu-link"> Sticky Sessions
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/using-vamp/virtual-hosts/" class="sub-menu-link"> Virtual Hosts
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu active ">                 
+            <a href="http://vamp.io/documentation/guides/" data-target=".collapse_guides" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Guides</span>                
+            </a>
+            <ul class="collapse_guides sub collapse  in ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/" class="sub-menu-link"> Getting started tutorial
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/1-deploying/" class="sub-menu-link"> 1. Deploying a blueprint
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/2-canary-release/" class="sub-menu-link"> 2. Doing a canary release
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/3-splitting-services/" class="sub-menu-link"> 3. Splitting into services
+                </a>
+                </li>                
+                
+                <li class="active">
+                <a href="http://vamp.io/documentation/guides/getting-started-tutorial/4-merge-delete/" class="sub-menu-link"> 4. Merging and deleting services
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/api-reference/" data-target=".collapse_api-reference" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>API reference</span>                
+            </a>
+            <ul class="collapse_api-reference sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/" class="sub-menu-link"> Overview
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/breeds/" class="sub-menu-link"> Breeds
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/blueprints/" class="sub-menu-link"> Blueprints
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/deployments/" class="sub-menu-link"> Deployments
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/gateways/" class="sub-menu-link"> Gateways
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/scales/" class="sub-menu-link"> Scales
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/filters/" class="sub-menu-link"> Filters
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/slas/" class="sub-menu-link"> Slas
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/escalations/" class="sub-menu-link"> Escalations
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/metrics-events/" class="sub-menu-link"> Events
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/api-reference/debug/" class="sub-menu-link"> Debug
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/cli-reference/" data-target=".collapse_cli-reference" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>CLI reference</span>                
+            </a>
+            <ul class="collapse_cli-reference sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/" class="sub-menu-link"> Overview
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/installation/" class="sub-menu-link"> Installation &amp; config
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/cli-reference/commands/" class="sub-menu-link"> Commands
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+                        
+            <li class="sub-menu">                 
+            <a href="http://vamp.io/documentation/community/" data-target=".collapse_community" class="sub-menu-header collapsed" data-toggle="collapse">
+                
+                <span>Community</span>                
+            </a>
+            <ul class="collapse_community sub collapse ">
+                
+                <li>
+                <a href="http://vamp.io/documentation/community/" class="sub-menu-link"> Issues &amp; Support
+                </a>
+                </li>                
+                
+                <li>
+                <a href="http://vamp.io/documentation/community/contribute/" class="sub-menu-link"> Contribute to Vamp
+                </a>
+                </li>                
+                
+            </ul>
+            
+            </li>
+                        
+            
+            <li>
+                <a href="http://vamp.io/faq">
+                    
+                    <span>FAQ</span>
+                </a>
+                
+            </li>
+            
+        </ul>
+        
+    </div>
+</aside>
+
+            </div>
+            <div class="col-md-9 docs">
+                
+
+<h1 id="4-merging-a-changed-topology">4. Merging a changed topology</h1>
+
+<p>In the <a href="http://vamp.io/documentation/guides/getting-started-tutorial/3-splitting-services/">previous part</a> we &ldquo;over-engineered&rdquo; our
+service based solution a bit: on purpose of course. We don&rsquo;t really need two backends services.
+So in this part we will introduce our newly engineered solution and transition to it using Vamp&rsquo;s
+blueprints and canary releasing methods.</p>
+
+<h2 id="step-1-some-background-and-theory">Step 1: Some background and theory</h2>
+
+<p>What we are going to do is create a new blueprint that is completely valid by itself and merge it
+with the already running deployment. This might sound strange at first, but it makes sense. Why? Because
+this will enable us to slowly move from the previous solution to the next solution. Once moved over, we can
+remove parts we no longer need, i.e. the former &ldquo;over-engineered&rdquo; topology.</p>
+
+<p><img src="http://vamp.io/img/services_atob.svg" alt="" /></p>
+
+<p>In the diagram above, this is visualized as follows:</p>
+
+<ol>
+<li>We have a running deployment (the blue circle with the &ldquo;1&rdquo;). To this we introduce a new blueprint
+which is merged with the running deployment (the pink circle with the &ldquo;2&rdquo;).</li>
+<li>At a point, both are active as we are transitioning from blue to pink.</li>
+<li>Once we are fully on pink, we actively remove/decommission the blue part.</li>
+</ol>
+
+<p>Is this the same as a blue/green release? Yes, but we like pink better ;o)</p>
+
+<h2 id="step-2-prepping-our-blueprint">Step 2: Prepping our blueprint</h2>
+
+<p>The following blueprint describes our more reasonable service topology. Again, this blueprint is completely
+valid by itself. You could just deploy it somewhere separately and not merge it with our over-engineered
+topology. Notice the following:</p>
+
+<ul>
+<li>The blueprint only has one backend cluster with one service.</li>
+<li>The blueprint does not specify a gateway using the <code>gateways</code> key because we are going to use the gateway already present and configured in the running deployment. However, it would be perfectly correct to specify the old gateway - the gateway would be updated as well.</li>
+</ul>
+
+<span>
+    <button class="copy-button pull-right btn" data-clipboard-text="---
+name: sava:1.3
+clusters:
+  sava:
+    services:
+      breed:
+        name: sava-frontend:1.3.0
+        deployable: magneticio/sava-frontend:1.3.0
+        ports:
+          port: 8080/http
+        environment_variables:
+          BACKEND: http://$backend.host:$backend.ports.port/api/message
+        dependencies:
+          backend: sava-backend:1.3.0
+      scale:
+        cpu: 0.2
+        memory: 64MB
+        instances: 1
+  backend:
+    services:
+      breed:
+        name: sava-backend:1.3.0
+        deployable: magneticio/sava-backend:1.3.0
+        ports:
+          port: 8080/http
+      scale:
+        cpu: 0.2
+        memory: 64MB
+        instances: 1
+
+" data-toggle="tooltip">
+        Copy
+    </button>
+<pre><code class="language-yaml">---
+name: sava:1.3
+clusters:
+  sava:
+    services:
+      breed:
+        name: sava-frontend:1.3.0
+        deployable: magneticio/sava-frontend:1.3.0
+        ports:
+          port: 8080/http
+        environment_variables:
+          BACKEND: http://$backend.host:$backend.ports.port/api/message
+        dependencies:
+          backend: sava-backend:1.3.0
+      scale:
+        cpu: 0.2
+        memory: 64MB
+        instances: 1
+  backend:
+    services:
+      breed:
+        name: sava-backend:1.3.0
+        deployable: magneticio/sava-backend:1.3.0
+        ports:
+          port: 8080/http
+      scale:
+        cpu: 0.2
+        memory: 64MB
+        instances: 1
+</code></pre>
+
+</span>
+
+
+<p>Updating our deployment using the UI or a <code>PUT</code> to the <code>/api/v1/deployments/{deployment_name}</code> should yield a deployment with the following properties (we left some irrelevant
+parts out):</p>
+
+<ol>
+<li>Two <code>services</code> in the sava <code>cluster</code>: the old one at 100% and the new one at 0% weight.</li>
+<li>Three backends in the <code>cluster</code> list: two old ones and one new one.</li>
+</ol>
+
+<p>So what happened here? Vamp has worked out what parts were already there and what parts should be merged or added. This is done based on naming, i.e. the sava cluster already existed, so Vamp added a service to it at 0% weight. A cluster named &ldquo;backend&rdquo; didn&rsquo;t exist yet, so it was created. Effectively, we have merged
+the running deployment with a new blueprint.</p>
+
+<h2 id="step-3-transitioning-from-blueprints-to-deployments-and-back">Step 3: Transitioning from blueprints to deployments and back</h2>
+
+<p>Moving from the old to the new topology is now just a question of &ldquo;turning the weight dial&rdquo;. You
+could do this in one go, or slowly adjust it. The easiest and neatest way is to just update the deployment as you go.</p>
+
+<p>Vamp&rsquo;s API has a convenient option for this: you can export any deployment as a blueprint! By appending <code>?as_blueprint=true</code> to any deployment URI, Vamp strips all runtime info and outputs a perfectly valid blueprint of that specific deployment.</p>
+
+<p>The default output will be in JSON format, but you can also get a YAML format. Just set the header <code>Accept: application/x-yaml</code> and Vamp will give you a YAML format blueprint of that deployment.</p>
+
+<blockquote>
+<p><strong>Note</strong>: When using the graphical UI, this is all taken care of.</p>
+</blockquote>
+
+<p>In this specific example, we could export the deployment as a blueprint and update the weight to a 50% to
+50% split. Then we could do this again, but with a 80% to 20% split and so on. See the abbreviated example
+below where we set the <code>weight</code> keys to <code>50%</code> in both <code>routing</code> sections.</p>
+
+<span>
+    <button class="copy-button pull-right btn" data-clipboard-text="---
+name: eb2d505e-f5cf-4aed-b4ae-326a8ca54577
+clusters:
+  sava:
+    services:
+    - breed:
+        name: sava-frontend:1.2.0
+        deployable: docker://magneticio/sava-frontend:1.2.0
+        ports:
+          port: 8080/http
+        environment_variables:
+          BACKEND_1: http://$backend1.host:$backend1.ports.port/api/message
+          BACKEND_2: http://$backend2.host:$backend2.ports.port/api/message
+        constants: {}
+        dependencies:
+          backend1: sava-backend1:1.2.0
+          backend2: sava-backend2:1.2.0
+      environment_variables: {}
+      scale:
+        cpu: 0.2
+        memory: 64MB
+        instances: 1
+      dialects: {}
+    - breed:
+        name: sava-frontend:1.3.0
+        deployable: docker://magneticio/sava-frontend:1.3.0
+        ports:
+          port: 8080/http
+        environment_variables:
+          BACKEND: http://$backend.host:$backend.ports.port/api/message
+        constants: {}
+        dependencies:
+          backend: sava-backend:1.3.0
+      environment_variables: {}
+      scale:
+        cpu: 0.2
+        memory: 64MB
+        instances: 1
+      dialects: {}
+    routing:
+      port:
+        sticky: none
+        routes:
+          sava-frontend:1.2.0:
+            weight: 50%
+            filters: []
+          sava-frontend:1.3.0:
+            weight: 50%
+            filters: []
+
+
+" data-toggle="tooltip">
+        Copy
+    </button>
+<pre><code class="language-yaml">---
+name: eb2d505e-f5cf-4aed-b4ae-326a8ca54577
+clusters:
+  sava:
+    services:
+    - breed:
+        name: sava-frontend:1.2.0
+        deployable: docker://magneticio/sava-frontend:1.2.0
+        ports:
+          port: 8080/http
+        environment_variables:
+          BACKEND_1: http://$backend1.host:$backend1.ports.port/api/message
+          BACKEND_2: http://$backend2.host:$backend2.ports.port/api/message
+        constants: {}
+        dependencies:
+          backend1: sava-backend1:1.2.0
+          backend2: sava-backend2:1.2.0
+      environment_variables: {}
+      scale:
+        cpu: 0.2
+        memory: 64MB
+        instances: 1
+      dialects: {}
+    - breed:
+        name: sava-frontend:1.3.0
+        deployable: docker://magneticio/sava-frontend:1.3.0
+        ports:
+          port: 8080/http
+        environment_variables:
+          BACKEND: http://$backend.host:$backend.ports.port/api/message
+        constants: {}
+        dependencies:
+          backend: sava-backend:1.3.0
+      environment_variables: {}
+      scale:
+        cpu: 0.2
+        memory: 64MB
+        instances: 1
+      dialects: {}
+    routing:
+      port:
+        sticky: none
+        routes:
+          sava-frontend:1.2.0:
+            weight: 50%
+            filters: []
+          sava-frontend:1.3.0:
+            weight: 50%
+            filters: []
+
+</code></pre>
+
+</span>
+
+
+<h2 id="step-4-deleting-parts-of-the-deployment">Step 4: Deleting parts of the deployment</h2>
+
+<p>Vamp helps you transition between states and avoid &ldquo;hard&rdquo; switches, so deleting parts of a deployment is somewhat different than you might expect.</p>
+
+<p>In essence, a delete is just another update of the deployment: you specify what you want to remove using a blueprint and send it to the deployment&rsquo;s URI using the <code>DELETE</code>HTTP verb: yes, it is HTTP Delete with a body, not just a URI and some id.</p>
+
+<p>This means you can specifically target parts of your deployment to be removed instead of deleting the whole thing. For this tutorial we are going to delete the &ldquo;over-engineered&rdquo; old part of our deployment.</p>
+
+<p>Currently, deleting works in two steps:
+- Set all routings to <code>weight: 0%</code> of the services you want to delete with a simple update.
+- Execute the delete.</p>
+
+<blockquote>
+<p><strong>Note</strong>: You need to explicitly set the routing weight of the service you want to deploy to zero before deleting. Here is why: When you have, for example, four active services divided in a 25/25/20/30 split and you delete the one with 30%, Vamp doesn&rsquo;t know how you want to redistribute the &ldquo;left over&rdquo; 30% of traffic. For this reason the user should first explicitly divide this and then perform the delete.</p>
+</blockquote>
+
+<p><strong>Setting to zero</strong></p>
+
+<p>When you grab the YAML version of the deployment, just like above, you can set all the <code>weight</code> entries for the Sava 1.2.0 versions to <code>0</code> and update the deployment as usual. See the cleaned up example and make sure to adjust the name to your specific situation.</p>
+
+<span>
+    <button class="copy-button pull-right btn" data-clipboard-text="---
+name: 125fd95c-a756-4635-8e1a-361085037870
+clusters:
+  backend1:
+    services:
+    - breed:
+        ref: sava-backend1:1.2.0
+    routing:
+      routes:
+        sava-backend1:1.2.0:
+          weight: 0%
+  backend2:
+    services:
+    - breed:
+        ref: sava-backend2:1.2.0
+    routing:
+      routes:
+        sava-backend2:1.2.0:
+          weight: 0%
+  sava:
+    services:
+    - breed:
+        ref: sava-frontend:1.3.0
+
+    - breed:
+        ref: sava-frontend:1.2.0
+    routing:
+      routes:
+        sava-frontend:1.3.0:
+          weight: 100%
+        sava-frontend:1.2.0:
+          weight: 0%
+
+" data-toggle="tooltip">
+        Copy
+    </button>
+<pre><code class="language-yaml">---
+name: 125fd95c-a756-4635-8e1a-361085037870
+clusters:
+  backend1:
+    services:
+    - breed:
+        ref: sava-backend1:1.2.0
+    routing:
+      routes:
+        sava-backend1:1.2.0:
+          weight: 0%
+  backend2:
+    services:
+    - breed:
+        ref: sava-backend2:1.2.0
+    routing:
+      routes:
+        sava-backend2:1.2.0:
+          weight: 0%
+  sava:
+    services:
+    - breed:
+        ref: sava-frontend:1.3.0
+
+    - breed:
+        ref: sava-frontend:1.2.0
+    routing:
+      routes:
+        sava-frontend:1.3.0:
+          weight: 100%
+        sava-frontend:1.2.0:
+          weight: 0%
+</code></pre>
+
+</span>
+
+
+<p><strong>Doing the delete</strong></p>
+
+<p>Now, you can take the exact same YAML blueprint or use one that&rsquo;s a bit cleaned up for clarity and send it in the body of the <code>DELETE</code> to the deployment resource, e.g. <code>/api/v1/deployments/125fd95c-a756-4635-8e1a-361085037870</code>.</p>
+
+<blockquote>
+<p><strong>Note:</strong> The UI does not have DELETE function yet for parts of deployments, just for full deployments. This will be added later.</p>
+</blockquote>
+
+<span>
+    <button class="copy-button pull-right btn" data-clipboard-text="---
+name: sava:1.2
+clusters:
+  sava:
+    services:
+      breed:
+        ref: sava-frontend:1.2.0
+  backend1:
+    services:
+      breed:
+        ref: sava-backend1:1.2.0
+  backend2:
+    services:
+      breed:
+        ref: sava-backend2:1.2.0
+
+" data-toggle="tooltip">
+        Copy
+    </button>
+<pre><code class="language-yaml">---
+name: sava:1.2
+clusters:
+  sava:
+    services:
+      breed:
+        ref: sava-frontend:1.2.0
+  backend1:
+    services:
+      breed:
+        ref: sava-backend1:1.2.0
+  backend2:
+    services:
+      breed:
+        ref: sava-backend2:1.2.0
+</code></pre>
+
+</span>
+
+
+<blockquote>
+<p><strong>Note</strong>: We removed the <code>deployable</code>, <code>environment_variables</code>, <code>ports</code> and some other parts of the blueprint. These are actually not necessary for updating or deletion. Besides that, this is actually exactly the same blueprint we used to initially deploy the &ldquo;old&rdquo; topology.</p>
+</blockquote>
+
+<p>You can check the result in the UI: you should be left with just one backend and one frontend:</p>
+
+<p><img src="http://vamp.io/img/screenshots/tut4_after_delete.png" alt="" /></p>
+
+<h2 id="step-5-when-would-i-use-this">Step 5: When would I use this?</h2>
+
+<p>Sounds cool, but when would I use this in practice? Well, basically anytime you release something new!
+For example a bugfix release for a mobile API that &ldquo;didn&rsquo;t change anything significantly&rdquo;? You could test
+this separately and describe it in its own blueprint. After testing, you would merge that exact same blueprint
+with your already running production version (the one without the bugfix) and slowly move over to new version.</p>
+
+<p>New major release of your customer facing app? You probably also have some new dependencies that come with that
+release. You create some containers and write up a blueprint that describes this new situation, run it in acceptance and test and what have you. Later, you merge it into your production setup, effectively putting it next to it and then slowly move from the old situation to the new situation, including dependencies.</p>
+
+<p>This is the end of this initial getting started tutorial. We haven&rsquo;t done anything with Vamp&rsquo;s SLA&rsquo;s yet, scaling or dictionary system, so there is much more to come!</p>
+
+                <span class="pull-right muted" style="margin-top: 15px">Found an error or a typo in these docs?<a href="https://github.com/magneticio/vamp.io/tree/master/content/documentation" target="_blank"> Submit an issue or a pull request!</a></span>
+   
+            </div>
+            <div class="col-md-1 hidden-xs hidden-sm">
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-1">
+    <div class="container">
+        <div class="row links">
+            <nav>
+                <div class="col-sm-3">
+                    <h6>Learn more</h6>
+                    <ul>
+                        <li><a href="http://vamp.io/documentation/">About Vamp</a></li>
+                        <li><a href="http://vamp.io/quick-start/">Quick start</a></li>
+                        <li><a href="http://vamp.io/documentation/using-vamp/">Using Vamp</a></li>
+                        <li><a href="http://vamp.io/documentation/guides/">Guides</a></li>
+                        <li><a href="http://vamp.io/documentation/api-reference/">API reference</a></li>
+                        <li><a href="http://vamp.io/documentation/cli-reference/">CLI reference</a></li>
+                        <li><a href="http://vamp.io/faq/">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h6>All things code</h6>
+                    <ul>
+                        <li><a href="http://vamp.io/contribute/">Contribute</a></li>
+                        <li><a href="http://vamp.io/documentation/community/">Issues & support</a></li>
+                        <li><a href="https://github.com/magneticio/vamp/" target="_blank">Github</a></li>
+                        <li><a href="https://gitter.im/magneticio/vamp" target="_blank">Gitter</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-5">
+                    <h6>Stay up to date</h6>
+                    <div class="subscribe-form">
+                        <p class="muted subscribe-lead">Leave your email for the latest news: we won't spam you and won't go off topic.</p>
+                        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate>
+                            <div class="mc-field-group input-group">
+                                <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Email">
+                                <span class="input-group-btn">
+                                <button type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe-2" class="btn btn-info">SIGN UP</button>
+                            </span>
+                            </div>
+                        </form>
+                    </div>
+                    <p>
+                        Or subscribe to our <a href="http://vamp.io/index.xml">RSS feed</a>
+                    </p>
+                </div>
+            </nav>
+        </div>
+        <div class="row licensing">
+            <div class="col-sm-3">
+                <div class="brand hidden-xs">
+                    <img src="http://vamp.io/img/magneticio_logo_gray.svg">
+                </div>
+            </div>
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-5">
+                <p class="muted pull-right">
+                    Code licensed under <a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">Apache 2</a> © 2015 <a href="http://magnetic.io/">Magnetic.io</a>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-59948816-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script src="http://vamp.io/vendor/theme/common-files/js/jquery-1.10.2.min.js"></script>
+<script src="http://vamp.io/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/modernizr.custom.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/easing.min.js"></script>
+<script src="http://vamp.io/vendor/theme/common-files/js/startup-kit.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/prettify.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/lang-yaml.js"></script>
+<script src="http://vamp.io/vendor/google-code-prettify/lang-scala.js"></script>
+<script src="http://vamp.io/vendor/prism/prism.js"></script>
+<script src="http://vamp.io/js/ZeroClipboard.min.js"></script>
+<script src="http://vamp.io/js/custom.js"></script>
+<script>
+$('document').ready(prettyPrint())
+</script>
+</div>
+</body>
+
+</html>

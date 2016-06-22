@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://vamp.io/</loc>
+    <lastmod>2016-05-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/2016/05/magnetic_io-vamp-raises-500k-in-investmentround-led-by-voltaventures/</loc>
+    <lastmod>2016-05-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/2016/05/magnetic_io-vamp-haalt-500k-op-in-investeringsronde-geleid-door-voltaventures/</loc>
+    <lastmod>2016-05-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/2016/04/canaries-and-containers/</loc>
+    <lastmod>2016-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/2015/08/release-0710/</loc>
+    <lastmod>2015-08-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/2015/08/going-native/</loc>
+    <lastmod>2015-08-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/2015/08/release-079/</loc>
+    <lastmod>2015-08-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/2015/06/8-docker-productivity-hacks/</loc>
+    <lastmod>2015-06-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/2015/05/release-076/</loc>
+    <lastmod>2015-05-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/2015/05/updates-docs/</loc>
+    <lastmod>2015-05-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/2015/04/release-075/</loc>
+    <lastmod>2015-04-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/2015/04/getting-started/</loc>
+    <lastmod>2015-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/2015/03/epic-first-post/</loc>
+    <lastmod>2015-03-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/installation</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/faq/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/guides/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/community/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/api-reference/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/cli-reference/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/using-vamp/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/installation/container_drivers/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/guides/getting-started-tutorial/1-deploying/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/api-reference/breeds/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/using-vamp/breeds/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/installation/configuration/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/community/contribute/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/cli-reference/installation/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/guides/getting-started-tutorial/2-canary-release/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/api-reference/blueprints/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/using-vamp/blueprints/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/cli-reference/commands/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/using-vamp/deployments/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/installation/installation/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/using-vamp/environment_variables/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/using-vamp/gateways/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/guides/getting-started-tutorial/3-splitting-services/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/api-reference/deployments/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/installation/quick_start/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/about-vamp/service-discovery/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/api-reference/gateways/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/guides/getting-started-tutorial/4-merge-delete/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/using-vamp/routings-and-filters/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/api-reference/scales/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/using-vamp/metrics-and-events/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/api-reference/filters/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/installation/osx</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/using-vamp/sla-and-escalations/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/installation/mesosphere_dcos/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/using-vamp/references/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/api-reference/slas/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/api-reference/escalations/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/api-reference/metrics-events/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/using-vamp/workflows/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/using-vamp/sticky-sessions/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/using-vamp/virtual-hosts/</loc>
+  </url>
+  
+  <url>
+    <loc>http://vamp.io/documentation/api-reference/debug/</loc>
+  </url>
+  
+</urlset>

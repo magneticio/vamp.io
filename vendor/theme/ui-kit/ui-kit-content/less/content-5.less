@@ -1,0 +1,60 @@
+/**
+ * Content 5 stylesheet  
+ * */
+ .content-5 {
+    padding-top: 130px;
+    padding-bottom: 120px;
+    position:relative;
+    .container > img {
+        display: block;
+        margin: 0 auto 50px;
+    }
+    h3 {
+        margin: 0 0 21px;
+        .font(35px, @text-color-heading);
+        font-family:@font-family-demo;
+        text-align: center;
+        @media (max-width: 767px) {
+            margin-bottom: 15px;
+        }
+        + .lead {
+            .font(25px);
+            font-family:@font-family-demo;
+            font-weight: 300;
+            text-align: center;
+            @media (max-width: 767px) {
+                line-height: 1.25;
+            }
+        }
+    }
+    @media (max-width: 480px) {
+        padding-bottom: 40px;
+    }
+    .features {
+        >[class*="col-sm-"] {
+            position: relative;
+            margin-top: 40px;
+            >[class*="fui-"] {
+                position: absolute;
+                left: -45px;
+                top: 7px;
+                .font(25px, @text-color-heading);
+                @media (max-width: 767px) {
+                    position: static;
+                    float: left;
+                    margin: -7px 20px 0 0;
+                }
+            }
+            p {
+                .font(16px);
+            }
+            h6 {
+                .font(22px, @base);
+                font-family:@font-family-demo;
+                font-weight:500;
+                margin-bottom: 14px;
+                text-transform: none;
+            }
+        }
+    }
+}

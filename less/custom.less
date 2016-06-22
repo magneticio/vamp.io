@@ -1,0 +1,61 @@
+
+body {
+  overflow-y: scroll;
+}
+
+.teaser_image {
+  padding: 30px;
+  margin: 0px 0px 20px;
+}
+
+.screen {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  pre {
+    padding-left: 50px;
+    padding-top: 50px;
+    margin: 40px 0px 50px;
+    border: 0px transparent;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    font-size: 14px;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    background-color: #333;
+    .kwd {
+      color: @brand-accent;
+    }
+    .pln {
+      color: white !important;
+    }
+    .pun {
+      color: @brand-accent;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 11px;
+    }
+  }
+}
+
+body > .navbar-collapse {
+  background: #ffffff;
+  box-shadow: 2px 0px 9px @gray;
+
+  .nav > li> a {
+    .a-color(@asbestos, @link-color);
+    border-bottom: 2px solid @footer-color;
+    &:hover{
+      color: @brand-info;
+    }
+  }
+}
+
+.social-buttons-horizontal {
+  iframe {
+    margin-left: 15px;
+  }
+
+}
+
+

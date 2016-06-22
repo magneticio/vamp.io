@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Vamp :: The Very Awesome Microservices Platform</title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://vamp.io/tags/launch/</link>
+    <language>en-us</language>
+    
+    <updated> Mar 31, 2015</updated>
+    
+    
+    <item>
+      <title>Epic first post: open sourcing Vamp!</title>
+      <link>http://vamp.io/2015/03/epic-first-post/</link>
+      <pubDate>Tue, 31 Mar 2015 00:00:00 UTC</pubDate>
+      
+      <guid>http://vamp.io/2015/03/epic-first-post/</guid>
+      <description>&lt;p&gt;From today onwards, we are open sourcing the development of Vamp, the &lt;em&gt;Very Awesome Microservice Platform&lt;/em&gt;. Yay!
+For me and the team this is quite a milestone and a very exciting next step in how we build Vamp and who contributes
+to it. We are still in alpha, so things might still be somewhat rough around the edges, but what Vamp can do
+already surpasses what I had imagined over a year ago! Big up for the team!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://vamp.io/img/team_launch.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So, what can you expect from Vamp and its development?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Open development on all fronts: open design, open code, easy extending.&lt;/li&gt;
+&lt;li&gt;Focus on usability: good documentation, helpful error messages and clear API design.&lt;/li&gt;
+&lt;li&gt;Standard where possible: No reinvention if not necessary!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Over the coming weeks and months we will be releasing a lot of write-ups, reference docs and cookbook-type
+tutorials on how to use Vamp and what tricks it can do.&lt;/p&gt;
+
+&lt;p&gt;Tim Nolet, CTO&lt;/p&gt;
+</description>
+    </item>
+    
+    
+  </channel>
+</rss>

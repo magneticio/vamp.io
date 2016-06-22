@@ -1,0 +1,75 @@
+/**
+ * Content 3 stylesheet  
+ * */
+ .content-3 {
+    padding-top: 130px;
+    padding-bottom: 130px;
+    position:relative;
+    h3 {
+        .font(30px, @text-color-heading);
+        font-family:@font-family-demo;
+        font-weight: 300;
+        margin-bottom: 24px;
+    }
+    p {
+        .font(16px);
+        font-family:@font-family-demo;
+        .line-height(30px);
+        @media (max-width: 767px) {
+            margin-bottom: 34px;
+        }
+    }
+    .v-center;
+    .img {
+        max-width: 380px;
+        margin-left: auto;
+        img {
+            width: 100%;
+        }
+        @media (max-width: 767px) {
+            margin-right: auto;
+            margin-bottom: 30px;
+        }
+    }
+    .delimiter {
+        margin-top:130px;
+        padding-top:70px;
+        border-top:2px solid @clouds;
+        @media (max-width: 767px) {
+            display: none;
+        }
+    }
+    .features {
+        h6 {
+            margin-top: 0;
+            margin-bottom: 22px;
+            .font(20px, @base);
+            font-family:@font-family-demo;
+            font-weight:500;
+            text-transform: none;
+            @media (max-width: 767px) {
+                margin-top: 30px;
+                margin-bottom: 15px;
+            }
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 0;
+            line-height: 26px;
+        }
+    }
+    &.mirror {
+        .aligment {
+            float: right;
+        }
+        .img {
+            margin-left: 0;
+            margin-right: auto;
+            max-width: 397px;
+
+            @media (max-width: 767px) {
+                margin-left: auto;
+            }
+        }
+    }
+}

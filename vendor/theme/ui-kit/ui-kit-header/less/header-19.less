@@ -1,0 +1,174 @@
+/**
+ * Header 19 stylesheet  
+ * */
+ .header-19 {
+    padding-top:0;
+    padding-bottom:0;
+    z-index:100;
+    position:relative;
+    .navbar {
+        position: absolute;
+        z-index: 2;
+        top: 100px;
+        font-family: @font-family-demo;
+        &.navbar-fixed-top {
+            position:fixed;
+        }
+        .opacity(0);
+        .loaded & {
+            .opacity(100);
+        }
+        @media (max-width: 480px) {
+            .brand > span {
+                left: 0;
+                .opacity(100);
+            }
+        }
+        @media (max-width: 767px) {
+            top: 90px;
+        }
+        .brand {
+            font-weight: 500;
+            .font(25px, @base);
+            position: relative;
+            overflow: hidden;
+            img:first-child {
+                float: left;
+                margin: -10px 15px 0 0;
+                position: relative;
+                z-index: 2;
+                border: 1px solid #e74c3c;
+                .border-radius(100%);
+                .box-sizing(border-box);
+                background-color: #e74c3c;
+            }
+            > span {
+                position: relative;
+                z-index: 1;
+                left: -100%;
+                .opacity(0);
+            }
+            &:hover, &:focus {
+                > span {
+                    left: 0;
+                    .opacity(100);
+                }
+            }
+        }
+        .navbar-header {
+            float: none;
+        }
+        .navbar-toggle {
+            display: block;
+            background-image: url("@{startup-basePath}common-files/icons/menu-icon-dark@2x.png");
+            .background-size(17px 12px);
+            margin-top: 26px;
+        }
+    }
+}
+.header-19-sub {
+    padding-top: 340px;
+    padding-bottom: 200px;
+    @media (max-width: 767px) {
+        padding-top: 255px;
+    }
+    background: #ebedee;
+    overflow: hidden;
+    position:relative;
+    > img {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        max-width: none;
+        height: 70%;
+    }
+    > .container {
+        position: relative;
+    }
+    h1 {
+        margin: 0 0 30px;
+        .font(45px, @text-color-heading);
+        font-weight: 300;
+        line-height: 1.34;
+    }
+    .btn {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+    .btns {
+        margin-top: 55px;
+        > * {
+            display: inline-block;
+            margin-left: 40px;
+            vertical-align: middle;
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+        .btn[class*="fui-"] {
+            float: left;
+            .font(26px, white);
+            margin: 0 18px 0 0;
+        }
+        @media (min-width: 481px) {
+            > *:not(:first-child) {
+                padding: 0;
+                background: transparent;
+                color: @turquoise;
+                &:hover, &:focus {
+                    color: mix(@turquoise, white, 80%);
+                }
+                &:active, &.active {
+                    color: mix(@turquoise, black, 85%);
+                }
+                [class*="fui-"] {
+                    .font(30px, #48C9B0);
+                    margin: 0;
+                }
+                :not([class*="fui-"]) {
+                    display: none;
+                }
+            }
+        }
+        @media (max-width: 480px) {
+            > * {
+                display: block;
+                margin: 0;
+                & + * {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+    .additional-links {
+        margin-top: 30px;
+        .font(12px, @concrete);
+        a {
+            text-decoration: underline;
+        }
+    }
+    > img {
+        right: -100px;
+        .opacity(0);
+        .loaded & {
+            right: 0;
+            .opacity(100);
+        }
+    }
+    .row {
+        position: relative;
+        left: -15%;
+        .opacity(0);
+        .loaded & {
+            left: 0;
+            .opacity(100);
+        }
+    }
+    @media (max-width: 480px) {
+        padding-top: 255px;
+        padding-bottom: 100px;
+        h1 {
+            .font(35px, @text-color-heading);
+        }
+    }
+}

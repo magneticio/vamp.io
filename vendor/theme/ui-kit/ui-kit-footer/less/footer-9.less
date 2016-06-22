@@ -1,0 +1,43 @@
+/**
+ * Footer 9 stylesheet  
+ * */
+ .footer-9-map {
+    padding: 0;
+    height: 550px;
+    min-height: 300px;
+    @media (max-width: 1200px){
+     height: 300px;
+   }
+ }
+.footer-9 {
+    h6 {
+        .font(18px, @base);
+        font-family:@font-family-demo;
+        font-weight:500;
+        text-transform: none;
+    }
+    p {
+        .font(16px);
+        font-family:@font-family-demo;
+        line-height: 26px;
+    }
+    a {
+        .font(16px, @alizarin);
+        font-family:@font-family-demo;
+        font-weight: normal;
+    }
+    padding-top: 110px;
+    padding-bottom: 110px;
+    @media (max-width: 768px) {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    @media (max-width: 480px) {
+        .box {
+            margin-top: 33px;
+            &.box-first {
+                margin-top: 0;
+            }
+        }
+    }
+}

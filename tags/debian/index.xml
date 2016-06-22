@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Vamp :: The Very Awesome Microservices Platform</title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://vamp.io/tags/debian/</link>
+    <language>en-us</language>
+    
+    <updated> Aug 5, 2015</updated>
+    
+    
+    <item>
+      <title>Going native - building native packages for Vamp</title>
+      <link>http://vamp.io/2015/08/going-native/</link>
+      <pubDate>Wed, 05 Aug 2015 00:00:00 UTC</pubDate>
+      
+      <guid>http://vamp.io/2015/08/going-native/</guid>
+      <description>
+
+&lt;p&gt;To give you a better experience installing Vamp, we decided to create native installers for the most common used platforms.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://vamp.io/img/packaging.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Okay, we already did the hard part: We designed and created the software, performed the tests, made a zip file, put the zip file on the website and wrote some documentation.&lt;/p&gt;
+
+&lt;p&gt;Only thing you had to do, is download the file, unzip it, put it contents in the correct directory, change the configuration files and write some startup scripts. And repeat these steps for every Vamp module. Easy as eating pie, right?&lt;/p&gt;
+
+&lt;p&gt;We didn&amp;rsquo;t think so either.&lt;/p&gt;
+
+&lt;p&gt;Time to go native.&lt;/p&gt;
+
+&lt;h2 id=&#34;targeting-platforms&#34;&gt;Targeting platforms&lt;/h2&gt;
+
+&lt;p&gt;The Vamp modules will be typically installed on a server, with the exception of Vamp CLI, which is likely to be installed on desktop/laptop environments also. For servers, we&amp;rsquo;ll create native installers for the &lt;a href=&#34;http://www.serverwatch.com/columns/article.php/3900711/The-Top-10-Linux-Server-Distributions.htm&#34;&gt;most widely used Linux flavors&lt;/a&gt;; for the desktop we&amp;rsquo;ll also include OSX, since thats what we are using ourself. And even for the platforms we don&amp;rsquo;t target directly, we can make things a bit easier, by creating a universal install package.&lt;/p&gt;
+
+&lt;h2 id=&#34;sbt-native-packager&#34;&gt;SBT Native Packager&lt;/h2&gt;
+
+&lt;p&gt;Where a Java developer uses Maven, a Scala developer uses SBT as its build system. The SBT ecosystem is quite vibrant and there a some real nice plugins available. One of them is the &lt;a href=&#34;http://www.scala-sbt.org/sbt-native-packager/&#34;&gt;SBT native packager plugin&lt;/a&gt;, which promisses to package your software to run anywhere.&lt;/p&gt;
+
+&lt;p&gt;We created a &lt;a href=&#34;http://github.com/magneticio/vamp-dist&#34;&gt;separate project&lt;/a&gt; for the distribution aspect of Vamp, which contains a directory for each module we want to publish. Out of the box, sbt-native-packager has the ability to create a so called &amp;lsquo;Universal&amp;rsquo; package. This is a zip file in which you&amp;rsquo;ll find a bin directory and a lib directory. To use a universal package, all you have to do is unzip the file and add the bin directory to your PATH statement. That is already a huge improvement.&lt;/p&gt;
+
+&lt;h2 id=&#34;universal-customization&#34;&gt;Universal customization&lt;/h2&gt;
+
+&lt;p&gt;Having a closer look at the Universal package, there are somethings we&amp;rsquo;d like to change.
+First of, the contents of the lib directory. It contains all the jar files our application needs, which are quite a few file. Lets change that, by wrapping the files into one single big jar file. With the help of the &lt;a href=&#34;https://github.com/sbt/sbt-assembly&#34;&gt;sbt-assembly&lt;/a&gt; plugin this can be done quite easy, as the excerpt from the CLI   &lt;a href=&#34;https://github.com/magneticio/vamp-dist/blob/master/cli/build.sbt&#34;&gt;build.sbt&lt;/a&gt; file shows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;//Make a fat jar
+assemblyJarName in assembly := &amp;quot;vamp-cli.jar&amp;quot;
+
+// removes all jar mappings in universal and appends the fat jar
+mappings in Universal := {
+ val universalMappings = (mappings in Universal).value
+ val fatJar = (assembly in Compile).value
+ // removing means filtering
+ val filtered = universalMappings filter {
+   case (file, fileName) =&amp;gt;  ! fileName.endsWith(&amp;quot;.jar&amp;quot;)
+ }
+ // add the fat jar
+ filtered :+ (fatJar -&amp;gt; (&amp;quot;lib/&amp;quot; + fatJar.getName))
+}
+
+// the bash scripts classpath only needs the fat jar
+scriptClasspath := Seq( (assemblyJarName in assembly).value )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The second thing we want to change in the CLI package, is the contents of the bin directory. The scripts in the bin directory are automatically generated when the package is being build and there are methods of adding or overriding functionality. For Vamp CLI, we want the name of the executable script to be &lt;code&gt;vamp&lt;/code&gt; instead of &lt;code&gt;vamp-cli&lt;/code&gt; and we&amp;rsquo;d like to include scripting to verify the installed Java version. For this, we had to add some lines to the &lt;a href=&#34;https://github.com/magneticio/vamp-dist/blob/master/cli/build.sbt&#34;&gt;build.sbt&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;executableScriptName := &amp;quot;vamp&amp;quot;
+
+// Add check for Java 8 (not for windows)
+bashScriptExtraDefines ++= IO.readLines(baseDirectory.value / &amp;quot;scripts&amp;quot; / &amp;quot;java_check.sh&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;standard-linux&#34;&gt;Standard Linux&lt;/h2&gt;
+
+&lt;p&gt;For Linux, we&amp;rsquo;d like to support Ubtuntu / Debian &amp;amp; Red Hat / CentOS. This means, we need to create .deb and .rpm packages. To do this, we specify some values in the build.sbt, to be included in the package mata information. For .deb packages, we&amp;rsquo;ve added:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;description := &amp;quot;This is the command line interface for VAMP&amp;quot;
+packageDescription := &amp;quot;CLI for the Very Awesome Microservices Platform&amp;quot;
+packageSummary := &amp;quot;The Vamp CLI&amp;quot;
+maintainer :=  &amp;quot;Matthijs Dekker &amp;lt;matthijs@magnetic.io&amp;gt;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For the .rpm package, we&amp;rsquo;ve added:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;rpmVendor := &amp;quot;Magnetic.io&amp;quot;
+rpmUrl := Some(&amp;quot;http://vamp.io&amp;quot;)
+rpmLicense := Some(&amp;quot;Apache 2&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that&amp;rsquo;s it. Now we can create Linux packages just by executing the sbt tasks &lt;code&gt;debian:packageBin&lt;/code&gt; and &lt;code&gt;rpm:packageBin&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Well not quite &amp;hellip;&lt;/p&gt;
+
+&lt;h2 id=&#34;the-init-problem&#34;&gt;The init problem&lt;/h2&gt;
+
+&lt;p&gt;The .deb package for Vamp CLI was easy to setup, but for our other components, things got a little more complex. The &lt;a href=&#34;http://www.zdnet.com/article/after-linux-civil-war-ubuntu-to-adopt-systemd/&#34;&gt;Linux &amp;lsquo;civil war&amp;rsquo;&lt;/a&gt;, which was all about which system to use for startup and shutdown routines, left a fragmented Linux world. Ubuntu 14.04 LTS uses &lt;code&gt;Upstart&lt;/code&gt;, Debian 7 uses &lt;code&gt;SystemV&lt;/code&gt; and Debian 8 and Ubuntu 15.04 &lt;code&gt;Systemd&lt;/code&gt;. Since we want to support all 4 releases, this means we have to create 3 different .deb packages, one for each init system.&lt;/p&gt;
+
+&lt;p&gt;Luckily, sbt-native-packager has support for all three init systems and by specifying the &lt;code&gt;serverLoading&lt;/code&gt; system, you can tell it which one to use.
+For example, to use &lt;code&gt;SystemV&lt;/code&gt; you would use:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;serverLoading in Debian := com.typesafe.sbt.packager.archetypes.ServerLoader.SystemV
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With some SBT trickery, defining a new task &amp;lsquo;packageDebianAll&amp;rsquo;, we can create packages for all three init systems.
+For full details, see the &lt;a href=&#34;https://github.com/magneticio/vamp-dist/blob/master/core/build.sbt&#34;&gt;build.sbt&lt;/a&gt; file for Vamp Core.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration-data&#34;&gt;Configuration &amp;amp; data&lt;/h2&gt;
+
+&lt;p&gt;Our server applications require configuration files and need to write data to disk. By adding &lt;code&gt;mappings&lt;/code&gt;, we can include files into the package.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;mappings in Universal &amp;lt;+= (packageBin in Compile, sourceDirectory ) map { (_, src) =&amp;gt;
+  val conf = src / &amp;quot;main&amp;quot; / &amp;quot;resources&amp;quot; / &amp;quot;reference.conf&amp;quot;
+  conf -&amp;gt; &amp;quot;conf/application.conf&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will create a &lt;code&gt;conf&lt;/code&gt; directoy in our package, with a file called &lt;code&gt;application.conf&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;To have the configuration file picked up by the startup script, we add it to the &lt;code&gt;bashScriptExtraDefines&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;bashScriptExtraDefines += &amp;quot;&amp;quot;&amp;quot;addJava &amp;quot;-Dconfig.file=${app_home}/../conf/application.conf&amp;quot;&amp;quot;&amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We have configured our application to write data in a &lt;code&gt;data&lt;/code&gt; directory, which we need to create when installing the software:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;// Add an empty folder to mappings
+linuxPackageMappings += packageTemplateMapping(s&amp;quot;/usr/share/${name.value}/data&amp;quot;)() withUser(name.value) withGroup(name.value)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that&amp;rsquo;s it for Vamp.&lt;/p&gt;
+
+&lt;h2 id=&#34;lets-go-all-the-way&#34;&gt;Lets GO all the way&lt;/h2&gt;
+
+&lt;p&gt;One Vamp module got left out, &lt;a href=&#34;https://github.com/magneticio/vamp-router&#34;&gt;Vamp Router&lt;/a&gt;. While the other Vamp modules are all written in Scala, Vamp Router is a &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; application and has it&amp;rsquo;s own build process. This build process creates .zip files, based on the hardware platform it can run on. Linux .deb &amp;amp; .rpm packages are however not created by this build, and we came up with a way to use sbt-native-packager for this purpose.&lt;/p&gt;
+
+&lt;p&gt;First, we&amp;rsquo;ll pull the vamp-router zip file from our Bintray download site in a &lt;code&gt;resourceGenerator&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;val vampRouterVersion = &amp;quot;0.7.9&amp;quot;
+
+val platform = &amp;quot;amd64&amp;quot;
+
+resourceGenerators in Compile += Def.task {
+  val location = url(s&amp;quot;https://bintray.com/artifact/download/magnetic-io/downloads/vamp-router/vamp-router_${vampRouterVersion}_linux_$platform.zip&amp;quot;)
+  IO.unzipURL(location, target.value / platform).toSeq
+}.taskValue
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next we create mappings, to include the files we&amp;rsquo;ve extracted from the zip file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;// copy vamp-router from the extracted bintray zip
+linuxPackageMappings += packageMapping( (target.value / platform / &amp;quot;vamp-router&amp;quot;,  &amp;quot;/usr/share/vamp-router/vamp-router&amp;quot;) ) withPerms &amp;quot;755&amp;quot;
+
+// Add the config files
+mappings in Universal &amp;lt;+= (packageBin in Compile, target ) map { (_, target) =&amp;gt;
+  val conf = target / platform / &amp;quot;configuration&amp;quot; / &amp;quot;error_pages&amp;quot;  / &amp;quot;500rate.http&amp;quot;
+  conf -&amp;gt; &amp;quot;configuration/error_pages/500rate.http&amp;quot;
+}
+
+mappings in Universal &amp;lt;+= (packageBin in Compile, target ) map { (_, target) =&amp;gt;
+  val conf = target / platform / &amp;quot;configuration&amp;quot; / &amp;quot;templates&amp;quot; / &amp;quot;haproxy_config.template&amp;quot;
+  conf -&amp;gt; &amp;quot;configuration/templates/haproxy_config.template&amp;quot;
+}
+
+mappings in Universal &amp;lt;+= (packageBin in Compile, target ) map { (_, target) =&amp;gt;
+  val conf = target / platform / &amp;quot;examples&amp;quot; / &amp;quot;example1.json&amp;quot;
+  conf -&amp;gt; &amp;quot;examples/example1.json&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We add our own start up script, since the generated one would not work for us:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;// Add the script file to which starts vamp-router
+mappings in Universal &amp;lt;+= (packageBin in Compile, sourceDirectory ) map { (_, src) =&amp;gt;
+  val bin = src / &amp;quot;templates&amp;quot; / &amp;quot;bash-template&amp;quot;
+  bin -&amp;gt; &amp;quot;bin/vamp-router&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And we remove the generated jar file, since there isn&amp;rsquo;t actually anything in there.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;// removes all jar mappings in universal
+mappings in Universal := {
+  val universalMappings = (mappings in Universal).value
+  val filtered = universalMappings filter {
+    case (file, fileName) =&amp;gt;  ! fileName.endsWith(&amp;quot;.jar&amp;quot;)
+  }
+  filtered
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Since the packages we are creating have dependencies and are not architecture independent, we need to add some additional statements to reflect this in the meta data of the packages&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;val rpmArchitecture=&amp;quot;x86_64&amp;quot;
+val debianArchitecture = &amp;quot;amd64&amp;quot;
+
+debianPackageDependencies in Debian ++= Seq(&amp;quot;haproxy&amp;quot;, &amp;quot;bash (&amp;gt;= 2.05a-11)&amp;quot;)
+packageArchitecture in Debian := debianArchitecture
+debianSection in Debian := &amp;quot;net&amp;quot;
+
+packageArchitecture in Rpm := rpmArchitecture
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With this done, we can create packages by running &lt;code&gt;sbt rpm:packageBin&lt;/code&gt; and &lt;code&gt;sbt packageDebianAll&lt;/code&gt;. This will create the debian &lt;code&gt;amd64&lt;/code&gt; and the rpm &lt;code&gt;x86_64&lt;/code&gt; packages. For the Debian &lt;code&gt;i386&lt;/code&gt; packages, we needed to repeat the trick, which we&amp;rsquo;ve done by simple duplicating the whole &lt;a href=&#34;https://github.com/magneticio/vamp-dist/tree/master/router-amd64&#34;&gt;router-amd64&lt;/a&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;And that wraps up all Linux packaging.&lt;/p&gt;
+
+&lt;h2 id=&#34;brewing-our-first-osx-package&#34;&gt;Brewing our first OSX package&lt;/h2&gt;
+
+&lt;p&gt;A popular method of installing software on OSX is using &lt;a href=&#34;http://brew.sh/&#34;&gt;homebrew&lt;/a&gt;. It allows you to install software from the command line, without the hassle of the Apple App Store. Creating a &lt;code&gt;brew&lt;/code&gt; package is not that hard. We setup an additional github repository, &lt;a href=&#34;https://github.com/magneticio/homebrew-vamp&#34;&gt;homebrew-vamp&lt;/a&gt;, here we could store our &lt;code&gt;formula&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Our forumula uses the Vamp CLI Universal package as a basis. For the brew package, we add an &lt;a href=&#34;https://github.com/magneticio/vamp-dist/blob/master/cli/src/scripts/brew_vamp&#34;&gt;additional script&lt;/a&gt; to the Universal package&lt;/p&gt;
+
+&lt;p&gt;The complete formula is just a couple of lines of Ruby&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &amp;quot;formula&amp;quot;
+
+class Vamp &amp;lt; Formula
+  homepage &amp;quot;http://vamp.io&amp;quot;
+  version &amp;quot;0.7.9&amp;quot;
+  url &amp;quot;https://bintray.com/artifact/download/magnetic-io/downloads/vamp-cli/vamp-cli-#{version}.zip&amp;quot;
+  # generate the sha256 hash on your mac with the command: shasum -a 256 &amp;lt;filename&amp;gt;
+  sha256 &amp;quot;c6385ceff1200c1f990bf133f5189270eca4a174ceedacb4a8e9915eda3b02ca&amp;quot;
+
+  def install
+      inreplace &amp;quot;brew/vamp&amp;quot;, &amp;quot;##PREFIX##&amp;quot;, &amp;quot;#{prefix}&amp;quot;
+      prefix.install &amp;quot;lib/vamp-cli.jar&amp;quot;
+      bin.install &amp;quot;brew/vamp&amp;quot;
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When we release a new version of Vamp, we need to update our formula, with the latest version number and an updated sha256 hash.&lt;/p&gt;
+
+&lt;h2 id=&#34;fire-and-forget&#34;&gt;Fire and forget&lt;/h2&gt;
+
+&lt;p&gt;With everything setup to create packages, the next step was automating it, so we can publish all packages with the push of a button. For every release, we update the version number the build.sbt files and update the library dependencies. Once, we push these changes to &lt;a href=&#34;https://github.com/magneticio/vamp-dist&#34;&gt;Github&lt;/a&gt;, Travis CI will start building the packages and with the help of some custom bash scripts, push it all to &lt;a href=&#34;https://bintray.com/magnetic-io/&#34;&gt;Bintray&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The final step is to update the brew formula on Github and we&amp;rsquo;ve done another release!&lt;/p&gt;
+</description>
+    </item>
+    
+    
+  </channel>
+</rss>

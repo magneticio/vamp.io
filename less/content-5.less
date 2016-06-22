@@ -1,0 +1,142 @@
+/**
+ * Content 5 stylesheet  
+ * */
+ .content-5 {
+  padding-top: 60px;
+  padding-bottom: 0px;
+
+  &.with-bottom-border {
+    border-bottom: 2px solid @gray;
+  }
+
+    position:relative;
+    .container > img {
+        display: block;
+        margin: 0 auto 50px;
+    }
+    h3 {
+        margin: 0 0 30px;
+        .font(28px, @text-color-heading);
+        font-family:@font-family-demo;
+        text-align: center;
+
+        >[class*="icon-"] {
+          margin-right: 20px;
+          color: @text-color-heading;
+          @media (max-width: 767px) {
+            position: static;
+            float: left;
+            margin: -7px 20px 0 0;
+          }
+        }
+
+        @media (max-width: 767px) {
+            margin-bottom: 15px;
+        }
+
+    }
+
+   h4 {
+     font-size: 21px;
+     font-weight: 300;
+   }
+  .lead {
+     .font(18px);
+     font-family:@font-family-demo;
+     font-weight: 300;
+     text-align: center;
+    letter-spacing: 0.3px;
+     @media (max-width: 767px) {
+       line-height: 1.25;
+     }
+   }
+   img {
+     text-align: center;
+     margin: 60px auto 60px auto;
+     width: 80%;
+     display: block;
+     &.home-screen {
+      margin: 60px auto 0px auto;
+      width: 90%;
+     }
+   }
+    .features {
+        >[class*="col-sm-"] {
+            position: relative;
+            >[class*="icon-"] {
+                position: absolute;
+                left: -45px;
+                top: 7px;
+                .font(24px, @text-color-heading);
+                @media (max-width: 767px) {
+                    position: static;
+                    float: left;
+                    margin: -7px 20px 0 0;
+                }
+            }
+            p {
+                .font(16px);
+                font-weight: 300;
+            }
+            h6 {
+                .font(22px, @base);
+                font-family:@font-family-demo;
+                font-weight:500;
+                margin-bottom: 14px;
+                text-transform: none;
+            }
+        }
+
+        .screenshot {
+          img {
+            max-width: 300px;
+          }
+        }
+
+      img {
+        max-width: 200px;
+        text-align: center;
+        margin: 0 auto 60px auto;
+        display: block;
+      }
+
+
+      @media (max-width: 720px) {
+        .right-image {
+          margin-top: 60px;
+        }      }
+
+    }
+   .integrations-row {
+     margin: 50px 0px 0px 0px;
+     .image-wrapper {
+      min-height: 220px;
+     }
+     .integration { 
+         text-align: center;
+         margin-bottom: 30px;
+       h5 {
+         margin-top: 50px;
+         color: @text-secondary-color;
+       }
+       button {
+         margin-bottom: 50px;
+
+          &:hover {
+           background-color: @brand-accent;
+          }
+       }
+       img {
+          text-align: center;
+          margin: auto;
+          width: 80%;
+          display: block;
+       }
+     }
+   }
+
+   .features {
+     margin-top: 70px;
+   }
+
+}

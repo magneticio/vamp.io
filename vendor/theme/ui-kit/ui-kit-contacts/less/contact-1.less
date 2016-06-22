@@ -1,0 +1,114 @@
+/**
+ * Copntact 1 stylesheet  
+ * */
+ .contacts-1 {
+    padding-top: 110px;
+    padding-bottom: 110px;
+    h3 {
+        font-size: 30px;
+        margin: 0 0 60px;
+        font-weight: 300;
+        @media (max-width: 480px) {
+            font-size: 26px;
+            margin: 0 0 30px;
+        }
+    }
+    h6, .h6 {
+        margin: 0 0 12px;
+        font-family: @font-family-demo;
+        font-weight: 500;
+        font-size: 18px;
+        text-transform: none;
+    }
+    label.h6 {
+        margin-bottom: 18px;
+    }
+    label.h6 {
+        margin-bottom: 18px;
+    }
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    b {
+        font-weight: 700;
+    }
+    a {
+        .a-color(#1abc9c);
+    }
+    form {
+        margin: 0;
+        input, textarea {
+            .box-sizing(border-box);
+            width: 100%;
+            max-width: 100%;
+            min-width: 100%;
+            margin-bottom: 29px;
+            border-color: #ebedee;
+            color: #7f8c8d;
+            font-size: 17px;
+            line-height: 22px;
+            &:focus {
+                border-color: #1abc9c;
+            }
+        }
+        input {
+            height: 45px;
+        }
+        label {
+            margin-bottom: 18px;
+        }
+        .btn {
+            margin-top: 7px;
+            min-width: 150px;
+            [class*="fui-"] {
+                font-size: 24px;
+            }
+        }
+        .btn.btn-primary {
+            &:hover, &:focus {
+                background-color: @brand-danger;
+            }
+            &:active, &.active {
+                background-color: mix(@brand-danger, black, 85%);
+            }
+        }
+    }
+    .additional {
+        margin-bottom: 45px;
+    }
+    .phone {
+        font-size: 13px;
+        font-family: @font-family-demo;
+        font-weight: 700;
+        letter-spacing: 2px;
+        line-height: 1.2;
+        color: #95a5a6;
+        big {
+            display: block;
+            font-size: 46px;
+            letter-spacing: normal;
+            white-space: nowrap;
+            color: #1abc9c;
+            @media (max-width: 992px) and (min-width: 768px) {
+                font-size: 32px;
+            }
+        }
+    }
+    @media (max-width: 767px) {
+        > .container > .row > * + * {
+            margin-top: 55px;
+        }
+    }
+    @media (max-width: 480px) {
+        form {
+            margin-bottom: 80px;
+            label {
+                margin-bottom: 0px;
+            }
+        }
+        .phone big {
+            font-size: 40px;
+        }
+    }
+}

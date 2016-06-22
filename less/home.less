@@ -1,0 +1,246 @@
+#home {
+
+  .h1 {
+    font-size: 30px;
+  }
+
+  .lead {
+    font-size: 18px;
+  }
+
+  ul.lead-list {
+    font-size: 20px;
+    color: @footer-color;
+  }
+  .hero-text {
+    h1 {
+      text-align: center;
+      font-size: 40px;
+    }
+
+    .lead {
+      text-align: center;
+    }
+  }
+
+  .version-link {
+    text-align: center;
+    font-size: 15px;
+    margin: 15px auto;
+    max-width: 430px;
+    display: block;
+    &:hover {
+    }
+  }
+
+  .spacer {
+    margin-bottom: 100px;
+  }
+
+  .btn {
+    width: auto;
+  }
+  .btn-row {
+    padding: 0;
+    text-align: center;
+  }
+  .btn-row .btn {
+    margin-top: 20px;
+    padding: 15px 32px;
+    width: 280px;
+    font-size: 20px;
+    &:hover {
+      box-shadow: inset 0px 0px 0px 2px @brand-info;
+      color: @brand-info;
+      background-color: transparent;
+    }
+  }
+
+  .btn-row .btn-getting-started {
+    padding-left: 16px;
+  }
+
+  .button-icon {
+      text-align: left;
+      vertical-align: middle;
+      display: inline-block;
+      margin-right: 14px;
+      height: 20px;
+      width: 38px;
+      margin: 0px;
+      margin-right: 12px;
+      margin-top: -4px;
+  }
+  .btn-row .btn-docs {
+    margin-top: 20px;
+    border: none;
+    box-shadow: inset 0px 0px 0px 2px @brand-accent;
+    background: #ffffff;
+    color: @brand-accent;
+    transition: color .25s,background .25s, box-shadow .25s;
+
+  }
+  .btn-row .btn-docs:hover {
+    box-shadow: inset 0px 0px 0px 2px @brand-accent;
+    color: #ffffff;
+    background-color:@brand-accent;
+
+  }
+  .btn-row .btn-docs:active {
+    box-shadow: inset 0px 0px 0px 2px @brand-accent;
+    color: #A8C7FF; }
+
+  @media (min-width: 992px) {
+
+    .btn-row {
+      .btn {
+        width: auto;
+      }
+      .btn-docs {
+        margin-right: 20px;
+
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .background-img {
+    background: url("/img/services_bg_blue.svg") right top repeat-y;
+  }
+    .btn-row {
+      .btn {
+        display: inline-block;
+      }
+    }
+  }
+
+  .home-screen {
+    height: 400px;
+  }
+
+  .hero-image {
+    height: 310px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(/img/feat1.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+.social-bar{
+  min-height: 69px;
+  background-color: #303747;
+
+  .social-btns-wrapper {
+    float: left;
+    padding-top: 21px;
+    padding-bottom: 21px;
+    padding-left: 15px;
+    padding-right: 15px;   
+    .twitter-button {
+      margin-right: 20px;
+    }  
+  }
+
+    .subscribe-form {
+      padding-top: 17px;
+      padding-bottom: 17px;
+      padding-left: 15px;
+      padding-right: 15px;
+      float: right;
+      width: 100%;
+      max-width: 500px;
+      z-index: 1;      
+      max-width: 500px;
+      form {
+        margin: 40px 0 10px;
+        .input-group {
+          input[type="email"] {
+            height: 35px;
+            font-size: 15px;
+            font-weight: 400;
+            background: @gray;
+            border:  1px solid transparent;
+            &::-webkit-input-placeholder {
+              color: @text-secondary-color;
+            }
+
+            &:-moz-placeholder { /* Firefox 18- */
+              color: @text-secondary-color;
+            }
+
+            &::-moz-placeholder {  /* Firefox 19+ */
+              color: @text-secondary-color;
+            }
+
+            &:-ms-input-placeholder {
+              color: @text-secondary-color;
+            }
+            @media (max-width: 480px) {
+              min-height: 41px;
+            }
+            &:focus {
+              background: #ffffff;
+              border:  1px solid @brand-info-light;
+            }
+          }
+
+          .btn {
+            height: 35px;
+            padding-left: 30px;
+            padding-right: 30px;
+            margin-left: 0;
+            background-color: @brand-info-dark;
+            color: #FFFFFF;
+            .border-radius(0 6px 6px 0);
+            border: 0;
+            line-height: 1px;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            @media (max-width: 480px) {
+              .border-radius(6px);
+            }
+          }
+          @media(max-width: 480px){
+
+            .form-control{
+              float: none;
+            }
+            .input-group-btn{
+              display: block;
+              width: 100%;
+            }
+          }
+        }
+      }
+      .btn.btn-info {
+        &:hover, &:focus {
+          background-color: @brand-accent;
+        }
+        &:active, &.active {
+          background-color: mix(@brand-accent, black, 85%);
+        }
+      }
+      @media (max-width: 480px) {
+        .input-group, .input-group input[type="email"], .input-group .btn {
+          display: block;
+          width: 100%;
+          min-height: 41px;
+        }
+        .input-group input[type="email"], .input-group .btn {
+          .border-radius(6px);
+        }
+        .input-group .btn {
+          margin-top: 15px;
+        }
+      }
+
+
+    }
+
+  }
+
+}
+

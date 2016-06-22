@@ -1,0 +1,96 @@
+#sidenav {
+
+  top: 0px;
+
+  @media (min-width: @screen-sm-min) {
+    margin-top: 45px;
+
+  }
+
+  ul {
+
+    &.top-level {
+      padding-left: 0px;
+    }
+
+    padding-left: 5px;
+    list-style-type: none;
+    li {
+      > a {
+        .font(14px);
+        text-transform: uppercase;
+        font-weight: 400;
+        .a-color(@asbestos, @link-color);
+        &:hover{
+          color: @brand-info;
+          text-decoration: underline;
+        }
+        &.sub-menu-link {
+          text-transform: none;
+          font-size: 14px;
+          font-weight: 400;
+        }
+        &.sub-menu-header-link {
+          text-transform: none;          
+          padding-left: 5px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .sub-menu {
+    margin-top: 8px;
+    a {
+          &.sub-menu-header {
+              &.collapsed::before{
+
+                 color: #bdc3c7;
+                 content: "\e002";
+                 display: inline-block;
+                 font-family: 'Flat-UI-Icons';
+                 font-size: 9.75px;
+                 margin: -2px 2px 0 -15px;
+                 vertical-align: middle;
+                 -webkit-font-smoothing: antialiased;              
+              }
+              
+              &::before {
+              
+               color: #bdc3c7;
+               content: "\e004";
+               display: inline-block;
+               font-family: 'Flat-UI-Icons';
+               font-size: 12.75px;
+               margin: -2px 2px 0 -18px;
+               vertical-align: middle;
+               -webkit-font-smoothing: antialiased;
+              
+           }
+        }
+    }
+
+
+    .active > a {
+      .a-color(@brand-info, @brand-info);
+
+    }
+    &.active > .sub-menu-header.collapsed {
+      .a-color(@brand-accent, @brand-accent);
+
+      &::before {
+
+        color: #bdc3c7;
+        content: "\e004";
+        display: inline-block;
+        font-family: 'Flat-UI-Icons';
+        font-size: 12.75px;
+        margin: -2px 2px 0 -18px;
+        vertical-align: middle;
+        -webkit-font-smoothing: antialiased;
+
+      }
+    }
+
+    }
+}
+
