@@ -46,7 +46,7 @@ In the Vamp UI, go to the **blueprints** tab, click the **Add new** button. Past
 
 ![](/img/screenshots/tut1_deploy.gif)
 
-Alternatively, you can your favorite tools like [Postman](https://www.getpostman.com/), [HTTPie](https://github.com/jakubroztocil/httpie) or Curl to post this blueprint directly to the `api/v1/deployments` endpoint of Vamp. 
+Alternatively, you can use your favorite tools like [Postman](https://www.getpostman.com/), [HTTPie](https://github.com/jakubroztocil/httpie) or Curl to post this blueprint directly to the `api/v1/deployments` endpoint of Vamp.
 
 >**Note**: Take care to set the correct `Content-Type: application/x-yaml` header on the POST request. Vamp is kinda
 strict with regard to content types, because we support JSON and YAML so we need to know what you are sending. 
