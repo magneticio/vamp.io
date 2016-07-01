@@ -62,7 +62,7 @@ vamp {
 
 Vamp uses Elasticsearch for persistence and [ZooKeeper](https://zookeeper.apache.org/), [etcd](https://coreos.com/etcd/docs/latest/) or [Consul](https://www.consul.io/) for key-value store (keeping HAProxy configuration). 
 
-```hocon
+```yaml
 vamp {
   persistence {
     response-timeout = 5 # seconds
@@ -103,13 +103,17 @@ Configurations for the container drivers have their own page. Please check here 
 
 The gateway-driver section configures how traffic should be routed through Vamp Gateway Agent. See the below example on how to configure this:
 
-```hocon
+```yaml
 vamp {
   gateway-driver {
     host = "10.193.238.26"              # Vamp Gateway Agent / Haproxy, internal IP.
     response-timeout = 30               # seconds
 
-    haproxy.ip = 127.0.0.1              # HAProxy backend server IP
+    haproxy {
+      ip = 127.0.0.1                    # HAProxy backend server IP
+
+      template = ""                     # Path to template file, if not specified default will be used
+    }
   }
 }  
 ``` 
@@ -154,7 +158,7 @@ Additional information can be found on [service discovery page](/documentation/a
 
 The operation section holds all parameters that control how Vamp executes against "external" services: this also includes Vamp Pulse and Vamp Gateway Agent.
 
-```hocon
+```yaml
 operation {
 	sla.period = 5      # seconds, controls how often an SLA checks against metrics
   escalation.period = 5 # seconds, controls how often Vamp checks for escalation events.
