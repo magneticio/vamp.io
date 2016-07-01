@@ -21,7 +21,7 @@ Lists metrics and/or events without any pagination or filtering.
 | tags          | Event tags, e.g. `GET /api/v1/events?tags=archiving&tags=breeds`
 <br>
 
-> Note: search criteria can be set in request body, checkout [examples](http://vamp.io/documentation/using-vamp/metrics-and-events/#query-metrics-events-using-tags) for event stream.
+> Note: search criteria can be set in request body, checkout [examples](/documentation/using-vamp/events/#query-events-using-tags) for event stream.
 
 ## Create events
 
@@ -30,5 +30,4 @@ Lists metrics and/or events without any pagination or filtering.
 ## Server-sent events (SSE)
 
     GET  /api/v1/events/stream
-    
-    POST /api/v1/events/stream
+

@@ -1,15 +1,15 @@
 ---
-title: Metrics & Events
+title: Events
 weight: 60
 menu:
   main:
     parent: using-vamp
 ---
-# Metrics & Events
+# Events
 
-Vamp collects metrics and events on all running services. Interaction with the API also creates events, like updating blueprints or deleting a deployment. Furthermore, Vamp allows third party applications to create events and trigger Vamp actions.
+Vamp collects events on all running services. Interaction with the API also creates events, like updating blueprints or deleting a deployment. Furthermore, Vamp allows third party applications to create events and trigger Vamp actions.
 
-All metrics and events are stored and retrieved using the Event API that is part of Vamp. Here is a JSON example of a "deployment create" event.
+All events are stored and retrieved using the Event API that is part of Vamp. Here is a JSON example of a "deployment create" event.
 
 ```JSON
 {
@@ -24,7 +24,7 @@ All metrics and events are stored and retrieved using the Event API that is part
 }
 ```
 
-All events and metrics stick to some **basic rules**:
+All events stick to some **basic rules**:
 
 
 - All data in Vamp are events. 
@@ -52,16 +52,16 @@ Tagging is done using a very similar schema: "{resource_group}", "{resource_grou
 
 This schema allows querying per group and per specific name. Getting all events related to all deployments is done by using tag "deployments". Getting events for specific deployment "deployments:{deployment_name}".
 
-## Query metrics & events using tags
+## Query events using tags
 
 Using the tags schema and timestamps, you can do some powerful queries. Either use an exact timestamp or use special range query operators, described [on the elastic.co site](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html).
 
-> **Note:** the default page size for a set or returned metrics is 30. From Vamp 0.7.8 onwards, we support pagination.
+> **Note:** the default page size for a set or returned events is 30.
 
 
-### Example 1: get all metrics
+### Example 1: get all events
 
-This query just gets ALL metrics up till now, taking into regard the pagination.
+This query just gets ALL metrics events up till now, taking into regard the pagination.
 
 `GET /api/v1/events`
 
@@ -74,9 +74,11 @@ This query just gets ALL metrics up till now, taking into regard the pagination.
 }
 ```
 
+> **Note:** GET request with body - similar to approach used by Elasticsearch.
+
 ### Example 2: response time for a cluster
 
-This query gets the most recent response time metrics for the "frontend" cluster in the "d9b42796-d8f6-431b-9230-9d316defaf6d" deployment. 
+This query gets the most recent response time events for the "frontend" cluster in the "d9b42796-d8f6-431b-9230-9d316defaf6d" deployment.
 
 `GET /api/v1/events`
 
@@ -138,9 +140,9 @@ Another example is getting the current sessions for a specific service, in this 
 **Notice** we made the search more specific by specifying the "services" and then "service:<SERVICE NAME>" tag.
 Also, we are using relative timestamps: anything later or equal (lte) than "now".
 
-### Example 4: all known metrics for a service
+### Example 4: all known events for a service
 
-This example gives you all the metrics we have for a specific service, in this case the same service as in example 2. In this way you can get a quick "health snapshot" of service, server, cluster or deployment.
+This example gives you all the events we have for a specific service, in this case the same service as in example 2. In this way you can get a quick "health snapshot" of service, server, cluster or deployment.
 
 `GET /api/v1/events`
 
@@ -156,9 +158,9 @@ This example gives you all the metrics we have for a specific service, in this c
 
 ## Server-sent events (SSE)
 
-Events and metrics can be streamed back directly from Vamp. 
+Events can be streamed back directly from Vamp.
 
-`POST /api/v1/events/stream`
+`GET /api/v1/events/stream`
 
 In order to narrow down (filter) events, list of tags could be provided in the request body.
 
@@ -168,11 +170,7 @@ In order to narrow down (filter) events, list of tags could be provided in the r
 }
 ```
 
-GET method can be also used (may be more convenient):
-
-`GET /api/v1/events/stream`
-
-Using tags:
+GET method can be also used with `tags` parameters (may be more convenient):
 
 `GET /api/v1/events/stream?tags=archiving&tags=breeds`
 
@@ -196,7 +194,7 @@ Here is an example event:
 }
 ```
 
-Searching through the archive is 100% the same as searching for metrics. The same tagging scheme applies. 
+Searching through the archive is 100% the same as searching for events. The same tagging scheme applies.
 The following query gives back the last set of delete actions executed in the Vamp API, regardless of the artefact type.
 
 `GET /api/v1/events`
