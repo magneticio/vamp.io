@@ -63,7 +63,7 @@ Using the tags schema and timestamps, you can do some powerful queries. Either u
 
 This query just gets ALL metrics up till now, taking into regard the pagination.
 
-`POST /api/v1/events/get`
+`GET /api/v1/events`
 
 ```json
 {
@@ -78,7 +78,7 @@ This query just gets ALL metrics up till now, taking into regard the pagination.
 
 This query gets the most recent response time metrics for the "frontend" cluster in the "d9b42796-d8f6-431b-9230-9d316defaf6d" deployment. 
 
-`POST /api/v1/events/get`
+`GET /api/v1/events`
 
 ```json
 {
@@ -124,7 +124,7 @@ This query gets the most recent response time metrics for the "frontend" cluster
 
 Another example is getting the current sessions for a specific service, in this case the `monarch_front:0.2` service that is part of the `214615ec-d5e4-473e-a98e-8aa4998b16f4` deployment and lives in the `frontend` cluster.
 
-`POST /api/v1/events/get`
+`GET /api/v1/events`
 
 ```json
 {
@@ -142,7 +142,7 @@ Also, we are using relative timestamps: anything later or equal (lte) than "now"
 
 This example gives you all the metrics we have for a specific service, in this case the same service as in example 2. In this way you can get a quick "health snapshot" of service, server, cluster or deployment.
 
-`POST /api/v1/events/get`
+`GET /api/v1/events`
 
 ```json
 {
@@ -199,7 +199,7 @@ Here is an example event:
 Searching through the archive is 100% the same as searching for metrics. The same tagging scheme applies. 
 The following query gives back the last set of delete actions executed in the Vamp API, regardless of the artefact type.
 
-`POST /api/v1/events/get`
+`GET /api/v1/events`
 
 
 ```json
