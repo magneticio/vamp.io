@@ -47,6 +47,17 @@ environment_variables:
   AWS_REGION: 'eu-west-1'     
 ```
 
+It is also possible to use wildcard `*` at the end of the name:
+
+```yaml
+---
+dependencies:
+  cache: redis:1.*
+```
+
+This will match any breed name that starts with `redis:1.`
+
+
 ## Using place holders
 
 You may also want to define a place holder for a variable of which you do not know the actual value yet, but it should be filled in at runtime, i.e. when this breed actually gets deployed. This place holder is designated with a `~` character.
