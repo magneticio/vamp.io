@@ -115,7 +115,7 @@ In this example `$backend.host` will have the value of the `vamp.gateway-driver.
 This is quite simmilar to common pattern to access any clustered application. 
 For instance if you want to access DB server, you will have an address string based on e.g. DNS name or something simmilar.
 Note that even without Vamp, you would need to setup access to `backend` in some similar way. 
-With Vamp, access is via VGA's and that allows specific routing (filters, weights) needed for A/B testing and canary releasing. 
+With Vamp, access is via VGA's and that allows specific routing (conditions, weights) needed for A/B testing and canary releasing.
 Additional information can be found on [service discovery page](/documentation/about-vamp/service-discovery/).
 
 ### operation
@@ -157,6 +157,6 @@ operation {
 ```  
 
 For each cluster and service port within the same cluster a gateway is created - this is exactly as one that can be created using Gateway API.
-That means specific filters and weights can be applied on traffic to/from cluster services - A/B testing and canary releases support.
+That means specific conditions and weights can be applied on traffic to/from cluster services - A/B testing and canary releases support.
 `vamp.operation.gateway.port-range` is range of port values that can be used for these cluster/port gateways. 
 These ports need to be available on all Vamp Gateway Agent hosts.

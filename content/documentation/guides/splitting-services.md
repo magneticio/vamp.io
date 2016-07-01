@@ -24,7 +24,7 @@ are done with coding, we can catch this new topology in the following blueprint.
 of things:
 
 1. We now have three `clusters`: `sava`, `backend1` and `backend2`. Each cluster could have multiple
-services on which we could do separate canary releases and set separate filters.
+services on which we could do separate canary releases and set separate conditions.
 2. The `sava` cluster has explicit dependencies on the two backends. Vamp will make sure these dependencies
 are checked and rolled out in the right order.
 3. Using `environment_variables` we connect the dynamically assigned ports and hostnames of the backend

@@ -18,8 +18,7 @@ Blueprints allow you to add the following extra properties:
 - [environment variables](/documentation/using-vamp/environment_variables/): a list of variables (interpolated or not) to be made available at runtime.
 - [dialects](#dialects): a dialect is a set of native commands for the underlying container platform, i.e. Docker or Mesosphere Marathon.
 - [scale](#scale): the CPU and memory and the amount of instance allocate to a service.
-- [routing](/documentation/using-vamp/routings-and-filters/): how much and which traffic the service should receive.
-- [filters](/documentation/using-vamp/routings-and-filters/): how traffic should be directed based on HTTP and/or TCP properties.
+- [conditions](/documentation/using-vamp/gateways-and-conditions/): how traffic should be directed based on HTTP and/or TCP properties.
 - [sla & escalations](/documentation/using-vamp/sla-and-escalations/): SLA definition that controls autoscaling.
 
 This example shows some of the key concepts of of blueprints:
@@ -32,11 +31,11 @@ gateways:
 clusters:
   my_frontend:                            # Custom cluster name.
   
-    routing:                              # Routing for this cluster services.
+    gateways:                             # Gateway for this cluster services.
       routes:                             # Makes sense only with
         some_cool_breed:                  # multiple services per cluster.
           weight: 95%
-          filters:
+          conditions:
           - condition: User-Agent = Chrome
         some_other_breed:                 # Second service.
           weight: 5%
@@ -89,7 +88,7 @@ my_cool_cluster
        ...
 ```
 
-Clusters and services are just organisational items. Vamp uses them to order, reference and control the actual containers and routing and traffic.
+Clusters and services are just organisational items. Vamp uses them to order, reference and control the actual containers and gateways and traffic.
 
 > **This all seems redundant, right?** We have a reference chain of blueprints -> gateways -> clusters -> services -> breeds -> deployable. However, you need this level of control and granularity in any serious environment where DRY principles are taken seriously and where "one size fits all" doesn't fly.
 

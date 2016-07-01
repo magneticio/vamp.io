@@ -22,7 +22,7 @@ gateways:
   9050/http: sava/port
 clusters:
   sava:
-    routing:
+    gateways:
       sticky: service                         # setting the service level
       routes:
         sava:1.0.0:
@@ -72,7 +72,7 @@ gateways:
   9050/http: sava/port
 clusters:
   sava:
-    routing:
+    gateways:
       sticky: instance                         # setting the instance level
       routes:
         sava:1.0.0:

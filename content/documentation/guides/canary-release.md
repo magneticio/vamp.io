@@ -18,12 +18,12 @@ walked through that part, please do so first. Now let's say we have a new versio
 Vamp allows you to do canary releases using blueprints. Take a look at the YAML example below. It is quite similar to the blueprint we initially used to deploy sava 1.0.0. However, there are two big differences.
 
 1. The `services` key holds a list of breeds: one for v1.0.0 and one for v1.1.0 of our app. [Breeds](/documentation/using-vamp/breeds/) are Vamp's way of describing static artifacts that can be used in blueprints.
-2. We've added the `routing` key which holds the weight of each service as a percentage of all requests.
+2. We've added the `gateways` key which holds the weight of each service as a percentage of all requests.
 
 Notice we assigned 50% to our current version 1.0.0 and 50% to the new version 1.1.0 We could also start with a 100% to 0% split, a 99% to 1% split or whatever combination you want as long as all percentages add up to 100% in total.
 
 
-You could also just leave out the whole `routing` sections and use the UI to change the weights after we've done the deployment.
+You could also just leave out the whole `gateways` sections and use the UI to change the weights after we've done the deployment.
 
 ![](/img/screenshots/weight_sliders.png)
 {{% copyable %}}
@@ -35,7 +35,7 @@ gateways:
   9050: sava/port
 clusters:
   sava:
-    routing:
+    gateways:
       routes:
         sava:1.0.0:
           weight: 50%  # weight in percentage
@@ -84,32 +84,32 @@ When finished deploying, you can start refreshing your browser at the correct en
 
 If you want to use the RESTful API, you can update a running deployment by getting its name (the UUID) from `/api/v1/deployments` and `PUT`-ing the blueprint to that resource, e.g: `/api/v1/deployments/e1c99ca3-dc1f-4577-aa1b-27f37dba0325`
 
-## Step 3: Using filters to target specific groups
+## Step 3: Using conditions to target specific groups
 
 Using percentages to divide traffic between versions is already quite powerful, but also very simplistic.
 What if, for instance, you want to specifically target a group of users? Or a specific channel of requests
 from an internal service? Vamp allows you to do this right from the blueprint DSL.
 
-Let's start simple: We will allow only Chrome users to access v1.1.0 of our application by inserting this routing scheme:
+Let's start simple: We will allow only Chrome users to access v1.1.0 of our application by inserting this gateways scheme:
 
 ```yaml
 ---
 routes:
   sava:1.1.0:
     weight: 0%
-    filter_strength: 100%
-    filters:
+    condition_strength: 100%
+    conditions:
     - condition: User-Agent = Chrome
 ```
 
 Notice two things:
 
 1. We inserted a list of conditions (with only one condition for now).
-2. We set the filter strength to 100% (it would be also by default set to 100%). This is important because we want all Chrome users to access the new service - we could also say `filter_strength: 50%` to give access just to half of them.
+2. We set the condition strength to 100% (it would be also by default set to 100%). This is important because we want all Chrome users to access the new service - we could also say `condition_strength: 50%` to give access just to half of them.
 3. We set te weight to 0% because we don't want any other users to access `sava:1.1.0`
 
-The first service where the filter matches the request will be used to handle the request. 
-More information about using filters, weights, sticky sessions etc. can be found [here](/documentation/using-vamp/routings-and-filters/).
+The first service where the condition matches the request will be used to handle the request.
+More information about using conditions, weights, sticky sessions etc. can be found [here](/documentation/using-vamp/gateways-and-conditions/).
 Our full blueprint now looks as follows:
 
 {{% copyable %}}
@@ -121,14 +121,14 @@ gateways:
   9050: sava/port
 clusters:
   sava:
-    routing:
+    gateways:
       routes:
         sava:1.0.0:
           weight: 100%
         sava:1.1.0:
           weight: 0%
-          filter_strength: 100%
-          filters:
+          condition_strength: 100%
+          conditions:
           - condition: User-Agent = Chrome
     services: # services is now a list of breeds
       -
@@ -163,11 +163,11 @@ As we are not actually deploying anything but just reconfiguring routes, the upd
 
 ![](/img/screenshots/screencap_canary1.gif)
 
-## Step 4: Learning a bit more about filters.
+## Step 4: Learning a bit more about conditions.
 
 Our browser example is easily testable on a laptop, but of course a bit contrived. Luckily you can
-create much more powerful filters quite easily. Checking Headers, Cookies, Hosts etc. is all possible.
-Under the hood, Vamp uses [Haproxy's ACL's](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#7.1) and you can use the exact ACL definition right in the blueprint in the `condition` field of a filter.
+create much more powerful conditions quite easily. Checking Headers, Cookies, Hosts etc. is all possible.
+Under the hood, Vamp uses [Haproxy's ACL's](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#7.1) and you can use the exact ACL definition right in the blueprint in the `condition` field of a condition.
 
 However, ACL's can be somewhat opaque and cryptic. That's why Vamp has a set of convenient "short codes"
 to address common use cases. Currently, we support the following, but we will be expanding on this in the future:
@@ -192,8 +192,8 @@ User-Agent=Android            # upper case, no white space
 user-agent = Android          # lower case, white space
 ```
 
-Having multiple conditions in a filter is perfectly possible. In this case all filters are implicitly
-"OR"-ed together, as in "if the first filter doesn't match, proceed to the next". For example, the following filter would first check whether the string "Chrome" exists in the User-Agent header of a
+Having multiple conditions in a condition is perfectly possible. In this case all conditions are implicitly
+"OR"-ed together, as in "if the first condition doesn't match, proceed to the next". For example, the following condition would first check whether the string "Chrome" exists in the User-Agent header of a
 request. If that doesn't result in a match, it would check whether the request has the header
 "X-VAMP-TUTORIAL". So any request matching either condition would go to this service.
 
@@ -201,8 +201,8 @@ request. If that doesn't result in a match, it would check whether the request h
 ---
 routes:
   sava:1.1.0:
-    filter_strength: 100%
-    filters:
+    condition_strength: 100%
+    conditions:
     - condition: User-Agent = Chrome
     - condition: Has Header X-VAMP-TUTORIAL
 ```

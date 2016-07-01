@@ -68,7 +68,7 @@ http POST http://localhost:8080/api/v1/deployments Content-Type:application/x-ya
 http POST http://`docker-machine ip default`:8080/api/v1/deployments Content-Type:application/x-yaml < sava_1.0.yaml
 ```
 
-After POST-ing, Vamp should respond with a `202 Accepted` message and return a JSON blob. This means Vamp is trying to deploy your container. You'll notice some parts are filled in for you, like a default scale, a default routing and of course a UUID as a name.
+After POST-ing, Vamp should respond with a `202 Accepted` message and return a JSON blob. This means Vamp is trying to deploy your container. You'll notice some parts are filled in for you, like a default scale, a default gateways.
 
 >**Note**: Using RESTful API it is possible to created deployment with a custom name - simple `PUT` request to `http://localhost:8080/api/v1/deployments/DEPLOYMENT_CUSTOM_NAME`
 

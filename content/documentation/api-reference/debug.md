@@ -39,7 +39,12 @@ Forces Vamp to perform an escalation check, regardless of the configured default
 Stops and erases all running deployment and gateways. Use with great caution!!
 
 	GET /api/v1/reset
-	
+
+
+## Get Vamp configuration
+
+	GET /api/v1/config
+
 ## Get HAProxy configuration
 
 	GET /api/v1/haproxy

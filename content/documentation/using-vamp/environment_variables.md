@@ -160,7 +160,7 @@ clusters:
           environment_variables:           
             CONNECTION_POOL: 60                 # different pool size
 
-  routing:
+  gateways:
     frontend_app:1.0-a:
       weight: 50% 
     frontend_app:1.0-b:
@@ -243,7 +243,7 @@ clusters:
         environment_variables:           
           JVM_HEAP_SIZE: 1800               # overrides the breed level AND cluster level
           
-  routing:
+  gateways:
     frontend_app:1.0-a:
       weight: 50% 
     frontend_app:1.0-b:
