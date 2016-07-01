@@ -9,7 +9,37 @@ menu:
 
 # Configuring Vamp
 
-Vamp comes together with an application.conf file. This file contains all the configurable settings. When installing Vamp through a package manager (yum, apt-get) you can find this file in `/usr/share/vamp/conf`. The config files are [HOCON type](https://github.com/typesafehub/config) files.
+Vamp can be configured using one of or combining:
+
+- `application.conf` [HOCON](https://github.com/typesafehub/config) file
+- environment variables
+- system properties
+
+Example:
+```bash
+
+export VAMP_INFO_MESSAGE=Hello # overriding Vamp info message (vamp.info.message)
+
+java -Dvamp.gateway-driver.host=localhost \
+     -Dlogback.configurationFile=logback.xml \
+     -Dconfig.file=application.conf \
+     -jar vamp.jar
+```
+
+## Environment variable configuration
+
+Each configuration parameter can be replaced by an environment variable.
+Environment variable name is based on configuration parameter name - all non-alphanumerics are replaced with `_` and converted to upper case:
+
+```
+vamp.info.message           ⇒ VAMP_INFO_MESSAGE
+vamp.gateway-driver.timeout ⇒ VAMP_GATEWAY_DRIVER_TIMEOUT
+```
+
+>**Note**: environment variables have precedence to `application.conf` or system properties.
+
+
+## Vamp `application.conf` sections
 
 The Vamp `application.conf` consists of the following sections. All sections are nested inside a parent `vamp {}` tag.
 
