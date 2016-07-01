@@ -106,13 +106,18 @@ The gateway-driver section configures how traffic should be routed through Vamp 
 ```yaml
 vamp {
   gateway-driver {
-    host = "10.193.238.26"              # Vamp Gateway Agent / Haproxy, internal IP.
-    response-timeout = 30               # seconds
+    host: "10.193.238.26"              # Vamp Gateway Agent / Haproxy, internal IP.
+    response-timeout: 30 seconds
 
     haproxy {
-      ip = 127.0.0.1                    # HAProxy backend server IP
+      ip: 127.0.0.1                    # HAProxy backend server IP
 
-      template = ""                     # Path to template file, if not specified default will be used
+      template: ""                     # Path to template file, if not specified default will be used
+
+      virtual-hosts {
+        ip: "127.0.0.1"                # IP, if virtual hosts are enabled
+        port: 40800                    # Port, if virtual hosts are enabled
+      }
     }
   }
 }  
