@@ -52,7 +52,7 @@ vamp {
     interface = 0.0.0.0
     host = localhost
     port = 8080
-    response-timeout = 10 # seconds, HTTP response time out
+    response-timeout = 10 seconds # HTTP response time out
   }
 }    
 ``` 
@@ -65,7 +65,7 @@ Vamp uses Elasticsearch for persistence and [ZooKeeper](https://zookeeper.apache
 ```yaml
 vamp {
   persistence {
-    response-timeout = 5 # seconds
+    response-timeout = 5 seconds
 
     database {
       type: "elasticsearch" # elasticsearch or in-memory (no persistence)
@@ -74,8 +74,8 @@ vamp {
 
     key-value-store {
     
-      type = "zookeeper"  # zookeeper, etcd or consul
-      base-path = "/vamp" # base path for keys, e.g. /vamp/...
+      type = "zookeeper"    # zookeeper, etcd or consul
+      base-path = "/vamp"   # base path for keys, e.g. /vamp/...
 
       zookeeper {
         servers = "192.168.99.100:2181"
@@ -165,23 +165,29 @@ The operation section holds all parameters that control how Vamp executes agains
 
 ```yaml
 operation {
-	sla.period = 5      # seconds, controls how often an SLA checks against metrics
-  escalation.period = 5 # seconds, controls how often Vamp checks for escalation events.
+  sla.period = 5 seconds        # controls how often an SLA checks against metrics
+  escalation.period = 5 seconds # controls how often Vamp checks for escalation events
 	synchronization {
-    period = 4          # seconds, controls how often Vamp performs 
-                        # a sync between Vamp and the container driver.
+    period = 4 seconds          # controls how often Vamp performs
+                                # a sync between Vamp and the container driver.
     timeout {
-      ready-for-deployment: 600	    # seconds, controls how long Vamp waits for a 
-                                    # service to start. If the service is not started 
-                                    # before this time, the service is registered as "error"
-      ready-for-undeployment: 600 	# seconds, similar to "ready-for-deployment", but for
-                                    # the removal of services.
+      ready-for-deployment: 600	seconds   # controls how long Vamp waits for a
+                                          # service to start. If the service is not started
+                                          # before this time, the service is registered as "error"
+      ready-for-undeployment: 600 seconds # similar to "ready-for-deployment", but for
+                                          # the removal of services.
     }
    }
   
   gateway {
     port-range = 40000-45000
-    response-timeout = 5 # seconds, timeout for container operations
+    response-timeout = 5 seconds # timeout for container operations
+
+    virtual-hosts.formats {      # name format
+      gateway                 = "$gateway.vamp"
+      deployment-port         = "$port.$deployment.vamp"
+      deployment-cluster-port = "$port.$cluster.$deployment.vamp"
+    }
   }
   
   deployment {
