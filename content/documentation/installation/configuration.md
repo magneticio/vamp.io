@@ -108,6 +108,8 @@ vamp {
   gateway-driver {
     host = "10.193.238.26"              # Vamp Gateway Agent / Haproxy, internal IP.
     response-timeout = 30               # seconds
+
+    haproxy.ip = 127.0.0.1              # HAProxy backend server IP
   }
 }  
 ``` 
