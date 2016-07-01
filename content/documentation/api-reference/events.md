@@ -1,5 +1,5 @@
 ---
-title: Events
+title: Events & SSE
 weight: 100
 menu:
   main:
