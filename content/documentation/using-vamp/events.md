@@ -170,9 +170,9 @@ In order to narrow down (filter) events, list of tags could be provided in the r
 }
 ```
 
-GET method can be also used with `tags` parameters (may be more convenient):
+GET method can be also used with `tag` parameter (may be more convenient):
 
-`GET /api/v1/events/stream?tags=archiving&tags=breeds`
+`GET /api/v1/events/stream?tag=archiving&tag=breeds`
 
 ## Archiving
 

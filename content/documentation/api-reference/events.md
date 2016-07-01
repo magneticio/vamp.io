@@ -18,7 +18,7 @@ Lists metrics and/or events without any pagination or filtering.
 
 | parameter     | description      |
 | ------------- |:----------------:|
-| tags          | Event tags, e.g. `GET /api/v1/events?tags=archiving&tags=breeds`
+| tag           | Event tag, e.g. `GET /api/v1/events?tag=archiving&tag=breeds`
 <br>
 
 > Note: search criteria can be set in request body, checkout [examples](/documentation/using-vamp/events/#query-events-using-tags) for event stream.
