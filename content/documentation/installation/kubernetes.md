@@ -23,7 +23,8 @@ Execute:
 {{% copyable %}}
 ```
 
-kubectl create -f https://raw.githubusercontent.com/coreos/etcd/master/hack/kubernetes-deploy/etcd.yml
+kubectl create \
+        -f https://raw.githubusercontent.com/magneticio/vamp-docker/master/vamp-kubernetes/etcd.yml
 ```
 {{% /copyable %}}
 
