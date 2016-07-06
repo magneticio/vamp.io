@@ -72,7 +72,7 @@ Let's first find a Rancher API endpoint that can be accessed from running contai
 Now let's deploy Vamp. Use `vamp` stack and go to `Add Service`:
 
 - `Name` ⇒ `vamp`
-- `Select Image` ⇒ `magneticio/vamp:develop-rancher`
+- `Select Image` ⇒ `magneticio/vamp:0.9.0-rancher`
 - go to `Add environment variable` VAMP_CONTAINER_DRIVER_RANCHER_URL with value of Rancher API endpoint, e.g. `http://172.17.0.2:8080/v1/projects/1a5`
 - go to `Networking` tab
 - under `Hostname` select `Set a specific hostname:` and enter `vamp`

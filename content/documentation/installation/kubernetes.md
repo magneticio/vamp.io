@@ -45,7 +45,7 @@ kubectl expose deployment elastic --protocol=TCP --port=5601 --name=kibana
 Execute:
 {{% copyable %}}
 ```
-kubectl run vamp --image=magneticio/vamp:develop-kubernetes
+kubectl run vamp --image=magneticio/vamp:0.9.0-kubernetes
 kubectl expose deployment vamp --protocol=TCP --port=8080 --name=vamp --type="LoadBalancer"
 ```
 {{% /copyable %}}
