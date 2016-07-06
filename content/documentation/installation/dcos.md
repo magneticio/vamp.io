@@ -68,35 +68,23 @@ Create `vamp.json` file with content:
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "magneticio/vamp:0.8.5",
+      "image": "magneticio/vamp:0.9.0-dcos",
       "network": "HOST",
       "forcePullImage": true
     }
   },
   "env": {
-    "VAMP_REST_API_PORT": "9090",
-    "VAMP_PERSISTENCE_KEY_VALUE_STORE_ZOOKEEPER_SERVERS": "zk-1.zk:2181",
-    "VAMP_CONTAINER_DRIVER_MESOS_URL": "http://leader.mesos:5050",
-    "VAMP_CONTAINER_DRIVER_MARATHON_URL": "http://marathon.mesos:8080",
-    "VAMP_GATEWAY_DRIVER_LOGSTASH_HOST": "elasticsearch-executor.elasticsearch.mesos",
-    "VAMP_PULSE_ELASTICSEARCH_URL": "http://elasticsearch-executor.elasticsearch.mesos:9200",
-    "VAMP_LIFTER_VAMP_GATEWAY_AGENT_ENABLED": "true"
   }
 }
 ```
 {{% /copyable %}}
 
-If you installed on different ports and/or hosts, make sure to update environment variables. For instance, they might look like this:
+If you want to change default Vamp DC/OS configuration, you can do it by setting [environment variables](/documentation/installation/configuration/).
+For instance:
 
 ```json
 "env": {
-  "VAMP_REST_API_PORT": "9090",
-  "VAMP_PERSISTENCE_KEY_VALUE_STORE_ZOOKEEPER_SERVERS": "10.240.0.3:2181",
-  "VAMP_CONTAINER_DRIVER_MESOS_URL": "http://10.240.0.3:5050",
-  "VAMP_CONTAINER_DRIVER_MARATHON_URL": "http://10.240.0.3:8080",
-  "VAMP_GATEWAY_DRIVER_LOGSTASH_HOST": "10.240.0.4",
-  "VAMP_PULSE_ELASTICSEARCH_URL": "http://10.240.0.4:9200",
-  "VAMP_LIFTER_VAMP_GATEWAY_AGENT_ENABLED": "true"
+  "VAMP_REST_API_PORT": "9090"
 }
 ```
 
@@ -107,8 +95,7 @@ curl -k -XPOST -d @vamp.json -H "Content-Type: application/json" http://MARATHON
 ```
 
 Marathon will now start deploying Vamp and if all arguments are set correctly you will notice that Vamp Gateway Agent will be also be deployed automatically.
-What we did with the (`VAMP_LIFTER_VAMP_GATEWAY_AGENT_ENABLED`) setting is that we enabled Vamp to automatically deploy Vamp Gateway Agent’s on each Marathon agent(node). Handy!
 
-Now we need to find out on what IP the public node is running, so you can access the VAMP dashboard from the outside. This IP is most often the same as where you find the Marathon dashboard. Vamp will expose its UI on port 9090 (`network: HOST`), you may set a different port (`VAMP_REST_API_PORT`) if you want.
+Now we need to find out on what IP the public node is running, so you can access the VAMP dashboard from the outside. This IP is most often the same as where you find the Marathon dashboard. Vamp will expose its UI on port 8080 (`network: HOST`), you may set a different port (`VAMP_REST_API_PORT`) if you want.
 
 Happy VAMP’ing! Make sure to run through our [QuickStart tutorials](http://vamp.io/documentation/guides/).
