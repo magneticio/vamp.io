@@ -102,7 +102,9 @@ clusters:
 ```
 {{% /copyable %}}
 
-Once it's running if we execute again:
+>**Note**: Bu sure that cluster has enough resources (CPU, memory), otherwise deployments will be in pending state.
+
+Once it's running if we get services:
 {{% copyable %}}
 ```
 kubectl get services --show-labels -l vamp=gateway
