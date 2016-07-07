@@ -2,6 +2,7 @@
 title: Quick start Docker
 type: documentation
 weight: 35
+draft: true
 menu:
     main:
       parent: installation
