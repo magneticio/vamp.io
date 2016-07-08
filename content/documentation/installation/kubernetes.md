@@ -18,10 +18,24 @@ menu:
 - Elasticsearch and Logstash
 
 It is advisable to try out the official [Quickstart for Google Container Engine](https://cloud.google.com/container-engine/docs/quickstart) tutorial first.
-After the (new) Kubernetes cluster is setup, let's deploy `etcd` - we will base installation on the following [tutorial](https://github.com/coreos/etcd/tree/master/hack/kubernetes-deploy).
+Simple way to create a new GKE cluster:
+
+- open Google Cloud Shell
+- set zone, e.g. `gcloud config set compute/zone europe-west1-b`
+- create cluster `vamp` using default parameters: `gcloud container clusters create vamp`
+
+After the (new) Kubernetes cluster is setup, we are going to continue with installation using Kubernetes CLI `kubectl`.
+You can use `kubectl` directly from Google Cloud Shell, e.g. to check Kubernetes client and server version:
+{{% copyable %}}
+```bash
+kubectl version
+```
+{{% /copyable %}}
+
+Let's deploy `etcd` - installation is based on this [tutorial](https://github.com/coreos/etcd/tree/master/hack/kubernetes-deploy).
 Execute: 
 {{% copyable %}}
-```
+```bash
 
 kubectl create \
         -f https://raw.githubusercontent.com/magneticio/vamp-docker/master/vamp-kubernetes/etcd.yml
@@ -30,7 +44,7 @@ kubectl create \
 
 Deploy [Elasticsearch and Logstash](https://github.com/magneticio/elastic) with proper Vamp Logstash configuration:
 {{% copyable %}}
-```
+```bash
 kubectl run elastic --image=magneticio/elastic:2.2
 kubectl expose deployment elastic --protocol=TCP --port=9200 --name=elasticsearch
 kubectl expose deployment elastic --protocol=UDP --port=10001 --name=logstash
@@ -44,7 +58,7 @@ kubectl expose deployment elastic --protocol=TCP --port=5601 --name=kibana
 
 Execute:
 {{% copyable %}}
-```
+```bash
 kubectl run vamp --image=magneticio/vamp:0.9.0-kubernetes
 kubectl expose deployment vamp --protocol=TCP --port=8080 --name=vamp --type="LoadBalancer"
 ```
@@ -54,7 +68,7 @@ Vamp image uses the following [configuration](https://github.com/magneticio/vamp
 
 Wait a bit until Vamp is running and check out the Kubernetes services:
 {{% copyable %}}
-```
+```bash
 kubectl get services
 ```
 {{% /copyable %}}
@@ -106,7 +120,7 @@ clusters:
 
 Once it's running if we get services:
 {{% copyable %}}
-```
+```bash
 kubectl get services --show-labels -l vamp=gateway
 ```
 {{% /copyable %}}
@@ -126,7 +140,7 @@ We can access our `sava` service on `http://104.155.24.47:9050`
 Default Kubernetes service type can be set in configuration: `vamp.container-driver.kubernetes.service-type`, possible values are `LoadBalancer` or `NodePort`. 
 
 We can also access using virtual hosts. Vamp Gateway Agent service is on IP `146.148.22.145` in this example, so:
-```
+```bash
 curl --resolve 9050.sava-1-0.vamp:80:146.148.22.145 -v http://9050.sava-1-0.vamp
 ```
 
