@@ -25,7 +25,8 @@ Based on the tutorial these are few simple steps to run Rancher locally:
 $ docker run -d --restart=always -p 8080:8080 rancher/server
 ```
 Rancher UI is exposed on port 8080, so go to http://SERVER_IP:8080 - for instance [http://192.168.99.100:8080](http://192.168.99.100:8080), [http://localhost:8080](http://localhost:8080) or something similar depending on your Docker setup.
-Now follow instruction on the screen and add Rancher host. You should get instructions to run a Docker image like:
+Now follow instruction on the screen and add new Rancher host - click on "Add Host" and then on "Save".
+You should get instructions (bullet point 5) to run an `agent` Docker image:
 ```bash
 $ docker run \
   -d --privileged \
@@ -35,7 +36,7 @@ $ docker run \
   http://192.168.99.100:8080/v1/scripts/E78EF5848B989FD4DA77:1466265600000:SYqIvhPgzKLonp8r0erqgpsi7pQ
 ```
 
-Go to `Add Stack` and create a new stack `vamp`. Let's now install other dependencies.
+Go to `Add Stack` and create a new stack `vamp` (lowercase). Let's now install other dependencies.
 
 ### Consul
 
@@ -77,7 +78,7 @@ Now let's deploy Vamp. Use `vamp` stack and go to `Add Service`:
 - go to `Networking` tab
 - under `Hostname` select `Set a specific hostname:` and enter `vamp`
 - click on `Create` button
-- go to `Add Load Balancer` (click arrow next to `Add Service`)
+- go to `Add Load Balancer` (click arrow next to `Add Service` button label)
 - choose name (e.g. `vamp-lb`), `Source IP/Port` ⇒ 9090, `Default Target Port` ⇒ 8080 and `Target Service` ⇒ `vamp`
 
 If you go now to http://SERVER_IP:9090 (e.g [http://192.168.99.100:9090](http://192.168.99.100:9090)), you should get Vamp UI.
