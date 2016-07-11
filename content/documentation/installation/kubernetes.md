@@ -135,6 +135,8 @@ hex26bb0695e9a85ec34b03   10.3.245.85    23.251.143.62   40000/TCP   2m        l
 12c97,vamp=gateway
 ```
 
+>**Note**: In this setup Vamp is deliberately configured to initiate exposure of all gateway and VGA ports. That would not be the case if default and recommended setting is used.
+
 We can access our `sava` service on `http://104.155.24.47:9050`
 
 Default Kubernetes service type can be set in configuration: `vamp.container-driver.kubernetes.service-type`, possible values are `LoadBalancer` or `NodePort`. 
@@ -146,4 +148,4 @@ curl --resolve 9050.sava-1-0.vamp:80:146.148.22.145 -v http://9050.sava-1-0.vamp
 
 You can also try out other [guides](/documentation/guides/).
 
->**Note**: Don't forget to [clean up](https://cloud.google.com/container-engine/docs/quickstart#clean-up) your Kubernetes cluster if you don't want to use it anymore.
+>**Note**: Don't forget to [clean up](https://cloud.google.com/container-engine/docs/quickstart#clean-up) your Kubernetes cluster and firewall rules if you don't want to use them anymore.
