@@ -1,87 +1,32 @@
 ---
 date: 2016-08-01T12:53:48+02:00
-title: Revamp
+title: Deploy online services, seamlessly
 type: index
-weight: 0
+weight: 20
+
 ---
 
-## Adding content to an existing section (menu)
+Stop unnecessary downtime when releasing microservice and container based applications.  
+Vamp removes the guesswork from planning and rolling out critical service upgrades.
 
-Let's create our first content file for your documentation. 
-Open a terminal and add the following command for each new file you want to add. 
-Replace `<section-name>` with a general term that describes your document in detail.
+* __Disruption free transition from one version to the next__  
+_Introduce service updates with control and clarity._
+* __Learn from your users__  
+_Get updates into the hands of specified users, fast. Optimise services based on actual results, then increase traffic when you are satisfied._
+* __Be online, be efficient__  
+_Automatically track spikes and troughs in activity to ensure running services are given exactly the resources they need._
+* __Fit with your choice of infrastructure__   
+_Vamp links with common technologies (such as Docker, DC/OS, Mesos/Marathon) or can work standalone._
 
-```sh
-hugo new <section-name>/filename.md
-```
+## Vamp - the canary test and release platform
 
-Visitors of your website will find the final document under `www.example.com/<section-name>/filename/`.
+Traditional release processes cause stress and risk that can negatively impact customer experience and stifle productivity.
+_Vamp offers practical tools and metrics that_ 
+ _[something about making already available technologies accessible in a useable “box”, offering advantages/removing disadvantages]_
 
-To be properly added to the menu, file should contains `menu` section, e.g.:
+* __Multiple versions__ By enabling multiple versions of a service to run side by side in production, Vamp adds a layer of flexibility to conventional blue/green releasing. 
+* __Rolling upgrades by %__ Forget the on/off release command. Vamp introduces service upgrades gradually, to defined groups of users. You gain the space to measure, optimise and react.
+* __Condition system__ Vamp's versatile condition system lets you control which version of your service defined users are routed to.
+* __Granular allocation of resources__ Specify the resource requirements of individual services in your architecture and Vamp will automatically monitor and adapt. 
 
-```
-menu:
-  main:
-    parent: Examples
-    identifier: Example 1
-    weight: 10
-```
-
-Check out content of `Examples`.
-
-## Creating section (menu)
-
-Open `config.toml` file and append new section (menu) definition.
-Let's add `Getting started` submenu. Add the following after the `Examples` definition (end of the file):
-
-```
-[[menu.main]]
-	name   = "Getting started"
-	url    = "getting-started/"
-	weight = 20
-```
-
-Fields:
-- `name` - displayed name
-- `url` - section URL, should be the same as directory name
-- `weight` - order of the submenu
-
-Now let's add the `index` page:
-
-```sh
-hugo new getting-started/index.md
-```
-
-## Table of contents
-
-You maybe noticed that the menu on the left contains a small table of contents of the current page. All `<h2>` tags (`## Headline` in Markdown) will be added automatically.
-
-## Admonitions
-
-Admonition is a handy feature that adds block-styled side content to your documentation, for example hints, notes or warnings. It can be enabled by using the corresponding [shortcodes](http://gohugo.io/extras/shortcodes/) inside your content:
-
-```go
-{{</* note title="Note" */>}}
-Nothing to see here, move along.
-{{</* /note */>}}
-```
-
-This will print the following block:
-
-{{< note title="Note" >}}
-Nothing to see here, move along.
-{{< /note >}}
-
-The shortcode adds a neutral color for the note class and a red color for the warning class. You can also add a custom title:
-
-```go
-{{</* warning title="Don't try this at home" */>}}
-Nothing to see here, move along.
-{{</* /warning */>}}
-```
-
-This will print the following block:
-
-{{< warning title="Don't try this at home" >}}
-Nothing to see here, move along.
-{{< /warning >}}
+_...CONTINUE WITH MORE TECHY BIT_

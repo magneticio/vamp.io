@@ -51,11 +51,37 @@ googleAnalytics = ""
 	plainIDAnchors = true
 
 [[menu.main]]
-	name   = "Revamp"
+	name   = "Vamp.io index"
 	url    = "/"
 	weight = 0
 
 [[menu.main]]
-	name   = "Examples"
-	url    = "examples/"
+	name   = "WHAT IS VAMP?"
+	url    = "what/"
 	weight = 10
+
+[[menu.main]]
+	name   = "GET STARTED"
+	url    = "getstarted/"
+	weight = 20
+
+[[menu.main]]
+	name   = "DOCS"
+	url    = "docs/"
+	weight = 30
+
+[[menu.main]]
+	name   = "BLOG"
+	url    = "blog/"
+	weight = 40
+
+[[menu.main]]
+	name   = "SUPPORT"
+	url    = "support/"
+	weight = 50
+
+[[menu.main]]
+	name   = "hugo instructions and examples"
+	url    = "instructions/"
+	weight = 60
+
