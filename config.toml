@@ -1,0 +1,61 @@
+baseurl = "http://vamp.com/"
+languageCode = "en-us"
+title = "Vamp"
+theme = "hugo-material-docs"
+metadataformat = "yaml"
+canonifyurls = true
+
+# Enable Google Analytics by entering your tracking id
+googleAnalytics = ""
+
+[params]
+	# General information
+	author = "magnetic.io"
+	description = "Vamp - Deploy and manage microservices with power and ease."
+	copyright = "Released under the Apache 2 license"
+
+	# Repository
+	provider = "GitHub"
+	repo_url = "https://github.com/magneticio/vamp"
+
+	version = "0.9.0"
+	logo = "images/logo.svg"
+	favicon = "images/logo.svg"
+
+	permalink = "#"
+
+	# Custom assets
+	custom_css = []
+	custom_js  = []
+
+	# Syntax highlighting theme
+	highlight_css  = ""
+
+	[params.palette]
+    	primary = "pink"
+    	accent  = "pink"
+
+    [params.font]
+    	text = "Roboto"
+    	code = "Roboto Mono"
+
+
+[social]
+	twitter = ""
+	github  = "magneticio/vamp"
+
+[blackfriday]
+	smartypants	= true
+	fractions = true
+	smartDashes = true
+	plainIDAnchors = true
+
+[[menu.main]]
+	name   = "Revamp"
+	url    = "/"
+	weight = 0
+
+[[menu.main]]
+	name   = "Examples"
+	url    = "examples/"
+	weight = 10
