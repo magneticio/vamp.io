@@ -2,9 +2,11 @@
 date: 2016-08-01T12:53:48+02:00
 title: Deploy online services, seamlessly
 type: index
-weight: 20
+weight: 0
 
 ---
+{{< warning title="DRAFT" >}}
+{{< /warning >}}
 
 Stop unnecessary downtime when releasing microservice and container based applications.  
 Vamp removes the guesswork from planning and rolling out critical service upgrades.
