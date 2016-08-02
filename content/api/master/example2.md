@@ -5,6 +5,7 @@ title: Example 2
 menu:
   main:
     parent: API
+    identifier: master/Example 2
     weight: 20
 ---
 
