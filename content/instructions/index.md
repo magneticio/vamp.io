@@ -1,6 +1,6 @@
 ---
 date: 2016-08-01T12:53:48+02:00
-title: Revamp
+title: Instructions for creating content
 weight: 10
 ---
 
@@ -50,6 +50,35 @@ Now let's add the `index` page:
 ```sh
 hugo new getting-started/index.md
 ```
+
+## Adding a new API version
+
+API section (menu) is specific because of custom rendering.
+In order to ad a new API version docs, go to `/content/api` and copy (branch) one of the existing versions.
+For instance let's copy `0.9.0` to `0.9.1` directory.
+
+```sh
+$ tree content/api
+
+content/api
+├── 0.8.5
+│   ├── example1.md
+│   └── index.md
+├── 0.9.0
+│   ├── example2.md
+│   └── index.md
+├── 0.9.1
+│   ├── example2.md
+│   └── index.md
+└── master
+    ├── example1.md
+    ├── example2.md
+    └── index.md
+```
+
+Now change all `0.9.0` occurrences in `0.9.1` files to `0.9.1`. 
+This will also prevent Hugo to complain about duplicate page identifiers.
+If you check `API` menu, `0.9.1` version should also appear (you may need to rerun `hugo serve --watch`).
 
 ## Table of contents
 

@@ -89,7 +89,7 @@ googleAnalytics = ""
 	weight = 60
 
 [[menu.main]]
-	name   = "hugo instructions and examples"
+	name   = "INSTRUCTIONS"
 	url    = "instructions/"
-	weight = 60
+	weight = 70
 
