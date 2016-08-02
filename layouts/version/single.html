@@ -1,0 +1,7 @@
+{{- $.Scratch.Add "version" slice -}}
+{{- range where .Site.Pages "Type" "not in"  (slice "page" "version" "search") -}}
+{{- $.Scratch.Add "version" (dict "title" .Title "location" (substr (.Permalink | relURL) 1)) -}}
+{{- end -}}
+{
+  "docs": {{- $.Scratch.Get "version" | jsonify -}}
+}

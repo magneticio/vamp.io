@@ -752,7 +752,7 @@ if ("document" in self && ("classList" in document.createElement("_") ? ! functi
             };
         Modernizr.ios || (window.addEventListener("resize", c), c());
         var l = function() {
-            pegasus(base_url + "index.json").then(function(e, n) {
+            pegasus(base_url + "/search.json").then(function(e, n) {
                 var o = lunr(function() {
                         this.field("title", {
                             boost: 10

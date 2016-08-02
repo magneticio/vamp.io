@@ -46,7 +46,7 @@ googleAnalytics = ""
 
 
 [social]
-	twitter = ""
+	twitter = "magneticio"
 	github  = "magneticio/vamp"
 
 [blackfriday]
@@ -84,6 +84,11 @@ googleAnalytics = ""
 	name   = "SUPPORT"
 	url    = "support/"
 	weight = 50
+
+[[menu.main]]
+	name   = "API"
+	url    = "api/"
+	weight = 60
 
 [[menu.main]]
 	name   = "hugo instructions and examples"

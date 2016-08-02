@@ -16,6 +16,12 @@
        <a href="https://twitter.com/{{ . }}" title="@{{ . }} on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
     </div>
     {{ end }}
+
+    {{ with .Site.Social.github }}
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/{{ . }}" title="@{{ . }} on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    {{ end }}
     
     <div class="button button-search" role="button" aria-label="Search">
       <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
