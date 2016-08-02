@@ -9,4 +9,4 @@ menu:
     weight: 10
 ---
 
-0.9.0
+- [Example 2](example2)

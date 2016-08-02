@@ -30,7 +30,7 @@ googleAnalytics = ""
 	]
 	custom_js   = [
 	  "javascripts/lunr.min.js",
-	  "javascripts/dropdown.js"
+	  "javascripts/version.js"
 	]
 
 	custom_menu = [
