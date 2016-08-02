@@ -48,7 +48,6 @@ googleAnalytics = ""
     	text = "Roboto"
     	code = "Roboto Mono"
 
-
 [social]
 	twitter = "magneticio"
 	github  = "magneticio/vamp"
@@ -58,11 +57,6 @@ googleAnalytics = ""
 	fractions = true
 	smartDashes = true
 	plainIDAnchors = true
-
-[[menu.main]]
-	name   = "Vamp.io index"
-	url    = "/"
-	weight = 0
 
 [[menu.main]]
 	name   = "WHAT IS VAMP?"

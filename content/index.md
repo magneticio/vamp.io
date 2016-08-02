@@ -3,7 +3,6 @@ date: 2016-08-01T12:53:48+02:00
 title: Deploy online services, seamlessly
 type: index
 weight: 0
-
 ---
 {{< warning title="DRAFT" >}}
 {{< /warning >}}
