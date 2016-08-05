@@ -1,13 +1,8 @@
 ---
 date: 2016-03-09T19:56:50+01:00
-title: reference
-
-menu:
-  main:
-    parent: DOCS
-    identifier: reference
-    weight: 20
+title: developer documentation
 ---
+
 {{< note title="intended content" >}}
 Documentation which can be accessed by version number. Where should version selection come?   
 __option 1 (preferable if possible):__  
