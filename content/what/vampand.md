@@ -1,11 +1,6 @@
 ---
 date: 2016-03-09T19:56:50+01:00
 title: Vamp compared to (old)...
-menu:
-  main:
-    parent: WHAT IS VAMP?
-    identifier: Vamp compared to (old)...
-    weight: 25 
 ---
 {{< warning title="DRAFT" >}}
 {{< /warning >}}  
