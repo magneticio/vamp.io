@@ -25,20 +25,22 @@ Running services can be tested and optimised to increase reliability:
 
 ## Create a responsive website
 _“We need to upgrade the web frontend to make it responsive”_  
-Developing a responsive web frontend traditionally requires a large investment of hours and extensive testing before you can go live (think of all the browser versions, screen sizes, resolutions...). Before you launch, it's hard to predict how your users will respond - will it actually convert?   
+Developing a responsive web frontend is a major undertaking, traditionally requiring a large investment of hours. Even with extensive testing, it's hard to predict how your users will respond until you go live - will it actually convert?   
 
-Vamp offers an alternative. Using canary release, the same project can be introduced to users with __minimal investment of hours__ and __increased certainty__.
+Vamp offers a smart alternative.   
+Use a canary release to introduce the new frontend to a selected cohort of users, requiring a minimal investment of hours and delivering real usage data.
 
-1. __Start small:__ You can build the new frontend for only one specific browser/resolution. Vamp will deploy the new frontend and route a percentage of supported users there (all other users continue to see the old version of your website).
-2. __Optimise:__ With your new service in the hands of real users, you can measure actual results and optimise accordingly.
-3. __Scale up:__ Once you are satisified, you can use Vamp to develop and deploy one browser/resolution at a time. 
+1. __Start small:__ Build the new frontend for only one specific browser/resolution. Vamp can deploy the new responsive frontend and route a percentage of supported users there (all other users will continue to see the old version of your website).
+2. __Optimise:__ With your new service in the hands of real users, you can measure actual data and optimise accordingly.
+3. __Scale up:__ Once you are satisified, you can use Vamp to scale up the release, developing and deploying one browser/resolution at a time. 
 
 
 ## Resolve incompatibilities after a (major) portal upgrade
 _“We upgraded the portal, our biggest client is running an unsupported browser”_  
 Leaving an important client unable to access your services after a major release is a _big problem_. The traditional response would be to rollback the upgrade asap - if possible.  
 
-Vamp offers a stress-free alternative. Using smart routing, compatibility issues for specific users/clients can be resolved while others continue to enjoy the benefits of your upgraded portal.
+Vamp offers a stress-free alternative.   
+Use smart routing to reslolve compatibility issues for specific users/clients while others enjoy the benefits of your upgraded portal.
 
 1. __Re-deploy:__ Vamp can redeploy the (containerised) previous version of your portal to run side by side with the upgraded version.
 2. __Activate smart routing:__ Vamp can route all users with a specific IP (or browser) to the previous version of the portal. Other clients will continue to see the upgraded portal.
@@ -49,7 +51,8 @@ Vamp offers a stress-free alternative. Using smart routing, compatibility issues
 _“We want to move to microservices, but can’t upgrade all components at once”_  
 Switching from a monolithic to a microservice architecture is a major undertaking.
 
-Vamp offers a managable alternative. Using smart routing behind the scenes, individual components can be upgraded step by step with no impact on running services.
+Vamp offers a managable alternative.  
+Use smart routing behind the scenes to upgrade individual components step by step with no impact on running services.
 
 1. __Start small:__ You can build e.g. one new frontend component. Vamp will deploy this to run alongside the legacy monolithic system.
 2. __Activate smart routing:__ Vamp can route traffic so the new frontend starts speaking to the legacy backend. You can continue transferring components from the legacy monolithic system to new microservices and Vamp will adapt the routing as you go.

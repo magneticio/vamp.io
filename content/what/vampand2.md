@@ -12,17 +12,19 @@ menu:
 {{< /warning >}}  
 Vamp works with scalable container infrastructures to provide programmable, microservice-level routing.   
 
-## Infrastructure management  
-_Cloud foundry, OpenStack, Docker, DC/OS, Mesos/Marathon, Kubernetes_
+## PaaS layer infrastructure management  
+_Cloud foundry, OpenStack, Docker, DC/OS, Mesos/Marathon, Kubernetes_  
+Vamp adds an experimentation layer, experiment framework, continuous improvement
 
-## Configuration management  
+## Configuration management tools
 _Puppet, Ansible, Chef_  
-? Habitat
+? Habitat  
+Vamp DSL
 
 ## Routers and load balancers
 _HAproxy, NGINX, Linkerd, traefik_  
 Vamp provides A/B testing and canary functionality on an infrstructure level, arranging the distribution of incoming traffic across separate, containerised instances of deployed services. This means routing and load balancing are essential for Vamp to do its job.     
-Vamp runs together with HAproxy, but could also be integrated on top of NGINX or other microservice orientated solutions that are better suited to dynamic reconfiguration, such as Linkerd (finagle/twitter) or traefik.
+Vamp runs together with HAproxy, but could also be integrated on top of NGINX or other microservice orientated solutions that are __better suited to/designed for/optimised for__ dynamic reconfiguration, such as Linkerd (finagle/twitter) or traefik.
 
 * [How could you benefit from Vamp's programmable routing?](/what/usecases/)  
 
