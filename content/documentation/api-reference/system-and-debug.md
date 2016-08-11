@@ -1,0 +1,76 @@
+---
+title: System & Debug
+weight: 1000
+menu:
+  main:
+    parent: api-reference
+---
+
+# System
+
+Vamp provides a set of API endpoints that help with getting general health/configuration status.
+
+## Get runtime info
+
+Lists information about Vamp's JVM environment and runtime status. 
+Also lists info for configured persistence layer and container driver status.
+
+	GET /api/v1/info
+	
+Sections are `jvm`, `persistence`, `key_value`, `pulse`, `gateway_driver`, `container_driver` and `workflow_driver`:
+
+```yaml
+{
+    "message": "...",
+    "version": "...",
+    "uuid": "...",
+    "running_since": "...",
+    "jvm": {...},
+    "persistence": {...},
+    "key_value": {...},
+    "pulse": {...},
+    "gateway_driver": {...},
+    "container_driver": {...},
+    "workflow_driver": {...}
+}
+```
+
+It is possible also to explicitly request only some sections (e.g. `jvm` and `persistence`):
+
+	GET /api/v1/info?for=jvm&for=persistence
+
+## Get Vamp configuration
+
+	GET /api/v1/config
+
+## Get HAProxy configuration
+
+	GET /api/v1/haproxy
+
+# Debug 
+
+> Note: use these endpoints at your own risk. The `/reset` endpoint for instance completely resets the state of Vamp. Some of these endpoints maybe removed at a later stage.
+
+## Force sync
+
+Forces Vamp to perform a synchronization cycle, regardless of the configured default interval.
+
+	GET /api/v1/sync
+	
+## Force SLA check	
+
+Forces Vamp to perform an SLA check, regardless of the configured default interval.
+
+	GET /api/v1/sla
+
+## Force escalation	
+
+Forces Vamp to perform an escalation check, regardless of the configured default interval.
+
+	GET /api/v1/escalation
+
+## Hard reset
+
+Stops and deletes all running deployments and gateways, but will preserve other artifacts.
+
+	GET /api/v1/reset
