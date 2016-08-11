@@ -176,7 +176,7 @@ GET method can be also used with `tag` parameter (may be more convenient):
 
 ## Archiving
 
-All changes in artifacts (creation, update or deletion) triggered by REST API calls are archived. We store the type of event and the original representation of the artefact. It's a bit like a Git log. 
+All changes in artifacts (creation, update or deletion) triggered by REST API calls are archived. We store the type of event and the original representation of the artifact. It's a bit like a Git log. 
 
 Here is an example event:
 
@@ -195,7 +195,7 @@ Here is an example event:
 ```
 
 Searching through the archive is 100% the same as searching for events. The same tagging scheme applies.
-The following query gives back the last set of delete actions executed in the Vamp API, regardless of the artefact type.
+The following query gives back the last set of delete actions executed in the Vamp API, regardless of the artifact type.
 
 `GET /api/v1/events`
 

@@ -49,7 +49,7 @@ It is possible also to explicitly request only some sections (e.g. `jvm` and `pe
 
 # Debug 
 
-> Note: use these endpoints at your own risk. The `/reset` endpoint for instance completely resets the state of Vamp. Some of these endpoints maybe removed at a later stage.
+> **Note:**use these endpoints at your own risk. The `/reset` endpoint for instance completely resets the state of Vamp. Some of these endpoints maybe removed at a later stage.
 
 ## Force sync
 

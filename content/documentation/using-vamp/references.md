@@ -1,14 +1,14 @@
 ---
-title: Referencing artefacts
+title: Referencing artifacts
 weight: 80
 menu:
   main:
     parent: using-vamp
 ---
 
-# Referencing artefacts
+# Referencing artifacts
 
-With any artefact, Vamp allows you to either use an inline notation or reference the artefact by name. For references, you use the `reference` keyword or its shorter version `ref`. Think of it like either using actual values or pointers to a value, i.e:
+With any artifact, Vamp allows you to either use an inline notation or reference the artifact by name. For references, you use the `reference` keyword or its shorter version `ref`. Think of it like either using actual values or pointers to a value, i.e:
 
 **inline notation**
 
@@ -40,13 +40,13 @@ name: my_blueprint
           reference: medium  
 ```
 
-This has a big impact on how complex or simple you can make any blueprint, breed or deployment. It also impacts how much knowledge you need to have of all the different artefacts that are used in a typical deployment or blueprint.
+This has a big impact on how complex or simple you can make any blueprint, breed or deployment. It also impacts how much knowledge you need to have of all the different artifacts that are used in a typical deployment or blueprint.
 
-In the second example, Vamp assumes that the breed called `my_breed` is available to load from its datastore at deploy time. This goes for all basic artefacts in Vamp: SLA's, gateways, conditions, escalations, etc.
+In the second example, Vamp assumes that the breed called `my_breed` is available to load from its datastore at deploy time. This goes for all basic artifacts in Vamp: SLA's, gateways, conditions, escalations, etc.
 
 # How will I use this?
 
-Starting with Vamp, you will probably start with inline artefacts. You have everything in one place and you can directly see what properties each artefact has. Later, you can start specializing and basically build a library of often used architectural components. Let's look at some use cases:
+Starting with Vamp, you will probably start with inline artifacts. You have everything in one place and you can directly see what properties each artifact has. Later, you can start specializing and basically build a library of often used architectural components. Let's look at some use cases:
 
 ## Example 1: a library of containers
 
@@ -57,7 +57,7 @@ You have a Redis container you have tweaked and setup exactly the way you want i
 ```yaml
 ---
 name: redis:1.0
-deployable: docker://redis
+deployable: redis
 ports: 6379/tcp
 ```
 

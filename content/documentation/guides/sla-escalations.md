@@ -70,7 +70,7 @@ clusters:
   sava:
     breed:
       name: sava:1.0.0
-      deployable: docker://magneticio/sava:1.0.0
+      deployable: magneticio/sava:1.0.0
       ports:
         port: 8080
 

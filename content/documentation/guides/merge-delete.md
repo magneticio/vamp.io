@@ -113,7 +113,7 @@ clusters:
     services:
     - breed:
         name: sava-frontend:1.2.0
-        deployable: docker://magneticio/sava-frontend:1.2.0
+        deployable: magneticio/sava-frontend:1.2.0
         ports:
           port: 8080/http
         environment_variables:
@@ -131,7 +131,7 @@ clusters:
       dialects: {}
     - breed:
         name: sava-frontend:1.3.0
-        deployable: docker://magneticio/sava-frontend:1.3.0
+        deployable: magneticio/sava-frontend:1.3.0
         ports:
           port: 8080/http
         environment_variables:

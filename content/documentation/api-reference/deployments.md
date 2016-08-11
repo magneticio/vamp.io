@@ -72,7 +72,7 @@ Deletes all or parts of a deployment.
 
 In contrast to most API's, doing a `DELETE` in Vamp takes a request body that designates what part of the deployment should be deleted. This allows you to remove specific services, clusters of the whole deployment.
 
-> Note: `DELETE` on deployment with an empty request body will not delete anything.
+> **Note:**`DELETE` on deployment with an empty request body will not delete anything.
 
 The most common way to specify what you want to delete is by exporting the target deployment as a blueprint using the `?as_blueprint=true` parameter. You then either programmatically or by hand edit the resulting blueprint and specify which of the services you want to delete. You can also use the blueprint as a whole in the `DELETE` request. The result is the removal of the full deployment. 
 

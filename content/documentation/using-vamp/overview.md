@@ -10,7 +10,7 @@ menu:
 
 # Using Vamp
 
-Vamp has few basic entities or artefacts you can work with:
+Vamp has few basic entities or artifacts you can work with:
 
 -   **Breeds**: static artifacts that describe single services and their dependencies.  
 -   **Blueprints**: blueprints are, well, blueprints! They describe how breeds work in runtime and what properties they should have.  
@@ -19,7 +19,7 @@ Vamp has few basic entities or artefacts you can work with:
 -   **Workflows**: apps (services) deployed on cluster, used for dynamically changing runtime configuration (e.g. SLA, scaling, condition weight update).
 
 
-> **Note**: Breeds and blueprints are static artifacts, deployments and gateways are not. This means any API actions on static artefacts are mostly synchronous. Actions on deployments are largely asychronous.
+> **Note**: Breeds and blueprints are static artifacts, deployments and gateways are not. This means any API actions on static artifacts are mostly synchronous. Actions on deployments are largely asychronous.
 
 ## Eventual consistency
 

@@ -35,4 +35,4 @@ Health can be defined on gateways and deployment ports and retrieved:
 
 Health is value between 1 (100% healthy) and 0.
 
-> Note: metrics and health are calculated using external services, e.g. Vamp workflows.
+> **Note:**metrics and health are calculated using external services, e.g. Vamp workflows.

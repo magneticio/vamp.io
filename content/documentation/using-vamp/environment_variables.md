@@ -132,12 +132,12 @@ A scope is an area of your breed or blueprint definition that limits the visibil
 
 1. **Breed scope**: The scope we used in all the above examples is the default scope. If you never define any `environment_variables` in any other place, this will be used.
 
-2. **Service scope**: This scope can override breed scope and is part of the blueprint artefact. Use this to override environment variables in a breed when using references to breeds.
+2. **Service scope**: This scope can override breed scope and is part of the blueprint artifact. Use this to override environment variables in a breed when using references to breeds.
 
-3. **Cluster scope**: This scope can override the service scope and breed scope and is part of the blueprint artefact. Use this to override all environment variables in all services that belong to a cluster.
+3. **Cluster scope**: This scope can override the service scope and breed scope and is part of the blueprint artifact. Use this to override all environment variables in all services that belong to a cluster.
 
 > **Note:** Using scopes effectively is completely up to your use case. The various scopes help to separate
-concerns when multiple people and/or teams work on Vamp artefacts and deployments and need to decouple their effor
+concerns when multiple people and/or teams work on Vamp artifacts and deployments and need to decouple their effor
 
 
 Let's look at some examples:
@@ -233,7 +233,7 @@ clusters:
 
 ### Example 4: Combining all scopes and references
 
-As a final example, let's combine some of the examples above and include referenced breeds. In this case, a we have two breed artefacts already stored in Vamp and include them by using the `ref` keyword.
+As a final example, let's combine some of the examples above and include referenced breeds. In this case, a we have two breed artifacts already stored in Vamp and include them by using the `ref` keyword.
 
 We override all `JVM_HEAP_SIZE` variables at the top scope. However, we just want to tweak the `JVM_HEAP_SIZE` for service `frontend_app:1.0-b`. We do this by adding a `environment_variables` at the service level.
 
