@@ -75,6 +75,21 @@ clusters:
 
 For instance together with this definition and Vamp Marathon dialect `uris` parameter requested jar can be downloaded from remote location. 
 
+### Breeds of deployable type `application/javascript` 
+
+Breed can have type `application/javascript` and definition should be a JavaScript script:
+
+```yaml
+---
+name: hello-world
+deployable:
+  type: application/javascript
+  definition: |
+    console.log('Hello World Vamp!');
+```
+
+It is possible to create or update breed with request `POST|PUT /api/v1/breeds/{name}`, Javascript script as body and header `Content-Type: application/javascript`.
+
 ## Ports
 
 The `ports` property is an array of named ports together with their protocol. It describes on what ports the deployables is offering services to the outside world. Let's look at the following breed:
