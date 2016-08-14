@@ -27,7 +27,6 @@ sticky: none
 routes:                        # routes
   vamp/sava/sava:1.0.0/port:
     weight: 50%
-    conditions: []
     instances:
     - name: vamp_6fd83b1fd01f7dd9eb7f.cda3c376-ae26-11e5-91fb-0242f7e42bf3
       host: default
@@ -37,7 +36,6 @@ routes:                        # routes
       port: 31292
   vamp/sava/sava:1.1.0/port:
     weight: 50%
-    conditions: []
     instances:
     - name: vamp_2e2fc6ab8a1cdbe79dc3.caa3c9e4-ae26-11e5-91fb-0242f7e42bf3
       host: default
@@ -110,7 +108,7 @@ name: sava
 port: 9070/http
 routes:
   sava:1.0/sava/port:
-    weight: 90%          # conditions can be used as well
+    weight: 90%          # condition can be used as well
   sava:1.1/sava/port:
     weight: 10%
 ```
@@ -126,7 +124,7 @@ Vamp allows you to determine this in following ways:
 
 1. by setting a **weight** in the percentage of traffic.
 2. by setting a **condition** condition to target specific traffic.
-3. by setting a **condition strength** in the percentage of traffic matching the condition conditions.
+3. by setting a **condition strength** in the percentage of traffic matching the condition.
 
 You can define gateways inline in a blueprint or store them separately under a unique name and just use that name to reference them from a blueprint.
 
@@ -135,9 +133,7 @@ Let's have a look at a simple inline gateway. This would be used directly inside
 ```yaml
 ---
 condition_strength: 10%  # Amount of traffic for this service in percents.
-conditions:
-- condition: User-Agent = IOS
-- really_cool_condition
+condition: User-Agent = IOS
 ```
 
 > **Notice:** we added a condition named `really_cool_condition` here. This condition is actually a reference to a separately stored condition definition we stored under a unique name on the `/conditions` endpoint.
@@ -158,8 +154,7 @@ service_A:
 service_B:
   weight: 0%
   condition_strength: 100%
-  conditions:
-  - user-agent == Firefox
+  condition: user-agent == Firefox
 ```
 
 Route half of `Firefox` users to route `service_B`, other half to `service_A` (80%) or `service_B` (20%):
@@ -170,8 +165,7 @@ service_A:
 service_B:
   weight: 20%
   condition_strength: 50%
-  conditions:
-  - user-agent == Firefox
+  condition: user-agent == Firefox
 ```
 Non `Firefox` requests will be just sent to `service_A` (80%) or `service_B` (20%).
 
@@ -208,12 +202,10 @@ Vamp is also quite flexible when it comes to the exact syntax. This means the fo
 In order to specify plain HAProxy ACL, ACL needs to be between `{ }`:
 
 ```yaml
-conditions:
-  - condition: { hdr_sub(user-agent) Chrome }
+condition: "< hdr_sub(user-agent) Chrome >"
 ```
 
-Having multiple conditions in a condition is perfectly possible. In this case all conditions are implicitly
-"AND"-ed together. For example, the following condition would first check whether the string "Chrome" exists in the User-Agent header of a
+Having multiple conditions in a condition is perfectly possible. For example, the following condition would first check whether the string "Chrome" exists in the User-Agent header of a
 request and then it would check whether the request has the header
 "X-VAMP-MY-COOL-HEADER". So any request matching both conditions would go to this service.
 
@@ -221,9 +213,7 @@ request and then it would check whether the request has the header
 ---
 gateways:
   weight: 100%
-  conditions:
-    - condition: User-Agent = Chrome
-    - condition: Has Header X-VAMP-MY-COOL-HEADER
+  condition: "User-Agent = Chrome AND Has Header X-VAMP-MY-COOL-HEADER"
 ```
 
 Using a tool like [httpie](https://github.com/jakubroztocil/httpie) makes testing this a breeze.
@@ -238,8 +228,7 @@ Vamp supports `AND`, `OR`, negation `NOT` and grouping `( )`:
 ---
 gateways:
   weight: 100%
-  conditions:
-    - condition: (User-Agent = Chrome OR User-Agent = Firefox) AND has cookie vamp
+  condition: (User-Agent = Chrome OR User-Agent = Firefox) AND has cookie vamp
 ```
 
 Additional boolean expression examples can be found [here](https://github.com/magneticio/vamp/blob/master/model/src/test/scala/io/vamp/model/parser/BooleanParserSpec.scala).
@@ -247,12 +236,10 @@ Additional boolean expression examples can be found [here](https://github.com/ma
 ## URL path rewrite
 
 Vamp also supports URL path rewrite which can be powerful solution in defining service API's (e.g. RESTful) outside of application service.
-Rewrites are specified in the similar way as conditions:
 
 ```yaml
 routes:
   web/port1:
-    conditions: [] # an empty list, can be ommited
     rewrites:
     - path: a if b
   web/port2:

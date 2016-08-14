@@ -151,10 +151,8 @@ clusters:
         routes:
           sava-frontend:1.2.0:
             weight: 50%
-            conditions: []
           sava-frontend:1.3.0:
             weight: 50%
-            conditions: []
 
 ```
 {{% /copyable %}}

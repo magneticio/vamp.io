@@ -98,13 +98,12 @@ routes:
   sava:1.1.0:
     weight: 0%
     condition_strength: 100%
-    conditions:
-    - condition: User-Agent = Chrome
+    condition: User-Agent = Chrome
 ```
 
 Notice two things:
 
-1. We inserted a list of conditions (with only one condition for now).
+1. We inserted a condition.
 2. We set the condition strength to 100% (it would be also by default set to 100%). This is important because we want all Chrome users to access the new service - we could also say `condition_strength: 50%` to give access just to half of them.
 3. We set te weight to 0% because we don't want any other users to access `sava:1.1.0`
 
@@ -128,8 +127,7 @@ clusters:
         sava:1.1.0:
           weight: 0%
           condition_strength: 100%
-          conditions:
-          - condition: User-Agent = Chrome
+          condition: User-Agent = Chrome
     services: # services is now a list of breeds
       -
         breed:
@@ -192,8 +190,7 @@ User-Agent=Android            # upper case, no white space
 user-agent = Android          # lower case, white space
 ```
 
-Having multiple conditions in a condition is perfectly possible. In this case all conditions are implicitly
-"OR"-ed together, as in "if the first condition doesn't match, proceed to the next". For example, the following condition would first check whether the string "Chrome" exists in the User-Agent header of a
+Having multiple conditions in a condition is perfectly possible. For example, the following condition would first check whether the string "Chrome" exists in the User-Agent header of a
 request. If that doesn't result in a match, it would check whether the request has the header
 "X-VAMP-TUTORIAL". So any request matching either condition would go to this service.
 
@@ -202,9 +199,7 @@ request. If that doesn't result in a match, it would check whether the request h
 routes:
   sava:1.1.0:
     condition_strength: 100%
-    conditions:
-    - condition: User-Agent = Chrome
-    - condition: Has Header X-VAMP-TUTORIAL
+    condition: User-Agent = Chrome AND Has Header X-VAMP-TUTORIAL
 ```
 
 Using a tool like [httpie](https://github.com/jakubroztocil/httpie) makes testing this a breeze.

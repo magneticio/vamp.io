@@ -35,8 +35,7 @@ clusters:
       routes:                             # Makes sense only with
         some_cool_breed:                  # multiple services per cluster.
           weight: 95%
-          conditions:
-          - condition: User-Agent = Chrome
+          condition: User-Agent = Chrome
         some_other_breed:                 # Second service.
           weight: 5%
           

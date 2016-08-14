@@ -32,7 +32,16 @@ Since workflows are running breeds in similar way as in deployments (blueprints)
   /api/v1/workflows
 ```
 
-Each workflow has to have `name`, `breed`, `schedule` and optional `scale`, e.g. :
+Each workflow has to have:
+
+ - `name`
+ - `breed` - either reference or inline definition, similar to blueprints
+ - `schedule` 
+ - `scale` - optional
+ - `environment_variables` (or `env`)- overrides breed environment variables
+ - `arguments`- Docker arguments, overrides default configuration arguments and breed arguments
+
+Example:
 
 ```yaml
 ---
@@ -43,6 +52,8 @@ scale:           # inline scale, reference definition can be also used, e.g. sca
   cpu: 1
   memory: 128MB
   instances: 2
+environment_variables:
+  interval: 5s
 ```
 
 ### Schedule
