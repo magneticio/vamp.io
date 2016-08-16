@@ -38,6 +38,7 @@ Sounds like you’ve got things running pretty smoothly to get releases ready fo
 Vamp is platform agnostic so can run on top of all common PaaS solutions. 
 
 _credibility style bar - what can we work with. lots of logos_
+
 * __What does Vamp cost?__ (how do you make money)
 * __Where can I try Vamp?__  
 [Follow the demo tutorial](/getstarted/tryvamp/) this will walk you through the main features of Vamp on your laptop. It should be enough to gain an initial introduction and get you started thinking about how Vamp can help your company.  

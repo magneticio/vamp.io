@@ -24,7 +24,7 @@ Vamp includes a versatile condition system to control which version of your serv
 _Fit with your choice of infrastructure_   
 Vamp links with common technologies (such as Docker, DC/OS, Mesos/Marathon) or can work standalone.
 
-## The freedom to succeed
+## The freedom to fly
 
 Traditional release strategies introduce unnecesary stress and risk that can stifle creativity.  
 Vamp provides practical tools and metrics that reduce the uncertainty of deploying to production. You are free to focus on delivering products that match user needs.  
@@ -33,6 +33,12 @@ Vamp provides practical tools and metrics that reduce the uncertainty of deployi
 something like the layered diagram on dcos.io, but focussing on a process rather than the technology. I can't draw it (yet). or a venn diagram.  
 some kind of metaphor  
 plan - develop - (test) - deploy - monitor_
+
+### Canary releases
+
+### Metrics aggregation
+
+### Single pane of glass
 
 ## Deployments as code
 
