@@ -4,30 +4,40 @@ title: Deploy online services, seamlessly
 type: index
 weight: 0
 ---
-{{< warning title="DRAFT" >}}
-{{< /warning >}}
 
 Stop unnecessary downtime when releasing microservice and container based applications.  
-Vamp removes the guesswork from planning and rolling out critical service upgrades.
+Remove the guesswork from planning and rolling out critical service upgrades.
 
 * __Disruption free transition from one version to the next__  
-_Introduce service updates with control and clarity._
-* __Learn from your users__  
-_Get updates into the hands of specified users, fast. Optimise services based on actual results, then increase traffic when you are satisfied._
-* __Be online, be efficient__  
-_Automatically track spikes and troughs in activity to ensure running services are given exactly the resources they need._
-* __Fit with your choice of infrastructure__   
-_Vamp links with common technologies (such as Docker, DC/OS, Mesos/Marathon) or can work standalone._
+_Introduce service updates with control and clarity._  
+Vamp adds a layer of flexibility to conventional deployment strategies, enabling rolling upgrades by percentage and instant rollback.
 
-## Vamp - the canary test and release platform
+* __Zero downtime__  
+_Track spikes and troughs in activity._  
+Vamp monitors individual services in your architecture and adapts resource allocation automatically.
+ 
+* __Data driven continous improvement__  
+_Get updates into the hands of specified users, fast and optimise based on live data before rolling out to all users._  
+Vamp includes a versatile condition system to control which version of your service a defined user cohort is routed to.  
+   
+* __No platform lock-in__  
+_Fit with your choice of infrastructure_   
+Vamp links with common technologies (such as Docker, DC/OS, Mesos/Marathon) or can work standalone.
 
-Traditional release processes cause stress and risk that can negatively impact customer experience and stifle productivity.
-_Vamp offers practical tools and metrics that_ 
- _[something about making already available technologies accessible in a useable “box”, offering advantages/removing disadvantages]_
+## The freedom to succeed
 
-* __Multiple versions__ By enabling multiple versions of a service to run side by side in production, Vamp adds a layer of flexibility to conventional blue/green releasing. 
-* __Rolling upgrades by %__ Forget the on/off release command. Vamp introduces service upgrades gradually, to defined groups of users. You gain the space to measure, optimise and react.
-* __Condition system__ Vamp's versatile condition system lets you control which version of your service defined users are routed to.
-* __Granular allocation of resources__ Specify the resource requirements of individual services in your architecture and Vamp will automatically monitor and adapt. 
+Traditional release strategies introduce unnecesary stress and risk that can stifle creativity.  
+Vamp provides practical tools and metrics that reduce the uncertainty of deploying to production. You are free to focus on delivering products that match user needs.  
 
-_...CONTINUE WITH MORE TECHY BIT_
+* _diagram: Vamp release cycle, continuous improvement, closing the feedback loop, removing guesswork  
+something like the layered diagram on dcos.io, but focussing on a process rather than the technology. I can't draw it (yet). or a venn diagram.  
+some kind of metaphor  
+plan - develop - (test) - deploy - monitor_
+
+## Deployments as code
+
+Vamp gives you a platform agnostic DSL to describe microservices. Containerised service deployments become repeatable and scalable.
+
+* service discovery (the Vamp way or your way)
+
+

@@ -6,14 +6,13 @@ title: what is Vamp?
 {{< warning title="DRAFT" >}}
 {{< /warning >}}
 
-Introducing product udpates to your users should never involve guesswork. The risks for your company are too high.
+Introducing product updates to users should never involve guesswork. 
   
-[How will you use Vamp?](/getstarted/usecases/)
+[How will you use Vamp?](/what/usecases/)
 
 __Close the feedback loop, enable continuous improvement__
  
-DevOps implementations often focus on continuous integration, release planning and continous delivery. This will improve time to market, enabling companies to release updates fast and often, but can't deliver the full benefits of an end-to-end DevOps approach.   
-To realise the jewel in the DevOps crown - __continuous improvement__ - strategies must continue beyond the delivery pipeline, into operations, and close the feedback loop.
+Continuous integration, release planning and continous delivery improve time to market, pushing frequent services updates into production, fast. An end-to-end DevOps approach continues beyond the delivery pipeline into operations, closing the feedback loop to enablie continuous improvement. 
  
 Vamp is a middleware solution that enables smart deployments and production-side monitoring of containerised (micro)services.   
 

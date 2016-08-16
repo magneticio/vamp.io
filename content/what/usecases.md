@@ -19,8 +19,8 @@ Vamp lets you tackle big projects with confidence:
 
 Running services can be tested and optimised to increase reliability:
 
-* [What would happen if…](#what-would-happen-if)
-* [When…](#when)
+* [Test for the impossible](#test-for-the-impossible)
+* [Automatically react](#automatically-react-to-spiky-traffic-load)
 
 
 ## Create a responsive website
@@ -61,8 +61,7 @@ Use smart routing behind the scenes to upgrade individual components step by ste
 ## Modernise services, e.g. move to noSQL DB  
 A/B test architecture before you jump
 
-## What would happen if…
-predict response to peak time
+## Test for the impossible
 
-## When…
-Vamp can react to spiky traffic/load and take action on a granular level
+## Automatically react to spiky traffic/load 
+Take action on a granular level

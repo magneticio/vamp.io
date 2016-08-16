@@ -9,29 +9,41 @@ menu:
 ---
 
 ### Vamp and your company
-* Why use Vamp?   
-_Our company already has a DevOps team to manage releases and deploy updates using CI/CD._  
-Sounds like you’ve got things running pretty smoothly getting releases ready for users, but you could be missing an important part of the picture.   Who is looking out for your users and how are you safeguarding business goals after deployment?   Your product lives in a dynamic, ever changing state of continuous integration and rapid deployment, which is great when things run to plan, but what happens when they don’t?  
-A delivery pipeline alone won't help you with operations issues. A chain of CI and CD tools channel new code through the required “cleaning filters” to test viability and integration before gracefully launching a completed product into the sea that is your live production environment. At this point, the operations team must step in to keep things afloat - development (and DevOps) have already moved on to the next release. The only way continuous delivery can save you now is by developing and releasing a patch - perhaps it will all work this time.
+* __Why use Vamp?__   
+how do you safeguard business goals after deployment?   
 
-Chances are the release process at your company would benefit from Vamp.
+Vamp challenges you to rethink how you develop and release microservice based applications.   
+The life of a release doesn't end when it hits production - that's just the beginning.
+     
+* __Who is already using Vamp and how?__
+_
+* __What is canary testing/releasing?__
+* __Will Vamp really make that much difference to my company?__  
+If you build stateless, microservice-based web applications, chances are the release process at your company would benefit from Vamp.   
 
-* Who is already using Vamp and how?
-* What is canary testing/releasing?
-* Will Vamp really make that much difference to my company?
 
+_Our company already has a DevOps team and we deploy updates using CI/CD._  
+Sounds like you’ve got things running pretty smoothly to get releases ready for users, but you might be missing an important part of the puzzle. Your product lives in a dynamic, ever changing state of continuous integration and rapid deployment, which is great when things run to plan, but what happens when they don’t?   
+
+---------
 ### Common concerns
-* Will we need to make big changes to start using Vamp?
-* Are containers secure?
-* What about databases?
-* Do you provide support?
+* __Will we need to make big changes to start using Vamp?__
+* __Are containers secure?__
+* __What about databases?__
+* __Do you provide support?__
 
+--------
 ### Practical info
-* Can I use Vamp together with… [insert package name]   
-What about continuous deployment?
-* What does Vamp cost? (how do you make money)
-* Where can I try Vamp?
+* __Can I use Vamp together with… [insert package name]__   
+Vamp is platform agnostic so can run on top of all common PaaS solutions. 
 
+_credibility style bar - what can we work with. lots of logos_
+* __What does Vamp cost?__ (how do you make money)
+* __Where can I try Vamp?__  
+[Follow the demo tutorial](/getstarted/tryvamp/) this will walk you through the main features of Vamp on your laptop. It should be enough to gain an initial introduction and get you started thinking about how Vamp can help your company.  
+If you want to know more, or have specific questions, [contact us to arrange a demo](/contact/).
+
+---------------------------
 ### About us
-* Who are you?
-* What will the future bring? What is your vision?
+* __Who are you?__
+* __What will the future bring? What is your vision?__
