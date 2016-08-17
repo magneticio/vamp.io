@@ -9,9 +9,9 @@ menu:
 
 # Sticky Sessions
 
-Vamp supports `service` and `instance` level sticky sessions.
+Vamp supports `route` and `instance` level sticky sessions.
 
-#### Service Level
+#### Route Level
 
 Common use case is when the end users have to have the same experience in A/B testing setup thus they should get the same service always (either A or B).
 {{% copyable %}}
@@ -23,7 +23,7 @@ gateways:
 clusters:
   sava:
     gateways:
-      sticky: service                         # setting the service level
+      sticky: route                           # setting the route level
       routes:
         sava:1.0.0:
           weight: 50%
