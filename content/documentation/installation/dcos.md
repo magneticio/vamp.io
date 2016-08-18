@@ -99,3 +99,26 @@ Marathon will now start deploying Vamp and if all arguments are set correctly yo
 Now we need to find out on what IP the public node is running, so you can access the VAMP dashboard from the outside. This IP is most often the same as where you find the Marathon dashboard. Vamp will expose its UI on port 8080 (`network: HOST`), you may set a different port (`VAMP_REST_API_PORT`) if you want.
 
 Happy VAMP’ing! Make sure to run through our [QuickStart tutorials](http://vamp.io/documentation/guides/).
+
+## Custom Vamp setup
+
+Vamp DC/OS Docker [image](https://github.com/magneticio/vamp-docker/tree/master/vamp-dcos) contains [configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf) that may be overridden for specific needs:
+
+- making a new Docker image based on Vamp DC/OS image, and/or
+- using [environment variables](/documentation/installation/configuration/#environment-variable-configuration)
+
+For instance in order to avoid automatic deployment of Vamp Gateway Agent, `vga-marathon` breed and workflow should be removed from `vamp.lifter.artifact.resources`:
+
+```yaml
+vamp.lifter.artifact.resources = [
+    "breeds/health.js", "workflows/health.yml",
+    "breeds/metrics.js", "workflows/metrics.yml",
+    "breeds/kibana.js", "workflows/kibana.yml"
+  ]
+```
+
+or 
+
+```bash
+VAMP_LIFTER_ARTIFACT_RESOURCES='["breeds/health.js","workflows/health.yml","breeds/metrics.js","workflows/metrics.yml","breeds/kibana.js","workflows/kibana.yml"]'
+```
