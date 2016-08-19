@@ -119,6 +119,8 @@ vamp.lifter.artifact.resources = [
 
 or 
 
-```bash
-VAMP_LIFTER_ARTIFACT_RESOURCES='["breeds/health.js","workflows/health.yml","breeds/metrics.js","workflows/metrics.yml","breeds/kibana.js","workflows/kibana.yml"]'
+```json
+"env": {
+  "VAMP_LIFTER_ARTIFACT_RESOURCES": "[\"breeds/health.js\",\"workflows/health.yml\",\"breeds/metrics.js\",\"workflows/metrics.yml\",\"breeds/kibana.js\",\"workflows/kibana.yml\"]"
+}
 ```
