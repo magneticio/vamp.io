@@ -47,7 +47,19 @@ Mitigate the risks when running and upgrading complex microservice architectures
 -------------
 
 ## Vamp feature list
-
+* API
+* CLI
+* Graphical UI
+* powerful condition system
+* microservice DSL
+* canary and A/B deployment strategies
+* auto-scaling
+* service monitoring
+* metrics aggregation
+* integration with common CI/CD pipelines
+* PaaS / container platform agnostic
+* open source
+* deployment workflow manager (?)
 
 -------------
 
