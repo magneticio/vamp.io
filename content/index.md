@@ -47,7 +47,7 @@ Mitigate the risks when running and upgrading complex microservice architectures
 -------------
 
 ## Vamp feature list
-(short version - the long version should sit on the "what is Vamp" page)
+
 
 -------------
 
