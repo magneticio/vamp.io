@@ -12,3 +12,4 @@ current 0,9,0 install content (revised). Links to platform page with install ste
 * [DC/OS](/docs/installation/dcos)
 * Rancher
 * Docker
+* Mac OS X

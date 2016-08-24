@@ -6,3 +6,5 @@ description: "gina"
 ---
 
 DC/OS platform page
+
+* Vamp is available as a DC/OS universe package

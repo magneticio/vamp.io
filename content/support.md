@@ -7,9 +7,14 @@ title: support
 It needs to be clear that we take support seriously.
 {{< /warning >}}
 
+* intro 
+
+community support
+online documentation
+
 ## Feeling lost?
 * Check the [Vamp FAQ](/faq/)?
-* [Try Vamp](/tryvamp/) and find out what we're about in 10 minutes
+* [Try Vamp](/tryvamp/) 
 
 ## Ready to learn more?
 * We're always adding new [Vamp resources and tutorials](/resources/)

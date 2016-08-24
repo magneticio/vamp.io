@@ -5,17 +5,34 @@ type: index
 weight: 0
 ---
 
-pain  
-description
+### Smart deployment strategies and service monitoring
+Empowering business with data-driven continuous improvement
 
 * [try Vamp](/tryvamp/)
 * [learn more](whatisvamp/)
+
+### Manage your microservices through a single pane of glass
+Smart deployment strategies and monitoring for data-driven continuous improvement
+
+* [try Vamp](/tryvamp/)
+* [learn more](whatisvamp/)
+
+### Deploy online services, seamlessly
+Mitigate the risks when running and upgrading complex microservice architectures
+
+* [try Vamp](/tryvamp/)
+* [learn more](whatisvamp/)
+
+
 
 ---------
 
 (U)SPs  
 
-* think 4  
+1.    
+2.  
+3.  
+
 * possible to have a use case for each?
 
 * rolling upgrades by percentage
