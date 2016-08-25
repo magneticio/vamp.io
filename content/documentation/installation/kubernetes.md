@@ -17,6 +17,8 @@ menu:
 - Key-value store like ZooKeeper, Consul or etcd
 - Elasticsearch and Logstash
 
+>**Note**: [Minikube](https://github.com/kubernetes/minikube) can be also used.
+
 It is advisable to try out the official [Quickstart for Google Container Engine](https://cloud.google.com/container-engine/docs/quickstart) tutorial first.
 Simple way to create a new GKE cluster:
 
@@ -56,7 +58,15 @@ kubectl expose deployment elastic --protocol=TCP --port=5601 --name=kibana
 
 ## Running Vamp
 
-Execute:
+Let's run Vamp gateway agent as a `daemon set` first:
+{{% copyable %}}
+```bash
+kubectl create \
+        -f https://raw.githubusercontent.com/magneticio/vamp-docker/master/vamp-kubernetes/vga.yml
+```
+{{% /copyable %}}
+
+Deploying Vamp:
 {{% copyable %}}
 ```bash
 kubectl run vamp --image=magneticio/vamp:0.9.0-kubernetes
@@ -64,7 +74,7 @@ kubectl expose deployment vamp --protocol=TCP --port=8080 --name=vamp --type="Lo
 ```
 {{% /copyable %}}
 
-Vamp image uses the following [configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-kubernetes/conf/application.conf).
+Vamp image uses the following [configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-kubernetes/application.conf).
 
 Wait a bit until Vamp is running and check out the Kubernetes services:
 {{% copyable %}}
@@ -89,9 +99,6 @@ vamp-gateway-agent   10.3.254.234   146.148.22.145   80/TCP              2m
 ```
 
 Notice that Vamp UI is exposed (in this example) on `http://146.148.118.45:8080`<br>
-When Vamp starts it deploys Vamp Gateway Agent as a Kubernetes `daemon set` and creates a service for it. 
-If you wish to disable this automatic deployment just set `vamp.lifter.vamp-gateway-agent.enabled = false`
-It can be deployed manually also as a non-daemon.
 
 Let's continue and deploy `sava` demo application:
 

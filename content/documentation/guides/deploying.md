@@ -82,7 +82,7 @@ When the application is fully deployed you can check it out at Vamp host address
 
 ## Step 3: Getting some metrics
 
-Using a simple tool like (Apache Bench)(https://httpd.apache.org/docs/2.2/programs/ab.html) we can put some load on our application and see some of the metrics flowing into the dashboard. Using the following command send 10000 requests using 15 threads to our Sava app.
+Using a simple tool like [Apache Bench](https://httpd.apache.org/docs/2.2/programs/ab.html) we can put some load on our application and see some of the metrics flowing into the dashboard. Using the following command send 10000 requests using 15 threads to our Sava app.
 
 ```bash
 ab -k -c 15 -n 10000 http://localhost:9050/
