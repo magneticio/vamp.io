@@ -35,9 +35,9 @@ Sections are `jvm`, `persistence`, `key_value`, `pulse`, `gateway_driver`, `cont
 }
 ```
 
-It is possible also to explicitly request only some sections (e.g. `jvm` and `persistence`):
+Explicitly requesting only some sections (e.g. `jvm` and `persistence`) using parameter(s) `on`:
 
-	GET /api/v1/info?for=jvm&for=persistence
+	GET /api/v1/info?on=jvm&on=persistence
 
 ## Get Vamp configuration
 
