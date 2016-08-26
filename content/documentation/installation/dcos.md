@@ -107,12 +107,12 @@ Vamp DC/OS Docker [image](https://github.com/magneticio/vamp-docker/tree/master/
 - making a new Docker image based on Vamp DC/OS image, and/or
 - using [environment variables](/documentation/installation/configuration/#environment-variable-configuration)
 
-For instance in order to avoid automatic deployment of Vamp Gateway Agent, `vga-marathon` breed and workflow should be removed from `vamp.lifter.artifact.resources`:
+Examples:
+
+1) remove `metrics` and `health` workflows by configuration and keep `kibana` workflow:
 
 ```yaml
 vamp.lifter.artifact.resources = [
-    "breeds/health.js", "workflows/health.yml",
-    "breeds/metrics.js", "workflows/metrics.yml",
     "breeds/kibana.js", "workflows/kibana.yml"
   ]
 ```
@@ -121,6 +121,20 @@ or
 
 ```json
 "env": {
-  "VAMP_LIFTER_ARTIFACT_RESOURCES": "[\"breeds/health.js\",\"workflows/health.yml\",\"breeds/metrics.js\",\"workflows/metrics.yml\",\"breeds/kibana.js\",\"workflows/kibana.yml\"]"
+  "VAMP_LIFTER_ARTIFACT_RESOURCES": "[\"breeds/kibana.js\",\"workflows/kibana.yml\"]"
+}
+```
+
+2) avoid automatic deployment of Vamp Gateway Agent, `vga-marathon` breed and workflow should be removed from `vamp.lifter.artifact.files`:
+
+```yaml
+vamp.lifter.artifact.files = []
+```
+
+or 
+
+```json
+"env": {
+  "VAMP_LIFTER_ARTIFACT_FILES": "[]"
 }
 ```

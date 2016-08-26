@@ -19,7 +19,7 @@ menu:
 
 >**Note**: If you want to make a setup on your local VM based Docker, it's advisable to increase default VM memory size from 1GB to 4GB.
 
-It is advisable to try out at least the official [Quick Start Guide](http://docs.rancher.com/rancher/latest/en/quick-start-guide/) tutorial first.
+Good starting point with using Rancher would be to try out at least the official [Quick Start Guide](http://docs.rancher.com/rancher/latest/en/quick-start-guide/) tutorial first.
 Based on the tutorial these are few simple steps to run Rancher locally:
 ```bash
 $ docker run -d --restart=always -p 8080:8080 rancher/server
