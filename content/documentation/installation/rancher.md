@@ -64,7 +64,17 @@ More details can be found on the [project page](https://github.com/magneticio/el
 
 ## Running Vamp
 
-Let's first find a Rancher API endpoint that can be accessed from running container.
+Let's first run Vamp Gateway Agent. Use `vamp` stack and go to `Add Service`:
+
+- set scale to `Always run one instance of this container on every host`
+- `Name` ⇒ `vamp-gateway-agent`
+- `Select Image` ⇒ `magneticio/vamp-gateway-agent:0.9.0`
+- set `Command` ⇒ `--storeType=consul --storeConnection=consul:8500 --storeKey=/vamp/haproxy/1.6 --logstash=elastic:10001`
+- go to `Networking` tab
+- under `Hostname` select `Set a specific hostname:` and enter `vamp-gateway-agent`
+- click on `Create` button
+
+Now let's find a Rancher API endpoint that can be accessed from running container.
 
 - go to `API` page and find the endpoint, e.g. `http://192.168.99.100:8080/v1/projects/1a5`
 - go to `Infrastructure`/`Containers` and find the IP address of `rancher/server`, e.g. `172.17.0.2`
