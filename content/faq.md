@@ -13,21 +13,21 @@ menu:
 how do you safeguard business goals after deployment?   
 
 Vamp challenges you to rethink how you develop and release microservice based applications.   
-The life of a release doesn't end when it hits production - that's just the beginning.
+
      
 * __Who is already using Vamp and how?__
-_
+
 * __What is canary testing/releasing?__
-* __Will Vamp really make that much difference to my company?__  
-If you build stateless, microservice-based web applications, chances are the release process at your company would benefit from Vamp.   
 
 
-_Our company already has a DevOps team and we deploy updates using CI/CD._  
-Sounds like you’ve got things running pretty smoothly to get releases ready for users, but you might be missing an important part of the puzzle. Your product lives in a dynamic, ever changing state of continuous integration and rapid deployment, which is great when things run to plan, but what happens when they don’t?   
+* __Will Vamp make that much difference to my company?__  
+Vamp brings clarity and flexibility to microservice upgrades and deployment monitoring. 
+
 
 ---------
 ### Common concerns
-* __Will we need to make big changes to start using Vamp?__
+* __Will we need to make big changes to start using Vamp?__  
+
 * __Are containers secure?__
 * __What about databases?__
 * __Do you provide support?__
