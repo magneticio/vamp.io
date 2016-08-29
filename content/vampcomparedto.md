@@ -33,8 +33,8 @@ Vamp runs together with HAproxy, but could also be integrated on top of microser
 
 ## CI/CD tools
 _Spinnaker, Jenkins, Wercker_  
-Modern deployment pipelines use Continuous Integration and Continuous Delivery (CI/CD) tools to keep development agile and automate everything possible in the release process, but what happens after a service update is deployed? Vamp is the missing link at the operations end of a CI/CD pipeline.  
-Vamp can work together with CI/CD tools like Spinnaker (Netflix), Jenkins and Wercker to deploy and monitor the updates they deliver. The initial deployment setup is defined in a Vamp blueprint (such as container details, required resources and routing filters). Vamp will run, monitor and scale the deployment based on the filters and conditions specified in the blueprint. 
+Continuous Integration and Continuous Delivery (CI/CD) tools automate the release process up to deployment, but what happens after an upgrade is deployed? Vamp completes the loop at the operations end of a CI/CD pipeline.  
+Vamp can work together with CI/CD tools like Spinnaker (Netflix), Jenkins and Wercker to deploy and monitor the software they deliver. The initial deployment setup is defined in a Vamp YAML blueprint (such as container details, required resources, routing filters). Vamp will run, monitor and scale the deployment based on the filters and conditions specified in the blueprint. 
 Deployments can be tracked and adapted dynamically from Vamp's API, CLI or graphical interface, so you always maintain complete control and have a clear overview of running services.
 
 * [How Vamp enhances deployment pipelines](/what/usecases/)  
