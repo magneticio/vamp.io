@@ -42,7 +42,8 @@ Now we need to use this new configuration. This is done by mounting file directo
 For instance on Mac OS X 10.8+ just replace `ABS_PATH_TO_FILE_DIR` with actual directory path of your new `application.conf` file (e.g. `/Users/vamp/sla`):
 
 ```
-docker run --net=host \
+docker run --privileged \
+           --net=host \
            -v /var/run/docker.sock:/var/run/docker.sock \
            -v $(which docker):/bin/docker \
            -v /sys/fs/cgroup:/sys/fs/cgroup \
