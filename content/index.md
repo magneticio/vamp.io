@@ -12,13 +12,11 @@ we agreed on choosing 3 based on the current draft content (see /old/ ). Would b
 {{< /note >}}
 
 * __Percentage and condition based routing__   
-Gradual rollouts and upgrades prevent performance issues and downtime disruptions.
-* __Container-scheduler agnostic API__   
-YAML based deployments avoid vendor lock-in. 
+Prevent performance issues and service disruption with gradual rollouts and upgrades.
 * __Integrated metrics- and event-driven workflows__   
-Automatic scaling and optimisation for deployments and running systems.
-
-
+Automatically scale and optimise deployments or running systems.
+* __Container-scheduler agnostic API__   
+Avoid vendor lock-in with YAML based deployments.
 ## We work with
 
 ### Companies:  

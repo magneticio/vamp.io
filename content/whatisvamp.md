@@ -6,9 +6,12 @@ weight: 10
 
 ## Vamp deploys online services, seamlessly
 
-Running and upgrading complex and critical microservice architectures need not be ... .
+Managing complex and critical microservice architectures need not be ... .
 
-With Vamp, no change is a breaking change. Smart deployment strategies allow you to transition between releases with zero downtime. Service upgrades can be introduced gradually to defined cohorts of users, giving you space for risk free, live testing of releases and real business data to inform decisions and planning.
+With Vamp, no change is a breaking change. Smart deployment strategies allow you to transition between releases with zero downtime. 
+Service upgrades can be introduced gradually to defined cohorts of users, giving you space for risk free, live testing of releases and real business data to inform decisions and planning.
+
+
 
 ## Single pane of glass
 Alongside a REST API and CLI, Vamp offers a graphical interface so you can monitor and control your microservices from a single pane of glass.
