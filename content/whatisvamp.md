@@ -58,9 +58,6 @@ Vamp manages deployments and running systems to bring you more of the benefits a
 * integrates with ELK stack (Elastic Search, Logstash, Kibana) for custom Kibana dashboards
 * Vamp Runner provides automated integration and workflows testing 
 
-## Frequently asked questions 
-* FAQ - quick intro, with link through to full page
-
 * [try Vamp](/tryvamp/)
 * [download Vamp](/downloads/)
 * [find out more](/support/)

@@ -7,3 +7,5 @@ menu:
     identifier: how Vamp works
     weight: 10
 ---
+
+[back to resources page](/resources/)

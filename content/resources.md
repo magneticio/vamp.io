@@ -2,26 +2,39 @@
 date: 2016-03-09T19:56:50+01:00
 title: resources
 ---
-{{< note title="content by version" >}}
+{{< note title="overview of resources section" >}}
+Can't use the real menu with this hugo template, so pages are linked below instead
 {{< /note >}}
 
-## installation guides
-  * Mesos/Marathon
-  * Kubernetes
-  * [DC/OS](/docs/dcos)
-  * Rancher
-  * Docker
-  * Mac OS X
+### How Vamp works
+This will change as I work through the content - it will cover the concept details that don't give specific instruction. in a way, it could sit under "what is Vamp", but is more technically focussed and that section is already quite full.
 
-## using Vamp
-* using Vamp
+* [overview](/howvampworks/)
+* [Vamp concepts](/vampconcepts/)
+* [service discovery](/servicediscovery/)
 
-## developer reference
-* API reference
-* CLI reference
 
-## downloads
-* download Vamp
+### downloads
+* [download Vamp](/downloads/)
+
+### install Vamp
+  * [Mesos/Marathon](/docs/mesosmarathon/)
+  * [Kubernetes](/docs/kubernetes/)
+  * [DC/OS](/docs/dcos/)
+  * [Rancher](/docs/rancher/)
+  * [Docker](/docs/docker/)
+  * [Mac OS X](/docs/macosx/)
+
+### using Vamp
+* [examples](/examples/)
+* [how-to's (processes)](/howto/)
+* [walkthrough/tutorials](/tutorials/)
+
+### developer docs
+* [API reference](http://vamp.io/documentation/api-reference/)
+* [CLI reference](http://vamp.io/documentation/cli-reference/)
+* (blueprint reference)
+
 
 --------
 
