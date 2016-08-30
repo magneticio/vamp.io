@@ -10,7 +10,6 @@ Vamp provides an interface for describing and managing services and their runtim
 1. Service description
 2. Runtime configuration description
 3. Deployment
-4. Routing and filters
 4. Automated runtime actions
 5. Metrics and events aggregation
 
@@ -29,9 +28,6 @@ Vamp blueprints are static execution plans - they describe how services should b
 ## Deployment
 
 Vamp deployments are running blueprints. You can run many deployments based on one blueprint and perform separate actions on each at runtime. You can also turn any running deployment into a new blueprint, allowing you __to consistantly reproduce identical runtime environments__. 
-
-## Routing and filters
-A __routing__ defines a set of rules for routing traffic between different services within the same __Vamp service cluster__.
 
 ## Automated runtime actions
 
