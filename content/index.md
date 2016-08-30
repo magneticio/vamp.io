@@ -45,11 +45,9 @@ Avoid vendor lock-in with YAML based deployments.
 
 ## Vamp feature list
 
-* container-scheduler agnostic API
 * graphical UI and dashboard
-* percentage and condition based programmable routing
-* integrated javascript-based workflow system for metric-driven autoscaling, canary releasing and other optimisation and automation patterns
-* YAML based configuration blueprints with support for dependencies, clusters and environment variables
+* integrated javascript-based workflow system 
+* metric-driven autoscaling, canary releasing and other optimisation and automation patterns
 * automatic loadbalancing for autoscaled services
 * API gateway routing features like conditional rewrites
 * CLI for integration with common CI/CD pipelines

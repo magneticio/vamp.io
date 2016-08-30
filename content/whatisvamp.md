@@ -39,30 +39,14 @@ Vamp manages deployments and running systems to bring you more of the benefits a
 * (x) Security concerns multiply
 * (x) Data feeds and monitoring/logs need to be aggregated and zipped together
 
-## Use cases
-
-* Create a responsive website
-* Resolve incompatibilities after a (major) portal upgrade
-* Move legacy monolithic systems with VMs to microservices
-* Modernise services, e.g. move to noSQL DB
-* Test for the impossible
-* Automatically react
-
-## Vamp compared to ... 
-
-* [PaaS layer infrastructure management](/vampcomparedto/#paas-layer-infrastructure-management)
-* [Configuration management tools](/vampcomparedto/#configuration-management-tools)
-* [Routers and load balancers](/vampcomparedto/#routers-and-load-balancers)
-* [CI/CD tools](/vampcomparedto/#ci-cd-tools)
-* [Feature toggle frameworks](/vampcomparedto/#feature-toggle-frameworks)
-
 ## Feature list
 
 * container-scheduler agnostic API
-* graphical UI and dashboard
 * percentage and condition based programmable routing
-* integrated javascript-based workflow system for metric-driven autoscaling, canary releasing and other optimisation and automation patterns
 * YAML based configuration blueprints with support for dependencies, clusters and environment variables
+* graphical UI and dashboard
+* integrated javascript-based workflow system 
+* metric-driven autoscaling, canary releasing and other optimisation and automation patterns
 * automatic loadbalancing for autoscaled services
 * API gateway routing features like conditional rewrites
 * CLI for integration with common CI/CD pipelines
