@@ -9,3 +9,11 @@ menu:
 ---
 
 [back to resources page](/resources/)
+
+* [architecture and components](/components/)
+* [concepts](/vampconcepts/)  
+* [service discovery](/servicediscovery/)
+
+
+
+[back to resources page](/resources/)

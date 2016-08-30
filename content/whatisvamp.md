@@ -60,4 +60,4 @@ Vamp manages deployments and running systems to bring you more of the benefits a
 
 * [try Vamp](/tryvamp/)
 * [download Vamp](/downloads/)
-* [find out more](/support/)
+* [find out more](/howvampworks/)

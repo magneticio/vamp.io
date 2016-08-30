@@ -7,3 +7,11 @@ menu:
     identifier: developer docs
     weight: 30
 ---
+
+* [API reference](http://vamp.io/documentation/api-reference/)
+* [CLI reference](http://vamp.io/documentation/cli-reference/)
+* [blueprint reference](/blueprint/)
+
+---------
+
+[back to resources page](/resources/)
