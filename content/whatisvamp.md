@@ -22,9 +22,7 @@ The purpose of Vamp is to:
 
 ## More benefit, less risk
 
-Developing applications using a microservices architecture has many benefits with regard to speed of deployment, scalability and separation of concerns. The flip side of this is increased complexity, stress and risk.   
-  
-Vamp manages microservice deployments and running systems to bring you more of the benefits and less of the pain.
+Vamp manages deployments and running systems to bring you more of the benefits and less of the pain associated with microservice architectures.
 
 ### Microservice bennefits and risks
 
@@ -32,7 +30,7 @@ Vamp manages microservice deployments and running systems to bring you more of t
 
 * (/) Faster development and deployment
 * (/) Clear separation of concerns
-* (/) Increased scalability and resiliency
+* (/) Scalability and resiliency
 
 #### Risks
 
