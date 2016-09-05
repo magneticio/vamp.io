@@ -228,21 +228,23 @@ button:focus {
 
 /* Grid */
 
+$container-width: 1160px;
+$columns: 15;
+$gutter-size: 40px;
+
 .container {
-  width: 1160px;
+  width: $container-width;
   //background-color: red;
 }
 
-
 .row {
-  margin: 40px 0;
+  width: $container-width + $gutter-size;
+  margin: 40px (-($gutter-size/2));
   display: flex;
-  width: 100%;
-  transform: translate(20px, 0);
-  flex-wrap: wrap;
+  //border: 1px solid yellow;
 
-  &--full {
-    transform: none;
+  &--wrap {
+    flex-wrap: wrap;
   }
 
   &:first-child {
@@ -254,6 +256,11 @@ button:focus {
   }
 }
 
+.col {
+  flex: 1;
+  padding: 0 20px;
+}
+
 .center {
   display: flex;
   align-items: center;
@@ -262,70 +269,67 @@ button:focus {
 }
 
 .one-col, .two-col, .three-col, .four-col, .five-col, .six-col, .seven-col, .eight-col, .nine-col, .ten-col, .eleven-col, .twelve-col, .thirteen-col, .fourteen-col, .fifteen-col {
-  margin: 0 40px 0 0;
-  padding: 0;
-  position: relative;
-  //background: #9fcdf6;
+  flex: none;
 }
+
 .one-col {
-  width: 40px;
+  width: (($container-width + $gutter-size) / $columns) * 1;
 }
 
 .two-col {
-  width: 120px;
+  width: (($container-width + $gutter-size) / $columns) * 2;
 }
 
 .three-col {
-  width: 200px;
+  width: (($container-width + $gutter-size) / $columns) * 3;
 }
 
 .four-col {
-  width: 280px;
+  width: (($container-width + $gutter-size) / $columns) * 4;
 }
 
 .five-col {
-  width: 360px;
+  width: (($container-width + $gutter-size) / $columns) * 5;
 }
 
 .six-col {
-  width: 440px;
+  width: (($container-width + $gutter-size) / $columns) * 6;
 }
 
 .seven-col {
-  width: 520px;
+  width: (($container-width + $gutter-size) / $columns) * 7;
 }
 
 .eight-col {
-  width: 600px;
+  width: (($container-width + $gutter-size) / $columns) * 8;
 }
 
 .nine-col {
-  width: 680px;
+  width: (($container-width + $gutter-size) / $columns) * 9;
 }
 
 .ten-col {
-  width: 760px;
+  width: (($container-width + $gutter-size) / $columns) * 10;
 }
 
 .eleven-col {
-  width: 840px;
+  width: (($container-width + $gutter-size) / $columns) * 11;
 }
 
 .twelve-col {
-  width: 920px;
+  width: (($container-width + $gutter-size) / $columns) * 12;
 }
 
 .thirteen-col {
-  width: 1000px;
+  width: (($container-width + $gutter-size) / $columns) * 13;
 }
 
 .fourteen-col {
-  width: 1080px;
+  width: (($container-width + $gutter-size) / $columns) * 14;
 }
 
 .fifteen-col {
-  width: 1160px;
-  margin-right: 0;
+  width: (($container-width + $gutter-size) / $columns) * 15;
 }
 
 .prefix-one {
@@ -443,6 +447,7 @@ button:focus {
 .clear { /* Useful generic clearing class. */
   clear: both;
 }
+
 .last-col {
   margin-right: 0;
 }
@@ -464,7 +469,7 @@ $red-hover: #C33750;
 $dark-blue-hover: #234B5F;
 $grey-hover: #6991AA;
 
-  // Font-sizes
+// Font-sizes
 $biggest: 52px;
 $big: 40px;
 $medium: 24px;
@@ -475,7 +480,6 @@ $small: 13px;
 $small-margin: 20px;
 $medium-margin: 40px;
 $big-margin: 60px;
-
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -579,11 +583,9 @@ body {
   border-radius: 5px;
   transition: all 0.15s ease-in-out;
 
-
   &--grey {
     background-color: $accent-color;
     color: white;
-
 
     &:hover {
       background-color: $dark-blue-hover;
@@ -700,8 +702,6 @@ body {
     padding: 10px;
   }
 }
-
-
 
 // Custom
 .hero-space-buttons {

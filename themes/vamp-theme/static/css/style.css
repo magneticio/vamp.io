@@ -232,20 +232,16 @@ button:focus {
 }
 
 .row {
-  margin: 40px 0;
+  width: 1200px;
+  margin: 40px -20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
-  -webkit-transform: translate(20px, 0);
-          transform: translate(20px, 0);
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
 }
 
-.row--full {
-  -webkit-transform: none;
-          transform: none;
+.row--wrap {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .row:first-child {
@@ -254,6 +250,13 @@ button:focus {
 
 .row:last-child {
   margin-bottom: 0;
+}
+
+.col {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 0 20px;
 }
 
 .center {
@@ -271,70 +274,69 @@ button:focus {
 }
 
 .one-col, .two-col, .three-col, .four-col, .five-col, .six-col, .seven-col, .eight-col, .nine-col, .ten-col, .eleven-col, .twelve-col, .thirteen-col, .fourteen-col, .fifteen-col {
-  margin: 0 40px 0 0;
-  padding: 0;
-  position: relative;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
 }
 
 .one-col {
-  width: 40px;
+  width: 80px;
 }
 
 .two-col {
-  width: 120px;
+  width: 160px;
 }
 
 .three-col {
-  width: 200px;
+  width: 240px;
 }
 
 .four-col {
-  width: 280px;
+  width: 320px;
 }
 
 .five-col {
-  width: 360px;
+  width: 400px;
 }
 
 .six-col {
-  width: 440px;
+  width: 480px;
 }
 
 .seven-col {
-  width: 520px;
+  width: 560px;
 }
 
 .eight-col {
-  width: 600px;
+  width: 640px;
 }
 
 .nine-col {
-  width: 680px;
+  width: 720px;
 }
 
 .ten-col {
-  width: 760px;
+  width: 800px;
 }
 
 .eleven-col {
-  width: 840px;
+  width: 880px;
 }
 
 .twelve-col {
-  width: 920px;
+  width: 960px;
 }
 
 .thirteen-col {
-  width: 1000px;
+  width: 1040px;
 }
 
 .fourteen-col {
-  width: 1080px;
+  width: 1120px;
 }
 
 .fifteen-col {
-  width: 1160px;
-  margin-right: 0;
+  width: 1200px;
 }
 
 .prefix-one {
