@@ -20,11 +20,11 @@ The purpose of Vamp is to:
 * Allow “Big Data” type analysis- and prediction patterns on service behavior, performance and life-cycle.
 * Provide clear SLA management and service level enforcement on services.
 
-## More benefit, less risk
+## More reward, less risk
 
 Vamp manages deployments and running systems to bring you more of the benefits and less of the pain associated with microservice architectures.
 
-### Microservice bennefits and risks
+### Microservice benefits and risks
 
 #### Benefits
 
