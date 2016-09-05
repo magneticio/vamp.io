@@ -1,0 +1,672 @@
+/* CSS RESET */
+
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+article, aside, figure, footer, header, nav, section, details, summary {
+  display: block;
+}
+
+/* Handle box-sizing while better addressing child elements:
+   http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* consider resetting the default cursor: https://gist.github.com/murtaugh/5247154 */
+
+/* Responsive images and other embedded objects */
+/* if you don't have full control over `img` tags (if you have to overcome attributes), consider adding height: auto */
+img,
+object,
+embed {
+  max-width: 100%;
+}
+
+/*
+   Note: keeping IMG here will cause problems if you're using foreground images as sprites.
+	In fact, it *will* cause problems with Google Maps' controls at small size.
+	If this is the case for you, try uncommenting the following:
+
+#map img {
+		max-width: none;
+}
+*/
+
+/* force a vertical scrollbar to prevent a jumpy page */
+html {
+  overflow-y: scroll;
+}
+
+/* we use a lot of ULs that aren't bulleted.
+	you'll have to restore the bullets within content,
+	which is fine because they're probably customized anyway */
+ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted #000;
+  cursor: help;
+}
+
+/* tables still need cellspacing="0" in the markup */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+th {
+  font-weight: bold;
+  vertical-align: bottom;
+}
+
+td {
+  font-weight: normal;
+  vertical-align: top;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+pre {
+  white-space: pre; /* CSS2 */
+  white-space: pre-wrap; /* CSS 2.1 */
+  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word; /* IE */
+}
+
+input[type="radio"] {
+  vertical-align: text-bottom;
+}
+
+input[type="checkbox"] {
+  vertical-align: bottom;
+}
+
+.ie7 input[type="checkbox"] {
+  vertical-align: baseline;
+}
+
+.ie6 input {
+  vertical-align: text-bottom;
+}
+
+select, input, textarea {
+  font: 99% sans-serif;
+}
+
+table {
+  font-size: inherit;
+  font: 100%;
+}
+
+small {
+  font-size: 85%;
+}
+
+strong {
+  font-weight: bold;
+}
+
+td, td img {
+  vertical-align: top;
+}
+
+/* Make sure sup and sub don't mess with your line-heights http://gist.github.com/413930 */
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* standardize any monospaced elements */
+pre, code, kbd, samp {
+  font-family: monospace, sans-serif;
+}
+
+/* hand cursor on clickable elements */
+.clickable,
+label,
+input[type=button],
+input[type=submit],
+input[type=file],
+button {
+  cursor: pointer;
+}
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea {
+  margin: 0;
+}
+
+/* make buttons play nice in IE */
+button,
+input[type=button] {
+  width: auto;
+  overflow: visible;
+}
+
+/* scale images in IE7 more attractively */
+.ie7 img {
+  -ms-interpolation-mode: bicubic;
+}
+
+/* prevent BG image flicker upon hover
+   (commented out as usage is rare, and the filter syntax messes with some pre-processors)
+.ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
+*/
+
+/* let's clear some floats */
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* Grid */
+
+.container {
+  width: 1160px;
+  //background-color: red;
+}
+
+
+.row {
+  margin: 40px 0;
+  display: flex;
+  width: 100%;
+  transform: translate(20px, 0);
+
+  &--full {
+    transform: none;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.one-col, .two-col, .three-col, .four-col, .five-col, .six-col, .seven-col, .eight-col, .nine-col, .ten-col, .eleven-col, .twelve-col, .thirteen-col, .fourteen-col, .fifteen-col {
+  margin: 0 40px 0 0;
+  padding: 0;
+  position: relative;
+  //background: #9fcdf6;
+}
+.one-col {
+  width: 40px;
+}
+
+.two-col {
+  width: 120px;
+}
+
+.three-col {
+  width: 200px;
+}
+
+.four-col {
+  width: 280px;
+}
+
+.five-col {
+  width: 360px;
+}
+
+.six-col {
+  width: 440px;
+}
+
+.seven-col {
+  width: 520px;
+}
+
+.eight-col {
+  width: 600px;
+}
+
+.nine-col {
+  width: 680px;
+}
+
+.ten-col {
+  width: 760px;
+}
+
+.eleven-col {
+  width: 840px;
+}
+
+.twelve-col {
+  width: 920px;
+}
+
+.thirteen-col {
+  width: 1000px;
+}
+
+.fourteen-col {
+  width: 1080px;
+}
+
+.fifteen-col {
+  width: 1160px;
+  margin-right: 0;
+}
+
+.prefix-one {
+  margin-left: 80px;
+}
+
+.prefix-two {
+  margin-left: 160px;
+}
+
+.prefix-three {
+  margin-left: 240px;
+}
+
+.prefix-four {
+  margin-left: 320px;
+}
+
+.prefix-five {
+  margin-left: 400px;
+}
+
+.prefix-six {
+  margin-left: 480px;
+}
+
+.prefix-seven {
+  margin-left: 560px;
+}
+
+.prefix-eight {
+  margin-left: 640px;
+}
+
+.prefix-nine {
+  margin-left: 720px;
+}
+
+.prefix-ten {
+  margin-left: 800px;
+}
+
+.prefix-eleven {
+  margin-left: 880px;
+}
+
+.prefix-twelve {
+  margin-left: 960px;
+}
+
+.prefix-thirteen {
+  margin-left: 1040px;
+}
+
+.prefix-fourteen {
+  margin-left: 1120px;
+}
+
+.suffix-one {
+  margin-right: 120px;
+}
+
+.suffix-two {
+  margin-right: 200px;
+}
+
+.suffix-three {
+  margin-right: 280px;
+}
+
+.suffix-four {
+  margin-right: 360px;
+}
+
+.suffix-five {
+  margin-right: 440px;
+}
+
+.suffix-six {
+  margin-right: 520px;
+}
+
+.suffix-seven {
+  margin-right: 600px;
+}
+
+.suffix-eight {
+  margin-right: 680px;
+}
+
+.suffix-nine {
+  margin-right: 760px;
+}
+
+.suffix-ten {
+  margin-right: 840px;
+}
+
+.suffix-eleven {
+  margin-right: 920px;
+}
+
+.suffix-twelve {
+  margin-right: 1000px;
+}
+
+.suffix-thirteen {
+  margin-right: 1080px;
+}
+
+.suffix-fourteen {
+  margin-right: 1160px;
+}
+
+.clear { /* Useful generic clearing class. */
+  clear: both;
+}
+.last-col {
+  margin-right: 0;
+}
+
+/* Variables */
+
+// Colors
+$red: #FF405E;
+$dark-blue: #142D3C;
+$medium-dark-blue: #234B5F;
+$medium-light-blue: #37647D;
+$light-blue: #C3D2DC;
+$dark-grey: #96ADAA;
+$light-grey: #F0F5FA;
+
+$accent-color: #6991AA;
+
+$red-hover: #C33750;
+$dark-blue-hover: #234B5F;
+$grey-hover: #6991AA;
+
+  // Font-sizes
+$biggest: 52px;
+$big: 40px;
+$medium: 24px;
+$medium-small: 15px;
+$small: 13px;
+
+// Margins
+$small-margin: 20px;
+$medium-margin: 40px;
+$big-margin: 60px;
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Components */
+
+.page {
+}
+
+// Fonts
+.header {
+  font-weight: 100;
+  font-size: 52px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $dark-blue;
+}
+
+.h1 {
+  font-size: 40px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: $dark-blue;
+
+  &:not(:first-child):not(:last-child) {
+    margin: $small-margin 0;
+  }
+
+  &:first-child {
+    margin-bottom: $small-margin;
+  }
+
+  &:last-child {
+    margin-bottom: $small-margin;
+  }
+}
+
+.h2 {
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.05em;
+  color: $dark-blue;
+
+  &:not(:first-child):not(:last-child) {
+    margin: $small-margin 0;
+  }
+
+  &:first-child {
+    margin-bottom: $small-margin;
+  }
+
+  &:last-child {
+    margin-bottom: $small-margin;
+  }
+}
+
+.h3 {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: $dark-grey;
+}
+
+.text-header {
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: $dark-blue;
+}
+
+.text {
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  font-size: 15px;
+  color: $dark-blue;
+  line-height: 1.5;
+}
+
+// Buttons
+.button {
+  @extend .h3;
+  //font-weight: 300;
+  border: none;
+  height: 40px;
+  min-width: 120px;
+  padding: 0 40px;
+  border-radius: 5px;
+  transition: all 0.15s ease-in-out;
+
+
+  &--grey {
+    background-color: $accent-color;
+    color: white;
+
+
+    &:hover {
+      background-color: $dark-blue-hover;
+    }
+
+    &--ghost {
+      background-color: transparent;
+      color: $accent-color;
+      border: 1px solid $accent-color;
+
+      &:hover {
+        background-color: $accent-color;
+        color: white;
+      }
+    }
+
+  }
+
+  &--red {
+    background-color: $red;
+    color: white;
+
+    &:hover {
+      background-color: $red-hover;
+    }
+
+    &--ghost {
+      background-color: transparent;
+      color: $red;
+      border: 1px solid $red;
+
+      &:hover {
+        background-color: $red;
+        color: white;
+      }
+    }
+  }
+
+  &--blue {
+    background-color: $dark-blue;
+    color: white;
+
+    &:hover {
+      background-color: $dark-blue-hover;
+    }
+
+    &--ghost {
+      background-color: transparent;
+      color: $dark-blue;
+      border: 1px solid $dark-blue;
+
+      &:hover {
+        background-color: $dark-blue;
+        color: white;
+      }
+
+    }
+  }
+}
+
+.lander-row {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+
+  &--blue {
+    background-color: $dark-blue;
+
+    .header, .h1, .h2, .text-header, .text {
+      color: $light-grey;
+    }
+  }
+
+  &--white {
+    background-color: white;
+  }
+
+  &--grey {
+    background-color: $light-grey;
+  }
+
+  &--red {
+    background-color: $red;
+
+    .header, .h2, .h3, .text-header, .text {
+      color: $light-grey;
+    }
+  }
+}
+
+
+
+
+// Custom
+
+.hero-space-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 400px;
+
+  .button {
+    min-width: 180px;
+  }
+}
+

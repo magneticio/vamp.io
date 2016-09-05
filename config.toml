@@ -1,7 +1,7 @@
 baseurl = "http://vamp.com/"
 languageCode = "en-us"
 title = "Vamp"
-theme = "hugo-material-docs"
+theme = "vamp-theme"
 metadataformat = "yaml"
 canonifyurls = true
 
