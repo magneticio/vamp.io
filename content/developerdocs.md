@@ -5,7 +5,7 @@ menu:
   main:
     parent: RESOURCES
     identifier: developer docs
-    weight: 30
+    weight: 40
 ---
 
 * [API reference](http://vamp.io/documentation/api-reference/)

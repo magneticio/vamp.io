@@ -5,7 +5,7 @@ title: Architecture and components
 
 [back to resources page](/resources/)
 
-The Vamp platform consists of multiple server and client side components. Before installing, it is very helpful to understand the role of each component and its preferred location in a typical architecture.
+The Vamp platform consists of server and client side components. Before installing, it is helpful to understand the role of each component and its preferred location in a typical architecture.
 
 ## Architecture
 
@@ -14,7 +14,7 @@ The below diagram should be used more as an overview than required architecture.
 
 {{< /note >}}
 
-![diagram](http://localhost:1313/img/vamp_arch.svg)
+![diagram](http://vamp.io/img/vamp_arch.svg)
 
 
 ## Components

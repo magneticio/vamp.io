@@ -18,8 +18,22 @@ Automatically scale and optimise deployments or running systems.
 * __Container-scheduler agnostic API__   
 Avoid vendor lock-in with YAML based deployments.
 ## We work with
+  
+## Vamp works with:  
 
-### Companies:  
+* Mesosphere  
+* Kubernetes  
+* DC/OS  
+* Rancher  
+* Docker
+* Azure
+
+### Cloud packets:  
+
+* AWS
+* Google
+
+## Companies using Vamp:  
 
 * BBVA  
 * Exact  
@@ -27,20 +41,6 @@ Avoid vendor lock-in with YAML based deployments.
 * Wehkamp  
 * Rabobank  
 * Ziggo
-  
-### Partners:  
-
-* Mesosphere  
-* Kubernetes  
-* DC/OS  
-* Rancher  
-* Docker
-
-### Cloud packets:  
-
-* AWS
-* Google
-
 -------------
 
 ## Vamp feature list
