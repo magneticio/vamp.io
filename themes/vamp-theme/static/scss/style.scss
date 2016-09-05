@@ -219,6 +219,13 @@ input[type=button] {
   clear: both;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none !important;
+}
+
 /* Grid */
 
 .container {
@@ -232,6 +239,7 @@ input[type=button] {
   display: flex;
   width: 100%;
   transform: translate(20px, 0);
+  flex-wrap: wrap;
 
   &--full {
     transform: none;
@@ -538,6 +546,18 @@ body {
   font-size: 14px;
   letter-spacing: 0.05em;
   color: $dark-blue;
+
+  &:not(:first-child):not(:last-child) {
+    margin: 10px 0;
+  }
+
+  &:first-child {
+    margin-bottom: 10px;
+  }
+
+  &:last-child {
+    margin-bottom: 10px;
+  }
 }
 
 .text {
@@ -624,6 +644,7 @@ body {
   }
 }
 
+// Lander rows
 .lander-row {
   display: flex;
   justify-content: center;
@@ -648,17 +669,41 @@ body {
   &--red {
     background-color: $red;
 
-    .header, .h2, .h3, .text-header, .text {
+    .header, .h2, .h3, .text {
       color: $light-grey;
     }
   }
 }
 
+// Inputs
+.input-group {
+  display: flex;
+
+  input {
+    border: none;
+    border-radius: 5px 0 0 5px;
+    flex: 1;
+    padding: 0 10px;
+
+    &:focus {
+      border: none;
+      outline: none !important;
+    }
+
+  }
+
+  button {
+    border-radius: 0 5px 5px 0;
+    width: 80px;
+    min-width: 80px;
+    max-width: 80px;
+    padding: 10px;
+  }
+}
 
 
 
 // Custom
-
 .hero-space-buttons {
   display: flex;
   align-items: center;
