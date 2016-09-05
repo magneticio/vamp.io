@@ -8,7 +8,7 @@ menu:
     weight: 10
 ---
 
-If everything went to plan, you should have your Vamp installation up and running __on your local machine__. If not, please check [the Vamp quick setup instructions](/quick-setup/)
+If everything went to plan, you should have your Vamp installation up and running __on your local machine__. If not, please check the [Vamp hello world with Marathon](/hello-world-marathon/)
 
 Now we're ready to check out some of Vamp's features. 
 
