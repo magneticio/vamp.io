@@ -7,16 +7,26 @@ menu:
     identifier: Hello world
     weight: 05
 ---
+## Overview
 
-This Hello world quick setup will run Mesos, [Marathon](https://mesosphere.github.io/marathon/) and Vamp inside a local Docker container with Vamp's Marathon driver. We will do this in three simple steps (although it's really just one docker run command):
+The Vamp hello world quick setup will run Mesos, [Marathon](https://mesosphere.github.io/marathon/) and Vamp inside a local Docker container with Vamp's Marathon driver.   
+We will do this in three simple steps (although it's really just one `docker run` command).
 
-1. Get docker
+### Quick setup steps:
+
+1. Get Docker
 2. Run Vamp
 3. Check Vamp is up and running
 
-> NB If you need help you can also find us on [Gitter] (https://gitter.im/magneticio/vamp)
+### Prerequisistes:
 
-## Step 1: Get Docker
+*  coffee
+
+>**Note** If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+
+## In depth
+
+### Step 1: Get Docker
 
 Please install one of the following for your platform/architecture
 
@@ -25,11 +35,11 @@ Please install one of the following for your platform/architecture
 
 > **Note:** Running the Vamp quick setup on earlier versions of Docker is also possible, even though it is recommended at least version 1.9.x.
 
-## Step 2: Run Vamp
+### Step 2: Run Vamp
 
 Start the `magneticio/vamp-docker:0.8.5-marathon` container, taking care to pass in the right parameters. 
 
-### Linux
+#### Linux
 
 A typical command would be:
 ```
@@ -47,7 +57,7 @@ Great article about starting Docker containers from/within another Docker contai
 > **Note:** Marathon port is 9090 (e.g. http://localhost:9090/) instead of default 8080. 
 
 
-### Mac OS X 10.8+ or Windows 7+
+#### Mac OS X 10.8+ or Windows 7+
 
 A typical command on Mac OS X running Docker Toolbox would be:
 ```
@@ -61,7 +71,7 @@ docker run --net=host \
 
 > **Note:** If you installed Docker Toolbox please use "Docker Quickstart Terminal". At this moment we don't support Kitematic yet.
 
-## Step 3: Check Vamp is up and running
+### Step 3: Check Vamp is up and running
 
 After some downloading and booting, your Docker log will show Vamp launch and report something like:
 
@@ -89,8 +99,9 @@ If you run on Docker machine, use `docker-machine ip default` instead of `localh
 > **Note:** This runs all of Vamp's components in one container. This is definitely not ideal, but works fine for kicking the tires.
 You will run into cpu, memory and storage issues pretty soon though. Also, random ports are assigned by Vamp which you might not have exposed on either Docker or your Docker Toolbox Vagrant box.  
 
-Now you're ready to follow our [Vamp Sava tutorials](/deploy-your-first-blueprint/).
+## What next?
 
-Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
+* Now you're all set to follow our [Vamp Sava tutorials](/deploy-your-first-blueprint/).
+* Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 
 > NB If you need help you can also find us on [Gitter] (https://gitter.im/magneticio/vamp)

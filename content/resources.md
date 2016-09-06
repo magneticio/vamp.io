@@ -19,10 +19,10 @@ We could make this content the "what is Vamp" section and use the business focus
 * [download Vamp](/downloads/)
 
 ### install Vamp
-  * [Mesos/Marathon](/docs/mesosmarathon/)
-  * [Kubernetes](/docs/kubernetes/)
-  * [DC/OS](/docs/dcos/)
-  * [Rancher](/docs/rancher/)
+  * [Hello world](/vamp-hello-world/)
+  * [quick setup with Kubernetes](/quick-setup-kubernetes/)
+  * [quick setup with DC/OS](/quick-setup-dcos/)
+  * [quick setup with Rancher](/quick-setup-rancher/)
   * [Docker](/docs/docker/)
   * [Mac OS X](/docs/macosx/)
 

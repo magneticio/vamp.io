@@ -7,18 +7,23 @@ menu:
     identifier: run a canary release
     weight: 20
 ---
-In the [previous tutorial we deployed our app sava 1.0](/deploy/). If you haven't walked through that part already, please do so before continuing. 
+
+## Overview
+
+In the [previous tutorial we deployed our app sava 1.0](/deploy-your-first-blueprint/). If you haven't walked through that part already, please do so before continuing. 
 
 Now let's say we have a new version of this great application that we want to canary release into production. We have it containerised as `magneticio/sava:1.1.0` and are ready to go. 
 
 ### In this tutorial we will:
 
-* prepare our blueprint
-* deploy the new version of our application next to the old one
-* Use conditions to target specific groups
-* Learn a bit more about conditions
+1. Prepare our blueprint
+2. Deploy the new version of our application next to the old one
+3. Use conditions to target specific groups
+4. Learn a bit more about conditions
 
-## Prepare our blueprint
+## In depth
+
+### Step 1: Prepare our blueprint
 
 Vamp allows you to do canary releases using blueprints. Take a look at the YAML example below. It is quite similar to the blueprint we initially used to deploy sava 1.0.0. However, there are two big differences.
 
@@ -71,12 +76,12 @@ clusters:
 > **Note**: There is nothing stopping you from deploying three or more versions and distributing the weight
 among them. Just make sure that when doing a straight three-way split you give one service 34% as 33%+33%+33%=99%.
 
-## Deploy the new version of our application next to the old one
+### Step 2: Deploy the new version of our application next to the old one
 
 It is our goal to update the already running deployment with the new blueprint. Vamp will figure out that v1.0.0
 is already there and just add v1.1.0 while setting the correct routing between these services.
 
-### Using the UI
+#### Using the UI
 
 1. go to the deployment detail screen and press the **Edit deployment** button. 
 2. Copy the above blueprint and paste over the the deployment that is there. 
@@ -92,11 +97,11 @@ When finished deploying, you can start refreshing your browser at the correct en
 
 > **Note** This works best "Incognito" or "Anonymous" mode of your browser because of the caching of static assets.
 
-### Using the API
+#### Using the API
 
 If you want to use the RESTful API, you can update a running deployment by getting its name (the UUID) from `/api/v1/deployments` and `PUT`-ing the blueprint to that resource, e.g: `/api/v1/deployments/e1c99ca3-dc1f-4577-aa1b-27f37dba0325`
 
-## Use conditions to target specific groups
+### Step 3:Use conditions to target specific groups
 
 Using percentages to divide traffic between versions is already quite powerful, but also very simplistic.
 What if, for instance, you want to specifically target a group of users? Or a specific channel of requests
@@ -172,7 +177,7 @@ As we are not actually deploying anything but just reconfiguring routes, the upd
 
 ![](/img/screenshots/screencap_canary1.gif)
 
-## Learn a bit more about conditions
+### Step 4: Learn a bit more about conditions
 
 Our browser example is easily testable on a laptop, but of course a bit contrived. Luckily you can
 create much more powerful filters quite easily. Checking Headers, Cookies, Hosts etc. is all possible.
@@ -222,4 +227,7 @@ Using a tool like [httpie](https://github.com/jakubroztocil/httpie) makes testin
 
 ![](/img/screenshots/screencap_canary2.gif)
 
-Cool stuff. But we are dealing here with single, monolithic applications. Where are the microservices? We will [chop up this monolith into services and deploy them with Vamp](/split-into-services/) in the third part of our tutorial →
+## What next?
+
+Cool stuff. But we are dealing here with single, monolithic applications. Where are the microservices?   
+We will [chop up this monolith into services and deploy them with Vamp](/split-into-services/) in the third part of our tutorial →

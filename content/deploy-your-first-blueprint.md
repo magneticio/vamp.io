@@ -7,18 +7,19 @@ menu:
     identifier: deploy your first blueprint
     weight: 10
 ---
+## Overview
 
-If everything went to plan, you should have your Vamp installation up and running __on your local machine__. If not, please check the [Vamp hello world with Marathon](/hello-world-marathon/)
-
-Now we're ready to check out some of Vamp's features. 
+If everything went to plan, you should have your Vamp installation up and running. If not, please follow the steps in [Vamp hello world](/hello-world-marathon/). Now we're ready to check out some of Vamp's features. 
 
 ### In this tutorial we will:  
 
-* Deploy a monolith, with either the Vamp UI or the Vamp API
-* Check out the deployed application
-* Get some metrics on the running application
+1. Deploy a monolith, using either the Vamp UI or the Vamp API
+2. Check out the deployed application
+3. Get some metrics on the running application
 
-## Deploy a monolith
+## In depth
+
+### Step 1: Deploy a monolith
 
 Imagine you or the company you work for still use monolithic applications. I know, it sounds far fetched...
 This application is conveniently called *Sava monolith* and is at version 1.0.  
@@ -45,7 +46,7 @@ clusters:
 ```
 
 
-### Deploy using the Vamp UI
+#### Deploy using the Vamp UI
 
 1. In the Vamp UI, go to the **blueprints** tab, click the **Add new** button. Paste in the below blueprint and press **Save**   
   * Vamp will store the blueprint and make it available for deployment. 
@@ -54,7 +55,7 @@ clusters:
 
 ![](/img/screenshots/tut1_deploy.gif)
 
-### Deploy using the Vamp API
+#### Deploy using the Vamp API
 
 Alternatively, you can use your favorite tools like [Postman](https://www.getpostman.com/), [HTTPie](https://github.com/jakubroztocil/httpie) or Curl to post this blueprint directly to the `api/v1/deployments` endpoint of Vamp.
 
@@ -82,7 +83,7 @@ After POST-ing, Vamp should respond with a `202 Accepted` message and return a J
 
 >**Note**: Using the RESTful API it is possible to create a deployment with a custom name - simple `PUT` request to `http://localhost:8080/api/v1/deployments/DEPLOYMENT_CUSTOM_NAME`
 
-## Check out the deployed application 
+### Step 2: Check out the deployed application 
 
 You can follow the deployment process of our container by checking the `/api/v1/deployments` endpoint and checking when the `state` field changes from `ReadyForDeployment` to `Deployed`. You can also check Marathon's GUI.
 
@@ -90,7 +91,7 @@ When the application is fully deployed you can check it out at Vamp host address
 
 ![](/img/screenshots/monolith1.png)
 
-## Get some metrics on the running application
+### Step 3: Get some metrics on the running application
 
 Using a simple tool like [Apache Bench](https://httpd.apache.org/docs/2.2/programs/ab.html) we can put some load on our application and see some of the metrics flowing into the dashboard. Use the following command to send 10000 requests using 15 threads to our Sava app.
 
@@ -106,4 +107,7 @@ You should see the metrics spike and some pretty charts being drawn:
 
 ![](/img/screenshots/tut1_metrics.png)
 
-Ok, that's great! Now let's [run a canary release in the second part of this getting started tutorial →](/canary-release/)
+## What next?
+
+Ok, that's great!   
+Now let's [run a canary release in the second part of this getting started tutorial →](/run-a-canary-release/)
