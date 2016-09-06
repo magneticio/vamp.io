@@ -11,7 +11,7 @@ menu:
 [back to resources page](/resources/)
 
 * [architecture and components](/components/)
-* [concepts](/vampconcepts/)  
+* [concepts](/vamp-concepts/)  
 * [service discovery](/servicediscovery/)
 
 

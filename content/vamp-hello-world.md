@@ -37,7 +37,7 @@ Please install one of the following for your platform/architecture
 
 ### Step 2: Run Vamp
 
-Start the `magneticio/vamp-docker:0.8.5-marathon` container, taking care to pass in the right parameters. 
+Use the instructions below to start the `magneticio/vamp-docker:0.8.5-marathon` container, taking care to pass in the right parameters. 
 
 #### Linux
 
@@ -51,8 +51,7 @@ docker run --net=host \
            magneticio/vamp-docker:0.8.5-marathon
 ```
 
-Mounting volumes is important. 
-Great article about starting Docker containers from/within another Docker container can be found [here](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/).
+Mounting volumes is important. [Read this great article about starting Docker containers from/within another Docker container](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/).
 
 > **Note:** Marathon port is 9090 (e.g. http://localhost:9090/) instead of default 8080. 
 
@@ -73,13 +72,13 @@ docker run --net=host \
 
 ### Step 3: Check Vamp is up and running
 
-After some downloading and booting, your Docker log will show Vamp launch and report something like:
+After some downloading and booting, your Docker log will show Vamp has launched and report something like:
 
 ```
 ...Bound to /0.0.0.0:8080
 ```
 
-Now check if Vamp is home on `http://{docker-machine ip default}:8080/` and you're ready for the [Vamp Sava tutorials](/deploy/)
+Now check if Vamp is home on `http://{docker-machine ip default}:8080/` and you're ready for the [Vamp Sava tutorials](/deploy-your-first-blueprint/)
 
 ![](/img/screenshots/vamp_ui_home.gif)
 
@@ -103,5 +102,6 @@ You will run into cpu, memory and storage issues pretty soon though. Also, rando
 
 * Now you're all set to follow our [Vamp Sava tutorials](/deploy-your-first-blueprint/).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
+* Remember, this is not a production grade setup!
 
 > NB If you need help you can also find us on [Gitter] (https://gitter.im/magneticio/vamp)
