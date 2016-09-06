@@ -65,7 +65,7 @@ googleAnalytics = ""
 
 [[menu.main]]
 	name   = "TRY VAMP"
-	url    = "tryvamp/"
+	url    = "/try-vamp/"
 	weight = 20
 
 

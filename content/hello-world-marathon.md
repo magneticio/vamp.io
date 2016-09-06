@@ -1,15 +1,18 @@
 ---
 date: 2016-03-09T19:56:50+01:00
-title: Hello world with Marathon
+title: Hello world
 menu:
   main:
     parent: TRY VAMP
-    identifier: Hello world with Marathon
+    identifier: Hello world
     weight: 05
 ---
 
-The easiest way to get started with Vamp is by spinning up one of the Docker images stored in the [vamp-docker repo](https://github.com/magneticio/vamp-docker) and the [public Docker hub](https://hub.docker.com/r/magneticio/vamp-docker/).
-This setup will run [Marathon](https://mesosphere.github.io/marathon/) and Vamp inside a Docker container with Vamp's Marathon driver. The quick setup steps below will walk you through this.
+This Hello world quick setup will run Mesos, [Marathon](https://mesosphere.github.io/marathon/) and Vamp inside a local Docker container with Vamp's Marathon driver. We will do this in three simple steps (although it's really just one docker run command):
+
+1. Get docker
+2. Run Vamp
+3. Check Vamp is up and running
 
 > NB If you need help you can also find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
@@ -86,7 +89,7 @@ If you run on Docker machine, use `docker-machine ip default` instead of `localh
 > **Note:** This runs all of Vamp's components in one container. This is definitely not ideal, but works fine for kicking the tires.
 You will run into cpu, memory and storage issues pretty soon though. Also, random ports are assigned by Vamp which you might not have exposed on either Docker or your Docker Toolbox Vagrant box.  
 
-Now proceed to our [Vamp Sava tutorials](/deploy/).
+Now you're ready to follow our [Vamp Sava tutorials](/deploy-your-first-blueprint/).
 
 Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 
