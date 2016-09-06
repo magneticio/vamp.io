@@ -84,6 +84,8 @@ When finished deploying, you can start refreshing your browser at the correct en
 
 If you want to use the RESTful API, you can update a running deployment by getting its name (the UUID) from `/api/v1/deployments` and `PUT`-ing the blueprint to that resource, e.g: `/api/v1/deployments/e1c99ca3-dc1f-4577-aa1b-27f37dba0325` or of course use the explicit name that you used for the deployment.
 
+> ** Note** You could also create a second blueprint with the service, and use **Merge to** to merge this new service to the Sava-cluster so it becomes available for routing traffic to it.  
+
 ## Step 3: Using conditions to target specific groups
 
 Using percentages to divide traffic between versions is already quite powerful, but also very simplistic.
