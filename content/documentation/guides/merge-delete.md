@@ -53,7 +53,7 @@ clusters:
         name: sava-frontend:1.3.0
         deployable: magneticio/sava-frontend:1.3.0
         ports:
-          port: 8080/http
+          webport: 8080/http
         environment_variables:
           BACKEND: http://$backend.host:$backend.ports.port/api/message
         dependencies:
@@ -68,7 +68,7 @@ clusters:
         name: sava-backend:1.3.0
         deployable: magneticio/sava-backend:1.3.0
         ports:
-          port: 8080/http
+          webport: 8080/http
       scale:
         cpu: 0.2
         memory: 64MB
@@ -115,7 +115,7 @@ clusters:
         name: sava-frontend:1.2.0
         deployable: magneticio/sava-frontend:1.2.0
         ports:
-          port: 8080/http
+          webport: 8080/http
         environment_variables:
           BACKEND_1: http://$backend1.host:$backend1.ports.port/api/message
           BACKEND_2: http://$backend2.host:$backend2.ports.port/api/message
@@ -133,7 +133,7 @@ clusters:
         name: sava-frontend:1.3.0
         deployable: magneticio/sava-frontend:1.3.0
         ports:
-          port: 8080/http
+          webport: 8080/http
         environment_variables:
           BACKEND: http://$backend.host:$backend.ports.port/api/message
         constants: {}
