@@ -44,7 +44,7 @@ clusters:
 
 In the Vamp UI, go to the **blueprints** tab, click the **Add new** button. Paste in the above blueprint and press **Save**. Vamp will store the blueprint and make it available for deployment. Now go to the **deployments** tab, select the blueprint you just saved, press the **Deploy button** and give it a nice name, for example 'Sava'. Note that we don't use a version-number for this deployment, as Vamp supports immutable infrastructure principles and want to keep the deployment up and running all the time by adding, changing or removing parts of it at runtime. 
 
-![](/img/screenshots/tut1_deploy.gif)
+![](/img/screenshots/tut1_deploy-v090.gif)
 
 Alternatively, you can use your favorite tools like [Postman](https://www.getpostman.com/), [HTTPie](https://github.com/jakubroztocil/httpie) or Curl to post this blueprint directly to the `api/v1/deployments` endpoint of Vamp.
 
@@ -94,11 +94,13 @@ ab -k -c 15 -n 10000 http://`docker-machine ip default`:9050/
 
 You should see the metrics spike and some pretty charts being drawn. A succesful deployment almost always consists of the containers being deployed, and the connected gateway that automatically load-balances the cluster and exposes it to the outside world. Metrics can be found both under the **deployment** tab and under the **gateways** tab. From the deployments tab there is a link to the related gateway. 
 
-![](/img/screenshots/tut1_metrics.png)
+![](/img/screenshots/tut1_metrics-v090.gif)
 
 ## Step 4: Change scale and load-balancing
 
 Vamp will automatically load-balance services. Let's change the scale of the service by entering "3" in the *instances** field. Now Vamp will automatically scale up the number of running instances (of course permitting underlying resources) and load-balance these to the outside world using the gateway feature.
+
+![](/img/screenshots/tut1_scale-v090.gif)
 
 ## Step 5: Chaos monkey
 
