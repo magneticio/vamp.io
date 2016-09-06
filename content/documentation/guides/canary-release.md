@@ -25,14 +25,14 @@ Notice we assigned 50% to our current version 1.0.0 and 50% to the new version 1
 
 You could also just leave out the whole `gateways` sections and use the UI to change the weights after we've done the deployment.
 
-![](/img/screenshots/weight_sliders.png)
+![](/img/screenshots/tut2_sliders.gif)
 {{% copyable %}}
 
 ```yaml
 ---
 name: sava:1.0
 gateways:
-  9050: sava/port
+  9050: sava/webport
 clusters:
   sava:
     gateways:
@@ -47,7 +47,7 @@ clusters:
           name: sava:1.0.0
           deployable: magneticio/sava:1.0.0
           ports:
-            port: 8080/http
+            webport: 8080/http
         scale:
           cpu: 0.2
           memory: 64MB
@@ -57,7 +57,7 @@ clusters:
           name: sava:1.1.0 # a new version of our service
           deployable: magneticio/sava:1.1.0
           ports:
-            port: 8080/http
+            webport: 8080/http
         scale:
           cpu: 0.2
           memory: 64MB
@@ -117,7 +117,7 @@ Our full blueprint now looks as follows:
 ---
 name: sava:1.0
 gateways:
-  9050: sava/port
+  9050: sava/webport
 clusters:
   sava:
     gateways:
@@ -134,7 +134,7 @@ clusters:
           name: sava:1.0.0
           deployable: magneticio/sava:1.0.0
           ports:
-            port: 8080/http
+            webport: 8080/http
         scale:
           cpu: 0.2
           memory: 64MB
@@ -144,7 +144,7 @@ clusters:
           name: sava:1.1.0 # a new version of our service
           deployable: magneticio/sava:1.1.0
           ports:
-            port: 8080/http
+            webport: 8080/http
         scale:
           cpu: 0.2
           memory: 64MB
