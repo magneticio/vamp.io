@@ -75,7 +75,7 @@ After some downloading and booting, your Docker log should say something like:
 
 Now check if Vamp is home on `http://{docker-machine ip default}:8080/` and proceed to our [getting started tutorial](/documentation/guides/)
 
-![](/img/screenshots/vamp_ui_home.gif)
+![](/img/screenshots/quickstart-marathon-infopanel-v090.gif)
 
 Exposed services:
 
