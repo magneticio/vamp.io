@@ -1,0 +1,71 @@
+[
+  {
+    "id": "whatisvamp",
+    "text": "What is Vamp?",
+    "href": "whatisvamp",
+    "items": [
+      {
+        "id": "vampusecases",
+        "text": "Use Cases",
+        "href": "vampusecases"
+      },
+      {
+        "id": "vampcomparedto",
+        "text": "Vamp compared to",
+        "href": "vampcomparedto"
+      }
+    ]
+  },
+  {
+    "id": "tryvamp",
+    "text": "Try vamp",
+    "href": "tryvamp",
+    "items": [
+      {
+        "id": "helloworld",
+        "text": "Hello world",
+        "href": "hello-world-marathon"
+      },
+      {
+        "id": "asdf",
+        "text": "Vamp compared to",
+        "href": "asfd"
+      },
+      {
+        "id": "sadf",
+        "text": "asdfafds compared to",
+        "href": "asfd"
+      },
+      {
+        "id": "sadf",
+        "text": "asdfafds compared to",
+        "href": "asfd"
+      }
+    ]
+  },
+  {
+    "id": "resources",
+    "text": "Resources",
+    "href": "resources"
+  },
+  {
+    "id": "news",
+    "text": "News",
+    "href": "news"
+  },
+  {
+    "id": "support",
+    "text": "Support",
+    "href": "support"
+  },
+  {
+    "id": "api",
+    "text": "Api",
+    "href": "api"
+  },
+  {
+    "id": "instructions",
+    "text": "instructions",
+    "href": "instructions"
+  }
+]

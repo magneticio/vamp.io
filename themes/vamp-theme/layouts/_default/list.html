@@ -1,0 +1,29 @@
+{{ partial: head }}
+
+{{ partial: "header" . }}
+
+<div class="page">
+  <div class="container">
+    <div class="row">
+      <div class="menu col five-col ">
+        <ul>
+          {{ partial "nav" . }}
+        </ul>
+      </div>
+      <div class="content col ten-col ">
+        <h1>Pages in {{ .Title | singularize }}</h1>
+
+        {{ range .Data.Pages }}
+        <a href="{{ .Permalink }}" title="{{ .Title }}">
+          <h2>{{ .Title }}</h2>
+        </a>
+
+        <br>
+        {{ printf "%s" .Summary | markdownify }}
+
+        <hr>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>

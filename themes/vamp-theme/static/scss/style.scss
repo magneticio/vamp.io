@@ -234,6 +234,7 @@ $gutter-size: 40px;
 
 .container {
   width: $container-width;
+  margin: 0 auto;
   //background-color: red;
 }
 
@@ -488,6 +489,19 @@ body {
 /* Components */
 
 .page {
+  min-height: 100vh;
+  padding-top: 80px;
+  &.documentation {
+    //background-color: red;
+    background: linear-gradient(90deg, $light-grey 50%, white 50%);
+
+    .header {
+      color: $red;
+      margin: 40px 0;
+
+    }
+
+  }
 }
 
 // Fonts
@@ -569,7 +583,7 @@ body {
   letter-spacing: 0.05em;
   font-size: 15px;
   color: $dark-blue;
-  line-height: 1.5;
+  line-height: 1.7;
 }
 
 // Buttons
@@ -702,6 +716,181 @@ body {
     padding: 10px;
   }
 }
+
+// single page
+.menu {
+  background-color: $light-grey;
+  padding: 40px;
+  height: calc(100vh - 80px);
+  position: fixed;
+  top: 80px;
+  overflow-y: scroll;
+}
+
+.menu-item {
+  cursor: pointer;
+  &:first-child {
+    .section {
+      padding-top: 0;
+    }
+  }
+
+  &:not(:last-child) {
+    .section {
+      border-bottom: 1px solid $dark-grey;
+    }
+  }
+}
+
+.section {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+
+  .bullet {
+    width: 40px;
+
+    img {
+      width: 22px;
+    }
+  }
+
+  .section-title {
+    width: 5 * 40px;
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .folding-indicator {
+    width: 40px;
+    text-align: right;
+    line-height: 0;
+  }
+}
+
+.sub-menu-item {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  padding: 7px 0 7px 60px;
+}
+
+.content {
+  padding: 0 40px;
+  margin-left: 400px;
+  background-color: white;
+  min-height: 100vh;
+}
+
+// Markdown implementation
+.markdowned {
+  h2 {
+    @extend .h2;
+    margin-top: 60px !important;
+
+  }
+
+  h3 {
+    @extend .h3;
+  }
+
+  p {
+    @extend .text;
+
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  ol {
+    margin-left: 40px;
+  }
+
+  ul {
+    list-style-type: square;
+    margin-left: 40px;
+  }
+
+  li {
+    margin: 20px 0;
+    @extend .text;
+  }
+
+  a {
+    color: $red;
+  }
+
+  em {
+    display: block;
+    color: $accent-color;
+    font-weight: 200;
+  }
+}
+
+.date {
+  @extend .text;
+  color: $accent-color;
+  margin: 40px 0;
+
+}
+
+//Menu
+.top-menu {
+  position: fixed;
+  width: 100vw;
+
+  background-color: $dark-blue;
+  height: 80px;
+
+  .logo {
+    height: 40px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .left, .right {
+    height: 100%;
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+  }
+
+  .top-menu-items {
+    display: flex;
+    height: 100%;
+  }
+
+  .top-menu-item {
+    display: block;
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 15px;
+    font-weight: 300;
+    text-decoration: none;
+
+    &.active {
+      border-bottom: 1px solid $red;
+    }
+  }
+
+
+}
+
 
 // Custom
 .hero-space-buttons {
