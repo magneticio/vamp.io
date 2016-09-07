@@ -25,7 +25,3 @@ Please follow the tutorial in the following steps to get a good understanding of
 [3. Splitting into multiple services](/documentation/guides/getting-started-tutorial/3-splitting-services/)
 
 [4. Merging and deleting services](/documentation/guides/getting-started-tutorial/4-merge-delete/)
-
-[5. Autoscaling using Vamp SLA's and escalations] (/documentation/guides/getting-started-tutorial/5-sla-escalations/)
-
-

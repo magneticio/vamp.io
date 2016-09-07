@@ -25,7 +25,6 @@ Notice we assigned 50% to our current version 1.0.0 and 50% to the new version 1
 
 You could also just leave out the whole `gateways` sections and use the UI to change the weights after we've done the deployment.
 
-![](/img/screenshots/tut2_sliders.gif)
 {{% copyable %}}
 
 ```yaml
@@ -155,9 +154,7 @@ clusters:
 {{% /copyable %}}
 
 Using the UI, you can either use the **Edit deployment** button again and completely paste in this blueprint or just
-find the right place in the blueprint and edit it by hand. The result should be the same as using our UI to insert a filter condition:
-
-![](/img/screenshots/tut2_canary-condition-v090.gif)
+find the right place in the blueprint and edit it by hand. The result should be the same as using our UI to insert a filter condition.
 
 As we are not actually deploying anything but just reconfiguring routes, the update should be almost instantaneous. You can fire up a Chrome browser and a Safari browser and check the results. A hard refresh might be necessary because of your browser's caching routine.
 

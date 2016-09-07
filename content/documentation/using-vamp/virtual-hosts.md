@@ -60,7 +60,7 @@ $ curl --resolve 9080.runner.vamp:80:${VAMP_GATEWAY_AGENT_IP} http://9080.runner
 {"id":"2.0.0","runtime":"1E188B006FF44AA6","port":8081,"path":""}
 ```
 
-In case of using Vamp quick start, `${VAMP_GATEWAY_AGENT_IP}` should have value of `${DOCKER_HOST_IP}` - [docs](/documentation/installation/quick_start/#step-2-run-vamp).
+In case of using Vamp quick start, `${VAMP_GATEWAY_AGENT_IP}` should have value of `${DOCKER_HOST_IP}` - [docs](/documentation/installation/marathon/#step-2-run-vamp).
 
 Vamp creates a virtual host for each gateway - name of the gateway (`/` replaced with `.`) appended to value from `vamp.gateway-driver.virtual-hosts-domain`.
 In case of above example:
