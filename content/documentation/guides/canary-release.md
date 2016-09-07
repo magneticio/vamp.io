@@ -22,6 +22,7 @@ Vamp allows you to do canary releases using blueprints. Take a look at the YAML 
 
 Notice we assigned 50% to our current version 1.0.0 and 50% to the new version 1.1.0 We could also start with a 100% to 0% split, a 99% to 1% split or whatever combination you want as long as all percentages add up to 100% in total.
 
+![](/img/screenshots/tut2_sliders-v090.gif)
 
 You could also just leave out the whole `gateways` sections and use the UI to change the weights after we've done the deployment.
 
@@ -73,7 +74,7 @@ is already there and just add v1.1.0 while setting the correct routing between t
 
 Using the UI, go to the deployment detail screen and press the **Edit deployment** button. Copy the above deployment and paste over the the deployment that is there. Press **Save** and Vamp will start working out the differences and update the deployment accordingly.
 
-![](/img/screenshots/tut2_canary.gif)
+![](/img/screenshots/tut2_canary-v090.gif)
 
 When finished deploying, you can start refreshing your browser at the correct endpoint, e.g. `http://192.168.99.100:9050/`. The application should switch between responding with a 1.0 page and a 1.1 page.
 
@@ -154,7 +155,9 @@ clusters:
 {{% /copyable %}}
 
 Using the UI, you can either use the **Edit deployment** button again and completely paste in this blueprint or just
-find the right place in the blueprint and edit it by hand. The result should be the same as using our UI to insert a filter condition.
+find the right place in the blueprint and edit it by hand. The result should be the same as using our UI to insert a filter condition:
+
+![](/img/screenshots/tut2_canary-condition-v090.gif)
 
 As we are not actually deploying anything but just reconfiguring routes, the update should be almost instantaneous. You can fire up a Chrome browser and a Safari browser and check the results. A hard refresh might be necessary because of your browser's caching routine.
 
