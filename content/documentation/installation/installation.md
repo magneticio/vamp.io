@@ -86,7 +86,7 @@ Steps:
 - run `./build-ui.sh && sbt test assembly`
 - after the build `./bootstrap/target/scala-2.11` directory will contain the binary with name matching `vamp-assembly-*.jar`
 
-Example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/make.sh).
+Example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/quick-start/make.sh).
 
 ### Vamp Gateway Agent (VGA)
 
