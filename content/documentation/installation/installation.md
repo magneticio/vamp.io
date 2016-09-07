@@ -35,7 +35,7 @@ In order to setup correctly Vamp with single/multiple VGA instances check out al
 
 ### Elasticsearch, Logstash and Kibana (ELK)
 
-HAProxy (VGA) generates logs and make them accessible via open socket - check the [configuration](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.cfg) of `log`.
+HAProxy (VGA) generates logs and make them accessible via open socket - check the [configuration](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.basic.cfg) of `log`.
 VGA is listening on log socket and any new messages is forwarded to Logstash instance.
 Log format is configurable in Vamp configuration [vamp.gateway-driver.haproxy](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf).
 Note that Logstash is listening on UDP port, but in principle any other listener can receive logs forwarded by VGA.
