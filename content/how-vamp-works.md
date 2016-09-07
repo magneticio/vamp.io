@@ -10,9 +10,10 @@ menu:
 
 [back to resources page](/resources/)
 
-* [architecture and components](/components/)
-* [concepts](/vamp-concepts/)  
-* [service discovery](/servicediscovery/)
+* [Architecture and components](/components/)
+* [Vamp concepts](/vamp-concepts/)  
+* [Service discovery](/service-discovery/)
+* [Persistence and key-value (KV) store](/persistence-key-value-store/)
 
 
 

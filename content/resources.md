@@ -2,44 +2,44 @@
 date: 2016-03-09T19:56:50+01:00
 title: resources
 ---
-{{< note title="overview of resources section" >}}
-Can't use the real menu with this hugo template, so pages are linked below instead
-{{< /note >}}
+This is a page of links to the
 
 ## How Vamp works
-This will change as I work through the content - it will cover the concept details that don't give specific instructions. This section could sit under "what is Vamp", but is more technically focussed and "what is Vamp" is already quite full with the more business-focussed content.   
-We could make this content the "what is Vamp" section and use the business focussed there as a "how do I sell this to my boss"
+
+* [Architecture and components](/components/)
+* [Vamp concepts](/vamp-concepts/)  
+* [Service discovery](/service-discovery/)
+* [Persistence and key-value (KV) store](/persistence-key-value-store/)
 
 
-* [Vamp concepts](/vampconcepts/)
-* [service discovery](/servicediscovery/)
+## [Run Vamp](/install/)
 
-
-## downloads
-* [download Vamp](/downloads/)
-This page does not exist yet
-
-## [install Vamp](/install/)
+### Quick demo setup
   * [Hello world](/vamp-hello-world/)
   * [Quick setup with Kubernetes](/quick-setup-kubernetes/)
   * [Quick setup with DC/OS](/quick-setup-dcos/)
   * [Quick setup with Rancher](/quick-setup-rancher/)
 
-### General installation details  
+### Run Vamp on your architecture 
+#### Get Vamp
 
-* [components & architecture](/components/)
-* [container drivers](/container-drivers/)
+* [Working with Vamp binaries](/vamp-binaries/)
+* [MacOS X](/osx) - install the Vamp CLI with homebrew
 
-### Extra bits
+#### Configuration
 
-  * [Mac OS X](/docs/macosx/)
+* [Container driver configuration](/container-drivers/)
+* [Vamp configuration](/vamp-configuration/)
+* [Elasticsearch, Logstash and Kibana (ELK) configuration](/elastic-configuration/) 
 
-## using Vamp
-* [examples](/examples/)
-* [how-to's (processes)](/howto/)
-* [walkthrough/tutorials](/tutorials/)
+
+## Using Vamp
+In principle, this will initially be the entire current "using Vamp" section. We need to completely reshuffle the content, but no time for that this week.
+Will copy this across at the end to avoid missing changes.
 
 ## Vamp reference docs
+Will copy these directly across at the end.
+
 * [API reference](http://vamp.io/documentation/api-reference/)
 * [CLI reference](http://vamp.io/documentation/cli-reference/)
 

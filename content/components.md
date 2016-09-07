@@ -3,8 +3,6 @@ date: 2016-03-09T19:56:50+01:00
 title: Architecture and components
 ---
 
-[back to resources page](/resources/)
-
 The Vamp platform consists of server- and client-side components. Before installing, it is helpful to understand the role of each component and its preferred location in a typical architecture.
 
 ## Architecture
@@ -40,6 +38,3 @@ The graphical web interface for managing Vamp in a web browser. Packaged with Va
 ### Vamp CLI
 
 The command line interface for managing Vamp and providing integration with (shell) scripts.
-
-
-[back to resources page](/resources/)
