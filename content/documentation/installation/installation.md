@@ -48,7 +48,7 @@ This also depends if ELK is used for custom application/service logs etc.
 
 Lagstash configuration used together with default `vamp.gateway-driver.haproxy` log format can be found [here](https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf).
 It will transform logs to plain JSON which can be parsed easily later on (e.g. for Kibana visualization).
-Logstash command line parameter example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/supervisord.conf) (Logstash section).
+Logstash command line parameter example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/quick-start/supervisord.conf) (Logstash section).
 
 In short:
 
