@@ -7,9 +7,7 @@ weight: 0
 * [try Vamp](/tryvamp/)
 * [learn more](whatisvamp/)
 
-{{< note title="USPs" >}}
-we agreed on choosing 3 based on the current draft content (see /old/ ). Would be nice if these linked directly to related use cases.
-{{< /note >}}
+-----------
 
 * __Percentage and condition based routing__   
 Prevent performance issues and service disruption with gradual rollouts and upgrades.
@@ -17,9 +15,24 @@ Prevent performance issues and service disruption with gradual rollouts and upgr
 Automatically scale and optimise deployments or running systems.
 * __Container-scheduler agnostic API__   
 Avoid vendor lock-in with YAML based deployments.
-## We work with
 
-### Companies:  
+----------
+  
+## Vamp works with:  
+
+* Mesosphere  
+* Kubernetes  
+* DC/OS  
+* Rancher  
+* Docker
+* Azure
+
+### Cloud packets:  
+
+* AWS
+* Google
+
+## Companies using Vamp:  
 
 * BBVA  
 * Exact  
@@ -27,19 +40,6 @@ Avoid vendor lock-in with YAML based deployments.
 * Wehkamp  
 * Rabobank  
 * Ziggo
-  
-### Partners:  
-
-* Mesosphere  
-* Kubernetes  
-* DC/OS  
-* Rancher  
-* Docker
-
-### Cloud packets:  
-
-* AWS
-* Google
 
 -------------
 

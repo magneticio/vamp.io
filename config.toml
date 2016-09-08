@@ -60,12 +60,12 @@ googleAnalytics = ""
 
 [[menu.main]]
 	name   = "WHAT IS VAMP?"
-	url    = "whatisvamp/"
+	url    = "/what-is-vamp/"
 	weight = 10
 
 [[menu.main]]
 	name   = "TRY VAMP"
-	url    = "tryvamp/"
+	url    = "/try-vamp/"
 	weight = 20
 
 
@@ -83,14 +83,4 @@ googleAnalytics = ""
 	name   = "SUPPORT"
 	url    = "support/"
 	weight = 50
-
-[[menu.main]]
-	name   = "API"
-	url    = "api/"
-	weight = 70
-
-[[menu.main]]
-	name   = "INSTRUCTIONS"
-	url    = "instructions/"
-	weight = 70
 
