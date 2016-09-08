@@ -22,10 +22,11 @@ This setup will run [Marathon](https://mesosphere.github.io/marathon/) and Vamp 
 
 Please install one of the following for your platform/architecture
 
-- Docker 1.10.x (Linux) or higher (Vamp works with Docker 1.11 too), OR
-- [Docker Toolbox 1.11.x] (https://github.com/docker/toolbox/releases) if on Mac OS X 10.8+ or Windows 7+ 
+- Docker 1.9.x (Linux) or higher (Vamp works with Docker 1.12 too), OR
+- [Docker Toolbox 1.12.x] (https://github.com/docker/toolbox/releases) if on Mac OS X 10.8+ or Windows 7+ 
 
-> **Note:** Running Vamp Quick Start on earlier versions of Docker is also possible, even though it is recommended at least version 1.9.x.
+
+> **Note:** Vamp Quickstart on Docker for Mac or Windows is currently not supported. We're working on this so please check back. 
 
 ## Step 2: Run Vamp
 

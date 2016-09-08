@@ -84,11 +84,11 @@ When the application is fully deployed you can check it out at Vamp host address
 
 Using a simple tool like [Apache Bench](https://httpd.apache.org/docs/2.2/programs/ab.html) we can put some load on our application and see some of the metrics flowing into the dashboard. Using the following command send 10000 requests using 15 threads to our Sava app.
 
-```bash
-ab -k -c 15 -n 10000 http://localhost:9050/
+```
+ab -k -c 15 -n 10000 http://10.26.184.254:9050/
 ```
 or
-```bash
+```
 ab -k -c 15 -n 10000 http://`docker-machine ip default`:9050/
 ```
 
@@ -98,7 +98,7 @@ You should see the metrics spike and some pretty charts being drawn. A succesful
 
 ## Step 4: Change scale and load-balancing
 
-Vamp will automatically load-balance services. Let's change the scale of the service by entering "3" in the *instances** field. Now Vamp will automatically scale up the number of running instances (of course permitting underlying resources) and load-balance these to the outside world using the gateway feature.
+Vamp will automatically load-balance services. Let's change the scale of the service by selecting "3" in the *instances** field. Now Vamp will automatically scale up the number of running instances (of course permitting underlying resources) and load-balance these to the outside world using the gateway feature.
 
 ![](/img/screenshots/tut1_scale-v090.gif)
 
