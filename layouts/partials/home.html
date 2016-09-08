@@ -8,7 +8,7 @@
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle"></button>
                         <a class="logo" href="/"><img src="/img/vamp_logo_blue_circle.svg" alt="vamp"></a>
-                        <span id="alpha">alpha</span>
+                        <span id="alpha">beta</span>
                     </div>
                     <div class="collapse navbar-collapse pull-right">
                         <ul class="nav pull-left">
@@ -17,6 +17,7 @@
                             <li><a href="/documentation/">DOCS</a></li>
                             <li><a href="/blog/">BLOG</a></li>
                             <li><a href="https://github.com/magneticio/vamp/" target="_blank">GITHUB</a></li>
+                            <li><a href="https://gitter.im/magneticio/vamp" target="_blank">GITTER</a></li>
                         </ul>
                     </div>
                 </div>
@@ -38,7 +39,7 @@
                     </p>
                     <a href="/installation/" class="version-link">Vamp {{ $.Site.Data.downloads.dist.stableCore }} licensed under {{ $.Site.Data.downloads.dist.license }}</a>
                     <a href="/installation">
-                        <img class="home-screen" src="img/screenshots/deploy_detail.png"></img>
+                        <img class="home-screen" src="img/screenshots/Vamp090-screenshot-homepage.png"></img>
                     </a>
                 </div>                          
             </div>
@@ -79,7 +80,7 @@
 
                 </p>
                 <p class="lead">
-                    Vamp provides you with a set of powerful features to manage microservices and container based architectures, all through a single pane of glass. Vamp has deeply ingrained support for <a href="/documentation/guides/getting-started-tutorial/2-canary-release/">canary releases</a> and A/B testing, <a href="/documentation/using-vamp/sla-and-escalations/">auto scaling</a>, <a href="/documentation/about-vamp/service-discovery/">service discovery</a>, a live <a href="/documentation/using-vamp/metrics-and-events/">metrics & events stream</a>.
+                    Vamp provides you with a set of powerful features to manage microservices and container based architectures, all through a single pane of glass. Vamp has deeply ingrained support for <a href="/documentation/guides/getting-started-tutorial/2-canary-release/">canary releases</a> and A/B testing, <a href="/documentation/using-vamp/sla-and-escalations/">auto scaling</a>, <a href="/documentation/about-vamp/service-discovery/">service discovery</a>, a live <a href="/documentation/using-vamp/events/">metrics & events stream</a>.
                 </p>
             </div>
         </div>
@@ -113,7 +114,7 @@
                 <h4>Integrated metrics and events engine</h4>
                 <p>Vamp automatically records everything that happens in your services architecture to a flexible metrics and
                     events system (running on Elasticsearch). Use Vamp's built metric tracking or integrate with third party
-                    systems like Kibana <a href="/documentation/using-vamp/metrics-and-events/">Learn more →</a></p>
+                    systems like Kibana <a href="/documentation/using-vamp/events/">Learn more →</a></p>
             </div>
         </div>
     </div>
@@ -130,26 +131,26 @@
             <div class="col-sm-10 col-sm-offset-1">
                 <p class="lead">
                     Vamp leverages the power of existing container management solutions. Currently we support
-                     <a href="https://docker.com" target="_blank">Docker</a>, <a href="http://dcos.io">DC/OS</a> and <a href="https://mesosphere.github.io/marathon/" target="_blank">Mesos/Marathon</a>. Kubernetes, Docker Swarm and Rancher are on the near-term roadmap.
+                     <a href="http://dcos.io">DC/OS</a>, <a href="https://mesosphere.github.io/marathon/" target="_blank">Mesos/Marathon</a>, <a href="http://kubernetes.io/" target="_blank">Kubernetes</a>, <a href="http://rancher.com/" target="_blank">Rancher</a> and <a href="https://docker.com" target="_blank">Docker</a>. Docker Swarm is on the near-term roadmap.
                  </p>
                 <div class="integrations-row row">
                     <div class="col-sm-4 integration">
                         <div class="image-wrapper">
-                            <img src="img/docker-logo.png">
+                            <img src="img/DCOS-logo.png">
                         </div>
-                        <a href="/quick-start/" class="btn btn-info btn-wide">Run Vamp with Docker</a>
+                        <a href="/documentation/installation/dcos/" class="btn btn-info">Run Vamp with DC/OS</a>
                     </div>
                     <div class="col-sm-4 integration">
-                        <div class="image-wrapper">                        
-                            <img src="img/DCOS-vertical-logo.png">
-                        </div>    
-                        <a href="/documentation/installation/mesosphere_dcos/" class="btn btn-info btn-wide">Run Vamp with DC/OS</a>    
+                        <div class="image-wrapper">
+                            <img src="img/kubernetes-logo.png">
+                        </div>
+                        <a href="/documentation/installation/kubernetes/" class="btn btn-info">Run Vamp with Kubernetes</a>
                     </div>
                     <div class="col-sm-4 integration">
-                        <div class="image-wrapper">                        
-                            <img src="img/gce.png">
-                        </div>    
-                        <a class="btn btn-info btn-wide disabled ">Kubernetes coming VERY soon!</a>                      
+                        <div class="image-wrapper">
+                            <img src="img/rancher-logo.png">
+                        </div>
+                        <a href="/documentation/installation/rancher/" class="btn btn-info">Run Vamp with Rancher</a>
                     </div>
                 </div>
             </div>

@@ -51,7 +51,7 @@ clusters:
     services:
       breed:
         name: my_frontend_service:0.1
-        deployable: docker://company/frontend:0.1
+        deployable: company/frontend:0.1
         ports:
           port: 8080/http
         dependencies:
@@ -65,7 +65,7 @@ clusters:
     services:
       breed:
         name: my_backend_service:0.3
-        deployable: docker://company/backend:0.3
+        deployable: company/backend:0.3
         ports:
           jdbc: 8080/tcp
       scale:

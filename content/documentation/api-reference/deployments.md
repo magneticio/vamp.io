@@ -10,7 +10,7 @@ menu:
 
 Deployments are non-static entities in the Vamp eco-system. They represent runtime structures so any changes to them will take time to execute and can possibly fail. Most API calls to the `/deployments` endpoint will therefore return a `202: Accepted` return code, indicating the asynchronous nature of the call.
 
-Deployments have a set of sub resources: **SLA's**, **scales** and **routings**. These are instantiations of their static counterparts.
+Deployments have a set of sub resources: **SLA's**, **scales** and **gateways**. These are instantiations of their static counterparts.
 
 Please check the notes on using [pagination](/documentation/api-reference/#pagination) and [json and yaml content types](/documentation/api-reference/#content-types) on how to effectively use the REST api.
 
@@ -72,14 +72,14 @@ Deletes all or parts of a deployment.
 
 In contrast to most API's, doing a `DELETE` in Vamp takes a request body that designates what part of the deployment should be deleted. This allows you to remove specific services, clusters of the whole deployment.
 
-> Note: `DELETE` on deployment with an empty request body will not delete anything.
+> **Note:**`DELETE` on deployment with an empty request body will not delete anything.
 
 The most common way to specify what you want to delete is by exporting the target deployment as a blueprint using the `?as_blueprint=true` parameter. You then either programmatically or by hand edit the resulting blueprint and specify which of the services you want to delete. You can also use the blueprint as a whole in the `DELETE` request. The result is the removal of the full deployment. 
 
 **example:**
 
 This is our (abbreviated) deployment in YAML format. We have two clusters. The first cluster 'frontend' has two services.
-We have left out some keys like `scale`, `routing` and `servers` among others as they have no effect on this specific use case.
+We have left out some keys like `scale` among others as they have no effect on this specific use case.
 
 		GET /api/v1/deployment/3df5c37c-5137-4d2c-b1e1-1cb3d03ffcd?as_blueprint=true
 
@@ -186,18 +186,3 @@ Updates a deployment scale.
 
 	POST|PUT /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/scale
 
-# Deployment routings
-
-Deployment routing are singular resources: you only have one routing per service. Deleting a routing is not a meaningful action.
-
-## Get a deployment routing
-
-Lists all details for a specific deployment routing that's part of a service inside a cluster.
-
-	GET /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/routing
-	
-## Set a deployment routing	
-
-Updates a deployment routing.
-
-	POST|PUT /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/routing

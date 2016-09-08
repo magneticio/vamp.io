@@ -35,7 +35,7 @@ In order to setup correctly Vamp with single/multiple VGA instances check out al
 
 ### Elasticsearch, Logstash and Kibana (ELK)
 
-HAProxy (VGA) generates logs and make them accessible via open socket - check the [configuration](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.cfg) of `log`.
+HAProxy (VGA) generates logs and make them accessible via open socket - check the [configuration](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.basic.cfg) of `log`.
 VGA is listening on log socket and any new messages is forwarded to Logstash instance.
 Log format is configurable in Vamp configuration [vamp.gateway-driver.haproxy](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf).
 Note that Logstash is listening on UDP port, but in principle any other listener can receive logs forwarded by VGA.
@@ -48,7 +48,7 @@ This also depends if ELK is used for custom application/service logs etc.
 
 Lagstash configuration used together with default `vamp.gateway-driver.haproxy` log format can be found [here](https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf).
 It will transform logs to plain JSON which can be parsed easily later on (e.g. for Kibana visualization).
-Logstash command line parameter example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/supervisord.conf) (Logstash section).
+Logstash command line parameter example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/quick-start/supervisord.conf) (Logstash section).
 
 In short:
 
@@ -80,13 +80,13 @@ Prerequisites:
 
 Steps:
 
-- checkout the source from the official [repo](https://github.com/magneticio/vamp). `master` branch contains the latest released version (e.g. 0.85). Versions are tagged. 
+- checkout the source from the official [repo](https://github.com/magneticio/vamp). `master` branch contains the latest released version (e.g. 0.9.0). Versions are tagged.
   Since `vamp-ui` is a separate project and added as a git submodule to Vamp (`ui` subdirectory) it is necessary to checkout the submodule as well:
-  `git clone --recursive git@github.com:magneticio/vamp.git` or specific branch: `git clone --recursive --branch 0.85 git@github.com:magneticio/vamp.git`
+  `git clone --recursive git@github.com:magneticio/vamp.git` or specific branch: `git clone --recursive --branch 0.9.0 git@github.com:magneticio/vamp.git`
 - run `./build-ui.sh && sbt test assembly`
 - after the build `./bootstrap/target/scala-2.11` directory will contain the binary with name matching `vamp-assembly-*.jar`
 
-Example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/make.sh).
+Example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/quick-start/make.sh).
 
 ### Vamp Gateway Agent (VGA)
 
@@ -97,7 +97,7 @@ Prerequisites:
 
 Steps:
 
-- checkout the source from the official [repo](https://github.com/magneticio/vamp-gateway-agent). Current `master` branch is backward compatible with the latest 0.85 Vamp build.
+- checkout the source from the official [repo](https://github.com/magneticio/vamp-gateway-agent). Current `master` branch is backward compatible with the latest 0.9.0 Vamp build.
 - set Go variables depending on target environment
 - run:
 
@@ -164,7 +164,7 @@ java -Dvamp.persistence.key-value-store.zookeeper.servers="192.168.99.100:2181" 
 Alternatively using volumes:
  
 ```
-docker run --net=host -v PATH_TO_LOCAL_CONFIG_DIR:/usr/local/vamp/conf magneticio/vamp:0.85
+docker run --net=host -v PATH_TO_LOCAL_CONFIG_DIR:/usr/local/vamp/conf magneticio/vamp:0.9.0
 ```
 
 ### Vamp Gateway Agent (VGA)

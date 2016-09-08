@@ -19,7 +19,9 @@ follow the instructions below.
 
         $ hugo server --watch
 
-    The site is server under `localhost:1313`
+    The site is server under `localhost:1313`. You can check if there is any dead link by running: 
+        
+        $ ./dead-links.sh
 
 4. Publishing is done through Travis-CI. Any commit to **master** branch will result in **gh-pages** update.
 

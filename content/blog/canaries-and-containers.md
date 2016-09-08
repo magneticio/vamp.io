@@ -57,10 +57,10 @@ With VAMP on DC/OS this can done by simply sending these rules to VAMP (either u
 
 Other use-cases are the validation and testing of different technological and architectural solutions (f.e. couchDB vs MongoDB as an embedded microservice datastore) in production and without impacting your visitors, or experimental finding of the optimal balance between allocated computing-resources (i.e. running costs) and the performance of your services.
 
-VAMP supports grouping of filters, Boolean expressions (AND/OR/NOT), and provides a built-in set of commonly used “routing short codes” like cookies, browser-types, headers and host-names in addition to supporting HAProxy ACL rules and configuration templates. VAMP also supports sticky sessions, URL path rewriting (very useful for API versioning, aggregation and routing) and makes sure that services are correctly “drained” when taken out of the routing. 
+VAMP supports grouping of filters, Boolean expressions (AND/OR/NOT), and provides a built-in set of commonly used “gateway short codes” like cookies, browser-types, headers and host-names in addition to supporting HAProxy ACL rules and configuration templates. VAMP also supports sticky sessions, URL path rewriting (very useful for API versioning, aggregation and gateway) and makes sure that services are correctly “drained” when taken out of the gateway.
 
 ## Autoscaling
-So now we know that VAMP makes it very easy to implement all kinds of useful canary-testing & releasing patterns. But when you are increasing the percentage of visitors or are expanding your filter-criteria to allow more visitors, you also need to scale up the number of running instances or allocated computing resources. Of course with Marathon it’s easy to use the UI or API to set the scale of the running containers. But wouldn’t it be much more practical if you could simply change the scaling-settings at the same time when changing the routing and load-balancing rules? Or even cooler: change the scaling automatically, based on performance-criteria? We thought so too, so we made it easy to do with VAMP: 
+So now we know that VAMP makes it very easy to implement all kinds of useful canary-testing & releasing patterns. But when you are increasing the percentage of visitors or are expanding your filter-criteria to allow more visitors, you also need to scale up the number of running instances or allocated computing resources. Of course with Marathon it’s easy to use the UI or API to set the scale of the running containers. But wouldn’t it be much more practical if you could simply change the scaling-settings at the same time when changing the gateway and load-balancing rules? Or even cooler: change the scaling automatically, based on performance-criteria? We thought so too, so we made it easy to do with VAMP:
 
 In VAMP you can set scaling parameters manually using our API, UI or CLI:
 
@@ -141,7 +141,7 @@ What do I need to do if I want to start experimenting with all these possibiliti
 
 1. First setup a cluster and download and install DC/OS as instructed: [https://dcos.io/docs/1.7/administration/installing/custom/gui/] (https://dcos.io/docs/1.7/administration/installing/custom/gui/)
 
-2. Now install VAMP as a DC/OS package: [http://vamp.io/documentation/installation/mesosphere_dcos/] (http://vamp.io/documentation/installation/mesosphere_dcos/)
+2. Now install VAMP as a DC/OS package: [http://vamp.io/documentation/installation/dcos/] (http://vamp.io/documentation/installation/dcos/)
 
 3. Now you can start with our Getting started with VAMP tutorials: [http://vamp.io/documentation/guides/] (http://vamp.io/documentation/guides/)
 

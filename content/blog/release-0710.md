@@ -27,10 +27,10 @@ An extra benefit of changing how we deal with scopes is the option to override v
 
 ## Clearer references
 
-In addition to changing how we deal with scopes we made using references to artefacts more explicit. You now use the `reference` or `ref` keyword to include artefacts by name in other artefacts. Previously, this was done using the `name` keyword, which was confusing. [Check the reference docs for more info →](/documentation/using-vamp/references/)
+In addition to changing how we deal with scopes we made using references to artifacts more explicit. You now use the `reference` or `ref` keyword to include artifacts by name in other artifacts. Previously, this was done using the `name` keyword, which was confusing. [Check the reference docs for more info →](/documentation/using-vamp/references/)
 
 
-> **Note**: this is a breaking change. Please update blueprints and other artefacts accordingly.
+> **Note**: this is a breaking change. Please update blueprints and other artifacts accordingly.
 
 ## Docker dialect
 
@@ -55,7 +55,7 @@ clusters:
 ## Simple deployment validation, or a NOOP run
 
 The last thing I'd like to point out is that we've added the `?validate_only=true` option to de `/deployments` endpoint. This means you can have Vamp validate whether the blueprint you are about to deploy is actually valid!
-Vamp will check if all references to other artefacts are in place and if the blueprint is semantically valid.
+Vamp will check if all references to other artifacts are in place and if the blueprint is semantically valid.
 This works like a "noop" (no operation) run and helps with sanity checking complex blueprints. [Check the deployment API docs for more info →](/documentation/api-reference/deployments/)
 
 

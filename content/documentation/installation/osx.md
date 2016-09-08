@@ -2,7 +2,7 @@
 title: Mac OS X
 type: documentation
 url: /installation/osx
-weight: 70
+weight: 100
 menu:
     main:
       parent: installation

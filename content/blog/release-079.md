@@ -16,7 +16,7 @@ We just pushed **release 0.7.9** which is easily the biggest Vamp release to dat
 <!--more--> 
 
 
-First of all, we package the first version of our **graphical user interface**. With this ReactJS based UI, you can create, update and delete Vamp artefacts quickly and dive into the Vamp metrics feed. [Quick start →](/quick-start)
+First of all, we package the first version of our **graphical user interface**. With this ReactJS based UI, you can create, update and delete Vamp artifacts quickly and dive into the Vamp metrics feed. [Quick start →](/quick-start)
 
 Secondly, we released the first version of the **Vamp command line interface**. The CLI allows admins and Devops engineers to do fully automated canary releases and blue/green deployments on Docker and Mesophere's/DCOS Marathon from CI tools like Jenkins or just from bash scripts.  
 
