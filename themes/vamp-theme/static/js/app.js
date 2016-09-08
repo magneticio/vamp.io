@@ -21,12 +21,23 @@ function documentReady() {
     getMenuFile(menuFileLoaded);
   })
 
+  //Scrolling
+  $(function() {
+    $(window).on("scroll", function() {
+      if($(window).scrollTop() > 0) {
+        $("#header").addClass("active");
+      } else {
+        //remove the background property so it comes transparent again (defined in your css)
+        $("#header").removeClass("active");
+      }
+    });
+  });
 
-
+  if(thePath !== '/') {
+    $("#header").addClass("always-active");
+    $('.page').addClass('padding-fix');
+  }
 }
-
-
-
 
 function getMenuFile(callback) {
   $.getJSON( '/menu.json', function(data) {
@@ -99,7 +110,6 @@ function buildSubSideMenu(data) {
     }
   })
 }
-
 
 
 
