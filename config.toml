@@ -84,13 +84,3 @@ googleAnalytics = ""
 	url    = "support/"
 	weight = 50
 
-[[menu.main]]
-	name   = "API"
-	url    = "api/"
-	weight = 70
-
-[[menu.main]]
-	name   = "INSTRUCTIONS"
-	url    = "instructions/"
-	weight = 70
-
