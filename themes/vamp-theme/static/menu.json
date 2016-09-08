@@ -1,68 +1,315 @@
 {
-  "menuOrder": ["whatisvamp", "tryvamp", "resources", "news", "support", "api", "instructions"],
-  "menuItems": {
-    "whatisvamp": {
-      "text": "What is Vamp?",
-      "href": "whatisvamp",
-      "items": {
-        "vampusecases": {
-          "text": "Use Cases",
-          "href": "vampusecases"
-        },
-        "vampcomparedto": {
-          "text": "Vamp compared to",
-          "href": "vampcomparedto",
-          "items": {
-            "test": {
-              "text": "test",
-              "items": "test",
-              "href": "test"
+  "children": [
+    {
+      "path": "about",
+      "text": "About",
+      "visible": true
+    },
+    {
+      "path": "community",
+      "text": "Community",
+      "visible": true
+    },
+    {
+      "path": "contact",
+      "text": "Contact",
+      "visible": true
+    },
+    {
+      "path": "draft",
+      "children": [
+        {
+          "path": "draft/api",
+          "children": [
+            {
+              "path": "draft/api/0.8.5",
+              "children": [
+                {
+                  "path": "draft/api/0.8.5/example1",
+                  "text": "Example1",
+                  "visible": true
+                },
+                {
+                  "path": "draft/api/0.8.5/index",
+                  "text": "Index",
+                  "visible": false
+                }
+              ],
+              "text": "0.8.5",
+              "visible": true
+            },
+            {
+              "path": "draft/api/0.9.0",
+              "children": [
+                {
+                  "path": "draft/api/0.9.0/example2",
+                  "text": "Example2",
+                  "visible": true
+                },
+                {
+                  "path": "draft/api/0.9.0/index",
+                  "text": "Index",
+                  "visible": false
+                }
+              ],
+              "text": "0.9.0",
+              "visible": true
+            },
+            {
+              "path": "draft/api/master",
+              "children": [
+                {
+                  "path": "draft/api/master/example1",
+                  "text": "Example1",
+                  "visible": true
+                },
+                {
+                  "path": "draft/api/master/example2",
+                  "text": "Example2",
+                  "visible": true
+                },
+                {
+                  "path": "draft/api/master/index",
+                  "text": "Index",
+                  "visible": false
+                }
+              ],
+              "text": "Master",
+              "visible": true
             }
-          }
+          ],
+          "text": "Api",
+          "visible": true
+        },
+        {
+          "path": "draft/blueprint",
+          "text": "Blueprint",
+          "visible": true
+        },
+        {
+          "path": "draft/downloads",
+          "text": "Downloads",
+          "visible": true
         }
-      }
+      ],
+      "text": "Draft",
+      "visible": false
     },
-    "tryvamp": {
-      "text": "Try vamp",
-      "href": "tryvamp",
-      "items": {
-        "helloworld": {
-          "text": "Hello world",
-          "href": "hello-world-marathon"
-        },
-        "asdf": {
-          "text": "Vamp compared to",
-          "href": "asfd"
-        },
-        "lol": {
-          "text": "asdfafds compared to",
-          "href": "asfd"
-        },
-        "sadf": {
-          "text": "asdfafds compared to",
-          "href": "asfd"
+    {
+      "path": "index.json",
+      "text": "Index.json",
+      "visible": false
+    },
+    {
+      "path": "index",
+      "text": "Index",
+      "visible": false
+    },
+    {
+      "path": "instructions",
+      "children": [
+        {
+          "path": "instructions/index",
+          "text": "Index",
+          "visible": false
         }
-      }
-    },
-    "resources": {
-      "text": "Resources",
-      "href": "resources"
-    },
-    "news": {
-      "text": "News",
-      "href": "news"
-    },
-    "support": {
-      "text": "Support",
-      "href": "support"
-    },
-    "api": {
-      "text": "Api",
-      "href": "api"
-    },
-    "instructions": {
+      ],
       "text": "Instructions",
-      "href": "instructions"
+      "visible": true
+    },
+    {
+      "path": "news",
+      "text": "News",
+      "visible": true
+    },
+    {
+      "path": "resources",
+      "children": [
+        {
+          "path": "resources/how-vamp-works",
+          "children": [
+            {
+              "path": "resources/how-vamp-works/components",
+              "text": "Components",
+              "visible": true
+            },
+            {
+              "path": "resources/how-vamp-works/index",
+              "text": "Index",
+              "visible": false
+            },
+            {
+              "path": "resources/how-vamp-works/persistence-key-value-store",
+              "text": "Persistence-key-value-store",
+              "visible": true
+            },
+            {
+              "path": "resources/how-vamp-works/service-discovery",
+              "text": "Service-discovery",
+              "visible": true
+            },
+            {
+              "path": "resources/how-vamp-works/vamp-concepts",
+              "text": "Vamp-concepts",
+              "visible": true
+            }
+          ],
+          "text": "How vamp works",
+          "visible": true
+        },
+        {
+          "path": "resources/index",
+          "text": "Index",
+          "visible": false
+        },
+        {
+          "path": "resources/run-vamp",
+          "children": [
+            {
+              "path": "resources/run-vamp/container-drivers",
+              "text": "Container-drivers",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/elastic-configuration",
+              "text": "Elastic-configuration",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/index",
+              "text": "Index",
+              "visible": false
+            },
+            {
+              "path": "resources/run-vamp/osx",
+              "text": "Osx",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/quick-setup-dcos",
+              "text": "Quick-setup-dcos",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/quick-setup-kubernetes",
+              "text": "Quick-setup-kubernetes",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/quick-setup-rancher",
+              "text": "Quick-setup-rancher",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/vamp-binaries",
+              "text": "Vamp-binaries",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/vamp-configuration",
+              "text": "Vamp-configuration",
+              "visible": true
+            }
+          ],
+          "text": "Run vamp",
+          "visible": true
+        },
+        {
+          "path": "resources/using-vamp",
+          "children": [
+            {
+              "path": "resources/using-vamp/index",
+              "text": "Index",
+              "visible": false
+            }
+          ],
+          "text": "Using vamp",
+          "visible": true
+        },
+        {
+          "path": "resources/vamp-reference-docs",
+          "children": [
+            {
+              "path": "resources/vamp-reference-docs/index",
+              "text": "Index",
+              "visible": false
+            }
+          ],
+          "text": "Vamp reference docs",
+          "visible": true
+        }
+      ],
+      "text": "Resources",
+      "visible": true
+    },
+    {
+      "path": "support",
+      "text": "Support",
+      "visible": true
+    },
+    {
+      "path": "try-vamp",
+      "children": [
+        {
+          "path": "try-vamp/deploy-your-first-blueprint",
+          "text": "Deploy-your-first-blueprint",
+          "visible": true
+        },
+        {
+          "path": "try-vamp/index",
+          "text": "Index",
+          "visible": false
+        },
+        {
+          "path": "try-vamp/merge",
+          "text": "Merge",
+          "visible": true
+        },
+        {
+          "path": "try-vamp/run-a-canary-release",
+          "text": "Run-a-canary-release",
+          "visible": true
+        },
+        {
+          "path": "try-vamp/split-into-services",
+          "text": "Split-into-services",
+          "visible": true
+        },
+        {
+          "path": "try-vamp/vamp-hello-world",
+          "text": "Vamp-hello-world",
+          "visible": true
+        }
+      ],
+      "text": "Try vamp",
+      "visible": true
+    },
+    {
+      "path": "what-is-vamp",
+      "children": [
+        {
+          "path": "what-is-vamp/faq",
+          "text": "Faq",
+          "visible": true
+        },
+        {
+          "path": "what-is-vamp/index",
+          "text": "Index",
+          "visible": false
+        },
+        {
+          "path": "what-is-vamp/use-cases",
+          "text": "Use-cases",
+          "visible": true
+        },
+        {
+          "path": "what-is-vamp/vamp-compared-to",
+          "text": "Vamp-compared-to",
+          "visible": true
+        }
+      ],
+      "text": "What is vamp",
+      "visible": true
     }
-  }
+  ]
 }

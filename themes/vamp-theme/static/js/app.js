@@ -1,9 +1,28 @@
 $(document).ready(documentReady);
 
 var menuTree = {};
+var topMenuItemTemplate;
+var sideMenuItemTemplate;
+var thePath;
+
 
 function documentReady() {
-  getMenuFile(menuFileLoaded);
+  thePath = window.location.pathname;
+  thePath = thePath.substring(1, thePath.length -1);
+  console.log(thePath);
+
+  $.get('/templates/topMenuItem.tpl', function(data) {
+    topMenuItemTemplate = data;
+
+    $.get('/templates/sideMenuItem.tpl', function(data) {
+      sideMenuItemTemplate = data;
+    });
+
+    getMenuFile(menuFileLoaded);
+  })
+
+
+
 }
 
 
@@ -27,68 +46,61 @@ function getMenuFile(callback) {
   });
 }
 
+
 function menuFileLoaded(data) {
-  //Set in localstorage
-  menuTree = data;
+  //Building top menu
+  data.children.forEach(function(topMenuItem) {
+    if (topMenuItem.visible) {
+      var html = Mustache.render(topMenuItemTemplate, topMenuItem);
+      var renderedTopMenuItem = $.parseHTML(html);
 
-  var pathname = window.location.pathname;
-  var pathnameTrimmed = pathname.substring(1, pathname.length-1);
-  path = pathnameTrimmed.split('/')[0];
-  if (path && path !== '') {
-    generateTopMenu(data);
-    generateSideMenu(localStorage.getItem("vamp-mainSelected"));
+      if(thePath.search(topMenuItem.path) !== -1) {
+        $(renderedTopMenuItem).addClass('active');
+        console.log(topMenuItem.children);
+        topMenuItem.children && buildSideMenu(topMenuItem);
+      }
 
-    var track = [];
-
-    console.log(track);
-  }
-}
-
-function generateTopMenu(data) {
-  var menuOrder = data.menuOrder;
-  var menuItems = data.menuItems;
-
-  menuOrder.forEach(function(orderItem) {
-    var menuItem = menuItems[orderItem];
-    var html = $.parseHTML('<a href="/' + menuItem.href + '" class="top-menu-item">' + menuItem.text + '</a>');
-    $(html).data('menuId', orderItem);
-    if(orderItem === localStorage.getItem('vamp-mainSelected')) {
-      $(html).addClass('active');
+      $('#top-menu-items').append(renderedTopMenuItem);
     }
-
-    $('#top-menu-items').append(html);
   });
-
-};
-
-function generateSideMenu(id) {
-  console.log(id);
-  console.log(menuTree.menuItems[id]);
-  var subItems = menuTree.menuItems[id].items;
-  if(!subItems) {
-    return;
-  }
-
-
-  for (var subItemId in subItems) {
-    var subItem = subItems[subItemId];
-    var sideMenuItem = generateSideMenuItem(subItem.text, subItem.href, subItem);
-    $(sideMenuItem).data('menuId', subItemId);
-
-    $('#side-menu').append(sideMenuItem);
-  }
-
 }
 
-function generateSideMenuItem(text, href, subItem) {
-  var htmlString = '<div class="menu-item"> <div class="section"> <div class="bullet"> <img src="../img/icons/003-Small-icons/block-03.svg" alt=""> </div> <div class="section-title"> <a href="/'+href+'" class="text">'+text+'</a> </div> <div class="folding-indicator"> - </div> </div> </div>';
-  for(var subSubItemName in subItem.items) {
-    var subSubItem = subItem.items[subSubItemName];
-    htmlString += '<a class="sub-menu-item text" href="/'+ subSubItem.href+ '">'+subSubItem.text+'</a>';
-  }
+function buildSideMenu(data) {
+  console.log(data);
+  data.children.forEach(function(sideMenuItem) {
+    if (sideMenuItem.visible) {
+      var html = Mustache.render(sideMenuItemTemplate, sideMenuItem);
+      var renderedSideMenuItem = $.parseHTML(html);
+      $('#side-menu').append(renderedSideMenuItem);
 
-  var parsedItem = $.parseHTML(htmlString);
-  return parsedItem;
+
+      if(thePath.search(sideMenuItem.path) !== -1) {
+        $(renderedSideMenuItem).addClass('active');
+        sideMenuItem.children && buildSubSideMenu(sideMenuItem);
+      }
+
+    }
+  })
 }
+
+function buildSubSideMenu(data) {
+  console.log(data);
+  console.log('test');
+  data.children.forEach(function(subSideMenuItem) {
+    if (subSideMenuItem.visible) {
+      var html = Mustache.render('<a class="sub-menu-item" href="/{{path}}"><p class="text">{{text}}</p></a>', subSideMenuItem);
+      var renderedSubSideMenuItem = $.parseHTML(html);
+
+      if(thePath.search(subSideMenuItem.path) !== -1) {
+        $(renderedSubSideMenuItem).addClass('active');
+      }
+
+      $('#side-menu').append(renderedSubSideMenuItem);
+    }
+  })
+}
+
+
+
 
 

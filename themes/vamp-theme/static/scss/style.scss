@@ -727,28 +727,18 @@ body {
   overflow-y: scroll;
 }
 
-.menu-item {
-  cursor: pointer;
-  &:first-child {
-    .section {
-      padding-top: 0;
-    }
-  }
-
-  &:not(:last-child) {
-    .section {
-      border-bottom: 1px solid $dark-grey;
-    }
-  }
-}
-
-.section {
-  padding: 10px 0;
+.side-menu-item {
   display: flex;
+  cursor: pointer;
+  padding: 10px 0;
   align-items: center;
+  text-decoration: none;
 
   .bullet {
     width: 40px;
+    display: flex;
+    align-items: center;
+    padding-top: 2px;
 
     img {
       width: 22px;
@@ -757,15 +747,26 @@ body {
 
   .section-title {
     width: 5 * 40px;
-    a {
-      text-decoration: none;
-    }
   }
 
   .folding-indicator {
     width: 40px;
     text-align: right;
     line-height: 0;
+  }
+
+  &.active {
+    .text {
+      color: $red;
+    }
+  }
+
+  &:first-child {
+      padding-top: 0;
+  }
+
+  &:not(:last-child) {
+      border-bottom: 1px solid $dark-grey;
   }
 }
 
@@ -775,6 +776,12 @@ body {
   text-decoration: none;
   padding: 7px 0 7px 60px;
   color: $dark-blue;
+
+  &.active {
+    .text {
+      color: $red;
+    }
+  }
 }
 
 .content {

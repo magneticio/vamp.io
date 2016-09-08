@@ -1,0 +1,24 @@
+{
+  "name": "revamp.io",
+  "version": "0.0.1",
+  "description": "This is the source for the new [vamp.io](http://vamp.io) site.",
+  "main": "buildMenu.js",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "directory-tree": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magneticio/revamp.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/magneticio/revamp.io/issues"
+  },
+  "homepage": "https://github.com/magneticio/revamp.io#readme"
+}
