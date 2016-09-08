@@ -8,9 +8,7 @@ menu:
      weight: 20 
 ---
 
-{{< warning title="DRAFT" >}}
-{{< /warning >}}  
-Vamp works with scalable container infrastructures to provide programmable, microservice-level routing and smart service management.   
+* Compared to doing it yourself:  consul / buoyant / linkerd (orchestration and management)
 
 ## PaaS layer infrastructure management  
 _Cloud foundry, OpenStack, Docker, DC/OS, Mesos/Marathon, Kubernetes_  

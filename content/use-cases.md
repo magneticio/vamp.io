@@ -8,6 +8,8 @@ menu:
     weight: 10
 ---
 
+How will you use Vamp? We've described some typical implementations of Vamp to give you some ideas of how Vamp 
+
 Use Vamp to optimise major projects:
 
 * [A different approach to creating a responsive website](#a-different-approach-to-creating-a-responsive-website)
@@ -89,4 +91,4 @@ Why scale the whole system? Using Vamp you could auto-scale individual services 
 
 1. __Describe services:__ You can describe individual services in a Vamp blueprints (breeds)
 2. __Set SLAs:__ 
-3. __Sleep easy:__ Vamp will track troughs and spikes in activity and automatically scale services to match your SLAs. All scaling events will be logged 
+3. __Sleep easy:__ Vamp will track troughs and spikes in activity and automatically scale services to match your SLAs. All scaling events will be logged.
