@@ -8,5 +8,7 @@ menu:
     weight: 30
 ---
 
-[back to resources page](/resources/)
+* will initially include current [using Vamp](http://vamp.io/documentation/using-vamp/) content - to be revised asap
+
+
 

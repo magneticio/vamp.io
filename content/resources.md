@@ -4,7 +4,7 @@ title: resources
 ---
 This is a page of links to the
 
-## How Vamp works
+## [How Vamp works](/how-vamp-works/)
 
 * [Architecture and components](/components/)
 * [Vamp concepts](/vamp-concepts/)  
@@ -33,11 +33,12 @@ This is a page of links to the
 * [Elasticsearch, Logstash and Kibana (ELK) configuration](/elastic-configuration/) 
 
 
-## Using Vamp
-In principle, this will initially be the entire current "using Vamp" section. We need to completely reshuffle the content, but no time for that this week.
-Will copy this across at the end to avoid missing changes.
+## [Using Vamp](/using-vamp/)
+Will copy this directly across at the end.
 
-## Vamp reference docs
+* [Using Vamp](http://vamp.io/documentation/using-vamp/)
+
+## [Vamp reference docs](/vamp-reference-docs/)
 Will copy these directly across at the end.
 
 * [API reference](http://vamp.io/documentation/api-reference/)

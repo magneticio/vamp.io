@@ -60,7 +60,7 @@ googleAnalytics = ""
 
 [[menu.main]]
 	name   = "WHAT IS VAMP?"
-	url    = "whatisvamp/"
+	url    = "/what-is-vamp/"
 	weight = 10
 
 [[menu.main]]
