@@ -476,8 +476,8 @@ body {
 }
 
 .page.documentation {
-  background: -webkit-linear-gradient(0deg, #F0F5FA 50%, white 50%);
-  background: linear-gradient(90deg, #F0F5FA 50%, white 50%);
+  background: -webkit-linear-gradient(0deg, #F0F5FA 33%, white 33%);
+  background: linear-gradient(90deg, #F0F5FA 33%, white 33%);
 }
 
 .page.documentation .header {
@@ -775,7 +775,7 @@ body {
 }
 
 .content {
-  padding: 0 40px;
+  padding: 0 40px 40px 40px;
   margin-left: 400px;
   background-color: white;
   min-height: 100vh;

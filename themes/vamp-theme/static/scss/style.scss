@@ -497,7 +497,7 @@ body {
 
   &.documentation {
     //background-color: red;
-    background: linear-gradient(90deg, $light-grey 50%, white 50%);
+    background: linear-gradient(90deg, $light-grey 33%, white 33%);
 
     .header {
       color: $red;
@@ -794,7 +794,7 @@ body {
 }
 
 .content {
-  padding: 0 40px;
+  padding: 0 40px 40px 40px;
   margin-left: 400px;
   background-color: white;
   min-height: 100vh;
