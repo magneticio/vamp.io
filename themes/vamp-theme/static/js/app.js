@@ -22,16 +22,19 @@ function documentReady() {
   })
 
   // Top menu color change
-  $(function() {
     $(window).on("scroll", function() {
-      if($(window).scrollTop() > 0) {
-        $("#header").addClass("active");
-      } else {
-        //remove the background property so it comes transparent again (defined in your css)
-        $("#header").removeClass("active");
-      }
+      setColorMenu();
     });
-  });
+
+  setColorMenu();
+  function setColorMenu() {
+    if($(window).scrollTop() > 0) {
+      $("#header").addClass("active");
+    } else {
+      //remove the background property so it comes transparent again (defined in your css)
+      $("#header").removeClass("active");
+    }
+  }
 
   if(thePath !== '/') {
     $("#header").addClass("always-active");
