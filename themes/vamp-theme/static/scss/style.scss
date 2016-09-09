@@ -1019,3 +1019,39 @@ body {
 .top-bar {
   border-top: 1px solid $light-grey;
 }
+
+.footer {
+  position: relative;
+  z-index: 999;
+
+  .h2 {
+    font-weight: 300;
+  }
+
+  a {
+    text-decoration: none;
+    .text {
+      font-weight: 100;
+    }
+  }
+
+  .input-group {
+    margin: 20px 0;
+  }
+}
+
+.footer-bottom {
+  position: relative;
+  z-index: 999;
+  padding: 20px 0;
+  border-top: 1px solid rgba($medium-light-blue, 0.3);
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  a {
+    color: $light-grey;
+
+  }
+}

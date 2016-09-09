@@ -1017,3 +1017,44 @@ body {
 .top-bar {
   border-top: 1px solid #F0F5FA;
 }
+
+.footer {
+  position: relative;
+  z-index: 999;
+}
+
+.footer .h2, .footer .markdowned h2, .markdowned .footer h2 {
+  font-weight: 300;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer a .text, .footer a .markdowned p, .markdowned .footer a p, .footer a .markdowned li, .markdowned .footer a li, .footer a .date {
+  font-weight: 100;
+}
+
+.footer .input-group {
+  margin: 20px 0;
+}
+
+.footer-bottom {
+  position: relative;
+  z-index: 999;
+  padding: 20px 0;
+  border-top: 1px solid rgba(55, 100, 125, 0.3);
+}
+
+.footer-bottom .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.footer-bottom a {
+  color: #F0F5FA;
+}
