@@ -100,7 +100,7 @@ You will run into cpu, memory and storage issues pretty soon though. Also, rando
 
 ## What next?
 
-* Now you're all set to follow our [Vamp Sava tutorials](/deploy-your-first-blueprint/).
+* Now you're all set to follow our [Vamp Sava tutorials](/try-vamp/sava-tutorials/).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 * Remember, this is not a production grade setup!
 

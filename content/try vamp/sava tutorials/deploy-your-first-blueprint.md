@@ -9,7 +9,7 @@ menu:
 ---
 ## Overview
 
-If everything went to plan, you should have your Vamp installation up and running. If not, please follow the steps in [Vamp hello world](/hello-world-marathon/). Now we're ready to check out some of Vamp's features. 
+If everything went to plan, you should have your Vamp installation up and running. If not, please follow the steps in [Vamp hello world](/try-vamp/hello-world/). Now we're ready to check out some of Vamp's features. 
 
 ### In this tutorial we will:  
 
@@ -110,4 +110,4 @@ You should see the metrics spike and some pretty charts being drawn:
 ## What next?
 
 Ok, that's great!   
-Now let's [run a canary release in the second part of this getting started tutorial →](/run-a-canary-release/)
+Now let's [run a canary release in the second part of this getting started tutorial →](/try-vamp/sava-tutorials/run-a-canary-release/)

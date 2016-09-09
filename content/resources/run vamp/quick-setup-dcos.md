@@ -99,7 +99,7 @@ Create a `vamp.json` file with the content:
 ```
 
 
-If you want to change the default Vamp DC/OS configuration, you can do it by setting [environment variables](/documentation/installation/configuration/).
+If you want to change the default Vamp DC/OS configuration, you can do it by setting [environment variables](/resources/run-vamp/vamp-configuration#environment-variable-configuration).
 For example:
 
 ```json
@@ -121,7 +121,7 @@ Now we need to find out on what IP the public node is running, so you can access
 Have fun! 
 
 
-* Now you're ready to follow our [Vamp Sava tutorials](/deploy-your-first-blueprint/).
+* Now you're ready to follow our [Vamp Sava tutorials](/try-vamp/sava-tutorials/).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 
 > NB If you need help you can also find us on [Gitter] (https://gitter.im/magneticio/vamp)
@@ -131,7 +131,7 @@ Have fun!
 The [Vamp DC/OS Docker image](https://github.com/magneticio/vamp-docker/tree/master/vamp-dcos) contains [configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf) that can be overridden for specific needs by:
 
 * making a new Docker image based on the Vamp DC/OS image
-* using [environment variables](/documentation/installation/configuration/#environment-variable-configuration)
+* using [environment variables](/resources/run-vamp/vamp-configuration#environment-variable-configuration)
 
 #### Example 1: Remove the `metrics` and `health` workflows by configuration and keep the `kibana` workflow:
 
@@ -167,7 +167,7 @@ or
 
 ## What next?
 
-* Now you're all set to follow our [Vamp Sava tutorials](/deploy-your-first-blueprint/).
+* Now you're all set to follow our [Vamp Sava tutorials](/try-vamp/sava-tutorials/).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 * Remember, this is not a production grade setup!
 

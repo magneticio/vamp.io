@@ -6,6 +6,10 @@ weight: 10
 
 Vamp is an open source, self-hosted platform for managing (micro)service oriented architectures that rely on container technology. Vamp takes care of complex, multi-step actions like canary releases, route updates, metrics collection and service discovery. 
 
+* [try Vamp](/try-vamp/)
+* [Use cases: Vamp solutions to practical problems](use-cases/)
+* [find out more](/resources/how-vamp-works/)
+
 ## Deploy online services, seamlessly
 
 Vamp gives you complete control over services, routing, runtime environments and planned deployments. All from your choice of interface - graphical UI, command line interface or RESTful API.
@@ -20,8 +24,9 @@ More about Vamp:
 * Vamp is not a strict container platform, but uses the power of container platforms under the hood.
 * Vamp is written in Scala, Go and ReactJS 
 
-* [find out how Vamp works](/how-vamp-works/)
 * [try Vamp](/try-vamp/)
+* [how will you use Vamp?](use-cases/)
+* [find out more](/resources/how-vamp-works/)
 
 --------
 
@@ -64,5 +69,5 @@ Vamp manages deployments and running systems to bring you more of the benefits a
 * Vamp Runner provides automated integration and workflows testing 
 
 * [try Vamp](/try-vamp/)
-* [how will you use Vamp?](/use-cases/)
-* [find out more](/how-vamp-works/)
+* [how will you use Vamp?](use-cases/)
+* [find out more](/resources/how-vamp-works/)

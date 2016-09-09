@@ -39,5 +39,5 @@ This also mean Vamp (not VGA), can be restarted, stopped etc. without main conse
 >
 * There should be one dedicated HAProxy for each VGA. 
 * Vamp also supports custom HAProxy configuration - base configuration should be used as a template and HAProxy frontends and backends are appended by VGA.
-* To correctly set up Vamp with single/multiple VGA instances, check out [Vamp gateway driver configuration](/configuration/#gateway-driver).
+* To correctly set up Vamp with single/multiple VGA instances, check out [Vamp gateway driver configuration](/resources/run-vamp/vamp-configuration#gateway-driver).
 

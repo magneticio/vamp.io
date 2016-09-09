@@ -151,7 +151,7 @@ If you want to the gateway port to be exposed outside of the cluster via Rancher
 
 ## What next?
 
-* Now you're all set to follow our [Vamp Sava tutorials](/run-a-canary-release/) (you can start with tutorial 2 - run a canary release as we already deployed the Sava demo application).
+* Now you're all set to follow our [Vamp Sava tutorials](/try-vamp/sava-tutorials/) (you can start with tutorial 2 - run a canary release as we already deployed the Sava demo application).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 * Remember, this is not a production grade setup!
 

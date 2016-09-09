@@ -9,7 +9,7 @@ menu:
 ---
 ## Overview
 
-In the [previous tutorial we did some basic canary releasing on two versions of a monolithic application](/run-a-canary-release/). Very nice, but Vamp isn't
+In the [previous tutorial we did some basic canary releasing on two versions of a monolithic application](/try-vamp/sava-tutorials/run-a-canary-release/). Very nice, but Vamp isn't
 called the *Very Awesome Microservices Platform* for nothing. 
 
 The next step is to split our monolithic Sava application into separate services. 
@@ -107,7 +107,7 @@ Host names and ports are configured at runtime and injected in the right parts o
 
 __Good to know__ is that there is no "point-to-point" wiring: the exposed host and port are actually service
 endpoints. The location, amount and version of containers running behind that service endpoint can vary.
-Learn more about [how Vamp does service discovery →](/documentation/about-vamp/service-discovery/)
+Learn more about [how Vamp does service discovery →](/resources/how-vamp-works/service-discovery/)
 
 ## What next?
-Great! We just demonstrated that Vamp can handle dependencies between services and configure these services with host and port information at runtime. Now let's do a [more complex migration to a new service based topology →](/merge/).
+Great! We just demonstrated that Vamp can handle dependencies between services and configure these services with host and port information at runtime. Now let's do a [more complex migration to a new service based topology →](/try-vamp/sava-tutorials/merge-a-changed-topology/).

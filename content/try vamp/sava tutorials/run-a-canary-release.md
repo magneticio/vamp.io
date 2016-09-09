@@ -10,7 +10,7 @@ menu:
 
 ## Overview
 
-In the [previous tutorial we deployed our app sava 1.0](/deploy-your-first-blueprint/). If you haven't walked through that part already, please do so before continuing. 
+In the [previous tutorial we deployed our app sava 1.0](try-vamp/sava-tutorials/deploy-your-first-blueprint/). If you haven't walked through that part already, please do so before continuing. 
 
 Now let's say we have a new version of this great application that we want to canary release into production. We have it containerised as `magneticio/sava:1.1.0` and are ready to go. 
 
@@ -27,7 +27,7 @@ Now let's say we have a new version of this great application that we want to ca
 
 Vamp allows you to do canary releases using blueprints. Take a look at the YAML example below. It is quite similar to the blueprint we initially used to deploy sava 1.0.0. However, there are two big differences.
 
-* The `services` key holds a list of breeds: one for v1.0.0 and one for v1.1.0 of our app. [Breeds](/documentation/using-vamp/breeds/) are Vamp's way of describing static artifacts that can be used in blueprints.
+* The `services` key holds a list of breeds: one for v1.0.0 and one for v1.1.0 of our app. [Breeds](/resources/using-vamp/breeds/) are Vamp's way of describing static artifacts that can be used in blueprints.
 * We've added the `routing` key which holds the weight of each service as a percentage of all requests.
 
 Notice we assigned 50% to our current version 1.0.0 and 50% to the new version 1.1.0 We could also start with a 100% to 0% split, a 99% to 1% split or whatever combination you want _as long as all percentages add up to 100% in total_.
@@ -126,7 +126,7 @@ Notice three things:
 * We set the weight to 0% because we don't want any other users to access `sava:1.1.0`
 
 The first service where the filter matches the request will be used to handle the request. 
-[More information about using filters, weights, sticky sessions etc.](/documentation/using-vamp/routings-and-filters/).  
+[More information about using filters, weights, sticky sessions etc.](/resources/using-vamp/routings-and-filters/).  
 Our full blueprint now looks as follows:
 
 ```yaml
@@ -230,4 +230,4 @@ Using a tool like [httpie](https://github.com/jakubroztocil/httpie) makes testin
 ## What next?
 
 Cool stuff. But we are dealing here with single, monolithic applications. Where are the microservices?   
-We will [chop up this monolith into services and deploy them with Vamp](/split-into-services/) in the third part of our tutorial →
+We will [chop up this monolith into services and deploy them with Vamp](/try-vamp/sava-tutorials/split-into-services/) in the third part of our tutorial →

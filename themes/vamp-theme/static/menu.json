@@ -134,6 +134,11 @@
               "visible": true
             },
             {
+              "path": "resources/how-vamp-works/concepts",
+              "text": "Concepts",
+              "visible": true
+            },
+            {
               "path": "resources/how-vamp-works/index",
               "text": "Index",
               "visible": false
@@ -146,11 +151,6 @@
             {
               "path": "resources/how-vamp-works/service-discovery",
               "text": "Service-discovery",
-              "visible": true
-            },
-            {
-              "path": "resources/how-vamp-works/vamp-concepts",
-              "text": "Vamp-concepts",
               "visible": true
             }
           ],
@@ -251,8 +251,8 @@
       "path": "try-vamp",
       "children": [
         {
-          "path": "try-vamp/deploy-your-first-blueprint",
-          "text": "Deploy-your-first-blueprint",
+          "path": "try-vamp/hello-world",
+          "text": "Hello-world",
           "visible": true
         },
         {
@@ -261,23 +261,35 @@
           "visible": false
         },
         {
-          "path": "try-vamp/merge",
-          "text": "Merge",
-          "visible": true
-        },
-        {
-          "path": "try-vamp/run-a-canary-release",
-          "text": "Run-a-canary-release",
-          "visible": true
-        },
-        {
-          "path": "try-vamp/split-into-services",
-          "text": "Split-into-services",
-          "visible": true
-        },
-        {
-          "path": "try-vamp/vamp-hello-world",
-          "text": "Vamp-hello-world",
+          "path": "try-vamp/sava-tutorials",
+          "children": [
+            {
+              "path": "try-vamp/sava-tutorials/deploy-your-first-blueprint",
+              "text": "Deploy-your-first-blueprint",
+              "visible": true
+            },
+            {
+              "path": "try-vamp/sava-tutorials/index",
+              "text": "Index",
+              "visible": false
+            },
+            {
+              "path": "try-vamp/sava-tutorials/merge-a-changed-topology",
+              "text": "Merge-a-changed-topology",
+              "visible": true
+            },
+            {
+              "path": "try-vamp/sava-tutorials/run-a-canary-release",
+              "text": "Run-a-canary-release",
+              "visible": true
+            },
+            {
+              "path": "try-vamp/sava-tutorials/split-into-services",
+              "text": "Split-into-services",
+              "visible": true
+            }
+          ],
+          "text": "Sava tutorials",
           "visible": true
         }
       ],

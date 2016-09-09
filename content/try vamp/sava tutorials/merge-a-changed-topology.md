@@ -3,7 +3,7 @@ date: 2016-03-09T19:56:50+01:00
 title: 4 - merge a changed topology
 ---
 
-In the [previous tutorial we "over-engineered" our service based solution a bit](/split-into-services/) (on purpose of course). 
+In the [previous tutorial we "over-engineered" our service based solution a bit](/try-vamp/sava-tutorials/split-into-services/) (on purpose of course). 
 
 We don't really need two backends services, so in this tutorial we will introduce our newly engineered solution and transition to it using Vamp blueprints and canary releasing methods.
 
@@ -98,7 +98,7 @@ In this specific example, we could export the deployment as a blueprint and upda
 50% split. Then we could do this again, but with a 80% to 20% split and so on. See the abbreviated example
 below where we set the `weight` keys to `50%` in both `routing` sections.
 
-{{% copyable %}}
+
 ```yaml
 ---
 name: eb2d505e-f5cf-4aed-b4ae-326a8ca54577
@@ -151,7 +151,6 @@ clusters:
             filters: []
 
 ```
-{{% /copyable %}}
 
 ## Step 4: Deleting parts of the deployment
 
@@ -172,7 +171,7 @@ Currently, deleting works in two steps:
 
 When you grab the YAML version of the deployment, just like above, you can set all the `weight` entries for the Sava 1.2.0 versions to `0` and update the deployment as usual. See the cleaned up example and make sure to adjust the name to your specific situation.
 
-{{% copyable %}}
+
 ```yaml
 ---
 name: 125fd95c-a756-4635-8e1a-361085037870
@@ -207,7 +206,7 @@ clusters:
         sava-frontend:1.2.0:
           weight: 0%
 ```
-{{% /copyable %}}
+
 
 
 **Doing the delete**
@@ -216,7 +215,7 @@ Now, you can take the exact same YAML blueprint or use one that's a bit cleaned 
 
 > **Note:** The UI does not have DELETE function yet for parts of deployments, just for full deployments. This will be added later.
 
-{{% copyable %}}
+
 ```yaml
 ---
 name: sava:1.2
@@ -234,7 +233,7 @@ clusters:
       breed:
         ref: sava-backend2:1.2.0
 ```
-{{% /copyable %}}
+
 
 > **Note**: We removed the `deployable`, `environment_variables`, `ports` and some other parts of the blueprint. These are actually not necessary for updating or deletion. Besides that, this is actually exactly the same blueprint we used to initially deploy the "old" topology.
 
@@ -253,3 +252,5 @@ New major release of your customer facing app? You probably also have some new d
 release. You create some containers and write up a blueprint that describes this new situation, run it in acceptance and test and what have you. Later, you merge it into your production setup, effectively putting it next to it and then slowly move from the old situation to the new situation, including dependencies.
 
 This is the end of this initial getting started tutorial. We haven't done anything with Vamp's SLA's yet, scaling or dictionary system, so there is much more to come!
+
+* [Vamp use cases](/what-is-vamp/use-cases/)
