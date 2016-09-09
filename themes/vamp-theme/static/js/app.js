@@ -21,7 +21,7 @@ function documentReady() {
     getMenuFile(menuFileLoaded);
   })
 
-  //Scrolling
+  // Top menu color change
   $(function() {
     $(window).on("scroll", function() {
       if($(window).scrollTop() > 0) {
@@ -37,6 +37,22 @@ function documentReady() {
     $("#header").addClass("always-active");
     $('.page').addClass('padding-fix');
   }
+
+
+  //Set smoothscrolling
+
+  $('a[href^="#"]').on('click',function (e) {
+    e.preventDefault();
+
+    var target = this.hash;
+    var $target = $(target);
+
+    $('html, body').stop().animate({
+      'scrollTop': $target.offset().top - 100
+    }, 350, 'swing', function () {
+      // window.location.hash = target;
+    });
+  });
 }
 
 function getMenuFile(callback) {
