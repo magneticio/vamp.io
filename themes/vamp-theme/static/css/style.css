@@ -811,7 +811,6 @@ body {
 }
 
 .markdowned em {
-  display: block;
   color: #6991AA;
   font-weight: 200;
 }
