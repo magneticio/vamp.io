@@ -121,23 +121,23 @@
       "path": "what-is-vamp",
       "children": [
         {
-          "path": "what-is-vamp/faq",
-          "text": "Faq",
-          "visible": true
-        },
-        {
           "path": "what-is-vamp/index",
           "text": "Index",
           "visible": false
         },
         {
           "path": "what-is-vamp/use-cases",
-          "text": "Use-cases",
+          "text": "Use cases",
           "visible": true
         },
         {
           "path": "what-is-vamp/vamp-compared-to",
-          "text": "Vamp-compared-to",
+          "text": "Vamp compared to...",
+          "visible": true
+        },
+        {
+          "path": "what-is-vamp/faq",
+          "text": "Frequently asked questions",
           "visible": true
         }
       ],
@@ -149,7 +149,7 @@
       "children": [
         {
           "path": "try-vamp/hello-world",
-          "text": "Hello-world",
+          "text": "Hello world",
           "visible": true
         },
         {
@@ -162,7 +162,17 @@
           "children": [
             {
               "path": "try-vamp/sava-tutorials/deploy-your-first-blueprint",
-              "text": "Deploy-your-first-blueprint",
+              "text": "Deploy your first blueprint",
+              "visible": true
+            },
+            {
+              "path": "try-vamp/sava-tutorials/run-a-canary-release",
+              "text": "Run a canary release",
+              "visible": true
+            },
+            {
+              "path": "try-vamp/sava-tutorials/split-into-services",
+              "text": "Split a monolith into services",
               "visible": true
             },
             {
@@ -172,17 +182,7 @@
             },
             {
               "path": "try-vamp/sava-tutorials/merge-a-changed-topology",
-              "text": "Merge-a-changed-topology",
-              "visible": true
-            },
-            {
-              "path": "try-vamp/sava-tutorials/run-a-canary-release",
-              "text": "Run-a-canary-release",
-              "visible": true
-            },
-            {
-              "path": "try-vamp/sava-tutorials/split-into-services",
-              "text": "Split-into-services",
+              "text": "Merge a changed topology",
               "visible": true
             }
           ],
@@ -201,12 +201,12 @@
           "children": [
             {
               "path": "resources/how-vamp-works/components",
-              "text": "Components",
+              "text": "Architecture and components",
               "visible": true
             },
             {
               "path": "resources/how-vamp-works/concepts",
-              "text": "Concepts",
+              "text": "Vamp concepts",
               "visible": true
             },
             {
@@ -215,13 +215,13 @@
               "visible": false
             },
             {
-              "path": "resources/how-vamp-works/persistence-key-value-store",
-              "text": "Persistence-key-value-store",
+              "path": "resources/how-vamp-works/service-discovery",
+              "text": "Service discovery",
               "visible": true
             },
             {
-              "path": "resources/how-vamp-works/service-discovery",
-              "text": "Service-discovery",
+              "path": "resources/how-vamp-works/persistence-key-value-store",
+              "text": "Persistence key value store",
               "visible": true
             }
           ],
@@ -237,49 +237,49 @@
           "path": "resources/run-vamp",
           "children": [
             {
+              "path": "resources/run-vamp/quick-setup-dcos",
+              "text": "Quick setup DC/OS",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/quick-setup-kubernetes",
+              "text": "Quick setup Kubernetes",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/quick-setup-rancher",
+              "text": "Quick setup Rancher",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/vamp-binaries",
+              "text": "Vamp binaries",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/osx",
+              "text": "Mac OS X",
+              "visible": true
+            },
+            {
               "path": "resources/run-vamp/container-drivers",
-              "text": "Container-drivers",
+              "text": "Container driver configuration",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/vamp-configuration",
+              "text": "Vamp configuration",
               "visible": true
             },
             {
               "path": "resources/run-vamp/elastic-configuration",
-              "text": "Elastic-configuration",
+              "text": "Elastic configuration",
               "visible": true
             },
             {
               "path": "resources/run-vamp/index",
               "text": "Index",
               "visible": false
-            },
-            {
-              "path": "resources/run-vamp/osx",
-              "text": "Osx",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/quick-setup-dcos",
-              "text": "Quick-setup-dcos",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/quick-setup-kubernetes",
-              "text": "Quick-setup-kubernetes",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/quick-setup-rancher",
-              "text": "Quick-setup-rancher",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/vamp-binaries",
-              "text": "Vamp-binaries",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/vamp-configuration",
-              "text": "Vamp-configuration",
-              "visible": true
             }
           ],
           "text": "Run vamp",

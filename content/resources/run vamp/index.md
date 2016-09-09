@@ -10,7 +10,7 @@ menu:
 
 ## Quick demo setup
 
-To help you try out Vamp, we've put together a collection of quick setup walkthroughs. These are a great way to get to grips with the power of Vamp and work through the [Vamp Sava tutorials](/try-vamp/#vamp-sava-tutorials).
+To help you try out Vamp, we've put together a collection of quick setup walkthroughs. These are a great way to get to grips with the power of Vamp and work through the [Vamp Sava tutorials](/try-vamp/sava-tutorials).
 
 >**Note:** Quick setups are not production grade setups!
 
