@@ -3,17 +3,17 @@
     {
       "path": "about",
       "text": "About",
-      "visible": true
+      "visible": false
     },
     {
       "path": "community",
       "text": "Community",
-      "visible": true
+      "visible": false
     },
     {
       "path": "contact",
       "text": "Contact",
-      "visible": true
+      "visible": false
     },
     {
       "path": "draft",
@@ -115,11 +115,82 @@
         }
       ],
       "text": "Instructions",
+      "visible": false
+    },
+    {
+      "path": "what-is-vamp",
+      "children": [
+        {
+          "path": "what-is-vamp/faq",
+          "text": "Faq",
+          "visible": true
+        },
+        {
+          "path": "what-is-vamp/index",
+          "text": "Index",
+          "visible": false
+        },
+        {
+          "path": "what-is-vamp/use-cases",
+          "text": "Use-cases",
+          "visible": true
+        },
+        {
+          "path": "what-is-vamp/vamp-compared-to",
+          "text": "Vamp-compared-to",
+          "visible": true
+        }
+      ],
+      "text": "What is Vamp?",
       "visible": true
     },
     {
-      "path": "news",
-      "text": "News",
+      "path": "try-vamp",
+      "children": [
+        {
+          "path": "try-vamp/hello-world",
+          "text": "Hello-world",
+          "visible": true
+        },
+        {
+          "path": "try-vamp/index",
+          "text": "Index",
+          "visible": false
+        },
+        {
+          "path": "try-vamp/sava-tutorials",
+          "children": [
+            {
+              "path": "try-vamp/sava-tutorials/deploy-your-first-blueprint",
+              "text": "Deploy-your-first-blueprint",
+              "visible": true
+            },
+            {
+              "path": "try-vamp/sava-tutorials/index",
+              "text": "Index",
+              "visible": false
+            },
+            {
+              "path": "try-vamp/sava-tutorials/merge-a-changed-topology",
+              "text": "Merge-a-changed-topology",
+              "visible": true
+            },
+            {
+              "path": "try-vamp/sava-tutorials/run-a-canary-release",
+              "text": "Run-a-canary-release",
+              "visible": true
+            },
+            {
+              "path": "try-vamp/sava-tutorials/split-into-services",
+              "text": "Split-into-services",
+              "visible": true
+            }
+          ],
+          "text": "Sava tutorials",
+          "visible": true
+        }
+      ],
+      "text": "TRY VAMP",
       "visible": true
     },
     {
@@ -243,84 +314,13 @@
       "visible": true
     },
     {
+      "path": "news",
+      "text": "News",
+      "visible": true
+    },
+    {
       "path": "support",
       "text": "Support",
-      "visible": true
-    },
-    {
-      "path": "try-vamp",
-      "children": [
-        {
-          "path": "try-vamp/hello-world",
-          "text": "Hello-world",
-          "visible": true
-        },
-        {
-          "path": "try-vamp/index",
-          "text": "Index",
-          "visible": false
-        },
-        {
-          "path": "try-vamp/sava-tutorials",
-          "children": [
-            {
-              "path": "try-vamp/sava-tutorials/deploy-your-first-blueprint",
-              "text": "Deploy-your-first-blueprint",
-              "visible": true
-            },
-            {
-              "path": "try-vamp/sava-tutorials/index",
-              "text": "Index",
-              "visible": false
-            },
-            {
-              "path": "try-vamp/sava-tutorials/merge-a-changed-topology",
-              "text": "Merge-a-changed-topology",
-              "visible": true
-            },
-            {
-              "path": "try-vamp/sava-tutorials/run-a-canary-release",
-              "text": "Run-a-canary-release",
-              "visible": true
-            },
-            {
-              "path": "try-vamp/sava-tutorials/split-into-services",
-              "text": "Split-into-services",
-              "visible": true
-            }
-          ],
-          "text": "Sava tutorials",
-          "visible": true
-        }
-      ],
-      "text": "Try vamp",
-      "visible": true
-    },
-    {
-      "path": "what-is-vamp",
-      "children": [
-        {
-          "path": "what-is-vamp/faq",
-          "text": "Faq",
-          "visible": true
-        },
-        {
-          "path": "what-is-vamp/index",
-          "text": "Index",
-          "visible": false
-        },
-        {
-          "path": "what-is-vamp/use-cases",
-          "text": "Use-cases",
-          "visible": true
-        },
-        {
-          "path": "what-is-vamp/vamp-compared-to",
-          "text": "Vamp-compared-to",
-          "visible": true
-        }
-      ],
-      "text": "What is vamp",
       "visible": true
     }
   ]
