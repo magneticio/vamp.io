@@ -841,6 +841,10 @@ body {
   color: #142D3C;
 }
 
+.top-menu.always-active .github-logo i.fa, .top-menu.active .github-logo i.fa {
+  color: #142D3C;
+}
+
 .top-menu.active {
   -webkit-transition: background-color 0.15s ease-in;
           transition: background-color 0.15s ease-in;
@@ -873,6 +877,12 @@ body {
           align-items: center;
 }
 
+.top-menu .right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .top-menu .top-menu-items {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -901,6 +911,54 @@ body {
 
 .top-menu .top-menu-item.active {
   border-bottom: 1px solid #FF405E;
+}
+
+.top-menu .github-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  text-decoration: none;
+}
+
+.top-menu .github-logo i.fa {
+  -webkit-transition: opacity 0.15s ease-in;
+          transition: opacity 0.15s ease-in;
+  -webkit-transform: translate(0, -1px);
+          transform: translate(0, -1px);
+  color: #F0F5FA;
+  opacity: 0.7;
+}
+
+.top-menu .github-logo:hover i.fa {
+  opacity: 1;
+}
+
+.top-menu .download {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+.top-menu .download .button {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 300;
 }
 
 .hero-space-buttons {

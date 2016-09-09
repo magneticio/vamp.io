@@ -508,7 +508,6 @@ body {
   }
 }
 
-
 // Fonts
 .header {
   font-weight: 100;
@@ -772,11 +771,11 @@ body {
   }
 
   &:first-child {
-      padding-top: 0;
+    padding-top: 0;
   }
 
   &:not(:last-child) {
-      border-bottom: 1px solid $dark-grey;
+    border-bottom: 1px solid $dark-grey;
   }
 }
 
@@ -875,15 +874,18 @@ body {
 
       color: $dark-blue;
     }
-  }
 
+    .github-logo {
+      i.fa {
+        color: $dark-blue;
+      }
+    }
+  }
 
   &.active {
     transition: background-color 0.15s ease-in;
     @extend .always-active;
   }
-
-
 
   .logo {
     height: 40px;
@@ -903,6 +905,11 @@ body {
     display: flex;
     align-items: center;
   }
+
+  .right {
+    display: flex;
+  }
+;
 
   .top-menu-items {
     display: flex;
@@ -926,9 +933,44 @@ body {
     }
   }
 
+  .github-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-decoration: none;
 
+    i.fa {
+      transition: opacity 0.15s ease-in;
+      transform: translate(0, -1px);
+      color: $light-grey;
+      opacity: 0.7;
+    }
+
+    &:hover {
+      i.fa {
+        opacity: 1;
+
+      }
+    }
+
+  }
+
+  .download {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    text-decoration: none;
+
+    .button {
+      padding-left: 10px;
+      padding-right: 10px;
+      font-weight: 300;
+    }
+  }
 }
-
 
 // Custom
 .hero-space-buttons {
@@ -973,7 +1015,6 @@ body {
     margin-top: 40px;
   }
 }
-
 
 .top-bar {
   border-top: 1px solid $light-grey;
