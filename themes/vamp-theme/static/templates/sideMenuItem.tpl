@@ -1,6 +1,6 @@
 <a href="/{{path}}" class="side-menu-item">
    <div class="bullet">
-    <img src="/img/icons/003-Small-icons/block-03.svg" alt="">
+    <img src="/img/003-Small-icons/block-03.svg" alt="">
    </div>
 
    <div class="section-title">
