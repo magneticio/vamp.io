@@ -1198,8 +1198,7 @@ section * {
   display: block;
 }
 .content-5 img.home-screen {
-  margin: 60px auto 0px auto;
-  width: 90%;
+  width: 1000%;
 }
 .content-5 .features > [class*="col-sm-"] {
   position: relative;
@@ -2101,7 +2100,7 @@ small[class*="icon-"] {
   }
 }
 #home .home-screen {
-  height: 400px;
+  width: 100%;
 }
 #home .hero-image {
   height: 310px;
