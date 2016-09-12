@@ -37,7 +37,8 @@ Start the `magneticio/vamp-docker:0.9.0` container, taking care to pass in the r
 A typical command would be:
 {{% copyable %}}
 ```
-docker run --net=host \
+docker run --privileged \
+           --net=host \
            -v /var/run/docker.sock:/var/run/docker.sock \
            -v $(which docker):/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
