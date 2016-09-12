@@ -21,7 +21,7 @@ To help you try out Vamp, we've put together a collection of quick setup walkthr
 
 ## Run Vamp on your architecture
 
-Before you get Vamp up and running on your architecture, it's helpful to understand [the role of each Vamp component and its preferred location in a typical architecture](/components/)
+Before you get Vamp up and running on your architecture, it's helpful to understand [the role of each Vamp component and its preferred location in a typical architecture](/resources/how-vamp-works/components/)
 
 ### Get Vamp
 

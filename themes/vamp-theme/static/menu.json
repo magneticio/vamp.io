@@ -292,21 +292,136 @@
               "path": "resources/using-vamp/index",
               "text": "Index",
               "visible": false
+            },
+            {
+              "path": "resources/using-vamp/breeds",
+              "text": "Breeds",
+              "visible": true
+            },
+            {
+              "path": "resources/using-vamp/blueprints",
+              "text": "Blueprints",
+              "visible": true
+            },
+            {
+              "path": "resources/using-vamp/deployments",
+              "text": "Deployments",
+              "visible": true
+            },
+            {
+              "path": "resources/using-vamp/environment-variables",
+              "text": "Environment variables",
+              "visible": true
+            },
+            {
+              "path": "resources/using-vamp/gateways-and-conditions",
+              "text": "Gateways and conditions",
+              "visible": true
+            },
+            {
+              "path": "resources/using-vamp/events",
+              "text": "Events",
+              "visible": true
+            },
+            {
+              "path": "resources/using-vamp/sla-and-escalations",
+              "text": "SLA and escalations",
+              "visible": true
+            },
+            {
+              "path": "resources/using-vamp/references",
+              "text": "Referencing artifacts",
+              "visible": true
+            },
+            {
+              "path": "resources/using-vamp/workflows",
+              "text": "Workflows",
+              "visible": true
+            },
+            {
+              "path": "resources/using-vamp/sticky-sessions",
+              "text": "Sticky sessions",
+              "visible": true
+            },
+            {
+              "path": "resources/using-vamp/virtual-hosts",
+              "text": "Virtual hosts",
+              "visible": true
+            },
+            {
+              "path": "resources/using-vamp/cli",
+              "text": "Vamp CLI",
+              "visible": true
             }
           ],
           "text": "Using vamp",
           "visible": true
         },
         {
-          "path": "resources/vamp-reference-docs",
+          "path": "resources/api-reference",
           "children": [
             {
-              "path": "resources/vamp-reference-docs/index",
+              "path": "resources/api-reference/index",
               "text": "Index",
               "visible": false
+            },
+            {
+              "path": "resources/api-reference/breeds",
+              "text": "Breeds",
+              "visible": true
+            },
+            {
+              "path": "resources/api-reference/blueprints",
+              "text": "Blueprints",
+              "visible": true
+            },
+            {
+              "path": "resources/api-reference/deployments",
+              "text": "Deployments",
+              "visible": true
+            },
+            {
+              "path": "resources/api-reference/gateways",
+              "text": "Gateways",
+              "visible": true
+            },
+            {
+              "path": "resources/api-reference/scales",
+              "text": "Scales",
+              "visible": true
+            },
+            {
+              "path": "resources/api-reference/conditions",
+              "text": "Conditions",
+              "visible": true
+            },
+            {
+              "path": "resources/api-reference/slas",
+              "text": "SLAs",
+              "visible": true
+            },
+            {
+              "path": "resources/api-reference/escalations",
+              "text": "Escalations",
+              "visible": true
+            },
+            {
+              "path": "resources/api-reference/events",
+              "text": "Events",
+              "visible": true
+            },
+            {
+              "path": "resources/api-reference/metrics-and-health",
+              "text": "Metrics and health",
+              "visible": true
+            },
+            {
+              "path": "resources/api-reference/system-and-debug",
+              "text": "System and debug",
+              "visible": true
             }
           ],
-          "text": "Vamp reference docs",
+          "text": "API documentation",
           "visible": true
         }
       ],
