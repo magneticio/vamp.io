@@ -6,7 +6,7 @@ menu:
     parent: api-reference
 ---
 
-# SLA's
+# SLAs
 
 Please check the notes on using [pagination](/documentation/api-reference/#pagination) and [json and yaml content types](/documentation/api-reference/#content-types) on how to effectively use the REST api.
 

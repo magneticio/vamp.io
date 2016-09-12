@@ -237,18 +237,8 @@
           "path": "resources/run-vamp",
           "children": [
             {
-              "path": "resources/run-vamp/quick-setup-dcos",
-              "text": "Quick setup DC/OS",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/quick-setup-kubernetes",
-              "text": "Quick setup Kubernetes",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/quick-setup-rancher",
-              "text": "Quick setup Rancher",
+              "path": "resources/run-vamp/quick-setup",
+              "text": "Quick setup",
               "visible": true
             },
             {
@@ -422,6 +412,23 @@
             }
           ],
           "text": "API documentation",
+          "visible": true
+        },
+        {
+          "path": "resources/api",
+          "children": [
+            {
+              "path": "resources/api/using-the-vamp-api",
+              "text": "Using the Vamp API",
+              "visible": true
+            },
+            {
+              "path": "resources/api/api-long",
+              "text": "API reference",
+              "visible": true
+            }
+            ],
+          "text": "API documentation (test)",
           "visible": true
         }
       ],

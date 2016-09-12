@@ -7,15 +7,15 @@ We’ve created a set of showcase applications, services and corresponding bluep
 
 To get to grips with how Vamp works, we advise that you: 
 
-1. Get Vamp up and running with [hello world](/hello-workd/) quick setup
-2. work through the [Sava tutorials](sava-tutorials/)
+1. Get Vamp up and running with [hello world](/try-vamp/hello-world/) quick setup
+2. work through the [Sava tutorials](/try-vamp/sava-tutorials/)
 
 > **Note:** If you need help you can find us on [Gitter](https://gitter.im/magneticio/vamp)  
 
 ## Hello world
 The easiest way to get Vamp started is to follow the [hello world](hello-world/) quick setup. This will run Vamp inside a local Docker container with Vamp’s Marathon driver.   
 
-_You could also follow one of our [other quick setups](/resources/run-vamp/), but we recommend hello world as it's the most straightforward._
+_You could also follow one of our [other quick setups](/resources/run-vamp/quick-setup/), but we recommend hello world as it's the most straightforward._
 
 Once you have Vamp up and running you can work through the Sava tutorials.  
 

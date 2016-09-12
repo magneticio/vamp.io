@@ -1,18 +1,14 @@
 ---
 date: 2016-03-09T19:56:50+01:00
 title: Hello world
-menu:
-  main:
-    parent: TRY VAMP
-    identifier: Hello world
-    weight: 05
+
 ---
+
+The Vamp hello world quick setup will run Mesos, [Marathon](https://mesosphere.github.io/marathon/) and Vamp inside a local Docker container with Vamp's Marathon driver. We will do this in three simple steps (although it's really just one `docker run` command).
+
 ## Overview
 
-The Vamp hello world quick setup will run Mesos, [Marathon](https://mesosphere.github.io/marathon/) and Vamp inside a local Docker container with Vamp's Marathon driver.   
-We will do this in three simple steps (although it's really just one `docker run` command).
-
-### Quick setup steps:
+### Steps:
 
 1. Get Docker
 2. Run Vamp

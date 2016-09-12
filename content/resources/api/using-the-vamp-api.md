@@ -1,9 +1,7 @@
 ---
-title: API Overview
-weight: 10
+date: 2016-03-09T19:56:50+01:00
+title: Using the Vamp API
 ---
-
-
 Vamp has one REST API.
 
 ## Content types
