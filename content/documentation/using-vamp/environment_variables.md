@@ -132,9 +132,9 @@ A scope is an area of your breed or blueprint definition that limits the visibil
 
 1. **Breed scope**: The scope we used in all the above examples is the default scope. If you never define any `environment_variables` in any other place, this will be used.
 
-2. **Service scope**: This scope can override breed scope and is part of the blueprint artifact. Use this to override environment variables in a breed when using references to breeds.
+2. **Cluster scope**: Will override the breed scope and is part of the blueprint artifact. Use this to override environment variables for all services that belong to a cluster.
 
-3. **Cluster scope**: This scope can override the service scope and breed scope and is part of the blueprint artifact. Use this to override all environment variables in all services that belong to a cluster.
+3. **Service scope**: Will override breed scope and cluster scope, and is part of the blueprint artifact. Use this to override all environment variables for a specific service within a cluster.
 
 > **Note:** Using scopes effectively is completely up to your use case. The various scopes help to separate
 concerns when multiple people and/or teams work on Vamp artifacts and deployments and need to decouple their effor
