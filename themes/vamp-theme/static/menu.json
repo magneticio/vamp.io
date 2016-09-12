@@ -205,11 +205,6 @@
               "visible": true
             },
             {
-              "path": "resources/how-vamp-works/concepts",
-              "text": "Vamp concepts",
-              "visible": true
-            },
-            {
               "path": "resources/how-vamp-works/index",
               "text": "Index",
               "visible": false
@@ -221,7 +216,12 @@
             },
             {
               "path": "resources/how-vamp-works/persistence-key-value-store",
-              "text": "Persistence key value store",
+              "text": "Persistence and key-value (KV) store",
+              "visible": true
+            },
+            {
+              "path": "resources/how-vamp-works/concepts",
+              "text": "Vamp concepts",
               "visible": true
             }
           ],

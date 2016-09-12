@@ -8,13 +8,12 @@ menu:
     weight: 10
 ---
 
-[back to resources page](/resources/)
+## Running Vamp
 
-* [Architecture and components](/components/)
-* [Vamp concepts](/vamp-concepts/)  
-* [Service discovery](/service-discovery/)
-* [Persistence and key-value (KV) store](/persistence-key-value-store/)
+* [Architecture and components](components/)
+* [Service discovery](service-discovery/)
+* [Persistence and key-value (KV) store](persistence-key-value-store/)
 
+## Working with Vamp
 
-
-[back to resources page](/resources/)
+* [Vamp concepts](concepts/)  

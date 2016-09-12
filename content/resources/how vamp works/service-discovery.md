@@ -3,8 +3,6 @@ date: 2016-03-09T19:56:50+01:00
 title: Service discovery
 ---
 
-[back to resources page](/resources/)
-
 ## How does Vamp do service discovery?
 
 Vamp uses a service discovery pattern called server-side service discovery. This pattern allows service discovery without the need to change your code or run any other daemon or agent. The provided link explains the general pro’s and cons in good detail. In addition to service discovery, Vamp also functions as a service registry.
