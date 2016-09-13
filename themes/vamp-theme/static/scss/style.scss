@@ -1033,6 +1033,11 @@ body {
     .text {
       font-weight: 100;
     }
+
+    &.rss-feed-link {
+      text-decoration: underline;
+      color: $red;
+    }
   }
 
   .input-group {

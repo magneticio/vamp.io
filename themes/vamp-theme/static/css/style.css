@@ -1035,6 +1035,11 @@ body {
   font-weight: 100;
 }
 
+.footer a.rss-feed-link {
+  text-decoration: underline;
+  color: #FF405E;
+}
+
 .footer .input-group {
   margin: 20px 0;
 }
