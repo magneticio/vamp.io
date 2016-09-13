@@ -1,25 +1,19 @@
 ---
+date: 2016-09-13T09:00:00+00:00
 title: Blueprints
-weight: 30
-menu:
-  main:
-    parent: using-vamp
-    identifier: using-blueprints
 ---
-
-# Blueprints
 
 Blueprints are execution plans - they describe how your services should be hooked up and what their topology should look like at runtime. This means you reference your breeds (or define them inline) and add runtime configuration to them.
 
 Blueprints allow you to add the following extra properties:
 
-- [gateways](#gateways): a stable port where the service can be reached.
-- [clusters & services](#clusters-services): a cluster is a grouping of services with one purpose, i.e. two versions (a/b) of one service.
-- [environment variables](/documentation/using-vamp/environment_variables/): a list of variables (interpolated or not) to be made available at runtime.
-- [dialects](#dialects): a dialect is a set of native commands for the underlying container platform, i.e. Docker or Mesosphere Marathon.
-- [scale](#scale): the CPU and memory and the amount of instance allocate to a service.
-- [conditions](/documentation/using-vamp/gateways-and-conditions/): how traffic should be directed based on HTTP and/or TCP properties.
-- [sla & escalations](/documentation/using-vamp/sla-and-escalations/): SLA definition that controls autoscaling.
+- [Gateways](#gateways): a stable port where the service can be reached.
+- [Clusters and services](#clusters-services): a cluster is a grouping of services with one purpose, i.e. two versions (a/b) of one service.
+- [Environment variables](/resources/using-vamp/environment-variables/): a list of variables (interpolated or not) to be made available at runtime.
+- [Dialects](#dialects): a dialect is a set of native commands for the underlying container platform, i.e. Docker or Mesosphere Marathon.
+- [Scale](#scale): the CPU and memory and the amount of instance allocate to a service.
+- [Conditions](/resources/using-vamp/gateways-and-conditions/): how traffic should be directed based on HTTP and/or TCP properties.
+- [SLA and escalations](/resources/using-vamp/sla-and-escalations/): SLA definition that controls autoscaling.
 
 This example shows some of the key concepts of of blueprints:
 
@@ -182,3 +176,8 @@ cpu: 2        # Number of CPUs per instance.
 memory: 2gb   # Memory per instance, MB/GB units.
 instances: 2  # Number of instances.
 ```
+## Where next?
+
+* Read about [Deployments](/resources/using-vamp/deployments/)
+* check the [API documentation](/resources/api-documentation/)
+* [Try Vamp](/try-vamp)

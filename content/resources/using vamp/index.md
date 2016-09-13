@@ -1,6 +1,6 @@
 ---
+date: 2016-09-13T09:00:00+00:00
 title: Using Vamp
-
 ---
 
 Vamp has few basic entities or artifacts you can work with:

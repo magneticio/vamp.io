@@ -415,7 +415,7 @@
           "visible": true
         },
         {
-          "path": "resources/api",
+          "path": "resources/api-documentation",
           "children": [
             {
               "path": "resources/api/using-the-vamp-api",
@@ -423,7 +423,7 @@
               "visible": true
             },
             {
-              "path": "resources/api/api-long",
+              "path": "resources/api/api",
               "text": "API reference",
               "visible": true
             }
