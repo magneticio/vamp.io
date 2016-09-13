@@ -1,1 +1,0 @@
-<a href="/{{path}}" id="top-menu-item-{{text}}" class="top-menu-item">{{text}}</a>
