@@ -138,3 +138,74 @@ or
   "VAMP_LIFTER_ARTIFACT_FILES": "[]"
 }
 ```
+
+## DC/OS with public and private nodes and Vamp
+
+Running Vamp on public Mesos agent node and disabling automatic Vamp Gateway Agent deployment (but keeping other default workflows):
+
+{{% copyable %}}
+```json
+{
+  "id": "vamp/vamp",
+  "instances": 1,
+  "cpus": 0.5,
+  "mem": 1024,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "magneticio/vamp:0.9.0-dcos",
+      "network": "HOST",
+      "forcePullImage": true
+    }
+  },
+  "env": {
+    "VAMP_LIFTER_ARTIFACT_FILES": "[\"breeds/health.js\",\"workflows/health.yml\",\"breeds/metrics.js\",\"workflows/metrics.yml\",\"breeds/kibana.js\",\"workflows/kibana.yml\"]"
+  },
+  "acceptedResourceRoles": [
+    "slave_public"
+  ]
+}
+```
+{{% /copyable %}}
+
+Deploying Vamp Gateway Agent - replace `$INSTANCES` (e.g. to be the same as total number of Mesos agent nodes) and optionally other parameters:
+
+{{% copyable %}}
+```json
+{
+  "id": "/vamp/vamp-gateway-agent",
+  "args": [
+    "--storeType=zookeeper",
+    "--storeConnection=zk-1.zk:2181",
+    "--storeKey=/vamp/haproxy/1.6",
+    "--logstash=elasticsearch-executor.elasticsearch.mesos:10001"
+  ],
+  "cpus": 0.2,
+  "mem": 256.0,
+  "instances": $INSTANCES,
+  "acceptedResourceRoles": [
+    "slave_public",
+    "*"
+  ],
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "magneticio/vamp-gateway-agent:0.9.0",
+      "network": "HOST",
+      "portMappings": [],
+      "privileged": true,
+      "parameters": []
+    }
+  },
+  "env": {},
+  "constraints": [
+    [
+      "hostname",
+      "UNIQUE"
+    ]
+  ],
+  "labels": {}
+}
+
+```
+{{% /copyable %}}
