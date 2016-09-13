@@ -110,12 +110,10 @@ ports:
 
 Ports come in two flavors:
 
-- `/tcp` this is the default type if none is specified. Use it for things like Redis, MySQL etc.
+- `/http` HTTP ports are the default type if none is specified. They are always recommended when dealing with HTTP-based services. Vamp can record a lot of interesting metrics like response times, errors etc. Of course, using `/tcp` will work but you miss out on cool data.
+- `/tcp` Use TCP ports for things like Redis, MySQL etc.
 
-- `/http` HTTP ports are always recommended when dealing with HTTP-based services. Vamp can record a lot of 
-interesting metrics like response times, errors etc. Of course, using `/tcp` will work but you miss out on cool data.
-
-> **Tip:** Use the `/http` notation for ports whenever possible!
+> **Note:** `/http` notation for ports is required for use of filters.
 
 Notice we can give the ports sensible names. This specific deployable has `web` port for customer traffic, an `admin` port for admin access and a `redis` port for some caching probably. These names come in handy when we later compose different breeds in blueprints.
 

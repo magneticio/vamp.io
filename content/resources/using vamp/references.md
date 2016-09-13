@@ -1,14 +1,13 @@
 ---
+date: 2016-09-13T09:00:00+00:00
 title: Referencing artifacts
-weight: 80
-menu:
-  main:
-    parent: using-vamp
 ---
 
-# Referencing artifacts
+With any artifact, Vamp allows you to either use an inline notation or reference the artifact by name. For references, you use the `reference` keyword or its shorter version `ref`. Think of it like either using actual values or pointers to a value. This has a big impact on how complex or simple you can make any blueprint, breed or deployment. It also impacts how much knowledge you need to have of all the different artifacts that are used in a typical deployment or blueprint.
 
-With any artifact, Vamp allows you to either use an inline notation or reference the artifact by name. For references, you use the `reference` keyword or its shorter version `ref`. Think of it like either using actual values or pointers to a value, i.e:
+Vamp assumes that referenced artifcats (the breed called `my_breed` in the example below) is available to load from its datastore at deploy time. This goes for all basic artifacts in Vamp: SLA's, gateways, conditions, escalations, etc.
+
+#### Example - reference notation
 
 **inline notation**
 
@@ -26,7 +25,7 @@ name: my_blueprint
           memory: 1024MB
           instances: 4
 ```
-**reference**
+**reference notation**
 
 ```yaml
 ---
@@ -40,17 +39,16 @@ name: my_blueprint
           reference: medium  
 ```
 
-This has a big impact on how complex or simple you can make any blueprint, breed or deployment. It also impacts how much knowledge you need to have of all the different artifacts that are used in a typical deployment or blueprint.
+## Working with references
 
-In the second example, Vamp assumes that the breed called `my_breed` is available to load from its datastore at deploy time. This goes for all basic artifacts in Vamp: SLA's, gateways, conditions, escalations, etc.
+When you begin to work with Vamp, you will probably start with inline artifacts. You have everything in one place and can directly see what properties each artifact has. Later, you can start specialising and basically build a library of often used architectural components. 
 
-# How will I use this?
 
-Starting with Vamp, you will probably start with inline artifacts. You have everything in one place and you can directly see what properties each artifact has. Later, you can start specializing and basically build a library of often used architectural components. Let's look at some use cases:
+#### Example - create a library of containers
 
-## Example 1: a library of containers
+**Use case:** You have a Redis container you have tweaked and setup exactly the way you want it. You want to use that exact container in all your environments (dev, test, prod etc.). 
 
-You have a Redis container you have tweaked and setup exactly the way you want it. You want to use that exact container in all your environments (dev, test, prod etc.). You put all that info inside a breed and either use the UI or API to save it, i.e:
+**Implementation:** Put all that info inside a breed and use either the Vamp UI or API to save it (below). Now you can just use the `ref: redis:1.0` notation anywhere in a blueprint.
 
 `POST /api/v1/breeds`
 
@@ -61,11 +59,11 @@ deployable: redis
 ports: 6379/tcp
 ```
 
-Now you can just use the `ref: redis:1.0` notation anywhere in a blueprint.
+#### Example - fix scales per environment
 
-## Example 2: fixing scales per environment
+**Use case:** You want to have a predetermined set of scales you can use per deployment per environment. For instance, a "medium_production" should be something else than a "medium_test".
 
-You want to have a predetermined set of scales you can use per deployment per environment. For instance, a "medium_production" should be something else than a "medium_test".
+**Implementation:** Put all that info inside a scale and use either the Vamp API to save it (below). Now you can use the `ref: medium_test` or `ref: medium_prod` notation anywhere a `scale` type is required.
 
 `POST /api/v1/scales`
 
@@ -85,11 +83,11 @@ memory: 1024MB
 instances: 1
 ```
 
-now you can use the `ref: medium_test` notation anywhere a `scale` type is required.
+#### Example - reuse a complex condition
 
-## Example 3: reusing a complex condition
+**Use case:** You have created a complex condition to target a specific part of your traffic. In this case users with a cookie that have a specific session variable set in that cookie. You want to use that condition now and then to do some testing. 
 
-You have created a complex condition to target a specific part of your traffic. In this case users with a cookie that have a specific session variable set in that cookie. You want to use that condition now and then to do some testing. You can just save that condition to the `/conditions`
+**Implementation:** Put all that info inside a condition and use either the Vamp API to save it (below). Now you can use the  `ref: condition_empty_shopping_cart` anywhere that `condition` is required.
 
 ```POST /api/v1/conditions```
 
@@ -99,3 +97,9 @@ name: condition_empty_shopping_cart
 condition: Cookie SHOPSESSION Contains shopping_basket_items=0 
 ```
 
+
+## Where next?
+
+* Read about [Workflows](/resources/using-vamp/workflows/)
+* check the [API documentation](/resources/api-documentation/)
+* [Try Vamp](/try-vamp)

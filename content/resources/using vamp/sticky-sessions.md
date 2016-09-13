@@ -1,20 +1,15 @@
 ---
+date: 2016-09-13T09:00:00+00:00
 title: Sticky Sessions
-weight: 110
-menu:
-  main:
-    parent: using-vamp
-    identifier: sticky-sessions
----
 
-# Sticky Sessions
+---
 
 Vamp supports `route` and `instance` level sticky sessions.
 
-#### Route Level
+## Route Level
 
-Common use case is when the end users have to have the same experience in A/B testing setup thus they should get the same service always (either A or B).
-{{% copyable %}}
+A common use case is when the end users have to have the same experience in A/B testing setup thus they should get the same service always (either A or B).
+
 ```yaml
 ---
 name: sava:1.0
@@ -58,13 +53,13 @@ clusters:
           memory: 256MB
           instances: 2
 ```
-{{% /copyable %}}
 
 
-#### Instance Level 
 
-Common use case is when the end users need to be served by the same instance (e.g. stateful application).
-{{% copyable %}}
+## Instance Level 
+
+A common use case is when the end users need to be served by the same instance (e.g. stateful application).
+
 ```yaml
 ---
 name: sava:1.0
@@ -108,9 +103,8 @@ clusters:
           memory: 256MB
           instances: 2
 ```
-{{% /copyable %}}
 
-#### Other Notes
+## Other Notes
 
 Resetting the `sticky` value can be done by: `sticky: none` or `sticky: ~` (setting it to `null`).
 
@@ -133,3 +127,9 @@ clusters:
   sava2: 
     ...
 ```
+
+## Where next?
+
+* Read about [Virtual hosts](/resources/using-vamp/virtual-hosts/)
+* Check the [API documentation](/resources/api-documentation/)
+* [Try Vamp](/try-vamp)

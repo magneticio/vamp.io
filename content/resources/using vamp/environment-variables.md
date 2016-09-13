@@ -1,15 +1,9 @@
 ---
+date: 2016-09-13T09:00:00+00:00
 title: Environment variables 
-weight: 33
-menu:
-  main:
-    parent: using-vamp
-    identifier: using-breeds-env-vars   
 ---
 
-# Environment variables & dependencies
-
-Breeds and blueprints can have a lists of environment variables that will be injected into the container at runtime.You set environment variables with the `environment_variables` keyword or its shorter version `env`, e.g. both examples below are equivalent.
+Breeds and blueprints can include lists of environment variables that will be injected into the container at runtime. You set environment variables with the `environment_variables` keyword or its shorter version `env`, e.g. both examples below are equivalent.
 
 ```yaml
 ---
@@ -60,9 +54,11 @@ This will match any breed name that starts with `redis:1.`
 
 ## Using place holders
 
-You may also want to define a place holder for a variable of which you do not know the actual value yet, but it should be filled in at runtime, i.e. when this breed actually gets deployed. This place holder is designated with a `~` character.
+Use the `~` character to define a place holder for a variable that should be filled in at runtime (i.e. when this breed actually gets deployed), but for which you do not yet know the actual value. 
 
-In the below example we designated the `ORACLE_PASSWORD` as a place holder. We require this variable to provided later.
+> **Typical use case**: When different roles in a company work on the same project. Developers can create place holders for variables that operations should fill in: it helps with separating responsibilities.
+
+#### Example - `ORACLE_PASSWORD` designated as a place holder
 
 ```yaml
 ---
@@ -74,11 +70,17 @@ environment_variables:
   ORACLE_PASSWORD: ~    
 ```
 
-> **Note**: A typical use case for this would be when different roles in a company work on the same project. Developers can create place holders for variables that operations should fill in: it helps with separating responsibilities.
-
 ## Resolving variables
 
-Using the `$` character, you can reference other statements in a breed/blueprint. This allows you to dynamically resolve ports and hosts names we don't know till a deployment is done. You can also resolve to hard coded and published constants from some other part of the blueprint or breed, typically a dependency, i.e.:
+Use the `$` character to reference other statements in a breed/blueprint. This allows you to dynamically resolve ports and hosts names that we don't know until a deployment is done. You can also resolve to hard coded and published constants from some other part of the blueprint or breed, typically a dependency.
+
+> **Note**: The `$` value is escaped by `$$`. A more strict notation is `${some_reference}`
+
+### Vamp host variable
+
+Vamp provides just one *magic** variable: the `host`. This resolves to the host or ip address of the referenced service. Strictly speaking, the `host` reference resolves to the gateway agent endpoint, but users do not need to concern themselves with this. Users can think of one-on-one connections where Vamp actually does server-side service discovery to decouple services.
+
+#### Example - resolving variables from a dependency
 
 ```yaml
 ---
@@ -97,11 +99,11 @@ clusters:
     breed: mysql:1.0
 ```
 
-Vamp provides just one *magic** variable: the `host`. This resolves to the host or ip address of the referenced service. Strictly speaking the `host` reference resolves to the gateway agent endpoint, but users do need to concern themselves with this. Users can think of *one-on-one* connections where Vamp actually does server-side service discovery to decouple services.
 
-> **Note**: The `$` value is escaped by `$$`. A more strict notation is `${some_reference}`
 
-We could even extend this further. What if the backend is configured through some environment variable, but the frontend also needs that information? Let's say the encoding type for our database. We just reference that environment variable using the exact same syntax:
+We could even extend this further. What if the backend is configured through some environment variable, but the frontend also needs that information? Let's say the encoding type for our database. We just reference that environment variable using the exact same syntax.
+
+#### Example - resolving variables from a dependency's environment variables
 
 ```yaml
 ---
@@ -123,7 +125,7 @@ clusters:
       ENCODING_TYPE: 'UTF8'   # injected into the backend MySQL container
 ```
 
-You can do everything with `environment_variables` but `constants` allow you to just be a little bit cleaner with regard to what you want to expose and what not.
+You can do everything with `environment_variables` but `constants` (see below) allow you to just be a little bit cleaner with regard to what you want to expose and what not.
 
 ## Environment variable scope
 
@@ -136,15 +138,16 @@ A scope is an area of your breed or blueprint definition that limits the visibil
 
 3. **Service scope**: Will override breed scope and cluster scope, and is part of the blueprint artifact. Use this to override all environment variables for a specific service within a cluster.
 
-> **Note:** Using scopes effectively is completely up to your use case. The various scopes help to separate
-concerns when multiple people and/or teams work on Vamp artifacts and deployments and need to decouple their effor
+### Examples of scope use
+
+> **Note:** Effective use of scope is completely dependent on your use case. The various scopes help to separate concerns when multiple people and/or teams work on Vamp artifacts and deployments and need to decouple their effort.
+
+#### Example - Run two of the same services with different configurations
+
+**Use case:** As a devOps-er you want to test one service configured in two different ways at the same time. Your service is configurable using environment variables. In this case we are testing a connection pool setting. 
 
 
-Let's look at some examples:
-
-### Example 1: Running two the same services with a different configuration
-
-As a dev/ops-er you want to test one service configured in two different ways at the same time. Your service is configurable using environment variables. In this case we are testing a connection pool setting. The blueprint would look like:
+**Implementation:** In the below blueprint we just use the breed level environment variables. The traffic is split into a 50/50 divide between both services.
 
 ```yaml
 ---
@@ -178,11 +181,12 @@ clusters:
       weight: 50% 
 ```  
 
-> **Note:** we just use the breed level environment variables. We also split the traffic into a 50/50 divide between both services.
 
-### Example 2: Overriding the JVM_HEAP_SIZE in production
+#### Example - Override the JVM_HEAP_SIZE in production
 
-As a developer, you created your service with a default heap size you use on your development laptop and maybe on a test environment. Once your service goes "live", an ops guy/gall should be able to override this setting.
+**Use case:** As a developer, you created your service with a default heap size you use on your development laptop and maybe on a test environment. Once your service goes "live", an ops guy/gal should be able to override this setting.
+
+**Implementation:** In the below blueprint we override the variable `JVM_HEAP_SIZE` for the whole `frontend` cluster by specifically marking it with .dot-notation `cluster.variable` 
 
 ```yaml
 ---
@@ -204,11 +208,11 @@ clusters:
             JVM_HEAP_SIZE: 1200         # will be overridden by deployment level: 2800
 ```            
 
-> **Note:** we override the variable `JVM_HEAP_SIZE` for the whole `frontend` cluster by specifically marking it with .dot-notation `cluster.variable` 
+#### Example - Use a place holder
 
-### Example 3: Using a place holder
+**Use case:** As a developer, you might not know some value your service needs at runtime, say the Google Anaytics ID your company uses. However, your Node.js frontend needs it! 
 
-As a developer, you might not know some value your service needs at runtime, say the Google Anaytics ID your company uses. However, your Node.js frontend needs it! You can make this explicit by demanding that a variable is to be set by a higher scope by using the `~` place holder. When this variable is NOT provided, Vamp will report an error at deploy time.
+**Implementation:** In the below blueprint the `~` place holder is used to explicitly demand that a variable is set by a higher scope. When this variable is NOT provided, Vamp will report an error at deploy time.
 
 ```yaml
 ---
@@ -231,11 +235,14 @@ clusters:
                                                   # Vamp reports error.
 ``` 
 
-### Example 4: Combining all scopes and references
+#### Example - combine all scopes and references
 
-As a final example, let's combine some of the examples above and include referenced breeds. In this case, a we have two breed artifacts already stored in Vamp and include them by using the `ref` keyword.
+As a final example, let's combine some of the examples above and include referenced breeds. In this case, we have two breed artifacts already stored in Vamp and include them by using the `ref` keyword.
 
-We override all `JVM_HEAP_SIZE` variables at the top scope. However, we just want to tweak the `JVM_HEAP_SIZE` for service `frontend_app:1.0-b`. We do this by adding a `environment_variables` at the service level.
+In the below blueprint:  
+
+* we override all breed scope `JVM_HEAP_SIZE` variables with cluster scope `environment_variables`
+* to further tweak the `JVM_HEAP_SIZE` for the service `frontend_app:1.0-b`, we also add service scope `environment_variables` for that service.
 
 ```yaml
 ---
@@ -268,6 +275,10 @@ clusters:
 Sometimes you just want configuration information to be available in a breed or blueprint. You don't need that information to be directly exposed as an environment variable. As a convenience, Vamp allows you to set `constants`.
 These are values that cannot be changed during deploy time.
 
+You can do everything with `environment_variables` but `constants` allow you to just be a little bit cleaner with regard to what you want to expose and what not.
+
+#### Exammple - using constants
+
 ```yaml
 ---
 clusters:
@@ -289,3 +300,10 @@ clusters:
       constants:
         SCHEMA_NAME: 'customers'    # NOT injected into the backend MySQL container
 ```
+
+
+## Where next?
+
+* Read about [Gateways and conditions](/resources/using-vamp/gateways-and-conditions/)
+* check the [API documentation](/resources/api-documentation/)
+* [Try Vamp](/try-vamp)

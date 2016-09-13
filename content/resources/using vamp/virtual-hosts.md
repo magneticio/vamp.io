@@ -1,13 +1,7 @@
 ---
+date: 2016-09-13T09:00:00+00:00
 title: Virtual Hosts
-weight: 120
-menu:
-  main:
-    parent: using-vamp
-    identifier: virtual-hosts
 ---
-
-# Virtual Hosts
 
 Vamp can be configured to support virtual host via HAProxy:
 
@@ -19,7 +13,7 @@ vamp.operation.gateway {
 ```
 
 Let's try an example: `PUT ${VAMP_URL}/api/v1/deployments/runner` with body:
-{{% copyable %}}
+
 
 ```yaml
 ---
@@ -48,7 +42,7 @@ clusters:
           port: 8081/http
         environment_variables:
           SAVA_RUNNER_ID: 2.0.0
-```{{% /copyable %}}
+```
 
 Now you can request:
 
@@ -80,7 +74,7 @@ GET ${VAMP_URL}/api/v1/gateways
 As you could see each gateways has `virtual_hosts` field.
 Using that field it is also possible to set list of custom virtual hosts.
 Let's see that in the following example:
-{{% copyable %}}
+
 
 ```yaml
 ---
@@ -116,7 +110,7 @@ clusters:
           port: 8081/http
         environment_variables:
           SAVA_RUNNER_ID: 2.0.0
-```{{% /copyable %}}
+```
 
 If you deploy this blueprint as `runner` and check gateway `9080/runner`:
 
@@ -139,3 +133,9 @@ $ curl --resolve run.vamp.run:80:${VAMP_GATEWAY_AGENT_IP} http://run.vamp.run
 ```
 
 `9080.runner.vamp` is added if configuration parameter `vamp.operation.gateway.virtual-hosts` is set, otherwise just custom virtual hosts if any.
+
+## Where next?
+
+* Read about [Vamp CLI](/resources/using-vamp/cli/)
+* Check the [API documentation](/resources/api-documentation/)
+* [Try Vamp](/try-vamp)
