@@ -1,7 +1,6 @@
 ---
+date: 2016-09-13T09:00:00+00:00
 title: The Vamp CLI
-weight: 10
-
 ---
 
 Vamp's command line interface (CLI) can be used to perform basic actions against the Vamp API. The CLI was
@@ -345,3 +344,9 @@ Displays the Vamp CLI version information
 > vamp version
 CLI version: 0.7.9
 ```
+
+## Where next?
+
+* Read about [Vamp use cases](/what-is-vamp/use-cases/)
+* Check the [API documentation](/resources/api-documentation/)
+* [Try Vamp](/try-vamp)

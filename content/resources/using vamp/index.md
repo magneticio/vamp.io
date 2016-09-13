@@ -5,14 +5,19 @@ title: Using Vamp
 
 Vamp has few basic entities or artifacts you can work with:
 
--   **Breeds**: static artifacts that describe single services and their dependencies.  
--   **Blueprints**: blueprints are, well, blueprints! They describe how breeds work in runtime and what properties they should have.  
--   **Deployments**: running blueprints. You can have many of one blueprint and perform actions on them at runtime. Plus, you can turn any running deployment into a blueprint.  
--   **Gateways**: "stable" routing endpoint - defined by it's port (incoming) and routes (outgoing). 
--   **Workflows**: apps (services) deployed on cluster, used for dynamically changing runtime configuration (e.g. SLA, scaling, condition weight update).
+### Static resource descriptions
+API actions on static resource descriptions are mostly synchronous.
 
+-   **Breeds**: Breeds describe single services and their dependencies.  
+-   **Blueprints**: Blueprints are, well, blueprints! They describe how breeds work in runtime and what properties they should have.  
 
-> **Note**: Breeds and blueprints are static artifacts, deployments and gateways are not. This means any API actions on static artifacts are mostly synchronous. Actions on deployments are largely asychronous.
+### Dynamic runtime entities
+
+> **Note**: API actions on dynamic runtime entities are largely asychronous.
+
+-   **Deployments**: Deployments are running blueprints. You can have many deployments from one blueprint and perform actions on each at runtime. Plus, you can turn any running deployment into a blueprint.  
+-   **Gateways**: Gateways are the "stable" routing endpoint - defined by it's port (incoming) and routes (outgoing). 
+-   **Workflows**: Workflows are apps (services) deployed on cluster, used for dynamically changing runtime configuration (e.g. SLA, scaling, condition weight update).
 
 ## Eventual consistency
 

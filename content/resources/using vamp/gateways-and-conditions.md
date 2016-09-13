@@ -1,20 +1,16 @@
 ---
-title: Gateways & Conditions
-weight: 35
-menu:
-  main:
-    parent: using-vamp
-    identifier: using-gateways
+date: 2016-09-13T09:00:00+00:00
+title: Gateways and conditions
 ---
 
-# Gateways
+## Gateways
 
-Gateways are another non-static entities in the Vamp eco-system. They represent load balancer rules to deployment, cluster and service instances.
+Gateways are dynmic runtime entities in the Vamp eco-system. They represent load balancer rules to deployment, cluster and service instances.
 
-There are 2 types of gateways:
+There are two types of gateways:
 
-- internal - created automatically for each deployment cluster, updated via Gateway/Deployment API
-- external - explicitly declared either in deployment blueprint or using gateway API
+* **Internal gateways:** created automatically for each deployment cluster, updated using the gateway/deployment API
+* **External gateways:** explicitly declared either in a deployment blueprint or using the gateway API
 
 This is an example of automatically created gateway for deployment `vamp`, cluster `sava` and port `port`.
 Cluster contains 2 services `sava:1.0.0` and `sava:1.1.0` with 2 running instances each. 
@@ -53,7 +49,7 @@ Gateway API allows programmable routing and having external gateways gives:
 **Example of A/B testing of 2 deployments**
 
 Deployment 1: `PUT /api/v1/deployments/sava:1.0`
-{{% copyable %}}
+
 ```yaml
 ---
 name: sava:1.0
@@ -74,10 +70,10 @@ clusters:
           memory: 256MB
           instances: 2
 ```
-{{% /copyable %}}
+
 
 Deployment 2: `PUT /api/v1/deployments/sava:1.1`
-{{% copyable %}}
+
 ```yaml
 ---
 name: sava:1.1
@@ -98,10 +94,10 @@ clusters:
           memory: 256MB
           instances: 2
 ```
-{{% /copyable %}}
+
 
 Gateway (90% / 10%): `POST /api/v1/gateways`
-{{% copyable %}}
+
 ```yaml
 ---
 name: sava
@@ -112,12 +108,11 @@ routes:
   sava:1.1/sava/port:
     weight: 10%
 ```
-{{% /copyable %}}
 
 This is similar to putting both `sava:1.0.0` and `sava:1.1.0` in the same cluster but that is just because this is a basic example.
 It is easy to imagine having an older legacy application and the new one and doing full canary release (or A/B testing) in seamless way by using gateways like this.
 
-## Gateway Usage
+### Gateway Usage
 
 Gateways define a set of rules for routing traffic between different services within the same cluster.
 Vamp allows you to determine this in following ways:
@@ -138,15 +133,20 @@ condition: User-Agent = IOS
 
 > **Notice:** we added a condition named `really_cool_condition` here. This condition is actually a reference to a separately stored condition definition we stored under a unique name on the `/conditions` endpoint.
 
-## Defining weights, condition strength and basic weight rules
+### Defining weights, condition strength and basic weight rules
 
 For each route, weight can be set regardless of any condition.
 The basic rule is the following:
+
 - find the first condition that matches request
 - if route exists, send the request to it depending on condition strength
 - if based on condition strength route **should not** follow that route then send request to one from all routes based on their weights.
 
-Route all `Firefox` and only `Firefox` users to route `service_B`:
+When defining weights, please make sure the total weight of routes always adds up to 100%.
+This means that when doing a straight three-way split you give one service 34% as `33%+33%+33%=99%`. Vamp has to account for all traffic and 1% can be a lot in high volume environments.
+
+
+#### Example - Route all `Firefox` and only `Firefox` users to route `service_B`:
 
 ```yaml
 service_A:
@@ -157,8 +157,8 @@ service_B:
   condition: user-agent == Firefox
 ```
 
-Route half of `Firefox` users to route `service_B`, other half to `service_A` (80%) or `service_B` (20%):
-
+#### Example - Route half of `Firefox` users to `service_B`, other half to `service_A` (80%) or `service_B` (20%):
+Non `Firefox` requests will be just sent to `service_A` (80%) or `service_B` (20%).
 ```yaml
 service_A:
   weight: 80%
@@ -167,16 +167,11 @@ service_B:
   condition_strength: 50%
   condition: user-agent == Firefox
 ```
-Non `Firefox` requests will be just sent to `service_A` (80%) or `service_B` (20%).
 
-When defining weights, please make sure the total weight of routes always adds up to 100%.
-This means that when doing a straight three-way split you give one service 34% as `33+33+34=100`.
-Vamp has to account for all traffic and 1% can be a lot in high volume environments.
-
-# Conditions
+## Conditions
 
 Creating conditions is quite easy. Checking Headers, Cookies, Hosts etc. is all possible.
-Under the hood, Vamp uses [Haproxy's ACL's](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#7.1) and you can use the exact ACL definition right in the blueprint in the `condition` field of a condition.
+Under the hood, Vamp uses Haproxy's ACL's ([cbonte.github.io/haproxy-dconv - 7.1 ACL basics](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#7.1)) and you can use the exact ACL definition right in the blueprint in the `condition` field of a condition.
 
 However, ACL's can be somewhat opaque and cryptic. That's why Vamp has a set of convenient "short codes"
 to address common use cases. Currently, we support the following:
@@ -196,7 +191,8 @@ to address common use cases. Currently, we support the following:
 | **header has value**      | header **name** has **value**    | header vamp has 12345    |
 | **header misses value**   | header **name** misses **value** | header vamp misses 12345 |
 
-Additional syntax examples can be found [here](https://github.com/magneticio/vamp/blob/master/model/src/test/scala/io/vamp/model/parser/ConditionDefinitionParserSpec.scala).
+* Additional syntax examples: [github.com/magneticio/vamp - ConditionDefinitionParserSpec.scala](https://github.com/magneticio/vamp/blob/master/model/src/test/scala/io/vamp/model/parser/ConditionDefinitionParserSpec.scala).
+
 Vamp is also quite flexible when it comes to the exact syntax. This means the following are all equivalent:
 
 In order to specify plain HAProxy ACL, ACL needs to be between `{ }`:
@@ -216,11 +212,11 @@ gateways:
   condition: "User-Agent = Chrome AND Has Header X-VAMP-MY-COOL-HEADER"
 ```
 
-Using a tool like [httpie](https://github.com/jakubroztocil/httpie) makes testing this a breeze.
+Using a tool like httpie ([github.com/jkbrzt/httpie](https://github.com/jakubroztocil/httpie)) makes testing this a breeze.
 
     http GET http://10.26.184.254:9050/ X-VAMP-MY-COOL-HEADER:stuff
 
-## Boolean expression in conditions
+### Boolean expression in conditions
 
 Vamp supports `AND`, `OR`, negation `NOT` and grouping `( )`:
 
@@ -231,11 +227,11 @@ gateways:
   condition: (User-Agent = Chrome OR User-Agent = Firefox) AND has cookie vamp
 ```
 
-Additional boolean expression examples can be found [here](https://github.com/magneticio/vamp/blob/master/model/src/test/scala/io/vamp/model/parser/BooleanParserSpec.scala).
+* Additional boolean expression examples: [github.com/magneticio/vamp - BooleanParserSpec.scala](https://github.com/magneticio/vamp/blob/master/model/src/test/scala/io/vamp/model/parser/BooleanParserSpec.scala).
 
-## URL path rewrite
+### URL path rewrite
 
-Vamp also supports URL path rewrite which can be powerful solution in defining service API's (e.g. RESTful) outside of application service.
+Vamp also supports URL path rewrite which can be powerful solution in defining service APIs (e.g. RESTful) outside of application service.
 
 ```yaml
 routes:
@@ -251,7 +247,7 @@ Path rewrite is defined in format: `path: NEW_PATH if CONDITION`:
 - `NEW_PATH` new path to be used; HAProxy variables are supported, e.g. `%[path]`
 - `CONDITION` condition using HAProxy directives, e.g. matching path, method, headers etc.
 
-## Vamp managed & external routes
+### Vamp managed and external routes
 
 Vamp managed routes are in the format:
 
@@ -275,3 +271,8 @@ routes:
     weight: 50%
 ```
 
+## Where next?
+
+* Read about [Events](/resources/using-vamp/events/)
+* check the [API documentation](/resources/api-documentation/)
+* [Try Vamp](/try-vamp)

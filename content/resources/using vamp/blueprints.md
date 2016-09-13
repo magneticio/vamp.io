@@ -15,7 +15,7 @@ Blueprints allow you to add the following extra properties:
 - [Conditions](/resources/using-vamp/gateways-and-conditions/): how traffic should be directed based on HTTP and/or TCP properties.
 - [SLA and escalations](/resources/using-vamp/sla-and-escalations/): SLA definition that controls autoscaling.
 
-This example shows some of the key concepts of of blueprints:
+#### Example blueprint - key concepts
 
 ```yaml
 ---
@@ -52,21 +52,19 @@ clusters:
 
 A gateway is a "stable" endpoint (or port in simplified sense) that almost never changes. When creating the mapping, it uses the definition (my_frontend/port in this case) from the "first" service in the cluster definition you reference. This service can of course be changed, but the gateway port normally doesn't.
 
-Please take care of setting the `/tcp` or `/http` (default) type for the port. Using `/http` allows Vamp to records more relevant metrics like response times and metrics.
+Please take care of setting the `/tcp` or `/http` (default) type for the port. Using `/http` allows Vamp to record more relevant metrics like response times and metrics.
 
 > **Note:** gateways are optional. You can just deploy services and have a home grown method to connect them to some stable, exposable endpoint.
 
-## Clusters & Services
+## Clusters and services
 
 In essence, blueprints define a collection of clusters.
-In turn, a cluster is a group of different services which
-will appear as a single service serve a single purposes.
+A cluster is a group of different services, which will appear as a single service and serve a single purpose.
 
-Common use cases are service A and B in an A/B testing scenario - usually just different
+Common use cases would be service A and B in an A/B testing scenario - usually just different
 versions of the same service (e.g. canary release or blue/green deployment).
 
-As said, clusters are configured by defining an array of services. A cluster can be
-given an arbitrary name. Services are just lists or arrays of breeds.
+Clusters are configured by defining an array of services. A cluster can be given an arbitrary name. Services are just lists or arrays of breeds.
 
 ```yaml
 ---
@@ -88,16 +86,18 @@ Clusters and services are just organisational items. Vamp uses them to order, re
 
 ## Dialects
 
-Vamp allows you to use container driver specific tags inside blueprints. We call this a “dialect”. We currently support:
+Vamp allows you to use container driver specific tags inside blueprints. We call this a “dialect”.  Dialects effectively enable you to make full use of, for instance, the underlying features like mounting disks, settings commands and providing access to private Docker registries.
+
+We currently support the following dialects:
 
 - `docker:`
 - `marathon:`
 
-This effectively enables you to make full use of, for instance, the underlying features like mounting disks, settings commands and providing access to private Docker registries.
-
 ### Docker dialect
 
-The following example show how you can mount a volume to a Docker container using the Docker dialect:
+The following example show how you can mount a volume to a Docker container using the Docker dialect.
+
+#### Example blueprint - using the Docker dialect
 
 ```yaml
 ---
@@ -113,7 +113,7 @@ clusters:
           "/tmp": ~
 ```
 
-Vamp will translate this into the proper API call. Inspecting the container after its deployed should show something similar to this:
+Vamp will translate this into the proper API call. Inspecting the container after it's deployed should show something similar to this:
 
 ```json
 ...
@@ -126,6 +126,8 @@ Vamp will translate this into the proper API call. Inspecting the container afte
 ### Marathon dialect
 
 This is an example with Marathon that pulls an image from private repo, mounts some volumes, sets some labels and gets run with an ad hoc command: all taken care of by Marathon.
+
+#### example blueprint - using the Marathon dialect
 
 ```yaml
 ---
@@ -153,20 +155,22 @@ clusters:
 ```
 **Notice the following**:
 
-1. Under the `marathon:` tag, we provide the command to run in the container by setting the `cmd:` tag.
-2. We provide a url to some credentials file in the `uri` array. As described [in the Marathon docs](https://mesosphere.github.io/marathon/docs/native-docker.html#using-a-private-docker-repository) this enables Mesos
+* Under the `marathon:` tag, we provide the command to run in the container by setting the `cmd:` tag.
+* We provide a url to some credentials file in the `uri` array. As described in the Marathon docs ([mesosphere.github.io/marathon - using a private Docker repository](https://mesosphere.github.io/marathon/docs/native-docker.html#using-a-private-docker-repository)) this enables Mesos
 to pull from a private registry, in this case registry.magnetic.io where these credentials are set up.
-3. We set some labels with some arbitrary metadata.
-4. We mount the `/tmp` to in Read/Write mode.
+* We set some labels with some arbitrary metadata.
+* We mount the `/tmp` to in Read/Write mode.
 
 We can provide the `marathon:` tag either on the service level, or the cluster level. Any `marathon:` tag set on the service level will override the cluster level as it is more specific. However, in 9 out of 10 cases the cluster level makes the most sense. Later, you can also mix dialects so you can prep your blueprint for multiple environments and run times within one description.
 
 
 ## Scale
 
-Scale is the "size" of a deployed service. Usually that means the number of instances (servers) and allocated cpu and memory.
+Scale is the "size" of a deployed service. Usually that means the number of instances (servers) and allocated CPU and memory.
 
 Scales can be defined inline in a blueprint or they can defined separately and given a unique name. The following example is a scale named "small". `POST`-ing this scale to the `/scales` REST API endpoint will store it under that name so it can be referenced from other blueprints.
+
+#### Example scale
 
 ```yaml
 ---

@@ -1,17 +1,11 @@
 ---
-title: Workflows
-weight: 100
-menu:
-  main:
-    parent: using-vamp
-    identifier: using-workflows    
+date: 2016-09-13T09:00:00+00:00
+title: Workflows 
 ---
 
-# Workflows
-
 A "workflow" is an automated change of the running system and its deployments and gateways. 
-Changing number of running instances based on metrics (e.g. SLA) is an example of a workflow. 
-A workflow can be seen as a recipe or solution, however it has more generic meaning not just related to "problematic" situations.
+Changing the number of running instances based on metrics (e.g. SLA) is an example of a workflow. 
+A workflow can be seen as a recipe or solution, however it has a more generic meaning not just related to "problematic" situations.
 
 
 Another example is a workflow that will decide automatically if a new version, when doing a canary release, should be accepted or not. 
@@ -167,3 +161,8 @@ JavaScript breeds will be executed by [Vamp Workflow Agent](https://github.com/m
 
 For additional JavaScript API check out [Vamp Node Client](https://github.com/magneticio/vamp-node-client) project.
 
+## Where next?
+
+* Read about [Sticky sessions](/resources/using-vamp/sticky-sessions/)
+* check the [API documentation](/resources/api-documentation/)
+* [Try Vamp](/try-vamp)
