@@ -1,6 +1,6 @@
 ---
-date: 2016-03-09T19:56:50+01:00
-title: Quick setup with Kubernetes
+date: 2016-09-13T09:00:00+00:00
+title: Kubernetes quick setup
 ---
 
 ## Overview
@@ -26,14 +26,14 @@ This quick setup will run Vamp together with etcd, Elasticsearch and Logstash on
 
 >**Note**:   
 
-> * [Minikube](https://github.com/kubernetes/minikube) can also be used.  
+> * Minikube can also be used. ([github.com - minikube](https://github.com/kubernetes/minikube)) 
 > * **Stuck?** If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
 
 ## In depth
 
 ### Before we begin...
-It is advisable to try out [the official Quickstart for Google Container Engine](https://cloud.google.com/container-engine/docs/quickstart) tutorial first.  
+It is advisable to try out the official Quickstart for Google Container Engine tutorial first ([google.com - container engine quickstart](https://cloud.google.com/container-engine/docs/quickstart)).  
 
 ### Step 1: Create a new GKE cluster:
 

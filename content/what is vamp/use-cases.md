@@ -1,11 +1,6 @@
 ---
-date: 2016-03-09T19:56:50+01:00
+date: 2016-09-13T09:00:00+00:00
 title: use cases
-menu:
-  main:
-    parent: WHAT IS VAMP?
-    identifier: use cases
-    weight: 10
 ---
 
 How will you use Vamp? We've described some typical implementations of Vamp to give you some ideas of how Vamp 

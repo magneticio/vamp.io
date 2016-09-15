@@ -1,11 +1,6 @@
 ---
-date: 2016-03-09T19:56:50+01:00
+date: 2016-09-13T09:00:00+00:00
 title: run Vamp
-menu:
-  main:
-    parent: RESOURCES
-    identifier: run Vamp
-    weight: 20
 ---
 
 ## Quick demo setup

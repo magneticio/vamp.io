@@ -1,7 +1,6 @@
 ---
-date: 2016-08-01T12:53:48+02:00
+date: 2016-09-13T09:00:00+00:00
 title: what is Vamp?
-weight: 10
 ---
 
 Vamp is an open source, self-hosted platform for managing (micro)service oriented architectures that rely on container technology. Vamp takes care of complex, multi-step actions like canary releases, route updates, metrics collection and service discovery. 

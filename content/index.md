@@ -1,8 +1,7 @@
 ---
-date: 2016-08-01T12:53:48+02:00
+date: 2016-09-13T09:00:00+00:00
 title: Canary releasing and autoscaling for microservice systems
 type: index
-weight: 0
 ---
 * [try Vamp](/tryvamp/)
 * [learn more](whatisvamp/)

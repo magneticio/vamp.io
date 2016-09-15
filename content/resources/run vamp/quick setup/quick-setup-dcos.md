@@ -1,6 +1,6 @@
 ---
-date: 2016-03-09T19:56:50+01:00
-title: Quick setup with DC/OS
+date: 2016-09-13T09:00:00+00:00
+title: DC/OS quick setup
 ---
 
 ## Overview 
@@ -8,7 +8,7 @@ title: Quick setup with DC/OS
 This quick setup will run Vamp, Mesos and Marathon, together with Zookeeper, Elasticsearch and Logstash on DC/OS.   
 (We'll also give you some additional information for creating a custom Vamp setup).
 
->**Note**: In this guide we will be using [DC/OS] (http://dcos.io) as our container-manager, but this guide will also work with Mesos and Marathon.
+>**Note**: In this guide we will be using DC/OS as our container-manager ([dcos.io](http://dcos.io)), but this guide will also work with Mesos and Marathon.
 
 ### Quick setup steps:
 

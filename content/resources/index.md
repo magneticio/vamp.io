@@ -1,5 +1,5 @@
 ---
-date: 2016-03-09T19:56:50+01:00
+date: 2016-09-13T09:00:00+00:00
 title: resources
 ---
 This is a page of links to the below content in a beautiful away. I imagine, 'how vamp works' at the top and 3 columns underneath with Get | Use | Reference
