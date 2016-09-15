@@ -121,9 +121,9 @@
       "path": "what-is-vamp",
       "children": [
         {
-          "path": "what-is-vamp/index",
-          "text": "Index",
-          "visible": false
+          "path": "what-is-vamp/",
+          "text": "Introduction",
+          "visible": true
         },
         {
           "path": "what-is-vamp/use-cases",
@@ -200,14 +200,9 @@
           "path": "resources/how-vamp-works",
           "children": [
             {
-              "path": "resources/how-vamp-works/components",
+              "path": "resources/how-vamp-works",
               "text": "Architecture and components",
               "visible": true
-            },
-            {
-              "path": "resources/how-vamp-works/index",
-              "text": "Index",
-              "visible": false
             },
             {
               "path": "resources/how-vamp-works/service-discovery",
@@ -217,11 +212,6 @@
             {
               "path": "resources/how-vamp-works/persistence-key-value-store",
               "text": "Persistence and key-value (KV) store",
-              "visible": true
-            },
-            {
-              "path": "resources/how-vamp-works/concepts",
-              "text": "Vamp concepts",
               "visible": true
             }
           ],
@@ -279,9 +269,9 @@
           "path": "resources/using-vamp",
           "children": [
             {
-              "path": "resources/using-vamp/index",
-              "text": "Index",
-              "visible": false
+              "path": "resources/using-vamp",
+              "text": "Overview",
+              "visible": true
             },
             {
               "path": "resources/using-vamp/breeds",
@@ -348,87 +338,20 @@
           "visible": true
         },
         {
-          "path": "resources/api-reference",
-          "children": [
-            {
-              "path": "resources/api-reference/index",
-              "text": "Index",
-              "visible": false
-            },
-            {
-              "path": "resources/api-reference/breeds",
-              "text": "Breeds",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/blueprints",
-              "text": "Blueprints",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/deployments",
-              "text": "Deployments",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/gateways",
-              "text": "Gateways",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/scales",
-              "text": "Scales",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/conditions",
-              "text": "Conditions",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/slas",
-              "text": "SLAs",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/escalations",
-              "text": "Escalations",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/events",
-              "text": "Events",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/metrics-and-health",
-              "text": "Metrics and health",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/system-and-debug",
-              "text": "System and debug",
-              "visible": true
-            }
-          ],
-          "text": "API documentation",
-          "visible": true
-        },
-        {
           "path": "resources/api-documentation",
           "children": [
             {
-              "path": "resources/api/using-the-vamp-api",
+              "path": "resources/api-documentation",
               "text": "Using the Vamp API",
               "visible": true
             },
             {
-              "path": "resources/api/api",
+              "path": "resources/api-documentation/api-reference",
               "text": "API reference",
               "visible": true
             }
             ],
-          "text": "API documentation (test)",
+          "text": "API documentation",
           "visible": true
         }
       ],

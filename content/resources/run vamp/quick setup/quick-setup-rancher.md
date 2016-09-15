@@ -1,5 +1,5 @@
 ---
-date: 2016-03-09T19:56:50+01:00
+date: 2016-09-13T09:00:00+00:00
 title: Quick setup with Rancher
 ---
 
@@ -29,7 +29,7 @@ This quick setup will run Vamp together with Consul, Elasticsearch and Logstash 
 ## In depth
 
 ### Before we begin...
-It is advisable to try out [the official Rancher Quick Start Guide](http://docs.rancher.com/rancher/latest/en/quick-start-guide/) tutorial first.  
+It is advisable to try out the official Rancher Quick Start Guide tutorial first ([rancher.com - quick start guide](http://docs.rancher.com/rancher/latest/en/quick-start-guide/)).  
 
 >**Note**: If you want to make a setup on your local VM based Docker, it's advisable to increase default VM memory size from 1GB to 4GB.
 

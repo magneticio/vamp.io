@@ -1,10 +1,10 @@
 ---
-date: 2016-03-09T19:56:50+01:00
+date: 2016-09-13T09:00:00+00:00
 title: Hello world
 
 ---
 
-The Vamp hello world quick setup will run Mesos, [Marathon](https://mesosphere.github.io/marathon/) and Vamp inside a local Docker container with Vamp's Marathon driver. We will do this in three simple steps (although it's really just one `docker run` command).
+The Vamp hello world quick setup will run Mesos, Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)) and Vamp inside a local Docker container with Vamp's Marathon driver. We will do this in three simple steps (although it's really just one `docker run` command).
 
 ## Overview
 
@@ -16,7 +16,7 @@ The Vamp hello world quick setup will run Mesos, [Marathon](https://mesosphere.g
 
 ### Prerequisistes:
 
-*  coffee
+*  Coffee
 
 >**Note** If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
@@ -74,7 +74,7 @@ After some downloading and booting, your Docker log will show Vamp has launched 
 ...Bound to /0.0.0.0:8080
 ```
 
-Now check if Vamp is home on `http://{docker-machine ip default}:8080/` and you're ready for the [Vamp Sava tutorials](/deploy-your-first-blueprint/)
+Now check if Vamp is home on `http://{docker-machine ip default}:8080/` and you're ready for the [Vamp Sava tutorials](/try-vamp/sava-tutorials/)
 
 ![](/img/screenshots/vamp_ui_home.gif)
 

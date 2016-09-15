@@ -1,5 +1,5 @@
 ---
-date: 2016-03-09T19:56:50+01:00
+date: 2016-09-13T09:00:00+00:00
 title: Persistence and key-value (KV) store
 ---
 
@@ -25,9 +25,9 @@ There is **no direct connection between Vamp and the VGA instances** - all commu
 * Since Mesos depends on ZooKeeper, the same ZooKeeper cluster can be used for Vamp and VGA's.
 
 
-## VGA and HAProxy
+## Vamp gateway agent (VGA) and HAProxy
 
-All communication between VAmp and the VGA instances is done by managing specific KV in the store. 
+All communication between Vamp and the VGA instances is done by managing specific KV in the store. 
 When Vamp needs to update the HAProxy configuration (e.g. when a new service has been deployed) Vamp will generate the new configuration and store it in the KV store.
 The VGA's read specific value and reload HAProxy instances. 
 

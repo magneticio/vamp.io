@@ -1,11 +1,6 @@
 ---
-date: 2016-03-09T19:56:50+01:00
+date: 2016-09-13T09:00:00+00:00
 title: Vamp compared to...
-menu:
-   main:
-     parent: WHAT IS VAMP?
-     identifier: Vamp compared to...
-     weight: 20 
 ---
 
 * Compared to doing it yourself:  consul / buoyant / linkerd (orchestration and management)
