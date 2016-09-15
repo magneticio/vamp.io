@@ -121,9 +121,9 @@
       "path": "what-is-vamp",
       "children": [
         {
-          "path": "what-is-vamp/index",
-          "text": "Index",
-          "visible": false
+          "path": "what-is-vamp/",
+          "text": "Introduction",
+          "visible": true
         },
         {
           "path": "what-is-vamp/use-cases",
@@ -418,12 +418,12 @@
           "path": "resources/api-documentation",
           "children": [
             {
-              "path": "resources/api/using-the-vamp-api",
+              "path": "resources/api-documentation/using-the-vamp-api",
               "text": "Using the Vamp API",
               "visible": true
             },
             {
-              "path": "resources/api/api",
+              "path": "resources/api-documentation/api",
               "text": "API reference",
               "visible": true
             }
