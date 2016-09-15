@@ -10,10 +10,7 @@
     <div class="menu col five-col" id="side-menu">
     </div>
     <div class="content col ten-col ">
-      <p class="date">
-        {{ .Date.Format "02 Jan 2006" }}
-      </p>
-      <h1 class="header">{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
+      <h1 class="content-header">{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
       <div class="markdowned">
         {{ .Content }}
       </div>

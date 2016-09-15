@@ -113,17 +113,6 @@ input, select {
   vertical-align: middle;
 }
 
-pre {
-  white-space: pre;
-  /* CSS2 */
-  white-space: pre-wrap;
-  /* CSS 2.1 */
-  white-space: pre-line;
-  /* CSS 3 (and 2.1 as well, actually) */
-  word-wrap: break-word;
-  /* IE */
-}
-
 input[type="radio"] {
   vertical-align: text-bottom;
 }
@@ -961,26 +950,26 @@ body {
   margin-bottom: 20px;
 }
 
-.h2, .markdowned h2 {
+.h2 {
   font-weight: 500;
   font-size: 24px;
   letter-spacing: 0.05em;
   color: #142D3C;
 }
 
-.h2:not(:first-child):not(:last-child), .markdowned h2:not(:first-child):not(:last-child) {
+.h2:not(:first-child):not(:last-child) {
   margin: 20px 0;
 }
 
-.h2:first-child, .markdowned h2:first-child {
+.h2:first-child {
   margin-bottom: 20px;
 }
 
-.h2:last-child, .markdowned h2:last-child {
+.h2:last-child {
   margin-bottom: 20px;
 }
 
-.h3, .button, .markdowned h3 {
+.h3, .button {
   font-weight: 500;
   text-transform: uppercase;
   font-size: 13px;
@@ -988,26 +977,26 @@ body {
   color: #96ADAA;
 }
 
-.text-header {
+.text-header, .markdowned th {
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0.05em;
   color: #142D3C;
 }
 
-.text-header:not(:first-child):not(:last-child) {
+.text-header:not(:first-child):not(:last-child), .markdowned th:not(:first-child):not(:last-child) {
   margin: 10px 0;
 }
 
-.text-header:first-child {
+.text-header:first-child, .markdowned th:first-child {
   margin-bottom: 10px;
 }
 
-.text-header:last-child {
+.text-header:last-child, .markdowned th:last-child {
   margin-bottom: 10px;
 }
 
-.text, .markdowned p, .markdowned li, .date {
+.text, .markdowned li, .markdowned td, .date {
   font-weight: 300;
   letter-spacing: 0.05em;
   font-size: 15px;
@@ -1129,7 +1118,7 @@ body {
   background-color: #142D3C;
 }
 
-.lander-row--blue .header, .lander-row--blue .h1, .lander-row--blue .h2, .lander-row--blue .markdowned h2, .markdowned .lander-row--blue h2, .lander-row--blue .text-header, .lander-row--blue .text, .lander-row--blue .markdowned p, .markdowned .lander-row--blue p, .lander-row--blue .markdowned li, .markdowned .lander-row--blue li, .lander-row--blue .date {
+.lander-row--blue .header, .lander-row--blue .h1, .lander-row--blue .h2, .lander-row--blue .text-header, .lander-row--blue .markdowned th, .markdowned .lander-row--blue th, .lander-row--blue .text, .lander-row--blue .markdowned li, .markdowned .lander-row--blue li, .lander-row--blue .markdowned td, .markdowned .lander-row--blue td, .lander-row--blue .date {
   color: #F0F5FA;
 }
 
@@ -1145,7 +1134,7 @@ body {
   background-color: #FF405E;
 }
 
-.lander-row--red .header, .lander-row--red .h2, .lander-row--red .markdowned h2, .markdowned .lander-row--red h2, .lander-row--red .h3, .lander-row--red .button, .lander-row--red .markdowned h3, .markdowned .lander-row--red h3, .lander-row--red .text, .lander-row--red .markdowned p, .markdowned .lander-row--red p, .lander-row--red .markdowned li, .markdowned .lander-row--red li, .lander-row--red .date {
+.lander-row--red .header, .lander-row--red .h2, .lander-row--red .h3, .lander-row--red .button, .lander-row--red .text, .lander-row--red .markdowned li, .markdowned .lander-row--red li, .lander-row--red .markdowned td, .markdowned .lander-row--red td, .lander-row--red .date {
   color: #F0F5FA;
 }
 
@@ -1259,7 +1248,7 @@ body {
   line-height: 0;
 }
 
-.side-menu-item.active .text, .side-menu-item.active .markdowned p, .markdowned .side-menu-item.active p, .side-menu-item.active .markdowned li, .markdowned .side-menu-item.active li, .side-menu-item.active .date {
+.side-menu-item.active .text, .side-menu-item.active .markdowned li, .markdowned .side-menu-item.active li, .side-menu-item.active .markdowned td, .markdowned .side-menu-item.active td, .side-menu-item.active .date {
   color: #FF405E;
 }
 
@@ -1279,7 +1268,7 @@ body {
   color: #142D3C;
 }
 
-.sub-menu-item.active .text, .sub-menu-item.active .markdowned p, .markdowned .sub-menu-item.active p, .sub-menu-item.active .markdowned li, .markdowned .sub-menu-item.active li, .sub-menu-item.active .date {
+.sub-menu-item.active .text, .sub-menu-item.active .markdowned li, .markdowned .sub-menu-item.active li, .sub-menu-item.active .markdowned td, .markdowned .sub-menu-item.active td, .sub-menu-item.active .date {
   color: #FF405E;
 }
 
@@ -1290,29 +1279,143 @@ body {
   min-height: 100vh;
 }
 
+.content .content-header {
+  font-size: 32px;
+  font-weight: 100;
+  color: #FF405E;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 50px;
+}
+
+.markdowned h1 {
+  font-size: 32px;
+  font-weight: 100;
+  color: #FF405E;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  margin: 25px 0;
+}
+
 .markdowned h2 {
-  margin-top: 60px !important;
+  font-size: 24px;
+  font-weight: 100;
+  color: #142D3C;
+  line-height: 1.5em;
+  letter-spacing: 0.05em;
+  margin: 50px 0 12.5px 0;
 }
 
-.markdowned p:not(:first-child) {
-  margin-top: 20px;
+.markdowned h2 + h3 {
+  margin-top: 0;
 }
 
-.markdowned p:not(:last-child) {
-  margin-bottom: 20px;
+.markdowned h2 + p {
+  margin-top: 0;
+}
+
+.markdowned h3 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #FF405E;
+  line-height: 1.8;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 50px 0 0 0;
+}
+
+.markdowned h3 + h4 {
+  margin-top: 0;
+}
+
+.markdowned h3 + p {
+  margin-top: 0;
+}
+
+.markdowned h4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #234B5F;
+  line-height: 1.8;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 25px 0 0 0;
+}
+
+.markdowned h4 + h5 {
+  margin-top: 0;
+}
+
+.markdowned h4 + p {
+  margin-top: 0;
+}
+
+.markdowned h5 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #FF405E;
+  line-height: 1.8;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 25px 0 0 0;
+}
+
+.markdowned h5 + h6 {
+  margin-top: 0;
+}
+
+.markdowned h5 + p {
+  margin-top: 0;
+}
+
+.markdowned h6 {
+  font-size: 15px;
+  font-weight: 500;
+  color: #142D3C;
+  line-height: 1.7;
+  letter-spacing: 0.025em;
+  margin: 25px 0;
+}
+
+.markdowned p {
+  font-size: 15px;
+  font-weight: 100;
+  color: #142D3C;
+  line-height: 1.7;
+  letter-spacing: 0.025em;
+  margin: 25px 0;
+}
+
+.markdowned a {
+  font-size: 15px;
+  font-weight: 100;
+  color: #142D3C;
+  line-height: 1.7;
+  letter-spacing: 0.025em;
+  text-decoration: underline;
+  margin: 25px 0;
 }
 
 .markdowned ol {
-  margin-left: 40px;
+  margin: 10px 40px;
 }
 
 .markdowned ul {
   list-style-type: square;
-  margin-left: 40px;
+  margin: 10px 40px;
 }
 
 .markdowned li {
-  margin: 20px 0;
+  margin: 10px 0;
+}
+
+.markdowned li:first-of-type {
+  margin-top: 0;
+}
+
+.markdowned li:last-of-type {
+  margin-bottom: 0;
 }
 
 .markdowned a {
@@ -1322,6 +1425,55 @@ body {
 .markdowned em {
   color: #6991AA;
   font-weight: 200;
+}
+
+.markdowned strong {
+  font-weight: 500;
+}
+
+.markdowned code {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.markdowned p > code, .markdowned li > code {
+  background-color: #F0F0F0;
+  padding: 0 5px;
+}
+
+.markdowned .hljs {
+  padding: 20px;
+}
+
+.markdowned table {
+  margin: 40px 0;
+}
+
+.markdowned th {
+  text-transform: capitalize;
+}
+
+.markdowned td, .markdowned th {
+  text-align: left;
+  padding: 20px 40px;
+  border-bottom: 1px solid #F0F5FA;
+}
+
+.markdowned td:first-of-type, .markdowned th:first-of-type {
+  padding-left: 10px;
+}
+
+.markdowned td:last-of-type, .markdowned th:last-of-type {
+  padding-right: 10px;
+}
+
+.markdowned tr:last-of-type td {
+  -webkit-transition: 0.1s ease-in background-color;
+          transition: 0.1s ease-in background-color;
+  border-bottom: none;
+}
+
+.markdowned tr:hover td {
+  background-color: #F0F5FA;
 }
 
 .date {
@@ -1336,6 +1488,8 @@ body {
   background-color: transparent;
   height: 80px;
   border-bottom: 1px solid rgba(240, 245, 250, 0.1);
+  -webkit-transition: background-color 0.15s ease-in;
+          transition: background-color 0.15s ease-in;
 }
 
 .top-menu.always-active, .top-menu.active {
@@ -1356,8 +1510,8 @@ body {
 }
 
 .top-menu.always-active .top-menu-item, .top-menu.active .top-menu-item {
-  -webkit-transition: color 0.15s ease-in;
-          transition: color 0.15s ease-in;
+  -webkit-transition: all 0.15s ease-in;
+          transition: all 0.15s ease-in;
   color: #142D3C;
 }
 
@@ -1367,11 +1521,6 @@ body {
 
 .top-menu.always-active .hamburger, .top-menu.active .hamburger {
   color: #142D3C;
-}
-
-.top-menu.active {
-  -webkit-transition: background-color 0.15s ease-in;
-          transition: background-color 0.15s ease-in;
 }
 
 .top-menu .logo {
@@ -1419,6 +1568,8 @@ body {
           flex-direction: column;
   background-color: #142D3C;
   box-shadow: 0 4px 4px -2px rgba(20, 45, 60, 0.7);
+  -webkit-transition: all 0.15s ease-in;
+          transition: all 0.15s ease-in;
 }
 
 .top-menu .top-menu-items.open {
@@ -1594,7 +1745,7 @@ body {
   height: 64px;
 }
 
-.offer-item .text, .offer-item .markdowned p, .markdowned .offer-item p, .offer-item .markdowned li, .markdowned .offer-item li, .offer-item .date {
+.offer-item .text, .offer-item .markdowned li, .markdowned .offer-item li, .offer-item .markdowned td, .markdowned .offer-item td, .offer-item .date {
   margin-left: 40px;
 }
 
@@ -1610,7 +1761,7 @@ body {
   height: 32px;
 }
 
-.lower-offer-item .text, .lower-offer-item .markdowned p, .markdowned .lower-offer-item p, .lower-offer-item .markdowned li, .markdowned .lower-offer-item li, .lower-offer-item .date {
+.lower-offer-item .text, .lower-offer-item .markdowned li, .markdowned .lower-offer-item li, .lower-offer-item .markdowned td, .markdowned .lower-offer-item td, .lower-offer-item .date {
   margin-left: 20px;
 }
 
@@ -1627,7 +1778,7 @@ body {
   z-index: 999;
 }
 
-.footer .h2, .footer .markdowned h2, .markdowned .footer h2 {
+.footer .h2 {
   font-weight: 300;
 }
 
@@ -1635,7 +1786,7 @@ body {
   text-decoration: none;
 }
 
-.footer a .text, .footer a .markdowned p, .markdowned .footer a p, .footer a .markdowned li, .markdowned .footer a li, .footer a .date {
+.footer a .text, .footer a .markdowned li, .markdowned .footer a li, .footer a .markdowned td, .markdowned .footer a td, .footer a .date {
   font-weight: 100;
 }
 

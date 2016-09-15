@@ -42,9 +42,12 @@ function documentReady() {
   function setColorMenu() {
     if ($(window).scrollTop() > 0) {
       $("#header").addClass("active");
+      $('#logo').attr('src', '/img/005-vamp/Logo/logo-long-colour.svg');
+
     } else {
       //remove the background property so it comes transparent again (defined in your css)
       $("#header").removeClass("active");
+      $('#logo').attr('src', '/img/005-vamp/Logo/logo-long-white.svg');
     }
   }
 
@@ -95,6 +98,9 @@ function getMenuFile(callback) {
     var sideMenuId = $(this).data().menuId;
     localStorage.setItem("vamp-sideSelected", sideMenuId);
   });
+
+  // Set it all
+  hljs.initHighlightingOnLoad();
 }
 
 

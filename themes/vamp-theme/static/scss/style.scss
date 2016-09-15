@@ -116,13 +116,6 @@ input, select {
   vertical-align: middle;
 }
 
-pre {
-  white-space: pre; /* CSS2 */
-  white-space: pre-wrap; /* CSS 2.1 */
-  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
-  word-wrap: break-word; /* IE */
-}
-
 input[type="radio"] {
   vertical-align: text-bottom;
 }
@@ -766,44 +759,192 @@ body {
   margin-left: 400px;
   background-color: white;
   min-height: 100vh;
+
+  .content-header {
+    font-size: 32px;
+    font-weight: 100;
+    color: $red;
+    line-height: 1.5;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 50px;
+  }
 }
 
 // Markdown implementation
 .markdowned {
+ h1 {
+   font-size: 32px;
+   font-weight: 100;
+   color: $red;
+   line-height: 1.5;
+   letter-spacing: 0.05em;
+   margin: 25px 0;
+ }
+
   h2 {
-    @extend .h2;
-    margin-top: 60px !important;
+    font-size: 24px;
+    font-weight: 100;
+    color: $dark-blue;
+    line-height: 1.5em;
+    letter-spacing: 0.05em;
+    margin: 50px 0 12.5px 0;
 
   }
 
+  h2 + h3 {
+    margin-top: 0;
+  }
+
+  h2 + p {
+    margin-top: 0;
+  }
+
+
+
   h3 {
-    @extend .h3;
+    font-size: 13px;
+    font-weight: 500;
+    color: $red;
+    line-height: 1.8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 50px 0 0 0;
+
+  }
+
+  h3 + h4 {
+    margin-top: 0;
+  }
+
+  h3 + p {
+    margin-top: 0;
+  }
+
+  h4 {
+    font-size: 13px;
+    font-weight: 500;
+    color: $medium-dark-blue;
+    line-height: 1.8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 25px 0 0 0;
+  }
+
+  h4 + h5 {
+    margin-top: 0;
+  }
+
+  h4 + p {
+    margin-top: 0;
+  }
+
+  h5 {
+    font-size: 13px;
+    font-weight: 500;
+    color: $red;
+    line-height: 1.8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 25px 0 0 0;
+  }
+
+  h5 + h6 {
+    margin-top: 0;
+  }
+
+  h5 + p {
+    margin-top: 0;
+  }
+
+  h6 {
+    font-size: 15px;
+    font-weight: 500;
+    color: $dark-blue;
+    line-height: 1.7;
+    letter-spacing: 0.025em;
+    margin: 25px 0;
+
   }
 
   p {
-    @extend .text;
+    font-size: 15px;
+    font-weight: 100;
+    color: $dark-blue;
+    line-height: 1.7;
+    letter-spacing: 0.025em;
+    margin: 25px 0;
 
-    &:not(:first-child) {
-      margin-top: 20px;
-    }
-
-    &:not(:last-child) {
-      margin-bottom: 20px;
-    }
   }
 
+  a {
+    font-size: 15px;
+    font-weight: 100;
+    color: $dark-blue;
+    line-height: 1.7;
+    letter-spacing: 0.025em;
+    text-decoration: underline;
+    margin: 25px 0;
+
+  }
+
+
+
+  //h2 {
+  //  @extend .h2;
+  //  margin-top: 40px !important;
+  //  margin-bottom: 10px !important;
+  //}
+  //
+  //h3 {
+  //  @extend .h3;
+  //  margin-top: 30px !important;
+  //  margin-bottom: 5px !important;
+  //}
+  //
+  //h2 + p, h2 + h3, h3 + p {
+  //  margin-top: 0 !important;
+  //}
+  //
+  //p + ul, p + ol {
+  //  margin-top: -10px;
+  //}
+  //
+  //p, blockquote {
+  //  @extend .text;
+  //
+  //  &:not(:first-child) {
+  //    margin-top: 20px;
+  //  }
+  //
+  //  &:not(:last-child) {
+  //    margin-bottom: 20px;
+  //  }
+  //}
+
+
+
   ol {
-    margin-left: 40px;
+    margin: 10px 40px;
+
   }
 
   ul {
     list-style-type: square;
-    margin-left: 40px;
+    margin: 10px 40px;
   }
 
   li {
-    margin: 20px 0;
+    margin: 10px 0;
     @extend .text;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 
   a {
@@ -814,6 +955,69 @@ body {
     color: $accent-color;
     font-weight: 200;
   }
+
+  strong {
+    font-weight: 500;
+  }
+
+  code {
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  p > code, li > code {
+    background-color: #F0F0F0;
+    padding: 0 5px;
+  }
+
+  .hljs {
+    padding: 20px;
+  }
+
+  table {
+    margin: 40px 0;
+  }
+
+  th {
+    @extend .text-header;
+    text-transform: capitalize;
+  }
+
+  td, th {
+    text-align: left;
+    padding: 20px 40px;
+
+
+
+    &:first-of-type {
+      padding-left: 10px;
+    }
+
+    &:last-of-type {
+      padding-right: 10px;
+    }
+
+    border-bottom: 1px solid $light-grey;
+  }
+
+  td {
+    @extend .text;
+  }
+
+  tr {
+    &:last-of-type {
+      td {
+        transition: 0.1s ease-in background-color;
+        border-bottom: none;
+      }
+    }
+  }
+
+  tr:hover {
+    td {
+      background-color: $light-grey;
+    }
+  }
+
 }
 
 .date {
@@ -832,6 +1036,9 @@ body {
   background-color: transparent;
   height: 80px;
   border-bottom: 1px solid rgba($light-grey, 0.1);
+  transition: background-color 0.15s ease-in;
+
+
 
   &.always-active {
     background-color: white;
@@ -849,7 +1056,7 @@ body {
     }
 
     .top-menu-item {
-      transition: color 0.15s ease-in;
+      transition: all 0.15s ease-in;
 
       color: $dark-blue;
     }
@@ -866,7 +1073,6 @@ body {
   }
 
   &.active {
-    transition: background-color 0.15s ease-in;
     @extend .always-active;
   }
 
@@ -904,6 +1110,8 @@ body {
     flex-direction: column;
     background-color: $dark-blue;
     box-shadow: 0 4px 4px -2px rgba($dark-blue, 0.7);
+    transition: all 0.15s ease-in;
+
 
     &.open {
       display: flex;
