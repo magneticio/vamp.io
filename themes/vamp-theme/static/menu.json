@@ -200,14 +200,9 @@
           "path": "resources/how-vamp-works",
           "children": [
             {
-              "path": "resources/how-vamp-works/components",
+              "path": "resources/how-vamp-works",
               "text": "Architecture and components",
               "visible": true
-            },
-            {
-              "path": "resources/how-vamp-works/index",
-              "text": "Index",
-              "visible": false
             },
             {
               "path": "resources/how-vamp-works/service-discovery",
@@ -217,11 +212,6 @@
             {
               "path": "resources/how-vamp-works/persistence-key-value-store",
               "text": "Persistence and key-value (KV) store",
-              "visible": true
-            },
-            {
-              "path": "resources/how-vamp-works/concepts",
-              "text": "Vamp concepts",
               "visible": true
             }
           ],
@@ -279,9 +269,9 @@
           "path": "resources/using-vamp",
           "children": [
             {
-              "path": "resources/using-vamp/index",
-              "text": "Index",
-              "visible": false
+              "path": "resources/using-vamp",
+              "text": "Overview",
+              "visible": true
             },
             {
               "path": "resources/using-vamp/breeds",
@@ -348,10 +338,10 @@
           "visible": true
         },
         {
-          "path": "resources/api-documentation/using-the-vamp-api",
+          "path": "resources/api-documentation",
           "children": [
             {
-              "path": "resources/api-documentation/using-the-vamp-api",
+              "path": "resources/api-documentation",
               "text": "Using the Vamp API",
               "visible": true
             },

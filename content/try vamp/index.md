@@ -7,7 +7,8 @@ We’ve created a set of showcase applications, services and corresponding bluep
 
 To get to grips with how Vamp works, we advise that you: 
 
-1. Get Vamp up and running with [hello world](/try-vamp/hello-world/) quick setup
+1. Get Vamp up and running with [hello world](/try-vamp/hello-world/) quick setup  
+_You could also follow one of our [other quick setups](/resources/run-vamp/quick-setup/), but we recommend hello world as it's the most straightforward._
 2. work through the [Sava tutorials](/try-vamp/sava-tutorials/)
 
 > **Note:** If you need help you can find us on [Gitter](https://gitter.im/magneticio/vamp)  
@@ -31,3 +32,5 @@ Once you have Vamp up and running, you can work through the Sava tutorials:
 2. [Run a canary release](sava-tutorials/run-a-canary-release/)
 3. [Split a monolith into services](sava-tutorials/split-into-services/)
 4. [Merge a changed topology](sava-tutorials/merge-a-changed-topology/)
+
+## Get started with Vamp on your architecture
