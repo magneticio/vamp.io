@@ -8,7 +8,7 @@ Before you get started running Vamp on your architecture, it is helpful to under
 
 ## Run Vamp
 
-Quick demo setups let you try Vamp out running with Mesos, DC/OS, Rancher and Kubernetes. When you're ready to run Vamp on your architecture, there are full instructions for working with binaries and configuring the required components.
+Quick demo setups let you try Vamp out running with Mesos, DC/OS, Rancher and Kubernetes. When you're ready to run Vamp on your architecture, there are full instructions for working with Vamp binaries and configuring the required components.
  
 * [Run Vamp](/resources/run-vamp/)
 

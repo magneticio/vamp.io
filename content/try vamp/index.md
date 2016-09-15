@@ -34,3 +34,6 @@ Once you have Vamp up and running, you can work through the Sava tutorials:
 4. [Merge a changed topology](sava-tutorials/merge-a-changed-topology/)
 
 ## Get started with Vamp on your architecture
+When you're ready to run Vamp on your architecture, we have full instructions for working with Vamp binaries and configuring the required components.
+
+* [Run vamp on your architecture](/resources/run-vamp/)
