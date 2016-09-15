@@ -348,74 +348,7 @@
           "visible": true
         },
         {
-          "path": "resources/api-reference",
-          "children": [
-            {
-              "path": "resources/api-reference/index",
-              "text": "Index",
-              "visible": false
-            },
-            {
-              "path": "resources/api-reference/breeds",
-              "text": "Breeds",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/blueprints",
-              "text": "Blueprints",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/deployments",
-              "text": "Deployments",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/gateways",
-              "text": "Gateways",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/scales",
-              "text": "Scales",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/conditions",
-              "text": "Conditions",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/slas",
-              "text": "SLAs",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/escalations",
-              "text": "Escalations",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/events",
-              "text": "Events",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/metrics-and-health",
-              "text": "Metrics and health",
-              "visible": true
-            },
-            {
-              "path": "resources/api-reference/system-and-debug",
-              "text": "System and debug",
-              "visible": true
-            }
-          ],
-          "text": "API documentation",
-          "visible": true
-        },
-        {
-          "path": "resources/api-documentation",
+          "path": "resources/api-documentation/using-the-vamp-api",
           "children": [
             {
               "path": "resources/api-documentation/using-the-vamp-api",
@@ -423,12 +356,12 @@
               "visible": true
             },
             {
-              "path": "resources/api-documentation/api",
+              "path": "resources/api-documentation/api-reference",
               "text": "API reference",
               "visible": true
             }
             ],
-          "text": "API documentation (test)",
+          "text": "API documentation",
           "visible": true
         }
       ],

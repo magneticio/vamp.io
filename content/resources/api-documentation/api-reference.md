@@ -1,9 +1,9 @@
 ---
+date: 2016-09-13T09:00:00+00:00
 title: API Reference
-
 ---
 
-Please check the notes on using [pagination](/resources/api/using-the-vamp-api#pagination) and [json and yaml content types](/resources/api/using-the-vamp-api#content-types) on how to effectively use the REST api.
+Please check the notes on using [pagination](/resources/api-documentation/using-the-vamp-api#pagination) and [json and yaml content types](/resources/api-documentation/using-the-vamp-api#content-types) on how to effectively use the REST api.
 
 # Blueprints
 
