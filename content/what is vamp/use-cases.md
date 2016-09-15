@@ -3,19 +3,19 @@ date: 2016-09-13T09:00:00+00:00
 title: use cases
 ---
 
-How will you use Vamp? We've described some typical implementations of Vamp to give you some ideas of how Vamp 
+How will you use Vamp? We've described some typical implementations of Vamp to give you some ideas of how Vamp
 
 Use Vamp to optimise major projects:
 
 * [A different approach to creating a responsive website](#a-different-approach-to-creating-a-responsive-website)
-* [Resolving incompatibilities after a (major) portal upgrade](#resolving-incompatibilities-after-a-major-portal-upgrade) 
+* [Resolving incompatibilities after a (major) portal upgrade](#resolving-incompatibilities-after-a-major-portal-upgrade)
 * [Move legacy monolithic systems with VMs to microservices](#move-legacy-monolithic-systems-with-vms-to-microservices)
-* [Modernise services, e.g. move to noSQL DB](#modernise-services-e-g-move-to-nosql-db) 
+* [Modernise services, e.g. move to noSQL DB](#modernise-services-e-g-move-to-nosql-db)
 
 Use Vamp to increase system reliability:
 
-* [Answer the question - what would happen if...?](#answer-the-question-what-would-happen-if)
-* [Automatically react when it does](#automatically-react-when-it-does)
+* [What would happen if...... Simulate and test scaling behaviour](#what-would-happen-if-simulate-and-test-scaling-behaviour)
+* [Self-healing and self-optimising](#self-healing-and-self-optimising)
 
 
 ## A different approach to creating a responsive website
@@ -27,14 +27,14 @@ Why develop the whole frontend in one go? Using Vamp you could use a canary rele
 
 1. __Start small:__ Build the new frontend for only one specific browser/resolution. Vamp can deploy the new responsive frontend and route a percentage of supported users there (all other users will continue to see the old version of your website).
 2. __Optimise:__ With your new service in the hands of real users, you can measure actual data and optimise accordingly.
-3. __Scale up:__ Once you are satisified, you can use Vamp to scale up the release, developing and deploying one browser/resolution at a time. 
+3. __Scale up:__ Once you are satisified, you can use Vamp to scale up the release, developing and deploying one browser/resolution at a time.
 
 
 ## Resolving incompatibilities after a (major) portal upgrade
 _“We upgraded the portal, our biggest client is running an unsupported browser”_  
 Leaving an important client unable to access your services after a major upgrade is a big and potentially costly problem. The traditional response would be to rollback the upgrade asap - if possible.  
 
-### Vamp offers a stress-free alternative 
+### Vamp offers a stress-free alternative
 Why rollback? Using Vamp's smart routing you could send specific users/clients to the old portal while others to enjoy the benefits of your new upgraded portal.
 
 1. __Re-deploy:__ Vamp can redeploy a (containerised) compatible version of your portal to run side-by-side with the upgraded version.
@@ -65,25 +65,25 @@ Why guess? Using Vamp you could A/B test the full architecture, in production, a
 3. __Keep the best performing option:__ Once you have made your decision, Vamp can route all traffic to your chosen architecture. Services from the alternative options will be drained to ensure customer experience is not impacted by the test.
 
 
-## Answer the question - what would happen if...?
-_"We can't be sure would happen if... users increased x10 ... latency dropped by 5 seconds ... a tier would drop ..."_  
-Your company might dream of overnight success, but what if it actually happened? Stress tests rarely cater to extreme circumstances. Oftentimes the bottleneck sits in the system simulating the load itself, so it's difficult to predict what would actually happen or to know if your planned responses will really help.
+## What would happen if......Simulate and test scaling behaviour
+_"How would our system react if... the number of users increased x10 ... the latency of a new service dropped by 20 seconds ... an entire tier of our application would be killed ..."_  
+Your company might dream of overnight success, but what if it actually happened? Stress tests rarely cater to extreme circumstances, and are often done on systems that are not identical to production environments. Oftentimes the bottleneck sits in the system simulating the load itself, so it's difficult to predict what would actually happen or to know if your planned responses will really help.
 
 ### Vamp offers a guessswork-free alternative
-Why not find out for sure? Using Vamp you could test your production infrastructure against seemingly impossible situations and optimise the planned responses.
+Why not find out for sure? Using Vamp you can test your services and applications against seemingly impossible situations, and then validate and optimise the scripted responses. With the same workflows as would be running in production, on the same infrastructure, with the same settings.
 
-1. __Mock required load:__ Vamp can deploy an instance to your production environment and simulate impossible situations withough routing any live user traffic there. 
-2. __Optimise:__ You can optimise your resource and autoscaling configurations based on what you see.
-3. __Iterate until you're certain:__ Vamp can repeat the tests until you're confident with the outcome.
+1. __Mock required load:__ Vamp can simulate (mock) high-stress situations for any kind of metric your system needs to respond to, without actually having to generate real traffic.
+2. __Optimise:__ You can optimise your resource allocation and autoscaling configurations based on real validated behaviour under stress.
+3. __Iterate until you're certain:__ Vamp can repeat the tests until you're confident with the outcome. Then you can use the same scaling and optimising workflows in production.
 
-## Automatically react when it does 
+## Self-healing and self-optimising
 
-_"Our website traffic can be unpredictable, it's hard to plan the exact resources we're going to need"_
-  
-  
-### Vamp offers a granular alternative 
-Why scale the whole system? Using Vamp you could auto-scale individual services based on clearly defined SLAs.
+_"Our website traffic can be unpredictable, it's hard to plan and dimension the exact resources we're going to need to run within SLA's"_
 
-1. __Describe services:__ You can describe individual services in a Vamp blueprints (breeds)
-2. __Set SLAs:__ 
-3. __Sleep easy:__ Vamp will track troughs and spikes in activity and automatically scale services to match your SLAs. All scaling events will be logged.
+
+### Vamp offers an easy and flexible way to dynamically scale resources and correct unhealthy behaviour
+Why overdimension your whole system? Using Vamp you can auto-scale individual services based on clearly defined SLAs. It's also easy to create advanced workflows for up and down scaling, based on your application or business specific requirements. Vamp can also make sure that unhealthy and failing services are corrected based on clearly defined metrics and treshholds.
+
+1. __Set SLAs:__ You can define SLA metrics, tresholds and escalation workflows. You can do this in Vamp blueprints, or create your own workflows for advanced use-cases.
+2. __Optimise:__ Vamp workflows can automically optimise your running system based on metrics that are relevant to your application or services.
+3. __Sleep easy:__ Vamp will track troughs and spikes in activity and automatically scale services to match your SLAs. All scaling events will be logged. Unhealthy services can be healed by Vamp.
