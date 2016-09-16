@@ -121,7 +121,7 @@
       "path": "what-is-vamp",
       "children": [
         {
-          "path": "what-is-vamp/",
+          "path": "what-is-vamp",
           "text": "Introduction",
           "visible": true
         },
@@ -136,8 +136,8 @@
           "visible": true
         },
         {
-          "path": "what-is-vamp/faq",
-          "text": "Frequently asked questions",
+          "path": "what-is-vamp/get-started",
+          "text": "Get started",
           "visible": true
         }
       ],
@@ -148,14 +148,14 @@
       "path": "try-vamp",
       "children": [
         {
-          "path": "try-vamp/hello-world",
-          "text": "Hello world",
+          "path": "try-vamp",
+          "text": "Overview",
           "visible": true
         },
         {
-          "path": "try-vamp/index",
-          "text": "Index",
-          "visible": false
+          "path": "try-vamp/hello-world",
+          "text": "Hello world",
+          "visible": true
         },
         {
           "path": "try-vamp/sava-tutorials",
