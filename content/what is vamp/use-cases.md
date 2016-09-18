@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: use cases
 ---
 
-How will you use Vamp? We've described some typical implementations of Vamp to give you some ideas of how Vamp
+## How will you use Vamp?
 
 Use Vamp to optimise major projects:
 

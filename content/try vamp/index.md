@@ -6,7 +6,7 @@ title: Try Vamp
 
 We've created some quick setups, demo applications and tutorials so you can try Vamp out for yourself.
 
-Follow the steps below to get Vamp up and running, then use the [Sava repo](/try-vamp/sava-tutorials/) to get to grips with some of Vamp's core features . 
+Follow the steps below to get Vamp up and running, then use the [Sava repo](/try-vamp/sava-tutorials/) to get to grips with some of Vamp's core features, like running a canary release. 
 
 ## Hello world quick setup
 
