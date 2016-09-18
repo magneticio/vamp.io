@@ -7,7 +7,7 @@ To help you try out Vamp, we've put together a collection of quick setup walkthr
 
 >**Note:** Quick setups are not production grade setups!
 
-* **[Hello world](/try-vamp/hello-world/)** - our easiest quick setup, runs Vamp together with Mesos and Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)) inside a local Docker container
+* **[Hello world](/try-vamp/)** - our easiest quick setup, runs Vamp inside a local Docker container together with Mesos and Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/))
 * **[DC/OS quick setup](/resources/run-vamp/quick-setup/quick-setup-dcos/)**
 * **[Kubernetes quick setup](/resources/run-vamp/quick-setup/quick-setup-kubernetes/)** - Kubernetes support is still in Alpha
 * **[Rancher quick setup](/resources/run-vamp/quick-setup/quick-setup-rancher/)** - Rancher support is still in Alpha

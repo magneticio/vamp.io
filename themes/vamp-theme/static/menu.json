@@ -149,11 +149,6 @@
       "children": [
         {
           "path": "try-vamp",
-          "text": "Overview",
-          "visible": true
-        },
-        {
-          "path": "try-vamp/hello-world",
           "text": "Hello world",
           "visible": true
         },
