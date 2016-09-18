@@ -7,11 +7,7 @@ title: run Vamp
 
 >**Note:** Quick setups are not production grade setups!
 
-To let you try out Vamp, we've put together a collection of quick setup walkthroughs.   
-
-* [Vamp quick setup](/resources/run-vamp/quick-setup/)
-
-These are a great way to get to grips with the power of Vamp and work through the [Vamp Sava tutorials](/try-vamp/sava-tutorials).
+To let you try out Vamp, we've put together a collection of [quick setup walkthroughs](/resources/run-vamp/quick-setup/). These are a great way to work through the [Vamp Sava tutorials](/try-vamp/sava-tutorials) and get to grips with the power of Vamp.
 
 ## Run Vamp on your architecture
 
