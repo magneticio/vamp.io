@@ -201,7 +201,12 @@
           "children": [
             {
               "path": "resources/how-vamp-works",
-              "text": "Architecture and components",
+              "text": "Vamp components",
+              "visible": true
+            },
+            {
+              "path": "resources/how-vamp-works/example-architectures",
+              "text": "Example architectures",
               "visible": true
             },
             {

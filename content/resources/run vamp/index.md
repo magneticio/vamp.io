@@ -15,7 +15,7 @@ These are a great way to get to grips with the power of Vamp and work through th
 
 ## Run Vamp on your architecture
 
-Before you get Vamp up and running on your architecture, it is helpful to understand [how vamp works](/resources/how-vamp-works/) and the role of each component and its preferred location in a typical architecture.
+Before you get Vamp up and running on your architecture, it is helpful to understand [how vamp works](/resources/how-vamp-works/) and the role of each component and its preferred location in [typical architectures](/resources/how-vamp-works/example-architectures/).
 
 ### Get Vamp
 

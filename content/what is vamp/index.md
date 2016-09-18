@@ -3,18 +3,17 @@ date: 2016-09-13T09:00:00+00:00
 title: what is Vamp?
 ---
 
-Vamp is an open source, self-hosted platform for managing (micro)service oriented architectures that rely on container technology. Vamp takes care of complex, multi-step actions like canary releases, route updates, metrics collection and service discovery. 
+Vamp is an open source, self-hosted platform for managing (micro)service oriented architectures that rely on container technology. Vamp takes care of complex, multi-step actions like canary releases, route updates, metrics collection and service discovery. You have complete control of all your services from your choice of interface - graphical UI, command line or RESTful API.
 
-* [try Vamp](/try-vamp/)
 * [Use cases: Vamp solutions to practical problems](use-cases/)
-* [find out more](/resources/how-vamp-works/)
+* [What Vamp offers compared to other tools and services](vamp-compared-to/)
+* [How Vamp works](/resources/how-vamp-works/)
 
 ## Deploy online services, seamlessly
 
-Vamp gives you complete control over services, routing, runtime environments and planned deployments. All from your choice of interface - graphical UI, command line interface or RESTful API.
 
 Vamp provides a model to describe (micro)services and their dependencies in blueprints, and a runtime/execution engine to deploy these blueprints, similar to AWS Cloudformation.
-Vamp can orchestrate complex deployment patterns, such as architecture level A/B testing and canary releasing. Clear SLA management and service level enforcement are also included out of the box, enabling granular auto-scaling for each individual service.  
+Vamp can orchestrate complex deployment patterns, such as architecture level A/B testing and canary releasing. Vamp includes clear SLA management and service level enforcement out of the box, which enables granular auto-scaling for each individual service and self-healing across your entire architecture.  
 
 More about Vamp:
 
@@ -23,9 +22,11 @@ More about Vamp:
 * Vamp is not a strict container platform, but uses the power of container platforms under the hood.
 * Vamp is written in Scala, Go and ReactJS 
 
-* [try Vamp](/try-vamp/)
-* [how will you use Vamp?](use-cases/)
-* [find out more](/resources/how-vamp-works/)
+--------
+
+* [Use cases: Vamp solutions to practical problems](use-cases/)
+* [What Vamp offers compared to other tools and services](vamp-compared-to/)
+* [How Vamp works](/resources/how-vamp-works/)
 
 --------
 
@@ -48,7 +49,14 @@ Vamp manages deployments and running systems to bring you more of the benefits a
 * (x) Security concerns multiply
 * (x) Data feeds and monitoring/logs need to be aggregated and zipped together
 
-## Vamp feature list
+
+* [Use cases: Vamp solutions to practical problems](use-cases/)
+* [What Vamp offers compared to other tools and services](vamp-compared-to/)
+* [How Vamp works](/resources/how-vamp-works/)
+
+## Feature list
+
+Features included in Vamp 0.9.0 (Beta release): 
 
 * container-scheduler agnostic API
 * percentage and condition based programmable routing
@@ -67,6 +75,20 @@ Vamp manages deployments and running systems to bring you more of the benefits a
 * integrates with ELK stack (Elastic Search, Logstash, Kibana) for custom Kibana dashboards
 * Vamp Runner provides automated integration and workflows testing 
 
-* [try Vamp](/try-vamp/)
-* [how will you use Vamp?](use-cases/)
-* [find out more](/resources/how-vamp-works/)
+--------------
+
+* [Use cases: Vamp solutions to practical problems](use-cases/)
+* [What Vamp offers compared to other tools and services](vamp-compared-to/)
+* [How Vamp works](/resources/how-vamp-works/)
+
+## Vamp in your architecture
+
+Vamp works together with your choice of orchestration, routing, persistance and big data. 
+
+![components](/images/diagram/Vamp-components.svg)
+
+--------------
+
+* [Use cases: Vamp solutions to practical problems](use-cases/)
+* [What Vamp offers compared to other tools and services](vamp-compared-to/)
+* [How Vamp works](/resources/how-vamp-works/)

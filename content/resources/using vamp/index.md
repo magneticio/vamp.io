@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: Using Vamp
 ---
 
-Vamp has few basic entities or artifacts you can work with:
+Vamp has few basic entities or artifacts you can work with, these can be classed as     either static resource descriptions or dynamic runtime entities:
 
 ### Static resource descriptions
 API actions on static resource descriptions are mostly synchronous.

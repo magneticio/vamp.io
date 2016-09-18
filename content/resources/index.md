@@ -3,6 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: resources
 ---
 
+## How Vamp works
 
 Before you get started running Vamp on your architecture, it is helpful to understand Before installing, it is helpful to understand [how vamp works](/resources/how-vamp-works/) and the role of each component and its preferred location in a typical architecture.
 
