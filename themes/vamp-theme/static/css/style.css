@@ -1818,3 +1818,85 @@ body {
 .footer-bottom a {
   color: #F0F5FA;
 }
+
+.admonition {
+  padding: 20px;
+  border-left: 10px solid;
+  border-radius: 0 5px 5px 0;
+  position: relative;
+}
+
+.admonition .admonition-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -50px;
+  width: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.admonition .admonition-icon-image {
+  width: 22px;
+  height: 22px;
+  background-size: contain;
+  bacground-position: center center;
+  background-repeat: no-repeat;
+}
+
+.admonition .admonition-title {
+  margin: 0;
+  padding: 0;
+  display: inline;
+  font-weight: 500;
+}
+
+.admonition p {
+  display: inline;
+}
+
+.admonition.note {
+  background-color: #F2F5F7;
+  border-color: #234B5F;
+}
+
+.admonition.note .admonition-icon-image {
+  background-image: url("/img/003-Small-icons/Notes/note.svg");
+}
+
+.admonition.note .admonition-title {
+  color: #234B5F;
+}
+
+.admonition.warning {
+  background-color: #FEF0D5;
+  border-color: #F9B32E;
+}
+
+.admonition.warning .admonition-icon-image {
+  background-image: url("/img/003-Small-icons/Notes/warning.svg");
+}
+
+.admonition.warning .admonition-title {
+  color: #F9B32E;
+}
+
+.admonition.tip {
+  background-color: #F2F5F7;
+  border-color: #6991AA;
+}
+
+.admonition.tip .admonition-icon-image {
+  background-image: url("/img/003-Small-icons/Notes/tip.svg");
+}
+
+.admonition.tip .admonition-title {
+  color: #6991AA;
+}

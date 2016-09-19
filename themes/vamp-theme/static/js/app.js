@@ -80,6 +80,10 @@ function documentReady() {
   $('top-menu-item').on('click', function(e) {
     $('.top-menu-items').removeClass('open');
   });
+
+  // Set node icons
+
+  $('.admonition').prepend('<div class="admonition-icon"><div class="admonition-icon-image"></div></div>');
 }
 
 function getMenuFile(callback) {

@@ -1274,6 +1274,8 @@ body {
   border-top: 1px solid $light-grey;
 }
 
+// footer
+
 .footer {
   position: relative;
   z-index: 999;
@@ -1312,5 +1314,84 @@ body {
   a {
     color: $light-grey;
 
+  }
+}
+
+// Note box
+.admonition {
+  padding: 20px;
+  border-left: 10px solid;
+  border-radius: 0 5px 5px 0;
+  position: relative;
+
+
+  .admonition-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -50px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .admonition-icon-image {
+    width: 22px;
+    height: 22px;
+    background-size: contain;
+    bacground-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .admonition-title {
+    margin: 0;
+    padding: 0;
+    display: inline;
+    font-weight: 500;
+  }
+
+  p {
+    display: inline;
+  }
+
+  &.note {
+    background-color: #F2F5F7;
+    border-color: #234B5F;
+
+    .admonition-icon-image {
+      background-image: url("/img/003-Small-icons/Notes/note.svg");
+    }
+
+    .admonition-title {
+      color: #234B5F;
+    }
+  }
+
+  &.warning {
+    background-color: #FEF0D5;
+    border-color: #F9B32E;
+
+    .admonition-icon-image {
+      background-image: url("/img/003-Small-icons/Notes/warning.svg");
+    }
+
+    .admonition-title {
+      color: #F9B32E;
+    }
+  }
+
+  &.tip {
+    background-color: #F2F5F7;
+    border-color: #6991AA;
+
+    .admonition-icon-image {
+      background-image: url("/img/003-Small-icons/Notes/tip.svg");
+    }
+
+    .admonition-title {
+      color: #6991AA;
+    }
   }
 }
