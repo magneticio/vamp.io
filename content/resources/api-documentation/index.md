@@ -63,3 +63,5 @@ kind: blueprint
 Additional `kind` field is required and it always correspond (singular form) to type of the artifact.
 For instance if specific endpoint would be `/api/v1/deloyments` then the same deployment request can be sent to `api/v1` with additional `kind: deployment`.
 If specific endpoints are used (e.g. `/api/v1/blueprints`) then `kind` needs to be ommited.
+
+* [API reference](/resources/api-documentation/api-reference/)

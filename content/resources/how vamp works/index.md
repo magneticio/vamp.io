@@ -28,9 +28,9 @@ The command line interface for managing Vamp and providing integration with (she
 
 Vamp works with your choice of orchestration platform. Currently we support Kubernetes, DC/OS and Rancher.
 
-### Persistance
+### Persistence
 
-Vamp uses Zookeeper as a key value store and elasticsearch for persistance. 
+Vamp uses Zookeeper as a key value store and elasticsearch for persistence. 
 
 ### Routing
 
