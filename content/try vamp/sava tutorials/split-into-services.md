@@ -5,11 +5,9 @@ title: 3 - split a monolith into services
 ## Overview
 
 In the [previous tutorial we did some basic canary releasing on two versions of a monolithic application](/try-vamp/sava-tutorials/run-a-canary-release/). Very nice, but Vamp isn't
-called the *Very Awesome Microservices Platform* for nothing. 
+called the *Very Awesome Microservices Platform* for nothing. The next step is to split our monolithic Sava application into separate services. 
 
-The next step is to split our monolithic Sava application into separate services. 
-
-### In this tutorial we will:
+#### In this tutorial we will:
 
 1. define a new service topology
 2. learn about environment variables and service discovery
@@ -81,9 +79,9 @@ clusters:
 
 Deploy this blueprint using either the UI or a REST call and when deployed check out the new topology in your browser (on port 9060 this time). When deployed it should yield something similar to:
 
-![](/img/screenshots/services_2backends.png)
+![](/images/screens/services_2backends.png)
 
-### Step2: Learn about environment variables and service discovery
+### Step 2: Learn about environment variables and service discovery
 
 If you were to check out the Docker containers using `docker inspect`, you would see the environment variables that we set in the blueprint. 
 
@@ -100,9 +98,11 @@ If you were to check out the Docker containers using `docker inspect`, you would
 
 Host names and ports are configured at runtime and injected in the right parts of your running deployment. Your service/app should pick up these variables to configure itself. Luckily, this is quite easy and common in almost all languages and frameworks.
 
-__Good to know__ is that there is no "point-to-point" wiring: the exposed host and port are actually service
+{{< tip >}}
+Remember, there is no "point-to-point" wiring. The exposed host and port are actually service
 endpoints. The location, amount and version of containers running behind that service endpoint can vary.
 Learn more about [how Vamp does service discovery →](/resources/how-vamp-works/service-discovery/)
+{{< /tip >}}
 
 ## What next?
 Great! We just demonstrated that Vamp can handle dependencies between services and configure these services with host and port information at runtime. Now let's do a [more complex migration to a new service based topology →](/try-vamp/sava-tutorials/merge-a-changed-topology/).
