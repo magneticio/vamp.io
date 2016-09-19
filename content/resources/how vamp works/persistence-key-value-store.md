@@ -12,18 +12,17 @@ Vamp is not demanding in ES resources, so either a small ES installation is suff
 Vamp depends on a key-value (KV) store for communication between Vamp and the Vamp Gateway Agents (VGA).
 We currently support:
 
-* [ZooKeeper](https://zookeeper.apache.org/)
-* [etcd](https://coreos.com/etcd/docs/latest/) 
-* [Consul](https://www.consul.io/)
+* ZooKeeper ([apache.org - zookeeper](https://zookeeper.apache.org/))
+* etcd ([coreos.com - etcd](https://coreos.com/etcd/docs/latest/)) 
+* Consul ([consul.io](https://www.consul.io/))
 
 Typically, there should be one Vamp instance and one or more VGA instances.  
 There is **no direct connection between Vamp and the VGA instances** - all communication is done by managing specific KV in the store.  
 
 
->**Note:**
->
-* Since Mesos depends on ZooKeeper, the same ZooKeeper cluster can be used for Vamp and VGA's.
-
+{{< note title="Note!">}}
+Since Mesos depends on ZooKeeper, the same ZooKeeper cluster can be used for Vamp and VGA's.
+{{< /note >}}
 
 ## Vamp gateway agent (VGA) and HAProxy
 
@@ -35,9 +34,8 @@ Since VGA (and HAProxy) is a single point of failure (proxy to all traffic), it 
 VGA instances can be added or removed any time. Once VGA starts running it will pick up the HAProxy configuration from the configured KV store and reload the HAProxy instance.
 This also mean Vamp (not VGA), can be restarted, stopped etc. without main consequences on running services. There would be no HAProxy configuration update, but, once Vamp is up, it will sync the HAProxy configuration (e.g. if Marathon restarted some service, so hosts/ports are changed).  
 
->**Note:**
->
+{{< note title="Note!">}}
 * There should be one dedicated HAProxy for each VGA. 
 * Vamp also supports custom HAProxy configuration - base configuration should be used as a template and HAProxy frontends and backends are appended by VGA.
 * To correctly set up Vamp with single/multiple VGA instances, check out [Vamp gateway driver configuration](/resources/run-vamp/vamp-configuration#gateway-driver).
-
+{{< /note >}}

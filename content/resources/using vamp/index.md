@@ -12,12 +12,12 @@ API actions on static resource descriptions are mostly synchronous.
 -   **Blueprints**: Blueprints are, well, blueprints! They describe how breeds work in runtime and what properties they should have.  
 
 ### Dynamic runtime entities
-
-> **Note**: API actions on dynamic runtime entities are largely asychronous.
+API actions on dynamic runtime entities are largely asychronous.
 
 -   **Deployments**: Deployments are running blueprints. You can have many deployments from one blueprint and perform actions on each at runtime. Plus, you can turn any running deployment into a blueprint.  
 -   **Gateways**: Gateways are the "stable" routing endpoint - defined by a port (incoming) and routes (outgoing). 
 -   **Workflows**: Workflows are apps (services) deployed on cluster, used for dynamically changing the runtime configuration (e.g. SLA, scaling, condition weight update).
+
 
 ## Eventual consistency
 
@@ -31,5 +31,9 @@ The reason for this is that in typical larger companies, where **multiple teams 
 
 Vamp allows you to set placeholders, communicate with teams using simple references and gradually build up a complicated deployment.
 
+## Where next?
 
+* Read about [Breeds](/resources/using-vamp/breeds/)
+* check the [API documentation](/resources/api-documentation/)
+* [Try Vamp](/try-vamp)
 
