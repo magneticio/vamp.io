@@ -81,6 +81,9 @@ function documentReady() {
     $('.top-menu-items').removeClass('open');
   });
 
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
 }
 
 function getMenuFile(callback) {
@@ -89,7 +92,6 @@ function getMenuFile(callback) {
   });
   
   // Set it all
-  hljs.initHighlightingOnLoad();
 }
 
 
