@@ -1223,6 +1223,10 @@ body {
   text-decoration: none;
 }
 
+.side-menu-item::-webkit-scrollbar {
+  display: none;
+}
+
 .side-menu-item .bullet {
   width: 40px;
   display: -webkit-box;

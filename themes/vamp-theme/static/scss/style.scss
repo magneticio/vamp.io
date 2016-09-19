@@ -704,6 +704,10 @@ body {
   align-items: center;
   text-decoration: none;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   .bullet {
     width: 40px;
     display: flex;
