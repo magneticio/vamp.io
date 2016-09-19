@@ -186,7 +186,7 @@
         }
       ],
       "text": "TRY VAMP",
-      "visible": true
+      "visible": false
     },
     {
       "path": "resources",

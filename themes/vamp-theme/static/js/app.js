@@ -81,66 +81,84 @@ function documentReady() {
     $('.top-menu-items').removeClass('open');
   });
 
-  // Set node icons
-
-  $('.admonition').prepend('<div class="admonition-icon"><div class="admonition-icon-image"></div></div>');
 }
 
 function getMenuFile(callback) {
   $.getJSON('/menu.json', function (data) {
     callback(data);
   });
-
-
-  $('#top-menu-items').on('click', 'a.top-menu-item', function (eventData) {
-    var topMenuId = $(this).data().menuId;
-    //Set in localstorage
-    localStorage.setItem("vamp-mainSelected", topMenuId);
-  });
-
-  $('#side-menu').on('click', 'div.menu-item', function (eventData) {
-    var sideMenuId = $(this).data().menuId;
-    localStorage.setItem("vamp-sideSelected", sideMenuId);
-  });
-
+  
   // Set it all
   hljs.initHighlightingOnLoad();
 }
 
 
 function menuFileLoaded(data) {
-  //Building top menu
+  //parents are set
+  setParents([], data.children);
+
+  // Find path
+  findPath(data.children, thePath, function(allActive){
+    allActive.forEach(function(oneActive) {
+      oneActive.active = true;
+    });
+  });
+
   data.children.forEach(function (topMenuItem) {
-    if (topMenuItem.visible) {
       var html = Mustache.render(topMenuItemTemplate, topMenuItem);
       var renderedTopMenuItem = $.parseHTML(html);
-
-      if (thePath.search(topMenuItem.path) !== -1) {
+      if(topMenuItem.active) {
         $(renderedTopMenuItem).addClass('active');
-        console.log(topMenuItem.children);
         topMenuItem.children && buildSideMenu(topMenuItem);
       }
+      topMenuItem.visible && $('#top-menu-items').append(renderedTopMenuItem);
+  });
 
-      $('#top-menu-items').append(renderedTopMenuItem);
+
+
+  console.log(data);
+}
+
+function setParents(parents, data) {
+  // console.log('parents: ', parents);
+  // console.log('data: ', data);
+
+  data.forEach(function(dataPoint) {
+    dataPoint.parents = parents.slice();
+    // console.log('dataPoint: ', dataPoint);
+    if(dataPoint.children) {
+      var withSelfParents = dataPoint.parents.slice();
+      withSelfParents.push(dataPoint);
+      // console.log(withSelfParents);
+      setParents(withSelfParents, dataPoint.children);
+    }
+  });
+}
+
+function findPath(data, path, callback) {
+  data.forEach(function(dataPoint) {
+    if(dataPoint.path === path){
+      var copiedArray = dataPoint.parents.slice();
+      copiedArray.push(dataPoint);
+      callback(copiedArray);
+    }
+
+    if(dataPoint.children) {
+      findPath(dataPoint.children, path, callback);
     }
   });
 }
 
 function buildSideMenu(data) {
-  console.log(data);
   data.children.forEach(function (sideMenuItem) {
-    if (sideMenuItem.visible) {
       var html = Mustache.render(sideMenuItemTemplate, sideMenuItem);
       var renderedSideMenuItem = $.parseHTML(html);
-      $('#side-menu').append(renderedSideMenuItem);
+      sideMenuItem.visible && $('#side-menu').append(renderedSideMenuItem);
 
-
-      if (thePath.search(sideMenuItem.path) !== -1) {
+      if(sideMenuItem.active) {
         $(renderedSideMenuItem).addClass('active');
         sideMenuItem.children && buildSubSideMenu(sideMenuItem);
       }
-
-    }
   })
 }
 
@@ -148,16 +166,14 @@ function buildSubSideMenu(data) {
   console.log(data);
   console.log('test');
   data.children.forEach(function (subSideMenuItem) {
-    if (subSideMenuItem.visible) {
       var html = Mustache.render('<a class="sub-menu-item" href="/{{path}}"><p class="text">{{text}}</p></a>', subSideMenuItem);
       var renderedSubSideMenuItem = $.parseHTML(html);
 
-      if (thePath.search(subSideMenuItem.path) !== -1) {
+      if (subSideMenuItem.active) {
         $(renderedSubSideMenuItem).addClass('active');
       }
 
-      $('#side-menu').append(renderedSubSideMenuItem);
-    }
+      subSideMenuItem.visible && $('#side-menu').append(renderedSubSideMenuItem);
   })
 }
 
