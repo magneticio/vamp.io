@@ -56,16 +56,27 @@ This schema allows querying per group and per specific name. Getting all events 
 
 Using the tags schema and timestamps, you can do some powerful queries. Either use an exact timestamp or use special range query operators, described on the elastic.co site ([elastic.co - Range query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html)).
 
-> **Note:** the default page size for a set of returned events is 30.
+{{< note title="Note!" >}}
+the default page size for a set of returned events is 30.
+{{< /note >}}
 
 
 ### Example queries
+
+* [Get all events](#example-1)
+* [Response time for a cluster](#example-2)
+* [Current sessions for a service](#example-3)
+* [ll known events for a service](#example-4)
  
-#### Example - get all events
+#### Example 1
+**Get all events**
 
 The below query gets ALL metrics events up till now, taking into regard the pagination.
 
-> **Note:** GET request with body - similar to approach used by Elasticsearch.
+{{< note title="Note!" >}}
+GET request with body - similar to approach used by Elasticsearch.
+{{< /note >}}
+
 
 `GET /api/v1/events`
 
@@ -78,7 +89,8 @@ The below query gets ALL metrics events up till now, taking into regard the pagi
 }
 ```
 
-#### Example - response time for a cluster
+#### Example 2 
+**Response time for a cluster**
 
 The below query gets the most recent response time events for the "frontend" cluster in the "d9b42796-d8f6-431b-9230-9d316defaf6d" deployment.
 
@@ -94,7 +106,6 @@ The below query gets the most recent response time events for the "frontend" clu
     }
 }
 ```
-
 
 
 ```json
@@ -126,7 +137,8 @@ The below query gets the most recent response time events for the "frontend" clu
 ]    
 ```
 
-#### Example - current sessions for a service
+#### Example 3
+**Current sessions for a service**
 
 Another example is getting the current sessions for a specific service, in this case the `monarch_front:0.2` service that is part of the `214615ec-d5e4-473e-a98e-8aa4998b16f4` deployment and lives in the `frontend` cluster.
 
@@ -144,7 +156,8 @@ Also, we are using relative timestamps: anything later or equal (lte) than "now"
 }
 ```
 
-#### Example - all known events for a service
+#### Example 4
+**All known events for a service**
 
 This below query gives you all the events we have for a specific service, in this case the same service as in example 2. In this way you can get a quick "health snapshot" of service, server, cluster or deployment.
 

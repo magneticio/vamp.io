@@ -8,7 +8,7 @@ Blueprints are execution plans - they describe how your services should be hooke
 Blueprints allow you to add the following extra properties:
 
 - [Gateways](#gateways): a stable port where the service can be reached.
-- [Clusters and services](#clusters-services): a cluster is a grouping of services with one purpose, i.e. two versions (a/b) of one service.
+- [Clusters and services](#clusters-and-services): a cluster is a grouping of services with one purpose, i.e. two versions (a/b) of one service.
 - [Environment variables](/resources/using-vamp/environment-variables/): a list of variables (interpolated or not) to be made available at runtime.
 - [Dialects](#dialects): a dialect is a set of native commands for the underlying container platform, i.e. Docker or Mesosphere Marathon.
 - [Scale](#scale): the CPU and memory and the amount of instance allocate to a service.
@@ -54,7 +54,9 @@ A gateway is a "stable" endpoint (or port in simplified sense) that almost never
 
 Please take care of setting the `/tcp` or `/http` (default) type for the port. Using `/http` allows Vamp to record more relevant metrics like response times and metrics.
 
-> **Note:** gateways are optional. You can just deploy services and have a home grown method to connect them to some stable, exposable endpoint.
+{{< note title="Note!" >}}
+gateways are optional. You can just deploy services and have a home grown method to connect them to some stable, exposable endpoint.
+{{< /note >}}
 
 ## Clusters and services
 
@@ -126,8 +128,19 @@ Vamp will translate this into the proper API call. Inspecting the container afte
 ### Marathon dialect
 
 This is an example with Marathon that pulls an image from private repo, mounts some volumes, sets some labels and gets run with an ad hoc command: all taken care of by Marathon.
+  
+We can provide the `marathon:` tag either on the service level, or the cluster level. Any `marathon:` tag set on the service level will override the cluster level as it is more specific. However, in 9 out of 10 cases the cluster level makes the most sense. Later, you can also mix dialects so you can prep your blueprint for multiple environments and run times within one description.
+
 
 #### example blueprint - using the Marathon dialect
+
+Notice the following:
+
+* Under the `marathon:` tag, we provide the command to run in the container by setting the `cmd:` tag.
+* We provide a url to some credentials file in the `uri` array. As described in the Marathon docs ([mesosphere.github.io/marathon - using a private Docker repository](https://mesosphere.github.io/marathon/docs/native-docker.html#using-a-private-docker-repository)) this enables Mesos
+to pull from a private registry, in this case registry.magnetic.io where these credentials are set up.
+* We set some labels with some arbitrary metadata.
+* We mount the `/tmp` to in Read/Write mode.
 
 ```yaml
 ---
@@ -153,15 +166,6 @@ clusters:
              hostPath: "/tmp/"
              mode: "RW"
 ```
-**Notice the following**:
-
-* Under the `marathon:` tag, we provide the command to run in the container by setting the `cmd:` tag.
-* We provide a url to some credentials file in the `uri` array. As described in the Marathon docs ([mesosphere.github.io/marathon - using a private Docker repository](https://mesosphere.github.io/marathon/docs/native-docker.html#using-a-private-docker-repository)) this enables Mesos
-to pull from a private registry, in this case registry.magnetic.io where these credentials are set up.
-* We set some labels with some arbitrary metadata.
-* We mount the `/tmp` to in Read/Write mode.
-
-We can provide the `marathon:` tag either on the service level, or the cluster level. Any `marathon:` tag set on the service level will override the cluster level as it is more specific. However, in 9 out of 10 cases the cluster level makes the most sense. Later, you can also mix dialects so you can prep your blueprint for multiple environments and run times within one description.
 
 
 ## Scale

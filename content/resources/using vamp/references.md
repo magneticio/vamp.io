@@ -43,8 +43,15 @@ name: my_blueprint
 
 When you begin to work with Vamp, you will probably start with inline artifacts. You have everything in one place and can directly see what properties each artifact has. Later, you can start specialising and basically build a library of often used architectural components. 
 
+### Example use of references
 
-#### Example - create a library of containers
+* [Create a library of containers](#example-1)
+* [Fix scales per environment](#example-2)
+* [Reuse a complex condition](#example-3)
+
+
+#### Example 1
+**Create a library of containers**
 
 **Use case:** You have a Redis container you have tweaked and setup exactly the way you want it. You want to use that exact container in all your environments (dev, test, prod etc.). 
 
@@ -59,7 +66,8 @@ deployable: redis
 ports: 6379/tcp
 ```
 
-#### Example - fix scales per environment
+#### Example 2
+**Fix scales per environment**
 
 **Use case:** You want to have a predetermined set of scales you can use per deployment per environment. For instance, a "medium_production" should be something else than a "medium_test".
 
@@ -83,7 +91,8 @@ memory: 1024MB
 instances: 1
 ```
 
-#### Example - reuse a complex condition
+#### Example 3
+**Reuse a complex condition**
 
 **Use case:** You have created a complex condition to target a specific part of your traffic. In this case users with a cookie that have a specific session variable set in that cookie. You want to use that condition now and then to do some testing. 
 

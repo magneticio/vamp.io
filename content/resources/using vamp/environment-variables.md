@@ -56,7 +56,9 @@ This will match any breed name that starts with `redis:1.`
 
 Use the `~` character to define a place holder for a variable that should be filled in at runtime (i.e. when this breed actually gets deployed), but for which you do not yet know the actual value. 
 
-> **Typical use case**: When different roles in a company work on the same project. Developers can create place holders for variables that operations should fill in: it helps with separating responsibilities.
+{{< tip  >}}
+**Typical use case**: When different roles in a company work on the same project. Developers can create place holders for variables that operations should fill in: it helps with separating responsibilities.
+{{< /tip >}}
 
 #### Example - `ORACLE_PASSWORD` designated as a place holder
 
@@ -74,7 +76,9 @@ environment_variables:
 
 Use the `$` character to reference other statements in a breed/blueprint. This allows you to dynamically resolve ports and hosts names that we don't know until a deployment is done. You can also resolve to hard coded and published constants from some other part of the blueprint or breed, typically a dependency.
 
-> **Note**: The `$` value is escaped by `$$`. A more strict notation is `${some_reference}`
+{{< note title="Note!" >}}
+The `$` value is escaped by `$$`. A more strict notation is `${some_reference}`
+{{< /note >}}
 
 ### Vamp host variable
 
@@ -100,10 +104,8 @@ clusters:
 ```
 
 
-
-We could even extend this further. What if the backend is configured through some environment variable, but the frontend also needs that information? Let's say the encoding type for our database. We just reference that environment variable using the exact same syntax.
-
 #### Example - resolving variables from a dependency's environment variables
+What if the backend is configured through some environment variable, but the frontend also needs that information? For example, the encoding type for our database. We can just reference that environment variable using the exact same syntax.
 
 ```yaml
 ---
@@ -132,17 +134,25 @@ You can do everything with `environment_variables` but `constants` (see below) a
 Environment variables can live on different scopes and can be overridden by scopes higher in the scope hierarchy.
 A scope is an area of your breed or blueprint definition that limits the visibility of variables and references inside that scope.
 
-1. **Breed scope**: The scope we used in all the above examples is the default scope. If you never define any `environment_variables` in any other place, this will be used.
+1. **Breed scope**: The scope used in all the above examples is the default scope. If you never define any `environment_variables` in any other place, this will be used.
 
 2. **Cluster scope**: Will override the breed scope and is part of the blueprint artifact. Use this to override environment variables for all services that belong to a cluster.
 
 3. **Service scope**: Will override breed scope and cluster scope, and is part of the blueprint artifact. Use this to override all environment variables for a specific service within a cluster.
 
+{{< note title="Note!" >}} 
+Effective use of scope is completely dependent on your use case. The various scopes help to separate concerns when multiple people and/or teams work on Vamp artifacts and deployments and need to decouple their effort.
+{{< /note >}}
+
 ### Examples of scope use
 
-> **Note:** Effective use of scope is completely dependent on your use case. The various scopes help to separate concerns when multiple people and/or teams work on Vamp artifacts and deployments and need to decouple their effort.
+* [Run two of the same services with different configurations](#example-1)
+* [Override the JVM_HEAP_SIZE in production](#example-2)
+* [Use a place holder](#example-3)
+* Just for fun - [combine all scopes and references](#example-4)
 
-#### Example - Run two of the same services with different configurations
+#### Example 1
+**Run two of the same services with different configurations**
 
 **Use case:** As a devOps-er you want to test one service configured in two different ways at the same time. Your service is configurable using environment variables. In this case we are testing a connection pool setting. 
 
@@ -182,7 +192,8 @@ clusters:
 ```  
 
 
-#### Example - Override the JVM_HEAP_SIZE in production
+#### Example 2
+**Override the JVM_HEAP_SIZE in production**
 
 **Use case:** As a developer, you created your service with a default heap size you use on your development laptop and maybe on a test environment. Once your service goes "live", an ops guy/gal should be able to override this setting.
 
@@ -208,7 +219,8 @@ clusters:
             JVM_HEAP_SIZE: 1200         # will be overridden by deployment level: 2800
 ```            
 
-#### Example - Use a place holder
+#### Example 3
+**Use a place holder**
 
 **Use case:** As a developer, you might not know some value your service needs at runtime, say the Google Anaytics ID your company uses. However, your Node.js frontend needs it! 
 
@@ -235,7 +247,8 @@ clusters:
                                                   # Vamp reports error.
 ``` 
 
-#### Example - combine all scopes and references
+#### Example 4
+**Combine all scopes and references**
 
 As a final example, let's combine some of the examples above and include referenced breeds. In this case, we have two breed artifacts already stored in Vamp and include them by using the `ref` keyword.
 

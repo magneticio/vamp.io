@@ -126,7 +126,9 @@ breed   :
       setInterval(process, period * 1000);
 ```
 
-> **Note:** Probably it would be better to keep breed as a reference and create breed as:
+{{< note title="Note!" >}}
+Probably it would be better to keep breed as a reference and create breed as shown below:
+{{< /note >}}
 
 ```
 PUT Content-Type: application/javascript /api/v1/breeds/metrics
@@ -157,9 +159,11 @@ var process = function() {
 setInterval(process, period * 1000);
 ```
 
-JavaScript breeds will be executed by [Vamp Workflow Agent](https://github.com/magneticio/vamp-workflow-agent).  
 
-For additional JavaScript API check out [Vamp Node Client](https://github.com/magneticio/vamp-node-client) project.
+
+JavaScript breeds will be executed by Vamp Workflow Agent ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)).  
+
+For additional JavaScript API check out Vamp Node Client ([github.com/magneticio - Vamp node client](https://github.com/magneticio/vamp-node-client)) project.
 
 ## Where next?
 

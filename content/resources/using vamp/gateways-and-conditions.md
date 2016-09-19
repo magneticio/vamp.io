@@ -176,20 +176,20 @@ Under the hood, Vamp uses Haproxy's ACL's ([cbonte.github.io/haproxy-dconv - 7.1
 However, ACL's can be somewhat opaque and cryptic. That's why Vamp has a set of convenient "short codes"
 to address common use cases. Currently, we support the following:
 
-| description               | syntax                           | example                  |
-| --------------------------|:--------------------------------:|:------------------------:|
-| **match user agent**      | user-agent == **value**          | user-agent == Firefox    |
-| **mismatch user agent**   | user-agent != **value**          | user-agent != Firefox    |
-| **match host**            | host == **value**                | host == localhost        |
-| **mismatch host**         | host != **value**                | host != localhost        |
-| **has cookie**            | has cookie **value**             | has cookie vamp          |
-| **misses cookie**         | misses cookie **value**          | misses cookie vamp       |
-| **has header**            | has header **value**             | has header ETag          |
-| **misses header**         | misses header **value**          | misses header ETag       |
-| **match cookie value**    | cookie **name** has **value**    | cookie vamp has 12345    |
-| **mismatch cookie value** | cookie **name** misses **value** | cookie vamp misses 12345 |
-| **header has value**      | header **name** has **value**    | header vamp has 12345    |
-| **header misses value**   | header **name** misses **value** | header vamp misses 12345 |
+| description           | syntax                       | example                  |
+| ----------------------|:----------------------------:|:------------------------:|
+| match user agent      | `user-agent ==` _value_          | `user-agent == Firefox`    |
+| mismatch user agent   | `user-agent !=` _value_          | `user-agent != Firefox`    |
+| match host            | `host ==` _value_                | `host == localhost`        |
+| mismatch host         | `host !=` _value_                | `host != localhost`       |
+| has cookie            | `has cookie` _value_             | `has cookie vamp`          |
+| misses cookie         | `misses cookie` _value_          | `misses cookie vamp`       |
+| has header            | `has header` _value_             | `has header ETag`          |
+| misses header         | `misses header` _value_          | `misses header ETag`       |
+| match cookie value    | `cookie` _name_ `has` _value_    | `cookie vamp has 12345`    |
+| mismatch cookie value | `cookie` _name_ `misses` _value_ | `cookie vamp misses 12345` |
+| header has value      | `header` _name_ `has` _value_   | `header vamp has 12345`    |
+| header misses value   | `header` _name_ `misses` _value_ | `header vamp misses 12345` |
 
 * Additional syntax examples: [github.com/magneticio/vamp - ConditionDefinitionParserSpec.scala](https://github.com/magneticio/vamp/blob/master/model/src/test/scala/io/vamp/model/parser/ConditionDefinitionParserSpec.scala).
 
