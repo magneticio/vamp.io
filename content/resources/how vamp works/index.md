@@ -8,7 +8,7 @@ Vamp works together with four key components; orchetstration, routing, persisten
 
 ### Vamp 
 
-Vamp consists of server- and client-side components. 
+Vamp itself consists of server- and client-side components:
 
 * Vamp  
 The main API endpoint, business logic and service coordinator. Vamp talks to the configured container manager (Docker, Marathon, Kubernetes etc.) and synchronizes it with Vamp Gateway Agent via ZooKeeper, etcd or Consul. Vamp uses Elasticsearch for artifact persistence and to store events (e.g. changes in deployments).
@@ -28,9 +28,9 @@ The command line interface for managing Vamp and providing integration with (she
 
 Vamp works with your choice of orchestration platform. Currently we support Kubernetes, DC/OS and Rancher.
 
-### Persistance
+### Persistence
 
-Vamp uses Zookeeper as a key value store and elasticsearch for persistance. 
+Vamp uses Zookeeper as a key value store and elasticsearch for persistence. 
 
 ### Routing
 

@@ -224,48 +224,6 @@
           "visible": false
         },
         {
-          "path": "resources/run-vamp",
-          "children": [
-            {
-              "path": "resources/run-vamp/quick-setup",
-              "text": "Quick setup",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/vamp-binaries",
-              "text": "Vamp binaries",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/osx",
-              "text": "Mac OS X",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/container-drivers",
-              "text": "Container driver configuration",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/vamp-configuration",
-              "text": "Vamp configuration",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/elastic-configuration",
-              "text": "Elastic configuration",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/index",
-              "text": "Index",
-              "visible": false
-            }
-          ],
-          "text": "Run vamp",
-          "visible": true
-        },
-        {
           "path": "resources/using-vamp",
           "children": [
             {
@@ -338,6 +296,48 @@
           "visible": true
         },
         {
+          "path": "resources/run-vamp",
+          "children": [
+            {
+              "path": "resources/run-vamp/vamp-binaries",
+              "text": "Vamp binaries",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/osx",
+              "text": "Mac OS X",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/container-drivers",
+              "text": "Container driver configuration",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/vamp-configuration",
+              "text": "Vamp configuration",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/elastic-configuration",
+              "text": "Elastic configuration",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/index",
+              "text": "Index",
+              "visible": false
+            },
+            {
+              "path": "resources/run-vamp/quick-setup",
+              "text": "Quick setup",
+              "visible": true
+            }
+          ],
+          "text": "Run vamp",
+          "visible": true
+        },
+        {
           "path": "resources/api-documentation",
           "children": [
             {
@@ -361,12 +361,12 @@
     {
       "path": "news",
       "text": "News",
-      "visible": true
+      "visible": false
     },
     {
       "path": "support",
       "text": "Support",
-      "visible": true
+      "visible": false
     }
   ]
 }
