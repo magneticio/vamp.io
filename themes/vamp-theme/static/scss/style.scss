@@ -638,6 +638,7 @@ body {
 
 .hero-space {
   padding-top: 14px + 20px;
+  padding-bottom: 0;
   background: linear-gradient(45deg, $dark-blue-hover, $dark-blue);
 
   @media all and (min-width: 321px) {
@@ -1398,4 +1399,8 @@ body {
       color: #6991AA;
     }
   }
+}
+
+.laptop {
+  transform: translateY(34px);
 }

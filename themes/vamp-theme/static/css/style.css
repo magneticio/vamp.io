@@ -1140,6 +1140,7 @@ body {
 
 .hero-space {
   padding-top: 34px;
+  padding-bottom: 0;
   background: -webkit-linear-gradient(45deg, #234B5F, #142D3C);
   background: linear-gradient(45deg, #234B5F, #142D3C);
 }
@@ -1903,4 +1904,9 @@ body {
 
 .admonition.tip .admonition-title {
   color: #6991AA;
+}
+
+.laptop {
+  -webkit-transform: translateY(34px);
+          transform: translateY(34px);
 }
