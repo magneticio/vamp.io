@@ -12,7 +12,9 @@ vamp.operation.gateway {
 }
 ```
 
-Let's try an example: `PUT ${VAMP_URL}/api/v1/deployments/runner` with body:
+#### Example - Virtual hosts
+ 
+ `PUT ${VAMP_URL}/api/v1/deployments/runner` with body:
 
 
 ```yaml
@@ -53,8 +55,9 @@ $ curl --resolve 9070.runner.vamp:80:${VAMP_GATEWAY_AGENT_IP} http://9070.runner
 $ curl --resolve 9080.runner.vamp:80:${VAMP_GATEWAY_AGENT_IP} http://9080.runner.vamp
 {"id":"2.0.0","runtime":"1E188B006FF44AA6","port":8081,"path":""}
 ```
-
-In case of using Vamp quick start, `${VAMP_GATEWAY_AGENT_IP}` should have value of `${DOCKER_HOST_IP}` - [docs](/documentation/installation/marathon/#step-2-run-vamp).
+{{< note title="Note!" >}}
+If you are running Vamp in one of the quick setups, `${VAMP_GATEWAY_AGENT_IP}` should have value of `${DOCKER_HOST_IP}` - See the [hello world quick setup instructions](/try-vamp#step-2-run-vamp).
+{{< /note >}}
 
 Vamp creates a virtual host for each gateway - name of the gateway (`/` replaced with `.`) appended to value from `vamp.gateway-driver.virtual-hosts-domain`.
 In case of above example:

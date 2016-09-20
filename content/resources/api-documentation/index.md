@@ -2,7 +2,10 @@
 date: 2016-09-13T09:00:00+00:00
 title: Using the Vamp API
 ---
-Vamp has one REST API.
+Vamp has one REST API. This page explains how to specify pagination, and json and yaml content types, and how to effectively use the Vamp REST API.
+
+#### See also
+* [Full details of all available API calls](/resources/api-documentation/api-reference/)
 
 ## Content types
 
@@ -64,4 +67,7 @@ Additional `kind` field is required and it always correspond (singular form) to 
 For instance if specific endpoint would be `/api/v1/deloyments` then the same deployment request can be sent to `api/v1` with additional `kind: deployment`.
 If specific endpoints are used (e.g. `/api/v1/blueprints`) then `kind` needs to be ommited.
 
-* [API reference](/resources/api-documentation/api-reference/)
+-------------
+
+#### See also
+* [Full details of all available API calls](/resources/api-documentation/api-reference/)
