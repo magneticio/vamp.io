@@ -1278,7 +1278,7 @@ body {
 }
 
 .content {
-  padding: 0 40px 40px 40px;
+  padding: 0 40px 40px 80px;
   margin-left: 400px;
   background-color: white;
   min-height: 100vh;
