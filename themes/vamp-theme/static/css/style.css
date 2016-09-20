@@ -1890,8 +1890,8 @@ body {
 }
 
 .admonition.tip {
-  background-color: #F2F5F7;
-  border-color: #6991AA;
+  background-color: #dcf7f0;
+  border-color: #2bd6b0;
 }
 
 .admonition.tip .admonition-icon-image {
@@ -1899,7 +1899,7 @@ body {
 }
 
 .admonition.tip .admonition-title {
-  color: #6991AA;
+  color: #2bd6b0;
 }
 
 .laptop {

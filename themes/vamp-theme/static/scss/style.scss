@@ -1343,15 +1343,15 @@ body {
   }
 
   &.tip {
-    background-color: #F2F5F7;
-    border-color: #6991AA;
+    background-color: #dcf7f0;
+    border-color: #2bd6b0;
 
     .admonition-icon-image {
       background-image: url("/img/003-Small-icons/Notes/tip.svg");
     }
 
     .admonition-title {
-      color: #6991AA;
+      color: #2bd6b0;
     }
   }
 }
