@@ -1395,7 +1395,7 @@ body {
 .markdowned a {
   font-size: 15px;
   font-weight: 100;
-  color: #142D3C;
+  color: #6991AA;
   line-height: 1.7;
   letter-spacing: 0.025em;
   text-decoration: underline;
@@ -1421,10 +1421,6 @@ body {
 
 .markdowned li:last-of-type {
   margin-bottom: 0;
-}
-
-.markdowned a {
-  color: #FF405E;
 }
 
 .markdowned em {
