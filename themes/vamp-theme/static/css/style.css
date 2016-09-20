@@ -1828,6 +1828,7 @@ body {
   border-left: 10px solid;
   border-radius: 0 5px 5px 0;
   position: relative;
+  margin: 40px 0;
 }
 
 .admonition .admonition-icon {
