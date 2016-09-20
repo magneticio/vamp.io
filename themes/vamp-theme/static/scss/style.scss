@@ -395,6 +395,12 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+#header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
 /* Components */
 
 .page {
@@ -406,7 +412,7 @@ body {
 
   &.documentation {
     //background-color: red;
-    background: linear-gradient(90deg, $light-grey 33%, white 33%);
+    //background: linear-gradient(90deg, $light-grey 33%, white 33%);
 
     .header {
       color: $red;
@@ -425,7 +431,6 @@ body {
   letter-spacing: 0.1em;
   color: $dark-blue;
   font-size: 36px;
-
 
   @media all and (min-width: 641px) {
     font-size: 52px;
@@ -454,7 +459,7 @@ body {
 }
 
 .h2 {
-  font-weight: 500;
+  font-weight: 300;
   font-size: 24px;
   letter-spacing: 0.05em;
   color: $dark-blue;
@@ -517,6 +522,42 @@ body {
   padding: 0 40px;
   border-radius: 5px;
   transition: all 0.15s ease-in-out;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    line-height: 1;
+    text-decoration: none;
+  }
+
+  &__icon {
+    position: relative;
+    height: 38px;
+    width: 38px;
+    background-position: center center;
+    background-size: contain;
+
+    &--arrow {
+      width: 30px;
+      background-image: url('/img/003-Small-icons/Red/Red-Arrow.svg');
+    }
+
+    &--mail {
+      background-image: url('/img/003-Small-icons/White/Mail-White.svg');
+    }
+  }
+
+  &:hover {
+    .button__icon--arrow {
+      background-image: url('/img/003-Small-icons/White/Arrow-White.svg');
+    }
+  }
+
+
+
+
 
   &--grey {
     background-color: $accent-color;
@@ -612,6 +653,33 @@ body {
    padding: 80px 0;
   }
 
+  &--small-padding {
+    @media all and (min-width: 321px) {
+      padding: 4px 0;
+
+    }
+
+    @media all and (min-width: 641px) {
+      padding: 11px 0;
+
+    }
+
+    @media all and (min-width: 769px) {
+      padding: 20px 0;
+
+    }
+
+    @media all and (min-width: 1025px) {
+      padding: 40px 0;
+
+    }
+
+    @media all and (min-width: 1201px) {
+      padding: 40px 0;
+    }
+
+  }
+
 
   &--blue {
     background-color: $dark-blue;
@@ -633,9 +701,14 @@ body {
     background-color: $red;
 
     .header, .h2, .h3, .text {
-      color: $light-grey;
+      color: white;
     }
   }
+
+  a {
+    text-decoration: none;
+  }
+
 }
 
 .hero-space {
@@ -681,12 +754,12 @@ body {
 
   }
 
-  button {
+  .button {
+    padding: 0;
     border-radius: 0 5px 5px 0;
     width: 80px;
     min-width: 80px;
     max-width: 80px;
-    padding: 10px;
   }
 }
 
@@ -763,7 +836,7 @@ body {
 
 .content {
   padding: 0 40px 40px 80px;
-  margin-left: 400px;
+  margin-left: 370px;
   background-color: white;
   min-height: 100vh;
 
@@ -1153,7 +1226,10 @@ body {
     align-items: center;
     justify-content: center;
     margin-right: 20px;
-    text-decoration: none;
+
+    a {
+      text-decoration: none;
+    }
 
     .button {
       padding-left: 10px;
@@ -1202,6 +1278,8 @@ body {
   img {
     width: 64px;
     height: 64px;
+    flex-grow: 0;
+    flex-shrink: 0;
   }
 
   .text {
@@ -1216,6 +1294,8 @@ body {
   img {
     width: 32px;
     height: 32px;
+    flex-grow: 0;
+    flex-shrink: 0;
   }
 
   .text {
@@ -1239,14 +1319,21 @@ body {
   position: relative;
   z-index: 999;
 
+  .text {
+    color: $light-blue !important;
+  }
+
   .h2 {
     font-weight: 300;
   }
 
   a {
     text-decoration: none;
+
     .text {
       font-weight: 100;
+      color: $light-blue !important;
+
     }
 
     &.rss-feed-link {
@@ -1265,9 +1352,26 @@ body {
   z-index: 999;
   padding: 20px 0;
   border-top: 1px solid rgba($medium-light-blue, 0.3);
+
+  .text {
+    color: $light-blue !important;
+  }
+
   .container {
     display: flex;
     justify-content: space-between;
+  }
+
+  .vamp-bat {
+    height: 40px;
+    width: 50px;
+    margin-right: 20px;
+  }
+
+  .part {
+    display: flex;
+    width: 40%;
+    align-items: center;
   }
 
   a {
@@ -1358,4 +1462,29 @@ body {
 
 .laptop {
   transform: translateY(34px);
+}
+
+.image--smaller {
+  width: 77.7777%;
+}
+
+.vamp-bat {
+  width: 60%;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  height: 30px;
+  margin-top: 20px;
+
+  a {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+.dark-it-up {
+  color: $accent-color !important;
 }

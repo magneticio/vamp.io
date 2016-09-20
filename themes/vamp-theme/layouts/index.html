@@ -4,6 +4,7 @@
   {{ partial "header" . }}
 </div>
 
+<!--HEROSPACE ROW-->
 <div class="page">
   <div class="lander-row lander-row--blue hero-space">
     <div class="container">
@@ -25,7 +26,7 @@
               </button>
             </a>
 
-            <p class="text">or</p>
+            <p class="text dark-it-up">or</p>
 
             <a href="/what-is-vamp">
               <button class="button button--grey">
@@ -44,25 +45,27 @@
     </div>
   </div>
 
+  <!--ABOUT VAMP ROW-->
   <div class="lander-row lander-row--white">
     <div class="container">
       <div class="row">
         <div class="col center">
-          <img src="img/001-Big-icons/illustration-01.svg" alt="">
+          <img class="image--smaller" src="img/001-Big-icons/illustration-01.svg" alt="">
           <h2 class="h2">Percentage and condition based routing</h2>
           <p class="text">
             Prevent performance issues and service disruption with gradual rollouts and upgrades.
           </p>
         </div>
         <div class="col center">
-          <img src="img/001-Big-icons/illustration-02.svg" alt="">
+          <img class="image--smaller" src="img/001-Big-icons/illustration-02.svg" alt="">
           <h2 class="h2">Integrated metrics- and event-driven workflows</h2>
           <p class="text">
             Automatic scaling and optimisation for deployments and running systems.
           </p>
         </div>
         <div class="col center">
-          <img src="img/001-Big-icons/illustration-03.svg" alt="">
+          <!--The inline style is here because it quickfixes a issue. It should be replaced in time-->
+          <img class="image--smaller" style="margin-top: -20px" src="img/001-Big-icons/illustration-03.svg" alt="">
           <h2 class="h2">Container-scheduler agnostic API</h2>
           <p class="text">
             YAML based deployments avoid vendor lock-in.
@@ -71,43 +74,92 @@
       </div>
       <div class="row">
         <div class="col center">
-          <a href="/what-is-vamp">
-            <button class="button button--red--ghost">
-              Learn More
-            </button>
+          <a href="/what-is-vamp" class="button button--red--ghost">
+              <p>Learn More</p>
+              <div class="button__icon button__icon--arrow">
+              </div>
           </a>
         </div>
       </div>
     </div>
   </div>
 
-
-  <div class="lander-row lander-row--grey">
+  <div class="lander-row lander-row--white lander-row--small-padding top-bar">
     <div class="container">
       <div class="row">
         <div class="col center">
-          <h3 class="h3">Partners</h3>
-          <h1 class="h1">We work with</h1>
+          <h3 class="h3">We are friends with</h3>
         </div>
       </div>
 
       <div class="row">
         <div class="col center">
-          <img src="/img/004-Logos/001-dark-blue/logo-05.svg" alt="">
+          <img src="/img/004-Logos/004-friends/BBVA.jpg" alt="">
         </div>
         <div class="col center">
-          <img src="/img/004-Logos/001-dark-blue/logo-06.svg" alt="">
+          <img src="/img/004-Logos/004-friends/Mijndomein.jpg" alt="">
         </div>
         <div class="col center">
-          <img src="/img/004-Logos/001-dark-blue/logo-07.svg" alt="">
+          <img src="/img/004-Logos/004-friends/Rabobank.jpg" alt="">
         </div>
         <div class="col center">
-          <img src="/img/004-Logos/001-dark-blue/logo-08.svg" alt="">
+          <img src="/img/004-Logos/004-friends/Trivento.jpg" alt="">
+        </div>
+        <div class="col center">
+          <img src="/img/004-Logos/004-friends/Wehkamp.jpg" alt="">
         </div>
       </div>
     </div>
   </div>
 
+  <!--ADD TO MALINGLIST ROW-->
+  <div class="lander-row lander-row--red lander-row--small-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col center">
+          <h3 class="h3">Mailinglist</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-3">
+            <img class="vamp-bat" src="/img/002-Medium-icons/Vamp-mail-01.svg" alt="">
+        </div>
+        <div class="col col-6">
+          <h1 class="h1">Stay up to date</h1>
+          <p class="text">
+            Leave your email for the latest news: we won't spam you and won't go off topic.
+          </p>
+        </div>
+        <div class="col col-6">
+          <p class="text-header">E-mailadres</p>
+          <div class="input-group">
+            <input type="text">
+            <a class="button button--blue">
+              <div class="button__icon button__icon--mail">
+              </div>
+            </a>
+          </div>
+          <div class="social-buttons">
+
+            <a href="https://www.facebook.com/magnetic.io" target="_blank">
+              <img src="/img/003-Small-icons/Dark-blue/Facebook.svg" alt="">
+            </a>
+
+            <a href="https://twitter.com/magneticio" target="_blank">
+              <img src="/img/003-Small-icons/Dark-blue/Twitter.svg" alt="">
+            </a>
+
+            <a href="https://www.linkedin.com/company/magnetic-io" target="_blank">
+              <img src="/img/003-Small-icons/Dark-blue/Linkedin.svg" alt="">
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--FEATURES LIST ROW 01-->
   <div class="lander-row lander-row--white">
     <div class="container">
       <div class="row">
@@ -172,6 +224,7 @@
     </div>
   </div>
 
+  <!--FEATURES LIST ROW 02-->
   <div class="lander-row lander-row--white top-bar">
     <div class="container">
       <div class="row row--wrap">
@@ -227,42 +280,48 @@
       </div>
       <div class="row">
         <div class="col center">
-          <a href="/what-is-vamp">
-            <button class="button button--red--ghost">
-              Learn More
-            </button>
+          <a href="/what-is-vamp" class="button button--red--ghost">
+              <p>Learn More</p>
+              <div class="button__icon button__icon--arrow">
+              </div>
           </a>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="lander-row lander-row--red">
+  <!--PARTNERS ROW-->
+  <div class="lander-row lander-row--grey">
     <div class="container">
       <div class="row">
         <div class="col center">
-          <h3 class="h3">Mailinglist</h3>
+          <h3 class="h3">Partners</h3>
+          <h1 class="h1">We work with</h1>
         </div>
       </div>
+
       <div class="row">
-        <div class="col col-3">
-          <button class="button button--red--ghost">
-            <img src="" alt="">
-          </button>
+        <div class="col center">
+          <img src="/img/004-Logos/001-dark-blue/Google-vertical.svg" alt="">
         </div>
-        <div class="col col-6">
-          <h1 class="h1">Stay up to date</h1>
-          <p class="text">
-            Leave your email for the latest news: we won't spam you and won't go off topic.
-          </p>
+        <div class="col center">
+          <img src="/img/004-Logos/001-dark-blue/Amazon-vertical.svg" alt="">
         </div>
-        <div class="col col-6">
-          <p class="text-header">E-mailadres</p>
-          <div class="input-group">
-            <input type="text">
-            <button class="button button--blue">
-            </button>
-          </div>
+        <div class="col center">
+          <img src="/img/004-Logos/001-dark-blue/Microsoft-vertical.svg" alt="">
+        </div>
+        <div class="col center">
+          <img src="/img/004-Logos/001-dark-blue/Kubernetes-vertical.svg" alt="">
+        </div>
+
+        <div class="col center">
+          <img src="/img/004-Logos/001-dark-blue/DCOS-vertical.svg" alt="">
+        </div>
+        <div class="col center">
+          <img src="/img/004-Logos/001-dark-blue/Rancher-vertical.svg" alt="">
+        </div>
+        <div class="col center">
+          <img src="/img/004-Logos/001-dark-blue/Docker-vertical.svg" alt="">
         </div>
       </div>
     </div>
