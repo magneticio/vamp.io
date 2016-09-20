@@ -1,95 +1,15 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: The Vamp CLI
+title: CLI reference
 ---
 
-Vamp's command line interface (CLI) can be used to perform basic actions against the Vamp API. The CLI was
-primarily developed to work in continuous delivery situations. In these setups, the CLI takes care of automating (canary) releasing new artifacts to Vamp deployments and clusters.
+#### See also
 
-# CLI Installation & configuration
+* [Using the CLI](/resources/cli-documentation/) - installation, configuration and effective use of the CLI
 
-Please check the appropriate [installation section](/installation) for your platform for details on how to install the Vamp CLI. 
+## Commands
 
-* [OSX](/installation/osx#/#install-cli)
-
-After installation, set Vamp's host location. This location can be specified as a command line option (`--host`)
-
-```bash
-vamp list breeds --host=http://192.168.59.103:8080
-```
-
-...or via the environment variable `VAMP_HOST`
-```bash
-export VAMP_HOST=http://192.168.59.103:8080
-```
-
-## Linux & Windows
-
-We currently don't have a installer specifically for Linux or Windows, but the manual install is pretty easy.
-
-After confirming you've got the correct Java version installed, head over to our Bintray download section to get the latest Vamp CLI release.
-It is located at https://dl.bintray.com/magnetic-io/downloads/vamp-cli/
-
-* Download the release zip file
-* Unzip it anywhere you'd like, e.g. `/usr/local/vamp-cli` or `C:\Program Files\` 
-* Inside the extracted Vamp CLI package is a `bin` directory. Add it to your PATH statement
-* Open a Console/CMD window and type `vamp`
-
-## Simple commands
-
-The basic commands of the CLI, like `list`, allow you to do exactly what you would expect:
-
-```
-> vamp list breeds
-NAME                     DEPLOYABLE
-catalog                  docker://zutherb/catalog-frontend
-checkout                 docker://zutherb/monolithic-shop
-product                  docker://zutherb/product-service
-navigation               docker://magneticio/navigation-service:latest
-cart                     docker://zutherb/cart-service
-redis                    docker://redis:latest
-mongodb                  docker://mongo:latest
-monarch_front:0.1        docker://magneticio/monarch:0.1
-monarch_front:0.2        docker://magneticio/monarch:0.2
-monarch_backend:0.3      docker://magneticio/monarch:0.3
-```
-
-```
-> vamp list deployments
-NAME                                    CLUSTERS
-1272c91b-ba29-4ad1-8d09-33cbaa8f6ac2    frontend, backend
-```
-
-
-## CI & Chaining
-
-In more complex continuous integration situations you can use the CLI with the `--stdin` flag to chain a bunch of commands together. You could for instance:
-
-* get an "old" version of a breed with `inspect`
-* generate a new breed based on the previous one, while inserting a new deployable
-* create the breed in the backend
-
-```
-vamp inspect breed frontend:${OLD} | \
-vamp generate breed --deployable mycompany/frontend:${NEW} frontend:${NEW} --stdin | \
-vamp create breed --stdin
-```
-
-Once you have the new breed stored, you can insert it into a running deployment at the right position, i.e:
-
-* get a blueprint from a running deployment with `inspect` and `--as_blueprint`
-* generate a new blueprint with `generate` while inserting a new breed
-* deploying the result with `deploy`
-
-```
-vamp inspect deployment $DEPLOYMENT --as_blueprint | \
-vamp generate blueprint --cluster frontend --breed frontend:${NEW} --stdin | \
-vamp deploy --deployment $DEPLOYMENT --stdin
-```
-
-# Commands
-
-VAMP CLI supports the following commands:
+The VAMP CLI supports the following commands:
                        
 * [create](#create)  
 * [deploy](#deploy)   
@@ -104,21 +24,25 @@ VAMP CLI supports the following commands:
 * [update](#update)
 * [version](#version)  
 
+{{< tip >}}
 For more details about a specific command, use `vamp COMMAND --help`
-                     
+{{< /tip >}}                     
 
-## Create
+### Create
 
 Create an artifact read from the specified filename or read from stdin.
 
-**Usage:** `vamp create blueprint|breed|deployment|escalation|condition|scale|sla [--file|--stdin]`
+**Usage:** 
+```
+vamp create blueprint|breed|deployment|escalation|condition|scale|sla [--file|--stdin]
+```
 
 Parameter | purpose
 ----------|--------
 `--file`        |       Name of the yaml file [Optional]
 `--stdin`        |      Read file from stdin [Optional]
   
-### Example
+#### Example - create
 ```bash
 > vamp create scale --file my_scale.yaml
 name: my_scale
@@ -126,11 +50,14 @@ cpu: 2.0
 memory: 2GB
 instances: 2
 ```
-## Deploy
+### Deploy
 
 Deploys a blueprint
 
-**Usage:** `vamp deploy NAME --deployment [--file|--stdin]` 
+**Usage:** 
+```
+vamp deploy NAME --deployment [--file|--stdin]
+```
 
 Parameter | purpose
 ----------|--------
@@ -138,28 +65,31 @@ Parameter | purpose
 `--stdin`     |         Read file from stdin [Optional]
 `--deployment`|         Name of the deployment to update [Optional]
 
-### Example
+#### Example - deploy
 ```bash
 > vamp deploy --deployment 1111-2222-3333-4444 --file my_new_blueprint.yaml
 ```
-## Generate
+
+### Generate
 
 Generates an artifact
 
-**Usage:** `vamp generate breed|blueprint|condition|scale [NAME] [--file|--stdin]`
-
+**Usage:** 
+```
+vamp generate breed|blueprint|condition|scale [NAME] [--file|--stdin]
+```
 | Parameter | purpose |
 |-----------|---------|
 `--file`    |           Name of the yaml file to preload the generation [Optional]
 `--stdin`   |           Read file from stdin [Optional]
 
-For 'generate breed':
+For `generate breed`:
 
 | Parameter | purpose |
 |-----------|---------|
 `--deployable`  |       Deployable specification [Optional]
 
-For 'generate blueprint':
+For `generate blueprint`:
 
 | Parameter | purpose |
 |-----------|---------|
@@ -167,7 +97,7 @@ For 'generate blueprint':
 `--breed`     |         Name of the breed   [Optional, requires --cluster]
 `--scale`     |         Name of the scale   [Optional, requires --breed]
 
-### Example
+#### Example - generate breed
 ```bash
 > vamp generate breed my_new_breed --json
 {
@@ -188,11 +118,11 @@ For 'generate blueprint':
 }
 ```
 
-## Help
+### Help
 
 Displays the Vamp help message
 
-### Example
+#### Example - Vamp help
 ```bash
 > vamp help
 Usage: vamp COMMAND [args..]
@@ -216,11 +146,11 @@ Run vamp COMMMAND --help  for additional help about the different command option
 
 
 
-## Info
+### Info
 
 Displays the Vamp Info message
 
-### Example
+#### Example - Vamp info
 ```bash
 > vamp info
 message: Hi, I'm Vamp! How are you?
@@ -241,17 +171,20 @@ jvm:
 ...    
 ```
 
-## Inspect
+### Inspect
 Shows the details of the specified artifact
 
-**Usage:** `vamp inspect blueprint|breed|deployment|escalation|condition|scale|sla NAME --json`
+**Usage:** 
+```
+vamp inspect blueprint|breed|deployment|escalation|condition|scale|sla NAME --json
+```
 
 | Parameter | purpose |
 |-----------|---------|
 `--as_blueprint` | Returns a blueprint (only for inspect deployment) [Optional]|
 `--json`    |  Output Json instead of Yaml [Optional]|
 
-### Example
+#### Example - inspect
 ```bash
 > vamp inspect breed sava:1.0.0
 name: sava:1.0.0
@@ -263,12 +196,15 @@ constants: {}
 dependencies: {}
 ```
 
-## List
+### List
 Shows a list of artifacts
 
-**Usage:** `vamp list blueprints|breeds|deployments|escalations|conditions|gateways|scales|slas`
+**Usage:** 
+```
+vamp list blueprints|breeds|deployments|escalations|conditions|gateways|scales|slas
+```
 
-### Example
+#### Example - list
 ```bash
 > vamp list deployments
 NAME                                    CLUSTERS
@@ -344,9 +280,8 @@ Displays the Vamp CLI version information
 > vamp version
 CLI version: 0.7.9
 ```
+-------------
 
-## Where next?
+#### See also
 
-* Read about [Vamp use cases](/what-is-vamp/use-cases/)
-* Check the [API documentation](/resources/api-documentation/)
-* [Try Vamp](/try-vamp)
+* [Using the CLI](/resources/cli-documentation/) - installation, configuration and effective use of the CLI

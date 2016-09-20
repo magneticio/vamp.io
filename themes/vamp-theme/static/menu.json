@@ -149,6 +149,11 @@
       "children": [
         {
           "path": "try-vamp",
+          "text": "Overview",
+          "visible": true
+        },
+        {
+          "path": "try-vamp/hello-world",
           "text": "Hello world",
           "visible": true
         },
@@ -285,11 +290,6 @@
               "path": "resources/using-vamp/virtual-hosts",
               "text": "Virtual hosts",
               "visible": true
-            },
-            {
-              "path": "resources/using-vamp/cli",
-              "text": "Vamp CLI",
-              "visible": true
             }
           ],
           "text": "Using vamp",
@@ -306,6 +306,11 @@
             {
               "path": "resources/run-vamp/osx",
               "text": "Mac OS X",
+              "visible": true
+            },
+            {
+              "path": "resources/run-vamp/linux-windows",
+              "text": "Linux and Windows",
               "visible": true
             },
             {
@@ -330,11 +335,45 @@
             },
             {
               "path": "resources/run-vamp/quick-setup",
+              "children": [
+                {
+                  "path": "resources/run-vamp/quick-setup/quick-setup-dcos",
+                  "text": "DC/OS quick setup",
+                  "visible": false
+                },
+                {
+                  "path": "resources/run-vamp/quick-setup/quick-setup-kubernetes",
+                  "text": "Kubernetes quick setup",
+                  "visible": false
+                },
+                {
+                  "path": "resources/run-vamp/quick-setup/quick-setup-rancher",
+                  "text": "Rancher quick setup",
+                  "visible": false
+                }
+              ],
               "text": "Quick setup",
               "visible": true
             }
           ],
           "text": "Run vamp",
+          "visible": true
+        },
+        {
+          "path": "resources/cli-documentation",
+          "children": [
+            {
+              "path": "resources/cli-documentation",
+              "text": "Using the Vamp CLI",
+              "visible": true
+            },
+            {
+              "path": "resources/cli-documentation/cli-reference",
+              "text": "CLI reference",
+              "visible": true
+            }
+          ],
+          "text": "CLI documentation",
           "visible": true
         },
         {
@@ -361,7 +400,7 @@
     {
       "path": "news",
       "text": "News",
-      "visible": false
+      "visible": true
     },
     {
       "path": "support",

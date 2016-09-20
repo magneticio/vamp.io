@@ -3,35 +3,42 @@ date: 2016-09-13T09:00:00+00:00
 title: Quick setup with Rancher
 ---
 
+{{< warning title="Warning!" >}}
+Quick setups are designed for demo purposes only - they are not production grade setups!
+{{< /warning >}}
+
 ## Overview
 
->**Note**: Rancher support is still in Alpha.
+{{< note title="Note!" >}}
+Rancher support is still in Alpha.
+{{< /note >}}
 
-This quick setup will run Vamp together with Consul, Elasticsearch and Logstash on Rancher.  
-(We'll also deploy our demo Sava application to give you something to play around on).
+This quick setup will run Vamp together with Consul, Elasticsearch and Logstash on Rancher. (We'll also deploy our demo Sava application to give you something to play around on).
 
 
-### Quick setup steps:
+#### Quick setup steps:
 
 1. Run Rancher locally
 2. Install Elasticsearch, Consul and Logstash
 3. Run Vamp
 4. Deploy the Sava demo application
 
-### Prerequisistes
+#### Prerequisistes
 
 * Rancher up and running
 * Key-value store like ZooKeeper, Consul or etcd
 * Elasticsearch and Logstash
 
->**Note** If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
 ## In depth
 
 ### Before we begin...
 It is advisable to try out the official Rancher Quick Start Guide tutorial first ([rancher.com - quick start guide](http://docs.rancher.com/rancher/latest/en/quick-start-guide/)).  
 
->**Note**: If you want to make a setup on your local VM based Docker, it's advisable to increase default VM memory size from 1GB to 4GB.
+{{< note title="Note!" >}}
+If you want to make a setup on your local VM based Docker, it's advisable to increase default VM memory size from 1GB to 4GB.
+{{< /note >}}
 
 ### Step 1: Run Rancher locally
 Based on the official Rancher quickstart tutorial, these are a few simple steps to run Rancher locally:
@@ -39,8 +46,11 @@ Based on the official Rancher quickstart tutorial, these are a few simple steps 
 $ docker run -d --restart=always -p 8080:8080 rancher/server
 ```
 The Rancher UI is exposed on port 8080, so go to http://SERVER_IP:8080 - for instance [http://192.168.99.100:8080](http://192.168.99.100:8080), [http://localhost:8080](http://localhost:8080) or something similar depending on your Docker setup.
-Now follow instruction on the screen and add new Rancher host - click on "Add Host" and then on "Save".
-You should get instructions (bullet point 5) to run an `agent` Docker image:
+  
+Follow the instructions on the screen to add a new Rancher host:
+
+1. click on "Add Host" and then on "Save". 
+2. You should get instructions (bullet point 5) to run an `agent` Docker image:
 ```bash
 $ docker run \
   -d --privileged \
@@ -50,7 +60,7 @@ $ docker run \
   http://192.168.99.100:8080/v1/scripts/E78EF5848B989FD4DA77:1466265600000:SYqIvhPgzKLonp8r0erqgpsi7pQ
 ```
 
-Go to `Add Stack` and create a new stack `vamp` (lowercase).   
+3. Go to `Add Stack` and create a new stack `vamp` (lowercase).   
 
 ### Step 2: Install Consul, Elasticsearch and Logstash
 We can now install the other dependencies.
@@ -68,7 +78,7 @@ Use your newly created `vamp` stack and go to `Add Service`:
 
 #### Elasticsearch and Logstash
 
-> Our custom Docker image `magneticio/elastic:2.2` contains Elasticsearch, Logstash and Kibana with the proper Logstash configuration for Vamp. More details can be found on the [project page](https://github.com/magneticio/elastic).
+> Our custom Docker image `magneticio/elastic:2.2` contains Elasticsearch, Logstash and Kibana with the proper Logstash configuration for Vamp. More details can be found on the github project page ([github.com/magneticio - elastic](https://github.com/magneticio/elastic)).
 
 Use the `vamp` stack and go to `Add Service`:
 
@@ -155,4 +165,4 @@ If you want to the gateway port to be exposed outside of the cluster via Rancher
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 * Remember, this is not a production grade setup!
 
->**Note** If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)

@@ -7,7 +7,7 @@ We’ve created a set of showcase applications, services and corresponding bluep
 
 
 {{< tip >}}
-You can work with Sava in the [Vamp hello world](/try-vamp/hello-world/) setup (or another quick demo setup).
+You can work with Sava in the [Vamp hello world](/try-vamp/hello-world/) quick setup (or another quick demo setup).
 {{< /tip >}}
 
 1. [Deploy your first blueprint](deploy-your-first-blueprint/)

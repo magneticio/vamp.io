@@ -4,7 +4,7 @@ title: 1 - deploy your first blueprint
 ---
 ## Overview
 
-If everything went to plan, you should have your Vamp installation up and running. If not, please follow the [Vamp quick setup steps](/try-vamp/). Now we're ready to check out some of Vamp's features. 
+If everything went to plan, you should have your Vamp installation up and running. If not, please follow the [Vamp hello world](/try-vamp/hello-world/) quick setup steps. Now we're ready to check out some of Vamp's features. 
 
 #### In this tutorial we will:  
 
