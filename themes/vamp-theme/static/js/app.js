@@ -27,7 +27,6 @@ topMenuItemTemplate = '';
 topMenuItemTemplate += '<a href=\"\/{{path}}\" id=\"top-menu-item-{{text}}\" class=\"top-menu-item\">{{text}}<\/a>';
 
 function documentReady() {
-
   thePath = window.location.pathname;
   thePath = thePath.substring(1, thePath.length - 1);
 
@@ -38,9 +37,14 @@ function documentReady() {
     setColorMenu();
   });
 
+
+  if (thePath !== '/') {
+    $('.page').addClass('padding-fix');
+  }
+
   setColorMenu();
   function setColorMenu() {
-    if ($(window).scrollTop() > 0) {
+    if ($(window).scrollTop() > 0 || thePath !== '/') {
       $("#header").addClass("active");
       $('#logo').attr('src', '/img/005-vamp/Logo/logo-long-colour.svg');
 
@@ -51,10 +55,7 @@ function documentReady() {
     }
   }
 
-  if (thePath !== '/') {
-    $("#header").addClass("always-active");
-    $('.page').addClass('padding-fix');
-  }
+
 
 
   //Set smoothscrolling
@@ -105,6 +106,8 @@ function menuFileLoaded(data) {
       oneActive.active = true;
     });
   });
+
+
 
   data.children.forEach(function (topMenuItem) {
       var html = Mustache.render(topMenuItemTemplate, topMenuItem);

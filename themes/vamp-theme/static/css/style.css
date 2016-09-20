@@ -1497,34 +1497,33 @@ body {
           transition: background-color 0.15s ease-in;
 }
 
-.top-menu.always-active, .top-menu.active {
+.top-menu.active {
   background-color: white;
   box-shadow: 0 4px 2px -2px rgba(20, 45, 60, 0.25);
   border-bottom: none;
 }
 
-.top-menu.always-active .top-menu-items, .top-menu.active .top-menu-items {
-  background-color: white;
+.top-menu.active .top-menu-items {
   border-top: 1px solid #142D3C;
 }
 
 @media all and (min-width: 1025px) {
-  .top-menu.always-active .top-menu-items, .top-menu.active .top-menu-items {
+  .top-menu.active .top-menu-items {
     border-top: none;
   }
 }
 
-.top-menu.always-active .top-menu-item, .top-menu.active .top-menu-item {
+.top-menu.active .top-menu-item {
   -webkit-transition: all 0.15s ease-in;
           transition: all 0.15s ease-in;
   color: #142D3C;
 }
 
-.top-menu.always-active .github-logo i.fa, .top-menu.active .github-logo i.fa {
+.top-menu.active .github-logo i.fa {
   color: #142D3C;
 }
 
-.top-menu.always-active .hamburger, .top-menu.active .hamburger {
+.top-menu.active .hamburger {
   color: #142D3C;
 }
 

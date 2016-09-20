@@ -417,6 +417,7 @@ body {
   }
 }
 
+
 // Fonts
 .header {
   font-weight: 100;
@@ -424,6 +425,7 @@ body {
   letter-spacing: 0.1em;
   color: $dark-blue;
   font-size: 36px;
+
 
   @media all and (min-width: 641px) {
     font-size: 52px;
@@ -893,42 +895,6 @@ body {
 
   }
 
-
-
-  //h2 {
-  //  @extend .h2;
-  //  margin-top: 40px !important;
-  //  margin-bottom: 10px !important;
-  //}
-  //
-  //h3 {
-  //  @extend .h3;
-  //  margin-top: 30px !important;
-  //  margin-bottom: 5px !important;
-  //}
-  //
-  //h2 + p, h2 + h3, h3 + p {
-  //  margin-top: 0 !important;
-  //}
-  //
-  //p + ul, p + ol {
-  //  margin-top: -10px;
-  //}
-  //
-  //p, blockquote {
-  //  @extend .text;
-  //
-  //  &:not(:first-child) {
-  //    margin-top: 20px;
-  //  }
-  //
-  //  &:not(:last-child) {
-  //    margin-bottom: 20px;
-  //  }
-  //}
-
-
-
   ol {
     margin: 10px 40px;
 
@@ -1043,14 +1009,11 @@ body {
   border-bottom: 1px solid rgba($light-grey, 0.1);
   transition: background-color 0.15s ease-in;
 
-
-
-  &.always-active {
+  &.active {
     background-color: white;
     box-shadow: 0 4px 2px -2px rgba($dark-blue, 0.25);
     border-bottom: none;
     .top-menu-items {
-      background-color: white;
       border-top: 1px solid $dark-blue;
 
 
@@ -1075,10 +1038,6 @@ body {
     .hamburger {
       color: $dark-blue;
     }
-  }
-
-  &.active {
-    @extend .always-active;
   }
 
   .logo {
