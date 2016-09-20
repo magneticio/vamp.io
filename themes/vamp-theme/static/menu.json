@@ -149,6 +149,11 @@
       "children": [
         {
           "path": "try-vamp",
+          "text": "Overview",
+          "visible": true
+        },
+        {
+          "path": "try-vamp/hello-world",
           "text": "Hello world",
           "visible": true
         },
@@ -330,6 +335,23 @@
             },
             {
               "path": "resources/run-vamp/quick-setup",
+              "children": [
+                {
+                  "path": "resources/run-vamp/quick-setup/quick-setup-dcos",
+                  "text": "DC/OS quick setup",
+                  "visible": false
+                },
+                {
+                  "path": "resources/run-vamp/quick-setup/quick-setup-kubernetes",
+                  "text": "Kubernetes quick setup",
+                  "visible": false
+                },
+                {
+                  "path": "resources/run-vamp/quick-setup/quick-setup-rancher",
+                  "text": "Rancher quick setup",
+                  "visible": false
+                }
+              ],
               "text": "Quick setup",
               "visible": true
             }

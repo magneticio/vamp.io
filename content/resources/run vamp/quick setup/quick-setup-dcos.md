@@ -3,25 +3,30 @@ date: 2016-09-13T09:00:00+00:00
 title: DC/OS quick setup
 ---
 
+{{< warning title="Warning!" >}}
+Quick setups are designed for demo purposes only - they are not production grade setups!
+{{< /warning >}}
+
 ## Overview 
 
-This quick setup will run Vamp, Mesos and Marathon, together with Zookeeper, Elasticsearch and Logstash on DC/OS.   
-(We'll also give you some additional information for creating a custom Vamp setup).
+This quick setup will run Vamp, Mesos and Marathon, together with Zookeeper, Elasticsearch and Logstash on DC/OS. (We'll also give you some additional information for creating a custom Vamp setup).
 
->**Note**: In this guide we will be using DC/OS as our container-manager ([dcos.io](http://dcos.io)), but this guide will also work with Mesos and Marathon.
+{{< note title="Note!" >}}
+In this guide we will be using DC/OS as our container-manager ([dcos.io](http://dcos.io)), but this guide will also work with Mesos and Marathon.
+{{< /note >}}
 
-### Quick setup steps:
+#### Quick setup steps:
 
 1. Install Elasticsearch + Logstash
 2. Deploy Vamp
 3. Extra info: Create a custom Vamp setup
 
-### Prerequisistes:
+#### Prerequisistes:
 
 *  Running DC/OS cluster (1.7)
 
 
->**Stuck?** If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
 ## In depth
 
@@ -75,7 +80,9 @@ curl -k -XPOST -d @marathon.json -H "Content-Type: application/json" http://MARA
 
 ### Step 2: Deploy Vamp
 
->**Note**: Vamp is available as DC/OS Universe package, so you could also deploy Vamp using the DC/OS web UI.
+{{< tip>}}
+Vamp is available as DC/OS Universe package, so you could also deploy Vamp using the DC/OS web UI.
+{{< /tip >}}
 
 Create a `vamp.json` file with the content:
 
@@ -128,12 +135,12 @@ Have fun!
 
 ### Extra info: Creating a custom Vamp setup
 
-The [Vamp DC/OS Docker image](https://github.com/magneticio/vamp-docker/tree/master/vamp-dcos) contains [configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf) that can be overridden for specific needs by:
+The Vamp DC/OS Docker image ([github.com/magneticio - Vamp DC/OS](https://github.com/magneticio/vamp-docker/tree/master/vamp-dcos)) contains configuration ([github.com/magneticio - Vamp DC/OS configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf)) that can be overridden for specific needs by:
 
-* making a new Docker image based on the Vamp DC/OS image
-* using [environment variables](/resources/run-vamp/vamp-configuration#environment-variable-configuration)
+* Making a new Docker image based on the Vamp DC/OS image
+* Using [environment variables](/resources/run-vamp/vamp-configuration#environment-variable-configuration)
 
-#### Example 1: Remove the `metrics` and `health` workflows by configuration and keep the `kibana` workflow:
+#### Example 1 - Remove the `metrics` and `health` workflows by configuration and keep the `kibana` workflow:
 
 ```yaml
 vamp.lifter.artifact.resources = [
@@ -149,9 +156,9 @@ or
 }
 ```
 
-#### Example 2: Avoid automatic deployment of Vamp Gateway Agent
+#### Example 2 - Avoid automatic deployment of Vamp Gateway Agent
 
-`vga-marathon` breed and workflow should be removed from `vamp.lifter.artifact.files`:
+Rremove `vga-marathon` breed and workflow from `vamp.lifter.artifact.files`:
 
 ```yaml
 vamp.lifter.artifact.files = []
@@ -171,4 +178,4 @@ or
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 * Remember, this is not a production grade setup!
 
->**Note** If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)

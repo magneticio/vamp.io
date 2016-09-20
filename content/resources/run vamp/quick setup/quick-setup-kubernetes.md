@@ -3,31 +3,37 @@ date: 2016-09-13T09:00:00+00:00
 title: Kubernetes quick setup
 ---
 
+{{< warning title="Warning!" >}}
+Quick setups are designed for demo purposes only - they are not production grade setups!
+{{< /warning >}}
+
 ## Overview
 
->**Note**: Kubernetes support is still in Alpha.
+{{< note title="Note!" >}}
+Kubernetes support is still in Alpha.
+{{< /note >}}
 
-This quick setup will run Vamp together with etcd, Elasticsearch and Logstash on Google container engine and kubernetes.   
-(We will also deploy our demo Sava application to give you something to play around on).   
+This quick setup will run Vamp together with etcd, Elasticsearch and Logstash on Google container engine and kubernetes. (We will also deploy our demo Sava application to give you something to play around on).   
 
 
-### Quick setup steps:
+#### Quick setup steps:
 
 1. Create a new GKE cluster
 2. Deploy etcd, Elasticsearch and Logstash
 3. Run Vamp
 4. Deploy the demo Sava application
 
-### Prerequisistes:
+#### Prerequisistes:
 
 * Google Container Engine cluster
 * Key-value store (like ZooKeeper, Consul or etcd)
 * Elasticsearch and Logstash
 
->**Note**:   
+{{< tip >}}
+Minikube can also be used. ([github.com - minikube](https://github.com/kubernetes/minikube)) 
+{{< /tip >}}
 
-> * Minikube can also be used. ([github.com - minikube](https://github.com/kubernetes/minikube)) 
-> * **Stuck?** If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
 
 ## In depth
@@ -69,7 +75,9 @@ kubectl expose deployment elastic --protocol=TCP --port=9200 --name=elasticsearc
 kubectl expose deployment elastic --protocol=UDP --port=10001 --name=logstash
 kubectl expose deployment elastic --protocol=TCP --port=5601 --name=kibana
 ```
->**Note**: This is not a production grade setup. You would need to take care also about persistence and running multiple replicas of each pods.
+{{< note title="Note!" >}}
+This is not a production grade setup. You would need to take care also about persistence and running multiple replicas of each pods.
+{{< /note >}}
 
 ### Step 3: Run Vamp
 
@@ -87,7 +95,7 @@ kubectl expose deployment vamp --protocol=TCP --port=8080 --name=vamp --type="Lo
 ```
 
 
-The Vamp image uses the following [configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-kubernetes/application.conf).
+The Vamp image uses the following configuration ([github.com/magneticio - Vamp kubernetes configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-kubernetes/application.conf)).
 
 Wait a bit until Vamp is running and check out the Kubernetes services:
 
@@ -135,7 +143,9 @@ clusters:
         instances: 1
 ```
 
->**Note**: Be sure that the cluster has enough resources (CPU, memory), otherwise deployments will be in pending state.
+{{< note title="Note!" >}}
+Be sure that the cluster has enough resources (CPU, memory), otherwise deployments will be in pending state.
+{{< /note >}}
 
 Once it's running if we get services:
 
@@ -154,7 +164,9 @@ hex26bb0695e9a85ec34b03   10.3.245.85    23.251.143.62   40000/TCP   2m        l
 12c97,vamp=gateway
 ```
 
->**Note**: In this setup Vamp is deliberately configured to initiate exposure of all gateway and VGA ports. That would not be the case if default and recommended setting is used.
+{{< note title="Note!" >}}
+In this setup Vamp is deliberately configured to initiate exposure of all gateway and VGA ports. That would not be the case if default and recommended setting is used.
+{{< /note >}}
 
 We can access our `sava` service on `http://104.155.24.47:9050`
 
@@ -165,7 +177,9 @@ We can also access using virtual hosts. Vamp Gateway Agent service is on IP `146
 curl --resolve 9050.sava-1-0.vamp:80:146.148.22.145 -v http://9050.sava-1-0.vamp
 ```
 
->**Note**: Don't forget to [clean up your Kubernetes cluster and firewall rules](https://cloud.google.com/container-engine/docs/quickstart#clean-up) if you don't want to use them anymore.
+{{< note title="Note!" >}}
+Don't forget to clean up your Kubernetes cluster and firewall rules  if you don't want to use them anymore ([google.com - container engine quickstart: clean up](https://cloud.google.com/container-engine/docs/quickstart#clean-up)).
+{{< /note >}}
 
 ## What next?
 
@@ -173,4 +187,4 @@ curl --resolve 9050.sava-1-0.vamp:80:146.148.22.145 -v http://9050.sava-1-0.vamp
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 * Remember, this is not a production grade setup!
 
->**Note** If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
