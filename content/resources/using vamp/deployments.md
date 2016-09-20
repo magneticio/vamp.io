@@ -6,6 +6,8 @@ title: Deployments
 A deployment is a "running" blueprint. Over time, new blueprints can be merged with existing deployments or parts of the running blueprint can be removed from it. Each deployment can be exported as a blueprint and 
 copy / pasted to another environment, or even to the same environment to function as a clone.
 
+## Create a deployment
+
 You can create a deployment in the following ways:
 
 * Send a `POST` request to the `/deployments` endpoint.
@@ -13,28 +15,11 @@ You can create a deployment in the following ways:
 * Use the CLI `vamp deploy` command  
  `$ vamp deploy my_blueprint`.
 
-The name of the deployment is automatically assigned as a UUID (e.g. `123e4567-e89b-12d3-a456-426655440000`).
+The name of the deployment will be automatically assigned as a UUID (e.g. `123e4567-e89b-12d3-a456-426655440000`).
 
-#### Example - a simple blueprint
 
-```yaml
----
-name: my_cool_blueprint
-gateways:
-  8080: my_frontend/port
 
-clusters:
-  my_frontend:
-    services:
-      -
-        breed: some_cool_breed:2.1
-        scale:
-          cpu: 2
-          memory: 2048MB
-          instances: 2
-```
-
-### Vamp deployment process
+## Vamp deployment process
 
 Once we have issued the deployment, Vamp will do the following:
 
