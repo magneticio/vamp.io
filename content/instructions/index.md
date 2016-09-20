@@ -113,3 +113,10 @@ This will print the following block:
 {{< warning title="Don't try this at home" >}}
 Nothing to see here, move along.
 {{< /warning >}}
+
+Using the tip keyword makes a tip box
+
+{{< tip title="Don't try this at home" >}}
+Nothing to see here, move along.
+{{< /tip >}}
+
