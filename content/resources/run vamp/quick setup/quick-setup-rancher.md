@@ -15,19 +15,18 @@ Rancher support is still in Alpha.
 
 This quick setup will run Vamp together with Consul, Elasticsearch and Logstash on Rancher. (We'll also deploy our demo Sava application to give you something to play around on).
 
-
-#### Quick setup steps:
-
-1. Run Rancher locally
-2. Install Elasticsearch, Consul and Logstash
-3. Run Vamp
-4. Deploy the Sava demo application
-
 #### Prerequisistes
 
 * Rancher up and running
 * Key-value store like ZooKeeper, Consul or etcd
 * Elasticsearch and Logstash
+
+#### In this quick setup we will:
+
+1. Run Rancher locally
+2. Install Elasticsearch, Consul and Logstash
+3. Run Vamp
+4. Deploy the Sava demo application
 
 If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
@@ -36,9 +35,9 @@ If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 ### Before we begin...
 It is advisable to try out the official Rancher Quick Start Guide tutorial first ([rancher.com - quick start guide](http://docs.rancher.com/rancher/latest/en/quick-start-guide/)).  
 
-{{< note title="Note!" >}}
+{{< tip >}}
 If you want to make a setup on your local VM based Docker, it's advisable to increase default VM memory size from 1GB to 4GB.
-{{< /note >}}
+{{< /tip >}}
 
 ### Step 1: Run Rancher locally
 Based on the official Rancher quickstart tutorial, these are a few simple steps to run Rancher locally:

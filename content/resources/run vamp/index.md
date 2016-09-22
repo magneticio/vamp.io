@@ -9,13 +9,13 @@ Before you get Vamp up and running on your architecture, it is helpful to unders
 
 If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
-### Get Vamp
+#### Get Vamp
 
 * [Working with Vamp binaries](vamp-binaries/)
 * [MacOS X](osx) - install the Vamp CLI with homebrew
 * [Linux and Windows](linux-windows) - manually install the Vamp CLI
 
-### Configuration
+#### Configuration
 
 * [Container driver configuration](container-drivers/)
 * [Vamp configuration](vamp-configuration/)

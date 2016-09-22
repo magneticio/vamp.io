@@ -3,25 +3,31 @@ date: 2016-09-13T09:00:00+00:00
 title: Elasticsearch, Logstash and Kibana (ELK) configuration
 ---
 
-HAProxy (VGA) generates logs and makes them accessible via open socket - check the [HAProxy configuration](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.cfg) of `log`.
+HAProxy (VGA) generates logs and makes them accessible via open socket - check the HAProxy configuration ([github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.cfg](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.cfg)) of `log`.
 VGA listens on log socket and any new messages are forwarded to the Logstash instance.
-Log format is configurable in Vamp configuration [vamp.gateway-driver.haproxy](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf).
-Note that Logstash is listening on UDP port, but in principle any other listener can receive logs forwarded by VGA.
-Different VGA's can use different Logstash instances.
-[Examples of different Logstash/Elasticsearch setups](https://www.elastic.co/guide/en/logstash/current/deploying-and-scaling.html).
+Log format is configurable in Vamp configuration vamp.gateway-driver.haproxy ([github.com/magneticio - reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)).
 
 * For an effective feedback loop, HTTP/TCP logs should be collected, stored and analyzed
 * Collection and storing is done by a combination of HAProxy, VGA and Logstash setup
 * Logs can be stored in Elasticsearch and later analyzed and visualized by Kibana.
 
+{{< note title="Note!" >}}
+* Logstash is listening on UDP port, but in principle any other listener can receive logs forwarded by VGA. 
+* Different VGA's can use different Logstash instances.
+{{< /note >}}
 
 ## Logstash configuration
 In general, for each HTTP/TCP request to HAProxy, several log messages are created (e.g. for gateway, service and instance level).
 Using one of the simplest Logstash configurations should be sufficient for dozens of requests per second - or even more.
 This also depends on whether ELK is used for custom application/service logs etc.
 
-* To transform logs to plain JSON, which can be parsed easily later on (e.g. for Kibana visualization), use this [Logstash configuration](https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf) together with the default `vamp.gateway-driver.haproxy` log format.
-* [Example of Logstash command line parameter](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/supervisord.conf) (Logstash section).
+You can transform logs to plain JSON, which can be parsed easily later on (e.g. for Kibana visualization), with this Logstash configuration together with the default `vamp.gateway-driver.haproxy` log format ([github.com/magneticio - logstash.conf](https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf)).
+
+{{< tip title="Examples" >}}
+
+* Different Logstash/Elasticsearch setups: ([elastic.co - Deploying and Scaling Logstash](https://www.elastic.co/guide/en/logstash/current/deploying-and-scaling.html)).
+* Logstash command line parameter ([/github.com/magneticio - Logstash section](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/supervisord.conf)).
+{{< /tip >}}
 
 ## Configure Vamp for Kibana
  
