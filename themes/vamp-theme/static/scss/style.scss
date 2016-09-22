@@ -39,7 +39,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: $color-big-stone;
-  font-size: 36px;
+  font-size: 26px;
 
   @media all and (min-width: 641px) {
     font-size: 52px;
@@ -708,6 +708,7 @@ body {
     }
 
     .github-logo {
+      margin-right: 4px;
       i.fa {
         color: $color-big-stone;
       }
@@ -836,7 +837,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 20px;
+    margin-right: 40px;
 
     a {
       text-decoration: none;

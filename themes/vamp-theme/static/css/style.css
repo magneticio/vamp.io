@@ -931,7 +931,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #142D3C;
-  font-size: 36px;
+  font-size: 26px;
 }
 
 @media all and (min-width: 641px) {
@@ -1594,6 +1594,10 @@ body {
   color: #142D3C;
 }
 
+.top-menu.active .github-logo {
+  margin-right: 4px;
+}
+
 .top-menu.active .github-logo i.fa {
   color: #142D3C;
 }
@@ -1750,7 +1754,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-right: 20px;
+  margin-right: 40px;
 }
 
 .top-menu .download a {

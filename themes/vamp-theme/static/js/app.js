@@ -91,8 +91,7 @@ function getMenuFile(callback) {
   $.getJSON('/menu.json', function (data) {
     callback(data);
   });
-  
-  // Set it all
+
 }
 
 
