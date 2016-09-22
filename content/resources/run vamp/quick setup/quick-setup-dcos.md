@@ -11,32 +11,31 @@ Quick setups are designed for demo purposes only - they are not production grade
 
 This quick setup will run Vamp, Mesos and Marathon, together with Zookeeper, Elasticsearch and Logstash on DC/OS. (We'll also give you some additional information for creating a custom Vamp setup).
 
-{{< note title="Note!" >}}
-In this guide we will be using DC/OS as our container-manager ([dcos.io](http://dcos.io)), but this guide will also work with Mesos and Marathon.
-{{< /note >}}
-
-#### Quick setup steps:
-
-1. Install Elasticsearch + Logstash
-2. Deploy Vamp
-3. Extra info: Create a custom Vamp setup
-
-#### Prerequisistes:
+#### Prerequisistes
 
 *  Running DC/OS cluster (1.7)
 
+#### In this quick setup we will:
+
+1. Install Elasticsearch + Logstash
+2. Deploy Vamp
+3. Get some extra info on creating a custom Vamp setup
 
 If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+
+{{< note title="Note!" >}}
+In this guide we will be using DC/OS as our container-manager ([dcos.io](http://dcos.io)), but this guide will also work with Mesos and Marathon.
+{{< /note >}}
 
 ## In depth
 
 ### Step 1: Install Elasticsearch and Logstash
 
 Mesos, Marathon and ZooKeeper are all installed by DC/OS. In addition to these, Vamp requires Elasticsearch and Logstash for metrics collection and aggregation.
-You could install Elasticsearch on DC/OS by following the [Mesos Elasticsearch documentation](http://mesos-elasticsearch.readthedocs.org/en/latest/).
-However, Vamp will also need Logstash (not currently available as a DC/OS package) with a specific [Vamp Logstash configuration] (https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf).  
+You could install Elasticsearch on DC/OS by following the Mesos Elasticsearch documentation ([mesos-elasticsearch - Elasticsearch Mesos Framework](http://mesos-elasticsearch.readthedocs.org/en/latest/)).
+However, Vamp will also need Logstash (not currently available as a DC/OS package) with a specific Vamp Logstash configuration ([github.com/magneticio - Vamp Docker logstash.conf](https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf)).  
 
-To make life easier, we have created compatible [Docker images for a Vamp Elastic Stack](https://hub.docker.com/r/magneticio/elastic/) that you can use with the [Mesos elasticsearch documentation - How to install on Marathon](http://mesos-elasticsearch.readthedocs.org/en/latest/#how-to-install-on-marathon).
+To make life easier, we have created compatible Docker images for a Vamp Elastic Stack ([hub.docker.com - magneticio elastic](https://hub.docker.com/r/magneticio/elastic/) that you can use with the Mesos elasticsearch documentation ([mesos-elasticsearch - How to install on Marathon](http://mesos-elasticsearch.readthedocs.org/en/latest/#how-to-install-on-marathon)).
 Our advice is to use our custom Elasticsearch+Logstash Docker image. Let’s go!
 
 First, let's create `marathon.json` file with the following content:

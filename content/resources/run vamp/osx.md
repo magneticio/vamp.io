@@ -3,9 +3,9 @@ date: 2016-09-13T09:00:00+00:00
 title: Mac OS X
 ---
 
-Native installers are not currently available to run the Vamp server component on MacOS X. We do have Homebrew support for the Vamp CLI.
-
 ## Install the Vamp CLI
+
+We have Homebrew support to install the Vamp CLI on MacOS X.
 
 ### Prerequisites
 
