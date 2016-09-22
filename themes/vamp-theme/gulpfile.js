@@ -15,9 +15,11 @@ var sassOptions = {
 
 gulp.task('browser-sync', function() {
   browserSync({
-    server: {
-       baseDir: "./"
-    }
+    ui: {
+      port: 1314
+    },
+    proxy: "localhost:1313",
+    reloadDelay: 500
   });
 });
 
