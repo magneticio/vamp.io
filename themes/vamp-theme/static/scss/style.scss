@@ -16,6 +16,7 @@ body {
 
 .page {
   min-height: 100vh;
+  position: relative;
   //padding-top: 80px;
   &.padding-fix {
     padding-top: 80px;
@@ -375,10 +376,10 @@ body {
 // single page
 .menu {
   background-color: $color-white-squeeze;
-  padding: 40px;
-  height: calc(100vh - 80px);
+  padding: 40px + 80px 40px 40px 40px;
+  height: 100vh;
   position: fixed;
-  top: 80px;
+  bottom: 0;
   overflow-y: scroll;
   width: 280px + 40px + 40px;
 }

@@ -92,6 +92,24 @@ function getMenuFile(callback) {
     callback(data);
   });
 
+
+  //unsticky menu
+
+
+  $(window).scroll(function () {
+    var offsetTop = $('.footer').offset().top;
+    var scrollBottom = $(window).scrollTop() + $(window).height();
+
+    if(scrollBottom >= offsetTop) {
+      $('.menu').css('position', 'absolute');
+      $('.menu').css('bottom', '0');
+
+    } else {
+      console.log('not-sticky');
+      $('.menu').css('position', 'fixed');
+      $('.menu').css('bottom', '');
+    }
+  });
 }
 
 
