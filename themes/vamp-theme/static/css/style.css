@@ -215,7 +215,12 @@ button:focus {
   outline: none !important;
 }
 
+/* Variables */
 /* Grid */
+/* Colors */
+/* For naming colors use: // http://chir.ag/projects/name-that-color/ */
+/* Font-sizes */
+/* Margins */
 .container {
   margin: 0 auto;
 }
@@ -893,7 +898,6 @@ button:focus {
   margin-right: 0;
 }
 
-/* Variables */
 body {
   font-family: 'Roboto', sans-serif;
 }
@@ -1284,6 +1288,7 @@ body {
   position: fixed;
   top: 80px;
   overflow-y: scroll;
+  width: 360px;
 }
 
 .side-menu-item {

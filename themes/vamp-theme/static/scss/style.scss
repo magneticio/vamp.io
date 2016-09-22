@@ -1,395 +1,6 @@
-/* CSS RESET */
-
-html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font-weight: normal;
-  vertical-align: baseline;
-  background: transparent;
-}
-
-article, aside, figure, footer, header, nav, section, details, summary {
-  display: block;
-}
-
-/* Handle box-sizing while better addressing child elements:
-   http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-html {
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-/* consider resetting the default cursor: https://gist.github.com/murtaugh/5247154 */
-
-/* Responsive images and other embedded objects */
-/* if you don't have full control over `img` tags (if you have to overcome attributes), consider adding height: auto */
-img,
-object,
-embed {
-  max-width: 100%;
-}
-
-/*
-   Note: keeping IMG here will cause problems if you're using foreground images as sprites.
-	In fact, it *will* cause problems with Google Maps' controls at small size.
-	If this is the case for you, try uncommenting the following:
-
-#map img {
-		max-width: none;
-}
-*/
-
-/* force a vertical scrollbar to prevent a jumpy page */
-html {
-  overflow-y: scroll;
-}
-
-/* we use a lot of ULs that aren't bulleted.
-	you'll have to restore the bullets within content,
-	which is fine because they're probably customized anyway */
-ul {
-  list-style: none;
-}
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
-}
-
-a {
-  margin: 0;
-  padding: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
-}
-
-del {
-  text-decoration: line-through;
-}
-
-abbr[title], dfn[title] {
-  border-bottom: 1px dotted #000;
-  cursor: help;
-}
-
-/* tables still need cellspacing="0" in the markup */
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-}
-
-th {
-  font-weight: bold;
-  vertical-align: bottom;
-}
-
-td {
-  font-weight: normal;
-  vertical-align: top;
-}
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-input, select {
-  vertical-align: middle;
-}
-
-input[type="radio"] {
-  vertical-align: text-bottom;
-}
-
-input[type="checkbox"] {
-  vertical-align: bottom;
-}
-
-.ie7 input[type="checkbox"] {
-  vertical-align: baseline;
-}
-
-.ie6 input {
-  vertical-align: text-bottom;
-}
-
-select, input, textarea {
-  font: 99% sans-serif;
-}
-
-table {
-  font-size: inherit;
-  font: 100%;
-}
-
-small {
-  font-size: 85%;
-}
-
-strong {
-  font-weight: bold;
-}
-
-td, td img {
-  vertical-align: top;
-}
-
-/* Make sure sup and sub don't mess with your line-heights http://gist.github.com/413930 */
-sub, sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-}
-
-sup {
-  top: -0.5em;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-/* standardize any monospaced elements */
-pre, code, kbd, samp {
-  font-family: monospace, sans-serif;
-}
-
-/* hand cursor on clickable elements */
-.clickable,
-label,
-input[type=button],
-input[type=submit],
-input[type=file],
-button {
-  cursor: pointer;
-}
-
-/* Webkit browsers add a 2px margin outside the chrome of form elements */
-button, input, select, textarea {
-  margin: 0;
-}
-
-/* make buttons play nice in IE */
-button,
-input[type=button] {
-  width: auto;
-  overflow: visible;
-}
-
-/* scale images in IE7 more attractively */
-.ie7 img {
-  -ms-interpolation-mode: bicubic;
-}
-
-/* prevent BG image flicker upon hover
-   (commented out as usage is rare, and the filter syntax messes with some pre-processors)
-.ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
-*/
-
-/* let's clear some floats */
-.clearfix:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-  outline: none !important;
-}
-
-/* Grid */
-
-$container-width-desktop: 1160px;
-$container-width-laptop: 1018px;
-$container-width-tablet: 650px;
-$container-width-mobile: 636px;
-$container-width-mobile-small: 316px;
-
-$columns: 15;
-$gutter-size: 40px;
-
-.container {
-  margin: 0 auto;
-  @media all and (min-width: 321px) {
-    width: $container-width-mobile-small;
-  }
-
-  @media all and (min-width: 641px) {
-    width: $container-width-mobile;
-  }
-
-  @media all and (min-width: 769px) {
-    width: $container-width-tablet;
-  }
-
-  @media all and (min-width: 1025px) {
-    width: $container-width-laptop;
-  }
-
-  @media all and (min-width: 1201px) {
-    width: $container-width-desktop;
-  }
-}
-
-.row {
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-
-  @media all and (min-width: 321px) {
-    width: $container-width-mobile-small + $gutter-size;
-    margin: 10px (-($gutter-size/2));
-
-  }
-
-  @media all and (min-width: 641px) {
-    width: $container-width-mobile + $gutter-size;
-    margin: 20px (-($gutter-size/2));
-    flex-direction: row;
-
-  }
-
-  @media all and (min-width: 769px) {
-    width: $container-width-tablet + $gutter-size;
-    margin: 30px (-($gutter-size/2));
-
-  }
-
-  @media all and (min-width: 1025px) {
-    width: $container-width-laptop + $gutter-size;
-    margin: 40px (-($gutter-size/2));
-
-  }
-
-  @media all and (min-width: 1201px) {
-    width: $container-width-desktop + $gutter-size;
-    margin: 40px (-($gutter-size/2));
-  }
-
-  //border: 1px solid yellow;
-
-  &--wrap {
-    flex-wrap: wrap;
-  }
-
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.col {
-  flex: 1;
-  padding: 20px;
-
-
-  @media all and (min-width: 641px) {
-    //padding-bottom: 20px;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-}
-
-.center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  flex-direction: column;
-}
-
-@for $i from 1 through 15 {
-  .col-#{$i} {
-  flex: none;
-  //width: (($container-width-desktop + $gutter-size) / $columns) * $i;
-
-    @media all and (min-width: 321px) {
-      //width: (($container-width-mobile-small + $gutter-size) / $columns) * $i;
-      width: 100%;
-    }
-
-    @media all and (min-width: 641px) {
-      //width: (($container-width-mobile + $gutter-size) / $columns) * $i;
-      width: 100%;
-    }
-
-
-    @media all and (min-width: 769px) {
-      width: (($container-width-tablet + $gutter-size) / $columns) * $i;
-    }
-
-    @media all and (min-width: 1025px) {
-      width: (($container-width-laptop + $gutter-size) / $columns) * $i;
-
-    }
-
-    @media all and (min-width: 1201px) {
-      width: (($container-width-desktop + $gutter-size) / $columns) * $i;
-    }
-  }
-}
-
-.clear { /* Useful generic clearing class. */
-  clear: both;
-}
-
-.last-col {
-  margin-right: 0;
-}
-
-/* Variables */
-
-// Colors
-$red: #FF405E;
-$dark-blue: #142D3C;
-$medium-dark-blue: #234B5F;
-$medium-light-blue: #37647D;
-$light-blue: #C3D2DC;
-$dark-grey: #96ADAA;
-$light-grey: #F0F5FA;
-
-$accent-color: #6991AA;
-
-$red-hover: #C33750;
-$dark-blue-hover: #234B5F;
-$grey-hover: #6991AA;
-
-// Font-sizes
-$biggest: 52px;
-$big: 40px;
-$medium: 24px;
-$medium-small: 15px;
-$small: 13px;
-
-// Margins
-$small-margin: 20px;
-$medium-margin: 40px;
-$big-margin: 60px;
+@import 'reset';
+@import 'variables';
+@import 'grid';
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -415,11 +26,9 @@ body {
     //background: linear-gradient(90deg, $light-grey 33%, white 33%);
 
     .header {
-      color: $red;
+      color: $color-radical-red;
       margin: 40px 0;
-
     }
-
   }
 }
 
@@ -429,7 +38,7 @@ body {
   font-weight: 100;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: $dark-blue;
+  color: $color-big-stone;
   font-size: 36px;
 
   @media all and (min-width: 641px) {
@@ -443,7 +52,7 @@ body {
   font-size: 40px;
   font-weight: 300;
   letter-spacing: 0.05em;
-  color: $dark-blue;
+  color: $color-big-stone;
 
   &:not(:first-child):not(:last-child) {
     margin: $small-margin 0;
@@ -462,7 +71,7 @@ body {
   font-weight: 300;
   font-size: 24px;
   letter-spacing: 0.05em;
-  color: $dark-blue;
+  color: $color-big-stone;
 
   &:not(:first-child):not(:last-child) {
     margin: $small-margin 0;
@@ -482,14 +91,14 @@ body {
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: 0.1em;
-  color: $dark-grey;
+  color: $color-cascade;
 }
 
 .text-header {
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0.05em;
-  color: $dark-blue;
+  color: $color-big-stone;
 
   &:not(:first-child):not(:last-child) {
     margin: 10px 0;
@@ -508,7 +117,7 @@ body {
   font-weight: 300;
   letter-spacing: 0.05em;
   font-size: 15px;
-  color: $dark-blue;
+  color: $color-big-stone;
   line-height: 1.7;
 }
 
@@ -560,20 +169,20 @@ body {
 
 
   &--grey {
-    background-color: $accent-color;
+    background-color: $color-bermuda-gray;
     color: white;
 
     &:hover {
-      background-color: $dark-blue-hover;
+      background-color: $color-blue-dianne;
     }
 
     &--ghost {
       background-color: transparent;
-      color: $accent-color;
-      border: 1px solid $accent-color;
+      color: $color-bermuda-gray;
+      border: 1px solid $color-bermuda-gray;
 
       &:hover {
-        background-color: $accent-color;
+        background-color: $color-bermuda-gray;
         color: white;
       }
     }
@@ -581,40 +190,40 @@ body {
   }
 
   &--red {
-    background-color: $red;
+    background-color: $color-radical-red;
     color: white;
 
     &:hover {
-      background-color: $red-hover;
+      background-color: $color-brick-red;
     }
 
     &--ghost {
       background-color: transparent;
-      color: $red;
-      border: 1px solid $red;
+      color: $color-radical-red;
+      border: 1px solid $color-radical-red;
 
       &:hover {
-        background-color: $red;
+        background-color: $color-radical-red;
         color: white;
       }
     }
   }
 
   &--blue {
-    background-color: $dark-blue;
+    background-color: $color-big-stone;
     color: white;
 
     &:hover {
-      background-color: $dark-blue-hover;
+      background-color: $color-blue-dianne;
     }
 
     &--ghost {
       background-color: transparent;
-      color: $dark-blue;
-      border: 1px solid $dark-blue;
+      color: $color-big-stone;
+      border: 1px solid $color-big-stone;
 
       &:hover {
-        background-color: $dark-blue;
+        background-color: $color-big-stone;
         color: white;
       }
 
@@ -682,10 +291,10 @@ body {
 
 
   &--blue {
-    background-color: $dark-blue;
+    background-color: $color-big-stone;
 
     .header, .h1, .h2, .text-header, .text {
-      color: $light-grey;
+      color: $color-white-squeeze;
     }
   }
 
@@ -694,11 +303,11 @@ body {
   }
 
   &--grey {
-    background-color: $light-grey;
+    background-color: $color-white-squeeze;
   }
 
   &--red {
-    background-color: $red;
+    background-color: $color-radical-red;
 
     .header, .h2, .h3, .text {
       color: white;
@@ -714,7 +323,7 @@ body {
 .hero-space {
   padding-top: 14px + 20px;
   padding-bottom: 0;
-  background: linear-gradient(45deg, $dark-blue-hover, $dark-blue);
+  background: linear-gradient(45deg, $color-blue-dianne, $color-big-stone);
 
   @media all and (min-width: 321px) {
     padding-top: 14px + 80px;
@@ -765,12 +374,13 @@ body {
 
 // single page
 .menu {
-  background-color: $light-grey;
+  background-color: $color-white-squeeze;
   padding: 40px;
   height: calc(100vh - 80px);
   position: fixed;
   top: 80px;
   overflow-y: scroll;
+  width: 280px + 40px + 40px;
 }
 
 .side-menu-item {
@@ -807,7 +417,7 @@ body {
 
   &.active {
     .text {
-      color: $red;
+      color: $color-radical-red;
     }
   }
 
@@ -816,7 +426,7 @@ body {
   }
 
   &:not(:last-child) {
-    border-bottom: 1px solid $dark-grey;
+    border-bottom: 1px solid $color-cascade;
   }
 }
 
@@ -825,11 +435,11 @@ body {
   width: 100%;
   text-decoration: none;
   padding: 7px 0 7px 60px;
-  color: $dark-blue;
+  color: $color-big-stone;
 
   &.active {
     .text {
-      color: $red;
+      color: $color-radical-red;
     }
   }
 }
@@ -843,7 +453,7 @@ body {
   .content-header {
     font-size: 32px;
     font-weight: 100;
-    color: $red;
+    color: $color-radical-red;
     line-height: 1.5;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -856,7 +466,7 @@ body {
  h1 {
    font-size: 32px;
    font-weight: 100;
-   color: $red;
+   color: $color-radical-red;
    line-height: 1.5;
    letter-spacing: 0.05em;
    margin: 25px 0;
@@ -865,7 +475,7 @@ body {
   h2 {
     font-size: 24px;
     font-weight: 100;
-    color: $dark-blue;
+    color: $color-big-stone;
     line-height: 1.5em;
     letter-spacing: 0.05em;
     margin: 50px 0 12.5px 0;
@@ -883,7 +493,7 @@ body {
   h3 {
     font-size: 13px;
     font-weight: 500;
-    color: $red;
+    color: $color-radical-red;
     line-height: 1.8;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -902,7 +512,7 @@ body {
   h4 {
     font-size: 13px;
     font-weight: 500;
-    color: $medium-dark-blue;
+    color: $color-blue-dianne;
     line-height: 1.8;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -920,7 +530,7 @@ body {
   h5 {
     font-size: 13px;
     font-weight: 500;
-    color: $red;
+    color: $color-radical-red;
     line-height: 1.8;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -938,7 +548,7 @@ body {
   h6 {
     font-size: 15px;
     font-weight: 500;
-    color: $dark-blue;
+    color: $color-big-stone;
     line-height: 1.7;
     letter-spacing: 0.025em;
     margin: 25px 0;
@@ -948,7 +558,7 @@ body {
   p {
     font-size: 15px;
     font-weight: 100;
-    color: $dark-blue;
+    color: $color-big-stone;
     line-height: 1.7;
     letter-spacing: 0.025em;
     margin: 25px 0;
@@ -958,7 +568,7 @@ body {
   a {
     font-size: 15px;
     font-weight: 100;
-    color: $accent-color;
+    color: $color-bermuda-gray;
     line-height: 1.7;
     letter-spacing: 0.025em;
     text-decoration: underline;
@@ -991,7 +601,7 @@ body {
 
 
   em {
-    color: $accent-color;
+    color: $color-bermuda-gray;
     font-weight: 200;
   }
 
@@ -1035,7 +645,7 @@ body {
       padding-right: 10px;
     }
 
-    border-bottom: 1px solid $light-grey;
+    border-bottom: 1px solid $color-white-squeeze;
   }
 
   td {
@@ -1053,7 +663,7 @@ body {
 
   tr:hover {
     td {
-      background-color: $light-grey;
+      background-color: $color-white-squeeze;
     }
   }
 
@@ -1061,7 +671,7 @@ body {
 
 .date {
   @extend .text;
-  color: $accent-color;
+  color: $color-bermuda-gray;
   margin: 40px 0;
 
 }
@@ -1074,15 +684,15 @@ body {
 
   background-color: transparent;
   height: 80px;
-  border-bottom: 1px solid rgba($light-grey, 0.1);
+  border-bottom: 1px solid rgba($color-white-squeeze, 0.1);
   transition: background-color 0.15s ease-in;
 
   &.active {
     background-color: white;
-    box-shadow: 0 4px 2px -2px rgba($dark-blue, 0.25);
+    box-shadow: 0 4px 2px -2px rgba($color-big-stone, 0.25);
     border-bottom: none;
     .top-menu-items {
-      border-top: 1px solid $dark-blue;
+      border-top: 1px solid $color-big-stone;
 
 
       @media all and (min-width: 1025px) {
@@ -1094,17 +704,17 @@ body {
     .top-menu-item {
       transition: all 0.15s ease-in;
 
-      color: $dark-blue;
+      color: $color-big-stone;
     }
 
     .github-logo {
       i.fa {
-        color: $dark-blue;
+        color: $color-big-stone;
       }
     }
 
     .hamburger {
-      color: $dark-blue;
+      color: $color-big-stone;
     }
   }
 
@@ -1140,8 +750,8 @@ body {
     left: 0;
     width: 100vw;
     flex-direction: column;
-    background-color: $dark-blue;
-    box-shadow: 0 4px 4px -2px rgba($dark-blue, 0.7);
+    background-color: $color-big-stone;
+    box-shadow: 0 4px 4px -2px rgba($color-big-stone, 0.7);
     transition: all 0.15s ease-in;
 
 
@@ -1175,7 +785,7 @@ body {
     text-decoration: none;
     height: 30px;
     width: 100%;
-    border-bottom: 1px solid $medium-dark-blue;
+    border-bottom: 1px solid $color-blue-dianne;
 
     &:last-of-type {
       border-bottom: 0
@@ -1190,7 +800,7 @@ body {
 
 
       &.active {
-        border-bottom: 1px solid $red;
+        border-bottom: 1px solid $color-radical-red;
       }
     }
 
@@ -1207,7 +817,7 @@ body {
     i.fa {
       transition: opacity 0.15s ease-in;
       transform: translate(0, -1px);
-      color: $light-grey;
+      color: $color-white-squeeze;
       opacity: 0.7;
     }
 
@@ -1240,7 +850,7 @@ body {
 
   .hamburger {
     height: 100%;
-    color: $light-grey;
+    color: $color-white-squeeze;
     width: 80px;
     display: flex;
     align-items: center;
@@ -1310,7 +920,7 @@ body {
 }
 
 .top-bar {
-  border-top: 1px solid $light-grey;
+  border-top: 1px solid $color-white-squeeze;
 }
 
 // footer
@@ -1320,7 +930,7 @@ body {
   z-index: 999;
 
   .text {
-    color: $light-blue !important;
+    color: $color-jungle-mist !important;
   }
 
   .h2 {
@@ -1332,13 +942,13 @@ body {
 
     .text {
       font-weight: 100;
-      color: $light-blue !important;
+      color: $color-jungle-mist !important;
 
     }
 
     &.rss-feed-link {
       text-decoration: underline;
-      color: $red;
+      color: $color-radical-red;
     }
   }
 
@@ -1351,10 +961,10 @@ body {
   position: relative;
   z-index: 999;
   padding: 20px 0;
-  border-top: 1px solid rgba($medium-light-blue, 0.3);
+  border-top: 1px solid rgba($color-ming, 0.3);
 
   .text {
-    color: $light-blue !important;
+    color: $color-jungle-mist !important;
   }
 
   .container {
@@ -1375,7 +985,7 @@ body {
   }
 
   a {
-    color: $light-grey;
+    color: $color-white-squeeze;
 
   }
 }
@@ -1486,7 +1096,7 @@ body {
 }
 
 .dark-it-up {
-  color: $accent-color !important;
+  color: $color-bermuda-gray !important;
 }
 
 .magnetic-logo
