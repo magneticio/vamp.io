@@ -9,7 +9,7 @@ body {
 #header {
   display: flex;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 30px;
 }
 
 /* Components */
@@ -753,6 +753,7 @@ body {
     background-color: $color-big-stone;
     box-shadow: 0 4px 4px -2px rgba($color-big-stone, 0.7);
     transition: all 0.15s ease-in;
+    margin-right: 20px;
 
 
     &.open {

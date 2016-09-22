@@ -909,7 +909,7 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 30px;
 }
 
 /* Components */
@@ -1649,6 +1649,7 @@ body {
   box-shadow: 0 4px 4px -2px rgba(20, 45, 60, 0.7);
   -webkit-transition: all 0.15s ease-in;
           transition: all 0.15s ease-in;
+  margin-right: 20px;
 }
 
 .top-menu .top-menu-items.open {
