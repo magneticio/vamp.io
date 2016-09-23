@@ -3,16 +3,21 @@ date: 2016-09-13T09:00:00+00:00
 title: contact
 ---
 
-{{< note title="include the following" >}}
-* General (business)contact details  
-Vamp is produced by magnetic.io from the heart of Amsterdam
+Vamp is produced by magnetic.io from the heart of Amsterdam.
+  
+Sint Antoniesbreestraat 16  
+1011 HB Amsterdam  
+The Netherlands  
++31(0)88 555 33 99  
 
-* support contact details  
-check the [support](/support/) page
-* community contact details  
-get involved
-* SALES contact detals  
-we can help you plan a Vamp strategy
+## Sales
+We can help you plan your Vamp strategy. Send us an email on [info@magnetic.io](mailto:info@magnetic.io)
 
-Team details?
-{{< /note >}}
+
+##  Support
+Check the [support](/support/) page.
+
+
+## Community 
+Join the [Vamp community](/community/).
+
