@@ -37,11 +37,6 @@ function documentReady() {
     setColorMenu();
   });
 
-
-  if (thePath !== '/') {
-    $('.page').addClass('padding-fix');
-  }
-
   setColorMenu();
   function setColorMenu() {
     if ($(window).scrollTop() > 0 || thePath !== '/') {

@@ -18,9 +18,6 @@ body {
   min-height: 100vh;
   position: relative;
   //padding-top: 80px;
-  &.padding-fix {
-    padding-top: 80px;
-  }
 
   &.documentation {
     //background-color: red;
@@ -30,9 +27,12 @@ body {
       color: $color-radical-red;
       margin: 40px 0;
     }
+
+    .content {
+      padding-top: 60px;
+    }
   }
 }
-
 
 // Fonts
 .header {
@@ -45,8 +45,6 @@ body {
   @media all and (min-width: 641px) {
     font-size: 52px;
   }
-
-
 }
 
 .h1 {
@@ -682,6 +680,7 @@ body {
   position: fixed;
   width: 100vw;
   z-index: 9999;
+  top: 0;
 
   background-color: transparent;
   height: 80px;
@@ -694,7 +693,6 @@ body {
     border-bottom: none;
     .top-menu-items {
       border-top: 1px solid $color-big-stone;
-
 
       @media all and (min-width: 1025px) {
         border-top: none;
@@ -1102,7 +1100,13 @@ body {
   color: $color-bermuda-gray !important;
 }
 
-.magnetic-logo
-{
+.magnetic-logo {
   height: 40px;
+}
+
+.single-page {
+  .top-menu {
+    transition: none;
+    background-color: white;
+  }
 }

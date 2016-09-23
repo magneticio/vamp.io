@@ -918,13 +918,13 @@ body {
   position: relative;
 }
 
-.page.padding-fix {
-  padding-top: 80px;
-}
-
 .page.documentation .header {
   color: #FF405E;
   margin: 40px 0;
+}
+
+.page.documentation .content {
+  padding-top: 60px;
 }
 
 .header {
@@ -1566,6 +1566,7 @@ body {
   position: fixed;
   width: 100vw;
   z-index: 9999;
+  top: 0;
   background-color: transparent;
   height: 80px;
   border-bottom: 1px solid rgba(240, 245, 250, 0.1);
@@ -2061,4 +2062,10 @@ body {
 
 .magnetic-logo {
   height: 40px;
+}
+
+.single-page .top-menu {
+  -webkit-transition: none;
+          transition: none;
+  background-color: white;
 }
