@@ -1282,6 +1282,10 @@ body {
   max-width: 80px;
 }
 
+.input-group a {
+  cursor: pointer;
+}
+
 .menu {
   background-color: #F0F5FA;
   padding: 120px 40px 40px 40px;
