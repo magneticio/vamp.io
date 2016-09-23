@@ -89,8 +89,6 @@ function getMenuFile(callback) {
 
 
   //unsticky menu
-
-
   $(window).scroll(function () {
     var offsetTop = $('.footer').offset().top;
     var scrollBottom = $(window).scrollTop() + $(window).height();
@@ -105,6 +103,12 @@ function getMenuFile(callback) {
       $('.menu').css('bottom', '');
     }
   });
+
+  // Set target="_blank" on external links
+  $(document.links).filter(function() {
+    return this.hostname != window.location.hostname;
+  }).attr('target', '_blank');
+
 }
 
 
