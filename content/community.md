@@ -1,16 +1,17 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: community
+title: Join the Vamp community
 ---
-### Join the community
-* Contribute (Github pull requests)
-* Change or feature request (submit an issue on github tagged "feature proposal")
-* Report a bug (submit an issue on github, including details of the environment you are running Vamp in)
+Vamp is actively developed by Magnetic.io, but is an open source project. We encourage anyone to pitch in with pull requests, bug reports etc. 
 
-## Contribute to Vamp
+## Contribute to Vamp 
+Vamp is split into separate repos and projects. Check the source on Github for an overview of all key repos ([github.com - magneticio](https://github.com/magneticio)).   
+Feel free to contribute with Github pull requests.
 
-Vamp is actively developed by Magnetic.io but is an open source project. We encourage anyone to pitch in with pull requests, issues etc. Vamp is split into separate repos and projects: check the source on Github for an overview of all key repos.
+## Submit change or feature requests 
+Let us know your change or feature requests.  
+Submit an issue on github tagged "feature proposal". 
 
-Keep Vamping!
-
-The Vamp team
+## Report a bug 
+if you find  bug, please report it!  
+Submit an issue on github, including details of the environment you are running Vamp in.
