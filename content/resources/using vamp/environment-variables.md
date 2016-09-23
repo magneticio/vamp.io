@@ -56,8 +56,8 @@ This will match any breed name that starts with `redis:1.`
 
 Use the `~` character to define a place holder for a variable that should be filled in at runtime (i.e. when this breed actually gets deployed), but for which you do not yet know the actual value. 
 
-{{< tip  >}}
-**Typical use case**: When different roles in a company work on the same project. Developers can create place holders for variables that operations should fill in: it helps with separating responsibilities.
+{{< tip title="Typical use case" >}}
+* When different roles in a company work on the same project. Developers can create place holders for variables that operations should fill in: it helps with separating responsibilities.
 {{< /tip >}}
 
 #### Example - `ORACLE_PASSWORD` designated as a place holder

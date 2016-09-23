@@ -28,11 +28,11 @@ In larger companies with multiple teams working together on a large project, all
 - You do not need to know the contents of an SLA when you reference it.
 - You can reference a variable that someone else should fill in.
 
-Read more about [referencing artifacts](/resources/using-vamp/references/).
+Read more about [referencing artifacts](/resources/using-vamp/references/) and [environment variables](/resources/using-vamp/environment-variables/).
 
 ## Where next?
 
-* Read about [Breeds](/resources/using-vamp/breeds/)
+* Read about [Vamp breeds](/resources/using-vamp/breeds/)
 * check the [API documentation](/resources/api-documentation/)
 * [Try Vamp](/try-vamp)
 

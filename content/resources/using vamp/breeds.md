@@ -59,7 +59,7 @@ When Vamp is set up to run with Marathon ([mesosphere.github.io - Marathon](http
 In that case cmd ([Marathon REST API - post v2/apps](https://mesosphere.github.io/marathon/docs/rest-api.html#post-v2-apps)) parameter will have value of deployable.
 
 #### Example breed - run a custom jar after it has been downloaded 
-Combining this definition and the Vamp Marathon dialect  `uris` parameter ([Marathon REST API - uris (Array of Strings)](https://mesosphere.github.io/marathon/docs/rest-api.html#uris-array-of-strings)) allows the requested jar to be downloaded from a remote location. 
+Combining this definition and the Vamp Marathon dialect  `uris` parameter allows the requested jar to be downloaded from a remote location ([Marathon REST API - uris Array of Strings](https://mesosphere.github.io/marathon/docs/rest-api.html#uris-array-of-strings)). 
 
 
 ```yaml
