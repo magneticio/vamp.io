@@ -5,7 +5,7 @@ title: Vamp configuration
 
 Vamp can be configured using one or a combination of:
 
-- the Vamp `application.conf` [HOCON](https://github.com/typesafehub/config) file
+- the Vamp `application.conf` HOCON file ([github.com/typesafehub - config](https://github.com/typesafehub/config))
 - environment variables
 - system properties
 
@@ -41,7 +41,7 @@ vamp {
 
 ### persistence
 
-Vamp uses Elasticsearch for persistence and [ZooKeeper](https://zookeeper.apache.org/), [etcd](https://coreos.com/etcd/docs/latest/) or [Consul](https://www.consul.io/) for key-value store (keeping HAProxy configuration). 
+Vamp uses Elasticsearch for persistence and ZooKeeper ([apache.org - ZooKeeper](https://zookeeper.apache.org/)), etcd ([coreos.com  - etcd documentation](https://coreos.com/etcd/docs/latest/)) or Consul ([consul.io](https://www.consul.io/)) for key-value store (keeping HAProxy configuration). 
 
 ```yaml
 vamp {
@@ -78,7 +78,7 @@ vamp {
 
 ### container drivers
 
-Configurations for the container drivers have their own page. Please check here [how to set up and use container drivers](/documentation/installation/container_drivers/)
+Configurations for the container drivers have their own page. Please check here [how to set up and use container drivers](/resources/run-vamp/container-drivers/)
 
 ### gateway-driver
 
@@ -138,7 +138,7 @@ This is quite simmilar to common pattern to access any clustered application.
 For instance if you want to access DB server, you will have an address string based on e.g. DNS name or something simmilar.
 Note that even without Vamp, you would need to setup access to `backend` in some similar way. 
 With Vamp, access is via VGA's and that allows specific routing (conditions, weights) needed for A/B testing and canary releasing.
-Additional information can be found on [service discovery page](/documentation/about-vamp/service-discovery/).
+Additional information can be found on [service discovery page](/resources/how-vamp-works/service-discovery/).
 
 ### operation
 
@@ -200,6 +200,7 @@ vamp.info.message           ⇒ VAMP_INFO_MESSAGE
 vamp.gateway-driver.timeout ⇒ VAMP_GATEWAY_DRIVER_TIMEOUT
 ```
 
->**Note**: environment variables have precedence to `application.conf` or system properties.
-
+{{< note title="Note!" >}}
+environment variables have precedence to `application.conf` or system properties.
+{{< /note >}}
 

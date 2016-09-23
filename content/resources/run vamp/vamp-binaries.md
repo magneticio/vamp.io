@@ -32,8 +32,8 @@ If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 2. Run `./build-ui.sh && sbt test assembly`
 2. After the build `./bootstrap/target/scala-2.11` directory will contain the binary with name matching `vamp-assembly-*.jar`
 
-{{< tip  >}}
-Check this example ([github.com/magneticio - Vamp docker quick start make.sh](https://github.com/magneticio/vamp-docker/blob/master/quick-start/make.sh)).
+{{< tip title="Find out more" >}}
+* Check this example: [github.com/magneticio - Vamp docker quick start make.sh](https://github.com/magneticio/vamp-docker/blob/master/quick-start/make.sh).
 {{< /tip >}}
 
 ### Vamp Gateway Agent (VGA)
@@ -55,9 +55,9 @@ godep restore
 go install
 CGO_ENABLED=0 go build -v -a -installsuffix cgo
 ```
-{{< tip  >}}
-* More details can found on the project page ([github.com/magneticio - Vamp gateway agent](https://github.com/magneticio/vamp-gateway-agent))
-* Check this example ([github.com/magneticio - clique-base make.sh](https://github.com/magneticio/vamp-docker/blob/master/clique-base/make.sh))
+{{< tip  title="Find out more" >}}
+* Check this example: [github.com/magneticio - clique-base make.sh](https://github.com/magneticio/vamp-docker/blob/master/clique-base/make.sh)
+* More details can found on the project page: [github.com/magneticio - Vamp gateway agent](https://github.com/magneticio/vamp-gateway-agent)
 {{< /tip >}}
 
 ## Download Vamp
@@ -89,12 +89,10 @@ _Default values ([github.com/magneticio - reference.conf](https://github.com/mag
 Processing configuration is based on this library ([github.com/typesafehub - config](https://github.com/typesafehub/config)). 
 Additional information about syntax and usage can be found on the library project page._
 
-{{< tip  >}}
-Check these examples:
-
-* Example `Logback.xml` file ([github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/conf/logback.xml](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/conf/logback.xml)).
-* Example `application.conf` filr ([github.com/magneticio - Vamp docker application.conf](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/conf/application.conf)). 
-* Additional command line argument examples from Vamp quick start ([github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/start.sh](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/start.sh)).
+{{< tip  title="Find out more" >}}
+* Example `Logback.xml` file: [github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/conf/logback.xml](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/conf/logback.xml)
+* Example `application.conf` file: [github.com/magneticio - Vamp docker application.conf](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/conf/application.conf)
+* Additional command line argument examples: [github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/start.sh](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/start.sh)
 {{< /tip >}}
 
 ### Vamp Docker image
@@ -124,12 +122,12 @@ docker run --net=host -v PATH_TO_LOCAL_CONFIG_DIR:/usr/local/vamp/conf magnetici
 Documentation can be found on the project page ([github.com/magneticio - Vamp gateway agent](https://github.com/magneticio/vamp-gateway-agent)).  
 
 {{< note title="Note!" >}}
-VGA instances may have different command line parameters (e.g. Logstash URLs), but always have a common HAProxy configuration read from the KV store.    
-This means all HAProxy instances will always be configured with the same configuration.
+All HAProxy instances will always be configured with the same configuration.  
+_VGA instances may have different command line parameters (e.g. Logstash URLs), but always have a common HAProxy configuration read from the KV store._   
 {{< /note >}}
 
-{{< tip  >}}
-Check the example of command line arguments in the `[program:VampGatewayAgent]` section ([github.com/magneticio - Vamp docker supervisord.conf](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/supervisord.conf)). 
+{{< tip title="Find out more" >}}
+* Example command line arguments: [github.com/magneticio - supervisord.conf: program:VampGatewayAgent](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/supervisord.conf)
 {{< /tip >}}
 
 
