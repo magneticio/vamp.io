@@ -24,6 +24,12 @@ java -Dvamp.gateway-driver.host=localhost \
 
 The Vamp `application.conf` consists of the following sections. All sections are nested inside a parent `vamp {}` tag.
 
+* rest-api
+* persistence
+* container-drivers
+* gateway-driver
+* operation
+
 ### rest-api
 Configure the port, host name and interface that Vamp runs on using the `rest-api.port` 
 
@@ -190,10 +196,12 @@ That means specific conditions and weights can be applied on traffic to/from clu
 These ports need to be available on all Vamp Gateway Agent hosts.
 
 
-## Environment variable configuration
+## Environment variables
 
 Each configuration parameter can be replaced by an environment variable.
-Environment variable name is based on configuration parameter name - all non-alphanumerics are replaced with `_` and converted to upper case:
+Environment variable names are based on the configuration parameter name converted to upper case and with all non-alphanumerics replaced by an underscore `_` 
+
+#### Example - environment variable names
 
 ```
 vamp.info.message           ⇒ VAMP_INFO_MESSAGE
@@ -201,6 +209,9 @@ vamp.gateway-driver.timeout ⇒ VAMP_GATEWAY_DRIVER_TIMEOUT
 ```
 
 {{< note title="Note!" >}}
-environment variables have precedence to `application.conf` or system properties.
+Environment variables have precedence over `application.conf` or system properties.
 {{< /note >}}
 
+* Read more about [environment variables](/resources/using-vamp/environment-variables/).
+
+## Sysyem properties
