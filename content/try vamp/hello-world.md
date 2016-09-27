@@ -37,7 +37,7 @@ Vamp hello world on Docker for Mac or Windows is currently not supported. We're 
 
 ### Step 2: Run Vamp
 
-Use the instructions below to start the `magneticio/vamp-docker:0.8.5-marathon` container, taking care to pass in the right parameters. 
+Use the instructions below to start the `magneticio/vamp-docker:0.9.0-marathon` container, taking care to pass in the right parameters. 
 
 #### Linux
 
@@ -49,7 +49,7 @@ docker run --privileged \
            -v $(which docker):/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=`hostname -I | awk '{print $1;}'`" \
-           magneticio/vamp-docker:0.8.5-marathon
+           magneticio/vamp-docker:0.9.0
 ```
 
 Mounting volumes is important. [Read this great article about starting Docker containers from/within another Docker container](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/).
@@ -67,11 +67,11 @@ docker run --net=host \
            -v `docker-machine ssh default "which docker"`:/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=`docker-machine ip default`" \
-           magneticio/vamp-docker:0.8.5-marathon
+           magneticio/vamp-docker:0.9.0
 ```
   
 {{< note title="Note" >}}
-If you installed Docker Toolbox, please use Docker Quickstart Terminal. We don't currently support Kitematic.
+If you installed Docker Toolbox, please use the Docker Quickstart Terminal. We don't currently support Kitematic.
 {{< /note >}}
 
 ### Step 3: Check Vamp is up and running
@@ -88,10 +88,7 @@ Now check if Vamp is home on `http://{docker-machine ip default}:8080/` and you'
 
 Exposed services:
 
-
- HAProxy statistics | [http://localhost:1988](http://localhost:1988) (username/password: haproxy) 
-
-
+- HAProxy statistics | [http://localhost:1988](http://localhost:1988) (username/password: haproxy) 
 - HAProxy statistics [http://localhost:1988](http://localhost:1988) (username/password: haproxy)
 - Elasticsearch HTTP [http://localhost:9200](http://localhost:9200)
 - Kibana [http://localhost:5601](http://localhost:5601)
