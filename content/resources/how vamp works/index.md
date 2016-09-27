@@ -27,4 +27,4 @@ Vamp and the Vamp Gateway Agent require specific elements in your architecture t
 
 We have provided some [example architectures](/resources/how-vamp-works/example-architectures/) to give you an idea how a typical setup might look.
 
-![components](/images/diagram/Vamp-components.svg)
+![components](/images/diagram/vamp-components-generic.svg)

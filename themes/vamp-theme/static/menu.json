@@ -218,6 +218,11 @@
               "path": "resources/how-vamp-works/persistence-key-value-store",
               "text": "Persistence and key-value (KV) store",
               "visible": true
+            },
+            {
+              "path": "resources/how-vamp-works/routing",
+              "text": "Routing",
+              "visible": true
             }
           ],
           "text": "How vamp works",
