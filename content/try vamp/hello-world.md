@@ -28,11 +28,11 @@ You could also start with one of our [other quick setups](/resources/run-vamp/qu
 
 Please install one of the following for your platform/architecture
 
-- Docker 1.10.x (Linux) or higher (Vamp works with Docker 1.11 too), OR
-- [Docker Toolbox 1.11.x] (https://github.com/docker/toolbox/releases) if on Mac OS X 10.8+ or Windows 7+ 
+- Docker 1.9.x (Linux) or higher (Vamp works with Docker 1.12 too), OR
+- [Docker Toolbox 1.12.x] (https://github.com/docker/toolbox/releases) if on Mac OS X 10.8+ or Windows 7+ 
 
 {{< note title="Note" >}}
-Running the Vamp quick setup on earlier versions of Docker is also possible, even though it is recommended at least version 1.9.x.
+Vamp hello world on Docker for Mac or Windows is currently not supported. We're working on this so please check back. 
 {{< /note >}}
 
 ### Step 2: Run Vamp
@@ -43,7 +43,8 @@ Use the instructions below to start the `magneticio/vamp-docker:0.8.5-marathon` 
 
 A typical command would be:
 ```
-docker run --net=host \
+docker run --privileged \
+           --net=host \
            -v /var/run/docker.sock:/var/run/docker.sock \
            -v $(which docker):/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \

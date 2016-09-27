@@ -11,6 +11,8 @@ If everything went to plan, you should have your Vamp installation up and runnin
 1. Deploy a monolith, using either the Vamp UI or the Vamp API
 2. Check out the deployed application
 3. Get some metrics on the running application
+$. Change the scale and load-balancing
+5. Chaos monkey!    
 
 ## In depth
 
@@ -101,7 +103,17 @@ ab -k -c 15 -n 10000 http://`docker-machine ip default`:9050/
 
 You should see the metrics spike and some pretty charts being drawn:
 
-![](/images/screens/tut1_metrics.png)
+![](/images/screens/tut1_metrics-v090.gif)
+
+### Step 4: Change scale and load-balancing
+
+Vamp will automatically load-balance services. Let's change the scale of the service by selecting "3" in the **instances** field. Now Vamp will automatically scale up the number of running instances (of course permitting underlying resources) and load-balance these to the outside world using the gateway feature.
+
+![](/images/screens/tut1_scale-v090.gif)
+
+### Step 5: Chaos monkey
+
+Now let's try something fun. Go to the Marathon UI (on port 9090) and find the Sava container running. Now select destroy to kill the container. Watch Vamp detecting that issue and making sure that the defined number of instances is spun up again as soon as possible, while making sure the loadbalancing routing rules are also updated to reflect the changed IP's and ports of the instances.
 
 ## What next?
 

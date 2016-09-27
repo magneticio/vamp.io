@@ -213,7 +213,7 @@ clusters:
 
 Now, you can take the exact same YAML blueprint or use one that's a bit cleaned up for clarity and send it in the body of the `DELETE` to the deployment resource, e.g. `/api/v1/deployments/125fd95c-a756-4635-8e1a-361085037870`.
 
-> **Note:** The UI does not have DELETE function yet for parts of deployments, just for full deployments. This will be added later.
+> **Note:** Using our UI you can delete parts of your deployment by using the “Remove from” function under the Blueprint tab.
 
 
 ```yaml
