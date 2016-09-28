@@ -14,22 +14,22 @@ For Vamp, we recognise the following benefits of this pattern:
 * platform/language agnostic: it’s just HTTP.
 * Easy integration using ENV variables.
 
-## Workflow
-
-The general workflow for creating and publishing a service is as follows.
-
-DSL -> Vamp API -> Vamp Gateway Agent -> HAproxy
-
-1. The user describes a service and its desired endpoint port in the Vamp DSL.
-2. The service is deployed to the configured container manager by Vamp.
-3. Vamp instruct Vamp Gateway Agent (via ZooKeeper, etcd or Consul) to set up service endpoints.
-4. Vamp Gateway Agent takes care of configuring HAProxy, making the services available.
+## Create and publish a service
 
 {{< note title="Note" >}}
 Services do not register themselves. They are explicitly created, registered in the Vamp database and provisioned on the load balancer.
 {{< /note >}}
 
-After this, the user is free to scale up/down or in/out the service either by hand or using Vamp’s auto scaling functionality. The endpoint is stable.
+Services are created and published as follows:
+
+![](/images/diagram/vamp-service-discovery.svg)
+
+1. The user describes a service and its desired endpoint port in the Vamp DSL.
+2. The service is deployed to the configured container manager by Vamp.
+3. Vamp instructs Vamp Gateway Agent (via ZooKeeper, etcd or Consul) to set up service endpoints.
+4. Vamp Gateway Agent takes care of configuring HAProxy, making the services available.
+
+After this, you can scale the service up/down or in/out either by hand or using Vamp’s auto scaling functionality. The endpoint is stable.
 
 ## Discovering a service
 
@@ -72,7 +72,7 @@ clusters:
 7. Any frontend service now has access to the location of the dependent backend service.
 
 {{< note title="Note" >}}
-There is no point-to-point wiring. The $backend.host and $backend.ports.jdbc variables resolve to service endpoints Vamp automatically sets up and exposes.
+There is no point-to-point wiring. The `$backend.host` and `$backend.ports.jdbc` variables resolve to service endpoints Vamp automatically sets up and exposes.
 {{< /note >}}
 
 Even though Vamp provides this type of service discovery, it does not put any constraint on other possible solutions. For instance services can use their own approach specific approach using service registry, self-registration etc.

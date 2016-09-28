@@ -2,7 +2,7 @@
 date: 2016-09-13T09:00:00+00:00
 title: Join the Vamp community
 ---
-Vamp is actively developed by Magnetic.io, but is an open source project. We encourage anyone to pitch in with pull requests, bug reports etc. 
+Vamp is an open source project, actively developed by Magnetic.io. We encourage anyone to pitch in with pull requests, bug reports etc. 
 
 ## Contribute to Vamp 
 Vamp is split into separate repos and projects. Check the source on Github for an overview of all key repos ([github.com - magneticio](https://github.com/magneticio)).   

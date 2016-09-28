@@ -45,7 +45,7 @@ If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
 #### Steps
 
-1. Checkout the source from the official [repo](https://github.com/magneticio/vamp-gateway-agent). Current `master` branch is backward compatible with the latest 0.9.0 Vamp build.
+1. Checkout the source from the official repo ([github.com/magneticio - Vamp gateway agent](https://github.com/magneticio/vamp-gateway-agent)). Current `master` branch is backward compatible with the latest 0.9.0 Vamp build.
 2. Set Go variables depending on target environment
 3. Run:
 
@@ -98,7 +98,7 @@ Additional information about syntax and usage can be found on the library projec
 ### Vamp Docker image
 
 A Vamp Docker image is available on the Docker hub ([hub.docker.com - magneticio Vamp](https://hub.docker.com/r/magneticio/vamp/)).
-The default Vamp configuration used in the image is here ([github.com/magneticio - Vamp docker conf](https://github.com/magneticio/vamp-docker/tree/master/vamp/conf)) - this `application.conf` is a subset of the full configuration ([/github.com/magneticio - reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)).
+The default Vamp configuration used in the image is here ([github.com/magneticio - Vamp docker conf](https://github.com/magneticio/vamp-docker/tree/master/vamp/conf)) - this `application.conf` is a subset of the full configuration ([github.com/magneticio - reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)).
 A few parameters still need to be provided, for example:
 
 ```

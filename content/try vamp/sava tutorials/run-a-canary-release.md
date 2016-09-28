@@ -90,11 +90,11 @@ You could also create a second blueprint with the new service, and merge this ne
 
 #### Deploy using the API
 
-1. Get the running deployment's name (the UUID) from `/api/v1/deployments` 
+1. Get the running deployment's name (the UUID) from `/api/v1/deployments` (or use the explicit name that you used for the deployment).
 2. `PUT` the blueprint to that resource, e.g: `/api/v1/deployments/e1c99ca3-dc1f-4577-aa1b-27f37dba0325`
 
 #### Check the deployment and routing
-When Vamp has finished deploying, you can start refreshing your browser at the correct endpoint, e.g. `http://10.26.184.254:9050/`. The application should switch between responding with a 1.0 page and a 1.1 page.
+When Vamp has finished deploying, you can start refreshing your browser at the correct endpoint, e.g. `http://192.168.99.100:9050/`. The application should switch between responding with a 1.0 page and a 1.1 page.
 
 ![](/images/screens/monolith_canary1.png)
 
@@ -123,7 +123,7 @@ routes:
 Notice three things:
 
 * We inserted a list of conditions (with only one condition for now).
-* We set the filter strength to 100% (it would be also by default set to 100%). This is important because we want all Chrome users to access the new service - we could also say `filter_strength: 50%` to give access just to half of them.
+* We set the filter strength to 100% (it would be also by default set to 100%). This is important because we want all Chrome users to access the new service - we could also say `filter_strength: 50%` to give access just to half of them (the other 50% would be redirected to weight rules and routed accordingly).
 * We set the weight to 0% because we don't want any other users to access `sava:1.1.0`
 
 The first service where the filter matches the request will be used to handle the request. 
@@ -170,7 +170,7 @@ clusters:
 ```
 
 Using the UI, you can either use the **Edit deployment** button again and completely paste in this blueprint or just
-find the right place in the blueprint and edit it by hand. The result should be as follows:
+find the right place in the blueprint and edit it by hand. The result should be the same as using our UI to insert a filter condition:
 
 ![](/images/screens/tut2_canary-condition-v090.gif)
 
