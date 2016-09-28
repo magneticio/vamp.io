@@ -382,7 +382,7 @@ body {
   height: 100vh;
   position: fixed;
   bottom: 0;
-  overflow-y: autoifix ;
+  overflow-y: scroll;
   width: 280px + 40px + 40px;
 }
 
@@ -398,7 +398,7 @@ body {
   }
 
   .bullet {
-    width: 40px;
+    width: 40px;gi
     display: flex;
     align-items: center;
     padding-top: 2px;
