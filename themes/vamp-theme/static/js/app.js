@@ -18,7 +18,7 @@ sideMenuItemTemplate += '    <p class=\"text\">{{text}}<\/p>';
 sideMenuItemTemplate += '   <\/div>';
 sideMenuItemTemplate += '';
 sideMenuItemTemplate += '   <div class=\"folding-indicator\">';
-sideMenuItemTemplate += '     -';
+sideMenuItemTemplate += '     ';
 sideMenuItemTemplate += '   <\/div>';
 sideMenuItemTemplate += '  <\/a>';
 
