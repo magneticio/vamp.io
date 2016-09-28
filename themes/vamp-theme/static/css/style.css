@@ -1366,6 +1366,7 @@ body {
   margin-left: 370px;
   background-color: white;
   min-height: 100vh;
+  max-width: 980px;
 }
 
 .content .content-header {
@@ -1496,6 +1497,7 @@ body {
 }
 
 .markdowned li {
+  font-weight: 100;
   margin: 10px 0;
 }
 

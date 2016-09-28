@@ -452,6 +452,8 @@ body {
   margin-left: 370px;
   background-color: white;
   min-height: 100vh;
+  max-width: 980px;
+
 
   .content-header {
     font-size: 32px;
@@ -590,6 +592,7 @@ body {
   }
 
   li {
+    font-weight: 100;
     margin: 10px 0;
     @extend .text;
 
