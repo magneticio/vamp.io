@@ -1394,7 +1394,7 @@ body {
   color: #142D3C;
   line-height: 1.5em;
   letter-spacing: 0.05em;
-  margin: 50px 0 12.5px 0;
+  margin: 32px 0 12.5px 0;
 }
 
 .markdowned h2 + h3 {
@@ -1405,6 +1405,10 @@ body {
   margin-top: 0;
 }
 
+.markdowned h2 + ul {
+  margin-top: 0;
+}
+
 .markdowned h3 {
   font-size: 13px;
   font-weight: 500;
@@ -1412,7 +1416,7 @@ body {
   line-height: 1.8;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin: 50px 0 0 0;
+  margin: 32px 0 0 0;
 }
 
 .markdowned h3 + h4 {
@@ -1420,6 +1424,10 @@ body {
 }
 
 .markdowned h3 + p {
+  margin-top: 0;
+}
+
+.markdowned h3 + ul {
   margin-top: 0;
 }
 
@@ -1441,6 +1449,10 @@ body {
   margin-top: 0;
 }
 
+.markdowned h4 + ul {
+  margin-top: 0;
+}
+
 .markdowned h5 {
   font-size: 13px;
   font-weight: 500;
@@ -1456,6 +1468,10 @@ body {
 }
 
 .markdowned h5 + p {
+  margin-top: 0;
+}
+
+.markdowned h5 + ul {
   margin-top: 0;
 }
 
@@ -1475,6 +1491,14 @@ body {
   line-height: 1.7;
   letter-spacing: 0.025em;
   margin: 25px 0;
+}
+
+.markdowned p + ul {
+  margin-top: 0;
+}
+
+.markdowned p + ol {
+  margin-top: 0;
 }
 
 .markdowned a {
