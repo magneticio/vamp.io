@@ -299,8 +299,13 @@
               "visible": true
             },
             {
-              "path": "resources/using-vamp/gateways-and-conditions",
-              "text": "Gateways and conditions",
+              "path": "resources/using-vamp/gateways",
+              "text": "Gateways",
+              "visible": true
+            },
+            {
+              "path": "resources/using-vamp/conditions",
+              "text": "Conditions",
               "visible": true
             },
             {

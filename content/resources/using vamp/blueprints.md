@@ -15,7 +15,7 @@ Blueprints allow you to add the following extra properties:
 - [Conditions](/resources/using-vamp/gateways-and-conditions/): how traffic should be directed based on HTTP and/or TCP properties.
 - [SLA and escalations](/resources/using-vamp/sla-and-escalations/): SLA definition that controls autoscaling.
 
-#### Example blueprint - key concepts
+#### Example - key concepts of blueprints
 
 ```yaml
 ---
@@ -53,6 +53,8 @@ clusters:
 A gateway is a "stable" endpoint (or port in simplified sense) that almost never changes. When creating the mapping, it uses the definition (my_frontend/port in this case) from the "first" service in the cluster definition you reference. This service can of course be changed, but the gateway port normally doesn't.
 
 Please take care of setting the `/tcp` or `/http` (default) type for the port. Using `/http` allows Vamp to record more relevant metrics like response times and metrics.
+
+Read more about [gateways](/resources/using-vamp/gateways/).
 
 {{< note title="Note!" >}}
 gateways are optional. You can just deploy services and have a home grown method to connect them to some stable, exposable endpoint.
