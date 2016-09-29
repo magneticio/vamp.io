@@ -1,0 +1,14 @@
+---
+date: 2016-09-13T09:00:00+00:00
+title: Modernise services
+---
+
+_"We want to switch to a noSQL database, but don't know which solution will run fastest"_  
+With multiple database options available, it's hard to know which is the best fit for your specific circumstances. You can try things out in a test lab, but the real test comes when you go live with production load.
+
+Why guess? Using Vamp you could A/B test the full architecture, in production, and then use real data to make an informed decision.   
+
+1. __Deploy two versions:__ Vamp can deploy multiple versions of your architecture, each with a different database solution, then distribute incoming traffic across each.
+2. __Stress test:__ Use the metrics reported by Vamp to measure which option performs best in production.
+3. __Keep the best performing option:__ Once you have made your decision, Vamp can route all traffic to your chosen architecture. Services from the alternative options will be drained to ensure customer experience is not impacted by the test.
+

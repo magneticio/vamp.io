@@ -127,6 +127,43 @@
         },
         {
           "path": "what-is-vamp/use-cases",
+          "children": [
+            {
+              "path": "index",
+              "text": "Index",
+              "visible": false
+            },
+            {
+              "path": "what-is-vamp/use-cases/create-responsive-website",
+              "text": "Create a responsive website",
+              "visible": true
+            },
+            {
+              "path": "what-is-vamp/use-cases/resolve-incompatibilities-after-upgrade",
+              "text": "Resolve incompatibilities",
+              "visible": true
+            },
+            {
+              "path": "what-is-vamp/use-cases/refactor-monolithic-to-microsystems",
+              "text": "Refactor to microservices",
+              "visible": true
+            },
+            {
+              "path": "what-is-vamp/use-cases/modernise-services",
+              "text": "Modernise services",
+              "visible": true
+            },
+            {
+              "path": "what-is-vamp/use-cases/simulate-and-test-scaling-behaviour",
+              "text": "Simulate and test scaling behaviour",
+              "visible": true
+            },
+            {
+              "path": "what-is-vamp/use-cases/self-healing-and-self-optimising",
+              "text": "Self-healing and self-optimising",
+              "visible": true
+            }
+            ],
           "text": "Use cases",
           "visible": true
         },
