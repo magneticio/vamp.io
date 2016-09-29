@@ -1,6 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: 4 - merge a changed topology
+title: Merge a changed topology
 ---
 
 ## Overview
@@ -22,7 +22,7 @@ What we are going to do is create a new blueprint that is completely valid by it
 with our already running deployment. This might sound strange at first, but it makes sense. Why? Merging will enable us to slowly move from the previous solution to the next solution. Once moved over, we can
 remove any parts we no longer need, i.e. the former "over-engineered" topology.
 
-![]()
+![](/images/services_atob.svg)
 
 In the diagram above, this is visualized as follows:
 
