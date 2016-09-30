@@ -294,7 +294,7 @@ body {
   &--blue {
     background-color: $color-big-stone;
 
-    .header, .h1, .h2, .text-header, .text {
+    .header, .h1, .h2, .text-header, .text, .fa {
       color: $color-white-squeeze;
     }
   }
@@ -310,7 +310,7 @@ body {
   &--red {
     background-color: $color-radical-red;
 
-    .header, .h2, .h3, .text {
+    .header, .h2, .h3, .text, .fa {
       color: white;
     }
   }
@@ -1159,11 +1159,15 @@ body {
   align-items: center;
   height: 30px;
   margin-top: 20px;
-  width: 40%;
+  width: 45%;
+  line-height: 30px;
 
   a {
-    height: 30px;
-    width: 30px;
+   padding-bottom: 2px;
+
+    i {
+      line-height: inherit;
+    }
   }
 }
 
