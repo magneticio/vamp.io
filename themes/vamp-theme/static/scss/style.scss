@@ -1118,9 +1118,10 @@ body {
 .social-buttons {
   display: flex;
   justify-content: space-between;
-  width: 50%;
+  align-items: center;
   height: 30px;
   margin-top: 20px;
+  width: 40%;
 
   a {
     height: 30px;
