@@ -10,7 +10,9 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 0 30px;
+  position: fixed;
 }
+
 
 /* Components */
 
@@ -323,6 +325,7 @@ body {
   padding-top: 14px + 20px;
   padding-bottom: 0;
   background: linear-gradient(45deg, $color-blue-dianne, $color-big-stone);
+  position: relative;
 
   @media all and (min-width: 321px) {
     padding-top: 14px + 80px;
@@ -342,6 +345,38 @@ body {
 
   @media all and (min-width: 1201px) {
     padding-top: 80px + 80px;
+  }
+
+
+  .bottom-background {
+    position: absolute;
+    //background-color: red;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 138px;
+    z-index: 5;
+    display: flex;
+
+    .left-pixels {
+      //background-color: red;
+      height: 100%;
+      width: 50%;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    .right-pixels {
+      height: 100%;
+      width: 50%;
+
+      img {
+        float: right;
+        height: 100%;
+      }
+    }
   }
 }
 
@@ -1107,6 +1142,7 @@ body {
 
 .laptop {
   transform: translateY(34px);
+  position: relative;
 }
 
 .image--smaller {

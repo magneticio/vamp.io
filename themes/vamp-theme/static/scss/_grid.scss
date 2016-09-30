@@ -1,5 +1,6 @@
 .container {
   margin: 0 auto;
+  z-index: 10;
   @media all and (min-width: 321px) {
     width: $container-width-mobile-small;
   }

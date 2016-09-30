@@ -223,6 +223,7 @@ button:focus {
 /* Margins */
 .container {
   margin: 0 auto;
+  z-index: 10;
 }
 
 @media all and (min-width: 321px) {
@@ -910,6 +911,7 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 0 30px;
+  position: fixed;
 }
 
 /* Components */
@@ -1222,6 +1224,7 @@ body {
   padding-bottom: 0;
   background: -webkit-linear-gradient(45deg, #234B5F, #142D3C);
   background: linear-gradient(45deg, #234B5F, #142D3C);
+  position: relative;
 }
 
 @media all and (min-width: 321px) {
@@ -1252,6 +1255,37 @@ body {
   .hero-space {
     padding-top: 160px;
   }
+}
+
+.hero-space .bottom-background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 138px;
+  z-index: 5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.hero-space .bottom-background .left-pixels {
+  height: 100%;
+  width: 50%;
+}
+
+.hero-space .bottom-background .left-pixels img {
+  height: 100%;
+}
+
+.hero-space .bottom-background .right-pixels {
+  height: 100%;
+  width: 50%;
+}
+
+.hero-space .bottom-background .right-pixels img {
+  float: right;
+  height: 100%;
 }
 
 .input-group {
@@ -2062,6 +2096,7 @@ body {
 .laptop {
   -webkit-transform: translateY(34px);
           transform: translateY(34px);
+  position: relative;
 }
 
 .image--smaller {
