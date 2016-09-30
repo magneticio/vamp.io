@@ -239,10 +239,10 @@
         "visible": true
       },
         {
-          "path": "resources/how-vamp-works",
+          "path": "resources/how-vamp-works/vamp-components",
           "children": [
             {
-              "path": "resources/how-vamp-works",
+              "path": "resources/how-vamp-works/vamp-components",
               "text": "Vamp components",
               "visible": true
             },
