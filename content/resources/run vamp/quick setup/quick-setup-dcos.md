@@ -13,11 +13,15 @@ This quick setup will run Vamp, Mesos and Marathon, together with Zookeeper, Ela
 
 #### Prerequisistes
 
-Before you start you need to have a DC/OS cluster up and running, as well as the DC/OS CLI configured to use it. We assume you have it up and running on http://dcos.example.com/.
-Setting up DC/OS is outside the scope of this document, for that you need to refer to the official DC/OS documentation:
+Before you start you need to have a DC/OS cluster up and running, as well as the its CLI configured to use it. We assume you have it up and running on http://dcos.example.com/. 
 
-* https://dcos.io/docs/latest/administration/installing/
-* https://dcos.io/docs/latest/usage/cli/
+This guide has been tested on both 1.7 and the latest 1.8 version of DC/OS.
+Setting it up is outside the scope of this document, for that you need to refer to the official documentation:
+
+* https://dcos.io/docs/1.7/administration/installing/
+* https://dcos.io/docs/1.7/usage/cli/
+* https://dcos.io/docs/1.8/administration/installing/
+* https://dcos.io/docs/1.8/usage/cli/
 
 #### In this quick setup we will:
 
