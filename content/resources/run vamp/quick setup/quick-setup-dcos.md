@@ -1,19 +1,23 @@
 ---
-date: 2016-09-13T09:00:00+00:00
+date: 2016-09-30T12:00:00+00:00
 title: DC/OS quick setup
 ---
 
 {{< warning title="Beware!" >}}
-Quick setups are designed for demo purposes only - they are not production grade.
+Quick setups are designed for demo purposes only - they are not production grade. 
 {{< /warning >}}
 
 ## Overview 
 
-This quick setup will run Vamp, Mesos and Marathon, together with Zookeeper, Elasticsearch and Logstash on DC/OS. (We'll also give you some additional information for creating a custom Vamp setup). If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+This quick setup will run Vamp, Mesos and Marathon, together with Zookeeper, Elasticsearch and Logstash on DC/OS. If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
 #### Prerequisistes
 
-*  Running DC/OS cluster (1.7) - we will be using DC/OS as our container-manager ([dcos.io](http://dcos.io)), but this guide will also work with Mesos and Marathon.
+Before you start you need to have a DC/OS cluster up and running, as well as the DC/OS CLI configured to use it. We assume you have it up and running on http://dcos.example.com/.
+Setting up DC/OS is outside the scope of this document, for that you need to refer to the official DC/OS documentation:
+
+* https://dcos.io/docs/latest/administration/installing/
+* https://dcos.io/docs/latest/usage/cli/
 
 #### In this quick setup we will:
 
@@ -24,61 +28,74 @@ This quick setup will run Vamp, Mesos and Marathon, together with Zookeeper, Ela
 
 ## In depth
 
-### Step 1: Install Elasticsearch and Logstash
+### Step 1: Install Elasticsearch + Logstash
 
-Mesos, Marathon and ZooKeeper are all installed by DC/OS. In addition to these, Vamp requires Elasticsearch and Logstash for metrics collection and aggregation.
+Mesos, Marathon and ZooKeeper are all installed by DC/OS. In addition to these, Vamp requires Elasticsearch and Logstash for metrics collection and aggregation. 
+
 You could install Elasticsearch on DC/OS by following the Mesos Elasticsearch documentation ([mesos-elasticsearch - Elasticsearch Mesos Framework](http://mesos-elasticsearch.readthedocs.org/en/latest/)).
 However, Vamp will also need Logstash (not currently available as a DC/OS package) with a specific Vamp Logstash configuration ([github.com/magneticio - Vamp Docker logstash.conf](https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf)).  
 
 To make life easier, we have created compatible Docker images for a Vamp Elastic Stack ([hub.docker.com - magneticio elastic](https://hub.docker.com/r/magneticio/elastic/)) that you can use with the Mesos elasticsearch documentation ([mesos-elasticsearch - How to install on Marathon](http://mesos-elasticsearch.readthedocs.org/en/latest/#how-to-install-on-marathon)).
-Our advice is to use our custom Elasticsearch+Logstash Docker image. Let’s go!
+Our advice is to use our custom Elasticsearch+Logstash Docker image. Let's get started! 
 
-First, let's create `marathon.json` file with the following content:
+Create `elasticsearch.json` with the following content:
 
 ```json
 {
   "id": "elasticsearch",
+  "instances": 1,
+  "cpus": 0.2,
+  "mem": 1024.0,
   "container": {
     "docker": {
-      "image": "mesos/elasticsearch-scheduler",
+      "image": "magneticio/elastic:2.2",
       "network": "HOST",
       "forcePullImage": true
     }
   },
-  "args": [
-    "--zookeeperMesosUrl", "zk://zk-1.zk:2181/mesos",
-    "--elasticsearchDockerImage", "magneticio/elastic:2.2",
-    "--elasticsearchRam", "1024",
-    "--elasticsearchPorts", "9200,9300"
-  ],
-  "cpus": 0.2,
-  "mem": 512.0,
-  "env": {
-    "JAVA_OPTS": "-Xms128m -Xmx256m"
-  },
-  "instances": 1
+  "healthChecks": [
+    {
+      "protocol": "TCP",
+      "gracePeriodSeconds": 30,
+      "intervalSeconds": 10,
+      "timeoutSeconds": 5,
+      "port": 9200,
+      "maxConsecutiveFailures": 0
+    }
+  ]
 }
 ```
 
-This is quite similar to the normal Mesos Elasticsearch installation. Notice that:  
+This will run the container with 1G of RAM and a basic health check on the elasticsearch port.
 
- * We use our custom Docker image `"--elasticsearchDockerImage", "magneticio/elastic:2.2"`   
- * We increased the amount of memory (by default it is 256MB).  
- * We explicitly added the default 9200 and 9300 Elasticsearch ports by adding the additional argument: `"--elasticsearchPorts", "9200,9300"`. (There are many other different arguments which can be used as well if you need them.)
+Using the CLI we can install this in our cluster:
 
-Following the Mesos Elasticsearch documentation, now send `marathon.json` file to Marathon:
-
+```bash
+$ dcos marathon app add elasticsearch.json
 ```
-curl -k -XPOST -d @marathon.json -H "Content-Type: application/json" http://MARATHON_IP_ADDRESS:8080/v2/apps
+
+If you get no error message you should now be able to see it being deployed:
+
+```bash
+$ dcos marathon app list
+ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD   
+/elasticsearch  1024  0.2    0/1    0/0      scale       DOCKER   None  
 ```
+
+Once it's fully up and running you should see all tasks and health checks being up:
+
+```bash
+$ dcos marathon app list
+ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD   
+/elasticsearch  1024  0.2    1/1    1/1       ---        DOCKER   None  
+```
+
 
 ### Step 2: Deploy Vamp
 
-{{< note>}}
-Vamp is available as DC/OS Universe package, so you could also deploy Vamp using the DC/OS web UI.
-{{< /note >}}
+Once you have elasticsearch up and running it's time to move on to Vamp.
 
-Create a `vamp.json` file with the content:
+Create `vamp.json` with the following content:
 
 ```json
 {
@@ -89,38 +106,75 @@ Create a `vamp.json` file with the content:
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "magneticio/vamp:0.9.0-dcos",
-      "network": "HOST",
+      "image": "magneticio/vamp:katana-dcos",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "name": "vip0",
+          "labels": {
+            "VIP_0": "10.20.0.100:8080"
+          }
+        }
+      ],
       "forcePullImage": true
     }
   },
+  "labels": {
+    "DCOS_SERVICE_NAME": "vamp",
+    "DCOS_SERVICE_SCHEME": "http",
+    "DCOS_SERVICE_PORT_INDEX": "0"
+  },
   "env": {
-  }
+    "VAMP_WAIT_FOR": "http://elasticsearch.marathon.mesos:9200/.kibana",
+    "VAMP_PERSISTENCE_DATABASE_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200",
+    "VAMP_GATEWAY_DRIVER_LOGSTASH_HOST": "elasticsearch.marathon.mesos",
+    "VAMP_WORKFLOW_DRIVER_VAMP_URL": "http://10.20.0.100:8080",
+    "VAMP_PULSE_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200"
+  },  
+  "healthChecks": [
+    {
+      "protocol": "TCP",
+      "gracePeriodSeconds": 30,
+      "intervalSeconds": 10,
+      "timeoutSeconds": 5,
+      "portIndex": 0,
+      "maxConsecutiveFailures": 0
+    }
+  ]
 }
 ```
 
+This service definition will download our Vamp container and spin it up in your DC/OS cluster on a private node in bridge networking mode. It will also configure the apporiate labels for the AdminRouter to expose the UI through DC/OS, as well as an internal VIP for other applications to talk to Vamp, adjusting some defaults to work inside DC/OS, and finally a health check for monitoring.
 
-If you want to change the default Vamp DC/OS configuration, you can do it by setting [environment variables](/resources/run-vamp/vamp-configuration#environment-variable-configuration).
-For example:
+Deploy it with the CLI, like with did with elasticsearch:
 
-```json
-"env": {
-  "VAMP_REST_API_PORT": "9090"
-}
+```bash
+$ dcos marathon app add vamp.json
+
+$ dcos marathon app list
+ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD   
+/elasticsearch  1024  0.2    1/1    1/1       ---        DOCKER   None  
+/vamp/vamp      1024  0.5    0/1    0/0      scale       DOCKER   None  
+
 ```
 
-Now send the request to Marathon:
+It will take a minute for Vamp to deploy all its components, you can see that by looking in the "tasks" column, where Vamp is listed as 0/1. Run the list command again and you should see all the components coming online:
 
+```bash
+$ dcos marathon app list
+ID                        MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
+/elasticsearch            1024  0.2    1/1    1/1       ---        DOCKER   None
+/vamp/vamp                1024  0.5    1/1    1/1       ---        DOCKER   None
+/vamp/vamp-gateway-agent  256   0.2    3/3    ---       ---        DOCKER   ['--storeType=zookeeper', '--storeConnection=zk-1.zk:2181', '--storeKey=/vamp/haproxy/1.6', '--logstash=elasticsearch.marathon.mesos:10001']
+/vamp/workflow-health      64   0.1    1/1    ---       ---        DOCKER   None
+/vamp/workflow-kibana      64   0.1    1/1    ---       ---        DOCKER   None
+/vamp/workflow-metrics     64   0.1    1/1    ---       ---        DOCKER   None
+/vamp/workflow-vga         64   0.1    1/1    ---       ---        DOCKER   None
 ```
-curl -k -XPOST -d @vamp.json -H "Content-Type: application/json" http://MARATHON_IP_ADDRESS:8080/v2/apps
-```
 
-Marathon will now start deploying Vamp and, if all arguments are set correctly, you will notice that Vamp Gateway Agent will be also be deployed automatically.
-
-Now we need to find out on what IP the public node is running, so you can access the VAMP dashboard from the outside. This IP is most often the same as where you find the Marathon dashboard. Vamp will expose its UI on port 8080 (`network: HOST`), you may set a different port (`VAMP_REST_API_PORT`) if you want.
-
-Have fun! 
-
+Vamp has now spun up all it's components and you should be able to access the ui by opening http://dcos.example.com/service/vamp/ in your browser. 
 
 * Now you're ready to follow our [Vamp Sava tutorials](/try-vamp/sava-tutorials/).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
@@ -152,7 +206,7 @@ or
 
 #### Example 2 - Avoid automatic deployment of Vamp Gateway Agent
 
-Rremove `vga-marathon` breed and workflow from `vamp.lifter.artifact.files`:
+Remove `vga-marathon` breed and workflow from `vamp.lifter.artifact.files`:
 
 ```yaml
 vamp.lifter.artifact.files = []
@@ -179,13 +233,18 @@ Running Vamp on public Mesos agent node and disabling automatic Vamp Gateway Age
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "magneticio/vamp:0.9.0-dcos",
+      "image": "magneticio/vamp:katana-dcos",
       "network": "HOST",
       "forcePullImage": true
     }
   },
   "env": {
-    "VAMP_LIFTER_ARTIFACT_FILES": "[\"breeds/health.js\",\"workflows/health.yml\",\"breeds/metrics.js\",\"workflows/metrics.yml\",\"breeds/kibana.js\",\"workflows/kibana.yml\"]"
+    "VAMP_LIFTER_ARTIFACT_FILES": "[\"breeds/health.js\",\"workflows/health.yml\",\"breeds/metrics.js\",\"workflows/metrics.yml\",\"breeds/kibana.js\",\"workflows/kibana.yml\"]",
+    "VAMP_WAIT_FOR": "http://elasticsearch.marathon.mesos:9200/.kibana",
+    "VAMP_PERSISTENCE_DATABASE_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200",
+    "VAMP_GATEWAY_DRIVER_LOGSTASH_HOST": "elasticsearch.marathon.mesos",
+    "VAMP_WORKFLOW_DRIVER_VAMP_URL": "http://10.20.0.100:8080",
+    "VAMP_PULSE_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200"
   },
   "acceptedResourceRoles": [
     "slave_public"
@@ -197,38 +256,35 @@ Deploying Vamp Gateway Agent - replace `$INSTANCES` (e.g. to be the same as tota
 
 ```json
 {
-  "id": "/vamp/vamp-gateway-agent",
-  "args": [
-    "--storeType=zookeeper",
-    "--storeConnection=zk-1.zk:2181",
-    "--storeKey=/vamp/haproxy/1.6",
-    "--logstash=elasticsearch-executor.elasticsearch.mesos:10001"
-  ],
+  "id": "vamp/vamp-gateway-agent",
+  "instances": $INSTANCES,
   "cpus": 0.2,
   "mem": 256.0,
-  "instances": $INSTANCES,
-  "acceptedResourceRoles": [
-    "slave_public",
-    "*"
-  ],
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "magneticio/vamp-gateway-agent:0.9.0",
+      "image": "magneticio/vamp-gateway-agent:katana",
       "network": "HOST",
-      "portMappings": [],
       "privileged": true,
-      "parameters": []
+      "forcePullImage": true
     }
   },
-  "env": {},
+  "args": [
+    "--storeType=zookeeper",
+    "--storeConnection=zk-1.zk:2181",
+    "--storeKey=/vamp/gateways/haproxy/1.6",
+    "--logstash=elasticsearch.marathon.mesos:10001"
+  ],
   "constraints": [
     [
       "hostname",
       "UNIQUE"
     ]
   ],
-  "labels": {}
+  "acceptedResourceRoles": [
+    "slave_public",
+    "*"
+  ]
 }
 
 ```
