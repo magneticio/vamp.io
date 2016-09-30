@@ -830,10 +830,12 @@ body {
       height: 100%;
       width: initial;
       border-bottom: none;
+      letter-spacing: 0.025em;
 
 
       &.active {
         border-bottom: 1px solid $color-radical-red;
+        font-weight: 500;
       }
     }
 
