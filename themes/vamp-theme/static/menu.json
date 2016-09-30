@@ -233,6 +233,11 @@
     {
       "path": "resources",
       "children": [
+      {
+        "path": "resources",
+        "text": "Introduction",
+        "visible": true
+      },
         {
           "path": "resources/how-vamp-works",
           "children": [
@@ -264,11 +269,6 @@
           ],
           "text": "How vamp works",
           "visible": true
-        },
-        {
-          "path": "resources/index",
-          "text": "Index",
-          "visible": false
         },
         {
           "path": "resources/using-vamp",
