@@ -8,36 +8,31 @@ In microservice architectures, these concerns can quickly multiply. It's all too
 
 ## Deploy online services, seamlessly
 
-Vamp is an open source, self-hosted platform for managing (micro)service oriented architectures that rely on container technology. The Vamp DSL allows you to describe your services, their dependencies and the required runtime environments in blueprints.  Vamp provides a runtime/execution engine to deploy these blueprints (similar to AWS Cloudformation) and a choice of interface for complete control - graphical UI, command line or RESTful API.
+Vamp is an open source, self-hosted platform for managing (micro)service oriented architectures that rely on container technology. The Vamp DSL allows you to describe your services, their dependencies and required runtime environments in blueprints.  These blueprints can then be deployed by the Vamp runtime/execution engine (similar to AWS Cloudformation). You can monitor and manage deployments and running services from your choice of interface - graphical UI, command line or RESTful API. Vamp workflows can also monitor applications for you and act automatically based on pre-defined SLAs.
 
-Combined, this allows you to run complex, multi-step actions - like canary releases - from one intuitive graphical interface. Vamp will take care of all the heavy lifting - route updates, metrics collection and service discovery - to orchestrate complex deployment patterns, such as architecture level A/B testing. 
+With Vamp you can orchestrate complex deployment patterns, such as architecture level A/B testing and canary releases, from one intuitive (graphical) interface. Vamp takes care of all the heavy lifting - route updates, metrics collection and service discovery.
 
-After deployment, Vamp keeps working to ensure that your running services are given the resources they need when they need them. Vamp will respond to any unexpected outages and can autoscale individual services. 
-
-### Find out more
-* [Use cases: Vamp solutions to practical problems](use-cases/)
-* [What Vamp offers compared to other tools and services](vamp-compared-to/)
-* [How Vamp works](/resources/how-vamp-works/)
+Find out [how Vamp works](/resources/how-vamp-works/).
 
 ## The Vamp feature list
 
 Vamp 0.9.0 (Beta release) includes: 
 
-* container-scheduler agnostic API
-* percentage and condition based programmable routing
+* Container-scheduler agnostic API
+* Percentage and condition based programmable routing
 * YAML based configuration blueprints with support for dependencies, clusters and environment variables
-* graphical UI and dashboard
-* integrated javascript-based workflow system 
-* metric-driven autoscaling, canary releasing and other optimisation and automation patterns
-* automatic loadbalancing for autoscaled services
+* Graphical UI and dashboard
+* Integrated javascript-based workflow system 
+* Metric-driven autoscaling, canary releasing and other optimisation and automation patterns
+* Automatic loadbalancing for autoscaled services
 * API gateway routing features like conditional rewrites
 * CLI for integration with common CI/CD pipelines
-* open source (Apache 2.0)
-* event API and server-side events (SSE) stream
-* multi-level metric aggregation
-* port-based, virtual host names or external service (consul etc) based service discovery support
-* lightweight design to run in high-available mission-critical architectures
-* integrates with ELK stack (Elastic Search, Logstash, Kibana) for custom Kibana dashboards
+* Open source (Apache 2.0)
+* Event API and server-side events (SSE) stream
+* Multi-level metric aggregation
+* Port-based, virtual host names or external service (consul etc) based service discovery support
+* Lightweight design to run in high-available mission-critical architectures
+* Integrates with ELK stack (Elastic Search, Logstash, Kibana) for custom Kibana dashboards
 * Vamp Runner provides automated integration and workflows testing 
 
 ## Did you know?
@@ -52,8 +47,6 @@ Vamp 0.9.0 (Beta release) includes:
 ## What next?
 
 * [Try Vamp](/try-vamp/)
-
-### Find out more
 * [Use cases: Vamp solutions to practical problems](use-cases/)
 * [What Vamp offers compared to other tools and services](vamp-compared-to/)
 * [How Vamp works](/resources/how-vamp-works/)

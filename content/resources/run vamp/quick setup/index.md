@@ -3,8 +3,8 @@ date: 2016-09-13T09:00:00+00:00
 title: Quick setup
 ---
 
-{{< warning title="Warning!" >}}
-Quick setups are designed for demo purposes only - they are not production grade setups!
+{{< warning title="Beware!" >}}
+Quick setups are designed for demo purposes only - they are not production grade.
 {{< /warning >}}
 
 To help you try out Vamp, we've put together a collection of quick setup walkthroughs. These are a great way to get to grips with the power of Vamp and work through the [Vamp Sava tutorials](/try-vamp/sava-tutorials).

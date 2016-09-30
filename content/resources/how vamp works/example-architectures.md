@@ -4,8 +4,11 @@ title: Example architectures
 ---
 
 {{< note title="note!" >}}
-The below diagrams should be used more as an overview than required architecture. Here we also include Mesos/Marathon stack even though it is not a hard dependency.
+The below diagrams should be used more as an overview than required architecture.
 {{< /note >}}
 
+## Mesosphere/Marathon with zookeeper and elasticsearch
+
+Mesos/Marathon stack is included even though it is not a hard dependency.
 ![diagram](/images/diagram/Architecture-and-components.svg)
 

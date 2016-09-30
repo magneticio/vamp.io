@@ -3,8 +3,8 @@ date: 2016-09-13T09:00:00+00:00
 title: Kubernetes quick setup
 ---
 
-{{< warning title="Warning!" >}}
-Quick setups are designed for demo purposes only - they are not production grade setups!
+{{< warning title="Beware!" >}}
+Quick setups are designed for demo purposes only - they are not production grade.
 {{< /warning >}}
 
 ## Overview

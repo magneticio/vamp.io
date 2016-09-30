@@ -317,6 +317,6 @@ clusters:
 
 ## Where next?
 
-* Read about [Gateways and conditions](/resources/using-vamp/gateways-and-conditions/)
+* Read about [Gateways](/resources/using-vamp/gateways/)
 * check the [API documentation](/resources/api-documentation/)
 * [Try Vamp](/try-vamp)

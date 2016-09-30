@@ -127,6 +127,43 @@
         },
         {
           "path": "what-is-vamp/use-cases",
+          "children": [
+            {
+              "path": "index",
+              "text": "Index",
+              "visible": false
+            },
+            {
+              "path": "what-is-vamp/use-cases/create-responsive-website",
+              "text": "Create a responsive website",
+              "visible": true
+            },
+            {
+              "path": "what-is-vamp/use-cases/resolve-incompatibilities-after-upgrade",
+              "text": "Resolve incompatibilities",
+              "visible": true
+            },
+            {
+              "path": "what-is-vamp/use-cases/refactor-monolithic-to-microsystems",
+              "text": "Refactor to microservices",
+              "visible": true
+            },
+            {
+              "path": "what-is-vamp/use-cases/modernise-services",
+              "text": "Modernise services",
+              "visible": true
+            },
+            {
+              "path": "what-is-vamp/use-cases/simulate-and-test-scaling-behaviour",
+              "text": "Simulate and test scaling behaviour",
+              "visible": true
+            },
+            {
+              "path": "what-is-vamp/use-cases/self-healing-and-self-optimising",
+              "text": "Self-healing and self-optimising",
+              "visible": true
+            }
+            ],
           "text": "Use cases",
           "visible": true
         },
@@ -196,6 +233,11 @@
     {
       "path": "resources",
       "children": [
+      {
+        "path": "resources",
+        "text": "Introduction",
+        "visible": true
+      },
         {
           "path": "resources/how-vamp-works",
           "children": [
@@ -229,11 +271,6 @@
           "visible": true
         },
         {
-          "path": "resources/index",
-          "text": "Index",
-          "visible": false
-        },
-        {
           "path": "resources/using-vamp",
           "children": [
             {
@@ -262,8 +299,13 @@
               "visible": true
             },
             {
-              "path": "resources/using-vamp/gateways-and-conditions",
-              "text": "Gateways and conditions",
+              "path": "resources/using-vamp/gateways",
+              "text": "Gateways",
+              "visible": true
+            },
+            {
+              "path": "resources/using-vamp/conditions",
+              "text": "Conditions",
               "visible": true
             },
             {
@@ -304,6 +346,11 @@
           "path": "resources/run-vamp",
           "children": [
             {
+              "path": "resources/run-vamp",
+              "text": "Overview",
+              "visible": true
+            },
+            {
               "path": "resources/run-vamp/vamp-binaries",
               "text": "Vamp binaries",
               "visible": true
@@ -332,11 +379,6 @@
               "path": "resources/run-vamp/elastic-configuration",
               "text": "Elastic configuration",
               "visible": true
-            },
-            {
-              "path": "resources/run-vamp/index",
-              "text": "Index",
-              "visible": false
             },
             {
               "path": "resources/run-vamp/quick-setup",

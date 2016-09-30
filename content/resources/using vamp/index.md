@@ -4,20 +4,18 @@ title: Using Vamp
 ---
 
 ## Basic Vamp artifacts
-Vamp has a few basic entities or artifacts you can work with, these can be classed as static resource descriptions and dynamic runtime entities:
+Vamp has a few basic entities or artifacts you can work with, these can be classed as static resource descriptions and dynamic runtime entities. Note that API actions on static resource descriptions are mostly synchronous, while API actions on dynamic runtime entities are largely asychronous.
 
 ### Static resource descriptions
-API actions on static resource descriptions are mostly synchronous.
 
--   **Breeds**: Breeds describe single services and their dependencies.  
--   **Blueprints**: Blueprints are, well, blueprints! They describe how breeds work in runtime and what properties they should have.  
+-   **Breeds** describe single services and their dependencies.  [Read more...](/resources/using-vamp/breeds/)
+-   **Blueprints** are, well, blueprints! They describe how breeds work in runtime and what properties they should have.  [Read more...](/resources/using-vamp/blueprints/)  
 
 ### Dynamic runtime entities
-API actions on dynamic runtime entities are largely asychronous.
 
--   **Deployments**: Deployments are running blueprints. You can have many deployments from one blueprint and perform actions on each at runtime. Plus, you can turn any running deployment into a blueprint.  
--   **Gateways**: Gateways are the "stable" routing endpoint - defined by a port (incoming) and routes (outgoing). 
--   **Workflows**: Workflows are apps (services) deployed on cluster, used for dynamically changing the runtime configuration (e.g. SLA, scaling, condition weight update).
+-   **Deployments** are running blueprints. You can have many deployments from one blueprint and perform actions on each at runtime. Plus, you can turn any running deployment into a blueprint.  [Read more...](/resources/using-vamp/deployments/)  
+-   **Gateways** are the "stable" routing endpoint - defined by a port (incoming) and routes (outgoing).  [Read more...](/resources/using-vamp/gateways/) 
+-   **Workflows** are apps (services) deployed on cluster, used for dynamically changing the runtime configuration (e.g. SLA, scaling, condition weight update).  [Read more...](/resources/using-vamp/workflows/)
 
 
 ## Working across multiple teams

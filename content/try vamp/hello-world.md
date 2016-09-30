@@ -4,8 +4,8 @@ title: Hello world
 
 ---
 
-{{< warning title="Warning!" >}}
-Quick setups are designed for demo purposes only - they are not production grade setups!
+{{< warning title="Beware!" >}}
+Quick setups are designed for demo purposes only - they are not production grade.
 {{< /warning >}}
 
 ## Overview
@@ -18,9 +18,7 @@ This Vamp quick setup will run Mesos, Marathon ([mesosphere.github.io - Marathon
 2. Run Vamp
 3. Check Vamp is up and running
 
-{{< tip >}}
-You could also start with one of our [other quick setups](/resources/run-vamp/quick-setup/), but we recommend hello world as it's the most straightforward.
-{{< /tip >}}
+_You could also start with one of our [other quick setups](/resources/run-vamp/quick-setup/), but we recommend hello world as it's the most straightforward._
 
 ## In depth
 
@@ -31,9 +29,7 @@ Please install one of the following for your platform/architecture
 - Docker 1.9.x (Linux) or higher (Vamp works with Docker 1.12 too), OR
 - [Docker Toolbox 1.12.x] (https://github.com/docker/toolbox/releases) if on Mac OS X 10.8+ or Windows 7+ 
 
-{{< note title="Note" >}}
 Vamp hello world on Docker for Mac or Windows is currently not supported. We're working on this so please check back. 
-{{< /note >}}
 
 ### Step 2: Run Vamp
 
@@ -54,13 +50,9 @@ docker run --privileged \
 
 Mounting volumes is important. [Read this great article about starting Docker containers from/within another Docker container](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/).
 
-{{< note title="Note" >}}
-Marathon port is 9090 (e.g. `http://localhost:9090/`) instead of the default 8080. 
-{{< /note >}}
-
 #### Mac OS X 10.8+ or Windows 7+
 
-A typical command on Mac OS X running Docker Toolbox would be:
+If you installed Docker Toolbox, please use the Docker Quickstart Terminal. We don't currently support Kitematic. A typical command on Mac OS X running Docker Toolbox would be:
 ```
 docker run --net=host \
            -v /var/run/docker.sock:/var/run/docker.sock \
@@ -69,10 +61,6 @@ docker run --net=host \
            -e "DOCKER_HOST_IP=`docker-machine ip default`" \
            magneticio/vamp-docker:0.9.0
 ```
-  
-{{< note title="Note" >}}
-If you installed Docker Toolbox, please use the Docker Quickstart Terminal. We don't currently support Kitematic.
-{{< /note >}}
 
 ### Step 3: Check Vamp is up and running
 
@@ -94,7 +82,7 @@ Exposed services:
 - Kibana [http://localhost:5601](http://localhost:5601)
 - Sense [http://localhost:5601/app/sense](http://localhost:5601/app/sense)
 - Mesos [http://localhost:5050](http://localhost:5050)
-- Marathon [http://localhost:9090](http://localhost:9090)
+- Marathon [http://localhost:9090](http://localhost:9090) (Note that the Marathon port is 9090 and not the default 8080).
 - Chronos [http://localhost:4400](http://localhost:4400)
 - Vamp [http://localhost:8080](http://localhost:8080)
 
