@@ -346,6 +346,11 @@
           "path": "resources/run-vamp",
           "children": [
             {
+              "path": "resources/run-vamp",
+              "text": "Overview",
+              "visible": true
+            },
+            {
               "path": "resources/run-vamp/vamp-binaries",
               "text": "Vamp binaries",
               "visible": true
@@ -374,11 +379,6 @@
               "path": "resources/run-vamp/elastic-configuration",
               "text": "Elastic configuration",
               "visible": true
-            },
-            {
-              "path": "resources/run-vamp/index",
-              "text": "Index",
-              "visible": false
             },
             {
               "path": "resources/run-vamp/quick-setup",
