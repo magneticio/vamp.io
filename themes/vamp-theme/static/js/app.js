@@ -50,11 +50,7 @@ function documentReady() {
     }
   }
 
-
-
-
   //Set smoothscrolling
-
   $('a[href^="#"]').on('click', function (e) {
     e.preventDefault();
 
@@ -109,6 +105,19 @@ function getMenuFile(callback) {
     return this.hostname != window.location.hostname;
   }).attr('target', '_blank');
 
+
+
+  //Initi slicknav
+  var slickNavConfig = {
+    label: '',
+    allowParentLinks: true,
+    closedSymbol: '&#xf105;',
+    openedSymbol: '&#xf107;'
+  }
+
+  $(function(){
+    $('#mobile-menu').slicknav(slickNavConfig);
+  });
 }
 
 
@@ -134,11 +143,42 @@ function menuFileLoaded(data) {
       }
       topMenuItem.visible && $('#top-menu-items').append(renderedTopMenuItem);
   });
-
-
-
-  console.log(data);
+  //build mobile menu
+  buildMobileMenu(data);
 }
+
+function buildMobileMenu(data) {
+  data.children.forEach(function(menuItem) {
+    console.log(menuItem)
+    var mobileListItemTop = createMobileListItem(menuItem.path, menuItem.text);
+
+    var secondLevelUl = $.parseHTML('<ul></ul>');
+    menuItem.children && menuItem.children.forEach(function(menuItemSecond) {
+      if(menuItemSecond.visible) {
+        var mobileSecondListItem = createMobileListItem(menuItemSecond.path, menuItemSecond.text);
+        $(secondLevelUl).append(mobileSecondListItem);
+
+        var thirdLevelUl = $.parseHTML('<ul></ul>');
+        menuItemSecond.children && menuItemSecond.children.forEach(function (menuItemThird) {
+          if(menuItemThird.visible) {
+            var mobileThirdListItem = createMobileListItem(menuItemThird.path, menuItemThird.text);
+            $(thirdLevelUl).append(mobileThirdListItem);
+          }
+        });
+        menuItemSecond.children && $(mobileSecondListItem).append(thirdLevelUl);
+        }
+    });
+    menuItem.children && $(mobileListItemTop).append(secondLevelUl);
+    menuItem.visible && $('#mobile-menu').append(mobileListItemTop);
+  });
+}
+
+function createMobileListItem(href, text) {
+  var html = '<li><a href="/'+href+'">'+text+'</a></li>';
+  return $.parseHTML(html);
+}
+
+
 
 function setParents(parents, data) {
   // console.log('parents: ', parents);
