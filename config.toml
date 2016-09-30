@@ -1,4 +1,4 @@
-baseurl = "http://vamp.com/"
+baseurl = "http://vamp.io/"
 languageCode = "en-us"
 title = "Vamp"
 theme = "vamp-theme"
