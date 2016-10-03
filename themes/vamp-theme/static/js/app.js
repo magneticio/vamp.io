@@ -112,7 +112,8 @@ function getMenuFile(callback) {
     label: '',
     allowParentLinks: true,
     closedSymbol: '&#xf105;',
-    openedSymbol: '&#xf107;'
+    openedSymbol: '&#xf107;',
+    brand: 'vamp'
   }
 
   $(function(){
@@ -139,7 +140,7 @@ function menuFileLoaded(data) {
       var renderedTopMenuItem = $.parseHTML(html);
       if(topMenuItem.active) {
         $(renderedTopMenuItem).addClass('active');
-        topMenuItem.children && buildSideMenu(topMenuItem);
+        topMenuItem.children && bgit uildSideMenu(topMenuItem);
       }
       topMenuItem.visible && $('#top-menu-items').append(renderedTopMenuItem);
   });
