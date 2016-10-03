@@ -325,7 +325,7 @@ body {
 }
 
 .hero-space {
-  padding-top: 14px + 20px;
+  padding-top: 14px + 40px;
   padding-bottom: 0;
   background: linear-gradient(45deg, $color-blue-dianne, $color-big-stone);
   position: relative;
@@ -494,7 +494,7 @@ body {
 }
 
 .content {
-  padding: 0 40px 40px 40px;
+  padding: 30px 40px 40px 40px;
   background-color: white;
   min-height: 100vh;
   max-width: 980px;
@@ -806,10 +806,17 @@ body {
     .hamburger {
       color: $color-big-stone;
     }
+
+    .logo {
+      background-image: url('/img/005-vamp/Logo/logo-long-colour.svg');;
+    }
   }
 
   .logo {
     height: 40px;
+    width: 120px;
+    background-image: url('/img/005-vamp/Logo/logo-long-white.svg');
+    background-size: contain;
   }
 
   .container {
@@ -1335,6 +1342,7 @@ $color_hover_text: $color-big-stone;
   box-sizing: border-box;
   background: $color_bg;
   padding: 5px;
+
   * {
     box-sizing: border-box;
   }
@@ -1408,11 +1416,19 @@ $color_hover_text: $color-big-stone;
   }
 }
 .slicknav_brand {
-  color: $color_text;
-  font-size: 18px;
-  line-height: 30px;
-  padding: 7px 12px;
-  height: 44px;
+  display: flex;
+  height: 38px;
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  img {
+    width: 80px;
+    height: 100%;
+  }
 }
 
 // Dev

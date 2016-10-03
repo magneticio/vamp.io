@@ -41,12 +41,9 @@ function documentReady() {
   function setColorMenu() {
     if ($(window).scrollTop() > 0 || thePath !== '/') {
       $("#header").addClass("active");
-      $('#logo').attr('src', '/img/005-vamp/Logo/logo-long-colour.svg');
-
     } else {
       //remove the background property so it comes transparent again (defined in your css)
       $("#header").removeClass("active");
-      $('#logo').attr('src', '/img/005-vamp/Logo/logo-long-white.svg');
     }
   }
 
@@ -113,7 +110,7 @@ function getMenuFile(callback) {
     allowParentLinks: true,
     closedSymbol: '&#xf105;',
     openedSymbol: '&#xf107;',
-    brand: 'vamp'
+    brand: '<a href="/"><img id="logo" class="logo" src="/img/005-vamp/Logo/logo-long-colour.svg" alt=""></a>'
   }
 
   $(function(){

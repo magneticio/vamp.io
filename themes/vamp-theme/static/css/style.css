@@ -1222,7 +1222,7 @@ body {
 }
 
 .hero-space {
-  padding-top: 34px;
+  padding-top: 54px;
   padding-bottom: 0;
   background: -webkit-linear-gradient(45deg, #234B5F, #142D3C);
   background: linear-gradient(45deg, #234B5F, #142D3C);
@@ -1405,7 +1405,7 @@ body {
 }
 
 .content {
-  padding: 0 40px 40px 40px;
+  padding: 30px 40px 40px 40px;
   background-color: white;
   min-height: 100vh;
   max-width: 980px;
@@ -1698,8 +1698,15 @@ body {
   color: #142D3C;
 }
 
+.top-menu.active .logo {
+  background-image: url("/img/005-vamp/Logo/logo-long-colour.svg");
+}
+
 .top-menu .logo {
   height: 40px;
+  width: 120px;
+  background-image: url("/img/005-vamp/Logo/logo-long-white.svg");
+  background-size: contain;
 }
 
 .top-menu .container {
@@ -2366,11 +2373,27 @@ body {
 }
 
 .slicknav_brand {
-  color: #142D3C;
-  font-size: 18px;
-  line-height: 30px;
-  padding: 7px 12px;
-  height: 44px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 38px;
+}
+
+.slicknav_brand a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.slicknav_brand img {
+  width: 80px;
+  height: 100%;
 }
 
 #__bs_notify__ {
