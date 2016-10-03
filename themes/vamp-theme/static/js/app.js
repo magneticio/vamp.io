@@ -140,7 +140,7 @@ function menuFileLoaded(data) {
       var renderedTopMenuItem = $.parseHTML(html);
       if(topMenuItem.active) {
         $(renderedTopMenuItem).addClass('active');
-        topMenuItem.children && bgit uildSideMenu(topMenuItem);
+        topMenuItem.children && buildSideMenu(topMenuItem);
       }
       topMenuItem.visible && $('#top-menu-items').append(renderedTopMenuItem);
   });
