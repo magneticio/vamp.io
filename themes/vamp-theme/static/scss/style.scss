@@ -149,6 +149,10 @@ body {
       background-image: url('/img/003-Small-icons/Red/Red-Arrow.svg');
     }
 
+    &--arrow-white {
+      background-image: url('/img/003-Small-icons/White/Arrow-White.svg');
+    }
+
     &--mail {
       background-image: url('/img/003-Small-icons/White/Mail-White.svg');
     }
@@ -225,6 +229,8 @@ body {
 
     }
   }
+
+
 }
 
 // Lander rows
@@ -924,7 +930,7 @@ body {
 }
 
 .top-bar {
-  border-top: 1px solid $color-white-squeeze;
+  border-top: 1px solid $color-jungle-mist;
 }
 
 // footer

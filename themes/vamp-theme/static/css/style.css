@@ -1044,6 +1044,10 @@ body {
   background-image: url("/img/003-Small-icons/Red/Red-Arrow.svg");
 }
 
+.button__icon--arrow-white {
+  background-image: url("/img/003-Small-icons/White/Arrow-White.svg");
+}
+
 .button__icon--mail {
   background-image: url("/img/003-Small-icons/White/Mail-White.svg");
 }
@@ -1836,7 +1840,7 @@ body {
 }
 
 .top-bar {
-  border-top: 1px solid #F0F5FA;
+  border-top: 1px solid #C3D2DC;
 }
 
 .footer {
