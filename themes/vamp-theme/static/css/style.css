@@ -903,17 +903,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-#header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 0 30px;
-  position: fixed;
-}
-
 /* Components */
 .page {
   min-height: 100vh;
@@ -1643,84 +1632,31 @@ body {
 }
 
 .top-menu {
+  display: none;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   position: fixed;
-  width: 100vw;
-  z-index: 9999;
-  top: 0;
-  background-color: transparent;
   height: 80px;
+  width: 100vw;
+  padding: 0 10px;
+  background-color: transparent;
+  z-index: 999;
   border-bottom: 1px solid rgba(240, 245, 250, 0.1);
-  -webkit-transition: background-color 0.15s ease-in;
-          transition: background-color 0.15s ease-in;
-  display: none !important;
+  -webkit-transition: 0.3s ease-in all;
+          transition: 0.3s ease-in all;
 }
 
 @media all and (min-width: 1025px) {
   .top-menu {
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 
-.top-menu.active {
-  background-color: white;
-  border-bottom: none;
-  box-shadow: 0 4px 2px -2px rgba(20, 45, 60, 0.25);
-}
-
-.top-menu.active .top-menu-items {
-  border-top: 1px solid #142D3C;
-  background-color: white;
-}
-
-@media all and (min-width: 1025px) {
-  .top-menu.active .top-menu-items {
-    border-top: none;
-  }
-}
-
-.top-menu.active .top-menu-item {
-  -webkit-transition: all 0.15s ease-in;
-          transition: all 0.15s ease-in;
-  color: #142D3C;
-}
-
-.top-menu.active .github-logo {
-  margin-right: 4px;
-}
-
-.top-menu.active .github-logo i.fa {
-  color: #142D3C;
-}
-
-.top-menu.active .hamburger {
-  color: #142D3C;
-}
-
-.top-menu.active .logo {
-  background-image: url("/img/005-vamp/Logo/logo-long-colour.svg");
-}
-
-.top-menu .logo {
-  height: 40px;
-  width: 120px;
-  background-image: url("/img/005-vamp/Logo/logo-long-white.svg");
-  background-size: contain;
-}
-
-.top-menu .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  height: 100%;
-}
-
-.top-menu .left, .top-menu .right {
-  height: 100%;
+.top-menu a {
+  text-decoration: none;
 }
 
 .top-menu .left {
@@ -1732,143 +1668,79 @@ body {
           align-items: center;
 }
 
+.top-menu .logo {
+  height: 40px;
+  width: 120px;
+  background-image: url("/img/005-vamp/Logo/logo-long-white.svg");
+  background-size: contain;
+}
+
 .top-menu .right {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-}
-
-.top-menu .top-menu-items {
-  display: none;
-}
-
-@media all and (min-width: 1025px) {
-  .top-menu .top-menu-items {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    position: initial;
-    width: initial;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    height: 100%;
-    background-color: transparent;
-    box-shadow: none;
-  }
-}
-
-.top-menu .top-menu-item {
-  display: block;
-  padding: 30px 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
+}
+
+.top-menu .top-menu-items, .top-menu .download, .top-menu .github-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  margin: 0 20px;
+  height: 100%;
+}
+
+.top-menu .top-menu-items {
+  margin: 0;
+}
+
+.top-menu .top-menu-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
   color: white;
   font-size: 15px;
   font-weight: 300;
   text-decoration: none;
-  height: 30px;
-  width: 100%;
-  border-bottom: 1px solid #234B5F;
+  height: 100%;
 }
 
-.top-menu .top-menu-item:last-of-type {
-  border-bottom: 0;
-}
-
-@media all and (min-width: 1025px) {
-  .top-menu .top-menu-item {
-    padding: 0 20px;
-    height: 100%;
-    width: initial;
-    border-bottom: none;
-    letter-spacing: 0.025em;
-  }
-  .top-menu .top-menu-item.active {
-    border-bottom: 1px solid #FF405E;
-    font-weight: 500;
-  }
+.top-menu .top-menu-item.active {
+  border-bottom: 1px solid #FF405E;
+  font-weight: 500;
 }
 
 .top-menu .github-logo {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  height: 100%;
-  text-decoration: none;
-}
-
-.top-menu .github-logo i.fa {
-  -webkit-transition: opacity 0.15s ease-in;
-          transition: opacity 0.15s ease-in;
-  -webkit-transform: translate(0, -1px);
-          transform: translate(0, -1px);
   color: #F0F5FA;
-  opacity: 0.7;
 }
 
-.top-menu .github-logo:hover i.fa {
-  opacity: 1;
+.top-menu.active {
+  background-color: white;
+  border-bottom: none;
+  box-shadow: 0 4px 2px -2px rgba(20, 45, 60, 0.25);
 }
 
-.top-menu .download {
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-right: 40px;
+.top-menu.active .logo {
+  background-image: url("/img/005-vamp/Logo/logo-long-colour.svg");
 }
 
-.top-menu .download a {
-  text-decoration: none;
+.top-menu.active .top-menu-item {
+  color: #142D3C;
 }
 
-.top-menu .download .button {
-  padding-left: 10px;
-  padding-right: 10px;
-  font-weight: 300;
-}
-
-.top-menu .hamburger {
-  height: 100%;
-  color: #F0F5FA;
-  width: 80px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  cursor: pointer;
-}
-
-@media all and (min-width: 1025px) {
-  .top-menu .hamburger {
-    display: none;
-  }
+.top-menu.active .github-logo {
+  color: rgba(20, 45, 60, 0.5);
 }
 
 .slicknav_menu {

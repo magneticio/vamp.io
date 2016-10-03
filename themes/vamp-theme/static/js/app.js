@@ -107,7 +107,7 @@ function getMenuFile(callback) {
   //Initi slicknav
   var slickNavConfig = {
     label: '',
-    allowParentLinks: true,
+    allowParentLinks: false,
     closedSymbol: '&#xf105;',
     openedSymbol: '&#xf107;',
     brand: '<a href="/"><img id="logo" class="logo" src="/img/005-vamp/Logo/logo-long-colour.svg" alt=""></a>'
