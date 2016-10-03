@@ -116,6 +116,33 @@ function getMenuFile(callback) {
   $(function(){
     $('#mobile-menu').slicknav(slickNavConfig);
   });
+
+  //check if emails are correct
+  var inputfields = $('#mc-embedded-subscribe-form input');
+
+  $('#mc-embedded-subscribe-form input').on('change paste keyup', function () {
+    var emailValue = $(this).val();
+
+    console.log('emailValue: ', isEmail(emailValue));
+    console.log('$(emailValue).val()', emailValue !== '');
+
+    //
+    if(isEmail(emailValue) && (emailValue !== '')) {
+      console.log('jaaaa');
+      $(this).parent().find('.button').removeClass('not-active');
+    } else {
+      console.log('nee');
+      $(this).parent().find('.button').addClass('not-active');
+    }
+
+  });
+
+  function isEmail(email) {
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
+  }
+  
+
 }
 
 

@@ -2396,6 +2396,15 @@ body {
   height: 100%;
 }
 
+a.not-active {
+  pointer-events: none;
+}
+
+a.not-active.button {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 #__bs_notify__ {
   top: 95% !important;
   right: 10px !important;
