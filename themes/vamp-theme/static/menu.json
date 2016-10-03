@@ -118,15 +118,15 @@
       "visible": false
     },
     {
-      "path": "what-is-vamp",
+      "path": "why-use-vamp",
       "children": [
         {
-          "path": "what-is-vamp",
+          "path": "why-use-vamp",
           "text": "Introduction",
           "visible": true
         },
         {
-          "path": "what-is-vamp/use-cases",
+          "path": "why-use-vamp/use-cases",
           "children": [
             {
               "path": "index",
@@ -134,32 +134,32 @@
               "visible": false
             },
             {
-              "path": "what-is-vamp/use-cases/create-responsive-website",
+              "path": "why-use-vamp/use-cases/create-responsive-website",
               "text": "Create a responsive website",
               "visible": true
             },
             {
-              "path": "what-is-vamp/use-cases/resolve-incompatibilities-after-upgrade",
+              "path": "why-use-vamp/use-cases/resolve-incompatibilities-after-upgrade",
               "text": "Resolve incompatibilities",
               "visible": true
             },
             {
-              "path": "what-is-vamp/use-cases/refactor-monolithic-to-microsystems",
+              "path": "why-use-vamp/use-cases/refactor-monolithic-to-microsystems",
               "text": "Refactor to microservices",
               "visible": true
             },
             {
-              "path": "what-is-vamp/use-cases/modernise-services",
+              "path": "why-use-vamp/use-cases/modernise-services",
               "text": "Modernise services",
               "visible": true
             },
             {
-              "path": "what-is-vamp/use-cases/simulate-and-test-scaling-behaviour",
+              "path": "why-use-vamp/use-cases/simulate-and-test-scaling-behaviour",
               "text": "Simulate and test scaling behaviour",
               "visible": true
             },
             {
-              "path": "what-is-vamp/use-cases/self-healing-and-self-optimising",
+              "path": "why-use-vamp/use-cases/self-healing-and-self-optimising",
               "text": "Self-healing and self-optimising",
               "visible": true
             }
@@ -168,12 +168,34 @@
           "visible": true
         },
         {
-          "path": "what-is-vamp/vamp-compared-to",
+          "path": "why-use-vamp/vamp-compared-to",
+          "children": [
+            {
+              "path": "why-use-vamp/vamp-compared-to",
+              "text": "Overview",
+              "visible": false
+            },
+            {
+              "path": "why-use-vamp/vamp-compared-to/proxies-and-load-balancers",
+              "text": "Proxies and load balancers",
+              "visible": true
+            },
+            {
+              "path": "why-use-vamp/vamp-compared-to/paas-and-container-systems",
+              "text": "PaaS and container systems",
+              "visible": true
+            },
+            {
+              "path": "why-use-vamp/vamp-compared-to/other-tools",
+              "text": "Other tools",
+              "visible": true
+            }
+            ],
           "text": "Vamp compared to...",
           "visible": true
         },
         {
-          "path": "what-is-vamp/get-started",
+          "path": "why-use-vamp/get-started",
           "text": "Get started",
           "visible": true
         }
