@@ -16,7 +16,7 @@ Automatically scale and optimise deployments or running systems.
 Avoid vendor lock-in with YAML based deployments.
 
 ----------
-  
+
 ## Vamp works with:  
 
 * Mesosphere  
@@ -45,7 +45,7 @@ Avoid vendor lock-in with YAML based deployments.
 ## Vamp feature list
 
 * graphical UI and dashboard
-* integrated javascript-based workflow system 
+* integrated javascript-based workflow system
 * metric-driven autoscaling, canary releasing and other optimisation and automation patterns
 * automatic loadbalancing for autoscaled services
 * API gateway routing features like conditional rewrites
