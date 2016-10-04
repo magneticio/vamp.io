@@ -12,7 +12,7 @@ Before you get Vamp up and running on your architecture, it is helpful to unders
 
 ## Run Vamp
 
-Set Vamp up to run on your architecture in a [production-grade custom set up](/resources/run-vamp/).
+Set Vamp up to run on your architecture in a [production-grade custom set up](/documentation/installation/).
 
 ## Need help?
 

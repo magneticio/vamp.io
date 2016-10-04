@@ -14,27 +14,18 @@ Vamp provides mature possibilities to test out new features in a controlled way 
 
 ## Vamp compared to configuration management and provisioning tools
 _Puppet, Ansible, Chef, Terraform_    
-Configuration management and infrastructure provisioning tools are often abused to stretch their responsibilities to container deployment features. A perfect case of "if all you have is a hammer, everything looks like a nail". These tools where not developed for container deployments or dynamically managing and routing traffic over these containers. Vamp is designed and developed from the bottom up specifically for these use-cases.  
+The responsbilities of configuration management and infrastructure provisioning tools are often stretched to cover container deployment features. These tools were not intended for handling container deployments or the dynamic management and routing traffic over these containers. Vamp has been designed and developed from the ground up specifically to fit these use cases.  
 
-## Vamp compared to custom build solutions
-Building and maintaining a scalable and robust enterprise-grade system for canary-testing and releasing is not trivial. Vamp not only delivers programmable routing and automatic loadbalancing, deployment orchestration and workflows, but also a powerful event system, a REST API, a graphical UI, integration testing tools and a CLI.  
-
-## Vamp compared to service discovery solutions
-_consul, etcd, zookeeper_  
-Vamp uses a service discovery pattern called server-side service discovery. This pattern allows service discovery without the need to change your code or run any other daemon or agent. In addition to service discovery, Vamp also functions as a service registry. We recognise the following benefits of this pattern:
-* No code injection needed.
-* No extra libraries or agents needed.
-* Platform/language agnostic: it’s just HTTP.
-* Easy integration using ENV variables.
-Vamp doesn't need point-to-point wiring. Vamp uses environment variables that resolve to service endpoints Vamp automatically sets up and exposes. Even though Vamp provides this type of service discovery, it does not put any constraint on other possible solutions. For instance services can use their own approach specific approach using service registry, self-registration etc.
+## Vamp compared to custom built solutions
+Building and maintaining a scalable and robust enterprise-grade system for canary-testing and releasing is not trivial. Vamp delivers programmable routing and automatic load balancing, deployment orchestration and workflows, as well as a powerful event system, REST API, graphical UI, integration testing tools and a CLI.  
 
 ## Vamp compared to A/B and MVT testing tools
 _Optimizely, VisualWebsiteOptimizer, Google Analytics, Planout_  
 Vamp enables canary testing versions of applications, effectively providing A/B and MVT testing of applications and services by deploying two or more versions of an application or service and dividing incoming traffic between the running versions. Vamp doesn't have a built-in analytics engine though, so the analysing of the relevant metrics needs to be done with a specific Vamp workflow or an external analytics engine. Winning results can be fed back to Vamp to automatically update routing rules and deployments to push a winning version to a full production release. Because of the flexible programmable routing and use of environment variables, Vamp can be used to canary test almost everything, from content and business logic to configuration settings and architectural changes.  
 
 ## Vamp compared to DevOps tools
-_Deis, Flynn, Dokku_
-Vamp has no ambition to provide a Heroku-like environment for containers. Vamp provides canary-testing and -releasing features and metric-driven workflows for autoscaling and other optimisations. To enable this Vamp integrates programmable routing and load balancing, container deployments and orchestration, and metric driven workflows. Vamp thinks of "business" as a first class citizen in DevOps teams, and thus provides a graphical UI and tools for non-technical roles.   
+_Deis, Flynn, Dokku_  
+Vamp has no ambition to provide a Heroku-like environment for containers. Vamp integrates programmable routing and load balancing, container deployments and orchestration to enable canary testing and canary releasing features. Vamp also adds metrics-driven workflows for auto-scaling and other optimisations. Vamp sees business as a first class citizen in DevOps teams, providing a graphical UI and tools for non-technical roles.   
 
 
 

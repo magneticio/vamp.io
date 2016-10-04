@@ -122,7 +122,7 @@
       "children": [
         {
           "path": "why-use-vamp",
-          "text": "Introduction",
+          "text": "Why use Vamp",
           "visible": true
         },
         {
@@ -195,6 +195,11 @@
           "visible": true
         },
         {
+          "path": "why-use-vamp/enterprise-edition",
+          "text": "Enterprise edition",
+          "visible": true
+        },
+        {
           "path": "why-use-vamp/get-started",
           "text": "Get started",
           "visible": true
@@ -253,213 +258,256 @@
       "visible": false
     },
     {
-      "path": "resources",
+      "path": "documentation",
       "children": [
-      {
-        "path": "resources",
-        "text": "Introduction",
-        "visible": true
-      },
         {
-          "path": "resources/how-vamp-works/vamp-components",
+          "path": "documentation/how-vamp-works/vamp-components",
           "children": [
             {
-              "path": "resources/how-vamp-works/vamp-components",
+              "path": "documentation/how-vamp-works/vamp-components",
               "text": "Vamp components",
               "visible": true
             },
             {
-              "path": "resources/how-vamp-works/example-architectures",
+              "path": "documentation/how-vamp-works/example-architectures",
               "text": "Example architectures",
               "visible": true
             },
             {
-              "path": "resources/how-vamp-works/service-discovery",
+              "path": "documentation/how-vamp-works/service-discovery",
               "text": "Service discovery",
               "visible": true
             },
             {
-              "path": "resources/how-vamp-works/persistence-key-value-store",
+              "path": "documentation/how-vamp-works/persistence-key-value-store",
               "text": "Persistence and key-value (KV) store",
               "visible": true
             },
             {
-              "path": "resources/how-vamp-works/routing",
+              "path": "documentation/how-vamp-works/routing",
               "text": "Routing",
               "visible": true
             }
           ],
-          "text": "How vamp works",
+          "text": "How Vamp works",
           "visible": true
         },
         {
-          "path": "resources/using-vamp",
-          "children": [
+          "path": "documentation/installation",
+          "children":
+          [
             {
-              "path": "resources/using-vamp",
-              "text": "Overview",
+              "path": "documentation/installation",
+              "text": "Introduction",
               "visible": true
             },
             {
-              "path": "resources/using-vamp/breeds",
-              "text": "Breeds",
+              "path": "documentation/installation/hello-world",
+              "text": "Hello world",
               "visible": true
             },
             {
-              "path": "resources/using-vamp/blueprints",
-              "text": "Blueprints",
+              "path": "documentation/installation/docker",
+              "text": "Docker",
               "visible": true
             },
             {
-              "path": "resources/using-vamp/deployments",
-              "text": "Deployments",
+              "path": "documentation/installation/dcos",
+              "text": "DC/OS",
               "visible": true
             },
             {
-              "path": "resources/using-vamp/environment-variables",
-              "text": "Environment variables",
+              "path": "documentation/installation/mesos-marathon",
+              "text": "Mesos/Marathon",
               "visible": true
             },
             {
-              "path": "resources/using-vamp/gateways",
-              "text": "Gateways",
+              "path": "documentation/installation/kubernetes",
+              "text": "Kubernetes",
               "visible": true
             },
             {
-              "path": "resources/using-vamp/conditions",
-              "text": "Conditions",
+              "path": "documentation/installation/rancher",
+              "text": "Rancher",
               "visible": true
             },
             {
-              "path": "resources/using-vamp/events",
-              "text": "Events",
-              "visible": true
-            },
-            {
-              "path": "resources/using-vamp/sla-and-escalations",
-              "text": "SLA and escalations",
-              "visible": true
-            },
-            {
-              "path": "resources/using-vamp/references",
-              "text": "Referencing artifacts",
-              "visible": true
-            },
-            {
-              "path": "resources/using-vamp/workflows",
-              "text": "Workflows",
-              "visible": true
-            },
-            {
-              "path": "resources/using-vamp/sticky-sessions",
-              "text": "Sticky sessions",
-              "visible": true
-            },
-            {
-              "path": "resources/using-vamp/virtual-hosts",
-              "text": "Virtual hosts",
-              "visible": true
-            }
-          ],
-          "text": "Using vamp",
-          "visible": true
-        },
-        {
-          "path": "resources/run-vamp",
-          "children": [
-            {
-              "path": "resources/run-vamp",
-              "text": "Overview",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/vamp-binaries",
-              "text": "Vamp binaries",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/osx",
-              "text": "Mac OS X",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/linux-windows",
-              "text": "Linux and Windows",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/container-drivers",
-              "text": "Container driver configuration",
-              "visible": true
-            },
-            {
-              "path": "resources/run-vamp/vamp-configuration",
+              "path": "documentation/installation/vamp-configuration",
               "text": "Vamp configuration",
               "visible": true
             },
             {
-              "path": "resources/run-vamp/elastic-configuration",
+              "path": "documentation/installation/elastic-configuration",
               "text": "Elastic configuration",
               "visible": true
-            },
-            {
-              "path": "resources/run-vamp/quick-setup",
-              "children": [
-                {
-                  "path": "resources/run-vamp/quick-setup/quick-setup-dcos",
-                  "text": "DC/OS quick setup",
-                  "visible": false
-                },
-                {
-                  "path": "resources/run-vamp/quick-setup/quick-setup-kubernetes",
-                  "text": "Kubernetes quick setup",
-                  "visible": false
-                },
-                {
-                  "path": "resources/run-vamp/quick-setup/quick-setup-rancher",
-                  "text": "Rancher quick setup",
-                  "visible": false
-                }
-              ],
-              "text": "Quick setup",
-              "visible": true
             }
           ],
-          "text": "Run vamp",
+          "text": "Installation",
           "visible": true
         },
         {
-          "path": "resources/cli-documentation",
+          "path": "documentation/using-vamp",
           "children": [
             {
-              "path": "resources/cli-documentation",
-              "text": "Using the Vamp CLI",
+              "path": "documentation/using-vamp",
+              "text": "Overview",
               "visible": true
             },
             {
-              "path": "resources/cli-documentation/cli-reference",
-              "text": "CLI reference",
+              "path": "documentation/using-vamp/breeds",
+              "text": "Breeds",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/blueprints",
+              "text": "Blueprints",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/deployments",
+              "text": "Deployments",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/environment-variables",
+              "text": "Environment variables",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/gateways",
+              "text": "Gateways",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/conditions",
+              "text": "Conditions",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/events",
+              "text": "Events",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/sla-and-escalations",
+              "text": "SLA and escalations",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/references",
+              "text": "Referencing artifacts",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/workflows",
+              "text": "Workflows",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/sticky-sessions",
+              "text": "Sticky sessions",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/virtual-hosts",
+              "text": "Virtual hosts",
               "visible": true
             }
           ],
-          "text": "CLI documentation",
+          "text": "Using Vamp",
           "visible": true
         },
         {
-          "path": "resources/api-documentation",
+          "path": "documentation/tutorials",
           "children": [
             {
-              "path": "resources/api-documentation",
+              "path": "documentation/tutorials/deploy-your-first-blueprint",
+              "text": "Deploy your first blueprint",
+              "visible": true
+            },
+            {
+              "path": "documentation/tutorials/run-a-canary-release",
+              "text": "Run a canary release",
+              "visible": true
+            },
+            {
+              "path": "documentation/tutorials/split-into-services",
+              "text": "Split a monolith into services",
+              "visible": true
+            },
+            {
+              "path": "documentation/tutorials/index",
+              "text": "Index",
+              "visible": false
+            },
+            {
+              "path": "documentation/tutorials/merge-a-changed-topology",
+              "text": "Merge a changed topology",
+              "visible": true
+            }
+          ],
+          "text": "Tutorials",
+          "visible": true
+        },
+        {
+          "path": "documentation/api",
+          "children": [
+            {
+              "path": "documentation/api",
               "text": "Using the Vamp API",
               "visible": true
             },
             {
-              "path": "resources/api-documentation/api-reference",
+              "path": "documentation/api/api-reference",
               "text": "API reference",
               "visible": true
             }
-            ],
-          "text": "API documentation",
+          ],
+          "text": "API",
+          "visible": true
+        },
+        {
+          "path": "documentation/cli",
+          "children": [
+            {
+              "path": "documentation/cli",
+              "text": "Using the Vamp CLI",
+              "visible": true
+            },
+            {
+              "path": "documentation/cli/cli-reference",
+              "text": "CLI reference",
+              "visible": true
+            }
+          ],
+          "text": "CLI",
+          "visible": true
+        },
+        {
+          "path": "documentation/release-notes",
+          "text": "Release notes",
+          "visible": true
+        }
+        ],
+      "text": "Documentation",
+      "visible": true
+    },
+    {
+      "path": "resources",
+      "children": [
+        {
+          "path": "resources",
+          "text": "Overview",
+          "visible": true
+        },
+        {
+          "path": "resources/downloads",
+          "text": "Downloads",
+          "visible": true
+        },
+        {
+          "path": "resources/community",
+          "text": "Community",
           "visible": true
         }
       ],
@@ -469,12 +517,12 @@
     {
       "path": "news",
       "text": "News",
-      "visible": true
+      "visible": false
     },
     {
       "path": "support",
       "text": "Support",
-      "visible": false
+      "visible": true
     }
   ]
 }
