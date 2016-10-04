@@ -9,7 +9,7 @@ Container cluster managers and schedulers like Marathon, DC/OS, Kubernetes, Noma
 
 ## Vamp compared to PaaS systems
 _Cloud foundry, OpenStack, IBM Bluemix, Openshift_  
-Vamp adds an experimentation layer to PaaS infrastructures by providing canary-releasing features that integrate with common PaaS proxies like HAProxy. For continuous delivery and autoscaling features Vamp integrates with container-schedulers that are often included in PaaS systems, like Kubernetes in Openshift V3.   
+Vamp adds an experimentation layer to PaaS infrastructures by providing canary-releasing features that integrate with common PaaS proxies like HAProxy. For continuous delivery and auto-scaling features, Vamp integrates with common container-schedulers included in PaaS systems, like Kubernetes in Openshift V3.   
 
 
 
