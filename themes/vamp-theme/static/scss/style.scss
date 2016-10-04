@@ -699,6 +699,7 @@ body {
   .hljs {
     padding: 20px;
     font-size: 14px;
+    background-color: $color-white-squeeze;
   }
 
   table {
@@ -1338,6 +1339,68 @@ a.not-active {
     cursor: not-allowed;
   }
   pointer-events: none;
+}
+
+pre code {
+  position: relative;
+}
+
+.copy-button {
+  background:none;
+  border:none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 0 0 5px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  width: 100px;
+  background-color: $color-jungle-mist;
+  transition: 0.3s ease-in all;
+
+
+  p {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 500;
+    font-size: 12px;
+    color: $color-big-stone;
+
+    .fa-check {
+      transform: translate(0, -1px);
+    }
+  }
+
+  .copied {
+    display: none;
+  }
+
+  &.zeroclipboard-is-hover {
+    transition: 0.1s ease-in all;
+    background-color: rgba($color-bermuda-gray, 0.7);
+    cursor: pointer;
+    color: white;
+  }
+
+  &.clicked {
+
+    background-color: $color-big-stone;
+    color: white;
+    width: 200px;
+
+    .copy {
+      display: none;
+      color: white;
+    }
+
+    .copied {
+      display: block;
+      color: white;
+    }
+  }
 }
 
 // Dev

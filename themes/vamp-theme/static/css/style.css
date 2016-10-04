@@ -1596,6 +1596,7 @@ body {
 .markdowned .hljs {
   padding: 20px;
   font-size: 14px;
+  background-color: #F0F5FA;
 }
 
 .markdowned table {
@@ -2281,6 +2282,69 @@ a.not-active {
 a.not-active.button {
   opacity: 0.3;
   cursor: not-allowed;
+}
+
+pre code {
+  position: relative;
+}
+
+.copy-button {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 0 0 5px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  width: 100px;
+  background-color: #C3D2DC;
+  -webkit-transition: 0.3s ease-in all;
+          transition: 0.3s ease-in all;
+}
+
+.copy-button p {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 500;
+  font-size: 12px;
+  color: #142D3C;
+}
+
+.copy-button p .fa-check {
+  -webkit-transform: translate(0, -1px);
+          transform: translate(0, -1px);
+}
+
+.copy-button .copied {
+  display: none;
+}
+
+.copy-button.zeroclipboard-is-hover {
+  -webkit-transition: 0.1s ease-in all;
+          transition: 0.1s ease-in all;
+  background-color: rgba(105, 145, 170, 0.7);
+  cursor: pointer;
+  color: white;
+}
+
+.copy-button.clicked {
+  background-color: #142D3C;
+  color: white;
+  width: 200px;
+}
+
+.copy-button.clicked .copy {
+  display: none;
+  color: white;
+}
+
+.copy-button.clicked .copied {
+  display: block;
+  color: white;
 }
 
 #__bs_notify__ {

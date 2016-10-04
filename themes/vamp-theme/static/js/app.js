@@ -70,9 +70,30 @@ function documentReady() {
     $('.top-menu-items').removeClass('open');
   });
 
+
+
   $('pre code').each(function(i, block) {
+    var codeText = $(this).text();
     hljs.highlightBlock(block);
+
+    $(this).append('<button class="copy-button" data-clipboard-text=\''+codeText+'\'><p class="copy"><i class="fa fa-lg fa-paperclip" aria-hidden="true"></i>&nbsp;&nbsp;Copy</p><p class="copied"><i class="fa fa-lg fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Copied to clipboard</p></button>');
   });
+
+  var client = new ZeroClipboard( $('.copy-button') );
+
+
+  $('.copy-button').click(function() {
+    var self = this;
+    $(self).addClass('clicked');
+
+    window.setTimeout(function () {
+      $(self).removeClass('clicked');
+    }, 5000);
+
+  });
+
+
+
 }
 
 function getMenuFile(callback) {
@@ -91,7 +112,6 @@ function getMenuFile(callback) {
       $('.menu').css('bottom', '0');
 
     } else {
-      console.log('not-sticky');
       $('.menu').css('position', 'fixed');
       $('.menu').css('bottom', '');
     }
@@ -101,9 +121,7 @@ function getMenuFile(callback) {
   $(document.links).filter(function() {
     return this.hostname != window.location.hostname;
   }).attr('target', '_blank');
-
-
-
+  
   //Initi slicknav
   var slickNavConfig = {
     label: '',
@@ -123,15 +141,11 @@ function getMenuFile(callback) {
   $('#mc-embedded-subscribe-form input').on('change paste keyup', function () {
     var emailValue = $(this).val();
 
-    console.log('emailValue: ', isEmail(emailValue));
-    console.log('$(emailValue).val()', emailValue !== '');
 
     //
     if(isEmail(emailValue) && (emailValue !== '')) {
-      console.log('jaaaa');
       $(this).parent().find('.button').removeClass('not-active');
     } else {
-      console.log('nee');
       $(this).parent().find('.button').addClass('not-active');
     }
 
@@ -174,7 +188,6 @@ function menuFileLoaded(data) {
 
 function buildMobileMenu(data) {
   data.children.forEach(function(menuItem) {
-    console.log(menuItem)
     var mobileListItemTop = createMobileListItem(menuItem.path, menuItem.text);
 
     var secondLevelUl = $.parseHTML('<ul></ul>');
@@ -206,16 +219,16 @@ function createMobileListItem(href, text) {
 
 
 function setParents(parents, data) {
-  // console.log('parents: ', parents);
-  // console.log('data: ', data);
+  //
+  //
 
   data.forEach(function(dataPoint) {
     dataPoint.parents = parents.slice();
-    // console.log('dataPoint: ', dataPoint);
+    //
     if(dataPoint.children) {
       var withSelfParents = dataPoint.parents.slice();
       withSelfParents.push(dataPoint);
-      // console.log(withSelfParents);
+      //
       setParents(withSelfParents, dataPoint.children);
     }
   });
@@ -249,8 +262,6 @@ function buildSideMenu(data) {
 }
 
 function buildSubSideMenu(data) {
-  console.log(data);
-  console.log('test');
   data.children.forEach(function (subSideMenuItem) {
       var html = Mustache.render('<a class="sub-menu-item" href="/{{path}}"><p class="text">{{text}}</p></a>', subSideMenuItem);
       var renderedSubSideMenuItem = $.parseHTML(html);
