@@ -802,6 +802,7 @@ body {
     display: flex;
     align-items: center;
     position: relative;
+    height: 100%;
   }
 
   .top-menu-items, .download, .github-logo {
@@ -815,6 +816,7 @@ body {
 
   .top-menu-items {
     margin: 0;
+    height: 100%;
   }
 
   .top-menu-item {
