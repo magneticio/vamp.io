@@ -4,11 +4,12 @@ title: Kubernetes
 ---
 
 ## Overview
-An important part of Vamp is that it's container-scheduler agnostic. So this means Vamp also works with Kubernetes. Let's set it up!
 
 {{< note title="Note!" >}}
 Kubernetes support is still in Alpha.
 {{< /note >}}
+
+An important part of Vamp is that it's container-scheduler agnostic. So this means Vamp also works with Kubernetes. Let's set it up!
 
 This quick setup will run Vamp together with etcd, Elasticsearch and Logstash on Google container engine and kubernetes. (We will also deploy our demo Sava application to give you something to play around on).   
 
