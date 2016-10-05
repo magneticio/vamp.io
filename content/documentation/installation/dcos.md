@@ -3,13 +3,13 @@ date: 2016-09-30T12:00:00+00:00
 title: DC/OS
 ---
 
-## Overview 
+## Overview
 
 This quick setup will run Vamp, Mesos and Marathon, together with Zookeeper, Elasticsearch and Logstash on DC/OS. If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
 #### Prerequisistes
 
-Before you start you need to have a DC/OS cluster up and running, as well as the its CLI configured to use it. We assume you have it up and running on http://dcos.example.com/. 
+Before you start you need to have a DC/OS cluster up and running, as well as the its CLI configured to use it. We assume you have it up and running on http://dcos.example.com/.
 
 This guide has been tested on both 1.7 and the latest 1.8 version of DC/OS.
 Setting it up is outside the scope of this document, for that you need to refer to the official documentation:
@@ -30,13 +30,13 @@ Setting it up is outside the scope of this document, for that you need to refer 
 
 ### Step 1: Install Elasticsearch + Logstash
 
-Mesos, Marathon and ZooKeeper are all installed by DC/OS. In addition to these, Vamp requires Elasticsearch and Logstash for metrics collection and aggregation. 
+Mesos, Marathon and ZooKeeper are all installed by DC/OS. In addition to these, Vamp requires Elasticsearch and Logstash for metrics collection and aggregation.
 
 You could install Elasticsearch on DC/OS by following the Mesos Elasticsearch documentation ([mesos-elasticsearch - Elasticsearch Mesos Framework](http://mesos-elasticsearch.readthedocs.org/en/latest/)).
 However, Vamp will also need Logstash (not currently available as a DC/OS package) with a specific Vamp Logstash configuration ([github.com/magneticio - Vamp Docker logstash.conf](https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf)).  
 
 To make life easier, we have created compatible Docker images for a Vamp Elastic Stack ([hub.docker.com - magneticio elastic](https://hub.docker.com/r/magneticio/elastic/)) that you can use with the Mesos elasticsearch documentation ([mesos-elasticsearch - How to install on Marathon](http://mesos-elasticsearch.readthedocs.org/en/latest/#how-to-install-on-marathon)).
-Our advice is to use our custom Elasticsearch+Logstash Docker image. Let's get started! 
+Our advice is to use our custom Elasticsearch+Logstash Docker image. Let's get started!
 
 Create `elasticsearch.json` with the following content:
 
@@ -174,7 +174,7 @@ ID                        MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
 /vamp/workflow-vga         64   0.1    1/1    ---       ---        DOCKER   None
 ```
 
-Vamp has now spun up all it's components and you should be able to access the ui by opening http://dcos.example.com/service/vamp/ in your browser. 
+Vamp has now spun up all it's components and you should be able to access the ui by opening http://dcos.example.com/service/vamp/ in your browser.
 
 * Now you're ready to follow our [Vamp getting started tutorials](/documentation/tutorials/).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
@@ -188,7 +188,7 @@ The Vamp DC/OS Docker image ([github.com/magneticio - Vamp DC/OS](https://github
 * Making a new Docker image based on the Vamp DC/OS image
 * Using [environment variables](/documentation/installation/vamp-configuration#environment-variable-configuration)
 
-#### Example 1 - Remove the `metrics` and `health` workflows by configuration and keep the `kibana` workflow:
+#### Example 1 - Remove the `metrics` and `health` workflows by Vamp configuration and keep the `kibana` workflow:
 
 ```yaml
 vamp.lifter.artifact.resources = [
@@ -196,7 +196,7 @@ vamp.lifter.artifact.resources = [
   ]
 ```
 
-or 
+or doing the same using Marathon JSON
 
 ```json
 "env": {
@@ -212,7 +212,7 @@ Remove `vga-marathon` breed and workflow from `vamp.lifter.artifact.files`:
 vamp.lifter.artifact.files = []
 ```
 
-or 
+or using Marathon JSON
 
 ```json
 "env": {
@@ -222,7 +222,7 @@ or
 
 ### DC/OS with public and private nodes and Vamp
 
-Running Vamp on public Mesos agent node and disabling automatic Vamp Gateway Agent deployment (but keeping other default workflows):
+Running Vamp on public Mesos agent node(s) and disabling automatic Vamp Gateway Agent deployments (but keeping other default workflows) can be done with the following Marathon JSON:
 
 ```json
 {
@@ -234,9 +234,24 @@ Running Vamp on public Mesos agent node and disabling automatic Vamp Gateway Age
     "type": "DOCKER",
     "docker": {
       "image": "magneticio/vamp:katana-dcos",
-      "network": "HOST",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "name": "vip0",
+          "labels": {
+            "VIP_0": "10.20.0.100:8080"
+          }
+        }
+      ],
       "forcePullImage": true
     }
+  },
+  "labels": {
+    "DCOS_SERVICE_NAME": "vamp",
+    "DCOS_SERVICE_SCHEME": "http",
+    "DCOS_SERVICE_PORT_INDEX": "0"
   },
   "env": {
     "VAMP_LIFTER_ARTIFACT_FILES": "[\"breeds/health.js\",\"workflows/health.yml\",\"breeds/metrics.js\",\"workflows/metrics.yml\",\"breeds/kibana.js\",\"workflows/kibana.yml\"]",
@@ -262,7 +277,7 @@ Running Vamp on public Mesos agent node and disabling automatic Vamp Gateway Age
 }
 ```
 
-Deploying Vamp Gateway Agent - replace `$INSTANCES` (e.g. to be the same as total number of Mesos agent nodes) and optionally other parameters:
+Deploying Vamp Gateway Agent on all public and private Mesos agent nodes through Marathon JSON - NB replace `$INSTANCES` (e.g. to be the same as total number of Mesos agent nodes) and optionally other parameters:
 
 ```json
 {
