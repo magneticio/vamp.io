@@ -2384,6 +2384,10 @@ pre code {
   margin-top: 0 !important;
 }
 
+#partners-row img {
+  width: 100%;
+}
+
 #__bs_notify__ {
   top: 95% !important;
   right: 10px !important;
