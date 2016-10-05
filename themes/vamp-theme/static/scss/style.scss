@@ -64,10 +64,19 @@ body {
 }
 
 .h2 {
+  font-size: 16px;
   font-weight: 300;
-  font-size: 24px;
   letter-spacing: 0.05em;
   color: $color-big-stone;
+
+
+  @media all and (min-width: 1025px) {
+    font-size: 22px;
+  }
+
+  @media all and (min-width: 1201px) {
+    font-size: 24px;
+  }
 
   &:not(:first-child):not(:last-child) {
     margin: $small-margin 0;
@@ -533,7 +542,6 @@ body {
     line-height: 1.5em;
     letter-spacing: 0.05em;
     margin: 32px 0 12.5px 0;
-
   }
 
   h2 + h3 {
@@ -1401,6 +1409,29 @@ pre code {
       color: white;
     }
   }
+}
+
+.second-icon {
+  transform: translate(0, 2px);
+}
+
+.third-icon {
+
+
+  @media all and (min-width: 1025px) {
+    width: 66%;
+    transform: translate(0,19px);
+  }
+
+  @media all and (min-width: 1201px) {
+    width: 68%;
+    transform: translate(0,3px);
+  }
+
+}
+
+.third-icon + h2 {
+  margin-top: 0 !important;
 }
 
 // Dev

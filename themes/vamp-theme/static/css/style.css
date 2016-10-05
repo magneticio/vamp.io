@@ -954,10 +954,22 @@ body {
 }
 
 .h2 {
+  font-size: 16px;
   font-weight: 300;
-  font-size: 24px;
   letter-spacing: 0.05em;
   color: #142D3C;
+}
+
+@media all and (min-width: 1025px) {
+  .h2 {
+    font-size: 22px;
+  }
+}
+
+@media all and (min-width: 1201px) {
+  .h2 {
+    font-size: 24px;
+  }
 }
 
 .h2:not(:first-child):not(:last-child) {
@@ -2345,6 +2357,31 @@ pre code {
 .copy-button.clicked .copied {
   display: block;
   color: white;
+}
+
+.second-icon {
+  -webkit-transform: translate(0, 2px);
+          transform: translate(0, 2px);
+}
+
+@media all and (min-width: 1025px) {
+  .third-icon {
+    width: 66%;
+    -webkit-transform: translate(0, 19px);
+            transform: translate(0, 19px);
+  }
+}
+
+@media all and (min-width: 1201px) {
+  .third-icon {
+    width: 68%;
+    -webkit-transform: translate(0, 3px);
+            transform: translate(0, 3px);
+  }
+}
+
+.third-icon + h2 {
+  margin-top: 0 !important;
 }
 
 #__bs_notify__ {

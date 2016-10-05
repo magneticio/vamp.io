@@ -121,7 +121,7 @@ function getMenuFile(callback) {
   $(document.links).filter(function() {
     return this.hostname != window.location.hostname;
   }).attr('target', '_blank');
-  
+
   //Initi slicknav
   var slickNavConfig = {
     label: '',
