@@ -1,6 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Vamp components
+title: Vamp components and architecture
 ---
 Vamp  consists of server- and client-side components that work together with elements in your architecture to handle orchetstration, routing, persistence and big data aggregation.
 
@@ -21,7 +21,7 @@ The Vamp UI is a graphical web interface for managing Vamp in a web browser. Pac
 ## Vamp CLI  
 Vamp CLI is a command line interface for managing Vamp and providing integration with (shell) scripts.
 
-## Your archetecture
+## Your architecture
 
 Vamp and the Vamp Gateway Agent require specific elements in your architecture to handle orchetstration, routing, persistence and big data aggregation. There is no set architecture required for running Vamp and every use case or specific combination of tools and platforms can have its own set up.
 

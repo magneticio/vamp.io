@@ -3,10 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: API Reference
 ---
 
-This page gives full details of all available API calls. 
-
-#### See also
-* [Using the API](/documentation/api/) - pagination, json and yaml content types and effective use of the API
+This page gives full details of all available API calls. See [Using the API](/documentation/api/) for details on pagination, json and yaml content types and effective use of the API
 
 ## Blueprints
 

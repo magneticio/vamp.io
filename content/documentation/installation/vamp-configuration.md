@@ -213,5 +213,3 @@ Environment variables have precedence over `application.conf` or system properti
 {{< /note >}}
 
 * Read more about [environment variables](/documentation/using-vamp/environment-variables/).
-
-## Sysyem properties
