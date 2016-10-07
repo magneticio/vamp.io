@@ -12,8 +12,7 @@ Vamp is an open source, self-hosted platform for managing (micro)service oriente
 
 With Vamp you can orchestrate complex deployment patterns, such as architecture level A/B testing and canary releases, from one intuitive (graphical) interface. Vamp takes care of all the heavy lifting - route updates, metrics collection and service discovery.
 
-Find out [how Vamp works](/resources/how-vamp-works/).
-
+Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components).
 
 
 ## Did you know?
@@ -27,10 +26,10 @@ Find out [how Vamp works](/resources/how-vamp-works/).
 
 
 {{< note title="What next?" >}}
-* [Try Vamp](/try-vamp/)
+* [Try Vamp](/documentation/installation/hello-world)
 * [Use cases: Vamp solutions to practical problems](use-cases/)
 * [What Vamp offers compared to other tools and services](vamp-compared-to/)
-* [How Vamp works](/documentation/how-vamp-works/components-and-architecture)
+* [How Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}
 
 

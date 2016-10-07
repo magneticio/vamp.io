@@ -7,7 +7,8 @@ title: Downloads
   * [Vamp](#vamp)
   * [Vamp Gateway Agent (VGA)](#vamp-gateway-agent-vga)
   * [Vamp CLI](#vamp-cli)
-* [Vamp CLI for MacOS X](#vamp-cli-for-macos-x) (Homebrew)
+* Homebrew
+  * [Vamp CLI for MacOS X](#vamp-cli-for-macos-x)
 * [Docker images](#docker-images)
 * Build from source
   * [Build Vamp](#build-vamp)
@@ -18,11 +19,8 @@ title: Downloads
 ## Binaries
 
 ### Vamp
-**Download from: [bintray.com/magnetic-io - Vamp](https://bintray.com/magnetic-io/downloads/vamp/view)**
-
-{{< note title="Note!" >}}
-OpenJDK or Oracle Java version 1.8.0_40 or higher required. Check with `java -version`.
-{{< /note >}}  
+**Download: [bintray.com/magnetic-io - Vamp](https://bintray.com/magnetic-io/downloads/vamp/view)**  
+**Requirements:** OpenJDK or Oracle Java version 1.8.0_40 or higher
 
 #### Example
 Let's assume that the Vamp binary is `vamp.jar`.
@@ -38,31 +36,28 @@ Processing configuration is based on the typesafe library. Additional informatio
 
 ### Vamp Gateway Agent (VGA)
 
-**Download from: [bintray.com/magnetic-io - Vamp Gateway Agent](https://bintray.com/magnetic-io/downloads/vamp-gateway-agent/view)**
+**Download: [bintray.com/magnetic-io - Vamp Gateway Agent](https://bintray.com/magnetic-io/downloads/vamp-gateway-agent/view)**
 
 Documentation can be found on the project page ([github.com/magneticio - Vamp Gateway Agent](https://github.com/magneticio/vamp-gateway-agent)). 
 ### Vamp CLI
 
-**Download from: [bintray.com/magnetic-io - Vamp CLI](https://bintray.com/magnetic-io/downloads/vamp-cli/view)**
-{{< note title="Note!" >}}
-OpenJDK or Oracle Java version 1.8.0_40 or higher required. Check with `java -version`.
-{{< /note >}}  
+**Download: [bintray.com/magnetic-io - Vamp CLI](https://bintray.com/magnetic-io/downloads/vamp-cli/view)**  
+**Requirements:** OpenJDK or Oracle Java version 1.8.0_40 or higher
 
 #### Manual install - Windows and Linux
 Inside the extracted Vamp CLI binary package ([bintray.com/magnetic-io - Vamp CLI](https://bintray.com/magnetic-io/downloads/vamp-cli/view)) is a `bin` directory. Add it to your PATH statement, open a Console/CMD window and type `vamp`.
 
-## Vamp CLI for MacOS X
+## Homebrew
+### Vamp CLI for MacOS X
+**Download:** We have Homebrew support to install the Vamp CLI on MacOS X  
+**Requirements:** OpenJDK or Oracle Java version 1.8.0_40 or higher  
 
-We have Homebrew support to install the Vamp CLI on MacOS X.
+#### Homebrew install - MacOS X
 
 ```bash
 brew tap magneticio/vamp
 brew install vamp
 ```
-
-{{< note title="Note!" >}}
-OpenJDK or Oracle Java version 1.8.0_40 or higher required. Check with `java -version`.
-{{< /note >}}  
 
 After installation, check if everything is properly installed with `vamp version`, then export the location of the Vamp host and check that the CLI can talk to Vamp:
 ```bash
@@ -77,15 +72,7 @@ VGA Docker images with HAProxy can be pulled from the Docker hub ([hub.docker.co
 ## Build from source
 
 ### Build Vamp
-
-#### Requirements
-
-- OpenJDK or Oracle Java version of 1.8.0_40 or higher. Check the version with `java -version`
-- git ([git-scm.com](https://git-scm.com/))
-- sbt ([scala-sbt.org](http://www.scala-sbt.org/index.html))
-- npm ([npmjs.com](https://www.npmjs.com/)) and Gulp ([gulpjs.com](http://gulpjs.com/))
-
-#### Steps
+**Requirements:** OpenJDK or Oracle Java version of 1.8.0_40 or higher, git ([git-scm.com](https://git-scm.com/)), sbt ([scala-sbt.org](http://www.scala-sbt.org/index.html)), npm ([npmjs.com](https://www.npmjs.com/)) and Gulp ([gulpjs.com](http://gulpjs.com/))
 
 1. Checkout the source from the official repo ([github.com/magneticio - Vamp](https://github.com/magneticio/vamp)):   
   {{< note title="Note!" >}} 
@@ -103,12 +90,7 @@ Check this example: [github.com/magneticio - Vamp docker quick start make.sh](ht
 
 ### Build Vamp Gateway Agent (VGA)
 
-#### Requirements
-
-- Go ([golang.org](https://golang.org/))
-- git ([git-scm.com](https://git-scm.com/))
-
-#### Steps
+**Requirements:** Go ([golang.org](https://golang.org/)) and git ([git-scm.com](https://git-scm.com/))
 
 1. Checkout the source from the official repo ([github.com/magneticio - Vamp gateway agent](https://github.com/magneticio/vamp-gateway-agent)). Current `master` branch is backward compatible with the latest 0.9.0 Vamp build.
 2. Set Go variables depending on target environment
