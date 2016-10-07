@@ -1,6 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Elasticsearch, Logstash and Kibana (ELK) configuration
+title: Configure Elastic Stack
 ---
 
 HAProxy (VGA) generates logs and makes them accessible via open socket - check the HAProxy configuration ([github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.cfg](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.cfg)) of `log`.

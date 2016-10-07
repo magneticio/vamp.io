@@ -1,6 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Vamp configuration
+title: Configure Vamp
 ---
 
 Vamp can be configured using one or a combination of:

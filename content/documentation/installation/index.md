@@ -2,7 +2,7 @@
 date: 2016-09-13T09:00:00+00:00
 title: Installation
 ---
-Before you get Vamp up and running on your architecture, it is helpful to understand [how vamp works](/documentation/how-vamp-works/) and the role of each component and its preferred location in [typical architectures](/documentation/how-vamp-works/example-architectures/).  
+Before you get Vamp up and running on your architecture, it is helpful to understand [how vamp works](/documentation/how-vamp-works/vamp-components-and-architecture) and the role of each component and its preferred location in a typical architecture.  
 
 If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
@@ -16,8 +16,8 @@ If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
 #### Configuration
 
-* [Vamp configuration](vamp-configuration/)
-* [Elasticsearch, Logstash and Kibana (ELK) configuration](elastic-configuration/) 
+* [Vamp configuration](configure-vamp/)
+* [Elasticsearch, Logstash and Kibana (ELK) configuration](configure-elastic-stack/) 
 
 ## Try Vamp
 

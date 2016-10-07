@@ -195,7 +195,7 @@
           "visible": true
         },
         {
-          "path": "why-use-vamp/features",
+          "path": "why-use-vamp/feature-list",
           "text": "Feature list",
           "visible": true
         },
@@ -214,67 +214,18 @@
       "visible": true
     },
     {
-      "path": "try-vamp",
-      "children": [
-        {
-          "path": "try-vamp",
-          "text": "Overview",
-          "visible": true
-        },
-        {
-          "path": "try-vamp/hello-world",
-          "text": "Hello world",
-          "visible": true
-        },
-        {
-          "path": "try-vamp/sava-tutorials",
-          "children": [
-            {
-              "path": "try-vamp/sava-tutorials/deploy-your-first-blueprint",
-              "text": "Deploy your first blueprint",
-              "visible": true
-            },
-            {
-              "path": "try-vamp/sava-tutorials/run-a-canary-release",
-              "text": "Run a canary release",
-              "visible": true
-            },
-            {
-              "path": "try-vamp/sava-tutorials/split-into-services",
-              "text": "Split a monolith into services",
-              "visible": true
-            },
-            {
-              "path": "try-vamp/sava-tutorials/index",
-              "text": "Index",
-              "visible": false
-            },
-            {
-              "path": "try-vamp/sava-tutorials/merge-a-changed-topology",
-              "text": "Merge a changed topology",
-              "visible": true
-            }
-          ],
-          "text": "Sava tutorials",
-          "visible": true
-        }
-      ],
-      "text": "TRY VAMP",
-      "visible": false
-    },
-    {
-      "path": "documentation/how-vamp-works/vamp-components",
+      "path": "documentation/how-vamp-works/vamp-components-and-architecture",
       "children": [
         {
           "path": "documentation/how-vamp-works/vamp-components",
           "children": [
             {
               "path": "documentation/how-vamp-works/vamp-architecture",
-              "text": "Vamp architecture",
+              "text": "Vamp architecture - TO REMOVE",
               "visible": true
             },
             {
-              "path": "documentation/how-vamp-works/vamp-components",
+              "path": "documentation/how-vamp-works/vamp-components-and-architecture",
               "text": "Vamp components and architecture",
               "visible": true
             },
@@ -308,7 +259,7 @@
           [
             {
               "path": "documentation/installation",
-              "text": "Introduction",
+              "text": "Overview",
               "visible": true
             },
             {
@@ -347,12 +298,12 @@
               "visible": true
             },
             {
-              "path": "documentation/installation/vamp-configuration",
+              "path": "documentation/installation/configure-vamp",
               "text": "Configure Vamp",
               "visible": true
             },
             {
-              "path": "documentation/installation/elastic-configuration",
+              "path": "documentation/installation/configure-elastic-stack",
               "text": "Configure Elastic Stack",
               "visible": true
             }
@@ -363,6 +314,11 @@
         {
           "path": "documentation/tutorials",
           "children": [
+            {
+              "path": "documentation/tutorials",
+              "text": "Overview",
+              "visible": true
+            },
             {
               "path": "documentation/tutorials/deploy-your-first-blueprint",
               "text": "Deploy your first blueprint",
@@ -379,11 +335,6 @@
               "visible": true
             },
             {
-              "path": "documentation/tutorials/index",
-              "text": "Index",
-              "visible": false
-            },
-            {
               "path": "documentation/tutorials/merge-and-delete",
               "text": "Merge and delete",
               "visible": true
@@ -393,11 +344,11 @@
           "visible": true
         },
         {
-          "path": "documentation/using-vamp",
+          "path": "documentation/using-vamp/artifacts",
           "children": [
             {
-              "path": "documentation/using-vamp",
-              "text": "Overview",
+              "path": "documentation/using-vamp/artifacts",
+              "text": "Vamp artifacts",
               "visible": true
             },
             {
@@ -465,16 +416,16 @@
           "visible": true
         },
         {
-          "path": "documentation/api",
+          "path": "documentation/api/api-reference",
           "children": [
-            {
-              "path": "documentation/api",
-              "text": "Using the Vamp API",
-              "visible": true
-            },
             {
               "path": "documentation/api/api-reference",
               "text": "API reference",
+              "visible": true
+            },
+            {
+              "path": "documentation/api/using-the-api",
+              "text": "Using the Vamp API",
               "visible": true
             }
           ],
@@ -482,16 +433,16 @@
           "visible": true
         },
         {
-          "path": "documentation/cli",
+          "path": "documentation/cli/cli-reference",
           "children": [
-            {
-              "path": "documentation/cli",
-              "text": "Using the Vamp CLI",
-              "visible": true
-            },
             {
               "path": "documentation/cli/cli-reference",
               "text": "CLI reference",
+              "visible": true
+            },
+            {
+              "path": "documentation/cli/using-the-cli",
+              "text": "Using the Vamp CLI",
               "visible": true
             }
           ],
@@ -528,11 +479,6 @@
       ],
       "text": "Resources",
       "visible": true
-    },
-    {
-      "path": "news",
-      "text": "News",
-      "visible": false
     },
     {
       "path": "support",
