@@ -219,19 +219,14 @@
       "visible": true
     },
     {
-      "path": "documentation/how-vamp-works/components-and-architecture",
+      "path": "documentation/how-vamp-works/architecture-and-components",
       "children": [
         {
-          "path": "documentation/how-vamp-works/components-and-architecture",
+          "path": "documentation/how-vamp-works/architecture-and-components",
           "children": [
             {
-              "path": "documentation/how-vamp-works/vamp-architecture",
-              "text": "Vamp architecture - TO REMOVE",
-              "visible": true
-            },
-            {
-              "path": "documentation/how-vamp-works/components-and-architecture",
-              "text": "Components and architecture",
+              "path": "documentation/how-vamp-works/architecture-and-components",
+              "text": "Architecture and components",
               "visible": true
             },
             {
