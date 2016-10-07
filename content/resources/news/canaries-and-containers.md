@@ -72,7 +72,7 @@ name: my_VAMP_blueprint
       services:
         breed:
           name: my_breed
-          deployable: registry.magnetic.io/app:1.0
+          deployable: registry.example.com/app:1.0
         scale:
           cpu: 2
           memory: 1024MB
