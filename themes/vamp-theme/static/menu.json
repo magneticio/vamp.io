@@ -195,6 +195,11 @@
           "visible": true
         },
         {
+          "path": "why-use-vamp/see-vamp-in-action",
+          "text": "See Vamp in action",
+          "visible": true
+        },
+        {
           "path": "why-use-vamp/feature-list",
           "text": "Feature list",
           "visible": true
@@ -217,7 +222,7 @@
       "path": "documentation/how-vamp-works/vamp-components-and-architecture",
       "children": [
         {
-          "path": "documentation/how-vamp-works/vamp-components",
+          "path": "documentation/how-vamp-works/vamp-components-and-architecture",
           "children": [
             {
               "path": "documentation/how-vamp-works/vamp-architecture",
@@ -227,6 +232,11 @@
             {
               "path": "documentation/how-vamp-works/vamp-components-and-architecture",
               "text": "Vamp components and architecture",
+              "visible": true
+            },
+            {
+              "path": "documentation/how-vamp-works/what-to-choose",
+              "text": "What to choose?",
               "visible": true
             },
             {
