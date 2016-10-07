@@ -219,10 +219,10 @@
       "visible": true
     },
     {
-      "path": "documentation/how-vamp-works/vamp-components-and-architecture",
+      "path": "documentation/how-vamp-works/components-and-architecture",
       "children": [
         {
-          "path": "documentation/how-vamp-works/vamp-components-and-architecture",
+          "path": "documentation/how-vamp-works/components-and-architecture",
           "children": [
             {
               "path": "documentation/how-vamp-works/vamp-architecture",
@@ -230,8 +230,8 @@
               "visible": true
             },
             {
-              "path": "documentation/how-vamp-works/vamp-components-and-architecture",
-              "text": "Vamp components and architecture",
+              "path": "documentation/how-vamp-works/components-and-architecture",
+              "text": "Components and architecture",
               "visible": true
             },
             {
@@ -255,7 +255,7 @@
               "visible": true
             },
             {
-              "path": "documentation/how-vamp-works/routing",
+              "path": "documentation/how-vamp-works/routing-and-load-balancing",
               "text": "Routing and load balancing",
               "visible": true
             }
@@ -358,7 +358,7 @@
           "children": [
             {
               "path": "documentation/using-vamp/artifacts",
-              "text": "Vamp artifacts",
+              "text": "Artifacts",
               "visible": true
             },
             {

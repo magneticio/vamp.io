@@ -1,8 +1,8 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Vamp components and architecture
+title: Components and architecture
 ---
-Vamp  consists of server- and client-side components that work together with elements in your architecture to handle orchetstration, routing, persistence and big data aggregation.
+Vamp consists of server- and client-side components that work together with elements in your architecture to handle orchetstration, routing, persistence and big data aggregation.
 
 ## Vamp  
 Vamp is the main API endpoint, business logic and service coordinator. Vamp talks to the configured container manager (Docker, Marathon, Kubernetes etc.) and synchronizes it with Vamp Gateway Agent (VGA)  via ZooKeeper, etcd or Consul. Vamp uses Elasticsearch for artifact persistence and to store events (e.g. changes in deployments).

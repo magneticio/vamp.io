@@ -25,9 +25,12 @@ Find out [how Vamp works](/resources/how-vamp-works/).
 * Vamp includes clear SLA management and service level enforcement out of the box
 * Vamp is an open source project, actively developed by [Magnetic.io](/about/)
 
-## What next?
 
+{{< note title="What next?" >}}
 * [Try Vamp](/try-vamp/)
 * [Use cases: Vamp solutions to practical problems](use-cases/)
 * [What Vamp offers compared to other tools and services](vamp-compared-to/)
-* [How Vamp works](/resources/how-vamp-works/)
+* [How Vamp works](/documentation/how-vamp-works/components-and-architecture)
+{{< /note >}}
+
+
