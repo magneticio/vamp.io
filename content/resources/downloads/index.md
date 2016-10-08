@@ -3,18 +3,22 @@ date: 2016-09-13T09:00:00+00:00
 title: Downloads
 ---
 
-* Binaries
-  * [Vamp](#vamp)
-  * [Vamp Gateway Agent (VGA)](#vamp-gateway-agent-vga)
-  * [Vamp CLI](#vamp-cli)
-* Homebrew
-  * [Vamp CLI for MacOS X](#vamp-cli-for-macos-x)
-* [Docker images](#docker-images)
-* Build from source
-  * [Build Vamp](#build-vamp)
-  * [Build Vamp Gateway Agent (VGA)](#build-vamp-gateway-agent-vga)
-  
+#### Binaries
+* [Vamp](#vamp)
+* [Vamp Gateway Agent (VGA)](#vamp-gateway-agent-vga)
+* [Vamp CLI](#vamp-cli)
 
+#### Homebrew
+* [Vamp CLI for MacOS X](#vamp-cli-for-macos-x)
+
+#### Docker images
+* [VGA and HAProxy](#vga-and-haproxy)
+
+#### Build from source
+* [Build Vamp](#build-vamp)
+* [Build Vamp Gateway Agent (VGA)](#build-vamp-gateway-agent-vga)
+  
+-----------
 
 ## Binaries
 
@@ -67,6 +71,7 @@ vamp info
 
 ## Docker images
 
+### VGA and HAProxy
 VGA Docker images with HAProxy can be pulled from the Docker hub ([hub.docker.com - magneticio Vamp gateway agent](https://hub.docker.com/r/magneticio/vamp-gateway-agent/)).
 
 ## Build from source
