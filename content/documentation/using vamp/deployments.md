@@ -32,9 +32,8 @@ Once we have issued the deployment, Vamp will do the following:
 Vamp will add runtime information to the deployment model, like start times, resolved ports etc.
 
 
-## Where next?
-
-* Read about [Environment variables](/documentation/using-vamp/environment-variables/)
-* Read about [Canary releases and A/B testing](/documentation/using-vamp/canary-releases-and-a-b-testing/)
-* check the [API documentation](/documentation/api/)
-* [Try Vamp](/try-vamp)
+{{< note title="What next?" >}}
+* Read about using Vamp for [Canary releases and A/B testing](/documentation/using-vamp/canary-releases-and-a-b-testing/)
+* Check the [API documentation](/documentation/api/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
+{{< /note >}}

@@ -8,8 +8,7 @@ Kubernetes support is still in Alpha.
 {{< /note >}}
 
 #### Tested against
-This guide has been tested on Kubernetes 1.2
-Minikube can also be used. ([github.com - minikube](https://github.com/kubernetes/minikube)) 
+This guide has been tested on Kubernetes 1.2. Minikube can also be used. ([github.com - minikube](https://github.com/kubernetes/minikube)) 
 
 #### Requirements
 

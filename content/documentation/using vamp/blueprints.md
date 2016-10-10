@@ -186,8 +186,10 @@ cpu: 2        # Number of CPUs per instance.
 memory: 2gb   # Memory per instance, MB/GB units.
 instances: 2  # Number of instances.
 ```
-## Where next?
 
-* Read about [Deployments](/documentation/using-vamp/deployments/)
-* check the [API documentation](/documentation/api/)
-* [Try Vamp](/try-vamp)
+{{< note title="What next?" >}}
+* Read about [Vamp deployments](/documentation/using-vamp/deployments/)
+* Check the [API documentation](/documentation/api/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
+{{< /note >}}
+

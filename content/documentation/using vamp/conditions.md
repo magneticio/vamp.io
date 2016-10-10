@@ -49,7 +49,7 @@ Using a tool like httpie ([github.com/jkbrzt/httpie](https://github.com/jakubroz
 
     http GET http://10.26.184.254:9050/ X-VAMP-MY-COOL-HEADER:stuff
 
-### Boolean expression in conditions
+## Boolean expression in conditions
 
 Vamp supports `AND`, `OR`, negation `NOT` and grouping `( )`:
 
@@ -62,7 +62,7 @@ gateways:
 
 * Additional boolean expression examples: [github.com/magneticio/vamp - BooleanParserSpec.scala](https://github.com/magneticio/vamp/blob/master/model/src/test/scala/io/vamp/model/parser/BooleanParserSpec.scala).
 
-### URL path rewrite
+## URL path rewrite
 
 Vamp also supports URL path rewrite which can be powerful solution in defining service APIs (e.g. RESTful) outside of application service.
 
@@ -80,7 +80,7 @@ Path rewrite is defined in format: `path: NEW_PATH if CONDITION`:
 - `NEW_PATH` new path to be used; HAProxy variables are supported, e.g. `%[path]`
 - `CONDITION` condition using HAProxy directives, e.g. matching path, method, headers etc.
 
-### Vamp managed and external routes
+## Vamp managed and external routes
 
 Vamp managed routes are in the format:
 
@@ -104,8 +104,9 @@ routes:
     weight: 50%
 ```
 
-## Where next?
+{{< note title="What next?" >}}
+* Read about [Vamp events](/documentation/using-vamp/events/)
+* Check the [API documentation](/documentation/api/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
+{{< /note >}}
 
-* Read about [Events](/documentation/using-vamp/events/)
-* check the [API documentation](/documentation/api/)
-* [Try Vamp](/try-vamp)

@@ -9,14 +9,14 @@ Log format is configurable in Vamp configuration vamp.gateway-driver.haproxy ([g
 
 * For an effective feedback loop, HTTP/TCP logs should be collected, stored and analyzed
 * Collection and storing is done by a combination of HAProxy, VGA and Logstash setup
-* Logs can be stored in Elasticsearch and later analyzed and visualized by Kibana.
+* Logs can be stored in Elasticsearch and later analysed and visualised by Kibana.
 
 {{< note title="Note!" >}}
 * Logstash is listening on UDP port, but in principle any other listener can receive logs forwarded by VGA. 
-* Different VGA's can use different Logstash instances.
+* Different VGAs can use different Logstash instances.
 {{< /note >}}
 
-## Logstash configuration
+## Configure Logstash
 In general, for each HTTP/TCP request to HAProxy, several log messages are created (e.g. for gateway, service and instance level).
 Using one of the simplest Logstash configurations should be sufficient for dozens of requests per second - or even more.
 This also depends on whether ELK is used for custom application/service logs etc.

@@ -128,8 +128,8 @@ clusters:
     ...
 ```
 
-## Where next?
-
-* Read about [Virtual hosts](/documentation/using-vamp/virtual-hosts/)
-* Check the [API documentation](/documentation/api/)
-* [Try Vamp](/try-vamp)
+{{< note title="What next?" >}}
+* Read about [using Vamp with virtual hosts](/documentation/using-vamp/virtual-hosts/)
+* Check the [API documentation](/documentation/api/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
+{{< /note >}}

@@ -5,7 +5,7 @@ title: Canary releases and A/B testing
 
 A common Vamp deployment scenario is to introduce a new version of the service to an existing cluster, this is what we call a **merge**. After testing/migration is done, the old or new version can be removed from the cluster, simply called a **removal**. Let's look at each in turn.
 
-### Merge
+## Merge
 
 Merging of new services is performed as a deployment update. You can merge in many ways:
 
@@ -108,7 +108,7 @@ In the last few examples we have shown the following:
 * A canary release with a cluster update and change of the topology (a new cluster was added).
 * An update of the gateways for a cluster - similar to a cluster scale update (instances, cpu, memory).
 
-### Removal
+## Removal
 
 Removal is done using the REST API `DELETE` request together with the new blueprint as request body.
 If a service exists it will be removed, otherwise the request is ignored. If a cluster has no more services left the cluster will be removed completely. Lastly, if a deployment has no more clusters it will be completely removed (destroyed).
@@ -191,8 +191,9 @@ In a nutshell: If we say that the first version was A and the second B, then we 
 We could also remove the newer version (monarch_1.1 with/without recommendation cluster) in case that it didn't perform as we expected.
 
 
-## Where next?
+{{< note title="What next?" >}}
+* Read about [Vamp environment variables](/documentation/using-vamp/environment-variables/)
+* Check the [API documentation](/documentation/api/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
+{{< /note >}}
 
-* Read about [Environment variables](/documentation/using-vamp/environment-variables/)
-* check the [API documentation](/documentation/api/)
-* [Try Vamp](/try-vamp)

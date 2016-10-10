@@ -12,3 +12,9 @@ Why guess? Using Vamp you could A/B test different versions of your services wit
 1. __Deploy two versions:__ Vamp can deploy multiple versions of your architecture, each with a different database solution (or other configuration settings), then distribute incoming traffic across each.
 2. __Stress test:__ Use the metrics reported by Vamp to measure which option performs best in production.
 3. __Keep the best performing option:__ Once you have made your decision, Vamp can route all traffic to your chosen architecture. Services from the alternative options will be drained to ensure customer experience is not impacted by the test.
+
+{{< note title="What next?" >}}
+* [Try Vamp](/documentation/installation/hello-world)
+* See [how Vamp measures up](/why-use-vamp/vamp-compared-to//proxies-and-load-balancers/) to other common platforms, tools and frameworks  
+* Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
+{{< /note >}}

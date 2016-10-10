@@ -315,8 +315,8 @@ Deploying Vamp Gateway Agent on all public and private Mesos agent nodes through
 {{< note title="What next?" >}}
 
 * Once you have Vamp up and running you can follow our [getting started tutorials](/documentation/tutorials/).
+* Chcek the [Vamp documentation](/documentation/how-vamp-works/architecture-and-components/)
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
-* Remember, this is not a production grade setup!
 
 If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 {{< /note >}}

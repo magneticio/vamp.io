@@ -137,8 +137,7 @@ $ curl --resolve run.vamp.run:80:${VAMP_GATEWAY_AGENT_IP} http://run.vamp.run
 
 `9080.runner.vamp` is added if configuration parameter `vamp.operation.gateway.virtual-hosts` is set, otherwise just custom virtual hosts if any.
 
-## Where next?
-
-* Read about [Vamp CLI](/documentation/using-vamp/cli/)
-* Check the [API documentation](/documentation/api/)
-* [Try Vamp](/try-vamp)
+{{< note title="What next?" >}}
+* Check the [API documentation](/documentation/api/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
+{{< /note >}}

@@ -12,3 +12,9 @@ Why rollback? Using Vamp's smart conditional routing you could send specific cli
 1. __Re-deploy:__ Vamp can (re)deploy a (containerised) compatible version of your portal to run side-by-side with the upgraded version.
 2. __Activate smart routing:__ Vamp can route all users with e.g. a specific IP, browser or location to a compatible version of the portal. Other clients will continue to see the new upgraded portal.
 3. __Resolve the incompatibility:__ Once the client upgrades to a compatible browser Vamp can automatically route them to the new portal version.
+
+{{< note title="What next?" >}}
+* [Try Vamp](/documentation/installation/hello-world)
+* See [how Vamp measures up](/why-use-vamp/vamp-compared-to//proxies-and-load-balancers/) to other common platforms, tools and frameworks  
+* Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
+{{< /note >}}

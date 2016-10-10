@@ -228,8 +228,8 @@ The following query gives back the last set of delete actions executed in the Va
 ```
 
 
-## Where next?
-
-* Read about [SLA and escalations](/documentation/using-vamp/sla-and-escalations/)
-* check the [API documentation](/documentation/api/)
-* [Try Vamp](/try-vamp)
+{{< note title="What next?" >}}
+* Read about [Vamp SLA (Service Level Agreement)](/documentation/using-vamp/sla/)
+* Check the [API documentation](/documentation/api/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
+{{< /note >}}

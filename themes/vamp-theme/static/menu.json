@@ -372,6 +372,11 @@
               "visible": true
             },
             {
+              "path": "documentation/using-vamp/canary-releases-and-a-b-testing",
+              "text": "Canary releases and A/B testing",
+              "visible": true
+            },
+            {
               "path": "documentation/using-vamp/environment-variables",
               "text": "Environment variables",
               "visible": true
@@ -392,8 +397,13 @@
               "visible": true
             },
             {
-              "path": "documentation/using-vamp/sla-and-escalations",
-              "text": "SLA and escalations",
+              "path": "documentation/using-vamp/sla",
+              "text": "SLA (Service Level Agreement)",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/escalations",
+              "text": "Escalations",
               "visible": true
             },
             {
