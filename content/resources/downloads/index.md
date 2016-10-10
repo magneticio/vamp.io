@@ -49,7 +49,20 @@ Documentation can be found on the project page ([github.com/magneticio - Vamp Ga
 **Requirements:** OpenJDK or Oracle Java version 1.8.0_40 or higher
 
 #### Manual install - Windows and Linux
-Inside the extracted Vamp CLI binary package ([bintray.com/magnetic-io - Vamp CLI](https://bintray.com/magnetic-io/downloads/vamp-cli/view)) is a `bin` directory. Add it to your PATH statement, open a Console/CMD window and type `vamp`.
+Inside the extracted Vamp CLI binary package ([bintray.com/magnetic-io - Vamp CLI](https://bintray.com/magnetic-io/downloads/vamp-cli/view)) is a `bin` directory. Add it to your PATH statement, open a Console/CMD window and type `vamp`.  
+After installation, set Vamp’s host location:
+
+* Vamp’s host location specified as a command line option ( `--host` )
+
+```
+vamp list breeds --host=http://192.168.59.103:8080
+```
+
+* Vamp’s host location specified via the environment variable `VAMP_HOST`
+
+```
+export VAMP_HOST=http://192.168.59.103:8080
+```
 
 ## Homebrew
 ### Vamp CLI for MacOS X

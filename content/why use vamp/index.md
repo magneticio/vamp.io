@@ -6,16 +6,21 @@ title: Why use Vamp?
 We recognise the pain and risk involved with delivering microservice applications.  We've been there too - facing downtime and unexpected issues while transitioning from one release to the next. 
 In microservice architectures, these concerns can quickly multiply. It's all too easy to get stuck dealing with the added complexities and miss out on the potential benefits. 
 
-## Deploy online services, seamlessly
+Benefits of a microservices architecture:
 
-Vamp is an open source, self-hosted platform for managing (micro)service oriented architectures that rely on container technology. The Vamp DSL allows you to describe your services, their dependencies and required runtime environments in blueprints.  These blueprints can then be deployed by the Vamp runtime/execution engine (similar to AWS Cloudformation). You can monitor and manage deployments and running services from your choice of interface - graphical UI, command line or RESTful API. Vamp workflows can also monitor applications for you and act automatically based on pre-defined SLAs.
+* speed of development and deployment
+* separation of concerns
+* scalability & resiliency
 
-With Vamp you can orchestrate complex deployment patterns, such as architecture level A/B testing and canary releases, from one intuitive (graphical) interface. Vamp takes care of all the heavy lifting - route updates, metrics collection and service discovery.
+## What is Vamp?
 
-Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components).
+Vamp is an open source, self-hosted platform for managing (micro)service oriented architectures that rely on container technology. Vamp provides a DSL to describe services, their dependencies and required runtime environments in blueprints and a runtime/execution engine to deploy these blueprints (similar to AWS Cloudformation). Planned deployments and running services can be managed from your choice of Vamp interface - graphical UI, command line interface or RESTful API. 
 
+After deployment, Vamp workflows continue to monitor running applications and can act automatically based on defined SLAs.  You can use Vamp to orchestrate complex deployment patterns, such as architecture level A/B testing and canary releases. Vamp will take care of all the heavy lifting, such as route updates, metrics collection and service discovery.
 
-## Did you know?
+![](/images/typical-systems-vs-vamp.png)
+
+### Vamp facts
 
 * Vamp is platform agnostic
 * Vamp is functionality agnostic, but functions well in an API centric, event driven and stateless environment. 
@@ -28,7 +33,7 @@ Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-compone
 {{< note title="What next?" >}}
 * [Try Vamp](/documentation/installation/hello-world)
 * [Use cases: Vamp solutions to practical problems](use-cases/)
-* [What Vamp offers compared to other tools and services](vamp-compared-to/)
+* [What Vamp offers compared to other tools and services](vamp-compared-to/proxies-and-load-balancers/)
 * [How Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}
 
