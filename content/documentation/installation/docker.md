@@ -53,6 +53,6 @@ Vamp can even run inside Docker while deploying to Docker.
     }
     ...
     ```
-    See [Vamp configuration](/documentation/installation/vamp-configuration/) for details of the the Vamp `application.conf` file
+    See [Vamp configuration](/documentation/installation/configure-vamp/) for details of the the Vamp `application.conf` file
 5. (Re)start Vamp by restarting the Java process by hand.   
 

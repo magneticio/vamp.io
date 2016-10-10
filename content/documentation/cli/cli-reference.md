@@ -3,9 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: CLI reference
 ---
 
-#### See also
-
-* [Using the CLI](/documentation/cli/) - installation, configuration and effective use of the CLI
+See [using the Vamp CLI](/documentation/cli/using-the-cli) for details on installation, configuration and effective use of the CLI
 
 ## Commands
 

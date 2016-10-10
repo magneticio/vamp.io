@@ -1,6 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Routing
+title: Routing and load balancing
 ---
 
 ## Vamp Gateway Agent (VGA) and HAProxy
@@ -16,5 +16,7 @@ This also means that Vamp (not VGA) can be restarted, stopped etc. without main 
 {{< note title="Note!">}}
 * There should be one dedicated HAProxy for each VGA. 
 * Vamp also supports custom HAProxy configuration - base configuration should be used as a template and HAProxy frontends and backends are appended by VGA.
-* To correctly set up Vamp with single/multiple VGA instances, check out [Vamp gateway driver configuration](/documentation/installation/vamp-configuration#gateway-driver).
+* All HAProxy instances will always be configured with the same configuration. VGA instances may have different command line parameters (e.g. Logstash URLs), but always have a common HAProxy configuration read from the KV store.
+* To correctly set up Vamp with single/multiple VGA instances, check out [Vamp gateway driver configuration](/documentation/installation/configure-vamp#gateway-driver).
 {{< /note >}}
+

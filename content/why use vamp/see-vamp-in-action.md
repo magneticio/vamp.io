@@ -1,5 +1,5 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Resources
+title: See Vamp in action
 ---
 

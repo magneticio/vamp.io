@@ -1,9 +1,8 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Using Vamp
+title: Artifacts
 ---
 
-## Basic Vamp artifacts
 Vamp has a few basic entities or artifacts you can work with, these can be classed as static resource descriptions and dynamic runtime entities. Note that API actions on static resource descriptions are mostly synchronous, while API actions on dynamic runtime entities are largely asychronous.
 
 ### Static resource descriptions

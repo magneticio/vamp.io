@@ -1,6 +1,6 @@
 ---
 date: 2016-10-04T09:00:00+00:00
-title: Kubernetes
+title: Kubernetes 1.2
 ---
 
 ## Overview

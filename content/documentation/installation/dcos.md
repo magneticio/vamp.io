@@ -1,6 +1,6 @@
 ---
 date: 2016-09-30T12:00:00+00:00
-title: DC/OS
+title: DC/OS 1.7 and 1.8
 ---
 
 ## Overview
@@ -186,7 +186,7 @@ Vamp has now spun up all it's components and you should be able to access the ui
 The Vamp DC/OS Docker image ([github.com/magneticio - Vamp DC/OS](https://github.com/magneticio/vamp-docker/tree/master/vamp-dcos)) contains configuration ([github.com/magneticio - Vamp DC/OS configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf)) that can be overridden for specific needs by:
 
 * Making a new Docker image based on the Vamp DC/OS image
-* Using [environment variables](/documentation/installation/vamp-configuration#environment-variable-configuration)
+* Using [environment variables](/documentation/installation/configure-vamp#environment-variable-configuration)
 
 #### Example 1 - Remove the `metrics` and `health` workflows by Vamp configuration and keep the `kibana` workflow:
 
