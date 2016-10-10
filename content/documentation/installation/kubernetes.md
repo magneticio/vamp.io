@@ -3,41 +3,25 @@ date: 2016-10-04T09:00:00+00:00
 title: Kubernetes 1.2
 ---
 
-## Overview
-
 {{< note title="Note!" >}}
 Kubernetes support is still in Alpha.
 {{< /note >}}
 
-An important part of Vamp is that it's container-scheduler agnostic. So this means Vamp also works with Kubernetes. Let's set it up!
+#### Tested against
+This guide has been tested on Kubernetes 1.2
+Minikube can also be used. ([github.com - minikube](https://github.com/kubernetes/minikube)) 
 
-This quick setup will run Vamp together with etcd, Elasticsearch and Logstash on Google container engine and kubernetes. (We will also deploy our demo Sava application to give you something to play around on).   
-
-
-#### Prerequisistes
+#### Requirements
 
 * Google Container Engine cluster
 * Key-value store (like ZooKeeper, Consul or etcd)
 * Elasticsearch and Logstash
 
-{{< tip >}}
-Minikube can also be used. ([github.com - minikube](https://github.com/kubernetes/minikube)) 
-{{< /tip >}}
-
-#### In this quick setup we will:
-
-1. Create a new GKE cluster
-2. Deploy etcd, Elasticsearch and Logstash
-3. Run Vamp
-4. Deploy the demo Sava application
-
-If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
-
-
-## In depth
-
-### Before we begin...
+#### Before we begin...
 It is advisable to try out the official Quickstart for Google Container Engine tutorial first ([google.com - container engine quickstart](https://cloud.google.com/container-engine/docs/quickstart)).  
+
+## Standard install
+The standard install will run Vamp together with etcd, Elasticsearch and Logstash on Google container engine and kubernetes. (We will also deploy our demo Sava application to give you something to play around on).   
 
 ### Step 1: Create a new GKE cluster:
 
@@ -178,10 +162,10 @@ $ curl --resolve 9050.sava-1-0.vamp:80:146.148.22.145 -v http://9050.sava-1-0.va
 Don't forget to clean up your Kubernetes cluster and firewall rules  if you don't want to use them anymore ([google.com - container engine quickstart: clean up](https://cloud.google.com/container-engine/docs/quickstart#clean-up)).
 {{< /note >}}
 
-## What next?
+{{< note title="What next?" >}}
 
-* Now you're all set to follow the other [Vamp getting started tutorials](/documentation/tutorials/).
+* Once you have Vamp up and running you can jump into the [getting started tutorials](/documentation/tutorials/).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
-* Remember, this is not a production grade setup!
 
 If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+{{< /note >}}

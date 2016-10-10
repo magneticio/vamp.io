@@ -3,38 +3,26 @@ date: 2016-09-13T09:00:00+00:00
 title: Rancher
 ---
 
-
-## Overview
-
 {{< note title="Note!" >}}
 Rancher support is still in Alpha.
 {{< /note >}}
 
-This quick setup will run Vamp together with Consul, Elasticsearch and Logstash on Rancher. (We'll also deploy our demo Sava application to give you something to play around on).
+#### Tested against
 
-#### Prerequisistes
+
+#### Requirements
 
 * Rancher up and running
 * Key-value store like ZooKeeper, Consul or etcd
 * Elasticsearch and Logstash
 
-#### In this quick setup we will:
-
-1. Run Rancher locally
-2. Install Elasticsearch, Consul and Logstash
-3. Run Vamp
-4. Deploy the Sava demo application
-
-If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
-
-## In depth
-
-### Before we begin...
+#### Before we begin...
 It is advisable to try out the official Rancher Quick Start Guide tutorial first ([rancher.com - quick start guide](http://docs.rancher.com/rancher/latest/en/quick-start-guide/)).  
 
-{{< tip >}}
+## Standard install
+The standard install will run Vamp together with Consul, Elasticsearch and Logstash on Rancher. (We'll also deploy our demo Sava application to give you something to play around on).
+
 If you want to make a setup on your local VM based Docker, it's advisable to increase default VM memory size from 1GB to 4GB.
-{{< /tip >}}
 
 ### Step 1: Run Rancher locally
 Based on the official Rancher quickstart tutorial, these are a few simple steps to run Rancher locally:
@@ -155,10 +143,11 @@ If you want to the gateway port to be exposed outside of the cluster via Rancher
 2. Choose name (e.g. `gateway-9050`), `Source IP/Port` ⇒ 9050, `Default Target Port` ⇒ 9050 and `Target Service` ⇒ `vamp-gateway-agent`
  
 
-## What next?
+{{< note title="What next?" >}}
 
-* Now you're all set to follow our [Vamp getting started tutorials](/documentation/tutorials/) (you can start with tutorial 2 - run a canary release as we already deployed the Sava demo application).
+* Once you have Vamp up and running you can jump into the [getting started tutorials](/documentation/tutorials/)
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 * Remember, this is not a production grade setup!
 
 If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+{{< /note >}}

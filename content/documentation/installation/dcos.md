@@ -5,28 +5,26 @@ title: DC/OS 1.7 and 1.8
 
 ## Overview
 
-This quick setup will run Vamp, Mesos and Marathon, together with Zookeeper, Elasticsearch and Logstash on DC/OS. If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+There are different ways to install Vamp on DC.OS. On this page we start out with the most common setup, but if you are interested in doing a custom install or working with public and private nodes you should jump to that section.
 
-#### Prerequisistes
+* [Standard install](#standard-install)
+* [Custom install](#custom-install)
+* [Public and private nodes](#public-and-private-nodes)
 
-Before you start you need to have a DC/OS cluster up and running, as well as the its CLI configured to use it. We assume you have it up and running on http://dcos.example.com/.
 
+## Standard install
+This setup will run Vamp, Mesos and Marathon, together with Zookeeper, Elasticsearch and Logstash on DC/OS. If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+#### Tested against
 This guide has been tested on both 1.7 and the latest 1.8 version of DC/OS.
-Setting it up is outside the scope of this document, for that you need to refer to the official documentation:
+
+#### Requirements
+Before you start you need to have a DC/OS cluster up and running, as well as the its CLI configured to use it. We assume you have it up and running on http://dcos.example.com/.
+Setting up DC/OS is outside the scope of this document, for that you need to refer to the official documentation:
 
 * https://dcos.io/docs/1.7/administration/installing/
 * https://dcos.io/docs/1.7/usage/cli/
 * https://dcos.io/docs/1.8/administration/installing/
 * https://dcos.io/docs/1.8/usage/cli/
-
-#### In this quick setup we will:
-
-1. Install Elasticsearch + Logstash
-2. Deploy Vamp
-3. Get some extra info on creating a custom Vamp setup
-4. DC/OS with public and private nodes and Vamp
-
-## In depth
 
 ### Step 1: Install Elasticsearch + Logstash
 
@@ -181,7 +179,7 @@ Vamp has now spun up all it's components and you should be able to access the ui
 
 > NB If you need help you can also find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
-### Extra info: Creating a custom Vamp setup
+## Custom install
 
 The Vamp DC/OS Docker image ([github.com/magneticio - Vamp DC/OS](https://github.com/magneticio/vamp-docker/tree/master/vamp-dcos)) contains configuration ([github.com/magneticio - Vamp DC/OS configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf)) that can be overridden for specific needs by:
 
@@ -220,7 +218,7 @@ or using Marathon JSON
 }
 ```
 
-### DC/OS with public and private nodes and Vamp
+## Public and private nodes
 
 Running Vamp on public Mesos agent node(s) and disabling automatic Vamp Gateway Agent deployments (but keeping other default workflows) can be done with the following Marathon JSON:
 
@@ -314,10 +312,11 @@ Deploying Vamp Gateway Agent on all public and private Mesos agent nodes through
 
 ```
 
-## What next?
+{{< note title="What next?" >}}
 
-* Now you're all set to follow our [Vamp getting started tutorials](/documentation/tutorials/).
+* Once you have Vamp up and running you can follow our [getting started tutorials](/documentation/tutorials/).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 * Remember, this is not a production grade setup!
 
 If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+{{< /note >}}
