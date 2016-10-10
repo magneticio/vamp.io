@@ -119,10 +119,12 @@
     },
     {
       "path": "why-use-vamp",
+      "text": "Why use Vamp? ",
+      "visible": true,
       "children": [
         {
           "path": "why-use-vamp",
-          "text": "Why use Vamp",
+          "text": "Why use Vamp?",
           "visible": true
         },
         {
@@ -214,9 +216,7 @@
           "text": "Get started",
           "visible": true
         }
-      ],
-      "text": "Why use Vamp? ",
-      "visible": true
+      ]
     },
     {
       "path": "documentation/how-vamp-works/architecture-and-components",
