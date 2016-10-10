@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: API Reference
 ---
 
-This page gives full details of all available API calls. See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
+This page gives full details of all available API calls. See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API.
 
 ## Blueprints
 
@@ -64,9 +64,7 @@ Deletes a blueprint.
 ------------
 
 ## Breeds
-
-#### See also
-* [Using the API](/documentation/api/) - pagination, json and yaml content types and effective use of the API
+See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
 
 ### List breeds
 
@@ -124,8 +122,7 @@ Deletes a breed.
 
 ## Conditions
 
-#### See also
-* [Using the API](/documentation/api/) - pagination, json and yaml content types and effective use of the API
+See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
 
 ### List conditions
 
@@ -177,8 +174,7 @@ Deployments are non-static entities in the Vamp eco-system. They represent runti
 
 Deployments have a set of sub resources: **SLA's**, **scales** and **gateways**. These are instantiations of their static counterparts.
 
-#### See also
-* [Using the API](/documentation/api/) - pagination, json and yaml content types and effective use of the API
+See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
 
 ### List deployments
 
@@ -360,7 +356,7 @@ Updates a deployment scale.
 
 ## Escalations
 
-Please check the notes on using [pagination](/documentation/api-reference/#pagination) and [json and yaml content types](/documentation/api-reference/#content-types) on how to effectively use the REST api.
+See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
 
 ### List escalations
 
@@ -408,7 +404,7 @@ Deletes an escalation.
 
 ## Events
 
-Please check the notes on using [pagination](/documentation/api-reference/#pagination) and [json and yaml content types](/documentation/api-reference/#content-types) on how to effectively use the REST api.
+See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
 
 ### List events
 
@@ -515,8 +511,7 @@ Health is calculated using external services, e.g. Vamp workflows.
 
 ## Scales
 
-#### See also
-* [Using the API](/documentation/api/) - pagination, json and yaml content types and effective use of the API
+See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
 
 ### List scales
 
@@ -564,8 +559,7 @@ Deletes a scale.
 
 ## SLAs
 
-#### See also
-* [Using the API](/documentation/api/) - pagination, json and yaml content types and effective use of the API
+See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
 
 ### List SLAs
 
@@ -675,5 +669,4 @@ Forces Vamp to perform an escalation check, regardless of the configured default
 	GET /api/v1/escalation
 
 ---------------
-#### See also
-* [Using the API](/documentation/api/) - notes on pagination, json and yaml content types and effective use the REST API.
+See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API

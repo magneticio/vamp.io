@@ -19,5 +19,5 @@ Check the [support](/support/) page.
 
 
 ## Community 
-Join the [Vamp community](/community/).
+Join the [Vamp community](/resources/community/).
 

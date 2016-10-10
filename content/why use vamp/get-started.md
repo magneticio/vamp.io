@@ -4,11 +4,11 @@ title: Get started
 ---
 
 ## Try Vamp
-We’ve created some quick setups, demo applications and tutorials so you can [try Vamp out for yourself](/try-vamp/).
+We’ve created some quick setups, demo applications and tutorials so you can [try Vamp out for yourself](/documentation/installation/hello-world).
 
 ## Vamp components
 
-Before you get Vamp up and running on your architecture, it is helpful to understand [how vamp works](/resources/how-vamp-works/) and the role of each component in [typical architectures](/resources/how-vamp-works/example-architectures/).
+Before you get Vamp up and running on your architecture, it is helpful to understand [how vamp works](/documentation/how-vamp-works/architecture-and-components) and the role of each component in typical architectures.
 
 ## Run Vamp
 
@@ -16,4 +16,4 @@ Set Vamp up to run on your architecture in a [production-grade custom set up](/d
 
 ## Need help?
 
-Check the [Vamp documentation](/resources/) or find us on [Gitter](https://gitter.im/magneticio/vamp)
+Check the [Vamp documentation](/documentation/using-vamp/artifacts) or find us on [Gitter](https://gitter.im/magneticio/vamp)

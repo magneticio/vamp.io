@@ -10,9 +10,7 @@ See [using the Vamp CLI](/documentation/cli/using-the-cli) for details on instal
 The VAMP CLI supports the following commands:  
 [create](#create), [deploy](#deploy), [generate](#generate), [help](#help), [info](#info), [inspect](#inspect), [list](#list), [merge](#merge), [remove](#remove), [undeploy](#undeploy), [update](#update), [version](#version)  
 
-{{< tip >}}
-For more details about a specific command, use `vamp COMMAND --help`
-{{< /tip >}}                     
+For details about a specific command, use `vamp COMMAND --help`
 
 ### Create
 

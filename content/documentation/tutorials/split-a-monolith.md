@@ -101,7 +101,7 @@ Host names and ports are configured at runtime and injected in the right parts o
 {{< tip >}}
 Remember, there is no "point-to-point" wiring. The exposed host and port are actually service
 endpoints. The location, amount and version of containers running behind that service endpoint can vary.
-Learn more about [how Vamp does service discovery →](/resources/how-vamp-works/service-discovery/)
+Learn more about [how Vamp does service discovery →](/documentation/how-vamp-works/service-discovery/)
 {{< /tip >}}
 
 ## What next?
