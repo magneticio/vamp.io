@@ -12,7 +12,7 @@ title: Downloads
 * [Vamp CLI for MacOS X](#vamp-cli-for-macos-x)
 
 #### Docker images
-* [VGA and HAProxy](#vga-and-haproxy)
+* [Vamp Gateway Agent (VGA) and HAProxy](#vamp-gateway-agent-vga-and-haproxy)
 
 #### Build from source
 * [Build Vamp](#build-vamp)
@@ -71,8 +71,8 @@ vamp info
 
 ## Docker images
 
-### VGA and HAProxy
-VGA Docker images with HAProxy can be pulled from the Docker hub ([hub.docker.com - magneticio Vamp gateway agent](https://hub.docker.com/r/magneticio/vamp-gateway-agent/)).
+### Vamp Gateway Agent (VGA) and HAProxy
+Vamp Gateway Agent (VGA) Docker images with HAProxy can be pulled from the Docker hub ([hub.docker.com - magneticio Vamp Gateway Agent](https://hub.docker.com/r/magneticio/vamp-gateway-agent/)).
 
 ## Build from source
 
@@ -106,5 +106,6 @@ go get github.com/tools/godep
 godep restore
 go install
 CGO_ENABLED=0 go build -v -a -installsuffix cgo
+```
 
 Check this example: [github.com/magneticio - clique-base make.sh](https://github.com/magneticio/vamp-docker/blob/master/clique-base/make.sh). More details can found on the project page: [github.com/magneticio - Vamp gateway agent](https://github.com/magneticio/vamp-gateway-agent).

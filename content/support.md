@@ -18,8 +18,8 @@ We can help you set up and get started with Vamp, but advise you work through th
 
 1. Find out [how Vamp can help you](/why-use-vamp/)
 * [Try Vamp](/documentation/installation/hello-world) 
-* Learn [how Vamp works](/documentation/how-vamp-works/)
-* Get your teeth into the [Vamp documentation](/documentation/)
+* Learn [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
+* Get your teeth into the [Vamp documentation](/documentation/using-vamp/artifacts)
 
 
 

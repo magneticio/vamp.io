@@ -2,22 +2,23 @@
 date: 2016-09-13T09:00:00+00:00
 title: Installation
 ---
-Before you get Vamp up and running on your architecture, it is helpful to understand [how vamp works](/documentation/how-vamp-works/vamp-components-and-architecture) and the role of each component and its preferred location in a typical architecture.  
+Before you get Vamp up and running on your architecture, it is helpful to understand [how vamp works](/documentation/how-vamp-works/architecture-and-components) and the role of each component and its preferred location in a typical architecture.  
 
 If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
 #### Install Vamp
 
-* [Docker](docker)
-* [DC/OS](dcos)
+* [Docker 1.10](docker)
+* [DC/OS 1.7 and 1.8](dcos)
 * [Mesos/Marathon](mesos-marathon)
-* [Kubernetes](kubernetes)
+* [Kubernetes 1.2](kubernetes)
 * [Rancher](rancher)
+* [Azure Container Service](azure-container-service)
 
 #### Configuration
 
-* [Vamp configuration](configure-vamp/)
-* [Elasticsearch, Logstash and Kibana (ELK) configuration](configure-elastic-stack/) 
+* [Configure Vamp](configure-vamp/)
+* [Configure Elastic Stack](configure-elastic-stack/) 
 
 ## Try Vamp
 
