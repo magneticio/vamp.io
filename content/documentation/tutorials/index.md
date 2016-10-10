@@ -9,5 +9,5 @@ You can work with Sava in the [Vamp hello world](/documentation/installation/hel
 
 1. [Deploy your first blueprint](deploy-your-first-blueprint/)
 2. [Run a canary release](run-a-canary-release/)
-3. [Split a monolith into services](split-into-services/)
-4. [Merge a changed topology](merge-a-changed-topology/)
+3. [Split a monolith into services](split-a-monolith/)
+4. [Merge a changed topology](merge-and-delete/)

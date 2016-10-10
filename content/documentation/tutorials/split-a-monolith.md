@@ -105,4 +105,4 @@ Learn more about [how Vamp does service discovery →](/resources/how-vamp-works
 {{< /tip >}}
 
 ## What next?
-Great! We just demonstrated that Vamp can handle dependencies between services and configure these services with host and port information at runtime. Now let's do a [more complex migration to a new service based topology →](/documentation/tutorials/merge-a-changed-topology/).
+Great! We just demonstrated that Vamp can handle dependencies between services and configure these services with host and port information at runtime. Now let's do a [more complex migration to a new service based topology →](/documentation/tutorials/merge-and-delete/).
