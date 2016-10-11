@@ -273,11 +273,6 @@
               "visible": true
             },
             {
-              "path": "documentation/installation/docker",
-              "text": "Docker 1.10",
-              "visible": true
-            },
-            {
               "path": "documentation/installation/dcos",
               "text": "DC/OS 1.7 and 1.8",
               "visible": true
@@ -289,7 +284,7 @@
             },
             {
               "path": "documentation/installation/kubernetes",
-              "text": "Kubernetes 1.2",
+              "text": "Kubernetes 1.x",
               "visible": true
             },
             {
@@ -305,6 +300,11 @@
             {
               "path": "documentation/installation/configure-vamp",
               "text": "Configure Vamp",
+              "visible": true
+            },
+            {
+              "path": "documentation/installation/set-container-driver",
+              "text": "Set container driver",
               "visible": true
             },
             {

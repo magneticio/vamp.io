@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: Configure Elastic Stack
 ---
 
-HAProxy (VGA) generates logs and makes them accessible via open socket - check the HAProxy configuration ([github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.cfg](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.cfg)) of `log`.
+HAProxy (VGA) generates logs and makes them accessible via open socket - check the HAProxy configuration ([github.com/magneticio - haproxy.cfg](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.basic.cfg)) of `log`.
 VGA listens on log socket and any new messages are forwarded to the Logstash instance.
 Log format is configurable in Vamp configuration vamp.gateway-driver.haproxy ([github.com/magneticio - reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)).
 
@@ -26,7 +26,7 @@ You can transform logs to plain JSON, which can be parsed easily later on (e.g. 
 {{< tip title="Examples" >}}
 
 * Different Logstash/Elasticsearch setups: ([elastic.co - Deploying and Scaling Logstash](https://www.elastic.co/guide/en/logstash/current/deploying-and-scaling.html)).
-* Logstash command line parameter ([/github.com/magneticio - Logstash section](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/supervisord.conf)).
+* Logstash command line parameter ([/github.com/magneticio - Logstash section](https://github.com/magneticio/vamp-docker/blob/master/quick-start/supervisord.conf)).
 {{< /tip >}}
 
 ## Configure Vamp for Kibana
@@ -35,7 +35,11 @@ Vamp can be configured to create Kibana `searches`, `visualisations` and `dashbo
 Vamp will do this by inserting ES documents to the Kibana index, so only URL to access ES is needed (by default reusing the same as for persistence).  
 
 
-
+{{< note title="What next?" >}}
+* [Configure Vamp](/documentation/installation/configure-vamp)
+* [Set container driver](/documentation/installation/set-container-driver)
+* Follow the [getting started tutorials](/documentation/tutorials)
+{{< /note >}}
 
 
 

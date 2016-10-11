@@ -24,11 +24,11 @@ java -Dvamp.gateway-driver.host=localhost \
 
 The Vamp `application.conf` consists of the following sections. All sections are nested inside a parent `vamp {}` tag.
 
-* rest-api
-* persistence
-* container-drivers
-* gateway-driver
-* operation
+* [rest-api](#rest-api)
+* [persistence](#persistence)
+* [container-drivers](/documentation/installation/configure-container-driver)
+* [gateway-driver](#gateway-driver)
+* [operation](#operation)
 
 ### rest-api
 Configure the port, host name and interface that Vamp runs on using the `rest-api.port` 
@@ -84,7 +84,7 @@ vamp {
 
 ### Container drivers
 
-Please check [installation](/documentation/installation)
+Please check [set container driver](/documentation/installation/set-container-driver)
 
 ### gateway-driver
 
@@ -213,3 +213,9 @@ Environment variables have precedence over `application.conf` or system properti
 {{< /note >}}
 
 * Read more about [environment variables](/documentation/using-vamp/environment-variables/).
+
+{{< note title="What next?" >}}
+* [Set container driver](/documentation/installation/set-container-driver)
+* [Configure Elastic Stack](/documentation/installation/configure-elastic-stack)
+* Follow the [getting started tutorials](/documentation/tutorials)
+{{< /note >}}

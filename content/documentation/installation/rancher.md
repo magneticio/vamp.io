@@ -8,7 +8,7 @@ Rancher support is still in Alpha.
 {{< /note >}}
 
 #### Tested against
-
+This guide has been tested on Rancher version 1.1.x.
 
 #### Requirements
 
