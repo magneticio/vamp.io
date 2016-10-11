@@ -7,6 +7,12 @@
 
 <head {{ with .Site.LanguageCode }}lang="{{ . }}"{{ end }}>
   <script type="text/javascript">
+    var theBaseUrl;
+    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+      theBaseUrl = location.host;
+    } else {
+      theBaseUrl = 'magneticio.github.io/revamp.io/'
+    }
     document.write("<base href='http://" + theBaseUrl + "' />");
   </script>
   <meta charset="utf-8">

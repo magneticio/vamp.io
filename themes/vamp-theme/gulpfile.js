@@ -14,10 +14,6 @@ var sassOptions = {
   includePaths: ['./sassLibs']
 };
 
-var productionUrl = 'magneticio.github.io/revamp.io/';
-var developmentUrl = 'location.host';
-
-
 gulp.task('browser-sync', function() {
   browserSync({
     ui: {
@@ -31,21 +27,6 @@ gulp.task('browser-sync', function() {
 gulp.task('bs-reload', function () {
   browserSync.reload();
 });
-
-gulp.task('set-environment-development', function () {
-  gulp.src(['./layouts/partials/head.tmp.html'])
-    .pipe(insert.prepend('<script>var theBaseUrl = '+ developmentUrl +' </script>\n'))
-    .pipe(rename('./layouts/partials/head.html'))
-    .pipe(gulp.dest('./'));
-});
-
-gulp.task('set-environment-production', function () {
-  gulp.src(['./layouts/partials/head.tmp.html'])
-    .pipe(insert.prepend('<script>var theBaseUrl = "'+ productionUrl +'" </script>\n'))
-    .pipe(rename('./layouts/partials/head.html'))
-    .pipe(gulp.dest('./'));
-});
-
 
 gulp.task('styles', function(){
   gulp.src(['./static/scss/**/*.scss'])
