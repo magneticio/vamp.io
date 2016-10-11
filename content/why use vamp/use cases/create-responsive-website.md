@@ -14,7 +14,7 @@ But why develop this new responsive frontend in one go, having to go for the dre
 3. __Scale up:__ Once you are satisified with the performance of the new frontend, you can use Vamp to scale up the release, developing and canary releasing one browser/resolution at a time. Of course other cohort combinations are also possible, Vamp is open and supports all HAproxy ACL rules.
 
 {{< note title="What next?" >}}
-* [Try Vamp](/documentation/installation/hello-world)
-* See [how Vamp measures up](/why-use-vamp/vamp-compared-to//proxies-and-load-balancers/) to other common platforms, tools and frameworks  
+* Read about using Vamp to [resolve client-side incompatibilities after an upgrade](/why-use-vamp/use-cases/resolve-incompatibilities-after-upgrade/)
+* See [how Vamp measures up](/why-use-vamp/vamp-compared-to//proxies-and-load-balancers/) to common platforms, tools and frameworks  
 * Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}

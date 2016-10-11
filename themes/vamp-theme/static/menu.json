@@ -151,8 +151,8 @@
               "visible": true
             },
             {
-              "path": "why-use-vamp/use-cases/modernise-services",
-              "text": "Modernise services",
+              "path": "why-use-vamp/use-cases/modernise-architecture",
+              "text": "Modernise architecture",
               "visible": true
             },
             {
@@ -188,8 +188,8 @@
               "visible": true
             },
             {
-              "path": "why-use-vamp/vamp-compared-to/other-tools",
-              "text": "Other tools",
+              "path": "why-use-vamp/vamp-compared-to/frameworks-and-tools",
+              "text": "Frameworks and tools",
               "visible": true
             }
             ],
@@ -230,13 +230,13 @@
               "visible": true
             },
             {
-              "path": "documentation/how-vamp-works/what-to-choose",
-              "text": "What to choose?",
+              "path": "documentation/how-vamp-works/requirements",
+              "text": "Requirements",
               "visible": true
             },
             {
-              "path": "documentation/how-vamp-works/requirements",
-              "text": "Requirements",
+              "path": "documentation/how-vamp-works/what-to-choose",
+              "text": "What to choose?",
               "visible": true
             },
             {
@@ -247,7 +247,7 @@
             {
               "path": "documentation/how-vamp-works/persistence-key-value-store",
               "text": "Persistence and key-value (KV) store",
-              "visible": true
+              "visible": false
             },
             {
               "path": "documentation/how-vamp-works/routing-and-load-balancing",

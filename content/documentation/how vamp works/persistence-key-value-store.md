@@ -5,22 +5,21 @@ title: Persistence and key-value (KV) store
 
 ## Persistence 
 Vamp uses Elasticsearch (ES) as main persistence (e.g. for artifacts and events). 
-Vamp is not demanding in ES resources, so either a small ES installation is sufficient or Vamp indexes (index names are configurable) can be stored in an existing ES cluster.
+Vamp is not demanding in ES resources, so a small ES installation is sufficient for Vamp indexes (index names are configurable). Vamp can also use an existing ES cluster.
 
 
 ## Key-value (KV) store
-Vamp depends on a key-value (KV) store for non-direct communication between Vamp and the Vamp Gateway Agents (VGA).
-We currently support:
+Vamp depends on a key-value (KV) store for non-direct communication between Vamp and instances of the Vamp Gateway Agent (VGA). There is no direct connection between Vamp and the VGA instances - all communication is done by managing specific KV in the store.  Currently we support:
 
-* ZooKeeper ([apache.org - zookeeper](https://zookeeper.apache.org/))
-* etcd ([coreos.com - etcd](https://coreos.com/etcd/docs/latest/)) 
-* Consul ([consul.io](https://www.consul.io/))
+* **ZooKeeper** ([apache.org - zookeeper](https://zookeeper.apache.org/)).  
+Vamp and VGAs can use an existing DC/OS ZooKeeper cluster.
+* **etcd** ([coreos.com - etcd](https://coreos.com/etcd/docs/latest/))  
+Vamp and VGAs can use an existing Kubernetes etcd cluster.
+* **Consul** ([consul.io](https://www.consul.io/))
 
-Typically, there should be one Vamp instance and one or more VGA instances.  
-
-{{< note title="Note!">}}
-* There is no direct connection between Vamp and the VGA instances - all communication is done by managing specific KV in the store.  
-* Since Mesos depends on ZooKeeper, the same ZooKeeper cluster can be used for Vamp and VGA's.
+{{< note title="What next?" >}}
+* Read about [routing and load balancing](/documentation/how-vamp-works/routing-and-load-balancing)
+* 
+* 
 {{< /note >}}
-
 
