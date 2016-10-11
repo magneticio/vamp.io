@@ -34,14 +34,14 @@ gulp.task('bs-reload', function () {
 
 gulp.task('set-environment-development', function () {
   gulp.src(['./layouts/partials/head.tmp.html'])
-    .pipe(insert.prepend('<script>var theBaseUrl = '+ developmentUrl +' </script>'))
+    .pipe(insert.prepend('<script>var theBaseUrl = '+ developmentUrl +' </script>\n'))
     .pipe(rename('./layouts/partials/head.html'))
     .pipe(gulp.dest('./'));
 });
 
 gulp.task('set-environment-production', function () {
   gulp.src(['./layouts/partials/head.tmp.html'])
-    .pipe(insert.prepend('<script>var theBaseUrl = "'+ productionUrl +'" </script>'))
+    .pipe(insert.prepend('<script>var theBaseUrl = "'+ productionUrl +'" </script>\n'))
     .pipe(rename('./layouts/partials/head.html'))
     .pipe(gulp.dest('./'));
 });
