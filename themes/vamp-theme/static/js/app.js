@@ -97,7 +97,7 @@ function documentReady() {
 }
 
 function getMenuFile(callback) {
-  $.getJSON('/menu.json', function (data) {
+  $.getJSON(theBaseUrl + '/menu.json', function (data) {
     callback(data);
   });
 
