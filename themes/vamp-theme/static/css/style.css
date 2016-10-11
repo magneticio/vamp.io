@@ -2087,7 +2087,7 @@ body {
 }
 
 .slicknav_menu {
-  *zoom: 1;
+  zoom: 1;
 }
 
 .slicknav_menu .slicknav_menutxt {
