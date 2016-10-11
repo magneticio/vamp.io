@@ -4,3 +4,6 @@ title: Events and metrics
 ---
 
 
+{{< note title="What next?" >}}
+* 
+{{< /note >}}

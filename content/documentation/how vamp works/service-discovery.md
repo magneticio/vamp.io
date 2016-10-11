@@ -76,3 +76,8 @@ There is no point-to-point wiring. The `$backend.host` and `$backend.ports.jdbc`
 {{< /note >}}
 
 Even though Vamp provides this type of service discovery, it does not put any constraint on other possible solutions. For instance services can use their own approach specific approach using service registry, self-registration etc.
+
+
+{{< note title="What next?" >}}
+* Read about how Vamp works with [routing and load balancing](/documentation/how-vamp-works/routing-and-load-balancing)
+{{< /note >}}
