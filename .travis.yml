@@ -3,7 +3,8 @@ sudo: false
 go: 1.7
 install: go get -v github.com/spf13/hugo
 script: hugo version && hugo
-after_success: |
+after_success: 
+  gulp set-environment-production
   if [ -n "$GITHUB_API_KEY" ] && [ ${TRAVIS_PULL_REQUEST} == "false" ] && [ $TRAVIS_BRANCH == "master" ]; then
     GIT_COMMIT=`git rev-parse --short HEAD`
     cd ./public
