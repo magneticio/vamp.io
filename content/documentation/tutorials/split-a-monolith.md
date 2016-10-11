@@ -5,7 +5,7 @@ title: Split a monolith
 ## Overview
 
 In the [previous tutorial we did some basic canary releasing on two versions of a monolithic application](/documentation/tutorials/run-a-canary-release/). Very nice, but Vamp isn't
-called the *Very Awesome Microservices Platform* for nothing. The next step is to split our monolithic Sava application into separate services. 
+called the *Very Awesome Microservices Platform* for nothing. The next step is to split our monolithic Sava application into separate services.
 
 #### In this tutorial we will:
 
@@ -17,9 +17,9 @@ called the *Very Awesome Microservices Platform* for nothing. The next step is t
 ### Step 1: Define a new service topology
 
 To prove our point, we are going to slightly "over-engineer" our services solution. This will also help
-us demonstrate how we can later remove parts of our solution using Vamp. For now, we'll split the 
+us demonstrate how we can later remove parts of our solution using Vamp. For now, we'll split the
 monolith into a topology of one frontend and two separate backend services. After our engineers
-are done with coding, we can catch this new topology in the following blueprint. Please notice a couple 
+are done with coding, we can catch this new topology in the following blueprint. Please notice a couple
 of things:
 
 * We now have three `clusters`: `sava`, `backend1` and `backend2`. Each cluster could have multiple
@@ -27,7 +27,7 @@ services on which we could do separate canary releases and set separate filters.
 * The `sava` cluster has explicit dependencies on the two backends. Vamp will make sure these dependencies
 are checked and rolled out in the right order.
 * Using `environment_variables` we connect the dynamically assigned ports and hostnames of the backend
-services to the "customer facing" `sava` service. 
+services to the "customer facing" `sava` service.
 * We've change the gateway port to `9060` so it doesn't collide with the  monolithic deployment.
 
 ```yaml
@@ -44,8 +44,8 @@ clusters:
         ports:
           webport: 8080/http                
         environment_variables:
-          BACKEND_1: http://$backend1.host:$backend1.ports.port/api/message
-          BACKEND_2: http://$backend2.host:$backend2.ports.port/api/message
+          BACKEND_1: http://$backend1.host:$backend1.ports.webport/api/message
+          BACKEND_2: http://$backend2.host:$backend2.ports.webport/api/message
         dependencies:
           backend1: sava-backend1:1.2.0
           backend2: sava-backend2:1.2.0
@@ -83,7 +83,7 @@ Deploy this blueprint using either the UI or a REST call and when deployed check
 
 ### Step 2: Learn about environment variables and service discovery
 
-If you were to check out the Docker containers using `docker inspect`, you would see the environment variables that we set in the blueprint. 
+If you were to check out the Docker containers using `docker inspect`, you would see the environment variables that we set in the blueprint.
 
 ```bash
 > docker inspect 66e64bc1c8ca

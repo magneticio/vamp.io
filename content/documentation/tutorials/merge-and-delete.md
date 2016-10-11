@@ -40,7 +40,7 @@ valid by itself. You could just deploy it somewhere separately and not merge it 
 topology. Notice the following:
 
 - The blueprint only has one backend cluster with one service.
-- The blueprint does not specify a gateway using the `gateways` key because we are going to use the gateway already present and configured in the running deployment. However, it would be perfectly correct to specify the old gateway - the gateway would be updated as well. 
+- The blueprint does not specify a gateway using the `gateways` key because we are going to use the gateway already present and configured in the running deployment. However, it would be perfectly correct to specify the old gateway - the gateway would be updated as well.
 
 ```yaml
 ---
@@ -54,7 +54,7 @@ clusters:
         ports:
           webport: 8080/http
         environment_variables:
-          BACKEND: http://$backend.host:$backend.ports.port/api/message
+          BACKEND: http://$backend.host:$backend.ports.webport/api/message
         dependencies:
           backend: sava-backend:1.3.0
       scale:
@@ -114,8 +114,8 @@ clusters:
         ports:
           webport: 8080/http
         environment_variables:
-          BACKEND_1: http://$backend1.host:$backend1.ports.port/api/message
-          BACKEND_2: http://$backend2.host:$backend2.ports.port/api/message
+          BACKEND_1: http://$backend1.host:$backend1.ports.webport/api/message
+          BACKEND_2: http://$backend2.host:$backend2.ports.webport/api/message
         constants: {}
         dependencies:
           backend1: sava-backend1:1.2.0
@@ -132,7 +132,7 @@ clusters:
         ports:
           webport: 8080/http
         environment_variables:
-          BACKEND: http://$backend.host:$backend.ports.port/api/message
+          BACKEND: http://$backend.host:$backend.ports.webport/api/message
         constants: {}
         dependencies:
           backend: sava-backend:1.3.0
