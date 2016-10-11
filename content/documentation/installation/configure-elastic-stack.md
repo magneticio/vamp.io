@@ -4,6 +4,7 @@ title: Configure Elastic Stack
 ---
 
 HAProxy (VGA) generates logs and makes them accessible via open socket - check the HAProxy configuration ([github.com/magneticio - haproxy.cfg](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.basic.cfg)) of `log`.
+
 VGA listens on log socket and any new messages are forwarded to the Logstash instance.
 Log format is configurable in Vamp configuration vamp.gateway-driver.haproxy ([github.com/magneticio - reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)).
 
