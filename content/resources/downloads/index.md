@@ -32,9 +32,9 @@ Let's assume that the Vamp binary is `vamp.jar`.
 java -Dlogback.configurationFile=logback.xml -Dconfig.file=application.conf -jar vamp.jar
 ```
 
-* `logback.xml` is the log configuration file ([example logback.xml file](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/conf/logback.xml))  
+* `logback.xml` is the log configuration file ([example logback.xml file](https://github.com/magneticio/vamp-docker/blob/master/quick-start/logback.xml))  
 Vamp uses the Logback library. Additional information about using Logback and the log file configuration format can be found on the Logback project page ([logback.qos.ch](http://logback.qos.ch/)). 
-* `application.conf` is the main Vamp configuration file ([example application.conf file](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/conf/application.conf))  
+* `application.conf` is the main Vamp configuration file ([example application.conf file](https://github.com/magneticio/vamp-docker/blob/master/quick-start/application.conf))  
 Default values ([github.com/magneticio - reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)) are loaded on start and application.conf may override any of them.
 Processing configuration is based on the typesafe library. Additional information about syntax and usage can be found on the project page ([github.com/typesafehub - config](https://github.com/typesafehub/config)). 
 

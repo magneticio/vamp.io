@@ -166,8 +166,8 @@ service_B:
   condition: user-agent == Firefox
 ```
 
-## Where next?
-
-* Read about [Conditions](/documentation/using-vamp/conditions/)
-* check the [API documentation](/documentation/api/)
-* [Try Vamp](/try-vamp)
+{{< note title="What next?" >}}
+* Read about [Vamp conditions](/documentation/using-vamp/conditions/)
+* Check the [API documentation](/documentation/api/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
+{{< /note >}}

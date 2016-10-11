@@ -165,8 +165,8 @@ JavaScript breeds will be executed by Vamp Workflow Agent ([github.com/magnetici
 
 For additional JavaScript API check out Vamp Node Client ([github.com/magneticio - Vamp node client](https://github.com/magneticio/vamp-node-client)) project.
 
-## Where next?
-
+{{< note title="What next?" >}}
 * Read about [Sticky sessions](/documentation/using-vamp/sticky-sessions/)
-* check the [API documentation](/documentation/api/)
-* [Try Vamp](/try-vamp)
+* Check the [API documentation](/documentation/api/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
+{{< /note >}}

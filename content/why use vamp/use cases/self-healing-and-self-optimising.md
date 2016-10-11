@@ -10,3 +10,9 @@ Why overdimension your whole system? Using Vamp you can auto-scale individual se
 1. __Set SLAs:__ You can define SLA metrics, tresholds and escalation workflows. You can do this in Vamp YAML blueprints, modify our packaged workflows, or create your own workflow scripts for advanced use-cases.
 2. __Optimise:__ Vamp workflows can automatically optimise your running system based on metrics that are relevant to your application or services.
 3. __Sleep easy:__ Vamp will track troughs and spikes in activity and automatically scale services up and down to match your SLAs. All scaling events will be logged. Unhealthy services can be healed by Vamp.
+
+{{< note title="What next?" >}}
+* [Try Vamp](/documentation/installation/hello-world)
+* See [how Vamp measures up](/why-use-vamp/vamp-compared-to//proxies-and-load-balancers/) to other common platforms, tools and frameworks  
+* Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
+{{< /note >}}

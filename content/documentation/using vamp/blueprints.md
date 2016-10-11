@@ -12,8 +12,8 @@ Blueprints allow you to add the following extra properties:
 - [Environment variables](/documentation/using-vamp/environment-variables/): a list of variables (interpolated or not) to be made available at runtime.
 - [Dialects](#dialects): a dialect is a set of native commands for the underlying container platform, i.e. Docker or Mesosphere Marathon.
 - [Scale](#scale): the CPU and memory and the amount of instance allocate to a service.
-- [Conditions](/documentation/using-vamp/gateways-and-conditions/): how traffic should be directed based on HTTP and/or TCP properties.
-- [SLA and escalations](/documentation/using-vamp/sla-and-escalations/): SLA definition that controls autoscaling.
+- [Conditions](/documentation/using-vamp/conditions/): how traffic should be directed based on HTTP and/or TCP properties.
+- [SLA](/documentation/using-vamp/sla/) and [escalations](/documentation/using-vamp/escalations/): SLA definition that controls autoscaling.
 
 #### Example - key concepts of blueprints
 
@@ -186,8 +186,10 @@ cpu: 2        # Number of CPUs per instance.
 memory: 2gb   # Memory per instance, MB/GB units.
 instances: 2  # Number of instances.
 ```
-## Where next?
 
-* Read about [Deployments](/documentation/using-vamp/deployments/)
-* check the [API documentation](/documentation/api/)
-* [Try Vamp](/try-vamp)
+{{< note title="What next?" >}}
+* Read about [Vamp deployments](/documentation/using-vamp/deployments/)
+* Check the [API documentation](/documentation/api/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
+{{< /note >}}
+

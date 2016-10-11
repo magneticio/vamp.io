@@ -107,8 +107,8 @@ condition: Cookie SHOPSESSION Contains shopping_basket_items=0
 ```
 
 
-## Where next?
-
-* Read about [Workflows](/documentation/using-vamp/workflows/)
-* check the [API documentation](/documentation/api/)
-* [Try Vamp](/try-vamp)
+{{< note title="What next?" >}}
+* Read about [Vamp workflows](/documentation/using-vamp/workflows/)
+* Check the [API documentation](/documentation/api/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
+{{< /note >}}

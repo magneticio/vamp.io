@@ -12,3 +12,9 @@ Why not work incrementally? Using Vamp's routing you could introduce new service
 1. __Start small:__ You can build e.g. one new frontend component. Vamp will deploy this to run alongside the legacy monolithic system.
 2. __Activate smart routing:__ Vamp can route traffic behind the scenes, so a small percentage of visitors is sent to the new frontend service, while the new frontend is routed by Vamp to the legacy backend. You can continue transferring components from the legacy monolithic system to new microservices and Vamp can adapt the routing as you go.
 3. __Remove legacy components:__ Once all services have been transferred from the legacy monolith, you can start removing components from the legacy system.
+
+{{< note title="What next?" >}}
+* [Try Vamp](/documentation/installation/hello-world)
+* See [how Vamp measures up](/why-use-vamp/vamp-compared-to//proxies-and-load-balancers/) to other common platforms, tools and frameworks  
+* Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
+{{< /note >}}

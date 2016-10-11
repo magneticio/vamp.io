@@ -16,7 +16,7 @@ If you prefer, you can build your own Mesos/Marathon cluster. Here are some tuto
 3. Whichever way you set up Marathon, in the end you should be able to see something like this:  
 ![](/images/screens/marathon-screenshot.png)
 
-4. Make a note of the Marathon endpoint (host:port) and update the container-driver section in [Vamp's config file](/configuration/). If you use a package installer like `yum` or `apt-get` you can find this file in `/usr/share/vamp/conf/application.conf`. Set the "url" option to the Marathon endpoint.
+4. Make a note of the Marathon endpoint (host:port) and update the container-driver section in [Vamp's config file](/documentation/installation/configure-vamp/). If you use a package installer like `yum` or `apt-get` you can find this file in `/usr/share/vamp/conf/application.conf`. Set the "url" option to the Marathon endpoint.
 
     ```
     ...

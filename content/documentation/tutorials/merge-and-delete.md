@@ -5,7 +5,7 @@ title: Merge and delete
 
 ## Overview
 
-In the [previous tutorial we "over-engineered" our service based solution a bit](/documentation/tutorials/split-into-services/) (on purpose of course). We don't really need two backends services, so in this tutorial we will introduce our newly engineered solution and transition to it using Vamp blueprints and canary releasing methods.
+In the [previous tutorial we "over-engineered" our service based solution a bit](/documentation/tutorials/split-a-monolith/) (on purpose of course). We don't really need two backends services, so in this tutorial we will introduce our newly engineered solution and transition to it using Vamp blueprints and canary releasing methods.
 
 #### In this tutorial we will:
 1. Get some background and theory on merging services

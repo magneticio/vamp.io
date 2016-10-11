@@ -56,7 +56,7 @@ $ curl --resolve 9080.runner.vamp:80:${VAMP_GATEWAY_AGENT_IP} http://9080.runner
 {"id":"2.0.0","runtime":"1E188B006FF44AA6","port":8081,"path":""}
 ```
 {{< note title="Note!" >}}
-If you are running Vamp in one of the quick setups, `${VAMP_GATEWAY_AGENT_IP}` should have value of `${DOCKER_HOST_IP}` - See the [hello world quick setup instructions](/try-vamp#step-2-run-vamp).
+If you are running Vamp in one of the quick setups, `${VAMP_GATEWAY_AGENT_IP}` should have value of `${DOCKER_HOST_IP}` - See the [hello world quick setup instructions](/documentation/installation/hello-world#step-2-run-vamp).
 {{< /note >}}
 
 Vamp creates a virtual host for each gateway - name of the gateway (`/` replaced with `.`) appended to value from `vamp.gateway-driver.virtual-hosts-domain`.
@@ -137,8 +137,7 @@ $ curl --resolve run.vamp.run:80:${VAMP_GATEWAY_AGENT_IP} http://run.vamp.run
 
 `9080.runner.vamp` is added if configuration parameter `vamp.operation.gateway.virtual-hosts` is set, otherwise just custom virtual hosts if any.
 
-## Where next?
-
-* Read about [Vamp CLI](/documentation/using-vamp/cli/)
-* Check the [API documentation](/documentation/api/)
-* [Try Vamp](/try-vamp)
+{{< note title="What next?" >}}
+* Check the [API documentation](/documentation/api/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
+{{< /note >}}

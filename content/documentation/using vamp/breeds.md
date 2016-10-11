@@ -120,8 +120,9 @@ Ports come in two flavors:
 
 Notice we can give the ports sensible names. This specific deployable has `web` port for customer traffic, an `admin` port for admin access and a `redis` port for some caching probably. These names come in handy when we later compose different breeds in blueprints.
 
-## Where next?
+{{< note title="What next?" >}}
+* Read about [Vamp blueprints](/documentation/using-vamp/blueprints/)
+* Check the [API documentation](/documentation/api/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
+{{< /note >}}
 
-* Read about [Blueprints](/documentation/using-vamp/blueprints/)
-* check the [API documentation](/documentation/api/)
-* [Try Vamp](/try-vamp)

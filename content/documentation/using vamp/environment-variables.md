@@ -315,8 +315,8 @@ clusters:
 ```
 
 
-## Where next?
-
-* Read about [Gateways](/documentation/using-vamp/gateways/)
-* check the [API documentation](/documentation/api/)
-* [Try Vamp](/try-vamp)
+{{< note title="What next?" >}}
+* Read about [Vamp gateways](/documentation/using-vamp/gateways/)
+* Check the [API documentation](/documentation/api/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
+{{< /note >}}

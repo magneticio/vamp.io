@@ -12,7 +12,7 @@ We believe people should focus their efforts on the things they excel at and tha
 Let computers do the tasks - they’re far more suited to that than us.
 
 ## Community
-We encourage anyone to [join the Vamp community](/community/) and pitch in with pull requests, bug reports etc.
+We encourage anyone to [join the Vamp community](/resources/community/) and pitch in with pull requests, bug reports etc.
 
 ## Team
 
