@@ -253,6 +253,11 @@
               "path": "documentation/how-vamp-works/routing-and-load-balancing",
               "text": "Routing and load balancing",
               "visible": true
+            },
+            {
+              "path": "documentation/how-vamp-works/events-and-metrics",
+              "text": "Events and metrics",
+              "visible": true
             }
           ],
           "text": "How Vamp works",

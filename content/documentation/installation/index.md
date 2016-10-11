@@ -6,19 +6,23 @@ Before you get Vamp up and running on your architecture, it is helpful to unders
 
 If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
+#### Requirements
+
+* [Vamp requirements](/documentation/how-vamp-works/requirements)
+
 #### Install Vamp
 
-* [DC/OS 1.7 and 1.8](dcos)
-* [Mesos/Marathon](mesos-marathon)
-* [Kubernetes 1.2](kubernetes)
-* [Rancher](rancher)
-* [Azure Container Service](azure-container-service)
+* [DC/OS 1.7 and 1.8](/documentation/installation/dcos)
+* [Mesos/Marathon](/documentation/installation/mesos-marathon)
+* [Kubernetes 1.2](/documentation/installation/kubernetes)
+* [Rancher](/documentation/installation/rancher)
+* [Azure Container Service](/documentation/installation/azure-container-service)
 
 #### Configuration
 
-* [Configure Vamp](configure-vamp/)
-* [Set container driver](set-container-driver/)
-* [Configure Elastic Stack](configure-elastic-stack/) 
+* [Configure Vamp](/documentation/installation/configure-vamp/)
+* [Set container driver](/documentation/installation/set-container-driver/)
+* [Configure Elastic Stack](/documentation/installation/configure-elastic-stack/) 
 
 ## Try Vamp
 
