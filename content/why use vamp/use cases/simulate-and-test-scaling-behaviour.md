@@ -13,7 +13,7 @@ Why not find out for sure? Using Vamp you can test your services and application
 3. __Iterate until you're certain:__ Vamp can repeat the tests until you're confident with the outcome. Then you can use the same scaling and optimising workflows in production.
 
 {{< note title="What next?" >}}
-* [Try Vamp](/documentation/installation/hello-world)
-* See [how Vamp measures up](/why-use-vamp/vamp-compared-to//proxies-and-load-balancers/) to other common platforms, tools and frameworks  
+* Read about using Vamp for [self healing and self optimising](/why-use-vamp/use-cases/self-healing-and-self-optimising/)
+* See [how Vamp measures up](/why-use-vamp/vamp-compared-to//proxies-and-load-balancers/) to common platforms, tools and frameworks  
 * Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}

@@ -12,7 +12,7 @@ Why overdimension your whole system? Using Vamp you can auto-scale individual se
 3. __Sleep easy:__ Vamp will track troughs and spikes in activity and automatically scale services up and down to match your SLAs. All scaling events will be logged. Unhealthy services can be healed by Vamp.
 
 {{< note title="What next?" >}}
-* [Try Vamp](/documentation/installation/hello-world)
-* See [how Vamp measures up](/why-use-vamp/vamp-compared-to//proxies-and-load-balancers/) to other common platforms, tools and frameworks  
+* Read about using Vamp for [service discovery](/why-use-vamp/use-cases/service-discovery/)
+* See [how Vamp measures up](/why-use-vamp/vamp-compared-to//proxies-and-load-balancers/) to common platforms, tools and frameworks  
 * Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}

@@ -14,7 +14,7 @@ Why not work incrementally? Using Vamp's routing you could introduce new service
 3. __Remove legacy components:__ Once all services have been transferred from the legacy monolith, you can start removing components from the legacy system.
 
 {{< note title="What next?" >}}
-* [Try Vamp](/documentation/installation/hello-world)
-* See [how Vamp measures up](/why-use-vamp/vamp-compared-to//proxies-and-load-balancers/) to other common platforms, tools and frameworks  
+* Read about using Vamp to [test and modernise architecture](/why-use-vamp/use-cases/modernise-architecture/)
+* See [how Vamp measures up](/why-use-vamp/vamp-compared-to//proxies-and-load-balancers/) to common platforms, tools and frameworks  
 * Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}
