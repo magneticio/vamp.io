@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "bourbon-neat": "^1.8.0",
+    "gulp-insert": "^0.5.0",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "node-bourbon": "^4.2.8",
     "node-gyp": "^3.4.0",

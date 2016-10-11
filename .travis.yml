@@ -2,8 +2,10 @@ language: go
 sudo: false
 go: 1.7
 install: go get -v github.com/spf13/hugo
-script: hugo version && hugo
-after_success: |
+before_script:
+  - npm install -g gulp
+script: gulp ./themes/vamp-theme/set-environment-production && hugo version && hugo
+after_success:
   if [ -n "$GITHUB_API_KEY" ] && [ ${TRAVIS_PULL_REQUEST} == "false" ] && [ $TRAVIS_BRANCH == "master" ]; then
     GIT_COMMIT=`git rev-parse --short HEAD`
     cd ./public
