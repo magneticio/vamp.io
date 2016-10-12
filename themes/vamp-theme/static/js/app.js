@@ -28,8 +28,9 @@ topMenuItemTemplate += '<a href=\"'+theBaseUrl+'\/{{path}}\" id=\"top-menu-item-
 
 function documentReady() {
   thePath = window.location.href.substring(theBaseUrl.length, window.location.href.length);
+  console.log(thePath);
   thePath = thePath.substring(1, thePath.length - 1);
-
+  console.log(thePath);
   getMenuFile(menuFileLoaded);
 
   // Top menu color change
