@@ -1979,7 +1979,7 @@ body {
 }
 
 .admonition.note .admonition-icon-image {
-  background-image: url("/img/003-Small-icons/Notes/note.svg");
+  background-image: url("../img/003-Small-icons/Notes/note.svg");
 }
 
 .admonition.note .admonition-title {
@@ -1992,7 +1992,7 @@ body {
 }
 
 .admonition.warning .admonition-icon-image {
-  background-image: url("/img/003-Small-icons/Notes/warning.svg");
+  background-image: url("../img/003-Small-icons/Notes/warning.svg");
 }
 
 .admonition.warning .admonition-title {
@@ -2005,7 +2005,7 @@ body {
 }
 
 .admonition.tip .admonition-icon-image {
-  background-image: url("/img/003-Small-icons/Notes/tip.svg");
+  background-image: url("../img/003-Small-icons/Notes/tip.svg");
 }
 
 .admonition.tip .admonition-title {

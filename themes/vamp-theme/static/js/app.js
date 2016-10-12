@@ -8,7 +8,7 @@ var thePath;
 
 //Side menu template
 sideMenuItemTemplate = '';
-sideMenuItemTemplate += '  <a href=\"\/{{path}}\" class=\"side-menu-item\">';
+sideMenuItemTemplate += '  <a href=\"'+theBaseUrl+'\/{{path}}\" class=\"side-menu-item\">';
 sideMenuItemTemplate += '   <div class=\"bullet\">';
 sideMenuItemTemplate += '    <img src=\"\/img\/003-Small-icons\/block-03.svg\" alt=\"\">';
 sideMenuItemTemplate += '   <\/div>';
@@ -24,7 +24,7 @@ sideMenuItemTemplate += '  <\/a>';
 
 //Top menu template
 topMenuItemTemplate = '';
-topMenuItemTemplate += '<a href=\"\/{{path}}\" id=\"top-menu-item-{{text}}\" class=\"top-menu-item\">{{text}}<\/a>';
+topMenuItemTemplate += '<a href=\"'+theBaseUrl+'\/{{path}}\" id=\"top-menu-item-{{text}}\" class=\"top-menu-item\">{{text}}<\/a>';
 
 function documentReady() {
   thePath = window.location.pathname;
