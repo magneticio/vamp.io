@@ -24,10 +24,10 @@ sideMenuItemTemplate += '  <\/a>';
 
 //Top menu template
 topMenuItemTemplate = '';
-topMenuItemTemplate += '<a href=\"'+theBaseUrl+'{{path}}\" id=\"top-menu-item-{{text}}\" class=\"top-menu-item\">{{text}}<\/a>';
+topMenuItemTemplate += '<a href=\"'+theBaseUrl+'\/{{path}}\" id=\"top-menu-item-{{text}}\" class=\"top-menu-item\">{{text}}<\/a>';
 
 function documentReady() {
-  thePath = window.location.pathname;
+  thePath = window.location.href.substring(theBaseUrl.length, window.location.href.length);
   thePath = thePath.substring(1, thePath.length - 1);
 
   getMenuFile(menuFileLoaded);
