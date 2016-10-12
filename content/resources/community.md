@@ -10,8 +10,8 @@ Feel free to contribute with Github pull requests.
 
 ## Submit change or feature requests 
 Let us know your change or feature requests.  
-Submit an issue on github tagged "feature proposal". 
+[Submit an issue on github](https://github.com/magneticio/vamp/issues) tagged "feature proposal". 
 
 ## Report a bug 
 if you find  bug, please report it!  
-Submit an issue on github, including details of the environment you are running Vamp in.
+[Submit an issue on github](https://github.com/magneticio/vamp/issues), including details of the environment you are running Vamp in.

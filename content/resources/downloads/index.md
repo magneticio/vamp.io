@@ -90,7 +90,7 @@ Vamp Gateway Agent (VGA) Docker images with HAProxy can be pulled from the Docke
 
 ### Vamp Workflow Agent
 A container for running small JavaScript-based workflows can be pulled from the Docker hub ([hub.docker.com - magneticio Vamp workfow agent](https://hub.docker.com/r/magneticio/vamp-workflow-agent/)). 
-Usually this will be pulled automatically as required.
+ Usually this will be pulled automatically.
 
 ## Build from source
 
