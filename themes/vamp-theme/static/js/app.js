@@ -1,4 +1,4 @@
-$(document).ready(documentReady);
+$(window).on('load', documentReady);
 
 var menuTree = {};
 var topMenuItemTemplate;
