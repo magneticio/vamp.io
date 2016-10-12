@@ -1053,19 +1053,19 @@ body {
 
 .button__icon--arrow {
   width: 30px;
-  background-image: url("/img/003-Small-icons/Red/Red-Arrow.svg");
+  background-image: url("../img/003-Small-icons/Red/Red-Arrow.svg");
 }
 
 .button__icon--arrow-white {
-  background-image: url("/img/003-Small-icons/White/Arrow-White.svg");
+  background-image: url("../img/003-Small-icons/White/Arrow-White.svg");
 }
 
 .button__icon--mail {
-  background-image: url("/img/003-Small-icons/White/Mail-White.svg");
+  background-image: url("../img/003-Small-icons/White/Mail-White.svg");
 }
 
 .button:hover .button__icon--arrow {
-  background-image: url("/img/003-Small-icons/White/Arrow-White.svg");
+  background-image: url("../img/003-Small-icons/White/Arrow-White.svg");
 }
 
 .button--grey {
@@ -1688,7 +1688,7 @@ body {
 .top-menu .logo {
   height: 40px;
   width: 120px;
-  background-image: url("/img/005-vamp/Logo/logo-long-white.svg");
+  background-image: url("../img/005-vamp/Logo/logo-long-white.svg");
   background-size: contain;
 }
 
@@ -1751,7 +1751,7 @@ body {
 }
 
 .top-menu.active .logo {
-  background-image: url("/img/005-vamp/Logo/logo-long-colour.svg");
+  background-image: url("../img/005-vamp/Logo/logo-long-colour.svg");
 }
 
 .top-menu.active .top-menu-item {
