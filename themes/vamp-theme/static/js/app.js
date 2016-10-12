@@ -128,7 +128,7 @@ function getMenuFile(callback) {
     allowParentLinks: false,
     closedSymbol: '&#xf105;',
     openedSymbol: '&#xf107;',
-    brand: '<a href="/"><img id="logo" class="logo" src="/img/005-vamp/Logo/logo-long-colour.svg" alt=""></a>'
+    brand: '<a href="'+theBaseUrl+'/"><img id="logo" class="logo" src="'+theBaseUrl+'/img/005-vamp/Logo/logo-long-colour.svg" alt=""></a>'
   }
 
   $(function(){
@@ -212,7 +212,7 @@ function buildMobileMenu(data) {
 }
 
 function createMobileListItem(href, text) {
-  var html = '<li><a href="/'+href+'">'+text+'</a></li>';
+  var html = '<li><a href="'+theBaseUrl+'/'+href+'">'+text+'</a></li>';
   return $.parseHTML(html);
 }
 
@@ -263,7 +263,7 @@ function buildSideMenu(data) {
 
 function buildSubSideMenu(data) {
   data.children.forEach(function (subSideMenuItem) {
-      var html = Mustache.render('<a class="sub-menu-item" href="/{{path}}"><p class="text">{{text}}</p></a>', subSideMenuItem);
+      var html = Mustache.render('<a class="sub-menu-item" href="'+theBaseUrl+'/{{path}}"><p class="text">{{text}}</p></a>', subSideMenuItem);
       var renderedSubSideMenuItem = $.parseHTML(html);
 
       if (subSideMenuItem.active) {
