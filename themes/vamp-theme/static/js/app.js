@@ -10,7 +10,7 @@ var thePath;
 sideMenuItemTemplate = '';
 sideMenuItemTemplate += '  <a href=\"'+theBaseUrl+'{{path}}\" class=\"side-menu-item\">';
 sideMenuItemTemplate += '   <div class=\"bullet\">';
-sideMenuItemTemplate += '    <img src=\"\/img\/003-Small-icons\/block-03.svg\" alt=\"\">';
+sideMenuItemTemplate += '    <img src=\"'+theBaseUrl+'img\/003-Small-icons\/block-03.svg\" alt=\"\">';
 sideMenuItemTemplate += '   <\/div>';
 sideMenuItemTemplate += '';
 sideMenuItemTemplate += '   <div class=\"section-title\">';
