@@ -14,6 +14,4 @@ Let computers do the tasks - they’re far more suited to that than us.
 ## Community
 We encourage anyone to [join the Vamp community](/resources/community/) and pitch in with pull requests, bug reports etc.
 
-## Team
-
 
