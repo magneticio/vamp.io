@@ -3,20 +3,17 @@ date: 2016-09-13T09:00:00+00:00
 title: CLI reference
 ---
 
-See [using the Vamp CLI](/documentation/cli/using-the-cli) for details on installation, configuration and effective use of the CLI
-
-## Commands
-
 The VAMP CLI supports the following commands:  
 [create](#create), [deploy](#deploy), [generate](#generate), [help](#help), [info](#info), [inspect](#inspect), [list](#list), [merge](#merge), [remove](#remove), [undeploy](#undeploy), [update](#update), [version](#version)  
+See [using the Vamp CLI](/documentation/cli/using-the-cli) for details on installation, configuration and effective use of the CLI
 
 For details about a specific command, use `vamp COMMAND --help`
 
-### Create
+-------------
+## Create
 
 Create an artifact read from the specified filename or read from stdin.
 
-**Usage:** 
 ```
 vamp create blueprint|breed|deployment|escalation|condition|scale|sla [--file|--stdin]
 ```
@@ -26,7 +23,7 @@ Parameter | purpose
 `--file`        |       Name of the yaml file [Optional]
 `--stdin`        |      Read file from stdin [Optional]
   
-#### Example - create
+#### Example
 ```bash
 > vamp create scale --file my_scale.yaml
 name: my_scale
@@ -34,11 +31,12 @@ cpu: 2.0
 memory: 2GB
 instances: 2
 ```
-### Deploy
+
+-------------
+## Deploy
 
 Deploys a blueprint
 
-**Usage:** 
 ```
 vamp deploy NAME --deployment [--file|--stdin]
 ```
@@ -49,16 +47,16 @@ Parameter | purpose
 `--stdin`     |         Read file from stdin [Optional]
 `--deployment`|         Name of the deployment to update [Optional]
 
-#### Example - deploy
+#### Example
 ```bash
 > vamp deploy --deployment 1111-2222-3333-4444 --file my_new_blueprint.yaml
 ```
 
-### Generate
+-------------
+## Generate
 
 Generates an artifact
 
-**Usage:** 
 ```
 vamp generate breed|blueprint|condition|scale [NAME] [--file|--stdin]
 ```
@@ -67,21 +65,13 @@ vamp generate breed|blueprint|condition|scale [NAME] [--file|--stdin]
 `--file`    |           Name of the yaml file to preload the generation [Optional]
 `--stdin`   |           Read file from stdin [Optional]
 
-For `generate breed`:
+### generate breed
 
 | Parameter | purpose |
 |-----------|---------|
 `--deployable`  |       Deployable specification [Optional]
 
-For `generate blueprint`:
-
-| Parameter | purpose |
-|-----------|---------|
-`--cluster`   |         Name of the cluster
-`--breed`     |         Name of the breed   [Optional, requires --cluster]
-`--scale`     |         Name of the scale   [Optional, requires --breed]
-
-#### Example - generate breed
+#### Example
 ```bash
 > vamp generate breed my_new_breed --json
 {
@@ -102,11 +92,20 @@ For `generate blueprint`:
 }
 ```
 
-### Help
+### generate blueprint
+
+| Parameter | purpose |
+|-----------|---------|
+`--cluster`   |         Name of the cluster
+`--breed`     |         Name of the breed   [Optional, requires --cluster]
+`--scale`     |         Name of the scale   [Optional, requires --breed]
+
+-------------
+## Help
 
 Displays the Vamp help message
 
-#### Example - Vamp help
+#### Example
 ```bash
 > vamp help
 Usage: vamp COMMAND [args..]
@@ -128,13 +127,12 @@ Commands:
 Run vamp COMMMAND --help  for additional help about the different command options
 ```
 
-
-
-### Info
+-------------
+## Info
 
 Displays the Vamp Info message
 
-#### Example - Vamp info
+#### Example
 ```bash
 > vamp info
 message: Hi, I'm Vamp! How are you?
@@ -155,10 +153,10 @@ jvm:
 ...    
 ```
 
-### Inspect
+-------------
+## Inspect
 Shows the details of the specified artifact
 
-**Usage:** 
 ```
 vamp inspect blueprint|breed|deployment|escalation|condition|scale|sla NAME --json
 ```
@@ -168,7 +166,7 @@ vamp inspect blueprint|breed|deployment|escalation|condition|scale|sla NAME --js
 `--as_blueprint` | Returns a blueprint (only for inspect deployment) [Optional]|
 `--json`    |  Output Json instead of Yaml [Optional]|
 
-#### Example - inspect
+#### Example
 ```bash
 > vamp inspect breed sava:1.0.0
 name: sava:1.0.0
@@ -180,15 +178,15 @@ constants: {}
 dependencies: {}
 ```
 
-### List
+-------------
+## List
 Shows a list of artifacts
 
-**Usage:** 
 ```
 vamp list blueprints|breeds|deployments|escalations|conditions|gateways|scales|slas
 ```
 
-#### Example - list
+#### Example 
 ```bash
 > vamp list deployments
 NAME                                    CLUSTERS
@@ -197,41 +195,43 @@ NAME                                    CLUSTERS
 a1e2a68b-295f-4c9b-bec5-64158d84cd00    sava, backend1, backend2
 ```
 
+-------------
 ## Merge
 
 Merges a blueprint with an existing deployment or blueprint.
 Either specify a deployment or blueprint in which the blueprint should be merged
 The blueprint can be specified by NAME, read from the specified filename or read from stdin.
 
-**Usage:** `vamp merge --deployment|--blueprint [NAME] [--file|--stdin]` 
+`vamp merge --deployment|--blueprint [NAME] [--file|--stdin]` 
       
 | Parameter | purpose |
 |-----------|---------|
 `--file`     | Name of the yaml file [Optional]
 `--stdin`    | Read file from stdin [Optional]
 
-### Example
+#### Example
 ```bash
 vamp merge --blueprint my_existing_blueprint -- file add_this_blueprint.yaml
 ```
 
+-------------
 ## Remove
 
 Removes artifact
 
-**Usage:** `vamp remove blueprint|breed|escalation|condition|scale|sla NAME`
+`vamp remove blueprint|breed|escalation|condition|scale|sla NAME`
 
-### Example
+#### Example
 ```bash
 > vamp remove scale my_scale
 ```
-
+-------------
 ## Undeploy
 
 Removes (part of) a deployment.
 By only specifying the name, the whole deployment will be removed. To remove part of a deployment, specify a blueprint. The contents of the blueprint will be subtracted from the active deployment.
 
-**Usage:** `vamp undeploy NAME [--blueprint|--file|--stdin]` 
+`vamp undeploy NAME [--blueprint|--file|--stdin]` 
 
 Parameter | purpose
 ----------|--------
@@ -239,27 +239,28 @@ Parameter | purpose
 `--file`   |       Name of the yaml file [Optional]
 `--stdin`  |      Read file from stdin [Optional]
 
-### Example
+#### Example
 ```bash
 > vamp undeploy 9ec50a2a-33d7-4dd3-a027-9eeaeaf925c1 --blueprint sava:1.0
 ```
-
+-------------
 ## Update
 
 Updates an existing artifact read from the specified filename or read from stdin.
 
-**Usage:** `vamp update blueprint|breed|deployment|escalation|condition|scale|sla NAME [--file] [--stdin]`
+`vamp update blueprint|breed|deployment|escalation|condition|scale|sla NAME [--file] [--stdin]`
 
 Parameter | purpose
 ----------|--------
 `--file`   |      Name of the yaml file [Optional]
 `--stdin`  |      Read file from stdin [Optional]
 
+-------------
 ## Version
 
 Displays the Vamp CLI version information 
 
-### Example
+#### Example
 ```bash
 > vamp version
 CLI version: 0.7.9
@@ -268,4 +269,4 @@ CLI version: 0.7.9
 
 #### See also
 
-* [Using the CLI](/documentation/cli/) - installation, configuration and effective use of the CLI
+* [Using the Vamp CLI](/documentation/cli/using-the-cli/) - installation, configuration and effective use of the CLI
