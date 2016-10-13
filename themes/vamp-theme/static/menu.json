@@ -377,11 +377,6 @@
               "visible": true
             },
             {
-              "path": "documentation/using-vamp/canary-releases-and-a-b-testing",
-              "text": "Canary releases and A/B testing",
-              "visible": true
-            },
-            {
               "path": "documentation/using-vamp/environment-variables",
               "text": "Environment variables",
               "visible": true
