@@ -813,7 +813,7 @@ body {
     height: 100%;
   }
 
-  .top-menu-items, .download, .github-logo {
+  .top-menu-items, .download, .github-logo, .search-button {
     display: flex;
     align-items: center;
     position: relative;
@@ -844,8 +844,9 @@ body {
     }
   }
 
-  .github-logo {
+  .github-logo, .search-button {
     color: $color-white-squeeze;
+    cursor: pointer;
   }
 }
 
@@ -863,7 +864,11 @@ body {
     color: $color-big-stone;
   }
 
-  .github-logo {
+  .github-logo{
+    color: rgba($color-big-stone, 0.5);
+  }
+
+  .search-button {
     color: rgba($color-big-stone, 0.5);
   }
 }
@@ -1444,6 +1449,134 @@ pre + pre {
   img {
     width: 100%;
   }
+}
+
+#search {
+  //background-color: yellow;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 99999;
+
+  left: 100vw;
+  overflow: hidden;
+
+  transition: all ease-in 0.3s;
+
+  &.active {
+    left: 0;
+  }
+}
+
+.search-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  border-bottom: 1px solid $color-cascade;
+
+  &__back {
+    width: 80px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    height: 79px;
+    background-color: white;
+    border-right: 1px solid $color-cascade;
+    text-decoration: none;
+
+    i {
+     line-height: 80px;
+      color: $color-cascade;
+
+    }
+  }
+
+  &__input {
+    font-size: 16px;
+    padding-left: 20px;
+    flex: 1;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.05em;
+    border: none;
+
+    &:focus {
+      outline: none !important;
+      outline-style: none !important;
+      box-shadow:none !important;
+      border-color:transparent !important;
+    }
+  }
+
+
+}
+
+.search-results {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 4px 2px -2px rgba($color-big-stone, 0.25);
+
+
+
+  ul {
+    li {
+      display: block;
+      background-color: white;
+      border-bottom: 1px solid $color-cascade;
+      padding: 20px 100px;
+      cursor: pointer;
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: rgba($color-radical-red, 0.7);
+        h2, p.url, p.the-content {
+          color: white;
+        }
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+
+    }
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: $color-big-stone;
+  }
+
+  p.url {
+    font-size: 14px;
+    font-weight: 300;
+    color: $color-ming;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+  }
+
+  p.the-content {
+    color: $color-big-stone;
+    letter-spacing: 0.05em;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
 }
 
 // Dev

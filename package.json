@@ -5,11 +5,12 @@
   "main": "buildMenu.js",
   "dependencies": {
     "colors": "^1.1.2",
-    "directory-tree": "^1.1.0"
+    "directory-tree": "^1.1.0",
+    "hugo-lunr": "0.0.4"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-index": "hugo-lunr -o themes/vamp-theme/static/lunr.json"
   },
   "repository": {
     "type": "git",

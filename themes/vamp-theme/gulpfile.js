@@ -20,7 +20,7 @@ gulp.task('browser-sync', function() {
       port: 1314
     },
     proxy: "localhost:1313",
-    reloadDelay: 500
+    reloadDelay: 1000
   });
 });
 

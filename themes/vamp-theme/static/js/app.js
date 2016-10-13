@@ -157,7 +157,7 @@ function getMenuFile(callback) {
     return regex.test(email);
   }
   
-
+  buildSearch();
 }
 
 
@@ -274,6 +274,83 @@ function buildSubSideMenu(data) {
       subSideMenuItem.visible && $('#side-menu').append(renderedSubSideMenuItem);
   })
 }
+
+// Search function
+function buildSearch() {
+  var self = this;
+
+  var index = lunr(function () {
+    this.ref('id');
+    this.field('uri');
+    this.field('title', {boost: 10});
+    this.field('content');
+    this.field('tags');
+  });
+
+  $.getJSON(theBaseUrl + 'lunr.json', function (data) {
+    self.data = data;
+
+    data.forEach(function(dataPoint, i) {
+      //Set ID
+      dataPoint.id = i;
+
+      //Join tags
+      dataPoint.tags = dataPoint.tags.join(',');
+
+      //Set title
+      var splittedContent = dataPoint.content.split("\n");
+      dataPoint.title = 'None';
+      if(splittedContent[2].substr(0, 5) === 'title') {
+        dataPoint.title = splittedContent[2].substr(7, splittedContent[2].length);
+        dataPoint.content = splittedContent.slice(4, splittedContent.length).join(' ');
+      }
+
+      index.add(dataPoint);
+    });
+
+  }, function(error) {
+    console.log(error);
+  });
+
+  $('.search-bar__input').keydown(function( event ) {
+    if ( event.which == 13 ) {
+      event.preventDefault();
+    }
+    console.log();
+    var searchResults = index.search($(this).val());
+    $('.search-results ul').empty();
+
+
+    for (var sri = 0; sri < 5; sri++) {
+      if(searchResults[sri]) {
+        var parsedResult = self.data[searchResults[sri].ref];
+        var goToUrl = theBaseUrl + ((parsedResult.uri.split(' ').join('-')).substring(1, parsedResult.uri.length));
+        $('.search-results ul').append('<li><a href="' + goToUrl + '"><h2>' + parsedResult.title + '</h2><p class="url">' + parsedResult.uri + '</p><p class="the-content">' + parsedResult.content + '</p></li>');
+      }
+    }
+
+  });
+
+  $('.search-button, .search-bar__back').click(function(event) {
+    $('#search').toggleClass('active');
+    $('.search-bar__input').focus();
+    event.preventDefault();
+    event.stopPropagation();
+  });
+
+  //escape key
+  $('.search-bar__input').keyup(function(e) {
+    if (e.keyCode == 27) {
+      $('.search-bar__input').focusout();
+      $('#search').toggleClass('active');
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  });
+
+}
+
+
 
 
 
