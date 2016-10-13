@@ -1613,6 +1613,7 @@ body {
 
 .markdowned table {
   margin: 40px 0;
+  width: 100%;
 }
 
 .markdowned th {
