@@ -278,10 +278,6 @@ button:focus {
   .row {
     width: 676px;
     margin: 20px -20px;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
   }
 }
 
@@ -289,6 +285,10 @@ button:focus {
   .row {
     width: 690px;
     margin: 30px -20px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
 }
 

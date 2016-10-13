@@ -36,14 +36,12 @@
   @media all and (min-width: 641px) {
     width: $container-width-mobile + $gutter-size;
     margin: 20px (-($gutter-size/2));
-    flex-direction: row;
-
   }
 
   @media all and (min-width: 769px) {
     width: $container-width-tablet + $gutter-size;
     margin: 30px (-($gutter-size/2));
-
+    flex-direction: row;
   }
 
   @media all and (min-width: 1025px) {
