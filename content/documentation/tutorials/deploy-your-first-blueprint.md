@@ -9,10 +9,10 @@ If everything went to plan, you should have your Vamp installation up and runnin
 #### In this tutorial we will:  
 
 1. Deploy a monolith, using either the Vamp UI or the Vamp API
-2. Check out the deployed application
-3. Get some metrics on the running application
-$. Change the scale and load-balancing
-5. Chaos monkey!    
+* Check out the deployed application  
+* Get some metrics on the running application  
+* Change the scale and load-balancing
+* Chaos monkey!    
 
 ## In depth
 
@@ -118,7 +118,7 @@ Vamp will automatically load-balance services. Let's change the scale of the ser
 
 Now let's try something fun. Go to the Marathon UI (on port 9090) and find the Sava container running. Now select destroy to kill the container. Watch Vamp detecting that issue and making sure that the defined number of instances is spun up again as soon as possible, while making sure the loadbalancing routing rules are also updated to reflect the changed IP's and ports of the instances.
 
-## What next?
+{{< note title="What next?" >}}
+* Let's [run a canary release in the second part of this getting started tutorial →](/documentation/tutorials/run-a-canary-release/)
+{{< /note >}}
 
-Ok, that's great!   
-Now let's [run a canary release in the second part of this getting started tutorial →](/documentation/tutorials/run-a-canary-release/)

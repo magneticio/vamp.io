@@ -257,8 +257,12 @@ with your already running production version (the one without the bugfix) and sl
 New major release of your customer facing app? You probably also have some new dependencies that come with that
 release. You create some containers and write up a blueprint that describes this new situation, run it in acceptance and test and what have you. Later, you merge it into your production setup, effectively putting it next to it and then slowly move from the old situation to the new situation, including dependencies.
 
-## What next?
-
-This is the end of this initial getting started tutorial. We haven't done anything with Vamp's SLA's yet, scaling or dictionary system, so there is much more to come!
-
+{{< note title="What next?" >}}
+* This is the end of this initial getting started tutorial. We haven't done anything with Vamp's SLA's yet, scaling or dictionary system, so there is much more to come!
 * [Vamp use cases](/why-use-vamp/use-cases/)
+* Find out how to [install a production-grade set up of Vamp](/documentation/installation/)
+{{< /note >}}
+
+
+
+
