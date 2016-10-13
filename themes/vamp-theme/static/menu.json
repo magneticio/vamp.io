@@ -308,11 +308,6 @@
               "visible": true
             },
             {
-              "path": "documentation/installation/set-container-driver",
-              "text": "Set container driver",
-              "visible": true
-            },
-            {
               "path": "documentation/installation/configure-elastic-stack",
               "text": "Configure Elastic Stack",
               "visible": true
