@@ -2388,6 +2388,10 @@ pre + pre {
   margin-top: 0 !important;
 }
 
+#partners-row a {
+  width: 100%;
+}
+
 #partners-row img {
   width: 100%;
 }
