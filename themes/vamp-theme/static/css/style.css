@@ -1613,6 +1613,7 @@ body {
 
 .markdowned table {
   margin: 40px 0;
+  width: 100%;
 }
 
 .markdowned th {
@@ -2386,6 +2387,10 @@ pre + pre {
 
 .third-icon + h2 {
   margin-top: 0 !important;
+}
+
+#partners-row a {
+  width: 100%;
 }
 
 #partners-row img {

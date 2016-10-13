@@ -712,6 +712,7 @@ body {
 
   table {
     margin: 40px 0;
+    width: 100%;
   }
 
   th {
@@ -1419,7 +1420,6 @@ pre + pre {
 
 .third-icon {
 
-
   @media all and (min-width: 1025px) {
     width: 66%;
     transform: translate(0,19px);
@@ -1437,6 +1437,10 @@ pre + pre {
 }
 
 #partners-row {
+  a {
+    width: 100%;
+  }
+
   img {
     width: 100%;
   }
