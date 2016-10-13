@@ -104,5 +104,7 @@ endpoints. The location, amount and version of containers running behind that se
 Learn more about [how Vamp does service discovery →](/documentation/how-vamp-works/service-discovery/)
 {{< /tip >}}
 
-## What next?
-Great! We just demonstrated that Vamp can handle dependencies between services and configure these services with host and port information at runtime. Now let's do a [more complex migration to a new service based topology →](/documentation/tutorials/merge-and-delete/).
+{{< note title="What next?" >}}
+* Great! We just demonstrated that Vamp can handle dependencies between services and configure these services with host and port information at runtime. Now let's do a [more complex migration to a new service based topology →](/documentation/tutorials/merge-and-delete/).
+{{< /note >}}
+

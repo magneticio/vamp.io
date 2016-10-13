@@ -232,7 +232,8 @@ Using a tool like httpie ([github.com/jakubroztocil - httpie](https://github.com
 
 ![](/images/screens/screencap_canary2.gif)
 
-## What next?
+{{< note title="What next?" >}}
+* Cool stuff. But we are dealing here with single, monolithic applications. Where are the microservices?  We will [chop up this monolith into services and deploy them with Vamp](/documentation/tutorials/split-a-monolith/) in the third part of our tutorial →
+{{< /note >}}
 
-Cool stuff. But we are dealing here with single, monolithic applications. Where are the microservices?   
-We will [chop up this monolith into services and deploy them with Vamp](/documentation/tutorials/split-a-monolith/) in the third part of our tutorial →
+
