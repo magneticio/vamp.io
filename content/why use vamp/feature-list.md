@@ -22,14 +22,6 @@ Vamp 0.9.0 (Beta release) includes:
 * Integrates with ELK stack (Elastic Search, Logstash, Kibana) for custom Kibana dashboards
 * Vamp Runner provides automated integration and workflows testing 
 
-## Did you know?
-
-* Vamp is platform agnostic
-* Vamp is functionality agnostic, but functions well in an API centric, event driven and stateless environment. 
-* Vamp is not a strict container platform, but uses the power of container platforms under the hood.
-* Vamp is written in Scala, Go and ReactJS 
-* Vamp includes clear SLA management and service level enforcement out of the box
-* Vamp is an open source project, actively developed by [Magnetic.io](/about/)
 
 {{< note title="What next?" >}}
 * [Try Vamp](/documentation/installation/hello-world)

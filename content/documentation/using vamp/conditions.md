@@ -3,6 +3,21 @@ date: 2016-09-13T09:00:00+00:00
 title: Conditions
 ---
 
+Conditions are used by gateways to filter incoming traffic for routing between services in a cluster.
+Read more about [gateway usage](/documentation/using-vamp/gateways/#gateway-usage). You can define conditions inline in a blueprint or store them separately under a unique name on the `/conditions` endpoint and just use that name to reference them from a blueprint. 
+
+#### Example - simple inline condition
+
+This would be used directly inside a blueprint.
+
+```yaml
+---
+condition_strength: 10%  # Amount of traffic for this service in percents.
+condition: User-Agent = IOS
+```
+
+## Create a condition 
+
 Creating conditions is quite easy. Checking Headers, Cookies, Hosts etc. is all possible.
 Under the hood, Vamp uses Haproxy's ACL's ([cbonte.github.io/haproxy-dconv - 7.1 ACL basics](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#7.1)) and you can use the exact ACL definition right in the blueprint in the `condition` field of a condition.
 
@@ -49,7 +64,7 @@ Using a tool like httpie ([github.com/jkbrzt/httpie](https://github.com/jakubroz
 
     http GET http://10.26.184.254:9050/ X-VAMP-MY-COOL-HEADER:stuff
 
-## Boolean expression in conditions
+### Boolean expression in conditions
 
 Vamp supports `AND`, `OR`, negation `NOT` and grouping `( )`:
 
@@ -62,47 +77,7 @@ gateways:
 
 * Additional boolean expression examples: [github.com/magneticio/vamp - BooleanParserSpec.scala](https://github.com/magneticio/vamp/blob/master/model/src/test/scala/io/vamp/model/parser/BooleanParserSpec.scala).
 
-## URL path rewrite
 
-Vamp also supports URL path rewrite which can be powerful solution in defining service APIs (e.g. RESTful) outside of application service.
-
-```yaml
-routes:
-  web/port1:
-    rewrites:
-    - path: a if b
-  web/port2:
-    weight: 100%
-```
-
-Path rewrite is defined in format: `path: NEW_PATH if CONDITION`:
-
-- `NEW_PATH` new path to be used; HAProxy variables are supported, e.g. `%[path]`
-- `CONDITION` condition using HAProxy directives, e.g. matching path, method, headers etc.
-
-## Vamp managed and external routes
-
-Vamp managed routes are in the format:
-
-- `gateway` - pointing to another gateway, e.g. it is possible to chain gateways
-- `deployment/cluster` - pointing to deployment cluster, i.e. services are not 'visible'
-- `deployment/cluster/service` - pointing to specific service within deployment cluster
-
-All examples above cover only Vamp managed routes.
-It is also possible to route traffic to specific IP or hostname and port.
-In that case IP or hostname and port need to be specified between brackets, e.g. `[hostname:port]` (and double quotes due to Yaml syntax).
-
-```yaml
-name: mesos
-port: 8080/http
-sticky: route
-
-routes:
-  "[192.168.99.100:5050]":
-    weight: 50%
-  "[localhost:5050]":
-    weight: 50%
-```
 
 {{< note title="What next?" >}}
 * Read about [Vamp events](/documentation/using-vamp/events/)

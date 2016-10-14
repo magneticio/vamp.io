@@ -21,8 +21,6 @@ If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 #### Configuration
 
 * [Configure Vamp](/documentation/installation/configure-vamp/)
-* [Set container driver](/documentation/installation/set-container-driver/)
-* [Configure Elastic Stack](/documentation/installation/configure-elastic-stack/) 
 
 ## Try Vamp
 
