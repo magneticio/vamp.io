@@ -5,8 +5,10 @@
   "main": "buildMenu.js",
   "dependencies": {
     "colors": "^1.1.2",
-    "directory-tree": "^1.1.0",
-    "hugo-lunr": "0.0.4"
+    "directory-tree": "^1.1.1",
+    "hugo-lunr": "0.0.4",
+    "lunr": "^0.7.1",
+    "remove-markdown": "^0.1.0"
   },
   "devDependencies": {},
   "scripts": {
