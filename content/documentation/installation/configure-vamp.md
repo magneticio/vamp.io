@@ -3,11 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: Configure Vamp
 ---
 
-Vamp can be configured using one or a combination of:
-
-- the Vamp `application.conf` HOCON file ([github.com/typesafehub - config](https://github.com/typesafehub/config))
-- environment variables
-- system properties
+Vamp can be configured using one or a combination of the Vamp `application.conf` HOCON file ([github.com/typesafehub - config](https://github.com/typesafehub/config)), environment variables and system properties.
 
 For example:
 ```bash
@@ -116,7 +112,6 @@ Vamp can even run inside Docker while deploying to Docker.
     }
     ...
     ```
-    See [Vamp configuration](/documentation/installation/configure-vamp/) for details of the the Vamp `application.conf` file
 5. (Re)start Vamp by restarting the Java process by hand.   
 
 #### Mesos/Marathon
@@ -288,21 +283,16 @@ These ports need to be available on all Vamp Gateway Agent hosts.
 
 ## Environment variables
 
-Each configuration parameter can be replaced by an environment variable.
-Environment variable names are based on the configuration parameter name converted to upper case and with all non-alphanumerics replaced by an underscore `_` 
+Each configuration parameter can be replaced by an environment variable. Environment variables have precedence over configuration from `application.conf` or system properties.  Read more about [environment variables](/documentation/using-vamp/environment-variables/).
 
-#### Example - environment variable names
+### Environment variable names
+Environment variable names are based on the configuration parameter name converted to upper case. All non-alphanumerics should be replaced by an underscore `_` 
 
 ```
 vamp.info.message           ⇒ VAMP_INFO_MESSAGE
 vamp.gateway-driver.timeout ⇒ VAMP_GATEWAY_DRIVER_TIMEOUT
 ```
 
-{{< note title="Note!" >}}
-Environment variables have precedence over `application.conf` or system properties.
-{{< /note >}}
-
-* Read more about [environment variables](/documentation/using-vamp/environment-variables/).
 
 {{< note title="What next?" >}}
 * [Set container driver](/documentation/installation/set-container-driver)

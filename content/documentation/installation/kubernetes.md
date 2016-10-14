@@ -8,7 +8,7 @@ Kubernetes support is still in Alpha.
 {{< /note >}}
 
 #### Tested against
-This guide has been tested on Kubernetes 1.2 and 1.3. Minikube can also be used. ([github.com - minikube](https://github.com/kubernetes/minikube)) 
+This guide has been tested on Kubernetes 1.2 and 1.3. Minikube can also be used. ([github.com - minikube](https://github.com/kubernetes/minikube))
 
 #### Requirements
 
@@ -40,7 +40,7 @@ $ kubectl version
 ### Step 2: Deploy etcd, Elasticsearch and Logstash
 
 Let's deploy `etcd` - the installation is based on this tutorial ([github.com/coreos - etcd on Kubernetes](https://github.com/coreos/etcd/tree/master/hack/kubernetes-deploy)).
-Execute: 
+Execute:
 
 ```bash
 $ kubectl create \
@@ -52,7 +52,7 @@ Deploy Elasticsearch and Logstash with a proper Vamp Logstash configuration ([gi
 ```bash
 $ kubectl run elastic --image=magneticio/elastic:2.2
 $ kubectl expose deployment elastic --protocol=TCP --port=9200 --name=elasticsearch
-$ ubectl expose deployment elastic --protocol=UDP --port=10001 --name=logstash
+$ kubectl expose deployment elastic --protocol=UDP --port=10001 --name=logstash
 $ kubectl expose deployment elastic --protocol=TCP --port=5601 --name=kibana
 ```
 {{< note title="Note!" >}}
@@ -150,7 +150,7 @@ In this setup Vamp is deliberately configured to initiate exposure of all gatewa
 
 Now we can access our `sava` service on `http://104.155.24.47:9050`
 
-The default Kubernetes service type can be set in configuration: `vamp.container-driver.kubernetes.service-type`, possible values are `LoadBalancer` or `NodePort`. 
+The default Kubernetes service type can be set in configuration: `vamp.container-driver.kubernetes.service-type`, possible values are `LoadBalancer` or `NodePort`.
 
 We can also access gateways using virtual hosts. Vamp Gateway Agent service is on IP `146.148.22.145` in this example, so:
 ```bash
