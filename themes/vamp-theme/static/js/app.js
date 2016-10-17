@@ -28,9 +28,7 @@ topMenuItemTemplate += '<a href=\"'+theBaseUrl+'{{path}}\" id=\"top-menu-item-{{
 
 function documentReady() {
   thePath = window.location.href.substring(theBaseUrl.length-1, window.location.href.length);
-  console.log(thePath);
   thePath = thePath.substring(1, thePath.length - 1);
-  console.log(thePath);
   getMenuFile(menuFileLoaded);
 
   // Top menu color change
@@ -183,6 +181,9 @@ function menuFileLoaded(data) {
       }
       topMenuItem.visible && $('#top-menu-items').append(renderedTopMenuItem);
   });
+
+  $('.content').css('opacity', 1);
+
   //build mobile menu
   buildMobileMenu(data);
 }
