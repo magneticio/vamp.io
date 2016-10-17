@@ -121,19 +121,6 @@ function getMenuFile(callback) {
     return this.hostname != window.location.hostname;
   }).attr('target', '_blank');
 
-  //Initi slicknav
-  var slickNavConfig = {
-    label: '',
-    allowParentLinks: false,
-    closedSymbol: '&#xf105;',
-    openedSymbol: '&#xf107;',
-    brand: '<a href="'+theBaseUrl+'/"><img id="logo" class="logo" src="'+theBaseUrl+'/img/005-vamp/Logo/logo-long-colour.svg" alt=""></a>'
-  }
-
-  $(function(){
-    $('#mobile-menu').slicknav(slickNavConfig);
-  });
-
   //check if emails are correct
   var inputfields = $('#mc-embedded-subscribe-form input');
 
@@ -160,6 +147,22 @@ function getMenuFile(callback) {
 
 
 function menuFileLoaded(data) {
+  //Init slicknav
+
+  buildMobileMenu(data);
+
+  var slickNavConfig = {
+    label: '',
+    allowParentLinks: false,
+    closedSymbol: '&#xf105;',
+    openedSymbol: '&#xf107;',
+    brand: '<a href="'+theBaseUrl+'/"><img id="logo" class="logo" src="'+theBaseUrl+'/img/005-vamp/Logo/logo-long-colour.svg" alt=""></a>'
+  }
+
+  $(function(){
+    $('#mobile-menu').slicknav(slickNavConfig);
+  });
+
   //parents are set
   setParents([], data.children);
 
@@ -185,7 +188,7 @@ function menuFileLoaded(data) {
   $('.content').css('opacity', 1);
 
   //build mobile menu
-  buildMobileMenu(data);
+
 }
 
 function buildMobileMenu(data) {
