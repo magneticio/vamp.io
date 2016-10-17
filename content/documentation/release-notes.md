@@ -24,3 +24,8 @@ Some of the most notable new features are:
 And, of course, there's a massive amount of improvements, bug fixes and other optimisations.
 
 * [github.com/magneticio - complete list of all the closed issues in this release](https://github.com/magneticio/vamp/issues?q=is%3Aissue+milestone%3A0.9.0+is%3Aclosed)
+
+{{< note title="What next?" >}}
+* Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases)) 
+* You can [try out the latest release](/documentation/installation/hello-world) with our single container hello world package.
+{{< /note >}}
