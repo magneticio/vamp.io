@@ -1767,11 +1767,11 @@ body {
 }
 
 .top-menu.active .github-logo {
-  color: rgba(20, 45, 60, 0.5);
+  color: #142D3C;
 }
 
 .top-menu.active .search-button {
-  color: rgba(20, 45, 60, 0.5);
+  color: #142D3C;
 }
 
 .slicknav_menu {
