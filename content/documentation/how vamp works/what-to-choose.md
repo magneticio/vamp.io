@@ -1,27 +1,51 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: What to choose?
+title: Which container scheduler?
 ---
-Vamp runs on top of a container scheduler to deliver it's scaling magic. But what container scheduler to choose when you're "greenfield" and don't have anything selected or running yet?
+Vamp can run on top of Mesos/Marathon, DC/OS, Kubernetes and Rancher (Docker Swarm support is coming soon). In case you’re “greenfield” and don’t have anything selected or running yet, we have provided some high-level pointers to help you make an informed decision. 
 
-Literally hundreds of blog posts have been written about which container platform is the best. The answer of course is, as always, "it depends". ;)
+* [Working with big data](/documentation/how-vamp-works/what-to-choose/#working-with-big-data)
+* [Running web-based applications](/documentation/how-vamp-works/what-to-choose/#running-web-based-applications)
+* [Managing (virtual) infrastructure](/documentation/how-vamp-works/what-to-choose/#managing-virtual-infrastructure)
+* [Just running Docker](/documentation/how-vamp-works/what-to-choose/#just-running-docker)
 
-From a very high-level overview we can give a few pointers though to make you help make a better decision.
+Whichever option you choose, as Vamp is container systems agnostic all your blueprints and workflows will keep on working if you decide to switch in the future *.
 
-If you simply want to play around with Vamp to get a feeling for what it can offer we suggest downloading and installing our [Vamp Hello World Docker Quickstart](/documentation/installation/hello-world/). It's a single Docker container including Vamp, Mesos/Marathon and ELK, and only needs Docker and at least 8GB to run.
+-------
 
-If you like the power that Vamp gives you it's time to select a container cluster-manager and scheduler to start using Vamp in production settings, assuming you will be running more than one machine for fail-over. We currently support Mesos/Marathon, DC/OS (which is based on Mesos/Marathon but adds additional features and a fancy UI), Kubernetes and Rancher. Now what to choose?
+### Working with big data
+_Mesos/Marathon, DC/OS, Azure Container Service_  
+If you are working with typical big data solutions like Kafka, Cassandra or Spark (often combined in something called SMACK stack), and/or want to run not only containers on your cluster it makes sense to investigate [Mesos/Marathon](/documentation/installation/mesos-marathon/) first. A lot of big data frameworks can run as native Mesos frameworks and you can combine the underlying infrastructure to share resources between these frameworks running on Mesos and your containers running inside Marathon (which is a Mesos framework in itself).
 
-Very high level we can make the following distinctions. If you are working with typical big data solutions like Kafka, Cassandra or Spark (often combined in something called SMACK stack), and/or want to run not only containers on your cluster, it makes sense to investigate [Mesos/Marathon](/documentation/installation/mesos-marathon/) first, as a lot of big data frameworks can run as native Mesos frameworks and you can combine the underlying infrastructure to share resources between these frameworks running on Mesos and your containers running inside Marathon (which is a Mesos framework in itself).
+#### Add in commercial support
+If you have the same requirements as described above, but you're more comfortable buying commercial support, moving towards [DC/OS](/documentation/installation/dcos/) makes sense. DC/OS is based on Mesos/Marathon, but adds additional features and a fancy UI. You can purchase commercial DC/OS support or buy an enterprise version from Mesosphere (the company that initiated Mesos and Marathon).
 
-If you have the same requirements as described above, but you're more comfortable buying commercial support, moving towards [DC/OS](/documentation/installation/dcos/) makes sense, as you can purchase commercial DC/OS support or buy an enterprise version of DC/OS from Mesosphere (the company that initiated Mesos and Marathon).
-
+#### Hosted solution
 If you're looking for a hosted version of DC/OS you could investigate [Azure Container Service](/documentation/installation/azure-container-service/) which let's you choose between DC/OS or Docker Swarm.
 
-If you're solely interested in running (micro)services, API's and other web-based applications, [Kubernetes](/documentation/installation/kubernetes/) is an integrated cluster-manager and -scheduler, and is specifically designed for running containers with web-focused payloads. There is also a hosted version of Kubernetes available from Google (Google Container Engine). Commercial support or fancy dashboards are less easy to find for Kubernetes at this point. Kubernetes is also the scheduler used in Redhat software (Openshift V3), so if your company used Redhat software this might make sense to investigate.
+-------
 
-If you not only want to manage and run containers, but are also interested in managing/provisioning (virtual) infrastructure, [Rancher](/documentation/installation/rancher/) is a viable option. It provides a Docker or Kubernetes based container scheduler, plus infrastructure provisioning with a very nice graphical UI.
+### Running web-based applications
+_Kubernetes, Google Container Engine_  
+If you're solely interested in running (micro)services, API's and other web-based applications, [Kubernetes](/documentation/installation/kubernetes/) is an integrated cluster-manager and -scheduler, and is specifically designed for running containers with web-focused payloads. 
 
-For people wanting to stay within the Docker ecosystem, Vamp works nicely with (single machine) [Docker](/documentation/installation/docker/), and we have solid Docker Swarm support coming up soon.
+#### Add in commercial support
+At this point, commercial support and fancy dashboards are less easy to find for Kubernetes. However, Kubernetes is the scheduler used in Redhat software (Openshift V3), so if your company used Redhat software this might make sense to investigate.
 
-The beauty of Vamp is that all your blueprints and workflows will keep on working (except for some [dialect](/documentation/using-vamp/blueprints#dialects) and specific metric store settings) when you want to move to a different scheduler or container cloud.
+#### hosted solution
+A hosted version of Kubernetes is available from Google (Google Container Engine). 
+
+-------
+
+### Managing (virtual) infrastructure
+_Rancher with Docker or Kubernetes_  
+If you want to manage/provision (virtual) infrastructure manage as well as run containers, [Rancher](/documentation/installation/rancher/) is a viable option. Rancher provides a Docker or Kubernetes based container scheduler and adds infrastructure provisioning with a nice graphical UI.
+
+-------
+
+### Just running Docker
+If you want to stay within the Docker ecosystem, Vamp works nicely with (single machine) [Docker](/documentation/installation/docker/). Docker Swarm support is coming up soon.
+
+-------
+  
+_* Note that Vamp [dialects](/documentation/using-vamp/blueprints#dialects) and some specific metric store settings are scheduler or container cloud specific._

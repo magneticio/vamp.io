@@ -12,3 +12,6 @@ Vamp can talk directly to a Docker daemon and its driver is configured by defaul
 
 #### Set container driver
 See [set Docker as the container driver](/documentation/installation/configure-vamp#docker)
+
+
+![](/images/logos/6.BADGES_v2-01.jpg)
