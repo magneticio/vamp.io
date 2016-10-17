@@ -2,14 +2,14 @@
 date: 2016-09-13T09:00:00+00:00
 title: Which container scheduler?
 ---
-Vamp can run on top of Mesos/Marathon, DC/OS, Kubernetes and Rancher (Docker Swarm support is coming soon). In case you’re “greenfield” and don’t have anything selected or running yet, we have provided some high-level pointers to help you make an informed decision. 
+Vamp can run on top of Mesos/Marathon, DC/OS, Kubernetes and Rancher (Docker Swarm support is coming soon). In case you’re “greenfield” and don’t have anything selected or running yet, here are some high-level pointers to help you make an informed decision. 
 
 * [Working with big data](/documentation/how-vamp-works/what-to-choose/#working-with-big-data)
 * [Running web-based applications](/documentation/how-vamp-works/what-to-choose/#running-web-based-applications)
 * [Managing (virtual) infrastructure](/documentation/how-vamp-works/what-to-choose/#managing-virtual-infrastructure)
 * [Just running Docker](/documentation/how-vamp-works/what-to-choose/#just-running-docker)
 
-Whichever option you choose, Vamp is container systems agnostic so all your blueprints and workflows will keep on working if you decide to switch in the future *.
+Whichever option you choose now, Vamp is container systems agnostic, so all your blueprints and workflows will keep on working if you decide to switch in the future *.
 
 -------
 
@@ -27,7 +27,7 @@ If you're looking for a hosted version of DC/OS you could investigate [Azure Con
 
 ### Running web-based applications
 _Kubernetes, Google Container Engine_  
-If you're solely interested in running (micro)services, API's and other web-based applications, [Kubernetes](/documentation/installation/kubernetes/) is an integrated cluster-manager and -scheduler, and is specifically designed for running containers with web-focused payloads. 
+If you're solely interested in running (micro)services, APIs and other web-based applications, [Kubernetes](/documentation/installation/kubernetes/) is an integrated cluster-manager and -scheduler, and is specifically designed for running containers with web-focused payloads. 
 
 #### Add in commercial support
 At this point, commercial support and fancy dashboards are less easy to find for Kubernetes. However, Kubernetes is the scheduler used in Redhat software (Openshift V3), so if your company used Redhat software this might make sense to investigate.
@@ -39,7 +39,7 @@ A hosted version of Kubernetes is available from Google (Google Container Engine
 
 ### Managing (virtual) infrastructure
 _Rancher with Docker or Kubernetes_  
-If you want to manage/provision (virtual) infrastructure manage as well as run containers, [Rancher](/documentation/installation/rancher/) is a viable option. Rancher provides a Docker or Kubernetes based container scheduler and adds infrastructure provisioning with a nice graphical UI.
+If you want to manage and provision (virtual) infrastructure as well as manage and run containers, [Rancher](/documentation/installation/rancher/) is a viable option. Rancher provides a Docker or Kubernetes based container scheduler and adds infrastructure provisioning with a nice graphical UI.
 
 -------
 
@@ -49,3 +49,8 @@ If you want to stay within the Docker ecosystem, Vamp works nicely with (single 
 -------
   
 _* Note that Vamp [dialects](/documentation/using-vamp/blueprints#dialects) and some specific metric store settings are scheduler or container cloud specific._
+
+{{< note title="What next?" >}}
+* Find out how to [install Vamp](/documentation/installation) 
+* Read about the [requirments to run Vamp](/documentation/how-vamp-works/requirements) 
+{{< /note >}}
