@@ -10,6 +10,9 @@ The Vamp hello world setup will run Mesos, Marathon ([mesosphere.github.io - Mar
 This hello world set up is designed for demo purposes only - it is not production grade.
 {{< /note >}}
 
+#### Requirements
+* at least 8GB free space
+
 ### Step 1: Get Docker
 
 Please install one of the following for your platform/architecture

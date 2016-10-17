@@ -9,7 +9,7 @@ Vamp can run on top of Mesos/Marathon, DC/OS, Kubernetes and Rancher (Docker Swa
 * [Managing (virtual) infrastructure](/documentation/how-vamp-works/what-to-choose/#managing-virtual-infrastructure)
 * [Just running Docker](/documentation/how-vamp-works/what-to-choose/#just-running-docker)
 
-Whichever option you choose, as Vamp is container systems agnostic all your blueprints and workflows will keep on working if you decide to switch in the future *.
+Whichever option you choose, Vamp is container systems agnostic so all your blueprints and workflows will keep on working if you decide to switch in the future *.
 
 -------
 
