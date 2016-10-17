@@ -2556,6 +2556,8 @@ pre + pre {
   font-weight: 300;
   letter-spacing: 0.1em;
   color: #142D3C;
+  padding-top: 0;
+  margin-top: 0 !important;
 }
 
 .search-results p.url {

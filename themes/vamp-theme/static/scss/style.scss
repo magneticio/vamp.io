@@ -1616,6 +1616,8 @@ pre + pre {
     font-weight: 300;
     letter-spacing: 0.1em;
     color: $color-big-stone;
+    padding-top: 0;
+    margin-top: 0 !important ;
   }
 
   p.url {
