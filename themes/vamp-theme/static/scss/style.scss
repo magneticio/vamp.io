@@ -1645,6 +1645,40 @@ h2 {
   margin-top: -100px !important;
 }
 
+#not-found-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  padding-top: 80px;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: $color-radical-red;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 100;
+  }
+
+  .image-container {
+    width: 530px;
+    height: 259px;
+  }
+
+  img {
+    width: 530px;
+    height: 259px;
+  }
+}
+
 
 // Dev
 #__bs_notify__ { top:95% !important; right: 10px !important; border-radius: 15px !important; height:60px !important; }

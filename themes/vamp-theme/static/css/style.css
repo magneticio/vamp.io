@@ -2582,6 +2582,49 @@ h2 {
   margin-top: -100px !important;
 }
 
+#not-found-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 80vh;
+  padding-top: 80px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+}
+
+#not-found-page h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: #FF405E;
+}
+
+#not-found-page h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+#not-found-page .image-container {
+  width: 530px;
+  height: 259px;
+}
+
+#not-found-page img {
+  width: 530px;
+  height: 259px;
+}
+
 #__bs_notify__ {
   top: 95% !important;
   right: 10px !important;
