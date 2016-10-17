@@ -45,10 +45,14 @@ body {
 }
 
 .h1 {
-  font-size: 40px;
+  font-size: 26px;
   font-weight: 300;
   letter-spacing: 0.05em;
   color: $color-big-stone;
+
+  @media all and (min-width: 641px) {
+    font-size: 40px;
+  }
 
   &:not(:first-child):not(:last-child) {
     margin: $small-margin 0;
@@ -70,7 +74,7 @@ body {
   color: $color-big-stone;
 
 
-  @media all and (min-width: 1025px) {
+    @media all and (min-width: 1025px) {
     font-size: 22px;
   }
 
@@ -247,7 +251,6 @@ body {
   display: flex;
   justify-content: center;
   padding: 8px 0;
-
 
   @media all and (min-width: 321px) {
     padding: 8px 0;
@@ -865,11 +868,11 @@ body {
   }
 
   .github-logo{
-    color: rgba($color-big-stone, 0.5);
+    color: $color-big-stone;
   }
 
   .search-button {
-    color: rgba($color-big-stone, 0.5);
+    color: $color-big-stone;
   }
 }
 
@@ -1449,6 +1452,46 @@ pre + pre {
   img {
     width: 100%;
   }
+
+  .logos-row {
+    flex-flow: row wrap;
+    justify-content: center;
+
+    @media all and (min-width: 321px) {
+      .col {
+        height: 190px;
+        width: 50%;
+        flex: none;
+        padding: 0;
+      }
+    }
+
+    @media all and (min-width: 641px) {
+      .col {
+        height: 230px;
+        width: 33%;
+        flex: none;
+      }
+    }
+
+    @media all and (min-width: 769px) {
+    }
+
+    @media all and (min-width: 1025px) {
+      .col {
+        height: auto;
+        width: 14.27%;
+      }
+    }
+
+    @media all and (min-width: 1201px) {
+
+
+    }
+
+    .col {}
+  }
+
 }
 
 #search {
@@ -1469,6 +1512,8 @@ pre + pre {
   }
 }
 
+
+// Search
 .search-bar {
   position: absolute;
   top: 0;
@@ -1578,6 +1623,9 @@ pre + pre {
   }
 
 }
+
+
+
 
 // Dev
 #__bs_notify__ { top:95% !important; right: 10px !important; border-radius: 15px !important; height:60px !important; }

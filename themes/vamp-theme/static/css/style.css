@@ -935,10 +935,16 @@ body {
 }
 
 .h1 {
-  font-size: 40px;
+  font-size: 26px;
   font-weight: 300;
   letter-spacing: 0.05em;
   color: #142D3C;
+}
+
+@media all and (min-width: 641px) {
+  .h1 {
+    font-size: 40px;
+  }
 }
 
 .h1:not(:first-child):not(:last-child) {
@@ -1761,11 +1767,11 @@ body {
 }
 
 .top-menu.active .github-logo {
-  color: rgba(20, 45, 60, 0.5);
+  color: #142D3C;
 }
 
 .top-menu.active .search-button {
-  color: rgba(20, 45, 60, 0.5);
+  color: #142D3C;
 }
 
 .slicknav_menu {
@@ -2400,6 +2406,42 @@ pre + pre {
 
 #partners-row img {
   width: 100%;
+}
+
+#partners-row .logos-row {
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media all and (min-width: 321px) {
+  #partners-row .logos-row .col {
+    height: 190px;
+    width: 50%;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+    padding: 0;
+  }
+}
+
+@media all and (min-width: 641px) {
+  #partners-row .logos-row .col {
+    height: 230px;
+    width: 33%;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+  }
+}
+
+@media all and (min-width: 1025px) {
+  #partners-row .logos-row .col {
+    height: auto;
+    width: 14.27%;
+  }
 }
 
 #search {
