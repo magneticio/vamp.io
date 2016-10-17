@@ -295,7 +295,6 @@ vamp.gateway-driver.timeout ⇒ VAMP_GATEWAY_DRIVER_TIMEOUT
 
 
 {{< note title="What next?" >}}
-* [Set container driver](/documentation/installation/set-container-driver)
-* [Configure Elastic Stack](/documentation/installation/configure-elastic-stack)
 * Follow the [getting started tutorials](/documentation/tutorials)
+* You can read in depth about [using Vamp](/documentation/using-vamp) or browse the [API reference](/documentation/api/api-reference) or [CLI reference](/documentation/cli/cli-reference) docs.
 {{< /note >}}
