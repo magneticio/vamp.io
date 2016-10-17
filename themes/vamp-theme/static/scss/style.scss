@@ -548,10 +548,18 @@ body {
     line-height: 1.5em;
     letter-spacing: 0.05em;
     margin: 32px 0 12.5px 0;
+
+    //padding for anchor tags
+    padding-top: 100px;
+    margin-top: -68px;
   }
 
   h2 + h3 {
     margin-top: 0;
+
+    //padding for anchor tags
+    padding-top: 100px;
+    margin-top: -100px !important;
   }
 
   h2 + p {
@@ -570,6 +578,10 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin: 32px 0 0 0;
+
+    //padding for anchor tags
+    padding-top: 100px;
+    margin-top: -100px + 32px !important;
 
   }
 
@@ -1627,7 +1639,11 @@ pre + pre {
 
 }
 
-
+//Anchor padding
+h2 {
+  padding-top: 100px;
+  margin-top: -100px !important;
+}
 
 
 // Dev
