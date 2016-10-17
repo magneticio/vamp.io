@@ -30,3 +30,7 @@ Vamp workflows are small applications (for example using JavaScript or your own 
 ### Vamp Gateway Agent (VGA)  
 Vamp Gateway Agent (VGA) reads the HAProxy configuration from ZooKeeper, etcd or Consul and reloads HAProxy on each configuration change with as close to zero client request interruptions as possible. Typically, there should be one Vamp instance and one or more VGA instances.     
 Logs from HAProxy are read over socket and pushed to Logstash over UDP.  VGA will handle and recover from ZooKeeper, etcd, Consul and Logstash outages without interrupting the HAProxy process and client requests.  
+
+{{< note title="What next?" >}}
+* Read about the [requirements to run Vamp](/documentation/how-vamp-works/requirements)
+{{< /note >}}
