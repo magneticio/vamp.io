@@ -63,10 +63,10 @@ the default page size for a set of returned events is 30.
 
 ### Example queries
 
-* [Get all events](#example-1)
-* [Response time for a cluster](#example-2)
-* [Current sessions for a service](#example-3)
-* [ll known events for a service](#example-4)
+* [Get all events](/documentation/using-vamp/events/#example-1)
+* [Response time for a cluster](/documentation/using-vamp/events/#example-2)
+* [Current sessions for a service](/documentation/using-vamp/events/#example-3)
+* [ll known events for a service](/documentation/using-vamp/events/#example-4)
  
 #### Example 1
 **Get all events**

@@ -4,7 +4,7 @@ title: CLI reference
 ---
 
 The VAMP CLI supports the following commands:  
-[create](#create), [deploy](#deploy), [generate](#generate), [help](#help), [info](#info), [inspect](#inspect), [list](#list), [merge](#merge), [remove](#remove), [undeploy](#undeploy), [update](#update), [version](#version)  
+[create](/documentation/cli/cli-reference/#create), [deploy](/documentation/cli/cli-reference/#deploy), [generate](/documentation/cli/cli-reference/#generate), [help](/documentation/cli/cli-reference/#help), [info](/documentation/cli/cli-reference/#info), [inspect](/documentation/cli/cli-reference/#inspect), [list](/documentation/cli/cli-reference/#list), [merge](/documentation/cli/cli-reference/#merge), [remove](/documentation/cli/cli-reference/#remove), [undeploy](/documentation/cli/cli-reference/#undeploy), [update](/documentation/cli/cli-reference/#update), [version](/documentation/cli/cli-reference/#version)  
 See [using the Vamp CLI](/documentation/cli/using-the-cli) for details on installation, configuration and effective use of the CLI
 
 For details about a specific command, use `vamp COMMAND --help`

@@ -45,9 +45,9 @@ When you begin to work with Vamp, you will probably start with inline artifacts.
 
 ### Example use of references
 
-* [Create a library of containers](#example-1)
-* [Fix scales per environment](#example-2)
-* [Reuse a complex condition](#example-3)
+* [Create a library of containers](/documentation/using-vamp/references/#example-1)
+* [Fix scales per environment](/documentation/using-vamp/references/#example-2)
+* [Reuse a complex condition](/documentation/using-vamp/references/#example-3)
 
 
 #### Example 1 

@@ -17,6 +17,8 @@ env:
   PORT: 8080
 ```
 
+## Dependencies
+
 Breeds can also have dependencies on other breeds. These dependencies should be stated explicitly, similar to how you would do in a Maven pom.xml, a Ruby Gemfile or similar package dependency systems, i.e:
 
 ```yaml
@@ -146,10 +148,10 @@ Effective use of scope is completely dependent on your use case. The various sco
 
 ### Examples of scope use
 
-* [Run two of the same services with different configurations](#example-1)
-* [Override the JVM_HEAP_SIZE in production](#example-2)
-* [Use a place holder](#example-3)
-* Just for fun - [combine all scopes and references](#example-4)
+* [Run two of the same services with different configurations](/documentation/using-vamp/environment-variables/#example-1)
+* [Override the JVM_HEAP_SIZE in production](/documentation/using-vamp/environment-variables/#example-2)
+* [Use a place holder](/documentation/using-vamp/environment-variables/#example-3)
+* Just for fun - [combine all scopes and references](/documentation/using-vamp/environment-variables/#example-4)
 
 #### Example 1
 **Run two of the same services with different configurations**

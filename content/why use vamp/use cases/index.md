@@ -8,7 +8,7 @@ The integrated deployment, routing and workflow features of Vamp support a broad
 #### Testing in production 
 * Use canary testing and releasing to introduce a responsive web frontend. [Read more ...](/why-use-vamp/use-cases/create-responsive-website/)
 * Resolve client-side incompatibilities after an upgrade. [Read more ...](/why-use-vamp/use-cases/resolve-incompatibilities-after-upgrade/)
-* A/B test architectural changes in production. [Read more ...](/why-use-vamp/use-cases/modernise-services/)
+* A/B test architectural changes in production. [Read more ...](/why-use-vamp/use-cases/modernise-architecture/)
 
 #### Migrating to microservices
 * Move from VM based monoliths to modern microservices. [Read more ...](/why-use-vamp/use-cases/refactor-monolithic-to-microsystems/)
