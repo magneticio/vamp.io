@@ -6,7 +6,7 @@ title: Requirements
 Vamp's components work together with elements in your architecture to handle orchetstration, routing, persistence and metrics aggregation. To achieve this, Vamp requires access to a container scheduler, key value store, Elastic Search and HAProxy.
 
 ## Container scheduler  (orchestration)
-Vamp talks directly to your choice of container scheduler. Currently we support [Mesos/Marathon](/documentation/installation/mesos-marathon), [DC/OS](/documentation/installation/dcos), [Kubernetes](/documentation/installation/kubernetes) and [Rancher](/documentation/installation/rancher). In case you’re “greenfield” and don’t have anything selected or running yet, check [which container scheduler?](/documentation/how-vamp-works/what-to-choose)
+Vamp talks directly to your choice of container scheduler. Currently we support [Mesos/Marathon](/documentation/installation/mesos-marathon), [DC/OS](/documentation/installation/dcos), [Kubernetes](/documentation/installation/kubernetes) and [Rancher](/documentation/installation/rancher). In case you’re “greenfield” and don’t have anything selected or running yet, check [which container scheduler?](/documentation/how-vamp-works/which-container-scheduler)
 
 ## Key value store
 Vamp depends on a key-value (KV) store for non-direct communication between Vamp and instances of the Vamp Gateway Agent (VGA). There is no direct connection between Vamp and the VGA instances, all communication is done by managing specific KV in the store.  When Vamp needs to update the HAProxy configuration (e.g. when a new service has been deployed) Vamp will generate the new configuration and store it in the KV store. The VGAs read specific valuea and reload HAProxy instances accordingly.
@@ -27,6 +27,6 @@ Each Vamp Gateway Agent (VGA) requires its own instance of HAProxy. This is a ha
 
 {{< note title="What next?" >}}
 * Find out how to [install Vamp](/documentation/installation)
-* High level pointers for [choosing a container scheduler](/documentation/how-vamp-works/what-to-choose)
+* High level pointers for [choosing a container scheduler](/documentation/how-vamp-works/which-container-scheduler)
 {{< /note >}}
 

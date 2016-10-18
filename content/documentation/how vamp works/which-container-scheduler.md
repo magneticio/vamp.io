@@ -4,10 +4,10 @@ title: Which container scheduler?
 ---
 Vamp can run on top of Mesos/Marathon, DC/OS, Kubernetes and Rancher (Docker Swarm support is coming soon). In case you’re “greenfield” and don’t have anything selected or running yet, here are some high-level pointers to help you make an informed decision: 
 
-* [Working with big data](/documentation/how-vamp-works/what-to-choose/#working-with-big-data)
-* [Running web-based applications](/documentation/how-vamp-works/what-to-choose/#running-web-based-applications)
-* [Managing (virtual) infrastructure](/documentation/how-vamp-works/what-to-choose/#managing-virtual-infrastructure)
-* [Just running Docker](/documentation/how-vamp-works/what-to-choose/#just-running-docker)
+* [Working with big data](/documentation/how-vamp-works/which-container-scheduler/#working-with-big-data)
+* [Running web-based applications](/documentation/how-vamp-works/which-container-scheduler/#running-web-based-applications)
+* [Managing (virtual) infrastructure](/documentation/how-vamp-works/which-container-scheduler/#managing-virtual-infrastructure)
+* [Just running Docker](/documentation/how-vamp-works/which-container-scheduler/#just-running-docker)
 
 Whichever option you choose now, Vamp is container systems agnostic, so all your blueprints and workflows will keep on working if you decide to switch in the future *.
 

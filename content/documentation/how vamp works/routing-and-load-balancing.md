@@ -2,13 +2,13 @@
 date: 2016-09-13T09:00:00+00:00
 title: Routing and load balancing
 ---
-Vamp uses the tried and tested HAProxy reverse proxy software for routing/proxying and load balancing ([haproxy.com](https://www.haproxy.com)). Vamp Gateway Agent (VGA) manages the HAProxy configuration and HAProxy routes incoming traffic to endpoints (explicitly defined external gateways) or handles intra-service routing. By applying some iptables magic, Vamp makes sure that HAProxy configuration updates won't introduce dropped packages. That means zero-downtime reloads.  
+Vamp uses the tried and tested HAProxy reverse proxy software for routing/proxying and load balancing ([haproxy.com](https://www.haproxy.com)). Vamp Gateway Agent (VGA) manages the HAProxy configuration and HAProxy routes incoming traffic to endpoints (explicitly defined external gateways) or handles intra-service routing. By applying some iptables magic, Vamp makes sure that HAProxy configuration updates won't introduce dropped packages., that means zero-downtime reloads.  
 
 ## Routing
 
-So how does Vamp exactly route traffic to the designated destinations? First we look for the [conditions](/documentation/using-vamp/conditions/) that might have been set for a route or gateway. This can be none, one or more conditions (see [boolean expression in conditions](/documentation/using-vamp/conditions/#boolean-expression-in-conditions)). There are also built-in short codes for common conditions, or you can use HAProxy ACL's directly.
+So how does Vamp exactly route traffic to the designated destinations? First we look for the [conditions](/documentation/using-vamp/conditions/) that might have been set for a route or gateway. This can be none, one or more conditions (see [boolean expression in conditions](/documentation/using-vamp/conditions/#boolean-expression-in-conditions)). There are built-in short codes for common conditions, or you can use HAProxy ACLs directly.
 
-If the condition is met, we evaluate the condition strength percentage. A 100% setting means everybody that meets the condition is sent to this route. A 5% setting means 5% of all visitors that meet the condition are sent to this route, the remaining 95% are returned into the "bucket" and are distributed using the general weight settings. A weight setting for each available route defines the distribution of all remaining traffic not matched by a condition or not targetted by condition strength.
+If the condition is met, we evaluate the condition strength percentage. A 100% setting means everybody that meets the condition is sent to this route. A 5% setting means 5% of all visitors that meet the condition are sent to this route, the remaining 95% are returned into the "bucket" and distributed using the general weight settings. A weight setting for each available route defines the distribution of all remaining traffic not matching a condition or not targetted by condition strength.
 
 ## Load balancing
 
@@ -17,7 +17,7 @@ Vamp load balancing is done transparently. Based on the scale setting of the run
 
 ## Topology and performance
 
-HAProxy can run as a container or a standalone service. A Vamp Gateway Agent (VGA) Docker image (including HAProxy with specific logstash configuration to provide proxy logs to logstash for the Vamp UI) can be pulled from the Docker hub ([hub.docker.com - magneticio Vamp Gateway Agent](https://hub.docker.com/r/magneticio/vamp-gateway-agent/)).
+HAProxy can run as a container or as a standalone service. A Vamp Gateway Agent (VGA) Docker image (including HAProxy with specific logstash configuration to provide proxy logs to logstash for the Vamp UI) can be pulled from the Docker hub ([hub.docker.com - magneticio Vamp Gateway Agent](https://hub.docker.com/r/magneticio/vamp-gateway-agent/)).
 
 HAProxy can run inside your cluster or on separate machines outside of your container cluster:
 
