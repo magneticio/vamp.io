@@ -8,7 +8,7 @@
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle"></button>
                         <a class="logo" href="/"><img src="/img/vamp_logo_blue_circle.svg" alt="vamp"></a>
-                        <span id="alpha">alpha</span>
+                        <span id="alpha">beta</span>
                     </div>
                     <div class="collapse navbar-collapse pull-right">
                         <ul class="nav pull-left">
@@ -130,30 +130,38 @@
             <div class="col-sm-10 col-sm-offset-1">
                 <p class="lead">
                     Vamp leverages the power of existing container management solutions. Currently we support
-                     <a href="https://docker.com" target="_blank">Docker</a>, <a href="http://dcos.io">DC/OS</a> and <a href="https://mesosphere.github.io/marathon/" target="_blank">Mesos/Marathon</a>. Kubernetes, Docker Swarm and Rancher are on the near-term roadmap.
+                     <a href="http://dcos.io">DC/OS</a>, <a href="https://mesosphere.github.io/marathon/" target="_blank">Mesos/Marathon</a>, <a href="http://kubernetes.io/" target="_blank">Kubernetes</a>, <a href="http://rancher.com/" target="_blank">Rancher</a> and <a href="https://docker.com" target="_blank">Docker</a>. Docker Swarm is on the near-term roadmap.
                  </p>
                 <div class="integrations-row row">
-                    <div class="col-sm-4 integration">
+                <div class="col-sm-3 integration">
+                    <div class="image-wrapper" style="display: flex; align-items: center; justify-content: center;">
+                        <img src="img/dockermember.jpg">
+                    </div>
+                    <a href="http://vamp.io/documentation/installation/container_drivers/#docker" class="btn btn-info">Run Vamp with Docker</a>
+                </div>
+                    <div class="col-sm-3 integration">
                         <div class="image-wrapper">
-                            <img src="img/docker-logo.png">
+                            <img src="img/DCOS-logo.png">
                         </div>
-                        <a href="/quick-start/" class="btn btn-info btn-wide">Run Vamp with Docker</a>
+                        <a href="/documentation/installation/dcos/" class="btn btn-info">Run Vamp with DC/OS</a>
                     </div>
-                    <div class="col-sm-4 integration">
-                        <div class="image-wrapper">                        
-                            <img src="img/DCOS-vertical-logo.png">
-                        </div>    
-                        <a href="/documentation/installation/mesosphere_dcos/" class="btn btn-info btn-wide">Run Vamp with DC/OS</a>    
+                    <div class="col-sm-3 integration">
+                        <div class="image-wrapper">
+                            <img src="img/kubernetes-logo.png">
+                        </div>
+                        <a href="/documentation/installation/kubernetes/" class="btn btn-info">Run Vamp with Kubernetes</a>
                     </div>
-                    <div class="col-sm-4 integration">
-                        <div class="image-wrapper">                        
-                            <img src="img/gce.png">
-                        </div>    
-                        <a class="btn btn-info btn-wide disabled ">Kubernetes coming VERY soon!</a>                      
-                    </div>
+                    <div class="col-sm-3 integration">
+                        <div class="image-wrapper">
+                            <img src="img/rancher-logo.png">
+                        </div>
+                        <a href="/documentation/installation/rancher/" class="btn btn-info">Run Vamp with Rancher</a>
+                    </div> 
+             
                 </div>
             </div>
         </div>    
     </div>
 </section>
+
 </div>

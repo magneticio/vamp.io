@@ -102,7 +102,7 @@ The default output will be in JSON format, but you can also get a YAML format. J
 
 In this specific example, we could export the deployment as a blueprint and update the weight to a 50% to
 50% split. Then we could do this again, but with a 80% to 20% split and so on. See the abbreviated example
-below where we set the `weight` keys to `50%` in both `routing` sections.
+below where we set the `weight` keys to `50%` in both `gateways` sections.
 
 {{% copyable %}}
 ```yaml
@@ -113,7 +113,7 @@ clusters:
     services:
     - breed:
         name: sava-frontend:1.2.0
-        deployable: docker://magneticio/sava-frontend:1.2.0
+        deployable: magneticio/sava-frontend:1.2.0
         ports:
           port: 8080/http
         environment_variables:
@@ -131,7 +131,7 @@ clusters:
       dialects: {}
     - breed:
         name: sava-frontend:1.3.0
-        deployable: docker://magneticio/sava-frontend:1.3.0
+        deployable: magneticio/sava-frontend:1.3.0
         ports:
           port: 8080/http
         environment_variables:
@@ -145,16 +145,14 @@ clusters:
         memory: 64MB
         instances: 1
       dialects: {}
-    routing:
+    gateways:
       port:
         sticky: none
         routes:
           sava-frontend:1.2.0:
             weight: 50%
-            filters: []
           sava-frontend:1.3.0:
             weight: 50%
-            filters: []
 
 ```
 {{% /copyable %}}
@@ -168,11 +166,11 @@ In essence, a delete is just another update of the deployment: you specify what 
 This means you can specifically target parts of your deployment to be removed instead of deleting the whole thing. For this tutorial we are going to delete the "over-engineered" old part of our deployment.
 
 Currently, deleting works in two steps:
-- Set all routings to `weight: 0%` of the services you want to delete with a simple update.
+- Set all gateways to `weight: 0%` of the services you want to delete with a simple update.
 - Execute the delete.
 
 
-> **Note**: You need to explicitly set the routing weight of the service you want to deploy to zero before deleting. Here is why: When you have, for example, four active services divided in a 25/25/20/30 split and you delete the one with 30%, Vamp doesn't know how you want to redistribute the "left over" 30% of traffic. For this reason the user should first explicitly divide this and then perform the delete.
+> **Note**: You need to explicitly set the gateway weight of the service you want to deploy to zero before deleting. Here is why: When you have, for example, four active services divided in a 25/25/20/30 split and you delete the one with 30%, Vamp doesn't know how you want to redistribute the "left over" 30% of traffic. For this reason the user should first explicitly divide this and then perform the delete.
 
 **Setting to zero**
 
@@ -187,7 +185,7 @@ clusters:
     services:
     - breed:
         ref: sava-backend1:1.2.0
-    routing:
+    gateways:
       routes:
         sava-backend1:1.2.0:
           weight: 0%
@@ -195,7 +193,7 @@ clusters:
     services:
     - breed:
         ref: sava-backend2:1.2.0
-    routing:
+    gateways:
       routes:
         sava-backend2:1.2.0:
           weight: 0%
@@ -206,7 +204,7 @@ clusters:
 
     - breed:
         ref: sava-frontend:1.2.0
-    routing:
+    gateways:
       routes:
         sava-frontend:1.3.0:
           weight: 100%

@@ -13,7 +13,8 @@ Vamp supports multiple container-orchestration platforms and will expand the num
 Currently supported:
 
 - [Docker](#docker)
-- [Mesosphere Marathon](#mesosphere-marathon)
+- [Mesosphere Marathon](?#mesosphere-marathon)
+- [Kubernetes](/documentation/installation/kubernetes/)
 
 > **Note:** As mentioned in the [components overview](/installation/), Vamp Gateway Agent **should always** be able to find and route traffic to addresses of any of the containers deployed, regardless of the container driver.
 

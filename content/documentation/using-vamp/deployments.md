@@ -61,7 +61,7 @@ Merging of new services is performed as a deployment update. You can merge in ma
 - Use the UI to update a deployment using the "Edit deployment" button. 
 - Use the CLI with a combination of the `vamp merge` and `vamp deploy` commands.
 
-If a service already exists then only the routing and scale will be updated. Otherwise a new service will be added. If a new cluster doesn't exist in the deployment, it will be added.
+If a service already exists then only the gateways and scale will be updated. Otherwise a new service will be added. If a new cluster doesn't exist in the deployment, it will be added.
 
 Let's deploy a simple service:
 
@@ -114,7 +114,7 @@ clusters:
       -  breed: monarch_1.0
       -  breed: monarch_1.1
           
-    routing:
+    gateways:
       monarch_1.0:
         weight: 100%
       monarch_1.1:
@@ -124,7 +124,7 @@ clusters:
     services:
       - breed: recommendation_1.0
     
-    routing:
+    gateways:
       recommendation_1.0:
         weight: 100%
 
@@ -141,7 +141,7 @@ clusters:
       - breed: monarch_1.0
       - breed: monarch_1.1
           
-    routing:
+    gateways:
       monarch_1.0:
         weight: 90%
       monarch_1.1:
@@ -154,7 +154,7 @@ In the last few examples we have shown the following:
 
 * A fresh new deployment.
 * A canary release with a cluster update and change of the topology (a new cluster was added).
-* An update of the routings for a cluster - similar to a cluster scale update (instances, cpu, memory).
+* An update of the gateways for a cluster - similar to a cluster scale update (instances, cpu, memory).
 
 ### Removal
 
@@ -177,7 +177,7 @@ clusters:
       - breed: monarch_1.0
       - breed: monarch_1.1
           
-    routing:
+    gateways:
       monarch_1.0:
         weight: 50%
       monarch_1.1:
@@ -186,7 +186,7 @@ clusters:
   recommendation:
     services:
       - breed: recommendation_1.0
-    routing: 
+    gateways:
       recommendation_1.0:
         weight: 100
 ```
@@ -220,14 +220,14 @@ clusters:
   monarch:
     services:
       breed: monarch_1.1
-    routing:
+    gateways:
       monarch_1.1:
         weight: 100%
 
   recommendation:
     services:
       breed: recommendation_1.0
-    routing:
+    gateways:
       recommendation_1.0:
         weight: 100%
 

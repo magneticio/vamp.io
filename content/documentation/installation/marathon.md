@@ -2,16 +2,15 @@
 title: Quick start Marathon
 type: documentation
 weight: 40
-aliases:
-  - /quick-start/
-  - /getting-started/
 menu:
     main:
       parent: installation
-    
+aliases:
+  - /quick-start/
+  - /getting-started/
 ---
 
-# Quick start with Marathon
+# Vamp with Marathon
 
 The easiest way to get started with Vamp is by spinning up one of the Docker images stored
 in the [vamp-docker repo](https://github.com/magneticio/vamp-docker) and the [public Docker hub](https://hub.docker.com/r/magneticio/vamp-docker/).
@@ -30,7 +29,7 @@ Please install one of the following for your platform/architecture
 
 ## Step 2: Run Vamp
 
-Start the `magneticio/vamp-docker:0.8.5-marathon` container, taking care to pass in the right parameters. 
+Start the `magneticio/vamp-docker:0.9.0` container, taking care to pass in the right parameters.
 
 ### Linux
 
@@ -42,7 +41,7 @@ docker run --net=host \
            -v $(which docker):/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=`hostname -I | awk '{print $1;}'`" \
-           magneticio/vamp-docker:0.8.5-marathon
+           magneticio/vamp-docker:0.9.0
 ```
 {{% /copyable %}}
 
@@ -62,7 +61,7 @@ docker run --net=host \
            -v `docker-machine ssh default "which docker"`:/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=`docker-machine ip default`" \
-           magneticio/vamp-docker:0.8.5-marathon
+           magneticio/vamp-docker:0.9.0
 ```
 {{% /copyable %}}
 

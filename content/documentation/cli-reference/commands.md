@@ -30,7 +30,7 @@ For more details about a specific command, use `vamp COMMAND --help`
 
 Create an artifact read from the specified filename or read from stdin.
 
-**Usage:** `vamp create blueprint|breed|deployment|escalation|filter|routing|scale|sla [--file|--stdin]` 
+**Usage:** `vamp create blueprint|breed|deployment|escalation|condition|scale|sla [--file|--stdin]`
 
 Parameter | purpose
 ----------|--------
@@ -65,7 +65,7 @@ Parameter | purpose
 
 Generates an artifact
 
-**Usage:** `vamp generate breed|blueprint|filter|routing|scale [NAME] [--file|--stdin]` 
+**Usage:** `vamp generate breed|blueprint|condition|scale [NAME] [--file|--stdin]`
 
 | Parameter | purpose |
 |-----------|---------|
@@ -84,7 +84,6 @@ For 'generate blueprint':
 |-----------|---------|
 `--cluster`   |         Name of the cluster
 `--breed`     |         Name of the breed   [Optional, requires --cluster]
-`--routing`   |         Name of the routing [Optional, requires --breed]
 `--scale`     |         Name of the scale   [Optional, requires --breed]
 
 ### Example
@@ -164,7 +163,7 @@ jvm:
 ## Inspect
 Shows the details of the specified artifact
 
-**Usage:** `vamp inspect blueprint|breed|deployment|escalation|filter|routing|scale|sla NAME --json`  
+**Usage:** `vamp inspect blueprint|breed|deployment|escalation|condition|scale|sla NAME --json`
 
 | Parameter | purpose |
 |-----------|---------|
@@ -186,7 +185,7 @@ dependencies: {}
 ## List
 Shows a list of artifacts
 
-**Usage:** `vamp list blueprints|breeds|deployments|escalations|filters|routings|scales|slas`  
+**Usage:** `vamp list blueprints|breeds|deployments|escalations|conditions|gateways|scales|slas`
 
 ### Example
 ```bash
@@ -219,7 +218,7 @@ vamp merge --blueprint my_existing_blueprint -- file add_this_blueprint.yaml
 
 Removes artifact
 
-**Usage:** `vamp remove blueprint|breed|escalation|filter|routing|scale|sla NAME` 
+**Usage:** `vamp remove blueprint|breed|escalation|condition|scale|sla NAME`
 
 ### Example
 ```bash
@@ -248,7 +247,7 @@ Parameter | purpose
 
 Updates an existing artifact read from the specified filename or read from stdin.
 
-**Usage:** `vamp update blueprint|breed|deployment|escalation|filter|routing|scale|sla NAME [--file] [--stdin]` 
+**Usage:** `vamp update blueprint|breed|deployment|escalation|condition|scale|sla NAME [--file] [--stdin]`
 
 Parameter | purpose
 ----------|--------

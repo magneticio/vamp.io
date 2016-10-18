@@ -1,30 +1,33 @@
 ---
-title: Events
+title: Events & SSE
 weight: 100
 menu:
   main:
     parent: api-reference
 ---
 
-# Metrics & Events
+# Events
 
 Please check the notes on using [pagination](/documentation/api-reference/#pagination) and [json and yaml content types](/documentation/api-reference/#content-types) on how to effectively use the REST api.
 
-## List metrics & events
+## List events
 
 Lists metrics and/or events without any pagination or filtering.
 
-    POST /api/v1/events/get 
+    GET /api/v1/events/get
 
-> Note: more information how to use this endpoint with `POST` request can be found [here](http://vamp.io/documentation/using-vamp/metrics-and-events/#query-metrics-events-using-tags).
+| parameter     | description      |
+| ------------- |:----------------:|
+| tag           | Event tag, e.g. `GET /api/v1/events?tag=archiving&tag=breeds`
+<br>
 
+> **Note:**search criteria can be set in request body, checkout [examples](/documentation/using-vamp/events/#query-events-using-tags) for event stream.
 
-## Create metrics & events
+## Create events
 
     POST /api/v1/events    
     
 ## Server-sent events (SSE)
 
     GET  /api/v1/events/stream
-    
-    POST /api/v1/events/stream
+

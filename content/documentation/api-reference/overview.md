@@ -19,12 +19,12 @@ Vamp has one REST API.
 
 ## Pagination
 
-From release 0.7.8 onwards Vamp API endpoints support pagination with the following scheme:
+Vamp API endpoints support pagination with the following scheme:
 
 * Request parameters `page` (starting from 1, not 0) and `per_page` (by default 30) e.g:
 
 ```
-GET http://vamp:8080/api/v1/events/get?page=5&per_page=20
+GET http://vamp:8080/api/v1/breeds?page=5&per_page=20
 ```
 
 * Response headers `X-Total-Count` giving the total amount of items (e.g. 349673) and a `Link` header for easy traversing, e.g.
@@ -46,3 +46,28 @@ See [Github's implementation](https://developer.github.com/guides/traversing-wit
 * A successful create operation has status code 201 `Created` and the response body contains the created resource.
 * A successful update operation has status code 200 `OK` or 202 `Accepted` and the response body contains the updated resource.
 * A successful delete operation has status code 204 `No Content` or 202 `Accepted` with an empty response body.
+
+## Sending multiple artifacts (documents) - `POST`, `PUT` and `DELETE`
+ 
+It is possible to send YAML document containing more than 1 artifact definition:
+
+```
+GET /api/v1
+```
+
+Supported methods are `POST`, `PUT` and `DELETE`. Example:
+
+```yaml
+---
+name: ...
+kind: breed
+# breed definition ...
+---
+name: ...
+kind: blueprint
+# blueprint definition ...
+```
+
+Additional `kind` field is required and it always correspond (singular form) to type of the artifact.
+For instance if specific endpoint would be `/api/v1/deloyments` then the same deployment request can be sent to `api/v1` with additional `kind: deployment`.
+If specific endpoints are used (e.g. `/api/v1/blueprints`) then `kind` needs to be ommited.

@@ -13,7 +13,7 @@ menu:
 # CLI reference overview
 
 Vamp's command line interface (CLI) can be used to perform basic actions against the Vamp API. The CLI was
-primarily developed to work in continuous delivery situations. In these setups, the CLI takes care of automating (canary) releasing new artefacts to Vamp deployments and clusters.
+primarily developed to work in continuous delivery situations. In these setups, the CLI takes care of automating (canary) releasing new artifacts to Vamp deployments and clusters.
 
 ## Simple commands
 

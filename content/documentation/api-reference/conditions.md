@@ -1,54 +1,54 @@
 ---
-title: Filters
+title: Conditions
 weight: 70
 menu:
   main:
     parent: api-reference
 ---
 
-# Filters
+# Conditions
 
 Please check the notes on using [pagination](/documentation/api-reference/#pagination) and [json and yaml content types](/documentation/api-reference/#content-types) on how to effectively use the REST api.
 
-## List filters
+## List conditions
 
-Lists all filters without any pagination or filtering.
+Lists all conditions without any pagination or filtering.
 
-    GET /api/v1/filters
+    GET /api/v1/conditions
 
-## Get a single filter
+## Get a single condition
 
-Lists all details for one specific filter.
+Lists all details for one specific condition.
 
-    GET /api/v1/filters/{filter_name}
+    GET /api/v1/conditions/{condition_name}
 
-## Create filter
+## Create condition
 
-Creates a new filter.
+Creates a new condition.
 
-    POST /api/v1/filters
+    POST /api/v1/conditions
 
-Accepts JSON or YAML formatted filters. Set the `Content-Type` request header to `application/json` or `application/x-yaml` accordingly.    
+Accepts JSON or YAML formatted conditions. Set the `Content-Type` request header to `application/json` or `application/x-yaml` accordingly.
 
 | parameter     | options           | default          | description       |
 | ------------- |:-----------------:|:----------------:| -----------------:|
 | validate_only | true or false     | false            | validates the escalation and returns a `201 Created` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
 
-## Update a filter
+## Update a condition
 
-Updates the content of a specific filter.
+Updates the content of a specific condition.
 
-    PUT /api/v1/filters/{filter_name}
+    PUT /api/v1/conditions/{condition_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
 | validate_only | true or false     | false            | validates the escalation and returns a `200 OK` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
 
-## Delete a filter
+## Delete a condition
 
-Deletes a filter.        
+Deletes a condition.
 
-    DELETE /api/v1/filters/{filter_name}
+    DELETE /api/v1/conditions/{condition_name}
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
