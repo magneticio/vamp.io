@@ -2,6 +2,7 @@
 date: 2016-10-04T09:00:00+00:00
 title: Kubernetes 1.x
 ---
+The installation will run Vamp together with etcd, Elasticsearch and Logstash on Google container engine and kubernetes. (We will also deploy our demo Sava application to give you something to play around on). Before you begin, it is advisable to try out the official Quickstart for Google Container Engine tutorial first ([google.com - container engine quickstart](https://cloud.google.com/container-engine/docs/quickstart)).  
 
 {{< note title="Note!" >}}
 Kubernetes support is still in Alpha.
@@ -15,12 +16,6 @@ This guide has been tested on Kubernetes 1.2 and 1.3. Minikube can also be used.
 * Google Container Engine cluster
 * Key-value store (like ZooKeeper, Consul or etcd)
 * Elasticsearch and Logstash
-
-#### Before we begin...
-It is advisable to try out the official Quickstart for Google Container Engine tutorial first ([google.com - container engine quickstart](https://cloud.google.com/container-engine/docs/quickstart)).  
-
-## Standard install
-The standard install will run Vamp together with etcd, Elasticsearch and Logstash on Google container engine and kubernetes. (We will also deploy our demo Sava application to give you something to play around on).   
 
 ### Step 1: Create a new GKE cluster:
 

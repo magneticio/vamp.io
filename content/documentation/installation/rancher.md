@@ -2,6 +2,7 @@
 date: 2016-09-13T09:00:00+00:00
 title: Rancher
 ---
+This installation will run Vamp together with Consul, Elasticsearch and Logstash on Rancher. (We'll also deploy our demo Sava application to give you something to play around on). Before you begin, it is advisable to try out the official Rancher Quick Start Guide tutorial first ([rancher.com - quick start guide](http://docs.rancher.com/rancher/latest/en/quick-start-guide/)). 
 
 {{< note title="Note!" >}}
 Rancher support is still in Alpha.
@@ -15,14 +16,7 @@ This guide has been tested on Rancher version 1.1.x.
 * Rancher up and running
 * Key-value store like ZooKeeper, Consul or etcd
 * Elasticsearch and Logstash
-
-#### Before we begin...
-It is advisable to try out the official Rancher Quick Start Guide tutorial first ([rancher.com - quick start guide](http://docs.rancher.com/rancher/latest/en/quick-start-guide/)).  
-
-## Standard install
-The standard install will run Vamp together with Consul, Elasticsearch and Logstash on Rancher. (We'll also deploy our demo Sava application to give you something to play around on).
-
-If you want to make a setup on your local VM based Docker, it's advisable to increase default VM memory size from 1GB to 4GB.
+* If you want to make a setup on your local VM based Docker, it's advisable to increase default VM memory size from 1GB to 4GB.
 
 ### Step 1: Run Rancher locally
 Based on the official Rancher quickstart tutorial, these are a few simple steps to run Rancher locally:
@@ -34,8 +28,9 @@ The Rancher UI is exposed on port 8080, so go to http://SERVER_IP:8080 - for ins
 Follow the instructions on the screen to add a new Rancher host:
 
 1. click on "Add Host" and then on "Save". 
-2. You should get instructions (bullet point 5) to run an `agent` Docker image:
-```bash
+2. You should get instructions (bullet point 5) to run an `agent` Docker image:  
+
+```
 $ docker run \
   -d --privileged \
   -v /var/run/docker.sock:/var/run/docker.sock \
@@ -50,7 +45,8 @@ Next we need to create a Vamp stack. This can be done either from `catalog` or f
 #### Run Vamp stack from catalog
 
 1. Go to `Catalog` 
-2. Find the `Vamp` entry, click the `Details` button.
+2. Find the `Vamp` entry, click the `Details` button
+3. Go to [Step 3: Run Vamp](/documentation/installation/rancher/#step-3-run-vamp)
 
 #### Run Vamp stack from scratch
 

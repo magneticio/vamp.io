@@ -50,7 +50,7 @@ When you begin to work with Vamp, you will probably start with inline artifacts.
 * [Reuse a complex condition](#example-3)
 
 
-#### Example 1
+#### Example 1 
 **Create a library of containers**
 
 **Use case:** You have a Redis container you have tweaked and setup exactly the way you want it. You want to use that exact container in all your environments (dev, test, prod etc.). 

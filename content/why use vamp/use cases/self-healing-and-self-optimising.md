@@ -13,6 +13,6 @@ Why overdimension your whole system? Using Vamp you can auto-scale individual se
 
 {{< note title="What next?" >}}
 * Read about using Vamp for [service discovery](/why-use-vamp/use-cases/service-discovery/)
-* See [how Vamp measures up](/why-use-vamp/vamp-compared-to//proxies-and-load-balancers/) to common platforms, tools and frameworks  
+* See [how Vamp measures up](/why-use-vamp/vamp-compared-to/proxies-and-load-balancers/) to common platforms, tools and frameworks  
 * Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}

@@ -3,8 +3,6 @@ date: 2016-09-30T12:00:00+00:00
 title: DC/OS 1.7 and 1.8
 ---
 
-## Overview
-
 There are different ways to install Vamp on DC.OS. On this page we start out with the most common setup, but if you are interested in doing a custom install or working with public and private nodes you should jump to that section.
 
 * [Standard install](#standard-install)
