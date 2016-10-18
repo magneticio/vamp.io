@@ -27,7 +27,7 @@ clusters:
     services:
       breed:
         name: busybox
-        deployable: registry.magnetic.io/busybox:latest
+        deployable: registry.example.com/busybox:latest
       marathon:
        cmd: "top"      
        uris:
@@ -53,7 +53,7 @@ Notice the following:
 
 1. Under the `marathon:` tag, we provide the command to run in the container by setting the `cmd:` tag.
 2. We provide a url to some credentials file in the `uri` array. As described [in the Marathon docs](https://mesosphere.github.io/marathon/docs/native-docker.html#using-a-private-docker-repository) this enables Mesos
-to pull from a private registry, in this case registry.magnetic.io where these credentials are set up.
+to pull from a private registry, in this case registry.example.com where these credentials are set up.
 3. We set some labels with some arbitrary metadata.
 4. We mount the `/tmp` to in Read/Write mode.
 

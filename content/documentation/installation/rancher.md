@@ -35,6 +35,18 @@ $ docker run \
   rancher/agent:v1.0.1 \
   http://192.168.99.100:8080/v1/scripts/E78EF5848B989FD4DA77:1466265600000:SYqIvhPgzKLonp8r0erqgpsi7pQ
 ```
+## Run Vamp stack from catalog
+
+Go to `Catalog` and find the `Vamp` entry, click the `Details` button.
+
+- Choose a version
+- Change the stack name and/or description if you want
+- Enter the port you want to access the Vamp UI on
+- Enter the Rancher API endpoint
+- Click `Launch` to start the stack
+- Head over to the `Deploy Application` section on this page! 
+
+## Run Vamp stack from scratch
 
 Go to `Add Stack` and create a new stack `vamp` (lowercase). Let's now install other dependencies.
 
@@ -99,6 +111,8 @@ If you want to access HAProxy stats:
 - go to `Add Load Balancer` (click arrow next to `Add Service`)
 - choose name (e.g. `vamp-gateway-agent-lb`), `Source IP/Port` ⇒ 1988, `Default Target Port` ⇒ 1988 and `Target Service` ⇒ `vamp-gateway-agent`
 - for HAProxy stats page use the following username/password: `haproxy`
+
+## Deploy application
 
 Let's deploy our `sava` demo application:
 {{% copyable %}}

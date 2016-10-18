@@ -35,7 +35,7 @@ In order to setup correctly Vamp with single/multiple VGA instances check out al
 
 ### Elasticsearch, Logstash and Kibana (ELK)
 
-HAProxy (VGA) generates logs and make them accessible via open socket - check the [configuration](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.cfg) of `log`.
+HAProxy (VGA) generates logs and make them accessible via open socket - check the [configuration](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.basic.cfg) of `log`.
 VGA is listening on log socket and any new messages is forwarded to Logstash instance.
 Log format is configurable in Vamp configuration [vamp.gateway-driver.haproxy](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf).
 Note that Logstash is listening on UDP port, but in principle any other listener can receive logs forwarded by VGA.
@@ -48,7 +48,7 @@ This also depends if ELK is used for custom application/service logs etc.
 
 Lagstash configuration used together with default `vamp.gateway-driver.haproxy` log format can be found [here](https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf).
 It will transform logs to plain JSON which can be parsed easily later on (e.g. for Kibana visualization).
-Logstash command line parameter example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/supervisord.conf) (Logstash section).
+Logstash command line parameter example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/quick-start/supervisord.conf) (Logstash section).
 
 In short:
 
@@ -86,7 +86,7 @@ Steps:
 - run `./build-ui.sh && sbt test assembly`
 - after the build `./bootstrap/target/scala-2.11` directory will contain the binary with name matching `vamp-assembly-*.jar`
 
-Example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/quick-start-marathon/make.sh).
+Example can be found [here](https://github.com/magneticio/vamp-docker/blob/master/quick-start/make.sh).
 
 ### Vamp Gateway Agent (VGA)
 

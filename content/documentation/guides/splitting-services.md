@@ -37,7 +37,7 @@ services to the "customer facing" `sava` service.
 ---
 name: sava:1.2
 gateways:
-  9060: sava/port
+  9060: sava/webport
 clusters:
   sava:
     services:
@@ -45,7 +45,7 @@ clusters:
         name: sava-frontend:1.2.0
         deployable: magneticio/sava-frontend:1.2.0
         ports:
-          port: 8080/http                
+          webport: 8080/http                
         environment_variables:
           BACKEND_1: http://$backend1.host:$backend1.ports.port/api/message
           BACKEND_2: http://$backend2.host:$backend2.ports.port/api/message
@@ -62,7 +62,7 @@ clusters:
         name: sava-backend1:1.2.0
         deployable: magneticio/sava-backend1:1.2.0
         ports:
-          port: 8080/http
+          webport: 8080/http
       scale:
         cpu: 0.2       
         memory: 64MB
@@ -73,7 +73,7 @@ clusters:
         name: sava-backend2:1.2.0
         deployable: magneticio/sava-backend2:1.2.0
         ports:
-          port: 8080/http
+          webport: 8080/http
       scale:
         cpu: 0.2       
         memory: 64MB

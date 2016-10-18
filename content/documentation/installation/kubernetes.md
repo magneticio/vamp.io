@@ -11,6 +11,8 @@ menu:
 
 >**Note**: Kubernetes support is still in Alpha.
 
+An important part of Vamp is that it's container-scheduler agnostic. So this means Vamp also works with Kubernetes. Let's set it up!
+
 ## Prerequisites
 
 - Google Container Engine cluster
@@ -23,18 +25,18 @@ It is advisable to try out the official [Quickstart for Google Container Engine]
 Simple way to create a new GKE cluster:
 
 - open Google Cloud Shell
-- set zone, e.g. `gcloud config set compute/zone europe-west1-b`
-- create cluster `vamp` using default parameters: `gcloud container clusters create vamp`
+- set a zone, e.g. `gcloud config set compute/zone europe-west1-b`
+- create a cluster `vamp` using these default parameters: `gcloud container clusters create vamp`
 
-After the (new) Kubernetes cluster is setup, we are going to continue with installation using Kubernetes CLI `kubectl`.
-You can use `kubectl` directly from Google Cloud Shell, e.g. to check Kubernetes client and server version:
+After the (new) Kubernetes cluster is setup, we are going to continue with the installation using Kubernetes CLI `kubectl`.
+You can use `kubectl` directly from the Google Cloud Shell, e.g. to check the Kubernetes client and server version:
 {{% copyable %}}
 ```bash
 kubectl version
 ```
 {{% /copyable %}}
 
-Let's deploy `etcd` - installation is based on this [tutorial](https://github.com/coreos/etcd/tree/master/hack/kubernetes-deploy).
+Let's deploy `etcd` - the installation is based on this [tutorial](https://github.com/coreos/etcd/tree/master/hack/kubernetes-deploy).
 Execute: 
 {{% copyable %}}
 ```bash
@@ -44,7 +46,7 @@ kubectl create \
 ```
 {{% /copyable %}}
 
-Deploy [Elasticsearch and Logstash](https://github.com/magneticio/elastic) with proper Vamp Logstash configuration:
+Deploy [Elasticsearch and Logstash](https://github.com/magneticio/elastic) with a proper Vamp Logstash configuration:
 {{% copyable %}}
 ```bash
 kubectl run elastic --image=magneticio/elastic:2.2
@@ -54,7 +56,7 @@ kubectl expose deployment elastic --protocol=TCP --port=5601 --name=kibana
 ```
 {{% /copyable %}}
 
->**Note**: This is not a production grade setup. You would need to take care also about persistence and running multiple replicas of each pods.
+>**Note**: This is not a production grade setup. You would also need to take care of persistence and running multiple replicas of each pod.
 
 ## Running Vamp
 
@@ -74,16 +76,16 @@ kubectl expose deployment vamp --protocol=TCP --port=8080 --name=vamp --type="Lo
 ```
 {{% /copyable %}}
 
-Vamp image uses the following [configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-kubernetes/application.conf).
+The Vamp image uses the following [configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-kubernetes/application.conf).
 
-Wait a bit until Vamp is running and check out the Kubernetes services:
+Now wait a bit until Vamp is running and check out the Kubernetes services:
 {{% copyable %}}
 ```bash
 kubectl get services
 ```
 {{% /copyable %}}
 
-Output should be similar to this:
+The output should be similar to this:
 
 ```
 NAME                 CLUSTER-IP     EXTERNAL-IP      PORT(S)             AGE
@@ -98,9 +100,9 @@ vamp                 10.3.242.93    146.148.118.45   8080/TCP            2m
 vamp-gateway-agent   10.3.254.234   146.148.22.145   80/TCP              2m
 ```
 
-Notice that Vamp UI is exposed (in this example) on `http://146.148.118.45:8080`<br>
+Notice that the Vamp UI is exposed (in this example) on `http://146.148.118.45:8080`<br>
 
-Let's continue and deploy `sava` demo application:
+Let's continue and deploy the `sava` demo application:
 
 {{% copyable %}}
 ```yaml
@@ -123,9 +125,9 @@ clusters:
 ```
 {{% /copyable %}}
 
->**Note**: Bu sure that cluster has enough resources (CPU, memory), otherwise deployments will be in pending state.
+>**Note**: Be sure that your cluster has enough resources (CPU, memory), otherwise deployments will be in a pending state.
 
-Once it's running if we get services:
+Once it's running we can check if all Vamp Gateway Agent services are up:
 {{% copyable %}}
 ```bash
 kubectl get services --show-labels -l vamp=gateway
@@ -142,17 +144,17 @@ hex26bb0695e9a85ec34b03   10.3.245.85    23.251.143.62   40000/TCP   2m        l
 12c97,vamp=gateway
 ```
 
->**Note**: In this setup Vamp is deliberately configured to initiate exposure of all gateway and VGA ports. That would not be the case if default and recommended setting is used.
+>**Note**: In this setup Vamp is deliberately configured to initiate the exposure of all gateway and VGA ports. This would not be the case if the default and recommended setting are used.
 
-We can access our `sava` service on `http://104.155.24.47:9050`
+Now we can access our `sava` service on `http://104.155.24.47:9050`
 
-Default Kubernetes service type can be set in configuration: `vamp.container-driver.kubernetes.service-type`, possible values are `LoadBalancer` or `NodePort`. 
+The default Kubernetes service type can be set in configuration: `vamp.container-driver.kubernetes.service-type`, possible values are `LoadBalancer` or `NodePort`. 
 
-We can also access using virtual hosts. Vamp Gateway Agent service is on IP `146.148.22.145` in this example, so:
+We can also access gateways using virtual hosts. Vamp Gateway Agent service is on IP `146.148.22.145` in this example, so:
 ```bash
 curl --resolve 9050.sava-1-0.vamp:80:146.148.22.145 -v http://9050.sava-1-0.vamp
 ```
 
-You can also try out other [guides](/documentation/guides/).
+You can now try out other [guides](/documentation/guides/).
 
 >**Note**: Don't forget to [clean up](https://cloud.google.com/container-engine/docs/quickstart#clean-up) your Kubernetes cluster and firewall rules if you don't want to use them anymore.

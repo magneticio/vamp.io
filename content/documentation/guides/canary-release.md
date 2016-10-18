@@ -22,17 +22,17 @@ Vamp allows you to do canary releases using blueprints. Take a look at the YAML 
 
 Notice we assigned 50% to our current version 1.0.0 and 50% to the new version 1.1.0 We could also start with a 100% to 0% split, a 99% to 1% split or whatever combination you want as long as all percentages add up to 100% in total.
 
+![](/img/screenshots/tut2_sliders-v090.gif)
 
 You could also just leave out the whole `gateways` sections and use the UI to change the weights after we've done the deployment.
 
-![](/img/screenshots/weight_sliders.png)
 {{% copyable %}}
 
 ```yaml
 ---
 name: sava:1.0
 gateways:
-  9050: sava/port
+  9050: sava/webport
 clusters:
   sava:
     gateways:
@@ -47,7 +47,7 @@ clusters:
           name: sava:1.0.0
           deployable: magneticio/sava:1.0.0
           ports:
-            port: 8080/http
+            webport: 8080/http
         scale:
           cpu: 0.2
           memory: 64MB
@@ -57,7 +57,7 @@ clusters:
           name: sava:1.1.0 # a new version of our service
           deployable: magneticio/sava:1.1.0
           ports:
-            port: 8080/http
+            webport: 8080/http
         scale:
           cpu: 0.2
           memory: 64MB
@@ -74,15 +74,17 @@ is already there and just add v1.1.0 while setting the correct routing between t
 
 Using the UI, go to the deployment detail screen and press the **Edit deployment** button. Copy the above deployment and paste over the the deployment that is there. Press **Save** and Vamp will start working out the differences and update the deployment accordingly.
 
-![](/img/screenshots/tut2_canary.gif)
+![](/img/screenshots/tut2_canary-v090.gif)
 
-When finished deploying, you can start refreshing your browser at the correct endpoint, e.g. `http://10.26.184.254:9050/`. The application should switch between responding with a 1.0 page and a 1.1 page.
+When finished deploying, you can start refreshing your browser at the correct endpoint, e.g. `http://192.168.99.100:9050/`. The application should switch between responding with a 1.0 page and a 1.1 page.
 
 ![](/img/screenshots/monolith_canary1.png)
 
 > **Note** This works best "Incognito" or "Anonymous" mode of your browser because of the caching of static assets.
 
-If you want to use the RESTful API, you can update a running deployment by getting its name (the UUID) from `/api/v1/deployments` and `PUT`-ing the blueprint to that resource, e.g: `/api/v1/deployments/e1c99ca3-dc1f-4577-aa1b-27f37dba0325`
+If you want to use the RESTful API, you can update a running deployment by getting its name (the UUID) from `/api/v1/deployments` and `PUT`-ing the blueprint to that resource, e.g: `/api/v1/deployments/e1c99ca3-dc1f-4577-aa1b-27f37dba0325` or of course use the explicit name that you used for the deployment.
+
+> ** Note** You could also create a second blueprint with the service, and use **Merge to** to merge this new service to the Sava-cluster so it becomes available for routing traffic to it.  
 
 ## Step 3: Using conditions to target specific groups
 
@@ -101,11 +103,11 @@ routes:
     condition: User-Agent = Chrome
 ```
 
-Notice two things:
+Notice a few things:
 
 1. We inserted a condition.
-2. We set the condition strength to 100% (it would be also by default set to 100%). This is important because we want all Chrome users to access the new service - we could also say `condition_strength: 50%` to give access just to half of them.
-3. We set te weight to 0% because we don't want any other users to access `sava:1.1.0`
+2. We set the condition strength to 100% (it would be also by default set to 100%). This is important because we want all Chrome users to access the new service - we could also say `condition_strength: 50%` to give access just to half of them. The other 50% would be redirected to weight rules and routed accordingly. 
+3. We set the weight to 0% because we don't want any other users to access `sava:1.1.0`
 
 The first service where the condition matches the request will be used to handle the request.
 More information about using conditions, weights, sticky sessions etc. can be found [here](/documentation/using-vamp/gateways-and-conditions/).
@@ -117,7 +119,7 @@ Our full blueprint now looks as follows:
 ---
 name: sava:1.0
 gateways:
-  9050: sava/port
+  9050: sava/webport
 clusters:
   sava:
     gateways:
@@ -134,7 +136,7 @@ clusters:
           name: sava:1.0.0
           deployable: magneticio/sava:1.0.0
           ports:
-            port: 8080/http
+            webport: 8080/http
         scale:
           cpu: 0.2
           memory: 64MB
@@ -144,7 +146,7 @@ clusters:
           name: sava:1.1.0 # a new version of our service
           deployable: magneticio/sava:1.1.0
           ports:
-            port: 8080/http
+            webport: 8080/http
         scale:
           cpu: 0.2
           memory: 64MB
@@ -153,9 +155,9 @@ clusters:
 {{% /copyable %}}
 
 Using the UI, you can either use the **Edit deployment** button again and completely paste in this blueprint or just
-find the right place in the blueprint and edit it by hand. The result should be as follows:
+find the right place in the blueprint and edit it by hand. The result should be the same as using our UI to insert a filter condition:
 
-![](/img/screenshots/tut2_filter.png)
+![](/img/screenshots/tut2_canary-condition-v090.gif)
 
 As we are not actually deploying anything but just reconfiguring routes, the update should be almost instantaneous. You can fire up a Chrome browser and a Safari browser and check the results. A hard refresh might be necessary because of your browser's caching routine.
 
