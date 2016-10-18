@@ -5,14 +5,19 @@
   "main": "buildMenu.js",
   "dependencies": {
     "colors": "^1.1.2",
+    "del": "^2.2.2",
     "directory-tree": "^1.1.1",
     "gulp": "^3.9.1",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-sass": "^2.3.2",
     "gulp-util": "^3.0.7",
     "hugo-lunr": "0.0.4",
     "lunr": "^0.7.1",
     "remove-markdown": "^0.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-useref": "^3.1.2"
+  },
   "scripts": {
     "build-index": "hugo-lunr -o themes/vamp-theme/static/lunr.json"
   },
