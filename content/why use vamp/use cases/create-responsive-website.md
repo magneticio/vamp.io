@@ -11,7 +11,7 @@ But why develop this new responsive frontend in one go, having to go for the dre
 
 1. __Start small:__ Build the new frontend for only one specific browser/resolution first to measure effectiveness. Vamp can deploy the new responsive frontend and route a percentage of supported users with this specific browser and screen-resolution there. All other users will continue to see the old version of your website.
 2. __Optimise:__ With the new responsive frontend in the hands of real users with this specific browser/resolution, you can measure actual data and optimise accordingly without negatively affecting the majority of your users.
-3. __Scale up:__ Once you are satisified with the performance of the new frontend, you can use Vamp to scale up the release, developing and canary releasing one browser/resolution at a time. Of course other cohort combinations are also possible, Vamp is open and supports all HAproxy ACL rules.
+3. __Scale up:__ Once you are satisified with the performance of the new frontend, you can use Vamp to scale up the release, developing and canary releasing one browser/resolution at a time. Of course other cohort combinations are also possible, Vamp is open and supports all HAProxy ACL rules.
 
 {{< note title="What next?" >}}
 * Read about using Vamp to [resolve client-side incompatibilities after an upgrade](/why-use-vamp/use-cases/resolve-incompatibilities-after-upgrade/)
