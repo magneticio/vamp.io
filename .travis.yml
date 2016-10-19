@@ -1,5 +1,5 @@
 language: go
-sudo: required
+sudo: true
 go: 1.7
 install:  npm cache clean -f && npm install -g n && n stable && node --version && npm install -g "gulpjs/gulp#4.0" && go get -v github.com/spf13/hugo
 script: npm install && gulp build:prod
