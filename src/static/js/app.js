@@ -254,7 +254,7 @@ function buildSideMenu(data) {
 
 function buildSubSideMenu(data) {
   data.children.forEach(function (subSideMenuItem) {
-      var html = Mustache.render('<a class="sub-menu-item" href="'+theBaseUrl+'{{path}}"><p class="text">{{text}}</p></a>', subSideMenuItem);
+      var html = Mustache.render('<a class="sub-menu-item" href="'+theBaseUrl+'{{path}}/"><p class="text">{{text}}</p></a>', subSideMenuItem);
       var renderedSubSideMenuItem = $.parseHTML(html);
 
       if (subSideMenuItem.active) {
