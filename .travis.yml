@@ -2,7 +2,12 @@ language: go
 sudo: true
 go: 1.7
 node_js: 6.9.0
-install: npm install -g "gulpjs/gulp#4.0" && go get -v github.com/spf13/hugo
+install:
+  - . $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
+  - npm install -g "gulpjs/gulp#4.0"
+  - go get -v github.com/spf13/hugo
 script: npm install && gulp build:prod
 after_success: |
   if [ -n "$GITHUB_API_KEY" ] && [ ${TRAVIS_PULL_REQUEST} == "false" ] && [ $TRAVIS_BRANCH == "master" ]; then
