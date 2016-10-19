@@ -1,5 +1,5 @@
 ---
-date: 2016-09-13T09:00:00+00:00
+date: 2016-10-19T09:00:00+00:00
 title: Downloads
 ---
 
@@ -18,7 +18,7 @@ title: Downloads
 #### Build from source
 * [Build Vamp](/resources/downloads/#build-vamp)
 * [Build Vamp Gateway Agent (VGA)](/resources/downloads/#build-vamp-gateway-agent-vga)
-  
+
 -----------
 
 ## Binaries
@@ -34,16 +34,16 @@ java -Dlogback.configurationFile=logback.xml -Dconfig.file=application.conf -jar
 ```
 
 * `logback.xml` is the log configuration file ([example logback.xml file](https://github.com/magneticio/vamp-docker/blob/master/quick-start/logback.xml))  
-Vamp uses the Logback library. Additional information about using Logback and the log file configuration format can be found on the Logback project page ([logback.qos.ch](http://logback.qos.ch/)). 
+Vamp uses the Logback library. Additional information about using Logback and the log file configuration format can be found on the Logback project page ([logback.qos.ch](http://logback.qos.ch/)).
 * `application.conf` is the main Vamp configuration file ([example application.conf file](https://github.com/magneticio/vamp-docker/blob/master/quick-start/application.conf))  
 Default values ([github.com/magneticio - reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)) are loaded on start and application.conf may override any of them.
-Processing configuration is based on the typesafe library. Additional information about syntax and usage can be found on the project page ([github.com/typesafehub - config](https://github.com/typesafehub/config)). 
+Processing configuration is based on the typesafe library. Additional information about syntax and usage can be found on the project page ([github.com/typesafehub - config](https://github.com/typesafehub/config)).
 
 ### Vamp Gateway Agent (VGA)
 
 **Download: [bintray.com/magnetic-io - Vamp Gateway Agent](https://bintray.com/magnetic-io/downloads/vamp-gateway-agent/view)**
 
-Documentation can be found on the project page ([github.com/magneticio - Vamp Gateway Agent](https://github.com/magneticio/vamp-gateway-agent)). 
+Documentation can be found on the project page ([github.com/magneticio - Vamp Gateway Agent](https://github.com/magneticio/vamp-gateway-agent)).
 ### Vamp CLI
 
 **Download: [bintray.com/magnetic-io - Vamp CLI](https://bintray.com/magnetic-io/downloads/vamp-cli/view)**  
@@ -89,7 +89,7 @@ vamp info
 Vamp Gateway Agent (VGA) Docker images with HAProxy can be pulled from the Docker hub ([hub.docker.com - magneticio Vamp Gateway Agent](https://hub.docker.com/r/magneticio/vamp-gateway-agent/)).
 
 ### Vamp Workflow Agent
-A container for running small JavaScript-based workflows can be pulled from the Docker hub ([hub.docker.com - magneticio Vamp workfow agent](https://hub.docker.com/r/magneticio/vamp-workflow-agent/)). 
+A container for running small JavaScript-based workflows can be pulled from the Docker hub ([hub.docker.com - magneticio Vamp workfow agent](https://hub.docker.com/r/magneticio/vamp-workflow-agent/)).
  Usually this will be pulled automatically.
 
 ## Build from source
@@ -98,7 +98,7 @@ A container for running small JavaScript-based workflows can be pulled from the 
 **Requirements:** OpenJDK or Oracle Java version of 1.8.0_40 or higher, git ([git-scm.com](https://git-scm.com/)), sbt ([scala-sbt.org](http://www.scala-sbt.org/index.html)), npm ([npmjs.com](https://www.npmjs.com/)) and Gulp ([gulpjs.com](http://gulpjs.com/))
 
 1. Checkout the source from the official repo ([github.com/magneticio - Vamp](https://github.com/magneticio/vamp)):   
-  {{< note title="Note!" >}} 
+  {{< note title="Note!" >}}
   * `master` branch contains the latest released version (e.g. 0.9.0). Versions are tagged.
   * `vamp-ui` is a separate project added as a git submodule to Vamp (`ui` subdirectory) it is, therefore, necessary to also checkout the submodule  
   {{< /note >}}
@@ -110,6 +110,18 @@ A container for running small JavaScript-based workflows can be pulled from the 
 2. After the build `./bootstrap/target/scala-2.11` directory will contain the binary with name matching `vamp-assembly-*.jar`
 
 Check this example: [github.com/magneticio - Vamp docker quick start make.sh](https://github.com/magneticio/vamp-docker/blob/master/quick-start/make.sh).
+
+### Running Vamp
+
+Let’s assume that Vamp binary is vamp.jar. OpenJDK or Oracle Java version of 1.8.0_40 or higher needs to be installed. Check the version with `java -version`
+
+Example:
+
+`java -Dlogback.configurationFile=logback.xml -Dconfig.file=application.conf -jar vamp.jar
+
+logback.xml` is log configuration. Vamp uses the [Logback](http://logback.qos.ch/) library and additional information about using the Logback and log file configuration format can be found on the Logback project page. An example file can be found [here](https://github.com/magneticio/vamp-docker/blob/master/quick-start/logback.xml).
+
+`application.conf` is the main Vamp configuration file. [Default](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf) values are loaded on start and `application.conf` may override any of them. Processing configuration is based on [this](https://github.com/typesafehub/config) library. Additional information about syntax and usage can be found on the library project page. An example of configuration can be found [here](https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf).
 
 ### Build Vamp Gateway Agent (VGA)
 

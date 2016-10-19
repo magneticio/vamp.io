@@ -27,7 +27,7 @@ The Vamp `application.conf` consists of the following sections. All sections are
 * [operation](/documentation/installation/configure-vamp/#operation)
 
 ### rest-api
-Configure the port, host name and interface that Vamp runs on using the `rest-api.port` 
+Configure the port, host name and interface that Vamp runs on using the `rest-api.port`
 
 ```
 vamp {
@@ -38,12 +38,17 @@ vamp {
     response-timeout = 10 seconds # HTTP response time out
   }
 }    
-``` 
+```
 
 
 ### persistence
 
-Vamp uses Elasticsearch for persistence and ZooKeeper ([apache.org - ZooKeeper](https://zookeeper.apache.org/)), etcd ([coreos.com  - etcd documentation](https://coreos.com/etcd/docs/latest/)) or Consul ([consul.io](https://www.consul.io/)) for key-value store (keeping HAProxy configuration). 
+{{< note title="Updated for Vamp 0.9.1" >}}
+* In the [Vamp configuration](/documentation/installation/configure-vamp/#persistence) we set `persistence caching` by default to `false`. In our Vamp images we set this to `true` to make it easier on the persistence store load. Check out this [default Vamp 0.9.1 configuration](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf) for reference.
+* We've added a key-value store as a persistence data store. Check out this [default Vamp 0.9.1 configuration](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf) for reference.
+{{< /note >}}
+
+Vamp uses Elasticsearch for persistence and ZooKeeper ([apache.org - ZooKeeper](https://zookeeper.apache.org/)), etcd ([coreos.com  - etcd documentation](https://coreos.com/etcd/docs/latest/)) or Consul ([consul.io](https://www.consul.io/)) for key-value store (keeping HAProxy configuration).
 
 ```yaml
 vamp {
@@ -56,7 +61,7 @@ vamp {
     }
 
     key-value-store {
-    
+
       type = "zookeeper"    # zookeeper, etcd or consul
       base-path = "/vamp"   # base path for keys, e.g. /vamp/...
 
@@ -133,7 +138,7 @@ If you prefer, you can build your own Mesos/Marathon cluster. Here are some tuto
     ...
     container-driver {
       type = "marathon"
-      url = "http://<marathon_host>:<marathon_port>" 
+      url = "http://<marathon_host>:<marathon_port>"
       response-timeout = 30 # seconds, timeout for container operations
     }
     ...
@@ -193,12 +198,12 @@ vamp {
     }
   }
 }  
-``` 
+```
 
 The reason for the need to configure `vamp.gateway-driver.host` is that when services are deployed, they need to be able to find Vamp Gateway Agent in their respective networks. This can be a totally different network than where Vamp is running.
 Let's use an example: `frontend` and `backend` service, `frontend` depends on `backend` - in Vamp DSL that would be 2 clusters (assuming the same deployment).
 There are different ways how `frontend` can discover its dependency `backend`, and to make things simpler Vamp supports using specific environment parameters.
- 
+
 ```yaml
 ---
 name: my-web-app
@@ -225,9 +230,9 @@ clusters:
 ```
 In this example `$backend.host` will have the value of the `vamp.gateway-driver.host` configuration parameter, while `$backend.ports.port` the next available port from `vamp.operation.gateway.port-range`.
 `frontend` doesn't connect to `backend` directly but via Vamp Gateway Agent(s) - given on these host and port parameters.
-This is quite simmilar to common pattern to access any clustered application. 
+This is quite simmilar to common pattern to access any clustered application.
 For instance if you want to access DB server, you will have an address string based on e.g. DNS name or something simmilar.
-Note that even without Vamp, you would need to setup access to `backend` in some similar way. 
+Note that even without Vamp, you would need to setup access to `backend` in some similar way.
 With Vamp, access is via VGA's and that allows specific routing (conditions, weights) needed for A/B testing and canary releasing.
 Additional information can be found on [service discovery page](/documentation/how-vamp-works/service-discovery/).
 
@@ -250,7 +255,7 @@ operation {
                                           # the removal of services.
     }
    }
-  
+
   gateway {
     port-range = 40000-45000
     response-timeout = 5 seconds # timeout for container operations
@@ -261,7 +266,7 @@ operation {
       deployment-cluster-port = "$port.$cluster.$deployment.vamp"
     }
   }
-  
+
   deployment {
     scale {         # default scale, if not specified in blueprint
       instances: 1
@@ -269,7 +274,7 @@ operation {
       memory: 1GB
     }
 
-    arguments: []   # split by first '=', 
+    arguments: []   # split by first '=',
                     # Docker command line arguments, e.g. "security-opt=seccomp:unconfined"
   }
 }
@@ -277,7 +282,7 @@ operation {
 
 For each cluster and service port within the same cluster a gateway is created - this is exactly as one that can be created using Gateway API.
 That means specific conditions and weights can be applied on traffic to/from cluster services - A/B testing and canary releases support.
-`vamp.operation.gateway.port-range` is range of port values that can be used for these cluster/port gateways. 
+`vamp.operation.gateway.port-range` is range of port values that can be used for these cluster/port gateways.
 These ports need to be available on all Vamp Gateway Agent hosts.
 
 
@@ -286,7 +291,7 @@ These ports need to be available on all Vamp Gateway Agent hosts.
 Each configuration parameter can be replaced by an environment variable. Environment variables have precedence over configuration from `application.conf` or system properties.  Read more about [environment variables](/documentation/using-vamp/environment-variables/).
 
 ### Environment variable names
-Environment variable names are based on the configuration parameter name converted to upper case. All non-alphanumerics should be replaced by an underscore `_` 
+Environment variable names are based on the configuration parameter name converted to upper case. All non-alphanumerics should be replaced by an underscore `_`
 
 ```
 vamp.info.message           ⇒ VAMP_INFO_MESSAGE
