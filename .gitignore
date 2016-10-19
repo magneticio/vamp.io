@@ -2,6 +2,12 @@
 public
 node_modules
 
+# exclude everything
+themes/vamp-theme/*
+
+# exception to the rule
+!themes/vamp-theme/.gitkeep
+
 # Compiled source #
 ###################
 *.com
