@@ -3,7 +3,7 @@ public
 node_modules
 
 # exclude everything
-themes/vamp-theme/*
+themes/vamp-theme
 
 # exception to the rule
 !themes/vamp-theme/.gitkeep

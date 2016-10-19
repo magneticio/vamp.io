@@ -1575,9 +1575,10 @@ pre + pre {
   top: 80px;
   left: 0;
   right: 0;
-  background-color: white;
+  bottom: 0;
+  background-color: transparent;
   box-shadow: 0 4px 2px -2px rgba($color-big-stone, 0.25);
-
+  overflow-y: auto;
 
 
   ul {
@@ -1593,7 +1594,7 @@ pre + pre {
       }
 
       &:hover {
-        background-color: rgba($color-radical-red, 0.7);
+        background-color: #fc869a;
         h2, p.url, p.the-content {
           color: white;
         }

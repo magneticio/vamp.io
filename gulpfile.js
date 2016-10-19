@@ -25,7 +25,7 @@ gulp.task('browser-sync', function() {
   });
 });
 
-gulp.task('bs-reload', function () {
+gulp.task('bs-reload', ['build:files'], function () {
   browserSync.reload();
 });
 
@@ -125,5 +125,5 @@ gulp.task('build:dev', ['build:files', 'set-base:development', 'images', 'build-
 gulp.task('build:files', ['dependencies', 'move:js', 'move:css', 'move:fonts', 'clean:moved', 'move:menu', 'move:rest', 'move:toml']);
 
 gulp.task('serve', ['browser-sync', 'build:dev'], function() {
-  gulp.watch('./src/static/scss/**/*.scss', ['build:files', 'bs-reload']);
+  gulp.watch('./src/static/scss/**/*.scss', ['bs-reload']);
 });

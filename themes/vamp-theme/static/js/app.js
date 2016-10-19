@@ -292,7 +292,7 @@ function buildSearch() {
     $('.search-results ul').empty();
 
 
-    for (var sri = 0; sri < 5; sri++) {
+    for (var sri = 0; sri < searchResults.length; sri++) {
       if(searchResults[sri]) {
         var parsedResult = self.pages[searchResults[sri].ref];
         var goToUrl = theBaseUrl + ((parsedResult.path.split(' ').join('-')).substring(1, parsedResult.path.length));

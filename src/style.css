@@ -1567,8 +1567,10 @@ pre + pre {
   top: 80px;
   left: 0;
   right: 0;
-  background-color: white;
-  box-shadow: 0 4px 2px -2px rgba(20, 45, 60, 0.25); }
+  bottom: 0;
+  background-color: transparent;
+  box-shadow: 0 4px 2px -2px rgba(20, 45, 60, 0.25);
+  overflow-y: auto; }
   .search-results ul li {
     display: block;
     background-color: white;
@@ -1578,7 +1580,7 @@ pre + pre {
     .search-results ul li:last-of-type {
       border-bottom: none; }
     .search-results ul li:hover {
-      background-color: rgba(255, 64, 94, 0.7); }
+      background-color: #fc869a; }
       .search-results ul li:hover h2, .search-results ul li:hover p.url, .search-results ul li:hover p.the-content {
         color: white; }
     .search-results ul li a {
