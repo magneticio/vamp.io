@@ -101,6 +101,10 @@ var developmentBase = '\n<script type="text/javascript">';
     developmentBase +='\ndocument.write(\'<base href="\' + theBaseUrl + \'"/>\');';
     developmentBase +='\n</script>';
 
+var productionBase = '\n<script type="text/javascript">';
+    productionBase +='\ntheBaseUrl = "https://magneticio.github.io/revamp.io/";';
+    productionBase +='\n</script>';
+
 
 gulp.task('set-base:development', ['dependencies'], function() {
   return gulp.src('./themes/vamp-theme/layouts/partials/head.html')
