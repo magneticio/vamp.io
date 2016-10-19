@@ -270,10 +270,13 @@ function buildSearch() {
   var self = this;
 
 
+
   $.getJSON(theBaseUrl + 'pages.json', function (data) {
     self.pages = data;
     $.getJSON(theBaseUrl + 'searchIndex.json', function (indexData) {
       index = lunr.Index.load(indexData);
+    }, function(error){
+      console.log(error);
     });
   }, function(error) {
     console.log(error);
