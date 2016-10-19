@@ -268,13 +268,12 @@ function buildSubSideMenu(data) {
 // Search function
 function buildSearch() {
   var self = this;
-
-
+  self.theIndex = {};
 
   $.getJSON(theBaseUrl + 'pages.json', function (data) {
     self.pages = data;
     $.getJSON(theBaseUrl + 'searchIndex.json', function (indexData) {
-      index = lunr.Index.load(indexData);
+      self.theIndex = lunr.Index.load(indexData);
     }, function(error){
       console.log(error);
     });
@@ -288,7 +287,7 @@ function buildSearch() {
       event.preventDefault();
     }
     console.log();
-    var searchResults = index.search($(this).val());
+    var searchResults = self.theIndex.search($(this).val());
     console.log(searchResults);
     $('.search-results ul').empty();
 

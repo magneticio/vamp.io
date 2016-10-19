@@ -43,7 +43,6 @@ gulp.task('sass', function() {
 gulp.task('dependencies', ['clean:start', 'sass'], function() {
   return gulp.src('./src/layouts/**/*.html')
     .pipe(useref())
-    .pipe(gulpif('*.js', uglify()))
     .pipe(gulpif('*.css',autoprefixer({
       cascade: false
     })))
