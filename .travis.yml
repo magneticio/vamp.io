@@ -1,7 +1,7 @@
 language: go
 sudo: false
 go: 1.7
-install: npm install -g "gulpjs/gulp#4.0" && go get -v github.com/spf13/hugo
+install: npm install -g "gulpjs/gulp#4.0" && npm cache clean -f && npm install -g n && n stable && node --version && go get -v github.com/spf13/hugo
 script: npm install && gulp build:prod
 after_success: |
   if [ -n "$GITHUB_API_KEY" ] && [ ${TRAVIS_PULL_REQUEST} == "false" ] && [ $TRAVIS_BRANCH == "master" ]; then
