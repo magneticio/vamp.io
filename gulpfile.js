@@ -119,7 +119,7 @@ gulp.task('set-base:production', ['dependencies'], function() {
 });
 
 gulp.task('build-search-index',['dependencies'], shell.task(['node ./buildSearchIndex.js']));
-gulp.task('hugo', ['dependencies'], shell.task(['hugo']));
+gulp.task('hugo', ['dependencies', 'build-search-index'], shell.task(['hugo']));
 
 gulp.task('build:prod', ['build:files', 'set-base:production', 'images', 'build-search-index', 'hugo']);
 gulp.task('build:dev', ['build:files', 'set-base:development', 'images', 'build-search-index', 'hugo']);
