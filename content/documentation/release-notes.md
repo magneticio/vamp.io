@@ -1,19 +1,33 @@
 ---
-date: 2016-09-13T09:00:00+00:00
+date: 2016-10-19T09:00:00+00:00
 title: Release notes
 ---
+## Vamp 0.9.1
+_19th October 2016_
 
-## Vamp 0.9.0 Beta release 
+### What is new
+* The biggie: We've added Websockets support to our HTTP API. And we're already using this heavily in our new UI to improve responsiveness and speed. https://github.com/magneticio/vamp/issues/529
+* We've updated our UI to a dark theme due to public demand, we love it as it's much easier on the eyes, and of course we're very interested in hearing [your thoughts](mailto:info@magnetic.io)!
+* You can now configure Vamp to use a key-value store for persistence data storage. By default nothing is set, and thus you need to choose either ElasticSearch or key-value. In our Docker images we use key-value as the persistence data store (`database; type”key-value”`), this can be found in the [Vamp Quickstart configuration](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf). The design reasons for this addition  are less dependencies on elasticsearch, better re-use of the available key-value stores that come with cluster-managers (like Zookeeper in DCOS or etcd in Kubernetes) and more robustness (i.e. if we loose ES the persistence data is still available, only the metrics data is temporarily unavailable). https://github.com/magneticio/vamp/issues/750
+* And of course lots of improvements and bug-fixes that can be found here: https://github.com/magneticio/vamp/issues?q=is%3Aissue+milestone%3A0.9.1+is%3Aclosed
+
+### What has changed
+
+* In the [Vamp configuration](/documentation/installation/configure-vamp/#persistence) we set `persistence caching` by default to `false`. In our Vamp images we set this to `true` to make it easier on the persistence store load. https://github.com/magneticio/vamp/issues/792
+* We've changed the updating deployment service states. https://github.com/magneticio/vamp/issues/797
+* **BREAKING CHANGE**: In the Vamp configuration the “rest-api” section has changed to “http-api”. When running Vamp 0.9.1 you need to change this setting accordingly. NB REST and websockets are both a part of our HTTP API. Check this [Vamp configuration](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf) example.
+
+## Vamp 0.9.0 Beta release
 _9th September 2016_
 
 The Vamp 0.9.0 release is a very important milestone in the lifecycle of Vamp, as we're removing the Alpha label and are moving to Beta! This means that we will do our utmost best to avoid breaking changes in our API's and DSL, focus even more on stabilising and optimising the current feature-set, while of course continuously introducing powerful new features.
-  
+
 The Vamp 0.9.0 release is the culmination of three months of hard work by our amazing team! This release incorporates nothing less than 115 issues and I'm very proud of what we've achieved.
 
 ![Vamp 0.9.0 UI](/images/screens/vamp_UI_090.png)
 
 Some of the most notable new features are:
- 
+
 * a brand new opensource UI with much better realtime graphs, sparklines, info, events panel and access to all relevant API objects like breeds, deployments but also new options like gateways and workflows.  
 * powerful integrated workflows for automation and optimisation like autoscaling, automated canary-releasing etc. using efficient Javascript-based scripting.
 * Kubernetes and Rancher support.
@@ -26,6 +40,6 @@ And, of course, there's a massive amount of improvements, bug fixes and other op
 * [github.com/magneticio - complete list of all the closed issues in this release](https://github.com/magneticio/vamp/issues?q=is%3Aissue+milestone%3A0.9.0+is%3Aclosed)
 
 {{< note title="What next?" >}}
-* Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases)) 
+* Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases))
 * You can [try out the latest release](/documentation/installation/hello-world) with our single container hello world package.
 {{< /note >}}

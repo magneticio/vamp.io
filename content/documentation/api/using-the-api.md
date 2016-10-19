@@ -1,7 +1,11 @@
 ---
-date: 2016-09-13T09:00:00+00:00
+date: 2016-10-19T09:00:00+00:00
 title: Using the Vamp API
 ---
+{{< note title="New in Vamp 0.9.1" >}}
+We've now added support for Websockets to our HTTP API. More information will follow soon.
+{{< /note >}}
+
 Vamp has one REST API. This page explains how to specify pagination, and json and yaml content types, and how to effectively use the Vamp REST API.
 
 #### See also
@@ -25,12 +29,12 @@ GET http://vamp:8080/api/v1/breeds?page=5&per_page=20
 * Response headers `X-Total-Count` giving the total amount of items (e.g. 349673) and a `Link` header for easy traversing, e.g.
 ```
 X-Total-Count: 5522
-Link: 
-  <http://vamp:8080/api/v1/events/get?page=1&per_page=5>; rel=first, 
-  <http://vamp:8080/api/v1/events/get?page=1&per_page=5>; rel=prev, 
-  <http://vamp:8080/api/v1/events/get?page=2&per_page=5>; rel=next, 
+Link:
+  <http://vamp:8080/api/v1/events/get?page=1&per_page=5>; rel=first,
+  <http://vamp:8080/api/v1/events/get?page=1&per_page=5>; rel=prev,
+  <http://vamp:8080/api/v1/events/get?page=2&per_page=5>; rel=next,
   <http://vamp:8080/api/v1/events/get?page=19&per_page=5>; rel=last
-``` 
+```
 
 See [Github's implementation](https://developer.github.com/guides/traversing-with-pagination/) for more info.
 
@@ -43,7 +47,7 @@ See [Github's implementation](https://developer.github.com/guides/traversing-wit
 * A successful delete operation has status code 204 `No Content` or 202 `Accepted` with an empty response body.
 
 ## Sending multiple artifacts (documents) - `POST`, `PUT` and `DELETE`
- 
+
 It is possible to send YAML document containing more than 1 artifact definition:
 
 ```
