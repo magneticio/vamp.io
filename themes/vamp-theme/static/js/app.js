@@ -8,7 +8,7 @@ var thePath;
 
 //Side menu template
 sideMenuItemTemplate = '';
-sideMenuItemTemplate += '  <a href=\"'+theBaseUrl+'{{path}}\" class=\"side-menu-item\">';
+sideMenuItemTemplate += '  <a href=\"'+theBaseUrl+'{{path}}/" class=\"side-menu-item\">';
 sideMenuItemTemplate += '   <div class=\"bullet\">';
 sideMenuItemTemplate += '    <img src=\"'+theBaseUrl+'img\/003-Small-icons\/block-03.svg\" alt=\"\">';
 sideMenuItemTemplate += '   <\/div>';
@@ -24,7 +24,7 @@ sideMenuItemTemplate += '  <\/a>';
 
 //Top menu template
 topMenuItemTemplate = '';
-topMenuItemTemplate += '<a href=\"'+theBaseUrl+'{{path}}\" id=\"top-menu-item-{{text}}\" class=\"top-menu-item\">{{text}}<\/a>';
+topMenuItemTemplate += '<a href=\"'+theBaseUrl+'{{path}}/\" id=\"top-menu-item-{{text}}\" class=\"top-menu-item\">{{text}}<\/a>';
 
 function documentReady() {
   thePath = window.location.href.substring(theBaseUrl.length-1, window.location.href.length).split('#')[0];
@@ -254,7 +254,7 @@ function buildSideMenu(data) {
 
 function buildSubSideMenu(data) {
   data.children.forEach(function (subSideMenuItem) {
-      var html = Mustache.render('<a class="sub-menu-item" href="'+theBaseUrl+'{{path}}"><p class="text">{{text}}</p></a>', subSideMenuItem);
+      var html = Mustache.render('<a class="sub-menu-item" href="'+theBaseUrl+'{{path}}/"><p class="text">{{text}}</p></a>', subSideMenuItem);
       var renderedSubSideMenuItem = $.parseHTML(html);
 
       if (subSideMenuItem.active) {

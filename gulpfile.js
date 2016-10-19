@@ -96,7 +96,7 @@ gulp.task('clean:moved', ['move:js', 'move:css'], function() {
 });
 
 var developmentBase = '\n<script type="text/javascript">';
-    developmentBase +='\ntheBaseUrl = "https://" + location.host + "/";';
+    developmentBase +='\ntheBaseUrl = "http://" + location.host + "/";';
     developmentBase +='\ndocument.write(\'<base href="\' + theBaseUrl + \'"/>\');';
     developmentBase +='\n</script>';
 
