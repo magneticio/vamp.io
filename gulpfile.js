@@ -87,6 +87,7 @@ gulp.task('move:fonts', function() {
 
 gulp.task('images', function() {
   return gulp.src('./src/static/img/**/*')
+    .pipe(imagemin())
     .pipe(gulp.dest('./themes/vamp-theme/static/img'))
 });
 
