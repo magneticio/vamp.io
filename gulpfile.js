@@ -114,7 +114,7 @@ gulp.task('set-base:development', ['dependencies'], function() {
 
 gulp.task('set-base:production', ['dependencies'], function() {
   return gulp.src('./themes/vamp-theme/layouts/partials/head.html')
-    .pipe(inject.after('<head>',  '\n<base href="https://magneticio.github.io/revamp.io/" />'))
+    .pipe(inject.after('<head>',  '\n'+productionBase+'\n<base href="https://magneticio.github.io/revamp.io/" />'))
     .pipe(gulp.dest('./themes/vamp-theme/layouts/partials'))
 });
 
