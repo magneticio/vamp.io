@@ -14,7 +14,7 @@ If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 
 * [DC/OS 1.7 and 1.8](/documentation/installation/dcos)
 * [Mesos/Marathon](/documentation/installation/mesos-marathon)
-* [Kubernetes 1.2](/documentation/installation/kubernetes)
+* [Kubernetes 1.x](/documentation/installation/kubernetes)
 * [Rancher](/documentation/installation/rancher)
 * [Azure Container Service](/documentation/installation/azure-container-service)
 

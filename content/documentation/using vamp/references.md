@@ -45,12 +45,12 @@ When you begin to work with Vamp, you will probably start with inline artifacts.
 
 ### Example use of references
 
-* [Create a library of containers](#example-1)
-* [Fix scales per environment](#example-2)
-* [Reuse a complex condition](#example-3)
+* [Create a library of containers](/documentation/using-vamp/references/#example-1)
+* [Fix scales per environment](/documentation/using-vamp/references/#example-2)
+* [Reuse a complex condition](/documentation/using-vamp/references/#example-3)
 
 
-#### Example 1
+#### Example 1 
 **Create a library of containers**
 
 **Use case:** You have a Redis container you have tweaked and setup exactly the way you want it. You want to use that exact container in all your environments (dev, test, prod etc.). 

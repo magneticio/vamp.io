@@ -2,14 +2,14 @@
 date: 2016-09-13T09:00:00+00:00
 title: Events and metrics
 ---
-HAProxy (VGA) generates logs and makes them accessible via open socket - check the HAProxy configuration ([github.com/magneticio - haproxy.cfg](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.basic.cfg)) of `log`.
+HAProxy (VGA) generates logs and makes them accessible via open socket - check the HAProxy configuration of `log` ([github.com/magneticio - haproxy.cfg](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.basic.cfg)).
 
 VGA listens on log socket and any new messages are forwarded to the Logstash instance.
 Log format is configurable in Vamp configuration vamp.gateway-driver.haproxy ([github.com/magneticio - reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)).
 
 * For an effective feedback loop, HTTP/TCP logs should be collected, stored and analyzed
 * Collection and storing is done by a combination of HAProxy, VGA and Logstash setup
-* Logs can be stored in Elasticsearch and later analysed and visualised by Kibana.
+* Logs can be stored in Elasticsearch and later analysed and visualised by Kibana
 
 ## Logstash
 

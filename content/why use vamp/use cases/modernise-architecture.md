@@ -15,6 +15,6 @@ Why guess? Using Vamp you could A/B test different versions of your services wit
 
 {{< note title="What next?" >}}
 * Read about using Vamp to [simulate and test scaling behaviour](/why-use-vamp/use-cases/simulate-and-test-scaling-behaviour/)
-* See [how Vamp measures up](/why-use-vamp/vamp-compared-to//proxies-and-load-balancers/) to common platforms, tools and frameworks  
+* See [how Vamp measures up](/why-use-vamp/vamp-compared-to/proxies-and-load-balancers/) to common platforms, tools and frameworks  
 * Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}

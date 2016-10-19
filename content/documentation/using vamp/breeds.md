@@ -7,10 +7,10 @@ To a certain degree, you could compare a breed to a Maven artifact or a Ruby Gem
 
 Breeds allow you to set the following properties:
 
-- [Deployable](#deployable): the name of actual container or command that should be run.
-- [Ports](#ports): a map of ports your container exposes.
+- [Deployable](/documentation/using-vamp/breeds/#deployable): the name of actual container or command that should be run.
+- [Ports](/documentation/using-vamp/breeds/#ports): a map of ports your container exposes.
 - [Environment variables](/documentation/using-vamp/environment-variables/): a list of variables (interpolated or not) to be made available at runtime.
-- [Dependencies](#environment-variables-dependencies): a list of other breeds this breed depends on.
+- [Dependencies](/documentation/using-vamp/environment-variables/#dependencies): a list of other breeds this breed depends on.
 
 
 ## Deployable

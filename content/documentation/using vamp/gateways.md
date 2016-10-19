@@ -51,12 +51,12 @@ _for example, IOS users_
 * The `condition_strength` targets a percentage of traffic matching a condition  
 _for example, 10% of IOS users_
 * The `weight` for each available route (%) defines the distribution of all remaining traffic (not matching or not targetted by a condition)  
-_for example, 100% of all traffic, except the selected 10% of IOS users_
+_for example, 100% of all traffic, except the targetted 10% of IOS users_
 
 
 ### Routes, condition-strength and weights
 
-Each route can have a weight and one or more conditions. Each condition has a condition-strength.
+Each route can have a weight and one or more conditions (see [boolean expression in conditions](/documentation/using-vamp/conditions/#boolean-expression-in-conditions)). Each condition has a condition-strength.
 
 Routing is calculated as followed:
 
