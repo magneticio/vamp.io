@@ -95,7 +95,7 @@ function parseContent(content) {
   let contentSplitted = content.split('---\n');
   if(contentSplitted[1] && contentSplitted[2]) {
     let dataBar = newLinesToJsObject(contentSplitted[1]);
-    let contentBar = contentSplitted[2];
+    let contentBar = contentSplitted.slice(2).join();
     Object.assign(parsedContent, dataBar);
     Object.assign(parsedContent, {content: removeMd(contentBar)});
   } else {

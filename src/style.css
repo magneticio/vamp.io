@@ -1544,7 +1544,8 @@ pre + pre {
     height: 79px;
     background-color: white;
     border-right: 1px solid #96ADAA;
-    text-decoration: none; }
+    text-decoration: none;
+    cursor: pointer; }
     .search-bar__back i {
       line-height: 80px;
       color: #96ADAA; }

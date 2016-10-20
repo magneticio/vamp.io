@@ -319,7 +319,7 @@ function buildSearch() {
   $('.search-bar__input').keyup(function(e) {
     //escape key
     if (e.keyCode == 27) {
-      exitSearch();
+      exitSearch(e);
     }
     //enter key
     if (e.keyCode == 13) {
@@ -329,8 +329,8 @@ function buildSearch() {
   });
 
   function exitSearch(event) {
-    event.preventDefault();
-    event.stopPropagation();
+    event && event.preventDefault();
+    event && event.stopPropagation();
     $('.search-bar__input').val('');
     $('.search-bar__input').focusout();
     $('#search').toggleClass('active');
