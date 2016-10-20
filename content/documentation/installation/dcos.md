@@ -5,9 +5,9 @@ title: DC/OS 1.7 and 1.8
 
 There are different ways to install Vamp on DC.OS. On this page we start out with the most common setup, but if you are interested in doing a custom install or working with public and private nodes you should jump to that section.
 
-* [Standard install](#standard-install)
-* [Custom install](#custom-install)
-* [Public and private nodes](#public-and-private-nodes)
+* [Standard install](/documentation/installation/dcos/#standard-install)
+* [Custom install](/documentation/installation/dcos/#custom-install)
+* [Public and private nodes](/documentation/installation/dcos/#public-and-private-nodes)
 
 
 ## Standard install
