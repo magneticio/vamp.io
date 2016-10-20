@@ -12,18 +12,50 @@ var gulpif = require('gulp-if');
 var uglify = require('gulp-uglify');
 var minifyCss = require('gulp-clean-css');
 var autoprefixer = require('gulp-autoprefixer');
-var browserSync = require('browser-sync');
+var browserSync = require('browser-sync').create();
 var shell = require('gulp-shell');
 var env = require('./env.json');
+var merge = require('merge-stream');
+var concat = require('gulp-concat');
 
 
 
-gulp.task('browser-sync', function() {
-  browserSync({
+gulp.task('serve', ['browser-sync', 'build:dev'], function() {
+  gulp.watch('./src/static/scss/**/*.scss', ['bs-reload']);
+});
+
+gulp.task('serve', function() {
+  browserSync.init({
     server: {
       baseDir: './public/'
     }
   });
+
+  gulp.watch('./src/static/scss/*.scss', ['sass:dev']);
+  gulp.watch('./src/static/js/*.js', ['js:dev']).on('change', browserSync.reload);
+
+});
+
+gulp.task('sass:dev', function() {
+  var sassStream = gulp.src('./src/static/scss/style.scss')
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(autoprefixer({cascade: false}));
+
+  var cssStream = gulp.src('./src/static/css/*.css')
+    .pipe(concat('css-files.css'));
+
+  var mergedStream = merge(sassStream, cssStream)
+    .pipe(concat('style.css'))
+    .pipe(gulp.dest('./themes/vamp-theme/static/css'))
+    .pipe(shell(['hugo']))
+    .pipe(browserSync.stream());
+
+  return mergedStream;
+});
+
+gulp.task('js:dev', function() {
+  return gulp.src('./themes/vamp-theme/layouts/js/app.js')
+    .pipe(gulp.dest('./themes/vamp-theme/static/js'))
 });
 
 gulp.task('bs-reload', ['build:files'], function () {
@@ -127,6 +159,3 @@ gulp.task('build:prod', ['build:files', 'set-base:production', 'images', 'build-
 gulp.task('build:dev', ['build:files', 'set-base:development', 'images', 'build-search-index', 'hugo']);
 gulp.task('build:files', ['dependencies', 'move:js', 'move:css', 'move:fonts', 'clean:moved', 'move:menu', 'move:rest', 'move:toml']);
 
-gulp.task('serve', ['browser-sync', 'build:dev'], function() {
-  gulp.watch('./src/static/scss/**/*.scss', ['bs-reload']);
-});
