@@ -14,6 +14,7 @@ var minifyCss = require('gulp-clean-css');
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync');
 var shell = require('gulp-shell');
+var env = require('./env.json');
 
 
 
@@ -99,8 +100,11 @@ var developmentBase = '\n<script type="text/javascript">';
     developmentBase +='\ndocument.write(\'<base href="\' + theBaseUrl + \'"/>\');';
     developmentBase +='\n</script>';
 
+
+var prodUrl = env.prod.baseUrl;
+
 var productionBase = '\n<script type="text/javascript">';
-    productionBase +='\ntheBaseUrl = "https://magneticio.github.io/revamp.io/";';
+    productionBase +='\ntheBaseUrl = "'+ prodUrl + '";';
     productionBase +='\n</script>';
 
 
@@ -112,7 +116,7 @@ gulp.task('set-base:development', ['dependencies'], function() {
 
 gulp.task('set-base:production', ['dependencies'], function() {
   return gulp.src('./themes/vamp-theme/layouts/partials/head.html')
-    .pipe(inject.after('<head>',  '\n'+productionBase+'\n<base href="https://magneticio.github.io/revamp.io/" />'))
+    .pipe(inject.after('<head>',  '\n'+productionBase+'\n<base href="'+ prodUrl + '" />'))
     .pipe(gulp.dest('./themes/vamp-theme/layouts/partials'))
 });
 
