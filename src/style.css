@@ -838,8 +838,7 @@ body {
   padding: 30px 40px 40px 40px;
   background-color: white;
   min-height: 100vh;
-  max-width: 980px;
-  opacity: 0; }
+  max-width: 980px; }
   @media all and (min-width: 1025px) {
     .content {
       margin-left: 370px;

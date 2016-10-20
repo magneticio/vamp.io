@@ -171,7 +171,6 @@ function menuFileLoaded(data) {
       topMenuItem.visible && $('#top-menu-items').append(renderedTopMenuItem);
   });
 
-  $('.content').css('opacity', 1);
 
   //build mobile menu
 
