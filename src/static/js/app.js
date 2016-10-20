@@ -310,7 +310,9 @@ function buildSearch() {
   });
 
   $('.search-bar__back').click(function(event) {
-    exitSearch();
+    event.preventDefault();
+    event.stopPropagation();
+    exitSearch(event);
   });
 
   //escape key
@@ -326,12 +328,13 @@ function buildSearch() {
   
   });
 
-  function exitSearch() {
+  function exitSearch(event) {
+    event.preventDefault();
+    event.stopPropagation();
     $('.search-bar__input').val('');
     $('.search-bar__input').focusout();
     $('#search').toggleClass('active');
-    event.preventDefault();
-    event.stopPropagation();
+
   }
 }
 
