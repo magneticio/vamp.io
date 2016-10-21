@@ -5,9 +5,9 @@ title: Run a canary release
 
 ## Overview
 
-In the [previous tutorial we deployed our app sava 1.0](/documentation/tutorials/deploy-your-first-blueprint/). If you haven't walked through that part already, please do so before continuing. 
+In the [previous tutorial we deployed our app sava 1.0](/documentation/tutorials/deploy-your-first-blueprint/). If you haven't walked through that part already, please do so before continuing.
 
-Now let's say we have a new version of this great application that we want to canary release into production. We have it containerised as `magneticio/sava:1.1.0` and are ready to go. 
+Now let's say we have a new version of this great application that we want to canary release into production. We have it containerised as `magneticio/sava:1.1.0` and are ready to go.
 
 #### In this tutorial we will:
 
@@ -80,9 +80,9 @@ You could also create a second blueprint with the new service, and merge this ne
 
 #### Deploy using the UI
 
-1. Go to the deployment detail screen and press the **Edit** button. 
-2. Copy the blueprint above and paste it over the the deployment that is there. 
-3. Press **Save** 
+1. Go to the deployment detail screen and press the **Edit** button.
+2. Copy the blueprint above and paste it over the the deployment that is there.
+3. Press **Save**
 
 * Vamp will start working out the differences and update the deployment accordingly.
 
@@ -126,8 +126,9 @@ Notice three things:
 * We set the filter strength to 100% (it would be also by default set to 100%). This is important because we want all Chrome users to access the new service - we could also say `filter_strength: 50%` to give access just to half of them (the other 50% would be redirected to weight rules and routed accordingly).
 * We set the weight to 0% because we don't want any other users to access `sava:1.1.0`
 
-The first service where the filter matches the request will be used to handle the request. 
-[More information about using filters, weights, sticky sessions etc.](/documentation/using-vamp/gateways-and-conditions/).  
+The first service where the filter matches the request will be used to handle the request.
+[More information about using filters, weights, sticky sessions etc.](/documentation/using-vamp/gateways/).  
+
 Our full blueprint now looks as follows:
 
 ```yaml
@@ -235,5 +236,3 @@ Using a tool like httpie ([github.com/jakubroztocil - httpie](https://github.com
 {{< note title="What next?" >}}
 * Cool stuff. But we are dealing here with single, monolithic applications. Where are the microservices?  We will [chop up this monolith into services and deploy them with Vamp](/documentation/tutorials/split-a-monolith/) in the third part of our tutorial →
 {{< /note >}}
-
-
