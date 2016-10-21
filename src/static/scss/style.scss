@@ -494,7 +494,7 @@ body {
 
   &.active {
     .text {
-      color: $color-radical-red;
+      font-weight: 500;
     }
   }
 }
@@ -525,7 +525,7 @@ body {
 
 // Markdown implementation
 .markdowned {
- h1 {
+  h1 {
    font-size: 32px;
    font-weight: 100;
    color: $color-radical-red;
@@ -536,7 +536,7 @@ body {
 
   h2 {
     font-size: 24px;
-    font-weight: 100;
+    font-weight: 500;
     color: $color-big-stone;
     line-height: 1.5em;
     letter-spacing: 0.05em;
@@ -566,7 +566,7 @@ body {
   h3 {
     font-size: 13px;
     font-weight: 500;
-    color: $color-radical-red;
+    color: $color-big-stone;
     line-height: 1.8;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -593,7 +593,7 @@ body {
   h4 {
     font-size: 13px;
     font-weight: 500;
-    color: $color-blue-dianne;
+    color: $color-cascade;
     line-height: 1.8;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -646,9 +646,9 @@ body {
 
   p {
     font-size: 15px;
-    font-weight: 100;
+    font-weight: 300;
     color: $color-big-stone;
-    line-height: 1.7;
+    line-height: 1.5;
     letter-spacing: 0.025em;
     margin: 25px 0;
 
@@ -664,7 +664,7 @@ body {
 
   a {
     font-size: 15px;
-    font-weight: 100;
+    font-weight: 300;
     color: $color-bermuda-gray;
     line-height: 1.7;
     letter-spacing: 0.025em;
@@ -674,17 +674,17 @@ body {
   }
 
   ol {
-    margin: 10px 40px;
+    margin: 10px 30px;
 
   }
 
   ul {
     list-style-type: square;
-    margin: 10px 40px;
+    margin: 10px 30px;
   }
 
   li {
-    font-weight: 100;
+    font-weight: 300;
     margin: 10px 0;
     @extend .text;
 
@@ -711,14 +711,17 @@ body {
   }
 
   p > code, li > code {
-    background-color: #F0F0F0;
+    background-color: #F7F8F9;
     padding: 0 5px;
   }
 
   .hljs {
     padding: 40px 20px 40px 20px;
     font-size: 14px;
-    background-color: $color-white-squeeze;
+    background-color: #F7F8F9;
+    span {
+      font-weight: 300;
+    }
   }
 
   table {
@@ -1028,7 +1031,7 @@ body {
 // Note box
 .admonition {
   padding: 20px;
-  border-left: 10px solid;
+  border-left: 5px solid;
   border-radius: 0 5px 5px 0;
   position: relative;
   margin: 40px 0;
@@ -1063,10 +1066,15 @@ body {
 
   p {
     display: inline;
+    font-weight: 300;
+  }
+
+  li {
+    font-weight: 300;
   }
 
   &.note {
-    background-color: #F2F5F7;
+    background-color: #F7F8F9;
     border-color: #234B5F;
 
     .admonition-icon-image {
@@ -1093,14 +1101,14 @@ body {
 
   &.tip {
     background-color: #dcf7f0;
-    border-color: #2bd6b0;
+    border-color: #1AA379;
 
     .admonition-icon-image {
       background-image: url("../img/003-Small-icons/Notes/tip.svg");
     }
 
     .admonition-title {
-      color: #2bd6b0;
+      color: #1AA379;
     }
   }
 }
@@ -1384,7 +1392,7 @@ pre + pre {
   letter-spacing: 0.1em;
   cursor: pointer;
   width: 100px;
-  background-color: $color-jungle-mist;
+  background-color: #E7ECF1;
   transition: 0.3s ease-in all;
 
 
@@ -1407,7 +1415,7 @@ pre + pre {
 
   &.zeroclipboard-is-hover {
     transition: 0.1s ease-in all;
-    background-color: rgba($color-bermuda-gray, 0.7);
+    background-color: $color-jungle-mist;
     cursor: pointer;
     color: white;
   }
@@ -1666,7 +1674,7 @@ pre + pre {
   h2 {
     font-size: 18px;
     margin-bottom: 20px;
-    font-weight: 100;
+    font-weight: 300;
   }
 
   .image-container {

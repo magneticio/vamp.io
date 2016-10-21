@@ -543,7 +543,7 @@ body {
       padding-top: 60px; } }
 
 .header {
-  font-weight: 100;
+  font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #142D3C;
@@ -845,7 +845,7 @@ body {
       padding: 0 40px 40px 80px; } }
   .content .content-header {
     font-size: 32px;
-    font-weight: 100;
+    font-weight: 300;
     color: #FF405E;
     line-height: 1.5;
     letter-spacing: 0.05em;
@@ -854,7 +854,7 @@ body {
 
 .markdowned h1 {
   font-size: 32px;
-  font-weight: 100;
+  font-weight: 300;
   color: #FF405E;
   line-height: 1.5;
   letter-spacing: 0.05em;
@@ -862,7 +862,7 @@ body {
 
 .markdowned h2 {
   font-size: 24px;
-  font-weight: 100;
+  font-weight: 500;
   color: #142D3C;
   line-height: 1.5em;
   letter-spacing: 0.05em;
@@ -884,7 +884,7 @@ body {
 .markdowned h3 {
   font-size: 13px;
   font-weight: 500;
-  color: #FF405E;
+  color: #142D3C;
   line-height: 1.8;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -904,7 +904,7 @@ body {
 .markdowned h4 {
   font-size: 13px;
   font-weight: 500;
-  color: #234B5F;
+  color: #96ADAA;
   line-height: 1.8;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -947,9 +947,9 @@ body {
 
 .markdowned p {
   font-size: 15px;
-  font-weight: 100;
+  font-weight: 300;
   color: #142D3C;
-  line-height: 1.7;
+  line-height: 1.5;
   letter-spacing: 0.025em;
   margin: 25px 0; }
 
@@ -961,7 +961,7 @@ body {
 
 .markdowned a {
   font-size: 15px;
-  font-weight: 100;
+  font-weight: 300;
   color: #6991AA;
   line-height: 1.7;
   letter-spacing: 0.025em;
@@ -973,10 +973,10 @@ body {
 
 .markdowned ul {
   list-style-type: square;
-  margin: 10px 40px; }
+  margin: 10px 30px; }
 
 .markdowned li {
-  font-weight: 100;
+  font-weight: 300;
   margin: 10px 0; }
   .markdowned li:first-of-type {
     margin-top: 0; }
@@ -994,13 +994,15 @@ body {
   font-family: 'Roboto Mono', monospace; }
 
 .markdowned p > code, .markdowned li > code {
-  background-color: #F0F0F0;
+  background-color: #F7F8F9;
   padding: 0 5px; }
 
 .markdowned .hljs {
   padding: 40px 20px 40px 20px;
   font-size: 14px;
-  background-color: #F0F5FA; }
+  background-color: #F7F8F9; }
+  .markdowned .hljs span {
+    font-weight: 300; }
 
 .markdowned table {
   margin: 40px 0;
@@ -1157,7 +1159,7 @@ body {
   .footer a {
     text-decoration: none; }
     .footer a .text, .footer a .markdowned li, .markdowned .footer a li, .footer a .markdowned td, .markdowned .footer a td, .footer a .date {
-      font-weight: 100;
+      font-weight: 300;
       color: #C3D2DC !important; }
     .footer a.rss-feed-link {
       text-decoration: underline;
@@ -1188,7 +1190,7 @@ body {
 
 .admonition {
   padding: 20px;
-  border-left: 10px solid;
+  border-left: 5px solid;
   border-radius: 0 5px 5px 0;
   position: relative;
   margin: 40px 0; }
@@ -1213,9 +1215,12 @@ body {
     display: inline;
     font-weight: 500; }
   .admonition p {
-    display: inline; }
+    display: inline;
+    font-weight: 300; }
+  .admonition li {
+    font-weight: 300; }
   .admonition.note {
-    background-color: #F2F5F7;
+    background-color: #F7F8F9;
     border-color: #234B5F; }
     .admonition.note .admonition-icon-image {
       background-image: url("../img/003-Small-icons/Notes/note.svg"); }
@@ -1446,7 +1451,7 @@ pre + pre {
   letter-spacing: 0.1em;
   cursor: pointer;
   width: 100px;
-  background-color: #C3D2DC;
+  background-color: #E7ECF1;
   transition: 0.3s ease-in all; }
   .copy-button p {
     margin: 0;
@@ -1461,7 +1466,7 @@ pre + pre {
     display: none; }
   .copy-button.zeroclipboard-is-hover {
     transition: 0.1s ease-in all;
-    background-color: rgba(105, 145, 170, 0.7);
+    background-color: #C3D2DC;
     cursor: pointer;
     color: white; }
   .copy-button.clicked {
@@ -1632,7 +1637,7 @@ pre + pre {
   #not-found-page h2 {
     font-size: 18px;
     margin-bottom: 20px;
-    font-weight: 100; }
+    font-weight: 300; }
   #not-found-page .image-container {
     width: 530px;
     height: 259px; }
