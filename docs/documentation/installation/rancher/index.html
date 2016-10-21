@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+
+
+
+ <html class="no-js"> 
+<head>
+
+<script type="text/javascript">
+theBaseUrl = "http://vamp.io/";
+</script>
+<base href="http://vamp.io/" />
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+  <title>Rancher - Vamp</title>
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="description" content="Vamp - Deploy and manage microservices with power and ease.">
+  
+  <link rel="canonical" href="./documentation/installation/rancher/">
+  
+  <meta name="author" content="magnetic.io">
+  
+
+  <meta property="og:url" content="/documentation/installation/rancher/">
+  <meta property="og:title" content="Vamp">
+  <meta property="og:image" content="/images/logo.svg">
+  <meta name="apple-mobile-web-app-title" content="Vamp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="shortcut icon" type="image/x-icon" href="./images/logo.svg">
+  <link rel="icon" type="image/x-icon" href="./images/logo.svg">
+
+
+  <style>
+    @font-face {
+      font-family: 'Icon';
+      src: url('fonts/icon.eot?52m981');
+      src: url('fonts/icon.eot?#iefix52m981')
+      format('embedded-opentype'),
+      url('fonts/icon.woff?52m981')
+      format('woff'),
+      url('fonts/icon.ttf?52m981')
+      format('truetype'),
+      url('fonts/icon.svg?52m981#icon')
+      format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/vendor.js"></script>
+
+  <script src="js/app.js"></script>
+
+  
+</head>
+<body class="palette-primary-pink palette-accent-pink">
+
+
+<div class="single-page">
+  <nav aria-label="Header" id="header" class="top-menu">
+  <div class="left">
+    <a href="./">
+      <div id="logo" class="logo"></div>
+    </a>
+  </div>
+
+  <div class="right">
+    <div class="top-menu-items" id="top-menu-items">
+
+    </div>
+
+    <div class="download">
+      <a href="./documentation/installation/hello-world/" class="button button--red">
+        Try Vamp
+      </a>
+    </div>
+
+    <a href="https://github.com/magneticio/vamp" target="_blank" class="github-logo">
+      <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+    </a>
+
+    <div class="search-button">
+      <i class="fa fa-lg fa-search"></i>
+    </div>
+
+  </div>
+</nav>
+
+<ul id="mobile-menu" style="display: none">
+</ul>
+
+<div id="search">
+  <div class="search-bar">
+    <div class="search-bar__back">
+      <i class="fa fa-lg fa-times"></i>
+    </div>
+    <input class="search-bar__input" placeholder="Type your search here...">
+  </div>
+  <div class="search-results">
+    <ul></ul>
+  </div>
+</div>
+
+
+</div>
+
+<div class="page documentation">
+    <div class="menu" id="side-menu">
+    </div>
+    <div class="content">
+      <h1 class="content-header">Rancher </h1>
+      <div class="markdowned">
+        
+
+<p>This installation will run Vamp together with Consul, Elasticsearch and Logstash on Rancher. (We&rsquo;ll also deploy our demo Sava application to give you something to play around on). Before you begin, it is advisable to try out the official Rancher Quick Start Guide tutorial first (<a href="http://docs.rancher.com/rancher/latest/en/quick-start-guide/">rancher.com - quick start guide</a>).</p>
+
+<div class="admonition note">
+  <p class="admonition-title">Note!</p>
+  <p>Rancher support is still in Alpha.</p>
+</div>
+
+<h4 id="tested-against">Tested against</h4>
+
+<p>This guide has been tested on Rancher version 1.1.x.</p>
+
+<h4 id="requirements">Requirements</h4>
+
+<ul>
+<li>Rancher up and running</li>
+<li>Key-value store like ZooKeeper, Consul or etcd</li>
+<li>Elasticsearch and Logstash</li>
+<li>If you want to make a setup on your local VM based Docker, it&rsquo;s advisable to increase default VM memory size from 1GB to 4GB.</li>
+</ul>
+
+<h3 id="step-1-run-rancher-locally">Step 1: Run Rancher locally</h3>
+
+<p>Based on the official Rancher quickstart tutorial, these are a few simple steps to run Rancher locally:</p>
+
+<pre><code class="language-bash">$ docker run -d --restart=always -p 8080:8080 rancher/server
+</code></pre>
+
+<p>The Rancher UI is exposed on port 8080, so go to <a href="http://SERVER_IP:8080">http://SERVER_IP:8080</a> - for instance <a href="http://192.168.99.100:8080">http://192.168.99.100:8080</a>, <a href="http://localhost:8080">http://localhost:8080</a> or something similar depending on your Docker setup.</p>
+
+<p>Follow the instructions on the screen to add a new Rancher host:</p>
+
+<ol>
+<li>click on &ldquo;Add Host&rdquo; and then on &ldquo;Save&rdquo;.</li>
+<li>You should get instructions (bullet point 5) to run an <code>agent</code> Docker image:<br /></li>
+</ol>
+
+<pre><code>$ docker run \
+  -d --privileged \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /var/lib/rancher:/var/lib/rancher \
+  rancher/agent:v1.0.1 \
+  http://192.168.99.100:8080/v1/scripts/E78EF5848B989FD4DA77:1466265600000:SYqIvhPgzKLonp8r0erqgpsi7pQ
+</code></pre>
+
+<h3 id="step-2-run-vamp-stack">Step 2: Run Vamp stack</h3>
+
+<p>Next we need to create a Vamp stack. This can be done either from <code>catalog</code> or from stratch (adding all dependencies manually - Consul, Elasticsearch, Logstash).</p>
+
+<h4 id="run-vamp-stack-from-catalog">Run Vamp stack from catalog</h4>
+
+<ol>
+<li>Go to <code>Catalog</code></li>
+<li>Find the <code>Vamp</code> entry, click the <code>Details</code> button</li>
+<li>Go to <a href="./documentation/installation/rancher/#step-3-run-vamp">Step 3: Run Vamp</a></li>
+</ol>
+
+<h4 id="run-vamp-stack-from-scratch">Run Vamp stack from scratch</h4>
+
+<ol>
+<li>Go to <code>Add Stack</code> and create a new stack <code>vamp</code> (lowercase).</li>
+
+<li><p>Install Consul:</p>
+
+<ul>
+<li>Use the <code>vamp</code> stack and go to <code>Add Service</code>:<br /></li>
+<li><code>Name</code> ⇒ <code>consul</code></li>
+<li><code>Select Image</code> ⇒ <code>gliderlabs/consul-server</code></li>
+<li>Set <code>Command</code> ⇒ <code>-server -bootstrap</code></li>
+<li>Go to <code>Networking</code> tab</li>
+<li>Under <code>Hostname</code> select <code>Set a specific hostname:</code> and enter <code>consul</code></li>
+<li>Click the <code>Create</code> button</li>
+</ul></li>
+
+<li><p>Install Elasticsearch and Logstash:</p>
+
+<ul>
+<li>Use the <code>vamp</code> stack and go to <code>Add Service</code>:<br /></li>
+<li><code>Name</code> ⇒ <code>elastic</code></li>
+<li><code>Select Image</code> ⇒ <code>magneticio/elastic:2.2</code></li>
+<li>Go to <code>Networking</code> tab</li>
+<li>Under <code>Hostname</code> select <code>Set a specific hostname:</code> and enter <code>elastic</code></li>
+<li>Click the <code>Create</code> button</li>
+</ul></li>
+</ol>
+
+<blockquote>
+<p>Our custom Docker image <code>magneticio/elastic:2.2</code> contains Elasticsearch, Logstash and Kibana with the proper Logstash configuration for Vamp. More details can be found on the github project page (<a href="https://github.com/magneticio/elastic">github.com/magneticio - elastic</a>).</p>
+</blockquote>
+
+<h3 id="step-3-run-vamp">Step 3: Run Vamp</h3>
+
+<ol>
+<li><p>First we&rsquo;ll run the Vamp Gateway Agent:</p>
+
+<ul>
+<li>Use the <code>vamp</code> stack and go to <code>Add Service</code>:</li>
+<li>Set scale to <code>Always run one instance of this container on every host</code></li>
+<li><code>Name</code> ⇒ <code>vamp-gateway-agent</code></li>
+<li><code>Select Image</code> ⇒ <code>magneticio/vamp-gateway-agent:0.9.0</code></li>
+<li>Set <code>Command</code> ⇒ <code>--storeType=consul --storeConnection=consul:8500 --storeKey=/vamp/haproxy/1.6 --logstash=elastic:10001</code></li>
+<li>Go to <code>Networking</code> tab</li>
+<li>Under <code>Hostname</code> select <code>Set a specific hostname:</code> and enter <code>vamp-gateway-agent</code></li>
+<li>Click on <code>Create</code> button</li>
+</ul></li>
+
+<li><p>Now let&rsquo;s find a Rancher API endpoint that can be accessed from running container:</p>
+
+<ul>
+<li>Go to the <code>API</code> page and find the endpoint, e.g. <code>http://192.168.99.100:8080/v1/projects/1a5</code></li>
+<li>Go to the <code>Infrastructure</code>/<code>Containers</code> and find the IP address of <code>rancher/server</code>, e.g. <code>172.17.0.2</code></li>
+<li>The Rancher API endpoint should be then <code>http://IP_ADDRESS:PORT/PATH</code> based on values we have, e.g. <code>http://172.17.0.2:8080/v1/projects/1a5</code></li>
+</ul></li>
+
+<li><p>Now we can deploy Vamp:</p>
+
+<ul>
+<li>Use the <code>vamp</code> stack and go to <code>Add Service</code>:</li>
+<li><code>Name</code> ⇒ <code>vamp</code></li>
+<li><code>Select Image</code> ⇒ <code>magneticio/vamp:0.9.0-rancher</code></li>
+<li>Go to <code>Add environment variable</code> VAMP_CONTAINER_DRIVER_RANCHER_URL with value of Rancher API endpoint, e.g. <code>http://172.17.0.2:8080/v1/projects/1a5</code></li>
+<li>(optional) add a <code>VAMP_CONTAINER_DRIVER_RANCHER_USER</code> variable with a <a href="https://docs.rancher.com/rancher/v1.2/zh/api/api-keys/#environment-api-keys">Rancher API access key</a> if your Rancher installation has access control enabled</li>
+<li>(optional) add a <code>VAMP_CONTAINER_DRIVER_RANCHER_PASSWORD</code> variable with a matching Rancher API secret key.</li>
+<li>Go to <code>Networking</code> tab</li>
+<li>Under <code>Hostname</code> select <code>Set a specific hostname:</code> and enter <code>vamp</code></li>
+<li>Click the <code>Create</code> button</li>
+<li>Go to <code>Add Load Balancer</code> (click arrow next to <code>Add Service</code> button label)</li>
+<li>Choose a name (e.g. <code>vamp-lb</code>)</li>
+<li><code>Source IP/Port</code> ⇒ 9090</li>
+<li><code>Default Target Port</code> ⇒ 8080 and <code>Target Service</code> ⇒ <code>vamp</code></li>
+</ul></li>
+</ol>
+
+<p>If you go to <a href="http://SERVER_IP:9090">http://SERVER_IP:9090</a> (e.g <a href="http://192.168.99.100:9090">http://192.168.99.100:9090</a>), you should get the Vamp UI.<br />
+You should also notice that Vamp Gateway Agent is running (one instance on each node) and additional Vamp workflows.</p>
+
+<p>To access HAProxy stats:</p>
+
+<ol>
+<li>Go to <code>Add Load Balancer</code> (click arrow next to <code>Add Service</code>)</li>
+<li>Choose aname (e.g. <code>vamp-gateway-agent-lb</code>), <code>Source IP/Port</code> ⇒ 1988, <code>Default Target Port</code> ⇒ 1988 and <code>Target Service</code> ⇒ <code>vamp-gateway-agent</code></li>
+<li>Use the following username/password: <code>haproxy</code> for the HAProxy stats page</li>
+</ol>
+
+<h3 id="step-4-deploy-the-sava-demo-application">Step 4: Deploy the Sava demo application</h3>
+
+<p>Let&rsquo;s deploy our <code>sava</code> demo application:</p>
+
+<pre><code class="language-yaml">---
+name: sava:1.0
+gateways:
+  9050: sava/port
+clusters:
+  sava:
+    services:
+      breed:
+        name: sava:1.0.0
+        deployable: magneticio/sava:1.0.0
+        ports:
+          port: 8080/http
+      scale:
+        cpu: 0.2
+        memory: 64MB
+        instances: 1
+</code></pre>
+
+<p>If you want the gateway port to be exposed outside of the cluster via Rancher Load Balancer:</p>
+
+<ol>
+<li>Go to <code>Add Load Balancer</code> (click arrow next to <code>Add Service</code>)</li>
+<li>Choose name (e.g. <code>gateway-9050</code>),
+
+<ul>
+<li><code>Source IP/Port</code> ⇒ 9050</li>
+<li><code>Default Target Port</code> ⇒ 9050</li>
+<li><code>Target Service</code> ⇒ <code>vamp-gateway-agent</code></li>
+</ul></li>
+</ol>
+
+<div class="admonition note">
+  <p class="admonition-title">What next?</p>
+  <p><ul>
+<li>Once you have Vamp up and running you can jump into the <a href="./documentation/tutorials/">getting started tutorials</a></li>
+<li>Things still not running? <a href="https://github.com/magneticio/vamp/issues">We&rsquo;re here to help →</a></li>
+<li>Remember, this is not a production grade setup!</li>
+</ul>
+
+<p>If you need help you can find us on <a href="https://gitter.im/magneticio/vamp">Gitter</a></p>
+</div>
+
+      </div>
+    </div>
+</div>
+
+<div class="lander-row lander-row--blue footer">
+  <div class="container">
+    <div class="row">
+      <div class="col col-3">
+        <h2 class="h2">Learn more</h2>
+        <a href="./why-use-vamp/">
+          <p class="text">Why use Vamp?</p>
+        </a>
+        <a href="./documentation/how-vamp-works/architecture-and-components">
+          <p class="text">Documentation</p>
+        </a>
+        <a href="./about/">
+          <p class="text">About us</p>
+        </a>
+        <a href="./resources/news/">
+          <p class="text">News</p>
+        </a>
+        <a href="./contact/">
+          <p class="text">Contact</p>
+        </a>
+      </div>
+        <div class="col col-6">
+        <h2 class="h2">All things code</h2>
+          <a href="./support/">
+            <p class="text">Support</p>
+          </a>
+          <a href="./resources/community/">
+            <p class="text">Community</p>
+          </a>
+          <a href="https://github.com/magneticio/vamp" target="_blank">
+            <p class="text">GitHub</p>
+          </a>
+          <a href="https://gitter.im/magneticio/vamp" target="_blank">
+            <p class="text">Gitter</p>
+          </a>
+      </div>
+      <div class="col col-6">
+        <h2 class="h2">Stay up to date</h2>
+        <p class="text">
+          Leave your email for the latest news: We won’t spam you and won’t go off topic.
+        </p>
+
+        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate="">
+          <div class="input-group">
+            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email">
+            <a onclick="$(this).closest('form').submit()" class="button button--red not-active">
+              <div class="button__icon button__icon--mail">
+              </div>
+            </a>
+          </div>
+        </form>
+
+        
+          
+        
+
+
+        <div class="social-buttons">
+          <p class="text">Follow us on: </p>
+          <a href="https://twitter.com/vamp_io" target="_blank">
+            <i class="fa fa-2x fa-twitter"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/company/magnetic-io" target="_blank">
+            <i class="fa fa-2x fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom lander-row--blue">
+  <div class="container">
+    <div class="part">
+      <a href="./about/"><img class="magnetic-logo" src="./img/005-vamp/Logo/magnetic-logo-footer.svg" alt=""></a>
+    </div>
+    <div class="part">
+      <img class="vamp-bat" src="./img/003-Small-icons/Medium-blue/VAMP-Medium.svg" alt="">
+      <p class="text">Code licensed under <a type="application/rss+xml" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2</a> © 2016 <a href="./about/">Magnetic.io</a></p>
+    </div>
+  </div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59948816-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+

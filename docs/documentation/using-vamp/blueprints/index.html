@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+
+
+
+ <html class="no-js"> 
+<head>
+
+<script type="text/javascript">
+theBaseUrl = "http://vamp.io/";
+</script>
+<base href="http://vamp.io/" />
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+  <title>Blueprints - Vamp</title>
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="description" content="Vamp - Deploy and manage microservices with power and ease.">
+  
+  <link rel="canonical" href="./documentation/using-vamp/blueprints/">
+  
+  <meta name="author" content="magnetic.io">
+  
+
+  <meta property="og:url" content="/documentation/using-vamp/blueprints/">
+  <meta property="og:title" content="Vamp">
+  <meta property="og:image" content="/images/logo.svg">
+  <meta name="apple-mobile-web-app-title" content="Vamp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="shortcut icon" type="image/x-icon" href="./images/logo.svg">
+  <link rel="icon" type="image/x-icon" href="./images/logo.svg">
+
+
+  <style>
+    @font-face {
+      font-family: 'Icon';
+      src: url('fonts/icon.eot?52m981');
+      src: url('fonts/icon.eot?#iefix52m981')
+      format('embedded-opentype'),
+      url('fonts/icon.woff?52m981')
+      format('woff'),
+      url('fonts/icon.ttf?52m981')
+      format('truetype'),
+      url('fonts/icon.svg?52m981#icon')
+      format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/vendor.js"></script>
+
+  <script src="js/app.js"></script>
+
+  
+</head>
+<body class="palette-primary-pink palette-accent-pink">
+
+
+<div class="single-page">
+  <nav aria-label="Header" id="header" class="top-menu">
+  <div class="left">
+    <a href="./">
+      <div id="logo" class="logo"></div>
+    </a>
+  </div>
+
+  <div class="right">
+    <div class="top-menu-items" id="top-menu-items">
+
+    </div>
+
+    <div class="download">
+      <a href="./documentation/installation/hello-world/" class="button button--red">
+        Try Vamp
+      </a>
+    </div>
+
+    <a href="https://github.com/magneticio/vamp" target="_blank" class="github-logo">
+      <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+    </a>
+
+    <div class="search-button">
+      <i class="fa fa-lg fa-search"></i>
+    </div>
+
+  </div>
+</nav>
+
+<ul id="mobile-menu" style="display: none">
+</ul>
+
+<div id="search">
+  <div class="search-bar">
+    <div class="search-bar__back">
+      <i class="fa fa-lg fa-times"></i>
+    </div>
+    <input class="search-bar__input" placeholder="Type your search here...">
+  </div>
+  <div class="search-results">
+    <ul></ul>
+  </div>
+</div>
+
+
+</div>
+
+<div class="page documentation">
+    <div class="menu" id="side-menu">
+    </div>
+    <div class="content">
+      <h1 class="content-header">Blueprints </h1>
+      <div class="markdowned">
+        
+
+<p>Blueprints are execution plans - they describe how your services should be hooked up and what their topology should look like at runtime. This means you reference your breeds (or define them inline) and add runtime configuration to them.</p>
+
+<p>Blueprints allow you to add the following extra properties:</p>
+
+<ul>
+<li><a href="./documentation/using-vamp/blueprints/#gateways">Gateways</a>: a stable port where the service can be reached.</li>
+<li><a href="./documentation/using-vamp/blueprints/#clusters-and-services">Clusters and services</a>: a cluster is a grouping of services with one purpose, i.e. two versions (a/b) of one service.</li>
+<li><a href="./documentation/using-vamp/environment-variables/">Environment variables</a>: a list of variables (interpolated or not) to be made available at runtime.</li>
+<li><a href="./documentation/using-vamp/blueprints/#dialects">Dialects</a>: a dialect is a set of native commands for the underlying container platform, i.e. Docker or Mesosphere Marathon.</li>
+<li><a href="./documentation/using-vamp/blueprints/#scale">Scale</a>: the CPU and memory and the amount of instance allocate to a service.</li>
+<li><a href="./documentation/using-vamp/conditions/">Conditions</a>: how traffic should be directed based on HTTP and/or TCP properties.</li>
+<li><a href="./documentation/using-vamp/sla/">SLA</a> and <a href="./documentation/using-vamp/escalations/">escalations</a>: SLA definition that controls autoscaling.</li>
+</ul>
+
+<h4 id="example-key-concepts-of-blueprints">Example - key concepts of blueprints</h4>
+
+<pre><code class="language-yaml">---
+name: my_blueprint                        # Custom blueprint name
+gateways:
+  8080/http: my_frontend/port
+clusters:
+  my_frontend:                            # Custom cluster name.
+  
+    gateways:                             # Gateway for this cluster services.
+      routes:                             # Makes sense only with
+        some_cool_breed:                  # multiple services per cluster.
+          weight: 95%
+          condition: User-Agent = Chrome
+        some_other_breed:                 # Second service.
+          weight: 5%
+          
+    services:                             # List of services
+      -
+        breed:
+          ref: some_cool_breed
+        scale:                            # Scale for this service.
+          cpu: 2                          # Number of CPUs per instance.
+          memory: 2048MB                  # Memory per instance (MB/GB units).
+          instances: 2                    # Number of instances
+      -                                          
+        breed: 
+          ref: some_other_breed           # Another service in the same cluster.  
+        scale: large                      # Notice we used a reference to a &quot;scale&quot;. 
+                                          # More on this later.
+</code></pre>
+
+<h2 id="gateways">Gateways</h2>
+
+<p>A gateway is a &ldquo;stable&rdquo; endpoint (or port in simplified sense) that almost never changes. When creating the mapping, it uses the definition (my_frontend/port in this case) from the &ldquo;first&rdquo; service in the cluster definition you reference. This service can of course be changed, but the gateway port normally doesn&rsquo;t.</p>
+
+<p>Please take care of setting the <code>/tcp</code> or <code>/http</code> (default) type for the port. Using <code>/http</code> allows Vamp to record more relevant metrics like response times and metrics.</p>
+
+<p>Read more about <a href="./documentation/using-vamp/gateways/">gateways</a>.</p>
+
+<div class="admonition note">
+  <p class="admonition-title">Note!</p>
+  <p>gateways are optional. You can just deploy services and have a home grown method to connect them to some stable, exposable endpoint.</p>
+</div>
+
+<h2 id="clusters-and-services">Clusters and services</h2>
+
+<p>In essence, blueprints define a collection of clusters.
+A cluster is a group of different services, which will appear as a single service and serve a single purpose.</p>
+
+<p>Common use cases would be service A and B in an A/B testing scenario - usually just different
+versions of the same service (e.g. canary release or blue/green deployment).</p>
+
+<p>Clusters are configured by defining an array of services. A cluster can be given an arbitrary name. Services are just lists or arrays of breeds.</p>
+
+<pre><code class="language-yaml">---
+my_cool_cluster
+  services
+   - breed: 
+      ref: my_cool_service_A      # reference to an existing breed
+   -
+     breed:                       # shortened inline breed
+       name: my_cool_service_B
+       deployable: some_container
+       ...
+</code></pre>
+
+<p>Clusters and services are just organisational items. Vamp uses them to order, reference and control the actual containers and gateways and traffic.</p>
+
+<blockquote>
+<p><strong>This all seems redundant, right?</strong> We have a reference chain of blueprints -&gt; gateways -&gt; clusters -&gt; services -&gt; breeds -&gt; deployable. However, you need this level of control and granularity in any serious environment where DRY principles are taken seriously and where &ldquo;one size fits all&rdquo; doesn&rsquo;t fly.</p>
+</blockquote>
+
+<h2 id="dialects">Dialects</h2>
+
+<p>Vamp allows you to use container driver specific tags inside blueprints. We call this a “dialect”.  Dialects effectively enable you to make full use of, for instance, the underlying features like mounting disks, settings commands and providing access to private Docker registries.</p>
+
+<p>We currently support the following dialects:</p>
+
+<ul>
+<li><code>docker:</code></li>
+<li><code>marathon:</code></li>
+</ul>
+
+<h3 id="docker-dialect">Docker dialect</h3>
+
+<p>The following example show how you can mount a volume to a Docker container using the Docker dialect.</p>
+
+<h4 id="example-blueprint-using-the-docker-dialect">Example blueprint - using the Docker dialect</h4>
+
+<pre><code class="language-yaml">---
+name: busybox
+clusters:
+  busyboxes:
+    services:
+      breed:
+        name: busybox-breed
+        deployable: busybox:latest
+      docker:
+        Volumes:
+          &quot;/tmp&quot;: ~
+</code></pre>
+
+<p>Vamp will translate this into the proper API call. Inspecting the container after it&rsquo;s deployed should show something similar to this:</p>
+
+<pre><code class="language-json">...
+&quot;Volumes&quot;: {
+      &quot;/tmp&quot;: &quot;/mnt/sda1/var/lib/docker/volumes/1a3923fa6108cc3e19a7fe0eeaa2a6c0454688ca6165d1919bf647f5f370d4d5/_data&quot;
+  },
+...    
+</code></pre>
+
+<h3 id="marathon-dialect">Marathon dialect</h3>
+
+<p>This is an example with Marathon that pulls an image from private repo, mounts some volumes, sets some labels and gets run with an ad hoc command: all taken care of by Marathon.</p>
+
+<p>We can provide the <code>marathon:</code> tag either on the service level, or the cluster level. Any <code>marathon:</code> tag set on the service level will override the cluster level as it is more specific. However, in 9 out of 10 cases the cluster level makes the most sense. Later, you can also mix dialects so you can prep your blueprint for multiple environments and run times within one description.</p>
+
+<h4 id="example-blueprint-using-the-marathon-dialect">example blueprint - using the Marathon dialect</h4>
+
+<p>Notice the following:</p>
+
+<ul>
+<li>Under the <code>marathon:</code> tag, we provide the command to run in the container by setting the <code>cmd:</code> tag.</li>
+<li>We provide a url to some credentials file in the <code>uri</code> array. As described in the Marathon docs (<a href="https://mesosphere.github.io/marathon/docs/native-docker.html#using-a-private-docker-repository">mesosphere.github.io/marathon - using a private Docker repository</a>) this enables Mesos
+to pull from a private registry, in this case registry.example.com where these credentials are set up.</li>
+<li>We set some labels with some arbitrary metadata.</li>
+<li>We mount the <code>/tmp</code> to in Read/Write mode.</li>
+</ul>
+
+<pre><code class="language-yaml">---
+name: busy-top:1.0
+clusters:
+  busyboxes:
+    services:
+      breed:
+        name: busybox
+        deployable: registry.example.com/busybox:latest
+      marathon:
+       cmd: &quot;top&quot;
+       uris:
+         -
+           &quot;https://some_host/some_path/some_file_with_docker_credentials&quot;
+       labels:
+         environment: &quot;staging&quot;
+         owner: &quot;buffy the vamp slayer&quot;
+       container:
+         volumes:
+           -
+             containerPath: &quot;/tmp/&quot;
+             hostPath: &quot;/tmp/&quot;
+             mode: &quot;RW&quot;
+</code></pre>
+
+<h2 id="scale">Scale</h2>
+
+<p>Scale is the &ldquo;size&rdquo; of a deployed service. Usually that means the number of instances (servers) and allocated CPU and memory.</p>
+
+<p>Scales can be defined inline in a blueprint or they can defined separately and given a unique name. The following example is a scale named &ldquo;small&rdquo;. <code>POST</code>-ing this scale to the <code>/scales</code> REST API endpoint will store it under that name so it can be referenced from other blueprints.</p>
+
+<h4 id="example-scale">Example scale</h4>
+
+<pre><code class="language-yaml">---
+name: small   # Custom name.
+
+cpu: 2        # Number of CPUs per instance.
+memory: 2gb   # Memory per instance, MB/GB units.
+instances: 2  # Number of instances.
+</code></pre>
+
+<div class="admonition note">
+  <p class="admonition-title">What next?</p>
+  <p><ul>
+<li>Read about <a href="./documentation/using-vamp/deployments/">Vamp deployments</a></li>
+<li>Check the <a href="./documentation/api/api-reference">API documentation</a></li>
+<li><a href="./documentation/installation/hello-world">Try Vamp</a></li>
+</ul>
+</p>
+</div>
+
+      </div>
+    </div>
+</div>
+
+<div class="lander-row lander-row--blue footer">
+  <div class="container">
+    <div class="row">
+      <div class="col col-3">
+        <h2 class="h2">Learn more</h2>
+        <a href="./why-use-vamp/">
+          <p class="text">Why use Vamp?</p>
+        </a>
+        <a href="./documentation/how-vamp-works/architecture-and-components">
+          <p class="text">Documentation</p>
+        </a>
+        <a href="./about/">
+          <p class="text">About us</p>
+        </a>
+        <a href="./resources/news/">
+          <p class="text">News</p>
+        </a>
+        <a href="./contact/">
+          <p class="text">Contact</p>
+        </a>
+      </div>
+        <div class="col col-6">
+        <h2 class="h2">All things code</h2>
+          <a href="./support/">
+            <p class="text">Support</p>
+          </a>
+          <a href="./resources/community/">
+            <p class="text">Community</p>
+          </a>
+          <a href="https://github.com/magneticio/vamp" target="_blank">
+            <p class="text">GitHub</p>
+          </a>
+          <a href="https://gitter.im/magneticio/vamp" target="_blank">
+            <p class="text">Gitter</p>
+          </a>
+      </div>
+      <div class="col col-6">
+        <h2 class="h2">Stay up to date</h2>
+        <p class="text">
+          Leave your email for the latest news: We won’t spam you and won’t go off topic.
+        </p>
+
+        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate="">
+          <div class="input-group">
+            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email">
+            <a onclick="$(this).closest('form').submit()" class="button button--red not-active">
+              <div class="button__icon button__icon--mail">
+              </div>
+            </a>
+          </div>
+        </form>
+
+        
+          
+        
+
+
+        <div class="social-buttons">
+          <p class="text">Follow us on: </p>
+          <a href="https://twitter.com/vamp_io" target="_blank">
+            <i class="fa fa-2x fa-twitter"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/company/magnetic-io" target="_blank">
+            <i class="fa fa-2x fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom lander-row--blue">
+  <div class="container">
+    <div class="part">
+      <a href="./about/"><img class="magnetic-logo" src="./img/005-vamp/Logo/magnetic-logo-footer.svg" alt=""></a>
+    </div>
+    <div class="part">
+      <img class="vamp-bat" src="./img/003-Small-icons/Medium-blue/VAMP-Medium.svg" alt="">
+      <p class="text">Code licensed under <a type="application/rss+xml" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2</a> © 2016 <a href="./about/">Magnetic.io</a></p>
+    </div>
+  </div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59948816-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+

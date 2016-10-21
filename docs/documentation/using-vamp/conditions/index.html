@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+
+
+
+ <html class="no-js"> 
+<head>
+
+<script type="text/javascript">
+theBaseUrl = "http://vamp.io/";
+</script>
+<base href="http://vamp.io/" />
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+  <title>Conditions - Vamp</title>
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="description" content="Vamp - Deploy and manage microservices with power and ease.">
+  
+  <link rel="canonical" href="./documentation/using-vamp/conditions/">
+  
+  <meta name="author" content="magnetic.io">
+  
+
+  <meta property="og:url" content="/documentation/using-vamp/conditions/">
+  <meta property="og:title" content="Vamp">
+  <meta property="og:image" content="/images/logo.svg">
+  <meta name="apple-mobile-web-app-title" content="Vamp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="shortcut icon" type="image/x-icon" href="./images/logo.svg">
+  <link rel="icon" type="image/x-icon" href="./images/logo.svg">
+
+
+  <style>
+    @font-face {
+      font-family: 'Icon';
+      src: url('fonts/icon.eot?52m981');
+      src: url('fonts/icon.eot?#iefix52m981')
+      format('embedded-opentype'),
+      url('fonts/icon.woff?52m981')
+      format('woff'),
+      url('fonts/icon.ttf?52m981')
+      format('truetype'),
+      url('fonts/icon.svg?52m981#icon')
+      format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/vendor.js"></script>
+
+  <script src="js/app.js"></script>
+
+  
+</head>
+<body class="palette-primary-pink palette-accent-pink">
+
+
+<div class="single-page">
+  <nav aria-label="Header" id="header" class="top-menu">
+  <div class="left">
+    <a href="./">
+      <div id="logo" class="logo"></div>
+    </a>
+  </div>
+
+  <div class="right">
+    <div class="top-menu-items" id="top-menu-items">
+
+    </div>
+
+    <div class="download">
+      <a href="./documentation/installation/hello-world/" class="button button--red">
+        Try Vamp
+      </a>
+    </div>
+
+    <a href="https://github.com/magneticio/vamp" target="_blank" class="github-logo">
+      <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+    </a>
+
+    <div class="search-button">
+      <i class="fa fa-lg fa-search"></i>
+    </div>
+
+  </div>
+</nav>
+
+<ul id="mobile-menu" style="display: none">
+</ul>
+
+<div id="search">
+  <div class="search-bar">
+    <div class="search-bar__back">
+      <i class="fa fa-lg fa-times"></i>
+    </div>
+    <input class="search-bar__input" placeholder="Type your search here...">
+  </div>
+  <div class="search-results">
+    <ul></ul>
+  </div>
+</div>
+
+
+</div>
+
+<div class="page documentation">
+    <div class="menu" id="side-menu">
+    </div>
+    <div class="content">
+      <h1 class="content-header">Conditions </h1>
+      <div class="markdowned">
+        
+
+<p>Conditions are used by gateways to filter incoming traffic for routing between services in a cluster.
+Read more about <a href="./documentation/using-vamp/gateways/#gateway-usage">gateway usage</a>. You can define conditions inline in a blueprint or store them separately under a unique name on the <code>/conditions</code> endpoint and just use that name to reference them from a blueprint.</p>
+
+<h4 id="example-simple-inline-condition">Example - simple inline condition</h4>
+
+<p>This would be used directly inside a blueprint.</p>
+
+<pre><code class="language-yaml">---
+condition_strength: 10%  # Amount of traffic for this service in percents.
+condition: User-Agent = IOS
+</code></pre>
+
+<h2 id="create-a-condition">Create a condition</h2>
+
+<p>Creating conditions is quite easy. Checking Headers, Cookies, Hosts etc. is all possible.
+Under the hood, Vamp uses Haproxy&rsquo;s ACL&rsquo;s (<a href="http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#7.1">cbonte.github.io/haproxy-dconv - 7.1 ACL basics</a>) and you can use the exact ACL definition right in the blueprint in the <code>condition</code> field of a condition.</p>
+
+<p>However, ACL&rsquo;s can be somewhat opaque and cryptic. That&rsquo;s why Vamp has a set of convenient &ldquo;short codes&rdquo;
+to address common use cases. Currently, we support the following:</p>
+
+<table>
+<thead>
+<tr>
+<th>description</th>
+<th align="center">syntax</th>
+<th align="center">example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>match user agent</td>
+<td align="center"><code>user-agent ==</code> <em>value</em></td>
+<td align="center"><code>user-agent == Firefox</code></td>
+</tr>
+
+<tr>
+<td>mismatch user agent</td>
+<td align="center"><code>user-agent !=</code> <em>value</em></td>
+<td align="center"><code>user-agent != Firefox</code></td>
+</tr>
+
+<tr>
+<td>match host</td>
+<td align="center"><code>host ==</code> <em>value</em></td>
+<td align="center"><code>host == localhost</code></td>
+</tr>
+
+<tr>
+<td>mismatch host</td>
+<td align="center"><code>host !=</code> <em>value</em></td>
+<td align="center"><code>host != localhost</code></td>
+</tr>
+
+<tr>
+<td>has cookie</td>
+<td align="center"><code>has cookie</code> <em>value</em></td>
+<td align="center"><code>has cookie vamp</code></td>
+</tr>
+
+<tr>
+<td>misses cookie</td>
+<td align="center"><code>misses cookie</code> <em>value</em></td>
+<td align="center"><code>misses cookie vamp</code></td>
+</tr>
+
+<tr>
+<td>has header</td>
+<td align="center"><code>has header</code> <em>value</em></td>
+<td align="center"><code>has header ETag</code></td>
+</tr>
+
+<tr>
+<td>misses header</td>
+<td align="center"><code>misses header</code> <em>value</em></td>
+<td align="center"><code>misses header ETag</code></td>
+</tr>
+
+<tr>
+<td>match cookie value</td>
+<td align="center"><code>cookie</code> <em>name</em> <code>has</code> <em>value</em></td>
+<td align="center"><code>cookie vamp has 12345</code></td>
+</tr>
+
+<tr>
+<td>mismatch cookie value</td>
+<td align="center"><code>cookie</code> <em>name</em> <code>misses</code> <em>value</em></td>
+<td align="center"><code>cookie vamp misses 12345</code></td>
+</tr>
+
+<tr>
+<td>header has value</td>
+<td align="center"><code>header</code> <em>name</em> <code>has</code> <em>value</em></td>
+<td align="center"><code>header vamp has 12345</code></td>
+</tr>
+
+<tr>
+<td>header misses value</td>
+<td align="center"><code>header</code> <em>name</em> <code>misses</code> <em>value</em></td>
+<td align="center"><code>header vamp misses 12345</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Additional syntax examples: <a href="https://github.com/magneticio/vamp/blob/master/model/src/test/scala/io/vamp/model/parser/ConditionDefinitionParserSpec.scala">github.com/magneticio/vamp - ConditionDefinitionParserSpec.scala</a>.</li>
+</ul>
+
+<p>Vamp is also quite flexible when it comes to the exact syntax. This means the following are all equivalent:</p>
+
+<p>In order to specify plain HAProxy ACL, ACL needs to be between <code>{ }</code>:</p>
+
+<pre><code class="language-yaml">condition: &quot;&lt; hdr_sub(user-agent) Chrome &gt;&quot;
+</code></pre>
+
+<p>Having multiple conditions in a condition is perfectly possible. For example, the following condition would first check whether the string &ldquo;Chrome&rdquo; exists in the User-Agent header of a
+request and then it would check whether the request has the header
+&ldquo;X-VAMP-MY-COOL-HEADER&rdquo;. So any request matching both conditions would go to this service.</p>
+
+<pre><code class="language-yaml">---
+gateways:
+  weight: 100%
+  condition: &quot;User-Agent = Chrome AND Has Header X-VAMP-MY-COOL-HEADER&quot;
+</code></pre>
+
+<p>Using a tool like httpie (<a href="https://github.com/jakubroztocil/httpie">github.com/jkbrzt/httpie</a>) makes testing this a breeze.</p>
+
+<pre><code>http GET http://10.26.184.254:9050/ X-VAMP-MY-COOL-HEADER:stuff
+</code></pre>
+
+<h3 id="boolean-expression-in-conditions">Boolean expression in conditions</h3>
+
+<p>Vamp supports <code>AND</code>, <code>OR</code>, negation <code>NOT</code> and grouping <code>( )</code>:</p>
+
+<pre><code class="language-yaml">---
+gateways:
+  weight: 100%
+  condition: (User-Agent = Chrome OR User-Agent = Firefox) AND has cookie vamp
+</code></pre>
+
+<ul>
+<li>Additional boolean expression examples: <a href="https://github.com/magneticio/vamp/blob/master/model/src/test/scala/io/vamp/model/parser/BooleanParserSpec.scala">github.com/magneticio/vamp - BooleanParserSpec.scala</a>.</li>
+</ul>
+
+<div class="admonition note">
+  <p class="admonition-title">What next?</p>
+  <p><ul>
+<li>Read about <a href="./documentation/using-vamp/events/">Vamp events</a></li>
+<li>Check the <a href="./documentation/api/api-reference">API documentation</a></li>
+<li><a href="./documentation/installation/hello-world">Try Vamp</a></li>
+</ul>
+</p>
+</div>
+
+      </div>
+    </div>
+</div>
+
+<div class="lander-row lander-row--blue footer">
+  <div class="container">
+    <div class="row">
+      <div class="col col-3">
+        <h2 class="h2">Learn more</h2>
+        <a href="./why-use-vamp/">
+          <p class="text">Why use Vamp?</p>
+        </a>
+        <a href="./documentation/how-vamp-works/architecture-and-components">
+          <p class="text">Documentation</p>
+        </a>
+        <a href="./about/">
+          <p class="text">About us</p>
+        </a>
+        <a href="./resources/news/">
+          <p class="text">News</p>
+        </a>
+        <a href="./contact/">
+          <p class="text">Contact</p>
+        </a>
+      </div>
+        <div class="col col-6">
+        <h2 class="h2">All things code</h2>
+          <a href="./support/">
+            <p class="text">Support</p>
+          </a>
+          <a href="./resources/community/">
+            <p class="text">Community</p>
+          </a>
+          <a href="https://github.com/magneticio/vamp" target="_blank">
+            <p class="text">GitHub</p>
+          </a>
+          <a href="https://gitter.im/magneticio/vamp" target="_blank">
+            <p class="text">Gitter</p>
+          </a>
+      </div>
+      <div class="col col-6">
+        <h2 class="h2">Stay up to date</h2>
+        <p class="text">
+          Leave your email for the latest news: We won’t spam you and won’t go off topic.
+        </p>
+
+        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate="">
+          <div class="input-group">
+            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email">
+            <a onclick="$(this).closest('form').submit()" class="button button--red not-active">
+              <div class="button__icon button__icon--mail">
+              </div>
+            </a>
+          </div>
+        </form>
+
+        
+          
+        
+
+
+        <div class="social-buttons">
+          <p class="text">Follow us on: </p>
+          <a href="https://twitter.com/vamp_io" target="_blank">
+            <i class="fa fa-2x fa-twitter"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/company/magnetic-io" target="_blank">
+            <i class="fa fa-2x fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom lander-row--blue">
+  <div class="container">
+    <div class="part">
+      <a href="./about/"><img class="magnetic-logo" src="./img/005-vamp/Logo/magnetic-logo-footer.svg" alt=""></a>
+    </div>
+    <div class="part">
+      <img class="vamp-bat" src="./img/003-Small-icons/Medium-blue/VAMP-Medium.svg" alt="">
+      <p class="text">Code licensed under <a type="application/rss+xml" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2</a> © 2016 <a href="./about/">Magnetic.io</a></p>
+    </div>
+  </div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59948816-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+

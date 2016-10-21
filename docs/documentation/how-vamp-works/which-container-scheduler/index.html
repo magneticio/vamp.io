@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+
+
+
+ <html class="no-js"> 
+<head>
+
+<script type="text/javascript">
+theBaseUrl = "http://vamp.io/";
+</script>
+<base href="http://vamp.io/" />
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+  <title>Which container scheduler? - Vamp</title>
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="description" content="Vamp - Deploy and manage microservices with power and ease.">
+  
+  <link rel="canonical" href="./documentation/how-vamp-works/which-container-scheduler/">
+  
+  <meta name="author" content="magnetic.io">
+  
+
+  <meta property="og:url" content="/documentation/how-vamp-works/which-container-scheduler/">
+  <meta property="og:title" content="Vamp">
+  <meta property="og:image" content="/images/logo.svg">
+  <meta name="apple-mobile-web-app-title" content="Vamp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="shortcut icon" type="image/x-icon" href="./images/logo.svg">
+  <link rel="icon" type="image/x-icon" href="./images/logo.svg">
+
+
+  <style>
+    @font-face {
+      font-family: 'Icon';
+      src: url('fonts/icon.eot?52m981');
+      src: url('fonts/icon.eot?#iefix52m981')
+      format('embedded-opentype'),
+      url('fonts/icon.woff?52m981')
+      format('woff'),
+      url('fonts/icon.ttf?52m981')
+      format('truetype'),
+      url('fonts/icon.svg?52m981#icon')
+      format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/vendor.js"></script>
+
+  <script src="js/app.js"></script>
+
+  
+</head>
+<body class="palette-primary-pink palette-accent-pink">
+
+
+<div class="single-page">
+  <nav aria-label="Header" id="header" class="top-menu">
+  <div class="left">
+    <a href="./">
+      <div id="logo" class="logo"></div>
+    </a>
+  </div>
+
+  <div class="right">
+    <div class="top-menu-items" id="top-menu-items">
+
+    </div>
+
+    <div class="download">
+      <a href="./documentation/installation/hello-world/" class="button button--red">
+        Try Vamp
+      </a>
+    </div>
+
+    <a href="https://github.com/magneticio/vamp" target="_blank" class="github-logo">
+      <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+    </a>
+
+    <div class="search-button">
+      <i class="fa fa-lg fa-search"></i>
+    </div>
+
+  </div>
+</nav>
+
+<ul id="mobile-menu" style="display: none">
+</ul>
+
+<div id="search">
+  <div class="search-bar">
+    <div class="search-bar__back">
+      <i class="fa fa-lg fa-times"></i>
+    </div>
+    <input class="search-bar__input" placeholder="Type your search here...">
+  </div>
+  <div class="search-results">
+    <ul></ul>
+  </div>
+</div>
+
+
+</div>
+
+<div class="page documentation">
+    <div class="menu" id="side-menu">
+    </div>
+    <div class="content">
+      <h1 class="content-header">Which container scheduler? </h1>
+      <div class="markdowned">
+        
+
+<p>Vamp can run on top of Mesos/Marathon, DC/OS, Kubernetes and Rancher (Docker Swarm support is coming soon). In case you’re “greenfield” and don’t have anything selected or running yet, here are some high-level pointers to help you make an informed decision:</p>
+
+<ul>
+<li><a href="./documentation/how-vamp-works/which-container-scheduler/#working-with-big-data">Working with big data</a> - Mesos/Marathon, DC/OS, Azure Container Service</li>
+<li><a href="./documentation/how-vamp-works/which-container-scheduler/#running-web-based-applications">Running web-based applications</a> - Kubernetes, Google Container Engine</li>
+<li><a href="./documentation/how-vamp-works/which-container-scheduler/#managing-virtual-infrastructure">Managing (virtual) infrastructure</a> - Rancher with Docker or Kubernetes</li>
+<li><a href="./documentation/how-vamp-works/which-container-scheduler/#just-running-docker">Just running Docker</a></li>
+</ul>
+
+<p>Whichever option you choose now, Vamp is container systems agnostic, so all your blueprints and workflows will keep on working if you decide to switch in the future *.</p>
+
+<hr />
+
+<h2 id="working-with-big-data">Working with big data</h2>
+
+<p>If you are working with typical big data solutions like Kafka, Cassandra or Spark (often combined in something called SMACK stack), and/or want to run not only containers on your cluster it makes sense to investigate <a href="./documentation/installation/mesos-marathon/">Mesos/Marathon</a> first. A lot of big data frameworks can run as native Mesos frameworks and you can combine the underlying infrastructure to share resources between these frameworks running on Mesos and your containers running inside Marathon (which is a Mesos framework in itself).</p>
+
+<h3 id="add-in-commercial-support">Add in commercial support</h3>
+
+<p>If you have the same requirements as described above, but you&rsquo;re more comfortable buying commercial support, moving towards <a href="./documentation/installation/dcos/">DC/OS</a> makes sense. DC/OS is based on Mesos/Marathon, but adds additional features and a fancy UI. You can purchase commercial DC/OS support or buy an enterprise version from Mesosphere (the company that initiated Mesos and Marathon).</p>
+
+<h3 id="hosted-solution">Hosted solution</h3>
+
+<p>If you&rsquo;re looking for a hosted version of DC/OS you could investigate <a href="./documentation/installation/azure-container-service/">Azure Container Service</a> which let&rsquo;s you choose between DC/OS or Docker Swarm.</p>
+
+<hr />
+
+<h2 id="running-web-based-applications">Running web-based applications</h2>
+
+<p>If you&rsquo;re solely interested in running (micro)services, APIs and other web-based applications, <a href="./documentation/installation/kubernetes/">Kubernetes</a> is an integrated cluster-manager and -scheduler, and is specifically designed for running containers with web-focused payloads.</p>
+
+<h3 id="add-in-commercial-support-1">Add in commercial support</h3>
+
+<p>At this point, commercial support and fancy dashboards are less easy to find for Kubernetes. However, Kubernetes is the scheduler used in Redhat software (Openshift V3), so if your company used Redhat software this might make sense to investigate.</p>
+
+<h3 id="hosted-solution-1">hosted solution</h3>
+
+<p>A hosted version of Kubernetes is available from Google (Google Container Engine).</p>
+
+<hr />
+
+<h2 id="managing-virtual-infrastructure">Managing (virtual) infrastructure</h2>
+
+<p>If you want to manage and provision (virtual) infrastructure as well as manage and run containers, <a href="./documentation/installation/rancher/">Rancher</a> is a viable option. Rancher provides a Docker or Kubernetes based container scheduler and adds infrastructure provisioning with a nice graphical UI.</p>
+
+<hr />
+
+<h2 id="just-running-docker">Just running Docker</h2>
+
+<p>If you want to stay within the Docker ecosystem, Vamp works nicely with (single machine) <a href="./documentation/installation/docker/">Docker</a>. Docker Swarm support is coming up soon.</p>
+
+<hr />
+
+<p><em>* Note that Vamp <a href="./documentation/using-vamp/blueprints#dialects">dialects</a> and some specific metric store settings are scheduler or container cloud specific.</em></p>
+
+<div class="admonition note">
+  <p class="admonition-title">What next?</p>
+  <p><ul>
+<li>Find out how to <a href="./documentation/installation">install Vamp</a></li>
+<li>Read about the <a href="./documentation/how-vamp-works/requirements">requirments to run Vamp</a></li>
+</ul>
+</p>
+</div>
+
+      </div>
+    </div>
+</div>
+
+<div class="lander-row lander-row--blue footer">
+  <div class="container">
+    <div class="row">
+      <div class="col col-3">
+        <h2 class="h2">Learn more</h2>
+        <a href="./why-use-vamp/">
+          <p class="text">Why use Vamp?</p>
+        </a>
+        <a href="./documentation/how-vamp-works/architecture-and-components">
+          <p class="text">Documentation</p>
+        </a>
+        <a href="./about/">
+          <p class="text">About us</p>
+        </a>
+        <a href="./resources/news/">
+          <p class="text">News</p>
+        </a>
+        <a href="./contact/">
+          <p class="text">Contact</p>
+        </a>
+      </div>
+        <div class="col col-6">
+        <h2 class="h2">All things code</h2>
+          <a href="./support/">
+            <p class="text">Support</p>
+          </a>
+          <a href="./resources/community/">
+            <p class="text">Community</p>
+          </a>
+          <a href="https://github.com/magneticio/vamp" target="_blank">
+            <p class="text">GitHub</p>
+          </a>
+          <a href="https://gitter.im/magneticio/vamp" target="_blank">
+            <p class="text">Gitter</p>
+          </a>
+      </div>
+      <div class="col col-6">
+        <h2 class="h2">Stay up to date</h2>
+        <p class="text">
+          Leave your email for the latest news: We won’t spam you and won’t go off topic.
+        </p>
+
+        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate="">
+          <div class="input-group">
+            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email">
+            <a onclick="$(this).closest('form').submit()" class="button button--red not-active">
+              <div class="button__icon button__icon--mail">
+              </div>
+            </a>
+          </div>
+        </form>
+
+        
+          
+        
+
+
+        <div class="social-buttons">
+          <p class="text">Follow us on: </p>
+          <a href="https://twitter.com/vamp_io" target="_blank">
+            <i class="fa fa-2x fa-twitter"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/company/magnetic-io" target="_blank">
+            <i class="fa fa-2x fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom lander-row--blue">
+  <div class="container">
+    <div class="part">
+      <a href="./about/"><img class="magnetic-logo" src="./img/005-vamp/Logo/magnetic-logo-footer.svg" alt=""></a>
+    </div>
+    <div class="part">
+      <img class="vamp-bat" src="./img/003-Small-icons/Medium-blue/VAMP-Medium.svg" alt="">
+      <p class="text">Code licensed under <a type="application/rss+xml" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2</a> © 2016 <a href="./about/">Magnetic.io</a></p>
+    </div>
+  </div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59948816-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
