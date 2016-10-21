@@ -2,7 +2,7 @@
 date: 2016-09-13T09:00:00+00:00
 title: Rancher
 ---
-This installation will run Vamp together with Consul, Elasticsearch and Logstash on Rancher. (We'll also deploy our demo Sava application to give you something to play around on). Before you begin, it is advisable to try out the official Rancher Quick Start Guide tutorial first ([rancher.com - quick start guide](http://docs.rancher.com/rancher/latest/en/quick-start-guide/)). 
+This installation will run Vamp together with Consul, Elasticsearch and Logstash on Rancher. (We'll also deploy our demo Sava application to give you something to play around on). Before you begin, it is advisable to try out the official Rancher Quick Start Guide tutorial first ([rancher.com - quick start guide](http://docs.rancher.com/rancher/latest/en/quick-start-guide/)).
 
 {{< note title="Note!" >}}
 Rancher support is still in Alpha.
@@ -24,10 +24,10 @@ Based on the official Rancher quickstart tutorial, these are a few simple steps 
 $ docker run -d --restart=always -p 8080:8080 rancher/server
 ```
 The Rancher UI is exposed on port 8080, so go to http://SERVER_IP:8080 - for instance [http://192.168.99.100:8080](http://192.168.99.100:8080), [http://localhost:8080](http://localhost:8080) or something similar depending on your Docker setup.
-  
+
 Follow the instructions on the screen to add a new Rancher host:
 
-1. click on "Add Host" and then on "Save". 
+1. click on "Add Host" and then on "Save".
 2. You should get instructions (bullet point 5) to run an `agent` Docker image:  
 
 ```
@@ -45,7 +45,7 @@ Next we need to create a Vamp stack. This can be done either from `catalog` or f
 
 #### Run Vamp stack from catalog
 
-1. Go to `Catalog` 
+1. Go to `Catalog`
 2. Find the `Vamp` entry, click the `Details` button
 3. Go to [Step 3: Run Vamp](/documentation/installation/rancher/#step-3-run-vamp)
 
@@ -73,7 +73,7 @@ Next we need to create a Vamp stack. This can be done either from `catalog` or f
 
 ### Step 3: Run Vamp
 
-1. First we'll run the Vamp Gateway Agent: 
+1. First we'll run the Vamp Gateway Agent:
   * Use the `vamp` stack and go to `Add Service`:
   * Set scale to `Always run one instance of this container on every host`
   * `Name` ⇒ `vamp-gateway-agent`
@@ -93,6 +93,8 @@ Next we need to create a Vamp stack. This can be done either from `catalog` or f
   * `Name` ⇒ `vamp`
   * `Select Image` ⇒ `magneticio/vamp:0.9.0-rancher`
   * Go to `Add environment variable` VAMP_CONTAINER_DRIVER_RANCHER_URL with value of Rancher API endpoint, e.g. `http://172.17.0.2:8080/v1/projects/1a5`
+  * (optional) add a `VAMP_CONTAINER_DRIVER_RANCHER_USER` variable with a [Rancher API access key](https://docs.rancher.com/rancher/v1.2/zh/api/api-keys/#environment-api-keys) if your Rancher installation has access control enabled
+  * (optional) add a `VAMP_CONTAINER_DRIVER_RANCHER_PASSWORD` variable with a matching Rancher API secret key.
   * Go to `Networking` tab
   * Under `Hostname` select `Set a specific hostname:` and enter `vamp`
   * Click the `Create` button
@@ -136,11 +138,11 @@ clusters:
 If you want the gateway port to be exposed outside of the cluster via Rancher Load Balancer:
 
 1. Go to `Add Load Balancer` (click arrow next to `Add Service`)
-2. Choose name (e.g. `gateway-9050`), 
+2. Choose name (e.g. `gateway-9050`),
   * `Source IP/Port` ⇒ 9050
-  * `Default Target Port` ⇒ 9050 
+  * `Default Target Port` ⇒ 9050
   * `Target Service` ⇒ `vamp-gateway-agent`
- 
+
 
 {{< note title="What next?" >}}
 
