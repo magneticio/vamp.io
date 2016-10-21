@@ -1057,12 +1057,12 @@ body {
   }
 
   .admonition-title {
-    margin: 0;
+    margin: 0 0 5px 0;
     padding: 0;
-    display: inline;
     font-weight: 500;
-
+    display: block;
   }
+
 
   p {
     display: inline;
@@ -1075,7 +1075,7 @@ body {
 
   &.note {
     background-color: #F7F8F9;
-    border-color: #234B5F;
+    border-color: #FAAC19;
 
     .admonition-icon-image {
       background-image: url("../img/003-Small-icons/Notes/note.svg");
