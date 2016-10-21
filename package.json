@@ -1,0 +1,43 @@
+{
+  "name": "revamp.io",
+  "version": "0.0.1",
+  "description": "This is the source for the new [vamp.io](http://vamp.io) site.",
+  "main": "buildMenu.js",
+  "dependencies": {
+    "browser-sync": "^2.17.5",
+    "colors": "^1.1.2",
+    "del": "^2.2.2",
+    "directory-tree": "^1.1.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-concat": "^2.6.0",
+    "gulp-if": "^2.0.1",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-inject-string": "^1.1.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "hugo-lunr": "0.0.4",
+    "lunr": "^0.7.1",
+    "merge-stream": "^1.0.0",
+    "remove-markdown": "^0.1.0"
+  },
+  "devDependencies": {
+    "gulp-shell": "^0.5.2",
+    "gulp-useref": "^3.1.2"
+  },
+  "scripts": {
+    "build-index": "hugo-lunr -o themes/vamp-theme/static/lunr.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magneticio/revamp.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/magneticio/revamp.io/issues"
+  },
+  "homepage": "https://github.com/magneticio/revamp.io#readme"
+}

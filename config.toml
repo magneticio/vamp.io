@@ -1,0 +1,86 @@
+baseurl = "."
+languageCode = "en-us"
+title = "Vamp"
+theme = "vamp-theme"
+metadataformat = "yaml"
+canonifyurls = true
+
+# Enable Google Analytics by entering your tracking id
+googleAnalytics = ""
+
+[params]
+	# General information
+	author = "magnetic.io"
+	description = "Vamp - Deploy and manage microservices with power and ease."
+	copyright = "Released under the Apache 2 license"
+
+	# Repository
+	provider = "GitHub"
+	repo_url = "https://github.com/magneticio/vamp"
+
+	version = "0.9.0"
+	logo = "images/logo.svg"
+	favicon = "images/logo.svg"
+
+	permalink = "#"
+
+	# Custom assets
+	custom_css  = [
+	  "stylesheets/dropdown.css"
+	]
+	custom_js   = [
+	  "javascripts/lunr.min.js",
+	  "javascripts/version.js"
+	]
+
+	custom_menu = [
+    "API"
+  ]
+
+	# Syntax highlighting theme
+	highlight_css  = ""
+
+	[params.palette]
+    	primary = "pink"
+    	accent  = "pink"
+
+    [params.font]
+    	text = "Roboto"
+    	code = "Roboto Mono"
+
+[social]
+	twitter = "magneticio"
+	github  = "magneticio/vamp"
+
+[blackfriday]
+	smartypants	= true
+	fractions = true
+	smartDashes = true
+	plainIDAnchors = true
+
+[[menu.main]]
+	name   = "WHAT IS VAMP?"
+	url    = "/what-is-vamp/"
+	weight = 10
+
+[[menu.main]]
+	name   = "TRY VAMP"
+	url    = "/try-vamp/"
+	weight = 20
+
+
+[[menu.main]]
+	name   = "RESOURCES"
+	url    = "resources/"
+	weight = 30
+
+[[menu.main]]
+	name   = "NEWS"
+	url    = "news/"
+	weight = 40
+
+[[menu.main]]
+	name   = "SUPPORT"
+	url    = "support/"
+	weight = 50
+
