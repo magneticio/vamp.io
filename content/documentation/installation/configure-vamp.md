@@ -96,7 +96,7 @@ Vamp can be configured to work with the following container drivers:
 Vamp can talk directly to a Docker daemon and its driver is configured by default. This is useful for local testing, Docker Swarm support is coming soon.
 Vamp can even run inside Docker while deploying to Docker.
 
-1. Install Docker as per Docker's installation manual ([docs.docker.com - install Docker engine](https://docs.docker.com/installation/))
+1. Install Docker as per Docker's installation manual ([docs.docker.com - install Docker engine](https://docs.docker.com/engine/installation/))
 2. Check the `DOCKER_*` environment variables Vamp uses to connect to Docker, i.e.
 
     ```
@@ -300,6 +300,6 @@ vamp.gateway-driver.timeout ⇒ VAMP_GATEWAY_DRIVER_TIMEOUT
 
 
 {{< note title="What next?" >}}
-* Follow the [getting started tutorials](/documentation/tutorials)
-* You can read in depth about [using Vamp](/documentation/using-vamp) or browse the [API reference](/documentation/api/api-reference) or [CLI reference](/documentation/cli/cli-reference) docs.
+* Follow the [getting started tutorials](/documentation/tutorials/)
+* You can read in depth about [using Vamp](/documentation/using-vamp/artifacts/) or browse the [API reference](/documentation/api/api-reference/) or [CLI reference](/documentation/cli/cli-reference/) docs.
 {{< /note >}}
