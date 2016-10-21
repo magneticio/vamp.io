@@ -1519,12 +1519,13 @@ pre + pre {
 #search {
   position: fixed;
   top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
   z-index: 99999;
   left: 100vw;
   overflow: hidden;
-  transition: all ease-in 0.3s; }
+  transition: all ease-in 0.3s;
+  pointer-events: none; }
   #search.active {
     left: 0; }
 
@@ -1535,7 +1536,8 @@ pre + pre {
   right: 0;
   height: 80px;
   display: flex;
-  border-bottom: 1px solid #96ADAA; }
+  border-bottom: 1px solid #96ADAA;
+  pointer-events: auto; }
   .search-bar__back {
     width: 80px;
     display: flex;
@@ -1575,8 +1577,8 @@ pre + pre {
     display: block;
     background-color: white;
     border-bottom: 1px solid #96ADAA;
-    padding: 20px 100px;
-    cursor: pointer; }
+    cursor: pointer;
+    position: relative; }
     .search-results ul li:last-of-type {
       border-bottom: none; }
     .search-results ul li:hover {
@@ -1584,7 +1586,12 @@ pre + pre {
       .search-results ul li:hover h2, .search-results ul li:hover p.url, .search-results ul li:hover p.the-content {
         color: white; }
     .search-results ul li a {
-      text-decoration: none; }
+      text-decoration: none;
+      display: block;
+      padding: 20px 100px;
+      width: 100%;
+      height: 100%;
+      pointer-events: auto; }
   .search-results h2 {
     font-size: 18px;
     font-weight: 300;
