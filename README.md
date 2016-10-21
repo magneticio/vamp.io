@@ -6,7 +6,7 @@ This is the source for the new [vamp.io](http://vamp.io) site.
     
 1. Clone this repo
     
-        $ git clone https://github.com/magneticio/revamp.io.git
+        $ git clone https://github.com/magneticio/vamp.io.git
         
 2. Download Hugo from [http://gohugo.io](http://gohugo.io) or install using Homebrew:
     

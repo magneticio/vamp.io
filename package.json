@@ -1,5 +1,5 @@
 {
-  "name": "revamp.io",
+  "name": "vamp.io",
   "version": "0.0.1",
   "description": "This is the source for the new [vamp.io](http://vamp.io) site.",
   "main": "buildMenu.js",
@@ -32,12 +32,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/magneticio/revamp.io.git"
+    "url": "git+https://github.com/magneticio/vamp.io.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/magneticio/revamp.io/issues"
+    "url": "https://github.com/magneticio/vamp.io/issues"
   },
-  "homepage": "https://github.com/magneticio/revamp.io#readme"
+  "homepage": "https://github.com/magneticio/vamp.io#readme"
 }
