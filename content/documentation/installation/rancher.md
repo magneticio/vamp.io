@@ -97,6 +97,8 @@ Now let's deploy Vamp. Use `vamp` stack and go to `Add Service`:
 - `Name` ⇒ `vamp`
 - `Select Image` ⇒ `magneticio/vamp:0.9.0-rancher`
 - go to `Add environment variable` VAMP_CONTAINER_DRIVER_RANCHER_URL with value of Rancher API endpoint, e.g. `http://172.17.0.2:8080/v1/projects/1a5`
+- (optional) add a VAMP_CONTAINER_DRIVER_RANCHER_USER variable with a [Rancher API access key](https://docs.rancher.com/rancher/v1.2/zh/api/api-keys/#environment-api-keys) if your Rancher installation has access control enabled.
+- (optional) add a VAMP_CONTAINER_DRIVER_RANCHER_PASSWORD variable with a matching Rancher API secret key.
 - go to `Networking` tab
 - under `Hostname` select `Set a specific hostname:` and enter `vamp`
 - click on `Create` button
