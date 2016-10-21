@@ -1,5 +1,5 @@
 ---
-date: 2016-09-13T09:00:00+00:00
+date: 2016-10-21T09:00:00+00:00
 title: Events and metrics
 ---
 HAProxy (VGA) generates logs and makes them accessible via open socket - check the HAProxy configuration of `log` ([github.com/magneticio - haproxy.cfg](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.basic.cfg)).
@@ -14,7 +14,7 @@ Log format is configurable in Vamp configuration vamp.gateway-driver.haproxy ([g
 ## Logstash
 
 {{< note title="Note!" >}}
-* Logstash is listening on UDP port, but in principle any other listener can receive logs forwarded by VGA. 
+* Logstash is listening on UDP port, but in principle any other listener can receive logs forwarded by VGA.
 * Different VGAs can use different Logstash instances.
 {{< /note >}}
 
@@ -31,10 +31,10 @@ You can transform logs to plain JSON, which can be parsed easily later on (e.g. 
 {{< /tip >}}
 
 ## Kibana
-   
+
   Vamp can be configured to create Kibana `searches`, `visualisations` and `dashboards` automatically with the `vamp.gateway-driver.kibana.enabled` configuration parameter.
   Vamp will do this by inserting ES documents to the Kibana index, so only the URL to access ES is needed (by default reusing the same as for persistence).  
 
 {{< note title="What next?" >}}
-* 
+* Let's [install Vamp](/documentation/installation/) 
 {{< /note >}}
