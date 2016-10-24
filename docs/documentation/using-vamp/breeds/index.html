@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+
+
+
+ <html class="no-js"> 
+<head>
+
+<script type="text/javascript">
+theBaseUrl = "http://vamp.io/";
+</script>
+<base href="http://vamp.io/" />
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+  <title>Breeds - Vamp</title>
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="description" content="Vamp - Deploy and manage microservices with power and ease.">
+  
+  <link rel="canonical" href="./documentation/using-vamp/breeds/">
+  
+  <meta name="author" content="magnetic.io">
+  
+
+  <meta property="og:url" content="/documentation/using-vamp/breeds/">
+  <meta property="og:title" content="Vamp">
+  <meta property="og:image" content="/images/logo.svg">
+  <meta name="apple-mobile-web-app-title" content="Vamp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="shortcut icon" type="image/x-icon" href="./images/logo.svg">
+  <link rel="icon" type="image/x-icon" href="./images/logo.svg">
+
+
+  <style>
+    @font-face {
+      font-family: 'Icon';
+      src: url('fonts/icon.eot?52m981');
+      src: url('fonts/icon.eot?#iefix52m981')
+      format('embedded-opentype'),
+      url('fonts/icon.woff?52m981')
+      format('woff'),
+      url('fonts/icon.ttf?52m981')
+      format('truetype'),
+      url('fonts/icon.svg?52m981#icon')
+      format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/vendor.js"></script>
+
+  <script src="js/app.js"></script>
+
+  
+</head>
+<body class="palette-primary-pink palette-accent-pink">
+
+
+<div class="single-page">
+  <nav aria-label="Header" id="header" class="top-menu">
+  <div class="left">
+    <a href="./">
+      <div id="logo" class="logo"></div>
+    </a>
+  </div>
+
+  <div class="right">
+    <div class="top-menu-items" id="top-menu-items">
+
+    </div>
+
+    <div class="download">
+      <a href="./documentation/installation/hello-world/" class="button button--red">
+        Try Vamp
+      </a>
+    </div>
+
+    <a href="https://github.com/magneticio/vamp" target="_blank" class="github-logo">
+      <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+    </a>
+
+    <div class="search-button">
+      <i class="fa fa-lg fa-search"></i>
+    </div>
+
+  </div>
+</nav>
+
+<ul id="mobile-menu" style="display: none">
+</ul>
+
+<div id="search">
+  <div class="search-bar">
+    <div class="search-bar__back">
+      <i class="fa fa-lg fa-times"></i>
+    </div>
+    <input class="search-bar__input" placeholder="Type your search here...">
+  </div>
+  <div class="search-results">
+    <ul></ul>
+  </div>
+</div>
+
+
+</div>
+
+<div class="page documentation">
+    <div class="menu" id="side-menu">
+    </div>
+    <div class="content">
+      <h1 class="content-header">Breeds </h1>
+      <div class="markdowned">
+        
+
+<p>Breeds are static descriptions of applications and services available for deployment. Each breed is described by the DSL in YAML notation or JSON, whatever you like. This description includes name, version, available parameters, dependencies etc.
+To a certain degree, you could compare a breed to a Maven artifact or a Ruby Gem description.</p>
+
+<p>Breeds allow you to set the following properties:</p>
+
+<ul>
+<li><a href="./documentation/using-vamp/breeds/#deployable">Deployable</a>: the name of actual container or command that should be run.</li>
+<li><a href="./documentation/using-vamp/breeds/#ports">Ports</a>: a map of ports your container exposes.</li>
+<li><a href="./documentation/using-vamp/environment-variables/">Environment variables</a>: a list of variables (interpolated or not) to be made available at runtime.</li>
+<li><a href="./documentation/using-vamp/environment-variables/#dependencies">Dependencies</a>: a list of other breeds this breed depends on.</li>
+</ul>
+
+<h2 id="deployable">Deployable</h2>
+
+<p>Deployables are pointers to the actual artifacts that get deployed. Vamp supports Docker containers or can support any other artifacts supported by your container manager.</p>
+
+<h4 id="example-breed-deploy-a-docker-container">Example breed - deploy a Docker container</h4>
+
+<pre><code class="language-yaml">---
+name: my_breed:0.1
+deployable: company/my_frontend_service:0.1
+
+ports:
+  web: 8080/http   
+</code></pre>
+
+<p>This breed, with a unique name, describes a deployable and the port it works on.</p>
+
+<h3 id="docker-deployables">Docker deployables</h3>
+
+<p>By default, the deployable is a Docker container.
+We could also make this explicit by setting type to <code>docker</code>. The following statements are equivalent:</p>
+
+<pre><code class="language-yaml">---
+deployable: company/my_frontend_service:0.1
+</code></pre>
+
+<pre><code class="language-yaml">---
+deployable: 
+  type: docker
+  definition: company/my_frontend_service:0.1
+</code></pre>
+
+<p>This shows the full (expanded) deployable with <code>type</code> and <code>definition</code>.</p>
+
+<p>Docker images are pulled by your container manager from any of the repositories configured. By default that would be the public Docker hub, but it could also be a private repo.</p>
+
+<h3 id="other-deployables">Other deployables</h3>
+
+<p>Running &ldquo;other&rdquo; artifacts such as zips or jars heavily depends on the underlying container manager.
+When Vamp is set up to run with Marathon (<a href="https://mesosphere.github.io/marathon/">mesosphere.github.io - Marathon</a>), <code>command</code> (or <code>cmd</code>) deployable types can be used.
+In that case cmd (<a href="https://mesosphere.github.io/marathon/docs/rest-api.html#post-v2-apps">Marathon REST API - post v2/apps</a>) parameter will have value of deployable.</p>
+
+<h4 id="example-breed-run-a-custom-jar-after-it-has-been-downloaded">Example breed - run a custom jar after it has been downloaded</h4>
+
+<p>Combining this definition and the Vamp Marathon dialect  <code>uris</code> parameter allows the requested jar to be downloaded from a remote location (<a href="https://mesosphere.github.io/marathon/docs/rest-api.html#uris-array-of-strings">Marathon REST API - uris Array of Strings</a>).</p>
+
+<pre><code class="language-yaml">---
+name: location
+clusters:
+  api:
+    services:
+      breed:
+        name: location
+        deployable: 
+          type: cmd
+          definition: java -jar location.jar
+      marathon:
+        uris: [&quot;https://my_repo_location_jar&quot;]
+
+</code></pre>
+
+<h3 id="javascript-deployables">JavaScript deployables</h3>
+
+<p>Breeds can have type <code>application/javascript</code> and definition should be a JavaScript script:</p>
+
+<pre><code class="language-yaml">---
+name: hello-world
+deployable:
+  type: application/javascript
+  definition: |
+    console.log('Hello World Vamp!');
+</code></pre>
+
+<p>It is possible to create or update breeds with the API request <code>POST|PUT /api/v1/breeds/{name}</code>, Javascript script as body and header <code>Content-Type: application/javascript</code>.</p>
+
+<h2 id="ports">Ports</h2>
+
+<p>The <code>ports</code> property is an array of named ports together with their protocol. It describes on what ports the deployables is offering services to the outside world. Let&rsquo;s look at the following breed:</p>
+
+<pre><code class="language-yaml">---
+name: my_breed:0.1
+deployable: company/my_frontend_service:0.1
+
+ports:
+  web: 8080/http
+  admin: 8081/http
+  redis: 9023/tcp   
+</code></pre>
+
+<p>Ports come in two flavors:</p>
+
+<ul>
+<li><code>/http</code> HTTP ports are the default type if none is specified. They are always recommended when dealing with HTTP-based services. Vamp can record a lot of interesting metrics like response times, errors etc. Of course, using <code>/tcp</code> will work but you miss out on cool data.</li>
+<li><code>/tcp</code> Use TCP ports for things like Redis, MySQL etc.</li>
+</ul>
+
+<div class="admonition note">
+  <p class="admonition-title">Note!</p>
+  <p><code>/http</code> notation for ports is required for use of filters.</p>
+</div>
+
+<p>Notice we can give the ports sensible names. This specific deployable has <code>web</code> port for customer traffic, an <code>admin</code> port for admin access and a <code>redis</code> port for some caching probably. These names come in handy when we later compose different breeds in blueprints.</p>
+
+<div class="admonition note">
+  <p class="admonition-title">What next?</p>
+  <p><ul>
+<li>Read about <a href="./documentation/using-vamp/blueprints/">Vamp blueprints</a></li>
+<li>Check the <a href="./documentation/api/api-reference">API documentation</a></li>
+<li><a href="./documentation/installation/hello-world">Try Vamp</a></li>
+</ul>
+</p>
+</div>
+
+      </div>
+    </div>
+</div>
+
+<div class="lander-row lander-row--blue footer">
+  <div class="container">
+    <div class="row">
+      <div class="col col-3">
+        <h2 class="h2">Learn more</h2>
+        <a href="./why-use-vamp/">
+          <p class="text">Why use Vamp?</p>
+        </a>
+        <a href="./documentation/how-vamp-works/architecture-and-components">
+          <p class="text">Documentation</p>
+        </a>
+        <a href="./about/">
+          <p class="text">About us</p>
+        </a>
+        <a href="./resources/news/">
+          <p class="text">News</p>
+        </a>
+        <a href="./contact/">
+          <p class="text">Contact</p>
+        </a>
+      </div>
+        <div class="col col-6">
+        <h2 class="h2">All things code</h2>
+          <a href="./support/">
+            <p class="text">Support</p>
+          </a>
+          <a href="./resources/community/">
+            <p class="text">Community</p>
+          </a>
+          <a href="https://github.com/magneticio/vamp" target="_blank">
+            <p class="text">GitHub</p>
+          </a>
+          <a href="https://gitter.im/magneticio/vamp" target="_blank">
+            <p class="text">Gitter</p>
+          </a>
+      </div>
+      <div class="col col-6">
+        <h2 class="h2">Stay up to date</h2>
+        <p class="text">
+          Leave your email for the latest news: We won’t spam you and won’t go off topic.
+        </p>
+
+        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate="">
+          <div class="input-group">
+            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email">
+            <a onclick="$(this).closest('form').submit()" class="button button--red not-active">
+              <div class="button__icon button__icon--mail">
+              </div>
+            </a>
+          </div>
+        </form>
+
+        
+          
+        
+
+
+        <div class="social-buttons">
+          <p class="text">Follow us on: </p>
+          <a href="https://twitter.com/vamp_io" target="_blank">
+            <i class="fa fa-2x fa-twitter"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/company/magnetic-io" target="_blank">
+            <i class="fa fa-2x fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom lander-row--blue">
+  <div class="container">
+    <div class="part">
+      <a href="./about/"><img class="magnetic-logo" src="./img/005-vamp/Logo/magnetic-logo-footer.svg" alt=""></a>
+    </div>
+    <div class="part">
+      <img class="vamp-bat" src="./img/003-Small-icons/Medium-blue/VAMP-Medium.svg" alt="">
+      <p class="text">Code licensed under <a type="application/rss+xml" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2</a> © 2016 <a href="./about/">Magnetic.io</a></p>
+    </div>
+  </div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59948816-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+

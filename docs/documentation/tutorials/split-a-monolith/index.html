@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+
+
+
+ <html class="no-js"> 
+<head>
+
+<script type="text/javascript">
+theBaseUrl = "http://vamp.io/";
+</script>
+<base href="http://vamp.io/" />
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+  <title>Split a monolith - Vamp</title>
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="description" content="Vamp - Deploy and manage microservices with power and ease.">
+  
+  <link rel="canonical" href="./documentation/tutorials/split-a-monolith/">
+  
+  <meta name="author" content="magnetic.io">
+  
+
+  <meta property="og:url" content="/documentation/tutorials/split-a-monolith/">
+  <meta property="og:title" content="Vamp">
+  <meta property="og:image" content="/images/logo.svg">
+  <meta name="apple-mobile-web-app-title" content="Vamp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="shortcut icon" type="image/x-icon" href="./images/logo.svg">
+  <link rel="icon" type="image/x-icon" href="./images/logo.svg">
+
+
+  <style>
+    @font-face {
+      font-family: 'Icon';
+      src: url('fonts/icon.eot?52m981');
+      src: url('fonts/icon.eot?#iefix52m981')
+      format('embedded-opentype'),
+      url('fonts/icon.woff?52m981')
+      format('woff'),
+      url('fonts/icon.ttf?52m981')
+      format('truetype'),
+      url('fonts/icon.svg?52m981#icon')
+      format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/vendor.js"></script>
+
+  <script src="js/app.js"></script>
+
+  
+</head>
+<body class="palette-primary-pink palette-accent-pink">
+
+
+<div class="single-page">
+  <nav aria-label="Header" id="header" class="top-menu">
+  <div class="left">
+    <a href="./">
+      <div id="logo" class="logo"></div>
+    </a>
+  </div>
+
+  <div class="right">
+    <div class="top-menu-items" id="top-menu-items">
+
+    </div>
+
+    <div class="download">
+      <a href="./documentation/installation/hello-world/" class="button button--red">
+        Try Vamp
+      </a>
+    </div>
+
+    <a href="https://github.com/magneticio/vamp" target="_blank" class="github-logo">
+      <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+    </a>
+
+    <div class="search-button">
+      <i class="fa fa-lg fa-search"></i>
+    </div>
+
+  </div>
+</nav>
+
+<ul id="mobile-menu" style="display: none">
+</ul>
+
+<div id="search">
+  <div class="search-bar">
+    <div class="search-bar__back">
+      <i class="fa fa-lg fa-times"></i>
+    </div>
+    <input class="search-bar__input" placeholder="Type your search here...">
+  </div>
+  <div class="search-results">
+    <ul></ul>
+  </div>
+</div>
+
+
+</div>
+
+<div class="page documentation">
+    <div class="menu" id="side-menu">
+    </div>
+    <div class="content">
+      <h1 class="content-header">Split a monolith </h1>
+      <div class="markdowned">
+        
+
+<h2 id="overview">Overview</h2>
+
+<p>In the <a href="./documentation/tutorials/run-a-canary-release/">previous tutorial we did some basic canary releasing on two versions of a monolithic application</a>. Very nice, but Vamp isn&rsquo;t
+called the <em>Very Awesome Microservices Platform</em> for nothing. The next step is to split our monolithic Sava application into separate services.</p>
+
+<h4 id="in-this-tutorial-we-will">In this tutorial we will:</h4>
+
+<ol>
+<li>define a new service topology</li>
+<li>learn about environment variables and service discovery</li>
+</ol>
+
+<h2 id="in-depth">In depth</h2>
+
+<h3 id="step-1-define-a-new-service-topology">Step 1: Define a new service topology</h3>
+
+<p>To prove our point, we are going to slightly &ldquo;over-engineer&rdquo; our services solution. This will also help
+us demonstrate how we can later remove parts of our solution using Vamp. For now, we&rsquo;ll split the
+monolith into a topology of one frontend and two separate backend services. After our engineers
+are done with coding, we can catch this new topology in the following blueprint. Please notice a couple
+of things:</p>
+
+<ul>
+<li>We now have three <code>clusters</code>: <code>sava</code>, <code>backend1</code> and <code>backend2</code>. Each cluster could have multiple
+services on which we could do separate canary releases and set separate filters.</li>
+<li>The <code>sava</code> cluster has explicit dependencies on the two backends. Vamp will make sure these dependencies
+are checked and rolled out in the right order.</li>
+<li>Using <code>environment_variables</code> we connect the dynamically assigned ports and hostnames of the backend
+services to the &ldquo;customer facing&rdquo; <code>sava</code> service.</li>
+<li>We&rsquo;ve change the gateway port to <code>9060</code> so it doesn&rsquo;t collide with the  monolithic deployment.</li>
+</ul>
+
+<pre><code class="language-yaml">---
+name: sava:1.2
+gateways:
+  9060: sava/webport
+clusters:
+  sava:
+    services:
+      breed:
+        name: sava-frontend:1.2.0
+        deployable: magneticio/sava-frontend:1.2.0
+        ports:
+          webport: 8080/http                
+        environment_variables:
+          BACKEND_1: http://$backend1.host:$backend1.ports.webport/api/message
+          BACKEND_2: http://$backend2.host:$backend2.ports.webport/api/message
+        dependencies:
+          backend1: sava-backend1:1.2.0
+          backend2: sava-backend2:1.2.0
+      scale:
+        cpu: 0.2      
+        memory: 64MB
+        instances: 1               
+  backend1:
+    services:
+      breed:
+        name: sava-backend1:1.2.0
+        deployable: magneticio/sava-backend1:1.2.0
+        ports:
+          webport: 8080/http
+      scale:
+        cpu: 0.2       
+        memory: 64MB
+        instances: 1              
+  backend2:
+    services:
+      breed:
+        name: sava-backend2:1.2.0
+        deployable: magneticio/sava-backend2:1.2.0
+        ports:
+          webport: 8080/http
+      scale:
+        cpu: 0.2       
+        memory: 64MB
+        instances: 1
+</code></pre>
+
+<p>Deploy this blueprint using either the UI or a REST call and when deployed check out the new topology in your browser (on port 9060 this time). When deployed it should yield something similar to:</p>
+
+<p><img src="./images/screens/services_2backends.png" alt="" /></p>
+
+<h3 id="step-2-learn-about-environment-variables-and-service-discovery">Step 2: Learn about environment variables and service discovery</h3>
+
+<p>If you were to check out the Docker containers using <code>docker inspect</code>, you would see the environment variables that we set in the blueprint.</p>
+
+<pre><code class="language-bash">&gt; docker inspect 66e64bc1c8ca
+...
+&quot;Env&quot;: [
+    &quot;BACKEND_1=http://172.17.42.1:33021/api/message&quot;,
+    &quot;BACKEND_2=http://172.17.42.1:33022/api/message&quot;,
+    &quot;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;
+],
+...
+</code></pre>
+
+<p>Host names and ports are configured at runtime and injected in the right parts of your running deployment. Your service/app should pick up these variables to configure itself. Luckily, this is quite easy and common in almost all languages and frameworks.</p>
+
+<div class="admonition tip">
+  <p class="admonition-title"></p>
+  <p>Remember, there is no &ldquo;point-to-point&rdquo; wiring. The exposed host and port are actually service
+endpoints. The location, amount and version of containers running behind that service endpoint can vary.
+Learn more about <a href="./documentation/how-vamp-works/service-discovery/">how Vamp does service discovery →</a></p>
+</div>
+
+<div class="admonition note">
+  <p class="admonition-title">What next?</p>
+  <p><ul>
+<li>Great! We just demonstrated that Vamp can handle dependencies between services and configure these services with host and port information at runtime. Now let&rsquo;s do a <a href="./documentation/tutorials/merge-and-delete/">more complex migration to a new service based topology →</a>.</li>
+</ul>
+</p>
+</div>
+
+      </div>
+    </div>
+</div>
+
+<div class="lander-row lander-row--blue footer">
+  <div class="container">
+    <div class="row">
+      <div class="col col-3">
+        <h2 class="h2">Learn more</h2>
+        <a href="./why-use-vamp/">
+          <p class="text">Why use Vamp?</p>
+        </a>
+        <a href="./documentation/how-vamp-works/architecture-and-components">
+          <p class="text">Documentation</p>
+        </a>
+        <a href="./about/">
+          <p class="text">About us</p>
+        </a>
+        <a href="./resources/news/">
+          <p class="text">News</p>
+        </a>
+        <a href="./contact/">
+          <p class="text">Contact</p>
+        </a>
+      </div>
+        <div class="col col-6">
+        <h2 class="h2">All things code</h2>
+          <a href="./support/">
+            <p class="text">Support</p>
+          </a>
+          <a href="./resources/community/">
+            <p class="text">Community</p>
+          </a>
+          <a href="https://github.com/magneticio/vamp" target="_blank">
+            <p class="text">GitHub</p>
+          </a>
+          <a href="https://gitter.im/magneticio/vamp" target="_blank">
+            <p class="text">Gitter</p>
+          </a>
+      </div>
+      <div class="col col-6">
+        <h2 class="h2">Stay up to date</h2>
+        <p class="text">
+          Leave your email for the latest news: We won’t spam you and won’t go off topic.
+        </p>
+
+        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate="">
+          <div class="input-group">
+            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email">
+            <a onclick="$(this).closest('form').submit()" class="button button--red not-active">
+              <div class="button__icon button__icon--mail">
+              </div>
+            </a>
+          </div>
+        </form>
+
+        
+          
+        
+
+
+        <div class="social-buttons">
+          <p class="text">Follow us on: </p>
+          <a href="https://twitter.com/vamp_io" target="_blank">
+            <i class="fa fa-2x fa-twitter"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/company/magnetic-io" target="_blank">
+            <i class="fa fa-2x fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom lander-row--blue">
+  <div class="container">
+    <div class="part">
+      <a href="./about/"><img class="magnetic-logo" src="./img/005-vamp/Logo/magnetic-logo-footer.svg" alt=""></a>
+    </div>
+    <div class="part">
+      <img class="vamp-bat" src="./img/003-Small-icons/Medium-blue/VAMP-Medium.svg" alt="">
+      <p class="text">Code licensed under <a type="application/rss+xml" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2</a> © 2016 <a href="./about/">Magnetic.io</a></p>
+    </div>
+  </div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59948816-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+

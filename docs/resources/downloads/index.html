@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+
+
+
+ <html class="no-js"> 
+<head>
+
+<script type="text/javascript">
+theBaseUrl = "http://vamp.io/";
+</script>
+<base href="http://vamp.io/" />
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+  <title>Downloads - Vamp</title>
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="description" content="Vamp - Deploy and manage microservices with power and ease.">
+  
+  <link rel="canonical" href="./resources/downloads/">
+  
+  <meta name="author" content="magnetic.io">
+  
+
+  <meta property="og:url" content="/resources/downloads/">
+  <meta property="og:title" content="Vamp">
+  <meta property="og:image" content="/images/logo.svg">
+  <meta name="apple-mobile-web-app-title" content="Vamp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="shortcut icon" type="image/x-icon" href="./images/logo.svg">
+  <link rel="icon" type="image/x-icon" href="./images/logo.svg">
+
+
+  <style>
+    @font-face {
+      font-family: 'Icon';
+      src: url('fonts/icon.eot?52m981');
+      src: url('fonts/icon.eot?#iefix52m981')
+      format('embedded-opentype'),
+      url('fonts/icon.woff?52m981')
+      format('woff'),
+      url('fonts/icon.ttf?52m981')
+      format('truetype'),
+      url('fonts/icon.svg?52m981#icon')
+      format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/vendor.js"></script>
+
+  <script src="js/app.js"></script>
+
+  
+</head>
+<body class="palette-primary-pink palette-accent-pink">
+
+
+<div class="single-page">
+  <nav aria-label="Header" id="header" class="top-menu">
+  <div class="left">
+    <a href="./">
+      <div id="logo" class="logo"></div>
+    </a>
+  </div>
+
+  <div class="right">
+    <div class="top-menu-items" id="top-menu-items">
+
+    </div>
+
+    <div class="download">
+      <a href="./documentation/installation/hello-world/" class="button button--red">
+        Try Vamp
+      </a>
+    </div>
+
+    <a href="https://github.com/magneticio/vamp" target="_blank" class="github-logo">
+      <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+    </a>
+
+    <div class="search-button">
+      <i class="fa fa-lg fa-search"></i>
+    </div>
+
+  </div>
+</nav>
+
+<ul id="mobile-menu" style="display: none">
+</ul>
+
+<div id="search">
+  <div class="search-bar">
+    <div class="search-bar__back">
+      <i class="fa fa-lg fa-times"></i>
+    </div>
+    <input class="search-bar__input" placeholder="Type your search here...">
+  </div>
+  <div class="search-results">
+    <ul></ul>
+  </div>
+</div>
+
+
+</div>
+
+<div class="page documentation">
+    <div class="menu" id="side-menu">
+    </div>
+    <div class="content">
+      <h1 class="content-header">Downloads </h1>
+      <div class="markdowned">
+        
+
+<h4 id="binaries">Binaries</h4>
+
+<ul>
+<li><a href="./resources/downloads/#vamp">Vamp</a></li>
+<li><a href="./resources/downloads/#vamp-gateway-agent-vga">Vamp Gateway Agent (VGA)</a></li>
+<li><a href="./resources/downloads/#vamp-cli">Vamp CLI</a></li>
+</ul>
+
+<h4 id="homebrew">Homebrew</h4>
+
+<ul>
+<li><a href="./resources/downloads/#vamp-cli-for-macos-x">Vamp CLI for MacOS X</a></li>
+</ul>
+
+<h4 id="docker-images">Docker images</h4>
+
+<ul>
+<li><a href="./resources/downloads/#vamp-gateway-agent-vga-and-haproxy">Vamp Gateway Agent (VGA) and HAProxy</a></li>
+<li><a href="./resources/downloads/#vamp-workflow-agent">Vamp workflow agent</a></li>
+</ul>
+
+<h4 id="build-from-source">Build from source</h4>
+
+<ul>
+<li><a href="./resources/downloads/#build-vamp">Build Vamp</a></li>
+<li><a href="./resources/downloads/#build-vamp-gateway-agent-vga">Build Vamp Gateway Agent (VGA)</a></li>
+</ul>
+
+<hr />
+
+<h2 id="binaries-1">Binaries</h2>
+
+<h3 id="vamp">Vamp</h3>
+
+<p><strong>Download: <a href="https://bintray.com/magnetic-io/downloads/vamp/view">bintray.com/magnetic-io - Vamp</a></strong><br />
+<strong>Requirements:</strong> OpenJDK or Oracle Java version 1.8.0_40 or higher</p>
+
+<h4 id="example">Example</h4>
+
+<p>Let&rsquo;s assume that the Vamp binary is <code>vamp.jar</code>.</p>
+
+<pre><code>java -Dlogback.configurationFile=logback.xml -Dconfig.file=application.conf -jar vamp.jar
+</code></pre>
+
+<ul>
+<li><code>logback.xml</code> is the log configuration file (<a href="https://github.com/magneticio/vamp-docker/blob/master/quick-start/logback.xml">example logback.xml file</a>)<br />
+Vamp uses the Logback library. Additional information about using Logback and the log file configuration format can be found on the Logback project page (<a href="http://logback.qos.ch/">logback.qos.ch</a>).</li>
+<li><code>application.conf</code> is the main Vamp configuration file (<a href="https://github.com/magneticio/vamp-docker/blob/master/quick-start/application.conf">example application.conf file</a>)<br />
+Default values (<a href="https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf">github.com/magneticio - reference.conf</a>) are loaded on start and application.conf may override any of them.
+Processing configuration is based on the typesafe library. Additional information about syntax and usage can be found on the project page (<a href="https://github.com/typesafehub/config">github.com/typesafehub - config</a>).</li>
+</ul>
+
+<h3 id="vamp-gateway-agent-vga">Vamp Gateway Agent (VGA)</h3>
+
+<p><strong>Download: <a href="https://bintray.com/magnetic-io/downloads/vamp-gateway-agent/view">bintray.com/magnetic-io - Vamp Gateway Agent</a></strong></p>
+
+<p>Documentation can be found on the project page (<a href="https://github.com/magneticio/vamp-gateway-agent">github.com/magneticio - Vamp Gateway Agent</a>).</p>
+
+<h3 id="vamp-cli">Vamp CLI</h3>
+
+<p><strong>Download: <a href="https://bintray.com/magnetic-io/downloads/vamp-cli/view">bintray.com/magnetic-io - Vamp CLI</a></strong><br />
+<strong>Requirements:</strong> OpenJDK or Oracle Java version 1.8.0_40 or higher</p>
+
+<h4 id="manual-install-windows-and-linux">Manual install - Windows and Linux</h4>
+
+<p>Inside the extracted Vamp CLI binary package (<a href="https://bintray.com/magnetic-io/downloads/vamp-cli/view">bintray.com/magnetic-io - Vamp CLI</a>) is a <code>bin</code> directory. Add it to your PATH statement, open a Console/CMD window and type <code>vamp</code>.<br />
+After installation, set Vamp’s host location:</p>
+
+<ul>
+<li>Vamp’s host location specified as a command line option ( <code>--host</code> )</li>
+</ul>
+
+<pre><code>vamp list breeds --host=http://192.168.59.103:8080
+</code></pre>
+
+<ul>
+<li>Vamp’s host location specified via the environment variable <code>VAMP_HOST</code></li>
+</ul>
+
+<pre><code>export VAMP_HOST=http://192.168.59.103:8080
+</code></pre>
+
+<h2 id="homebrew-1">Homebrew</h2>
+
+<h3 id="vamp-cli-for-macos-x">Vamp CLI for MacOS X</h3>
+
+<p><strong>Download:</strong> We have Homebrew support to install the Vamp CLI on MacOS X<br />
+<strong>Requirements:</strong> OpenJDK or Oracle Java version 1.8.0_40 or higher</p>
+
+<h4 id="homebrew-install-macos-x">Homebrew install - MacOS X</h4>
+
+<pre><code class="language-bash">brew tap magneticio/vamp
+brew install vamp
+</code></pre>
+
+<p>After installation, check if everything is properly installed with <code>vamp version</code>, then export the location of the Vamp host and check that the CLI can talk to Vamp:</p>
+
+<pre><code class="language-bash">export VAMP_HOST=http://localhost:8080
+vamp info
+</code></pre>
+
+<h2 id="docker-images-1">Docker images</h2>
+
+<h3 id="vamp-gateway-agent-vga-and-haproxy">Vamp Gateway Agent (VGA) and HAProxy</h3>
+
+<p>Vamp Gateway Agent (VGA) Docker images with HAProxy can be pulled from the Docker hub (<a href="https://hub.docker.com/r/magneticio/vamp-gateway-agent/">hub.docker.com - magneticio Vamp Gateway Agent</a>).</p>
+
+<h3 id="vamp-workflow-agent">Vamp Workflow Agent</h3>
+
+<p>A container for running small JavaScript-based workflows can be pulled from the Docker hub (<a href="https://hub.docker.com/r/magneticio/vamp-workflow-agent/">hub.docker.com - magneticio Vamp workfow agent</a>).
+ Usually this will be pulled automatically.</p>
+
+<h2 id="build-from-source-1">Build from source</h2>
+
+<h3 id="build-vamp">Build Vamp</h3>
+
+<p><strong>Requirements:</strong> OpenJDK or Oracle Java version of 1.8.0_40 or higher, git (<a href="https://git-scm.com/">git-scm.com</a>), sbt (<a href="http://www.scala-sbt.org/index.html">scala-sbt.org</a>), npm (<a href="https://www.npmjs.com/">npmjs.com</a>) and Gulp (<a href="http://gulpjs.com/">gulpjs.com</a>)</p>
+
+<ol>
+<li><p>Checkout the source from the official repo (<a href="https://github.com/magneticio/vamp">github.com/magneticio - Vamp</a>):<br />
+<div class="admonition note">
+  <p class="admonition-title">Note!</p>
+  <p><ul>
+<li><code>master</code> branch contains the latest released version (e.g. 0.9.0). Versions are tagged.</li>
+<li><code>vamp-ui</code> is a separate project added as a git submodule to Vamp (<code>ui</code> subdirectory) it is, therefore, necessary to also checkout the submodule<br />
+<br /></li>
+</ul>
+</p>
+</div></p>
+
+<ul>
+<li><code>git clone --recursive git@github.com:magneticio/vamp.git</code><br /></li>
+<li>or specific branch: <code>git clone --recursive --branch 0.9.0 git@github.com:magneticio/vamp.git</code></li>
+</ul></li>
+
+<li><p>Run <code>./build-ui.sh &amp;&amp; sbt test assembly</code></p></li>
+
+<li><p>After the build <code>./bootstrap/target/scala-2.11</code> directory will contain the binary with name matching <code>vamp-assembly-*.jar</code></p></li>
+</ol>
+
+<p>Check this example: <a href="https://github.com/magneticio/vamp-docker/blob/master/quick-start/make.sh">github.com/magneticio - Vamp docker quick start make.sh</a>.</p>
+
+<h3 id="running-vamp">Running Vamp</h3>
+
+<p>Let’s assume that Vamp binary is vamp.jar. OpenJDK or Oracle Java version of 1.8.0_40 or higher needs to be installed. Check the version with <code>java -version</code></p>
+
+<p>Example:</p>
+
+<p>`java -Dlogback.configurationFile=logback.xml -Dconfig.file=application.conf -jar vamp.jar</p>
+
+<p>logback.xml` is log configuration. Vamp uses the <a href="http://logback.qos.ch/">Logback</a> library and additional information about using the Logback and log file configuration format can be found on the Logback project page. An example file can be found <a href="https://github.com/magneticio/vamp-docker/blob/master/quick-start/logback.xml">here</a>.</p>
+
+<p><code>application.conf</code> is the main Vamp configuration file. <a href="https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf">Default</a> values are loaded on start and <code>application.conf</code> may override any of them. Processing configuration is based on <a href="https://github.com/typesafehub/config">this</a> library. Additional information about syntax and usage can be found on the library project page. An example of configuration can be found <a href="https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf">here</a>.</p>
+
+<h3 id="build-vamp-gateway-agent-vga">Build Vamp Gateway Agent (VGA)</h3>
+
+<p><strong>Requirements:</strong> Go (<a href="https://golang.org/">golang.org</a>) and git (<a href="https://git-scm.com/">git-scm.com</a>)</p>
+
+<ol>
+<li>Checkout the source from the official repo (<a href="https://github.com/magneticio/vamp-gateway-agent">github.com/magneticio - Vamp gateway agent</a>). Current <code>master</code> branch is backward compatible with the latest 0.9.0 Vamp build.</li>
+<li>Set Go variables depending on target environment</li>
+<li>Run:</li>
+</ol>
+
+<pre><code>go get github.com/tools/godep
+godep restore
+go install
+CGO_ENABLED=0 go build -v -a -installsuffix cgo
+</code></pre>
+
+<p>Check this example: <a href="https://github.com/magneticio/vamp-docker/blob/master/clique-base/make.sh">github.com/magneticio - clique-base make.sh</a>. More details can found on the project page: <a href="https://github.com/magneticio/vamp-gateway-agent">github.com/magneticio - Vamp gateway agent</a>.</p>
+
+      </div>
+    </div>
+</div>
+
+<div class="lander-row lander-row--blue footer">
+  <div class="container">
+    <div class="row">
+      <div class="col col-3">
+        <h2 class="h2">Learn more</h2>
+        <a href="./why-use-vamp/">
+          <p class="text">Why use Vamp?</p>
+        </a>
+        <a href="./documentation/how-vamp-works/architecture-and-components">
+          <p class="text">Documentation</p>
+        </a>
+        <a href="./about/">
+          <p class="text">About us</p>
+        </a>
+        <a href="./resources/news/">
+          <p class="text">News</p>
+        </a>
+        <a href="./contact/">
+          <p class="text">Contact</p>
+        </a>
+      </div>
+        <div class="col col-6">
+        <h2 class="h2">All things code</h2>
+          <a href="./support/">
+            <p class="text">Support</p>
+          </a>
+          <a href="./resources/community/">
+            <p class="text">Community</p>
+          </a>
+          <a href="https://github.com/magneticio/vamp" target="_blank">
+            <p class="text">GitHub</p>
+          </a>
+          <a href="https://gitter.im/magneticio/vamp" target="_blank">
+            <p class="text">Gitter</p>
+          </a>
+      </div>
+      <div class="col col-6">
+        <h2 class="h2">Stay up to date</h2>
+        <p class="text">
+          Leave your email for the latest news: We won’t spam you and won’t go off topic.
+        </p>
+
+        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate="">
+          <div class="input-group">
+            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email">
+            <a onclick="$(this).closest('form').submit()" class="button button--red not-active">
+              <div class="button__icon button__icon--mail">
+              </div>
+            </a>
+          </div>
+        </form>
+
+        
+          
+        
+
+
+        <div class="social-buttons">
+          <p class="text">Follow us on: </p>
+          <a href="https://twitter.com/vamp_io" target="_blank">
+            <i class="fa fa-2x fa-twitter"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/company/magnetic-io" target="_blank">
+            <i class="fa fa-2x fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom lander-row--blue">
+  <div class="container">
+    <div class="part">
+      <a href="./about/"><img class="magnetic-logo" src="./img/005-vamp/Logo/magnetic-logo-footer.svg" alt=""></a>
+    </div>
+    <div class="part">
+      <img class="vamp-bat" src="./img/003-Small-icons/Medium-blue/VAMP-Medium.svg" alt="">
+      <p class="text">Code licensed under <a type="application/rss+xml" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2</a> © 2016 <a href="./about/">Magnetic.io</a></p>
+    </div>
+  </div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59948816-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+

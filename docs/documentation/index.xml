@@ -1,0 +1,3116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Documentations on Vamp</title>
+    <link>documentation/</link>
+    <description>Recent content in Documentations on Vamp</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Oct 2016 09:00:00 +0000</lastBuildDate>
+    <atom:link href="documentation/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Events and metrics</title>
+      <link>/documentation/how-vamp-works/events-and-metrics/</link>
+      <pubDate>Fri, 21 Oct 2016 09:00:00 +0000</pubDate>
+      
+      <guid>/documentation/how-vamp-works/events-and-metrics/</guid>
+      <description>
+
+&lt;p&gt;HAProxy (VGA) generates logs and makes them accessible via open socket - check the HAProxy configuration of &lt;code&gt;log&lt;/code&gt; (&lt;a href=&#34;https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.basic.cfg&#34;&gt;github.com/magneticio - haproxy.cfg&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;VGA listens on log socket and any new messages are forwarded to the Logstash instance.
+Log format is configurable in Vamp configuration vamp.gateway-driver.haproxy (&lt;a href=&#34;https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf&#34;&gt;github.com/magneticio - reference.conf&lt;/a&gt;).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For an effective feedback loop, HTTP/TCP logs should be collected, stored and analyzed&lt;/li&gt;
+&lt;li&gt;Collection and storing is done by a combination of HAProxy, VGA and Logstash setup&lt;/li&gt;
+&lt;li&gt;Logs can be stored in Elasticsearch and later analysed and visualised by Kibana&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;logstash&#34;&gt;Logstash&lt;/h2&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;Note!&lt;/p&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;Logstash is listening on UDP port, but in principle any other listener can receive logs forwarded by VGA.&lt;/li&gt;
+&lt;li&gt;Different VGAs can use different Logstash instances.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In general, for each HTTP/TCP request to HAProxy, several log messages are created (e.g. for gateway, service and instance level).
+Using one of the simplest Logstash configurations should be sufficient for dozens of requests per second - or even more.
+This also depends on whether ELK is used for custom application/service logs etc.&lt;/p&gt;
+
+&lt;p&gt;You can transform logs to plain JSON, which can be parsed easily later on (e.g. for Kibana visualization), with this Logstash configuration together with the default &lt;code&gt;vamp.gateway-driver.haproxy&lt;/code&gt; log format (&lt;a href=&#34;https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf&#34;&gt;github.com/magneticio - logstash.conf&lt;/a&gt;).&lt;/p&gt;
+
+&lt;div class=&#34;admonition tip&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;Examples&lt;/p&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;Different Logstash/Elasticsearch setups: (&lt;a href=&#34;https://www.elastic.co/guide/en/logstash/current/deploying-and-scaling.html&#34;&gt;elastic.co - Deploying and Scaling Logstash&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Logstash command line parameter (&lt;a href=&#34;https://github.com/magneticio/vamp-docker/blob/master/quick-start/supervisord.conf&#34;&gt;/github.com/magneticio - Logstash section&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;kibana&#34;&gt;Kibana&lt;/h2&gt;
+
+&lt;p&gt;Vamp can be configured to create Kibana &lt;code&gt;searches&lt;/code&gt;, &lt;code&gt;visualisations&lt;/code&gt; and &lt;code&gt;dashboards&lt;/code&gt; automatically with the &lt;code&gt;vamp.gateway-driver.kibana.enabled&lt;/code&gt; configuration parameter.
+  Vamp will do this by inserting ES documents to the Kibana index, so only the URL to access ES is needed (by default reusing the same as for persistence).&lt;/p&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;What next?&lt;/p&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;Let&amp;rsquo;s &lt;a href=&#34;./documentation/installation/&#34;&gt;install Vamp&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Release notes</title>
+      <link>/documentation/release-notes/</link>
+      <pubDate>Wed, 19 Oct 2016 09:00:00 +0000</pubDate>
+      
+      <guid>/documentation/release-notes/</guid>
+      <description>
+
+&lt;h2 id=&#34;vamp-0-9-1&#34;&gt;Vamp 0.9.1&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;19th October 2016&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;what-has-changed&#34;&gt;What has changed&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;BREAKING CHANGE&lt;/strong&gt;: In the Vamp configuration the “rest-api” section has changed to “http-api”. When running Vamp 0.9.1 you need to change this setting accordingly. NB REST and websockets are both a part of our HTTP API. Check this &lt;a href=&#34;https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf&#34;&gt;Vamp configuration&lt;/a&gt; example.&lt;/li&gt;
+&lt;li&gt;In the &lt;a href=&#34;./documentation/installation/configure-vamp/#persistence&#34;&gt;Vamp configuration&lt;/a&gt; we set &lt;code&gt;persistence caching&lt;/code&gt; by default to &lt;code&gt;false&lt;/code&gt;. In our Vamp images we set this to &lt;code&gt;true&lt;/code&gt; to make it easier on the persistence store load. &lt;a href=&#34;https://github.com/magneticio/vamp/issues/792&#34;&gt;https://github.com/magneticio/vamp/issues/792&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;We&amp;rsquo;ve changed the updating deployment service states. &lt;a href=&#34;https://github.com/magneticio/vamp/issues/797&#34;&gt;https://github.com/magneticio/vamp/issues/797&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;what-is-new&#34;&gt;What is new&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The biggie: We&amp;rsquo;ve added Websockets support to our HTTP API. And we&amp;rsquo;re already using this heavily in our new UI to improve responsiveness and speed. &lt;a href=&#34;https://github.com/magneticio/vamp/issues/529&#34;&gt;https://github.com/magneticio/vamp/issues/529&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;We&amp;rsquo;ve updated our UI to a dark theme due to public demand, we love it as it&amp;rsquo;s much easier on the eyes, and of course we&amp;rsquo;re very interested in hearing &lt;a href=&#34;mailto:info@magnetic.io&#34;&gt;your thoughts&lt;/a&gt;!&lt;/li&gt;
+&lt;li&gt;You can now configure Vamp to use a key-value store for persistence data storage. By default nothing is set, and thus you need to choose either ElasticSearch or key-value. Take a look at the &lt;a href=&#34;https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf&#34;&gt;Vamp Quickstart configuration&lt;/a&gt; for possible settings. The design reasons for this addition  are less dependencies on elasticsearch, better re-use of the available key-value stores that come with cluster-managers (like Zookeeper in DCOS or etcd in Kubernetes) and more robustness (i.e. if we loose ES the persistence data is still available, only the metrics data is temporarily unavailable). Possible issues might be the performance of the key-value store. &lt;a href=&#34;https://github.com/magneticio/vamp/issues/750&#34;&gt;https://github.com/magneticio/vamp/issues/750&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;And of course lots of improvements and bug-fixes that can be found here: &lt;a href=&#34;https://github.com/magneticio/vamp/issues?q=is%3Aissue+milestone%3A0.9.1+is%3Aclosed&#34;&gt;https://github.com/magneticio/vamp/issues?q=is%3Aissue+milestone%3A0.9.1+is%3Aclosed&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;vamp-0-9-0&#34;&gt;Vamp 0.9.0&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;9th September 2016&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The Vamp 0.9.0 release is a very important milestone in the lifecycle of Vamp, as we&amp;rsquo;re removing the Alpha label and are moving to Beta! This means that we will do our utmost best to avoid breaking changes in our API&amp;rsquo;s and DSL, focus even more on stabilising and optimising the current feature-set, while of course continuously introducing powerful new features.&lt;/p&gt;
+
+&lt;p&gt;The Vamp 0.9.0 release is the culmination of three months of hard work by our amazing team! This release incorporates nothing less than 115 issues and I&amp;rsquo;m very proud of what we&amp;rsquo;ve achieved.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;./images/screens/vamp_UI_090.png&#34; alt=&#34;Vamp 0.9.0 UI&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Some of the most notable new features are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a brand new opensource UI with much better realtime graphs, sparklines, info, events panel and access to all relevant API objects like breeds, deployments but also new options like gateways and workflows.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;powerful integrated workflows for automation and optimisation like autoscaling, automated canary-releasing etc. using efficient Javascript-based scripting.&lt;/li&gt;
+&lt;li&gt;Kubernetes and Rancher support.&lt;/li&gt;
+&lt;li&gt;support for custom virtual host names in gateways.&lt;/li&gt;
+&lt;li&gt;support for custom HAProxy templates.&lt;/li&gt;
+&lt;li&gt;a brand new Vamp Runner helper application for automated integration testing, mocking scenarios and educational purposes.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And, of course, there&amp;rsquo;s a massive amount of improvements, bug fixes and other optimisations.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/magneticio/vamp/issues?q=is%3Aissue+milestone%3A0.9.0+is%3Aclosed&#34;&gt;github.com/magneticio - complete list of all the closed issues in this release&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;What next?&lt;/p&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;Read all release notes on github (&lt;a href=&#34;https://github.com/magneticio/vamp/releases&#34;&gt;github.com/magneticio - Vamp releases&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;You can &lt;a href=&#34;./documentation/installation/hello-world&#34;&gt;try out the latest release&lt;/a&gt; with our single container hello world package.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Using the Vamp API</title>
+      <link>/documentation/api/using-the-api/</link>
+      <pubDate>Wed, 19 Oct 2016 09:00:00 +0000</pubDate>
+      
+      <guid>/documentation/api/using-the-api/</guid>
+      <description>
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;New in Vamp 0.9.1&lt;/p&gt;
+  &lt;p&gt;We&amp;rsquo;ve now added support for Websockets to our HTTP API. More information will follow soon.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Vamp has one REST API. This page explains how to specify pagination, and json and yaml content types, and how to effectively use the Vamp REST API.&lt;/p&gt;
+
+&lt;h4 id=&#34;see-also&#34;&gt;See also&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/api/api-reference/&#34;&gt;Full details of all available API calls&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;content-types&#34;&gt;Content types&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Vamp requests can be in YAML format or JSON format. Set the &lt;code&gt;Content-Type&lt;/code&gt; request header to &lt;code&gt;application/x-yaml&lt;/code&gt; or &lt;code&gt;application/json&lt;/code&gt; accordingly.&lt;/li&gt;
+&lt;li&gt;Vamp responses can be in YAML format or JSON format. Set the &lt;code&gt;Accept&lt;/code&gt; request header to &lt;code&gt;application/x-yaml&lt;/code&gt; or &lt;code&gt;application/json&lt;/code&gt; accordingly.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;pagination&#34;&gt;Pagination&lt;/h2&gt;
+
+&lt;p&gt;Vamp API endpoints support pagination with the following scheme:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Request parameters &lt;code&gt;page&lt;/code&gt; (starting from 1, not 0) and &lt;code&gt;per_page&lt;/code&gt; (by default 30) e.g:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;GET http://vamp:8080/api/v1/breeds?page=5&amp;amp;per_page=20
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Response headers &lt;code&gt;X-Total-Count&lt;/code&gt; giving the total amount of items (e.g. 349673) and a &lt;code&gt;Link&lt;/code&gt; header for easy traversing, e.g.
+&lt;code&gt;
+X-Total-Count: 5522
+Link:
+&amp;lt;http://vamp:8080/api/v1/events/get?page=1&amp;amp;per_page=5&amp;gt;; rel=first,
+&amp;lt;http://vamp:8080/api/v1/events/get?page=1&amp;amp;per_page=5&amp;gt;; rel=prev,
+&amp;lt;http://vamp:8080/api/v1/events/get?page=2&amp;amp;per_page=5&amp;gt;; rel=next,
+&amp;lt;http://vamp:8080/api/v1/events/get?page=19&amp;amp;per_page=5&amp;gt;; rel=last
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;See &lt;a href=&#34;https://developer.github.com/guides/traversing-with-pagination/&#34;&gt;Github&amp;rsquo;s implementation&lt;/a&gt; for more info.&lt;/p&gt;
+
+&lt;h2 id=&#34;return-codes&#34;&gt;Return codes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Create &amp;amp; Delete operations are idempotent: sending the second request with the same content will not result to an error response (4xx).&lt;/li&gt;
+&lt;li&gt;An update will fail (4xx) if a resource does not exist.&lt;/li&gt;
+&lt;li&gt;A successful create operation has status code 201 &lt;code&gt;Created&lt;/code&gt; and the response body contains the created resource.&lt;/li&gt;
+&lt;li&gt;A successful update operation has status code 200 &lt;code&gt;OK&lt;/code&gt; or 202 &lt;code&gt;Accepted&lt;/code&gt; and the response body contains the updated resource.&lt;/li&gt;
+&lt;li&gt;A successful delete operation has status code 204 &lt;code&gt;No Content&lt;/code&gt; or 202 &lt;code&gt;Accepted&lt;/code&gt; with an empty response body.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;sending-multiple-artifacts-documents-post-put-and-delete&#34;&gt;Sending multiple artifacts (documents) - &lt;code&gt;POST&lt;/code&gt;, &lt;code&gt;PUT&lt;/code&gt; and &lt;code&gt;DELETE&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;It is possible to send YAML document containing more than 1 artifact definition:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Supported methods are &lt;code&gt;POST&lt;/code&gt;, &lt;code&gt;PUT&lt;/code&gt; and &lt;code&gt;DELETE&lt;/code&gt;. Example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+name: ...
+kind: breed
+# breed definition ...
+---
+name: ...
+kind: blueprint
+# blueprint definition ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Additional &lt;code&gt;kind&lt;/code&gt; field is required and it always correspond (singular form) to type of the artifact.
+For instance if specific endpoint would be &lt;code&gt;/api/v1/deloyments&lt;/code&gt; then the same deployment request can be sent to &lt;code&gt;api/v1&lt;/code&gt; with additional &lt;code&gt;kind: deployment&lt;/code&gt;.
+If specific endpoints are used (e.g. &lt;code&gt;/api/v1/blueprints&lt;/code&gt;) then &lt;code&gt;kind&lt;/code&gt; needs to be ommited.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;see-also-1&#34;&gt;See also&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/api/api-reference/&#34;&gt;Full details of all available API calls&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes 1.x</title>
+      <link>/documentation/installation/kubernetes/</link>
+      <pubDate>Tue, 04 Oct 2016 09:00:00 +0000</pubDate>
+      
+      <guid>/documentation/installation/kubernetes/</guid>
+      <description>
+
+&lt;p&gt;The installation will run Vamp together with etcd, Elasticsearch and Logstash on Google container engine and kubernetes. (We will also deploy our demo Sava application to give you something to play around on). Before you begin, it is advisable to try out the official Quickstart for Google Container Engine tutorial first (&lt;a href=&#34;https://cloud.google.com/container-engine/docs/quickstart&#34;&gt;google.com - container engine quickstart&lt;/a&gt;).&lt;/p&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;Note!&lt;/p&gt;
+  &lt;p&gt;Kubernetes support is still in Alpha.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&#34;tested-against&#34;&gt;Tested against&lt;/h4&gt;
+
+&lt;p&gt;This guide has been tested on Kubernetes 1.2 and 1.3. Minikube can also be used. (&lt;a href=&#34;https://github.com/kubernetes/minikube&#34;&gt;github.com - minikube&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h4 id=&#34;requirements&#34;&gt;Requirements&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Google Container Engine cluster&lt;/li&gt;
+&lt;li&gt;Key-value store (like ZooKeeper, Consul or etcd)&lt;/li&gt;
+&lt;li&gt;Elasticsearch and Logstash&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;step-1-create-a-new-gke-cluster&#34;&gt;Step 1: Create a new GKE cluster:&lt;/h3&gt;
+
+&lt;p&gt;The simple way to create a new GKE cluster:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;open Google Cloud Shell&lt;/li&gt;
+&lt;li&gt;set a zone, e.g. &lt;code&gt;gcloud config set compute/zone europe-west1-b&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;create a cluster &lt;code&gt;vamp&lt;/code&gt; using default parameters: &lt;code&gt;gcloud container clusters create vamp&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;After the (new) Kubernetes cluster is setup, we are going to continue with the installation using the Kubernetes CLI &lt;code&gt;kubectl&lt;/code&gt;.
+You can use &lt;code&gt;kubectl&lt;/code&gt; directly from the Google Cloud Shell, e.g. to check the Kubernetes client and server version:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ kubectl version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;step-2-deploy-etcd-elasticsearch-and-logstash&#34;&gt;Step 2: Deploy etcd, Elasticsearch and Logstash&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;rsquo;s deploy &lt;code&gt;etcd&lt;/code&gt; - the installation is based on this tutorial (&lt;a href=&#34;https://github.com/coreos/etcd/tree/master/hack/kubernetes-deploy&#34;&gt;github.com/coreos - etcd on Kubernetes&lt;/a&gt;).
+Execute:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ kubectl create \
+        -f https://raw.githubusercontent.com/magneticio/vamp-docker/master/vamp-kubernetes/etcd.yml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Deploy Elasticsearch and Logstash with a proper Vamp Logstash configuration (&lt;a href=&#34;https://github.com/magneticio/elastic&#34;&gt;github.com/magneticio - elastic&lt;/a&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ kubectl run elastic --image=magneticio/elastic:2.2
+$ kubectl expose deployment elastic --protocol=TCP --port=9200 --name=elasticsearch
+$ kubectl expose deployment elastic --protocol=UDP --port=10001 --name=logstash
+$ kubectl expose deployment elastic --protocol=TCP --port=5601 --name=kibana
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;Note!&lt;/p&gt;
+  &lt;p&gt;This is not a production grade setup. You would also need to take care of persistence and running multiple replicas of each pod.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;step-3-run-vamp&#34;&gt;Step 3: Run Vamp&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;rsquo;s run Vamp gateway agent as a &lt;code&gt;daemon set&lt;/code&gt; first:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ kubectl create \
+        -f https://raw.githubusercontent.com/magneticio/vamp-docker/master/vamp-kubernetes/vga.yml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To deploy Vamp, execute:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ kubectl run vamp --image=magneticio/vamp:0.9.0-kubernetes
+$ kubectl expose deployment vamp --protocol=TCP --port=8080 --name=vamp --type=&amp;quot;LoadBalancer&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The Vamp image uses the following configuration (&lt;a href=&#34;https://github.com/magneticio/vamp-docker/blob/master/vamp-kubernetes/application.conf&#34;&gt;github.com/magneticio - Vamp kubernetes configuration&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Wait a bit until Vamp is running and check out the Kubernetes services:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ kubectl get services
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The output should be similar to this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;NAME                 CLUSTER-IP     EXTERNAL-IP      PORT(S)             AGE
+elasticsearch        10.3.242.188   &amp;lt;none&amp;gt;           9200/TCP            4m
+etcd-client          10.3.247.112   &amp;lt;none&amp;gt;           2379/TCP            4m
+etcd0                10.3.251.13    &amp;lt;none&amp;gt;           2379/TCP,2380/TCP   4m
+etcd1                10.3.251.103   &amp;lt;none&amp;gt;           2379/TCP,2380/TCP   4m
+etcd2                10.3.250.20    &amp;lt;none&amp;gt;           2379/TCP,2380/TCP   4m
+kubernetes           10.3.240.1     &amp;lt;none&amp;gt;           443/TCP             5m
+logstash             10.3.254.16    &amp;lt;none&amp;gt;           10001/UDP           4m
+vamp                 10.3.242.93    146.148.118.45   8080/TCP            2m
+vamp-gateway-agent   10.3.254.234   146.148.22.145   80/TCP              2m
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that the Vamp UI is exposed (in this example) on &lt;code&gt;http://146.148.118.45:8080&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;step-4-deploy-the-sava-demo-application&#34;&gt;Step 4: Deploy the Sava demo application&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+name: sava:1.0
+gateways:
+  9050: sava/port
+clusters:
+  sava:
+    services:
+      breed:
+        name: sava:1.0.0
+        deployable: magneticio/sava:1.0.0
+        ports:
+          port: 8080/http
+      scale:
+        cpu: 0.2       
+        memory: 64MB
+        instances: 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;Note!&lt;/p&gt;
+  &lt;p&gt;Be sure that the cluster has enough resources (CPU, memory), otherwise deployments will be in pending state.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Once it&amp;rsquo;s running we can check if all Vamp Gateway Agent services are up:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ kubectl get services --show-labels -l vamp=gateway
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can see that for each gateway a new service is created:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;NAME                      CLUSTER-IP     EXTERNAL-IP     PORT(S)     AGE       LABELS
+hex1f8c9a0157c9fe3335e9   10.3.243.199   104.155.24.47   9050/TCP    2m        lookup_name=a7ad6869e65e9c047f956cf7d1b4d01a89e
+ef486,vamp=gateway
+hex26bb0695e9a85ec34b03   10.3.245.85    23.251.143.62   40000/TCP   2m        lookup_name=6ace45cb2c155e85bd0c84123d1dab5a6cb
+12c97,vamp=gateway
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;Note!&lt;/p&gt;
+  &lt;p&gt;In this setup Vamp is deliberately configured to initiate exposure of all gateway and VGA ports. This would not be the case if the default and recommended setting are used.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now we can access our &lt;code&gt;sava&lt;/code&gt; service on &lt;code&gt;http://104.155.24.47:9050&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The default Kubernetes service type can be set in configuration: &lt;code&gt;vamp.container-driver.kubernetes.service-type&lt;/code&gt;, possible values are &lt;code&gt;LoadBalancer&lt;/code&gt; or &lt;code&gt;NodePort&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We can also access gateways using virtual hosts. Vamp Gateway Agent service is on IP &lt;code&gt;146.148.22.145&lt;/code&gt; in this example, so:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ curl --resolve 9050.sava-1-0.vamp:80:146.148.22.145 -v http://9050.sava-1-0.vamp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;Note!&lt;/p&gt;
+  &lt;p&gt;Don&amp;rsquo;t forget to clean up your Kubernetes cluster and firewall rules  if you don&amp;rsquo;t want to use them anymore (&lt;a href=&#34;https://cloud.google.com/container-engine/docs/quickstart#clean-up&#34;&gt;google.com - container engine quickstart: clean up&lt;/a&gt;).&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;What next?&lt;/p&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;Once you have Vamp up and running you can jump into the &lt;a href=&#34;./documentation/tutorials/&#34;&gt;getting started tutorials&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Things still not running? &lt;a href=&#34;https://github.com/magneticio/vamp/issues&#34;&gt;We&amp;rsquo;re here to help →&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you need help you can find us on &lt;a href=&#34;https://gitter.im/magneticio/vamp&#34;&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Azure Container Service</title>
+      <link>/documentation/installation/azure-container-service/</link>
+      <pubDate>Fri, 30 Sep 2016 12:00:00 +0000</pubDate>
+      
+      <guid>/documentation/installation/azure-container-service/</guid>
+      <description>&lt;p&gt;To run Vamp together with Azure Container Service (&lt;a href=&#34;https://azure.microsoft.com/en-us/services/container-service/&#34;&gt;azure.microsoft.com - Container Service&lt;/a&gt;), you need to use DC/OS as the default ACS Docker container scheduler.&lt;/p&gt;
+
+&lt;p&gt;After you have activated your ACS setup with DC/OS, go to your DC/OS admin environment and install Vamp using our &lt;a href=&#34;./documentation/installation/dcos/&#34;&gt;DC/OS installation instructions&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;What next?&lt;/p&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;Once you have Vamp up and running you can jump into the &lt;a href=&#34;./documentation/tutorials/&#34;&gt;getting started tutorials&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Things still not running? &lt;a href=&#34;https://github.com/magneticio/vamp/issues&#34;&gt;We&amp;rsquo;re here to help →&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;If you need help you can find us on &lt;a href=&#34;https://gitter.im/magneticio/vamp&#34;&gt;Gitter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>DC/OS 1.7 and 1.8</title>
+      <link>/documentation/installation/dcos/</link>
+      <pubDate>Fri, 30 Sep 2016 12:00:00 +0000</pubDate>
+      
+      <guid>/documentation/installation/dcos/</guid>
+      <description>
+
+&lt;p&gt;There are different ways to install Vamp on DC.OS. On this page we start out with the most common setup, but if you are interested in doing a custom install or working with public and private nodes you should jump to that section.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/installation/dcos/#standard-install&#34;&gt;Standard install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/installation/dcos/#custom-install&#34;&gt;Custom install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/installation/dcos/#public-and-private-nodes&#34;&gt;Public and private nodes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;standard-install&#34;&gt;Standard install&lt;/h2&gt;
+
+&lt;p&gt;This setup will run Vamp, Mesos and Marathon, together with Zookeeper, Elasticsearch and Logstash on DC/OS. If you need help you can find us on &lt;a href=&#34;https://gitter.im/magneticio/vamp&#34;&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;tested-against&#34;&gt;Tested against&lt;/h4&gt;
+
+&lt;p&gt;This guide has been tested on both 1.7 and the latest 1.8 version of DC/OS.&lt;/p&gt;
+
+&lt;h4 id=&#34;requirements&#34;&gt;Requirements&lt;/h4&gt;
+
+&lt;p&gt;Before you start you need to have a DC/OS cluster up and running, as well as the its CLI configured to use it. We assume you have it up and running on &lt;a href=&#34;http://dcos.example.com/&#34;&gt;http://dcos.example.com/&lt;/a&gt;.
+Setting up DC/OS is outside the scope of this document, for that you need to refer to the official documentation:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://dcos.io/docs/1.7/administration/installing/&#34;&gt;https://dcos.io/docs/1.7/administration/installing/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dcos.io/docs/1.7/usage/cli/&#34;&gt;https://dcos.io/docs/1.7/usage/cli/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dcos.io/docs/1.8/administration/installing/&#34;&gt;https://dcos.io/docs/1.8/administration/installing/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dcos.io/docs/1.8/usage/cli/&#34;&gt;https://dcos.io/docs/1.8/usage/cli/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;step-1-install-elasticsearch-logstash&#34;&gt;Step 1: Install Elasticsearch + Logstash&lt;/h3&gt;
+
+&lt;p&gt;Mesos, Marathon and ZooKeeper are all installed by DC/OS. In addition to these, Vamp requires Elasticsearch and Logstash for metrics collection and aggregation.&lt;/p&gt;
+
+&lt;p&gt;You could install Elasticsearch on DC/OS by following the Mesos Elasticsearch documentation (&lt;a href=&#34;http://mesos-elasticsearch.readthedocs.org/en/latest/&#34;&gt;mesos-elasticsearch - Elasticsearch Mesos Framework&lt;/a&gt;).
+However, Vamp will also need Logstash (not currently available as a DC/OS package) with a specific Vamp Logstash configuration (&lt;a href=&#34;https://github.com/magneticio/vamp-docker/blob/master/clique-base/logstash/logstash.conf&#34;&gt;github.com/magneticio - Vamp Docker logstash.conf&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;To make life easier, we have created compatible Docker images for a Vamp Elastic Stack (&lt;a href=&#34;https://hub.docker.com/r/magneticio/elastic/&#34;&gt;hub.docker.com - magneticio elastic&lt;/a&gt;) that you can use with the Mesos elasticsearch documentation (&lt;a href=&#34;http://mesos-elasticsearch.readthedocs.org/en/latest/#how-to-install-on-marathon&#34;&gt;mesos-elasticsearch - How to install on Marathon&lt;/a&gt;).
+Our advice is to use our custom Elasticsearch+Logstash Docker image. Let&amp;rsquo;s get started!&lt;/p&gt;
+
+&lt;p&gt;Create &lt;code&gt;elasticsearch.json&lt;/code&gt; with the following content:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;id&amp;quot;: &amp;quot;elasticsearch&amp;quot;,
+  &amp;quot;instances&amp;quot;: 1,
+  &amp;quot;cpus&amp;quot;: 0.2,
+  &amp;quot;mem&amp;quot;: 1024.0,
+  &amp;quot;container&amp;quot;: {
+    &amp;quot;docker&amp;quot;: {
+      &amp;quot;image&amp;quot;: &amp;quot;magneticio/elastic:2.2&amp;quot;,
+      &amp;quot;network&amp;quot;: &amp;quot;HOST&amp;quot;,
+      &amp;quot;forcePullImage&amp;quot;: true
+    }
+  },
+  &amp;quot;healthChecks&amp;quot;: [
+    {
+      &amp;quot;protocol&amp;quot;: &amp;quot;TCP&amp;quot;,
+      &amp;quot;gracePeriodSeconds&amp;quot;: 30,
+      &amp;quot;intervalSeconds&amp;quot;: 10,
+      &amp;quot;timeoutSeconds&amp;quot;: 5,
+      &amp;quot;port&amp;quot;: 9200,
+      &amp;quot;maxConsecutiveFailures&amp;quot;: 0
+    }
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will run the container with 1G of RAM and a basic health check on the elasticsearch port.&lt;/p&gt;
+
+&lt;p&gt;Using the CLI we can install this in our cluster:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ dcos marathon app add elasticsearch.json
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you get no error message you should now be able to see it being deployed:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ dcos marathon app list
+ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD   
+/elasticsearch  1024  0.2    0/1    0/0      scale       DOCKER   None  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once it&amp;rsquo;s fully up and running you should see all tasks and health checks being up:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ dcos marathon app list
+ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD   
+/elasticsearch  1024  0.2    1/1    1/1       ---        DOCKER   None  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;step-2-deploy-vamp&#34;&gt;Step 2: Deploy Vamp&lt;/h3&gt;
+
+&lt;p&gt;Once you have elasticsearch up and running it&amp;rsquo;s time to move on to Vamp.&lt;/p&gt;
+
+&lt;p&gt;Create &lt;code&gt;vamp.json&lt;/code&gt; with the following content:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;id&amp;quot;: &amp;quot;vamp/vamp&amp;quot;,
+  &amp;quot;instances&amp;quot;: 1,
+  &amp;quot;cpus&amp;quot;: 0.5,
+  &amp;quot;mem&amp;quot;: 1024,
+  &amp;quot;container&amp;quot;: {
+    &amp;quot;type&amp;quot;: &amp;quot;DOCKER&amp;quot;,
+    &amp;quot;docker&amp;quot;: {
+      &amp;quot;image&amp;quot;: &amp;quot;magneticio/vamp:katana-dcos&amp;quot;,
+      &amp;quot;network&amp;quot;: &amp;quot;BRIDGE&amp;quot;,
+      &amp;quot;portMappings&amp;quot;: [
+        {
+          &amp;quot;containerPort&amp;quot;: 8080,
+          &amp;quot;hostPort&amp;quot;: 0,
+          &amp;quot;name&amp;quot;: &amp;quot;vip0&amp;quot;,
+          &amp;quot;labels&amp;quot;: {
+            &amp;quot;VIP_0&amp;quot;: &amp;quot;10.20.0.100:8080&amp;quot;
+          }
+        }
+      ],
+      &amp;quot;forcePullImage&amp;quot;: true
+    }
+  },
+  &amp;quot;labels&amp;quot;: {
+    &amp;quot;DCOS_SERVICE_NAME&amp;quot;: &amp;quot;vamp&amp;quot;,
+    &amp;quot;DCOS_SERVICE_SCHEME&amp;quot;: &amp;quot;http&amp;quot;,
+    &amp;quot;DCOS_SERVICE_PORT_INDEX&amp;quot;: &amp;quot;0&amp;quot;
+  },
+  &amp;quot;env&amp;quot;: {
+    &amp;quot;VAMP_WAIT_FOR&amp;quot;: &amp;quot;http://elasticsearch.marathon.mesos:9200/.kibana&amp;quot;,
+    &amp;quot;VAMP_PERSISTENCE_DATABASE_ELASTICSEARCH_URL&amp;quot;: &amp;quot;http://elasticsearch.marathon.mesos:9200&amp;quot;,
+    &amp;quot;VAMP_GATEWAY_DRIVER_LOGSTASH_HOST&amp;quot;: &amp;quot;elasticsearch.marathon.mesos&amp;quot;,
+    &amp;quot;VAMP_WORKFLOW_DRIVER_VAMP_URL&amp;quot;: &amp;quot;http://10.20.0.100:8080&amp;quot;,
+    &amp;quot;VAMP_PULSE_ELASTICSEARCH_URL&amp;quot;: &amp;quot;http://elasticsearch.marathon.mesos:9200&amp;quot;
+  },  
+  &amp;quot;healthChecks&amp;quot;: [
+    {
+      &amp;quot;protocol&amp;quot;: &amp;quot;TCP&amp;quot;,
+      &amp;quot;gracePeriodSeconds&amp;quot;: 30,
+      &amp;quot;intervalSeconds&amp;quot;: 10,
+      &amp;quot;timeoutSeconds&amp;quot;: 5,
+      &amp;quot;portIndex&amp;quot;: 0,
+      &amp;quot;maxConsecutiveFailures&amp;quot;: 0
+    }
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This service definition will download our Vamp container and spin it up in your DC/OS cluster on a private node in bridge networking mode. It will also configure the apporiate labels for the AdminRouter to expose the UI through DC/OS, as well as an internal VIP for other applications to talk to Vamp, adjusting some defaults to work inside DC/OS, and finally a health check for monitoring.&lt;/p&gt;
+
+&lt;p&gt;Deploy it with the CLI, like with did with elasticsearch:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ dcos marathon app add vamp.json
+
+$ dcos marathon app list
+ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD   
+/elasticsearch  1024  0.2    1/1    1/1       ---        DOCKER   None  
+/vamp/vamp      1024  0.5    0/1    0/0      scale       DOCKER   None  
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It will take a minute for Vamp to deploy all its components, you can see that by looking in the &amp;ldquo;tasks&amp;rdquo; column, where Vamp is listed as 0/1. Run the list command again and you should see all the components coming online:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ dcos marathon app list
+ID                        MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
+/elasticsearch            1024  0.2    1/1    1/1       ---        DOCKER   None
+/vamp/vamp                1024  0.5    1/1    1/1       ---        DOCKER   None
+/vamp/vamp-gateway-agent  256   0.2    3/3    ---       ---        DOCKER   [&#39;--storeType=zookeeper&#39;, &#39;--storeConnection=zk-1.zk:2181&#39;, &#39;--storeKey=/vamp/haproxy/1.6&#39;, &#39;--logstash=elasticsearch.marathon.mesos:10001&#39;]
+/vamp/workflow-health      64   0.1    1/1    ---       ---        DOCKER   None
+/vamp/workflow-kibana      64   0.1    1/1    ---       ---        DOCKER   None
+/vamp/workflow-metrics     64   0.1    1/1    ---       ---        DOCKER   None
+/vamp/workflow-vga         64   0.1    1/1    ---       ---        DOCKER   None
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vamp has now spun up all it&amp;rsquo;s components and you should be able to access the ui by opening &lt;a href=&#34;http://dcos.example.com/service/vamp/&#34;&gt;http://dcos.example.com/service/vamp/&lt;/a&gt; in your browser.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Now you&amp;rsquo;re ready to follow our &lt;a href=&#34;./documentation/tutorials/&#34;&gt;Vamp getting started tutorials&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Things still not running? &lt;a href=&#34;https://github.com/magneticio/vamp/issues&#34;&gt;We&amp;rsquo;re here to help →&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;NB If you need help you can also find us on &lt;a href=&#34;https://gitter.im/magneticio/vamp&#34;&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;custom-install&#34;&gt;Custom install&lt;/h2&gt;
+
+&lt;p&gt;The Vamp DC/OS Docker image (&lt;a href=&#34;https://github.com/magneticio/vamp-docker/tree/master/vamp-dcos&#34;&gt;github.com/magneticio - Vamp DC/OS&lt;/a&gt;) contains configuration (&lt;a href=&#34;https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf&#34;&gt;github.com/magneticio - Vamp DC/OS configuration&lt;/a&gt;) that can be overridden for specific needs by:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Making a new Docker image based on the Vamp DC/OS image&lt;/li&gt;
+&lt;li&gt;Using &lt;a href=&#34;./documentation/installation/configure-vamp#environment-variable-configuration&#34;&gt;environment variables&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;example-1-remove-the-metrics-and-health-workflows-by-vamp-configuration-and-keep-the-kibana-workflow&#34;&gt;Example 1 - Remove the &lt;code&gt;metrics&lt;/code&gt; and &lt;code&gt;health&lt;/code&gt; workflows by Vamp configuration and keep the &lt;code&gt;kibana&lt;/code&gt; workflow:&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;vamp.lifter.artifact.resources = [
+    &amp;quot;breeds/kibana.js&amp;quot;, &amp;quot;workflows/kibana.yml&amp;quot;
+  ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or doing the same using Marathon JSON&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;env&amp;quot;: {
+  &amp;quot;VAMP_LIFTER_ARTIFACT_RESOURCES&amp;quot;: &amp;quot;[\&amp;quot;breeds/kibana.js\&amp;quot;,\&amp;quot;workflows/kibana.yml\&amp;quot;]&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;example-2-avoid-automatic-deployment-of-vamp-gateway-agent&#34;&gt;Example 2 - Avoid automatic deployment of Vamp Gateway Agent&lt;/h4&gt;
+
+&lt;p&gt;Remove &lt;code&gt;vga-marathon&lt;/code&gt; breed and workflow from &lt;code&gt;vamp.lifter.artifact.files&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;vamp.lifter.artifact.files = []
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or using Marathon JSON&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;env&amp;quot;: {
+  &amp;quot;VAMP_LIFTER_ARTIFACT_FILES&amp;quot;: &amp;quot;[]&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;public-and-private-nodes&#34;&gt;Public and private nodes&lt;/h2&gt;
+
+&lt;p&gt;Running Vamp on public Mesos agent node(s) and disabling automatic Vamp Gateway Agent deployments (but keeping other default workflows) can be done with the following Marathon JSON:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;id&amp;quot;: &amp;quot;vamp/vamp&amp;quot;,
+  &amp;quot;instances&amp;quot;: 1,
+  &amp;quot;cpus&amp;quot;: 0.5,
+  &amp;quot;mem&amp;quot;: 1024,
+  &amp;quot;container&amp;quot;: {
+    &amp;quot;type&amp;quot;: &amp;quot;DOCKER&amp;quot;,
+    &amp;quot;docker&amp;quot;: {
+      &amp;quot;image&amp;quot;: &amp;quot;magneticio/vamp:katana-dcos&amp;quot;,
+      &amp;quot;network&amp;quot;: &amp;quot;BRIDGE&amp;quot;,
+      &amp;quot;portMappings&amp;quot;: [
+        {
+          &amp;quot;containerPort&amp;quot;: 8080,
+          &amp;quot;hostPort&amp;quot;: 0,
+          &amp;quot;name&amp;quot;: &amp;quot;vip0&amp;quot;,
+          &amp;quot;labels&amp;quot;: {
+            &amp;quot;VIP_0&amp;quot;: &amp;quot;10.20.0.100:8080&amp;quot;
+          }
+        }
+      ],
+      &amp;quot;forcePullImage&amp;quot;: true
+    }
+  },
+  &amp;quot;labels&amp;quot;: {
+    &amp;quot;DCOS_SERVICE_NAME&amp;quot;: &amp;quot;vamp&amp;quot;,
+    &amp;quot;DCOS_SERVICE_SCHEME&amp;quot;: &amp;quot;http&amp;quot;,
+    &amp;quot;DCOS_SERVICE_PORT_INDEX&amp;quot;: &amp;quot;0&amp;quot;
+  },
+  &amp;quot;env&amp;quot;: {
+    &amp;quot;VAMP_LIFTER_ARTIFACT_FILES&amp;quot;: &amp;quot;[\&amp;quot;breeds/health.js\&amp;quot;,\&amp;quot;workflows/health.yml\&amp;quot;,\&amp;quot;breeds/metrics.js\&amp;quot;,\&amp;quot;workflows/metrics.yml\&amp;quot;,\&amp;quot;breeds/kibana.js\&amp;quot;,\&amp;quot;workflows/kibana.yml\&amp;quot;]&amp;quot;,
+    &amp;quot;VAMP_WAIT_FOR&amp;quot;: &amp;quot;http://elasticsearch.marathon.mesos:9200/.kibana&amp;quot;,
+    &amp;quot;VAMP_PERSISTENCE_DATABASE_ELASTICSEARCH_URL&amp;quot;: &amp;quot;http://elasticsearch.marathon.mesos:9200&amp;quot;,
+    &amp;quot;VAMP_GATEWAY_DRIVER_LOGSTASH_HOST&amp;quot;: &amp;quot;elasticsearch.marathon.mesos&amp;quot;,
+    &amp;quot;VAMP_WORKFLOW_DRIVER_VAMP_URL&amp;quot;: &amp;quot;http://vamp-vamp.marathon.mesos:8080&amp;quot;,
+    &amp;quot;VAMP_PULSE_ELASTICSEARCH_URL&amp;quot;: &amp;quot;http://elasticsearch.marathon.mesos:9200&amp;quot;
+  },
+  &amp;quot;acceptedResourceRoles&amp;quot;: [
+    &amp;quot;slave_public&amp;quot;
+  ],
+  &amp;quot;healthChecks&amp;quot;: [
+    {
+      &amp;quot;protocol&amp;quot;: &amp;quot;TCP&amp;quot;,
+      &amp;quot;gracePeriodSeconds&amp;quot;: 30,
+      &amp;quot;intervalSeconds&amp;quot;: 10,
+      &amp;quot;timeoutSeconds&amp;quot;: 5,
+      &amp;quot;portIndex&amp;quot;: 0,
+      &amp;quot;maxConsecutiveFailures&amp;quot;: 0
+    }
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Deploying Vamp Gateway Agent on all public and private Mesos agent nodes through Marathon JSON - NB replace &lt;code&gt;$INSTANCES&lt;/code&gt; (e.g. to be the same as total number of Mesos agent nodes) and optionally other parameters:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;id&amp;quot;: &amp;quot;vamp/vamp-gateway-agent&amp;quot;,
+  &amp;quot;instances&amp;quot;: $INSTANCES,
+  &amp;quot;cpus&amp;quot;: 0.2,
+  &amp;quot;mem&amp;quot;: 256.0,
+  &amp;quot;container&amp;quot;: {
+    &amp;quot;type&amp;quot;: &amp;quot;DOCKER&amp;quot;,
+    &amp;quot;docker&amp;quot;: {
+      &amp;quot;image&amp;quot;: &amp;quot;magneticio/vamp-gateway-agent:katana&amp;quot;,
+      &amp;quot;network&amp;quot;: &amp;quot;HOST&amp;quot;,
+      &amp;quot;privileged&amp;quot;: true,
+      &amp;quot;forcePullImage&amp;quot;: true
+    }
+  },
+  &amp;quot;args&amp;quot;: [
+    &amp;quot;--storeType=zookeeper&amp;quot;,
+    &amp;quot;--storeConnection=zk-1.zk:2181&amp;quot;,
+    &amp;quot;--storeKey=/vamp/gateways/haproxy/1.6&amp;quot;,
+    &amp;quot;--logstash=elasticsearch.marathon.mesos:10001&amp;quot;
+  ],
+  &amp;quot;constraints&amp;quot;: [
+    [
+      &amp;quot;hostname&amp;quot;,
+      &amp;quot;UNIQUE&amp;quot;
+    ]
+  ],
+  &amp;quot;acceptedResourceRoles&amp;quot;: [
+    &amp;quot;slave_public&amp;quot;,
+    &amp;quot;*&amp;quot;
+  ]
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;What next?&lt;/p&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;Once you have Vamp up and running you can follow our &lt;a href=&#34;./documentation/tutorials/&#34;&gt;getting started tutorials&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Chcek the &lt;a href=&#34;./documentation/how-vamp-works/architecture-and-components/&#34;&gt;Vamp documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Things still not running? &lt;a href=&#34;https://github.com/magneticio/vamp/issues&#34;&gt;We&amp;rsquo;re here to help →&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you need help you can find us on &lt;a href=&#34;https://gitter.im/magneticio/vamp&#34;&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>/documentation/installation/docker/</link>
+      <pubDate>Fri, 30 Sep 2016 12:00:00 +0000</pubDate>
+      
+      <guid>/documentation/installation/docker/</guid>
+      <description>
+
+&lt;p&gt;Vamp can talk directly to a Docker daemon and its driver is configured by default. This is useful for local testing. Vamp can even run inside Docker while deploying to Docker.  You can pass native Docker options by &lt;a href=&#34;./documentation/using-vamp/blueprints/#dialects&#34;&gt;using the Docker dialect in a Vamp blueprint.&lt;/a&gt;. Docker Swarm support is coming soon.&lt;/p&gt;
+
+&lt;h4 id=&#34;set-container-driver&#34;&gt;Set container driver&lt;/h4&gt;
+
+&lt;p&gt;See &lt;a href=&#34;./documentation/installation/configure-vamp#docker&#34;&gt;set Docker as the container driver&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;./images/logos/docker-member.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mesos/Marathon</title>
+      <link>/documentation/installation/mesos-marathon/</link>
+      <pubDate>Fri, 30 Sep 2016 12:00:00 +0000</pubDate>
+      
+      <guid>/documentation/installation/mesos-marathon/</guid>
+      <description>
+
+&lt;p&gt;Vamp can use the full power of Marathon running on either a DCOS cluster or custom Mesos cluster. You can use Vamp&amp;rsquo;s DSL, or you can pass native Marathon options by &lt;a href=&#34;./documentation/using-vamp/blueprints/#dialects&#34;&gt;using a dialect in a blueprint.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;install&#34;&gt;Install&lt;/h4&gt;
+
+&lt;p&gt;The instructions included on the &lt;a href=&#34;./documentation/installation/dcos&#34;&gt;DC/OS installation page&lt;/a&gt; will also work with Mesos/Marathon.&lt;/p&gt;
+
+&lt;h4 id=&#34;set-container-driver&#34;&gt;set container driver&lt;/h4&gt;
+
+&lt;p&gt;See &lt;a href=&#34;./documentation/installation/configure-vamp#mesos-marathon&#34;&gt;set Mesos/Marathon as the container driver&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>API Reference</title>
+      <link>/documentation/api/api-reference/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>/documentation/api/api-reference/</guid>
+      <description>
+
+&lt;p&gt;This page gives full details of all available API calls. See &lt;a href=&#34;./documentation/api/using-the-api&#34;&gt;using the Vamp API&lt;/a&gt; for details on pagination, json and yaml content types and effective use of the API.&lt;/p&gt;
+
+&lt;h2 id=&#34;blueprints&#34;&gt;Blueprints&lt;/h2&gt;
+
+&lt;h3 id=&#34;list-blueprints&#34;&gt;List blueprints&lt;/h3&gt;
+
+&lt;p&gt;Lists all blueprints without any pagination or filtering.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/blueprints
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;expand_references&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;all breed references will be replaced (recursively) with full breed definitions. &lt;code&gt;400 Bad Request&lt;/code&gt; in case some breeds are not yet fully defined.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;only_references&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;all breeds will be replaced with their references.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;get-a-single-blueprint&#34;&gt;Get a single blueprint&lt;/h3&gt;
+
+&lt;p&gt;Lists all details for one specific blueprint.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/blueprints/{blueprint_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;expand_references&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;all breed references will be replaced (recursively) with full breed definitions. &lt;code&gt;400 Bad Request&lt;/code&gt; in case some breeds are not yet fully defined.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;only_references&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;all breeds will be replaced with their references.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;create-blueprint&#34;&gt;Create blueprint&lt;/h3&gt;
+
+&lt;p&gt;Creates a new blueprint. Accepts JSON or YAML formatted blueprints. Set the &lt;code&gt;Content-Type&lt;/code&gt; request header to &lt;code&gt;application/json&lt;/code&gt; or &lt;code&gt;application/x-yaml&lt;/code&gt; accordingly.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;POST /api/v1/blueprint
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the blueprint and returns a &lt;code&gt;201 Created&lt;/code&gt; if the blueprint is valid.This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;update-a-blueprint&#34;&gt;Update a blueprint&lt;/h3&gt;
+
+&lt;p&gt;Updates the content of a specific blueprint.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PUT /api/v1/blueprints/{blueprint_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the blueprint and returns a &lt;code&gt;200 OK&lt;/code&gt; if the blueprint is valid. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;delete-a-blueprint&#34;&gt;Delete a blueprint&lt;/h3&gt;
+
+&lt;p&gt;Deletes a blueprint.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DELETE /api/v1/blueprints/{blueprint_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;returns a &lt;code&gt;204 No Content&lt;/code&gt; without actual delete of the blueprint.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;breeds&#34;&gt;Breeds&lt;/h2&gt;
+
+&lt;p&gt;See &lt;a href=&#34;./documentation/api/using-the-api&#34;&gt;using the Vamp API&lt;/a&gt; for details on pagination, json and yaml content types and effective use of the API&lt;/p&gt;
+
+&lt;h3 id=&#34;list-breeds&#34;&gt;List breeds&lt;/h3&gt;
+
+&lt;p&gt;Lists all breeds without any pagination or filtering.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/breeds
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;expand_references&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;all breed dependencies will be replaced (recursively) with full breed definitions. &lt;code&gt;400 Bad Request&lt;/code&gt; in case some dependencies are not yet fully defined.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;only_references&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;all full breed dependencies will be replaced with their references.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;get-a-single-breed&#34;&gt;Get a single breed&lt;/h3&gt;
+
+&lt;p&gt;Lists all details for one specific breed.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/breeds/{breed_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;expand_references&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;all breed dependencies will be replaced (recursively) with full breed definitions. &lt;code&gt;400 Bad Request&lt;/code&gt; in case some dependencies are not yet fully defined.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;only_references&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;all full breed dependencies will be replaced with their references.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;create-breed&#34;&gt;Create breed&lt;/h3&gt;
+
+&lt;p&gt;Creates a new breed. Accepts JSON or YAML formatted breeds. Set the &lt;code&gt;Content-Type&lt;/code&gt; request header to &lt;code&gt;application/json&lt;/code&gt; or &lt;code&gt;application/x-yaml&lt;/code&gt; accordingly.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;POST /api/v1/breeds
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the breed and returns a &lt;code&gt;201 Created&lt;/code&gt; if the breed is valid. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;update-a-breed&#34;&gt;Update a breed&lt;/h3&gt;
+
+&lt;p&gt;Updates the content of a specific breed.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PUT /api/v1/breeds/{breed_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the breed and returns a &lt;code&gt;200 OK&lt;/code&gt; if the breed is valid. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;delete-a-breed&#34;&gt;Delete a breed&lt;/h3&gt;
+
+&lt;p&gt;Deletes a breed.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DELETE /api/v1/breeds/{breed_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;returns a &lt;code&gt;204 No Content&lt;/code&gt; without actual delete of the breed.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;conditions&#34;&gt;Conditions&lt;/h2&gt;
+
+&lt;p&gt;See &lt;a href=&#34;./documentation/api/using-the-api&#34;&gt;using the Vamp API&lt;/a&gt; for details on pagination, json and yaml content types and effective use of the API&lt;/p&gt;
+
+&lt;h3 id=&#34;list-conditions&#34;&gt;List conditions&lt;/h3&gt;
+
+&lt;p&gt;Lists all conditions without any pagination or filtering.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/conditions
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;get-a-single-condition&#34;&gt;Get a single condition&lt;/h3&gt;
+
+&lt;p&gt;Lists all details for one specific condition.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/conditions/{condition_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;create-condition&#34;&gt;Create condition&lt;/h3&gt;
+
+&lt;p&gt;Creates a new condition. Accepts JSON or YAML formatted conditions. Set the &lt;code&gt;Content-Type&lt;/code&gt; request header to &lt;code&gt;application/json&lt;/code&gt; or &lt;code&gt;application/x-yaml&lt;/code&gt; accordingly.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;POST /api/v1/conditions
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the escalation and returns a &lt;code&gt;201 Created&lt;/code&gt; if the escalation is valid. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;update-a-condition&#34;&gt;Update a condition&lt;/h3&gt;
+
+&lt;p&gt;Updates the content of a specific condition.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PUT /api/v1/conditions/{condition_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the escalation and returns a &lt;code&gt;200 OK&lt;/code&gt; if the escalation is valid. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;delete-a-condition&#34;&gt;Delete a condition&lt;/h3&gt;
+
+&lt;p&gt;Deletes a condition.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DELETE /api/v1/conditions/{condition_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;returns a &lt;code&gt;204 No Content&lt;/code&gt; without actual delete of the escalation.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;deployments&#34;&gt;Deployments&lt;/h2&gt;
+
+&lt;p&gt;Deployments are non-static entities in the Vamp eco-system. They represent runtime structures so any changes to them will take time to execute and can possibly fail. Most API calls to the &lt;code&gt;/deployments&lt;/code&gt; endpoint will therefore return a &lt;code&gt;202: Accepted&lt;/code&gt; return code, indicating the asynchronous nature of the call.&lt;/p&gt;
+
+&lt;p&gt;Deployments have a set of sub resources: &lt;strong&gt;SLA&amp;rsquo;s&lt;/strong&gt;, &lt;strong&gt;scales&lt;/strong&gt; and &lt;strong&gt;gateways&lt;/strong&gt;. These are instantiations of their static counterparts.&lt;/p&gt;
+
+&lt;p&gt;See &lt;a href=&#34;./documentation/api/using-the-api&#34;&gt;using the Vamp API&lt;/a&gt; for details on pagination, json and yaml content types and effective use of the API&lt;/p&gt;
+
+&lt;h3 id=&#34;list-deployments&#34;&gt;List deployments&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/deployments
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;as_blueprint&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;exports each deployment as a valid blueprint. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to export in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;expand_references&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;all breed references will be replaced (recursively) with full breed definitions. It will be applied only if &lt;code&gt;?as_blueprint=true&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;only_references&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;all breeds will be replaced with their references. It will be applied only if &lt;code&gt;?as_blueprint=true&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;get-a-single-deployment&#34;&gt;Get a single deployment&lt;/h3&gt;
+
+&lt;p&gt;Lists all details for one specific deployment.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/deployments/{deployment_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;as_blueprint&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;exports the deployment as a valid blueprint. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to export in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;expand_references&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;all breed references will be replaced (recursively) with full breed definitions. It will be applied only if &lt;code&gt;?as_blueprint=true&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;only_references&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;all breeds will be replaced with their references. It will be applied only if &lt;code&gt;?as_blueprint=true&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;create-deployment-using-a-blueprint&#34;&gt;Create deployment using a blueprint&lt;/h3&gt;
+
+&lt;p&gt;Creates a new deployment&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;POST /api/v1/deployments
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create a named (non UUID) deployment&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PUT /api/v1/deployments/{deployment_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the blueprint and returns a &lt;code&gt;202 Accepted&lt;/code&gt; if the blueprint is valid for deployment. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;update-a-deployment-using-a-blueprint&#34;&gt;Update a deployment using a blueprint&lt;/h3&gt;
+
+&lt;p&gt;Updates the settings of a specific deployment.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PUT /api/v1/deployments/{deployment_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the blueprint and returns a &lt;code&gt;202 Accepted&lt;/code&gt; if the deployment after the update would be still valid. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;delete-a-deployment-using-a-blueprint&#34;&gt;Delete a deployment using a blueprint&lt;/h3&gt;
+
+&lt;p&gt;Deletes all or parts of a deployment.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DELETE /api/v1/deployments/{deployment_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the blueprint and returns a &lt;code&gt;202 Accepted&lt;/code&gt; if the deployment after the (partial) deletion would be still valid. Actual delete is not performed.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;In contrast to most API&amp;rsquo;s, doing a &lt;code&gt;DELETE&lt;/code&gt; in Vamp takes a request body that designates what part of the deployment should be deleted. This allows you to remove specific services, clusters of the whole deployment.&lt;/p&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;Note!&lt;/p&gt;
+  &lt;p&gt;&lt;code&gt;DELETE&lt;/code&gt; on deployment with an empty request body will not delete anything.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The most common way to specify what you want to delete is by exporting the target deployment as a blueprint using the &lt;code&gt;?as_blueprint=true&lt;/code&gt; parameter. You then either programmatically or by hand edit the resulting blueprint and specify which of the services you want to delete. You can also use the blueprint as a whole in the &lt;code&gt;DELETE&lt;/code&gt; request. The result is the removal of the full deployment.&lt;/p&gt;
+
+&lt;h4 id=&#34;example-delete-service&#34;&gt;example - delete service&lt;/h4&gt;
+
+&lt;p&gt;This is our (abbreviated) deployment in YAML format. We have two clusters. The first cluster &amp;lsquo;frontend&amp;rsquo; has two services.
+We have left out some keys like &lt;code&gt;scale&lt;/code&gt; among others as they have no effect on this specific use case.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    GET /api/v1/deployment/3df5c37c-5137-4d2c-b1e1-1cb3d03ffcd?as_blueprint=true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;name: 3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
+endpoints:
+  frontend.port: &#39;9050&#39;
+clusters:
+  frontend:
+    services:
+    - breed:
+        name: monarch_front:0.1
+        deployable: magneticio/monarch:0.1
+        ports:
+          port: 8080/http
+        constants: {}
+        dependencies:
+          backend:
+            ref: monarch_backend:0.3
+    - breed:
+        name: monarch_front:0.2
+        deployable: magneticio/monarch:0.2
+        ports:
+          port: 8080/http
+        dependencies:
+          backend:
+            ref: monarch_backend:0.3
+  backend:
+    services:
+    - breed:
+        name: monarch_backend:0.3
+        deployable: magneticio/monarch:0.3
+        ports:
+          jdbc: 8080/http
+        environment_variables: {}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If we want to delete the first service in the &lt;code&gt;frontend&lt;/code&gt; cluster, we use the following blueprint as the request body in the &lt;code&gt;DELETE&lt;/code&gt; action.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DELETE /api/v1/deployments/3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;name: 3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
+clusters:
+  frontend:
+    services:
+    - breed:
+        ref: monarch_front:0.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If we want to delete the whole deployment, we just specify all the clusters and services.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DELETE /api/v1/deployments/3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;name: 3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
+clusters:
+  frontend:
+    services:
+    - breed:
+        ref: monarch_front:0.1
+    - breed:
+        ref: monarch_front:0.2
+  backend:
+    services:
+    - breed:
+        ref: monarch_backend:0.3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;deployment-slas&#34;&gt;Deployment SLAs&lt;/h2&gt;
+
+&lt;h3 id=&#34;get-a-deployment-sla&#34;&gt;Get a deployment SLA&lt;/h3&gt;
+
+&lt;p&gt;Lists all details for a specific SLA that&amp;rsquo;s part of a specific cluster.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/sla
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;set-a-deployment-sla&#34;&gt;Set a deployment SLA&lt;/h3&gt;
+
+&lt;p&gt;Creates or updates a specific deployment SLA.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;POST|PUT /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/sla
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;delete-a-deployment-sla&#34;&gt;Delete a deployment SLA&lt;/h3&gt;
+
+&lt;p&gt;Deletes as specific deployment SLA.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DELETE /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/sla
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;deployment-scales&#34;&gt;Deployment scales&lt;/h2&gt;
+
+&lt;p&gt;Deployment scales are singular resources: you only have one scale per service. Deleting a scale is not a meaningfull action.&lt;/p&gt;
+
+&lt;h3 id=&#34;get-a-deployment-scale&#34;&gt;Get a deployment scale&lt;/h3&gt;
+
+&lt;p&gt;Lists all details for a specific deployment scale that&amp;rsquo;s part of a service inside a cluster.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/scale
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;set-a-deployment-scale&#34;&gt;Set a deployment scale&lt;/h3&gt;
+
+&lt;p&gt;Updates a deployment scale.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;POST|PUT /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/scale
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;escalations&#34;&gt;Escalations&lt;/h2&gt;
+
+&lt;p&gt;See &lt;a href=&#34;./documentation/api/using-the-api&#34;&gt;using the Vamp API&lt;/a&gt; for details on pagination, json and yaml content types and effective use of the API&lt;/p&gt;
+
+&lt;h3 id=&#34;list-escalations&#34;&gt;List escalations&lt;/h3&gt;
+
+&lt;p&gt;Lists all escalations without any pagination or filtering.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/escalations
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;get-a-single-escalation&#34;&gt;Get a single escalation&lt;/h3&gt;
+
+&lt;p&gt;Lists all details for one specific escalation.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/escalations/{escalation_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;create-escalation&#34;&gt;Create escalation&lt;/h3&gt;
+
+&lt;p&gt;Creates a new escalation. Accepts JSON or YAML formatted escalations. Set the &lt;code&gt;Content-Type&lt;/code&gt; request header to &lt;code&gt;application/json&lt;/code&gt; or &lt;code&gt;application/x-yaml&lt;/code&gt; accordingly.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;POST /api/v1/escalations
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the escalation and returns a &lt;code&gt;201 Created&lt;/code&gt; if the escalation is valid. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;update-an-escalation&#34;&gt;Update an escalation&lt;/h3&gt;
+
+&lt;p&gt;Updates the content of a specific escalation.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PUT /api/v1/escalations/{escalation_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the escalation and returns a &lt;code&gt;200 OK&lt;/code&gt; if the escalation is valid. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;delete-an-escalation&#34;&gt;Delete an escalation&lt;/h3&gt;
+
+&lt;p&gt;Deletes an escalation.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DELETE /api/v1/escalations/{escalation_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;returns a &lt;code&gt;204 No Content&lt;/code&gt; without actual delete of the escalation.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;events&#34;&gt;Events&lt;/h2&gt;
+
+&lt;p&gt;See &lt;a href=&#34;./documentation/api/using-the-api&#34;&gt;using the Vamp API&lt;/a&gt; for details on pagination, json and yaml content types and effective use of the API&lt;/p&gt;
+
+&lt;h3 id=&#34;list-events&#34;&gt;List events&lt;/h3&gt;
+
+&lt;p&gt;Lists metrics and/or events without any pagination or filtering.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/events/get
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tag&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Event tag, e.g. &lt;code&gt;GET /api/v1/events?tag=archiving&amp;amp;tag=breeds&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;Note!&lt;/p&gt;
+  &lt;p&gt;search criteria can be set in request body, checkout &lt;a href=&#34;./documentation/using-vamp/events/#query-events-using-tags&#34;&gt;examples&lt;/a&gt; for event stream.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;create-events&#34;&gt;Create events&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;POST /api/v1/events    
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;server-sent-events-sse&#34;&gt;Server-sent events (SSE)&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;GET  /api/v1/events/stream
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;gateways&#34;&gt;Gateways&lt;/h2&gt;
+
+&lt;h3 id=&#34;list-gateways&#34;&gt;List gateways&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/gateways
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;get-a-single-gateway&#34;&gt;Get a single gateway&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/gateways/{gateway_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;create-gateway&#34;&gt;Create gateway&lt;/h3&gt;
+
+&lt;p&gt;Accepts JSON or YAML formatted gateways. Set the &lt;code&gt;Content-Type&lt;/code&gt; request header to &lt;code&gt;application/json&lt;/code&gt; or &lt;code&gt;application/x-yaml&lt;/code&gt; accordingly.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;POST /api/v1/gateways
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the gateway and returns a &lt;code&gt;201 Created&lt;/code&gt; if the gateway is valid. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;update-a-gateway&#34;&gt;Update a gateway&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;PUT /api/v1/gateways/{gateway_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the gateway and returns a &lt;code&gt;200 OK&lt;/code&gt; if the gateway is valid. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;delete-a-gateway&#34;&gt;Delete a gateway&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;DELETE /api/v1/gateways/{gateway_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;returns a &lt;code&gt;204 No Content&lt;/code&gt; without actual delete of the gateway.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;metrics&#34;&gt;Metrics&lt;/h2&gt;
+
+&lt;p&gt;Metrics can be defined on gateways and deployment ports and retrieved:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/api/v1/metrics/gateways/{gateway}/{metrics}
+/api/v1/metrics/gateways/{gateway}/routes/$route/{metrics}
+
+/api/v1/metrics/deployments/{deployment}/clusters/{cluster}/ports/{port}/{metrics}
+/api/v1/metrics/deployments/{deployment}/clusters/{cluster}/services/{service}/ports/{port}/{metrics}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;example&#34;&gt;Example&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;/api/v1/metrics/deployments/sava/clusters/frontend/ports/api/response-time
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;Note!&lt;/p&gt;
+  &lt;p&gt;Metrics are calculated using external services, e.g. Vamp workflows.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;health&#34;&gt;Health&lt;/h2&gt;
+
+&lt;p&gt;Health can be defined on gateways and deployment ports and retrieved:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/api/v1/health/gateways/{gateway}
+/api/v1/health/gateways/{gateway}/routes/$route
+
+/api/v1/health/deployments/{deployment}
+/api/v1/health/deployments/{deployment}/clusters/{cluster}
+/api/v1/health/deployments/{deployment}/clusters/{cluster}/services/{service}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Health is value between 1 (100% healthy) and 0.&lt;/p&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;Note!&lt;/p&gt;
+  &lt;p&gt;Health is calculated using external services, e.g. Vamp workflows.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;scales&#34;&gt;Scales&lt;/h2&gt;
+
+&lt;p&gt;See &lt;a href=&#34;./documentation/api/using-the-api&#34;&gt;using the Vamp API&lt;/a&gt; for details on pagination, json and yaml content types and effective use of the API&lt;/p&gt;
+
+&lt;h3 id=&#34;list-scales&#34;&gt;List scales&lt;/h3&gt;
+
+&lt;p&gt;Lists all scales without any pagination or filtering.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/scales
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;get-a-single-scale&#34;&gt;Get a single scale&lt;/h3&gt;
+
+&lt;p&gt;Lists all details for one specific scale.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/scales/{scale_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;create-scale&#34;&gt;Create scale&lt;/h3&gt;
+
+&lt;p&gt;Creates a new scale. Accepts JSON or YAML formatted scales. Set the &lt;code&gt;Content-Type&lt;/code&gt; request header to &lt;code&gt;application/json&lt;/code&gt; or &lt;code&gt;application/x-yaml&lt;/code&gt; accordingly.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;POST /api/v1/scales
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the scale and returns a &lt;code&gt;201 Created&lt;/code&gt; if the scale is valid. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;update-a-scale&#34;&gt;Update a scale&lt;/h3&gt;
+
+&lt;p&gt;Updates the content of a specific scale.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PUT /api/v1/scales/{scale_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the scale and returns a &lt;code&gt;200 OK&lt;/code&gt; if the scale is valid. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;delete-a-scale&#34;&gt;Delete a scale&lt;/h3&gt;
+
+&lt;p&gt;Deletes a scale.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DELETE /api/v1/scales/{scale_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;returns a &lt;code&gt;204 No Content&lt;/code&gt; without actual delete of the scale.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;slas&#34;&gt;SLAs&lt;/h2&gt;
+
+&lt;p&gt;See &lt;a href=&#34;./documentation/api/using-the-api&#34;&gt;using the Vamp API&lt;/a&gt; for details on pagination, json and yaml content types and effective use of the API&lt;/p&gt;
+
+&lt;h3 id=&#34;list-slas&#34;&gt;List SLAs&lt;/h3&gt;
+
+&lt;p&gt;Lists all slas without any pagination or filtering.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/slas
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;get-a-single-sla&#34;&gt;Get a single SLA&lt;/h3&gt;
+
+&lt;p&gt;Lists all details for one specific breed.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/slas/{sla_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;create-an-sla&#34;&gt;Create an SLA&lt;/h3&gt;
+
+&lt;p&gt;Creates a new SLA&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;POST /api/v1/slas   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the SLA and returns a &lt;code&gt;201 Created&lt;/code&gt; if the SLA is valid. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;update-an-sla&#34;&gt;Update an SLA&lt;/h3&gt;
+
+&lt;p&gt;Updates the content of a specific SLA.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PUT /api/v1/slas/{sla_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;validates the SLA and returns a &lt;code&gt;200 OK&lt;/code&gt; if the SLA is valid. This can be used together with the header &lt;code&gt;Accept: application/x-yaml&lt;/code&gt; to return the result in YAML format instead of the default JSON.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;delete-an-sla&#34;&gt;Delete an SLA&lt;/h3&gt;
+
+&lt;p&gt;Deletes an SLA.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DELETE /api/v1/slas/{sla_name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;options&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;default&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validate_only&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;true or false&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;false&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;returns a &lt;code&gt;204 No Content&lt;/code&gt; without actual delete of the SLA.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;system&#34;&gt;System&lt;/h2&gt;
+
+&lt;p&gt;Vamp provides a set of API endpoints that help with getting general health/configuration status.&lt;/p&gt;
+
+&lt;h3 id=&#34;get-runtime-info&#34;&gt;Get runtime info&lt;/h3&gt;
+
+&lt;p&gt;Lists information about Vamp&amp;rsquo;s JVM environment and runtime status.
+Also lists info for configured persistence layer and container driver status.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/info
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sections are &lt;code&gt;jvm&lt;/code&gt;, &lt;code&gt;persistence&lt;/code&gt;, &lt;code&gt;key_value&lt;/code&gt;, &lt;code&gt;pulse&lt;/code&gt;, &lt;code&gt;gateway_driver&lt;/code&gt;, &lt;code&gt;container_driver&lt;/code&gt; and &lt;code&gt;workflow_driver&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;{
+    &amp;quot;message&amp;quot;: &amp;quot;...&amp;quot;,
+    &amp;quot;version&amp;quot;: &amp;quot;...&amp;quot;,
+    &amp;quot;uuid&amp;quot;: &amp;quot;...&amp;quot;,
+    &amp;quot;running_since&amp;quot;: &amp;quot;...&amp;quot;,
+    &amp;quot;jvm&amp;quot;: {...},
+    &amp;quot;persistence&amp;quot;: {...},
+    &amp;quot;key_value&amp;quot;: {...},
+    &amp;quot;pulse&amp;quot;: {...},
+    &amp;quot;gateway_driver&amp;quot;: {...},
+    &amp;quot;container_driver&amp;quot;: {...},
+    &amp;quot;workflow_driver&amp;quot;: {...}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;example-explicitly-request-specific-sections&#34;&gt;Example - explicitly request specific sections&lt;/h4&gt;
+
+&lt;p&gt;Explicitly requesting &lt;code&gt;jvm&lt;/code&gt; and &lt;code&gt;persistence&lt;/code&gt; using parameter(s) &lt;code&gt;on&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/info?on=jvm&amp;amp;on=persistence
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;get-vamp-configuration&#34;&gt;Get Vamp configuration&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/config
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;get-haproxy-configuration&#34;&gt;Get HAProxy configuration&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/haproxy
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;debug&#34;&gt;Debug&lt;/h2&gt;
+
+&lt;h3 id=&#34;force-sync&#34;&gt;Force sync&lt;/h3&gt;
+
+&lt;p&gt;Forces Vamp to perform a synchronization cycle, regardless of the configured default interval.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/sync
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;force-sla-check&#34;&gt;Force SLA check&lt;/h3&gt;
+
+&lt;p&gt;Forces Vamp to perform an SLA check, regardless of the configured default interval.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/sla
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;force-escalation&#34;&gt;Force escalation&lt;/h3&gt;
+
+&lt;p&gt;Forces Vamp to perform an escalation check, regardless of the configured default interval.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /api/v1/escalation
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;See &lt;a href=&#34;./documentation/api/using-the-api&#34;&gt;using the Vamp API&lt;/a&gt; for details on pagination, json and yaml content types and effective use of the API&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Architecture and components</title>
+      <link>/documentation/how-vamp-works/architecture-and-components/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>/documentation/how-vamp-works/architecture-and-components/</guid>
+      <description>
+
+&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;
+
+&lt;p&gt;Vamp and the Vamp Gateway Agent require specific elements in your architecture to handle orchetstration, routing, persistence and metrics aggregation. There is no set architecture required for running Vamp and every use case or specific combination of tools and platforms can have its own set up.&lt;/p&gt;
+
+&lt;h4 id=&#34;example-topology&#34;&gt;Example topology&lt;/h4&gt;
+
+&lt;p&gt;The below diagram should be used more as an overview than required architecture. For example, in this diagram the Mesos/Marathon stack and Elasticsearch are included even though these are not a hard dependency. Vamp can be configured to run with other container schedulers, log-aggregators, key-value and event-stores.
+&lt;img src=&#34;./images/diagram/Architecture-and-components.svg&#34; alt=&#34;architecture&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;vamp-components&#34;&gt;Vamp components&lt;/h2&gt;
+
+&lt;p&gt;Vamp consists of server- and client-side components that work together with elements in your architecture to handle orchetstration, routing, persistence and metrics aggregation.&lt;/p&gt;
+
+&lt;h3 id=&#34;vamp-ui&#34;&gt;Vamp UI&lt;/h3&gt;
+
+&lt;p&gt;The Vamp UI is a graphical web interface for managing Vamp in a web browser. It is packaged with Vamp.&lt;/p&gt;
+
+&lt;h3 id=&#34;vamp-cli&#34;&gt;Vamp CLI&lt;/h3&gt;
+
+&lt;p&gt;The Vamp CLI is a command line interface for managing Vamp and providing integration with (shell) scripts. It&amp;rsquo;s currently not very well maintained but still can be useful if our REST API cannot be used for your integration requirements.&lt;/p&gt;
+
+&lt;h3 id=&#34;vamp&#34;&gt;Vamp&lt;/h3&gt;
+
+&lt;p&gt;Vamp is the main API endpoint, business logic and service coordinator. Vamp talks to the configured container manager (Docker, Marathon, Kubernetes etc.) and synchronizes it with Vamp Gateway Agent (VGA)  via ZooKeeper, etcd or Consul (distributed key-value stores). Vamp can use Elasticsearch for artifact persistence and to store events (e.g. changes in deployments). Typically, there should be one Vamp instance and one or more VGA instances. Vamp is not a realtime application and only updates deployments and routing when asked to (reactive) and thus doesn&amp;rsquo;t need to run with multiple instances in HA mode. If this is a hard requirement of your project please contact us for the &lt;a href=&#34;./why-use-vamp/enterprise-edition/&#34;&gt;Vamp Enterprise Edition&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;vamp-workflows&#34;&gt;Vamp workflows&lt;/h3&gt;
+
+&lt;p&gt;Vamp workflows are small applications or scripts (for example using JavaScript or your own containers) that automate changes of the running system, and its deployments and gateways. We have included a set of useful workflows out of the box, such as health and metrics, which are used by the Vamp UI to report system status and to enable autoscaling and self-healing. Our &lt;a href=&#34;https://github.com/magneticio/vamp-runner/&#34;&gt;Vamp Runner project&lt;/a&gt; provides more advanced workflow recipes as an example.&lt;/p&gt;
+
+&lt;h3 id=&#34;vamp-gateway-agent-vga&#34;&gt;Vamp Gateway Agent (VGA)&lt;/h3&gt;
+
+&lt;p&gt;Vamp Gateway Agent (VGA) reads the HAProxy configuration from ZooKeeper, etcd or Consul and reloads HAProxy on each configuration change with as close to zero client request interruptions as possible. Typically, there should be one Vamp instance and one or more VGA instances.&lt;br /&gt;
+Logs from HAProxy are read over socket and pushed to Logstash over UDP.  VGA will handle and recover from ZooKeeper, etcd, Consul and Logstash outages without interrupting the HAProxy process and client requests.&lt;/p&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;What next?&lt;/p&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;Read about the &lt;a href=&#34;./documentation/how-vamp-works/requirements&#34;&gt;requirements to run Vamp&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Artifacts</title>
+      <link>/documentation/using-vamp/artifacts/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>/documentation/using-vamp/artifacts/</guid>
+      <description>
+
+&lt;p&gt;Vamp has a few basic entities or artifacts you can work with, these can be classed as static resource descriptions and dynamic runtime entities. Note that API actions on static resource descriptions are mostly synchronous, while API actions on dynamic runtime entities are largely asychronous.&lt;/p&gt;
+
+&lt;h3 id=&#34;static-resource-descriptions&#34;&gt;Static resource descriptions&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Breeds&lt;/strong&gt; describe single services and their dependencies.  &lt;a href=&#34;./documentation/using-vamp/breeds/&#34;&gt;Read more&amp;hellip;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Blueprints&lt;/strong&gt; are, well, blueprints! They describe how breeds work in runtime and what properties they should have.  &lt;a href=&#34;./documentation/using-vamp/blueprints/&#34;&gt;Read more&amp;hellip;&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;dynamic-runtime-entities&#34;&gt;Dynamic runtime entities&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Deployments&lt;/strong&gt; are running blueprints. You can have many deployments from one blueprint and perform actions on each at runtime. Plus, you can turn any running deployment into a blueprint.  &lt;a href=&#34;./documentation/using-vamp/deployments/&#34;&gt;Read more&amp;hellip;&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gateways&lt;/strong&gt; are the &amp;ldquo;stable&amp;rdquo; routing endpoint - defined by a port (incoming) and routes (outgoing).  &lt;a href=&#34;./documentation/using-vamp/gateways/&#34;&gt;Read more&amp;hellip;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Workflows&lt;/strong&gt; are apps (services) deployed on cluster, used for dynamically changing the runtime configuration (e.g. SLA, scaling, condition weight update).  &lt;a href=&#34;./documentation/using-vamp/workflows/&#34;&gt;Read more&amp;hellip;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;working-across-multiple-teams&#34;&gt;Working across multiple teams&lt;/h2&gt;
+
+&lt;p&gt;In larger companies with multiple teams working together on a large project, all required information is often not available at the same time. To facilitate this style of working, Vamp allows you to set placeholders. Placeholders let you communicate with other teams using simple references and gradually build up a complicated deployment. Vamp will only check references at deployment time, this means:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Breeds can be referenced in blueprints before they exist&lt;/li&gt;
+&lt;li&gt;You do not need to know the contents of an SLA when you reference it.&lt;/li&gt;
+&lt;li&gt;You can reference a variable that someone else should fill in.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Read more about &lt;a href=&#34;./documentation/using-vamp/references/&#34;&gt;referencing artifacts&lt;/a&gt; and &lt;a href=&#34;./documentation/using-vamp/environment-variables/&#34;&gt;environment variables&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;What next?&lt;/p&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;Read about &lt;a href=&#34;./documentation/using-vamp/breeds/&#34;&gt;Vamp breeds&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Check the &lt;a href=&#34;./documentation/api/api-reference&#34;&gt;API documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/installation/hello-world&#34;&gt;Try Vamp&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Blueprints</title>
+      <link>/documentation/using-vamp/blueprints/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>/documentation/using-vamp/blueprints/</guid>
+      <description>
+
+&lt;p&gt;Blueprints are execution plans - they describe how your services should be hooked up and what their topology should look like at runtime. This means you reference your breeds (or define them inline) and add runtime configuration to them.&lt;/p&gt;
+
+&lt;p&gt;Blueprints allow you to add the following extra properties:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/using-vamp/blueprints/#gateways&#34;&gt;Gateways&lt;/a&gt;: a stable port where the service can be reached.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/using-vamp/blueprints/#clusters-and-services&#34;&gt;Clusters and services&lt;/a&gt;: a cluster is a grouping of services with one purpose, i.e. two versions (a/b) of one service.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/using-vamp/environment-variables/&#34;&gt;Environment variables&lt;/a&gt;: a list of variables (interpolated or not) to be made available at runtime.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/using-vamp/blueprints/#dialects&#34;&gt;Dialects&lt;/a&gt;: a dialect is a set of native commands for the underlying container platform, i.e. Docker or Mesosphere Marathon.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/using-vamp/blueprints/#scale&#34;&gt;Scale&lt;/a&gt;: the CPU and memory and the amount of instance allocate to a service.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/using-vamp/conditions/&#34;&gt;Conditions&lt;/a&gt;: how traffic should be directed based on HTTP and/or TCP properties.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/using-vamp/sla/&#34;&gt;SLA&lt;/a&gt; and &lt;a href=&#34;./documentation/using-vamp/escalations/&#34;&gt;escalations&lt;/a&gt;: SLA definition that controls autoscaling.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;example-key-concepts-of-blueprints&#34;&gt;Example - key concepts of blueprints&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+name: my_blueprint                        # Custom blueprint name
+gateways:
+  8080/http: my_frontend/port
+clusters:
+  my_frontend:                            # Custom cluster name.
+  
+    gateways:                             # Gateway for this cluster services.
+      routes:                             # Makes sense only with
+        some_cool_breed:                  # multiple services per cluster.
+          weight: 95%
+          condition: User-Agent = Chrome
+        some_other_breed:                 # Second service.
+          weight: 5%
+          
+    services:                             # List of services
+      -
+        breed:
+          ref: some_cool_breed
+        scale:                            # Scale for this service.
+          cpu: 2                          # Number of CPUs per instance.
+          memory: 2048MB                  # Memory per instance (MB/GB units).
+          instances: 2                    # Number of instances
+      -                                          
+        breed: 
+          ref: some_other_breed           # Another service in the same cluster.  
+        scale: large                      # Notice we used a reference to a &amp;quot;scale&amp;quot;. 
+                                          # More on this later.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;gateways&#34;&gt;Gateways&lt;/h2&gt;
+
+&lt;p&gt;A gateway is a &amp;ldquo;stable&amp;rdquo; endpoint (or port in simplified sense) that almost never changes. When creating the mapping, it uses the definition (my_frontend/port in this case) from the &amp;ldquo;first&amp;rdquo; service in the cluster definition you reference. This service can of course be changed, but the gateway port normally doesn&amp;rsquo;t.&lt;/p&gt;
+
+&lt;p&gt;Please take care of setting the &lt;code&gt;/tcp&lt;/code&gt; or &lt;code&gt;/http&lt;/code&gt; (default) type for the port. Using &lt;code&gt;/http&lt;/code&gt; allows Vamp to record more relevant metrics like response times and metrics.&lt;/p&gt;
+
+&lt;p&gt;Read more about &lt;a href=&#34;./documentation/using-vamp/gateways/&#34;&gt;gateways&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;Note!&lt;/p&gt;
+  &lt;p&gt;gateways are optional. You can just deploy services and have a home grown method to connect them to some stable, exposable endpoint.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;clusters-and-services&#34;&gt;Clusters and services&lt;/h2&gt;
+
+&lt;p&gt;In essence, blueprints define a collection of clusters.
+A cluster is a group of different services, which will appear as a single service and serve a single purpose.&lt;/p&gt;
+
+&lt;p&gt;Common use cases would be service A and B in an A/B testing scenario - usually just different
+versions of the same service (e.g. canary release or blue/green deployment).&lt;/p&gt;
+
+&lt;p&gt;Clusters are configured by defining an array of services. A cluster can be given an arbitrary name. Services are just lists or arrays of breeds.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+my_cool_cluster
+  services
+   - breed: 
+      ref: my_cool_service_A      # reference to an existing breed
+   -
+     breed:                       # shortened inline breed
+       name: my_cool_service_B
+       deployable: some_container
+       ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Clusters and services are just organisational items. Vamp uses them to order, reference and control the actual containers and gateways and traffic.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;This all seems redundant, right?&lt;/strong&gt; We have a reference chain of blueprints -&amp;gt; gateways -&amp;gt; clusters -&amp;gt; services -&amp;gt; breeds -&amp;gt; deployable. However, you need this level of control and granularity in any serious environment where DRY principles are taken seriously and where &amp;ldquo;one size fits all&amp;rdquo; doesn&amp;rsquo;t fly.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;dialects&#34;&gt;Dialects&lt;/h2&gt;
+
+&lt;p&gt;Vamp allows you to use container driver specific tags inside blueprints. We call this a “dialect”.  Dialects effectively enable you to make full use of, for instance, the underlying features like mounting disks, settings commands and providing access to private Docker registries.&lt;/p&gt;
+
+&lt;p&gt;We currently support the following dialects:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker:&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;marathon:&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;docker-dialect&#34;&gt;Docker dialect&lt;/h3&gt;
+
+&lt;p&gt;The following example show how you can mount a volume to a Docker container using the Docker dialect.&lt;/p&gt;
+
+&lt;h4 id=&#34;example-blueprint-using-the-docker-dialect&#34;&gt;Example blueprint - using the Docker dialect&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+name: busybox
+clusters:
+  busyboxes:
+    services:
+      breed:
+        name: busybox-breed
+        deployable: busybox:latest
+      docker:
+        Volumes:
+          &amp;quot;/tmp&amp;quot;: ~
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vamp will translate this into the proper API call. Inspecting the container after it&amp;rsquo;s deployed should show something similar to this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;...
+&amp;quot;Volumes&amp;quot;: {
+      &amp;quot;/tmp&amp;quot;: &amp;quot;/mnt/sda1/var/lib/docker/volumes/1a3923fa6108cc3e19a7fe0eeaa2a6c0454688ca6165d1919bf647f5f370d4d5/_data&amp;quot;
+  },
+...    
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;marathon-dialect&#34;&gt;Marathon dialect&lt;/h3&gt;
+
+&lt;p&gt;This is an example with Marathon that pulls an image from private repo, mounts some volumes, sets some labels and gets run with an ad hoc command: all taken care of by Marathon.&lt;/p&gt;
+
+&lt;p&gt;We can provide the &lt;code&gt;marathon:&lt;/code&gt; tag either on the service level, or the cluster level. Any &lt;code&gt;marathon:&lt;/code&gt; tag set on the service level will override the cluster level as it is more specific. However, in 9 out of 10 cases the cluster level makes the most sense. Later, you can also mix dialects so you can prep your blueprint for multiple environments and run times within one description.&lt;/p&gt;
+
+&lt;h4 id=&#34;example-blueprint-using-the-marathon-dialect&#34;&gt;example blueprint - using the Marathon dialect&lt;/h4&gt;
+
+&lt;p&gt;Notice the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Under the &lt;code&gt;marathon:&lt;/code&gt; tag, we provide the command to run in the container by setting the &lt;code&gt;cmd:&lt;/code&gt; tag.&lt;/li&gt;
+&lt;li&gt;We provide a url to some credentials file in the &lt;code&gt;uri&lt;/code&gt; array. As described in the Marathon docs (&lt;a href=&#34;https://mesosphere.github.io/marathon/docs/native-docker.html#using-a-private-docker-repository&#34;&gt;mesosphere.github.io/marathon - using a private Docker repository&lt;/a&gt;) this enables Mesos
+to pull from a private registry, in this case registry.example.com where these credentials are set up.&lt;/li&gt;
+&lt;li&gt;We set some labels with some arbitrary metadata.&lt;/li&gt;
+&lt;li&gt;We mount the &lt;code&gt;/tmp&lt;/code&gt; to in Read/Write mode.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+name: busy-top:1.0
+clusters:
+  busyboxes:
+    services:
+      breed:
+        name: busybox
+        deployable: registry.example.com/busybox:latest
+      marathon:
+       cmd: &amp;quot;top&amp;quot;
+       uris:
+         -
+           &amp;quot;https://some_host/some_path/some_file_with_docker_credentials&amp;quot;
+       labels:
+         environment: &amp;quot;staging&amp;quot;
+         owner: &amp;quot;buffy the vamp slayer&amp;quot;
+       container:
+         volumes:
+           -
+             containerPath: &amp;quot;/tmp/&amp;quot;
+             hostPath: &amp;quot;/tmp/&amp;quot;
+             mode: &amp;quot;RW&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;scale&#34;&gt;Scale&lt;/h2&gt;
+
+&lt;p&gt;Scale is the &amp;ldquo;size&amp;rdquo; of a deployed service. Usually that means the number of instances (servers) and allocated CPU and memory.&lt;/p&gt;
+
+&lt;p&gt;Scales can be defined inline in a blueprint or they can defined separately and given a unique name. The following example is a scale named &amp;ldquo;small&amp;rdquo;. &lt;code&gt;POST&lt;/code&gt;-ing this scale to the &lt;code&gt;/scales&lt;/code&gt; REST API endpoint will store it under that name so it can be referenced from other blueprints.&lt;/p&gt;
+
+&lt;h4 id=&#34;example-scale&#34;&gt;Example scale&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+name: small   # Custom name.
+
+cpu: 2        # Number of CPUs per instance.
+memory: 2gb   # Memory per instance, MB/GB units.
+instances: 2  # Number of instances.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;What next?&lt;/p&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;Read about &lt;a href=&#34;./documentation/using-vamp/deployments/&#34;&gt;Vamp deployments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Check the &lt;a href=&#34;./documentation/api/api-reference&#34;&gt;API documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/installation/hello-world&#34;&gt;Try Vamp&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Breeds</title>
+      <link>/documentation/using-vamp/breeds/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>/documentation/using-vamp/breeds/</guid>
+      <description>
+
+&lt;p&gt;Breeds are static descriptions of applications and services available for deployment. Each breed is described by the DSL in YAML notation or JSON, whatever you like. This description includes name, version, available parameters, dependencies etc.
+To a certain degree, you could compare a breed to a Maven artifact or a Ruby Gem description.&lt;/p&gt;
+
+&lt;p&gt;Breeds allow you to set the following properties:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/using-vamp/breeds/#deployable&#34;&gt;Deployable&lt;/a&gt;: the name of actual container or command that should be run.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/using-vamp/breeds/#ports&#34;&gt;Ports&lt;/a&gt;: a map of ports your container exposes.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/using-vamp/environment-variables/&#34;&gt;Environment variables&lt;/a&gt;: a list of variables (interpolated or not) to be made available at runtime.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/using-vamp/environment-variables/#dependencies&#34;&gt;Dependencies&lt;/a&gt;: a list of other breeds this breed depends on.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;deployable&#34;&gt;Deployable&lt;/h2&gt;
+
+&lt;p&gt;Deployables are pointers to the actual artifacts that get deployed. Vamp supports Docker containers or can support any other artifacts supported by your container manager.&lt;/p&gt;
+
+&lt;h4 id=&#34;example-breed-deploy-a-docker-container&#34;&gt;Example breed - deploy a Docker container&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+name: my_breed:0.1
+deployable: company/my_frontend_service:0.1
+
+ports:
+  web: 8080/http   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This breed, with a unique name, describes a deployable and the port it works on.&lt;/p&gt;
+
+&lt;h3 id=&#34;docker-deployables&#34;&gt;Docker deployables&lt;/h3&gt;
+
+&lt;p&gt;By default, the deployable is a Docker container.
+We could also make this explicit by setting type to &lt;code&gt;docker&lt;/code&gt;. The following statements are equivalent:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+deployable: company/my_frontend_service:0.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+deployable: 
+  type: docker
+  definition: company/my_frontend_service:0.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This shows the full (expanded) deployable with &lt;code&gt;type&lt;/code&gt; and &lt;code&gt;definition&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Docker images are pulled by your container manager from any of the repositories configured. By default that would be the public Docker hub, but it could also be a private repo.&lt;/p&gt;
+
+&lt;h3 id=&#34;other-deployables&#34;&gt;Other deployables&lt;/h3&gt;
+
+&lt;p&gt;Running &amp;ldquo;other&amp;rdquo; artifacts such as zips or jars heavily depends on the underlying container manager.
+When Vamp is set up to run with Marathon (&lt;a href=&#34;https://mesosphere.github.io/marathon/&#34;&gt;mesosphere.github.io - Marathon&lt;/a&gt;), &lt;code&gt;command&lt;/code&gt; (or &lt;code&gt;cmd&lt;/code&gt;) deployable types can be used.
+In that case cmd (&lt;a href=&#34;https://mesosphere.github.io/marathon/docs/rest-api.html#post-v2-apps&#34;&gt;Marathon REST API - post v2/apps&lt;/a&gt;) parameter will have value of deployable.&lt;/p&gt;
+
+&lt;h4 id=&#34;example-breed-run-a-custom-jar-after-it-has-been-downloaded&#34;&gt;Example breed - run a custom jar after it has been downloaded&lt;/h4&gt;
+
+&lt;p&gt;Combining this definition and the Vamp Marathon dialect  &lt;code&gt;uris&lt;/code&gt; parameter allows the requested jar to be downloaded from a remote location (&lt;a href=&#34;https://mesosphere.github.io/marathon/docs/rest-api.html#uris-array-of-strings&#34;&gt;Marathon REST API - uris Array of Strings&lt;/a&gt;).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+name: location
+clusters:
+  api:
+    services:
+      breed:
+        name: location
+        deployable: 
+          type: cmd
+          definition: java -jar location.jar
+      marathon:
+        uris: [&amp;quot;https://my_repo_location_jar&amp;quot;]
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;javascript-deployables&#34;&gt;JavaScript deployables&lt;/h3&gt;
+
+&lt;p&gt;Breeds can have type &lt;code&gt;application/javascript&lt;/code&gt; and definition should be a JavaScript script:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+name: hello-world
+deployable:
+  type: application/javascript
+  definition: |
+    console.log(&#39;Hello World Vamp!&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It is possible to create or update breeds with the API request &lt;code&gt;POST|PUT /api/v1/breeds/{name}&lt;/code&gt;, Javascript script as body and header &lt;code&gt;Content-Type: application/javascript&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;ports&#34;&gt;Ports&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code&gt;ports&lt;/code&gt; property is an array of named ports together with their protocol. It describes on what ports the deployables is offering services to the outside world. Let&amp;rsquo;s look at the following breed:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+name: my_breed:0.1
+deployable: company/my_frontend_service:0.1
+
+ports:
+  web: 8080/http
+  admin: 8081/http
+  redis: 9023/tcp   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ports come in two flavors:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/http&lt;/code&gt; HTTP ports are the default type if none is specified. They are always recommended when dealing with HTTP-based services. Vamp can record a lot of interesting metrics like response times, errors etc. Of course, using &lt;code&gt;/tcp&lt;/code&gt; will work but you miss out on cool data.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/tcp&lt;/code&gt; Use TCP ports for things like Redis, MySQL etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;Note!&lt;/p&gt;
+  &lt;p&gt;&lt;code&gt;/http&lt;/code&gt; notation for ports is required for use of filters.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Notice we can give the ports sensible names. This specific deployable has &lt;code&gt;web&lt;/code&gt; port for customer traffic, an &lt;code&gt;admin&lt;/code&gt; port for admin access and a &lt;code&gt;redis&lt;/code&gt; port for some caching probably. These names come in handy when we later compose different breeds in blueprints.&lt;/p&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;What next?&lt;/p&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;Read about &lt;a href=&#34;./documentation/using-vamp/blueprints/&#34;&gt;Vamp blueprints&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Check the &lt;a href=&#34;./documentation/api/api-reference&#34;&gt;API documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/installation/hello-world&#34;&gt;Try Vamp&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>CLI reference</title>
+      <link>/documentation/cli/cli-reference/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>/documentation/cli/cli-reference/</guid>
+      <description>
+
+&lt;p&gt;The VAMP CLI supports the following commands:&lt;br /&gt;
+&lt;a href=&#34;./documentation/cli/cli-reference/#create&#34;&gt;create&lt;/a&gt;, &lt;a href=&#34;./documentation/cli/cli-reference/#deploy&#34;&gt;deploy&lt;/a&gt;, &lt;a href=&#34;./documentation/cli/cli-reference/#generate&#34;&gt;generate&lt;/a&gt;, &lt;a href=&#34;./documentation/cli/cli-reference/#help&#34;&gt;help&lt;/a&gt;, &lt;a href=&#34;./documentation/cli/cli-reference/#info&#34;&gt;info&lt;/a&gt;, &lt;a href=&#34;./documentation/cli/cli-reference/#inspect&#34;&gt;inspect&lt;/a&gt;, &lt;a href=&#34;./documentation/cli/cli-reference/#list&#34;&gt;list&lt;/a&gt;, &lt;a href=&#34;./documentation/cli/cli-reference/#merge&#34;&gt;merge&lt;/a&gt;, &lt;a href=&#34;./documentation/cli/cli-reference/#remove&#34;&gt;remove&lt;/a&gt;, &lt;a href=&#34;./documentation/cli/cli-reference/#undeploy&#34;&gt;undeploy&lt;/a&gt;, &lt;a href=&#34;./documentation/cli/cli-reference/#update&#34;&gt;update&lt;/a&gt;, &lt;a href=&#34;./documentation/cli/cli-reference/#version&#34;&gt;version&lt;/a&gt;&lt;br /&gt;
+See &lt;a href=&#34;./documentation/cli/using-the-cli&#34;&gt;using the Vamp CLI&lt;/a&gt; for details on installation, configuration and effective use of the CLI&lt;/p&gt;
+
+&lt;p&gt;For details about a specific command, use &lt;code&gt;vamp COMMAND --help&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;create&#34;&gt;Create&lt;/h2&gt;
+
+&lt;p&gt;Create an artifact read from the specified filename or read from stdin.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vamp create blueprint|breed|deployment|escalation|condition|scale|sla [--file|--stdin]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Parameter&lt;/th&gt;
+&lt;th&gt;purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Name of the yaml file [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--stdin&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Read file from stdin [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;example&#34;&gt;Example&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; vamp create scale --file my_scale.yaml
+name: my_scale
+cpu: 2.0
+memory: 2GB
+instances: 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;deploy&#34;&gt;Deploy&lt;/h2&gt;
+
+&lt;p&gt;Deploys a blueprint&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vamp deploy NAME --deployment [--file|--stdin]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Parameter&lt;/th&gt;
+&lt;th&gt;purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Name of the yaml file [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--stdin&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Read file from stdin [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--deployment&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Name of the deployment to update [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;example-1&#34;&gt;Example&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; vamp deploy --deployment 1111-2222-3333-4444 --file my_new_blueprint.yaml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;generate&#34;&gt;Generate&lt;/h2&gt;
+
+&lt;p&gt;Generates an artifact&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vamp generate breed|blueprint|condition|scale [NAME] [--file|--stdin]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Parameter&lt;/th&gt;
+&lt;th&gt;purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Name of the yaml file to preload the generation [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--stdin&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Read file from stdin [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;generate-breed&#34;&gt;generate breed&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Parameter&lt;/th&gt;
+&lt;th&gt;purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--deployable&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Deployable specification [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;example-2&#34;&gt;Example&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; vamp generate breed my_new_breed --json
+{
+  &amp;quot;name&amp;quot;:&amp;quot;my_new_breed&amp;quot;,
+  &amp;quot;deployable&amp;quot;:&amp;quot;docker://&amp;quot;,
+  &amp;quot;ports&amp;quot;:{
+    
+  },
+  &amp;quot;environment_variables&amp;quot;:{
+    
+  },
+  &amp;quot;constants&amp;quot;:{
+    
+  },
+  &amp;quot;dependencies&amp;quot;:{
+    
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;generate-blueprint&#34;&gt;generate blueprint&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Parameter&lt;/th&gt;
+&lt;th&gt;purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--cluster&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Name of the cluster&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--breed&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Name of the breed   [Optional, requires &amp;ndash;cluster]&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--scale&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Name of the scale   [Optional, requires &amp;ndash;breed]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;help&#34;&gt;Help&lt;/h2&gt;
+
+&lt;p&gt;Displays the Vamp help message&lt;/p&gt;
+
+&lt;h4 id=&#34;example-3&#34;&gt;Example&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; vamp help
+Usage: vamp COMMAND [args..]
+
+Commands:
+  create              Create an artifact
+  deploy              Deploys a blueprint
+  help                This message
+  generate            Generates an artifact
+  info                Information from Vamp
+  inspect             Shows the details of the specified artifact
+  list                Shows a list of artifacts
+  merge               Merge a blueprint with an existing deployment or blueprint
+  remove              Removes an artifact
+  undeploy            Removes (part of) a deployment
+  update              Update an artifact
+  version             Shows the version of the VAMP CLI client
+  
+Run vamp COMMMAND --help  for additional help about the different command options
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;info&#34;&gt;Info&lt;/h2&gt;
+
+&lt;p&gt;Displays the Vamp Info message&lt;/p&gt;
+
+&lt;h4 id=&#34;example-4&#34;&gt;Example&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; vamp info
+message: Hi, I&#39;m Vamp! How are you?
+jvm:
+  operating_system:
+    name: Mac OS X
+    architecture: x86_64
+    version: 10.9.5
+    available_processors: 8.0
+    system_load_average: 4.8095703125
+  runtime:
+    process: 12871@MacMatthijs-4.local
+    virtual_machine_name: Java HotSpot(TM) 64-Bit Server VM
+    virtual_machine_vendor: Oracle Corporation
+    virtual_machine_version: 25.31-b07
+    start_time: 1433415167162
+    up_time: 1305115
+...    
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;inspect&#34;&gt;Inspect&lt;/h2&gt;
+
+&lt;p&gt;Shows the details of the specified artifact&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vamp inspect blueprint|breed|deployment|escalation|condition|scale|sla NAME --json
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Parameter&lt;/th&gt;
+&lt;th&gt;purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--as_blueprint&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Returns a blueprint (only for inspect deployment) [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--json&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Output Json instead of Yaml [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;example-5&#34;&gt;Example&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; vamp inspect breed sava:1.0.0
+name: sava:1.0.0
+deployable: magneticio/sava:1.0.0
+ports:
+  port: 80/http
+environment_variables: {}
+constants: {}
+dependencies: {}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;list&#34;&gt;List&lt;/h2&gt;
+
+&lt;p&gt;Shows a list of artifacts&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vamp list blueprints|breeds|deployments|escalations|conditions|gateways|scales|slas
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;example-6&#34;&gt;Example&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; vamp list deployments
+NAME                                    CLUSTERS
+80b310eb-027e-44e8-b170-5bf004119ef4    sava
+06e4ace5-41ce-46d7-b32d-01ee2c48f436    sava
+a1e2a68b-295f-4c9b-bec5-64158d84cd00    sava, backend1, backend2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;merge&#34;&gt;Merge&lt;/h2&gt;
+
+&lt;p&gt;Merges a blueprint with an existing deployment or blueprint.
+Either specify a deployment or blueprint in which the blueprint should be merged
+The blueprint can be specified by NAME, read from the specified filename or read from stdin.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;vamp merge --deployment|--blueprint [NAME] [--file|--stdin]&lt;/code&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Parameter&lt;/th&gt;
+&lt;th&gt;purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Name of the yaml file [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--stdin&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Read file from stdin [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;example-7&#34;&gt;Example&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vamp merge --blueprint my_existing_blueprint -- file add_this_blueprint.yaml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;remove&#34;&gt;Remove&lt;/h2&gt;
+
+&lt;p&gt;Removes artifact&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;vamp remove blueprint|breed|escalation|condition|scale|sla NAME&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;example-8&#34;&gt;Example&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; vamp remove scale my_scale
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;undeploy&#34;&gt;Undeploy&lt;/h2&gt;
+
+&lt;p&gt;Removes (part of) a deployment.
+By only specifying the name, the whole deployment will be removed. To remove part of a deployment, specify a blueprint. The contents of the blueprint will be subtracted from the active deployment.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;vamp undeploy NAME [--blueprint|--file|--stdin]&lt;/code&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Parameter&lt;/th&gt;
+&lt;th&gt;purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--blueprint&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Name of the stored blueprint to subtract from the deployment&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Name of the yaml file [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--stdin&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Read file from stdin [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;example-9&#34;&gt;Example&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; vamp undeploy 9ec50a2a-33d7-4dd3-a027-9eeaeaf925c1 --blueprint sava:1.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;update&#34;&gt;Update&lt;/h2&gt;
+
+&lt;p&gt;Updates an existing artifact read from the specified filename or read from stdin.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;vamp update blueprint|breed|deployment|escalation|condition|scale|sla NAME [--file] [--stdin]&lt;/code&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Parameter&lt;/th&gt;
+&lt;th&gt;purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Name of the yaml file [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--stdin&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Read file from stdin [Optional]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;version&#34;&gt;Version&lt;/h2&gt;
+
+&lt;p&gt;Displays the Vamp CLI version information&lt;/p&gt;
+
+&lt;h4 id=&#34;example-10&#34;&gt;Example&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; vamp version
+CLI version: 0.7.9
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;see-also&#34;&gt;See also&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/cli/using-the-cli/&#34;&gt;Using the Vamp CLI&lt;/a&gt; - installation, configuration and effective use of the CLI&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Conditions</title>
+      <link>/documentation/using-vamp/conditions/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>/documentation/using-vamp/conditions/</guid>
+      <description>
+
+&lt;p&gt;Conditions are used by gateways to filter incoming traffic for routing between services in a cluster.
+Read more about &lt;a href=&#34;./documentation/using-vamp/gateways/#gateway-usage&#34;&gt;gateway usage&lt;/a&gt;. You can define conditions inline in a blueprint or store them separately under a unique name on the &lt;code&gt;/conditions&lt;/code&gt; endpoint and just use that name to reference them from a blueprint.&lt;/p&gt;
+
+&lt;h4 id=&#34;example-simple-inline-condition&#34;&gt;Example - simple inline condition&lt;/h4&gt;
+
+&lt;p&gt;This would be used directly inside a blueprint.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+condition_strength: 10%  # Amount of traffic for this service in percents.
+condition: User-Agent = IOS
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;create-a-condition&#34;&gt;Create a condition&lt;/h2&gt;
+
+&lt;p&gt;Creating conditions is quite easy. Checking Headers, Cookies, Hosts etc. is all possible.
+Under the hood, Vamp uses Haproxy&amp;rsquo;s ACL&amp;rsquo;s (&lt;a href=&#34;http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#7.1&#34;&gt;cbonte.github.io/haproxy-dconv - 7.1 ACL basics&lt;/a&gt;) and you can use the exact ACL definition right in the blueprint in the &lt;code&gt;condition&lt;/code&gt; field of a condition.&lt;/p&gt;
+
+&lt;p&gt;However, ACL&amp;rsquo;s can be somewhat opaque and cryptic. That&amp;rsquo;s why Vamp has a set of convenient &amp;ldquo;short codes&amp;rdquo;
+to address common use cases. Currently, we support the following:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;description&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;syntax&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;match user agent&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;user-agent ==&lt;/code&gt; &lt;em&gt;value&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;user-agent == Firefox&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;mismatch user agent&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;user-agent !=&lt;/code&gt; &lt;em&gt;value&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;user-agent != Firefox&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;match host&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;host ==&lt;/code&gt; &lt;em&gt;value&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;host == localhost&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;mismatch host&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;host !=&lt;/code&gt; &lt;em&gt;value&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;host != localhost&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;has cookie&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;has cookie&lt;/code&gt; &lt;em&gt;value&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;has cookie vamp&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;misses cookie&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;misses cookie&lt;/code&gt; &lt;em&gt;value&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;misses cookie vamp&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;has header&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;has header&lt;/code&gt; &lt;em&gt;value&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;has header ETag&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;misses header&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;misses header&lt;/code&gt; &lt;em&gt;value&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;misses header ETag&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;match cookie value&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;cookie&lt;/code&gt; &lt;em&gt;name&lt;/em&gt; &lt;code&gt;has&lt;/code&gt; &lt;em&gt;value&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;cookie vamp has 12345&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;mismatch cookie value&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;cookie&lt;/code&gt; &lt;em&gt;name&lt;/em&gt; &lt;code&gt;misses&lt;/code&gt; &lt;em&gt;value&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;cookie vamp misses 12345&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;header has value&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;header&lt;/code&gt; &lt;em&gt;name&lt;/em&gt; &lt;code&gt;has&lt;/code&gt; &lt;em&gt;value&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;header vamp has 12345&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;header misses value&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;header&lt;/code&gt; &lt;em&gt;name&lt;/em&gt; &lt;code&gt;misses&lt;/code&gt; &lt;em&gt;value&lt;/em&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;header vamp misses 12345&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Additional syntax examples: &lt;a href=&#34;https://github.com/magneticio/vamp/blob/master/model/src/test/scala/io/vamp/model/parser/ConditionDefinitionParserSpec.scala&#34;&gt;github.com/magneticio/vamp - ConditionDefinitionParserSpec.scala&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Vamp is also quite flexible when it comes to the exact syntax. This means the following are all equivalent:&lt;/p&gt;
+
+&lt;p&gt;In order to specify plain HAProxy ACL, ACL needs to be between &lt;code&gt;{ }&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;condition: &amp;quot;&amp;lt; hdr_sub(user-agent) Chrome &amp;gt;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Having multiple conditions in a condition is perfectly possible. For example, the following condition would first check whether the string &amp;ldquo;Chrome&amp;rdquo; exists in the User-Agent header of a
+request and then it would check whether the request has the header
+&amp;ldquo;X-VAMP-MY-COOL-HEADER&amp;rdquo;. So any request matching both conditions would go to this service.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+gateways:
+  weight: 100%
+  condition: &amp;quot;User-Agent = Chrome AND Has Header X-VAMP-MY-COOL-HEADER&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Using a tool like httpie (&lt;a href=&#34;https://github.com/jakubroztocil/httpie&#34;&gt;github.com/jkbrzt/httpie&lt;/a&gt;) makes testing this a breeze.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http GET http://10.26.184.254:9050/ X-VAMP-MY-COOL-HEADER:stuff
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;boolean-expression-in-conditions&#34;&gt;Boolean expression in conditions&lt;/h3&gt;
+
+&lt;p&gt;Vamp supports &lt;code&gt;AND&lt;/code&gt;, &lt;code&gt;OR&lt;/code&gt;, negation &lt;code&gt;NOT&lt;/code&gt; and grouping &lt;code&gt;( )&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;---
+gateways:
+  weight: 100%
+  condition: (User-Agent = Chrome OR User-Agent = Firefox) AND has cookie vamp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Additional boolean expression examples: &lt;a href=&#34;https://github.com/magneticio/vamp/blob/master/model/src/test/scala/io/vamp/model/parser/BooleanParserSpec.scala&#34;&gt;github.com/magneticio/vamp - BooleanParserSpec.scala&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+  &lt;p class=&#34;admonition-title&#34;&gt;What next?&lt;/p&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;Read about &lt;a href=&#34;./documentation/using-vamp/events/&#34;&gt;Vamp events&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Check the &lt;a href=&#34;./documentation/api/api-reference&#34;&gt;API documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./documentation/installation/hello-world&#34;&gt;Try Vamp&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

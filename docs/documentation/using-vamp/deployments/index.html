@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+
+
+
+ <html class="no-js"> 
+<head>
+
+<script type="text/javascript">
+theBaseUrl = "http://vamp.io/";
+</script>
+<base href="http://vamp.io/" />
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+  <title>Deployments - Vamp</title>
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="description" content="Vamp - Deploy and manage microservices with power and ease.">
+  
+  <link rel="canonical" href="./documentation/using-vamp/deployments/">
+  
+  <meta name="author" content="magnetic.io">
+  
+
+  <meta property="og:url" content="/documentation/using-vamp/deployments/">
+  <meta property="og:title" content="Vamp">
+  <meta property="og:image" content="/images/logo.svg">
+  <meta name="apple-mobile-web-app-title" content="Vamp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="shortcut icon" type="image/x-icon" href="./images/logo.svg">
+  <link rel="icon" type="image/x-icon" href="./images/logo.svg">
+
+
+  <style>
+    @font-face {
+      font-family: 'Icon';
+      src: url('fonts/icon.eot?52m981');
+      src: url('fonts/icon.eot?#iefix52m981')
+      format('embedded-opentype'),
+      url('fonts/icon.woff?52m981')
+      format('woff'),
+      url('fonts/icon.ttf?52m981')
+      format('truetype'),
+      url('fonts/icon.svg?52m981#icon')
+      format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/vendor.js"></script>
+
+  <script src="js/app.js"></script>
+
+  
+</head>
+<body class="palette-primary-pink palette-accent-pink">
+
+
+<div class="single-page">
+  <nav aria-label="Header" id="header" class="top-menu">
+  <div class="left">
+    <a href="./">
+      <div id="logo" class="logo"></div>
+    </a>
+  </div>
+
+  <div class="right">
+    <div class="top-menu-items" id="top-menu-items">
+
+    </div>
+
+    <div class="download">
+      <a href="./documentation/installation/hello-world/" class="button button--red">
+        Try Vamp
+      </a>
+    </div>
+
+    <a href="https://github.com/magneticio/vamp" target="_blank" class="github-logo">
+      <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+    </a>
+
+    <div class="search-button">
+      <i class="fa fa-lg fa-search"></i>
+    </div>
+
+  </div>
+</nav>
+
+<ul id="mobile-menu" style="display: none">
+</ul>
+
+<div id="search">
+  <div class="search-bar">
+    <div class="search-bar__back">
+      <i class="fa fa-lg fa-times"></i>
+    </div>
+    <input class="search-bar__input" placeholder="Type your search here...">
+  </div>
+  <div class="search-results">
+    <ul></ul>
+  </div>
+</div>
+
+
+</div>
+
+<div class="page documentation">
+    <div class="menu" id="side-menu">
+    </div>
+    <div class="content">
+      <h1 class="content-header">Deployments </h1>
+      <div class="markdowned">
+        
+
+<p>A deployment is a &ldquo;running&rdquo; blueprint. Over time, new blueprints can be merged with existing deployments or parts of the running blueprint can be removed from it. Each deployment can be exported as a blueprint and
+copy / pasted to another environment, or even to the same environment to function as a clone.</p>
+
+<h2 id="create-a-deployment">Create a deployment</h2>
+
+<p>You can create a deployment in the following ways:</p>
+
+<ul>
+<li>Send a <code>POST</code> request to the <code>/deployments</code> endpoint.</li>
+<li>Use the UI to deploy a blueprint using the &ldquo;deploy&rdquo; button on the &ldquo;blueprints&rdquo; tab.</li>
+<li>Use the CLI <code>vamp deploy</code> command<br />
+<code>$ vamp deploy my_blueprint</code>.</li>
+</ul>
+
+<p>The name of the deployment will be automatically assigned as a UUID (e.g. <code>123e4567-e89b-12d3-a456-426655440000</code>).</p>
+
+<h2 id="vamp-deployment-process">Vamp deployment process</h2>
+
+<p>Once we have issued the deployment, Vamp will do the following:</p>
+
+<ol>
+<li>Update Vamps internal model.</li>
+<li>Issue and monitor deployment commands to the container platform.</li>
+<li>Update the ZooKeeper entry.</li>
+<li>Start collecting metrics.</li>
+<li>Monitor the container platform for changes.</li>
+</ol>
+
+<p>Vamp will add runtime information to the deployment model, like start times, resolved ports etc.</p>
+
+<h2 id="deployment-scenarios">Deployment scenarios</h2>
+
+<p>A common Vamp deployment scenario is to introduce a new version of the service to an existing cluster, this is what we call a <strong>merge</strong>. After testing/migration is done, the old or new version can be removed from the cluster, simply called a <strong>removal</strong>. Let&rsquo;s look at each in turn.</p>
+
+<h3 id="merge">Merge</h3>
+
+<p>Merging of new services is performed as a deployment update. You can merge in many ways:</p>
+
+<ul>
+<li>Send a <code>PUT</code> request to the <code>/deployments/{deployment_name}</code> endpoint.</li>
+<li>Use the UI to update a deployment using the &ldquo;Edit deployment&rdquo; button.</li>
+<li>Use the CLI with a combination of the <code>vamp merge</code> and <code>vamp deploy</code> commands.</li>
+</ul>
+
+<p>If a service already exists then only the gateways and scale will be updated. Otherwise a new service will be added. If a new cluster doesn&rsquo;t exist in the deployment, it will be added.</p>
+
+<p>Let&rsquo;s deploy a simple service:</p>
+
+<pre><code class="language-yaml">---
+name: monarch_1.0
+
+clusters:
+  monarch:
+    # Specifying only a reference to the breed.
+    breed: monarch_1.0   
+</code></pre>
+
+<p>After this point we may have another version ready for deployment and now instead of only one service, we have added another one:</p>
+
+<pre><code class="language-yaml">---
+name: monarch_1.1
+
+environment_variables:
+  # Some variable needed for our new recommendation engine,
+  # just as an example.
+  recommendation.route: &quot;/api/v1&quot;
+
+clusters:
+
+  monarch:
+    # Just a reference and this breed has one dependency:
+    # recommendation_1.0
+    breed: monarch_1.1
+
+  recommendation:
+    breed: recommendation_1.0
+ 
+</code></pre>
+
+<p>Now our deployment (in simplified blueprint format) looks like this:</p>
+
+<pre><code class="language-yaml">---
+name: monarch_1.0
+
+environment_variables:
+  recommendation.route: &quot;/api/v1&quot;
+
+clusters:
+
+  monarch:
+    services:
+      -  breed: monarch_1.0
+      -  breed: monarch_1.1
+          
+    gateways:
+      monarch_1.0:
+        weight: 100%
+      monarch_1.1:
+        weight: 0%
+
+  recommendation:
+    services:
+      - breed: recommendation_1.0
+    
+    gateways:
+      recommendation_1.0:
+        weight: 100%
+
+</code></pre>
+
+<p>Note that the route weight for monarch_1.1 is 0, i.e. no traffic is sent to it.
+Let&rsquo;s redirect some traffic to our new monarch_1.1 (e.g. 10%):</p>
+
+<pre><code class="language-yaml">---
+clusters:
+  monarch:
+    services:
+      - breed: monarch_1.0
+      - breed: monarch_1.1
+          
+    gateways:
+      monarch_1.0:
+        weight: 90%
+      monarch_1.1:
+        weight: 10%
+</code></pre>
+
+<p>Note that we can omit other fields like name, parameters and even other clusters (e.g. recommendation) if the change is not relevant to them. In this example we just wanted to update the weights.</p>
+
+<p>In the last few examples we have shown the following:</p>
+
+<ul>
+<li>A fresh new deployment.</li>
+<li>A canary release with a cluster update and change of the topology (a new cluster was added).</li>
+<li>An update of the gateways for a cluster - similar to a cluster scale update (instances, cpu, memory).</li>
+</ul>
+
+<h3 id="removal">Removal</h3>
+
+<p>Removal is done using the REST API <code>DELETE</code> request together with the new blueprint as request body.
+If a service exists it will be removed, otherwise the request is ignored. If a cluster has no more services left the cluster will be removed completely. Lastly, if a deployment has no more clusters it will be completely removed (destroyed).</p>
+
+<p>Let&rsquo;s use the example from the previous section. Notice the weight is evenly distributed (<sup>50</sup>&frasl;<sub>50</sub>).</p>
+
+<pre><code class="language-yaml">---
+name: monarch_1.0
+
+environment_variables:
+  recommendation.route: &quot;/api/v1&quot;
+
+clusters:
+
+  monarch:
+    services:
+      - breed: monarch_1.0
+      - breed: monarch_1.1
+          
+    gateways:
+      monarch_1.0:
+        weight: 50%
+      monarch_1.1:
+        weight: 50%
+
+  recommendation:
+    services:
+      - breed: recommendation_1.0
+    gateways:
+      recommendation_1.0:
+        weight: 100
+</code></pre>
+
+<p>If we are happy with the new monarch version 1.1, we can proceed with the removal of the old version.
+This change is applied on the running deployment. We send the following YAML as the body of the <code>DELETE</code> request
+to the <code>/deployments/&lt;deployment_UUID&gt;</code> endpoint.</p>
+
+<pre><code class="language-yaml">---
+name: monarch_1.0
+
+clusters:
+  monarch:
+    breed: monarch_1.0
+
+</code></pre>
+
+<p>Note that this is the same original blueprint we started with. What we are doing here is basically &ldquo;subtracting&rdquo; one blueprint from the other, although &ldquo;the other&rdquo; is a running deployment.
+After this operation our deployment is:</p>
+
+<pre><code class="language-yaml">---
+name: monarch_1.0
+
+environment_variables:
+  recommendation.route: &quot;/api/v1&quot;
+
+clusters:
+
+  monarch:
+    services:
+      breed: monarch_1.1
+    gateways:
+      monarch_1.1:
+        weight: 100%
+
+  recommendation:
+    services:
+      breed: recommendation_1.0
+    gateways:
+      recommendation_1.0:
+        weight: 100%
+
+</code></pre>
+
+<p>In a nutshell: If we say that the first version was A and the second B, then we just did the migration from A to B without downtime:
+* <strong>A</strong> -&gt; A + B -&gt; A + B - A -&gt; <strong>B</strong></p>
+
+<p>We could also remove the newer version (monarch_1.1 with/without recommendation cluster) in case that it didn&rsquo;t perform as we expected.</p>
+
+<div class="admonition note">
+  <p class="admonition-title">What next?</p>
+  <p><ul>
+<li>Read about <a href="./documentation/using-vamp/environment-variables/">Vamp environment variables</a></li>
+<li>Check the <a href="./documentation/api/api-reference">API documentation</a></li>
+<li><a href="./documentation/installation/hello-world">Try Vamp</a></li>
+</ul>
+</p>
+</div>
+
+      </div>
+    </div>
+</div>
+
+<div class="lander-row lander-row--blue footer">
+  <div class="container">
+    <div class="row">
+      <div class="col col-3">
+        <h2 class="h2">Learn more</h2>
+        <a href="./why-use-vamp/">
+          <p class="text">Why use Vamp?</p>
+        </a>
+        <a href="./documentation/how-vamp-works/architecture-and-components">
+          <p class="text">Documentation</p>
+        </a>
+        <a href="./about/">
+          <p class="text">About us</p>
+        </a>
+        <a href="./resources/news/">
+          <p class="text">News</p>
+        </a>
+        <a href="./contact/">
+          <p class="text">Contact</p>
+        </a>
+      </div>
+        <div class="col col-6">
+        <h2 class="h2">All things code</h2>
+          <a href="./support/">
+            <p class="text">Support</p>
+          </a>
+          <a href="./resources/community/">
+            <p class="text">Community</p>
+          </a>
+          <a href="https://github.com/magneticio/vamp" target="_blank">
+            <p class="text">GitHub</p>
+          </a>
+          <a href="https://gitter.im/magneticio/vamp" target="_blank">
+            <p class="text">Gitter</p>
+          </a>
+      </div>
+      <div class="col col-6">
+        <h2 class="h2">Stay up to date</h2>
+        <p class="text">
+          Leave your email for the latest news: We won’t spam you and won’t go off topic.
+        </p>
+
+        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate="">
+          <div class="input-group">
+            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email">
+            <a onclick="$(this).closest('form').submit()" class="button button--red not-active">
+              <div class="button__icon button__icon--mail">
+              </div>
+            </a>
+          </div>
+        </form>
+
+        
+          
+        
+
+
+        <div class="social-buttons">
+          <p class="text">Follow us on: </p>
+          <a href="https://twitter.com/vamp_io" target="_blank">
+            <i class="fa fa-2x fa-twitter"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/company/magnetic-io" target="_blank">
+            <i class="fa fa-2x fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom lander-row--blue">
+  <div class="container">
+    <div class="part">
+      <a href="./about/"><img class="magnetic-logo" src="./img/005-vamp/Logo/magnetic-logo-footer.svg" alt=""></a>
+    </div>
+    <div class="part">
+      <img class="vamp-bat" src="./img/003-Small-icons/Medium-blue/VAMP-Medium.svg" alt="">
+      <p class="text">Code licensed under <a type="application/rss+xml" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2</a> © 2016 <a href="./about/">Magnetic.io</a></p>
+    </div>
+  </div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59948816-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+

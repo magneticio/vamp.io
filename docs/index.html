@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+
+
+
+ <html class="no-js"> 
+<head>
+
+<script type="text/javascript">
+theBaseUrl = "http://vamp.io/";
+</script>
+<base href="http://vamp.io/" />
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+  <title>Vamp</title>
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="description" content="Vamp - Deploy and manage microservices with power and ease.">
+  
+  <link rel="canonical" href="./">
+  
+  <meta name="author" content="magnetic.io">
+  
+
+  <meta property="og:url" content="./">
+  <meta property="og:title" content="Vamp">
+  <meta property="og:image" content="/images/logo.svg">
+  <meta name="apple-mobile-web-app-title" content="Vamp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="shortcut icon" type="image/x-icon" href="./images/logo.svg">
+  <link rel="icon" type="image/x-icon" href="./images/logo.svg">
+
+
+  <style>
+    @font-face {
+      font-family: 'Icon';
+      src: url('fonts/icon.eot?52m981');
+      src: url('fonts/icon.eot?#iefix52m981')
+      format('embedded-opentype'),
+      url('fonts/icon.woff?52m981')
+      format('woff'),
+      url('fonts/icon.ttf?52m981')
+      format('truetype'),
+      url('fonts/icon.svg?52m981#icon')
+      format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/vendor.js"></script>
+
+  <script src="js/app.js"></script>
+
+  
+  <link href="index.xml" rel="alternate" type="application/rss+xml" title="Vamp" />
+  <link href="index.xml" rel="feed" type="application/rss+xml" title="Vamp" />
+  
+</head>
+<body class="palette-primary-pink palette-accent-pink">
+
+
+<div>
+  <nav aria-label="Header" id="header" class="top-menu">
+  <div class="left">
+    <a href="./">
+      <div id="logo" class="logo"></div>
+    </a>
+  </div>
+
+  <div class="right">
+    <div class="top-menu-items" id="top-menu-items">
+
+    </div>
+
+    <div class="download">
+      <a href="./documentation/installation/hello-world/" class="button button--red">
+        Try Vamp
+      </a>
+    </div>
+
+    <a href="https://github.com/magneticio/vamp" target="_blank" class="github-logo">
+      <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+    </a>
+
+    <div class="search-button">
+      <i class="fa fa-lg fa-search"></i>
+    </div>
+
+  </div>
+</nav>
+
+<ul id="mobile-menu" style="display: none">
+</ul>
+
+<div id="search">
+  <div class="search-bar">
+    <div class="search-bar__back">
+      <i class="fa fa-lg fa-times"></i>
+    </div>
+    <input class="search-bar__input" placeholder="Type your search here...">
+  </div>
+  <div class="search-results">
+    <ul></ul>
+  </div>
+</div>
+
+
+</div>
+
+
+<div class="page">
+  <div class="lander-row lander-row--blue hero-space">
+    <div class="container">
+
+      <div class="row">
+        <div class="col">
+          <h1 class="header center">
+            Canary releasing and autoscaling for microservice systems
+          </h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col center">
+          <div class="hero-space-buttons">
+            <a href="./documentation/installation/hello-world" class="button button--red">
+                Try Vamp
+            </a>
+
+            <p class="text dark-it-up">or</p>
+
+            <a href="./why-use-vamp" class="button button--grey">
+                Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col center">
+        <a href="./documentation/installation/hello-world"><img class="laptop" src="img/006-mock-ups/VAMP-laptop.png" alt=""></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bottom-background">
+      <div class="left-pixels">
+        <img src="img/herospace/pixels-header-left.gif" alt="">
+      </div>
+      <div class="right-pixels">
+        <img src="img/herospace/pixels-header-right.gif" alt="">
+      </div>
+    </div>
+  </div>
+
+  
+  <div id="about-vamp-row" class="lander-row lander-row--white">
+    <div class="container">
+      <div class="row">
+        <div class="col center">
+          <a href="documentation/tutorials/run-a-canary-release/" class="image--smaller"><img src="img/001-Big-icons/illustration-01.svg" alt="Easy canary releasing"></a>
+          <h2 class="h2">Easy canary releasing</h2>
+          <p class="text">
+            Percentage and condition based routing for A/B testing and canary releasing. Prevent performance issues and service disruption with gradual rollouts and upgrades.
+          </p>
+        </div>
+        <div class="col center">
+          <a href="documentation/using-vamp/sla/" class="image--smaller second-icon"><img src="img/001-Big-icons/illustration-02.svg" alt="Powerful autoscaling"></a>
+          <h2 class="h2">Powerful autoscaling</h2>
+          <p class="text">
+            Integrated events, SLA and workflows engine. Enable metric-driven canary releasing, autoscaling and other optimisation patterns. Easy to extend with custom workflow scripts.
+          </p>
+        </div>
+        <div class="col center">
+          <a href="documentation/installation/" class="image--smaller third-icon"><img src="img/001-Big-icons/illustration-03.svg" alt="Container agnostic deploys"></a>
+          <h2 class="h2">Container systems agnostic</h2>
+          <p class="text">
+            Integrates with all major container systems to avoid vendor lock-in. YAML based configurations, RESTful API and graphical UI to manage deployments and operations.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col center">
+          <a href="./why-use-vamp" class="button button--red--ghost">
+              <p>Learn More</p>
+              <div class="button__icon button__icon--arrow">
+              </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lander-row lander-row--white lander-row--small-padding top-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col center">
+          <h3 class="h3">Vamp friends</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col center">
+          <img src="./img/004-Logos/004-friends/BBVA.jpg" alt="BBA Innovation team">
+        </div>
+        <div class="col center">
+          <img src="./img/004-Logos/004-friends/Mijndomein.jpg" alt="Mijndomein">
+        </div>
+        <div class="col center">
+          <img src="./img/004-Logos/004-friends/Rabobank.jpg" alt="Rabobank">
+        </div>
+        <div class="col center">
+          <img src="./img/004-Logos/004-friends/Trivento.jpg" alt="Trivento">
+        </div>
+        <div class="col center">
+          <img src="./img/004-Logos/004-friends/Wehkamp.jpg" alt="Wehkamp">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="lander-row lander-row--grey features-top">
+    <div class="container">
+      <div class="row">
+        <div class="col center">
+          <h3 class="h3">Features</h3>
+          <h1 class="h1">What more do we offer</h1>
+        </div>
+      </div>
+
+      <div class="row row--wrap">
+        <div class="col col-5">
+          <div class="offer-item">
+            <img src="./img/002-Medium-icons/Medium-icons-01.svg" alt="">
+            <p class="text">
+              Graphical UI and dashboards for clear information and easy management
+            </p>
+          </div>
+        </div>
+        <div class="col col-5">
+          <div class="offer-item">
+            <img src="./img/002-Medium-icons/Medium-icons-02.svg" alt="">
+            <p class="text">
+              Integrated javascript based workflow system for flexible automation
+            </p>
+          </div>
+        </div>
+        <div class="col col-5">
+          <div class="offer-item">
+            <img src="./img/002-Medium-icons/Medium-icons-03.svg" alt="">
+            <p class="text">
+              Integrated metrics and events system exposed through API, SSE and websockets.
+            </p>
+          </div>
+        </div>
+        <div class="col col-5">
+          <div class="offer-item">
+            <img src="./img/002-Medium-icons/Medium-icons-06.svg" alt="">
+            <p class="text">
+              Automatic load balancing of scaled out services and containers
+            </p>
+          </div>
+        </div>
+        <div class="col col-5">
+          <div class="offer-item">
+            <img src="./img/002-Medium-icons/Medium-icons-05.svg" alt="">
+            <p class="text">
+              API gateway features such as URL rewrites and conditional redirects
+            </p>
+          </div>
+        </div>
+        <div class="col col-5">
+          <div class="offer-item">
+            <img src="./img/002-Medium-icons/Medium-icons-04.svg" alt="">
+            <p class="text">
+              CLI and REST API for integration with CI/CD pipelines
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <div class="lander-row lander-row--grey top-bar features-bottom">
+    <div class="container">
+      <div class="row row--wrap">
+        <div class="col col-5">
+          <div class="lower-offer-item">
+            <img src="./img/003-Small-icons/block-03.svg" alt="">
+            <p class="text">
+              Apache 2.0 opensource license
+            </p>
+          </div>
+        </div>
+        <div class="col col-5">
+          <div class="lower-offer-item">
+            <img src="./img/003-Small-icons/block-03.svg" alt="">
+            <p class="text">
+              Manages dependencies, environment variables and resources
+            </p>
+          </div>
+        </div>
+        <div class="col col-5">
+          <div class="lower-offer-item">
+            <img src="./img/003-Small-icons/block-03.svg" alt="">
+            <p class="text">
+              Scalable, high available and modular architecture
+            </p>
+          </div>
+        </div>
+        <div class="col col-5">
+          <div class="lower-offer-item">
+            <img src="./img/003-Small-icons/block-03.svg" alt="">
+            <p class="text">
+              Support for port based, virtual hosts and external service discovery
+            </p>
+          </div>
+        </div>
+        <div class="col col-5">
+          <div class="lower-offer-item">
+            <img src="./img/003-Small-icons/block-03.svg" alt="">
+            <p class="text">
+              Vamp Runner for integration testing and educational purposes
+            </p>
+          </div>
+        </div>
+        <div class="col col-5">
+          <div class="lower-offer-item">
+            <img src="./img/003-Small-icons/block-03.svg" alt="">
+            <p class="text">
+              Canary releasing also works without containers and microservices
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col center">
+          <a href="./why-use-vamp" class="button button--red">
+              <p>Learn More</p>
+              <div class="button__icon button__icon--arrow-white">
+              </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div id="partners-row" class="lander-row lander-row--white">
+    <div class="container">
+      <div class="row">
+        <div class="col center">
+          <h3 class="h3">Technology Partners</h3>
+          <h1 class="h1">Vamp works with</h1>
+        </div>
+      </div>
+
+      <div class="row logos-row">
+        <div class="col center">
+          <a href="documentation/installation/kubernetes/"><img src="./img/004-Logos/001-dark-blue/Google-vertical.svg" alt="Google"></a>
+        </div>
+        <div class="col center">
+          <a href="documentation/how-vamp-works/architecture-and-components/"><img src="./img/004-Logos/001-dark-blue/Amazon-vertical.svg" alt="Amazon AWS"></a>
+        </div>
+        <div class="col center">
+          <a href="documentation/installation/azure-container-service/"><img src="./img/004-Logos/001-dark-blue/Microsoft-vertical.svg" alt="Microsoft Azure"></a>
+        </div>
+        <div class="col center">
+          <a href="documentation/installation/kubernetes/"><img src="./img/004-Logos/001-dark-blue/Kubernetes-vertical.svg" alt="Kubernetes"></a>
+        </div>
+
+        <div class="col center">
+          <a href="documentation/installation/dcos/"><img src="./img/004-Logos/001-dark-blue/DCOS-vertical.svg" alt="DC/OS"></a>
+        </div>
+        <div class="col center">
+          <a href="documentation/installation/rancher/"><img src="./img/004-Logos/001-dark-blue/Rancher-vertical.svg" alt="Rancher"></a>
+        </div>
+        <div class="col center">
+          <a href="documentation/how-vamp-works/architecture-and-components"><img src="./img/004-Logos/001-dark-blue/Docker-vertical-member.svg" alt="Docker"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lander-row lander-row--blue footer">
+  <div class="container">
+    <div class="row">
+      <div class="col col-3">
+        <h2 class="h2">Learn more</h2>
+        <a href="./why-use-vamp/">
+          <p class="text">Why use Vamp?</p>
+        </a>
+        <a href="./documentation/how-vamp-works/architecture-and-components">
+          <p class="text">Documentation</p>
+        </a>
+        <a href="./about/">
+          <p class="text">About us</p>
+        </a>
+        <a href="./resources/news/">
+          <p class="text">News</p>
+        </a>
+        <a href="./contact/">
+          <p class="text">Contact</p>
+        </a>
+      </div>
+        <div class="col col-6">
+        <h2 class="h2">All things code</h2>
+          <a href="./support/">
+            <p class="text">Support</p>
+          </a>
+          <a href="./resources/community/">
+            <p class="text">Community</p>
+          </a>
+          <a href="https://github.com/magneticio/vamp" target="_blank">
+            <p class="text">GitHub</p>
+          </a>
+          <a href="https://gitter.im/magneticio/vamp" target="_blank">
+            <p class="text">Gitter</p>
+          </a>
+      </div>
+      <div class="col col-6">
+        <h2 class="h2">Stay up to date</h2>
+        <p class="text">
+          Leave your email for the latest news: We won’t spam you and won’t go off topic.
+        </p>
+
+        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate="">
+          <div class="input-group">
+            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email">
+            <a onclick="$(this).closest('form').submit()" class="button button--red not-active">
+              <div class="button__icon button__icon--mail">
+              </div>
+            </a>
+          </div>
+        </form>
+
+        
+          
+        
+
+
+        <div class="social-buttons">
+          <p class="text">Follow us on: </p>
+          <a href="https://twitter.com/vamp_io" target="_blank">
+            <i class="fa fa-2x fa-twitter"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/company/magnetic-io" target="_blank">
+            <i class="fa fa-2x fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom lander-row--blue">
+  <div class="container">
+    <div class="part">
+      <a href="./about/"><img class="magnetic-logo" src="./img/005-vamp/Logo/magnetic-logo-footer.svg" alt=""></a>
+    </div>
+    <div class="part">
+      <img class="vamp-bat" src="./img/003-Small-icons/Medium-blue/VAMP-Medium.svg" alt="">
+      <p class="text">Code licensed under <a type="application/rss+xml" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2</a> © 2016 <a href="./about/">Magnetic.io</a></p>
+    </div>
+  </div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59948816-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+

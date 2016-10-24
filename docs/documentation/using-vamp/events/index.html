@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+
+
+
+ <html class="no-js"> 
+<head>
+
+<script type="text/javascript">
+theBaseUrl = "http://vamp.io/";
+</script>
+<base href="http://vamp.io/" />
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+  <title>Events - Vamp</title>
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="description" content="Vamp - Deploy and manage microservices with power and ease.">
+  
+  <link rel="canonical" href="./documentation/using-vamp/events/">
+  
+  <meta name="author" content="magnetic.io">
+  
+
+  <meta property="og:url" content="/documentation/using-vamp/events/">
+  <meta property="og:title" content="Vamp">
+  <meta property="og:image" content="/images/logo.svg">
+  <meta name="apple-mobile-web-app-title" content="Vamp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="shortcut icon" type="image/x-icon" href="./images/logo.svg">
+  <link rel="icon" type="image/x-icon" href="./images/logo.svg">
+
+
+  <style>
+    @font-face {
+      font-family: 'Icon';
+      src: url('fonts/icon.eot?52m981');
+      src: url('fonts/icon.eot?#iefix52m981')
+      format('embedded-opentype'),
+      url('fonts/icon.woff?52m981')
+      format('woff'),
+      url('fonts/icon.ttf?52m981')
+      format('truetype'),
+      url('fonts/icon.svg?52m981#icon')
+      format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/vendor.js"></script>
+
+  <script src="js/app.js"></script>
+
+  
+</head>
+<body class="palette-primary-pink palette-accent-pink">
+
+
+<div class="single-page">
+  <nav aria-label="Header" id="header" class="top-menu">
+  <div class="left">
+    <a href="./">
+      <div id="logo" class="logo"></div>
+    </a>
+  </div>
+
+  <div class="right">
+    <div class="top-menu-items" id="top-menu-items">
+
+    </div>
+
+    <div class="download">
+      <a href="./documentation/installation/hello-world/" class="button button--red">
+        Try Vamp
+      </a>
+    </div>
+
+    <a href="https://github.com/magneticio/vamp" target="_blank" class="github-logo">
+      <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+    </a>
+
+    <div class="search-button">
+      <i class="fa fa-lg fa-search"></i>
+    </div>
+
+  </div>
+</nav>
+
+<ul id="mobile-menu" style="display: none">
+</ul>
+
+<div id="search">
+  <div class="search-bar">
+    <div class="search-bar__back">
+      <i class="fa fa-lg fa-times"></i>
+    </div>
+    <input class="search-bar__input" placeholder="Type your search here...">
+  </div>
+  <div class="search-results">
+    <ul></ul>
+  </div>
+</div>
+
+
+</div>
+
+<div class="page documentation">
+    <div class="menu" id="side-menu">
+    </div>
+    <div class="content">
+      <h1 class="content-header">Events </h1>
+      <div class="markdowned">
+        
+
+<p>Vamp collects events on all running services. Interaction with the API also creates events, like updating blueprints or deleting a deployment. Furthermore, Vamp allows third party applications to create events and trigger Vamp actions.</p>
+
+<p>All events are stored and retrieved using the Event API that is part of Vamp.</p>
+
+<h4 id="example-json-deployment-create-event">Example - JSON &ldquo;deployment create&rdquo; event</h4>
+
+<pre><code class="language-JSON">{
+  &quot;tags&quot;: [
+    &quot;deployments&quot;,
+    &quot;deployments:6ce79a33-5dca-4eb2-b072-d5f65e4eef8a&quot;,
+    &quot;archiving&quot;,
+    &quot;archiving:create&quot;
+  ],
+  &quot;value&quot;: &quot;name: sava&quot;,
+  &quot;timestamp&quot;: &quot;2015-04-21T09:15:42Z&quot;
+}
+</code></pre>
+
+<h2 id="basic-event-rules">Basic event rules</h2>
+
+<p>All events stick to some basic rules:</p>
+
+<ul>
+<li>All data in Vamp are events.</li>
+<li>Values can be any JSON object or it can be empty.</li>
+<li>Timestamps are in ISO8601/RFC3339.</li>
+<li>Timestamps are optional. If not provided, Vamp will insert the current time.</li>
+<li>Timestamps are inclusive for querying.</li>
+<li>Events can be tagged with metadata. A simple tag is just single string.</li>
+<li>Querying data by tag assumes &ldquo;AND&rdquo; behaviour when multiple tags are supplied, i.e. [&ldquo;one&rdquo;, &ldquo;two&rdquo;] would only fetch records that are tagged with both.</li>
+<li>Supported event aggregations are: <code>average</code>, <code>min</code>, <code>max</code> and <code>count</code>.</li>
+</ul>
+
+<h2 id="how-tags-are-organised">How tags are organised</h2>
+
+<p>In all of Vamp&rsquo;s components we follow a REST (resource oriented) schema, for instance:</p>
+
+<pre><code>/deployments/{deployment_name} 
+/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}
+</code></pre>
+
+<p>Tagging is done using a very similar schema: &ldquo;{resource_group}&ldquo;, &ldquo;{resource_group}:{name}&ldquo;. Some examples:</p>
+
+<pre><code>&quot;deployments&quot;, &quot;deployments:{deployment_name}&quot;
+&quot;deployments&quot;, &quot;deployments:{deployment_name}&quot;, &quot;clusters&quot;, &quot;clusters:{cluster_name}&quot;, &quot;services&quot;, &quot;services&quot;,services:{service_name} &quot;
+</code></pre>
+
+<p>This schema allows querying per group and per specific name. Getting all events related to all deployments is done by using tag &ldquo;deployments&rdquo;. Getting events for specific deployment &ldquo;deployments:{deployment_name}&ldquo;.</p>
+
+<h2 id="query-events-using-tags">Query events using tags</h2>
+
+<p>Using the tags schema and timestamps, you can do some powerful queries. Either use an exact timestamp or use special range query operators, described on the elastic.co site (<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html">elastic.co - Range query</a>).</p>
+
+<div class="admonition note">
+  <p class="admonition-title">Note!</p>
+  <p>the default page size for a set of returned events is 30.</p>
+</div>
+
+<h3 id="example-queries">Example queries</h3>
+
+<ul>
+<li><a href="./documentation/using-vamp/events/#example-1">Get all events</a></li>
+<li><a href="./documentation/using-vamp/events/#example-2">Response time for a cluster</a></li>
+<li><a href="./documentation/using-vamp/events/#example-3">Current sessions for a service</a></li>
+<li><a href="./documentation/using-vamp/events/#example-4">ll known events for a service</a></li>
+</ul>
+
+<h4 id="example-1">Example 1</h4>
+
+<p><strong>Get all events</strong></p>
+
+<p>The below query gets ALL metrics events up till now, taking into regard the pagination.</p>
+
+<div class="admonition note">
+  <p class="admonition-title">Note!</p>
+  <p>GET request with body - similar to approach used by Elasticsearch.</p>
+</div>
+
+<p><code>GET /api/v1/events</code></p>
+
+<pre><code class="language-json">{
+  &quot;tags&quot;: [&quot;metrics&quot;],
+    &quot;timestamp&quot; : {
+      &quot;lte&quot; : &quot;now&quot;
+    }
+}
+</code></pre>
+
+<h4 id="example-2">Example 2</h4>
+
+<p><strong>Response time for a cluster</strong></p>
+
+<p>The below query gets the most recent response time events for the &ldquo;frontend&rdquo; cluster in the &ldquo;d9b42796-d8f6-431b-9230-9d316defaf6d&rdquo; deployment.</p>
+
+<p><strong>Notice</strong> the &ldquo;gateways:<UUID>&rdquo;, &ldquo;metrics:responseTime&rdquo; and &ldquo;gateways&rdquo; tags. This means &ldquo;give me the response time of this specific gateway at the gateway level&rdquo;. The response will echo back the events in the time range with the original set of tags associated with the events.</p>
+
+<p><code>GET /api/v1/events</code></p>
+
+<pre><code class="language-json">{
+  &quot;tags&quot;: [&quot;routes:d9b42796-d8f6-431b-9230-9d316defaf6d_frontend_8080&quot;,&quot;metrics:rtime&quot;,&quot;route&quot;],
+    &quot;timestamp&quot; : {
+      &quot;lte&quot; : &quot;now&quot;
+    }
+}
+</code></pre>
+
+<pre><code class="language-json">[
+    {
+        &quot;tags&quot;: [
+            &quot;gateways&quot;,
+            &quot;gateways:d9b42796-d8f6-431b-9230-9d316defaf6d_frontend_8080&quot;,
+            &quot;metrics:rate&quot;,
+            &quot;metrics&quot;,
+            &quot;gateway&quot;
+        ],
+        &quot;value&quot;: 0,
+        &quot;timestamp&quot;: &quot;2015-06-08T10:28:35.001Z&quot;,
+        &quot;type&quot;: &quot;gateway-metric&quot;
+    },
+    {
+        &quot;tags&quot;: [
+            &quot;gateways&quot;,
+            &quot;gateways:d9b42796-d8f6-431b-9230-9d316defaf6d_frontend_8080&quot;,
+            &quot;metrics:rate&quot;,
+            &quot;metrics&quot;,
+            &quot;gateway&quot;
+        ],
+        &quot;value&quot;: 0,
+        &quot;timestamp&quot;: &quot;2015-06-08T10:28:32.001Z&quot;,
+        &quot;type&quot;: &quot;gateway-metric&quot;
+    }
+]    
+</code></pre>
+
+<h4 id="example-3">Example 3</h4>
+
+<p><strong>Current sessions for a service</strong></p>
+
+<p>Another example is getting the current sessions for a specific service, in this case the <code>monarch_front:0.2</code> service that is part of the <code>214615ec-d5e4-473e-a98e-8aa4998b16f4</code> deployment and lives in the <code>frontend</code> cluster.</p>
+
+<p><strong>Notice</strong> we made the search more specific by specifying the &ldquo;services&rdquo; and then &ldquo;service:<SERVICE NAME>&rdquo; tag.
+Also, we are using relative timestamps: anything later or equal (lte) than &ldquo;now&rdquo;.</p>
+
+<p><code>GET /api/v1/events</code></p>
+
+<pre><code class="language-json">{
+  &quot;tags&quot;: [&quot;routes:214615ec-d5e4-473e-a98e-8aa4998b16f4_frontend_8080&quot;,&quot;metrics:scur&quot;,&quot;services:monarch_front:0.2&quot;,&quot;service&quot;],
+    &quot;timestamp&quot; : {
+      &quot;lte&quot; : &quot;now&quot;
+    }
+}
+</code></pre>
+
+<h4 id="example-4">Example 4</h4>
+
+<p><strong>All known events for a service</strong></p>
+
+<p>This below query gives you all the events we have for a specific service, in this case the same service as in example 2. In this way you can get a quick &ldquo;health snapshot&rdquo; of service, server, cluster or deployment.</p>
+
+<p><strong>Notice</strong> we made the search less specific by just providing the &ldquo;metrics&rdquo; tag and not telling the API which specific one we want.</p>
+
+<p><code>GET /api/v1/events</code></p>
+
+<pre><code class="language-json">{
+  &quot;tags&quot;: [&quot;routes:214615ec-d5e4-473e-a98e-8aa4998b16f4_frontend_8080&quot;,&quot;metrics&quot;,&quot;services:monarch_front:0.2&quot;,&quot;service&quot;],
+    &quot;timestamp&quot; : {
+      &quot;lte&quot; : &quot;now&quot;
+    }
+}
+</code></pre>
+
+<h2 id="server-sent-events-sse">Server-sent events (SSE)</h2>
+
+<p>Events can be streamed back directly from Vamp.</p>
+
+<p><code>GET /api/v1/events/stream</code></p>
+
+<p>In order to narrow down (filter) events, list of tags could be provided in the request body.</p>
+
+<pre><code class="language-json">{
+  &quot;tags&quot;: [&quot;routes:214615ec-d5e4-473e-a98e-8aa4998b16f4_frontend_8080&quot;,&quot;metrics&quot;]
+}
+</code></pre>
+
+<p>GET method can be also used with <code>tag</code> parameter (may be more convenient):</p>
+
+<p><code>GET /api/v1/events/stream?tag=archiving&amp;tag=breeds</code></p>
+
+<h2 id="archiving">Archiving</h2>
+
+<p>All changes in artifacts (creation, update or deletion) triggered by REST API calls are archived. We store the type of event and the original representation of the artifact. It&rsquo;s a bit like a Git log.</p>
+
+<p>Here is an example event:</p>
+
+<pre><code class="language-json">{
+  &quot;tags&quot;: [
+    &quot;deployments&quot;,
+    &quot;deployments:6ce79a33-5dca-4eb2-b072-d5f65e4eef8a&quot;,
+    &quot;archiving&quot;,
+    &quot;archiving:delete&quot;
+  ],
+  &quot;value&quot;: &quot;&quot;,
+  &quot;timestamp&quot;: &quot;2015-04-21T09:17:31Z&quot;,
+  &quot;type&quot;: &quot;&quot;
+}
+</code></pre>
+
+<p>Searching through the archive is 100% the same as searching for events. The same tagging scheme applies.
+The following query gives back the last set of delete actions executed in the Vamp API, regardless of the artifact type.</p>
+
+<p><code>GET /api/v1/events</code></p>
+
+<pre><code class="language-json">{
+  &quot;tags&quot;: [&quot;archiving&quot;,&quot;archiving:delete&quot;],
+    &quot;timestamp&quot; : {
+      &quot;lte&quot; : &quot;now&quot;
+    }
+}
+</code></pre>
+
+<div class="admonition note">
+  <p class="admonition-title">What next?</p>
+  <p><ul>
+<li>Read about <a href="./documentation/using-vamp/sla/">Vamp SLA (Service Level Agreement)</a></li>
+<li>Check the <a href="./documentation/api/api-reference">API documentation</a></li>
+<li><a href="./documentation/installation/hello-world">Try Vamp</a></li>
+</ul>
+</p>
+</div>
+
+      </div>
+    </div>
+</div>
+
+<div class="lander-row lander-row--blue footer">
+  <div class="container">
+    <div class="row">
+      <div class="col col-3">
+        <h2 class="h2">Learn more</h2>
+        <a href="./why-use-vamp/">
+          <p class="text">Why use Vamp?</p>
+        </a>
+        <a href="./documentation/how-vamp-works/architecture-and-components">
+          <p class="text">Documentation</p>
+        </a>
+        <a href="./about/">
+          <p class="text">About us</p>
+        </a>
+        <a href="./resources/news/">
+          <p class="text">News</p>
+        </a>
+        <a href="./contact/">
+          <p class="text">Contact</p>
+        </a>
+      </div>
+        <div class="col col-6">
+        <h2 class="h2">All things code</h2>
+          <a href="./support/">
+            <p class="text">Support</p>
+          </a>
+          <a href="./resources/community/">
+            <p class="text">Community</p>
+          </a>
+          <a href="https://github.com/magneticio/vamp" target="_blank">
+            <p class="text">GitHub</p>
+          </a>
+          <a href="https://gitter.im/magneticio/vamp" target="_blank">
+            <p class="text">Gitter</p>
+          </a>
+      </div>
+      <div class="col col-6">
+        <h2 class="h2">Stay up to date</h2>
+        <p class="text">
+          Leave your email for the latest news: We won’t spam you and won’t go off topic.
+        </p>
+
+        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&amp;id=c1465e21d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate="">
+          <div class="input-group">
+            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email">
+            <a onclick="$(this).closest('form').submit()" class="button button--red not-active">
+              <div class="button__icon button__icon--mail">
+              </div>
+            </a>
+          </div>
+        </form>
+
+        
+          
+        
+
+
+        <div class="social-buttons">
+          <p class="text">Follow us on: </p>
+          <a href="https://twitter.com/vamp_io" target="_blank">
+            <i class="fa fa-2x fa-twitter"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/company/magnetic-io" target="_blank">
+            <i class="fa fa-2x fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom lander-row--blue">
+  <div class="container">
+    <div class="part">
+      <a href="./about/"><img class="magnetic-logo" src="./img/005-vamp/Logo/magnetic-logo-footer.svg" alt=""></a>
+    </div>
+    <div class="part">
+      <img class="vamp-bat" src="./img/003-Small-icons/Medium-blue/VAMP-Medium.svg" alt="">
+      <p class="text">Code licensed under <a type="application/rss+xml" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2</a> © 2016 <a href="./about/">Magnetic.io</a></p>
+    </div>
+  </div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59948816-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
