@@ -10,7 +10,7 @@ install:
   - go get -v github.com/spf13/hugo
 script: npm install && gulp build:prod
 after_success: |
-  if [ -n "$GITHUB_API_KEY" ] && [ ${TRAVIS_PULL_REQUEST} == "false" ] && [ $TRAVIS_BRANCH == "revamp" ]; then
+  if [ -n "$GITHUB_API_KEY" ] && [ ${TRAVIS_PULL_REQUEST} == "false" ] && [ $TRAVIS_BRANCH == "master" ]; then
     GIT_COMMIT=`git rev-parse --short HEAD`
     cd ./public && cp ../CNAME ./CNAME && cp ../robots.txt ./robots.txt
     git init > /dev/null 2>&1
