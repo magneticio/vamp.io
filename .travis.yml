@@ -13,7 +13,6 @@ after_success: |
   if [ -n "$GITHUB_API_KEY" ] && [ ${TRAVIS_PULL_REQUEST} == "false" ] && [ $TRAVIS_BRANCH == "revamp" ]; then
     GIT_COMMIT=`git rev-parse --short HEAD`
     cd ./public && cp ../CNAME ./CNAME && cp ../robots.txt ./robots.txt
-
     git init > /dev/null 2>&1
     git add .
     git -c user.name='Travis-CI' -c user.email='travis@magnetic.io' commit -m "build ${GIT_COMMIT}" > /dev/null 2>&1
