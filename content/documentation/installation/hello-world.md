@@ -67,7 +67,6 @@ Now check if Vamp is home on `http://{docker-machine ip default}:8080/` and you'
 
 Exposed services:
 
-- HAProxy statistics | [http://localhost:1988](http://localhost:1988) (username/password: haproxy) 
 - HAProxy statistics [http://localhost:1988](http://localhost:1988) (username/password: haproxy)
 - Elasticsearch HTTP [http://localhost:9200](http://localhost:9200)
 - Kibana [http://localhost:5601](http://localhost:5601)
