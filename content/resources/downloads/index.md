@@ -95,7 +95,10 @@ A container for running small JavaScript-based workflows can be pulled from the 
 ## Build from source
 
 ### Build Vamp
-**Requirements:** OpenJDK or Oracle Java version of 1.8.0_40 or higher, git ([git-scm.com](https://git-scm.com/)), sbt ([scala-sbt.org](http://www.scala-sbt.org/index.html)), npm ([npmjs.com](https://www.npmjs.com/)) and Gulp ([gulpjs.com](http://gulpjs.com/))
+**Requirements:** OpenJDK or Oracle Java version of 1.8.0_40 or higher, git ([git-scm.com](https://git-scm.com/)), sbt ([scala-sbt.org](http://www.scala-sbt.org/index.html)), npm ([npmjs.com](https://www.npmjs.com/)) and Gulp ([gulpjs.com](http://gulpjs.com/))  
+{{< note >}}
+If you build from source (master branch) without a specific tag, you will build katana not the official release. Check the [katana documentation](documentation/release-notes/katana) for details of all changes since the last official release. 
+{{< /note >}}
 
 1. Checkout the source from the official repo ([github.com/magneticio - Vamp](https://github.com/magneticio/vamp)):   
   {{< note title="Note!" >}}
@@ -126,6 +129,9 @@ logback.xml` is log configuration. Vamp uses the [Logback](http://logback.qos.ch
 ### Build Vamp Gateway Agent (VGA)
 
 **Requirements:** Go ([golang.org](https://golang.org/)) and git ([git-scm.com](https://git-scm.com/))
+{{< note >}}
+If you build from source (master branch) without a specific tag, you will build katana not the official release. Check the [katana documentation](documentation/release-notes/katana) for details of all changes since the last official release. 
+{{< /note >}}
 
 1. Checkout the source from the official repo ([github.com/magneticio - Vamp gateway agent](https://github.com/magneticio/vamp-gateway-agent)). Current `master` branch is backward compatible with the latest 0.9.0 Vamp build.
 2. Set Go variables depending on target environment

@@ -1,8 +1,13 @@
 ---
 date: 2016-10-19T09:00:00+00:00
-title: Vamp 0.9.1
+title: katana
 ---
 _19th October 2016_
+
+{{< note title="katana is not an official release">}}
+All changes since the last official release are described below. This applies only to binaries built from source (master branch). 
+{{< /note >}}
+
 
 ## What has changed
 * **BREAKING CHANGE**: In the Vamp configuration the “rest-api” section has changed to “http-api”. When running Vamp 0.9.1 you need to change this setting accordingly. NB REST and websockets are both a part of our HTTP API. Check this [Vamp configuration](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf) example.

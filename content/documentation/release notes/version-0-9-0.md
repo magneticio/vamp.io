@@ -1,6 +1,6 @@
 ---
 date: 2016-10-19T09:00:00+00:00
-title: Vamp 0.9.0
+title: version 0.9.0
 ---
 
 _9th September 2016_
