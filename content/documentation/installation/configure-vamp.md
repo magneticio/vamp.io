@@ -87,10 +87,10 @@ vamp {
 
 Vamp can be configured to work with the following container drivers:
 
-* [Docker](#docker)
-* [Mesos/Marathon](#mesos-marathon)
-* [Kubernetes](#kubernetes)
-* [Rancher](#rancher)
+* [Docker](/documentation/installation/configure-vamp/#docker)
+* [Mesos/Marathon](/documentation/installation/configure-vamp/#mesos-marathon)
+* [Kubernetes](/documentation/installation/configure-vamp/#kubernetes)
+* [Rancher](/documentation/installation/configure-vamp/#rancher)
 
 #### Docker
 Vamp can talk directly to a Docker daemon and its driver is configured by default. This is useful for local testing, Docker Swarm support is coming soon.
