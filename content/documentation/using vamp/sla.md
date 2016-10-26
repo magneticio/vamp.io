@@ -58,28 +58,28 @@ clusters:
       memory: 1024MB
       instances: 2
 
-    sla:
-      # Type of SLA.
-      type: response_time_sliding_window
-      threshold:
-        upper: 1000   # Upper threshold in milliseconds.
-        lower: 100    # Lower threshold in milliseconds.
-      window:
-        interval: 600 # Time period in seconds used for
-                      # average response time aggregation.
-        cooldown: 600 # Time period in seconds. During this 
-                      # period no new escalation events will 
-                      # be generated. New event may be expected 
-                      # not before cooldown + interval time has 
-                      # been reached after the last event. 
-     
-      # List of escalations.
-      escalations:
-        - 
-          type: scale_instances
-          minimum: 1
-          maximum: 3
-          scale_by: 1
+  sla:
+    # Type of SLA.
+    type: response_time_sliding_window
+    threshold:
+      upper: 1000   # Upper threshold in milliseconds.
+      lower: 100    # Lower threshold in milliseconds.
+    window:
+      interval: 600 # Time period in seconds used for
+                    # average response time aggregation.
+      cooldown: 600 # Time period in seconds. During this 
+                    # period no new escalation events will 
+                    # be generated. New event may be expected 
+                    # not before cooldown + interval time has 
+                    # been reached after the last event. 
+
+    # List of escalations.
+    escalations:
+      - 
+        type: scale_instances
+        minimum: 1
+        maximum: 3
+        scale_by: 1
 ```          
 
 {{< note title="What next?" >}}
