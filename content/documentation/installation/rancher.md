@@ -41,7 +41,7 @@ $ docker run \
 
 
 ### Step 2: Run Vamp stack
-Next we need to create a Vamp stack. This can be done either from `catalog` or from stratch (adding all dependencies manually - Consul, Elasticsearch, Logstash).
+Next we need to create a Vamp stack. This can be done either from `catalog` or from scratch (adding all dependencies manually - Consul, Elasticsearch, Logstash).
 
 #### Run Vamp stack from catalog
 
