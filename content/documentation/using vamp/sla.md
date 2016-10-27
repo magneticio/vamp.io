@@ -33,32 +33,33 @@ The `response_time_sliding_window` SLA triggers events based on response times.
 
 #### Example - SLA defined inline in a blueprint.
 
-**Notice** the SLA is defined at the cluster level and acts on the first service in the cluster.
+**Notice** the SLA is defined per cluster and acts on the first service in the cluster.
 
 **Notice** how the SLA is defined separately from the escalations. This is key to how Vamp approaches SLA's and how modular and extendable the system is.
 
 ```yaml
 ---
-name: monarch
+name: sava
 
 gateways:
-  80: monarch/port
+  80: sava/webport
 
 clusters:
 
-  monarch:
-    breed:
-      name: monarch
-      deployable: vamp/monarch
-      ports:
-        port: 80
+  sava:                        # the sava cluster
+    services:
+    - breed:
+        name: monarch
+        deployable: vamp/monarch
+        ports:
+          webport: 80
 
     scale:
       cpu: 1
       memory: 1024MB
       instances: 2
 
-    sla:
+    sla:                        # SLA applies to the first service in the sava cluster (monarch)
       # Type of SLA.
       type: response_time_sliding_window
       threshold:
