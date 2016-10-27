@@ -104,12 +104,12 @@ Next we need to create a Vamp stack. This can be done either from `catalog` or f
   * `Default Target Port` ⇒ 8080 and `Target Service` ⇒ `vamp`
 
 If you go to http://SERVER_IP:9090 (e.g [http://192.168.99.100:9090](http://192.168.99.100:9090)), you should get the Vamp UI.  
-You should also notice that Vamp Gateway Agent is running (one instance on each node) and additional Vamp workflows.
+You should also notice that Vamp Gateway Agent is running (one instance on each node) and you can see some [Vamp workflows](/documentation/using-vamp/workflows/) running.
 
 To access HAProxy stats:
 
 1. Go to `Add Load Balancer` (click arrow next to `Add Service`)
-2. Choose aname (e.g. `vamp-gateway-agent-lb`), `Source IP/Port` ⇒ 1988, `Default Target Port` ⇒ 1988 and `Target Service` ⇒ `vamp-gateway-agent`
+2. Choose a name (e.g. `vamp-gateway-agent-lb`), `Source IP/Port` ⇒ 1988, `Default Target Port` ⇒ 1988 and `Target Service` ⇒ `vamp-gateway-agent`
 3. Use the following username/password: `haproxy` for the HAProxy stats page
 
 ### Step 4: Deploy the Sava demo application
@@ -135,7 +135,7 @@ clusters:
         instances: 1
 ```
 
-If you want the gateway port to be exposed outside of the cluster via Rancher Load Balancer:
+If you want the gateway port to be exposed outside of the cluster via a Rancher Load Balancer:
 
 1. Go to `Add Load Balancer` (click arrow next to `Add Service`)
 2. Choose name (e.g. `gateway-9050`),
