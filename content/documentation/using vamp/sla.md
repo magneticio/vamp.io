@@ -48,16 +48,16 @@ clusters:
 
   sava:                        # the sava cluster
     services:
-    - breed:
+      breed:
         name: monarch
         deployable: vamp/monarch
         ports:
           webport: 80
 
-    scale:
-      cpu: 1
-      memory: 1024MB
-      instances: 2
+      scale:
+        cpu: 1
+        memory: 1024MB
+        instances: 2
 
     sla:                        # SLA applies to the first service in the sava cluster (monarch)
       # Type of SLA.
