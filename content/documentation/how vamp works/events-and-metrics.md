@@ -19,7 +19,7 @@ Data and events are read by Vamp components either directly from Elasticsearch o
 ## Formatted raw data (logs)
 
 ### HAProxy
-HAProxy (VGA) generates logs and makes them accessible via open socket - check the HAProxy configuration of log ([github.com/magneticio - haproxy.cfg](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.basic.cfg)).
+HAProxy generates logs and makes them accessible via open socket - check the HAProxy configuration of log ([github.com/magneticio - haproxy.cfg](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.basic.cfg)).
 VGA listens on log socket and any new messages are forwarded to the Logstash instance. The HAProxy log format is configurable in Vamp configuration `vamp.gateway-driver.haproxy` ([github.com/magneticio - reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)).
 
 
