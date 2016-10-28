@@ -89,7 +89,7 @@ ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
 
 ### Step 2: Deploy Vamp
 
-Once you have elasticsearch up and running it's time to move on to Vamp.
+Once you have elasticsearch up and running it's time to move on to Vamp. The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](contact) if you’d like further details.
 
 Create `vamp.json` with the following content:
 

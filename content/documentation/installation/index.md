@@ -11,11 +11,13 @@ If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 * [Vamp requirements](/documentation/how-vamp-works/requirements)
 
 #### Install Vamp
+The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](contact) if you’d like further details.
 
 * [DC/OS 1.7 and 1.8](/documentation/installation/dcos)
 * [Mesos/Marathon](/documentation/installation/mesos-marathon)
 * [Kubernetes 1.x](/documentation/installation/kubernetes)
 * [Rancher](/documentation/installation/rancher)
+* [Docker](/documentation/installation/docker)
 * [Azure Container Service](/documentation/installation/azure-container-service)
 
 #### Configuration

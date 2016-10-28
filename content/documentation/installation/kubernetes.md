@@ -70,7 +70,7 @@ $ kubectl expose deployment vamp --protocol=TCP --port=8080 --name=vamp --type="
 ```
 
 
-The Vamp image uses the following configuration ([github.com/magneticio - Vamp kubernetes configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-kubernetes/application.conf)).
+The Vamp image uses the following configuration ([github.com/magneticio - Vamp kubernetes configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-kubernetes/application.conf)). The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](contact) if you’d like further details.
 
 Wait a bit until Vamp is running and check out the Kubernetes services:
 
