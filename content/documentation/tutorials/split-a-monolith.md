@@ -2,19 +2,13 @@
 date: 2016-09-13T09:00:00+00:00
 title: Split a monolith
 ---
-## Overview
-
 In the [previous tutorial we did some basic canary releasing on two versions of a monolithic application](/documentation/tutorials/run-a-canary-release/). Very nice, but Vamp isn't
-called the *Very Awesome Microservices Platform* for nothing. The next step is to split our monolithic Sava application into separate services.
-
-#### In this tutorial we will:
+called the *Very Awesome Microservices Platform* for nothing. The next step is to split our monolithic Sava application into separate services. In this tutorial we will:
 
 1. define a new service topology
 2. learn about environment variables and service discovery
 
-## In depth
-
-### Step 1: Define a new service topology
+## Define a new service topology
 
 To prove our point, we are going to slightly "over-engineer" our services solution. This will also help
 us demonstrate how we can later remove parts of our solution using Vamp. For now, we'll split the
@@ -81,7 +75,7 @@ Deploy this blueprint using either the UI or a REST call and when deployed check
 
 ![](/images/screens/services_2backends.png)
 
-### Step 2: Learn about environment variables and service discovery
+## Learn about environment variables and service discovery
 
 If you were to check out the Docker containers using `docker inspect`, you would see the environment variables that we set in the blueprint.
 
@@ -98,11 +92,9 @@ If you were to check out the Docker containers using `docker inspect`, you would
 
 Host names and ports are configured at runtime and injected in the right parts of your running deployment. Your service/app should pick up these variables to configure itself. Luckily, this is quite easy and common in almost all languages and frameworks.
 
-{{< tip >}}
 Remember, there is no "point-to-point" wiring. The exposed host and port are actually service
 endpoints. The location, amount and version of containers running behind that service endpoint can vary.
-Learn more about [how Vamp does service discovery →](/documentation/how-vamp-works/service-discovery/)
-{{< /tip >}}
+Learn more about [how Vamp does service discovery](/documentation/how-vamp-works/service-discovery/).
 
 {{< note title="What next?" >}}
 * Great! We just demonstrated that Vamp can handle dependencies between services and configure these services with host and port information at runtime. Now let's do a [more complex migration to a new service based topology →](/documentation/tutorials/merge-and-delete/).

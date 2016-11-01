@@ -20,18 +20,18 @@ java -Dvamp.gateway-driver.host=localhost \
 
 The Vamp `application.conf` consists of the following sections. All sections are nested inside a parent `vamp {}` tag.
 
-* [rest-api](/documentation/installation/configure-vamp/#rest-api)
+* [http-api](/documentation/installation/configure-vamp/#http-api)
 * [persistence](/documentation/installation/configure-vamp/#persistence)
 * [container-drivers](/documentation/installation/configure-vamp/#container-drivers)
 * [gateway-driver](/documentation/installation/configure-vamp/#gateway-driver)
 * [operation](/documentation/installation/configure-vamp/#operation)
 
-### rest-api
-Configure the port, host name and interface that Vamp runs on using the `rest-api.port`
+### http-api
+Configure the port, host name and interface that Vamp runs on using the `http-api.port`
 
 ```
 vamp {
-  rest-api {
+  http-api {
     interface = 0.0.0.0
     host = localhost
     port = 8080

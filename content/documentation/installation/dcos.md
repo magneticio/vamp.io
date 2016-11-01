@@ -163,7 +163,7 @@ $ dcos marathon app list
 ID                        MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
 /elasticsearch            1024  0.2    1/1    1/1       ---        DOCKER   None
 /vamp/vamp                1024  0.5    1/1    1/1       ---        DOCKER   None
-/vamp/vamp-gateway-agent  256   0.2    3/3    ---       ---        DOCKER   ['--storeType=zookeeper', '--storeConnection=zk-1.zk:2181', '--storeKey=/vamp/haproxy/1.6', '--logstash=elasticsearch.marathon.mesos:10001']
+/vamp/vamp-gateway-agent  256   0.2    3/3    ---       ---        DOCKER   ['--storeType=zookeeper', '--storeConnection=zk-1.zk:2181', '--storeKey=/vamp/gateways/haproxy/1.6', '--logstash=elasticsearch.marathon.mesos:10001']
 /vamp/workflow-health      64   0.1    1/1    ---       ---        DOCKER   None
 /vamp/workflow-kibana      64   0.1    1/1    ---       ---        DOCKER   None
 /vamp/workflow-metrics     64   0.1    1/1    ---       ---        DOCKER   None

@@ -3,20 +3,15 @@ date: 2016-09-13T09:00:00+00:00
 title: Merge and delete
 ---
 
-## Overview
+In the [previous tutorial we "over-engineered" our service based solution a bit](/documentation/tutorials/split-a-monolith/) (on purpose of course). We don't really need two backends services, so in this tutorial we will introduce our newly engineered solution and transition to it using Vamp blueprints and canary releasing methods. In this tutorial we will:
 
-In the [previous tutorial we "over-engineered" our service based solution a bit](/documentation/tutorials/split-a-monolith/) (on purpose of course). We don't really need two backends services, so in this tutorial we will introduce our newly engineered solution and transition to it using Vamp blueprints and canary releasing methods.
-
-#### In this tutorial we will:
 1. Get some background and theory on merging services
 2. Prepare our blueprint
 3. Transition from blueprints to deployments (and back)
 4. Delete parts of the deployment
 5. Answer the all important question _when would I use this?_
 
-## In depth
-
-### step 1: Get some background and theory
+## Some background and theory
 
 What we are going to do is create a new blueprint that is completely valid by itself and merge it
 with our already running deployment. This might sound strange at first, but it makes sense. Why? Merging will enable us to slowly move from the previous solution to the next solution. Once moved over, we can
@@ -33,7 +28,7 @@ which is merged with the running deployment (the pink circle with the "2").
 
 Is this the same as a blue/green release? Yes, but we like pink better ;o)
 
-### Step 2: Prepare our blueprint
+## Prepare our blueprint
 
 The below blueprint describes our more reasonable service topology. Again, this blueprint is completely
 valid by itself. You could just deploy it somewhere separately and not merge it with our over-engineered
@@ -83,7 +78,7 @@ parts out):
 So what happened here? Vamp has worked out what parts were already there and what parts should be merged or added. This is done based on naming, i.e. the sava cluster already existed, so Vamp added a service to it at 0% weight. A cluster named "backend" didn't exist yet, so it was created. Effectively, we have merged
 the running deployment with a new blueprint.
 
-### Step 3: Transition from blueprints to deployments and back
+## Transition from blueprints to deployments and back
 
 Moving from the old to the new topology is now just a question of "turning the weight dial". You
 could do this in one go, or slowly adjust it. The easiest and neatest way is to just update the deployment as you go.
@@ -92,9 +87,7 @@ Vamp's API has a convenient option for this: you can export any deployment as a 
 
 The default output will be in JSON format, but you can also get a YAML format. Just set the header `Accept: application/x-yaml` and Vamp will give you a YAML format blueprint of that deployment.
 
-{{< note title="Note!" >}}
 When using the graphical UI, this is all taken care of.
-{{< /note >}}
 
 
 In this specific example, we could export the deployment as a blueprint and update the weight to a 50% to
@@ -152,7 +145,7 @@ clusters:
             weight: 50%
 ```
 
-### Step 4: Delete parts of the deployment
+## Delete parts of the deployment
 
 Vamp helps you transition between states and avoid "hard" switches, so deleting parts of a deployment is somewhat different than you might expect.
 
@@ -215,9 +208,9 @@ clusters:
 
 Now, you can take the exact same YAML blueprint or use one that's a bit cleaned up for clarity and send it in the body of the `DELETE` to the deployment resource, e.g. `/api/v1/deployments/125fd95c-a756-4635-8e1a-361085037870`.
 
-{{< note title="Note!" >}}
-Using our UI you can delete parts of your deployment by using the “Remove from” function under the Blueprint tab.
-{{< /note >}}
+
+Using the Vamp UI you can delete parts of your deployment by using the **REMOVE FROM** function under the **BLUEPRINTS** tab.
+
 
 
 ```yaml
@@ -239,15 +232,13 @@ clusters:
 ```
 
 
-{{< note title="Note!" >}}
 We removed the `deployable`, `environment_variables`, `ports` and some other parts of the blueprint. These are actually not necessary for updating or deletion. Besides that, this is actually exactly the same blueprint we used to initially deploy the "old" topology.
-{{< /note >}}
 
 You can check the result in the UI: you should be left with just one backend and one frontend:
 
-![](/images/screens/tut4_after_delete.png)
+![](/images/screens/v091/tut4_after_delete.png)
 
-### Step 5: When would I use this?
+## When would I use this?
 
 Sounds cool, but when would I use this in practice? Well, basically anytime you release something new!
 For example a bugfix release for a mobile API that "didn't change anything significantly"? You could test

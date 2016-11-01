@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: Feature list
 ---
 
-Vamp 0.9.0 includes:
+Vamp 0.9.1 includes:
 
 * Container-scheduler agnostic API
 * Percentage and condition based programmable routing
