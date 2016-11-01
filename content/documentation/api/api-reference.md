@@ -34,7 +34,7 @@ Lists all details for one specific blueprint.
 Creates a new blueprint. Accepts JSON or YAML formatted blueprints. Set the `Content-Type` request header to `application/json` or `application/x-yaml` accordingly.
 
 
-    POST /api/v1/blueprint
+    POST /api/v1/blueprints
 
 
 | parameter     | options           | default          | description      |
@@ -245,7 +245,7 @@ The most common way to specify what you want to delete is by exporting the targe
 This is our (abbreviated) deployment in YAML format. We have two clusters. The first cluster 'frontend' has two services.
 We have left out some keys like `scale` among others as they have no effect on this specific use case.
 
-		GET /api/v1/deployment/3df5c37c-5137-4d2c-b1e1-1cb3d03ffcd?as_blueprint=true
+		GET /api/v1/deployments/3df5c37c-5137-4d2c-b1e1-1cb3d03ffcd?as_blueprint=true
 
 ```yaml
 name: 3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
