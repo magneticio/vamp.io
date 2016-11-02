@@ -476,6 +476,11 @@
               "path": "documentation/release-notes/version-0-9-0",
               "text": "version 0.9.0",
               "visible": true
+            },
+            {
+              "path": "documentation/release-notes/older-versions",
+              "text": "older versions",
+              "visible": true
             }
           ],
           "text": "Release notes",
