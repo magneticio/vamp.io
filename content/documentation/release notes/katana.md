@@ -15,5 +15,5 @@ All changes since the last official release are described below. This applies on
 
 {{< note title="What next?" >}}
 * Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases))
-* You can [try out Vamp](/documentation/installation/hello-world) with our single container hello world package.
+* [Try out Vamp](/documentation/installation/hello-world) with our single container hello world package.
 {{< /note >}}
