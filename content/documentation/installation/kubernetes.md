@@ -56,7 +56,7 @@ $ kubectl expose deployment elastic --protocol=TCP --port=5601 --name=kibana
 Now we can run Vamp gateway agent as a `daemon set`:
 ```bash
 $ kubectl create \
-        -f https://github.com/magneticio/vamp.io/blob/master/static/res/vga.yml
+        -f https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/vga.yml
 ```
 
 To deploy Vamp, execute:
