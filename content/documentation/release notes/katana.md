@@ -7,10 +7,11 @@ title: katana
 All changes since the last official release are described below. This applies only to binaries built from source (master branch). 
 {{< /note >}}
 
-## What has changed
-* no changes since last release.
-
 ## What is new
+* Option to suspend workflows without deleting them and option to restart them [#789](https://github.com/magneticio/vamp/issues/789)
+* Workflow execution period (successive executions) and execution timeout (max allowed execution time) [#813](https://github.com/magneticio/vamp/issues/813)
+
+## What has changed
 * no changes since last release.
 
 {{< note title="What next?" >}}
