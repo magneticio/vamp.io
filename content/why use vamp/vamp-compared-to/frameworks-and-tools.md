@@ -1,6 +1,9 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Frameworks and tools
+menu:
+  main:
+    parent: "Vamp compared to..."
 ---
 
 ## Vamp compared to CI/CD tools

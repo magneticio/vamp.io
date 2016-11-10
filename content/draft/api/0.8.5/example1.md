@@ -1,12 +1,6 @@
 ---
 date: 2016-03-09T19:56:50+01:00
 title: Example 1
-
-menu:
-  main:
-    parent: API
-    identifier: 0.8.5/Example 1
-    weight: 10
 ---
 
 ## Subtitle

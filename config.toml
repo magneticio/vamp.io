@@ -33,10 +33,6 @@ googleAnalytics = ""
 	  "javascripts/version.js"
 	]
 
-	custom_menu = [
-    "API"
-  ]
-
 	# Syntax highlighting theme
 	highlight_css  = ""
 
@@ -59,28 +55,36 @@ googleAnalytics = ""
 	plainIDAnchors = true
 
 [[menu.main]]
-	name   = "WHAT IS VAMP?"
-	url    = "/what-is-vamp/"
+	name   = "Why use Vamp?"
+	url    = "/why-use-vamp/"
 	weight = 10
 
 [[menu.main]]
-	name   = "TRY VAMP"
-	url    = "/try-vamp/"
+	name   = "Documentation"
+	identification = "documentation"
+	url    = "/documentation/how-vamp-works/architecture-and-components/"
 	weight = 20
 
 
 [[menu.main]]
-	name   = "RESOURCES"
-	url    = "resources/"
+	name   = "Resources"
+	url    = "/resources/downloads/"
 	weight = 30
 
 [[menu.main]]
-	name   = "NEWS"
-	url    = "news/"
+	name   = "Support"
+	url    = "/support/"
 	weight = 40
 
 [[menu.main]]
-	name   = "SUPPORT"
-	url    = "support/"
-	weight = 50
+	name  = "Vamp compared to..."
+	url   = "/why-use-vamp/vamp-compared-to/proxies-and-load-balancers/"
+	parent = "Why use Vamp?"
+	weight = 20
+
+[[menu.main]]
+	name	= "How Vamp works"
+	url = "/documentation/how-vamp-works/architecture-and-components/"
+	parent = "Documentation"
+	weight = 10
 

@@ -1,6 +1,9 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Architecture and components
+menu:
+  main:
+    parent: "How Vamp works"
 ---
 
 ## Architecture

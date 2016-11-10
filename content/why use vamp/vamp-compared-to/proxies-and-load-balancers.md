@@ -1,6 +1,9 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Proxies and load balancers
+menu:
+  main:
+    parent: "Vamp compared to..."
 ---
 
 ## Vamp compared to software based proxies and load balancers

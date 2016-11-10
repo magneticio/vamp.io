@@ -1,0 +1,130 @@
+.container {
+  margin: 0 auto;
+  z-index: 10;
+  @media all and (min-width: 321px) {
+    width: $container-width-mobile-small;
+  }
+
+  @media all and (min-width: 641px) {
+    width: $container-width-mobile;
+  }
+
+  @media all and (min-width: 769px) {
+    width: $container-width-tablet;
+  }
+
+  @media all and (min-width: 1025px) {
+    width: $container-width-laptop;
+  }
+
+  @media all and (min-width: 1201px) {
+    width: $container-width-desktop;
+  }
+}
+
+.row {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  @media all and (min-width: 321px) {
+    width: $container-width-mobile-small + $gutter-size;
+    margin: 10px (-($gutter-size/2));
+
+  }
+
+  @media all and (min-width: 641px) {
+    width: $container-width-mobile + $gutter-size;
+    margin: 20px (-($gutter-size/2));
+  }
+
+  @media all and (min-width: 769px) {
+    width: $container-width-tablet + $gutter-size;
+    margin: 30px (-($gutter-size/2));
+    flex-direction: row;
+  }
+
+  @media all and (min-width: 1025px) {
+    width: $container-width-laptop + $gutter-size;
+    margin: 40px (-($gutter-size/2));
+
+  }
+
+  @media all and (min-width: 1201px) {
+    width: $container-width-desktop + $gutter-size;
+    margin: 40px (-($gutter-size/2));
+  }
+
+  //border: 1px solid yellow;
+
+  &--wrap {
+    flex-wrap: wrap;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.col {
+  flex: 1;
+  padding: 20px;
+
+
+  @media all and (min-width: 641px) {
+    //padding-bottom: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+@for $i from 1 through 15 {
+  .col-#{$i} {
+    flex: none;
+    //width: (($container-width-desktop + $gutter-size) / $columns) * $i;
+
+    @media all and (min-width: 321px) {
+      //width: (($container-width-mobile-small + $gutter-size) / $columns) * $i;
+      width: 100%;
+    }
+
+    @media all and (min-width: 641px) {
+      //width: (($container-width-mobile + $gutter-size) / $columns) * $i;
+      width: 100%;
+    }
+
+
+    @media all and (min-width: 769px) {
+      width: (($container-width-tablet + $gutter-size) / $columns) * $i;
+    }
+
+    @media all and (min-width: 1025px) {
+      width: (($container-width-laptop + $gutter-size) / $columns) * $i;
+
+    }
+
+    @media all and (min-width: 1201px) {
+      width: (($container-width-desktop + $gutter-size) / $columns) * $i;
+    }
+  }
+}
+
+.clear { /* Useful generic clearing class. */
+  clear: both;
+}
+
+.last-col {
+  margin-right: 0;
+}

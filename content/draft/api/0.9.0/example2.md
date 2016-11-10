@@ -1,12 +1,6 @@
 ---
 date: 2016-08-01T11:16:39+02:00
 title: Example 2
-
-menu:
-  main:
-    parent: API
-    identifier: 0.9.0/Example 2
-    weight: 20
 ---
 
 Church-key gentrify tousled microdosing, bitters yr food truck post-ironic sustainable kitsch 90's twee kombucha. Typewriter 3 wolf moon artisan try-hard. Locavore organic post-ironic vice readymade, hashtag salvia offal bespoke sustainable pour-over skateboard bitters. Pop-up letterpress trust fund quinoa, jean shorts authentic artisan. Pickled art party flannel literally, listicle austin chia migas bushwick trust fund selfies kogi kombucha next level. Ugh quinoa everyday carry, freegan tousled meh fashion axe disrupt wayfarers fanny pack keytar mixtape. Kogi beard food truck fashion axe.

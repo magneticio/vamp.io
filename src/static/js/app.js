@@ -29,7 +29,7 @@ topMenuItemTemplate += '<a href=\"'+theBaseUrl+'{{path}}/\" id=\"top-menu-item-{
 function documentReady() {
   thePath = window.location.href.substring(theBaseUrl.length-1, window.location.href.length).split('#')[0];
   thePath = thePath.substring(1, thePath.length - 1);
-  getMenuFile(menuFileLoaded);
+  getMenuFile();
 
   // Top menu color change
   $(window).on("scroll", function () {

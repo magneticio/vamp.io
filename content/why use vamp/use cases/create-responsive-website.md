@@ -1,6 +1,9 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Canary test and release a responsive frontend
+menu:
+    main: 
+        parent: "Use cases"
 ---
 
 _“We need to upgrade our website frontend to make it responsive”_
