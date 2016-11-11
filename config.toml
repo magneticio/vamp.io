@@ -65,7 +65,6 @@ googleAnalytics = ""
 	url    = "/documentation/how-vamp-works/architecture-and-components/"
 	weight = 20
 
-
 [[menu.main]]
 	name   = "Resources"
 	url    = "/resources/downloads/"
@@ -87,4 +86,10 @@ googleAnalytics = ""
 	url = "/documentation/how-vamp-works/architecture-and-components/"
 	parent = "Documentation"
 	weight = 10
+
+[[menu.main]]
+	name = "API"
+	url = "/documentation/api/0.9.1/api-reference"
+	parent = "Documentation"
+	weight = 20
 

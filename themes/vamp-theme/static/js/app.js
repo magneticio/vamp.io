@@ -5,6 +5,7 @@ var thePath;
 function documentReady() {
   thePath = window.location.pathname;
   setSideMenu();
+  setDropdown();
 
   // Top menu color change
   $(window).on("scroll", function () {
@@ -70,6 +71,24 @@ function setSideMenu() {
     if(firstPartUrl === firstPartUrlMenu) {
       $(this).addClass('active');
     }
+  });
+}
+
+function setDropdown() {
+  var arrayPath = thePath.split('/');
+  var versionInPath = arrayPath[arrayPath.length - 3];
+
+  if(!isNaN(versionInPath.substring(0,1))) {
+    $('#versions-dropdown').css('display', 'block');  
+  }
+
+  $('#versions-dropdown').val(versionInPath);
+
+  $('#versions-dropdown').change(function() {
+    var value = $(this).val();
+    arrayPath[arrayPath.length - 3] = value;
+    var newPath = arrayPath.join('/');
+    window.location.href = newPath;
   });
 }
 
