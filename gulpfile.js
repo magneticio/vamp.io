@@ -24,7 +24,7 @@ gulp.task('sass:dev', function() {
       .pipe(sass.sync().on('error', sass.logError))
       .pipe(autoprefixer({cascade: false}));
   
-    var cssStream = gulp.src('./themes/vamp-theme/css/*.css')
+    var cssStream = gulp.src('./themes/vamp-theme/static/css/vendor/*.css')
       .pipe(concat('css-files.css'));
   
     var mergedStream = merge(sassStream, cssStream)

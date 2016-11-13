@@ -51,6 +51,49 @@ function documentReady() {
 
   });
 
+  //unsticky menu
+  $(window).scroll(function () {
+    var offsetTop = $('.footer').offset().top;
+    var scrollBottom = $(window).scrollTop() + $(window).height();
+
+    if(scrollBottom >= offsetTop) {
+      $('#side-menu').css('position', 'absolute');
+      $('#side-menu').css('bottom', '0');
+
+    } else {
+      $('#side-menu').css('position', 'fixed');
+      $('#side-menu').css('bottom', '');
+    }
+  });
+
+  // Set target="_blank" on external links
+  $(document.links).filter(function() {
+    return this.hostname != window.location.hostname;
+  }).attr('target', '_blank');
+
+  //check if emails are correct
+  var inputfields = $('#mc-embedded-subscribe-form input');
+
+  $('#mc-embedded-subscribe-form input').on('change paste keyup', function () {
+    var emailValue = $(this).val();
+
+
+    //
+    if(isEmail(emailValue) && (emailValue !== '')) {
+      $(this).parent().find('.button').removeClass('not-active');
+    } else {
+      $(this).parent().find('.button').addClass('not-active');
+    }
+
+  });
+
+  function isEmail(email) {
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
+  }
+
+  buildSearch();
+
 }
 
 // Set side menu 
