@@ -1,6 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Blueprints
+menu:
+  main:
+    parent: "Using Vamp"
+    weight: 30
 ---
 
 Blueprints are execution plans - they describe how your services should be hooked up and what their topology should look like at runtime. This means you reference your breeds (or define them inline) and add runtime configuration to them.

@@ -4,6 +4,7 @@ title: Frameworks and tools
 menu:
   main:
     parent: "Vamp compared to..."
+    weight: 30
 ---
 
 ## Vamp compared to CI/CD tools

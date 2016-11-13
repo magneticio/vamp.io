@@ -1,6 +1,10 @@
 ---
 date: 2016-10-21T09:00:00+00:00
 title: Events and metrics
+menu:
+  main:
+    parent: "How Vamp works"
+    weight: 60
 ---
 
 To provide an effective feedback loop, HTTP/TCP logs should be collected, stored and analyzed. Collection and storing is done with a combination of HAProxy, VGA and Logstash setup. Logs are stored in Elasticsearch and can be later visualised by Kibana.

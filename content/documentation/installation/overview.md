@@ -1,6 +1,11 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Installation
+menu:
+  main:
+    name: "Overview"
+    parent: "Installation"
+    weight: 10
 ---
 Before you get Vamp up and running on your architecture, it is helpful to understand [how vamp works](/documentation/how-vamp-works/architecture-and-components) and the role of each component and its preferred location in a typical architecture.  
 

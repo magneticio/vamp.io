@@ -4,6 +4,7 @@ title: PaaS and container systems
 menu:
   main:
     parent: "Vamp compared to..."
+    weight: 20
 ---
 
 ## Vamp compared to container schedulers and container clouds (CPaaS)

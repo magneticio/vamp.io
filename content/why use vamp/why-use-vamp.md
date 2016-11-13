@@ -1,6 +1,11 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Why use Vamp?
+menu:
+  main:
+    parent: "why-use-vamp-top"
+    identifier: "why-use-vamp-page"
+    weight: 5
 ---
 
 We recognise the pain and risk involved with delivering microservice applications.  We've been there too - facing downtime and unexpected issues while transitioning from one release to the next. 

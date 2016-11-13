@@ -1,6 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Conditions
+menu:
+  main:
+    parent: "Using Vamp"
+    weight: 70
 ---
 
 Conditions are used by gateways to filter incoming traffic for routing between services in a cluster.

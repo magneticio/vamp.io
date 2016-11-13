@@ -4,6 +4,7 @@ title: Proxies and load balancers
 menu:
   main:
     parent: "Vamp compared to..."
+    weight: 10
 ---
 
 ## Vamp compared to software based proxies and load balancers

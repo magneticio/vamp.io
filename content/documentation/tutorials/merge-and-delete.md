@@ -1,6 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Merge and delete
+menu:
+  main:
+    parent: "Tutorials"
+    weight: 50
 ---
 
 In the [previous tutorial we "over-engineered" our service based solution a bit](/documentation/tutorials/split-a-monolith/) (on purpose of course). We don't really need two backends services, so in this tutorial we will introduce our newly engineered solution and transition to it using Vamp blueprints and canary releasing methods. In this tutorial we will:

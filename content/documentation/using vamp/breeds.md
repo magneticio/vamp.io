@@ -1,6 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Breeds 
+title: Breeds
+menu:
+  main:
+    parent: "Using Vamp"
+    weight: 20
 ---
 Breeds are static descriptions of applications and services available for deployment. Each breed is described by the DSL in YAML notation or JSON, whatever you like. This description includes name, version, available parameters, dependencies etc.
 To a certain degree, you could compare a breed to a Maven artifact or a Ruby Gem description.

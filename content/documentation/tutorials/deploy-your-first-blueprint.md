@@ -1,6 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Deploy your first blueprint
+menu:
+  main:
+    parent: "Tutorials"
+    weight: 20
 ---
 If everything went to plan, you should have your Vamp installation up and running. If not, please follow the [Vamp hello world](/documentation/installation/hello-world) quick setup steps. Now we're ready to check out some of Vamp's features. In this tutorial we will:  
 

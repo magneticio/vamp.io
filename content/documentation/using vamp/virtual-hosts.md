@@ -1,6 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Virtual Hosts
+menu:
+  main:
+    parent: "Using Vamp"
+    weight: 140
 ---
 
 Vamp can be configured to support virtual host via HAProxy:

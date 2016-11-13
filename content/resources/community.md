@@ -1,6 +1,11 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Join the Vamp community
+menu:
+  main:
+    name: "Community"
+    parent: "Resources"
+    weight: 20
 ---
 Vamp is an open source project, actively developed by Magnetic.io. We encourage anyone to pitch in with pull requests, bug reports etc. 
 

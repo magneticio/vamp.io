@@ -1,6 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Split a monolith
+menu:
+  main:
+    parent: "Tutorials"
+    weight: 40
 ---
 In the [previous tutorial we did some basic canary releasing on two versions of a monolithic application](/documentation/tutorials/run-a-canary-release/). Very nice, but Vamp isn't
 called the *Very Awesome Microservices Platform* for nothing. The next step is to split our monolithic Sava application into separate services. In this tutorial we will:

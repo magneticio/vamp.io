@@ -4,6 +4,7 @@ title: Simulate and test scaling behaviour
 menu:
     main: 
         parent: "Use cases"
+        weight: 50
 ---
 
 _"How would our system react if... the number of users increased x10 ... the response time of a service increased with 20 seconds ... an entire tier of our application would be killed ..."_  

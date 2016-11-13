@@ -4,6 +4,8 @@ title: Resolve client-side incompatibilities after an upgrade
 menu:
     main: 
         parent: "Use cases"
+        name: "Resolve incompatibilities"
+        weight: 30
 ---
 
 _“We upgraded our website self-management portal, but our biggest client is running an unsupported old browser version”_

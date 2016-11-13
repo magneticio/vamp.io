@@ -4,6 +4,7 @@ title: Architecture and components
 menu:
   main:
     parent: "How Vamp works"
+    weight: 10
 ---
 
 ## Architecture

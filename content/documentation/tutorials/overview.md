@@ -1,6 +1,12 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Tutorials
+menu:
+  main:
+    parent: "Tutorials"
+    name: "Overview"
+    identifier: "tutorial-overview"
+    weight: 10
 ---
 
 ## Getting started

@@ -1,6 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Using the Vamp CLI
+menu:
+  main:
+    parent: "CLI"
+    weight: 20
 ---
 
 Vamp's command line interface (CLI) can be used to perform basic actions against the Vamp API. The CLI was

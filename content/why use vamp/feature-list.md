@@ -1,6 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Feature list
+menu:
+  main:
+    parent: "why-use-vamp-top"
+    weight: 50
 ---
 
 Vamp 0.9.1 includes:
