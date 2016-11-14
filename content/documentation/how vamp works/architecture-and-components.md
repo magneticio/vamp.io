@@ -4,7 +4,7 @@ title: Architecture and components
 ---
 
 ## Architecture
-Vamp and the Vamp Gateway Agent require specific elements in your architecture to handle orchetstration, routing, persistence and metrics aggregation. There is no set architecture required for running Vamp and every use case or specific combination of tools and platforms can have its own set up.
+Vamp and the Vamp Gateway Agent require specific elements in your architecture to handle orchestration, routing, persistence and metrics aggregation. There is no set architecture required for running Vamp and every use case or specific combination of tools and platforms can have its own set up.
 
 #### Example topology
 The below diagram should be used more as an overview than required architecture. For example, in this diagram the Mesos/Marathon stack and Elasticsearch are included even though these are not a hard dependency. Vamp can be configured to run with other container schedulers, log-aggregators, key-value and event-stores.
