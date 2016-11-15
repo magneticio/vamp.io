@@ -18,17 +18,14 @@ This guide has been tested on Rancher version 1.1.x.
 * Elasticsearch and Logstash
 * If you want to make a setup on your local VM based Docker, it's advisable to increase default VM memory size from 1GB to 4GB.
 
-### Step 1: Run Rancher locally
+## Run Rancher locally
 Based on the official Rancher quickstart tutorial, these are a few simple steps to run Rancher locally:
 ```bash
 $ docker run -d --restart=always -p 8080:8080 rancher/server
 ```
 The Rancher UI is exposed on port 8080, so go to http://SERVER_IP:8080 - for instance [http://192.168.99.100:8080](http://192.168.99.100:8080), [http://localhost:8080](http://localhost:8080) or something similar depending on your Docker setup.
 
-Follow the instructions on the screen to add a new Rancher host:
-
-1. click on "Add Host" and then on "Save".
-2. You should get instructions (bullet point 5) to run an `agent` Docker image:  
+Follow the instructions on the screen to add a new Rancher host. Click on "Add Host" and then on "Save". You should get instructions (bullet point 5) to run an `agent` Docker image:  
 
 ```
 $ docker run \
@@ -40,16 +37,16 @@ $ docker run \
 ```
 
 
-### Step 2: Run Vamp stack
+## Create a Vamp stack
 Next we need to create a Vamp stack. This can be done either from `catalog` or from scratch (adding all dependencies manually - Consul, Elasticsearch, Logstash).
 
-#### Run Vamp stack from catalog
+### Create a Vamp stack from catalog
 
-1. Go to `Catalog`
-2. Find the `Vamp` entry, click the `Details` button
-3. Go to [Step 3: Run Vamp](/documentation/installation/rancher/#step-3-run-vamp)
+You can create a Vamp stack directly from the Rancher catalog. Just go to `Catalog`, find the `Vamp` entry and click the `Details` button. Now you are ready to [run Vamp](/documentation/installation/rancher/#run-vamp)
 
-#### Run Vamp stack from scratch
+### Create a Vamp stack from scratch
+
+If you'd rather create a Vamp stack from scratch, our custom Docker image `magneticio/elastic:2.2` contains Elasticsearch, Logstash and Kibana with the proper Logstash configuration for Vamp. More details can be found on the github project page ([github.com/magneticio - elastic](https://github.com/magneticio/elastic)).
 
 1. Go to `Add Stack` and create a new stack `vamp` (lowercase).
 2. Install Consul:  
@@ -57,7 +54,7 @@ Next we need to create a Vamp stack. This can be done either from `catalog` or f
     1. `Name` ⇒ `consul`
     2. `Select Image` ⇒ `gliderlabs/consul-server`
     3. Set `Command` ⇒ `-server -bootstrap`
-    4. Go to `Networking` tab
+    4. Go to the `Networking` tab
     5. Under `Hostname` select `Set a specific hostname:` and enter `consul`
     6. Click the `Create` button
 
@@ -65,54 +62,58 @@ Next we need to create a Vamp stack. This can be done either from `catalog` or f
   * Use the `vamp` stack and go to `Add Service`:  
     1. `Name` ⇒ `elastic`
     2. `Select Image` ⇒ `magneticio/elastic:2.2`
-    3. Go to `Networking` tab
+    3. Go to the `Networking` tab
     4. Under `Hostname` select `Set a specific hostname:` and enter `elastic`
-    6. Click the `Create` button
+    6. Click `Create`
 
-> Our custom Docker image `magneticio/elastic:2.2` contains Elasticsearch, Logstash and Kibana with the proper Logstash configuration for Vamp. More details can be found on the github project page ([github.com/magneticio - elastic](https://github.com/magneticio/elastic)).
+## Run Vamp
 
-### Step 3: Run Vamp
+First we'll run the Vamp Gateway Agent:
 
-1. First we'll run the Vamp Gateway Agent:
-  * Use the `vamp` stack and go to `Add Service`:
-  * Set scale to `Always run one instance of this container on every host`
-  * `Name` ⇒ `vamp-gateway-agent`
-  * `Select Image` ⇒ `magneticio/vamp-gateway-agent:0.9.1`
-  * Set `Command` ⇒ `--storeType=consul --storeConnection=consul:8500 --storeKey=/vamp/gateways/haproxy/1.6 --logstash=elastic:10001`
-  * Go to `Networking` tab
-  * Under `Hostname` select `Set a specific hostname:` and enter `vamp-gateway-agent`
-  * Click on `Create` button
+* Use the `vamp` stack and go to `Add Service`:
+* Set scale to `Always run one instance of this container on every host`
+* `Name` ⇒ `vamp-gateway-agent`
+* `Select Image` ⇒ `magneticio/vamp-gateway-agent:0.9.1`
+* Set `Command` ⇒ `--storeType=consul --storeConnection=consul:8500 --storeKey=/vamp/gateways/haproxy/1.6 --logstash=elastic:10001`
+* Go to `Networking` tab
+* Under `Hostname` select `Set a specific hostname:` and enter `vamp-gateway-agent`
+* Click `Create` 
 
-2. Now let's find a Rancher API endpoint that can be accessed from running container:
-  * Go to the `API` page and find the endpoint, e.g. `http://192.168.99.100:8080/v1/projects/1a5`
-  * Go to the `Infrastructure`/`Containers` and find the IP address of `rancher/server`, e.g. `172.17.0.2`
-  * The Rancher API endpoint should be then `http://IP_ADDRESS:PORT/PATH` based on values we have, e.g. `http://172.17.0.2:8080/v1/projects/1a5`
+Now let's find a Rancher API endpoint that can be accessed from running container:
 
-3. Now we can deploy Vamp:
-  * Use the `vamp` stack and go to `Add Service`:
-  * `Name` ⇒ `vamp`
-  * `Select Image` ⇒ `magneticio/vamp:0.9.1-rancher`
-  * Go to `Add environment variable` VAMP_CONTAINER_DRIVER_RANCHER_URL with value of Rancher API endpoint, e.g. `http://172.17.0.2:8080/v1/projects/1a5`
-  * (optional) add a `VAMP_CONTAINER_DRIVER_RANCHER_USER` variable with a [Rancher API access key](https://docs.rancher.com/rancher/v1.2/zh/api/api-keys/#environment-api-keys) if your Rancher installation has access control enabled
-  * (optional) add a `VAMP_CONTAINER_DRIVER_RANCHER_PASSWORD` variable with a matching Rancher API secret key.
-  * Go to `Networking` tab
-  * Under `Hostname` select `Set a specific hostname:` and enter `vamp`
-  * Click the `Create` button
-  * Go to `Add Load Balancer` (click arrow next to `Add Service` button label)
-  * Choose a name (e.g. `vamp-lb`)
-  * `Source IP/Port` ⇒ 9090
-  * `Default Target Port` ⇒ 8080 and `Target Service` ⇒ `vamp`
+* Go to the `API` page and find the endpoint, e.g. `http://192.168.99.100:8080/v1/projects/1a5`
+* Go to the `Infrastructure`/`Containers` and find the IP address of `rancher/server`, e.g. `172.17.0.2`
+* The Rancher API endpoint should be then `http://IP_ADDRESS:PORT/PATH` based on values we have, e.g. `http://172.17.0.2:8080/v1/projects/1a5`
 
-If you go to http://SERVER_IP:9090 (e.g [http://192.168.99.100:9090](http://192.168.99.100:9090)), you should get the Vamp UI.  The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](contact) if you’d like further details.  
-You should also notice that Vamp Gateway Agent is running (one instance on each node) and you can see some [Vamp workflows](/documentation/using-vamp/workflows/) running.
+Now we can deploy Vamp:
 
-To access HAProxy stats:
+* Use the `vamp` stack and go to `Add Service`:
+* `Name` ⇒ `vamp`
+* `Select Image` ⇒ `magneticio/vamp:0.9.1-rancher`
+* Go to `Add environment variable` VAMP_CONTAINER_DRIVER_RANCHER_URL with value of Rancher API endpoint, e.g. `http://172.17.0.2:8080/v1/projects/1a5`
+* (optional) add a `VAMP_CONTAINER_DRIVER_RANCHER_USER` variable with a [Rancher API access key](https://docs.rancher.com/rancher/v1.2/zh/api/api-keys/#environment-api-keys) if your Rancher installation has access control enabled
+* (optional) add a `VAMP_CONTAINER_DRIVER_RANCHER_PASSWORD` variable with a matching Rancher API secret key.
+* Go to `Networking` tab
+* Under `Hostname` select `Set a specific hostname:` and enter `vamp`
+* Click `Create`
+* Go to `Add Load Balancer` (click arrow next to `Add Service` button label)
+* Choose a name (e.g. `vamp-lb`)
+* `Source IP/Port` ⇒ 9090
+* `Default Target Port` ⇒ 8080 and `Target Service` ⇒ `vamp`
 
-1. Go to `Add Load Balancer` (click arrow next to `Add Service`)
-2. Choose a name (e.g. `vamp-gateway-agent-lb`), `Source IP/Port` ⇒ 1988, `Default Target Port` ⇒ 1988 and `Target Service` ⇒ `vamp-gateway-agent`
-3. Use the following username/password: `haproxy` for the HAProxy stats page
+If you go to http://SERVER_IP:9090 (e.g [http://192.168.99.100:9090](http://192.168.99.100:9090)), you should get the Vamp UI.  You should also notice that Vamp Gateway Agent is running (one instance on each node) and you can see some [Vamp workflows](/documentation/using-vamp/workflows/) running.
+The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](contact) if you’d like further details.  
 
-### Step 4: Deploy the Sava demo application
+
+To access HAProxy stats, go to `Add Load Balancer` (click the arrow next to `Add Service`). Choose a name (e.g. `vamp-gateway-agent-lb`) and set:
+ 
+* `Source IP/Port` ⇒ 1988
+* `Default Target Port` ⇒ 1988 
+* `Target Service` ⇒ `vamp-gateway-agent`
+
+You can access the HAProxy stats page with username/password `haproxy`.
+
+## Deploy the Sava demo application
 
 Let's deploy our `sava` demo application:
 
