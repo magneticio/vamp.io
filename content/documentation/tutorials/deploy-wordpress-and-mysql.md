@@ -4,34 +4,43 @@ date: 2016-09-13T09:00:00+00:00
 title: Deploy Wordpress from the Docker hub
 draft: true
 ---
+Ths tutorial will demonstrate how Vamp builds deployments and works with gateways. We'll do this by deploying Wordpress together with mySQL using official images from the Docker hub. We are going to work with the Vamp UI, but you could just as easily perform all the described actions using the Vamp API.  
 
-In this tutorial we're going to use Vamp to deploy Wordpress together with mySQL. We will work with official images from the Docker hub to demonstrate how Vamp can easily initiate deployments, manage gateways and load balance  traffic across services and deployments. We are going to set up our deployment as individual artifacts (breeds, blueprint and gateways) using the Vamp UI, but you could just as easily use the Vamp API. In this tutorial we will:
+In this tutorial we will:
 
-1. Take a look at how Vamp structures deployments 
-* Create breeds to describe the mySQL and Wordpress services
-* Create a blueprint that references our two breeds and deploy them
-* Add a stable endpoint to access our running Wordpress deployment
-* Deploy a second instance of mySQL and Wordpress
-* Use a gateway to load balance traffic between the two deployments
+1. [Build a deployment from Vamp artifacts](documentation/tutorials/deploy-wordpress-and-mysql/#build-a-deployment-from-vamp-artifacts)  
+  * Create breeds to describe the mySQL and Wordpress deployables and their requirements
+  * Create a scale to specify the resources to be assigned at runtime
+  * Create a blueprint that combines breeds with scales 
+  * Deploy two instances of mySQL and Wordpress
+2. [Work with Vamp gateways](documentation/tutorials/deploy-wordpress-and-mysql/#work-with-vamp-gateways) 
+  * Add stable endpoints to access the running Wordpress deployments
+  * Create a gateway to control traffic distribution between the two deployments and run a canary release
+  * Connect Wordpress to the mySQL service using an external gateway
+  
+  
 
 ### Requirements
 
 * A running version of Vamp (this tutorial has been tested on the [Vamp hello world set up](documentation/installation/hello-world))
 * Access to the Docker hub
 
-## How Vamp structures deployments
-Deployments managed by Vamp are described in blueprints using the Vamp DSL (Domain Specific Language). A Vamp blueprint describes scalable services to deploy, grouped into clusters for traffic distribution. Gateways allow access to running services from both within the deployment (internal gateways) and at stable endpoints (external gateways).  
+## Build a deployment from Vamp artifacts
+Deployments to be initiated by Vamp are described in blueprints using the Vamp DSL (Domain Specific Language). A Vamp blueprint combines breed and scale artifacts to make scalable services, then groups these services into clusters for traffic distribution. 
+A blueprint can reference individually stored artifacts, or they can be described inline. We are going to create individual breed and scale artifacts, then reference these from our blueprint.
 
-Let's start by creating breeds that describe the mySQL and Wordpress services.
-
-## Create breeds to describe our services
-Services to be deployed by Vamp must first be described in a breed. You can describe breeds inline as part of a blueprint or you can store them separately as individual artifacts that can be referenced from blueprints. Breeds define the deployable to run and the internal gateway(s) to expose for a single service. Settings can be specified in a breed and passed to the service at runtime, this is done using environment variables.  
+### Create breeds
+Services to be deployed by Vamp must first be described in a breed. Breeds define the deployable to run and the internal gateway(s) to create for a single service. Settings can be specified in a breed and passed to the service at runtime, this is done using environment variables.  
 [Read more about environment variables...](documentation/using-vamp/environment-variables)
 
 For our deployment, we will need to create two breeds - one for the mySQL database and one for Wordpress. We can use environment variables to specify the login credentials for the database and add some Vamp magic to tell Wordpress where it can find the as-yet-undeployed mySQL database. The Vamp variable `host` will resolve to the host or IP address of a referenced service at runtime. Finally, we can declare the mySQL database as a dependency for the Wordpress service so Vamp will wait until the database is available before it deploys Wordpress and all environment variables can be resolved.
 
-### Create the mySQL breed
-We are using mySQL as the Wordpress database, but you could try another database if you prefer. A quick check of the official documentation on the Docker hub tells us that the official mySQL container ([hub.docker.com - mySQL](https://hub.docker.com/_/mysql/)) exposes the standard mySQL port (3306). We can create a database and set up some user accounts with the variables `MYSQL_DATABASE`, `MYSQL_ROOT_PASSWORD`, `MYSQL_USER` and `MYSQL_PASSWORD`. That's all the details we need to create a breed for the mySQL service. 
+* **The mySQL breed**  
+We will use mySQL as the Wordpress database, but you could try another database if you prefer. A quick check of the official documentation on the Docker hub tells us that the official mySQL container ([hub.docker.com - mySQL](https://hub.docker.com/_/mysql/)) exposes the standard mySQL port (3306). We can create a database and set up some user accounts with the variables `MYSQL_DATABASE`, `MYSQL_ROOT_PASSWORD`, `MYSQL_USER` and `MYSQL_PASSWORD`. That's all the details we need to create a breed for the mySQL service. 
+
+  1. Go the BREEDS tab in the Vamp UI
+  * Click ADD
+  * Paste in the below breed YAML and click SAVE
 
 ```
 name: mysql                    # name of our breed
@@ -45,13 +54,12 @@ environment_variables:         # required settings
   MYSQL_PASSWORD: "wordpress_password"
 ```
 
-1. Go the BREEDS tab in the Vamp UI
-* Click ADD
-* Paste in the above breed YAML
-* Click SAVE
-
-### Create the Wordpress breed
+* **The Wordpress breed**  
 Now let's do the same for our Wordpress service. The official Wordpress container ([hub.docker.com - wordpress](https://hub.docker.com/_/wordpress/)) runs apache on port 80. We can specify an external database using the variables `WORDPRESS_DB_HOST`, `WORDPRESS_DB_USER` and `WORDPRESS_DB_PASSWORD`. 
+
+  1. Go the BREEDS tab in the Vamp UI
+  * Click ADD
+  * Paste in the below breed YAML and click SAVE
 
 ```
 name: wp:1.0.0                 # name of our Wordpress service
@@ -66,22 +74,28 @@ dependencies:                  # required for the Wordpress service to run
   db: mysql                    # the mysql service from the db cluster
 ```
 
-1. Go the BREEDS tab in the Vamp UI
-* Click ADD
-* Paste in the above breed YAML
-* Click SAVE
 
-Nothing has been deployed yet, but you will be able to see the two breeds we have created listed in the Vamp UI:
+Nothing has been deployed yet, but you will be able to see the two new breeds listed in the Vamp UI under the BREEDS tab:
 
 ![](images/screens/v091/wordpress_breeds.jpg)
 
+### Create a scale
+The resources to assign
 
-## Create a blueprint to deploy our breeds
-We can now combine our breeds in a simple blueprint ready for deployment. The Vamp blueprint will create scalable services by joining each breed description with a scale description (the resources to assign). 
-Services are grouped in clusters to allow distribution of incoming traffic - more on this later. 
+```
+name: demo
+  instances: 1
+  cpu: 0.3
+  memory: 380MB  
+```
+### Create a blueprint
+We can now reference our artifacts from a simple blueprint, ready for deployment. The Vamp blueprint creates scalable services by joining the breed descriptions with a scale. Services are grouped into clusters to allow easy distribution of incoming traffic - more on this later. 
 
-### Create the blueprint 
-Our blueprint will use two clusters - one for the database service and one for the Wordpress service. We have described the `scale` inline, but we could have stored these as separate artifacts and referenced them from here (as we have done with the `breed`).
+Our blueprint will use two clusters - one for the database service and one for the Wordpress service.
+
+1. Go to the BLUEPRINTS tab in the Vamp UI 
+* Click ADD (top right)
+* Paste in the below blueprint YAML and press SAVE
 
 ```
 name: wp_demo            # name of our blueprint
@@ -89,43 +103,53 @@ clusters:
   db:                    # name of our database cluster
     services:
       breed: mysql       # the mySQL breed we created
-      scale:
-        instances: 1
-        cpu: 0.3
-        memory: 380MB              
+      scale: demo        # the scale we created
   wp:                    # name of our Wordpress cluster
     services:
       breed: wp:1.0.0    # the Wordpress breed we created
-      scale:
-        cpu: 0.2
-        memory: 380MB
-        instances: 1
+      scale: demo        # the scale we created
 ```
-1. Go to the BLUEPRINTS tab in the Vamp UI 
-* Click ADD (top right)
-* Paste in the above blueprint YAML
-* Press SAVE. 
 
-Vamp will store the blueprint and make it available for deployment. 
+Vamp will store the blueprint and make it available for deployment. You can see it listed under the BLUEPRINTS tab.
 
 ![](images/screens/v091/wordpress_blueprints.jpg)
 
 ### Deploy the blueprint
 
 1. Click DEPLOY AS
-* You’ll be prompted to give your deployment a name, let’s call it `wp_demo_1`
+* You will be prompted to give your deployment a name, let’s call it `wp_demo_1`
 * Click DEPLOY to initiate the deployment
 
-Vamp will now run the deployment. This might take some time, especially if the images need to be pulled from the Docker hub. You can track the status of the deployed clusters and their services under the DEPLOYMENTS by opening the `wp_demo_1` deployment. Once a deployment has successfully completed you will see the service name highlighted in grey (on the left), the IP of the deployed instance(s) and any environment variables passed to the service. Note how the Wordpress deployment doesn't start until mySQL has fully deployed.
+Vamp will now run the deployment. This might take some time, especially if the images need to be pulled from the Docker hub. You can track the status of the deployed clusters and their services under the DEPLOYMENTS tab by opening the `wp_demo_1` deployment. Once a deployment has successfully completed, you will see the service name highlighted in grey (on the left), the IP of the deployed instance(s) and any environment variables passed to the service. Note how Wordpress won't start deploying until mySQL has fully deployed.
 
 ![](images/screens/v091/wordpress_deployment_1.jpg)
-## Access Wordpress from a stable endpoint
 
-Vamp treats the clusters of services in a blueprint as a single "black box" deployment. Each service exposes internal gateways that are accessible to other services from within the same deployment. Internal gateways are defined as `ports` in a breed and come in two flavours - tcp and http ([read more about ports](documentation/using-vamp/breeds/#ports)). To access a service at a stable endpoint from outside the deployment, an external gateway must also be exposed.  
+### Deploy the blueprint again
+We can deploy a second instance of Wordpress and mySQL quickly using our existing artifacts. You can re-use Vamp breeds, scales and blueprints to initiate as many deployments as you like. Each deployment will be treated as an individual entity and Vamp will manage all the internal gateways, so you don't need to worry about creating conflicts with other running services or deployments (more on this later). 
 
-Our deployment currently only exposes internal gateways - you can see these listed under the GATEWAYS tab in the Vamp UI.  
+1. Go to the BLUEPRINTS tab 
+* Click DEPLOY AS on the `wp_demo` blueprint
+* You’ll be prompted to give the deployment a name, let’s call it `wp_demo_2` this time
+* Click DEPLOY to initiate the deployment
+
+You will be able to see both deployments listed on the DEPLOYMENTS tab:
+
+![](images/screens/v091/wordpress_deployment_2.jpg)
+
+## Work with Vamp gateways
+Vamp exposes gateways to allow access to service clusters. Vamp gateways are either dynamic, automatically created endpoints (internal gateways) or stable, declared endpoints (external gateways). Weights and conditions can be applied to gateways to control traffic distribution across multiple (defined) routes - for example, across the services in a cluster.  
+[Read more about gateway usage](documentation/using-vamp/gateways/#gateway-usage)
+
+We currently have two separate deployments running. In each of our deployments, Wordpress is connected to its own instance of the mySQL database at a `mysql_port` internal gateway. A new `mysql_port` internal gateway will be automatically created each time our mySQL breed is deployed. You can see all exposed gateways listed under the GATEWAYS tab in the Vamp UI, they are described in the format `deployment/cluster/port`. 
 
 ![](images/screens/v091/wordpress_internal_gateways.jpg)
+
+### Add stable endpoints
+We could use the Wordpress internal gateways to access our Wordpress deployments (`<deployment>/wp/webport` - go ahead and try to connect to the ports listed), but the ports assigned are unpredictable. Better is to set up stable endpoints by adding external gateways that point to each Wordpress internal gateway. 
+
+ 
+
+
 
 ### Create an external gateway
 If we had wanted to easily access our Wordpress instance from a stable endpoint, we should have also exposed an external gateway. Oops. Luckily, Vamp makes it easy for us to update the running deployment. This means that we can create a new external gateway and map it directly to the internal gateway of our running Wordpress service.   
@@ -155,12 +179,7 @@ Well that was fun, but Vamp can do so much more. Let's use our deployment to dem
 
 ### Deploy Wordpress and mySQL #2
 
-This will be a quick deployment, because we can re-use our existing Vamp breeds and blueprint and shouldn't need to pull any images from the Docker hub. You can re-use breeds and blueprints to initiate as many deployments as you like. Each deployment will be treated as an individual entity and Vamp will manage all the internal gateways, so you don't need to worry about creating conflicts with other running services or deployments. 
 
-1. Go to the BLUEPRINTS tab 
-* Click DEPLOY AS on the `wp_demo` blueprint
-* You’ll be prompted to give the deployment a name, let’s call it `wp_demo_2` this time
-* Click DEPLOY to initiate the deployment
 
 ### Create external gateweay #2
 As before, we will need to create an external gateway to give us a stable endpoint to access the deployment. Notice that we've specified a different port for this external gateway. This was necesary as port 9050 is in use by the external gateway we created earlier to point to the `wp_demo_1` deployment.
