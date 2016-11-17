@@ -1,13 +1,13 @@
 ---
 date: 2016-10-19T09:00:00+00:00
 title: Using the Vamp API
+version: 0.9.2
 menu:
   main:
     parent: "API"
+    indetifier: "using-vamp-api-0.9.2"
 ---
-{{< note title="New in Vamp 0.9.1" >}}
-We've now added support for Websockets to our HTTP API. More information will follow soon.
-{{< /note >}}
+Version 0.9.2
 
 Vamp has one REST API. This page explains how to specify pagination, and json and yaml content types, and how to effectively use the Vamp REST API.
 

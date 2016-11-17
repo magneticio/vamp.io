@@ -1,12 +1,14 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: API Reference
+version: 0.9.1
 menu:
   main:
     parent: "API"
+    identifier: "api-reference-0.9.1"
 ---
 
-VERSION 0.9.2
+VERSION 0.9.1
 
 This page gives full details of all available API calls. See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API.
 

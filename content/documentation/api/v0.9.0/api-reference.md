@@ -2,6 +2,9 @@
 date: 2016-09-13T09:00:00+00:00
 title: API Reference
 version: 0.9.0
+menu:
+  main:
+    parent: "API"
 ---
 
 VERSION 0.9.0

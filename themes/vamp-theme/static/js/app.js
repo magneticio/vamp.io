@@ -115,24 +115,61 @@ function setSideMenu() {
       $(this).addClass('active');
     }
   });
+
+  var versions = [];
+
+  var linkOfSideMenu = $('.side-menu__sub__item__text').each(function() {
+    var linkOfSideMenu = $(this).data('url');
+    var menuLinkVersion = getVersionFromUrl(linkOfSideMenu);
+    var urlLinkVersion = getVersionFromUrl(thePath);
+
+    
+    if(menuLinkVersion === urlLinkVersion) {
+     $(this).css('display', 'block'); 
+    } 
+
+    if(urlLinkVersion) {
+      if(versions.indexOf(menuLinkVersion) < 0 && (getEndOfUrl(linkOfSideMenu) === getEndOfUrl(thePath))) {
+        var isSelected = menuLinkVersion === urlLinkVersion ? 'selected' : '';
+        var optionsSting = '<option value="'+linkOfSideMenu+'"'+isSelected+'>'+menuLinkVersion+'</option>';
+
+        versions.push(menuLinkVersion);
+        $('#versions-dropdown').append(optionsSting);
+      }
+
+      $('#versions-dropdown').css('display', 'block');
+
+    } else {
+      $(this).css('display', 'block');
+    }
+  });
+
+  $("#versions-dropdown").append($("#versions-dropdown option").remove().sort(function(a, b) {
+      var at = $(a).text(), bt = $(b).text();
+      return (at < bt)?1:((at > bt)?-1:0);
+  }));
+  
 }
 
-function setDropdown() {
-  var arrayPath = thePath.split('/');
-  var versionInPath = arrayPath[arrayPath.length - 3];
-
-  if(!isNaN(versionInPath.substring(0,1))) {
-    $('#versions-dropdown').css('display', 'block');  
+function getVersionFromUrl(url) {
+  var urlSplitted = url.split('/');
+  var versionInPath = urlSplitted[urlSplitted.length - 3];
+  if(versionInPath.substring(0,1) === 'v') {
+    return versionInPath;
+  } else {
+    return false;
   }
+}
 
-  $('#versions-dropdown').val(versionInPath);
+function getEndOfUrl(url) {
+  var urlSplitted = url.split('/');
+  return urlSplitted[urlSplitted.length - 2];
+}
 
-  $('#versions-dropdown').change(function() {
-    var value = $(this).val();
-    arrayPath[arrayPath.length - 3] = value;
-    var newPath = arrayPath.join('/');
-    window.location.href = newPath;
-  });
+
+
+function setDropdown() {
+  
 }
 
 
