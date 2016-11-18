@@ -1,10 +1,9 @@
 
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Run a Wordpress deployment and control access with gateways
-draft: true
+title: Run a Wordpress deployment and use gateways to control access
 ---
-Ths tutorial will demonstrate how Vamp builds deployments from artifacts and works with gateways. We'll do this by deploying Wordpress together with mySQL using official images from the Docker hub. We are going to work with the Vamp UI, but you could just as easily perform all the described actions using the Vamp API.  
+Ths tutorial will demonstrate how Vamp builds deployments from artifacts and works with gateways. We'll do this by deploying Wordpress together with mySQL using official images from the Docker hub and then setting up a gateway to run a canary release. We will work with the Vamp UI, but you could just as easily perform all the described actions using the Vamp API.  
 
 In this tutorial we will:
 
@@ -22,7 +21,8 @@ In this tutorial we will:
 
 * A running version of Vamp (this tutorial has been tested on the [Vamp hello world set up](documentation/installation/hello-world))
 * Access to the Docker hub
-
+* You might run into issues if your firewall is set to block connections in the ranges 31000-32000 (required by Mesos) or 40000-45000 (required by Vamp)
+  
 ## Create a Wordpress blueprint and deploy it
 Deployments to be initiated by Vamp are described in blueprints using the Vamp DSL (Domain Specific Language). A Vamp blueprint combines breed and scale artifacts to make scalable services, then groups these services into clusters for traffic distribution. 
 A blueprint can reference individually stored artifacts, or everything can be described inline in the blueprint. We are going to create individual breed and scale artifacts, then reference these from our blueprint.
@@ -232,20 +232,20 @@ Now we have an external gateway set up with two routes, we can use the WEIGHT sl
 
 
 ## Summing up
-You should now understand a bit more about how Vamp builds deployments from the various artifacts, resolves variables and handles internal routing. Obviously, this is not a production grade setup. The database is running in a containerised mySQL instance with no data persistence - if the container crashes you lose all your data and settings. If you're running in the Vamp hello world setup, you're also likely to hit resource problems pretty quickly. If things aren't working as expected you can try increasing the memory of Docker VirtualBox VM (3GB should be enough for this demo).
+You should now understand a bit more about how Vamp builds deployments from the various artifacts, resolves variables and handles internal routing. Obviously, this is not a production grade setup. The database is running in a containerised mySQL instance with no data persistence. If you're running in the Vamp hello world setup, you're also likely to hit resource problems pretty quickly. If things aren't working as expected you can try increasing the memory of Docker VirtualBox VM (3GB should be enough for this demo).
 
-## Just for fun
-Looking for more of a challenge? Try these:
+## Looking for more of a challenge?
+Just for fun, you could try these:
 
-* Rewrite the Wordpress and mySQL deployment as a single blueprint (define artifacts inline)
-* Run this deployment using the Vamp API
-  * Full instructions in [Deploy your first blueprint - using the API](documentation/tutorials/deploy-your-first-blueprint/#deploy-a-monolith)
-  * Check the [API reference](documentation/api/api-reference) 
-* Add a condition to the gateway - for example, send all firefox users to one version of your site and everyone else to the other
+* Can you rewrite the Wordpress and mySQL deployment as a single blueprint (define artifacts inline)?
+* Can you run this deployment using the Vamp API?
+  * There are full instructions in [deploy your first blueprint - using the API](documentation/tutorials/deploy-your-first-blueprint/#deploy-a-monolith) or you can check the [API reference](documentation/api/api-reference) 
+* Try adding a condition to the 9070 external gateway - for example, to send all Firefox users to one version of your site and everyone else to the other
   * Read about [using conditions](documentation/using-vamp/conditions)
-* Set up external gateways for the mySQL deployments and connect Wordpress to the mySQL server running in the other deployment
+* Could you set up external gateways for the mySQL deployments and connect Wordpress to the mySQL server running in the other deployment?
 
 {{< note title="What next?" >}}
 * What would you like to see for our next tutorial? [let us know](mailto:info@magnetic.io)
+* Find our more about [using Vamp](documentation/using-vamp/artifacts)
 {{< /note >}}
 

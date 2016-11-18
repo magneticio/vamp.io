@@ -325,6 +325,11 @@
               "visible": true
             },
             {
+              "path": "documentation/tutorials/deploy-wordpress-and-mysql/",
+              "text": "Run a Wordpress deployment",
+              "visible": true
+            },
+            {
               "path": "documentation/tutorials/deploy-your-first-blueprint",
               "text": "Deploy your first blueprint",
               "visible": true
