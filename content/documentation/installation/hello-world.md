@@ -78,7 +78,7 @@ Vamp UI       |      [http://localhost:8080](http://localhost:8080)
 
 ## Summing up
 
-This set up runs all of Vamp's components in one container. You will run into cpu, memory and storage issues pretty soon though. Also, random ports are assigned by Vamp which you might not have exposed on either Docker or your Docker Toolbox Vagrant box.  This is definitely not ideal, but works fine for kicking the tires.
+This set up runs all of Vamp's components in one container. You will run into cpu, memory and storage issues pretty soon though. Also, random ports from 31000 - 32000 and 40000 - 45000 are assigned by Vamp which you might not have exposed on either Docker or your Docker Toolbox Vagrant box.  This is definitely not ideal, but works fine for kicking the tires.
 Now you're all set to follow our [getting started tutorials](/documentation/tutorials/).
 
 {{< note title="What next?" >}}
