@@ -136,7 +136,7 @@ We can now quickly deploy a second instance of Wordpress and mySQL using our exi
 
 We now have two separate Wordpress deployments running, they should both be listed under the DEPLOYMENTS tab:
 
-![](images/screens/v091/wordpress_deployment_2.jpg)
+![](images/screens/v091/wordpress_deployments.png)
 
 ## Use gateways to control access to deployments
 Vamp exposes internal and external gateways to allow access to clusters of services. Internal gateways are automatically created dynamic endpoints, external gateways are declared stable endpoints. Weights and conditions can be applied to gateways to control the traffic distribution across multiple potential routes. For example, internal gateways can control traffic distribution across the services deployed in a cluster, whereas external gateways might control traffic distribution across routes not managed by Vamp.  
@@ -144,10 +144,10 @@ Vamp exposes internal and external gateways to allow access to clusters of servi
 
 To get back to our demonstration, we currently have two separate deployments running. In each of our deployments, Wordpress is connected to its own instance of mySQL via a `mysql_port` internal gateway. At deployment time, Vamp automatically creates new internal gateways for all the `ports` defined in the breed(s) deployed. This means that we have exposed `mysql_port` and `webport` internal gateways for each of our deployments. You can see all currently exposed gateways listed under the GATEWAYS tab, they are labelled in the format `deployment/cluster/port`. 
 
-![](images/screens/v091/wordpress_internal_gateways.jpg)
+![](images/screens/v091/wordpress_internal_gateways.png)
 
 ### Add stable endpoints
-We could use the internal gateway ports to access our deployments if we wanted (go ahead and connect to the assigned `<deployment>/wp/webport` ports, you should be connected to a running Wordpress service). The ports assigned to internal gateways are, however, unpredictable, so it makes much more sense to declare external gateways and access services through stable endpoints. 
+We could use the internal gateway ports to access our deployments if we wanted (go ahead and connect to the assigned `<deployment>/wp/webport` ports, you should see your running Wordpress services). The ports assigned to internal gateways are, however, unpredictable, so it makes much more sense to declare external gateways and access the services through stable endpoints. 
 
 We can quickly add a new stable endpoint that maps to one of our existing `webport` internal gateways.
 
@@ -171,6 +171,8 @@ The gateway will be exposed and you can directly - and forever - access your Wor
 
 Hello Wordpress! Go ahead and finish the installation - I hear it's very quick - then you can check out your new site.
 
+![](images/screens/v091/wordpress_wp_demo_1.png)
+
 ### Let's do that again
 As we are running two deployments, we also need two external gateways - one for each instance of Wordpress. Let's add a second external gateway to give our other Wordpress service a stable endpoint, this time we'll need to expose a different port.
 
@@ -186,6 +188,8 @@ routes:
     weight: 100%          # all traffic will be sent here
 ```
 The new gateway will be listed under the GATEWAYS tab and you can access your second Wordpress site on the newly exposed 9060 port (the old Wordpress site will still be available at port 9050). Complete this second Wordpress installation and make some changes to the site - select a different theme or add some content to help you easily tell the two deployments apart.  
+
+![](images/screens/v091/wordpress_wp_demo_2.png)
 
 ### Use a gateway to distribute incoming traffic
 Well that was fun, but Vamp can do so much more! We can use our deployments to demonstrate some of Vamp's traffic distribution features and show how these can be used to run a canary release.
