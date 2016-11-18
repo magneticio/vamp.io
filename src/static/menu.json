@@ -325,7 +325,7 @@
               "visible": true
             },
             {
-              "path": "documentation/tutorials/deploy-wordpress-and-mysql/",
+              "path": "documentation/tutorials/deploy-wordpress-and-mysql",
               "text": "Run a Wordpress deployment",
               "visible": true
             },
