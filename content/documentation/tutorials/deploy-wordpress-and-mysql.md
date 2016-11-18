@@ -13,7 +13,7 @@ In this tutorial we will:
   * Create a scale to specify the resources to be assigned at runtime
   * Create a blueprint that combines breeds with scales 
   * Deploy two instances of mySQL and Wordpress
-2. [Use gateways to control access to deployments](documentation/tutorials/deploy-wordpress-and-mysql/#use-gateways-to-control-access-to-deployments) 
+2. [Use gateways to control access to the deployments](documentation/tutorials/deploy-wordpress-and-mysql/#use-gateways-to-control-access-to-the-deployments) 
   * Add stable endpoints to access the running Wordpress deployments
   * Control traffic distribution between the two deployments 
   * Run a canary release
@@ -138,11 +138,11 @@ We now have two separate Wordpress deployments running, they should both be list
 
 ![](images/screens/v091/wordpress_deployments.png)
 
-## Use gateways to control access to deployments
+## Use gateways to control access to the deployments
 Vamp exposes internal and external gateways to allow access to clusters of services. Internal gateways are automatically created dynamic endpoints, external gateways are declared stable endpoints. Weights and conditions can be applied to gateways to control the traffic distribution across multiple potential routes. For example, internal gateways can control traffic distribution across the services deployed in a cluster, whereas external gateways might control traffic distribution across routes not managed by Vamp.  
 [Read more about gateway usage](documentation/using-vamp/gateways/#gateway-usage)
 
-To get back to our demonstration, we currently have two separate deployments running. In each of our deployments, Wordpress is connected to its own instance of mySQL via a `mysql_port` internal gateway. At deployment time, Vamp automatically creates new internal gateways for all the `ports` defined in the breed(s) deployed. This means that we have exposed `mysql_port` and `webport` internal gateways for each of our deployments. You can see all currently exposed gateways listed under the GATEWAYS tab, they are labelled in the format `deployment/cluster/port`. 
+To get back to our demonstration, we currently have two separate deployments running. In each of our deployments, Wordpress is connected to its own instance of mySQL via a `mysql_port` internal gateway. At deployment time, Vamp automatically creates new internal gateways for all the `ports` defined in the breed(s) deployed. This means that we have exposed a `mysql_port` and a `webport` internal gateway for each of our deployments. You can see all currently exposed gateways listed under the GATEWAYS tab, they are labelled in the format `deployment/cluster/port`. 
 
 ![](images/screens/v091/wordpress_internal_gateways.png)
 
