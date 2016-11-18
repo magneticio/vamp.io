@@ -144,14 +144,14 @@ We now have two separate Wordpress deployments running, they should both be list
 Vamp exposes internal and external gateways to allow access to clusters of services. Internal gateways are automatically created dynamic endpoints, external gateways are declared stable endpoints. Weights and conditions can be applied to gateways to control the traffic distribution across multiple potential routes - for example, internal gateways can control traffic distribution across the services in a cluster, whereas external gateways might control traffic distribution across routes not managed by Vamp.  
 [Read more about gateway usage](documentation/using-vamp/gateways/#gateway-usage)
 
-To get back to our demonstration, we currently have two separate deployments running. In each of our deployments, Wordpress is connected to its own instance of mySQL via a `mysql_port` internal gateway. At deployment time Vamp will automatically create new internal gateways for all the `ports` defined in a breed. Each new internal  gateway is mapped to the next available port to avoid potential conflicts between services. You can see all exposed gateways listed under the GATEWAYS tab, they are labelled in the format `deployment/cluster/port`. 
+To get back to our demonstration, we currently have two separate deployments running. In each of our deployments, Wordpress is connected to its own instance of mySQL via a `mysql_port` internal gateway. At deployment time Vamp will automatically create new internal gateways for all the `ports` defined in a breed. You can see all exposed gateways listed under the GATEWAYS tab, they are labelled in the format `deployment/cluster/port`. 
 
 ![](images/screens/v091/wordpress_internal_gateways.jpg)
 
 ### Add stable endpoints
-We could use the assigned internal gateway ports to access our Wordpress deployments if we wanted to (go ahead and connect to the `<deployment>/wp/webport` ports listed under GATEWAYS). The ports assigned to internal gateways are, however, unpredictable, so it makes much more sense to declare external gateways that can act as a stable endpoint for each service. 
+We could use the assigned internal gateway ports to access our Wordpress deployments if we wanted to (go ahead and connect to the `<deployment>/wp/webport` ports listed under GATEWAYS). The ports assigned to internal gateways are, however, unpredictable, so it makes much more sense to declare external gateways that provide stable endpoints. 
 
-Vamp makes it easy to update our running deployment in this way. Go ahead and create a new external gateway that maps to an existing internal gateway.   
+Vamp makes it easy to update our running deployment in this way. Go ahead and create a new stable endpoint that maps to an existing internal gateway.   
 
 1. Go to the GATEWAYS tab in the Vamp UI
 * Click ADD (top right)
@@ -167,14 +167,14 @@ routes:
 ```
 
 
-The gateway will be exposed and we can directly access our Wordpress service at the port specified (9050). 
+The gateway will be exposed and we can directly - and forever - access our Wordpress service at the port specified (9050). 
 
 ![](images/screens/v091/wordpress.png)
 
 Hello Wordpress! Go ahead and finish the installation - I hear it's very quick - then you can check out your new site.
 
 ### Let's do that again
-As we are running two deployments, we will also need two external gateways - one for each instance of Wordpress. Let's update Vamp again to include a second external gateway.
+As we are running two deployments, we also need two external gateways - one for each instance of Wordpress. Let's update Vamp again to include a second external gateway. We will need to specify a different external gateway port this time as port 9050 is already in use.
 
 1. Go to the GATEWAYS tab again and click ADD (top right)
 * Paste in the below gateway YAML and click SAVE
@@ -187,19 +187,12 @@ routes:
   wp_demo_2/wp/webport:   # the internal gateway exposed by the Wordpress breed
     weight: 100%          # all traffic will be sent here
 ```
-Notice that we specified a different external gateway port this time - port 9050 is already in use by the external gateway we created to point to the `wp_demo_1/wp/webport`, so we're using 9060 this time.
-
-
-
-Once the new gateway has been created you can access the second Wordpress site on the newly exposed 9060 port (the old Wordpress site will still be available at port 9050). Complete this second Wordpress installation and make some changes to the site - select a different theme or add some content to help you easily tell the two deployments apart.
+The new gateway will be listed under the GATEWAYS tab and you can access your second Wordpress site on the newly exposed 9060 port (the old Wordpress site will still be available at port 9050). Complete this second Wordpress installation and make some changes to the site - select a different theme or add some content to help you easily tell the two deployments apart.
 
 Well that was fun, but Vamp can do so much more! We can use our deployments to demonstrate some of Vamp's traffic distribution features and show how these can be used to run a canary release.  
 
 ### Use a gateway to distribute incoming traffic
-Vamp distributes traffic between services via shared gateways. If our Wordpress services were running in the same deployment and cluster, they would have shared an internal gateway and we could have directly used the WEIGHT slider in the deployments section of the Vamp UI to distribute traffic between them. As we are working with two separate deployments we will need to do something a bit more cunning first.
-
-### Create a new external gateway with two routes
-We can solve this by creating a new, shared external gateway for our two deployments. We do this in much the same way as we created the previous external gateways, only this time we will be adding two routes and will use the weight setting to distribute traffic between them. You can add as many routes as you like to a gateway, just remember that _the total weight must add up to 100%_. 
+Vamp distributes traffic between services at shared gateways. If our Wordpress services had been running in the same deployment and cluster with a shared internal gateway, we could have  used the WEIGHT slider in the DEPLOYMENTS section of the Vamp UI to distribute traffic between them. As we are working with two separate deployments, we need to create a shared external gateway that can distribute the traffic for us. This is much the same as exposing a simple gateway, only this time we will add two routes and use the `weight` setting to split traffic between them. You can add as many routes as you like to a gateway, just remember that _the total weight must always add up to 100%_. 
 
 1. Go to the GATEWAYS tab in the Vamp UI
 * Click ADD (top right)
@@ -216,10 +209,10 @@ routes:
     weight: 50%     # send 50% of all traffic to this route
 ```
 
-The gateway wil be created. Now going to port 9070 should send you to either your old Wordpress install or your new Wordpress install. 
+The gateway wil be created. Go to port 9070 and see which Wordpress install you are sent to. 
 
 {{< note title="Note!" >}}
-You might notice the URL in your browser switch to either :9060 or :9050 and that subsequent visits to the 9070 endpoint consistently send you back to the same port/Wordpress. So what's going on with our gateway? Visits to 9070 should be split 50% / 50% between our two Wordpress instances! Here's where things get sticky, but that's not down to Vamp.  
+You might notice that the URL in your browser switched to either :9060 or :9050 and that subsequent visits to the 9070 endpoint consistently send you back to the same port/Wordpress. So what's going on with our gateway? Visits to 9070 should be split 50% / 50% between our two Wordpress instances! Here's where things get sticky, but that's not down to Vamp.  
 
 * On your first visit via 9070, Wordpress picked up that you had been redirected and sent out the HTTP response 301, which means "permanently moved"
 * Your browser cached this 301 redirect and is now automatically sending every subsequent attempt to visit 9070 to the same destination 
