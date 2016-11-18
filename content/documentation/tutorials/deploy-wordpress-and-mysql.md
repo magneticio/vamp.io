@@ -1,10 +1,10 @@
 
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Deploy Wordpress from the Docker hub
+title: Build a Wordpress deployment and play with gateways
 draft: true
 ---
-Ths tutorial will demonstrate how Vamp builds deployments and works with gateways. We'll do this by deploying Wordpress together with mySQL using official images from the Docker hub. We are going to work with the Vamp UI, but you could just as easily perform all the described actions using the Vamp API.  
+Ths tutorial will demonstrate how Vamp builds deployments from artifacts and works with gateways. We'll do this by deploying Wordpress together with mySQL using official images from the Docker hub. We are going to work with the Vamp UI, but you could just as easily perform all the described actions using the Vamp API.  
 
 In this tutorial we will:
 
@@ -15,10 +15,8 @@ In this tutorial we will:
   * Deploy two instances of mySQL and Wordpress
 2. [Work with Vamp gateways](documentation/tutorials/deploy-wordpress-and-mysql/#use-vamp-gateways) 
   * Add stable endpoints to access the running Wordpress deployments
-  * Create a gateway to control traffic distribution between the two deployments and run a canary release
-  * Connect Wordpress to the mySQL service using an external gateway
-  
-  
+  * Create a gateway to control traffic distribution between the two deployments 
+  * Run a canary release
 
 ### Requirements
 
@@ -93,7 +91,7 @@ cpu: 0.2
 memory: 380MB  
 ```
 ### Create a blueprint
-We can now create a simple blueprint that references our artifacts ready for deployment. A Vamp blueprint creates scalable services by joining togehter breed descriptions and a scale. Services are grouped into clusters to allow easy distribution of incoming traffic - more on this later. 
+Now we can create a simple blueprint that references our artifacts ready for deployment. A Vamp blueprint creates scalable services by joining togehter breed descriptions and a scale. Services are grouped into clusters to allow easy distribution of incoming traffic - more on this later. 
 
 Our blueprint will use two clusters - one for the database service and one for the Wordpress service.
 
@@ -144,14 +142,14 @@ We now have two separate Wordpress deployments running, they should both be list
 Vamp exposes internal and external gateways to allow access to clusters of services. Internal gateways are automatically created dynamic endpoints, external gateways are declared stable endpoints. Weights and conditions can be applied to gateways to control the traffic distribution across multiple potential routes - for example, internal gateways can control traffic distribution across the services in a cluster, whereas external gateways might control traffic distribution across routes not managed by Vamp.  
 [Read more about gateway usage](documentation/using-vamp/gateways/#gateway-usage)
 
-To get back to our demonstration, we currently have two separate deployments running. In each of our deployments, Wordpress is connected to its own instance of mySQL via a `mysql_port` internal gateway. At deployment time Vamp will automatically create new internal gateways for all the `ports` defined in a breed. You can see all exposed gateways listed under the GATEWAYS tab, they are labelled in the format `deployment/cluster/port`. 
+To get back to our demonstration, we currently have two separate deployments running. In each of our deployments, Wordpress is connected to its own instance of mySQL via a `mysql_port` internal gateway. At deployment time, Vamp automatically creates new internal gateways for all the `ports` defined in a breed, so we also have two exposed `webport` internal gateways - one for each of our Wordpress deployments. You can see all exposed gateways listed under the GATEWAYS tab, they are labelled in the format `deployment/cluster/port`. 
 
 ![](images/screens/v091/wordpress_internal_gateways.jpg)
 
 ### Add stable endpoints
-We could use the assigned internal gateway ports to access our Wordpress deployments if we wanted to (go ahead and connect to the `<deployment>/wp/webport` ports listed under GATEWAYS). The ports assigned to internal gateways are, however, unpredictable, so it makes much more sense to declare external gateways that provide stable endpoints. 
+We could use the `webport` internal gateway ports to access our Wordpress deployments if we wanted to (go ahead and connect to the assigned `<deployment>/wp/webport` ports). The ports assigned to internal gateways are, however, unpredictable, so it makes much more sense to declare external gateways that provide stable endpoints. 
 
-Vamp makes it easy to update our running deployment in this way. Go ahead and create a new stable endpoint that maps to an existing internal gateway.   
+Vamp makes it easy to update our running deployment in this way. Go ahead and create a new stable endpoint that maps to an existing `webport` internal gateway: 
 
 1. Go to the GATEWAYS tab in the Vamp UI
 * Click ADD (top right)
@@ -167,7 +165,7 @@ routes:
 ```
 
 
-The gateway will be exposed and we can directly - and forever - access our Wordpress service at the port specified (9050). 
+The gateway will be exposed and we can directly - and forever - access our Wordpress service at the specified 9050 port. 
 
 ![](images/screens/v091/wordpress.png)
 
@@ -187,12 +185,12 @@ routes:
   wp_demo_2/wp/webport:   # the internal gateway exposed by the Wordpress breed
     weight: 100%          # all traffic will be sent here
 ```
-The new gateway will be listed under the GATEWAYS tab and you can access your second Wordpress site on the newly exposed 9060 port (the old Wordpress site will still be available at port 9050). Complete this second Wordpress installation and make some changes to the site - select a different theme or add some content to help you easily tell the two deployments apart.
-
-Well that was fun, but Vamp can do so much more! We can use our deployments to demonstrate some of Vamp's traffic distribution features and show how these can be used to run a canary release.  
+The new gateway will be listed under the GATEWAYS tab and you can access your second Wordpress site on the newly exposed 9060 port (the old Wordpress site will still be available at port 9050). Complete this second Wordpress installation and make some changes to the site - select a different theme or add some content to help you easily tell the two deployments apart.  
 
 ### Use a gateway to distribute incoming traffic
-Vamp distributes traffic between services at shared gateways. If our Wordpress services had been running in the same deployment and cluster with a shared internal gateway, we could have  used the WEIGHT slider in the DEPLOYMENTS section of the Vamp UI to distribute traffic between them. As we are working with two separate deployments, we need to create a shared external gateway that can distribute the traffic for us. This is much the same as exposing a simple gateway, only this time we will add two routes and use the `weight` setting to split traffic between them. You can add as many routes as you like to a gateway, just remember that _the total weight must always add up to 100%_. 
+Well that was fun, but Vamp can do so much more! We can use our deployments to demonstrate some of Vamp's traffic distribution features and show how these can be used to run a canary release.
+
+Vamp distributes traffic between services at shared gateways. If our Wordpress services had been running in the same deployment and cluster with a shared internal gateway, we could have  used the WEIGHT slider in the DEPLOYMENTS section of the Vamp UI to distribute traffic between them. As we are working with two separate deployments, we need to create a shared external gateway that to distribute the traffic. This is much the same as exposing a simple gateway, only this time we will add two routes and use the `weight` setting to split traffic between them. You can add as many routes as you like to a gateway, just remember that _the total weight must always add up to 100%_. 
 
 1. Go to the GATEWAYS tab in the Vamp UI
 * Click ADD (top right)
