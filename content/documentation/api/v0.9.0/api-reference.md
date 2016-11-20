@@ -5,6 +5,7 @@ version: 0.9.0
 menu:
   main:
     parent: "API"
+    weight: 13
 ---
 
 VERSION 0.9.0

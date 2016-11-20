@@ -6,6 +6,7 @@ menu:
   main:
     parent: "API"
     identifier: "api-reference-0.9.1"
+    weight: 12
 ---
 
 VERSION 0.9.1

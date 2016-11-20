@@ -6,6 +6,7 @@ menu:
   main:
     parent: "API"
     identifier: "using-vamp-api-0.9.1"
+    weight: 22
 ---
 {{< note title="New in Vamp 0.9.1" >}}
 We've now added support for Websockets to our HTTP API. More information will follow soon.

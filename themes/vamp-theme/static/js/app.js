@@ -5,7 +5,6 @@ var thePath;
 function documentReady() {
   thePath = window.location.pathname;
   setSideMenu();
-  setDropdown();
 
   // Top menu color change
   $(window).on("scroll", function () {
@@ -99,79 +98,55 @@ function documentReady() {
 // Set side menu 
 function setSideMenu() {
   var firstPartUrl = thePath.split('/')[1];
-  $('.side-menu-list').each(function() {
+  $('.side-menu-list').each(function () {
     var parentUrl = $(this).data('parenturl');
     var firstPartUrlMenu = parentUrl.split('/')[1];
-    if(firstPartUrl === firstPartUrlMenu) {
+    if (firstPartUrl === firstPartUrlMenu) {
       $(this).css('display', 'block');
     }
   });
 
-  $('.top-menu-item').each(function() {
+  $('.top-menu-item').each(function () {
     var parentUrl = $(this).data('parenturl');
     var firstPartUrlMenu = parentUrl.split('/')[1];
     $(this).removeClass('active');
-    if(firstPartUrl === firstPartUrlMenu) {
+    if (firstPartUrl === firstPartUrlMenu) {
       $(this).addClass('active');
     }
   });
 
-  var versions = [];
+  var urlInfo = getInfoFromUrl(window.location.pathname);
 
-  var linkOfSideMenu = $('.side-menu__sub__item__text').each(function() {
-    var linkOfSideMenu = $(this).data('url');
-    var menuLinkVersion = getVersionFromUrl(linkOfSideMenu);
-    var urlLinkVersion = getVersionFromUrl(thePath);
+  if (urlInfo) {
+    $('.side-menu__sub__item__text').each(function (element) {
+      var elementUrlInfo = getInfoFromUrl($(this).data('url'));
+      var isCurrent = '';
 
-    
-    if(menuLinkVersion === urlLinkVersion) {
-     $(this).css('display', 'block'); 
-    } 
-
-    if(urlLinkVersion) {
-      if(versions.indexOf(menuLinkVersion) < 0 && (getEndOfUrl(linkOfSideMenu) === getEndOfUrl(thePath))) {
-        var isSelected = menuLinkVersion === urlLinkVersion ? 'selected' : '';
-        var optionsSting = '<option value="'+linkOfSideMenu+'"'+isSelected+'>'+menuLinkVersion+'</option>';
-
-        versions.push(menuLinkVersion);
-        $('#versions-dropdown').append(optionsSting);
+      if (elementUrlInfo.version === urlInfo.version) {
+        isCurrent = 'selected';
+        $(this).css('display', 'block');
       }
 
-      $('#versions-dropdown').css('display', 'block');
+      if (elementUrlInfo.pageName === urlInfo.pageName) {
+        $('#versions-dropdown').append('<option value="' + $(this).attr('href') + '"'+isCurrent+'>' + elementUrlInfo.version + '</option>')
+      }
+    });
 
-    } else {
-      $(this).css('display', 'block');
-    }
-  });
-
-  $("#versions-dropdown").append($("#versions-dropdown option").remove().sort(function(a, b) {
-      var at = $(a).text(), bt = $(b).text();
-      return (at < bt)?1:((at > bt)?-1:0);
-  }));
-  
-}
-
-function getVersionFromUrl(url) {
-  var urlSplitted = url.split('/');
-  var versionInPath = urlSplitted[urlSplitted.length - 3];
-  if(versionInPath.substring(0,1) === 'v') {
-    return versionInPath;
-  } else {
-    return false;
+    $('#versions-dropdown').css('display', 'block');
   }
+
+
+  function getInfoFromUrl(url) {
+    var splittedUrl = url.split('/').slice(1,-1);
+    var urlInfo =  {
+      pageName: splittedUrl[splittedUrl.length-1],
+      version: splittedUrl[splittedUrl.length-2]
+    }
+
+    return urlInfo.version.substring(0,1) === 'v' ? urlInfo : false;
+  }
+
 }
-
-function getEndOfUrl(url) {
-  var urlSplitted = url.split('/');
-  return urlSplitted[urlSplitted.length - 2];
-}
-
-
-
-function setDropdown() {
-  
-}
-
 
 // Search function
 function buildSearch() {

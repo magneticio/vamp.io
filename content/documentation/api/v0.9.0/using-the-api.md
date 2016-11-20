@@ -6,6 +6,7 @@ menu:
   main:
     parent: "API"
     identifier: "using-vamp-api-0.9.0"
+    weight: 23
 ---
 Vamp has one REST API. This page explains how to specify pagination, and json and yaml content types, and how to effectively use the Vamp REST API.
 

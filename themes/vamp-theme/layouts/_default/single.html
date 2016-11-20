@@ -23,7 +23,7 @@
         <ul class="side-menu__sub">
           {{ range .Children }}
           <li class="side-menu__sub__item{{if $currentNode.IsMenuCurrent "main" . }} active{{end}}">
-            <a class="side-menu__sub__item__text" href="{{.URL}}" data-url="{{.URL}}">{{ .Name }}</a>
+            <a id="menu-link-{{.URL}}" class="side-menu__sub__item__text" href="{{.URL}}" data-url="{{.URL}}">{{ .Name }}</a>
           </li>
           {{ end }}
         </ul>

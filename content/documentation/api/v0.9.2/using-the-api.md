@@ -6,6 +6,7 @@ menu:
   main:
     parent: "API"
     indetifier: "using-vamp-api-0.9.2"
+    weight: 21
 ---
 Version 0.9.2
 
