@@ -133,6 +133,10 @@ function setSideMenu() {
     });
 
     $('#versions-dropdown').css('display', 'block');
+  } else {
+    $('.side-menu__sub__item__text').each(function () {
+      $(this).css('display', 'block');
+    });
   }
 
 
