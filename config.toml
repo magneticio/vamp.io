@@ -54,6 +54,7 @@ googleAnalytics = ""
 	smartDashes = true
 	plainIDAnchors = true
 
+# Top Menu Items
 [[menu.main]]
 	name   = "Why use Vamp?"
 	url    = "/why-use-vamp/why-use-vamp/"
@@ -75,7 +76,7 @@ googleAnalytics = ""
 	url    = "/support/"
 	weight = 40
 
-# Why use vamp
+# Side Menu Items, Parent should match the identifier of the Top Menu Item
 [[menu.main]]
 	name = "Use cases"
 	url = "/why-use-vamp/use-cases/use-cases"
