@@ -1,4 +1,8 @@
-$(window).on('load', documentReady);
+// $(window).on('load', documentReady);
+$(document).ready(function() {
+  documentReady();
+});
+
 var thePath;
 
 
