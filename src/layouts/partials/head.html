@@ -70,7 +70,7 @@
   <script src="../../static/js/app.js"></script>
   <!-- endbuild -->
 
-  {{ with .RSSlink }}
+  {{ with .RSSLink }}
   <link href="{{ . }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
   <link href="{{ . }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
   {{ end }}
