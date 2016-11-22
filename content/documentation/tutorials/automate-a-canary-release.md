@@ -16,7 +16,7 @@ In this tutorial we will:
   * Create gateway
   * Introduce new service version
 4. [Play around with workflows](documentation/tutorials/automate-a-canary-release/#play-around-with-workflows)
-  * Mock some metrics
+  * Mock the traffic metrics
   * Automate a canary release
   * Autoscale the services
 
@@ -27,25 +27,36 @@ In this tutorial we will:
 * You might run into issues if your firewall is set to block connections in the ranges 31000-32000 (required by Mesos) or 40000-45000 (required by Vamp)
   
 ## Spin up Vamp runner
-Vamp runner is the tool we use to demonstrate how the individual features of Vamp can be combined to fit real world use cases. Once Vamp is up and running, you can deploy Vamp runner alongside it (check the [Vamp hello world set up](documentation/installation/hello-world) if you don't already have a running version of Vamp).
+Vamp runner is the tool we use to demonstrate how individual features of Vamp can be combined to fit real world use cases. Once Vamp is up and running, you can deploy Vamp runner alongside it (check the [Vamp hello world set up](documentation/installation/hello-world) if you don't already have a running version of Vamp).
 
-Open a Docker Quickstrat Terminal and run:
+
+### Mac OS X  
 
 ```
-docker run --net=host \
-    -e VAMP_RUNNER_API_URL=http://${DOCKER_HOST_IP}:8080/api/v1/ \
-    magneticio/vamp-runner:0.9.1
+docker run --net=host -e \  
+    VAMP_RUNNER_API_URL=http://$(docker-machine ip default):8080/api/v1/ \  
+    magneticio/vamp-runner:0.9.1  
 ```
-You will be able to access Vamp runner at port 8088 go ahead and click through the left menu:
-                                                     
+
+### Linux
+
+```
+docker run --net=host -e \
+    VAMP_RUNNER_API_URL=http://$(hostname -I | awk '{print $1;}'):8080/api/v1/ \
+    magneticio/vamp-runner:0.9.1      
+```
+
+You can access the Vamp runner UI at port 8088. Go ahead and click through the left menu:
+
 * **Vamp** shows details of the Vamp setup Vamp runner is working with
 * **Recipes** lets you walk through the available demos - we're going to use _Canary Release - Introducing New Service Version_
 * **Runner** shows the configuration and log for Vamp runner
 
 ![](images/screens/v091/runner_recipes_canary.png)
+                                                   
 
 ## Create a blueprint and deploy some services
-We can use Vamp runner to quickly create and deploy all the artifacts required for our demo. If you prefer a manual approach, you could create each of these yourself using either the Vamp UI or API. The required YAMLs for all the listed recipes are available in the Vamp runner github repo ([github.com/magneticio - Vamp runner recipes](https://github.com/magneticio/vamp-runner/tree/master/recipes)).
+We can use Vamp runner to quickly create and deploy all the artifacts required for our demo. If you prefer a manual approach, you could always create each of these yourself - the required YAMLs for all the recipes are available in the github repo ([github.com/magneticio - Vamp runner recipes](https://github.com/magneticio/vamp-runner/tree/master/recipes)).
 
 1. Go to **Recipes** and select **Canary Release - Introducing New Service Version** from the RECIPES list.
   * The steps required to complete the selected recipe are listed in the central box
@@ -54,7 +65,7 @@ We can use Vamp runner to quickly create and deploy all the artifacts required f
   
 2. Click **Run** next to the first recipe step **Create blueprint** (in the central box)
   * Each recipe step must be performed in sequence
-  * The info button next to each step tells you about the action to be completed, in this case it shows us the blueprint that will be created.
+  * The info button next to each step tells you about the action to be completed, in this case it shows us the blueprint that will be created
   * Once a step has completed successfully, the circle next to it will be coloured green
 
 3. Wait for the **Create blueprint** step to complete, then work through the next four steps in turn:
@@ -62,14 +73,17 @@ We can use Vamp runner to quickly create and deploy all the artifacts required f
   * Deploy blueprint
   * Create gateway
   * Introduce new service version
-  
+
+ The EVENTS stream in Vamp runner will document the process of each step until our services are deployed. The created artifacts and deployments are visible in the Vamp UI (or via the API) and the deployed service can be accessed at the external gateway Vamp runner created (9050).
+
 ## Play around with workflows
-### Mock some metrics
+
+### Mock the traffic metrics
 ### Automate a canary release
 ### Autoscale the services
 
-## Clean up after yourself
-When you're finished completing a recipe it's easy to set Vamp back to its initial state. Click the **Clean up** button on the right and Vamp runner will undeploy and remove all deployments, gateways, workflows and artifacts. 
+## Clean up and move along
+You can set Vamp back to its initial state at any step in a recipe. Click the **Clean up** button on the right of the **Recipes** screen to remove all deployments, gateways, workflows and artifacts that have been created by the selected recipe.  The status of each step will also be reset and you can start from the beginning again.
 
 ## Summing up
 
