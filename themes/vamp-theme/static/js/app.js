@@ -147,7 +147,7 @@ function setSideMenu() {
       version: splittedUrl[splittedUrl.length-2]
     }
 
-    return urlInfo.version.substring(0,1) === 'v' && !isNaN(urlInfo.version.substring(1,2)) ? urlInfo : false;
+    return urlInfo && urlInfo.version &&  urlInfo.version.substring(0,1) === 'v' && !isNaN(urlInfo.version.substring(1,2)) ? urlInfo : false;
   }
 
 }
