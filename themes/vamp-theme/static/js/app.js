@@ -110,6 +110,15 @@ function documentReady() {
   })
 
 
+  $('#mobile-menu li').click(function() {
+    $(this).toggleClass('active');
+    $(this).next('ul').toggleClass('show');
+  });
+
+  $('#mobile-header .hamburger').click(function() {
+    $('#mobile-menu').toggleClass('show');
+  });
+
 }
 
 // Set side menu 
