@@ -40,10 +40,26 @@
 
       <h1 class="content-header">{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
 
-    
-      <select name="versions" id="versions-dropdown" onChange="document.location = this.value" style="display: none">
+    <!---->
+      <!--<select name="versions" id="versions-dropdown" onChange="document.location = this.value" style="display: none">-->
 
-      </select>
+      <!--</select>-->
+
+      <div id="versions-dropdown" class="dropdown">
+        <div class="dropdown__core">
+          <div class="dropdown__selected">
+            Selected version
+          </div>
+          <div class="dropdown__chevon">
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="dropdown__items">
+
+        </div>
+      </div>
+
       <div class="markdowned">
         {{ .Content }}
       </div>

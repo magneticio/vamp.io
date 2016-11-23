@@ -97,6 +97,19 @@ function documentReady() {
 
   buildSearch();
 
+
+  //Dropdown functionality
+  $('.dropdown').click(function () {
+    $(this).toggleClass('dropdown__active');
+  });
+
+  $('#versions-dropdown .dropdown__item').click(function() {
+    var goToUrl = $(this).data('url');
+    console.log('goToUrl: ', goToUrl);
+    window.location = goToUrl;
+  })
+
+
 }
 
 // Set side menu 
@@ -132,7 +145,9 @@ function setSideMenu() {
       }
 
       if (elementUrlInfo.pageName === urlInfo.pageName) {
-        $('#versions-dropdown').append('<option value="' + $(this).attr('href') + '"'+isCurrent+'>' + elementUrlInfo.version + '</option>')
+        // $('#versions-dropdown .dropdown__items').append('<option value="' + $(this).attr('href') + '"'+isCurrent+'>' + elementUrlInfo.version + '</option>')
+        $('#versions-dropdown .dropdown__items').append('<div data-url="' +$(this).attr('href')+ '" class="dropdown__item '+ isCurrent +'"><i class="fa fa-check" aria-hidden="true"></i>' + elementUrlInfo.version + '</div>');
+        $('#versions-dropdown .dropdown__selected').html(urlInfo.version);
       }
     });
 
