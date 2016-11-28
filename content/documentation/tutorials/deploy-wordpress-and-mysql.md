@@ -194,7 +194,7 @@ The new gateway will be listed under the GATEWAYS tab and you can access your se
 ### Use a gateway to distribute incoming traffic
 Well that was fun, but Vamp can do so much more! We can use our deployments to demonstrate some of Vamp's traffic distribution features and show how these can be used to run a canary release.
 
-Vamp distributes traffic between services at shared gateways. If our Wordpress services had been running in the same deployment and cluster with a shared internal gateway, we could have  used the WEIGHT slider in the DEPLOYMENTS section of the Vamp UI to distribute traffic between them. As we are working with two separate deployments, we need to create a shared external gateway that to distribute the traffic. This is much the same as exposing a simple gateway, only this time we will add two routes and use the `weight` setting to split traffic between them. You can add as many routes as you like to a gateway, just remember that _the total weight must always add up to 100%_. 
+Vamp distributes traffic between services at shared gateways. If our Wordpress services had been running in the same deployment and cluster with a shared internal gateway, we could have used the shared internal gateway's WEIGHT slider to distribute traffic between them. As we are working with two separate deployments, we need to create a shared external gateway first. This is much the same as exposing a simple gateway, only this time we will add two routes and use the `weight` setting to split traffic between them. You can add as many routes as you like to a gateway, just remember that _the total weight must always add up to 100%_. 
 
 1. Go to the GATEWAYS tab in the Vamp UI
 * Click ADD (top right)
