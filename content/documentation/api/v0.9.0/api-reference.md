@@ -8,11 +8,23 @@ menu:
     weight: 13
 ---
 
+<<<<<<< HEAD:content/documentation/api/v0.9.0/api-reference.md
 VERSION 0.9.0
 
 This page gives full details of all available API calls. See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API.
+=======
+This page gives full details of all available API calls. See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, JSON and YAML content types and effective use of the API.
+
+* **Resource descriptions:** [Blueprints](documentation/api/api-reference/#blueprints), [Breeds](documentation/api/api-reference/#breeds), [Conditions](documentation/api/api-reference/#conditions), [Escalations](documentation/api/api-reference/#escalations), [Scales](documentation/api/api-reference/#scales), [SLAs](documentation/api/api-reference/#slas)
+* **Runtime entities:** [Deployments](documentation/api/api-reference/#deployments), [Deployment scales](documentation/api/api-reference/#deployment-scales), [Deployment SLAs](documentation/api/api-reference/#deployment-slas), [Gateways](documentation/api/api-reference/#gateways)  
+* **Data:** [Events](documentation/api/api-reference/#events), [Health](documentation/api/api-reference/#health), [Metrics](documentation/api/api-reference/#metrics)
+* [System](documentation/api/api-reference/#system), [Debug](documentation/api/api-reference/#debug)
+
+--------------
+>>>>>>> master:content/documentation/api/api-reference.md
 
 ## Blueprints
+Read about [using blueprints](documentation/using-vamp/blueprints/). Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
 
 ### List blueprints
 
@@ -71,7 +83,7 @@ Deletes a blueprint.
 ------------
 
 ## Breeds
-See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
+Read about [using breeds](documentation/using-vamp/breeds/). Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
 
 ### List breeds
 
@@ -128,8 +140,7 @@ Deletes a breed.
 ---------
 
 ## Conditions
-
-See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
+Read about [using conditions](documentation/using-vamp/conditions/). Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
 
 ### List conditions
 
@@ -173,15 +184,161 @@ Deletes a condition.
 | ------------- |:-----------------:|:----------------:| ----------------:|
 | `validate_only` | true or false     | false            | returns a `204 No Content` without actual delete of the escalation.
 
+----------
+
+
+## Escalations
+
+Read about [using escalations](documentation/using-vamp/escalations/). Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
+
+### List escalations
+
+Lists all escalations without any pagination or filtering.
+
+    GET /api/v1/escalations
+
+### Get a single escalation
+
+Lists all details for one specific escalation.
+
+    GET /api/v1/escalations/{escalation_name}
+
+### Create escalation
+
+Creates a new escalation. Accepts JSON or YAML formatted escalations. Set the `Content-Type` request header to `application/json` or `application/x-yaml` accordingly.   
+
+    POST /api/v1/escalations
+
+| parameter     | options           | default          | description       |
+| ------------- |:-----------------:|:----------------:| -----------------:|
+| `validate_only` | true or false     | false            | validates the escalation and returns a `201 Created` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+
+### Update an escalation
+
+Updates the content of a specific escalation.
+
+    PUT /api/v1/escalations/{escalation_name}
+
+| parameter     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the escalation and returns a `200 OK` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+
+### Delete an escalation
+
+Deletes an escalation.        
+
+    DELETE /api/v1/escalations/{escalation_name}
+
+| parameter     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | returns a `204 No Content` without actual delete of the escalation.
+
+-----------
+
+## Scales
+
+See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, JSON and YAML content types and effective use of the API
+
+### List scales
+
+Lists all scales without any pagination or filtering.
+
+    GET /api/v1/scales
+
+### Get a single scale
+
+Lists all details for one specific scale.
+
+    GET /api/v1/scales/{scale_name}
+
+### Create scale
+
+Creates a new scale. Accepts JSON or YAML formatted scales. Set the `Content-Type` request header to `application/json` or `application/x-yaml` accordingly.    
+
+    POST /api/v1/scales
+
+| parameter     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| -----------------:|
+| `validate_only` | true or false     | false            | validates the scale and returns a `201 Created` if the scale is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+
+### Update a scale
+
+Updates the content of a specific scale.
+
+    PUT /api/v1/scales/{scale_name}
+
+| parameter     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the scale and returns a `200 OK` if the scale is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+
+### Delete a scale
+
+Deletes a scale.        
+
+    DELETE /api/v1/scales/{scale_name}
+
+| parameter     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | returns a `204 No Content` without actual delete of the scale.
+
+-------------
+
+## SLAs
+
+Read about [using SLAs](documentation/using-vamp/sla/). Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
+
+### List SLAs
+
+Lists all slas without any pagination or filtering.
+
+    GET /api/v1/slas
+
+### Get a single SLA
+
+Lists all details for one specific breed.
+
+    GET /api/v1/slas/{sla_name}
+
+### Create an SLA
+
+Creates a new SLA
+
+    POST /api/v1/slas   
+
+| parameter     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| -----------------:|
+| `validate_only` | true or false     | false            | validates the SLA and returns a `201 Created` if the SLA is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+
+### Update an SLA
+
+Updates the content of a specific SLA.
+
+    PUT /api/v1/slas/{sla_name}
+
+| parameter     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the SLA and returns a `200 OK` if the SLA is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+
+### Delete an SLA
+
+Deletes an SLA.        
+
+    DELETE /api/v1/slas/{sla_name}
+
+| parameter     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | returns a `204 No Content` without actual delete of the SLA.
+
+
 -------------
 
 ## Deployments
 
 Deployments are non-static entities in the Vamp eco-system. They represent runtime structures so any changes to them will take time to execute and can possibly fail. Most API calls to the `/deployments` endpoint will therefore return a `202: Accepted` return code, indicating the asynchronous nature of the call.
 
-Deployments have a set of sub resources: **SLA's**, **scales** and **gateways**. These are instantiations of their static counterparts.
+Deployments have a set of sub resources: **SLAs**, **scales** and **gateways**. These are instantiations of their static counterparts.
 
-See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
+Read about [using deployments](documentation/using-vamp/deployments/). Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
 
 ### List deployments
 
@@ -321,6 +478,26 @@ clusters:
         ref: monarch_backend:0.3
 ```    
 
+-------------
+
+## Deployment scales
+
+Deployment scales are singular resources: you only have one scale per service. Deleting a scale is not a meaningfull action.
+
+### Get a deployment scale
+
+Lists all details for a specific deployment scale that's part of a service inside a cluster.
+
+	GET /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/scale
+	
+### Set a deployment scale	
+
+Updates a deployment scale.
+
+	POST|PUT /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/scale
+	
+--------------
+
 ## Deployment SLAs
 
 ### Get a deployment SLA
@@ -341,104 +518,10 @@ Deletes as specific deployment SLA.
 
 	DELETE /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/sla
 
-
-## Deployment scales
-
-Deployment scales are singular resources: you only have one scale per service. Deleting a scale is not a meaningfull action.
-
-### Get a deployment scale
-
-Lists all details for a specific deployment scale that's part of a service inside a cluster.
-
-	GET /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/scale
-	
-### Set a deployment scale	
-
-Updates a deployment scale.
-
-	POST|PUT /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/scale
-
-----------
-
-
-## Escalations
-
-See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
-
-### List escalations
-
-Lists all escalations without any pagination or filtering.
-
-    GET /api/v1/escalations
-
-### Get a single escalation
-
-Lists all details for one specific escalation.
-
-    GET /api/v1/escalations/{escalation_name}
-
-### Create escalation
-
-Creates a new escalation. Accepts JSON or YAML formatted escalations. Set the `Content-Type` request header to `application/json` or `application/x-yaml` accordingly.   
-
-    POST /api/v1/escalations
-
-| parameter     | options           | default          | description       |
-| ------------- |:-----------------:|:----------------:| -----------------:|
-| `validate_only` | true or false     | false            | validates the escalation and returns a `201 Created` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
-
-### Update an escalation
-
-Updates the content of a specific escalation.
-
-    PUT /api/v1/escalations/{escalation_name}
-
-| parameter     | options           | default          | description      |
-| ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the escalation and returns a `200 OK` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
-
-### Delete an escalation
-
-Deletes an escalation.        
-
-    DELETE /api/v1/escalations/{escalation_name}
-
-| parameter     | options           | default          | description      |
-| ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | returns a `204 No Content` without actual delete of the escalation.
-
----------
-
-## Events
-
-See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
-
-### List events
-
-Lists metrics and/or events without any pagination or filtering.
-
-    GET /api/v1/events/get
-
-| parameter     | description      |
-| ------------- |:----------------:|
-| `tag`           | Event tag, e.g. `GET /api/v1/events?tag=archiving&tag=breeds`
-
-
-{{< note title="Note!" >}}
-search criteria can be set in request body, checkout [examples](/documentation/using-vamp/events/#query-events-using-tags) for event stream.
-{{< /note >}}
-
-### Create events
-
-    POST /api/v1/events    
-    
-### Server-sent events (SSE)
-
-    GET  /api/v1/events/stream
-
 --------------
 
 ## Gateways
+Read about [using gateways](documentation/using-vamp/gateways/). Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
 
 ### List gateways
 
@@ -474,27 +557,36 @@ Accepts JSON or YAML formatted gateways. Set the `Content-Type` request header t
 | ------------- |:-----------------:|:----------------:| ----------------:|
 | `validate_only` | true or false     | false            | returns a `204 No Content` without actual delete of the gateway.
 
------------
+---------
 
-## Metrics
+## Events
 
-Metrics can be defined on gateways and deployment ports and retrieved:
+Read about [using events](documentation/using-vamp/events/). Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
 
-```
-/api/v1/metrics/gateways/{gateway}/{metrics}
-/api/v1/metrics/gateways/{gateway}/routes/$route/{metrics}
+### List events
 
-/api/v1/metrics/deployments/{deployment}/clusters/{cluster}/ports/{port}/{metrics}
-/api/v1/metrics/deployments/{deployment}/clusters/{cluster}/services/{service}/ports/{port}/{metrics}
-```
+Lists metrics and/or events without any pagination or filtering.
 
-#### Example
-    /api/v1/metrics/deployments/sava/clusters/frontend/ports/api/response-time
+    GET /api/v1/events/get
+
+| parameter     | description      |
+| ------------- |:----------------:|
+| `tag`           | Event tag, e.g. `GET /api/v1/events?tag=archiving&tag=breeds`
+
 
 {{< note title="Note!" >}}
-Metrics are calculated using external services, e.g. Vamp workflows.
+search criteria can be set in request body, checkout [examples](/documentation/using-vamp/events/#query-events-using-tags) for event stream.
 {{< /note >}}
 
+### Create events
+
+    POST /api/v1/events    
+    
+### Server-sent events (SSE)
+
+    GET  /api/v1/events/stream
+
+-----------
 ## Health
 
 Health can be defined on gateways and deployment ports and retrieved:
@@ -516,99 +608,25 @@ Health is calculated using external services, e.g. Vamp workflows.
 
 -----------
 
-## Scales
+## Metrics
 
-See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
+Metrics can be defined on gateways and deployment ports and retrieved:
 
-### List scales
+```
+/api/v1/metrics/gateways/{gateway}/{metrics}
+/api/v1/metrics/gateways/{gateway}/routes/$route/{metrics}
 
-Lists all scales without any pagination or filtering.
+/api/v1/metrics/deployments/{deployment}/clusters/{cluster}/ports/{port}/{metrics}
+/api/v1/metrics/deployments/{deployment}/clusters/{cluster}/services/{service}/ports/{port}/{metrics}
+```
 
-    GET /api/v1/scales
+#### Example
+    /api/v1/metrics/deployments/sava/clusters/frontend/ports/api/response-time
 
-### Get a single scale
+{{< note title="Note!" >}}
+Metrics are calculated using external services, e.g. Vamp workflows.
+{{< /note >}}
 
-Lists all details for one specific scale.
-
-    GET /api/v1/scales/{scale_name}
-
-### Create scale
-
-Creates a new scale. Accepts JSON or YAML formatted scales. Set the `Content-Type` request header to `application/json` or `application/x-yaml` accordingly.    
-
-    POST /api/v1/scales
-
-| parameter     | options           | default          | description      |
-| ------------- |:-----------------:|:----------------:| -----------------:|
-| `validate_only` | true or false     | false            | validates the scale and returns a `201 Created` if the scale is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
-
-### Update a scale
-
-Updates the content of a specific scale.
-
-    PUT /api/v1/scales/{scale_name}
-
-| parameter     | options           | default          | description      |
-| ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the scale and returns a `200 OK` if the scale is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
-
-### Delete a scale
-
-Deletes a scale.        
-
-    DELETE /api/v1/scales/{scale_name}
-
-| parameter     | options           | default          | description      |
-| ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | returns a `204 No Content` without actual delete of the scale.
-
--------------
-
-## SLAs
-
-See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
-
-### List SLAs
-
-Lists all slas without any pagination or filtering.
-
-    GET /api/v1/slas
-
-### Get a single SLA
-
-Lists all details for one specific breed.
-
-    GET /api/v1/slas/{sla_name}
-
-### Create an SLA
-
-Creates a new SLA
-
-    POST /api/v1/slas   
-
-| parameter     | options           | default          | description      |
-| ------------- |:-----------------:|:----------------:| -----------------:|
-| `validate_only` | true or false     | false            | validates the SLA and returns a `201 Created` if the SLA is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
-
-### Update an SLA
-
-Updates the content of a specific SLA.
-
-    PUT /api/v1/slas/{sla_name}
-
-| parameter     | options           | default          | description      |
-| ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the SLA and returns a `200 OK` if the SLA is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
-
-### Delete an SLA
-
-Deletes an SLA.        
-
-    DELETE /api/v1/slas/{sla_name}
-
-| parameter     | options           | default          | description      |
-| ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | returns a `204 No Content` without actual delete of the SLA.
 
 
 ---------------
@@ -676,4 +694,4 @@ Forces Vamp to perform an escalation check, regardless of the configured default
 	GET /api/v1/escalation
 
 ---------------
-See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, json and yaml content types and effective use of the API
+See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, JSON and YAML content types and effective use of the API

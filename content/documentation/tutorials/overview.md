@@ -17,3 +17,8 @@ You can work with Sava in the [Vamp hello world](/documentation/installation/hel
 2. [Run a canary release](/documentation/tutorials/run-a-canary-release/)
 3. [Split a monolith into services](/documentation/tutorials/split-a-monolith/)
 4. [Merge a changed topology](/documentation/tutorials/merge-and-delete/)
+
+
+## Learn more
+* [Run a Wordpress deployment and use gateways to control access](/documentation/tutorials/deploy-wordpress-and-mysql)  
+This tutorial shows how to deploy Wordpress together with mySQL and set up a gateway to run a canary release

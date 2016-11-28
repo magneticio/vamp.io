@@ -343,6 +343,11 @@
               "path": "documentation/tutorials/merge-and-delete",
               "text": "Merge and delete",
               "visible": true
+            },
+            {
+              "path": "documentation/tutorials/deploy-wordpress-and-mysql",
+              "text": "Run a Wordpress deployment",
+              "visible": true
             }
           ],
           "text": "Tutorials",
