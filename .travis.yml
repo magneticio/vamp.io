@@ -7,6 +7,9 @@ language: go
 sudo: false
 go: 1.7
 node_js: 6.9.0
+cache:
+  directories:
+  - /node_modules
 install:
   - . $HOME/.nvm/nvm.sh
   - nvm install stable
