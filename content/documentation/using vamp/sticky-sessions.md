@@ -1,7 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Sticky Sessions
-
+menu:
+  main:
+    parent: "Using Vamp"
+    weight: 130
 ---
 
 Vamp supports `route` and `instance` level sticky sessions.

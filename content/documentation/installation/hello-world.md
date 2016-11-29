@@ -1,7 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Hello world
-
+menu:
+  main:
+    parent: "Installation"
+    weight: 20
 ---
 
 The Vamp hello world setup will run Mesos, Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)) and Vamp 0.9.1 inside a local Docker container with Vamp's Marathon driver.  We will do this in three simple steps (although it's really just one `docker run` command). You can use the hello world setup to work through the [getting started tutorials](/documentation/tutorials) and try out some of Vamp's core features.

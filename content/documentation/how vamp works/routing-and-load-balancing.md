@@ -1,6 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Routing and load balancing
+menu:
+  main:
+    parent: "How Vamp works"
+    weight: 50
 ---
 Vamp uses the tried and tested HAProxy reverse proxy software for routing/proxying and load balancing ([haproxy.com](https://www.haproxy.com)). Vamp Gateway Agent (VGA) manages the HAProxy configuration and HAProxy routes incoming traffic to endpoints (explicitly defined external gateways) or handles intra-service routing. By applying some iptables magic, Vamp makes sure that HAProxy configuration updates won't introduce dropped packages., that means zero-downtime reloads.  
 

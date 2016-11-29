@@ -33,10 +33,6 @@ googleAnalytics = ""
 	  "javascripts/version.js"
 	]
 
-	custom_menu = [
-    "API"
-  ]
-
 	# Syntax highlighting theme
 	highlight_css  = ""
 
@@ -58,29 +54,79 @@ googleAnalytics = ""
 	smartDashes = true
 	plainIDAnchors = true
 
+# Top Menu Items
 [[menu.main]]
-	name   = "WHAT IS VAMP?"
-	url    = "/what-is-vamp/"
+	name   = "Why use Vamp?"
+	url    = "/why-use-vamp/why-use-vamp/"
+	identifier = "why-use-vamp-top"
 	weight = 10
 
 [[menu.main]]
-	name   = "TRY VAMP"
-	url    = "/try-vamp/"
+	name   = "Documentation"
+	url    = "/documentation/how-vamp-works/architecture-and-components/"
 	weight = 20
 
-
 [[menu.main]]
-	name   = "RESOURCES"
-	url    = "resources/"
+	name   = "Resources"
+	url    = "/resources/downloads/"
 	weight = 30
 
 [[menu.main]]
-	name   = "NEWS"
-	url    = "news/"
+	name   = "Support"
+	url    = "/support/"
+	weight = 40
+
+# Side Menu Items, Parent should match the identifier of the Top Menu Item
+[[menu.main]]
+	name = "Use cases"
+	url = "/why-use-vamp/use-cases/use-cases"
+	parent = "why-use-vamp-top"
+	weight = 10
+
+[[menu.main]]
+	name  = "Vamp compared to..."
+	url   = "/why-use-vamp/vamp-compared-to/proxies-and-load-balancers/"
+	parent = "why-use-vamp-top"
+	weight = 30
+
+[[menu.main]]
+	name	= "How Vamp works"
+	url = "/documentation/how-vamp-works/architecture-and-components/"
+	parent = "Documentation"
+	weight = 10
+
+[[menu.main]]
+	name = "Installation"
+	url = "/documentation/installation/overview"
+	parent = "Documentation"
+	weight = 20
+
+[[menu.main]]
+	name = "Tutorials"
+	url = "/documentation/tutorials/overview"
+	parent = "Documentation"
+	weight = 30
+
+[[menu.main]]
+	name = "Using Vamp"
+	url = "documentation/using-vamp/artifacts"
+	parent = "Documentation"
 	weight = 40
 
 [[menu.main]]
-	name   = "SUPPORT"
-	url    = "support/"
+	name = "API"
+	url = "/documentation/api/v0.9.1/api-reference"
+	parent = "Documentation"
 	weight = 50
 
+[[menu.main]]
+	name = "CLI"
+	url = "/documentation/cli/cli-reference/"
+	parent = "Documentation"
+	weight = 60
+
+[[menu.main]]
+	name = "Release notes"
+	url = "/documentation/release-notes/version-0-9-1/"
+	parent = "Documentation"
+	weight = 70

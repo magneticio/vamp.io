@@ -1,6 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Workflows 
+title: Workflows
+menu:
+  main:
+    parent: "Using Vamp"
+    weight: 120
 ---
 
 A "workflow" is an automated change of the running system and its deployments and gateways. 

@@ -1,6 +1,11 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Service discovery
+menu:
+    main: 
+        parent: "Use cases"
+        identifier: "use-cases-service-disc"
+        weight: 70
 ---
 
 Vamp uses a service discovery pattern called server-side service discovery. This pattern allows service discovery without the need to change your code or run any other service-discovery daemon or agent. In addition to service discovery, Vamp also functions as a service registry. We recognise the following benefits of this pattern:

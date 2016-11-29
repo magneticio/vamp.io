@@ -1,6 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Environment variables 
+title: Environment variables
+menu:
+  main:
+    parent: "Using Vamp"
+    weight: 50
 ---
 
 Breeds and blueprints can include lists of environment variables that will be injected into the container at runtime. You set environment variables with the `environment_variables` keyword or its shorter version `env`, e.g. both examples below are equivalent.
