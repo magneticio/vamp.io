@@ -30,7 +30,7 @@ Currently we use Logstash to format and send data to Elastic Search, but you cou
 Each Vamp Gateway Agent (VGA) requires its own instance of HAProxy. This is a hard requirement, so to keep things simple we provide a Docker container with both Vamp Gateway Agent (VGA) and HAProxy ([hub.docker.com - magneticio/vamp-gateway-agent](https://hub.docker.com/r/magneticio/vamp-gateway-agent/)).  
 
 {{< note title="What next?" >}}
-* Find out how to [install Vamp](/documentation/installation)
+* Find out how to [install Vamp](/documentation/installation/overview)
 * High level pointers for [choosing a container scheduler](/documentation/how-vamp-works/which-container-scheduler)
 {{< /note >}}
 

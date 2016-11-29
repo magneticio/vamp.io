@@ -31,6 +31,6 @@ The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely 
 
 ## Try Vamp
 
-We've put together a [hello world walkthrough](/documentation/installation/hello-world/) to let you try out some of Vamp's core features in a local docker container. You can use this to work through the [getting started tutorials](/documentation/tutorials).
+We've put together a [hello world walkthrough](/documentation/installation/hello-world/) to let you try out some of Vamp's core features in a local docker container. You can use this to work through the [getting started tutorials](/documentation/tutorials/overview).
 
 

@@ -49,5 +49,5 @@ All events are stored and retrieved using the Event API, part of the [Vamp API](
   Vamp will do this by inserting ES documents to the Kibana index, so only the URL to access ES is needed (by default reusing the same as for persistence). Read more about [Vamp configuration](/documentation/installation/configure-vamp)
 
 {{< note title="What next?" >}}
-* Let's [install Vamp](/documentation/installation/) 
+* Let's [install Vamp](/documentation/installation/overview) 
 {{< /note >}}

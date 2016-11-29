@@ -29,7 +29,7 @@ Vamp 0.9.1 includes:
 
 {{< note title="What next?" >}}
 * [Try Vamp](/documentation/installation/hello-world/)
-* [Use cases](/why-use-vamp/use-cases/): Vamp solutions to practical problems
+* [Use cases](/why-use-vamp/use-cases/use-cases): Vamp solutions to practical problems
 * [What Vamp offers compared to other tools and services](/why-use-vamp/vamp-compared-to/proxies-and-load-balancers/)
 * [How Vamp works](/documentation/how-vamp-works/architecture-and-components/)
 {{< /note >}}

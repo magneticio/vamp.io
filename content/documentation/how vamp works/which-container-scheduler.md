@@ -52,6 +52,6 @@ If you want to stay within the Docker ecosystem, Vamp works nicely with (single 
 _* Note that Vamp [dialects](/documentation/using-vamp/blueprints#dialects) and some specific metric store settings are scheduler or container cloud specific._
 
 {{< note title="What next?" >}}
-* Find out how to [install Vamp](/documentation/installation) 
+* Find out how to [install Vamp](/documentation/installation/overview) 
 * Read about the [requirments to run Vamp](/documentation/how-vamp-works/requirements) 
 {{< /note >}}

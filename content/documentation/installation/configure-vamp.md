@@ -304,6 +304,6 @@ vamp.gateway-driver.timeout ⇒ VAMP_GATEWAY_DRIVER_TIMEOUT
 
 
 {{< note title="What next?" >}}
-* Follow the [getting started tutorials](/documentation/tutorials/)
+* Follow the [getting started tutorials](/documentation/tutorials/overview)
 * You can read in depth about [using Vamp](/documentation/using-vamp/artifacts/) or browse the [API reference](/documentation/api/api-reference/) or [CLI reference](/documentation/cli/cli-reference/) docs.
 {{< /note >}}

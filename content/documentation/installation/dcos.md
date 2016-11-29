@@ -176,7 +176,7 @@ ID                        MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
 
 Vamp has now spun up all it's components and you should be able to access the ui by opening http://dcos.example.com/service/vamp/ in your browser.
 
-* Now you're ready to follow our [Vamp getting started tutorials](/documentation/tutorials/).
+* Now you're ready to follow our [Vamp getting started tutorials](/documentation/tutorials/overview).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 
 > NB If you need help you can also find us on [Gitter] (https://gitter.im/magneticio/vamp)
@@ -316,7 +316,7 @@ Deploying Vamp Gateway Agent on all public and private Mesos agent nodes through
 
 {{< note title="What next?" >}}
 
-* Once you have Vamp up and running you can follow our [getting started tutorials](/documentation/tutorials/).
+* Once you have Vamp up and running you can follow our [getting started tutorials](/documentation/tutorials/overview).
 * Chcek the [Vamp documentation](/documentation/how-vamp-works/architecture-and-components/)
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 

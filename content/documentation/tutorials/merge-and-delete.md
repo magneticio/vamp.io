@@ -254,8 +254,8 @@ release. You create some containers and write up a blueprint that describes this
 
 {{< note title="What next?" >}}
 * This is the end of this initial getting started tutorial. We haven't done anything with Vamp's SLA's yet, scaling or dictionary system, so there is much more to come!
-* [Vamp use cases](/why-use-vamp/use-cases/)
-* Find out how to [install a production-grade set up of Vamp](/documentation/installation/)
+* [Vamp use cases](/why-use-vamp/use-cases/use-cases/)
+* Find out how to [install a production-grade set up of Vamp](/documentation/installation/overview/)
 {{< /note >}}
 
 
