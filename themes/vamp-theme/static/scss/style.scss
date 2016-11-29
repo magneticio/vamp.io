@@ -1762,9 +1762,13 @@ pre + pre {
   align-items: center;
   justify-content: center;
   height: 80vh;
-  padding-top: 80px;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
+  padding-top: 40px;
+
+  @media all and (min-width: 550px) {
+    padding-top: 80px;
+  }
 
   h1 {
     font-size: 32px;
@@ -1772,6 +1776,7 @@ pre + pre {
     font-weight: 300;
     letter-spacing: 0.05em;
     color: $color-radical-red;
+    text-align: center;
   }
 
   h2 {
@@ -1781,13 +1786,27 @@ pre + pre {
   }
 
   .image-container {
-    width: 530px;
-    height: 259px;
+    width: 80%;
+    height: auto;
+
+
+    @media all and (min-width: 550px) {
+      width: 530px;
+      height: 259px;
+    }
   }
 
   img {
-    width: 530px;
-    height: 259px;
+    width: 100%;
+    height: auto;
+
+
+
+    @media all and (min-width: 550px) {
+      width: 530px;
+      height: 259px;
+    }
+
   }
 }
 
