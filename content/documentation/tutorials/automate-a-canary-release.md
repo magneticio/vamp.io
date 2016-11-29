@@ -15,8 +15,9 @@ In this tutorial we will:
 3. [Create workflows](documentation/tutorials/automate-a-canary-release/#create-workflows)
   * Generate the traffic requests
   * Automate a canary release
-  * Autoscale the services
   * Force a rollback
+  * Autoscale the services
+
 
 ### Requirements
 
@@ -55,47 +56,57 @@ We can use Vamp Runner to quickly create and deploy all the artifacts required f
   * Once a step has completed successfully, the circle next to it will be coloured green. If for whatever reason the desired state cannot be reached the circle will colour red. (NB check the recipe JSON definition file for each recipe the GitHub project recipes folder to examine the states that are defined to check if a step has been executed successfully.) You can try cleaning the entire recipe by clicking the “Cleanup” button in the right column, or check the events at the bottom of the Vamp Runner UI and find out if there are any specific errors happening.
 
 3. Wait for the **Create blueprint** step to complete and the circle to turn green, then work through the next four steps in turn:
-  * Create breed and scale
-  * Deploy blueprint
-  * Create gateway
-  * Introduce new service version
+  * Create breed and scale - these are the artifacts needed to deploy the service `sava:1.0`
+  * Deploy blueprint - deploys the application `sava:1.0` with a routing weight of 100% (all traffic)
+  * Create gateway - exposes the external gateway 9050 mapped to our Sava deployment
+  * Introduce new service version - merges the updated service `sava:1.1` with our running deployment. The routing weight is set to 0% (no traffic)
 
  The EVENTS stream in Vamp Runner will show the process of each step until our services are deployed. The created artifacts and deployments are visible in the Vamp UI (or via the API) and, if everything worked as expected, the deployed service can be accessed at the external gateway Vamp Runner created (9050).
 
 ## Create workflows
-With all our services ready to go, we can get started with some automation. We will use three workflows, one to generate traffic requests, one to automate the canary release and rollback, and one to autoscale our services as the traffic routing is rebalanced. For each of our workflows, Vamp Runner will first create a breed with `type: application/javascript` containing the JavaScript to run and then create a workflow that references the breed.
+With both of our services ready to go, we can get started with some automation. We will use three workflows, one to generate traffic requests, one to automate the canary release and rollback, and one to autoscale our services as the traffic routing is rebalanced. For each of our workflows, Vamp Runner will first create a breed with `type: application/javascript` containing the JavaScript to run and then create a workflow which references that breed.
 
-When the workflow is created, Vamp will deploy a workflow agent container and inject the JavaScript from the referenced breed ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)). The JavaScript will then run at the schedule defined in the workflow (as a daemon, triggered by specific Vamp events or following a set time schedule). The Vamp node.js client library enables JavaScript workflows to speak directly to the Vamp API, see the gitHub project for details ([github.com/magneticio - Vamp node client](https://github.com/magneticio/vamp-node-client)).  
+When a workflow is created, Vamp deploys a workflow agent container and injects the JavaScript from the referenced breed into it ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)). The JavaScript will then run at the schedule defined in the workflow (as a daemon, triggered by specific Vamp events or following a set time schedule). The Vamp node.js client library enables JavaScript workflows to speak directly to the Vamp API, see the gitHub project for details ([github.com/magneticio - Vamp node client](https://github.com/magneticio/vamp-node-client)).  
 [Read more about workflows](/documentation/using-vamp/workflows)
 
 ### Generate traffic requests
-The next step in our Vamp Runner recipe is to generate some traffic requests and get these flowing into our deployed service. We're going to do this using a workflow.
+The next step in our Vamp Runner recipe is to get some traffic requests flowing into our deployed service. We can generate these using a workflow.
 
 Click **Run** next to **Generate traffic requests** and Vamp will create a breed and workflow named `traffic`. 
 
 The traffic workflow will send generated traffic requests to our service at the external gateway port 9050.  You can see the exact YAML posted to the Vamp API to complete this by clicking on the **info** button. The workflow is set to run as a daemon, so it will begin generating traffic requests as soon as it is created. You will see these show up in the EVENTS stream at the bottom of the Vamp Runner UI, or you can watch them arrive at the gateway in the Vamp UI.
 
-![](images/screens/v091/runner_generate_traffic_requests.png)
+![](images/screens/v091/canary_runner_generate_traffic_requests.png)
 
-![](images/screens/v091/runner_vamp_ui_gateway.png)
+![](images/screens/v091/canary_vamp_ui_gateway.png)
 
 ### Automate a canary release
-Our services were initially deployed with 100% traffic being routed to sava:1.0 and 0% to sava:1.1
-Now we have some generated traffic requests coming in, we can automate a canary release to gradually rebalance rollback will be initiated in case this hits the defined 500.
+Our services have been deployed with the routing weights `sava:1.0` - 100% and `sava:1.1` - 0%, this means all incoming traffic is currently being routed to `sava:1.0`. The next step in our Vamp Runer recipe is to initiate an automtated canary release. 
 
 Click **Run** next to **Automated canary release** and Vamp will create a breed and workflow named `canary`. 
 
-You can also adjust the weight manually in the Vamp UI.
+Once created, the canary workflow will begin to gradually rebalance traffic routing, introducing `sava:1.1` while phasing out `sava:1.0`. Click the **info** button in Vamp Runner to check the exact YAML used for this. You can track progress of the canary release in the EVENTS stream at the bottom of the Vamp Runner UI and you will also see the weight distribution on the internal gateway updating in the Vamp UI.
+ 
+![](images/screens/v091/canary_vamp_ui_gateway_canary.png)
 
-
-### Autoscale the services
-As trafic routing is rebalanced between the services we can automatically scale the services up or down.
-
-The **Auto scaling** step will create a breed and workflow named `auto-scaling`.
-
-You can also scale the services manually in the Vamp UI.
+You can also adjust the weight manually in the Vamp UI, the canary workflow will kick in and take over from there.
 
 ### Force a rollback
+As our Sava service has traffic requests flowing into the 9050 gateway (generated by the `traffic` workflow), the `canary` workflow can measure for errors and initiate a rollback in case a defined limit is reached (we have set this to 500). We can demonstrate this in our hellow world setup by maliciously destroying our `sava:1.1` deployment from the Marathon UI.
+
+1. Go the Marathon UI (on port 9090) and find the `sava:1.1` container running
+* Select **destroy** to kill the container
+
+You will see three things happen. First of all, the canary workflow will pick up on the errors for traffic routed to `sava:1.1` and rebalance routing so 100% of traffic is routed back to `sava:1.0`. Next, Vamp will detect the issue and spin up the `sava:1.1` service again as soon as possible. Finally, the canary workflow will begin the canary release process again.
+
+### Autoscale the services
+As the canary workflow rebalnaces trafic routing between the deployed services, the demands placed on each will change. The final step in our Vamp Runner recipe is to account for this by automatically scaling the services up and down.
+
+Click **Run** next to **Auto scaling** and Vamp will create a breed and workflow named `auto-scaling`.
+
+As with the routing weight distribution, you can also scale the services manually in the Vamp UI.
+
+
 
 
 ## Clean up and move along
