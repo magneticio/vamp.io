@@ -1569,6 +1569,13 @@ pre + pre {
     flex-flow: row wrap;
     justify-content: center;
 
+    .col {
+      height: 140px;
+      width: 50%;
+      flex: none;
+      padding: 20px;
+    }
+
     @media all and (min-width: 321px) {
       .col {
         height: 190px;

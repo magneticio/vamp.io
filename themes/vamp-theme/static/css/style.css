@@ -1695,6 +1695,13 @@ pre + pre {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center; }
+  #partners-row .logos-row .col {
+    height: 140px;
+    width: 50%;
+    -webkit-box-flex: 0;
+    -ms-flex: none;
+    flex: none;
+    padding: 20px; }
   @media all and (min-width: 321px) {
     #partners-row .logos-row .col {
       height: 190px;
