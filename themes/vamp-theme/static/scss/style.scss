@@ -1065,14 +1065,19 @@ body {
 
   .text {
     color: $color-jungle-mist !important;
+    text-align: center;
   }
 
   .h2 {
     font-weight: 300;
+    text-align: center;
+    padding-top: 20px;
+    margin-bottom: 5px;
   }
 
   a {
     text-decoration: none;
+    text-align: center;
 
     .text {
       font-weight: 100;
@@ -1089,6 +1094,22 @@ body {
   .input-group {
     margin: 20px 0;
   }
+
+  @media all and (min-width: 769px) {
+    .h2 {
+      text-align: left;
+      padding-top: initial;
+      margin-bottom: 20px;
+    }
+
+    a {
+      text-align: left;
+    }
+
+    .text {
+      text-align: left;
+    }
+  }
 }
 
 .footer-bottom {
@@ -1101,28 +1122,44 @@ body {
     color: $color-jungle-mist !important;
   }
 
-  .container {
-    display: flex;
-    justify-content: space-between;
-  }
-
   .vamp-bat {
     height: 40px;
     width: 50px;
     margin-right: 20px;
+    display: none;
   }
 
   .part {
     display: flex;
-    width: 40%;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin: 10px 0;
   }
 
   a {
     color: $color-white-squeeze;
-
   }
-}
+
+  @media all and (min-width: 769px) {
+    .container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .part {
+      width: 40%;
+      justify-content: initial;
+      text-align: initial;
+      margin: initial;
+    }
+
+    .vamp-bat {
+      display: block;
+    }
+  }
+  }
 
 // Note box
 .admonition {
@@ -1223,20 +1260,38 @@ body {
 }
 
 .social-buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 30px;
-  margin-top: 20px;
-  width: 45%;
-  line-height: 30px;
 
-  a {
-   padding-bottom: 2px;
+  .social-icons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 25%;
+  }
 
-    i {
-      line-height: inherit;
+
+  @media all and (min-width: 769px) {
+    display: flex;
+    align-items: center;
+
+    .social-icons {
+      padding: 0 0;
     }
+
+    p {
+      width: 144px;
+    }
+
+    .social-icons {
+      justify-content: flex-start;
+
+      a {
+        padding-bottom: 2px;
+        margin-right: 20px;
+      }
+
+
+    }
+
   }
 }
 
