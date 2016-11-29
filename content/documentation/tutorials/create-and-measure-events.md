@@ -11,6 +11,7 @@ In this tutorial we will:
 
 1. Create a simple workflow
 * Create Vamp events using the REST API
+* Track / measure / search events using the API (and a workflow?) 
 
 ### Requirements
 
@@ -103,7 +104,7 @@ Adjust below as required...
 Can do this in brower. you can use `?type=`, `?tag=` or `?value=` to search through events.
 
 
-
+### Track 
 
 
 
