@@ -41,7 +41,7 @@ Vamp events are strored by default in Elasticsearch. Elasticsearch indexing is b
 
 The `events` endpoint of the Vamp API can be used to create and retrieve events stored in Elasticsearch. We are going to use this endpoint to create an event with the custom type `hello_api`.
 
-Use postman or curl to `POST` the below JSON to `/api/v1/events`
+Use postman or curl to `POST` the below JSON to the `/api/v1/events` endpoint.
 
 ```
 {
@@ -109,7 +109,7 @@ dependencies: {}
 ```
 ![](images/screens/v091/events_vampui_breeds.png)
 
-### Deploy hello workflow
+### Deploy the hello_workflow breed as a workflow
 We can now create a workflow that references the `hello_workflow` breed. Once the workflow is created, the breed will be deployed in a Vamp workflow agent container. We will schedule our workflow to run as a daemon, so it will immediately start running at the set interval (5 seconds).
 
 1. Go to the WORKFLOWS tab in the Vamp UI 
@@ -117,14 +117,17 @@ We can now create a workflow that references the `hello_workflow` breed. Once th
 * Paste in the below blueprint YAML and click SAVE
 
 ```
-
+name: hello_workflow
+kind: workflow
+breed: hello_workflow
+schedule: daemon
 ```
 The workflow will be deployed and you will see the created events appearing in the Vamp UI EVENTS stream. 
 
 ![](images/screens/v091/events_vampui_hello_workflow_5.png)
 
 ### Update the running workflow
-Restart workflow features are coming very soon to Vamp, but in Vamp 0.9.1 updates made to the script in the `hello_workflow` breed will not be carried over to the running `hello_workflow` workflow. Vamp breeds are static artifacts, so updating the breed alone won't have any effect on the running workflow . To update a running workflow you need to re-deploy the workflow. Let's demonstrate this by updating our workflow so it runs every second.
+In Vamp 0.9.1, updates made to a breed will not be carried over to an associated workflow. Vamp breeds are static artifacts, so updating the breed alone won't have any effect on the running workflow . To update a running workflow you need to re-deploy the workflow (a restart workflow feature is coming very soon, which makes this much simpler). Let's update our running workflow so it runs every second.
  
 1. Go the BREEDS tab in the Vamp UI
 * Open the `hello_workflow` breed and update the script to set `var period = 1` (this will cause the events to be generated every second)
@@ -135,14 +138,14 @@ Restart workflow features are coming very soon to Vamp, but in Vamp 0.9.1 update
 * Open the `hello_workflow` workflow and update ???
 * Click SAVE - the workflow will be redployed, including the changes made to the `hello_workflow` breed
 * Check the events stream again 
-  * `hello_workflow` should now be generating events every second - that's a lot of events!
+  * `hello_workflow` should now be generating events every second - that's a lot of events! Feel free to delete the workflow and stop it running.
  
 ![](images/screens/v091/events_vampui_hello_workflow_10.png)
 
 ## Retrieve and filter events using the REST API
-Can do this in brower. you can use `?type=`, `?tag=` or `?value=` to search through events.
+Now we have a lot of events stored we can use the same REST API events endpoint to retrieve them. We can search for specifc events and filter for specific types and tags. You can try this out in postman or curl by sending a GET request to the `/api/v1/events` endpoint or you could do this in brower. you can use `?type=` or `?tag=` to search through events.
 
-the event API enables you to filter and search for specifc events with specific types, tags or values
+
 
 
 
@@ -159,5 +162,6 @@ Just for fun, you could try these:
 {{< note title="What next?" >}}
 * What would you like to see for our next tutorial? [let us know](mailto:info@magnetic.io)
 * Find our more about [using Vamp](documentation/using-vamp/artifacts)
+* Read more about the [Vamp API](documentation/api/api-reference)
 {{< /note >}}
 
