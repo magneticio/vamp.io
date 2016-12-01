@@ -8,7 +8,7 @@ menu:
     weight: 10
 ---
 
-{{< note title="katana is not an official release">}}
+{{< note title="Katana is not an official release">}}
 All changes since the last official release are described below. This applies only to binaries built from source (master branch). 
 {{< /note >}}
 
