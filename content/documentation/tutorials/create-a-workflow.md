@@ -61,19 +61,12 @@ Best practice when creating events is to include both the tag with no value (in 
 ## Create a simple workflow
 Now we know how to generate events with the Vamp API, we can take this a step further and create a simple workflow to automate the process. You can automate Vamp with any application (for example something developed in python), as long as it can count or trigger an action against the Vamp API. For this tutorial, we will create a Vamp workflow. 
 
-Vamp workflows are a convenient way of creating Node JS based scripts that run as containers and access the Vamp API. 
+Vamp workflows are a convenient way of creating Node JS based scripts that run as containers and access the Vamp API. Workflows run in Vamp workflow agent containers and are managed just like any other container inside your cluster, making them robust, scalable and dynamic. A workflows can be scheduled to run as a deamon, be triggered by Vamp events or run at specified timestamp (the Vamp workflow driver is used for time based and event based workflows).
 
-
-Explain what a workflow is, why we use them and how they are created...
-
-*  
-* 
-* Workflows can be scheduled to run as a deamon, be triggered by events or run at specified timestamp.
-* The workflow driver is used for time based and event based workflows
-* Create a workflow, referencing the breed - this is best practice.
+We are going to create a workflow to run as a daemon. We'll start by creating a breed with the required script and then deploy this as a workflow. It is advisable to create a static breed artifact containing the workflow script and reference this from a deployed workflow - once a workflow is undeployed it will disappear, whereas a breed can be deployed any number of times.
 
 ### Create a breed 
-Here we're going to add our JavaScript. There are few items that we need to include so we can interact with Vamp. First, we require the `vamp-node-client` library to be able to interact with the Vamp API. We also need to create a a new Vamp API object and set the run interval.
+The breed will hold the JavaScript to be run for our workflow. To be able to interact with Vamp, we will need to include a few items in the JavaScript. The `vamp-node-client` library allows the note JS application to interact with the Vamp API. We also need to create a new Vamp API object and set a run interval.
 
 
   1. Go the BREEDS tab in the Vamp UI
@@ -94,8 +87,8 @@ deployable:
 
     var period = 5;  // milliseconds
 
-    var run = function () {   // create a Vamp event - tag_key:tag_value, event_type
-         api.event(['test_key', 'test_key:test_value'], 'hello_workflow');
+    var run = function () {   // create a Vamp event - tag, value, event_type
+          api.event('test_key', 'test_value', 'hello_workflow'); 
      };
 
     run();
@@ -140,18 +133,16 @@ In Vamp 0.9.1, updates made to a breed will not be carried over to an associated
 * Check the events stream again 
   * `hello_workflow` should now be generating events every second - that's a lot of events! Feel free to delete the workflow and stop it running.
  
-![](images/screens/v091/events_vampui_hello_workflow_10.png)
+![](images/screens/v091/events_vampui_hello_workflow_1.png)
 
 ## Retrieve and filter events using the REST API
-Now we have a lot of events stored we can use the same REST API events endpoint to retrieve them. We can search for specifc events and filter for specific types and tags. You can try this out in postman or curl by sending a GET request to the `/api/v1/events` endpoint or you could do this in brower. you can use `?type=` or `?tag=` to search through events.
+Now we have a lot of events stored we can use the same REST API events endpoint to retrieve them. We can search for specifc events and filter for specific types and tags. You can try this out in postman or curl by sending a GET request to the `/api/v1/events` endpoint, you can even do this in your browser. Use `?type=` or `?tag=` to search through events.
 
-
-
-
+![](images/screens/v091/events_retrieve_events.png)
 
 
 ## Summing up
-We created our first workflow and showed how the Vamp events stream is central to Vamp. 
+You should now know a bit more about the Vamp events stream and how it is used by the distributed components of Vamp. Now you understand how to build, deploy and update your own workflows there should be no stopping you - what will you automate?
 
 ## Looking for more of a challenge?
 Just for fun, you could try these:
