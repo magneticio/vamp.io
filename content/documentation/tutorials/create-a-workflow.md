@@ -41,7 +41,7 @@ Vamp events are strored by default in Elasticsearch. Elasticsearch indexing is b
 
 The `events` endpoint of the Vamp API can be used to create and retrieve events stored in Elasticsearch. We are going to use this endpoint to create an event with the custom type `hello_api`.
 
-Use postman or curl to `POST` the below JSON to the `/api/v1/events` endpoint.
+Use Postman or curl to `POST` the below JSON to the `/api/v1/events` endpoint.
 
 ```
 {
@@ -49,6 +49,7 @@ Use postman or curl to `POST` the below JSON to the `/api/v1/events` endpoint.
     "test_key",
     "test_key:test_value"
   ],
+  "value": "test_value",
   "type": "hello_api"
 }
 ```  
@@ -107,7 +108,7 @@ We can now create a workflow that references the `hello_workflow` breed. Once th
 
 1. Go to the WORKFLOWS tab in the Vamp UI 
 * Click ADD (top right)
-* Paste in the below blueprint YAML and click SAVE
+* Paste in the below workflow YAML and click SAVE
 
 ```
 name: hello_workflow
@@ -120,7 +121,7 @@ The workflow will be deployed and you will see the created events appearing in t
 ![](images/screens/v091/events_vampui_hello_workflow_5.png)
 
 ### Update the running workflow
-In Vamp 0.9.1, updates made to a breed will not be carried over to an associated workflow. Vamp breeds are static artifacts, so updating the breed alone won't have any effect on the running workflow . To update a running workflow you need to re-deploy the workflow (a restart workflow feature is coming very soon, which makes this much simpler). Let's update our running workflow so it runs every second.
+In Vamp 0.9.1, updates made to a breed will not be carried over to an associated workflow. Vamp breeds are static artifacts, so updating the breed alone will have no effect on the running workflow. To update a running workflow, it must be redeployed (a restart workflow feature is coming very soon). Let's update our running workflow so it runs every second.
  
 1. Go the BREEDS tab in the Vamp UI
 * Open the `hello_workflow` breed and update the script to set `var period = 1` (this will cause the events to be generated every second)
@@ -128,18 +129,22 @@ In Vamp 0.9.1, updates made to a breed will not be carried over to an associated
 * Check the events stream in the Vamp UI 
   * `hello_workflow` events will continue to appear every 5 seconds
 * Go to the WORKFLOWS tab
-* Open the `hello_workflow` workflow and update ???
-* Click SAVE - the workflow will be redployed, including the changes made to the `hello_workflow` breed
+* Select the `hello_workflow` workflow and delete it. Note that this will only delete the running workflow, not the associated breed. 
+* To re-deploy the workflow with the updated breed, click ADD (top right)
+* Paste in the same (above) workflow YAML and click SAVE
 * Check the events stream again 
   * `hello_workflow` should now be generating events every second - that's a lot of events! Feel free to delete the workflow and stop it running.
  
 ![](images/screens/v091/events_vampui_hello_workflow_1.png)
 
 ## Retrieve and filter events using the REST API
-Now we have a lot of events stored we can use the same REST API events endpoint to retrieve them. We can search for specifc events and filter for specific types and tags. You can try this out in postman or curl by sending a GET request to the `/api/v1/events` endpoint, you can even do this in your browser. Use `?type=` or `?tag=` to search through events.
+Now we have a lot of events stored we can use the same REST API events endpoint to retrieve them. We can search for specifc events and filter for specific types and tags. You can try this out in Postman or curl by sending a GET request to the `/api/v1/events` endpoint, you can even do this in your browser. Use `?type=` or `?tag=` to search through events.
 
 ![](images/screens/v091/events_retrieve_events.png)
 
+The API can also allows be used to retreive an events stream `/api/v1/events/stream`
+
+![](images/screens/v091/events_stream.png)
 
 ## Summing up
 You should now know a bit more about the Vamp events stream and how it is used by the distributed components of Vamp. Now you understand how to build, deploy and update your own workflows there should be no stopping you - what will you automate?
@@ -147,7 +152,7 @@ You should now know a bit more about the Vamp events stream and how it is used b
 ## Looking for more of a challenge?
 Just for fun, you could try these:
 
-* 
+*  
 * 
 
 {{< note title="What next?" >}}
