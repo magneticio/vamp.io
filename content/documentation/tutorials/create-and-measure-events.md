@@ -40,7 +40,7 @@ Vamp events are strored by default in Elasticsearch. Elasticsearch indexing is b
   
 ## Use the REST API to create events
 
-The `events` endpoint of the Vamp API can be used to create and retrieve events stored in Elasticsearch. For this demonstration, we will use the events API to create a custom event type `hello_api`.
+The `events` endpoint of the Vamp API can be used to create and retrieve events stored in Elasticsearch. For this demonstration, we will use the events API to create an event with the custom type `hello_api`.
 
 
 
@@ -55,9 +55,11 @@ Use postman or curl to `POST` the below JSON to `/api/v1/events`
   "type": "hello_api"
 }
 ```  
-You will receive a response with the accepted JSON (including a timestamp) in the body. The created event will show up in the EVENTS stream at the bottom of the Vamp UI:
+You will receive a response from the API with the accepted JSON (including an added timestamp) in the body. The created event will show up in the EVENTS stream at the bottom of the Vamp UI:
 
 ![](images/screens/v091/events_vampui_hello_api.png)
+
+When creating events, best practice is to include the tag with no value (in this example ` "test_key" `) as well as the tag with a specific value (in this example `test_key`). This allows the published event to be picked up by everything listening on a specific tag name, not just those listening on a specific tag value. For example "I am a deployment" not just "I am this specific deployment".
 
 ## Create a simple workflow
 Now we know how to generate events with the Vamp API, we can take this a step further and create a simple workflow to automate the process. You can automate Vamp with any application (for example something developed in python), as long as it can count or trigger an action against the Vamp API. For this tutorial, we will create a Vamp workflow. 
