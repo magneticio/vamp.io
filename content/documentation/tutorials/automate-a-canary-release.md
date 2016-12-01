@@ -2,9 +2,15 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Automate a canary release with rollback using workflows
+menu:
+  main:
+    parent: "Tutorials"
+    name: "Automate a canary release with rollback"
+    weight: 70
 draft: true
 ---
-Vamp workflows are dynamic runtime artifacts built from (Node.js javascript) scripts that can access Vamp’s API and events/metrics system. Vamp manages workflows just like any other container inside your cluster, making them robust, scalable and dynamic. With very little effort you can use workflows to create valuable and powerful automation playbooks for testing and deployments. 
+
+Vamp workflows are dynamic runtime artifacts built from  Node JS based scripts that can access the Vamp API. Vamp manages workflows just like any other container inside your cluster, making them robust, scalable and dynamic. With very little effort you can use workflows to create valuable and powerful automation playbooks for testing and deployments. 
 
 This tutorial will show how workflows can be used to run an automated canary release, gradually introducing an updated service and initiating a rollback to the old version in case 500 errors are measured on the new service. We will use our nifty little demo and automation tool Vamp Runner to demonstrate this, but you could just as easily perform all the described actions manually in the Vamp UI or using the API.  
 

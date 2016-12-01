@@ -4,8 +4,8 @@ title: Older versions
 menu:
   main:
     parent: "Release notes"
-    name: "older versions"
-    weight: 40
+    name: "Older versions"
+    weight: 1000
 ---
 
 All release notes about older Vamp versions can be found in the [Github release notes](https://github.com/magneticio/vamp/releases).
