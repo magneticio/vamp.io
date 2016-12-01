@@ -1,6 +1,8 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Use cases
+aliases:
+    - /why-use-vamp/use-cases/
 menu:
     main:
       parent: "Use cases"
