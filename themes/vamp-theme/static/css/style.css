@@ -2019,10 +2019,13 @@ pre + pre {
       cursor: pointer;
       height: 100%; }
 
+.landing-page .search-bar {
+  opacity: 0; }
+
 .search-bar {
   top: 20px;
   width: 100vw;
-  z-index: 800;
+  z-index: 20;
   background-color: #F0F5FA;
   height: 60px;
   padding: 0 20px;
@@ -2032,15 +2035,16 @@ pre + pre {
   box-shadow: 0 4px 2px -2px rgba(20, 45, 60, 0.25);
   display: none;
   position: fixed;
-  -webkit-transition: 0.3s ease-in all;
-  transition: 0.3s ease-in all; }
+  -webkit-transition: 0.3s ease-in top;
+  transition: 0.3s ease-in top; }
   @media all and (min-width: 1025px) {
     .search-bar {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex; } }
   .search-bar.active {
-    top: 80px; }
+    top: 80px;
+    opacity: 1; }
   .search-bar__label {
     font-weight: 300;
     letter-spacing: 0.01em;

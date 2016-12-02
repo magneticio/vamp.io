@@ -888,7 +888,7 @@ body {
   height: 80px;
   width: 100vw;
   padding: 0 10px;
-  background-color: transparent;
+  background-color:  transparent;
   z-index: 999;
   border-bottom: 1px solid rgba($color-white-squeeze, 0.1);
   transition: 0.3s ease-in all;
@@ -965,6 +965,8 @@ body {
   background-color: white;
   border-bottom: none;
   box-shadow: 0 4px 2px -2px rgba($color-big-stone, 0.25);
+
+
 
   .logo {
     background-image: url('../img/005-vamp/Logo/logo-long-colour.svg');
@@ -1970,11 +1972,16 @@ pre + pre {
   }
 }
 
+.landing-page {
+  .search-bar {
+    opacity: 0;
+  }
+}
 
 .search-bar {
   top: 20px;
   width: 100vw;
-  z-index: 800;
+  z-index: 20;
   background-color: $color-white-squeeze;
   height: 60px;
   padding: 0 20px;
@@ -1982,14 +1989,16 @@ pre + pre {
   box-shadow: 0 4px 2px -2px rgba(20, 45, 60, 0.25);
   display: none;
   position: fixed;
-  transition: 0.3s ease-in all;
+  transition: 0.3s ease-in top;
 
   @media all and (min-width: 1025px) {
     display: flex;
+
   }
 
   &.active {
     top: 80px;
+    opacity: 1;
   }
 
   &__label {
