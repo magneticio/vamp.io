@@ -9,14 +9,11 @@ menu:
 draft: true
 ---
 
-
-This tutorial will explain how to work with the Vamp events stream. We will create and retrieve some (custom) events using the Vamp REST API, then create a simple workflow to automate this interaction. Let's get started!
+This tutorial will explain how to use the Vamp API and workflows to work with the Vamp events stream. We will create and retrieve some (custom) events using the Vamp REST API, then create a simple workflow to automate this interaction. Let's get started!
 
 ### Requirements
 
 * A running version of Vamp 0.9.x (this tutorial has been tested on the [Vamp hello world set up](documentation/installation/hello-world) using Vamp 0.9.1)
-
-
 
 ## Vamp events
 Vamp is a distributed system tied together by a central events stream. Every action in Vamp creates events, which in turn can be measured and used as triggers for new actions. For example, gateway updates are triggered by deployments (synchronisation events), while canary releases and autoscaling are based on health and metrics events. Events are described in the format:  
@@ -24,8 +21,7 @@ Vamp is a distributed system tied together by a central events stream. Every act
 `['tag', 'tag1:tag2'], value, event_type` 
 
 ### Event tags
-Each event created by Vamp is gi
-ven one or more tags. Tags provide meta-information for each stored event and are used for filtering search and for listening. Tags can be either a single tag or a combination of two tags separated by a `:`. The Vamp convention is to use the first tag as a generic label (for example a group) and the second tag as a specific label (i.e. a specific item in a group)
+Each event created by Vamp is given one or more tags. Tags provide meta-information for each stored event and are used for filtering search and for listening. Tags can be either a single tag or a combination of two tags separated by a `:`. The Vamp convention is to use the first tag as a generic label (for example a group) and the second tag as a specific label (i.e. a specific item in a group)
 
 ### Event value
 The event value is optional and could be anything you choose to store along with an event. Values are not analysed and can't be used for search. If you don’t specify value, it will be blank
@@ -62,7 +58,7 @@ Use Postman or curl to `POST` the below JSON to the `/api/v1/events` endpoint.
   "type": "hello_api"
 }
 ```  
-If all runs to plan, you will receive a response from the API with the accepted JSON in the body. You will notice that a timestamp has been added and that tag1 is listed two times - as the separate tag `tag1` and as the combined tag `tag1:tag2`. If you check in the Vamp UI, you will see the created event show up in the EVENTS stream at the bottom of the screen.
+If all runs to plan, you will receive a response from the API with the accepted JSON in the body. You will notice that a timestamp has been added. In Elasticsearch the tag will be expanded, so you will be able to search on the separate tag `tag1` as well as the combined tag `tag1:tag2`. If you check in the Vamp UI, you will see the created event show up in the EVENTS stream at the bottom of the screen.
 
 ![](images/screens/v091/events_vampui_hello_api.png)
 
@@ -70,12 +66,12 @@ If all runs to plan, you will receive a response from the API with the accepted 
 ## Create a simple workflow
 Now we know how to generate events with the Vamp API, we can take this a step further and create a simple workflow to automate the process. You can automate Vamp with any application (for example something developed in python), as long as it can count or trigger an action against the Vamp API. For this tutorial, we will create a Vamp workflow. 
 
-Vamp workflows are a convenient way of creating Node JS based scripts that run as containers and access the Vamp API. Workflows run in Vamp workflow agent containers and are managed just like any other container inside your cluster, making them robust, scalable and dynamic. A workflows can be scheduled to run as a deamon, be triggered by Vamp events or run at specified timestamp (the Vamp workflow driver is used for time based and event based workflows).
+Vamp workflows are a convenient way of creating Node JS based scripts that run as containers and access the Vamp API. Workflows run in Vamp workflow agent containers ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)) and are managed just like any other container inside your cluster, making them robust, scalable and dynamic. A workflows can be scheduled to run as a deamon, be triggered by Vamp events or run at specified timestamp (the Vamp workflow driver is used for time based and event based workflows).
 
 We are going to create a workflow to run as a daemon. We'll start by creating a breed with the required script and then deploy this as a workflow. It is advisable to create a static breed artifact containing the workflow script and reference this from a deployed workflow - once a workflow is undeployed it will disappear, whereas a breed can be deployed any number of times.
 
 ### Create a breed 
-The breed will hold the JavaScript to be run for our workflow. To be able to interact with Vamp, we will need to include a few items in the JavaScript. The `vamp-node-client` library allows the note JS application to interact with the Vamp API. We also need to create a new Vamp API object and set a run interval.
+The breed will hold the JavaScript to be run for our workflow. To be able to interact with Vamp, we will need to include a few items in the JavaScript. The Vamp Node.js Client library allows the note JS application to interact with the Vamp API, see the gitHub project for details ([github.com/magneticio - Vamp Node.js Client](https://github.com/magneticio/vamp-node-client)). We also need to create a new Vamp API object and set a run interval.
 
 
   1. Go the BREEDS tab in the Vamp UI
@@ -141,7 +137,7 @@ In Vamp 0.9.1, updates made to a breed will not be carried over to an associated
 ![](images/screens/v091/events_vampui_hello_workflow_1.png)
 
 ## Retrieve and filter events using the REST API
-Now we have a lot of events stored we can use the same REST API events endpoint to retrieve them. We can search for specifc events and filter for specific types and tags. You can try this out in Postman or curl by sending a GET request to the `/api/v1/events` endpoint, you can even do this in your browser. Use `?type=` or `?tag=` to search through events.
+Now we have a lot of events stored we can use the same REST API events endpoint to retrieve them. We can search for specifc events and filter for specific types and tags. You can try this out in Postman or curl by sending a GET request to the `/api/v1/events` endpoint, you can even do this in your browser. Use `?type=` or `?tags=` (`generic` or `generic:specifc`) to search through stored events, it is not currently possible to filter for a specific value. See [using the Vamp API](/documentation/api/using-the-api) for details on pagination.
 
 ![](images/screens/v091/events_retrieve_events.png)
 
@@ -155,8 +151,8 @@ You should now know a bit more about the Vamp events stream and how it is used b
 ## Looking for more of a challenge?
 Just for fun, you could try these:
 
-*  
-* 
+* Can you create a workflow that responds to a specific Vamp event?
+* The Vamp Node.js Client library also allows you to create workflows that measure and count metrics. how might you incorporate that functionality into an automation workflow? See the gitHub project for details ([github.com/magneticio - Vamp Node.js Client](https://github.com/magneticio/vamp-node-client)) or check the examples used in the Vamp runner recipes ([github.com/magneticio - Vamp Runner recipes](https://github.com/magneticio/vamp-runner/tree/master/recipes))
 
 {{< note title="What next?" >}}
 * What would you like to see for our next tutorial? [let us know](mailto:info@magnetic.io)
