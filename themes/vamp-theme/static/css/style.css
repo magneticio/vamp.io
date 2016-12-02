@@ -2047,8 +2047,8 @@ pre + pre {
     left: 83px;
     padding: 10px 0;
     opacity: 0;
-    -webkit-transition: opacity ease-in 0.15s;
-    transition: opacity ease-in 0.15s; }
+    -webkit-transition: opacity ease-in 0.3s;
+    transition: opacity ease-in 0.3s; }
     .search-bar .suggestions.active {
       opacity: 1; }
     .search-bar .suggestions li {

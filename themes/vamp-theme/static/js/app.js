@@ -199,13 +199,19 @@ function buildSearch() {
   });
 
 
+    var selectedSuggestionIndex = 0;
+    var suggestions = [];
+
+
     //when key is pressed
     $('.search-bar__input input').keydown($.debounce(250, function(event) {
-        var suggestions = [];
-        var selectedSuggestionIndex = 0;
+        if(event.keyCode == 27 || event.keyCode == 13 || event.keyCode == 38 || event.keyCode == 40 || event.keyCode == 9) {
+          return;
+        }
+        suggestions = [];
+        selectedSuggestionIndex = 0;
 
         var currentValue = $(this).val();
-        console.log(currentValue)
         for (var i = 0; i < self.suggestionList.length;i++) {
           if(suggestions.length > 4) {
             break;
@@ -278,17 +284,53 @@ function buildSearch() {
   });
 
   //escape key
-  $('.search-bar__input').keyup(function(e) {
-    //escape key
-    if (e.keyCode == 27) {
-      exitSearch(e);
-    }
-    //enter key
-    if (e.keyCode == 13) {
+  $('.search-bar__input input').keyup(function(e) {
+      //escape key
+      if (e.keyCode == 27) {
+          exitSearch(e);
+      }
 
-    }
-  
+      //enter key
+      if (e.keyCode == 13) {
+
+      }
+
+      //up arrow
+      if (e.keyCode == 38) {
+          selectPrevious();
+      }
+
+      //down arrow or tab
+      if (e.keyCode == 40 || e.keyCode == 9) {
+          selectNext();
+
+      }
   });
+
+  function selectNext() {
+      selectedSuggestionIndex  = (selectedSuggestionIndex+1) % suggestions.length;
+      setSelected(selectedSuggestionIndex);
+  }
+
+  function selectPrevious() {
+      if(selectedSuggestionIndex === 0) {
+        selectedSuggestionIndex = suggestions.length -1;
+      } else {
+          selectedSuggestionIndex  = (selectedSuggestionIndex-1) % suggestions.length;
+      }
+
+      setSelected(selectedSuggestionIndex);
+  }
+
+  function setSelected(index) {
+    $('.suggestions ul li').each(function(i) {
+      $(this).removeClass('selected');
+      if(index === i) {
+        $(this).addClass('selected');
+      }
+    });
+  }
+
 
   function exitSearch(event) {
     event && event.preventDefault();
