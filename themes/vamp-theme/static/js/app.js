@@ -188,6 +188,8 @@ function buildSearch() {
   $.getJSON(theBaseUrl + 'pages.json', function (data) {
     self.pages = data;
     $.getJSON(theBaseUrl + 'searchIndex.json', function (indexData) {
+      console.log(indexData);
+      self.suggestionList = indexData.corpusTokens;
       self.theIndex = lunr.Index.load(indexData);
     }, function(error){
       console.log(error);
@@ -196,26 +198,73 @@ function buildSearch() {
     console.log(error);
   });
 
-  
-  $('.search-bar__input').keydown($.debounce(250, function( event ) {
-    if ( event.which == 13 ) {
-      event.preventDefault();
-    }
-    console.log();
-    var searchResults = self.theIndex.search($(this).val());
-    console.log(searchResults);
-    $('.search-results ul').empty();
+
+    //when key is pressed
+    $('.search-bar__input input').keydown($.debounce(250, function(event) {
+        var suggestions = [];
+        var selectedSuggestionIndex = 0;
+
+        var currentValue = $(this).val();
+        console.log(currentValue)
+        for (var i = 0; i < self.suggestionList.length;i++) {
+          if(suggestions.length > 4) {
+            break;
+          }
+
+          var possibleSuggestion = self.suggestionList[i];
+
+          if(possibleSuggestion.indexOf(currentValue) == 0 && currentValue.length > 0) {
+            suggestions.push(self.suggestionList[i]);
+          }
+        }
+
+        if(suggestions.length > 0) {
+            $('.suggestions').addClass('active');
+        } else {
+            $('.suggestions').removeClass('active');
+        }
+
+        $('.suggestions ul').empty();
+
+        suggestions.forEach(function(suggestion, suggestionIndex) {
+          var suggestionHtml = suggestion.slice(0, currentValue.length) + '<b>' + suggestion.slice(currentValue.length) + '</b>';
+
+          activeString = '';
+          if(suggestionIndex === selectedSuggestionIndex) {
+            activeString = 'selected';
+          }
+
+          $('.suggestions ul').append('<li class="' +activeString+ '">' + suggestionHtml + '</li>');
+        });
 
 
-    for (var sri = 0; sri < searchResults.length; sri++) {
-      if(searchResults[sri]) {
-        var parsedResult = self.pages[searchResults[sri].ref];
-        var goToUrl = theBaseUrl + ((parsedResult.path.split(' ').join('-')).substring(1, parsedResult.path.length));
-        $('.search-results ul').append('<li><a href="' + goToUrl + '"><h2>' + parsedResult.title + '</h2><p class="url">' + parsedResult.path.split(' ').join('-') + '</p><p class="the-content">' + parsedResult.content + '</p></li>');
-      }
-    }
 
-  }));
+
+    }));
+
+
+
+
+  //
+  // $('.search-bar__input').keydown($.debounce(250, function( event ) {
+  //   if ( event.which == 13 ) {
+  //     event.preventDefault();
+  //   }
+  //   console.log();
+  //   var searchResults = self.theIndex.search($(this).val());
+  //   console.log(searchResults);
+  //   $('.search-results ul').empty();
+  //
+  //
+  //   for (var sri = 0; sri < searchResults.length; sri++) {
+  //     if(searchResults[sri]) {
+  //       var parsedResult = self.pages[searchResults[sri].ref];
+  //       var goToUrl = theBaseUrl + ((parsedResult.path.split(' ').join('-')).substring(1, parsedResult.path.length));
+  //       $('.search-results ul').append('<li><a href="' + goToUrl + '"><h2>' + parsedResult.title + '</h2><p class="url">' + parsedResult.path.split(' ').join('-') + '</p><p class="the-content">' + parsedResult.content + '</p></li>');
+  //     }
+  //   }
+  //
+  // }));
 
   
   $('.search-button').click(function(event) {

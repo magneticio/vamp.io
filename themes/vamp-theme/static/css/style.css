@@ -2037,6 +2037,31 @@ pre + pre {
   position: fixed;
   -webkit-transition: 0.3s ease-in top;
   transition: 0.3s ease-in top; }
+  .search-bar .suggestions {
+    position: absolute;
+    background-color: #F0F5FA;
+    box-shadow: 0 0 8px 1px rgba(20, 45, 60, 0.25);
+    border-radius: 5px;
+    top: 65px;
+    min-width: 250px;
+    left: 83px;
+    padding: 10px 0;
+    opacity: 0;
+    -webkit-transition: opacity ease-in 0.15s;
+    transition: opacity ease-in 0.15s; }
+    .search-bar .suggestions.active {
+      opacity: 1; }
+    .search-bar .suggestions li {
+      padding: 5px 20px;
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      cursor: pointer; }
+      .search-bar .suggestions li:hover {
+        background-color: #6991AA; }
+      .search-bar .suggestions li.selected {
+        background-color: #C3D2DC; }
+      .search-bar .suggestions li b {
+        font-weight: 700; }
   @media all and (min-width: 1025px) {
     .search-bar {
       display: -webkit-box;

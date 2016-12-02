@@ -1991,6 +1991,45 @@ pre + pre {
   position: fixed;
   transition: 0.3s ease-in top;
 
+
+  .suggestions {
+    position: absolute;
+    background-color: $color-white-squeeze;
+    box-shadow: 0 0 8px 1px rgba(20, 45, 60, 0.25);
+    border-radius: 5px;
+    top: 60px + 5px;
+    min-width: 250px;
+    left: 83px;
+    padding: 10px 0;
+    opacity: 0;
+    transition: opacity ease-in 0.3s;
+
+
+
+    &.active {
+      opacity: 1;
+    }
+
+    li {
+      padding: 5px 20px;
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $color-bermuda-gray;
+      }
+
+      &.selected {
+        background-color: $color-jungle-mist;
+      }
+
+      b {
+        font-weight: 700;
+      }
+    }
+  }
+
   @media all and (min-width: 1025px) {
     display: flex;
 
