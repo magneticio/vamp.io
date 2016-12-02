@@ -2019,6 +2019,96 @@ pre + pre {
       cursor: pointer;
       height: 100%; }
 
+.search-bar {
+  top: 20px;
+  width: 100vw;
+  z-index: 800;
+  background-color: #F0F5FA;
+  height: 60px;
+  padding: 0 20px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-shadow: 0 4px 2px -2px rgba(20, 45, 60, 0.25);
+  display: none;
+  position: fixed;
+  -webkit-transition: 0.3s ease-in all;
+  transition: 0.3s ease-in all; }
+  @media all and (min-width: 1025px) {
+    .search-bar {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; } }
+  .search-bar.active {
+    top: 80px; }
+  .search-bar__label {
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    font-size: 13px; }
+  .search-bar__input {
+    position: relative;
+    height: 100%; }
+    .search-bar__input input {
+      position: absolute;
+      height: 100%;
+      width: 90%;
+      background-color: transparent;
+      border: none;
+      letter-spacing: 0.01em;
+      font-size: 13px; }
+  .search-bar__exit {
+    height: 50%;
+    width: 30px;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    line-height: 1; }
+
+.search-page {
+  width: 100vw;
+  height: 100vh; }
+  @media all and (min-width: 1025px) {
+    .search-page {
+      padding-top: 120px; } }
+  .search-page .search-results-for {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    .search-page .search-results-for h1 {
+      display: inline-block;
+      height: 48px; }
+    .search-page .search-results-for p {
+      margin-left: 10px;
+      font-size: 24px;
+      display: inline-block;
+      -ms-flex-item-align: end;
+      align-self: flex-end;
+      line-height: 1;
+      padding-bottom: 4px; }
+  .search-page .search-result-item {
+    padding: 20px 0;
+    border-bottom: 1px solid #6991AA; }
+    .search-page .search-result-item:last-of-type {
+      border-bottom: none; }
+    .search-page .search-result-item h2 {
+      margin: 0;
+      padding: 0; }
+    .search-page .search-result-item .text, .search-page .search-result-item .markdowned li, .markdowned .search-page .search-result-item li, .search-page .search-result-item .markdowned td, .markdowned .search-page .search-result-item td, .search-page .search-result-item .date {
+      margin: 0;
+      padding: 0; }
+    .search-page .search-result-item a {
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      color: #FF405E; }
+
 #__bs_notify__ {
   top: 95% !important;
   right: 10px !important;

@@ -219,15 +219,12 @@ function buildSearch() {
 
   
   $('.search-button').click(function(event) {
-    $('#search').toggleClass('active');
-    $('.search-bar__input').focus();
-    event.preventDefault();
-    event.stopPropagation();
+    $('.search-bar').toggleClass('active');
+    $('.search-bar__input input').focus();
   });
 
-  $('.search-bar__back').click(function(event) {
-    event.preventDefault();
-    event.stopPropagation();
+  $('.search-bar__exit').click(function(event) {
+    console.log('test');
     exitSearch(event);
   });
 
@@ -247,9 +244,9 @@ function buildSearch() {
   function exitSearch(event) {
     event && event.preventDefault();
     event && event.stopPropagation();
-    $('.search-bar__input').val('');
-    $('.search-bar__input').focusout();
-    $('#search').toggleClass('active');
+    $('.search-bar__input input').val('');
+    $('.search-bar__input input').focusout();
+    $('.search-bar').toggleClass('active');
 
   }
 }
