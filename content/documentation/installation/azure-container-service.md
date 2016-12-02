@@ -18,5 +18,6 @@ After you have activated your ACS setup with DC/OS, go to your DC/OS admin envir
 
 * Once you have Vamp up and running you can jump into the [getting started tutorials](/documentation/tutorials/overview).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
-* If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+
+If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 {{< /note >}}

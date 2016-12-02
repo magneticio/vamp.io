@@ -15,7 +15,8 @@ There are different ways to install Vamp on DC.OS. On this page we start out wit
 
 
 ## Standard install
-This setup will run Vamp, Mesos and Marathon, together with Zookeeper, Elasticsearch and Logstash on DC/OS. If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
+This setup will run Vamp, Mesos and Marathon, together with Zookeeper, Elasticsearch and Logstash on DC/OS. 
+
 #### Tested against
 This guide has been tested on both 1.7 and the latest 1.8 version of DC/OS.
 
