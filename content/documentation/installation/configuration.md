@@ -8,7 +8,7 @@ menu:
 draft: true
 ---
 
-Vamp configuration is held in a combination of the Vamp `application.conf` and `reference.conf` files.  You can override settings defined in the configuration files using Vamp environment variables or Java/JVM system properties. It is advisable to use environment variables to apply small changes or extend one of our template Docker images with a customised `application.conf` for more extensive customisation ([github.com/magneticio - Vamp Docker](https://github.com/magneticio/vamp-docker)) .
+Vamp configuration is held in a combination of the Vamp `application.conf` and `reference.conf` files.  You can override settings in the configuration files using Vamp environment variables or Java/JVM system properties. It is advisable to use environment variables to apply small changes or extend one of our template Docker images with a customised `application.conf` for more extensive customisation ([github.com/magneticio - Vamp Docker](https://github.com/magneticio/vamp-docker)) .
 
 
 
@@ -17,10 +17,10 @@ The Vamp configuration files follow the HOCON file standard ([github.com/typesaf
 
 1. Environment variables (override all other settings)
 2. Java system properties (advised for advanced use only)
-3. application.config (adds specifics, for example container driver)
-4. reference.config (part of the code. Contains many defaults, but not a full configuration)
+3. application.conf (adds specifics, for example container driver)
+4. reference.conf (part of the code. Contains many defaults, but not a full configuration)
 
-### Vamp configuration API
+### Access configuration through the API
 The Vamp API endpoint `config` or `configuration` can be used to retrieve all configuration settings. This allows workflows to directly retrieve their configuration settings from the Vamp configuration.
 
 `GET /api/v1/config`
@@ -324,8 +324,9 @@ That means specific conditions and weights can be applied on traffic to/from clu
 `vamp.operation.gateway.port-range` is range of port values that can be used for these cluster/port gateways.
 These ports need to be available on all Vamp Gateway Agent hosts.
 
-## reference.config
+## reference.conf
 
+Finally any remaining settings are taken from the `reference.conf` file. this is included as part of the Vamp code and contains many default settings. it does not, however, contain a full Vamp configuration. For example, the container driver must be specified in another configuration layer. ([github.com/magneticio - reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)). 
 
 
 {{< note title="What next?" >}}

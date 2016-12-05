@@ -1,13 +1,12 @@
 
 ---
-date: 2016-09-13T09:00:00+00:00
-title: Automate a canary release with rollback using workflows
+date: 2016-12-05T09:00:00+00:00
+title: Automate a canary release with rollback
 menu:
   main:
     parent: "Tutorials"
     name: "Automate a canary release with rollback"
     weight: 70
-draft: true
 ---
 
 One of the most powerful features of Vamp are workflows. Vamp workflows are containers with injected Node.js scripts that access the Vamp API for all kinds of automation and optimisation tasks. Vamp manages workflows just like any other container inside your cluster, making them robust, scalable and dynamic. With very little effort you can use workflows to create valuable and powerful automation playbooks for testing and deployments. 
@@ -22,8 +21,6 @@ In this tutorial we will:
   * Generate the traffic requests
   * Automate a canary release
   * Force a rollback when detecting errors
-  * Autoscale the services based on traffic distribution
-
 
 ### Requirements
 
@@ -32,7 +29,7 @@ In this tutorial we will:
 * You might run into issues if your firewall is set to block connections in the ranges 31000-32000 (required by Mesos) or 40000-45000 (required by Vamp)
   
 ## Spin up Vamp Runner
-Vamp Runner is the tool we use to demonstrate how individual features of Vamp can be combined to fit real world use cases and unlock the real power of Vamp. We developed Vamp Runner as an automated integration testing tool to make sure important patterns of Vamp worked as expected against all supported container scheduling stacks when building new versions of Vamp. After we realised how powerful the concept of recipes was, we added a graphical UI on top for demonstration purposes. Vamp Runner can still be used in CLI mode though for your automated integration testing purposes. All actions triggered by Vamp Runner can also be triggered by your CI or automation tool of choice, check out the recipes folder in the Github project ([github.com/magneticio - Vamp Runner recipes](https://github.com/magneticio/vamp-runner/tree/master/recipes)).
+Vamp Runner is the tool we use to demonstrate how individual Vamp features can be combined to fit real world use cases. This unlocks the real power of Vamp. We developed Vamp Runner as an automated integration testing tool to make sure important patterns of Vamp worked as expected against all supported container scheduling stacks when building new versions of Vamp. After we realised how powerful the concept of recipes was, we added a graphical UI on top for demonstration purposes. Vamp Runner can still be used in CLI mode though for your automated integration testing purposes. All actions triggered by Vamp Runner can also be triggered by your CI or automation tool of choice, check out the recipes folder in the Github project ([github.com/magneticio - Vamp Runner recipes](https://github.com/magneticio/vamp-runner/tree/master/recipes)).
 
 Once Vamp is up and running, you can deploy Vamp Runner alongside it (if you don’t already have a running version of Vamp, check the [Vamp hello world set up](documentation/installation/hello-world) ). Vamp Runner connects to the Vamp API endpoint, specified as `VAMP_RUNNER_API_URL` in the below docker run command. Note that the IP of your Vamp API location might be different, change this accordingly.
 ```
@@ -74,22 +71,24 @@ We can use Vamp Runner to quickly create and deploy all the artifacts required f
 ![](images/screens/v091/canary_sava10.png)
 
 ## Create workflows
-With two versions of our service ready to go, we can get started with some automation. We are going to use three workflows; one to generate traffic requests so we can see metrics and introduce 500 errors, one to automate a canary release and rollback, and one to autoscale our services as the traffic routing is rebalanced. For each of our workflows, Vamp Runner will first create a breed of `type: application/javascript` containing the Node.js JavaScript to run, and then create a workflow referencing this breed.
+With two versions of our service ready to go, we can get started with some automation. We are going to demonstrate our automated canary release using two workflows; one to generate traffic requests (so we can see metrics and introduce 500 errors) and one to automate the canary release and rollback. For each of our workflows, Vamp Runner will first create a breed of `type: application/javascript` containing the Node.js JavaScript to run, and then create a workflow referencing this breed.
 
 When a workflow is created, Vamp will deploy a workflow agent container and inject the provided JavaScript into it ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)). The JavaScript will then run according to the schedule defined in the workflow (as a daemon, triggered by specific Vamp events or following a set time schedule). The Vamp Node.js client library inside the Vamp workflow container enables JavaScript workflows to speak easily to the Vamp API, see the gitHub project for details ([github.com/magneticio - Vamp Node.js Client](https://github.com/magneticio/vamp-node-client)).  
 [Read more about workflows](/documentation/using-vamp/workflows)
 
 ### Generate traffic requests
-The next step in our Vamp Runner recipe is to get some traffic requests flowing into our deployed service. We can generate these using a workflow.
+Continuing with our Vamp Runner recipe, the next step is to get some traffic requests flowing into the deployed service. We can generate these using a workflow.
 
-Click **Run** next to **Generate traffic requests** and Vamp will create a breed and workflow named `traffic`. 
+Click **Run** next to **Generate traffic requests** and Vamp will create a breed and a workflow named `traffic`. 
 
 The traffic workflow will send traffic requests to our service at the defined port (9050).  You can see the exact YAML posted to the Vamp API to complete this by clicking on the **info** button. The traffic workflow is set to run as a daemon, so it will begin generating traffic requests as soon as it is created. You will see these show up in the EVENTS stream at the bottom of the Vamp Runner UI, or you can watch them arrive at the gateway in the Vamp UI.
+
+Our services have been deployed with the routing weights `sava:1.0` - 100% and `sava:1.1` - 0%, this means that all incoming traffic is currently being routed to `sava:1.0`. 
 
 ![](images/screens/v091/canary_traffic_gateways.png)
 
 ### Automate a canary release
-Our services have been deployed with the routing weights `sava:1.0` - 100% and `sava:1.1` - 0%, this means all incoming traffic is currently being routed to `sava:1.0`. The next step in our Vamp Runer recipe is to initiate an automated canary release and gradually introduce `sava:1.1` to the world. 
+The next step in our Vamp Runer recipe is to initiate an automated canary release and gradually introduce `sava:1.1` to the world. 
 
 Click **Run** next to **Automated canary release** and Vamp will create a breed and a workflow named `canary`. 
 
@@ -118,12 +117,7 @@ marathon will redeploy the `sava:1.1` service again as soon as possible and Vamp
 ![](images/screens/v091/canary_force_rollback_2.png)
 
 ### Autoscale the services
-As the canary workflow rebalances traffic routing between the deployed services, the demands placed on each will change. The final step in our Vamp Runner recipe is to account for this by automatically scaling the services up and down.
-
-Click **Run** next to **Auto scaling** and Vamp will create a breed and workflow named `auto-scaling`.
-
-The autoscaling workflow reads routing distribution and rebalances the scales of the two Sava services accordingly.
-
+The final step in this Vamp Runner recipe deploys a workflow to automatically scale the services as their weights are rebalanced. Go ahead and run this step too - we will explain more about how Vamp manages autoscaling in a future tutorial.
 
 ## Clean up and move along
 You can set Vamp back to its initial (clean) state at any step in a recipe. Click the **Clean up** button on the right of the **Recipes** screen to remove all deployments, gateways, workflows and artifacts that have been created by the selected recipe.  The status of each step will also be reset and you can start from the beginning again.
