@@ -8,24 +8,27 @@ menu:
 draft: true
 ---
 
-Vamp configuration is held in a combination of the Vamp `application.conf` and `reference.conf` files.  You can override settings in the configuration files using Vamp environment variables or Java/JVM system properties. It is advisable to use environment variables to apply small changes or extend one of our template Docker images with a customised `application.conf` for more extensive customisation ([github.com/magneticio - Vamp Docker](https://github.com/magneticio/vamp-docker)) .
+Vamp configuration is held in a combination of the Vamp `application.conf` and `reference.conf` files. You can override settings in the configuration files using Vamp environment variables or Java/JVM system properties. It is advisable to use environment variables when overriding specific settings and extend one of our template Docker images with a customised `application.conf` for more extensive customisations ([github.com/magneticio - Vamp Docker](https://github.com/magneticio/vamp-docker)) .
 
 
 
 ### Layered configuration
 The Vamp configuration files follow the HOCON file standard ([github.com/typesafehub - config](https://github.com/typesafehub/config)). Vamp builds its configuration from layers in this order:
 
-1. Environment variables (override all other settings)
-2. Java system properties (advised for advanced use only)
-3. application.conf (adds specific settings, for example container driver)
-4. reference.conf (part of the code. Contains many defaults, but not a full configuration)
+1. Environment variables - override all other settings
+2. Java system properties - advised for advanced use only
+3. `application.conf` - adds required settings to reference.conf. For example container driver
+4. `reference.conf` - part of the Vamp code. Contains many defaults, but not a full configuration
 
 ### Access configuration through the API
-All configuration settings can be retrieved from the Vamp API endpoint `config` or `configuration`. This means that workflow configuration settings can be stored in the Vamp `application.conf` file.
+All configuration settings can be retrieved from the Vamp API endpoint `config` or `configuration`. This means that the Vamp `application.conf` file can be used to store settings not used by Vamp, for example, configuration for Logstash or workflows.
 
 `GET /api/v1/config`
 
-## Environment variables
+## Override specific configuration settings
+You can override specific settings in the configuration files using Vamp environment variables or Java/JVM system properties. It is advisable to use environment variables when overriding specific settings.
+
+### Environment variables
 Vamp will first check for environment variables. Environment variables override all other configuration settings. Each configuration parameter can be replaced by an environment variable.  Environment variable names are based on the configuration parameter name converted to upper case. All non-alphanumerics should be replaced by an underscore `_`.  
 For example:
 
@@ -36,10 +39,8 @@ vamp.gateway-driver.timeout      |    VAMP_GATEWAY_DRIVER_TIMEOUT
 
 
   
-## Java system properties
-Advised for advanced use only. Most configuration settings can be best handled with environment variables or by creating a new docker image to extend a Vamp template.
-
-For example:
+### Java system properties
+Configuration by system properties is advised for advanced use only. Overriding specific settings can be best handled using environment variables. If you require extensive customisation, consider creating a new docker image with a custom application.conf file. For example:
 ```bash
 
 export VAMP_INFO_MESSAGE=Hello # overriding Vamp info message (vamp.info.message)
@@ -50,6 +51,15 @@ java -Dvamp.gateway-driver.host=localhost \
      -jar vamp.jar
 ```
 
+## Use a custom application.conf file
+You can create a new Docker image to extend one of the template Vamp images and add in your customised `application.conf` file. The below example explains the steps for creating a custom DCOS config, if you are using a different container management platform you should use the associated `application.conf` and adjust the Docker file accordingly.
+
+1. Grab a copy of this config: [(github.com/magneticio - Vamp DCOS application.conf)](https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf)
+2. Adjust as required. Check the application.conf reference (below) for details of available options
+3. Create a Dockerfile with the lines:  
+  `FROM magneticio/vamp-dcos:0.9.1`  
+  `ADD application.conf /usr/local/vamp/conf/`
+4. Build the image with `docker build --tag <username>/vamp`
 
 ## application.conf
 

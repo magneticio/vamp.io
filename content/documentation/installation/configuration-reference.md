@@ -1,0 +1,293 @@
+---
+date: 2016-09-13T09:00:00+00:00
+title: application.conf reference
+menu:
+  main:
+    parent: "Installation"
+    weight: 110
+draft: true
+---
+```
+vamp {
+
+  info {
+    message = "Hi, I'm Vamp! How are you?"
+    timeout = 3 seconds # response timeout for each component (e.g. Persistance, Container Driver...)
+  }
+
+  stats {
+    timeout = 5 seconds # response timeout for each component
+  }
+
+  persistence {
+    response-timeout = 5 seconds #
+
+    database {
+      type: "" # elasticsearch, key-value or in-memory
+
+      elasticsearch {
+        url = ""
+        response-timeout = 5 seconds # timeout for elasticsearch operations
+        index = "vamp-persistence"
+      }
+
+      key-value {
+        caching = false
+      }
+    }
+
+    key-value-store {
+      type = "" # zookeeper, etcd or consul
+      base-path = "/vamp"
+
+      zookeeper {
+        servers = ""
+        session-timeout = 5000
+        connect-timeout = 5000
+      }
+
+      etcd.url = ""
+
+      consul.url = ""
+    }
+  }
+
+  container-driver {
+    type = "" # docker, kubernetes, marathon or rancher
+
+    docker {
+      workflow-name-prefix = "vamp-workflow-"
+      repository {
+        email = ""
+        username = ""
+        password = ""
+        server-address = ""
+      }
+    }
+
+    mesos.url = ""
+    marathon {
+      user = ""
+      password = ""
+      url = ""
+      sse = true
+      workflow-name-prefix = "vamp/workflow-"
+    }
+
+    kubernetes {
+      url = ""
+      workflow-name-prefix = "vamp-workflow-"
+      service-type = "NodePort" # NodePort or LoadBalancer
+      create-services = true
+      vamp-gateway-agent-id = "vamp-gateway-agent"
+      token = "/var/run/secrets/kubernetes.io/serviceaccount/token"
+    }
+
+    rancher {
+      url = ""
+      workflow-name-prefix = "vamp-workflow-"
+      user = ""
+      password = ""
+      environment {
+        name = "vamp"
+        deployment.name-prefix = ""
+      }
+    }
+
+    response-timeout = 30 seconds # timeout for container operations
+  }
+
+  workflow-driver {
+    type = "none" # docker (daemon), marathon (daemon), kubernetes (daemon), rancher (daemon), chronos (time and event triggered), or none
+    # it's possible to combine (csv): 'marathon,chronos'
+    response-timeout = 30 seconds # timeout for container operations
+
+    vamp-url = ""
+
+    chronos.url = ""
+
+    workflow {
+      deployable = {
+        type = "container/docker"
+        definition = ""
+      }
+      environment-variables = []
+      scale {         # default scale, if not specified in workflow
+        instances = 1
+        cpu = 0.1
+        memory = 64MB
+      }
+      arguments: []
+      network = "BRIDGE"
+      command = ""
+    }
+  }
+
+  dictionary {
+    response-timeout = 5 seconds # timeout for container operations
+  }
+
+  http-api {
+
+    interface = 0.0.0.0
+    host = localhost
+    port = 8080
+
+    response-timeout = 10 seconds # HTTP response timeout
+
+    strip-path-segments = 0
+
+    sse.keep-alive-timeout = 15 seconds # timeout after an empty comment (":\n") will be sent in order keep connection alive
+
+    ui {
+      directory = ""
+      index = "" # index file, e.g. ${vamp.http-api.ui.directory}"/index.html"
+    }
+  }
+
+  gateway-driver {
+    host = "localhost" # note: host of cluster hosts will have this value (e.g. db.host)
+    response-timeout = 30 seconds # timeout for gateway operations
+
+    haproxy {
+      version = "1.6" # 1.5 or 1.6
+      ip = "127.0.0.1" # local IP used for chaining gateways
+      template = "" # template file, otherwise default is used /io/vamp/gateway_driver/haproxy/template.twig
+      socket-path = "/usr/local/vamp"
+      virtual-hosts {
+        ip = "0.0.0.0"
+        port = 80
+      }
+      tcp-log-format = """{\"ci\":\"%ci\",\"cp\":%cp,\"t\":\"%t\",\"ft\":\"%ft\",\"b\":\"%b\",\"s\":\"%s\",\"Tw\":%Tw,\"Tc\":%Tc,\"Tt\":%Tt,\"B\":%B,\"ts\":\"%ts\",\"ac\":%ac,\"fc\":%fc,\"bc\":%bc,\"sc\":%sc,\"rc\":%rc,\"sq\":%sq,\"bq\":%bq}"""
+      http-log-format = """{\"ci\":\"%ci\",\"cp\":%cp,\"t\":\"%t\",\"ft\":\"%ft\",\"b\":\"%b\",\"s\":\"%s\",\"Tq\":%Tq,\"Tw\":%Tw,\"Tc\":%Tc,\"Tr\":%Tr,\"Tt\":%Tt,\"ST\":%ST,\"B\":%B,\"CC\":\"%CC\",\"CS\":\"%CS\",\"tsc\":\"%tsc\",\"ac\":%ac,\"fc\":%fc,\"bc\":%bc,\"sc\":%sc,\"rc\":%rc,\"sq\":%sq,\"bq\":%bq,\"hr\":\"%hr\",\"hs\":\"%hs\",\"r\":%{+Q}r}"""
+    }
+
+    elasticsearch.metrics {
+      index = "logstash-*"
+      type = "haproxy"
+    }
+  }
+
+  pulse {
+    elasticsearch {
+      url = "" # e.g http://localhost:9200
+      index {
+        name = "vamp-pulse"
+        time-format.event = "YYYY-MM-dd"
+      }
+    }
+    response-timeout = 30 seconds # timeout for pulse operations
+  }
+
+  operation {
+
+    synchronization {
+
+      initial-delay = 5 seconds #
+      period = 6 seconds # synchronization will be active only if period is greater than 0
+
+      mailbox {
+        // Until we get available akka.dispatch.NonBlockingBoundedMailbox
+        mailbox-type = "akka.dispatch.BoundedMailbox"
+        mailbox-capacity = 10
+        mailbox-push-timeout-time = 0s
+      }
+
+      timeout {
+        ready-for-deployment = 600 seconds #
+        ready-for-undeployment = 600 seconds #
+      }
+
+      check {
+        cpu = false
+        memory = false
+        instances = true
+      }
+    }
+
+    deployment {
+      scale {         # default scale, if not specified in blueprint
+        instances = 1
+        cpu = 1
+        memory = 1GB
+      }
+
+      arguments = []   # split by first '='
+    }
+
+    gateway {
+      port-range = 40000-45000
+      response-timeout = 5 seconds # timeout for container operations
+    }
+
+    sla.period = 5 seconds # sla monitor period
+    escalation.period = 5 seconds # escalation monitor period
+
+    health.window = 30 seconds #
+
+    metrics.window = 30 seconds #
+
+    gateway.virtual-hosts = {
+      enabled = true
+      formats {
+        gateway = "$gateway.vamp"
+        deployment-port = "$port.$deployment.vamp"
+        deployment-cluster-port = "$port.$cluster.$deployment.vamp"
+      }
+    }
+  }
+
+  lifter {
+
+    pulse.enabled = true
+
+    persistence.enabled = true
+
+    artifact {
+
+      enabled = true
+
+      override = false
+
+      postpone = 5 seconds # postpone initalization
+
+      files = []
+
+      resources = []
+    }
+  }
+}
+
+akka {
+
+  loglevel = "INFO"
+  log-dead-letters = 0
+  log-config-on-start = off
+  log-dead-letters-during-shutdown = off
+  loggers = ["akka.event.slf4j.Slf4jLogger"]
+  event-handlers = ["akka.event.slf4j.Slf4jEventHandler"]
+
+  actor.default-mailbox.mailbox-type = "akka.dispatch.SingleConsumerOnlyUnboundedMailbox"
+
+  default-dispatcher.fork-join-executor.pool-size-max = 32
+  jvm-exit-on-fatal-error = false
+}
+
+spray.can {
+
+  server {
+    server-header = ""
+    ssl-encryption = off
+    pipelining-limit = 1
+    idle-timeout = 60 s
+    request-timeout = 10 s
+    verbose-error-messages = off
+    automatic-back-pressure-handling = on
+    back-pressure {
+      noack-rate = 10
+      reading-low-watermark = infinite
+    }
+    ssl-tracing = off
+  }
+}
+```

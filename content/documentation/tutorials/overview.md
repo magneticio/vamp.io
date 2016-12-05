@@ -23,7 +23,7 @@ You can work with Sava in the [Vamp hello world](/documentation/installation/hel
 
 ## Learn more
 * [Automate a canary release with rollback](/documentation/tutorials/automate-a-canary-release)  
-Use Vamp Runner to automate a canary release and force a rollback using workflows
+Use workflows to automate a canary release and force a rollback (Vamp Runner)
 
 * [Run a Wordpress deployment and use gateways to control access](/documentation/tutorials/deploy-wordpress-and-mysql)  
 This tutorial shows how to deploy Wordpress together with mySQL and set up a gateway to run a canary release
