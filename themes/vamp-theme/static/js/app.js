@@ -191,6 +191,7 @@ function buildSearch() {
       console.log(indexData);
       self.suggestionList = indexData.corpusTokens;
       self.theIndex = lunr.Index.load(indexData);
+      onSearchPage();
     }, function(error){
       console.log(error);
     });
@@ -242,10 +243,6 @@ function buildSearch() {
 
           $('.suggestions ul').append('<li class="' +activeString+ '">' + suggestionHtml + '</li>');
         });
-
-
-
-
     }));
 
 
@@ -283,7 +280,8 @@ function buildSearch() {
     exitSearch(event);
   });
 
-  //escape key
+
+  //Key presses
   $('.search-bar__input input').keyup(function(e) {
       //escape key
       if (e.keyCode == 27) {
@@ -292,7 +290,13 @@ function buildSearch() {
 
       //enter key
       if (e.keyCode == 13) {
-
+        // Get latest suggestion
+          var selectedSuggestion = suggestions[selectedSuggestionIndex];
+          if(selectedSuggestion) {
+              window.location.href = '/search?s=' + selectedSuggestion;
+          } else {
+              window.location.href = '/search?s=' + $(this).val();
+          }
       }
 
       //up arrow
@@ -303,7 +307,6 @@ function buildSearch() {
       //down arrow or tab
       if (e.keyCode == 40 || e.keyCode == 9) {
           selectNext();
-
       }
   });
 
@@ -338,8 +341,53 @@ function buildSearch() {
     $('.search-bar__input input').val('');
     $('.search-bar__input input').focusout();
     $('.search-bar').toggleClass('active');
-
   }
+
+  //Let's get all the url parameters
+  var queries = {};
+  $.each(document.location.search.substr(1).split('&'), function(c,q){
+      var i = q.split('=');
+
+      i[0] && i[1] && (queries[i[0].toString()] = i[1].toString());
+  });
+
+
+
+  function buildSearchItemHtml(title, path, content) {
+      return '<div class=\"search-result-item\">\r\n<h2>' + title + '<\/h2>\r\n<p class=\"text\">'+ content +'<\/p>\r\n<a href=\"' + path + '" class=\"\">Read more &nbsp;<i class=\"fa fa-arrow-right\" aria-hidden=\"true\"><\/i>\r\n<\/a>\r\n<\/div>'
+  }
+
+  function onSearchPage() {
+      // If query string is there, try to search
+      var searchText = queries['s'];
+      if (searchText) {
+          $('#searchtext').text(searchText);
+          var searchResults = self.theIndex.search(searchText);
+          searchResults.forEach(function(searchResult){
+              var page = self.pages[searchResult.ref];
+              page.path = page.path.replace(/\s+/g, '-');
+              page.content = getTextSample(page.content, searchText);
+              $('.search-result-items').append(buildSearchItemHtml(page.title, page.path, page.content));
+
+          });
+
+      }
+  }
+
+  function getTextSample(wholeText, word) {
+    var splittedText = wholeText.split(word.toLowerCase());
+
+    var returnText = wholeText.split(' ').slice(0, 40).join(' ');
+
+    if(splittedText[0] && splittedText[1]) {
+        var firstPart = splittedText[0].split(' ').slice(-20).join(' ');
+        var lastPart = splittedText[1].split(' ').slice(0,20).join(' ');
+        returnText = firstPart + '<b>' + word + '</b>' + lastPart;
+    }
+    return returnText;
+  }
+
+
 }
 
 

@@ -2102,7 +2102,8 @@ pre + pre {
 
 .search-page {
   width: 100vw;
-  height: 100vh; }
+  height: 100vh;
+  overflow-y: scroll; }
   @media all and (min-width: 1025px) {
     .search-page {
       padding-top: 120px; } }
