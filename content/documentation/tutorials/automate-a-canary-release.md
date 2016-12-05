@@ -17,8 +17,8 @@ In this tutorial we will:
 
 1. [Spin up Vamp Runner](documentation/tutorials/automate-a-canary-release/#spin-up-vamp-runner)  
 2. [Create a Blueprint and deploy some services](documentation/tutorials/automate-a-canary-release/#create-a-blueprint-and-deploy-some-services) 
-3. [Create workflows that:](documentation/tutorials/automate-a-canary-release/#create-workflows)
-  * Generate the traffic requests
+3. [Create workflows to:](documentation/tutorials/automate-a-canary-release/#create-workflows)
+  * Generate traffic requests
   * Automate a canary release
   * Force a rollback when detecting errors
 

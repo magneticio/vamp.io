@@ -17,11 +17,11 @@ The Vamp configuration files follow the HOCON file standard ([github.com/typesaf
 
 1. Environment variables (override all other settings)
 2. Java system properties (advised for advanced use only)
-3. application.conf (adds specifics, for example container driver)
+3. application.conf (adds specific settings, for example container driver)
 4. reference.conf (part of the code. Contains many defaults, but not a full configuration)
 
 ### Access configuration through the API
-The Vamp API endpoint `config` or `configuration` can be used to retrieve all configuration settings. This allows workflows to directly retrieve their configuration settings from the Vamp configuration.
+All configuration settings can be retrieved from the Vamp API endpoint `config` or `configuration`. This means that workflow configuration settings can be stored in the Vamp `application.conf` file.
 
 `GET /api/v1/config`
 
