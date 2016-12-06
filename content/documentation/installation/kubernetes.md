@@ -152,7 +152,7 @@ Don't forget to clean up your Kubernetes cluster and firewall rules  if you don'
 
 {{< note title="What next?" >}}
 
-* Once you have Vamp up and running you can jump into the [getting started tutorials](/documentation/tutorials/).
+* Once you have Vamp up and running you can jump into the [getting started tutorials](/documentation/tutorials/overview).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 
 If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)

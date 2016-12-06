@@ -151,7 +151,7 @@ If you want the gateway port to be exposed outside of the cluster via a Rancher 
 
 {{< note title="What next?" >}}
 
-* Once you have Vamp up and running you can jump into the [getting started tutorials](/documentation/tutorials/)
+* Once you have Vamp up and running you can jump into the [getting started tutorials](/documentation/tutorials/overview)
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 * Remember, this is not a production grade setup!
 

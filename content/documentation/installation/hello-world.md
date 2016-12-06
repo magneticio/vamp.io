@@ -7,7 +7,7 @@ menu:
     weight: 20
 ---
 
-The Vamp hello world setup will run Mesos, Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)) and Vamp 0.9.1 inside a local Docker container with Vamp's Marathon driver.  We will do this in three simple steps (although it's really just one `docker run` command). You can use the hello world setup to work through the [getting started tutorials](/documentation/tutorials) and try out some of Vamp's core features.
+The Vamp hello world setup will run Mesos, Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)) and Vamp 0.9.1 inside a local Docker container with Vamp's Marathon driver.  We will do this in three simple steps (although it's really just one `docker run` command). You can use the hello world setup to work through the [getting started tutorials](/documentation/tutorials/overview) and try out some of Vamp's core features.
 
 {{< note >}}
 This hello world set up is designed for demo purposes only - it is not production grade.
@@ -60,7 +60,7 @@ Mounting volumes is important. [Read this great article about starting Docker co
 After some downloading and booting, your Docker log will show the Vamp has launched and report:  
 `...Binding: 0.0.0.0:8080`
 
-Now you can check if Vamp is home on `http://{docker-machine ip default}:8080/` and you're ready for the [Vamp getting started tutorials](/documentation/tutorials/)
+Now you can check if Vamp is home on `http://{docker-machine ip default}:8080/` and you're ready for the [Vamp getting started tutorials](/documentation/tutorials/overview)
 
 ![](/images/screens/v091/quicksetup-marathon-infopanel.jpg)
   
@@ -82,10 +82,10 @@ Vamp UI       |      [http://localhost:8080](http://localhost:8080)
 ## Summing up
 
 This set up runs all of Vamp's components in one container. You will run into cpu, memory and storage issues pretty soon though. Also, random ports from 31000 - 32000 and 40000 - 45000 are assigned by Vamp which you might not have exposed on either Docker or your Docker Toolbox Vagrant box.  This is definitely not ideal, but works fine for kicking the tires.
-Now you're all set to follow our [getting started tutorials](/documentation/tutorials/).
+Now you're all set to follow our [getting started tutorials](/documentation/tutorials/overview).
 
 {{< note title="What next?" >}}
-* Follow the [getting started tutorials](/documentation/tutorials/).
+* Follow the [getting started tutorials](/documentation/tutorials/overview).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 * Remember, this is not a production grade setup!
 

@@ -1,15 +1,46 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Configure Vamp
+title: Configuration reference
 menu:
   main:
     parent: "Installation"
-    weight: 90
+    weight: 100
+draft: true
 ---
 
-Vamp can be configured using one or a combination of the Vamp `application.conf` HOCON file ([github.com/typesafehub - config](https://github.com/typesafehub/config)), environment variables and system properties.
+Vamp configuration is held in a combination of the Vamp `application.conf` and `reference.conf` files. You can override settings in the configuration files using Vamp environment variables or Java/JVM system properties.
 
+
+
+### Layered configuration
+The Vamp configuration files follow the HOCON file standard ([github.com/typesafehub - config](https://github.com/typesafehub/config)). Vamp builds its configuration from layers in this order:
+
+1. Environment variables - will override all other settings
+2. Java system properties - advised for advanced use only
+3. `application.conf` - adds required settings to reference.conf. For example, container driver
+4. `reference.conf` - part of the Vamp code. Contains default settings, but not a full configuration
+
+### Access configuration through the API
+All configuration parameters can be retrieved from the Vamp API endpoint `config` or `configuration`. This means that the Vamp `application.conf` file can store parameters not intended for use by Vamp, for example, configuration for Logstash or workflows.
+
+`GET /api/v1/config`
+
+## Override specific configuration parameters
+You can override specific settings in the configuration files using Vamp environment variables or Java/JVM system properties. It is advisable to use environment variables when overriding specific parameters.
+
+### Environment variables
+Environment variables override all other configuration settings. To override a configuration parameter with an environment variable, convert the configuration parameter name to upper case and replace all non-alphanumerics with an underscore `_`.  
 For example:
+
+configuration parameter name |  Environment variable name
+----------|--------
+vamp.info.message      |    VAMP_INFO_MESSAGE
+vamp.gateway-driver.timeout      |    VAMP_GATEWAY_DRIVER_TIMEOUT
+
+
+  
+### Java system properties
+Configuration by system properties is advised for advanced use only. Overriding specific settings can be best handled using environment variables. If you require extensive customisation, consider creating a new docker image with a custom application.conf file. For example:
 ```bash
 
 export VAMP_INFO_MESSAGE=Hello # overriding Vamp info message (vamp.info.message)
@@ -20,7 +51,24 @@ java -Dvamp.gateway-driver.host=localhost \
      -jar vamp.jar
 ```
 
-## The Vamp `application.conf` file
+## Use a custom application.conf file
+You can create a new Docker image, extending one of the template Vamp images with your customised `application.conf` file. The below example explains the steps for creating a Docker image with a custom DCOS config, if you are using a different container management platform you should use the associated `application.conf` and adjust the Docker file accordingly.
+
+1. Copy application.conf [(github.com/magneticio - Vamp DCOS application.conf)](https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf)
+2. Adjust as required. Check the list of configuration settings (below) for details of the available optionsa
+3. Create a Dockerfile with the lines:  
+  `FROM magneticio/vamp-dcos:0.9.1`  
+  `ADD application.conf /usr/local/vamp/conf/`
+4. Build the image with `docker build --tag <username>/vamp`
+
+
+## Configuration settings
+
+### application.conf
+
+Next we take settings from the Vamp `application.config` file, this can be specified in `vamp.sh`. Template docker images with a basic configuration for each supported platform are provided in the Vamp Docker github repo ([github.com/magneticio - Vamp Docker](https://github.com/magneticio/vamp-docker)).
+
+
 
 The Vamp `application.conf` consists of the following sections. All sections are nested inside a parent `vamp {}` tag.
 
@@ -289,18 +337,9 @@ That means specific conditions and weights can be applied on traffic to/from clu
 `vamp.operation.gateway.port-range` is range of port values that can be used for these cluster/port gateways.
 These ports need to be available on all Vamp Gateway Agent hosts.
 
+## reference.conf
 
-## Environment variables
-
-Each configuration parameter can be replaced by an environment variable. Environment variables have precedence over configuration from `application.conf` or system properties.  Read more about [environment variables](/documentation/using-vamp/environment-variables/).
-
-### Environment variable names
-Environment variable names are based on the configuration parameter name converted to upper case. All non-alphanumerics should be replaced by an underscore `_`
-
-```
-vamp.info.message           ⇒ VAMP_INFO_MESSAGE
-vamp.gateway-driver.timeout ⇒ VAMP_GATEWAY_DRIVER_TIMEOUT
-```
+Finally any remaining settings are taken from the `reference.conf` file. this is included as part of the Vamp code and contains many default settings. it does not, however, contain a full Vamp configuration. For example, the container driver must be specified in another configuration layer. ([github.com/magneticio - reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)). 
 
 
 {{< note title="What next?" >}}

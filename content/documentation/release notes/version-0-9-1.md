@@ -1,10 +1,11 @@
 ---
 date: 2016-10-01T09:00:00+00:00
-title: version 0.9.1
+title: Version 0.9.1
 menu:
   main:
     parent: "Release notes"
-    weight: 20
+    name: Version 0.9.1
+    weight: 998
 ---
 
 _1st November 2016_

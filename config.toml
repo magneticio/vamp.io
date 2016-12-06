@@ -115,7 +115,7 @@ googleAnalytics = ""
 
 [[menu.main]]
 	name = "API"
-	url = "/documentation/api/v0.9.1/api-reference"
+	url = "/documentation/api/api-reference"
 	parent = "Documentation"
 	weight = 50
 
