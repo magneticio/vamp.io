@@ -1,3 +1,5 @@
+/* @flow */
+
 // $(window).on('load', documentReady);
 $(document).ready(function() {
   documentReady();

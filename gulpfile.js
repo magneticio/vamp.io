@@ -1,3 +1,5 @@
+/* @flow */
+
 /* File: gulpfile.js */
 
 // grab our gulp packages
