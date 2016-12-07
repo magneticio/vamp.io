@@ -15,9 +15,13 @@ All changes since the last official release are described below. This applies on
 ## What is new
 * Option to suspend workflows without deleting them and option to restart them [#789](https://github.com/magneticio/vamp/issues/789)
 * Workflow execution period (successive executions) and execution timeout (max allowed execution time) [#813](https://github.com/magneticio/vamp/issues/813)
+* Kubernetes bearer as an optional configuration parameter [#834](https://github.com/magneticio/vamp/issues/834)
+* Option to disable timing out deployment operations [#840](https://github.com/magneticio/vamp/issues/840)
 
 ## What has changed
-* no changes since last release.
+* Custom event types - only alphanumerics, '_' and '-' are allowed in type names [#830](https://github.com/magneticio/vamp/issues/830)
+* Configurable Logstash URL (host, port) instead of just host [#831](https://github.com/magneticio/vamp/issues/831)
+* 500 response code if any of /info response parts return an error [#771](https://github.com/magneticio/vamp/issues/771)
 
 {{< note title="What next?" >}}
 * Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases))
