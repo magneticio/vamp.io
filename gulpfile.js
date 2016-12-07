@@ -15,36 +15,39 @@ var fs = require('fs');
 
 gulp.task('sass:dev', function() {
     var sassStream = gulp.src('./themes/vamp-theme/static/scss/style.scss')
-      .pipe(sass.sync().on('error', sass.logError))
-      .pipe(autoprefixer({cascade: false}));
-  
+        .pipe(sass.sync().on('error', sass.logError))
+        .pipe(autoprefixer({cascade: false}));
+
     var cssStream = gulp.src('./themes/vamp-theme/static/css/vendor/*.css')
-      .pipe(concat('css-files.css'));
-  
+        .pipe(concat('css-files.css'));
+
     var mergedStream = merge(sassStream, cssStream)
-      .pipe(concat('style.css'))
-      .pipe(gulp.dest('./themes/vamp-theme/static/css'));
+        .pipe(concat('style.css'))
+        .pipe(gulp.dest('./themes/vamp-theme/static/css'));
     return mergedStream;
 });
 
+
+var jsLibsBase = './themes/vamp-theme/static/js/libs/';
+
 gulp.task('js', function() {
-    gulp.src('./themes/vamp-theme/static/js/libs/*.js')
+    gulp.src([jsLibsBase + 'jquery-3.1.0.min.js', jsLibsBase + 'lunrjs.min.js', jsLibsBase + 'highlight.pack.js', jsLibsBase + 'debounce.min.js', jsLibsBase + 'clipboard.min.js'])
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest('./themes/vamp-theme/static/js/'));
 });
 
 
 var developmentBase = '\n<script type="text/javascript">';
-    developmentBase +='\ntheBaseUrl = "http://" + location.host + "/";';
-    developmentBase +='\ndocument.write(\'<base href="\' + theBaseUrl + \'"/>\');';
-    developmentBase +='\n</script>';
+developmentBase +='\ntheBaseUrl = "http://" + location.host + "/";';
+developmentBase +='\ndocument.write(\'<base href="\' + theBaseUrl + \'"/>\');';
+developmentBase +='\n</script>';
 
 
 var prodUrl = env.prod.baseUrl;
 
 var productionBase = '\n<script type="text/javascript">';
-    productionBase +='\ntheBaseUrl = "'+ prodUrl + '";';
-    productionBase +='\n</script>';
+productionBase +='\ntheBaseUrl = "'+ prodUrl + '";';
+productionBase +='\n</script>';
 
 
 gulp.task('set-base:development', [], function() {

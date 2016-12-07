@@ -40,13 +40,13 @@ function documentReady() {
     var codeText = $(this).text();
     codeText = codeText.split('\'').join('&#39');
     codeText = codeText.split('"').join('&quot');
+
     hljs.highlightBlock(block);
 
-    $(this).append('<button class="copy-button" data-clipboard-text=\''+codeText+'\'><p class="copy"><i class="fa fa-lg fa-paperclip" aria-hidden="true"></i>&nbsp;&nbsp;Copy</p><p class="copied"><i class="fa fa-lg fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Copied to clipboard</p></button>');
+    $(this).append('<button class="copy-button" data-clipboard-text="'+codeText+'"><p class="copy"><i class="fa fa-lg fa-paperclip" aria-hidden="true"></i>&nbsp;&nbsp;Copy</p><p class="copied"><i class="fa fa-lg fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Copied to clipboard</p></button>');
   });
 
-  var client = new ZeroClipboard( $('.copy-button') );
-
+  new Clipboard('.copy-button');
 
   $('.copy-button').click(function() {
     var self = this;
