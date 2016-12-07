@@ -36,8 +36,8 @@ function documentReady() {
 
   $('pre code').each(function(i, block) {
     var codeText = $(this).text();
-    codeText = codeText.split('\'').join('&#39');
-    codeText = codeText.split('"').join('&quot');
+    codeText = codeText.split('\'').join('&#39;');
+    codeText = codeText.split('"').join('&quot;');
 
     hljs.highlightBlock(block);
 
