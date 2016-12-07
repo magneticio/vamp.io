@@ -9,6 +9,8 @@ var merge = require('merge-stream');
 var concat = require('gulp-concat')
 var env = require('./env.json');
 var inject = require('gulp-inject-string');
+var fs = require('fs');
+
 
 
 
@@ -44,15 +46,11 @@ var productionBase = '\n<script type="text/javascript">';
 
 
 gulp.task('set-base:development', [], function() {
-    return gulp.src('./themes/vamp-theme/layouts/partials/head.html')
-        .pipe(inject.after('<head>',  developmentBase))
-        .pipe(gulp.dest('./themes/vamp-theme/layouts/partials'))
+    fs.writeFileSync('./themes/vamp-theme/layouts/partials/base-url.html', developmentBase);
 });
 
 gulp.task('set-base:production', [], function() {
-    return gulp.src('./themes/vamp-theme/layouts/partials/head.html')
-        .pipe(inject.after('<head>',  '\n'+productionBase+'\n<base href="'+ prodUrl + '" />'))
-        .pipe(gulp.dest('./themes/vamp-theme/layouts/partials'))
+    fs.writeFileSync('./themes/vamp-theme/layouts/partials/base-url.html', '\n'+productionBase+'\n<base href="'+ prodUrl + '" />');
 });
 
 gulp.task('build-search-index',['sass:dev'], shell.task(['node ./buildSearchIndex.js']));
