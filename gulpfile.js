@@ -13,10 +13,6 @@ var env = require('./env.json');
 var inject = require('gulp-inject-string');
 var fs = require('fs');
 
-
-
-
-
 gulp.task('sass:dev', function() {
     var sassStream = gulp.src('./themes/vamp-theme/static/scss/style.scss')
       .pipe(sass.sync().on('error', sass.logError))
@@ -31,7 +27,11 @@ gulp.task('sass:dev', function() {
     return mergedStream;
 });
 
-
+gulp.task('js', function() {
+    gulp.src('./themes/vamp-theme/static/js/libs/*.js')
+        .pipe(concat('vendor.js'))
+        .pipe(gulp.dest('./themes/vamp-theme/static/js/'));
+});
 
 
 var developmentBase = '\n<script type="text/javascript">';
@@ -58,6 +58,6 @@ gulp.task('set-base:production', [], function() {
 gulp.task('build-search-index',['sass:dev'], shell.task(['node ./buildSearchIndex.js']));
 gulp.task('hugo', ['sass:dev', 'build-search-index'], shell.task(['hugo']));
 
-gulp.task('build:prod', ['hugo', 'set-base:production']);
-gulp.task('build:dev', ['hugo', 'set-base:development']);
+gulp.task('build:prod', ['hugo', 'set-base:production', 'js']);
+gulp.task('build:dev', ['hugo', 'set-base:development', 'js']);
 
