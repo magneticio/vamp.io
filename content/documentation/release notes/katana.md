@@ -18,6 +18,7 @@ All changes since the last official release are described below. This applies on
 * Kubernetes bearer as an optional configuration parameter [#834](https://github.com/magneticio/vamp/issues/834)
 * Option to disable timing out deployment operations [#840](https://github.com/magneticio/vamp/issues/840)
 * Proper HTTPS support (client side) [#846](https://github.com/magneticio/vamp/issues/846)
+* Help panel in Vamp UI [#13](https://github.com/magneticio/vamp-ui/issues/13)
 
 ## What has changed
 * Custom event types - only alphanumerics, '_' and '-' are allowed in type names [#830](https://github.com/magneticio/vamp/issues/830)
