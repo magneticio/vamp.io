@@ -23,6 +23,7 @@ All changes since the last official release are described below. This applies on
 * Custom event types - only alphanumerics, '_' and '-' are allowed in type names [#830](https://github.com/magneticio/vamp/issues/830)
 * Configurable Logstash URL (host, port) instead of just host [#831](https://github.com/magneticio/vamp/issues/831)
 * 500 response code if any of /info response parts return an error [#771](https://github.com/magneticio/vamp/issues/771)
+* Explicit mapping for supported workflow deployable types [#845](https://github.com/magneticio/vamp/issues/845)
 
 {{< note title="What next?" >}}
 * Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases))
