@@ -162,7 +162,7 @@ container-driver {
 
 Parameter             |  Default |  Details  
 ---------------------|--------|--------
- type                 |  -   |  docker / kubernetes / marathon / rancher
+ type                 |  -   |  docker / kubernetes / marathon / rancher. Set in `application.conf`. Also include the configuration section for the specified type (see below).
  response-timeout     |  30 seconds   |  Timeout for container operations
  mesos.url            |   -  |  Used for information. Required only when `container-driver.type = "marathon" `
 
