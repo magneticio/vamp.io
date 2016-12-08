@@ -17,6 +17,7 @@ All changes since the last official release are described below. This applies on
 * Workflow execution period (successive executions) and execution timeout (max allowed execution time) [#813](https://github.com/magneticio/vamp/issues/813)
 * Kubernetes bearer as an optional configuration parameter [#834](https://github.com/magneticio/vamp/issues/834)
 * Option to disable timing out deployment operations [#840](https://github.com/magneticio/vamp/issues/840)
+* Proper HTTPS support (client side) [#846](https://github.com/magneticio/vamp/issues/846)
 
 ## What has changed
 * Custom event types - only alphanumerics, '_' and '-' are allowed in type names [#830](https://github.com/magneticio/vamp/issues/830)
