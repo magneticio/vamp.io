@@ -10,10 +10,11 @@ menu:
 
 This page gives full details of all available API calls. See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, JSON and YAML content types and effective use of the API.
 
-* **Resource descriptions:** [Blueprints](documentation/api/api-reference/#blueprints), [Breeds](documentation/api/api-reference/#breeds), [Conditions](documentation/api/api-reference/#conditions), [Escalations](documentation/api/api-reference/#escalations), [Scales](documentation/api/api-reference/#scales), [SLAs](documentation/api/api-reference/#slas)
-* **Runtime entities:** [Deployments](documentation/api/api-reference/#deployments), [Deployment scales](documentation/api/api-reference/#deployment-scales), [Deployment SLAs](documentation/api/api-reference/#deployment-slas), [Gateways](documentation/api/api-reference/#gateways)  
-* **Data:** [Events](documentation/api/api-reference/#events), [Health](documentation/api/api-reference/#health), [Metrics](documentation/api/api-reference/#metrics)
-* [System](documentation/api/api-reference/#system), [Debug](documentation/api/api-reference/#debug)
+* **Resource descriptions:** [blueprints](documentation/api/api-reference/#blueprints), [breeds](documentation/api/api-reference/#breeds), [conditions](documentation/api/api-reference/#conditions), [escalations](documentation/api/api-reference/#escalations), [scales](documentation/api/api-reference/#scales), [slas](documentation/api/api-reference/#slas)
+* **Runtime entities:** [deployments](documentation/api/api-reference/#deployments), [deployment scales](documentation/api/api-reference/#deployment-scales), [deployment SLAs](documentation/api/api-reference/#deployment-slas), [gateways](documentation/api/api-reference/#gateways)  
+* **Data:** [events](documentation/api/api-reference/#events), [health](documentation/api/api-reference/#health), [metrics](documentation/api/api-reference/#metrics)
+* **System:** [info, config, haproxy](documentation/api/api-reference/#system)
+* **Debug:** [sync, sla, escalation](documentation/api/api-reference/#debug)
 
 --------------
 

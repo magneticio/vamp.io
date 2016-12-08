@@ -8,11 +8,19 @@ menu:
 draft: true
 ---
 
-Defaults settings are specified in `reference.conf`. Required parameters with no default must be specified in `application.conf` or using environment variables and/or Java system properties (not advised). 
+Default Vamp settings are specified in `reference.conf`. Required parameters with no default must be specified in `application.conf` or using environment variables and/or Java system properties (not advised). 
 
-[Info](documentation/installation/configuration-reference/#info), [Stats](documentation/installation/configuration-reference/#stats), [Persistence](documentation/installation/configuration-reference/#persistence), [Container driver](documentation/installation/configuration-reference/#container-driver), [Workflow driver](documentation/installation/configuration-reference/#workflow-driver), [Dictionary](documentation/installation/configuration-reference/#dictionary), [http-api](documentation/installation/configuration-reference/#http-api), [Gateway driver](documentation/installation/configuration-reference/#gateway-driver), [Pulse](documentation/installation/configuration-reference/#pulse), [Operation](documentation/installation/configuration-reference/#operation), [Lifter](documentation/installation/configuration-reference/#lifter)
+The full `reference.conf` file can be found in the Vamp project repo [github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf). 
 
-## Info
+### Vamp { }
+Vamp configuration is described in sections, nested inside a parent `vamp {}` tag. Usage, defaults and requirements for each section are outlined below: [info](documentation/installation/configuration-reference/#info), [stats](documentation/installation/configuration-reference/#stats), [persistence](documentation/installation/configuration-reference/#persistence), [container driver](documentation/installation/configuration-reference/#container-driver), [workflow driver](documentation/installation/configuration-reference/#workflow-driver), [dictionary](documentation/installation/configuration-reference/#dictionary), [http-api](documentation/installation/configuration-reference/#http-api), [gateway driver](documentation/installation/configuration-reference/#gateway-driver), [pulse](documentation/installation/configuration-reference/#pulse), [operation](documentation/installation/configuration-reference/#operation), [lifter](documentation/installation/configuration-reference/#lifter)
+
+### akka { }
+Vamp is based on the Akka library. Akka configuration is included in `reference.conf` inside the `akka {}` tag. These settings can be tweaked in `application.conf`, although this is not recommended. Refer to the akka documentation for details.
+
+-------
+
+## Info 
 Description
 ```
 info {
@@ -26,6 +34,8 @@ Parameter | Required |  Default |  Details
 message |          |    Hi, I'm Vamp! How are you? |  The welcome message displayed in the Vamp info pane
 timeout |          |    3 seconds |  Response timeout for each component (e.g. Persistance, Container Driver...)
 
+-------
+
 ## Stats
 Description
 ```
@@ -37,6 +47,8 @@ stats {
 Parameter |Required |  Default |  Details  
 ----------|---------|--------|--------
   timeout |   |   5 seconds  |  Response timeout for each component
+
+-------
 
 ## Persistence
 {{< note title="Updated for Vamp 0.9.1" >}}
@@ -100,6 +112,8 @@ Parameter                                     | Required |  Default |  Details
   key-value-store.zookeeper.connect-timeout |  |   5000  |  
   etcd.url                                 |  |  -   |  Rquired when `persistence.key-value-store.type = "etcd" `  
   consul.url                                |  |   -  |  Required when `persistence.key-value-store.type = "consul" ` 
+
+-------
 
 ## Container driver
 Vamp can be configured to work with Docker, Mesos/Marathon, Kubernetes or Rancher container drivers. Only configuration for the specified `container-driver.type` is required. See the provided template docker images for example configurations ([github.com/magneticio - Vamp Docker](https://github.com/magneticio/vamp-docker)).
@@ -199,6 +213,7 @@ Parameter                   | Required |  Default |  Details
   create-services         |  |   true  |  
   vamp-gateway-agent-id   |  |  vamp-gateway-agent   |  
   token                   |  |  /var/run/secrets/kubernetes.io/serviceaccount/token   |  
+
 ### Container-driver.marathon
 Required only when `container-driver.type = "marathon" `. The default image provided in the vamp-docker github repo contains all the settings required ??
 ```
@@ -242,6 +257,8 @@ Parameter | Required |  Default |  Details
   password  | |   -  |       
   environment.name  | |  -   |       
   environment.deployment.name-prefix  | |  -   |       
+
+-------     
      
 ## Workflow driver
 Description
@@ -298,15 +315,17 @@ Parameter | Required |  Default |  Details
   }
 ```
 
-Parameter |  Default |  Details  
-----------|--------|--------
-  deployable.type   |  container/docker   |  
-  deployable.definition   |  -   |  
-  environment-variables  |   -  |  
-  scale   |   `instances = 1`, `cpu = 0.1`, `memory = 64MB`  |  Default scale. Used if not specified in workflow
-  arguments  |   -  |  
-  network   |   BRIDGE  |  
-  command  |   -  |  
+Parameter | Required | Default |  Details  
+----------|----|------|--------
+  deployable.type   | |  container/docker   |  
+  deployable.definition   | |  -   |  
+  environment-variables  | |   -  |  
+  scale   | |   `instances = 1`, `cpu = 0.1`, `memory = 64MB`  |  Default scale. Used if not specified in workflow
+  arguments  | |   -  |  
+  network   | |   BRIDGE  |  
+  command  | |   -  |  
+
+-------
 
 ## Dictionary
 Description
@@ -316,9 +335,11 @@ dictionary {
 }
 ```
 
-Parameter |  Default |  Details  
-----------|--------|--------
-  response-timeout   |  5 seconds   |  Timeout for container operations
+Parameter | Required | Default |  Details  
+----------|---|-------|-------- 
+  response-timeout   | |  5 seconds   |  Timeout for container operations
+
+-------
 
 ## http-api
 Configure the port, host name and interface that Vamp runs on using the `http-api.port`
@@ -342,16 +363,18 @@ http-api {
 }
 ```
 
-Parameter |  Default |  Details  
-----------|--------|--------
-  interface   |   0.0.0.0  |  
-  host   |   localhost  |  
-  port   |  8080   |  The port Vamp runs on
-  response-timeout   |   10 seconds  |  HTTP response timeout
-  strip-path-segments   |   0  |  
-  sse.keep-alive-timeout   |   15 seconds  |  timeout after an empty comment (":\n") will be sent in order keep connection alive
-  ui.directory   |   -  |  
-  ui.index  |   -  |  index file, e.g. ${vamp.http-api.ui.directory}"/index.html"
+Parameter | Required | Default |  Details  
+----------|---|-------|--------
+  interface   | |   0.0.0.0  |  
+  host   | |   localhost  |  
+  port   | |  8080   |  The port Vamp runs on
+  response-timeout   | |   10 seconds  |  HTTP response timeout
+  strip-path-segments   | |   0  |  
+  sse.keep-alive-timeout   | |   15 seconds  |  timeout after an empty comment (":\n") will be sent in order keep connection alive
+  ui.directory   | |   -  |  
+  ui.index  | |   -  |  index file, e.g. ${vamp.http-api.ui.directory}"/index.html"
+
+-------
 
 ## Gateway driver
 The gateway-driver section configures how traffic should be routed through Vamp Gateway Agent. 
@@ -380,12 +403,12 @@ gateway-driver {
 }
 ```
 
-Parameter |  Default |  Details  
+Parameter |  Required  |  Default |  Details  
 ----------|--------|--------
-  host   |   localhost  |  note: host of cluster hosts will have this value (e.g. db.host). Vamp Gateway Agent / Haproxy, internal IP
-  response-timeout   |  30 seconds   |  timeout for gateway operations
-  elasticsearch.metrics.index   |  -   |  
-  elasticsearch.metrics.type   |   -  |  
+  host   | |   localhost  |  note: host of cluster hosts will have this value (e.g. db.host). Vamp Gateway Agent / Haproxy, internal IP
+  response-timeout   | |  30 seconds   |  timeout for gateway operations
+  elasticsearch.metrics.index   | |  -   |  
+  elasticsearch.metrics.type   | |   -  |  
 
 ### Gateway-driver.haproxy
 ```
@@ -402,16 +425,18 @@ Parameter |  Default |  Details
     http-log-format = """{\"ci\":\"%ci\",\"cp\":%cp,\"t\":\"%t\",\"ft\":\"%ft\",\"b\":\"%b\",\"s\":\"%s\",\"Tq\":%Tq,\"Tw\":%Tw,\"Tc\":%Tc,\"Tr\":%Tr,\"Tt\":%Tt,\"ST\":%ST,\"B\":%B,\"CC\":\"%CC\",\"CS\":\"%CS\",\"tsc\":\"%tsc\",\"ac\":%ac,\"fc\":%fc,\"bc\":%bc,\"sc\":%sc,\"rc\":%rc,\"sq\":%sq,\"bq\":%bq,\"hr\":\"%hr\",\"hs\":\"%hs\",\"r\":%{+Q}r}"""
   }
 ```
-Parameter |  Default |  Details  
-----------|--------|--------
-  version   |   1.5  |  `1.5` / `1.6`
-  ip   |   127.0.0.1  |  local IP used for chaining gateways.  HAProxy backend server IP
-  template   |   -  |  template file, if not specified the default will be used /io/vamp/gateway_driver/haproxy/template.twig
-  socket-path   |   `/usr/local/vamp`  |  
-  virtual-hosts.ip   |   0.0.0.0  |  IP, if virtual hosts are enabled
-  virtual-hosts.port   |  80   |  Port, if virtual hosts are enabled
-  tcp-log-format   |   see above example  |  
-  http-log-format   |  see above example   |  
+Parameter | Required  | Default |  Details  
+----------|----|------|--------
+  version   | |   1.5  |  `1.5` / `1.6`
+  ip   | |   127.0.0.1  |  local IP used for chaining gateways.  HAProxy backend server IP
+  template   |  |  -  |  template file, if not specified the default will be used /io/vamp/gateway_driver/haproxy/template.twig
+  socket-path   | |   `/usr/local/vamp`  |  
+  virtual-hosts.ip   | |   0.0.0.0  |  IP, if virtual hosts are enabled
+  virtual-hosts.port   | |  80   |  Port, if virtual hosts are enabled
+  tcp-log-format   | |   see above example  |  
+  http-log-format   | |  see above example   |  
+
+-------
 
 ## Pulse
 Description
@@ -428,12 +453,14 @@ pulse {
 }
 ```
 
-Parameter |  Default |  Details  
-----------|--------|--------
-  elasticsearch.url   |  -   |  e.g http://localhost:9200
-  elasticsearch.index.name   |   vamp-pulse  |  
-  elasticsearch.index.time-format.event   |  YYYY-MM-dd   |  
-  response-timeout   |  30 seconds   |  timeout for pulse operations
+Parameter | Required | Default |  Details  
+----------|----|----|--------
+  elasticsearch.url   | |  -   |  e.g http://localhost:9200
+  elasticsearch.index.name   | |   vamp-pulse  |  
+  elasticsearch.index.time-format.event   | |  YYYY-MM-dd   |  
+  response-timeout   | |  30 seconds   |  timeout for pulse operations
+
+-------
 
 ## Operation
 The operation section holds all parameters that control how Vamp executes against “external” services: this also includes Vamp Pulse and Vamp Gateway Agent.
@@ -597,6 +624,7 @@ Parameter |  Default |  Details
   formats.deployment-cluster-port   |  $port.$cluster.$deployment.vamp   |  
      
 ------
+
 ## Lifter
 Lifter is the Vamp bootstrap installer. The lifter configuration specifies items that Vamp should run on startup. No items are included by default in `reference.conf`, these need to be added in `application.conf`. We advise that you at least run the Vamp Health and Metrics workflows, as these are required for the Vamp UI.
 
@@ -618,10 +646,7 @@ For example:
     ]
   }
 ```
-
-## Akka
-Vamp is based on the Akka library. This can be tweaked in `application.conf`. Refer to the akka documentation for details ???
-
+-------
 
 ## Spray can
 Depreciated. Do not use.
