@@ -5,12 +5,11 @@ menu:
   main:
     parent: "Installation"
     weight: 110
-draft: true
 ---
 
 Default Vamp settings are specified in `reference.conf`. Required parameters with no default must be specified in `application.conf` or using environment variables and/or Java system properties (not advised). 
 
-The full `reference.conf` file can be found in the Vamp project repo [github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf). 
+The full `reference.conf` file can be found in the Vamp project repo ([github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)). 
 
 ### Vamp { }
 Vamp configuration is described in sections, nested inside a parent `vamp {}` tag. Usage, defaults and requirements for each section are outlined below: [info](documentation/installation/configuration-reference/#info), [stats](documentation/installation/configuration-reference/#stats), [persistence](documentation/installation/configuration-reference/#persistence), [container driver](documentation/installation/configuration-reference/#container-driver), [workflow driver](documentation/installation/configuration-reference/#workflow-driver), [dictionary](documentation/installation/configuration-reference/#dictionary), [http-api](documentation/installation/configuration-reference/#http-api), [gateway driver](documentation/installation/configuration-reference/#gateway-driver), [pulse](documentation/installation/configuration-reference/#pulse), [operation](documentation/installation/configuration-reference/#operation), [lifter](documentation/installation/configuration-reference/#lifter)
@@ -379,7 +378,7 @@ Parameter  | Default |  Details
 -------
 
 ## Gateway driver
-The gateway-driver section configures how traffic should be routed through Vamp Gateway Agent. 
+The gateway-driver section configures how traffic should be routed through Vamp Gateway Agent. Read more about how Vamp uses these parameters for [service discovery](/documentation/using-vamp/service-discovery).
 ```
 gateway-driver {
   host = "localhost"
@@ -407,7 +406,7 @@ gateway-driver {
 
 Parameter   |  Default |  Details  
 ----------|--------|--------
-  host    |   localhost  |  note: host of cluster hosts will have this value (e.g. db.host). Vamp Gateway Agent / Haproxy, internal IP
+  host    |   localhost  |  The Vamp Gateway Agent/HAProxy, internal IP. To simplify service discovery, Vamp supports using specific environment parameters. `{cluster_name}.host` will have the value of this parameter (`vamp.gateway-driver.host`)
   response-timeout    |  30 seconds   |  timeout for gateway operations
   elasticsearch.metrics.index    |  -   |  
   elasticsearch.metrics.type    |   -  |  
@@ -527,8 +526,8 @@ operation {
 
 Parameter |  Default |  Details  
 ----------|--------|--------
-  sla.period     |  5 seconds  |  
-  escalation.period     |  5 seconds  |  
+  sla.period     |  5 seconds  |  controls how often an SLA checks against metrics
+  escalation.period     |  5 seconds  |  controls how often Vamp checks for escalation events
   health.window     |  30 seconds  |  
   metrics.window     |  30 seconds  | 
      
@@ -561,11 +560,11 @@ Parameter |  Default |  Details
 Parameter   |  Default |  Details  
 ----------|--------|--------
  initial-delay   |   5 seconds  |  
- period    |   6 seconds  |  synchronization will be active only if period is greater than 0
+ period    |   6 seconds  |  controls how often Vamp performs a sync between Vamp and the container driver. synchronization will be active only if period is greater than 0
  mailbox.mailbox-type    |   akka.dispatch.NonBlockingBoundedMailbox   |  
  mailbox.mailbox-capacity  |     100  |  Queue for operational tasks (deployments etc.)
- timeout.ready-for-deployment    |    600 seconds  |  
- timeout.ready-for-undeployment    |   600 seconds   |  
+ timeout.ready-for-deployment    |    600 seconds  |  controls how long Vamp waits for a service to start. If the service is not started before this time, the service is registered as "error"
+ timeout.ready-for-undeployment    |   600 seconds   |  similar to "ready-for-deployment" (above), but for the removal of services
  check.cpu    |    false  |  
  check.memory   |    false   |  
  check.instances   |    false   |  
@@ -586,11 +585,13 @@ Parameter   |  Default |  Details
 
 Parameter |  Default |  Details  
 ----------|--------|--------
-  scale   |  instances = 1, cpu = 1,  memory = 1GB  |  Default scale, used if not specified in blueprint
-  arguments   |   -  |  split by first '='
+  scale   |  instances = 1, cpu = 1,  memory = 1GB  |  default scale, used if not specified in blueprint
+  arguments   |   -  |  Docker command line arguments, e.g. "security-opt=seccomp:unconfined". Split by first '=' 
 
 ### operation.gateway
-
+For each cluster and service port within the same cluster a gateway is created - this is exactly as one that can be created using Gateway API.
+That means specific conditions and weights can be applied on traffic to/from cluster services - A/B testing and canary releases support. 
+`vamp.operation.gateway.port-range` is range of port values that can be used for these cluster/port gateways. These ports need to be available on all Vamp Gateway Agent hosts.
 ```
   gateway {
     port-range = 40000-45000
@@ -600,7 +601,7 @@ Parameter |  Default |  Details
 
 Parameter |  Default |  Details  
 ----------|--------|--------
-  port-range   |  40000-45000   |   range of port values that can be used for Vamp internal gateways. **These ports need to be available on all Vamp Gateway Agent hosts**
+  port-range   |  40000-45000   |   range of port values that can be used for Vamp internal gateways. These ports need to be available on all Vamp Gateway Agent hosts
   response-timeout   |   5 seconds  |  timeout for container operations
 
 ### operation.gateway.virtual-hosts
@@ -620,9 +621,9 @@ Defines the standard Vamp virtual host gateway format.
 Parameter |  Default |  Details  
 ----------|--------|--------
   enabled   |  true   |  if set to false, Vamp will not automatically generate gateway virtual host names. You can still specify in gateways/blueprints.
-  formats.gateways   |   $gateway.vamp  |  
-  formats.deployment-port   |  $port.$deployment.vamp   |  
-  formats.deployment-cluster-port   |  $port.$cluster.$deployment.vamp   |  
+  formats.gateways   |   $gateway.vamp  |  name format
+  formats.deployment-port   |  $port.$deployment.vamp   |  name format
+  formats.deployment-cluster-port   |  $port.$cluster.$deployment.vamp   |  name format
      
 ------
 
@@ -650,7 +651,7 @@ For example:
 
 
 {{< note title="What next?" >}}
-* Read about [how to configure Vamp](documentation/installation/how-to-configure-vamp)
+* Read about [how to configure Vamp](documentation/installation/configure-vamp)
 * Look at some [example configurations](documentation/installation/example-configurations)
 * Follow the [tutorials](/documentation/tutorials/overview)
 * You can read in depth about [using Vamp](/documentation/using-vamp/artifacts/) or browse the [API reference](/documentation/api/api-reference/) or [CLI reference](/documentation/cli/cli-reference/) docs.

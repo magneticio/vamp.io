@@ -1,12 +1,101 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Extra bits left from configure Vamp
+title: Configure Vamp
 menu:
   main:
     parent: "Installation"
-    weight: 130
+    weight: 90
 draft: true
 ---
+
+Vamp can be configured using one or a combination of the Vamp `application.conf` HOCON file ([github.com/typesafehub - config](https://github.com/typesafehub/config)), environment variables and system properties.
+
+For example:
+```bash
+
+export VAMP_INFO_MESSAGE=Hello # overriding Vamp info message (vamp.info.message)
+
+java -Dvamp.gateway-driver.host=localhost \
+     -Dlogback.configurationFile=logback.xml \
+     -Dconfig.file=application.conf \
+     -jar vamp.jar
+```
+
+## The Vamp `application.conf` file
+
+The Vamp `application.conf` consists of the following sections. All sections are nested inside a parent `vamp {}` tag.
+
+* [http-api](/documentation/installation/configure-vamp/#http-api)
+* [persistence](/documentation/installation/configure-vamp/#persistence)
+* [container-drivers](/documentation/installation/configure-vamp/#container-drivers)
+* [gateway-driver](/documentation/installation/configure-vamp/#gateway-driver)
+* [operation](/documentation/installation/configure-vamp/#operation)
+
+### http-api
+Configure the port, host name and interface that Vamp runs on using the `http-api.port`
+
+```
+vamp {
+  http-api {
+    interface = 0.0.0.0
+    host = localhost
+    port = 8080
+    response-timeout = 10 seconds # HTTP response time out
+  }
+}    
+```
+
+
+### persistence
+
+{{< note title="Updated for Vamp 0.9.1" >}}
+* In the [Vamp configuration](/documentation/installation/configure-vamp/#persistence) we set `persistence caching` by default to `false`. In our Vamp images we set this to `true` to make it easier on the persistence store load. Check out this [default Vamp 0.9.1 configuration](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf) for reference.
+* We've added a key-value store as a persistence data store. Check out this [default Vamp 0.9.1 configuration](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf) for reference.
+{{< /note >}}
+
+Vamp uses Elasticsearch for persistence and ZooKeeper ([apache.org - ZooKeeper](https://zookeeper.apache.org/)), etcd ([coreos.com  - etcd documentation](https://coreos.com/etcd/docs/latest/)) or Consul ([consul.io](https://www.consul.io/)) for key-value store (keeping HAProxy configuration).
+
+```yaml
+vamp {
+  persistence {
+    response-timeout = 5 seconds
+
+    database {
+      type: "elasticsearch" # elasticsearch or in-memory (no persistence)
+      elasticsearch.url = ${vamp.pulse.elasticsearch.url}
+    }
+
+    key-value-store {
+
+      type = "zookeeper"    # zookeeper, etcd or consul
+      base-path = "/vamp"   # base path for keys, e.g. /vamp/...
+
+      zookeeper {
+        servers = "192.168.99.100:2181"
+      }
+
+      etcd {
+        url = "http://192.168.99.100:2379"
+      }
+
+      consul {
+        url = "http://192.168.99.100:8500"
+      }
+    }
+  }
+}
+```
+
+`zookeeper`, `etcd` or `consul` configuration is needed based on the type, e.g. if `type = "zookeeper"` then only `zookeeper.servers` should be set.
+
+### Container drivers
+
+Vamp can be configured to work with the following container drivers:
+
+* [Docker](/documentation/installation/configure-vamp/#docker)
+* [Mesos/Marathon](/documentation/installation/configure-vamp/#mesos-marathon)
+* [Kubernetes](/documentation/installation/configure-vamp/#kubernetes)
+* [Rancher](/documentation/installation/configure-vamp/#rancher)
 
 #### Docker
 Vamp can talk directly to a Docker daemon and its driver is configured by default. This is useful for local testing, Docker Swarm support is coming soon.
@@ -202,4 +291,20 @@ That means specific conditions and weights can be applied on traffic to/from clu
 These ports need to be available on all Vamp Gateway Agent hosts.
 
 
+## Environment variables
 
+Each configuration parameter can be replaced by an environment variable. Environment variables have precedence over configuration from `application.conf` or system properties.  Read more about [environment variables](/documentation/using-vamp/environment-variables/).
+
+### Environment variable names
+Environment variable names are based on the configuration parameter name converted to upper case. All non-alphanumerics should be replaced by an underscore `_`
+
+```
+vamp.info.message           ⇒ VAMP_INFO_MESSAGE
+vamp.gateway-driver.timeout ⇒ VAMP_GATEWAY_DRIVER_TIMEOUT
+```
+
+
+{{< note title="What next?" >}}
+* Follow the [getting started tutorials](/documentation/tutorials/overview)
+* You can read in depth about [using Vamp](/documentation/using-vamp/artifacts/) or browse the [API reference](/documentation/api/api-reference/) or [CLI reference](/documentation/cli/cli-reference/) docs.
+{{< /note >}}
