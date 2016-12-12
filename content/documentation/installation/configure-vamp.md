@@ -75,7 +75,7 @@ api.config().each(function (config) {
 });
 ```
 {{< note title="What next?" >}}
-* Check the [Vamp configuration reference](documentation/installation/configuration-reference)
+* Check the [configuration reference](documentation/installation/configuration-reference)
 * Look at some [example configurations](documentation/installation/example-configurations)
 * Follow the [tutorials](/documentation/tutorials/overview)
 * You can read in depth about [using Vamp](/documentation/using-vamp/artifacts/) or browse the [API reference](/documentation/api/api-reference/) or [CLI reference](/documentation/cli/cli-reference/) docs.

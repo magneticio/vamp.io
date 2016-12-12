@@ -28,10 +28,12 @@ info {
 }
 ```
 
-Parameter  |  Default |  Details  
---------------------|--------|--------
-message  |    Hi, I'm Vamp! How are you? |  The welcome message displayed in the Vamp info pane
-timeout    |    3 seconds |  Response timeout for each component (e.g. Persistance, Container Driver...). How long we will wait for components to reply on an API info call. Should be less than http response timeout.
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+message  | - |    Hi, I'm Vamp! How are you? |  The welcome message displayed in the Vamp info pane
+timeout    | - |    3 seconds |  Response timeout for each component (e.g. Persistance, Container Driver...). How long we will wait for components to reply on an API info call. Should be less than `http-api.response-timeout`.
+
+
 
 -------
 
@@ -43,9 +45,9 @@ stats {
 }
 ```
 
-Parameter  |  Default |  Details  
--------------------|--------|--------
-  timeout  |   5 seconds  |  Response timeout for each component
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  timeout  | - |  5 seconds  |  Response timeout for each component
 
 -------
 
@@ -91,21 +93,21 @@ persistence {
 }
 ```
 
-Parameter                                     |  Default |  Details  
---------------------------------------------------|----------|----------
-  response-timeout                                    |   5 seconds  |  
-  database.type                               |   -  |  `elasticsearch` / `key-value` / `in-memory`
-  database.elasticsearch.url                 |  -   |  
-  database.elasticsearch.response-timeout     |  5 seconds   |  Timeout for elasticsearch operations
-  database.elasticsearch.index                |  vamp-persistence   |  
-  database.key-value.caching                  |  false  |  set this to true to make it easier on the persistence store load
-  key-value-store.type                        |   -  | `zookeeper` / `etcd` / `consul`
-  key-value-store.base-path                   |  /vamp  |  
-  key-value-store.zookeeper.servers           |  -   |  Required when `persistence.key-value-store.type = "zookeeper" `
-  key-value-store.zookeeper.session-timeout   |   5000  |   
-  key-value-store.zookeeper.connect-timeout   |   5000  |  
-  etcd.url                                   |  -   |  Rquired when `persistence.key-value-store.type = "etcd" `  
-  consul.url                                  |   -  |  Required when `persistence.key-value-store.type = "consul" ` 
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  response-timeout   |  -  |   5 seconds  |  
+  database.type   |  elasticsearch, key-value, in-memory  |   -  |  set in `application.conf`
+  database.elasticsearch.url               |   |  -   |  set in `application.conf`
+  database.elasticsearch.response-timeout  | -  |  5 seconds   |  Timeout for elasticsearch operations
+  database.elasticsearch.index             | -  |  vamp-persistence   |  
+  database.key-value.caching               | true, false   |  false  |  set this to true to make it easier on the persistence store load
+  key-value-store.type                     | zookeeper, etcd, consul   |   -  |  set in `application.conf`
+  key-value-store.base-path                | -  |  /vamp  |  
+  key-value-store.zookeeper.servers        | - |  -   |  Required when `persistence.key-value-store.type = "zookeeper" `
+  key-value-store.zookeeper.session-timeout | - |   5000  |   
+  key-value-store.zookeeper.connect-timeout | - |   5000  |  
+  etcd.url                                 | - |  -   |  Rquired when `persistence.key-value-store.type = "etcd" `  
+  consul.url                               | -  |   -  |  Required when `persistence.key-value-store.type = "consul" ` 
 
 -------
 
@@ -158,12 +160,11 @@ container-driver {
   response-timeout = 30 seconds
 }
 ```
-
-Parameter             |  Default |  Details  
----------------------|--------|--------
- type                 |  -   |  docker / kubernetes / marathon / rancher. Set in `application.conf`. Also include the configuration section for the specified type (see below).
- response-timeout     |  30 seconds   |  Timeout for container operations
- mesos.url            |   -  |  Used for information. Required only when `container-driver.type = "marathon" `
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+ type            |  docker, kubernetes, marathon, rancher     |  -   |  set in `application.conf`. Also include the configuration section for the specified container driver type (see below).
+ response-timeout  | -   |  30 seconds   |  Timeout for container operations
+ mesos.url         | -   |   -  |  Used for information. Required only when `container-driver.type = "marathon" `
 
 ### Container-driver.docker
 Required only when `container-driver.type = "docker" `.  
@@ -179,13 +180,13 @@ Required only when `container-driver.type = "docker" `.
   }
 ```
 
-Parameter                       |  Default |  Details  
-----------------------------------|--------|--------
-  workflow-name-prefix         |   vamp-workflow-  |  
-  repository.email             |  -   |  Docker repository credentials
-  repository.username          |   -  |  Docker repository credentials
-  repository.password          |   -  |  Docker repository credentials    
-  repository.server-address    |   -  |  Docker repository credentials 
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  workflow-name-prefix      | -  |   vamp-workflow-  |  
+  repository.email          | -   |  -   |  Docker repository credentials
+  repository.username       | -   |   -  |  Docker repository credentials
+  repository.password       | -   |   -  |  Docker repository credentials    
+  repository.server-address  | -  |   -  |  Docker repository credentials 
           
 ### Container-driver.kubernetes
 Required only when `container-driver.type = "kubernetes" `.  
@@ -201,14 +202,14 @@ See the [example configuration](/documentation/installation/example-configuratio
   }
 ```
 
-Parameter                    |  Default |  Details  
--------------------------------|--------|--------
-  url                      |   -  |  Kubernetes API URL
-  workflow-name-prefix     |  vamp-workflow-   |  
-  service-type             |   NodePort  |   NodePort / LoadBalancer              
-  create-services           |   true  |  when set to false, gateways will not be exposed as a service (access will only be possible through gateway agent)
-  vamp-gateway-agent-id     |  vamp-gateway-agent   |  
-  token                     |  /var/run/secrets/kubernetes.io/serviceaccount/token   |  
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  url                   | -   |   -  |  Kubernetes API URL
+  workflow-name-prefix   | -  |  vamp-workflow-   |  
+  service-type          | NodePort, LoadBalancer   |   NodePort  |                 
+  create-services        | true, false   |   true  |  when set to false, gateways will not be exposed as a service (access will only be possible through gateway agent)
+  vamp-gateway-agent-id  | -   |  vamp-gateway-agent   |  
+  token                  | -  |  /var/run/secrets/kubernetes.io/serviceaccount/token   |  
 
 ### Container-driver.marathon
 Required only when `container-driver.type = "marathon" `. note that you should also set `container-driver.mesos.url`.  
@@ -223,13 +224,13 @@ See the [example configuration](/documentation/installation/example-configuratio
   }
 ```
 
-Parameter                   |  Default |  Details  
-------------------------------|--------|--------
-  user                      |   -  |  
-  password                 |   -  |       
-  url                       |   -  |  
-  sse                       |   true  |  When set to true, Vamp will listen on Marathon events which allows for quicker reaction to Marathon changes
-  workflow-name-prefix      |   vamp/workflow-  |   
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  user             | -         |   -  |  
+  password           | -      |   -  |       
+  url                  | -     |   -  |  
+  sse                    | true, false   |   true  |  When set to true, Vamp will listen on Marathon events which allows for quicker reaction to Marathon changes
+  workflow-name-prefix   | -   |   vamp/workflow-  |   
 
 ### Container-driver.rancher
 Required only when `container-driver.type = "rancher" `.  
@@ -247,14 +248,14 @@ See the [example configuration](/documentation/installation/example-configuratio
   }
 ```
 
-Parameter |  Default |  Details  
-------------|--------|--------
-  url  |    -  |  Rancher API URL
-  workflow-name-prefix   |   vamp-workflow-  |            
-  user  |    -  |  API authentication credentials (if required)
-  password  |    -  |       API authentication credentials (if required)
-  environment.name  |   -   |       
-  environment.deployment.name-prefix  |   -   |       
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  url  | - |    -  |  Rancher API URL
+  workflow-name-prefix  | -  |   vamp-workflow-  |            
+  user  | - |    -  |  API authentication credentials (if required)
+  password | - |    -  |       API authentication credentials (if required)
+  environment.name | - |   -   |       
+  environment.deployment.name-prefix | - |   -   |       
 
 -------     
      
@@ -287,12 +288,12 @@ workflow-driver {
 }
 ```
 
-Parameter  |  Default |  Details  
----------|-----|--------
-  type   |   none   |  `docker` (daemon) / `marathon` (daemon) / `kubernetes` (daemon) / `rancher` (daemon) / `chronos` (time and event triggered) / `none`. Can be combined (csv), e.g. `marathon,chronos`
-  response-timeout    |  30 seconds   |  Timeout for container operations
-  vamp-url   |    -   |  The URL that workflow agent (workflows) will use to access Vamp. Set in `application.conf`. Required for all workflows which need to access Vamp.
-  chronos.url   |     -  |  if you use chronos, set the URL in `application.conf`
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  type  | docker, marathon, kubernetes, rancher, chronos, none |   none   |  Daemon (docker, marathon, kubernetes, rancher), time and event triggered (chronos). Can be combined (csv), e.g. `marathon,chronos`
+  response-timeout  | -  |  30 seconds   |  Timeout for container operations
+  vamp-url   | -|    -   |  The URL that workflow agent (workflows) will use to access Vamp. Set in `application.conf`. Required for all workflows which need to access Vamp.
+  chronos.url   | - |     -  |  if you use chronos, set the URL in `application.conf`
 
 ### Worflow-driver.workflow
 Applied when a worklow is deployed (run).
@@ -315,15 +316,15 @@ Applied when a worklow is deployed (run).
   }
 ```
 
-Parameter  | Default |  Details  
-----------|---------|--------
-  deployable.type   |   container/docker   |   applied if breed type is set to `application/javascript`. Overridden for other breed types.
-  deployable.definition   |   -   |   applied if breed type is set to `application/javascript`. Overridden for other breed types.
-  environment-variables  |   -  |  will be added to every workflow
-  scale   |    `instances = 1`, `cpu = 0.1`, `memory = 64MB`  |  Default scale. Used if not specified in workflow
-  arguments  |    -  |  will be added to every workflow
-  network   |    BRIDGE  |  
-  command  |    -  |  Docker command
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  deployable.type  | - |   container/docker   |   applied if breed type is set to `application/javascript`. Overridden for other breed types.
+  deployable.definition  | -  |   -   |   applied if breed type is set to `application/javascript`. Overridden for other breed types.
+  environment-variables  | - |   -  |  will be added to every workflow
+  scale   | - |    instances = 1 cpu = 0.1 memory = 64MB  |  Default scale. Used if not specified in workflow
+  arguments  | - |    -  |  will be added to every workflow
+  network   | - |    BRIDGE  |  
+  command  | - |    -  |  Docker command
 
 -------
 
@@ -336,9 +337,9 @@ dictionary {
 }
 ```
 
-Parameter  | Default |  Details  
-----------|---------|-------- 
-  response-timeout   |   5 seconds   |  Timeout for container operations
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  response-timeout  | -  |   5 seconds   |  Timeout for container operations
 
 -------
 
@@ -364,16 +365,16 @@ http-api {
 }
 ```
 
-Parameter  | Default |  Details  
----------|-------|--------
-  interface    |   0.0.0.0  |  
-  host   |    localhost  |  
-  port   |   8080   |  The port Vamp runs on
-  response-timeout   |    10 seconds  |  HTTP response timeout
-  strip-path-segments   |    0  |  
-  sse.keep-alive-timeout   |    15 seconds  |  timeout after an empty comment (":\n") will be sent in order keep connection alive
-  ui.directory   |   -  |  specify in `application.conf` to use the Vamp UI
-  ui.index  |    -  |  index file, e.g. ${vamp.http-api.ui.directory}"/index.html". Specify in `application.conf` to use the Vamp UI
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  interface  | -   |   0.0.0.0  |  
+  host   | - |    localhost  |  
+  port   | - |   8080   |  The port Vamp runs on
+  response-timeout   | - |    10 seconds  |  HTTP response timeout
+  strip-path-segments   | - |    0  |  
+  sse.keep-alive-timeout   | - |    15 seconds  |  timeout after an empty comment (":\n") will be sent in order keep connection alive
+  ui.directory   | - |   -  |  set in `application.conf` to use the Vamp UI
+  ui.index  | - |    -  |  index file, e.g. `${vamp.http-api.ui.directory}"/index.html"`. Set in `application.conf` to use the Vamp UI
 
 -------
 
@@ -404,12 +405,12 @@ gateway-driver {
 }
 ```
 
-Parameter   |  Default |  Details  
-----------|--------|--------
-  host    |   localhost  |  The Vamp Gateway Agent/HAProxy, internal IP. To simplify service discovery, Vamp supports using specific environment parameters. `{cluster_name}.host` will have the value of this parameter (`vamp.gateway-driver.host`)
-  response-timeout    |  30 seconds   |  timeout for gateway operations
-  elasticsearch.metrics.index    |  -   |  
-  elasticsearch.metrics.type    |   -  |  
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  host    | - |   localhost  |  The Vamp Gateway Agent/HAProxy, internal IP. To simplify service discovery, Vamp supports using specific environment parameters. `{cluster_name}.host` will have the value of this parameter (`vamp.gateway-driver.host`)
+  response-timeout    | - |  30 seconds   |  timeout for gateway operations
+  elasticsearch.metrics.index   | -  |  -   |  
+  elasticsearch.metrics.type  | -   |   -  |  
 
 ### Gateway-driver.haproxy
 ```
@@ -426,16 +427,17 @@ Parameter   |  Default |  Details
     http-log-format = """{\"ci\":\"%ci\",\"cp\":%cp,\"t\":\"%t\",\"ft\":\"%ft\",\"b\":\"%b\",\"s\":\"%s\",\"Tq\":%Tq,\"Tw\":%Tw,\"Tc\":%Tc,\"Tr\":%Tr,\"Tt\":%Tt,\"ST\":%ST,\"B\":%B,\"CC\":\"%CC\",\"CS\":\"%CS\",\"tsc\":\"%tsc\",\"ac\":%ac,\"fc\":%fc,\"bc\":%bc,\"sc\":%sc,\"rc\":%rc,\"sq\":%sq,\"bq\":%bq,\"hr\":\"%hr\",\"hs\":\"%hs\",\"r\":%{+Q}r}"""
   }
 ```
-Parameter   | Default |  Details  
-------------|------|--------
-  version    |   1.6  |  `1.5` / `1.6`
-  ip    |   127.0.0.1  |  local IP used for chaining gateways.  HAProxy backend server IP
-  template     |  -  |  HAProxy configuration template file, can be edited to customise HAProxy configuration. If not specified the default will be used /io/vamp/gateway_driver/haproxy/template.twig
-  socket-path    |   `/usr/local/vamp`  |  
-  virtual-hosts.ip    |   0.0.0.0  |  IP, if virtual hosts are enabled
-  virtual-hosts.port    |  80   |  Port, if virtual hosts are enabled
-  tcp-log-format    |   see above example  |  
-  http-log-format    |  see above example   |  
+
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  version   |  1.5, 1.6 |   1.6  | 
+  ip    | - |   127.0.0.1  |  local IP used for chaining gateways.  HAProxy backend server IP
+  template    | -  |  -  |  HAProxy configuration template file, can be edited to customise HAProxy configuration. If not specified the default will be used /io/vamp/gateway_driver/haproxy/template.twig
+  socket-path   | -  |   `/usr/local/vamp`  |  
+  virtual-hosts.ip   | -  |   0.0.0.0  |  IP, if virtual hosts are enabled
+  virtual-hosts.port  | -   |  80   |  Port, if virtual hosts are enabled
+  tcp-log-format   | -  |   see above  |  
+  http-log-format  | -   |  see above   |  
 
 -------
 
@@ -455,12 +457,12 @@ pulse {
 }
 ```
 
-Parameter  | Default |  Details  
------------|----|--------
-  elasticsearch.url    |  -   |  e.g http://localhost:9200
-  elasticsearch.index.name    |   vamp-pulse  |  
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  elasticsearch.url   | -   |  -   |  e.g http://localhost:9200
+  elasticsearch.index.name   | -   |   vamp-pulse  |  
   elasticsearch.index.time-format.event   | |  YYYY-MM-dd   |  
-  response-timeout    |  30 seconds   |  timeout for pulse operations
+  response-timeout   | -   |  30 seconds   |  timeout for pulse operations
 
 -------
 
@@ -524,12 +526,12 @@ operation {
 }
 ```
 
-Parameter |  Default |  Details  
-----------|--------|--------
-  sla.period     |  5 seconds  |  controls how often an SLA checks against metrics
-  escalation.period     |  5 seconds  |  controls how often Vamp checks for escalation events
-  health.window     |  30 seconds  |  
-  metrics.window     |  30 seconds  | 
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  sla.period    | -   |  5 seconds  |  controls how often an SLA checks against metrics
+  escalation.period   | -    |  5 seconds  |  controls how often Vamp checks for escalation events
+  health.window    | -   |  30 seconds  |  
+  metrics.window    | -   |  30 seconds  | 
      
 ### operation.synchronisation
 
@@ -557,17 +559,17 @@ Parameter |  Default |  Details
   }
 ```
 
-Parameter   |  Default |  Details  
-----------|--------|--------
- initial-delay   |   5 seconds  |  
- period    |   6 seconds  |  controls how often Vamp performs a sync between Vamp and the container driver. synchronization will be active only if period is greater than 0
- mailbox.mailbox-type    |   akka.dispatch.NonBlockingBoundedMailbox   |  
- mailbox.mailbox-capacity  |     100  |  Queue for operational tasks (deployments etc.)
- timeout.ready-for-deployment    |    600 seconds  |  controls how long Vamp waits for a service to start. If the service is not started before this time, the service is registered as "error"
- timeout.ready-for-undeployment    |   600 seconds   |  similar to "ready-for-deployment" (above), but for the removal of services
- check.cpu    |    false  |  
- check.memory   |    false   |  
- check.instances   |    false   |  
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+ initial-delay  | -   |   5 seconds  |  
+ period  | -    |   6 seconds  |  controls how often Vamp performs a sync between Vamp and the container driver. synchronization will be active only if period is greater than 0
+ mailbox.mailbox-type   | -   |   akka.dispatch.NonBlockingBoundedMailbox   |  
+ mailbox.mailbox-capacity | -   |     100  |  Queue for operational tasks (deployments etc.)
+ timeout.ready-for-deployment   | -   |    600 seconds  |  controls how long Vamp waits for a service to start. If the service is not started before this time, the service is registered as "error"
+ timeout.ready-for-undeployment  | -    |   600 seconds   |  similar to "ready-for-deployment" (above), but for the removal of services
+ check.cpu   | true, false   |    false  |  
+ check.memory  | true, false |    false   |  
+ check.instances  | true, false |    false   |  
      
 ### operation.deployment
 
@@ -583,10 +585,10 @@ Parameter   |  Default |  Details
   }
 ```
 
-Parameter |  Default |  Details  
-----------|--------|--------
-  scale   |  instances = 1, cpu = 1,  memory = 1GB  |  default scale, used if not specified in blueprint
-  arguments   |   -  |  Docker command line arguments, e.g. "security-opt=seccomp:unconfined". Split by first '=' 
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  scale   | - |  instances = 1 cpu = 1  memory = 1GB  |  default scale, used if not specified in blueprint
+  arguments | -  |   -  |  Docker command line arguments, e.g. "security-opt=seccomp:unconfined". Split by first '=' 
 
 ### operation.gateway
 For each cluster and service port within the same cluster a gateway is created - this is exactly as one that can be created using Gateway API.
@@ -599,10 +601,10 @@ That means specific conditions and weights can be applied on traffic to/from clu
   }
 ```
 
-Parameter |  Default |  Details  
-----------|--------|--------
-  port-range   |  40000-45000   |   range of port values that can be used for Vamp internal gateways. These ports need to be available on all Vamp Gateway Agent hosts
-  response-timeout   |   5 seconds  |  timeout for container operations
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  port-range   | - |  40000-45000   |   range of port values that can be used for Vamp internal gateways. These ports need to be available on all Vamp Gateway Agent hosts
+  response-timeout  | -   |   5 seconds  |  timeout for container operations
 
 ### operation.gateway.virtual-hosts
 Defines the standard Vamp virtual host gateway format.
@@ -618,12 +620,12 @@ Defines the standard Vamp virtual host gateway format.
   }
 ```
 
-Parameter |  Default |  Details  
-----------|--------|--------
-  enabled   |  true   |  if set to false, Vamp will not automatically generate gateway virtual host names. You can still specify in gateways/blueprints.
-  formats.gateways   |   $gateway.vamp  |  name format
-  formats.deployment-port   |  $port.$deployment.vamp   |  name format
-  formats.deployment-cluster-port   |  $port.$cluster.$deployment.vamp   |  name format
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  enabled  | true, false |  true   |  if set to false, Vamp will not automatically generate gateway virtual host names. You can still specify in gateways/blueprints.
+  formats.gateways  | -  |   $gateway.vamp  |  name format
+  formats.deployment-port   | - |  $port.$deployment.vamp   |  name format
+  formats.deployment-cluster-port   | - |  $port.$cluster.$deployment.vamp   |  name format
      
 ------
 
