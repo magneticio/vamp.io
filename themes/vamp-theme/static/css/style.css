@@ -1776,50 +1776,6 @@ pre + pre {
   #search.active {
     left: 0; }
 
-.search-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 80px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border-bottom: 1px solid #96ADAA;
-  pointer-events: auto; }
-  .search-bar__back {
-    width: 80px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-line-pack: center;
-    align-content: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    height: 79px;
-    background-color: white;
-    border-right: 1px solid #96ADAA;
-    text-decoration: none;
-    cursor: pointer; }
-    .search-bar__back i {
-      line-height: 80px;
-      color: #96ADAA; }
-  .search-bar__input {
-    font-size: 16px;
-    padding-left: 20px;
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.05em;
-    border: none; }
-    .search-bar__input:focus {
-      outline: none !important;
-      outline-style: none !important;
-      box-shadow: none !important;
-      border-color: transparent !important; }
-
 .search-results {
   position: absolute;
   top: 80px;
@@ -2086,7 +2042,7 @@ pre + pre {
   z-index: 20;
   background-color: #F0F5FA;
   height: 80px;
-  padding: 0 20px;
+  width: 100%;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -2098,30 +2054,36 @@ pre + pre {
   top: 0;
   opacity: 0;
   left: 100vw; }
-  .search-bar .suggestions {
+  .search-bar .inline-search-results {
     position: absolute;
-    background-color: #F0F5FA;
-    box-shadow: 0 0 8px 1px rgba(20, 45, 60, 0.25);
-    border-radius: 5px;
-    top: 85px;
+    top: 80px;
     min-width: 250px;
-    left: 83px;
-    padding: 10px 0;
+    left: 80px;
     opacity: 0;
     -webkit-transition: opacity ease-in 0.3s;
     transition: opacity ease-in 0.3s; }
-    .search-bar .suggestions.active {
+    .search-bar .inline-search-results.active {
       opacity: 1; }
-    .search-bar .suggestions li {
-      padding: 5px 20px;
+    .search-bar .inline-search-results a {
+      text-decoration: none; }
+    .search-bar .inline-search-results li {
+      padding: 10px 20px;
       font-weight: 300;
       letter-spacing: 0.01em;
-      cursor: pointer; }
-      .search-bar .suggestions li.selected {
+      cursor: pointer;
+      margin-top: 2px;
+      background-color: #F0F5FA;
+      border-left: 2px #FF405E solid; }
+      .search-bar .inline-search-results li .title {
+        font-weight: 500;
+        color: #234B5F; }
+      .search-bar .inline-search-results li .text, .search-bar .inline-search-results li .markdowned li, .markdowned .search-bar .inline-search-results li li, .search-bar .inline-search-results li .markdowned td, .markdowned .search-bar .inline-search-results li td, .search-bar .inline-search-results li .date {
+        font-weight: 100; }
+      .search-bar .inline-search-results li.selected {
         background-color: #C3D2DC; }
-      .search-bar .suggestions li:hover {
+      .search-bar .inline-search-results li:hover {
         background-color: #6991AA !important; }
-      .search-bar .suggestions li b {
+      .search-bar .inline-search-results li b {
         font-weight: 700; }
   @media all and (min-width: 1025px) {
     .search-bar {
@@ -2132,24 +2094,40 @@ pre + pre {
     opacity: 1;
     z-index: 9999;
     left: 0; }
-  .search-bar__label {
-    font-weight: 300;
-    letter-spacing: 0.01em;
-    font-size: 13px; }
+  .search-bar__icon {
+    height: 80px;
+    width: 80px;
+    background-color: #FF405E;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: white; }
   .search-bar__input {
     position: relative;
-    height: 100%; }
+    height: 100%;
+    width: calc(100% - 160px);
+    border: none; }
     .search-bar__input input {
       position: absolute;
-      height: 100%;
-      width: 90%;
-      background-color: transparent;
-      border: none;
-      letter-spacing: 0.01em;
-      font-size: 13px; }
+      padding: 0 20px;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      font-size: 24px;
+      letter-spacing: 0.05em;
+      font-weight: 300;
+      background: transparent;
+      border: none; }
   .search-bar__exit {
     height: 50%;
-    width: 30px;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
     display: -webkit-box;
     display: -ms-flexbox;

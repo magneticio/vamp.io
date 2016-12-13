@@ -191,9 +191,9 @@ function buildSearch() {
 
   $.getJSON(theBaseUrl + 'pages.json', function (data) {
     self.pages = data;
-    self.suggestionList = createSuggestionsList(data);
+    self.ionList = createionsList(data);
     $.getJSON(theBaseUrl + 'searchIndex.json', function (indexData) {
-      //self.suggestionList = indexData.corpusTokens;
+      //self.ionList = indexData.corpusTokens;
 
       self.theIndex = lunr.Index.load(indexData);
       onSearchPage();
@@ -215,7 +215,7 @@ function buildSearch() {
     return false;
   }
   var keyValueWords = {};
-  function createSuggestionsList(contentArray) {
+  function createionsList(contentArray) {
       var keyValueWords = {};
       for (var i = 0; i < contentArray.length; i++){
         var theContent = contentArray[i].content;
@@ -230,8 +230,8 @@ function buildSearch() {
       return Object.values(keyValueWords);
   }
 
-    var selectedSuggestionIndex = 0;
-    var suggestions = [];
+    var selectedionIndex = 0;
+    var ions = [];
 
 
     function setInputSelection(input, startPos, endPos) {
@@ -250,35 +250,57 @@ function buildSearch() {
         }
     }
 
+    function buildInlineSearchItem(title, text, url) {
+        return '<li><a href="'+url+'"><h3 class="title">'+title+'</h3><p class="text">'+text+'</p></a></li>'
+    }
+
     //when key is pressed
     $('.search-bar__input input').keydown($.debounce(250, function(event) {
-        if(event.keyCode == 27 || event.keyCode == 13 || event.keyCode == 38 || event.keyCode == 40 || event.keyCode == 9 || event.keyCode == 8) {
+        if(event.keyCode == 27 || event.keyCode == 13 || event.keyCode == 38 || event.keyCode == 40 || event.keyCode == 9) {
           return;
         }
-        suggestions = [];
-        selectedSuggestionIndex = 0;
+
+
+        ions = [];
+        selectedionIndex = 0;
 
         var currentValue = $(this).val();
-        for (var i = 0; i < self.suggestionList.length;i++) {
-          if(suggestions.length > 4) {
+
+        for (var i = 0; i < self.ionList.length;i++) {
+          if(ions.length > 4) {
             break;
           }
 
-          var possibleSuggestion = self.suggestionList[i];
+          var possibleion = self.ionList[i];
 
-          if(possibleSuggestion.indexOf(currentValue) == 0 && currentValue.length > 0) {
-            suggestions.push(self.suggestionList[i]);
+          if(possibleion.indexOf(currentValue) == 0 && currentValue.length > 0) {
+            ions.push(self.ionList[i]);
           }
         }
 
-        var theSuggestion = suggestions[0];
-
-        if(currentValue && theSuggestion) {
+        var theion = ions[0];
+        if(currentValue && theion && !(event.keyCode == 8)) {
             var startPos = currentValue.length;
-            var endPos = theSuggestion.length;
+            var endPos = theion.length;
 
-            $('.search-bar__input input').val(theSuggestion);
+            $('.search-bar__input input').val(theion);
             setInputSelection($('.search-bar__input input')[0], startPos, endPos);
+        }
+
+
+        //Find inline searchresults
+        console.log(currentValue);
+        if(getSearchResults(currentValue).length > 0) {
+            $('.inline-search-results').addClass('active');
+            $('.inline-search-results ul').empty();
+
+            getSearchResults(currentValue).slice(0, 3).forEach(function (searchResult) {
+                console.log(searchResult.content);
+                var inlineItemHtml = buildInlineSearchItem(searchResult.title, searchResult.content, searchResult.path);
+                $('.inline-search-results ul').append(inlineItemHtml);
+            });
+        } else {
+            $('.inline-search-results').removeClass('active');
         }
     }));
 
@@ -302,13 +324,7 @@ function buildSearch() {
 
       //enter key
       if (e.keyCode == 13) {
-        // Get latest suggestion
-          var selectedSuggestion = suggestions[selectedSuggestionIndex];
-          if(selectedSuggestion) {
-              window.location.href = '/search?s=' + selectedSuggestion;
-          } else {
-              window.location.href = '/search?s=' + $(this).val();
-          }
+          window.location.href = '/search?s=' + $(this).val();
       }
 
       //up arrow
@@ -323,22 +339,22 @@ function buildSearch() {
   });
 
   function selectNext() {
-      selectedSuggestionIndex  = (selectedSuggestionIndex+1) % suggestions.length;
-      setSelected(selectedSuggestionIndex);
+      selectedionIndex  = (selectedionIndex+1) % ions.length;
+      setSelected(selectedionIndex);
   }
 
   function selectPrevious() {
-      if(selectedSuggestionIndex === 0) {
-        selectedSuggestionIndex = suggestions.length -1;
+      if(selectedionIndex === 0) {
+        selectedionIndex = ions.length -1;
       } else {
-          selectedSuggestionIndex  = (selectedSuggestionIndex-1) % suggestions.length;
+          selectedionIndex  = (selectedionIndex-1) % ions.length;
       }
 
-      setSelected(selectedSuggestionIndex);
+      setSelected(selectedionIndex);
   }
 
   function setSelected(index) {
-    $('.suggestions ul li').each(function(i) {
+    $('.ions ul li').each(function(i) {
       $(this).removeClass('selected');
       if(index === i) {
         $(this).addClass('selected');
@@ -372,34 +388,50 @@ function buildSearch() {
   function onSearchPage() {
       // If query string is there, try to search
       var searchText = queries['s'];
+      $('#searchtext').text(searchText);
+      getSearchResults(searchText).forEach(function(searchResult) {
+          $('.search-result-items').append(buildSearchItemHtml(searchResult.title, searchResult.path, searchResult.content));
+      });
+  }
+
+
+
+  function getSearchResults(searchText) {
+      var pageResults = [];
       if (searchText) {
-          $('#searchtext').text(searchText);
           var searchResults = self.theIndex.search(searchText);
           searchResults.forEach(function(searchResult){
               var page = self.pages[searchResult.ref];
               page.path = page.path.replace(/\s+/g, '-');
               page.content = getTextSample(page.content, searchText);
-              $('.search-result-items').append(buildSearchItemHtml(page.title, page.path, page.content));
-
+              pageResults.push(page);
           });
-
       }
+
+      return pageResults;
   }
 
   function getTextSample(wholeText, word) {
-    var splittedText = wholeText.split(word.toLowerCase());
+      // First get the subsets of the words.
+      var subsetWord;
 
-    var returnText = wholeText.split(' ').slice(0, 40).join(' ');
 
-    if(splittedText[0] && splittedText[1]) {
-        var firstPart = splittedText[0].split(' ').slice(-20).join(' ');
-        var lastPart = splittedText[1].split(' ').slice(0,20).join(' ');
-        returnText = firstPart + '<b>' + word + '</b>' + lastPart;
-    }
-    return returnText;
+      for(var i = 0; i < word.length; i++) {
+          // Get specific subset
+          var subWord = word.substr(0, i + 1);
+          // Look if this subset is present in the text
+          var subsetPosition = wholeText.search(subWord);
+          if(subsetPosition !== -1) {
+              subsetWord = subWord;
+          }
+      }
+      var splittedText = wholeText.split(subsetWord);
+      var firstPart = splittedText[0].split(' ').slice(-20).join(' ');
+      var lastPart = splittedText.slice(1).join().split(' ').slice(0, 20).join(' ');
+      var whole = firstPart + '<b>' + subsetWord + '</b>' + lastPart;
+
+    return whole;
   }
-
-
 }
 
 

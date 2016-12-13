@@ -1691,55 +1691,6 @@ pre + pre {
   }
 }
 
-
-// Search
-.search-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 80px;
-  display: flex;
-  border-bottom: 1px solid $color-cascade;
-  pointer-events: auto;
-
-  &__back {
-    width: 80px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    height: 79px;
-    background-color: white;
-    border-right: 1px solid $color-cascade;
-    text-decoration: none;
-    cursor: pointer;
-
-    i {
-     line-height: 80px;
-      color: $color-cascade;
-
-    }
-  }
-
-  &__input {
-    font-size: 16px;
-    padding-left: 20px;
-    flex: 1;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.05em;
-    border: none;
-
-    &:focus {
-      outline: none !important;
-      outline-style: none !important;
-      box-shadow:none !important;
-      border-color:transparent !important;
-    }
-  }
-
-
-}
-
 .search-results {
   position: absolute;
   top: 80px;
@@ -2064,7 +2015,7 @@ pre + pre {
   z-index: 20;
   background-color: $color-white-squeeze;
   height: 80px;
-  padding: 0 20px;
+  width: 100%;
   align-items: center;
   box-shadow: 0 4px 2px -2px rgba(20, 45, 60, 0.25);
   display: none;
@@ -2074,15 +2025,12 @@ pre + pre {
   opacity: 0;
   left: 100vw;
 
-  .suggestions {
+  .inline-search-results {
     position: absolute;
-    background-color: $color-white-squeeze;
-    box-shadow: 0 0 8px 1px rgba(20, 45, 60, 0.25);
-    border-radius: 5px;
-    top: 80px + 5px;
+    //box-shadow: 0 0 8px 1px rgba(20, 45, 60, 0.25);
+    top: 80px;
     min-width: 250px;
-    left: 83px;
-    padding: 10px 0;
+    left: 80px;
     opacity: 0;
     transition: opacity ease-in 0.3s;
 
@@ -2090,11 +2038,27 @@ pre + pre {
       opacity: 1;
     }
 
+    a {
+      text-decoration: none;
+    }
+
     li {
-      padding: 5px 20px;
+      padding: 10px 20px;
       font-weight: 300;
       letter-spacing: 0.01em;
       cursor: pointer;
+      margin-top: 2px;
+      background-color: $color-white-squeeze;
+      border-left: 2px $color-radical-red solid;
+
+      .title {
+        font-weight: 500;
+        color: $color-blue-dianne;
+      }
+
+      .text {
+        font-weight: 100;
+      }
 
       &.selected {
         background-color: $color-jungle-mist;
@@ -2122,29 +2086,42 @@ pre + pre {
 
   }
 
-  &__label {
-    font-weight: 300;
-    letter-spacing: 0.01em;
-    font-size: $font-size-small;
+  &__icon {
+    height: 80px;
+    width: 80px;
+    background-color: $color-radical-red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
   }
 
   &__input {
     position: relative;
     height: 100%;
+    width: calc(100% - 160px);
+    border: none;
+    //background-color: transparent;
+
+
     input {
       position: absolute;
-      height: 100%;
-      width: 90%;
-      background-color: transparent;
+      padding: 0 20px;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      font-size: $font-size-medium;
+      letter-spacing: 0.05em;
+      font-weight: 300;
+      background: transparent;
       border: none;
-      letter-spacing: 0.01em;
-      font-size: $font-size-small;
     }
   }
 
   &__exit {
     height: 50%;
-    width: 30px;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
     display: flex;
     align-items: center;
