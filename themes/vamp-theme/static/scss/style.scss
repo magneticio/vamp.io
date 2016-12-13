@@ -2060,32 +2060,31 @@ pre + pre {
 }
 
 .search-bar {
-  top: 20px;
-  width: 100vw;
+  top: 0;
   z-index: 20;
   background-color: $color-white-squeeze;
-  height: 60px;
+  height: 80px;
   padding: 0 20px;
   align-items: center;
   box-shadow: 0 4px 2px -2px rgba(20, 45, 60, 0.25);
   display: none;
   position: fixed;
-  transition: 0.3s ease-in top;
-
+  transition: 0.3s ease-in left;
+  top: 0;
+  opacity: 0;
+  left: 100vw;
 
   .suggestions {
     position: absolute;
     background-color: $color-white-squeeze;
     box-shadow: 0 0 8px 1px rgba(20, 45, 60, 0.25);
     border-radius: 5px;
-    top: 60px + 5px;
+    top: 80px + 5px;
     min-width: 250px;
     left: 83px;
     padding: 10px 0;
     opacity: 0;
     transition: opacity ease-in 0.3s;
-
-
 
     &.active {
       opacity: 1;
@@ -2117,8 +2116,10 @@ pre + pre {
   }
 
   &.active {
-    top: 80px;
     opacity: 1;
+    z-index: 9999;
+    left: 0;
+
   }
 
   &__label {

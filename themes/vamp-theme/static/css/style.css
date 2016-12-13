@@ -2082,11 +2082,10 @@ pre + pre {
   opacity: 0; }
 
 .search-bar {
-  top: 20px;
-  width: 100vw;
+  top: 0;
   z-index: 20;
   background-color: #F0F5FA;
-  height: 60px;
+  height: 80px;
   padding: 0 20px;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2094,14 +2093,17 @@ pre + pre {
   box-shadow: 0 4px 2px -2px rgba(20, 45, 60, 0.25);
   display: none;
   position: fixed;
-  -webkit-transition: 0.3s ease-in top;
-  transition: 0.3s ease-in top; }
+  -webkit-transition: 0.3s ease-in left;
+  transition: 0.3s ease-in left;
+  top: 0;
+  opacity: 0;
+  left: 100vw; }
   .search-bar .suggestions {
     position: absolute;
     background-color: #F0F5FA;
     box-shadow: 0 0 8px 1px rgba(20, 45, 60, 0.25);
     border-radius: 5px;
-    top: 65px;
+    top: 85px;
     min-width: 250px;
     left: 83px;
     padding: 10px 0;
@@ -2127,8 +2129,9 @@ pre + pre {
       display: -ms-flexbox;
       display: flex; } }
   .search-bar.active {
-    top: 80px;
-    opacity: 1; }
+    opacity: 1;
+    z-index: 9999;
+    left: 0; }
   .search-bar__label {
     font-weight: 300;
     letter-spacing: 0.01em;
