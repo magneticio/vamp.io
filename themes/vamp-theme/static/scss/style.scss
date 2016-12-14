@@ -2028,8 +2028,9 @@ pre + pre {
   .inline-search-results {
     position: absolute;
     //box-shadow: 0 0 8px 1px rgba(20, 45, 60, 0.25);
-    top: 80px;
+    top: 82px;
     min-width: 250px;
+    max-width: 800px;
     left: 80px;
     opacity: 0;
     transition: opacity ease-in 0.3s;
@@ -2047,17 +2048,26 @@ pre + pre {
       font-weight: 300;
       letter-spacing: 0.01em;
       cursor: pointer;
-      margin-top: 2px;
+      border-bottom: 1px solid $color-bermuda-gray;
       background-color: $color-white-squeeze;
       border-left: 2px $color-radical-red solid;
+      transition: 0.07s all ease-in;
+
+      &:last-of-type {
+        border-bottom: none;;
+      }
 
       .title {
         font-weight: 500;
         color: $color-blue-dianne;
+        font-size: 15px;
+        margin-bottom: 5px;
       }
 
       .text {
-        font-weight: 100;
+        font-weight: 300;
+        font-size: $font-size-small;
+        line-height: 1.2;
       }
 
       &.selected {
@@ -2065,7 +2075,9 @@ pre + pre {
       }
 
       &:hover {
-        background-color: $color-bermuda-gray !important;
+        background-color: darken($color-white-squeeze, 5) !important;
+        border-left: 4px $color-radical-red solid;
+
       }
 
       b {

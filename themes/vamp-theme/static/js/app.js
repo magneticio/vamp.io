@@ -279,23 +279,21 @@ function buildSearch() {
         }
 
         var theion = ions[0];
-        if(currentValue && theion && !(event.keyCode == 8)) {
-            var startPos = currentValue.length;
-            var endPos = theion.length;
-
-            $('.search-bar__input input').val(theion);
-            setInputSelection($('.search-bar__input input')[0], startPos, endPos);
-        }
+        // if(currentValue && theion && !(event.keyCode == 8)) {
+        //     var startPos = currentValue.length;
+        //     var endPos = theion.length;
+        //
+        //     $('.search-bar__input input').val(theion);
+        //     setInputSelection($('.search-bar__input input')[0], startPos, endPos);
+        // }
 
 
         //Find inline searchresults
-        console.log(currentValue);
         if(getSearchResults(currentValue).length > 0) {
             $('.inline-search-results').addClass('active');
             $('.inline-search-results ul').empty();
 
-            getSearchResults(currentValue).slice(0, 3).forEach(function (searchResult) {
-                console.log(searchResult.content);
+            getSearchResults(currentValue).slice(0, 5).forEach(function (searchResult) {
                 var inlineItemHtml = buildInlineSearchItem(searchResult.title, searchResult.content, searchResult.path);
                 $('.inline-search-results ul').append(inlineItemHtml);
             });
@@ -401,7 +399,7 @@ function buildSearch() {
       if (searchText) {
           var searchResults = self.theIndex.search(searchText);
           searchResults.forEach(function(searchResult){
-              var page = self.pages[searchResult.ref];
+              var page = jQuery.extend(true, {}, self.pages[searchResult.ref]);
               page.path = page.path.replace(/\s+/g, '-');
               page.content = getTextSample(page.content, searchText);
               pageResults.push(page);
@@ -427,7 +425,8 @@ function buildSearch() {
       }
       var splittedText = wholeText.split(subsetWord);
       var firstPart = splittedText[0].split(' ').slice(-20).join(' ');
-      var lastPart = splittedText.slice(1).join().split(' ').slice(0, 20).join(' ');
+      var lastPart = splittedText.slice(1).join(subsetWord).split(' ').slice(0, 20).join(' ');
+
       var whole = firstPart + '<b>' + subsetWord + '</b>' + lastPart;
 
     return whole;

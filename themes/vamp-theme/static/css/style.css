@@ -2056,8 +2056,9 @@ pre + pre {
   left: 100vw; }
   .search-bar .inline-search-results {
     position: absolute;
-    top: 80px;
+    top: 82px;
     min-width: 250px;
+    max-width: 800px;
     left: 80px;
     opacity: 0;
     -webkit-transition: opacity ease-in 0.3s;
@@ -2071,18 +2072,27 @@ pre + pre {
       font-weight: 300;
       letter-spacing: 0.01em;
       cursor: pointer;
-      margin-top: 2px;
+      border-bottom: 1px solid #6991AA;
       background-color: #F0F5FA;
-      border-left: 2px #FF405E solid; }
+      border-left: 2px #FF405E solid;
+      -webkit-transition: 0.07s all ease-in;
+      transition: 0.07s all ease-in; }
+      .search-bar .inline-search-results li:last-of-type {
+        border-bottom: none; }
       .search-bar .inline-search-results li .title {
         font-weight: 500;
-        color: #234B5F; }
+        color: #234B5F;
+        font-size: 15px;
+        margin-bottom: 5px; }
       .search-bar .inline-search-results li .text, .search-bar .inline-search-results li .markdowned li, .markdowned .search-bar .inline-search-results li li, .search-bar .inline-search-results li .markdowned td, .markdowned .search-bar .inline-search-results li td, .search-bar .inline-search-results li .date {
-        font-weight: 100; }
+        font-weight: 300;
+        font-size: 13px;
+        line-height: 1.2; }
       .search-bar .inline-search-results li.selected {
         background-color: #C3D2DC; }
       .search-bar .inline-search-results li:hover {
-        background-color: #6991AA !important; }
+        background-color: #dde8f4 !important;
+        border-left: 4px #FF405E solid; }
       .search-bar .inline-search-results li b {
         font-weight: 700; }
   @media all and (min-width: 1025px) {
