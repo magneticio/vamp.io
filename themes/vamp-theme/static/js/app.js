@@ -227,32 +227,17 @@ function buildSearch() {
             }
         });
       }
+
       return Object.values(keyValueWords);
   }
 
-    var selectedionIndex = 0;
-    var ions = [];
-
-
-    function setInputSelection(input, startPos, endPos) {
-        input.focus();
-        if (typeof input.selectionStart != "undefined") {
-            input.selectionStart = startPos;
-            input.selectionEnd = endPos;
-        } else if (document.selection && document.selection.createRange) {
-            // IE branch
-            input.select();
-            var range = document.selection.createRange();
-            range.collapse(true);
-            range.moveEnd("character", endPos);
-            range.moveStart("character", startPos);
-            range.select();
-        }
-    }
+    var selectedInlineResultIndex = -1;
+    var inlineSearchResults = [];
 
     function buildInlineSearchItem(title, text, url) {
         return '<li><a href="'+url+'"><h3 class="title">'+title+'</h3><p class="text">'+text+'</p></a></li>'
     }
+
 
     //when key is pressed
     $('.search-bar__input input').keydown($.debounce(250, function(event) {
@@ -260,40 +245,15 @@ function buildSearch() {
           return;
         }
 
-
-        ions = [];
-        selectedionIndex = 0;
-
+        selectedInlineResultIndex = -1;
         var currentValue = $(this).val();
-
-        for (var i = 0; i < self.ionList.length;i++) {
-          if(ions.length > 4) {
-            break;
-          }
-
-          var possibleion = self.ionList[i];
-
-          if(possibleion.indexOf(currentValue) == 0 && currentValue.length > 0) {
-            ions.push(self.ionList[i]);
-          }
-        }
-
-        var theion = ions[0];
-        // if(currentValue && theion && !(event.keyCode == 8)) {
-        //     var startPos = currentValue.length;
-        //     var endPos = theion.length;
-        //
-        //     $('.search-bar__input input').val(theion);
-        //     setInputSelection($('.search-bar__input input')[0], startPos, endPos);
-        // }
-
 
         //Find inline searchresults
         if(getSearchResults(currentValue).length > 0) {
             $('.inline-search-results').addClass('active');
             $('.inline-search-results ul').empty();
-
-            getSearchResults(currentValue).slice(0, 5).forEach(function (searchResult) {
+            inlineSearchResults = getSearchResults(currentValue).slice(0, 5);
+            inlineSearchResults.forEach(function (searchResult) {
                 var inlineItemHtml = buildInlineSearchItem(searchResult.title, searchResult.content, searchResult.path);
                 $('.inline-search-results ul').append(inlineItemHtml);
             });
@@ -317,12 +277,24 @@ function buildSearch() {
   $('.search-bar__input input').keyup(function(e) {
       //escape key
       if (e.keyCode == 27) {
-          exitSearch(e);
+          console.log(selectedInlineResultIndex);
+          if(selectedInlineResultIndex < 0) {
+              exitSearch(e);
+          } else {
+              selectedInlineResultIndex = -1;
+              $('.inline-search-results ul li').each(function(i) {
+                  $(this).removeClass('selected');
+              });
+          }
       }
 
       //enter key
       if (e.keyCode == 13) {
-          window.location.href = '/search?s=' + $(this).val();
+          if(selectedInlineResultIndex < 0) {
+              window.location.href = '/search?s=' + $(this).val();
+          } else {
+              window.location.href = inlineSearchResults[selectedInlineResultIndex].path;
+          }
       }
 
       //up arrow
@@ -337,22 +309,22 @@ function buildSearch() {
   });
 
   function selectNext() {
-      selectedionIndex  = (selectedionIndex+1) % ions.length;
-      setSelected(selectedionIndex);
+      selectedInlineResultIndex  = (selectedInlineResultIndex+1) % inlineSearchResults.length;
+      setSelected(selectedInlineResultIndex);
   }
 
   function selectPrevious() {
-      if(selectedionIndex === 0) {
-        selectedionIndex = ions.length -1;
+      if(selectedInlineResultIndex === 0) {
+        selectedInlineResultIndex = inlineSearchResults.length -1;
       } else {
-          selectedionIndex  = (selectedionIndex-1) % ions.length;
+          selectedInlineResultIndex  = (selectedInlineResultIndex-1) % inlineSearchResults.length;
       }
 
-      setSelected(selectedionIndex);
+      setSelected(selectedInlineResultIndex);
   }
 
   function setSelected(index) {
-    $('.ions ul li').each(function(i) {
+    $('.inline-search-results ul li').each(function(i) {
       $(this).removeClass('selected');
       if(index === i) {
         $(this).addClass('selected');
@@ -366,6 +338,8 @@ function buildSearch() {
     event && event.stopPropagation();
     $('.search-bar__input input').val('');
     $('.search-bar__input input').focusout();
+    inlineSearchResults = [];
+    $('.inline-search-results ul').empty();
     $('.search-bar').toggleClass('active');
   }
 
