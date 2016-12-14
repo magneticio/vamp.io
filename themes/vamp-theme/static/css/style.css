@@ -2133,7 +2133,8 @@ pre + pre {
       letter-spacing: 0.05em;
       font-weight: 300;
       background: transparent;
-      border: none; }
+      border: none;
+      height: 100%; }
   .search-bar__exit {
     height: 50%;
     width: 80px;
