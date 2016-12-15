@@ -6,7 +6,7 @@ menu:
     name: "Roadmap"
     parent: "Resources"
     weight: 25
-dreaft: true
+draft: true
 ---
 
 
