@@ -213,7 +213,7 @@ Parameter  |  Options  |  Default |  Details
 
 ### Container-driver.marathon
 Required only when `container-driver.type = "marathon" `. note that you should also set `container-driver.mesos.url`.  
-See the [example configuration](/documentation/installation/example-configurations).
+
 ```
   marathon {
     user = ""
