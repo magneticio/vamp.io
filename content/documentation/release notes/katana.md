@@ -21,12 +21,14 @@ All changes since the last official release are described below. This applies on
 * Help panel in Vamp UI [#13](https://github.com/magneticio/vamp-ui/issues/13)
 * Configurable default container type [#762](https://github.com/magneticio/vamp/issues/762)
 * Support for Kuberntes driver with rkt runtime [#761](https://github.com/magneticio/vamp/issues/761)
+* Workflow environment variable values can be parametrised with workflow name (e.g. as $workflow or ${workflow}) [#862](https://github.com/magneticio/vamp/issues/862)
 
 ## What has changed
 * Custom event types - only alphanumerics, '_' and '-' are allowed in type names [#830](https://github.com/magneticio/vamp/issues/830)
 * Configurable Logstash URL (host, port) instead of just host [#831](https://github.com/magneticio/vamp/issues/831)
 * 500 response code if any of /info response parts return an error [#771](https://github.com/magneticio/vamp/issues/771)
 * Explicit mapping for supported workflow deployable types [#845](https://github.com/magneticio/vamp/issues/845)
+* All default workflow environment variables need to be specified, e.g. VAMP_URL and VAMP_URL or VAMP_KEY_VALUE_STORE_PATH [#862](https://github.com/magneticio/vamp/issues/862)
 
 {{< note title="What next?" >}}
 * Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases))
