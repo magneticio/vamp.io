@@ -1,11 +1,11 @@
 
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Run a Wordpress deployment and use gateways to control access
+title: Deploy Wordpress with mySQL and use gateways to control access
 menu:
   main:
     parent: "Tutorials"
-    name: "Run a Wordpress deployment"
+    name: "Deploy Wordpress"
     weight: 60
 ---
 Ths tutorial will demonstrate how Vamp builds deployments from artifacts and works with gateways. We'll do this by deploying Wordpress together with mySQL using official images from the Docker hub and setting up a gateway to run a canary release. We are going to use the Vamp UI, but you could just as easily perform all the described actions using the Vamp API.  
@@ -47,7 +47,7 @@ We will use mySQL as the Wordpress database, but you could try another database 
 
 ```
 name: mysql                    # name of our breed
-deployable: mysql:latest       # the publicly available Docker image
+deployable: mysql:5.6          # publicly available Docker image
 ports:
   mysql_port: 3306/tcp         # internal gateway - the default mySQL port (tcp) 
 environment_variables:         # required settings
@@ -65,16 +65,16 @@ Now let's do the same for our Wordpress service. The official Wordpress containe
   * Paste in the below breed YAML and click SAVE
 
 ```
-name: wp:1.0.0                 # name of our Wordpress service
-deployable: wordpress:latest   # publicly available Docker image        
+name: wp:1.0.0                          # name of our Wordpress service
+deployable: wordpress:4.6-php7.0-apache # publicly available Docker image        
 ports:
-  webport: 80/http             # internal gateway - the default apache port
+  webport: 80/http                      # internal gateway - the default apache port
 environment_variables:         
   WORDPRESS_DB_HOST: $db.host:$db.ports.mysql_port
   WORDPRESS_DB_USER: "wordpress_user"
   WORDPRESS_DB_PASSWORD: "wordpress_password"
-dependencies:                  # required for the Wordpress service to run
-  db: mysql                    # the mysql service from the db cluster
+dependencies:                           # required for the Wordpress service to run
+  db: mysql                             # the mysql service from the db cluster
 ```
 
 
