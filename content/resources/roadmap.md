@@ -9,12 +9,13 @@ menu:
 draft: true
 ---
 
+The Vamp roadmap gives you a high level overview of planned features and projects. 
 
-## Near term 
+## Coming soon
 
 
 ## Mid term
 
 
-## Long term
+## In the future
 
