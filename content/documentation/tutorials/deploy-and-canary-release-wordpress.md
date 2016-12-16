@@ -1,12 +1,14 @@
 
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Deploy Wordpress with mySQL and use gateways to control access
+title: Deploy and canary release Wordpress
 menu:
   main:
     parent: "Tutorials"
-    name: "Deploy Wordpress"
+    name: "Deploy and canary release Wordpress"
     weight: 60
+aliases:
+    - /documentation/tutorials/deploy-wordpress-and-mysql/
 ---
 Ths tutorial will demonstrate how Vamp builds deployments from artifacts and works with gateways. We'll do this by deploying Wordpress together with mySQL using official images from the Docker hub and setting up a gateway to run a canary release. We are going to use the Vamp UI, but you could just as easily perform all the described actions using the Vamp API.  
 

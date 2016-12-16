@@ -10,17 +10,19 @@ draft: true
 ---
 Blueprints are static artifacts. They describe how breeds work in runtime and what properties they should have. Read about [using blueprints](documentation/using-vamp/blueprints/).
 
-## Methods
+## Actions
  
  * [List](/documentation/api/api-blueprints/#list-blueprints) - return a list of all blueprints
- * [Get](/documentation/api/api-blueprints/#get-a-single-blueprint) - get a single blueprint
- * [Create](/documentation/api/api-blueprints/#create-a-blueprint) - create a new blueprint 
- * [Update](/documentation/api/api-blueprints/#update-a-blueprint) - update an existing blueprint
- * [Delete](/documentation/api/api-blueprints/#delete-a-blueprint) - delete a blueprint
+ * [Get](/documentation/api/api-blueprints/#get-blueprint) - get a single blueprint
+ * [Create](/documentation/api/api-blueprints/#create-blueprint) - create a new blueprint 
+ * [Update](/documentation/api/api-blueprints/#update-blueprint) - update an existing blueprint
+ * [Delete](/documentation/api/api-blueprints/#delete-blueprint) - delete a blueprint
 
 ## Blueprint resource
 
 Vamp requests can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/api-common-parameters) for details on how to set this.
+
+!! Would be good t show the return (complete) and also the minimum to send !!
 
 ### JSON
 
@@ -94,6 +96,8 @@ Vamp requests can be in JSON or YAML format (default JSON). See [common paramete
  environment variables |
  scale | Can be created separately and referenced from here or defined inline as part of the blueprint. See [scale resource](/documentation/)
 
+-----------
+
 ## List blueprints
 
 Returns a list of all stored blueprint resources. For details on pagination see [common parameters](/documentation/api/api-common-parameters)
@@ -115,7 +119,9 @@ If successful, will return a list of [blueprint resources](/documentation/api/ap
 ### Errors
 * **400 bad request** `expand_references` set to true and some breeds are not yet fully defined.
 
-## Get a single blueprint
+-----------
+
+## Get blueprint
 
 Returns details of a single, specified blueprint.
 
@@ -137,8 +143,9 @@ If successful, will return a single [blueprint resource](/documentation/api/api-
 ### Errors
 * **400 bad request** `expand_references` set to true and some breeds are not yet fully defined.
 
+-----------
 
-## Create a blueprint
+## Create blueprint
 
 Creates a new blueprint. Create operations are idempotent: sending a second request with the same content will not result in an error response (4xx).
 
@@ -161,7 +168,9 @@ A successful create operation has status code 201 `Created` and the response bod
 
 * ???
 
-## Update a blueprint
+-----------
+
+## Update blueprint
 
 Updates the content of a specific blueprint.
 
@@ -183,7 +192,9 @@ A successful update operation has status code 200 `OK` or 202 `Accepted` and the
 
 * **4xx** - an update will fail if a resource does not exist
 
-## Delete a blueprint
+-----------
+
+## Delete blueprint
 
 Deletes a blueprint. Delete operations are idempotent: sending a second request with the same content will not result in an error response (4xx).
 
