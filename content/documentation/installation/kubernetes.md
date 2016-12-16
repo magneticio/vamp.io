@@ -35,8 +35,30 @@ You can use `kubectl` directly from the Google Cloud Shell, e.g. to check the Ku
 ```bash
 $ kubectl version
 ```
+## Quickstart
 
-## Deploy etcd, Elasticsearch and Logstash
+To quickly get started with VAMP on kubernetes use the following command to automate the quick start described below (requires curl):
+
+```
+curl -s https://raw.githubusercontent.com/magneticio/vamp-docker/master/vamp-kubernetes/vamp_kube_quickstart.sh | bash
+```
+The script will poll for the external ip of Vamp, note that this process will take a while. if the installation was successful the ip will be displayed:
+
+```
+$ [OK] Quickstart finished, Vamp is running on http://104.xxx.xxx.xxx:8080
+```
+
+We don't recommend running this setup in production. You might want to add a HTTPS proxy in front of Vamp with at least basic authentication.
+
+To remove the quickstart deployment, use the following command:
+
+```
+curl -s https://raw.githubusercontent.com/magneticio/vamp-docker/master/vamp-kubernetes/vamp_kube_uninstall.sh | bash
+```
+
+## Manual deployment
+
+#### Deploy etcd, Elasticsearch and Logstash
 
 Now let's deploy `etcd` - this installation is based on the tutorial ([github.com/coreos - etcd on Kubernetes](https://github.com/coreos/etcd/tree/master/hack/kubernetes-deploy)).  Note that this is not a production grade setup - you would also need to take care of persistence and running multiple replicas of each pod.
 First, execute:
@@ -55,7 +77,7 @@ $ kubectl expose deployment elastic --protocol=UDP --port=10001 --name=logstash
 $ kubectl expose deployment elastic --protocol=TCP --port=5601 --name=kibana
 ```
 
-## Run Vamp
+#### Run Vamp
 
 Now we can run Vamp gateway agent as a `daemon set`:
 ```bash
