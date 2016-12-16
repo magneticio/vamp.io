@@ -14,12 +14,12 @@ Ths tutorial will demonstrate how Vamp builds deployments from artifacts and wor
 
 In this tutorial we will:
 
-1. [Create a Wordpress blueprint and deploy it](documentation/tutorials/deploy-wordpress-and-mysql/#create-a-wordpress-blueprint-and-deploy-it)  
+1. [Create a Wordpress blueprint and deploy it](documentation/tutorials/deploy-and-canary-release-wordpress/#create-a-wordpress-blueprint-and-deploy-it)  
   * Create breeds to describe the mySQL and Wordpress deployables and their requirements
   * Create a scale to specify the resources to be assigned at runtime
   * Create a blueprint that combines breeds with scales 
   * Deploy two instances of mySQL and Wordpress
-2. [Use gateways to control access to the deployments](documentation/tutorials/deploy-wordpress-and-mysql/#use-gateways-to-control-access-to-the-deployments) 
+2. [Canary release the deployments using gateways](documentation/tutorials/deploy-and-canary-release-wordpress/#canary-release-the-deployments-using-gateways) 
   * Add stable endpoints to access the running Wordpress deployments
   * Control traffic distribution between the two deployments 
   * Run a canary release
@@ -145,7 +145,7 @@ We now have two separate Wordpress deployments running, they should both be list
 
 ![](images/screens/v091/wordpress_deployments.png)
 
-## Use gateways to control access to the deployments
+## Canary release the deployments using gateways
 Vamp exposes internal and external gateways to allow access to clusters of services. Internal gateways are automatically created dynamic endpoints, external gateways are declared stable endpoints. Weights and conditions can be applied to gateways to control the traffic distribution across multiple potential routes. For example, internal gateways can control traffic distribution across the services deployed in a cluster, whereas external gateways might control traffic distribution across routes not managed by Vamp.  
 [Read more about gateway usage](documentation/using-vamp/gateways/#gateway-usage)
 
