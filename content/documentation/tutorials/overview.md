@@ -3,6 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: Tutorials
 aliases:
     - /documentation/tutorials/
+    - /documentation/guides/
 menu:
   main:
     parent: "Tutorials"
