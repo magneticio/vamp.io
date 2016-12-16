@@ -13,13 +13,15 @@ Kubernetes support is still in Alpha.
 {{< /note >}}
 
 #### Tested against
-This guide has been tested on Kubernetes 1.2 and 1.3. Minikube can also be used. ([github.com - minikube](https://github.com/kubernetes/minikube))
+This guide has been tested on Kubernetes 1.4.x and 1.5. Minikube 0.13.x or higher can also be used. ([github.com - minikube](https://github.com/kubernetes/minikube))
 
 #### Requirements
 
-* Google Container Engine cluster
+* Google Container Engine cluster or Minikube (0.13.1 or later)
 * Key-value store (like ZooKeeper, Consul or etcd)
 * Elasticsearch and Logstash
+* Enough (CPU and memory) resources on your K8s cluster to deploy the Vamp dependencies AND the containers at the scale you define. NB take a look into the available resources when a deployment keeps "hanging" to see if you actually have enough resources available.
+* Vamp currently only supports the 'default' namespace, so this should be available.
 
 ## Create a new GKE cluster
 
@@ -93,7 +95,8 @@ $ kubectl expose deployment vamp --protocol=TCP --port=8080 --name=vamp --type="
 ```
 
 
-As a reference, you can find the latest Vamp katana  Kubernetes configuration here: [github.com/magneticio - Vamp Kubernetes configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-kubernetes/application.conf). Vamp katana includes all changes since the last official release, check the [katana documentation](/documentation/release-notes/katana) for details.  
+As a reference, you can find the latest Vamp katana  Kubernetes configuration here: [github.com/magneticio - Vamp Kubernetes configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-kubernetes/application.conf). Vamp katana includes all changes since the last official release, check the [katana documentation](/documentation/release-notes/katana) for details.
+
 The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](contact) if you’d like further details.
 
 Wait a bit until Vamp is running and check out the Kubernetes services:
@@ -119,6 +122,8 @@ vamp-gateway-agent   10.3.254.234   146.148.22.145   80/TCP              2m
 ```
 
 Notice that the Vamp UI is exposed (in this example) on `http://146.148.118.45:8080`
+On Minikube you can use the handy `minikube service vamp` command to open the Vamp UI in your browser.
+In the Kubernetes dashboard under 'Services' you will see the external endpoint appear with a hyperlink icon behind it when the Vamp UI service is available.
 
 ## Deploy the Sava demo application
 
@@ -164,6 +169,8 @@ In this setup Vamp is deliberately configured to initiate exposure of all gatewa
 {{< /note >}}
 
 Now we can access our `sava` service on `http://104.155.24.47:9050`
+
+In the Kubernetes dashboard you will see the external endpoint appear with a hyperlink icon behind it in the "Services" overview when the external gateway of your deployment is available. You can recognise it by the port that's included in the endpoint that you have defined in your blueprint gateway definition.
 
 The default Kubernetes service type can be set in configuration: `vamp.container-driver.kubernetes.service-type`, possible values are `LoadBalancer` or `NodePort`. We can also access gateways using virtual hosts. Vamp Gateway Agent service is on IP `146.148.22.145` in this example, so:
 ```bash
