@@ -138,7 +138,7 @@ In Vamp 0.9.1, updates made to a breed will not be carried over to an associated
 ![](images/screens/v091/events_vampui_hello_workflow_1.png)
 
 ## Retrieve and filter events using the REST API
-Now we have a lot of events stored we can use the same REST API events endpoint to retrieve them. We can search for specific events and filter for specific types and tags. You can try this out in Postman or curl by sending a GET request to the `/api/v1/events` endpoint, you can even do this in your browser. Use `?type=` or `?tags=` (`generic` or `generic:specifc`) to search through stored events, note that it is not possible to filter for specific values.  
+Now we have a lot of events stored we can use the same REST API events endpoint to retrieve them. We can search for specific events and filter for specific types and tags. You can try this out in Postman or curl by sending a GET request to the `/api/v1/events` endpoint, you can even do this in your browser. Search through stored events using `?type=` or `?tags=` (following the tag format `generic` or `generic:specifc`). Note that it is not possible to filter for specific values.  
 See [using the Vamp API](/documentation/api/using-the-api) for details on pagination.
 
 ![](images/screens/v091/events_retrieve_events.png)
