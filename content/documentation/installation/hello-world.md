@@ -1,6 +1,8 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Hello world
+aliases:
+    - /getting-started/
 menu:
   main:
     parent: "Installation"

@@ -1,23 +1,25 @@
 
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Run a Wordpress deployment and use gateways to control access
+title: Deploy and canary release Wordpress
 menu:
   main:
     parent: "Tutorials"
-    name: "Run a Wordpress deployment"
+    name: "Deploy and canary release Wordpress"
     weight: 60
+aliases:
+    - /documentation/tutorials/deploy-wordpress-and-mysql/
 ---
 Ths tutorial will demonstrate how Vamp builds deployments from artifacts and works with gateways. We'll do this by deploying Wordpress together with mySQL using official images from the Docker hub and setting up a gateway to run a canary release. We are going to use the Vamp UI, but you could just as easily perform all the described actions using the Vamp API.  
 
 In this tutorial we will:
 
-1. [Create a Wordpress blueprint and deploy it](documentation/tutorials/deploy-wordpress-and-mysql/#create-a-wordpress-blueprint-and-deploy-it)  
+1. [Create a Wordpress blueprint and deploy it](documentation/tutorials/deploy-and-canary-release-wordpress/#create-a-wordpress-blueprint-and-deploy-it)  
   * Create breeds to describe the mySQL and Wordpress deployables and their requirements
   * Create a scale to specify the resources to be assigned at runtime
   * Create a blueprint that combines breeds with scales 
   * Deploy two instances of mySQL and Wordpress
-2. [Use gateways to control access to the deployments](documentation/tutorials/deploy-wordpress-and-mysql/#use-gateways-to-control-access-to-the-deployments) 
+2. [Canary release the deployments using gateways](documentation/tutorials/deploy-and-canary-release-wordpress/#canary-release-the-deployments-using-gateways) 
   * Add stable endpoints to access the running Wordpress deployments
   * Control traffic distribution between the two deployments 
   * Run a canary release
@@ -47,7 +49,7 @@ We will use mySQL as the Wordpress database, but you could try another database 
 
 ```
 name: mysql                    # name of our breed
-deployable: mysql:latest       # the publicly available Docker image
+deployable: mysql:5.6          # publicly available Docker image
 ports:
   mysql_port: 3306/tcp         # internal gateway - the default mySQL port (tcp) 
 environment_variables:         # required settings
@@ -65,16 +67,16 @@ Now let's do the same for our Wordpress service. The official Wordpress containe
   * Paste in the below breed YAML and click SAVE
 
 ```
-name: wp:1.0.0                 # name of our Wordpress service
-deployable: wordpress:latest   # publicly available Docker image        
+name: wp:1.0.0                          # name of our Wordpress service
+deployable: wordpress:4.6-php7.0-apache # publicly available Docker image        
 ports:
-  webport: 80/http             # internal gateway - the default apache port
+  webport: 80/http                      # internal gateway - the default apache port
 environment_variables:         
   WORDPRESS_DB_HOST: $db.host:$db.ports.mysql_port
   WORDPRESS_DB_USER: "wordpress_user"
   WORDPRESS_DB_PASSWORD: "wordpress_password"
-dependencies:                  # required for the Wordpress service to run
-  db: mysql                    # the mysql service from the db cluster
+dependencies:                           # required for the Wordpress service to run
+  db: mysql                             # the mysql service from the db cluster
 ```
 
 
@@ -143,7 +145,7 @@ We now have two separate Wordpress deployments running, they should both be list
 
 ![](images/screens/v091/wordpress_deployments.png)
 
-## Use gateways to control access to the deployments
+## Canary release the deployments using gateways
 Vamp exposes internal and external gateways to allow access to clusters of services. Internal gateways are automatically created dynamic endpoints, external gateways are declared stable endpoints. Weights and conditions can be applied to gateways to control the traffic distribution across multiple potential routes. For example, internal gateways can control traffic distribution across the services deployed in a cluster, whereas external gateways might control traffic distribution across routes not managed by Vamp.  
 [Read more about gateway usage](documentation/using-vamp/gateways/#gateway-usage)
 

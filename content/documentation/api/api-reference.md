@@ -484,7 +484,7 @@ clusters:
 
 ## Deployment scales
 
-Deployment scales are singular resources: you only have one scale per service. Deleting a scale is not a meaningfull action.
+Deployment scales are singular resources: you only have one scale per service. Deleting a scale is not a meaningful action.
 
 ### Get a deployment scale
 
@@ -569,14 +569,14 @@ Details on pagination, JSON and YAML content types and effective use of the API 
 
 ### List events
 
-Lists metrics and/or events without any pagination or filtering.
+Lists events (for example health and metrics). You can optionally filter the returned events by tag(s) or type. 
 
-    GET /api/v1/events/get
+    GET /api/v1/events
 
 | parameter     | description      |
 | ------------- |:----------------:|
-| `tag`           | Event tag, e.g. `GET /api/v1/events?tag=archiving&tag=breeds`
-
+| `tags`           | Filter returned events by tag(s), for example `GET /api/v1/events?tags=archiving&tag=breeds`
+| `type`           | Filter returned events by type, for example `GET /api/v1/events?type=metrics`
 
 {{< note title="Note!" >}}
 search criteria can be set in request body, checkout [examples](/documentation/using-vamp/events/#query-events-using-tags) for event stream.

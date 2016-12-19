@@ -47,11 +47,17 @@ In all of Vamp's components we follow a REST (resource oriented) schema, for ins
 /deployments/{deployment_name} 
 /deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}
 ```
-Tagging is done using a very similar schema: "{resource_group}", "{resource_group}:{name}". Some examples:
+Tagging is done using a very similar schema: "{resource_group}", "{resource_group}:{name}". For example:
 
 ```
-"deployments", "deployments:{deployment_name}"
-"deployments", "deployments:{deployment_name}", "clusters", "clusters:{cluster_name}", "services", "services",services:{service_name} "
+[
+    "deployments", 
+    "deployments:{deployment_name}", 
+    "clusters", 
+    "clusters:{cluster_name}", 
+    "services", 
+    "services:{service_name}"
+]
 ```
 
 This schema allows querying per group and per specific name. Getting all events related to all deployments is done by using tag "deployments". Getting events for specific deployment "deployments:{deployment_name}".

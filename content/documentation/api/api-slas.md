@@ -1,0 +1,67 @@
+---
+date: 2016-09-13T09:00:00+00:00
+title: API - SLAs
+menu:
+  main:
+    parent: "API"
+    identifier: "api-reference-slas"
+    weight: 35
+draft: true
+---
+intro text. Read about [using SLAs](documentation/using-vamp/slas/).
+
+## Actions
+ 
+ * [List](/documentation/api/api-slas/#list-slas) - return a list of all SLAs
+ * [Get](/documentation/api/api-slas/#get-sla) - get a single SLA
+ * [Create](/documentation/api/api-slas/#create-sla) - create a new SLA 
+ * [Update](/documentation/api/api-slas/#update-sla) - update a SLA
+ * [Delete](/documentation/api/api-slas/#delete-sla) - delete a SLA
+
+## SLA resource
+You can define SLAs inline or store them separately under a unique name and reference them from a blueprint, breed or gateway resorce.
+The minimum and API return resource examples below are shown in YAML format. Vamp API requests and responses can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/api-common-parameters) for details on how to set this.
+
+### Minimum resource
+The minimum fields required to successfully create a SLA.
+
+```
+
+```
+
+### API return resource
+The fields returned by the API after a SLA has been created (also visible in the UI)
+
+```
+ 
+```
+
+ Field name        | description          
+ -----------------|-----------------
+  |  
+  |
+  
+
+## List SLAs
+
+Returns a list of all stored SLAs. For details on pagination see [common parameters](/documentation/api/api-common-parameters)
+
+### Request syntax
+    GET /api/v1/slas
+
+| Request parameters         | options           | default          | description       |
+| ----------------- |:-----------------:|:----------------:| -----------------:|
+|  |  |  |  |
+
+### Request body
+The request body should be empty.
+
+### Response syntax
+
+
+### Errors
+* ???
+
+## Examples
+
+???
