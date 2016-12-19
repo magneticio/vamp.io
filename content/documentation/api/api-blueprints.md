@@ -20,81 +20,49 @@ Blueprints are static artifacts. They describe how breeds work in runtime and wh
 
 ## Blueprint resource
 
-Vamp requests can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/api-common-parameters) for details on how to set this.
+The minimum and API return resource examples below are shown in YAML format. Vamp API requests and responses can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/api-common-parameters) for details on how to set this. 
 
-!! Would be good t show the return (complete) and also the minimum to send !!
-
-### JSON
+### Minimum resource
+The minimum fields required to successfully create a blueprint.
 
 ```
-[
-  {
-    "name": "sava:1.0",
-    "kind": "blueprint",
-    "gateways": {
-      "9050": {
-        "port": "9050",
-        "sticky": null,
-        "virtual_hosts": [],
-        "routes": {
-          "sava/webport": {
-            "lookup_name": "58f685a567309e7e6a29d40190bdfd530188d650",
-            "weight": null,
-            "balance": "default",
-            "condition": null,
-            "condition_strength": null,
-            "rewrites": []
-          }
-        }
-      }
-    },
-    "clusters": {
-      "sava": {
-        "services": [
-          {
-            "breed": {
-              "name": "sava:1.0.0",
-              "kind": "breed",
-              "deployable": {
-                "type": "container/docker",
-                "definition": "magneticio/sava:1.0.0"
-              },
-              "ports": {
-                "webport": "8080/http"
-              },
-              "environment_variables": {},
-              "constants": {},
-              "arguments": [],
-              "dependencies": {}
-            },
-            "environment_variables": {},
-            "scale": {
-              "cpu": 0.2,
-              "memory": "64.00MB",
-              "instances": 1
-            },
-            "arguments": [],
-            "dialects": {}
-          }
-        ],
-        "gateways": {},
-        "dialects": {}
-      }
-    },
-    "environment_variables": {}
-  }
-]
+name: sava_minimum
+clusters:
+  sava:
+    services:
+    - breed: sava:1.0
 ```
 
- Field name        | description          
- -----------------|-----------------
- name |
- gateways | Can be created separately and referenced from here or defined inline as part of the blueprint. See [gateway resource](/documentation/api/api-gateways)
- clusters |
- services |
- breed | Can be created separately and referenced from here or defined inline as part of the blueprint. See [breed resource](/documentation/)
- environment variables |
- scale | Can be created separately and referenced from here or defined inline as part of the blueprint. See [scale resource](/documentation/)
+### API return resource
+The fields returned by the API after a blueprint has been created (also visible in the UI)
+
+```
+name: sava_minimum
+kind: blueprint
+gateways: {}
+clusters:
+  sava:
+    services:
+    - breed:
+        reference: sava:1.0
+      environment_variables: {}
+      arguments: []
+      dialects: {}
+    gateways: {}
+    dialects: {}
+environment_variables: {}
+```
+
+ Field name    |  Required  | description          
+ --------------|---|-----------------
+ name | yes |
+ kind | optional | Required to [send multiple resources](/documentation/api/api-overview/#send-multiple-resources-post-put-and-delete)
+ gateways | optional |  Can be created separately and referenced from here or defined inline as part of the blueprint. See [gateway resource](/documentation/api/api-gateways)
+ clusters | yes  |
+ services | yes |
+ breed |  yes |Can be created separately and referenced from here or defined inline as part of the blueprint. See [breed resource](/documentation/)
+ environment variables | optional |
+ scale | optional | Can be created separately and referenced from here or defined inline as part of the blueprint. If omitted, the default scale will be used (See [scale resource](/documentation/) and [reference.conf default scale](/documentation/installation/configuration-reference/#operation))
 
 -----------
 

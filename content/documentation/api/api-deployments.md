@@ -10,19 +10,26 @@ draft: true
 ---
 intro text. Read about [using deployments](documentation/using-vamp/deployments/).
 
-## Methods
+## Actions
  
  * [List](/documentation/api/api-deployments/#list-deployments) - return a list of all deployments
- * [Get](/documentation/api/api-deployments/#get-a-single-deployment) - get a single deployment
- * [Create](/documentation/api/api-deployments/#create-a-deployment) - create a new deployment 
- * [Update](/documentation/api/api-deployments/#update-a-deployment) - update a running deployment
- * [Delete](/documentation/api/api-deployments/#delete-a-deployment) - delete a deployment
+ * [Get](/documentation/api/api-deployments/#get-deployment) - get a single deployment
+ * [Create](/documentation/api/api-deployments/#create-deployment) - create a new deployment 
+ * [Update](/documentation/api/api-deployments/#update-deployment) - update a running deployment
+ * [Delete](/documentation/api/api-deployments/#delete-deployment) - delete a deployment
 
 ## Deployment resource
 
-Vamp requests can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/api-common-parameters) for details on how to set this.
+The minimum and API return resource examples below are shown in YAML format. Vamp API requests and responses can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/api-common-parameters) for details on how to set this.
 
-### JSON
+### Minimum resource
+
+```
+
+```
+
+
+### API return resource
 
 ```
 
