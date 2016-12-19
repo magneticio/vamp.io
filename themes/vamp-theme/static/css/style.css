@@ -1443,8 +1443,8 @@ body {
       color: #1AA379; }
 
 .laptop {
-  -webkit-transform: translateY(43px);
-  transform: translateY(43px);
+  -webkit-transform: translateY(40px);
+  transform: translateY(40px);
   position: relative;
   max-width: 70%; }
 

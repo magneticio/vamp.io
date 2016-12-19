@@ -2,6 +2,7 @@
 ---
 date: 2016-12-05T09:00:00+00:00
 title: Automate a canary release with rollback
+type: tutorial
 menu:
   main:
     parent: "Tutorials"
