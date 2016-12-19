@@ -1,3 +1,5 @@
+/* @flow */
+
 // $(window).on('load', documentReady);
 $(document).ready(function() {
   documentReady();
@@ -189,8 +191,12 @@ function buildSearch() {
 
   $.getJSON(theBaseUrl + 'pages.json', function (data) {
     self.pages = data;
+    self.ionList = createionsList(data);
     $.getJSON(theBaseUrl + 'searchIndex.json', function (indexData) {
+      //self.ionList = indexData.corpusTokens;
+
       self.theIndex = lunr.Index.load(indexData);
+      onSearchPage();
     }, function(error){
       console.log(error);
     });
@@ -198,61 +204,206 @@ function buildSearch() {
     console.log(error);
   });
 
-  
-  $('.search-bar__input').keydown($.debounce(250, function( event ) {
-    if ( event.which == 13 ) {
-      event.preventDefault();
+  function isFirstChar(string, chars) {
+    for(var i = 0; i < chars.length; i++) {
+        var theChar = chars[i];
+        if (string.charAt(0) === theChar || string.charAt(string.length - 1) === theChar || string.includes('--')) {
+            return true;
+        }
     }
-    console.log();
-    var searchResults = self.theIndex.search($(this).val());
-    console.log(searchResults);
-    $('.search-results ul').empty();
 
-
-    for (var sri = 0; sri < searchResults.length; sri++) {
-      if(searchResults[sri]) {
-        var parsedResult = self.pages[searchResults[sri].ref];
-        var goToUrl = theBaseUrl + ((parsedResult.path.split(' ').join('-')).substring(1, parsedResult.path.length));
-        $('.search-results ul').append('<li><a href="' + goToUrl + '"><h2>' + parsedResult.title + '</h2><p class="url">' + parsedResult.path.split(' ').join('-') + '</p><p class="the-content">' + parsedResult.content + '</p></li>');
+    return false;
+  }
+  var keyValueWords = {};
+  function createionsList(contentArray) {
+      var keyValueWords = {};
+      for (var i = 0; i < contentArray.length; i++){
+        var theContent = contentArray[i].content;
+        var theWords = theContent.split(' ');
+        theWords.forEach(function(theWord) {
+            var lowerCaseWord = theWord.toLowerCase();
+            if(lowerCaseWord.length > 3 && isNaN(lowerCaseWord.charAt(0)) && !isFirstChar(lowerCaseWord, ['"', '#', '\'', '$', '%', '(', ')', '*', '-', '.', ',', ':', '.'])) {
+                keyValueWords[lowerCaseWord] = lowerCaseWord;
+            }
+        });
       }
+
+      return Object.values(keyValueWords);
+  }
+
+    var selectedInlineResultIndex = -1;
+    var inlineSearchResults = [];
+
+    function buildInlineSearchItem(title, text, url) {
+        return '<li><a href="'+url+'"><h3 class="title">'+title+'</h3><p class="text">'+text+'</p></a></li>'
     }
 
-  }));
 
-  
+    //when key is pressed
+    $('.search-bar__input input').keydown($.debounce(250, function(event) {
+        if(event.keyCode == 27 || event.keyCode == 13 || event.keyCode == 38 || event.keyCode == 40 || event.keyCode == 9) {
+          return;
+        }
+
+        selectedInlineResultIndex = -1;
+        var currentValue = $(this).val();
+
+        //Find inline searchresults
+        if(getSearchResults(currentValue).length > 0) {
+            $('.inline-search-results').addClass('active');
+            $('.inline-search-results ul').empty();
+            inlineSearchResults = getSearchResults(currentValue).slice(0, 5);
+            inlineSearchResults.forEach(function (searchResult) {
+                var inlineItemHtml = buildInlineSearchItem(searchResult.title, searchResult.content, searchResult.path);
+                $('.inline-search-results ul').append(inlineItemHtml);
+            });
+        } else {
+            $('.inline-search-results').removeClass('active');
+        }
+    }));
+
   $('.search-button').click(function(event) {
-    $('#search').toggleClass('active');
-    $('.search-bar__input').focus();
-    event.preventDefault();
-    event.stopPropagation();
+    $('.search-bar').toggleClass('active');
+    $('.search-bar__input input').focus();
   });
 
-  $('.search-bar__back').click(function(event) {
-    event.preventDefault();
-    event.stopPropagation();
+  $('.search-bar__exit').click(function(event) {
+    console.log('test');
     exitSearch(event);
   });
 
-  //escape key
-  $('.search-bar__input').keyup(function(e) {
-    //escape key
-    if (e.keyCode == 27) {
-      exitSearch(e);
-    }
-    //enter key
-    if (e.keyCode == 13) {
 
-    }
-  
+  //Key presses
+  $('.search-bar__input input').keyup(function(e) {
+      //escape key
+      if (e.keyCode == 27) {
+          console.log(selectedInlineResultIndex);
+          if(selectedInlineResultIndex < 0) {
+              exitSearch(e);
+          } else {
+              selectedInlineResultIndex = -1;
+              $('.inline-search-results ul li').each(function(i) {
+                  $(this).removeClass('selected');
+              });
+          }
+      }
+
+      //enter key
+      if (e.keyCode == 13) {
+          if(selectedInlineResultIndex < 0) {
+              window.location.href = '/search?s=' + $(this).val();
+          } else {
+              window.location.href = inlineSearchResults[selectedInlineResultIndex].path;
+          }
+      }
+
+      //up arrow
+      if (e.keyCode == 38) {
+          selectPrevious();
+      }
+
+      //down arrow or tab
+      if (e.keyCode == 40 || e.keyCode == 9) {
+          selectNext();
+      }
   });
+
+  function selectNext() {
+      selectedInlineResultIndex  = (selectedInlineResultIndex+1) % inlineSearchResults.length;
+      setSelected(selectedInlineResultIndex);
+  }
+
+  function selectPrevious() {
+      if(selectedInlineResultIndex === 0) {
+        selectedInlineResultIndex = inlineSearchResults.length -1;
+      } else {
+          selectedInlineResultIndex  = (selectedInlineResultIndex-1) % inlineSearchResults.length;
+      }
+
+      setSelected(selectedInlineResultIndex);
+  }
+
+  function setSelected(index) {
+    $('.inline-search-results ul li').each(function(i) {
+      $(this).removeClass('selected');
+      if(index === i) {
+        $(this).addClass('selected');
+      }
+    });
+  }
+
 
   function exitSearch(event) {
     event && event.preventDefault();
     event && event.stopPropagation();
-    $('.search-bar__input').val('');
-    $('.search-bar__input').focusout();
-    $('#search').toggleClass('active');
+    $('.search-bar__input input').val('');
+    $('.search-bar__input input').focusout();
+    inlineSearchResults = [];
+    $('.inline-search-results ul').empty();
+    $('.search-bar').toggleClass('active');
+  }
 
+  //Let's get all the url parameters
+  var queries = {};
+  $.each(document.location.search.substr(1).split('&'), function(c,q){
+      var i = q.split('=');
+
+      i[0] && i[1] && (queries[i[0].toString()] = i[1].toString());
+  });
+
+
+
+  function buildSearchItemHtml(title, path, content) {
+      return '<div class=\"search-result-item\">\r\n<h2>' + title + '<\/h2>\r\n<p class=\"text\">'+ content +'<\/p>\r\n<a href=\"' + path + '" class=\"\">Read more &nbsp;<i class=\"fa fa-arrow-right\" aria-hidden=\"true\"><\/i>\r\n<\/a>\r\n<\/div>'
+  }
+
+  function onSearchPage() {
+      // If query string is there, try to search
+      var searchText = queries['s'];
+      $('#searchtext').text(searchText);
+      getSearchResults(searchText).forEach(function(searchResult) {
+          $('.search-result-items').append(buildSearchItemHtml(searchResult.title, searchResult.path, searchResult.content));
+      });
+  }
+
+
+
+  function getSearchResults(searchText) {
+      var pageResults = [];
+      if (searchText) {
+          var searchResults = self.theIndex.search(searchText);
+          searchResults.forEach(function(searchResult){
+              var page = jQuery.extend(true, {}, self.pages[searchResult.ref]);
+              page.path = page.path.replace(/\s+/g, '-');
+              page.content = getTextSample(page.content, searchText);
+              pageResults.push(page);
+          });
+      }
+
+      return pageResults;
+  }
+
+  function getTextSample(wholeText, word) {
+      // First get the subsets of the words.
+      var subsetWord;
+
+
+      for(var i = 0; i < word.length; i++) {
+          // Get specific subset
+          var subWord = word.substr(0, i + 1);
+          // Look if this subset is present in the text
+          var subsetPosition = wholeText.search(subWord);
+          if(subsetPosition !== -1) {
+              subsetWord = subWord;
+          }
+      }
+      var splittedText = wholeText.split(subsetWord);
+      var firstPart = splittedText[0].split(' ').slice(-20).join(' ');
+      var lastPart = splittedText.slice(1).join(subsetWord).split(' ').slice(0, 20).join(' ');
+
+      var whole = firstPart + '<b>' + subsetWord + '</b>' + lastPart;
+
+    return whole;
   }
 }
 

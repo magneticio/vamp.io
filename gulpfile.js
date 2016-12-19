@@ -27,6 +27,7 @@ gulp.task('sass:dev', function() {
     return mergedStream;
 });
 
+
 var jsLibsBase = './themes/vamp-theme/static/js/libs/';
 
 gulp.task('js', function() {

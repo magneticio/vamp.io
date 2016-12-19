@@ -1443,9 +1443,10 @@ body {
       color: #1AA379; }
 
 .laptop {
-  -webkit-transform: translateY(34px);
-  transform: translateY(34px);
-  position: relative; }
+  -webkit-transform: translateY(40px);
+  transform: translateY(40px);
+  position: relative;
+  max-width: 70%; }
 
 .image--smaller {
   width: 60%; }
@@ -1776,50 +1777,6 @@ pre + pre {
   #search.active {
     left: 0; }
 
-.search-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 80px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border-bottom: 1px solid #96ADAA;
-  pointer-events: auto; }
-  .search-bar__back {
-    width: 80px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-line-pack: center;
-    align-content: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    height: 79px;
-    background-color: white;
-    border-right: 1px solid #96ADAA;
-    text-decoration: none;
-    cursor: pointer; }
-    .search-bar__back i {
-      line-height: 80px;
-      color: #96ADAA; }
-  .search-bar__input {
-    font-size: 16px;
-    padding-left: 20px;
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.05em;
-    border: none; }
-    .search-bar__input:focus {
-      outline: none !important;
-      outline-style: none !important;
-      box-shadow: none !important;
-      border-color: transparent !important; }
-
 .search-results {
   position: absolute;
   top: 80px;
@@ -2077,6 +2034,162 @@ pre + pre {
       margin-left: 20px;
       cursor: pointer;
       height: 100%; }
+
+.landing-page .search-bar {
+  opacity: 0; }
+
+.search-bar {
+  top: 0;
+  z-index: 20;
+  background-color: #F0F5FA;
+  height: 80px;
+  width: 100%;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-shadow: 0 4px 2px -2px rgba(20, 45, 60, 0.25);
+  display: none;
+  position: fixed;
+  -webkit-transition: 0.3s ease-in left;
+  transition: 0.3s ease-in left;
+  top: 0;
+  opacity: 0;
+  left: 100vw; }
+  .search-bar .inline-search-results {
+    position: absolute;
+    top: 82px;
+    min-width: 250px;
+    max-width: 800px;
+    left: 80px;
+    opacity: 0;
+    -webkit-transition: opacity ease-in 0.3s;
+    transition: opacity ease-in 0.3s; }
+    .search-bar .inline-search-results.active {
+      opacity: 1; }
+    .search-bar .inline-search-results a {
+      text-decoration: none; }
+    .search-bar .inline-search-results li {
+      padding: 10px 20px;
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      border-bottom: 1px solid #6991AA;
+      background-color: #F0F5FA;
+      border-left: 2px #FF405E solid;
+      -webkit-transition: 0.07s all ease-in;
+      transition: 0.07s all ease-in; }
+      .search-bar .inline-search-results li:last-of-type {
+        border-bottom: none; }
+      .search-bar .inline-search-results li .title {
+        font-weight: 500;
+        color: #234B5F;
+        font-size: 15px;
+        margin-bottom: 5px; }
+      .search-bar .inline-search-results li .text, .search-bar .inline-search-results li .markdowned li, .markdowned .search-bar .inline-search-results li li, .search-bar .inline-search-results li .markdowned td, .markdowned .search-bar .inline-search-results li td, .search-bar .inline-search-results li .date {
+        font-weight: 300;
+        font-size: 13px;
+        line-height: 1.2; }
+      .search-bar .inline-search-results li.selected {
+        background-color: #C3D2DC; }
+      .search-bar .inline-search-results li:hover {
+        background-color: #dde8f4 !important;
+        border-left: 4px #FF405E solid; }
+      .search-bar .inline-search-results li b {
+        font-weight: 700; }
+  @media all and (min-width: 1025px) {
+    .search-bar {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; } }
+  .search-bar.active {
+    opacity: 1;
+    z-index: 9999;
+    left: 0; }
+  .search-bar__icon {
+    height: 80px;
+    width: 80px;
+    background-color: #FF405E;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: white; }
+  .search-bar__input {
+    position: relative;
+    height: 100%;
+    width: calc(100% - 160px);
+    border: none; }
+    .search-bar__input input {
+      position: absolute;
+      padding: 0 20px;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      font-size: 24px;
+      letter-spacing: 0.05em;
+      font-weight: 300;
+      background: transparent;
+      border: none;
+      height: 100%; }
+  .search-bar__exit {
+    height: 50%;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    line-height: 1; }
+
+.search-page {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll; }
+  @media all and (min-width: 1025px) {
+    .search-page {
+      padding-top: 120px; } }
+  .search-page .search-results-for {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    .search-page .search-results-for h1 {
+      display: inline-block;
+      height: 48px; }
+    .search-page .search-results-for p {
+      margin-left: 10px;
+      font-size: 24px;
+      display: inline-block;
+      -ms-flex-item-align: end;
+      align-self: flex-end;
+      line-height: 1;
+      padding-bottom: 4px; }
+  .search-page .search-result-item {
+    padding: 20px 0;
+    border-bottom: 1px solid #6991AA; }
+    .search-page .search-result-item:last-of-type {
+      border-bottom: none; }
+    .search-page .search-result-item h2 {
+      margin: 0;
+      padding: 0; }
+    .search-page .search-result-item .text, .search-page .search-result-item .markdowned li, .markdowned .search-page .search-result-item li, .search-page .search-result-item .markdowned td, .markdowned .search-page .search-result-item td, .search-page .search-result-item .date {
+      margin: 0;
+      padding: 0; }
+    .search-page .search-result-item a {
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      color: #FF405E; }
 
 #__bs_notify__ {
   top: 95% !important;
