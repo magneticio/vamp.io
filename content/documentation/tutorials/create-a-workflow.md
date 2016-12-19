@@ -9,6 +9,12 @@ menu:
 draft: true
 ---
 
+{{< note title="New in version 0.9.2" >}}
+* #789 suspend/restart workflows
+* #830 Custom event types - only alphanumerics, ‘_’ and ‘-’ are allowed in type names 
+* #845 Explicit mapping for supported workflow deployable types 
+{{< /note >}}
+
 In an earlier tutorial we showed how Vamp workflows can be used to automate all kinds of useful behaviour, for example to automate canary releasing with rollbacks, or autoscaling. In this tutorial, we will explain in more detail how the Vamp workflow system works and create a workflow that accesses the Vamp events system. We will first create and retrieve some custom events manually using the Vamp REST API, then create a simple workflow to automate these actions. Let's get started!
 
 ### Requirements

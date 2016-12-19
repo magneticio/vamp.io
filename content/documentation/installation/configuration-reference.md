@@ -7,7 +7,16 @@ menu:
     weight: 110
 ---
 
-Default Vamp settings are specified in `reference.conf`. Required parameters with no default must be specified in `application.conf` or using environment variables and/or Java system properties (not advised). 
+{{< note title="New in version 0.9.2" >}}
+* _#834 Kubernetes bearer as an optional configuration parameter_ 
+* _#840 Option to disable timing out deployment operations_  
+* _#761 Support for Kuberntes driver with rkt runtime_ 
+* _#762 Configurable default container type_  
+* #831 Configurable Logstash URL (host, port) instead of just host 
+* _#845 Explicit mapping for supported workflow deployable types_ 
+{{< /note >}}
+
+The default Vamp settings are specified in `reference.conf`. Required parameters with no default must be specified in `application.conf` or using environment variables and/or Java system properties (not advised). 
 
 The full `reference.conf` file can be found in the Vamp project repo ([github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)). 
 
@@ -48,6 +57,19 @@ stats {
 Parameter  |  Options  |  Default |  Details  
 ------------|-------|--------|--------
   timeout  | - |  5 seconds  |  Response timeout for each component
+
+-------
+## Model
+
+```
+model {
+  default-deployable-type = "container/docker"
+}
+```
+
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  default-deployable-type  | container/docker, container/rkt  |  container/docker  |  The default container type
 
 -------
 
@@ -143,6 +165,7 @@ container-driver {
     service-type = "NodePort"
     create-services = true
     vamp-gateway-agent-id = "vamp-gateway-agent"
+    bearer = ""
     token = "/var/run/secrets/kubernetes.io/serviceaccount/token"
   }
 
@@ -198,6 +221,7 @@ See the [example configuration](/documentation/installation/example-configuratio
     service-type = "NodePort"
     create-services = true
     vamp-gateway-agent-id = "vamp-gateway-agent"
+    bearer = ""
     token = "/var/run/secrets/kubernetes.io/serviceaccount/token"
   }
 ```
@@ -209,6 +233,7 @@ Parameter  |  Options  |  Default |  Details
   service-type          | NodePort, LoadBalancer   |   NodePort  |                 
   create-services        | true, false   |   true  |  when set to false, gateways will not be exposed as a service (access will only be possible through gateway agent)
   vamp-gateway-agent-id  | -   |  vamp-gateway-agent   |  
+  bearer   | - | - |
   token                  | -  |  /var/run/secrets/kubernetes.io/serviceaccount/token   |  
 
 ### Container-driver.marathon
@@ -271,10 +296,11 @@ workflow-driver {
   chronos.url = ""
 
   workflow {
-    deployable = {
-      type = "container/docker"
-      definition = ""
-    }
++   deployables = {
+ +     "application/javascript" = {
+ +       type = "container/docker"
+ +       definition = "" # workflow agent
+ +     }
     environment-variables = []
     scale {         
       instances = 1
@@ -300,9 +326,11 @@ Applied when a worklow is deployed (run).
 
 ```
   workflow {
-    deployable = {
-      type = "container/docker"
-      definition = ""
++   deployables = {
+ +     "application/javascript" = {
+ +       type = "container/docker"
+ +       definition = ""
+ +     }
     }
     environment-variables = []
     scale {         
@@ -318,8 +346,8 @@ Applied when a worklow is deployed (run).
 
 Parameter  |  Options  |  Default |  Details  
 ------------|-------|--------|--------
-  deployable.type  | - |   container/docker   |   applied if breed type is set to `application/javascript`. Overridden for other breed types.
-  deployable.definition  | -  |   -   |   applied if breed type is set to `application/javascript`. Overridden for other breed types.
+  deployables.type  | - |   container/docker   |   applied to the specified breed type. Overridden for other breed types.
+  deployables.definition  | -  |   -   |   applied to the specified breed type. Overridden for other breed types.
   environment-variables  | - |   -  |  will be added to every workflow
   scale   | - |    instances = 1 cpu = 0.1 memory = 64MB  |  Default scale. Used if not specified in workflow
   arguments  | - |    -  |  will be added to every workflow
@@ -550,8 +578,8 @@ Parameter  |  Options  |  Default |  Details
  period  | -    |   6 seconds  |  controls how often Vamp performs a sync between Vamp and the container driver. synchronization will be active only if period is greater than 0
  mailbox.mailbox-type   | -   |   akka.dispatch.NonBlockingBoundedMailbox   |  
  mailbox.mailbox-capacity | -   |     100  |  Queue for operational tasks (deployments etc.)
- timeout.ready-for-deployment   | -   |    600 seconds  |  controls how long Vamp waits for a service to start. If the service is not started before this time, the service is registered as "error"
- timeout.ready-for-undeployment  | -    |   600 seconds   |  similar to "ready-for-deployment" (above), but for the removal of services
+ timeout.ready-for-deployment   | -   |    600 seconds  |  controls how long Vamp waits for a service to start. If the service is not started before this time, the service is registered as "error". If set to 0, Vamp will keep trying forever.
+ timeout.ready-for-undeployment  | -    |   600 seconds   |  similar to "ready-for-deployment" (above), but for the removal of services.
  check.cpu   | true, false   |    false  |  
  check.memory  | true, false |    false   |  
  check.instances  | true, false |    false   |  

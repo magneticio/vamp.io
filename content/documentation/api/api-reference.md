@@ -8,6 +8,10 @@ menu:
     weight: 12
 ---
 
+{{< note title="New in version 0.9.2" >}}
+* #771 500 response code if any of `/info` response parts return an error 
+{{< /note >}}
+
 This page gives full details of all available API calls. See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, JSON and YAML content types and effective use of the API.
 
 * **Resource descriptions:** [blueprints](documentation/api/api-reference/#blueprints), [breeds](documentation/api/api-reference/#breeds), [conditions](documentation/api/api-reference/#conditions), [escalations](documentation/api/api-reference/#escalations), [scales](documentation/api/api-reference/#scales), [slas](documentation/api/api-reference/#slas)

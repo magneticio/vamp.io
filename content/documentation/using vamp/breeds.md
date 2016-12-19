@@ -6,6 +6,11 @@ menu:
     parent: "Using Vamp"
     weight: 20
 ---
+
+{{< note title="New in version 0.9.2" >}}
+* #762 Configurable default container type 
+{{< /note >}}
+
 Breeds are static descriptions of applications and services available for deployment. Each breed is described by the DSL in YAML notation or JSON, whatever you like. This description includes name, version, available parameters, dependencies etc.
 To a certain degree, you could compare a breed to a Maven artifact or a Ruby Gem description.
 

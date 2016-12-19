@@ -7,6 +7,10 @@ menu:
     weight: 50
 ---
 
+{{< note title="New in version 0.9.2" >}}
+* #862 Workflow environment variable values can be parametrised with workflow name, for example as `$workflow` or `${workflow}`. All default workflow environment variables now need to be specified, e.g. VAMP_URL and VAMP_KEY_VALUE_STORE_PATH 
+{{< /note >}}
+
 Breeds and blueprints can include lists of environment variables that will be injected into the container at runtime. You set environment variables with the `environment_variables` keyword or its shorter version `env`, e.g. both examples below are equivalent.
 
 ```yaml

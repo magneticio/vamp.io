@@ -7,6 +7,10 @@ menu:
     weight: 80
 ---
 
+{{< note title="New in version 0.9.2" >}}
+* #830 Custom event types - only alphanumerics, ‘_’ and ‘-’ are allowed in type names 
+{{< /note >}}
+
 Vamp collects events on all running services. Interaction with the API also creates events, like updating blueprints or deleting a deployment. Furthermore, Vamp allows third party applications to create events and trigger Vamp actions.
 
 All events are stored and retrieved using the Event API that is part of Vamp.

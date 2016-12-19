@@ -7,10 +7,15 @@ menu:
     weight: 120
 ---
 
+{{< note title="New in version 0.9.2" >}}
+* #789 suspend/restart workflows
+* #862 Workflow environment variable values can be parametrised with workflow name, for example as `$workflow` or `${workflow}`. All default workflow environment variables now need to be specified, e.g. VAMP_URL and VAMP_KEY_VALUE_STORE_PATH 
+* #845 Explicit mapping for supported workflow deployable types 
+{{< /note >}}
+
 A "workflow" is an automated change of the running system and its deployments and gateways. 
 Changing the number of running instances based on metrics (e.g. SLA) is an example of a workflow. 
 A workflow can be seen as a recipe or solution, however it has a more generic meaning not just related to "problematic" situations.
-
 
 Another example is a workflow that will decide automatically if a new version, when doing a canary release, should be accepted or not. 
 For instance, push the route up to 50% of traffic to the new version, compare metrics over some time (e.g. frequency of 5xx errors, response time), change to 100% and remove the old version. 
@@ -41,7 +46,7 @@ Each workflow has to have:
 
 Example:
 
-```yaml
+```
 ---
 name: metrics
 breed: metrics   # breed reference, inline definition can be also used
@@ -54,7 +59,7 @@ environment_variables:
   interval: 5s
 ```
 
-### Schedule
+## Schedule
 
 Following schedule types are supported:
 
