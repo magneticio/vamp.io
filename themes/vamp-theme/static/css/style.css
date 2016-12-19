@@ -1443,9 +1443,10 @@ body {
       color: #1AA379; }
 
 .laptop {
-  -webkit-transform: translateY(34px);
-  transform: translateY(34px);
-  position: relative; }
+  -webkit-transform: translateY(43px);
+  transform: translateY(43px);
+  position: relative;
+  max-width: 70%; }
 
 .image--smaller {
   width: 60%; }
