@@ -23,6 +23,10 @@ writeFile('searchIndex.json', base, JSON.stringify(searchIndex));
 
 function transverseTree(tree) {
   tree.forEach(treeItem => {
+    if(treeItem.path === 'content/index.md' || treeItem.path === 'content/index.json.md') {
+      return;
+    }
+    console.log(treeItem.path);
     if(isDirectory(treeItem)) {
       transverseTree(treeItem.children);
     } else {
