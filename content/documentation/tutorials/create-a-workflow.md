@@ -125,7 +125,7 @@ The workflow will be deployed and you will see the created events appearing in t
 ![](images/screens/v092/events_vampui_hello_workflow_5.png)
 
 ### Update the running workflow
-Updates made to a breed will not be carried over to an associated workflow directly. Vamp breeds are static artifacts, so updating the breed alone has no effect on a running workflow. To update a running workflow, it must be restarted. Let's update our running workflow so it runs every second.
+Updates made to a breed or workflow will not be carried over to the running workflow directly. To apply updates to a running workflow, it must be restarted. Let's update our running workflow so it creates an event every second.
  
 1. Go the WORKFLOWS tab in the Vamp UI
 * Open the `hello_workflow` workflow and update the VAMP_WORKFLOW_EXECUTION_PERIOD to 1 (this will cause the events to be generated every second)
