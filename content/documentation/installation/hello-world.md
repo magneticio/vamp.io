@@ -64,9 +64,15 @@ After some downloading and booting, your Docker log will show the Vamp has launc
 
 Now you can check if Vamp is home on `http://{docker-machine ip default}:8080/` and you're ready for the [Vamp getting started tutorials](/documentation/tutorials/overview)
 
-![](/images/screens/v091/quicksetup-marathon-infopanel.jpg)
+![](/images/screens/v092/quicksetup-marathon-infopanel.png)
   
-All the services exposed in this demo are listed below. If you run on Docker machine you will need to switch `localhost` for `docker-machine ip default`.
+Click on the **?** in the top right corner of any screen for quick access to page help, related documentation and tutorials.
+
+![](/images/screens/v092/quicksetup-helppanel.png)
+
+## Access the exposed services
+
+All the services exposed in this demo are listed below. Note that if you run on Docker machine you will need to switch `localhost` for `docker-machine ip default`.
 
 
 Exposed services |  
