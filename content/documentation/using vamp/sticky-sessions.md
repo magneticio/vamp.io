@@ -132,7 +132,7 @@ clusters:
 ```
 
 {{< note title="What next?" >}}
-* Read about [using Vamp with virtual hosts](/documentation/using-vamp/virtual-hosts/)
+* Read about [using Vamp for service discovery](/documentation/using-vamp/service-discovery/)
 * Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

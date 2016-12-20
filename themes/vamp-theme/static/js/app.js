@@ -244,7 +244,9 @@ function buildSearch() {
         });
       }
 
-      return Object.values(keyValueWords);
+      return Object.keys(keyValueWords).map(function (key) {
+          return keyValueWords[key];
+      });
   }
 
     var selectedInlineResultIndex = -1;

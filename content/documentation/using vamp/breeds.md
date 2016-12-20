@@ -47,7 +47,7 @@ deployable: company/my_frontend_service:0.1
 ```yaml
 ---
 deployable: 
-  type: docker
+  type: container/docker
   definition: company/my_frontend_service:0.1
 ```
 
