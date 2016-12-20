@@ -109,7 +109,7 @@ googleAnalytics = ""
 
 [[menu.main]]
 	name = "Using Vamp"
-	url = "documentation/using-vamp/artifacts"
+	url = "documentation/using-vamp/artifacts/"
 	parent = "Documentation"
 	weight = 40
 

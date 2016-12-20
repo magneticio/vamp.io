@@ -4,8 +4,10 @@ title: API Reference
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-0.9.1"
+    identifier: "api-reference-0.9.2"
     weight: 12
+aliases:
+    - /documentation/api/api-reference/
 ---
 
 This page gives full details of all available API calls. See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, JSON and YAML content types and effective use of the API.

@@ -32,14 +32,13 @@ All events stick to some basic rules:
 
 
 * All data in Vamp are events. 
-* Values can be empty or any JSON object.
+* Values can be any JSON object or it can be empty.
 * Timestamps are in ISO8601/RFC3339.
 * Timestamps are optional. If not provided, Vamp will insert the current time.
 * Timestamps are inclusive for querying.
 * Events can be tagged with metadata. A simple tag is just single string.
 * Querying data by tag assumes "AND" behaviour when multiple tags are supplied, i.e. ["one", "two"] would only fetch records that are tagged with both.
 * Supported event aggregations are: `average`, `min`, `max` and `count`.
-* Custom event type names should only include alphanumerics, ‘_’ and ‘-’
 
 ## How tags are organised
 
@@ -77,7 +76,7 @@ the default page size for a set of returned events is 30.
 * [Get all events](/documentation/using-vamp/events/#example-1)
 * [Response time for a cluster](/documentation/using-vamp/events/#example-2)
 * [Current sessions for a service](/documentation/using-vamp/events/#example-3)
-* [All known events for a service](/documentation/using-vamp/events/#example-4)
+* [ll known events for a service](/documentation/using-vamp/events/#example-4)
  
 #### Example 1
 **Get all events**
