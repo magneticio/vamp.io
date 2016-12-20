@@ -7,6 +7,10 @@ menu:
     weight: 100
 ---
 
+{{< note title="New in version 0.9.2" >}}
+* _#831 Configurable Logstash URL (host, port) instead of just host_ 
+{{< /note >}}
+
 Vamp configuration is held in a combination of the Vamp `application.conf` and `reference.conf` files following the HOCON file standard ([github.com/typesafehub - config](https://github.com/typesafehub/config)). You can override settings in the configuration files using Vamp environment variables or Java/JVM system properties.
 
 Configuration is built in layers following this order:
@@ -31,7 +35,7 @@ docker run --net=host \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=$(docker-machine ip default)" \
            -e "VAMP_INFO_MESSAGE=hey YOU! " \
-           magneticio/vamp-docker:0.9.1
+           magneticio/vamp-docker:0.9.2
 ```
 
 ### Java system properties
@@ -52,12 +56,15 @@ For more extensive customisations, you can create a new Docker image, extending 
 1. Copy application.conf [(github.com/magneticio - Vamp DCOS application.conf)](https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf)
 2. Adjust as required. Check the list of configuration settings (below) for details of the available optionsa
 3. Create a Dockerfile with the lines:  
-  `FROM magneticio/vamp-dcos:0.9.1`  
+  `FROM magneticio/vamp-dcos:0.9.2`  
   `ADD application.conf /usr/local/vamp/conf/`
 4. Build the image with `docker build --tag <username>/vamp`
 
+## Configuration not intended for Vamp
+It is possible to store configuration parameters not intended for use by Vamp itself in the Vamp `application.conf` file, such as configuration for Logstash or workflows. For example, you could chose to include the logstash URL in your custom `application.conf` file - Vamp would ignore the parameter, but it would be available to all workflows through the API. This is useful for storing shared local configuration parameters. Configuration specific to a single workflow is best set using environment variables or by hard coding the parameter.
+
 ## Access configuration through the API
-All configuration parameters can be retrieved from the Vamp API endpoint `config` or `configuration`. This means that the Vamp `application.conf` file can store parameters not intended for use by Vamp, for example, configuration for Logstash or workflows.
+All configuration parameters can be retrieved from the Vamp API endpoint `config` or `configuration`. 
 
 * Return all configuration parameters as a JSON object:  
   `GET` `/api/v1/config` .
@@ -74,6 +81,7 @@ api.config().each(function (config) {
     _.log(config['vamp.info.message']);
 });
 ```
+
 {{< note title="What next?" >}}
 * Check the [configuration reference](documentation/installation/configuration-reference)
 * Look at some [example configurations](documentation/installation/example-configurations)

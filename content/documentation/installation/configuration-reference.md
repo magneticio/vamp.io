@@ -12,7 +12,6 @@ menu:
 * _#840 Option to disable timing out deployment operations_  
 * _#761 Support for Kuberntes driver with rkt runtime_ 
 * _#762 Configurable default container type_  
-* #831 Configurable Logstash URL (host, port) instead of just host 
 * _#845 Explicit mapping for supported workflow deployable types_ 
 {{< /note >}}
 
@@ -296,12 +295,11 @@ workflow-driver {
   chronos.url = ""
 
   workflow {
-+   deployables = {
- +     "application/javascript" = {
- +       type = "container/docker"
- +       definition = "" # workflow agent
- +     }
-    environment-variables = []
+   deployables = {
+     "application/javascript" = {
+        type = "container/docker"
+        definition = ""
+      }
     scale {         
       instances = 1
       cpu = 0.1
@@ -326,11 +324,11 @@ Applied when a worklow is deployed (run).
 
 ```
   workflow {
-+   deployables = {
- +     "application/javascript" = {
- +       type = "container/docker"
- +       definition = ""
- +     }
+   deployables = {
+     "application/javascript" = {
+        type = "container/docker"
+        definition = ""
+      }
     }
     environment-variables = []
     scale {         

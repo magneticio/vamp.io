@@ -9,7 +9,7 @@ menu:
     weight: 20
 ---
 
-The Vamp hello world setup will run Mesos, Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)) and Vamp 0.9.1 inside a local Docker container with Vamp's Marathon driver.  We will do this in three simple steps (although it's really just one `docker run` command). You can use the hello world setup to work through the [getting started tutorials](/documentation/tutorials/overview) and try out some of Vamp's core features.
+The Vamp hello world setup will run Mesos, Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)) and Vamp 0.9.2 inside a local Docker container with Vamp's Marathon driver.  We will do this in three simple steps (although it's really just one `docker run` command). You can use the hello world setup to work through the [getting started tutorials](/documentation/tutorials/overview) and try out some of Vamp's core features.
 
 {{< note >}}
 This hello world set up is designed for demo purposes only - it is not production grade.
@@ -29,7 +29,7 @@ Vamp hello world on Docker for Mac or Windows is currently not supported. We're 
 
 ## Run Vamp
 
-Start the `magneticio/vamp-docker:0.9.1-marathon` container, taking care to pass in the right parameters for your system: 
+Start the `magneticio/vamp-docker:0.9.2-marathon` container, taking care to pass in the right parameters for your system: 
 
 #### Mac OS X 10.8+ or Windows 7+
 
@@ -40,7 +40,7 @@ docker run --net=host \
            -v `docker-machine ssh default "which docker"`:/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=$(docker-machine ip default)" \
-           magneticio/vamp-docker:0.9.1
+           magneticio/vamp-docker:0.9.2
 ```
 
 #### Linux
@@ -52,7 +52,7 @@ docker run --privileged \
            -v $(which docker):/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=$(hostname -I | awk '{print $1;}')" \
-           magneticio/vamp-docker:0.9.1
+           magneticio/vamp-docker:0.9.2
 ```
 
 Mounting volumes is important. [Read this great article about starting Docker containers from/within another Docker container](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/).

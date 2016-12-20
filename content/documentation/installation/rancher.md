@@ -77,7 +77,7 @@ First we'll run the Vamp Gateway Agent:
 * Use the `vamp` stack and go to `Add Service`:
 * Set scale to `Always run one instance of this container on every host`
 * `Name` ⇒ `vamp-gateway-agent`
-* `Select Image` ⇒ `magneticio/vamp-gateway-agent:0.9.1`
+* `Select Image` ⇒ `magneticio/vamp-gateway-agent:0.9.2`
 * Set `Command` ⇒ `--storeType=consul --storeConnection=consul:8500 --storeKey=/vamp/gateways/haproxy/1.6 --logstash=elastic:10001`
 * Go to `Networking` tab
 * Under `Hostname` select `Set a specific hostname:` and enter `vamp-gateway-agent`
@@ -93,7 +93,7 @@ Now we can deploy Vamp:
 
 * Use the `vamp` stack and go to `Add Service`:
 * `Name` ⇒ `vamp`
-* `Select Image` ⇒ `magneticio/vamp:0.9.1-rancher`
+* `Select Image` ⇒ `magneticio/vamp:0.9.2-rancher`
 * Go to `Add environment variable` VAMP_CONTAINER_DRIVER_RANCHER_URL with value of Rancher API endpoint, e.g. `http://172.17.0.2:8080/v1/projects/1a5`
 * (optional) add a `VAMP_CONTAINER_DRIVER_RANCHER_USER` variable with a [Rancher API access key](https://docs.rancher.com/rancher/v1.2/zh/api/api-keys/#environment-api-keys) if your Rancher installation has access control enabled
 * (optional) add a `VAMP_CONTAINER_DRIVER_RANCHER_PASSWORD` variable with a matching Rancher API secret key.

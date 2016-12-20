@@ -7,11 +7,7 @@ menu:
     weight: 50
 ---
 
-{{< note title="New in version 0.9.2" >}}
-* #862 Workflow environment variable values can be parametrised with workflow name, for example as `$workflow` or `${workflow}`. All default workflow environment variables now need to be specified, e.g. VAMP_URL and VAMP_KEY_VALUE_STORE_PATH 
-{{< /note >}}
-
-Breeds and blueprints can include lists of environment variables that will be injected into the container at runtime. You set environment variables with the `environment_variables` keyword or its shorter version `env`, e.g. both examples below are equivalent.
+Breeds, blueprints and workflows can include a list of environment variables to be injected into the container at runtime. You set environment variables with the `environment_variables` keyword or its shorter version `env`, e.g. both examples below are equivalent.
 
 ```yaml
 ---
@@ -24,18 +20,6 @@ environment_variables:
 env:
   PORT: 8080
 ```
-
-## Dependencies
-
-Breeds can also have dependencies on other breeds. These dependencies should be stated explicitly, similar to how you would do in a Maven pom.xml, a Ruby Gemfile or similar package dependency systems, i.e:
-
-```yaml
----
-dependencies:
-  cache: redis:1.1
-``` 
-
-In a lot of cases, dependencies coexist with interpolated environment variables or constants because exact values are not known untill deploy time.
 
 ## 'Hard' setting a variable
 
@@ -51,24 +35,12 @@ environment_variables:
   AWS_REGION: 'eu-west-1'     
 ```
 
-It is also possible to use wildcard `*` at the end of the name:
+## Place holders
 
-```yaml
----
-dependencies:
-  cache: redis:1.*
-```
-
-This will match any breed name that starts with `redis:1.`
-
-
-## Using place holders
+Place holders can be used to separate responsibilities across a company where different roles are working on the same project. For example, developers can create place holders for variables to be filled in by operations.
 
 Use the `~` character to define a place holder for a variable that should be filled in at runtime (i.e. when this breed actually gets deployed), but for which you do not yet know the actual value. 
 
-{{< tip title="Typical use case" >}}
-* When different roles in a company work on the same project. Developers can create place holders for variables that operations should fill in: it helps with separating responsibilities.
-{{< /tip >}}
 
 #### Example - `ORACLE_PASSWORD` designated as a place holder
 
@@ -92,7 +64,8 @@ The `$` value is escaped by `$$`. A more strict notation is `${some_reference}`
 
 ### Vamp host variable
 
-Vamp provides just one *magic** variable: the `host`. This resolves to the host or ip address of the referenced service. Strictly speaking, the `host` reference resolves to the gateway agent endpoint, but users do not need to concern themselves with this. Users can think of one-on-one connections where Vamp actually does server-side service discovery to decouple services.
+Vamp provides just one *magic** variable: `host`. This resolves to the host or ip address of the referenced service. Strictly speaking, the `host` reference resolves to the gateway agent endpoint, but users do not need to concern themselves with this. Users can think of one-on-one connections where Vamp actually does server-side service discovery to decouple services.
+
 
 #### Example - resolving variables from a dependency
 

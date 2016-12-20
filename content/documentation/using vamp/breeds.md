@@ -18,9 +18,8 @@ Breeds allow you to set the following properties:
 
 - [Deployable](/documentation/using-vamp/breeds/#deployable): the name of actual container or command that should be run.
 - [Ports](/documentation/using-vamp/breeds/#ports): a map of ports your container exposes.
+- [Dependencies](/documentation/using-vamp/breeds/#dependencies): a list of other breeds this breed depends on.
 - [Environment variables](/documentation/using-vamp/environment-variables/): a list of variables (interpolated or not) to be made available at runtime.
-- [Dependencies](/documentation/using-vamp/environment-variables/#dependencies): a list of other breeds this breed depends on.
-
 
 ## Deployable
 
@@ -41,8 +40,8 @@ This breed, with a unique name, describes a deployable and the port it works on.
 
 ### Docker deployables
 
-By default, the deployable is a Docker container. 
-We could also make this explicit by setting type to `docker`. The following statements are equivalent:
+Docker images are pulled by your container manager from any of the repositories configured. By default that would be the public Docker hub, but it could also be a private repo.
+The default deployable type is a Docker container, but we could also make this explicit by setting type to `docker`. The following statements are equivalent:
 
 ```yaml
 ---
@@ -59,7 +58,6 @@ deployable:
 This shows the full (expanded) deployable with `type` and `definition`.
 
 
-Docker images are pulled by your container manager from any of the repositories configured. By default that would be the public Docker hub, but it could also be a private repo.
 
 ### Other deployables
 
@@ -128,6 +126,30 @@ Ports come in two flavors:
 {{< /note >}}
 
 Notice we can give the ports sensible names. This specific deployable has `web` port for customer traffic, an `admin` port for admin access and a `redis` port for some caching probably. These names come in handy when we later compose different breeds in blueprints.
+
+## Dependencies
+
+Breeds can also have dependencies on other breeds. These dependencies should be stated explicitly, similar to how you would do in a Maven pom.xml, a Ruby Gemfile or similar package dependency systems, i.e:
+
+```yaml
+---
+dependencies:
+  cache: redis:1.1
+``` 
+
+It is also possible to use wildcard `*` at the end of the name. This will match any breed name that starts with `redis:1.`:
+
+```yaml
+---
+dependencies:
+  cache: redis:1.*
+```
+
+
+
+In a lot of cases, dependencies coexist with interpolated environment variables or constants because exact values are not known untill deploy time.  
+[Read more about environment variables](/documentation/using-vamp/environment-variables/)
+
 
 {{< note title="What next?" >}}
 * Read about [Vamp blueprints](/documentation/using-vamp/blueprints/)

@@ -9,13 +9,13 @@ menu:
 ---
 
 {{< note title="New in version 0.9.2" >}}
-* #771 500 response code if any of `/info` response parts return an error 
+* _#771 500 response code if any of `/info` response parts return an error_ 
 {{< /note >}}
 
 This page gives full details of all available API calls. See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, JSON and YAML content types and effective use of the API.
 
 * **Resource descriptions:** [blueprints](documentation/api/api-reference/#blueprints), [breeds](documentation/api/api-reference/#breeds), [conditions](documentation/api/api-reference/#conditions), [escalations](documentation/api/api-reference/#escalations), [scales](documentation/api/api-reference/#scales), [slas](documentation/api/api-reference/#slas)
-* **Runtime entities:** [deployments](documentation/api/api-reference/#deployments), [deployment scales](documentation/api/api-reference/#deployment-scales), [deployment SLAs](documentation/api/api-reference/#deployment-slas), [gateways](documentation/api/api-reference/#gateways)  
+* **Runtime entities:** [deployments](documentation/api/api-reference/#deployments), [deployment scales](documentation/api/api-reference/#deployment-scales), [deployment SLAs](documentation/api/api-reference/#deployment-slas), [gateways](documentation/api/api-reference/#gateways), [workflows](documentation/api/api-reference/#workflows)    
 * **Data:** [events](documentation/api/api-reference/#events), [health](documentation/api/api-reference/#health), [metrics](documentation/api/api-reference/#metrics)
 * **System:** [info, config, haproxy](documentation/api/api-reference/#system)
 * **Debug:** [sync, sla, escalation](documentation/api/api-reference/#debug)
@@ -566,6 +566,17 @@ Accepts JSON or YAML formatted gateways. Set the `Content-Type` request header t
 
 ---------
 
+## Workflows
+Each workflow is represented as an artifact and they follow basic CRUD operation patterns as any other artifact. Note that workflows must be restarted to apply changes.  
+Read about [using workflows](documentation/using-vamp/workflows/).  
+Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
+
+```
+  /api/v1/workflows
+```
+
+---------
+
 ## Events
 
 For specific usage examples, see [using events](documentation/using-vamp/events/).  
@@ -645,8 +656,7 @@ Vamp provides a set of API endpoints that help with getting general health/confi
 
 ### Get runtime info
 
-Lists information about Vamp's JVM environment and runtime status. 
-Also lists info for configured persistence layer and container driver status.
+The `/info` API endpoint lists details of Vamp's JVM environment and runtime status, the configured persistence layer and the container driver status.  If any `/info` response parts return an error, the API will return a 500 response code. 
 
 	GET /api/v1/info
 	

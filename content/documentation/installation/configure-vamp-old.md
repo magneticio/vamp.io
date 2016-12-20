@@ -49,8 +49,8 @@ vamp {
 ### persistence
 
 {{< note title="Updated for Vamp 0.9.1" >}}
-* In the [Vamp configuration](/documentation/installation/configure-vamp/#persistence) we set `persistence caching` by default to `false`. In our Vamp images we set this to `true` to make it easier on the persistence store load. Check out this [default Vamp 0.9.1 configuration](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf) for reference.
-* We've added a key-value store as a persistence data store. Check out this [default Vamp 0.9.1 configuration](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf) for reference.
+* In the [Vamp configuration](/documentation/installation/configure-vamp/#persistence) we set `persistence caching` by default to `false`. In our Vamp images we set this to `true` to make it easier on the persistence store load. Check out this [default Vamp 0.9.2 configuration](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf) for reference.
+* We've added a key-value store as a persistence data store. Check out this [default Vamp 0.9.2 configuration](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf) for reference.
 {{< /note >}}
 
 Vamp uses Elasticsearch for persistence and ZooKeeper ([apache.org - ZooKeeper](https://zookeeper.apache.org/)), etcd ([coreos.com  - etcd documentation](https://coreos.com/etcd/docs/latest/)) or Consul ([consul.io](https://www.consul.io/)) for key-value store (keeping HAProxy configuration).
