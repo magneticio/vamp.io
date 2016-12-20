@@ -44,6 +44,22 @@ function documentReady() {
     hljs.highlightBlock(block);
 
     $(this).append('<button class="copy-button" data-clipboard-text="'+codeText+'"><p class="copy"><i class="fa fa-lg fa-paperclip" aria-hidden="true"></i>&nbsp;&nbsp;Copy</p><p class="copied"><i class="fa fa-lg fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Copied to clipboard</p></button>');
+    var heightOfCodeblock = $(this).height();
+    if (heightOfCodeblock > 325) {
+      $(this).height(365);
+      $(this).css('overflow', 'hidden');
+      $(this).append('<button class="expand-code-block-button"><p>Read more</p></button>');
+    }
+  });
+
+  $('.expand-code-block-button').click(function() {
+      if($(this).parent().height() > 446) {
+        $(this).parent().height(365);
+        $(this).find('p').text('Read More');
+      } else {
+        $(this).parent().height('');
+        $(this).find('p').text('Collapse');
+      }
   });
 
   new Clipboard('.copy-button');
