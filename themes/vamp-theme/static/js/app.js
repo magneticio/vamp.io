@@ -53,12 +53,12 @@ function documentReady() {
   });
 
   $('.expand-code-block-button').click(function() {
-      if($(this).parent().height() > 365) {
+      if($(this).parent().height() > 446) {
         $(this).parent().height(365);
-        $(this).text('Read More');
+        $(this).find('p').text('Read More');
       } else {
-        $(this).parent().height('initial');
-        $(this).text('Collapse');
+        $(this).parent().height('');
+        $(this).find('p').text('Collapse');
       }
   });
 
