@@ -7,11 +7,6 @@ menu:
     weight: 50
 ---
 
-{{< note title="New in version 0.9.2" >}}
-* #761 Support for Kuberntes driver with rkt runtime 
-* #834 Kubernetes bearer as an optional configuration parameter 
-{{< /note >}}
-
 The installation will run Vamp together with etcd, Elasticsearch and Logstash on Google container engine and kubernetes. (We will also deploy our demo Sava application to give you something to play around on). Before you begin, it is advisable to try out the official Quickstart for Google Container Engine tutorial first ([google.com - container engine quickstart](https://cloud.google.com/container-engine/docs/quickstart)).  
 
 {{< note title="Note!" >}}

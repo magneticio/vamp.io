@@ -7,12 +7,6 @@ menu:
     weight: 120
 ---
 
-{{< note title="New in version 0.9.2" >}}
-* _#789 suspend/restart workflows_
-* _#862 Workflow environment variable values can be parametrised with workflow name, for example as `$workflow` or `${workflow}`._ 
-* _Vamp node client #6 configurable workflow cache_
-{{< /note >}}
-
 A "workflow" is an automated change of the running system and its deployments and gateways. 
 Changing the number of running instances based on metrics (e.g. SLA) is an example of a workflow. 
 A workflow can be seen as a recipe or solution, however it has a more generic meaning not just related to "problematic" situations.

@@ -7,14 +7,6 @@ menu:
     weight: 110
 ---
 
-{{< note title="New in version 0.9.2" >}}
-* _#834 Kubernetes bearer as an optional configuration parameter_ 
-* _#840 Option to disable timing out deployment operations_  
-* _#761 Support for Kuberntes driver with rkt runtime_ 
-* _#762 Configurable default container type_  
-* _#845 Explicit mapping for supported workflow deployable types_ 
-{{< /note >}}
-
 The default Vamp settings are specified in `reference.conf`. Required parameters with no default must be specified in `application.conf` or using environment variables and/or Java system properties (not advised). 
 
 The full `reference.conf` file can be found in the Vamp project repo ([github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)). 

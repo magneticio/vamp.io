@@ -7,7 +7,7 @@ menu:
     weight: 50
 ---
 
-Vamp 0.9.3 includes:
+Vamp 0.9.2 includes:
 
 * Container-scheduler agnostic API
 * Percentage and condition based programmable routing

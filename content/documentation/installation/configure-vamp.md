@@ -7,10 +7,6 @@ menu:
     weight: 100
 ---
 
-{{< note title="New in version 0.9.2" >}}
-* _#831 Configurable Logstash URL (host, port) instead of just host_ 
-{{< /note >}}
-
 Vamp configuration is held in a combination of the Vamp `application.conf` and `reference.conf` files following the HOCON file standard ([github.com/typesafehub - config](https://github.com/typesafehub/config)). You can override settings in the configuration files using Vamp environment variables or Java/JVM system properties.
 
 Configuration is built in layers following this order:
