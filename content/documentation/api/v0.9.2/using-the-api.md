@@ -6,6 +6,8 @@ menu:
     parent: "API"
     identifier: "using-vamp-api-0.9.2"
     weight: 22
+aliases:
+    - /documentation/api/using-the-api/
 ---
 {{< note title="Websockets support" >}}
 The HTTP API supports websockets. Further details coming soon.

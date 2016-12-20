@@ -6,6 +6,8 @@ menu:
     identifier: "deployments-v092"
     parent: "Using Vamp"
     weight: 40
+aliases:
+    - /documentation/using-vamp/deployments/
 ---
 
 A deployment is a "running" blueprint. Over time, new blueprints can be merged with existing deployments or parts of the running blueprint can be removed from it. Each deployment can be exported as a blueprint and 

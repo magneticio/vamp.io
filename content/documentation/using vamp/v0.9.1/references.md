@@ -49,9 +49,9 @@ When you begin to work with Vamp, you will probably start with inline artifacts.
 
 ### Example use of references
 
-* [Create a library of containers](/documentation/using-vamp/references/#example-1)
-* [Fix scales per environment](/documentation/using-vamp/references/#example-2)
-* [Reuse a complex condition](/documentation/using-vamp/references/#example-3)
+* [Create a library of containers](/documentation/using-vamp/v0.9.1/references/#example-1)
+* [Fix scales per environment](/documentation/using-vamp/v0.9.1/references/#example-2)
+* [Reuse a complex condition](/documentation/using-vamp/v0.9.1/references/#example-3)
 
 
 #### Example 1 
@@ -112,7 +112,7 @@ condition: Cookie SHOPSESSION Contains shopping_basket_items=0
 
 
 {{< note title="What next?" >}}
-* Read about [Vamp workflows](/documentation/using-vamp/workflows/)
+* Read about [Vamp workflows](/documentation/using-vamp/v0.9.1/workflows/)
 * Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

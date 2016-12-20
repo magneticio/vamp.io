@@ -162,7 +162,7 @@ clusters:
 ```
 
 {{< note title="What next?" >}}
-* Read about [Referencing artifacts in Vamp](/documentation/using-vamp/references/)
+* Read about [Referencing artifacts in Vamp](/documentation/using-vamp/v0.9.1/references/)
 * Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

@@ -6,6 +6,8 @@ menu:
     identifier: "events-v092"
     parent: "Using Vamp"
     weight: 80
+aliases:
+    - /documentation/using-vamp/events/
 ---
 
 Vamp collects events on all running services. Interaction with the API also creates events, like updating blueprints or deleting a deployment. Furthermore, Vamp allows third party applications to create events and trigger Vamp actions.

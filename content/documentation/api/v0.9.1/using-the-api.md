@@ -14,7 +14,7 @@ We've now added support for Websockets to our HTTP API. More information will fo
 Vamp has one REST API. This page explains how to specify pagination, and json and yaml content types, and how to effectively use the Vamp REST API.
 
 #### See also
-* [Full details of all available API calls](/documentation/api/api-reference/)
+* [Full details of all available API calls](/documentation/api/v.0.9.1/api-reference/)
 
 ## Content types
 
@@ -79,4 +79,4 @@ If specific endpoints are used (e.g. `/api/v1/blueprints`) then `kind` needs to 
 -------------
 
 #### See also
-* [Full details of all available API calls](/documentation/api/api-reference/)
+* [Full details of all available API calls](/documentation/api/v.0.9.1/api-reference/)

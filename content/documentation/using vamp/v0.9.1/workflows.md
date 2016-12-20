@@ -170,7 +170,7 @@ JavaScript breeds will be executed by Vamp Workflow Agent ([github.com/magnetici
 For additional JavaScript API check out Vamp Node Client ([github.com/magneticio - Vamp node client](https://github.com/magneticio/vamp-node-client)) project.
 
 {{< note title="What next?" >}}
-* Read about [Sticky sessions](/documentation/using-vamp/sticky-sessions/)
+* Read about [Sticky sessions](/documentation/using-vamp/v0.9.1/sticky-sessions/)
 * Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

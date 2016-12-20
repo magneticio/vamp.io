@@ -137,7 +137,7 @@ Note that even without Vamp, you would need to setup access to `backend` in some
 With Vamp, access is via VGA's and that allows specific routing (conditions, weights) needed for A/B testing and canary releasing.
 
 {{< note title="What next?" >}}
-* Read about [using Vamp with virtual hosts](/documentation/using-vamp/virtual-hosts/)
+* Read about [using Vamp with virtual hosts](/documentation/using-vamp/v0.9.1/virtual-hosts/)
 * Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

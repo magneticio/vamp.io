@@ -6,6 +6,8 @@ menu:
     identifier: "virtual-hosts-v092"
     parent: "Using Vamp"
     weight: 140
+aliases:
+    - /documentation/using-vamp/virtual-hosts/
 ---
 
 Vamp can be configured to support virtual host via HAProxy:

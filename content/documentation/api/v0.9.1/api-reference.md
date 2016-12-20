@@ -10,11 +10,11 @@ menu:
 
 This page gives full details of all available API calls. See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, JSON and YAML content types and effective use of the API.
 
-* **Resource descriptions:** [blueprints](documentation/api/api-reference/#blueprints), [breeds](documentation/api/api-reference/#breeds), [conditions](documentation/api/api-reference/#conditions), [escalations](documentation/api/api-reference/#escalations), [scales](documentation/api/api-reference/#scales), [slas](documentation/api/api-reference/#slas)
-* **Runtime entities:** [deployments](documentation/api/api-reference/#deployments), [deployment scales](documentation/api/api-reference/#deployment-scales), [deployment SLAs](documentation/api/api-reference/#deployment-slas), [gateways](documentation/api/api-reference/#gateways)  
-* **Data:** [events](documentation/api/api-reference/#events), [health](documentation/api/api-reference/#health), [metrics](documentation/api/api-reference/#metrics)
-* **System:** [info, config, haproxy](documentation/api/api-reference/#system)
-* **Debug:** [sync, sla, escalation](documentation/api/api-reference/#debug)
+* **Resource descriptions:** [blueprints](documentation/api/v.0.9.1/api-reference/#blueprints), [breeds](documentation/api/v.0.9.1/api-reference/#breeds), [conditions](documentation/api/v.0.9.1/api-reference/#conditions), [escalations](documentation/api/v.0.9.1/api-reference/#escalations), [scales](documentation/api/v.0.9.1/api-reference/#scales), [slas](documentation/api/v.0.9.1/api-reference/#slas)
+* **Runtime entities:** [deployments](documentation/api/v.0.9.1/api-reference/#deployments), [deployment scales](documentation/api/v.0.9.1/api-reference/#deployment-scales), [deployment SLAs](documentation/api/v.0.9.1/api-reference/#deployment-slas), [gateways](documentation/api/v.0.9.1/api-reference/#gateways)  
+* **Data:** [events](documentation/api/v.0.9.1/api-reference/#events), [health](documentation/api/v.0.9.1/api-reference/#health), [metrics](documentation/api/v.0.9.1/api-reference/#metrics)
+* **System:** [info, config, haproxy](documentation/api/v.0.9.1/api-reference/#system)
+* **Debug:** [sync, sla, escalation](documentation/api/v.0.9.1/api-reference/#debug)
 
 --------------
 

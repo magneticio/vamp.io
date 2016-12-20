@@ -6,6 +6,8 @@ menu:
     identifier: "workflows-v092"
     parent: "Using Vamp"
     weight: 120
+aliases:
+    - /documentation/using-vamp/workfows/
 ---
 
 A "workflow" is an automated change of the running system and its deployments and gateways. 

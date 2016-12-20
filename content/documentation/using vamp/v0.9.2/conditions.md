@@ -6,6 +6,8 @@ menu:
     identifier: "conditions-v092"
     parent: "Using Vamp"
     weight: 70
+aliases:
+    - /documentation/using-vamp/conditions/
 ---
 
 Conditions are used by gateways to filter incoming traffic for routing between services in a cluster.
