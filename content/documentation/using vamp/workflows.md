@@ -10,6 +10,7 @@ menu:
 {{< note title="New in version 0.9.2" >}}
 * _#789 suspend/restart workflows_
 * _#862 Workflow environment variable values can be parametrised with workflow name, for example as `$workflow` or `${workflow}`._ 
+* _Vamp node client #6 configurable workflow cache_
 {{< /note >}}
 
 A "workflow" is an automated change of the running system and its deployments and gateways. 
@@ -59,7 +60,7 @@ breed  | - |   yes |  either a reference or inline definition, similar to bluepr
 status  |  running, stopping, suspending, starting, restarting |   - |  `restarting` will first suspend and then start the workflow (applying any changes since last start). `suspending` will stop a workflow from running without deleting it. `stopping` a workflow will delete it (not reversible).
 schedule  | daemon, event, time |   yes |  See [schedules](/documentation/using-vamp/workflows/#schedules) below
 scale  | - |   - |  when not specified, the default scale will be used
-environment_variables (or env) | - |   yes (when using the Vamp workflow agent) |  overrides breed environment variables. You can provide your own variabes here. The following variables must be specified when using Vamp workflow agent: `VAMP_WORKFLOW_EXECUTION_TIMEOUT`, `VAMP_KEY_VALUE_STORE_CONNECTION`, `VAMP_KEY_VALUE_STORE_PATH`,  `VAMP_WORKFLOW_EXECUTION_PERIOD`, `VAMP_KEY_VALUE_STORE_TYPE`, `VAMP_URL`
+environment_variables (or env) | - |   yes (when using the Vamp workflow agent) |  overrides breed environment variables. You can provide your own variabes here. The following variables must be specified when using Vamp workflow agent: `VAMP_WORKFLOW_EXECUTION_TIMEOUT`, `VAMP_KEY_VALUE_STORE_CONNECTION`, `VAMP_KEY_VALUE_STORE_PATH`,  `VAMP_WORKFLOW_EXECUTION_PERIOD`, `VAMP_KEY_VALUE_STORE_TYPE`, `VAMP_URL`. For a workflow that will run forever, set VAMP_API_CACHE=false (by default this is set to true)
 arguments  | - |   - | Docker arguments, overrides default configuration arguments and breed arguments  
 
 

@@ -344,8 +344,7 @@ Applied when a worklow is deployed (run).
 
 Parameter  |  Options  |  Default |  Details  
 ------------|-------|--------|--------
-  deployables.type  | - |   container/docker   |   applied to the specified breed type. Overridden for other breed types.
-  deployables.definition  | -  |   -   |   applied to the specified breed type. Overridden for other breed types.
+  deployables  | - |   ` "application/javascript" = { type = "container/docker" definition = "" `  |   Deployment type and definition applied to the specified breed type. Overridden for other breed types.
   environment-variables  | - |   -  |  will be added to every workflow
   scale   | - |    instances = 1 cpu = 0.1 memory = 64MB  |  Default scale. Used if not specified in workflow
   arguments  | - |    -  |  will be added to every workflow

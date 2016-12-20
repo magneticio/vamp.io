@@ -60,7 +60,7 @@ For more extensive customisations, you can create a new Docker image, extending 
   `ADD application.conf /usr/local/vamp/conf/`
 4. Build the image with `docker build --tag <username>/vamp`
 
-## Configuration not intended for Vamp
+## Extra configuration (not intended for Vamp)
 It is possible to store configuration parameters not intended for use by Vamp itself in the Vamp `application.conf` file, such as configuration for Logstash or workflows. For example, you could chose to include the logstash URL in your custom `application.conf` file - Vamp would ignore the parameter, but it would be available to all workflows through the API. This is useful for storing shared local configuration parameters. Configuration specific to a single workflow is best set using environment variables or by hard coding the parameter.
 
 ## Access configuration through the API
