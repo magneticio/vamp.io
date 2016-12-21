@@ -2209,6 +2209,17 @@ pre + pre {
       text-decoration: none;
       color: #FF405E; }
 
+.anchor-hover {
+  padding-left: 8px;
+  padding-bottom: 2px;
+  opacity: 0;
+  color: #6991AA;
+  -webkit-transition: 0.07s ease-in-out all;
+  transition: 0.07s ease-in-out all; }
+
+h2:hover .anchor-hover {
+  opacity: 1; }
+
 #__bs_notify__ {
   top: 95% !important;
   right: 10px !important;

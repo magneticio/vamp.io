@@ -2225,5 +2225,18 @@ pre + pre {
   }
 }
 
+.anchor-hover {
+  padding-left: 8px;
+  opacity: 0;
+  color: $color-bermuda-gray;
+  transition: 0.07s ease-in-out all;
+}
+
+h2:hover .anchor-hover {
+  opacity: 1;
+}
+
+
+
 // Dev
 #__bs_notify__ { top:95% !important; right: 10px !important; border-radius: 15px !important; height:60px !important; }

@@ -12,6 +12,18 @@ function documentReady() {
   thePath = window.location.pathname;
   setSideMenu();
 
+  // Set anchors on all h2
+  $('.documentation h2').each(function() {
+    $(this).append('<a class="anchor-hover" href="'+ window.location.pathname +'#'+$(this).attr('id')+'"><i class="fa fa-link" aria-hidden="true"></i></a>');
+
+  });
+
+
+  // window.setTimeout(function() {location.location = window.location.href.replace(window.location.hash, '') + window.location.hash;}, 2000);
+
+  // Now scroll to it
+
+
   // Top menu color change
   $(window).on("scroll", function () {
     setColorMenu();
@@ -36,6 +48,7 @@ function documentReady() {
     $('.top-menu-items').removeClass('open');
   });
 
+  // Create codeblocks when this code is present
   $('pre code').each(function(i, block) {
     var codeText = $(this).text();
     codeText = codeText.split('\'').join('&#39;');
@@ -100,8 +113,6 @@ function documentReady() {
   $('#mc-embedded-subscribe-form input').on('change paste keyup', function () {
     var emailValue = $(this).val();
 
-
-    //
     if(isEmail(emailValue) && (emailValue !== '')) {
       $(this).parent().find('.button').removeClass('not-active');
     } else {
@@ -118,7 +129,7 @@ function documentReady() {
   buildSearch();
 
 
-  //Dropdown functionality
+  // Dropdown functionality
   $('.dropdown').click(function () {
     $(this).toggleClass('dropdown__active');
   });
@@ -139,7 +150,10 @@ function documentReady() {
     $('#mobile-menu').toggleClass('show');
   });
 
+
 }
+
+
 
 // Set side menu 
 function setSideMenu() {
