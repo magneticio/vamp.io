@@ -386,7 +386,7 @@ function buildSearch() {
 
 
   function buildSearchItemHtml(title, path, content) {
-      return '<div class=\"search-result-item\">\r\n<h2>' + title + '<\/h2>\r\n<p class=\"text\">'+ content +'<\/p>\r\n<a href=\"' + path + '" class=\"\">Read more &nbsp;<i class=\"fa fa-arrow-right\" aria-hidden=\"true\"><\/i>\r\n<\/a>\r\n<\/div>'
+      return '<div class=\"search-result-item\">\r\n<h2>' + title + '<\/h2>\r\n<p class=\"path\">'+ path +'</p><p class=\"text\">'+ content +'<\/p>\r\n<a href=\"' + path + '" class=\"\">Read more &nbsp;<i class=\"fa fa-arrow-right\" aria-hidden=\"true\"><\/i>\r\n<\/a>\r\n<\/div>'
   }
 
   function onSearchPage() {
