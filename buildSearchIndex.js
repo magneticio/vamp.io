@@ -26,7 +26,6 @@ function transverseTree(tree) {
     if(treeItem.path === 'content/index.md' || treeItem.path === 'content/index.json.md') {
       return;
     }
-    console.log(treeItem.path);
     if(isDirectory(treeItem)) {
       transverseTree(treeItem.children);
     } else {
@@ -40,8 +39,9 @@ function transverseTree(tree) {
       }
 
       Object.assign(aDocument, parseContent(fileContent));
-      if(!aDocument.path.contains('news') && !aDocument.path.contains('draft')) {
+      if(!aDocument.path.contains('news') && !aDocument.path.contains('draft') && !aDocument.draft) {
         allDocuments.push(aDocument);
+        console.log('Path [' + aDocument.path + '] was added to searchindex.');
       }
     }
   });
