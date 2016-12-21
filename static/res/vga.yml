@@ -19,7 +19,7 @@ spec:
         - /usr/local/vamp/vamp-gateway-agent
         - --storeType=etcd
         - --storeConnection=http://etcd-client:2379
-        - --storeKey=/vamp/gateways/haproxy/1.6
+        - --storeKey=/vamp/gateways/haproxy/1.6/value
         - --logstash=logstash:10001
         resources:
           requests:
