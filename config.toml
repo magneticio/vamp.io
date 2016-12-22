@@ -127,6 +127,6 @@ googleAnalytics = ""
 
 [[menu.main]]
 	name = "Release notes"
-	url = "/documentation/release-notes/version-0-9-1/"
+	url = "/documentation/release-notes/"
 	parent = "Documentation"
 	weight = 70

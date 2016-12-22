@@ -129,11 +129,14 @@ You can send the required JavaScript directly to the API to store as a breed:
 * Request syntax:
 
 ```
-PUT Content-Type: application/javascript /api/v1/breeds/metrics
+PUT  
+/api/v1/breeds/metrics  
+Content-Type: application/javascript
 ```
 * Request body:
 
-```javascript
+
+```
 'use strict';
 
 let _ = require('highland');
@@ -164,8 +167,6 @@ api.gateways().each(function (gateway) {
     });
   });
 });
-
-setInterval(process, period * 1000);
 ```
 
 
