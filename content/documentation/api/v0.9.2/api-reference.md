@@ -21,7 +21,7 @@ This page gives full details of all available API calls. See [using the Vamp API
 --------------
 
 ## Blueprints
-Read about [using blueprints](documentation/using-vamp/v0.9.2blueprints/).  
+Read about [using blueprints](documentation/using-vamp/v0.9.2/blueprints/).  
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.2/using-the-api).
 
 ### List blueprints
@@ -81,7 +81,7 @@ Deletes a blueprint.
 ------------
 
 ## Breeds
-Read about [using breeds](documentation/using-vamp/v0.9.2breeds/).  
+Read about [using breeds](documentation/using-vamp/v0.9.2/breeds/).  
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.2/using-the-api).
 
 ### List breeds
@@ -139,7 +139,7 @@ Deletes a breed.
 ---------
 
 ## Conditions
-Read about [using conditions](documentation/using-vamp/v0.9.2conditions/).  
+Read about [using conditions](documentation/using-vamp/v0.9.2/conditions/).  
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.2/using-the-api).
 
 ### List conditions
@@ -189,7 +189,7 @@ Deletes a condition.
 
 ## Escalations
 
-Read about [using escalations](documentation/using-vamp/v0.9.2escalations/).  
+Read about [using escalations](documentation/using-vamp/v0.9.2/escalations/).  
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.2/using-the-api).
 
 ### List escalations
@@ -238,7 +238,7 @@ Deletes an escalation.
 
 ## Scales
 
-Read about [using scales](documentation/using-vamp/v0.9.2blueprints/#scale).  
+Read about [using scales](documentation/using-vamp/v0.9.2/blueprints/#scale).  
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.2/using-the-api).
 
 ### List scales
@@ -287,7 +287,7 @@ Deletes a scale.
 
 ## SLAs
 
-Read about [using SLAs](documentation/using-vamp/v0.9.2sla/).  
+Read about [using SLAs](documentation/using-vamp/v0.9.2/sla/).  
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.2/using-the-api).
 
 ### List SLAs
@@ -341,7 +341,7 @@ Deployments are non-static entities in the Vamp eco-system. They represent runti
 
 Deployments have a set of sub resources: **SLAs**, **scales** and **gateways**. These are instantiations of their static counterparts.
 
-Read more about [using deployments](documentation/using-vamp/v0.9.2deployments/).  
+Read more about [using deployments](documentation/using-vamp/v0.9.2/deployments/).  
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.2/using-the-api).
 
 ### List deployments
@@ -525,7 +525,7 @@ Deletes as specific deployment SLA.
 --------------
 
 ## Gateways
-Read about [using gateways](documentation/using-vamp/v0.9.2gateways/).  
+Read about [using gateways](documentation/using-vamp/v0.9.2/gateways/).  
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.2/using-the-api).
 
 ### List gateways
@@ -566,7 +566,7 @@ Accepts JSON or YAML formatted gateways. Set the `Content-Type` request header t
 
 ## Workflows
 Each workflow is represented as an artifact and they follow basic CRUD operation patterns as any other artifact. Note that workflows must be restarted to apply changes.  
-Read about [using workflows](documentation/using-vamp/v0.9.2workflows/).  
+Read about [using workflows](documentation/using-vamp/v0.9.2/workflows/).  
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.2/using-the-api).
 
 ```
@@ -577,7 +577,7 @@ Details on pagination, JSON and YAML content types and effective use of the API 
 
 ## Events
 
-For specific usage examples, see [using events](documentation/using-vamp/v0.9.2events/).  
+For specific usage examples, see [using events](documentation/using-vamp/v0.9.2/events/).  
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.2/using-the-api).
 
 ### List events
