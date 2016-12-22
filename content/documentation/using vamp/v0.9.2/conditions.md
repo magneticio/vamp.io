@@ -11,7 +11,7 @@ aliases:
 ---
 
 Conditions are used by gateways to filter incoming traffic for routing between services in a cluster.
-Read more about [gateway usage](/documentation/using-vamp/gateways/#gateway-usage). You can define conditions inline in a blueprint or store them separately under a unique name on the `/conditions` endpoint and just use that name to reference them from a blueprint. 
+Read more about [gateway usage](/documentation/using-vamp/v0.9.2/gateways/#gateway-usage). You can define conditions inline in a blueprint or store them separately under a unique name on the `/conditions` endpoint and just use that name to reference them from a blueprint. 
 
 #### Example - simple inline condition
 
@@ -87,8 +87,8 @@ gateways:
 
 
 {{< note title="What next?" >}}
-* Read about [Vamp events](/documentation/using-vamp/events/)
-* Check the [API documentation](/documentation/api/api-reference)
+* Read about [Vamp events](/documentation/using-vamp/v0.9.2/events/)
+* Check the [API documentation](/documentation/api/v0.9.2/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
 

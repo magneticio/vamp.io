@@ -7,8 +7,7 @@ menu:
     weight: 10
 ---
 
-{{< note title="Note!" >}}
-The information on this page is written for Vamp v0.9.1 and was last updated on 21st December 2016.  
+{{< note title="The information on this page is written for Vamp v0.9.1" >}}
 
 * Switch to the [latest version of this page](/documentation/using-vamp/artifacts).
 * Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
@@ -18,15 +17,15 @@ Vamp has a few basic entities or artifacts you can work with, these can be class
 
 ### Dynamic runtime entities
 
--   **Deployments** are running blueprints. You can have many deployments from one blueprint and perform actions on each at runtime. Plus, you can turn any running deployment into a blueprint.  [Read more...](/documentation/using-vamp/deployments/)  
--   **Gateways** are the "stable" routing endpoint - defined by a port (incoming) and routes (outgoing).  [Read more...](/documentation/using-vamp/gateways/) 
--   **Workflows** are apps (services) deployed on cluster, used for dynamically changing the runtime configuration (e.g. SLA, scaling, condition weight update).  [Read more...](/documentation/using-vamp/workflows/)
+-   **Deployments** are running blueprints. You can have many deployments from one blueprint and perform actions on each at runtime. Plus, you can turn any running deployment into a blueprint.  [Read more...](/documentation/using-vamp/v0.9.1/deployments/)  
+-   **Gateways** are the "stable" routing endpoint - defined by a port (incoming) and routes (outgoing).  [Read more...](/documentation/using-vamp/v0.9.1/gateways/) 
+-   **Workflows** are apps (services) deployed on cluster, used for dynamically changing the runtime configuration (e.g. SLA, scaling, condition weight update).  [Read more...](/documentation/using-vamp/v0.9.1/workflows/)
 
 ### Static resource descriptions
 
--   **Blueprints** are, well, blueprints! They describe how breeds work in runtime and what properties they should have.  [Read more...](/documentation/using-vamp/blueprints/)  
--   **Breeds** describe single services and their dependencies.  [Read more...](/documentation/using-vamp/breeds/)
--   **Scales** define the size of a deployed service [Read more...](documentation/using-vamp/blueprints/#scale)
+-   **Blueprints** are, well, blueprints! They describe how breeds work in runtime and what properties they should have.  [Read more...](/documentation/v0.9.1/using-vamp/blueprints/)  
+-   **Breeds** describe single services and their dependencies.  [Read more...](/documentation/v0.9.1/using-vamp/breeds/)
+-   **Scales** define the size of a deployed service [Read more...](documentation/using-vamp/v0.9.1/blueprints/#scale)
 
 ## Working across multiple teams
 
@@ -36,10 +35,10 @@ In larger companies with multiple teams working together on a large project, all
 - You do not need to know the contents of an SLA when you reference it.
 - You can reference a variable that someone else should fill in.
 
-Read more about [referencing artifacts](/documentation/using-vamp/references/) and [environment variables](/documentation/using-vamp/environment-variables/).
+Read more about [referencing artifacts](/documentation/using-vamp/v0.9.1/references/) and [environment variables](/documentation/using-vamp/v0.9.1/environment-variables/).
 
 {{< note title="What next?" >}}
-* Read about [Vamp breeds](/documentation/using-vamp/breeds/)
-* Check the [API documentation](/documentation/api/api-reference)
+* Read about [Vamp breeds](/documentation/using-vamp/v0.9.1/breeds/)
+* Check the [API documentation](/documentation/api/v0.9.1/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

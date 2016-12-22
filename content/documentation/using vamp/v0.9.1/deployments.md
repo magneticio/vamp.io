@@ -7,8 +7,7 @@ menu:
     weight: 40
 ---
 
-{{< note title="Note!" >}}
-The information on this page is written for Vamp v0.9.1 and was last updated on 21st December 2016.  
+{{< note title="The information on this page is written for Vamp v0.9.1" >}}
 
 * Switch to the [latest version of this page](/documentation/using-vamp/deployments).
 * Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
@@ -234,6 +233,6 @@ We could also remove the newer version (monarch_1.1 with/without recommendation 
 
 {{< note title="What next?" >}}
 * Read about [Vamp environment variables](/documentation/using-vamp/v0.9.1/environment-variables/)
-* Check the [API documentation](/documentation/api/api-reference)
+* Check the [API documentation](/documentation/api/v0.9.1/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

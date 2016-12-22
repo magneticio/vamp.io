@@ -14,13 +14,13 @@ Blueprints are execution plans - they describe how your services should be hooke
 
 Blueprints allow you to add the following extra properties:
 
-- [Gateways](/documentation/using-vamp/blueprints/#gateways): a stable port where the service can be reached.
-- [Clusters and services](/documentation/using-vamp/blueprints/#clusters-and-services): a cluster is a grouping of services with one purpose, i.e. two versions (a/b) of one service.
-- [Environment variables](/documentation/using-vamp/environment-variables/): a list of variables (interpolated or not) to be made available at runtime.
-- [Dialects](/documentation/using-vamp/blueprints/#dialects): a dialect is a set of native commands for the underlying container platform, i.e. Docker or Mesosphere Marathon.
-- [Scale](/documentation/using-vamp/blueprints/#scale): the CPU and memory and the amount of instance allocate to a service.
-- [Conditions](/documentation/using-vamp/conditions/): how traffic should be directed based on HTTP and/or TCP properties.
-- [SLA](/documentation/using-vamp/sla/) and [escalations](/documentation/using-vamp/escalations/): SLA definition that controls autoscaling.
+- [Gateways](/documentation/using-vamp/v0.9.2/blueprints/#gateways): a stable port where the service can be reached.
+- [Clusters and services](/documentation/using-vamp/v0.9.2/blueprints/#clusters-and-services): a cluster is a grouping of services with one purpose, i.e. two versions (a/b) of one service.
+- [Environment variables](/documentation/using-vamp/v0.9.2/environment-variables/): a list of variables (interpolated or not) to be made available at runtime.
+- [Dialects](/documentation/using-vamp/v0.9.2/blueprints/#dialects): a dialect is a set of native commands for the underlying container platform, i.e. Docker or Mesosphere Marathon.
+- [Scale](/documentation/using-vamp/v0.9.2/blueprints/#scale): the CPU and memory and the amount of instance allocate to a service.
+- [Conditions](/documentation/using-vamp/v0.9.2/conditions/): how traffic should be directed based on HTTP and/or TCP properties.
+- [SLA](/documentation/using-vamp/v0.9.2/sla/) and [escalations](/documentation/using-vamp/escalations/): SLA definition that controls autoscaling.
 
 #### Example - key concepts of blueprints
 
@@ -196,7 +196,7 @@ instances: 2  # Number of instances.
 
 {{< note title="What next?" >}}
 * Read about [Vamp deployments](/documentation/using-vamp/deployments/)
-* Check the [API documentation](/documentation/api/api-reference)
+* Check the [API documentation](/documentation/api/v0.9.2/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
 

@@ -53,7 +53,7 @@ The gateway API allows for programmable routing. External gateways give an entry
 A gateway defines a set of rules for routing traffic between different services within the same cluster.
 Vamp allows you to determine this in three ways:
 
-* A `condition` will target specific traffic. Read more about [conditions](/documentation/using-vamp/conditions)  
+* A `condition` will target specific traffic. Read more about [conditions](/documentation/using-vamp/v0.9.2/conditions)  
 _for example, IOS users_
 * The `condition_strength` targets a percentage of traffic matching a condition  
 _for example, 10% of IOS users_
@@ -63,11 +63,11 @@ _for example, 100% of all traffic, except the targetted 10% of IOS users_
 
 ### Routes, condition-strength and weights
 
-Each route can have a weight and one or more conditions (see [boolean expression in conditions](/documentation/using-vamp/conditions/#boolean-expression-in-conditions)). Each condition has a condition-strength.
+Each route can have a weight and one or more conditions (see [boolean expression in conditions](/documentation/using-vamp/v0.9.2/conditions/#boolean-expression-in-conditions)). Each condition has a condition-strength.
 
 Routing is calculated as followed:
 
-1. Find the first `condition` that matches the request. Read more about [conditions](/documentation/using-vamp/conditions)  
+1. Find the first `condition` that matches the request. Read more about [conditions](/documentation/using-vamp/v0.9.2/conditions)  
 _for example, IOS users_
 - If the route exists, send the request to it depending on the `condition strength`  
 _for example, 10% of IOS users are sent to the route_
@@ -209,7 +209,7 @@ routes:
 ```
 
 {{< note title="What next?" >}}
-* Read about [Vamp conditions](/documentation/using-vamp/conditions/)
-* Check the [API documentation](/documentation/api/api-reference)
+* Read about [Vamp conditions](/documentation/using-vamp/v0.9.2/conditions/)
+* Check the [API documentation](/documentation/api/v0.9.2/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

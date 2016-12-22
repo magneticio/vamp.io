@@ -15,10 +15,10 @@ To a certain degree, you could compare a breed to a Maven artifact or a Ruby Gem
 
 Breeds allow you to set the following properties:
 
-- [Deployable](/documentation/using-vamp/breeds/#deployable): the name of actual container or command that should be run.
-- [Ports](/documentation/using-vamp/breeds/#ports): a map of ports your container exposes.
-- [Dependencies](/documentation/using-vamp/breeds/#dependencies): a list of other breeds this breed depends on.
-- [Environment variables](/documentation/using-vamp/environment-variables/): a list of variables (interpolated or not) to be made available at runtime.
+- [Deployable](/documentation/using-vamp/v0.9.2/breeds/#deployable): the name of actual container or command that should be run.
+- [Ports](/documentation/using-vamp/v0.9.2/breeds/#ports): a map of ports your container exposes.
+- [Dependencies](/documentation/using-vamp/v0.9.2/breeds/#dependencies): a list of other breeds this breed depends on.
+- [Environment variables](/documentation/using-vamp/v0.9.2/environment-variables/): a list of variables (interpolated or not) to be made available at runtime.
 
 ## Deployable
 
@@ -147,12 +147,12 @@ dependencies:
 
 
 In a lot of cases, dependencies coexist with interpolated environment variables or constants because exact values are not known untill deploy time.  
-[Read more about environment variables](/documentation/using-vamp/environment-variables/)
+[Read more about environment variables](/documentation/using-vamp/v0.9.2/environment-variables/)
 
 
 {{< note title="What next?" >}}
-* Read about [Vamp blueprints](/documentation/using-vamp/blueprints/)
-* Check the [API documentation](/documentation/api/api-reference)
+* Read about [Vamp blueprints](/documentation/using-vamp/v0.9.2/blueprints/)
+* Check the [API documentation](/documentation/api/v0.9.2/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
 

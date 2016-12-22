@@ -77,10 +77,10 @@ the default page size for a set of returned events is 30.
 
 ### Example queries
 
-* [Get all events](/documentation/using-vamp/events/#example-1)
-* [Response time for a cluster](/documentation/using-vamp/events/#example-2)
-* [Current sessions for a service](/documentation/using-vamp/events/#example-3)
-* [All known events for a service](/documentation/using-vamp/events/#example-4)
+* [Get all events](/documentation/using-vamp/v0.9.2/events/#example-1)
+* [Response time for a cluster](/documentation/using-vamp/v0.9.2/events/#example-2)
+* [Current sessions for a service](/documentation/using-vamp/v0.9.2/events/#example-3)
+* [All known events for a service](/documentation/using-vamp/v0.9.2/events/#example-4)
  
 #### Example 1
 **Get all events**
@@ -243,7 +243,7 @@ The following query gives back the last set of delete actions executed in the Va
 
 
 {{< note title="What next?" >}}
-* Read about [Vamp SLA (Service Level Agreement)](/documentation/using-vamp/sla/)
-* Check the [API documentation](/documentation/api/api-reference)
+* Read about [Vamp SLA (Service Level Agreement)](/documentation/using-vamp/v0.9.2/sla/)
+* Check the [API documentation](/documentation/api/v0.9.2/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

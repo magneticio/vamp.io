@@ -90,7 +90,7 @@ clusters:
 ```          
 
 {{< note title="What next?" >}}
-* Read about [Vamp escalations](/documentation/using-vamp/escalations/)
-* Check the [API documentation](/documentation/api/api-reference)
+* Read about [Vamp escalations](/documentation/using-vamp/v0.9.2/escalations/)
+* Check the [API documentation](/documentation/api/v0.9.2/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

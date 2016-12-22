@@ -135,7 +135,7 @@ clusters:
 ```
 
 {{< note title="What next?" >}}
-* Read about [using Vamp for service discovery](/documentation/using-vamp/service-discovery/)
-* Check the [API documentation](/documentation/api/api-reference)
+* Read about [using Vamp for service discovery](/documentation/using-vamp/v0.9.2/service-discovery/)
+* Check the [API documentation](/documentation/api/v0.9.2/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

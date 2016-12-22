@@ -6,8 +6,8 @@ menu:
     parent: "Using Vamp"
     weight: 70
 ---
-{{< note title="Note!" >}}
-The information on this page is written for Vamp v0.9.1 and was last updated on 21st December 2016.  
+
+{{< note title="The information on this page is written for Vamp v0.9.1" >}}
 
 * Switch to the [latest version of this page](/documentation/using-vamp/conditions).
 * Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
@@ -91,6 +91,6 @@ gateways:
 
 {{< note title="What next?" >}}
 * Read about [Vamp events](/documentation/using-vamp/v0.9.1/events/)
-* Check the [API documentation](/documentation/api/api-reference)
+* Check the [API documentation](/documentation/api/v0.9.1/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

@@ -170,7 +170,7 @@ api.gateways().each(function (gateway) {
 
 
 {{< note title="What next?" >}}
-* Read about [Sticky sessions](/documentation/using-vamp/sticky-sessions/)
-* Check the [API documentation](/documentation/api/api-reference)
+* Read about [Sticky sessions](/documentation/using-vamp/v0.9.2/sticky-sessions/)
+* Check the [API documentation](/documentation/api/v0.9.2/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
