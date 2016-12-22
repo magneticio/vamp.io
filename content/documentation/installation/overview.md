@@ -30,7 +30,9 @@ The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely 
 
 #### Configuration
 
-* [Configure Vamp](/documentation/installation/configure-vamp/)
+* [How to configure Vamp](/documentation/installation/configure-vamp/)
+* [Configuration reference](/documentation/installation/configuration-reference/)
+* [Example configurations](/documentation/installation/example-configurations/)
 
 ## Try Vamp
 
