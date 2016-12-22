@@ -7,7 +7,7 @@ menu:
     weight: 110
 ---
 
-The default Vamp settings are specified in `reference.conf`. Required parameters with no default must be specified in `application.conf` or using environment variables and/or Java system properties (not advised). 
+Default Vamp settings are specified in `reference.conf`. Required parameters with no default must be specified in `application.conf` or using environment variables and/or Java system properties. 
 
 The full `reference.conf` file can be found in the Vamp project repo ([github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)). 
 

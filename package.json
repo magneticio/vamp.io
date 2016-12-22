@@ -24,6 +24,7 @@
     "remove-markdown": "^0.1.0"
   },
   "devDependencies": {
+    "flow-bin": "^0.36.0",
     "gulp-shell": "^0.5.2",
     "gulp-useref": "^3.1.2"
   },

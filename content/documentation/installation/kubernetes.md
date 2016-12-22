@@ -1,6 +1,6 @@
 ---
 date: 2016-10-04T09:00:00+00:00
-title: Kubernetes 1.x
+title: Kubernetes
 menu:
   main:
     parent: "Installation"
@@ -35,15 +35,17 @@ The simple way to create a new GKE cluster:
 After the (new) Kubernetes cluster is setup, we are going to continue with the installation using the Kubernetes CLI `kubectl`.
 You can use `kubectl` directly from the Google Cloud Shell, e.g. to check the Kubernetes client and server version:
 
-```bash
-$ kubectl version
+```
+kubectl version
 ```
 ## Quickstart
 
-To quickly get started with VAMP on kubernetes use the following command to automate the quick start described below (requires curl):
+To quickly get started with Vamp on Kubernetes use the following command to automate the quick start described below (requires curl):
 
 ```
-curl -s https://raw.githubusercontent.com/magneticio/vamp-docker/master/vamp-kubernetes/vamp_kube_quickstart.sh | bash
+curl -s \
+  https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/vamp_kube_quickstart.sh \
+  | bash
 ```
 The script will poll for the external ip of Vamp, note that this process will take a while. if the installation was successful the ip will be displayed:
 
@@ -56,7 +58,9 @@ We don't recommend running this setup in production. You might want to add a HTT
 To remove the quickstart deployment, use the following command:
 
 ```
-curl -s https://raw.githubusercontent.com/magneticio/vamp-docker/master/vamp-kubernetes/vamp_kube_uninstall.sh | bash
+curl -s \
+  https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/vamp_kube_uninstall.sh \
+  | bash
 ```
 
 ## Manual deployment
@@ -66,33 +70,31 @@ curl -s https://raw.githubusercontent.com/magneticio/vamp-docker/master/vamp-kub
 Now let's deploy `etcd` - this installation is based on the tutorial ([github.com/coreos - etcd on Kubernetes](https://github.com/coreos/etcd/tree/master/hack/kubernetes-deploy)).  Note that this is not a production grade setup - you would also need to take care of persistence and running multiple replicas of each pod.
 First, execute:
 
-```bash
-$ kubectl create \
-        -f https://raw.githubusercontent.com/magneticio/vamp-docker/master/vamp-kubernetes/etcd.yml
+```
+kubectl create -f https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/etcd.yml
 ```
 
 Then deploy Elasticsearch and Logstash with a proper Vamp Logstash configuration ([github.com/magneticio - elastic](https://github.com/magneticio/elastic)) using:
 
-```bash
-$ kubectl run elastic --image=magneticio/elastic:2.2
-$ kubectl expose deployment elastic --protocol=TCP --port=9200 --name=elasticsearch
-$ kubectl expose deployment elastic --protocol=UDP --port=10001 --name=logstash
-$ kubectl expose deployment elastic --protocol=TCP --port=5601 --name=kibana
+```
+kubectl run elastic --image=magneticio/elastic:2.2
+kubectl expose deployment elastic --protocol=TCP --port=9200 --name=elasticsearch
+kubectl expose deployment elastic --protocol=UDP --port=10001 --name=logstash
+kubectl expose deployment elastic --protocol=TCP --port=5601 --name=kibana
 ```
 
 #### Run Vamp
 
 Now we can run Vamp gateway agent as a `daemon set`:
-```bash
-$ kubectl create \
-        -f https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/vga.yml
+```
+kubectl create -f https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/vga.yml
 ```
 
 To deploy Vamp, execute:
 
-```bash
-$ kubectl run vamp --image=magneticio/vamp:0.9.2-kubernetes
-$ kubectl expose deployment vamp --protocol=TCP --port=8080 --name=vamp --type="LoadBalancer"
+```
+kubectl run vamp --image=magneticio/vamp:0.9.1-kubernetes
+kubectl expose deployment vamp --protocol=TCP --port=8080 --name=vamp --type="LoadBalancer"
 ```
 
 
@@ -102,8 +104,8 @@ The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely 
 
 Wait a bit until Vamp is running and check out the Kubernetes services:
 
-```bash
-$ kubectl get services
+```
+kubectl get services
 ```
 
 
@@ -150,8 +152,8 @@ clusters:
 
 Be sure that the cluster has enough resources (CPU, memory), otherwise deployments will be in pending state. Once it's running we can check if all Vamp Gateway Agent services are up:
 
-```bash
-$ kubectl get services --show-labels -l vamp=gateway
+```
+kubectl get services --show-labels -l vamp=gateway
 ```
 
 
@@ -174,8 +176,8 @@ Now we can access our `sava` service on `http://104.155.24.47:9050`
 In the Kubernetes dashboard you will see the external endpoint appear with a hyperlink icon behind it in the "Services" overview when the external gateway of your deployment is available. You can recognise it by the port that's included in the endpoint that you have defined in your blueprint gateway definition.
 
 The default Kubernetes service type can be set in configuration: `vamp.container-driver.kubernetes.service-type`, possible values are `LoadBalancer` or `NodePort`. We can also access gateways using virtual hosts. Vamp Gateway Agent service is on IP `146.148.22.145` in this example, so:
-```bash
-$ curl --resolve 9050.sava-1-0.vamp:80:146.148.22.145 -v http://9050.sava-1-0.vamp
+```
+curl --resolve 9050.sava-1-0.vamp:80:146.148.22.145 -v http://9050.sava-1-0.vamp
 ```
 
 Don't forget to clean up your Kubernetes cluster and firewall rules  if you don't want to use them anymore ([google.com - container engine quickstart: clean up](https://cloud.google.com/container-engine/docs/quickstart#clean-up)).
