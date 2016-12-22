@@ -39,15 +39,20 @@ Workflow artifacts are similar to  blueprints or deployments. Note that workflow
 ```
 ---
 name: metrics
-breed: metrics   # breed reference, inline definition can be also used
+breed: metrics
 status: running
 schedule: daemon
-scale:           # inline scale, can also be a reference e.g. scale: small
-  cpu: 1
-  memory: 128MB
-  instances: 2
 environment_variables:
-  interval: 5s
+  VAMP_WORKFLOW_EXECUTION_TIMEOUT: '7'
+  VAMP_KEY_VALUE_STORE_CONNECTION: 192.168.99.100:2181
+  VAMP_KEY_VALUE_STORE_PATH: /vamp/workflows/metrics
+  VAMP_WORKFLOW_EXECUTION_PERIOD: '5'
+  VAMP_KEY_VALUE_STORE_TYPE: zookeeper
+  VAMP_URL: http://192.168.99.100:8080
+scale:
+  cpu: 0.1
+  memory: 128.00MB
+  instances: 1
 ```
 
 Field name  |  Options  |  Required |  Description  
@@ -55,15 +60,13 @@ Field name  |  Options  |  Required |  Description
 name  | - |   yes |  
 breed  | - |   yes |  either a reference or inline definition, similar to blueprints. Best practice would be to store the breed separately and reference it from the workflow
 status  |  running, stopping, suspending, starting, restarting |   - |  `restarting` will first suspend and then start the workflow (applying any changes since last start). `suspending` will stop a workflow from running without deleting it. `stopping` a workflow will delete it (not reversible).
-schedule  | daemon, event, time |   yes |  See [schedules](/documentation/using-vamp/workflows/#schedules) below
+schedule  | daemon, event, time |   yes |  See [schedules](/documentation/using-vamp/v0.9.2/workflows/#schedules) below
+environment_variables (or env) | - |   yes (when using the Vamp workflow agent) |  overrides breed environment variables. You can provide your own variabes here. The following variables must be specified when using Vamp workflow agent: `VAMP_WORKFLOW_EXECUTION_TIMEOUT`, `VAMP_KEY_VALUE_STORE_CONNECTION`, `VAMP_KEY_VALUE_STORE_PATH`,  `VAMP_WORKFLOW_EXECUTION_PERIOD`, `VAMP_KEY_VALUE_STORE_TYPE`, `VAMP_URL`. For a workflow that will run forever, also set VAMP_API_CACHE=false (by default this is set to true)
 scale  | - |   - |  when not specified, the default scale will be used
-environment_variables (or env) | - |   yes (when using the Vamp workflow agent) |  overrides breed environment variables. You can provide your own variabes here. The following variables must be specified when using Vamp workflow agent: `VAMP_WORKFLOW_EXECUTION_TIMEOUT`, `VAMP_KEY_VALUE_STORE_CONNECTION`, `VAMP_KEY_VALUE_STORE_PATH`,  `VAMP_WORKFLOW_EXECUTION_PERIOD`, `VAMP_KEY_VALUE_STORE_TYPE`, `VAMP_URL`. For a workflow that will run forever, set VAMP_API_CACHE=false (by default this is set to true)
-arguments  | - |   - | Docker arguments, overrides default configuration arguments and breed arguments  
-
 
 ## Schedules
 
-Workflows can be schedulde to tun as a daemon, be triggered by specific events or rn according to a time schedule. See the examples for each below.
+Workflows can be schedulde to run as a daemon, be triggered by specific events or rn according to a time schedule. See the examples for each below.
 
 ### Scheduled as a daemon
 For example:
@@ -102,9 +105,7 @@ JavaScript breeds are executed by Vamp Workflow Agent ([github.com/magneticio - 
 ### Metrics workflow
 ```
 name: metrics
-kind: workflow
-breed:
-  reference: metrics
+breed: metrics
 status: running
 schedule: daemon
 environment_variables:
@@ -118,8 +119,6 @@ scale:
   cpu: 0.1
   memory: 128.00MB
   instances: 1
-network: HOST
-arguments: []
 ```
 
 ### Metrics breed

@@ -15,19 +15,19 @@ The information on this page is written for Vamp v0.9.1 and was last updated on 
 * Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
 {{< /note >}}
 
-This page gives full details of all available API calls. See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, JSON and YAML content types and effective use of the API.
+This page gives full details of all available API calls. See [using the Vamp API](/documentation/api/v0.9.1/using-the-api) for details on pagination, JSON and YAML content types and effective use of the API.
 
-* **Resource descriptions:** [blueprints](documentation/api/v.0.9.1/api-reference/#blueprints), [breeds](documentation/api/v.0.9.1/api-reference/#breeds), [conditions](documentation/api/v.0.9.1/api-reference/#conditions), [escalations](documentation/api/v.0.9.1/api-reference/#escalations), [scales](documentation/api/v.0.9.1/api-reference/#scales), [slas](documentation/api/v.0.9.1/api-reference/#slas)
-* **Runtime entities:** [deployments](documentation/api/v.0.9.1/api-reference/#deployments), [deployment scales](documentation/api/v.0.9.1/api-reference/#deployment-scales), [deployment SLAs](documentation/api/v.0.9.1/api-reference/#deployment-slas), [gateways](documentation/api/v.0.9.1/api-reference/#gateways)  
-* **Data:** [events](documentation/api/v.0.9.1/api-reference/#events), [health](documentation/api/v.0.9.1/api-reference/#health), [metrics](documentation/api/v.0.9.1/api-reference/#metrics)
-* **System:** [info, config, haproxy](documentation/api/v.0.9.1/api-reference/#system)
-* **Debug:** [sync, sla, escalation](documentation/api/v.0.9.1/api-reference/#debug)
+* **Resource descriptions:** [blueprints](documentation/api/v0.9.1/api-reference/#blueprints), [breeds](documentation/api/v0.9.1/api-reference/#breeds), [conditions](documentation/api/v0.9.1/api-reference/#conditions), [escalations](documentation/api/v0.9.1/api-reference/#escalations), [scales](documentation/api/v0.9.1/api-reference/#scales), [slas](documentation/api/v0.9.1/api-reference/#slas)
+* **Runtime entities:** [deployments](documentation/api/v0.9.1/api-reference/#deployments), [deployment scales](documentation/api/v0.9.1/api-reference/#deployment-scales), [deployment SLAs](documentation/api/v0.9.1/api-reference/#deployment-slas), [gateways](documentation/api/v0.9.1/api-reference/#gateways)  
+* **Data:** [events](documentation/api/v0.9.1/api-reference/#events), [health](documentation/api/v0.9.1/api-reference/#health), [metrics](documentation/api/v0.9.1/api-reference/#metrics)
+* **System:** [info, config, haproxy](documentation/api/v0.9.1/api-reference/#system)
+* **Debug:** [sync, sla, escalation](documentation/api/v0.9.1/api-reference/#debug)
 
 --------------
 
 ## Blueprints
-Read about [using blueprints](documentation/using-vamp/blueprints/).  
-Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
+Read about [using blueprints](documentation/using-vamp/v0.9.1/blueprints/).  
+Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List blueprints
 
@@ -86,8 +86,8 @@ Deletes a blueprint.
 ------------
 
 ## Breeds
-Read about [using breeds](documentation/using-vamp/breeds/).  
-Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
+Read about [using breeds](documentation/using-vamp/v0.9.1/breeds/).  
+Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List breeds
 
@@ -144,8 +144,8 @@ Deletes a breed.
 ---------
 
 ## Conditions
-Read about [using conditions](documentation/using-vamp/conditions/).  
-Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
+Read about [using conditions](documentation/using-vamp/v0.9.1/conditions/).  
+Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List conditions
 
@@ -194,8 +194,8 @@ Deletes a condition.
 
 ## Escalations
 
-Read about [using escalations](documentation/using-vamp/escalations/).  
-Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
+Read about [using escalations](documentation/using-vamp/v0.9.1/escalations/).  
+Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List escalations
 
@@ -243,8 +243,8 @@ Deletes an escalation.
 
 ## Scales
 
-Read about [using scales](documentation/using-vamp/blueprints/#scale).  
-Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
+Read about [using scales](documentation/using-vamp/v0.9.1/blueprints/#scale).  
+Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List scales
 
@@ -292,8 +292,8 @@ Deletes a scale.
 
 ## SLAs
 
-Read about [using SLAs](documentation/using-vamp/sla/).  
-Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
+Read about [using SLAs](documentation/using-vamp/v0.9.1/sla/).  
+Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List SLAs
 
@@ -346,8 +346,8 @@ Deployments are non-static entities in the Vamp eco-system. They represent runti
 
 Deployments have a set of sub resources: **SLAs**, **scales** and **gateways**. These are instantiations of their static counterparts.
 
-Read more about [using deployments](documentation/using-vamp/deployments/).  
-Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
+Read more about [using deployments](documentation/using-vamp/v0.9.1/deployments/).  
+Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List deployments
 
@@ -530,8 +530,8 @@ Deletes as specific deployment SLA.
 --------------
 
 ## Gateways
-Read about [using gateways](documentation/using-vamp/gateways/).  
-Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
+Read about [using gateways](documentation/using-vamp/v0.9.1/gateways/).  
+Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List gateways
 
@@ -571,8 +571,8 @@ Accepts JSON or YAML formatted gateways. Set the `Content-Type` request header t
 
 ## Events
 
-For specific usage examples, see [using events](documentation/using-vamp/events/).  
-Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/using-the-api).
+For specific usage examples, see [using events](documentation/using-vamp/v0.9.1/events/).  
+Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List events
 
@@ -586,7 +586,7 @@ Lists events (for example health and metrics). You can optionally filter the ret
 | `type`           | Filter returned events by type, for example `GET /api/v1/events?type=metrics`
 
 {{< note title="Note!" >}}
-search criteria can be set in request body, checkout [examples](/documentation/using-vamp/events/#query-events-using-tags) for event stream.
+search criteria can be set in request body, checkout [examples](/documentation/using-vamp/v0.9.1/events/#query-events-using-tags) for event stream.
 {{< /note >}}
 
 ### Create events
@@ -706,4 +706,4 @@ Forces Vamp to perform an escalation check, regardless of the configured default
 	GET /api/v1/escalation
 
 ---------------
-See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, JSON and YAML content types and effective use of the API
+See [using the Vamp API](/documentation/api/v0.9.1/using-the-api) for details on pagination, JSON and YAML content types and effective use of the API

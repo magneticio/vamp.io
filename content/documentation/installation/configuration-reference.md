@@ -12,7 +12,7 @@ Default Vamp settings are specified in `reference.conf`. Required parameters wit
 The full `reference.conf` file can be found in the Vamp project repo ([github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)). 
 
 ### Vamp { }
-Vamp configuration is described in sections, nested inside a parent `vamp {}` tag. Usage, defaults and requirements for each section are outlined below: [info](documentation/installation/configuration-reference/#info), [stats](documentation/installation/configuration-reference/#stats), [persistence](documentation/installation/configuration-reference/#persistence), [container driver](documentation/installation/configuration-reference/#container-driver), [workflow driver](documentation/installation/configuration-reference/#workflow-driver), [http-api](documentation/installation/configuration-reference/#http-api), [gateway driver](documentation/installation/configuration-reference/#gateway-driver), [pulse](documentation/installation/configuration-reference/#pulse), [operation](documentation/installation/configuration-reference/#operation), [lifter](documentation/installation/configuration-reference/#lifter)
+Vamp configuration is described in sections, nested inside a parent `vamp {}` tag. Usage, defaults and requirements for each section are outlined below: [info](documentation/installation/configuration-reference/#info), [stats](documentation/installation/configuration-reference/#stats), [model](documentation/installation/configuration-reference/#model), [persistence](documentation/installation/configuration-reference/#persistence), [container driver](documentation/installation/configuration-reference/#container-driver), [workflow driver](documentation/installation/configuration-reference/#workflow-driver), [http-api](documentation/installation/configuration-reference/#http-api), [gateway driver](documentation/installation/configuration-reference/#gateway-driver), [pulse](documentation/installation/configuration-reference/#pulse), [operation](documentation/installation/configuration-reference/#operation), [lifter](documentation/installation/configuration-reference/#lifter), [common](documentation/installation/configuration-reference/#common)
 
 ### akka { }
 Vamp is based on the Akka library. Akka configuration is included in `reference.conf` inside the `akka {}` tag. These settings can be tweaked in `application.conf` (advanced use only). Refer to the akka documentation for details.
@@ -311,7 +311,7 @@ Parameter  |  Options  |  Default |  Details
   vamp-url   | -|    -   |  The URL that workflow agent (workflows) will use to access Vamp. Set in `application.conf`. Required for all workflows which need to access Vamp.
   chronos.url   | - |     -  |  if you use chronos, set the URL in `application.conf`
 
-### Worflow-driver.workflow
+### Workflow-driver.workflow
 Applied when a worklow is deployed (run).
 
 ```
@@ -336,7 +336,7 @@ Applied when a worklow is deployed (run).
 
 Parameter  |  Options  |  Default |  Details  
 ------------|-------|--------|--------
-  deployables  | - |   ` "application/javascript" = { type = "container/docker" definition = "" `  |   Deployment type and definition applied to the specified breed type. Overridden for other breed types.
+  deployables  | - |   ` "application/javascript" = { type = "container/docker" definition = "" `  |   Deployable type and definition applied to the specified breed type. Overridden for other breed types.
   environment-variables  | - |   -  |  will be added to every workflow
   scale   | - |    instances = 1 cpu = 0.1 memory = 64MB  |  Default scale. Used if not specified in workflow
   arguments  | - |    -  |  will be added to every workflow
@@ -652,6 +652,16 @@ For example:
     ]
   }
 ```
+-------
+## Common
+
+```
+common.http.client.tls-check = true
+```
+
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  http.client.tls-check  | true, false  |  true  |  If set to false tls-check will be disabled, for example to allow Vamp to accept invalid certificates.
 
 
 {{< note title="What next?" >}}

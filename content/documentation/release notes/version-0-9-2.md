@@ -15,23 +15,33 @@ _22nd December 2016_
 
 
 ## What is new
-* Option to suspend workflows without deleting them and option to restart them [#789](https://github.com/magneticio/vamp/issues/789)
-* Workflow execution period (successive executions) and execution timeout (max allowed execution time) [#813](https://github.com/magneticio/vamp/issues/813)
-* Kubernetes bearer as an optional configuration parameter [#834](https://github.com/magneticio/vamp/issues/834)
-* Option to disable timing out deployment operations [#840](https://github.com/magneticio/vamp/issues/840)
-* Proper HTTPS support (client side) [#846](https://github.com/magneticio/vamp/issues/846)
-* Configurable default container type [#762](https://github.com/magneticio/vamp/issues/762)
-* Support for Kuberntes driver with rkt runtime [#761](https://github.com/magneticio/vamp/issues/761)
-* Workflow environment variable values can be parametrised with workflow name (e.g. as $workflow or ${workflow}) [#862](https://github.com/magneticio/vamp/issues/862)
-* We've added a help panel to the Vamp UI [#13](https://github.com/magneticio/vamp-ui/issues/13)
+* [#789](https://github.com/magneticio/vamp/issues/789) Workflows can now be suspended without deleting them and there is an option to restart them.  
+* [#813](https://github.com/magneticio/vamp/issues/813) Workflow execution period (successive executions) and execution timeout (max allowed execution time) can now be set for each workflow.   
+  More details: [using workflows - artifacts](/documentation/using-vamp/v0.9.2/workflows/#artifacts)
+* [#834](https://github.com/magneticio/vamp/issues/834) Kubernetes bearer can be added as an optional configuration parameter.  
+  More details: [configuration reference - container driver](/documentation/installation/configuration-reference/#container-driver)
+* [#840](https://github.com/magneticio/vamp/issues/840) Time out can now be disabled for deployment operations.  
+  More details: [configuration reference - operation](documentation/installation/configuration-reference/#operation)
+* [#846](https://github.com/magneticio/vamp/issues/846) Proper HTTPS support (client side).  
+  More details: [configuration reference - common](/documentation/installation/configuration-reference/#common)
+* [#762](https://github.com/magneticio/vamp/issues/762) The default container type can now be configured.  
+  More details: [configuration reference - model](documentation/installation/configuration-reference/#model)
+* [#761](https://github.com/magneticio/vamp/issues/761) Support for Kubernetes driver with rkt runtime.
+* [#862](https://github.com/magneticio/vamp/issues/862) Workflow environment variable values can be parametrised with workflow name (e.g. as $workflow or ${workflow}).
+* [Vamp UI #13](https://github.com/magneticio/vamp-ui/issues/13) We've added a help panel to the Vamp UI - click on the ? in the top right corner.
 * Website documentation is now versioned - where available, you can select content for specific Vamp versions.
 
 ## What has changed
-* Custom event types - only alphanumerics, '_' and '-' are allowed in type names [#830](https://github.com/magneticio/vamp/issues/830)
-* Configurable Logstash URL (host, port) instead of just host [#831](https://github.com/magneticio/vamp/issues/831)
-* 500 response code if any of /info response parts return an error [#771](https://github.com/magneticio/vamp/issues/771)
-* Explicit mapping for supported workflow deployable types [#845](https://github.com/magneticio/vamp/issues/845)
-* All default workflow environment variables need to be specified, e.g. VAMP_URL and VAMP_KEY_VALUE_STORE_PATH [#862](https://github.com/magneticio/vamp/issues/862)
+* [#830](https://github.com/magneticio/vamp/issues/830) Custom event types - only alphanumerics, '_' and '-' are allowed in type names.   
+  More details: [using events - basic event rules](/documentation/using-vamp/v0.9.2/events/#basic-event-rules)
+* [#831](https://github.com/magneticio/vamp/issues/831) Logstash URL (host, port) can now be configured (instead of just host).  
+  More details: [how to configure Vamp - extra configuration](/documentation/installation/configure-vamp/#extra-configuration-not-intended-for-vamp)
+* [#771](https://github.com/magneticio/vamp/issues/771) The API now returns a 500 response code if any of /info response parts return an error.  
+  More details: [API reference - get runtime info](/documentation/api/v0.9.2/api-reference/#system)
+* [#845](https://github.com/magneticio/vamp/issues/845) Spported workflow deployable types can be explicitly mapped.  
+  More details: [configuration reference - workflow-driver.workflow](/documentation/installation/configuration-reference/#workflow-driver-workflow) 
+* [#862](https://github.com/magneticio/vamp/issues/862) All default workflow environment variables need to be specified, e.g. VAMP_URL and VAMP_KEY_VALUE_STORE_PATH.  
+  More details: [using workflows - artifacts](/documentation/using-vamp/v0.9.2/workflows/#artifacts). 
 
 {{< note title="What next?" >}}
 * Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases))
