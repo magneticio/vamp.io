@@ -8,6 +8,13 @@ menu:
     weight: 12
 ---
 
+{{< note title="Note!" >}}
+The information on this page is written for Vamp v0.9.1 and was last updated on 21st December 2016.  
+
+* Switch to the [latest version of this page](/documentation/api/api-reference).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 This page gives full details of all available API calls. See [using the Vamp API](/documentation/api/using-the-api) for details on pagination, JSON and YAML content types and effective use of the API.
 
 * **Resource descriptions:** [blueprints](documentation/api/v.0.9.1/api-reference/#blueprints), [breeds](documentation/api/v.0.9.1/api-reference/#breeds), [conditions](documentation/api/v.0.9.1/api-reference/#conditions), [escalations](documentation/api/v.0.9.1/api-reference/#escalations), [scales](documentation/api/v.0.9.1/api-reference/#scales), [slas](documentation/api/v.0.9.1/api-reference/#slas)

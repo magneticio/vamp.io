@@ -7,6 +7,14 @@ menu:
     identifier: "using-vamp-api-0.9.1"
     weight: 22
 ---
+
+{{< note title="Note!" >}}
+The information on this page is written for Vamp v0.9.1 and was last updated on 21st December 2016.  
+
+* Switch to the [latest version of this page](/documentation/api/using-the-api).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 {{< note title="New in Vamp 0.9.1" >}}
 We've now added support for Websockets to our HTTP API. More information will follow soon.
 {{< /note >}}

@@ -7,6 +7,13 @@ menu:
     weight: 120
 ---
 
+{{< note title="Note!" >}}
+The information on this page is written for Vamp v0.9.1 and was last updated on 21st December 2016.  
+
+* Switch to the [latest version of this page](/documentation/using-vamp/workfows).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 A "workflow" is an automated change of the running system and its deployments and gateways. 
 Changing the number of running instances based on metrics (e.g. SLA) is an example of a workflow. 
 A workflow can be seen as a recipe or solution, however it has a more generic meaning not just related to "problematic" situations.

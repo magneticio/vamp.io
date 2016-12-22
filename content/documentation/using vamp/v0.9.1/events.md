@@ -7,6 +7,13 @@ menu:
     weight: 80
 ---
 
+{{< note title="Note!" >}}
+The information on this page is written for Vamp v0.9.1 and was last updated on 21st December 2016.  
+
+* Switch to the [latest version of this page](/documentation/using-vamp/events).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 Vamp collects events on all running services. Interaction with the API also creates events, like updating blueprints or deleting a deployment. Furthermore, Vamp allows third party applications to create events and trigger Vamp actions.
 
 All events are stored and retrieved using the Event API that is part of Vamp.
