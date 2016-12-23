@@ -13,6 +13,9 @@ aliases:
 
 _22nd December 2016_
 
+![](/img/006-mock-ups/VAMP-light-laptop-v091-hero.png)
+
+This v0.9.2 release of Vamp has plenty of improvements in the areas of installation, robustness and stability. We also give the workflows feature some TLC so they're even easier to use from the UI. Check out our ["Automated canary release with rollback" tutorial](/documentation/tutorials/automate-a-canary-release/) to get a feeling for the power of Vamp workflows.
 
 ## What is new
 * [#789](https://github.com/magneticio/vamp/issues/789) Workflows can now be suspended without deleting them and there is an option to restart them.  
@@ -39,9 +42,9 @@ _22nd December 2016_
 * [#771](https://github.com/magneticio/vamp/issues/771) The API now returns a 500 response code if any of /info response parts return an error.  
   More details: [API reference - get runtime info](/documentation/api/v0.9.2/api-reference/#system)
 * [#845](https://github.com/magneticio/vamp/issues/845) Spported workflow deployable types can be explicitly mapped.  
-  More details: [configuration reference - workflow-driver.workflow](/documentation/installation/configuration-reference/#workflow-driver-workflow) 
+  More details: [configuration reference - workflow-driver.workflow](/documentation/installation/configuration-reference/#workflow-driver-workflow)
 * [#862](https://github.com/magneticio/vamp/issues/862) All default workflow environment variables need to be specified, e.g. VAMP_URL and VAMP_KEY_VALUE_STORE_PATH.  
-  More details: [using workflows - artifacts](/documentation/using-vamp/v0.9.2/workflows/#artifacts). 
+  More details: [using workflows - artifacts](/documentation/using-vamp/v0.9.2/workflows/#artifacts).
 
 {{< note title="What next?" >}}
 * Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases))
