@@ -663,6 +663,27 @@ Parameter  |  Options  |  Default |  Details
 ------------|-------|--------|--------
   http.client.tls-check  | true, false  |  true  |  If set to false tls-check will be disabled, for example to allow Vamp to accept invalid certificates.
 
+## Parameterize application.conf
+
+To avoid duplication of configuration and make it easier to overwrite specific settings you can define global variables outside the `vamp { }` stanza, at the top of `application.conf`. 
+
+For example:
+```
+vamp_host = "localhost"    # Default value
+vamp_host = ${?VAMP_HOST}  # If environment variable exists, use this value
+
+vamp {
+  info {
+    message = "Hi, I'm Vamp! I'm running on: "${vamp_host}
+    timeout = 3 seconds
+  }  
+}
+```
+
+This is as of 0.9.2 how [we configure our DC/OS Docker image]( https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf)
+
+(Typesafe documentation on the topic covering system or env variable overrides)[https://github.com/typesafehub/config#optional-system-or-env-variable-overrides]
+
 
 {{< note title="What next?" >}}
 * Read about [how to configure Vamp](documentation/installation/configure-vamp)
