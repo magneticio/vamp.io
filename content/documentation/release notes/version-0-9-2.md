@@ -46,6 +46,9 @@ This v0.9.2 release of Vamp has plenty of improvements in the areas of installat
 * [#862](https://github.com/magneticio/vamp/issues/862) All default workflow environment variables need to be specified, e.g. VAMP_URL and VAMP_KEY_VALUE_STORE_PATH.  
   More details: [using workflows - artifacts](/documentation/using-vamp/v0.9.2/workflows/#artifacts).
 
+## Known issues
+  * On some infrastructures we sometimes noticed time-outs on the UI side. Accessing the API directly works fine. 
+
 {{< note title="What next?" >}}
 * Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases))
 * You can [try out Vamp](/documentation/installation/hello-world) with our single container hello world package.
