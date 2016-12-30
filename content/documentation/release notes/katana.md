@@ -13,10 +13,10 @@ All changes since the last official release are described below. This applies on
 {{< /note >}}
 
 ## What is new
-* no changes since the last release
+* `no-store` pulse storage [#869](https://github.com/magneticio/vamp/issues/869).
 
 ## What has changed
-* no changes since the last release
+* Pulse storage type needs to be explicitly specified `vamp.pulse.type`: `elasticsearch` or `no-store` [#869](https://github.com/magneticio/vamp/issues/869).
 
 {{< note title="What next?" >}}
 * Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases))
