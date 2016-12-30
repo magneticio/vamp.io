@@ -1021,7 +1021,9 @@ body {
   line-height: 1.8;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin: 32px 0 0 0; }
+  margin: 32px 0 0 0;
+  padding-top: 100px;
+  margin-top: -68px; }
 
 .markdowned h4 + h5 {
   margin-top: 0; }
@@ -2222,6 +2224,12 @@ pre + pre {
   transition: 0.07s ease-in-out all; }
 
 h2:hover .anchor-hover {
+  opacity: 1; }
+
+h3:hover .anchor-hover {
+  opacity: 1; }
+
+h4:hover .anchor-hover {
   opacity: 1; }
 
 #__bs_notify__ {

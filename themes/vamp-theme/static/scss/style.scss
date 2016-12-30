@@ -694,6 +694,10 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin: 32px 0 0 0;
+
+    //padding for anchor tags
+    padding-top: 100px;
+    margin-top: -68px;
   }
 
   h4 + h5 {
@@ -2243,7 +2247,13 @@ h2:hover .anchor-hover {
   opacity: 1;
 }
 
+h3:hover .anchor-hover {
+  opacity: 1;
+}
 
+h4:hover .anchor-hover {
+  opacity: 1;
+}
 
 // Dev
 #__bs_notify__ { top:95% !important; right: 10px !important; border-radius: 15px !important; height:60px !important; }

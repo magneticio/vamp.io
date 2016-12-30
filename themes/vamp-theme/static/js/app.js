@@ -13,7 +13,7 @@ function documentReady() {
   setSideMenu();
 
   // Set anchors on all h2
-  $('.documentation h2').each(function() {
+  $('.documentation h2, h3, h4').each(function() {
     $(this).append('<a class="anchor-hover" href="'+ window.location.pathname +'#'+$(this).attr('id')+'"><i class="fa fa-link" aria-hidden="true"></i></a>');
 
   });
