@@ -93,6 +93,12 @@ function removeIndex(path) {
   }
 }
 
+ function removeNoteBoxes(content) {
+    content = content.replace(/{([^}]+)}/g, ' ');
+    content = content.replace(/}/g, ' ');
+    return content;
+ }
+
 function parseContent(content) {
   let parsedContent = {};
   //split on three dashes and newline
@@ -101,7 +107,7 @@ function parseContent(content) {
     let dataBar = newLinesToJsObject(contentSplitted[1]);
     let contentBar = contentSplitted.slice(2).join();
     Object.assign(parsedContent, dataBar);
-    Object.assign(parsedContent, {content: removeMd(contentBar)});
+    Object.assign(parsedContent, {content: removeNoteBoxes(removeMd(contentBar))});
   } else {
     parsedContent = {title: '', date: '', content: content};
   }
