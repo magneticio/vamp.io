@@ -19,10 +19,6 @@ function documentReady() {
   });
 
 
-  // window.setTimeout(function() {location.location = window.location.href.replace(window.location.hash, '') + window.location.hash;}, 2000);
-
-  // Now scroll to it
-
 
   // Top menu color change
   $(window).on("scroll", function () {
@@ -130,11 +126,16 @@ function documentReady() {
 
 
   // Dropdown functionality
-  $('.dropdown').click(function () {
+    $('html').click(function() {
+        $('.dropdown').removeClass('dropdown__active');
+    });
+
+  $('.dropdown').click(function (e) {
     $(this).toggleClass('dropdown__active');
+    e.stopPropagation();
   });
 
-  $('#versions-dropdown .dropdown__item').click(function() {
+  $('#versions-dropdown .dropdown__item').click(function(e) {
     var goToUrl = $(this).data('url');
     console.log('goToUrl: ', goToUrl);
     window.location = goToUrl;
