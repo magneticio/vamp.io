@@ -14,6 +14,7 @@ All changes since the last official release are described below. This applies on
 
 ## What is new
 * `no-store` pulse storage [#869](https://github.com/magneticio/vamp/issues/869).
+* Configurable service network [#730](https://github.com/magneticio/vamp/issues/730).
 
 ## What has changed
 * Pulse storage type needs to be explicitly specified `vamp.pulse.type`: `elasticsearch` or `no-store` [#869](https://github.com/magneticio/vamp/issues/869).
