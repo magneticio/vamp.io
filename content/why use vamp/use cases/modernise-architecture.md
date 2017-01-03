@@ -5,7 +5,7 @@ menu:
     main: 
         parent: "Use cases"
         weight: 40
-        name: "Mordernise architecture"
+        name: "Modernise architecture"
 ---
 
 _"We want to switch to a NoSQL database for our microservices, but don't know which solution will run best for our purposes"_
