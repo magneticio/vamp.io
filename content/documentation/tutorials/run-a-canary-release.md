@@ -102,11 +102,11 @@ routes:
 Notice three things:
 
 * We inserted a list of conditions (with only one condition for now).
-* We set the filter strength to 100% (it would be also by default set to 100%). This is important because we want all Chrome users to access the new service - we could also say `filter_strength: 50%` to give access just to half of them (the other 50% would be redirected to weight rules and routed accordingly).
+* We set the condition strength to 100% (it would be also by default set to 100%). This is important because we want all Chrome users to access the new service - we could also say `condition_strength: 50%` to give access just to half of them (the other 50% would be redirected to weight rules and routed accordingly).
 * We set the weight to 0% because we don't want any other users to access `sava:1.1.0`
 
-The first service where the filter matches the request will be used to handle the request.
-[More information about using filters, weights, sticky sessions etc.](/documentation/using-vamp/gateways/).  
+The first service where the condition matches the request will be used to handle the request.
+[More information about using conditions, weights, sticky sessions etc.](/documentation/using-vamp/gateways/).  
 
 Our full blueprint now looks as follows:
 
@@ -149,7 +149,7 @@ clusters:
 ```
 
 Using the UI, you can either use the **EDIT** button from the deployment details screen again and completely paste in this blueprint or just
-find the right place in the blueprint and edit it by hand. The result should be the same as using our UI to insert a filter condition:
+find the right place in the blueprint and edit it by hand. The result should be the same as using our UI to insert a condition:
 
 ![](/images/screens/v091/tut2_canary-condition.jpg)
 
@@ -160,8 +160,8 @@ As we are not actually deploying anything but just reconfiguring routes, the upd
 ## A bit more about conditions
 
 Our browser example is easily testable on a laptop, but of course a bit contrived. Luckily you can
-create much more powerful filters quite easily. Checking Headers, Cookies, Hosts etc. is all possible.
-Under the hood, Vamp uses Haproxy's ACL's ([cbonte.github.io/haproxy-dconv/configuration-1.5 - ACL basics](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#7.1)) and you can use the exact ACL definition right in the blueprint in the `condition` field of a filter.
+create much more powerful conditions quite easily. Checking Headers, Cookies, Hosts etc. is all possible.
+Under the hood, Vamp uses Haproxy's ACL's ([cbonte.github.io/haproxy-dconv/configuration-1.5 - ACL basics](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#7.1)) and you can use the exact ACL definition right in the blueprint in the 'condition` field.
 
 #### Vamp short codes
 
@@ -188,8 +188,8 @@ User-Agent=Android            # upper case, no white space
 user-agent = Android          # lower case, white space
 ```
 
-#### Multiple conditions in a filter
-Multiple conditions can be included using boolean expression. For example, the following condition would first check whether the string "Chrome" exists in the User-Agent header of a
+#### Add multiple conditions
+Multiple conditions can be included using boolean expressions. For example, the following condition would first check whether the string "Chrome" exists in the User-Agent header of a
 request and then it would check whether the request has the header "X-VAMP-TUTORIAL". So any request matching both conditions would go to this service.
 
 ```yaml
