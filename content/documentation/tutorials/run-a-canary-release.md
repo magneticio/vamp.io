@@ -95,9 +95,8 @@ Let's start simple: We will allow only Chrome users to access v1.1.0 of our appl
 routes:
   sava:1.1.0:
     weight: 0%
-    filter_strength: 100%
-    filters:
-    - condition: User-Agent = Chrome
+    condition_strength: 100%
+    condition: User-Agent = Chrome    
 ```
 
 Notice three things:
@@ -190,24 +189,17 @@ user-agent = Android          # lower case, white space
 ```
 
 #### Multiple conditions in a filter
-Having multiple conditions in a filter is perfectly possible, all filters will be implicitly
-"OR"-ed together, as in _"if the first filter doesn't match, proceed to the next"_.   
-
-In the example below, the filter would first check whether the string "Chrome" exists in the User-Agent header of a
-request. If that doesn't result in a match, it would check whether the request has the header
-"X-VAMP-TUTORIAL". So any request matching either condition would go to this service.
+Multiple conditions can be included using boolean expression. For example, the following condition would first check whether the string "Chrome" exists in the User-Agent header of a
+request and then it would check whether the request has the header "X-VAMP-TUTORIAL". So any request matching both conditions would go to this service.
 
 ```yaml
 ---
-routes:
-  sava:1.1.0:
-    filter_strength: 100%
-    filters:
-    - condition: User-Agent = Chrome
-    - condition: Has Header X-VAMP-TUTORIAL
+gateways:
+  weight: 100%
+  condition: "User-Agent = Chrome AND Has Header X-VAMP-TUTORIAL"
 ```
 
-Using a tool like httpie ([github.com/jakubroztocil - httpie](https://github.com/jakubroztocil/httpie)) makes testing this a breeze.
+Using a tool like httpie ([github.com/jkbrzt/httpie](https://github.com/jakubroztocil/httpie)) makes testing this a breeze.
 
     http GET http://10.26.184.254:9050/ X-VAMP-TUTORIAL:stuff
 
