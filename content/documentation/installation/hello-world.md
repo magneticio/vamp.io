@@ -16,7 +16,7 @@ This hello world set up is designed for demo purposes only - it is not productio
 {{< /note >}}
 
 #### Requirements
-* At least 8GB free space
+* At least 8GB of memory
 
 ## Get Docker
 
