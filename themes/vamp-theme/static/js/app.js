@@ -186,7 +186,6 @@ function setSideMenu() {
       if (elementUrlInfo.version === urlInfo.version) {
         isCurrent = 'selected';
         $(this).css('display', 'block');
-        $(this).append('&nbsp;(' + urlInfo.version + ')');
       }
 
       if (elementUrlInfo.pageName === urlInfo.pageName) {
