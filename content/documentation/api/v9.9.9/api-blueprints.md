@@ -12,15 +12,15 @@ Blueprints are static artifacts. They describe how breeds work in runtime and wh
 
 ## Actions
  
- * [List](/documentation/api/api-blueprints/#list-blueprints) - return a list of all blueprints
- * [Get](/documentation/api/api-blueprints/#get-blueprint) - get a single blueprint
- * [Create](/documentation/api/api-blueprints/#create-blueprint) - create a new blueprint 
- * [Update](/documentation/api/api-blueprints/#update-blueprint) - update an existing blueprint
- * [Delete](/documentation/api/api-blueprints/#delete-blueprint) - delete a blueprint
+ * [List](/documentation/api/v9.9.9/api-blueprints/#list-blueprints) - return a list of all blueprints
+ * [Get](/documentation/api/v9.9.9/api-blueprints/#get-blueprint) - get a single blueprint
+ * [Create](/documentation/api/v9.9.9/api-blueprints/#create-blueprint) - create a new blueprint 
+ * [Update](/documentation/api/v9.9.9/api-blueprints/#update-blueprint) - update an existing blueprint
+ * [Delete](/documentation/api/v9.9.9/api-blueprints/#delete-blueprint) - delete a blueprint
 
 ## Blueprint resource
 
-The minimum and API return resource examples below are shown in YAML format. Vamp API requests and responses can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/api-common-parameters) for details on how to set this. 
+The minimum and API return resource examples below are shown in YAML format. Vamp API requests and responses can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this. 
 
 ### Minimum resource
 The minimum fields required to successfully create a blueprint.
@@ -56,11 +56,11 @@ environment_variables: {}
  Field name    |  Required  | description          
  --------------|---|-----------------
  name | yes |
- kind | optional | Required to [send multiple resources](/documentation/api/api-overview/#send-multiple-resources-post-put-and-delete)
- gateways | optional |  Can be created separately and referenced from here or defined inline as part of the blueprint. See [gateway resource](/documentation/api/api-gateways)
+ kind | optional | Required to [send multiple resources](/documentation/api/v9.9.9/api-overview/#send-multiple-resources) to `/api/v1`
+ gateways | optional |  Can be created separately and referenced from here or defined inline as part of the blueprint. See [gateway resource](/documentation/api/v9.9.9/api-gateways)
  clusters | yes  |
  services | yes |
- breed |  yes |Can be created separately and referenced from here or defined inline as part of the blueprint. See [breed resource](/documentation/)
+ breed |  yes |Can be created separately and referenced from here or defined inline as part of the blueprint. See [breed resource](/documentation/api/v9.9.9/api-breeds)
  environment variables | optional |
  scale | optional | Can be created separately and referenced from here or defined inline as part of the blueprint. If omitted, the default scale will be used (See [scale resource](/documentation/) and [reference.conf default scale](/documentation/installation/configuration-reference/#operation))
 
@@ -68,7 +68,7 @@ environment_variables: {}
 
 ## List blueprints
 
-Returns a list of all stored blueprint resources. For details on pagination see [common parameters](/documentation/api/api-common-parameters)
+Returns a list of all stored blueprint resources. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
 
 ### Request syntax
     GET /api/v1/blueprints
@@ -82,7 +82,7 @@ Returns a list of all stored blueprint resources. For details on pagination see 
 The request body should be empty.
 
 ### Response syntax
-If successful, will return a list of [blueprint resources](/documentation/api/api-blueprints/#blueprint-resource) in the specified `accept` format (default JSON).  
+If successful, will return a list of [blueprint resources](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `accept` format (default JSON).  
 
 ### Errors
 * **400 bad request** `expand_references` set to true and some breeds are not yet fully defined.
@@ -106,7 +106,7 @@ Returns details of a single, specified blueprint.
 The request body should be empty.
 
 ### Response syntax
-If successful, will return a single [blueprint resource](/documentation/api/api-blueprints/#blueprint-resource) in the specified `accept` format (default JSON).
+If successful, will return a single [blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `accept` format (default JSON).
 
 ### Errors
 * **400 bad request** `expand_references` set to true and some breeds are not yet fully defined.
@@ -127,10 +127,10 @@ Creates a new blueprint. Create operations are idempotent: sending a second requ
 | `validate_only` | true or false     | false            | validates the blueprint and returns a `201 Created` if the blueprint is valid.  
 
 ### Request body
-Should contain a [blueprint resource](/documentation/api/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON).
+Should contain a [blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON).
 
 ### Response syntax
-A successful create operation has status code 201 `Created` and the response body will contain the created [blueprint resource](/documentation/api/api-blueprints/#blueprint-resource) in the specified `accept` format (default JSON). 
+A successful create operation has status code 201 `Created` and the response body will contain the created [blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `accept` format (default JSON). 
 
 ### Errors
 
@@ -151,10 +151,10 @@ Updates the content of a specific blueprint.
 | `validate_only` | true or false     | false            | validates the blueprint and returns a `200 OK` if the blueprint is valid.  
 
 ### Request body
-Should contain a [blueprint resource](/documentation/api/api-blueprints/#blueprint-resource) in the specified `content-type` (default JSON).
+Should contain a [blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `content-type` (default JSON).
 
 ### Response syntax
-A successful update operation has status code 200 `OK` or 202 `Accepted` and the response body will contain the updated [blueprint resource](/documentation/api/api-blueprints/#blueprint-resource) in the specified `accept` format (default JSON).
+A successful update operation has status code 200 `OK` or 202 `Accepted` and the response body will contain the updated [blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `accept` format (default JSON).
 
 ### Errors
 
@@ -164,7 +164,7 @@ A successful update operation has status code 200 `OK` or 202 `Accepted` and the
 
 ## Delete blueprint
 
-Deletes a blueprint. Delete operations are idempotent: sending a second request with the same content will not result in an error response (4xx).
+Deletes a blueprint. Note that delete operations are idempotent: sending a second request with the same content will not result in an error response (4xx).
 
 ### Request syntax
 

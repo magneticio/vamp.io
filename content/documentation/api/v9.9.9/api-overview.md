@@ -6,34 +6,59 @@ menu:
     parent: "API"
     identifier: "api-overview"
     weight: 25
+aliases:
+    - /documentation/api/new
 draft: true
 ---
 
-Vamp has one REST API. For details on pagination, and request and response formats see [common parameters](/documentation/api/api-common-parameters).
+Vamp has one REST API. For details on pagination, and request and response formats see [common parameters](/documentation/api/v9.9.9/api-common-parameters).
 
-## Endpoints and resources
+## API endpoints and resource descriptions
 
-* **Resource descriptions:** [blueprints](documentation/api/api-blueprints), [breeds](), [conditions](), [escalations](), [scales](), [slas]()
-* **Runtime entities:** [deployments](documentation/api/api-deployments), [deployment scales](), [deployment SLAs](), [gateways](documentation/api/api-gateways)  
-* **Data:** [events](), [health](), [metrics]()
-* **System:** [info, config, haproxy]()
+* **Artifacts:** [blueprints](documentation/api/v9.9.9/api-blueprints), [breeds](documentation/api/v9.9.9/api-breeds), [conditions](documentation/api/v9.9.9/api-conditions), [escalations](documentation/api/v9.9.9/api-escalations), [scales](documentation/api/v9.9.9/api-scales), [slas](documentation/api/v9.9.9/api-slas)
+* **Runtime entities:** [deployments](documentation/api/v9.9.9/api-deployments), [deployment scales](), [deployment SLAs](), [gateways](documentation/api/v9.9.9/api-gateways)  
+* **Data:** [events](documentation/api/v9.9.9/api-events), [health](documentation/api/v9.9.9/api-health), [metrics](documentation/api/v9.9.9/api-metrics)
+* **System:** [info](documentation/api/v9.9.9/api-info), config, haproxy
 * **Debug:** [sync, sla, escalation]()
 
-## Send multiple resources - `POST`, `PUT` and `DELETE`
+## Send multiple resources
 
-It is possible to send YAML document containing more than 1 artifact definition. Supported methods are `POST`, `PUT` and `DELETE`. Example:
+It is possible to `POST`, `PUT` or `DELETE` YAML or JSON documents containing more than one artifact definition.
+
+Similar artifacts can be sent to a specific endpoint, such as `/api/v1/breeds`. Different artifact types can also be sent together by using the general endpoint `api/v1` and including a `kind` field in each artifact definition. The artifact kind corresponds to the singular form of the artifact type (for example `blueprint`, `breed`, `condition`).
+
+### Example (YAML) - post multiple artifacts to a specific endpoint 
+
+`POST /api/v1/breeds`
 
 ```yaml
+---
+name: ...
+# breed 1 definition ...
+---
+name: ...
+# breed 2 definition ....
+---
+name: ...
+# breed 3 definition ....
+```
+
+### Example (YAML) - post multiple artifact types to /api/v1
+When using the general `api/v1` endpoint, each artifact description  must include a `kind` field.
+
+`POST /api/v1`
+
+```yaml
+---
+name: ...
+kind: blueprint
+# blueprint definition ...
 ---
 name: ...
 kind: breed
 # breed definition ...
 ---
 name: ...
-kind: blueprint
-# blueprint definition ...
+kind: condition
+# condition definition ...
 ```
-
-Additional `kind` field is required and it always correspond (singular form) to type of the artifact.
-For instance if specific endpoint would be `/api/v1/deloyments` then the same deployment request can be sent to `api/v1` with additional `kind: deployment`.
-If specific endpoints are used (e.g. `/api/v1/blueprints`) then `kind` needs to be ommited.

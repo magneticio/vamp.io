@@ -53,30 +53,48 @@ See [Github's implementation](https://developer.github.com/guides/traversing-wit
 * A successful update operation has status code 200 `OK` or 202 `Accepted` and the response body contains the updated resource.
 * A successful delete operation has status code 204 `No Content` or 202 `Accepted` with an empty response body.
 
-## Sending multiple artifacts (documents) - `POST`, `PUT` and `DELETE`
+## Send multiple resources
 
-It is possible to send YAML document containing more than 1 artifact definition:
+It is possible to `POST`, `PUT` or `DELETE` YAML or JSON documents containing more than one artifact definition.
 
-```
-GET /api/v1
-```
+Artifacts of the same type can be grouped together and sent to a specific endpoint, such as `/api/v1/breeds`. Different artifact types can also be grouped together and sent to the general API endpoint `api/v1` by including a `kind` field in each artifact definition. The artifact kind corresponds to the singular form of the artifact type (for example `blueprint`, `breed`, `condition`).
 
-Supported methods are `POST`, `PUT` and `DELETE`. Example:
+### Example (YAML) - post multiple artifacts to a specific endpoint 
+
+`POST /api/v1/breeds`
 
 ```yaml
+---
+name: ...
+# breed 1 definition ...
+---
+name: ...
+# breed 2 definition ....
+---
+name: ...
+# breed 3 definition ....
+```
+
+### Example (YAML) - post multiple artifact types to /api/v1
+When using the general `api/v1` endpoint, each artifact description  must include a `kind` field.
+
+`POST /api/v1`
+
+```yaml
+---
+name: ...
+kind: blueprint
+# blueprint definition ...
 ---
 name: ...
 kind: breed
 # breed definition ...
 ---
 name: ...
-kind: blueprint
-# blueprint definition ...
+kind: condition
+# condition definition ...
 ```
 
-Additional `kind` field is required and it always correspond (singular form) to type of the artifact.
-For instance if specific endpoint would be `/api/v1/deloyments` then the same deployment request can be sent to `api/v1` with additional `kind: deployment`.
-If specific endpoints are used (e.g. `/api/v1/blueprints`) then `kind` needs to be ommited.
 
 -------------
 

@@ -12,12 +12,12 @@ intro text. Read about [using events](documentation/using-vamp/events/).
 
 ## Actions
  
- * [List](/documentation/api/api-events/#list-events) - return a list of all events
- * [Get](/documentation/api/api-events/#get-event) - get a single event
- * [Create](/documentation/api/api-events/#create-event) - create a new event 
+ * [List](/documentation/api/v9.9.9/api-events/#list-events) - return a list of all events
+ * [Get](/documentation/api/v9.9.9/api-events/#get-event) - get a single event
+ * [Create](/documentation/api/v9.9.9/api-events/#create-event) - create a new event 
 
 ## Event resource
-The minimum and API return resource examples below are shown in YAML format. Vamp API requests and responses can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/api-common-parameters) for details on how to set this.
+The minimum and API return resource examples below are shown in YAML format. Vamp API requests and responses can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this.
 
 ### Minimum resource
 The minimum fields required to successfully create a event.
@@ -41,7 +41,7 @@ The fields returned by the API after a event has been created (also visible in t
 
 ## List events
 
-Returns a list of all stored events. For details on pagination see [common parameters](/documentation/api/api-common-parameters)
+Returns a list of all stored events. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
 
 ### Request syntax
     GET /api/v1/events

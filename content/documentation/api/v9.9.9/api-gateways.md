@@ -12,15 +12,15 @@ intro text. Read about [using gateways](documentation/using-vamp/gateways/).
 
 ## Methods
  
- * [List](/documentation/api/api-gateways/#list-gateways) - return a list of all gateways
- * [Get](/documentation/api/api-gateways/#get-a-single-gateway) - get a single gateway
- * [Create](/documentation/api/api-gateways/#create-a-gateway) - create a new gateway 
- * [Update](/documentation/api/api-gateways/#update-a-gateway) - update a gateway
- * [Delete](/documentation/api/api-gateways/#delete-a-gateway) - delete a gateway
+ * [List](/documentation/api/v9.9.9/api-gateways/#list-gateways) - return a list of all gateways
+ * [Get](/documentation/api/v9.9.9/api-gateways/#get-a-single-gateway) - get a single gateway
+ * [Create](/documentation/api/v9.9.9/api-gateways/#create-a-gateway) - create a new gateway 
+ * [Update](/documentation/api/v9.9.9/api-gateways/#update-a-gateway) - update a gateway
+ * [Delete](/documentation/api/v9.9.9/api-gateways/#delete-a-gateway) - delete a gateway
 
 ## Gateway resource
 
-Vamp requests can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/api-common-parameters) for details on how to set this.
+Vamp requests can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this.
 
 ### JSON
 
@@ -35,7 +35,7 @@ Vamp requests can be in JSON or YAML format (default JSON). See [common paramete
   
 ## List gateways
 
-Returns a list of all gateways. For details on pagination see [common parameters](/documentation/api/api-common-parameters)
+Returns a list of all gateways. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
 
 ### Request syntax
     GET /api/v1/gateways

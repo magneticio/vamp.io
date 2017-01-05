@@ -9,6 +9,8 @@ menu:
 draft: true
 ---
 
+The headers described below can be added to all API requests to [specify JSON or YAML](/documentation/api/v9.9.9/api-common-parameters/#request-and-response-format) for requests and responses, and [manage pagination](/documentation/api/v9.9.9/api-common-parameters/#pagination) for responses.
+
 ## Request and response format
 Requests and responses can be formatted in JSON or YAML (default JSON). 
 

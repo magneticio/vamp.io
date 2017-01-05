@@ -12,15 +12,15 @@ intro text. Read about [using deployments](documentation/using-vamp/deployments/
 
 ## Actions
  
- * [List](/documentation/api/api-deployments/#list-deployments) - return a list of all deployments
- * [Get](/documentation/api/api-deployments/#get-deployment) - get a single deployment
- * [Create](/documentation/api/api-deployments/#create-deployment) - create a new deployment 
- * [Update](/documentation/api/api-deployments/#update-deployment) - update a running deployment
- * [Delete](/documentation/api/api-deployments/#delete-deployment) - delete a deployment
+ * [List](/documentation/api/v9.9.9/api-deployments/#list-deployments) - return a list of all deployments
+ * [Get](/documentation/api/v9.9.9/api-deployments/#get-deployment) - get a single deployment
+ * [Create](/documentation/api/v9.9.9/api-deployments/#create-deployment) - create a new deployment 
+ * [Update](/documentation/api/v9.9.9/api-deployments/#update-deployment) - update a running deployment
+ * [Delete](/documentation/api/v9.9.9/api-deployments/#delete-deployment) - delete a deployment
 
 ## Deployment resource
 
-The minimum and API return resource examples below are shown in YAML format. Vamp API requests and responses can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/api-common-parameters) for details on how to set this.
+The minimum and API return resource examples below are shown in YAML format. Vamp API requests and responses can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this.
 
 ### Minimum resource
 
@@ -42,7 +42,7 @@ The minimum and API return resource examples below are shown in YAML format. Vam
   
 ## List deployments
 
-Returns a list of all running deployments. For details on pagination see [common parameters](/documentation/api/api-common-parameters)
+Returns a list of all running deployments. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
 
 ### Request syntax
     GET /api/v1/deployments

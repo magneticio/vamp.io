@@ -12,16 +12,16 @@ intro text. Read about [using scales](/documentation/using-vamp/blueprints/#scal
 
 ## Actions
  
- * [List](/documentation/api/api-scales/#list-scales) - return a list of all scales
- * [Get](/documentation/api/api-scales/#get-scale) - get a single scale
- * [Create](/documentation/api/api-scales/#create-scale) - create a new scale 
- * [Update](/documentation/api/api-scales/#update-scale) - update a scale
- * [Delete](/documentation/api/api-scales/#delete-scale) - delete a scale
+ * [List](/documentation/api/v9.9.9/api-scales/#list-scales) - return a list of all scales
+ * [Get](/documentation/api/v9.9.9/api-scales/#get-scale) - get a single scale
+ * [Create](/documentation/api/v9.9.9/api-scales/#create-scale) - create a new scale 
+ * [Update](/documentation/api/v9.9.9/api-scales/#update-scale) - update a scale
+ * [Delete](/documentation/api/v9.9.9/api-scales/#delete-scale) - delete a scale
 
 ## Scale resource
 
 
-The minimum and API return resource examples below are shown in YAML format. Vamp API requests and responses can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/api-common-parameters) for details on how to set this.
+The minimum and API return resource examples below are shown in YAML format. Vamp API requests and responses can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this.
 
 ### Minimum resource
 The minimum fields required to successfully create a scale.
@@ -45,7 +45,7 @@ The fields returned by the API after a scale has been created (also visible in t
 
 ## List conditions
 
-Returns a list of all stored conditions. For details on pagination see [common parameters](/documentation/api/api-common-parameters)
+Returns a list of all stored conditions. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
 
 ### Request syntax
     GET /api/v1/conditions
