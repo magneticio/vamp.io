@@ -15,7 +15,10 @@ install:
   - nvm install stable
   - nvm use stable
   - npm install -g "gulpjs/gulp#4.0"
-  - go get -v github.com/spf13/hugo
+  - curl -sSL https://github.com/spf13/hugo/releases/download/v0.18.1/hugo_0.18.1_Linux-64bit.tar.gz | tar -zxf - -C /tmp/
+  - mv /tmp/hugo_0.18.1_linux_amd64/hugo_0.18.1_linux_amd64 /tmp/hugo
+  - rm -rf /tmp/hugo_0.18.1_linux_amd64
+  - export PATH="/tmp:$PATH"
 script: npm install && gulp build:prod
 after_success: |
   if [ -n "$GITHUB_API_KEY" ] && [ ${TRAVIS_PULL_REQUEST} == "false" ] && [ $TRAVIS_BRANCH == "master" ]; then
