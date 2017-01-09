@@ -23,12 +23,13 @@ You can work with Sava in the [Vamp hello world](/documentation/installation/hel
 
 
 ## Learn more
-* [Create a workflow that generates events](/documentation/tutorials/create-a-workflow)  
-Learn about the Vamp events system and create a simple workflow that interacts with the Vamp API 
+
+* [Deploy and canary release Wordpress](/documentation/tutorials/deploy-wordpress-and-mysql)  
+This tutorial shows how to deploy Wordpress together with mySQL and set up a gateway to run a canary release
 
 * [Automate a canary release with rollback](/documentation/tutorials/automate-a-canary-release)  
 Use workflows to automate a canary release and force a rollback (Vamp Runner)
 
-* [Deploy and canary release Wordpress](/documentation/tutorials/deploy-wordpress-and-mysql)  
-This tutorial shows how to deploy Wordpress together with mySQL and set up a gateway to run a canary release
+* [Create a workflow that generates events](/documentation/tutorials/create-a-workflow)  
+Learn about the Vamp events system and create a simple workflow that interacts with the Vamp API 
 

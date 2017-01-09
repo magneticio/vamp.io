@@ -13,7 +13,7 @@ intro text. Read about [using breeds](documentation/using-vamp/breeds/).
 ## Actions
  
  * [List](/documentation/api/v9.9.9/api-breeds/#list-breeds) - return a list of all breeds
- * [Get](/documentation/api/v9.9.9/api-breeds/#get-breed) - get a single breed
+ * [Get](/documentation/api/v9.9.9/api-breeds/#get-single-breed) - get a single breed
  * [Create](/documentation/api/v9.9.9/api-breeds/#create-breed) - create a new breed 
  * [Update](/documentation/api/v9.9.9/api-breeds/#update-breed) - update a stored breed
  * [Delete](/documentation/api/v9.9.9/api-breeds/#delete-breed) - delete a breed
@@ -77,7 +77,7 @@ If successful, will return a list of [breed resources](/documentation/api/v9.9.9
 
 --------------
 
-## Get specific breed
+## Get single breed
 
 Returns a specific stored breed.
 
@@ -104,7 +104,7 @@ Creates a breed with the specified fields.
 * The request body should include at least the [minimum breed resource](/documentation/api/v9.9.9/api-breeds/#breed-resource) in the specified `content-type` format (default JSON). 
 
 ### Response
-If successful, will return the created [breed resources](/documentation/api/v9.9.9/api-breeds/#breed-resource) in the specified `accept` format (default JSON).
+If successful, will return the created [breed resource](/documentation/api/v9.9.9/api-breeds/#breed-resource) in the specified `accept` format (default JSON).
 
 ### Errors
 * ???
@@ -121,7 +121,7 @@ Updates the specified field(s) of a stored breed.
 * The request body should include at least the [minimum breed resource](/documentation/api/v9.9.9/api-breeds/#breed-resource) in the specified `content-type` format (default JSON). The `name` field must match the `breed_name` specified in the request syntax.
 
 ### Response
-If successful, will return the updated [breed resources](/documentation/api/v9.9.9/api-breeds/#breed-resource) in the specified `accept` format (default JSON).
+If successful, will return the updated [breed resource](/documentation/api/v9.9.9/api-breeds/#breed-resource) in the specified `accept` format (default JSON).
 
 ### Errors
 * ???

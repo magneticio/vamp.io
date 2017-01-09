@@ -12,24 +12,15 @@ intro text. Read about [using deployments](documentation/using-vamp/deployments/
 
 ## Actions
  
- * [List](/documentation/api/v9.9.9/api-deployments/#list-deployments) - return a list of all deployments
- * [Get](/documentation/api/v9.9.9/api-deployments/#get-deployment) - get a single deployment
- * [Create](/documentation/api/v9.9.9/api-deployments/#create-deployment) - create a new deployment 
- * [Update](/documentation/api/v9.9.9/api-deployments/#update-deployment) - update a running deployment
- * [Delete](/documentation/api/v9.9.9/api-deployments/#delete-deployment) - delete a deployment
+ * [List](/documentation/api/v9.9.9/api-deployments/#list-deployments) - return details of all deployments
+ * [Get](/documentation/api/v9.9.9/api-deployments/#get-deployment) - get details of a single deployment
+ * [Create](/documentation/api/v9.9.9/api-deployments/#create-deployment) - initiate a new deployment 
+ * [Update](/documentation/api/v9.9.9/api-deployments/#update-deployment) - add to a running deployment
+ * [Delete](/documentation/api/v9.9.9/api-deployments/#delete-deployment) - remove elements from a running deployment
 
 ## Deployment resource
 
-The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this. 
-
-### Minimum resource
-
-```
-
-```
-
-
-### API return resource
+The resource example below is in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this. 
 
 ```
 name: sava
@@ -94,14 +85,20 @@ hosts:
 
  Field name        | description          
  -----------------|-----------------
+ name |  
+ kind |
+ lookup_name |  
+ clusters |
   |  
-  |
+ ports |
+ environment_variables |  
+ hosts |
 
 -----------------  
   
 ## List deployments
 
-Returns a list of all running deployments. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
+Return a list of all running deployments. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters).
 
 ### Request
 * `GET`
@@ -114,8 +111,76 @@ If successful, will return a list of [deployment resources](/documentation/api/v
 ### Errors
 * ???
 
------------------
+--------------
 
+## Get single deployment
+
+Return details of a specific running deployment.
+
+### Request
+* `GET`
+* `/api/v1/deployments/{deployment_name}`
+* The request body should be empty.
+
+### Response
+If successful, will return the specified [deployment resource](/documentation/api/v9.9.9/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
+
+### Errors
+* The requested resource could not be found.
+
+--------------
+
+## Create deployment
+
+Initiate a deployment.
+
+### Request
+* `POST` 
+* `/api/v1/deployments`
+* The request body should include at least the [minimum blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). 
+
+### Response
+If successful, will return the created [deployment resource](/documentation/api/v9.9.9/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
+
+### Errors
+* ???
+
+--------------
+
+## Update deployment
+
+Add to a running deployment.
+
+### Request
+* `PUT`
+* `/api/v1/deployments/{deployment_name}`
+* The request body should include at least the [minimum blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). The `name` field must match the `breed_name` specified in the request syntax.
+
+### Response
+If successful, will return the updated [deployment resource](/documentation/api/v9.9.9/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
+
+### Errors
+* ???
+
+--------------
+
+## Delete deployment
+
+Remove specified elements from a running deployment.
+
+### Request
+
+* `DELETE`
+* `/api/v1/deployments/{deployment_name}`
+* The request body should contain at least a [minimum blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) containing the services to be removed from the deployment. To delete a full deployment, include the complete blueprint or deployment resource.
+
+### Response
+???
+
+### Errors
+* ???
+
+--------------
 ## Examples
 
 See [gateways - A/B TEST TWO DEPLOYMENTS USING ROUTE WEIGHT](/documentation/using-vamp/gateways/#example-a-b-test-two-deployments-using-route-weight)
