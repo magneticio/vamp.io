@@ -19,10 +19,16 @@ intro text. Read about [using gateways](documentation/using-vamp/gateways/).
  * [Delete](/documentation/api/v9.9.9/api-gateways/#delete-a-gateway) - delete a gateway
 
 ## Gateway resource
+You can define gateways inline or store them separately under a unique name and reference them from a blueprint, breed or deployment resource.
+The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this. 
 
-Vamp requests can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this.
+### Minimum resource
 
-### JSON
+```
+
+```
+
+### API return resource
 
 ```
 

@@ -20,21 +20,26 @@ intro text. Read about [using scales](/documentation/using-vamp/blueprints/#scal
 
 ## Scale resource
 
-
-The minimum and API return resource examples below are shown in YAML format. Vamp API requests and responses can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this.
+The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this. 
 
 ### Minimum resource
-The minimum fields required to successfully create a scale.
+The minimum fields required to successfully store a scale.
 
 ```
-
+- name: demo2
+  cpu: 0.2
+  memory: 380.00MB
 ```
 
 ### API return resource
-The fields returned by the API after a scale has been created (also visible in the UI)
+The fields returned by the API for stored scales.
 
 ```
- 
+ - name: demo
+   kind: scale
+   cpu: 0.2
+   memory: 380.00MB
+   instances: 1
 ```
 
  Field name        | description          

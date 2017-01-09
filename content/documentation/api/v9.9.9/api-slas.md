@@ -20,7 +20,7 @@ intro text. Read about [using SLAs](documentation/using-vamp/slas/).
 
 ## SLA resource
 You can define SLAs inline or store them separately under a unique name and reference them from a blueprint, breed or gateway resorce.
-The minimum and API return resource examples below are shown in YAML format. Vamp API requests and responses can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this.
+The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this. 
 
 ### Minimum resource
 The minimum fields required to successfully create a SLA.

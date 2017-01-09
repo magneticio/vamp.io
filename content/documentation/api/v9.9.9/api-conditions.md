@@ -8,7 +8,8 @@ menu:
     weight: 35
 draft: true
 ---
-intro text. Read about [using conditions](documentation/using-vamp/conditions/).
+You can save and manage cnodition templates through the API, these can be referenced and applied to gateways. Read about [using conditions](documentation/using-vamp/conditions/).
+
 
 ## Actions
  
@@ -19,48 +20,118 @@ intro text. Read about [using conditions](documentation/using-vamp/conditions/).
  * [Delete](/documentation/api/v9.9.9/api-conditions/#delete-condition) - delete a condition
 
 ## Condition resource
-You can define conditions inline or store them separately under a unique name and reference them from a blueprint, breed or gateway resorce.
-The minimum and API return resource examples below are shown in YAML format. Vamp API requests and responses can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this.
+You can define conditions inline or store them separately under a unique name and reference them from a blueprint, breed or gateway resource.
+The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this. 
 
 ### Minimum resource
-The minimum fields required to successfully create a condition.
+The minimum fields required to successfully store a condition.
 
 ```
-
+name: sava
+condition: User-Agent = Chrome
 ```
 
 ### API return resource
-The fields returned by the API after a condition has been created (also visible in the UI)
+The fields returned by the API for stored conditions.
 
 ```
- 
+name: sava
+kind: condition
+condition: User-Agent = Chrome 
 ```
 
- Field name        | description          
- -----------------|-----------------
-  |  
-  |
+ Field name    |  Required  | description          
+ --------------|---|-----------------
+ name | yes |  Unique name used to reference the condition from a gateway
+ kind | optional | The resource type. Required to [send multiple resources](/documentation/api/v9.9.9/api-overview/#send-multiple-resources) to `/api/v1`
+ condition | yes | Boolean condition statement. See [using conditions](/documentation/using-vamp/conditions/) for details on how to create a condition.
   
+-----------
 
 ## List conditions
 
-Returns a list of all stored conditions. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
+Returns a list of all stored conditions. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters).
 
-### Request syntax
-    GET /api/v1/conditions
+### Request
+* `GET` 
+* `/api/v1/conditions`
+* The request body should be empty.
 
-| Request parameters         | options           | default          | description       |
-| ----------------- |:-----------------:|:----------------:| -----------------:|
-|  |  |  |  |
-
-### Request body
-The request body should be empty.
-
-### Response syntax
-
+### Response
+If successful, will return a list of all stored [condition resources](/documentation/api/v9.9.9/api-conditions/#condition-resource) in the specified `accept` format (default JSON).
 
 ### Errors
 * ???
+
+-----------
+
+## Get condition
+
+Return a specific stored condition.
+
+### Request 
+* `GET`
+* `/api/v1/conditions/{condition_name}`
+* The request body should be empty.
+
+### Response 
+If successful, will return the named [condition resource](/documentation/api/v9.9.9/api-conditions/#condition-resource) in the specified `accept` format (default JSON).
+
+### Errors
+* ???
+
+-----------
+
+## Create condition
+
+Create a condition template.
+
+### Request
+* `POST`
+* `/api/v1/conditions/`
+* The request body should include at least a [minimum condition resource](/documentation/api/v9.9.9/api-conditions/#condition-resource) in the specified `Content-Type` format (default JSON).
+
+### Response
+If successful, will return the stored [condition resource](/documentation/api/v9.9.9/api-conditions/#condition-resource) in the specified `accept` format (default JSON).
+
+### Errors
+* ???
+
+-----------
+
+## Update condition
+
+Update a stored condition template.
+
+### Request 
+* `PUT` 
+* `/api/v1/conditions/{condition_name}`
+* The request body should include at least a [minimum condition resource](/documentation/api/v9.9.9/api-conditions/#condition-resource) in the specified `Content-Type` format (default JSON). The `name` field must match the `{condition_name}` used in the request path.
+
+### Response
+If successful, will return the updated [condition resource](/documentation/api/v9.9.9/api-conditions/#condition-resource) in the specified `accept` format (default JSON).
+
+### Errors
+* ???
+
+-----------
+
+## Delete condition
+
+Delete a stored condition template. Note that delete operations are idempotent: sending a second request with the same content will not result in an error response (4xx).
+
+### Request 
+* `DELETE` 
+* `/api/v1/conditions/{condition_name}`
+* The request body should be empty.
+
+### Response
+A successful delete operation has status code 204 `No Content` or 202 `Accepted` with an empty response body.
+
+### Errors
+* ???
+
+-----------
 
 ## Examples
 

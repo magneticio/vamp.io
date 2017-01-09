@@ -17,21 +17,20 @@ Details of Vamp's JVM environment and runtime status, the configured persistence
  * [Get](/documentation/api/v9.9.9/api-info/#get-specific-info-section) - explicitly request a specific info section.
 
 ## Info parameters
+The example below is in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this. 
 
 ```
-{
-    "message": "...",
-    "version": "...",
-    "uuid": "...",
-    "running_since": "...",
-    "jvm": {...},
-    "persistence": {...},
-    "key_value": {...},
-    "pulse": {...},
-    "gateway_driver": {...},
-    "container_driver": {...},
-    "workflow_driver": {...}
-}
+message: {...}
+version: {...}
+uuid: {...}
+running_since: {...}
+jvm: {...}
+persistence: {...}
+key_value: {...}
+pulse: {...}
+gateway_driver: {...}
+container_driver: {...}
+workflow_driver: {...}
 ```
  Parameter name        | optional | description          
  -----------------|-----------------|---
@@ -54,13 +53,13 @@ Details of Vamp's JVM environment and runtime status, the configured persistence
 
 Returns details of Vamp's JVM environment and runtime status, the configured persistence layer and the container driver status. 
 
-### Request syntax
-    GET /api/v1/info
+### Request
 
-### Request body
-The request body should be empty.
+* `GET`
+* `/api/v1/info`
+* The request body should be empty.
 
-### Response syntax
+### Response
 If successful, will return a list of [all info parameters](/documentation/api/v9.9.9/api-info/#info-parameters).
 
 ### Errors
@@ -72,13 +71,13 @@ If successful, will return a list of [all info parameters](/documentation/api/v9
 
 Returns a specific info section, see [info parameters](/documentation/api/v9.9.9/api-info/#info-parameters). 
 
-### Request syntax
-    GET /api/v1/info?on=paramater_name
+### Request
 
-### Request body
-The request body should be empty.
+* `GET` 
+* `/api/v1/info?on={paramater_name}`
+* The request body should be empty.
 
-### Response syntax
+### Response
 If successful, will return a list with only the standard and specified [info parameters](/documentation/api/v9.9.9/api-info/#info-parameters). 
 
 ### Errors

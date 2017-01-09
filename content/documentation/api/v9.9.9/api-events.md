@@ -17,17 +17,17 @@ intro text. Read about [using events](documentation/using-vamp/events/).
  * [Create](/documentation/api/v9.9.9/api-events/#create-event) - create a new event 
 
 ## Event resource
-The minimum and API return resource examples below are shown in YAML format. Vamp API requests and responses can be in JSON or YAML format (default JSON). See [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this.
+The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this. 
 
 ### Minimum resource
-The minimum fields required to successfully create a event.
+The minimum fields required to successfully store a event.
 
 ```
 
 ```
 
 ### API return resource
-The fields returned by the API after a event has been created (also visible in the UI)
+The fields returned by the API for stored events.
 
 ```
  
