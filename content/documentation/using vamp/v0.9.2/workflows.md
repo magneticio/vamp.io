@@ -7,7 +7,7 @@ menu:
     parent: "Using Vamp"
     weight: 120
 aliases:
-    - /documentation/using-vamp/workfows/
+    - /documentation/using-vamp/workflows/
 ---
 
 A "workflow" is an automated change of the running system and its deployments and gateways. 

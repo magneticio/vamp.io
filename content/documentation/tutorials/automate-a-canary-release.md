@@ -25,7 +25,7 @@ In this tutorial we will:
 
 ### Requirements
 
-* A running version of Vamp 0.9.x (this tutorial has been tested on the [Vamp hello world set up](documentation/installation/hello-world) using Vamp 0.9.1)
+* A running version of Vamp 0.9.x (this tutorial has been tested on the [Vamp hello world set up](documentation/installation/hello-world) using Vamp 0.9.2)
 * Access to the Docker hub
 * You might run into issues if your firewall is set to block connections in the ranges 31000-32000 (required by Mesos) or 40000-45000 (required by Vamp)
   
@@ -34,7 +34,7 @@ Vamp Runner is the tool we use to demonstrate how individual Vamp features can b
 
 Once Vamp is up and running, you can deploy Vamp Runner alongside it (if you don’t already have a running version of Vamp, check the [Vamp hello world set up](documentation/installation/hello-world) ). Vamp Runner connects to the Vamp API endpoint, specified as `VAMP_RUNNER_API_URL` in the below docker run command. Note that the IP of your Vamp API location might be different, change this accordingly.
 ```
-docker run --net=host -e VAMP_RUNNER_API_URL=http://192.168.99.100:8080/api/v1 magneticio/vamp-runner:0.9.1   
+docker run --net=host -e VAMP_RUNNER_API_URL=http://192.168.99.100:8080/api/v1 magneticio/vamp-runner:0.9.2   
 ```
 
 You can access the Vamp Runner UI at port 8088. Go ahead and click through the left menu:
@@ -120,7 +120,7 @@ marathon will redeploy the `sava:1.1` service again as soon as possible and Vamp
 ### Autoscale the services
 The final step in this Vamp Runner recipe deploys a workflow to automatically scale the services as their weights are rebalanced. Go ahead and run this step too - we will explain more about how Vamp manages autoscaling in a future tutorial.
 
-## Clean up and move along
+## Clear up and move along
 You can set Vamp back to its initial (clean) state at any step in a recipe. Click the **Clean up** button on the right of the **Recipes** screen to remove all deployments, gateways, workflows and artifacts that have been created by the selected recipe.  The status of each step will also be reset and you can start from the beginning again.
 
 ## Summing up
