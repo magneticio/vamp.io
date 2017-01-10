@@ -15,7 +15,8 @@ All changes since the last official release are described below. This applies on
 ## What is new
 * `no-store` pulse storage [#869](https://github.com/magneticio/vamp/issues/869).
 * Configurable service network [#730](https://github.com/magneticio/vamp/issues/730).
-* Using Vamp namespace in Docker labels[#679](https://github.com/magneticio/vamp/issues/679).
+* Using Vamp namespace in Docker labels [#679](https://github.com/magneticio/vamp/issues/679).
+* Key-value store for (additional) Vamp configuration [#872](https://github.com/magneticio/vamp/issues/872).
 
 ## What has changed
 * Pulse storage type needs to be explicitly specified `vamp.pulse.type`: `elasticsearch` or `no-store` [#869](https://github.com/magneticio/vamp/issues/869).
