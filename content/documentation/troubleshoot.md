@@ -13,7 +13,7 @@ The pointers below will help debug and resolve common issues in case Vamp is not
 
 | Problem         | Description           | Probable cause    
 | ----------------- |:-----------------:|:----------------:| 
-| [Metrics not displaying](/documentation/troubleshoot/#metrics-not-displaying) |   For example, in the Vamp UI, health is reporting 0%   |  Workflows not running,  incorrect Logstash configuration
+| [Metrics not displaying](/documentation/troubleshoot/#metrics-not-displaying) |   For example, the Vamp UI is incorrectly reporting health as 0%   |  Workflows not running,  incorrect Logstash configuration
 | [General strange behaviour](/documentation/troubleshoot/#general-strange-behaviour) |      |  System cleanup required
 | [It just doesn't work](/documentation/troubleshoot/#it-just-doesn-t-work) |      |  incorrect version installed 
 
@@ -42,7 +42,8 @@ If the Vamp UI is not displaying status data as expected, check that the health 
   * If there are no HAProxy logs (index _logstash-{date}_ )  
   check the logstash configuration  
   check the elasticsearch installation and configuration  
-  what if I'm not using elasticsearch??
+  
+  * what if I'm not using elasticsearch??
 
 ## General strange behaviour
 

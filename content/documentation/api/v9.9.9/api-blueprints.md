@@ -12,11 +12,11 @@ Blueprints are static artifacts. They describe how breeds work in runtime and wh
 
 ## Actions
  
- * [List](/documentation/api/v9.9.9/api-blueprints/#list-blueprints) - return a list of all blueprints
- * [Get](/documentation/api/v9.9.9/api-blueprints/#get-blueprint) - get a single blueprint
+ * [List](/documentation/api/v9.9.9/api-blueprints/#list-blueprints) - return a list of all stored blueprints
+ * [Get](/documentation/api/v9.9.9/api-blueprints/#get-blueprint) - get a single stored blueprint
  * [Create](/documentation/api/v9.9.9/api-blueprints/#create-blueprint) - create a new blueprint 
  * [Update](/documentation/api/v9.9.9/api-blueprints/#update-blueprint) - update an existing blueprint
- * [Delete](/documentation/api/v9.9.9/api-blueprints/#delete-blueprint) - delete a blueprint
+ * [Delete](/documentation/api/v9.9.9/api-blueprints/#delete-blueprint) - delete a stored blueprint
 
 ## Blueprint resource
 
@@ -187,103 +187,4 @@ A successful delete operation has status code 204 `No Content` or 202 `Accepted`
 
 * ???
 
------------
-
-
-
-## Get blueprint
-
-Returns details of a single, specified blueprint.
-
-### Request syntax
-
-    GET /api/v1/blueprints/{blueprint_name}
-
-| Request parameters         | options           | default          | description       |
-| ----------------- |:-----------------:|:----------------:| -----------------:|
-| `expand_references` | true or false     | false            | all breed references will be replaced (recursively) with full breed definitions. `400 Bad Request` in case some breeds are not yet fully defined.
-| `only_references`   | true or false     | false            | all breeds will be replaced with their references.
-
-### Request body
-The request body should be empty.
-
-### Response syntax
-If successful, will return the named [blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `accept` format (default JSON).
-
-### Errors
-* **400 bad request** - `expand_references` set to true and some breeds are not yet fully defined.
-
------------
-
-## Create blueprint
-
-Creates a new blueprint. Create operations are idempotent: sending a second request with the same content will not result in an error response (4xx).
-
-### Request syntax
-
-    POST /api/v1/blueprints
-
-
-| Request parameters     | options           | default          | description      |
-| ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the blueprint and returns a `201 Created` if the blueprint is valid.  
-
-### Request body
-Should contain a [blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON).
-
-### Response syntax
-A successful create operation has status code 201 `Created` and the response body will contain the created [blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `accept` format (default JSON). 
-
-### Errors
-
-* ???
-
------------
-
-## Update blueprint
-
-Updates the content of a specific blueprint.
-
-### Request syntax
-
-    PUT /api/v1/blueprints/{blueprint_name}
-
-| Request parameters     | options           | default          | description      |
-| ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the blueprint and returns a `200 OK` if the blueprint is valid.  
-
-### Request body
-Should contain a [blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `content-type` (default JSON).
-
-### Response syntax
-A successful update operation has status code 200 `OK` or 202 `Accepted` and the response body will contain the updated [blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `accept` format (default JSON).
-
-### Errors
-
-* **4xx** - an update will fail if a resource does not exist
-
------------
-
-## Delete blueprint
-
-Deletes a blueprint. Note that delete operations are idempotent: sending a second request with the same content will not result in an error response (4xx).
-
-### Request syntax
-
-    DELETE /api/v1/blueprints/{blueprint_name}
-
-| Request parameters     | options           | default          | description      |
-| ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | returns a `204 No Content` without actual delete of the blueprint.
-
-### Request body
-
-???
-
-### Response syntax
-
-A successful delete operation has status code 204 `No Content` or 202 `Accepted` with an empty response body.
-
-### Errors
-
-* ???
+--------------

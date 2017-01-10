@@ -12,10 +12,10 @@ intro text. Read about [using deployments](documentation/using-vamp/deployments/
 
 ## Actions
  
- * [List](/documentation/api/v9.9.9/api-deployments/#list-deployments) - return details of all deployments
- * [Get](/documentation/api/v9.9.9/api-deployments/#get-deployment) - get details of a single deployment
+ * [List](/documentation/api/v9.9.9/api-deployments/#list-deployments) - return details of all running deployments
+ * [Get](/documentation/api/v9.9.9/api-deployments/#get-deployment) - get details of a single running deployment
  * [Create](/documentation/api/v9.9.9/api-deployments/#create-deployment) - initiate a new deployment 
- * [Update](/documentation/api/v9.9.9/api-deployments/#update-deployment) - add to a running deployment
+ * [Update](/documentation/api/v9.9.9/api-deployments/#update-deployment) - add to a running deployment (merge)
  * [Delete](/documentation/api/v9.9.9/api-deployments/#delete-deployment) - remove elements from a running deployment
 
 ## Deployment resource
@@ -145,11 +145,15 @@ If successful, will return the created [deployment resource](/documentation/api/
 ### Errors
 * ???
 
+### Examples
+
+See [gateways - A/B TEST TWO DEPLOYMENTS USING ROUTE WEIGHT](/documentation/using-vamp/gateways/#example-a-b-test-two-deployments-using-route-weight)
+
 --------------
 
 ## Update deployment
 
-Add to a running deployment.
+Add to a running deployment (merge).
 
 ### Request
 * `PUT`
@@ -181,6 +185,3 @@ Remove specified elements from a running deployment.
 * ???
 
 --------------
-## Examples
-
-See [gateways - A/B TEST TWO DEPLOYMENTS USING ROUTE WEIGHT](/documentation/using-vamp/gateways/#example-a-b-test-two-deployments-using-route-weight)

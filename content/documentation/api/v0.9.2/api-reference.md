@@ -588,7 +588,7 @@ Lists events (for example health and metrics). You can optionally filter the ret
 
 | parameter     | description      |
 | ------------- |:----------------:|
-| `tags`           | Filter returned events by tag(s), for example `GET /api/v1/events?tags=archiving&tag=breeds`
+| `tag`           | Filter returned events by tag(s), for example `GET /api/v1/events?tag=archiving&tag=breeds`
 | `type`           | Filter returned events by type, for example `GET /api/v1/events?type=metrics`
 
 {{< note title="Note!" >}}

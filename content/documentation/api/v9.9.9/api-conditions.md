@@ -8,19 +8,19 @@ menu:
     weight: 35
 draft: true
 ---
-You can save and manage cnodition templates through the API, these can be referenced and applied to gateways. Read about [using conditions](documentation/using-vamp/conditions/).
+Conditions templates are static artifacts. You can save and manage condition templates through the API, these can then be referenced and applied to gateways. Read about [using conditions](documentation/using-vamp/conditions/).
 
 
 ## Actions
  
- * [List](/documentation/api/v9.9.9/api-conditions/#list-conditions) - return a list of all conditions
- * [Get](/documentation/api/v9.9.9/api-conditions/#get-condition) - get a single condition
- * [Create](/documentation/api/v9.9.9/api-conditions/#create-condition) - create a new condition 
- * [Update](/documentation/api/v9.9.9/api-conditions/#update-condition) - update a condition
- * [Delete](/documentation/api/v9.9.9/api-conditions/#delete-condition) - delete a condition
+ * [List](/documentation/api/v9.9.9/api-conditions/#list-conditions) - return a list of all stored condition templates
+ * [Get](/documentation/api/v9.9.9/api-conditions/#get-condition) - get a single stored condition template
+ * [Create](/documentation/api/v9.9.9/api-conditions/#create-condition) - create a new condition template
+ * [Update](/documentation/api/v9.9.9/api-conditions/#update-condition) - update a condition template
+ * [Delete](/documentation/api/v9.9.9/api-conditions/#delete-condition) - delete a stored condition template
 
 ## Condition resource
-You can define conditions inline or store them separately under a unique name and reference them from a blueprint, breed or gateway resource.
+You can define conditions inline or store them separately as templates under a unique name and reference them from a blueprint, breed or gateway resource.
 The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this. 
 
 ### Minimum resource
@@ -132,7 +132,3 @@ A successful delete operation has status code 204 `No Content` or 202 `Accepted`
 * ???
 
 -----------
-
-## Examples
-
-???

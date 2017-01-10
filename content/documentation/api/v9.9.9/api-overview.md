@@ -15,9 +15,9 @@ Vamp has one REST API. For details on pagination, and request and response forma
 
 ## API endpoints and resource descriptions
 
-* **Artifacts:** [blueprints](documentation/api/v9.9.9/api-blueprints), [breeds](documentation/api/v9.9.9/api-breeds), [conditions](documentation/api/v9.9.9/api-conditions), [escalations](documentation/api/v9.9.9/api-escalations), [scales](documentation/api/v9.9.9/api-scales), [slas](documentation/api/v9.9.9/api-slas)
+* **Artifacts:** [blueprints](documentation/api/v9.9.9/api-blueprints), [breeds](documentation/api/v9.9.9/api-breeds), [conditions](documentation/api/v9.9.9/api-conditions), [escalations](), [scales](documentation/api/v9.9.9/api-scales), [slas]()
 * **Runtime entities:** [deployments](documentation/api/v9.9.9/api-deployments), [deployment scales](), [deployment SLAs](), [gateways](documentation/api/v9.9.9/api-gateways)  
-* **Data:** [events](documentation/api/v9.9.9/api-events), [health](documentation/api/v9.9.9/api-health), [metrics](documentation/api/v9.9.9/api-metrics)
+* **Data:** [events](documentation/api/v9.9.9/api-events), [health](), [metrics]()
 * **System:** [info](documentation/api/v9.9.9/api-info), config, haproxy
 * **Debug:** [sync, sla, escalation]()
 
