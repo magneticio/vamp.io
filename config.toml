@@ -96,8 +96,8 @@ googleAnalytics = ""
 	weight = 10
 
 [[menu.main]]
-	name = "Installation"
-	url = "/documentation/installation/overview"
+	name = "Using Vamp"
+	url = "documentation/using-vamp/artifacts/"
 	parent = "Documentation"
 	weight = 20
 
@@ -108,25 +108,28 @@ googleAnalytics = ""
 	weight = 30
 
 [[menu.main]]
-	name = "Using Vamp"
-	url = "documentation/using-vamp/artifacts/"
+	name = "Install"
+	identifier = "Installation"
+	url = "/documentation/installation/overview"
 	parent = "Documentation"
 	weight = 40
 
 [[menu.main]]
-	name = "API"
+	name = "API documentation"
+	identifier = "API"
 	url = "/documentation/api/api-reference"
 	parent = "Documentation"
-	weight = 50
+	weight = 60
 
 [[menu.main]]
-	name = "CLI"
+	name = "CLI documentation"
+	identifier = "CLI"
 	url = "/documentation/cli/cli-reference/"
 	parent = "Documentation"
-	weight = 60
+	weight = 70
 
 [[menu.main]]
 	name = "Release notes"
 	url = "/documentation/release-notes/"
 	parent = "Documentation"
-	weight = 70
+	weight = 80

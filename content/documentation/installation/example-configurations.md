@@ -17,7 +17,7 @@ The full `reference.conf` file can be found in the Vamp project repo ([github.co
 You can use `application.conf` to tailor the Vamp configuration to fit your environment. Settings specified here, or in environment variables, will override any defaults included in `reference.conf`. Template configuration files are provided, which complete the standard required settings and include the Vamp Health and Metrics workflows (required by the Vamp UI).  If your environment requires extensive customisation, you can [use a custom application.conf file](/documentation/installation/configure-vamp/#use-a-custom-application-conf-file).
 
 
-* [DCOS application.conf](https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf)  
+* [DC/OS application.conf](https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf)  
   _Container driver:_ Marathon  
   _Key-value store:_ Zookeeper
 

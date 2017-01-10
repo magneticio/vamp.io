@@ -634,21 +634,18 @@ Parameter  |  Options  |  Default |  Details
 ## Lifter
 Lifter is the Vamp bootstrap installer. The lifter configuration specifies items that Vamp should run on startup. No items are included by default in `reference.conf`, these need to be added in `application.conf`. We advise that you at least run the Vamp Health and Metrics workflows, as these are required for the Vamp UI.
 
-For example:
+For example (taken from the [DC/OS template application.conf](https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf)):
 
 ```
-  lifter.artifact {
-
-    files = [
-      "/usr/local/vamp/artifacts/breeds/vga.js",
-      "/usr/local/vamp/artifacts/workflows/vga.yml"
-    ]
-
-    resources = [
-      "breeds/health.js",
-      "workflows/health.yml",
-      "breeds/metrics.js",
-      "workflows/metrics.yml"
+  lifter.artifact.files = [
+    "/usr/local/vamp/artifacts/breeds/health.js",
+    "/usr/local/vamp/artifacts/workflows/health.yml",
+    "/usr/local/vamp/artifacts/breeds/metrics.js",
+    "/usr/local/vamp/artifacts/workflows/metrics.yml",
+    "/usr/local/vamp/artifacts/breeds/kibana.js",
+    "/usr/local/vamp/artifacts/workflows/kibana.yml",
+    "/usr/local/vamp/artifacts/breeds/vga.js",
+    "/usr/local/vamp/artifacts/workflows/vga.yml"
     ]
   }
 ```
