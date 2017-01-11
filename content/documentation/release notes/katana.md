@@ -21,6 +21,7 @@ All changes since the last official release are described below. This applies on
 ## What has changed
 * Pulse storage type needs to be explicitly specified `vamp.pulse.type`: `elasticsearch` or `no-store` [#869](https://github.com/magneticio/vamp/issues/869).
 * Removed redundant HAProxy configuration: `vamp.gateway-driver.haproxy.virtual-hosts`, `vamp.gateway-driver.haproxy.tcp-log-format` and `vamp.gateway-driver.haproxy.http-log-format` [#763](https://github.com/magneticio/vamp/issues/763). 
+* Debug API endpoints have been removed [#308](https://github.com/magneticio/vamp/issues/308).
 
 {{< note title="What next?" >}}
 * Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases))
