@@ -11,14 +11,12 @@ draft: true
 
 The pointers below will help debug and resolve common issues in case Vamp is not running or not behaving as expected.
 
-### Get help with:
+* [Troubleshoot a full Vamp installation](/documentation/troubleshoot/#troubleshoot-a-full-vamp-installation)
+* [Troubleshooting tips for using Vamp](/documentation/troubleshoot/#troubleshooting-tips-for-using-vamp)
+* [Troubleshoot the Vamp Hello world quickstart](/documentation/troubleshoot/#troubleshoot-the-vamp-hello-world-quickstart)
+* [Report an issue](/documentation/troubleshoot/#report-an-issue)
 
-* [Setting up a full Vamp installation](/documentation/troubleshoot/#set-up-a-full-vamp-installation)
-* [Using Vamp](/documentation/troubleshoot/#using-vamp)
-* [Running the Vamp Hello world quickstart](/documentation/troubleshoot/#run-the-vamp-hello-world-quickstart)
-
-
-## Set up a full Vamp installation
+## Troubleshoot a full Vamp installation
 The steps below will help you debug problems encountered when following our full install instructions. 
 
 1. Does your install follow the instructions for your framework? 
@@ -29,7 +27,7 @@ The steps below will help you debug problems encountered when following our full
       HAProxy logs: _logstash-{date}_     
       Health workflow events: _vamp-pulse-health-{date}_  
       Metrics workflow events: _vamp-pulse-metrics-{date}_   
-- Are the Vamp components installed and running?
+- Are all Vamp components installed and running?
   - Check that the Vamp and VGA docker containers are running `docker ps`. 
   - Check the logs `docker logs {container ID}`  
     Any errors here should be clear, in case they aren't [report the issue](/documentation/troubleshoot/#report-an-issue).
@@ -46,27 +44,26 @@ The steps below will help you debug problems encountered when following our full
   - Check the logs for each `vamp-workflow-agent` container using `docker logs {container ID}`  
     If a `failure` is reported, the workflow may not be able to talk to Elasticsearch - check the Elasticsearch configuration in `application.conf`.  
     Any errors here should be clear, in case they aren't [report the issue](/documentation/troubleshoot/#report-an-issue).
-- Check the [release notes](/documentation/release-notes/latest) for known issues and breaking changes
+- Check the [release notes](/documentation/release-notes/latest) for known issues and breaking changes.
 - If you're still hitting problems, please [report the issue](/documentation/troubleshoot/#report-an-issue).
 
-## Using Vamp
+## Troubleshooting tips for using Vamp
 If you encounter problems running services on an installed version of Vamp, check the following: 
 
 1. Confirm that everything is installed ok:
-  - Check the Vamp info ().
-  - [Set up a full Vamp installation](/documentation/troubleshoot/#set-up-a-full-vamp-installation).
-  - [Run the Vamp Hello world quickstart](/documentation/troubleshoot/#run-the-vamp-hello-world-quickstart).
+  - Check the Vamp info (using `GET <vamp url>/api/v1/info` or in the info pane of the Vamp UI).  
+    If a component is not listed or reported as `not connected`, check the instructions to [troubleshoot a full Vamp installation](/documentation/troubleshoot/#troubleshoot-a-full-vamp-installation) or [troubleshoot the Vamp Hello world quickstart](/documentation/troubleshoot/#troubleshoot-the-vamp-hello-world-quickstart).
 - Take some time to read through the [documentation](/documentation/using-vamp/blueprints/) and [tutorials](/documentation/tutorials/overview/).
 - Ask us on gitter ([gitter.im - magneticio/vamp](https://gitter.im/magneticio/vamp))
 - Still not working? 
   - [Report an issue](/documentation/troubleshoot/#report-an-issue).
 
-## Run the Vamp Hello world quickstart
+## Troubleshoot the Vamp Hello world quickstart
 The Vamp hello world quickstart is a self contained testing place. If you run into problems or unexpected behaviour, we advise that you clear everything out and reinstall.
 
-1. Stop everything. 
-- Remove stale container images.
-- Restart docker machine.
+1. Stop all running containers - for example using `docker ps | awk '{print $1}' | xargs docker stop 2>/dev/null`
+- Clean up  your docker environment (remove stopped containers, dangling images and volumes)
+- Restart docker machine using `docker-machine restart`.
 - Reinstall [Vamp hello world](/documentation/installation/hello-world/).
 
 ## Report an issue
