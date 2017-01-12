@@ -13,7 +13,7 @@ The pointers below will help debug and resolve common issues in case Vamp is not
 
 * [Troubleshoot a full Vamp installation](/documentation/troubleshoot/#troubleshoot-a-full-vamp-installation)
 * [Troubleshooting tips for using Vamp](/documentation/troubleshoot/#troubleshooting-tips-for-using-vamp)
-* [Troubleshoot the Vamp Hello world quickstart](/documentation/troubleshoot/#troubleshoot-the-vamp-hello-world-quickstart)
+* [Troubleshoot the Vamp hello world quickstart](/documentation/troubleshoot/#troubleshoot-the-vamp-hello-world-quickstart)
 * [Report an issue](/documentation/troubleshoot/#report-an-issue)
 
 ## Troubleshoot a full Vamp installation
@@ -62,7 +62,7 @@ If you encounter problems running services on an installed version of Vamp, chec
 The Vamp hello world quickstart is a self contained testing place. If you run into problems or unexpected behaviour, we advise that you clear everything out and reinstall.
 
 1. Stop all running containers - for example using `docker ps | awk '{print $1}' | xargs docker stop 2>/dev/null`
-- Clean up  your docker environment (remove stopped containers, dangling images and volumes)
+- Clean up  your docker environment (remove stopped containers, dangling images and volumes).
 - Restart docker machine using `docker-machine restart`.
 - Reinstall [Vamp hello world](/documentation/installation/hello-world/).
 
