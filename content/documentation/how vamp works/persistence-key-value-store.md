@@ -5,7 +5,7 @@ title: Persistence and key-value (KV) store
 
 ## Persistence 
 Vamp uses Elasticsearch (ES) as main persistence (e.g. for artifacts and events). 
-Vamp is not demanding in ES resources, so a small ES installation is sufficient for Vamp indexes (index names are configurable). Vamp can also use an existing ES cluster.
+Vamp is not demanding in ES resources, so a small ES installation is sufficient for Vamp indices (index names are configurable). Vamp can also use an existing ES cluster.
 
 
 ## Key-value (KV) store
