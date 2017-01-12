@@ -18,6 +18,7 @@ All changes since the last official release are described below. This applies on
 * Using Vamp namespace in Docker labels [#679](https://github.com/magneticio/vamp/issues/679).
 * Key-value store for (additional) Vamp configuration [#872](https://github.com/magneticio/vamp/issues/872).
 * Multiple gateway marshallers [#870](https://github.com/magneticio/vamp/issues/870).
+* Querying events by type [#878](https://github.com/magneticio/vamp/issues/878).
 
 ## What has changed
 * Pulse storage type needs to be explicitly specified `vamp.pulse.type`: `elasticsearch` or `no-store` [#869](https://github.com/magneticio/vamp/issues/869).
