@@ -5,7 +5,7 @@ menu:
   main:
     parent: "API"
     identifier: "api-reference-breeds"
-    weight: 35
+    weight: 20
 draft: true
 ---
 Breeds are static artifacts that describe individual services and can be referenced from blueprints or workflows. Read about [using breeds](documentation/using-vamp/breeds/).
@@ -118,13 +118,13 @@ Updates the specified field(s) of a stored breed.
 ### Request
 * `PUT`
 * `/api/v1/breeds/{breed_name}`
-* The request body should include at least the [minimum breed resource](/documentation/api/v9.9.9/api-breeds/#breed-resource) in the specified `content-type` format (default JSON). The `name` field must match the `breed_name` specified in the request syntax.
+* The request body should include at least the [minimum breed resource](/documentation/api/v9.9.9/api-breeds/#breed-resource) in the specified `content-type` format (default JSON). The `name` field must match the `breed_name` specified in the request path.
 
 ### Response
 If successful, will return the updated [breed resource](/documentation/api/v9.9.9/api-breeds/#breed-resource) in the specified `accept` format (default JSON).
 
 ### Errors
-* ???
+* **Inconsistent name** - the `breed_name` in the request path does not match the `name` field in the request body.
 
 --------------
 

@@ -5,7 +5,7 @@ menu:
   main:
     parent: "API"
     identifier: "api-reference-conditions"
-    weight: 35
+    weight: 30
 draft: true
 ---
 Conditions templates are static artifacts. You can save and manage condition templates through the API, these can then be referenced and applied to gateways. Read about [using conditions](documentation/using-vamp/conditions/).
@@ -112,7 +112,7 @@ Update a stored condition template.
 If successful, will return the updated [condition resource](/documentation/api/v9.9.9/api-conditions/#condition-resource) in the specified `accept` format (default JSON).
 
 ### Errors
-* ???
+* **Inconsistent name** - the `condition_name` in the request path does not match the `name` field in the request body.
 
 -----------
 

@@ -5,7 +5,7 @@ menu:
   main:
     parent: "API"
     identifier: "api-reference-common-parameters"
-    weight: 40
+    weight: 1000
 draft: true
 ---
 

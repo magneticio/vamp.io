@@ -5,7 +5,7 @@ menu:
   main:
     parent: "API"
     identifier: "api-reference-blueprints"
-    weight: 30
+    weight: 10
 draft: true
 ---
 Blueprints are static artifacts. They describe how breeds work in runtime and what properties they should have. Read about [using blueprints](documentation/using-vamp/blueprints/).
@@ -148,7 +148,7 @@ Updates the content of a specific blueprint.
 
 * `PUT`
 * `/api/v1/blueprints/{blueprint_name}`
-* The request body should contain at least a [minimum blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `content-type` (default JSON).
+* The request body should contain at least a [minimum blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `content-type` (default JSON). The name field must match the `blueprint_name` specified in the request path.
 * Optional headers:
 
 | Request parameters     | options           | default          | description      |
@@ -161,6 +161,7 @@ A successful update operation has status code 200 `OK` or 202 `Accepted` and the
 ### Errors
 
 * **4xx** - an update will fail if a resource does not exist
+* **Inconsistent name** - the `scale_name` in the request path does not match the `name` field in the request body.
 
 -----------
 

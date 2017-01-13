@@ -5,18 +5,18 @@ menu:
   main:
     parent: "API"
     identifier: "api-reference-scales"
-    weight: 35
+    weight: 40
 draft: true
 ---
-intro text. Read about [using scales](/documentation/using-vamp/blueprints/#scale).
+Read about [using scales](/documentation/using-vamp/blueprints/#scale).
 
 ## Actions
  
- * [List](/documentation/api/v9.9.9/api-scales/#list-scales) - return a list of all scales
- * [Get](/documentation/api/v9.9.9/api-scales/#get-scale) - get a single scale
+ * [List](/documentation/api/v9.9.9/api-scales/#list-scales) - return a list of all stored scales
+ * [Get](/documentation/api/v9.9.9/api-scales/#get-single-scale) - get a single stored scale
  * [Create](/documentation/api/v9.9.9/api-scales/#create-scale) - create a new scale 
- * [Update](/documentation/api/v9.9.9/api-scales/#update-scale) - update a scale
- * [Delete](/documentation/api/v9.9.9/api-scales/#delete-scale) - delete a scale
+ * [Update](/documentation/api/v9.9.9/api-scales/#update-scale) - update a stored scale
+ * [Delete](/documentation/api/v9.9.9/api-scales/#delete-scale) - delete a stored scale
 
 ## Scale resource
 
@@ -26,48 +26,113 @@ The resource examples shown below are in YAML format. Vamp API requests and resp
 The minimum fields required to successfully store a scale.
 
 ```
-- name: demo2
-  cpu: 0.2
-  memory: 380.00MB
+- name: sava_scale
+  cpu: 0.2 
+  memory: 64MB
 ```
 
 ### API return resource
 The fields returned by the API for stored scales.
 
 ```
- - name: demo
-   kind: scale
-   cpu: 0.2
-   memory: 380.00MB
-   instances: 1
+- name: sava_scale
+  kind: scale
+  cpu: 0.2
+  memory: 64.00MB
+  instances: 1
 ```
 
- Field name        | description          
- -----------------|-----------------
-  |  
-  |
-  
+ Field name      | Required  | description          
+ -----------------|----------|-------
+ name | yes  | Unique name used to reference the scale from a breed, blueprint, deployment or workflow.
+ kind |  optional  |   The resource type. Required to [send multiple resources](/documentation/api/v9.9.9/api-overview/#send-multiple-resources) to `/api/v1`
+ cpu |  yes |   
+ memory | yes  |  
+ instances | optional  |  
 
-## List conditions
+------------------
 
-Returns a list of all stored conditions. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
+## List scales
 
-### Request syntax
-    GET /api/v1/conditions
+Returns a list of all stored scales. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
 
-| Request parameters         | options           | default          | description       |
-| ----------------- |:-----------------:|:----------------:| -----------------:|
-|  |  |  |  |
+### Request
+ * `GET`
+ * `/api/v1/scales`
+ * The request body should be empty.
 
-### Request body
-The request body should be empty.
-
-### Response syntax
-
+### Response
+If successful, will return a list of all stored [scale resources](/documentation/api/v9.9.9/api-scales/#scale-resource) in the specified `accept` format (default JSON).  
 
 ### Errors
 * ???
 
-## Examples
+------------------
 
+## Get single scale
+
+Returns a single stored scale.
+
+### Request
+ * `GET`
+ * `/api/v1/scales/{scale_name}`
+ * The request body should be empty.
+
+### Response
+If successful, will return the named [scale resource](/documentation/api/v9.9.9/api-scales/#scale-resource) in the specified `accept` format (default JSON).  
+
+### Errors
+* ???
+
+------------------
+
+## Create scale
+
+Create a new scale. Scales can be stored individually and then referenced from a breed, blueprint, deployment or workflow.
+
+### Request
+ * `POST`
+ * `/api/v1/scales`
+ * The request body should inclde at least a minimum [scale resource](/documentation/api/v9.9.9/api-scales/#scale-resource) in the specified `Content-Type` format (default JSON).
+
+### Response
+If successful, will return the newly stored [scale resource](/documentation/api/v9.9.9/api-scales/#scale-resource) in the specified `accept` format (default JSON).  
+
+### Errors
+* ???
+
+------------------
+
+## Update scale
+
+Update a stored scale.
+
+### Request
+ * `PUT`
+ * `/api/v1/scales/{scale_name}`
+ * The request body should inclde at least a minimum [scale resource](/documentation/api/v9.9.9/api-scales/#scale-resource) in the specified `Content-Type` format (default JSON). The `name` field must match the `scale_name` specified in the request path.
+
+### Response
+If successful, will return the newly stored [scale resource](/documentation/api/v9.9.9/api-scales/#scale-resource) in the specified `accept` format (default JSON).  
+
+### Errors
+* **Inconsistent name** - the `scale_name` in the request path does not match the `name` field in the request body.
+
+------------------
+
+## Delete scale
+
+Delete a stored scale. Note that delete operations are idempotent: sending a second request with the same content will not result in an error response (4xx).
+
+### Request
+ * `DELETE`
+ * `/api/v1/scales/{scale_name}`
+ * The request body should be empty.
+
+### Response
+A successful delete operation has status code 204 `No Content` or 202 `Accepted` with an empty response body.
+
+### Errors
 ???
+
+------------------

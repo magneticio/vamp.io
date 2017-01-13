@@ -5,10 +5,10 @@ menu:
   main:
     parent: "API"
     identifier: "api-reference-deployments"
-    weight: 35
+    weight: 50
 draft: true
 ---
-intro text. Read about [using deployments](documentation/using-vamp/deployments/).
+Read about [using deployments](documentation/using-vamp/deployments/).
 
 ## Actions
  

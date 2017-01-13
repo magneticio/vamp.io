@@ -1,14 +1,9 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: API - SLAs
-menu:
-  main:
-    parent: "API"
-    identifier: "api-reference-slas"
-    weight: 35
 draft: true
 ---
-intro text. Read about [using SLAs](documentation/using-vamp/slas/).
+Read about [using SLAs](documentation/using-vamp/slas/).
 
 ## Actions
  

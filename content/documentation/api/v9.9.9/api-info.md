@@ -5,7 +5,7 @@ menu:
   main:
     parent: "API"
     identifier: "api-reference-info"
-    weight: 35
+    weight: 80
 draft: true
 ---
 
@@ -51,7 +51,7 @@ workflow_driver: {...}
 
 ## List info
 
-Returns details of Vamp's JVM environment and runtime status, the configured persistence layer and the container driver status. 
+Return details of Vamp's JVM environment and runtime status, the configured persistence layer and the container driver status. 
 
 ### Request
 
@@ -69,7 +69,7 @@ If successful, will return a list of [all info parameters](/documentation/api/v9
 
 ## Get specific info section
 
-Returns a specific info section, see [info parameters](/documentation/api/v9.9.9/api-info/#info-parameters). 
+Return a specific info section, see [info parameters](/documentation/api/v9.9.9/api-info/#info-parameters). 
 
 ### Request
 
@@ -87,7 +87,7 @@ If successful, will return a list with only the standard and specified [info par
 #### Example - explicitly request `jvm` and `persistence` info
 Request:
 
-	GET /api/v1/info?on=jvm&on=persistence
+	GET <vamp url>/api/v1/info?on=jvm&on=persistence
 	
 Response:
 

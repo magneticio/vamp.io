@@ -1,14 +1,9 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: API - Escalations
-menu:
-  main:
-    parent: "API"
-    identifier: "api-reference-escalations"
-    weight: 35
 draft: true
 ---
-intro text. Read about [using escalations](documentation/using-vamp/escalations/).
+Read about [using escalations](documentation/using-vamp/escalations/).
 
 ## Actions
  
