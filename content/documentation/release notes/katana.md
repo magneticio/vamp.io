@@ -26,6 +26,7 @@ All changes since the last official release are described below. This applies on
 * Removed redundant HAProxy configuration: `vamp.gateway-driver.haproxy.virtual-hosts`, `vamp.gateway-driver.haproxy.tcp-log-format` and `vamp.gateway-driver.haproxy.http-log-format` [#763](https://github.com/magneticio/vamp/issues/763). 
 * Debug API endpoints have been removed [#308](https://github.com/magneticio/vamp/issues/308).
 * API endpoint to get HAProxy configuration and key-value key for VGA [#870](https://github.com/magneticio/vamp/issues/870). 
+* Configuration change: `vamp.workflow-driver.workflow.deployables."application/javascript"` has been changed to `vamp.workflow-driver.workflow.deployables.application.javascript`.
 
 {{< note title="What next?" >}}
 * Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases))
