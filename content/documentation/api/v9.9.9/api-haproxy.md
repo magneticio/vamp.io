@@ -123,7 +123,7 @@ backend 1f2c9bf68395805af6ecd4c389c061dfdd24d62d
 
 ## Get HAProxy configuration
 
-Return the HAProxy configuration for the specified version,
+Return the configuration for the specified HAProxy version,
 
 ### Request
 
@@ -135,7 +135,7 @@ Return the HAProxy configuration for the specified version,
 If successful, will return the [HA proxy configuration](/documentation/api/v9.9.9/api-haproxy/#haproxy-config-parameters) for the HAProxy `version_number` specified in the request path. 
 
 ### Errors
-* **blank response** - There is no configuration for the specified HAProxy version number.
+* **blank response** - There is no configuration available for the specified HAProxy version number.
 
 
 ### Examples

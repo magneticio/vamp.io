@@ -158,7 +158,7 @@ Add to a running deployment (merge).
 ### Request
 * `PUT`
 * `/api/v1/deployments/{deployment_name}`
-* The request body should include at least the [minimum blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). The `name` field must match the `breed_name` specified in the request syntax.
+* The request body should include at least the [minimum blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). The `name` field must match the `deployment_name` specified in the request syntax.
 
 ### Response
 If successful, will return the updated [deployment resource](/documentation/api/v9.9.9/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).

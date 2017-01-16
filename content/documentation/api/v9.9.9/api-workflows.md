@@ -19,18 +19,19 @@ Read about [using workflows](documentation/using-vamp/workflows/).
  * [Delete](/documentation/api/v9.9.9/api-workflows/#delete-workflow) - delete a workflow
 
 ## Workflow resource
-You can define SLAs inline or store them separately under a unique name and reference them from a blueprint, breed or gateway resorce.
 The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this. 
 
 ### Minimum resource
 The minimum fields required to successfully create a workflow.
 
 ```
-
+name: workflow_name
+schedule: daemon
+breed: workflow_breed
 ```
 
 ### API return resource
-The fields returned by the API after a workflow has been created (also visible in the UI)
+The fields returned by the API after a workflow has been created (also visible in the Vamp UI workflow editor)
 
 ```
 - name: health
@@ -54,13 +55,13 @@ The fields returned by the API after a workflow has been created (also visible i
   arguments: [] 
 ```
 
- Field name       |   | description          
+ Field name       | Required  | description          
  -------------|----|-----------------
- name |    |
+ name |  yes  |
  kind |    |
- breed |    |
+ breed |  yes  |
  status |    |
- schedule |   | 
+ schedule |  yes  | 
  environment_variables |    |
  scale |   |   
  network |   |   
@@ -71,19 +72,100 @@ The fields returned by the API after a workflow has been created (also visible i
 
 ## List workflows
 
-Returns a list of all stored workflows. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
+Return a list of all stored workflows. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
 
 ### Request
 * `GET`
 * `/api/v1/workflows`
 * The request body should be empty.
 
-| Request parameters         | options           | default          | description       |
-| ----------------- |:-----------------:|:----------------:| -----------------:|
-|  |  |  |  |
-
 ### Response
-
+If successful, will return a list of [workflow resources](/documentation/api/v9.9.9/api-workflows/#workflow-resource) in the specified `accept` format (default JSON).
 
 ### Errors
 * ???
+
+--------------
+
+## Get single workflow
+
+Return details of a specific workflow.
+
+### Request
+* `GET`
+* `/api/v1/worflows/{workflow_name}`
+* The request body should be empty.
+
+### Response
+If successful, will return the specified [workflow resource](/documentation/api/v9.9.9/api-workflows/#workflow-resource) in the specified `accept` format (default JSON).
+
+### Errors
+* The requested resource could not be found.
+
+--------------
+
+## Create workflow
+
+Initiate a workflow.
+
+### Request
+* `POST` 
+* `/api/v1/workflows`
+* The request body should include at least the [minimum workflow resource](/documentation/api/v9.9.9/api-workflows/#workflow-resource) in the specified `content-type` format (default JSON). 
+
+### Response
+If successful, will return the created [workflow resource](/documentation/api/v9.9.9/api-workflows/#workflow-resource) in the specified `accept` format (default JSON).
+
+### Errors
+* ???
+
+### Examples
+???
+
+--------------
+
+## Update workflow
+
+Add to a running workflow.
+
+### Request
+* `PUT`
+* `/api/v1/workflows/{workflow_name}`
+* The request body should include at least the [minimum workflow resource](/documentation/api/v9.9.9/api-workflows/#workflow-resource) in the specified `content-type` format (default JSON). The `name` field must match the `workflow_name` specified in the request syntax.
+
+### Response
+If successful, will return the updated [deployment resource](/documentation/api/v9.9.9/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
+
+### Errors
+* ???
+
+### Example - restart a running workflow
+Request:
+
+* `PUT`
+* `/api/v1/workflows/{workflow_name}`
+* The request body should include the current workflow resource (`GET <vamp url>/api/v1/workflows/{workflow_name}`) with the status adjusted to `status: restarting`
+
+Response:  
+
+* If successful, will return the updated [workflow resource](/documentation/api/v9.9.9/api-workflows/#workflow-resource).
+
+--------------
+
+## Delete workflow
+
+Delete a running workflow.
+
+### Request
+
+* `DELETE`
+* `/api/v1/workflows/{workflow_name}`
+* 
+
+### Response
+???
+
+### Errors
+* ???
+
+--------------
