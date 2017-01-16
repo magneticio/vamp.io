@@ -119,7 +119,7 @@ If successful, will return the newly stored [gateway resource](/documentation/ap
 Update a stored gateway.
 
 ### Request
-* `PUT` or `POST`
+* `PUT`
 * `/api/v1/gateways/{gateway_name}`
 * The request body should include at least a [minimum gateway resource](/documentation/api/v9.9.9/api-gateways/#gateway-resource) in the specified `Content-Type` format (default JSON).  The `name` field must match the `gateway_name` specified in the request path.
 

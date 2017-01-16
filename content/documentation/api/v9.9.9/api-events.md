@@ -5,7 +5,7 @@ menu:
   main:
     parent: "API"
     identifier: "api-reference-events"
-    weight: 70
+    weight: 80
 draft: true
 ---
 Read about [using events](documentation/using-vamp/events/) and [the Vamp events system](/documentation/tutorials/create-a-workflow/#the-vamp-events-system).

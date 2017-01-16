@@ -5,7 +5,7 @@ menu:
   main:
     parent: "API"
     identifier: "api-reference-config"
-    weight: 90
+    weight: 100
 draft: true
 ---
 
