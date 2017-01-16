@@ -7,14 +7,20 @@ menu:
     weight: 100
 ---
 
-Vamp configuration is held in a combination of the Vamp `application.conf` and `reference.conf` files following the HOCON file standard ([github.com/typesafehub - config](https://github.com/typesafehub/config)). You can override settings in the configuration files using Vamp environment variables or Java/JVM system properties.
+Vamp configuration is held in a combination of the Vamp `application.conf` and `reference.conf` files following the HOCON file standard ([github.com/typesafehub - config](https://github.com/typesafehub/config)). You can override settings in the configuration files using Vamp environment variables or Java/JVM system properties. Vamp configuration is built in layers following this order:
 
-Configuration is built in layers following this order:
+1. `reference.conf` - part of the Vamp code. Contains generic, default settings. Not a full configuration.
+2. `application.conf` - adds environment specifics to the generic `reference.conf` defaults.
+3. Java system properties - advised for advanced use only.
+4. Environment variables - override all other settings.
 
-1. Environment variables - will override all other settings.
-2. Java system properties - advised for advanced use only.
-3. `application.conf` - adds environment specifics to the generic `reference.conf` defaults.
-4. `reference.conf` - part of the Vamp code. Contains generic, default settings. Not a full configuration.
+### On this page:
+
+* [Override specific configuration parameters](/documentation/installation/configure-vamp/#override-specific-configuration-parameters)
+* [Use a custom application.conf file](/documentation/installation/configure-vamp/#use-a-custom-application-conf-file)
+* [Parameterize application.conf](/documentation/installation/configure-vamp/#parameterize-application-conf)
+* [Include configuration not intended for Vamp](/documentation/installation/configure-vamp/#include-configuration-not-intended-for-vamp)
+* [Access configuration parameters through the API](/documentation/installation/configure-vamp/#access-configuration-parameters-through-the-api)
 
 ## Override specific configuration parameters
 You can override specific parameters set in the `application.conf` and `reference.conf` configuration files using Vamp environment variables or Java/JVM system properties. It is advisable to use environment variables when overriding specific parameters.
@@ -56,19 +62,41 @@ For more extensive customisations, you can create a new Docker image, extending 
   `ADD application.conf /usr/local/vamp/conf/`
 4. Build the image with `docker build --tag <username>/vamp`
 
-## Extra configuration (not intended for Vamp)
+
+## Parameterize application.conf
+
+To avoid duplication of configuration and make it easier to overwrite specific settings you can define global variables outside the `vamp { }` stanza, at the top of `application.conf`. 
+
+For example:
+```
+vamp_host = "localhost"    # Default value
+vamp_host = ${?VAMP_HOST}  # If environment variable exists, use this value
+
+vamp {
+  info {
+    message = "Hi, I'm Vamp! I'm running on: "${vamp_host}
+    timeout = 3 seconds
+  }  
+}
+```
+
+This is as of 0.9.2 how [we configure our DC/OS Docker image]( https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf)
+
+(Typesafe documentation on the topic covering system or env variable overrides)[https://github.com/typesafehub/config#optional-system-or-env-variable-overrides]
+
+## Include configuration not intended for Vamp
 It is possible to store configuration parameters not intended for use by Vamp itself in the Vamp `application.conf` file, such as configuration for Logstash or workflows. For example, you could chose to include the logstash URL in your custom `application.conf` file - Vamp would ignore the parameter, but it would be available to all workflows through the API. This is useful for storing shared local configuration parameters. Configuration specific to a single workflow is best set using environment variables or by hard coding the parameter.
 
-## Access configuration through the API
+## Access configuration parameters through the API
 All configuration parameters can be retrieved from the Vamp API endpoint `config` or `configuration`. 
 
 * Return all configuration parameters as a JSON object:  
   `GET` `/api/v1/config` .
   
 * Return a single paramater:  
-  `GET /api/v1/config/<configuration parameter name>`  
+  `GET` `/api/v1/config/<configuration parameter name>`  
 
-For example `GET` `/api/v1/config/vamp.info.message` 
+For example `GET` `<vamp url>/api/v1/config/vamp.info.message` 
 
 Or, from a workflow using Vamp node.JS client ([github.com/magneticio - Vamp Node.js Client](https://github.com/magneticio/vamp-node-client)):
 
