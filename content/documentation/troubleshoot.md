@@ -11,12 +11,12 @@ draft: true
 
 The pointers below will help debug and resolve common issues in case Vamp is not running or not behaving as expected.
 
-If you find some of the instructions not clear enough or lacking information, please [raise an issue on GitHub](https://github.com/magneticio/vamp.io/issues/new).
-
 * [Troubleshoot a full Vamp installation](/documentation/troubleshoot/#troubleshoot-a-full-vamp-installation)
 * [Troubleshoot the Vamp hello world quickstart](/documentation/troubleshoot/#troubleshoot-the-vamp-hello-world-quickstart)
 * [Troubleshooting tips for using Vamp](/documentation/troubleshoot/#troubleshooting-tips-for-using-vamp)
 * [Report an issue](/documentation/troubleshoot/#report-an-issue)
+
+If you find some of the instructions not clear enough or lacking information, please [raise an issue on GitHub](https://github.com/magneticio/vamp.io/issues/new).
 
 ## Troubleshoot a full Vamp installation
 The steps below will help you debug problems encountered when following our full install instructions. 
@@ -49,6 +49,8 @@ The steps below will help you debug problems encountered when following our full
 - Check the [release notes](/documentation/release-notes/latest) for known issues and breaking changes.
 - If you're still hitting problems, please [report the issue](/documentation/troubleshoot/#report-an-issue).
 
+Did this help? If you find some of the instructions not clear enough or lacking information, please [raise an issue on GitHub](https://github.com/magneticio/vamp.io/issues/new).
+
 ## Troubleshoot the Vamp Hello world quickstart
 The Vamp hello world quickstart is a self contained testing place. If you run into problems or unexpected behaviour, we advise that you clear everything out and reinstall.
 
@@ -57,6 +59,8 @@ The Vamp hello world quickstart is a self contained testing place. If you run in
 - Restart docker machine using `docker-machine restart`.
 - Reinstall [Vamp hello world](/documentation/installation/hello-world/).
 - If everything is installed ok and you're running into problems using Vamp, check the [troubleshooting tips for using Vamp](/documentation/troubleshoot/#troubleshooting-tips-for-using-vamp).
+
+Did this help? If you find some of the instructions not clear enough or lacking information, please [raise an issue on GitHub](https://github.com/magneticio/vamp.io/issues/new).
 
 ## Troubleshooting tips for using Vamp
 If you encounter problems running services on an installed version of Vamp, check the following: 
@@ -68,6 +72,7 @@ If you encounter problems running services on an installed version of Vamp, chec
 - Ask us on gitter ([gitter.im - magneticio/vamp](https://gitter.im/magneticio/vamp))
 - Still not working? [Report an issue](/documentation/troubleshoot/#report-an-issue).
 
+Did this help? If you find some of the instructions not clear enough or lacking information, please [raise an issue on GitHub](https://github.com/magneticio/vamp.io/issues/new).
 
 ## Report an issue
 
