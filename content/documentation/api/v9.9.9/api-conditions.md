@@ -8,7 +8,7 @@ menu:
     weight: 30
 draft: true
 ---
-Conditions templates are static artifacts. You can save and manage condition templates through the API, these can then be referenced and applied to gateways. Read about [using conditions](documentation/using-vamp/conditions/).
+Condition templates are static artifacts. You can save and manage condition templates through the API, these can then be referenced and applied to gateways. Read about [using conditions](documentation/using-vamp/conditions/).
 
 
 ## Actions

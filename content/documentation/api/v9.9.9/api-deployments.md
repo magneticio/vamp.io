@@ -13,7 +13,7 @@ Read about [using deployments](documentation/using-vamp/deployments/).
 ## Actions
  
  * [List](/documentation/api/v9.9.9/api-deployments/#list-deployments) - return details of all running deployments
- * [Get](/documentation/api/v9.9.9/api-deployments/#get-deployment) - get details of a single running deployment
+ * [Get](/documentation/api/v9.9.9/api-deployments/#get-single-deployment) - get details of a single running deployment
  * [Create](/documentation/api/v9.9.9/api-deployments/#create-deployment) - initiate a new deployment 
  * [Update](/documentation/api/v9.9.9/api-deployments/#update-deployment) - add to a running deployment (merge)
  * [Delete](/documentation/api/v9.9.9/api-deployments/#delete-deployment) - remove elements from a running deployment

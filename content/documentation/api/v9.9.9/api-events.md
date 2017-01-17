@@ -14,6 +14,7 @@ Read about [using events](documentation/using-vamp/events/) and [the Vamp events
  
  * [List](/documentation/api/v9.9.9/api-events/#list-events) - return a list of all events (can be filtered)
  * [Create](/documentation/api/v9.9.9/api-events/#create-event) - create a new event 
+ * [stream](/documentation/api/v9.9.9/api-events/#stream-events) - open SSE events stream
 
 ## Event resource
 The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this.
@@ -42,53 +43,56 @@ The fields returned by the API for stored events.
 
  Field name    |  required?  | description          
  --------------|---|-----------------
- tags |  yes  | An event must contain at least one tag. Combined tags (tag1:tag2) will be stored as tag1 and tag1:tag2. 
- value |  optional  | If not included, will be blank.
- timestamp |  optional  | If not included the current timestamp will be added.
- type |  optional  | If not included, will be set to the default type `event`.
+ tags |  Required  | An event must contain at least one tag. Combined tags (tag1:tag2) will be stored as tag1 and tag1:tag2. 
+ value |  Optional  | If not included, will be blank.
+ timestamp |  Optional  | If not included the current timestamp will be added.
+ type |  Optional  | If not included, will be set to the default type `event`.
   
 ---------------
 
 ## List events
 
-Returns a list of all stored events.  You can optionally filter the events list by type or tag(s).  
+Return a list of all stored events.  You can optionally filter the events list by type or tag(s).  
 For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters).
 
 ### Request
 * `GET`
-* `/api/v1/events`
+* `/api/v1/events`  
+  You can optionally filter returned events by tag(s) or type, for example:  
+  `GET /api/v1/events?tag=archiving&tag=breeds` or  
+  `GET /api/v1/events?type=metrics` 
 * The request body should be empty.
-* Optional headers:
-
-| Request parameters         | description       |
-| ----------------- |:-----------------:|
-| `tag` | Filter returned events by tag(s), for example `GET /api/v1/events?tag=archiving&tag=breeds` |  
-| `type` | Filter returned events by type, for example `GET /api/v1/events?type=metrics` | 
 
 ### Response
-
-
-### Errors
-* ???
+Will return a (filtered) list of [event resources](/documentation/api/v9.9.9/api-events/#event-resource)].
 
 ---------------
 
 ## Create event
 
-Creates a new events. 
+Create a new event. 
 
 ### Request
 * `POST`
 * `/api/v1/events`
-* The request body should include at least a minimum event resource
-* Optional headers:
-
-| Request parameters         | options           | default          | description       |
-| ----------------- |:-----------------:|:----------------:| -----------------:|
-|  |  |  |  |
+* The request body should include at least a [minimum event resource](/documentation/api/v9.9.9/api-events/#event-resource).
 
 ### Response
+Will return the created [event resource](/documentation/api/v9.9.9/api-events/#event-resource) in the specified `accept` format (default JSON). 
+
+---------------
+
+## Stream events
+
+Open a Server-sent events (SSE) connection to receive updates to the Vamp events stream, for example in Google Chrome.
+
+### Request
+* `<vamp url>/api/v1/events/stream`  
+  You can optionally filter returned events by tag(s), for example:  
+  `GET /api/v1/events/stream?tag=archiving&tag=breeds`
+
+### Response
+Transmits (filtered) updates to the Vamp events stream.
 
 
-### Errors
-* ???
+---------------

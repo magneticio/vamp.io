@@ -19,8 +19,7 @@ Read about [using gateways](documentation/using-vamp/gateways/).
  * [Delete](/documentation/api/v9.9.9/api-gateways/#delete-gateway) - delete a gateway
 
 ## Gateway resource
-You can define gateways inline or create them separately and reference them by name in a blueprint, breed or deployment.  
-The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this. 
+You can define gateways inline as part of a blueprint, breed or deployment, or create them separately and reference them by name. The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this. 
 
 ### Minimum resource
 
@@ -64,7 +63,7 @@ routes: {}
     
 ## List gateways
 
-Returns a list of all gateways. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
+Return a list of all gateways. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
 
 ### Request
 * `GET`
@@ -90,7 +89,7 @@ Get details of a single gateway.
 * The request body should be empty.
 
 ### Response
-If successful, will return the named [gateway resource](/documentation/api/v9.9.9/api-gateways/#gateway-resource) in the specified `accept` format (default JSON).  
+If successful, will return the named [gateway resource](/documentation/using-vamp/v0.9.2/gateways/#example-a-b-test-two-deployments-using-route-weight) in the specified `accept` format (default JSON).  
 
 ### Errors
 * **The requested resource could not be found.** - the named gateway does not exist.

@@ -9,7 +9,7 @@ menu:
 draft: true
 ---
 
-The pointers below will help debug and resolve common issues in case Vamp is not running or not behaving as expected.
+The pointers in this article will help you troubleshoot and resolve common issues in case Vamp is not running or not behaving as expected.
 
 * [Troubleshoot a full Vamp installation](/documentation/troubleshoot/#troubleshoot-a-full-vamp-installation)
 * [Troubleshoot the Vamp hello world quickstart](/documentation/troubleshoot/#troubleshoot-the-vamp-hello-world-quickstart)
@@ -21,9 +21,13 @@ If you find some of the instructions not clear enough or lacking information, pl
 ## Troubleshoot a full Vamp installation
 The steps below will help you debug problems encountered when following our full install instructions. 
 
-1. Does your install follow the instructions for your framework? 
-  - Check the install page [DC/OS](/documentation/installation/dcos/), [Mesos/Marathon](/documentation/installation/mesos-marathon/), [Kubernetes](/documentation/installation/kubernetes/), [Rancher](/documentation/installation/rancher/) and [Docker](/documentation/installation/docker/). 
+1. Does your install follow the instructions for your specific container scheduler? 
+  - Check the relevant Vamp installation instructions: [DC/OS](/documentation/installation/dcos/), [Mesos/Marathon](/documentation/installation/mesos-marathon/), [Kubernetes](/documentation/installation/kubernetes/), [Rancher](/documentation/installation/rancher/) or [Docker](/documentation/installation/docker/). 
+- Check the information panel in the UI (click the i-icon in the top right corner) to see if all fields have a proper value and are not empty. If some fields are empty this is often an indication of an invalid configuration. 
 - Can Vamp connect to Elasticsearch?  
+  Vamp uses Elasticsearch to store haproxy logs and calculated metrics from its event system. First check if you see a logstash index in your Elasticsearch cluster. If you don’t see any indices at all please check if the Vamp Gateway Agent (or your custom HAproxy) stores it’s logs in the expected format (https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.basic.cfg for HAproxy 1.7.1 format). Vamp up to version 0.9.2 uses logstash (included in the custom Vamp Elasticsearch docker container) to send HAproxy logs to Elasticsearch. Make sure your logstash is configured correctly (https://github.com/magneticio/vamp-gateway-agent and scroll down to “Logstash example configuration” and that your logstash can read from the HAproxy logs and connect to your Elasticsearch cluster.
+  If you do see a logstash index in Elasticsearch, but no health or metrics indices this probably means that the default Vamp health and metrics workflows cannot access the Elasticsearch cluster or your Vamp API. Make sure that the Vamp Workflow Agent containers can access the Elasticsearch cluster and the Vamp API. This can be done f.e. by SSH’ing into a workflow agent container and trying to telnet the Elasticsearch address and the Vamp API that you configured in your configuration settings. You can check these using /api/v1/info or /api/v1/config or take a look into the Vamp UI workflows menu by opening a workflow and checking the environment variables that point to Elasticsearch and Vamp API there. If the Vamp Workflow Agent containers can access your Elasticsearch cluster and the Vamp API on the address in the workflow environment variables, and there is a logstash index in ES, the workflows should start generating the metrics and health indices when running correctly.
+  
   - Check the Elasticsearch indices required by the Vamp UI have been created:  
     `GET <elasticsearch url>/_cat/indices?v`  
       HAProxy logs: _logstash-{date}_     
@@ -46,16 +50,28 @@ The steps below will help you debug problems encountered when following our full
   - Check the logs for each `vamp-workflow-agent` container using `docker logs {container ID}`  
     If a `failure` is reported, the workflow may not be able to talk to Elasticsearch - check the Elasticsearch configuration in `application.conf`.  
     Any errors here should be clear, in case they aren't [report the issue](/documentation/troubleshoot/#report-an-issue).
-- Check the [release notes](/documentation/release-notes/latest) for known issues and breaking changes.
+- Check the [Vamp release notes](/documentation/release-notes/latest) for known issues and breaking changes.
+- If you see time-out errors on the Vamp UI make sure your web socket connections to the Vamp API are open and stable.
+  - check in your configuration that you’re using http:// in front of TCP/HTTP addresses, but not in front of UDP connections. Also make sure there are no double ports (ie 9200:9200) popping up in your configuration when looking into /api/v1/config
+  - when deploying a blueprint and the deployment keeps on hanging in “deploying” make sure that there are enough resources (CPU and memory) available in your container cluster. Also make sure that your key-value store is accessible by the Vamp Gateway Agent and that you’ve used the correct address in your configuration.
 - If you're still hitting problems, please [report the issue](/documentation/troubleshoot/#report-an-issue).
 
 Did this help? If you find some of the instructions not clear enough or lacking information, please [raise an issue on GitHub](https://github.com/magneticio/vamp.io/issues/new).
 
 ## Troubleshoot the Vamp Hello world quickstart
-The Vamp hello world quickstart is a self contained testing place. If you run into problems or unexpected behaviour, we advise that you clear everything out and reinstall.
+The Vamp hello world quickstart is a self contained testing package. If you run into problems or unexpected behaviour, we advise that you clear everything out and reinstall.
 
 1. Stop all running containers - for example using `docker ps | awk '{print $1}' | xargs docker stop 2>/dev/null`
-- Clean up  your docker environment (remove stopped containers, dangling images and volumes).
+- Clean up  your docker environment (remove stopped containers, dangling images and volumes). A script to do this: 
+        
+        docker rmi -f $(docker images -q -f dangling=true) 2>/dev/null
+        
+        echo "removing exited docker containers..."
+        docker ps -a | grep 'Exited' | awk '{print $1}' | xargs docker rm
+        docker ps -a | grep 'Created' | awk '{print $1}' | xargs docker rm
+        
+        echo "removing dangling docker volumes..."
+        docker volume rm $(docker volume ls -qf dangling=true) 2>/dev/null `
 - Restart docker machine using `docker-machine restart`.
 - Reinstall [Vamp hello world](/documentation/installation/hello-world/).
 - If everything is installed ok and you're running into problems using Vamp, check the [troubleshooting tips for using Vamp](/documentation/troubleshoot/#troubleshooting-tips-for-using-vamp).

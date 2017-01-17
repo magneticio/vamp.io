@@ -57,7 +57,7 @@ environment_variables: {}
  --------------|---|-----------------
  name | yes |
  kind | optional | The resource type. Required to [send multiple resources](/documentation/api/v9.9.9/api-overview/#send-multiple-resources) to `/api/v1`
- gateways | optional |  Can be created separately and referenced from here or defined inline as part of the blueprint. See [gateway resource](/documentation/api/v9.9.9/api-gateways)
+ gateways | optional |  Can be created separately and referenced from here or defined inline as part of the blueprint. See [gateway resource](/documentation/api/v9.9.9/api-gateways/#gateway-resource)
  clusters | yes  |
  services | yes |
  breed |  yes |Can be created separately and referenced from here or defined inline as part of the blueprint. See [breed resource](/documentation/api/v9.9.9/api-breeds)
@@ -68,7 +68,7 @@ environment_variables: {}
 
 ## List blueprints
 
-Returns a list of all stored blueprint resources. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
+Return a list of all stored blueprint resources. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
 
 ### Request
 
@@ -94,7 +94,7 @@ If successful, will return a list of [blueprint resources](/documentation/api/v9
 
 ## Get single blueprint
 
-Returns details of a single, specified blueprint.
+Return details of a single, specified blueprint.
 
 ### Request 
 
@@ -118,7 +118,7 @@ If successful, will return the named [blueprint resource](/documentation/api/v9.
 
 ## Create blueprint
 
-Stores a new blueprint. Note that create operations are idempotent: sending a second request with the same content will not result in an error response (4xx).
+Store a new blueprint. Note that create operations are idempotent: sending a second request with the same content will not result in an error response (4xx).
 
 ### Request
 
@@ -142,7 +142,7 @@ A successful create operation has status code 201 `Created` and the response bod
 
 ## Update blueprint
 
-Updates the content of a specific blueprint.
+Update the content of a stored blueprint.
 
 ### Request
 
@@ -161,13 +161,13 @@ A successful update operation has status code 200 `OK` or 202 `Accepted` and the
 ### Errors
 
 * **4xx** - an update will fail if a resource does not exist
-* **Inconsistent name** - the `scale_name` in the request path does not match the `name` field in the request body.
+* **Inconsistent name** - the `blueprint_name` in the request path does not match the `name` field in the request body.
 
 -----------
 
 ## Delete blueprint
 
-Deletes a blueprint. Note that delete operations are idempotent: sending a second request with the same content will not result in an error response (4xx).
+Delete a stored blueprint. Note that delete operations are idempotent: sending a second request with the same content will not result in an error response (4xx).
 
 ### Request
 

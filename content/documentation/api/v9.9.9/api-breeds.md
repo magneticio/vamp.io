@@ -47,16 +47,16 @@ arguments: []
 dependencies: {}
 ```
 
- Field name        | Required | description          
- -----------------|--------|---------
-name  |  yes  | a unique name to reference the breed
-kind  |  optional  | The resource type. Required to [send multiple resources](/documentation/api/v9.9.9/api-overview/#send-multiple-resources-post-put-and-delete) to `/api/v1`
-deployable  |  yes  |  the default deployable type is `container/docker`
-ports  |  optional  |  
-environtment_variables  |  optional  |
-constants  |  optional  |
-arguments  |  optional  |
-dependencies  |  optional  |  
+ Field name   |  Options   | Required | description          
+ ------------|-----|--------|---------
+name  |   |  yes  | a unique name to reference the breed
+kind  | `breed`  |  optional  | The resource type. Required to [send multiple resources](/documentation/api/v9.9.9/api-overview/#send-multiple-resources-post-put-and-delete) to `/api/v1`
+deployable  |   |  yes  |  the default deployable type is `container/docker`
+ports  |   |  optional  |  
+environtment_variables  |   |  optional  |
+constants  |   |  optional  |
+arguments  |   |  optional  |
+dependencies  |   |  optional  |  
 
 --------------  
   

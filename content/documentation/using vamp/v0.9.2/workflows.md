@@ -10,63 +10,19 @@ aliases:
     - /documentation/using-vamp/workflows/
 ---
 
-A "workflow" is an automated change of the running system and its deployments and gateways. 
-Changing the number of running instances based on metrics (e.g. SLA) is an example of a workflow. 
-A workflow can be seen as a recipe or solution, however it has a more generic meaning not just related to "problematic" situations.
+Vamp workflows are a convenient way to run Node JS based scripts that access the Vamp API to monitor and interact with running services. JavaScript workflows run in Vamp workflow agent containers ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)) and are managed just like any other container inside your cluster, making them robust, scalable and dynamic. Workflows can be scheduled to run as a daemon, be triggered by Vamp events or to run at specified times. 
 
-Another example is a workflow that will decide automatically if a new version, when doing a canary release, should be accepted or not. 
-For instance, push the route up to 50% of traffic to the new version, compare metrics over some time (e.g. frequency of 5xx errors, response time), change to 100% and remove the old version. 
-This workflow could define the rate of the transitions (e.g. 5% -> 10% -> 25%, ...) as well.
+Vamp ships with three default workflows:
 
-### Rationale
+* Health  - checks and stores the status of running services. Events stored by the health workflow are used by the Vamp UI.
+* Metrics - stores metrics on running services. Events stored by the metrics workflow are used by the Vamp UI.
+* Kibana - supports the easy creation of Kibana dashboards.
 
-Workflows allow closing the feedback loop: deploy, measure, **react**.
-Vamp workflows are based on running separate services (breeds) and in its simplest form scripting can be used - e.g. `application/javascript` breeds. 
-Scripting allows experimentation with different features and if the feature is common and generic enough, it could be supported later in Vamp DSL.
-Since workflows are running breeds in similar way as in deployments (blueprints), all other breed features are supported - ports, environment variables etc.
-
-## API
-
-Each workflow is represented as an artifact and they follow basic CRUD operation patterns as any other artifact. Note that workflows must be restarted to apply changes.
-```
-  /api/v1/workflows
-```
-
-## Artifacts
-
-Workflow artifacts are similar to  blueprints or deployments. Note that workflows must be restarted to apply changes.
-
-```
----
-name: metrics
-breed: metrics
-status: running
-schedule: daemon
-environment_variables:
-  VAMP_WORKFLOW_EXECUTION_TIMEOUT: '7'
-  VAMP_KEY_VALUE_STORE_CONNECTION: 192.168.99.100:2181
-  VAMP_KEY_VALUE_STORE_PATH: /vamp/workflows/metrics
-  VAMP_WORKFLOW_EXECUTION_PERIOD: '5'
-  VAMP_KEY_VALUE_STORE_TYPE: zookeeper
-  VAMP_URL: http://192.168.99.100:8080
-scale:
-  cpu: 0.1
-  memory: 128.00MB
-  instances: 1
-```
-
-Field name  |  Options  |  Required |  Description  
-------------|-------|--------|--------
-name  | - |   yes |  
-breed  | - |   yes |  either a reference or inline definition, similar to blueprints. Best practice would be to store the breed separately and reference it from the workflow
-status  |  running, stopping, suspending, starting, restarting |   - |  `restarting` will first suspend and then start the workflow (applying any changes since last start). `suspending` will stop a workflow from running without deleting it. `stopping` a workflow will delete it (not reversible).
-schedule  | daemon, event, time |   yes |  See [schedules](/documentation/using-vamp/v0.9.2/workflows/#schedules) below
-environment_variables (or env) | - |   yes (when using the Vamp workflow agent) |  overrides breed environment variables. You can provide your own variabes here. The following variables must be specified when using Vamp workflow agent: `VAMP_WORKFLOW_EXECUTION_TIMEOUT`, `VAMP_KEY_VALUE_STORE_CONNECTION`, `VAMP_KEY_VALUE_STORE_PATH`,  `VAMP_WORKFLOW_EXECUTION_PERIOD`, `VAMP_KEY_VALUE_STORE_TYPE`, `VAMP_URL`. For a workflow that will run forever, also set VAMP_API_CACHE=false (by default this is set to true)
-scale  | - |   - |  when not specified, the default scale will be used
+You can create your own workflows using Node JS based scripts running inside a Vamp workflow agent container, or use another language of preference - create an application or script that accesses the Vamp API and build it into a Docker container to be deployed by Vamp.
 
 ## Schedules
 
-Workflows can be schedulde to run as a daemon, be triggered by specific events or rn according to a time schedule. See the examples for each below.
+Workflows can be scheduled to run as a daemon, be triggered by specific events or rn according to a time schedule. See the examples for each below.
 
 ### Scheduled as a daemon
 For example:
@@ -170,6 +126,7 @@ api.gateways().each(function (gateway) {
 
 
 {{< note title="What next?" >}}
+* Try the tutorial [Create a workflow that generates events](/documentation/tutorials/create-a-workflow/)
 * Read about [Sticky sessions](/documentation/using-vamp/v0.9.2/sticky-sessions/)
 * Check the [API documentation](/documentation/api/v0.9.2/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)

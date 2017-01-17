@@ -55,17 +55,18 @@ The fields returned by the API after a workflow has been created (also visible i
   arguments: [] 
 ```
 
- Field name       | Required  | description          
- -------------|----|-----------------
- name |  yes  |
- kind |    |
- breed |  yes  |
- status |    |
- schedule |  yes  | 
- environment_variables |    |
- scale |   |   
- network |   |   
- arguments |    |  
+    
+Field name  |  Options  |  Required |  Description  
+------------|-------|--------|--------
+name  | - |   Required |  
+kind |  -  | Optional | The resource type. Required to [send multiple resources](/documentation/api/v9.9.9/api-overview/#send-multiple-resources) to `/api/v1`
+breed  | - |   Required |  either a reference or inline definition, similar to blueprints. Best practice would be to store the breed separately and reference it from the workflow
+status  |  running, stopping, suspending, starting, restarting |   Optional |  `restarting` will first suspend and then start the workflow (applying any changes since last start). `suspending` will stop a workflow from running without deleting it. `stopping` a workflow will delete it (not reversible).
+schedule  | daemon, event, time |   Required |  The workflow schedule. See [using workflows - schedules](/documentation/using-vamp/v0.9.2/workflows/#schedules).
+environment_variables (or env) | - |   Optional |  Overrides breed environment variables. You can provide your own variabes here. The following variables are required when using Vamp workflow agent, if not specified here, the configured defaults will be applied: `VAMP_WORKFLOW_EXECUTION_TIMEOUT`, `VAMP_KEY_VALUE_STORE_CONNECTION`, `VAMP_KEY_VALUE_STORE_PATH`,  `VAMP_WORKFLOW_EXECUTION_PERIOD`, `VAMP_KEY_VALUE_STORE_TYPE`, `VAMP_URL`. For a workflow that will run forever, also set VAMP_API_CACHE=false (by default this is set to true).
+scale  | - |   Optional |  when not specified, the default scale will be applied.    
+ network |   |  Optional |
+ arguments |    | Optional |    
     
     
 ------------ 
@@ -82,9 +83,6 @@ Return a list of all stored workflows. For details on pagination see [common par
 ### Response
 If successful, will return a list of [workflow resources](/documentation/api/v9.9.9/api-workflows/#workflow-resource) in the specified `accept` format (default JSON).
 
-### Errors
-* ???
-
 --------------
 
 ## Get single workflow
@@ -100,7 +98,7 @@ Return details of a specific workflow.
 If successful, will return the specified [workflow resource](/documentation/api/v9.9.9/api-workflows/#workflow-resource) in the specified `accept` format (default JSON).
 
 ### Errors
-* The requested resource could not be found.
+* **The requested resource could not be found** - there is no stored workflow with the specified `workflow_name`.
 
 --------------
 
@@ -119,14 +117,11 @@ If successful, will return the created [workflow resource](/documentation/api/v9
 ### Errors
 * ???
 
-### Examples
-???
-
 --------------
 
 ## Update workflow
 
-Add to a running workflow.
+Update a stored workflow.
 
 ### Request
 * `PUT`
@@ -135,9 +130,6 @@ Add to a running workflow.
 
 ### Response
 If successful, will return the updated [deployment resource](/documentation/api/v9.9.9/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
-
-### Errors
-* ???
 
 ### Example - restart a running workflow
 Request:
@@ -148,13 +140,13 @@ Request:
 
 Response:  
 
-* If successful, will return the updated [workflow resource](/documentation/api/v9.9.9/api-workflows/#workflow-resource).
+* Will return the updated [workflow resource](/documentation/api/v9.9.9/api-workflows/#workflow-resource).
 
 --------------
 
 ## Delete workflow
 
-Delete a running workflow.
+Delete a stored workflow.
 
 ### Request
 
@@ -165,7 +157,5 @@ Delete a running workflow.
 ### Response
 ???
 
-### Errors
-* ???
 
 --------------
