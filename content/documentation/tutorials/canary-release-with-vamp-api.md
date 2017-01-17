@@ -17,15 +17,16 @@ draft: true
 
 ## API calls
 
-### Initiate deployment
+### 1) Initiate deployment
+
+* Create a deployment `sava` with a cluster `sava` containing the service `sava:1.0.0`.  
+* Create an internal gateway `sava/sava/port`, containing the route `sava/sava/sava:1.0.0/port`
 
 `PUT /api/v1/deployments/sava`
 
 ```
 ---
 name: sava:1.0
-gateways:
-  9050/http: sava/port
 clusters:
   sava:
     services:
@@ -37,7 +38,10 @@ clusters:
             port: 8080/http
 ```
 
-### Merge new service
+### 2) Merge new service
+
+* Add the service `sava:1.1.0` to the deployment `sava` inside the cluster `sava`.  
+* Add the route `sava/sava/sava:1.1.0/port` to the internal gateway `sava/sava/port`
 
 `PUT /api/v1/deployments/sava`
 
@@ -55,9 +59,12 @@ clusters:
             port: 8080/http
 ```
 
-### Distribute traffic
+### 3) Distribute traffic
 
-`PUT /api/v1/gateways/sava/sava/port`
+* Add the stable endpoint `9050` to the internal gateway `sava/sava/port`  
+* Set a weight for the routes `sava/sava/sava:1.0.0/port` and `sava/sava/sava:1.1.0/port` to distribute traffic between the services.
+
+`PUT /api/v1/gateways/sava/sava/port` 
 
 ```
 name: sava/sava/port
@@ -67,6 +74,24 @@ routes:
     weight: 90%          
   sava/sava/sava:1.1.0/port:
     weight: 10%
+```
+
+### 4) Remove old service
+ 
+First, set the route weight on the `sava:1.0.0` service to 0%.
+
+* Remove the service `sava:1.0.0` from the `sava` cluster of the `sava` deployment
+* Remove the route `sava/sava/sava:1.0.0/port` from the gateway `sava/sava/port`
+
+`DELETE /api/v1/deployments/sava`
+
+```
+---
+name: sava:1.0
+clusters:
+  sava:
+    services:
+      - breed: sava:1.0.0
 ```
 
 
