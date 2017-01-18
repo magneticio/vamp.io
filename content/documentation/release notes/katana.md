@@ -26,8 +26,9 @@ All changes since the last official release are described below. This applies on
 * Pulse storage type needs to be explicitly specified `vamp.pulse.type`: `elasticsearch` or `no-store` [#869](https://github.com/magneticio/vamp/issues/869)
 * Removed redundant HAProxy configuration: `vamp.gateway-driver.haproxy.virtual-hosts`, `vamp.gateway-driver.haproxy.tcp-log-format` and `vamp.gateway-driver.haproxy.http-log-format` [#763](https://github.com/magneticio/vamp/issues/763).
 * Debug API endpoints have been removed [#308](https://github.com/magneticio/vamp/issues/308)
-* API endpoint to get HAProxy configuration and key-value key for VGA [#870](https://github.com/magneticio/vamp/issues/870).
+* API endpoint to get HAProxy configuration and key-value key for VGA [#870](https://github.com/magneticio/vamp/issues/870)
 * Configuration change: `vamp.workflow-driver.workflow.deployables."application/javascript"` has been changed to `vamp.workflow-driver.workflow.deployables.application.javascript`
+* Default workflow parameters are applied only on `application/javascript` workflows [#880](https://github.com/magneticio/vamp/issues/880)
 
 {{< note title="What next?" >}}
 * Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases))
