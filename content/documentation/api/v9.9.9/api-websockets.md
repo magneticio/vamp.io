@@ -9,48 +9,57 @@ menu:
 draft: true
 ---
 
-Every request and response via WebSocket API is done by transmitting text messages. 
-They all contains meta-information and payload. 
-All REST requests and responses can be mapped 1-on-1 to WebSocket request and responses using the following properties.
+WebSocket API requests and responses are transmitted as text messages containing both meta-information and a payload.  
 
-1) Requests:
+* [WebSocket API requests](/documentation/api/v9.9.9/api-websockets/#websocket-api-requests)
+* [Websocket API responses](/documentation/api/v9.9.9/api-websockets/#websocket-api-responses)
 
-- `api` - API version, only `v1` is supported and allowed right now (corresponds to `api/v1`)
-- `path` - full REST path (without api version) that could be used, e.g. `breeds` or `workflows/health`
-- `action` - `Peek`, `Put` or `Remove` - REST: `GET`, `POST|PUT` or `DELETE`
-- `accept` - `Json`, `Yaml`, `PlainText` or `Javascript` - expected response payload content type, REST: similar to `Accept` header; `PlainText` and `Javascript` will be retrieved "as is" without any data encoding.
-- `content` - `Json`, `Yaml`, `PlainText` or `Javascript` - content type of the payload (data), REST: similar to `Content-Type` header
-- `transaction` - arbitrary id (defined by client), server will set the same value in its response(s)
-- `data` - payload, REST: body
-- `parameters`- map of additional parameters, REST: query string, e.g. `validate_only=true`
+## WebSocket API requests
+REST API requests can be mapped 1-on-1 to WebSocket API requests using the properties described below. Note that all enum (symbolic) values like `Json`, `Peek` etc. are case-insensitive. The Vamp API accepts requests in JSON or YAML. 
 
-Request can be sent either as JSON or YAML.
+### Example - excplicitly request gateway driver info
 
-Example:
-```
-{
-  api: 'v1',
-  path: 'info',
-  action: 'peek`,
-  accept: 'JSON',
-  content: 'JSON',
-  transaction: `123`,
-  data: '',
-  parameters: 'on=gateway_driver'
-}
-```
+* REST API request:
+  `GET /api/v1/info?on=gateway_driver`
+* WebSocket API request:
 
-Using REST API this is equivalent to: `/api/v1/info?on=gateway_driver`
+    ```
+    {
+      api: 'v1',
+      path: 'info',
+      action: 'peek`,
+      accept: 'JSON',
+      content: 'JSON',
+      transaction: `123`,
+      data: '',
+      parameters: 'on=gateway_driver'
+    }
+    ```
 
-2) Responses:
+### WebSocket API request properties
 
-- `api` - API version, only `v1` is supported right now
-- `path` - path same as in corresponding request
-- `action` - action value from the request
-- `status` - response status: `Ok`, `Accepted`, `NoContent` or `Error`
-- `content` - `Json`, `Yaml`, `PlainText` or `Javascript` - content type of the payload (data) - same as in corresponding request 
-- `transaction` - request id
-- `data` - payload, text encoded as specified in `content` parameter
-- `parameters`- map of additional parameters and response headers (one that would be expected from equivalent REST response)
+Property | Options | Description
+------|------|------
+ `api`   |  `v1`  |    API version, only `v1` is supported right now (corresponds to `api/v1`).
+ `path`   |    |    The full REST path (without API version) for example `breeds` or `workflows/health`.
+ `action`   |  `Peek`, `Put` or `Remove`  |    Corresponding to the REST methods: `Peek` =  `GET`, `Put` = `POST` or `PUT`, `Remove` = `DELETE`.
+ `accept`   |   `Json`, `Yaml`, `PlainText`, `Javascript`  |  Expected response payload content type. REST: similar to the `Accept` header. `PlainText` and `Javascript` will be retrieved "as is" without any data encoding.      
+ `content`   |  `Json`, `Yaml`, `PlainText`, `Javascript`   |  Content type of the payload (data), REST: similar to `Content-Type` header.       
+ `transaction`   |    |   Arbitrary ID (defined by client), server will set the same value in its response(s).     
+ `data`   |    |    Payload, REST: body.
+ `parameters`   |    |   Map of additional parameters, REST: query string, e.g. `validate_only=true`.     
+    
 
-NOTE: all enum (symbolic) values like `Json`, `Peek` etc. are case-insensitive.
+## WebSocket API Responses
+REST API responses can be mapped 1-on-1 to WebSocket API responses using the properties described below. Note that all enum (symbolic) values like `Json`, `Peek` etc. are case-insensitive. Vamp API responses can be formatted in JSON or YAML. 
+
+Property | Options | Description
+------|------|------
+ `api`   |  `v1`  |    API version, only `v1` is supported right now (corresponds to `api/v1`).
+ `path`   |    |    The same path as in the corresponding request.
+ `action`   |  `Peek`, `Put` or `Remove`  |    Action value from the request.
+ `status`   |   `Ok`, `Accepted`, `NoContent` or `Error`  |  Response status.      
+ `content`   |  `Json`, `Yaml`, `PlainText`, `Javascript`   |  Content type of the payload (data) - same as in the corresponding request.     
+ `transaction`   |    |   Request ID.
+ `data`   |    |    Payload, text encoded as specified in `content` parameter.
+ `parameters`   |    |   Map of additional parameters and response headers (as would be expected from equivalent REST response)

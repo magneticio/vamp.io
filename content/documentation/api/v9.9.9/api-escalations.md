@@ -49,7 +49,7 @@ The fields returned by the API after an escalation has been created (also visibl
 
  Field name    | Options | Required?  | description          
  -----------------|-----|------|------
- name |  -  |  Required  | a unique name to reference the escalation
+ name |  -  |  Required  | A unique name to reference the escalation
  kind |  `escalation`  |  Optional  | The resource type. Required to [send multiple resources](/documentation/api/v9.9.9/api-overview/#send-multiple-resources-post-put-and-delete) to `/api/v1`
  type |  `scale_instances`, `scale_cpu`, `scale_memory`  |  Required  |  Escalation handler. Specifies what is to be scaled.
  target |    | Optional   | The target cluster to scale up/down. If not included, will default to the cluster where escalations are specified.

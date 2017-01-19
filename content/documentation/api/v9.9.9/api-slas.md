@@ -28,12 +28,12 @@ The minimum fields required to successfully create a SLA.
 ```
 name: sla_name
 type: response_time_sliding_window
-threshold:
- upper: 100
- lower: 10
 window:
  interval: 50
  cooldown: 50
+threshold:
+ upper: 100
+ lower: 10
 ```
 
 ### API return resource
@@ -52,17 +52,21 @@ The fields returned by the API after a SLA has been created (also visible in the
    escalations: []
 ```
 
- Field name   | Ooptions  |  Required   | description          
- -----------------|-----------------
-  |  
-  |
-  
+ Field name   | Options  |  Required   | description          
+ -----------------|----|----|---------
+ `name` |   | Required  | Unique name, used to reference the SLA.
+ `kind` | `sla`  | Optional  | The resource type. Required to [send multiple resources](/documentation/api/v9.9.9/api-overview/#send-multiple-resources-post-put-and-delete) to `/api/v1`.
+ `type` | `response_time_sliding_window`  | Required  |
+ `window` |   | Required  |  
+ `threshold` |   | Required  |
+ `escalations` |   | Optional  |
+
 
 -----------------
 
 ## List SLAs
 
-Returns a list of all stored SLAs. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters)
+Return a list of all stored SLA templates. For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters).
 
 ### Request
  * `GET` 
@@ -70,5 +74,80 @@ Returns a list of all stored SLAs. For details on pagination see [common paramet
  * The request body should be empty.
 
 ### Response 
+If successful, will return a list of all stored [SLA resources](/documentation/api/v9.9.9/api-slas/#sla-resource) in the specified `accept` format (default JSON).  
+
+-----------------
+
+## Get single SLA
+
+Return a the named SLA resource.
+
+### Request
+* `GET` 
+* `/api/v1/slas/{sla_name}`
+* The request body should be empty.
+
+### Response
+If successful, will return the named [SLA resource](/documentation/api/v9.9.9/api-slas/#sla-resource) in the specified `accept` format (default JSON).  
+
+-----------------
+
+## Create SLA
+
+Store a new SLA template.
+
+### Request
+* `POST` 
+* `/api/v1/slas`
+* The request body should include at least a mimnimum [SLA resource](/documentation/api/v9.9.9/api-slas/#sla-resource).
+* Optional headers:
+
+| parameter     | options           | default          | description       |
+| ------------- |:-----------------:|:----------------:| -----------------:|
+| `validate_only` | true or false     | false            | validates the escalation and returns a `201 Created` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+
+
+### Response
+A successful create operation has status code 201 `Created` and the response body will contain the created [SLA resource](/documentation/api/v9.9.9/api-slas/#sla-resource) in the specified `accept` format (default JSON). 
+
+-----------------
+
+## Update SLA
+
+Update a stored SLA template.
+
+### Request
+* `PUT` 
+* `/api/v1/slas/{sla_name}`
+* The request body should include at least a mimnimum [SLA resource](/documentation/api/v9.9.9/api-slas/#sla-resource). The `name` field must match the `sla_name` specified in the request path.
+* Optional headers:
+
+| parameter     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the escalation and returns a `200 OK` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+
+
+### Response
+A successful update operation has status code 200 `OK` or 202 `Accepted` and the response body will contain the updated [SLA resource](/documentation/api/v9.9.9/api-slas/#sla-resource) in the specified `accept` format (default JSON).
+
+-----------------
+
+## Delete SLA
+
+Delete a stored SLA template. Note that delete operations are idempotent: sending a second request with the same content will not result in an error response (4xx).
+
+### Request
+* `DELETE` 
+* `/api/v1/slas/{sla_name}`
+* The request body should be empty.
+* Optional headers:
+
+| parameter     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | returns a `204 No Content` without actual delete of the escalation.
+
+
+### Response
+A successful delete operation has status code 204 `No Content` or 202 `Accepted` with an empty response body.
 
 -----------------

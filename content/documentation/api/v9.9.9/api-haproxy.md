@@ -114,10 +114,6 @@ backend 1f2c9bf68395805af6ecd4c389c061dfdd24d62d
   # server: e0fac2d5bb3be249d937_sava-1-0-e0fac2d5bb3be249d937.f8dd2859-dbdc-11e6-bdac-0242846bb8a0
   server 10f3595fedfdd135af60e06d738c802cbd23564a 192.168.99.100:31473 cookie 10f3595fedfdd135af60e06d738c802cbd23564a weight 100 check  
 ```
- Parameter name        | optional | description          
- -----------------|-----------------|---
-  |   |
-
 
 ------------------
 
@@ -136,9 +132,5 @@ If successful, will return the [HA proxy configuration](/documentation/api/v9.9.
 
 ### Errors
 * **blank response** - There is no configuration available for the specified HAProxy version number.
-
-
-### Examples
-???
 
 ------------------

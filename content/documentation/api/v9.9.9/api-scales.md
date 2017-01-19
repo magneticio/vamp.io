@@ -26,9 +26,9 @@ The resource examples shown below are in YAML format. Vamp API requests and resp
 The minimum fields required to successfully store a scale.
 
 ```
-- name: sava_scale
-  cpu: 0.2 
-  memory: 64MB
+name: sava_scale
+cpu: 0.2 
+memory: 64MB
 ```
 
 ### API return resource
@@ -131,8 +131,5 @@ Delete a stored scale. Note that delete operations are idempotent: sending a sec
 
 ### Response
 A successful delete operation has status code 204 `No Content` or 202 `Accepted` with an empty response body.
-
-### Errors
-???
 
 ------------------
