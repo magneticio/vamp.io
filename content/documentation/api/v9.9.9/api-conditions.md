@@ -8,7 +8,7 @@ menu:
     weight: 30
 draft: true
 ---
-Condition templates are static artifacts. You can save and manage condition templates through the API, these can then be referenced and applied to gateways. Read about [using conditions](documentation/using-vamp/conditions/).
+Condition templates are static artifacts. You can save and manage condition templates through the API, these can then be referenced and applied to gateways. Read about [using conditions](documentation/using-vamp/conditions/) and [using gateways](documentation/using-vamp/gateways/).
 
 
 ## Actions
@@ -60,9 +60,6 @@ Returns a list of all stored conditions. For details on pagination see [common p
 ### Response
 If successful, will return a list of all stored [condition resources](/documentation/api/v9.9.9/api-conditions/#condition-resource) in the specified `accept` format (default JSON).
 
-### Errors
-* ???
-
 -----------
 
 ## Get condition
@@ -77,9 +74,6 @@ Return a specific stored condition.
 ### Response 
 If successful, will return the named [condition resource](/documentation/api/v9.9.9/api-conditions/#condition-resource) in the specified `accept` format (default JSON).
 
-### Errors
-* ???
-
 -----------
 
 ## Create condition
@@ -90,12 +84,14 @@ Create a condition template.
 * `POST`
 * `/api/v1/conditions/`
 * The request body should include at least a [minimum condition resource](/documentation/api/v9.9.9/api-conditions/#condition-resource) in the specified `Content-Type` format (default JSON).
+* Optional headers:
+
+| Request parameters     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the breed and returns a `201 Created` if the condition is valid
 
 ### Response
 If successful, will return the stored [condition resource](/documentation/api/v9.9.9/api-conditions/#condition-resource) in the specified `accept` format (default JSON).
-
-### Errors
-* ???
 
 -----------
 
@@ -107,6 +103,11 @@ Update a stored condition template.
 * `PUT` 
 * `/api/v1/conditions/{condition_name}`
 * The request body should include at least a [minimum condition resource](/documentation/api/v9.9.9/api-conditions/#condition-resource) in the specified `Content-Type` format (default JSON). The `name` field must match the `{condition_name}` used in the request path.
+* Optional headers:
+
+| Request parameters     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the breed and returns a `200 OK` if the condition is valid
 
 ### Response
 If successful, will return the updated [condition resource](/documentation/api/v9.9.9/api-conditions/#condition-resource) in the specified `accept` format (default JSON).
@@ -124,11 +125,13 @@ Delete a stored condition template. Note that delete operations are idempotent: 
 * `DELETE` 
 * `/api/v1/conditions/{condition_name}`
 * The request body should be empty.
+* Optional headers:
+
+| Request parameters     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the breed and returns a `204 No Content` if the condition is valid, without actual delete of the breed.
 
 ### Response
 A successful delete operation has status code 204 `No Content` or 202 `Accepted` with an empty response body.
-
-### Errors
-* ???
 
 -----------

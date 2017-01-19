@@ -68,12 +68,19 @@ Returns a list of all stored breeds. For details on pagination see [common param
 * `GET`
 * /api/v1/breeds
 * The request body should be empty.
+* Optional headers:
+  
+| Request parameters         | options           | default          | description       |
+| ----------------- |:-----------------:|:----------------:| -----------------:|
+| `expand_references` | true or false     | false            | all breed dependencies will be replaced (recursively) with full breed definitions. 
+| `only_references`   | true or false     | false            | all full breed dependencies will be replaced with their references.
+
 
 ### Response
 If successful, will return a list of [breed resources](/documentation/api/v9.9.9/api-breeds/#breed-resource) in the specified `accept` format (default JSON). For details on pagination see [common parameters](/documentation/api/v9.9.9/api-common-parameters).
 
 ### Errors
-* ???
+* **400 Bad Request** - `expand_references` set to true and some dependencies are not yet fully defined.
 
 --------------
 
@@ -85,12 +92,19 @@ Returns a specific stored breed.
 * `GET`
 * `/api/v1/breeds/{breed_name}`
 * The request body should be empty.
+* Optional headers:
+  
+| Request parameters         | options           | default          | description       |
+| ----------------- |:-----------------:|:----------------:| -----------------:|
+| `expand_references` | true or false     | false            | all breed dependencies will be replaced (recursively) with full breed definitions. 
+| `only_references`   | true or false     | false            | all full breed dependencies will be replaced with their references.
 
 ### Response
 If successful, will return the specified [breed resource](/documentation/api/v9.9.9/api-breeds/#breed-resource) in the specified `accept` format (default JSON)
 
 ### Errors
 * The requested resource could not be found.
+* **400 Bad Request** - `expand_references` set to true and some dependencies are not yet fully defined.
 
 --------------
 
@@ -102,12 +116,14 @@ Creates a breed with the specified fields.
 * `POST` 
 * `/api/v1/breeds`
 * The request body should include at least the [minimum breed resource](/documentation/api/v9.9.9/api-breeds/#breed-resource) in the specified `content-type` format (default JSON). 
+* Optional headers:
+
+| Request parameters     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the breed and returns a `201 Created` if the breed is valid
 
 ### Response
 If successful, will return the created [breed resource](/documentation/api/v9.9.9/api-breeds/#breed-resource) in the specified `accept` format (default JSON).
-
-### Errors
-* ???
 
 --------------
 
@@ -119,6 +135,11 @@ Updates the specified field(s) of a stored breed.
 * `PUT`
 * `/api/v1/breeds/{breed_name}`
 * The request body should include at least the [minimum breed resource](/documentation/api/v9.9.9/api-breeds/#breed-resource) in the specified `content-type` format (default JSON). The `name` field must match the `breed_name` specified in the request path.
+* Optional headers:
+
+| Request parameters     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the breed and returns a `200 OK` if the breed is valid
 
 ### Response
 If successful, will return the updated [breed resource](/documentation/api/v9.9.9/api-breeds/#breed-resource) in the specified `accept` format (default JSON).
@@ -137,11 +158,13 @@ Deletes the specified breed. Note that delete operations are idempotent: sending
 * `DELETE`
 * `/api/v1/breeds/{breed_name}`
 * The request body should be empty.
+* Optional headers:
+
+| Request parameters     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the breed and returns a `204 No Content` if the breed is valid, without actual delete of the breed.
 
 ### Response
 A successful delete operation has status code 204 `No Content` or 202 `Accepted` with an empty response body.
-
-### Errors
-* ???
 
 --------------

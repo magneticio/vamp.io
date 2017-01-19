@@ -134,10 +134,6 @@ Store a new blueprint. Note that create operations are idempotent: sending a sec
 ### Response
 A successful create operation has status code 201 `Created` and the response body will contain the created [blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `accept` format (default JSON). 
 
-### Errors
-
-* ???
-
 -----------
 
 ## Update blueprint

@@ -104,6 +104,11 @@ Create a new gateway.
 * `POST`
 * `/api/v1/gateways`
 * The request body should include at least a [minimum gateway resource](/documentation/api/v9.9.9/api-gateways/#gateway-resource) in the specified `Content-Type` format (default JSON).
+* Optional headers:
+
+| Request parameters     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the breed and returns a `201 Created` if the gateway is valid
 
 ### Response
 If successful, will return the newly stored [gateway resource](/documentation/api/v9.9.9/api-gateways/#gateway-resource) in the specified `accept` format (default JSON).  
@@ -121,6 +126,11 @@ Update a stored gateway.
 * `PUT`
 * `/api/v1/gateways/{gateway_name}`
 * The request body should include at least a [minimum gateway resource](/documentation/api/v9.9.9/api-gateways/#gateway-resource) in the specified `Content-Type` format (default JSON).  The `name` field must match the `gateway_name` specified in the request path.
+* Optional headers:
+
+| Request parameters     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the breed and returns a `200 OK` if the gateway is valid
 
 ### Response
 If successful, will return the newly stored [gateway resource](/documentation/api/v9.9.9/api-gateways/#gateway-resource) in the specified `accept` format (default JSON).  
@@ -138,11 +148,13 @@ Delete a gateway. Note that delete operations are idempotent: sending a second r
 * `DELETE`
 * `/api/v1/gateways/{gateway_name}`
 * The request body should be empty.
+* Optional headers:
+
+| Request parameters     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the breed and returns a `204 No Content` if the gateway is valid, without actual delete of the breed.
 
 ### Response
 A successful delete operation has status code 204 `No Content` or 202 `Accepted` with an empty response body.
-
-### Errors
-* ???
 
 ----------- 

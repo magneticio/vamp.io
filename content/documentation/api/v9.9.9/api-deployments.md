@@ -8,6 +8,8 @@ menu:
     weight: 50
 draft: true
 ---
+
+Deployments are dynamic runtime structures, so changes to them take time to execute and can possibly fail. Most API calls to the `/deployments` endpoint will, therefore, return a `202: Accepted` return code, indicating the asynchronous nature of the call. Deployments have a set of sub resources: [deployment SLAs](/documentation/api/v9.9.9/api-deployment-slas), [deployment scales](/documentation/api/v9.9.9/api-deployment-scales) and [gateways](/documentation/api/v9.9.9/api-gateways). These are instantiations of their static counterparts.
 Read about [using deployments](documentation/using-vamp/deployments/).
 
 ## Actions
@@ -15,6 +17,7 @@ Read about [using deployments](documentation/using-vamp/deployments/).
  * [List](/documentation/api/v9.9.9/api-deployments/#list-deployments) - return details of all running deployments
  * [Get](/documentation/api/v9.9.9/api-deployments/#get-single-deployment) - get details of a single running deployment
  * [Create](/documentation/api/v9.9.9/api-deployments/#create-deployment) - initiate a new deployment 
+ * [Create named deployment](/documentation/api/v9.9.9/api-deployments/#create-named-deployment) - initiate a new deployment with a custom name (non UUID)
  * [Update](/documentation/api/v9.9.9/api-deployments/#update-deployment) - add to a running deployment (merge)
  * [Delete](/documentation/api/v9.9.9/api-deployments/#delete-deployment) - remove elements from a running deployment
 
@@ -104,12 +107,17 @@ Return a list of all running deployments. For details on pagination see [common 
 * `GET`
 * `/api/v1/deployments`
 * The request body should be empty.
+* Optional headers:
+
+| parameter     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `as_blueprint` | true or false     | false            | Exports each deployment as a valid blueprint
+| `expand_references` | true or false     | false            | all breed references will be replaced (recursively) with full breed definitions. It will be applied only if `?as_blueprint=true`.
+| `only_references` | true or false     | false            | all breeds will be replaced with their references. It will be applied only if `?as_blueprint=true`.
+
 
 ### Response
 If successful, will return a list of [deployment resources](/documentation/api/v9.9.9/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
-
-### Errors
-* ???
 
 --------------
 
@@ -121,6 +129,13 @@ Return details of a specific running deployment.
 * `GET`
 * `/api/v1/deployments/{deployment_name}`
 * The request body should be empty.
+* Optional headers:
+
+| parameter     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `as_blueprint` | true or false     | false            | Exports each deployment as a valid blueprint
+| `expand_references` | true or false     | false            | all breed references will be replaced (recursively) with full breed definitions. It will be applied only if `?as_blueprint=true`.
+| `only_references` | true or false     | false            | all breeds will be replaced with their references. It will be applied only if `?as_blueprint=true`.
 
 ### Response
 If successful, will return the specified [deployment resource](/documentation/api/v9.9.9/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
@@ -138,18 +153,39 @@ Initiate a deployment.
 * `POST` 
 * `/api/v1/deployments`
 * The request body should include at least the [minimum blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). 
+* Optional headers:
+
+| Request parameters     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the blueprint and returns a `201 Created` if the blueprint is valid.  
 
 ### Response
 If successful, will return the created [deployment resource](/documentation/api/v9.9.9/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
-
-### Errors
-* ???
 
 ### Examples
 
 See [gateways - A/B TEST TWO DEPLOYMENTS USING ROUTE WEIGHT](/documentation/using-vamp/gateways/#example-a-b-test-two-deployments-using-route-weight)
 
 --------------
+
+## Create named deployment
+
+Initiate a deployment with a custom name (non UUID).
+
+### Request
+* `POST` 
+* `/api/v1/deployments/{deployment_name}`
+* The request body should include at least the [minimum blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). 
+* Optional headers:
+
+| Request parameters     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the blueprint and returns a `202 Accepted` if the blueprint is valid for deployment.   
+
+### Response
+If successful, will return the created [deployment resource](/documentation/api/v9.9.9/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
+
+------------
 
 ## Update deployment
 
@@ -159,29 +195,107 @@ Add to a running deployment (merge).
 * `PUT`
 * `/api/v1/deployments/{deployment_name}`
 * The request body should include at least the [minimum blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). The `name` field must match the `deployment_name` specified in the request syntax.
+* Optional headers:
+
+| Request parameters     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the blueprint and returns a `202 Accepted`  if the deployment after the update would be still valid.  
 
 ### Response
 If successful, will return the updated [deployment resource](/documentation/api/v9.9.9/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
-
-### Errors
-* ???
 
 --------------
 
 ## Delete deployment
 
-Remove specified elements from a running deployment.
+Delete all or parts of a deployment.
 
 ### Request
 
 * `DELETE`
 * `/api/v1/deployments/{deployment_name}`
-* The request body should contain at least a [minimum blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) containing the services to be removed from the deployment. To delete a full deployment, include the complete blueprint or deployment resource.
+* The request body should contain at least a [minimum blueprint resource](/documentation/api/v9.9.9/api-blueprints/#blueprint-resource) containing the services to be removed from the deployment. To delete a full deployment, include the complete blueprint or deployment resource. Note that `DELETE` on deployment with an empty request body will not delete anything.
+* Optional headers:
+
+| Request parameters     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the breed and returns a `202 Accepted` if the deployment after the (partial) deletion would be still valid. Actual delete is not performed.
 
 ### Response
-???
 
-### Errors
-* ???
+### Example - Delete service
+
+This is our (abbreviated) deployment in YAML format. We have two clusters. The first cluster 'frontend' has two services.
+We have left out some keys like `scale` among others as they have no effect on this specific use case.
+
+		GET /api/v1/deployments/3df5c37c-5137-4d2c-b1e1-1cb3d03ffcd?as_blueprint=true
+
+```yaml
+name: 3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
+endpoints:
+  frontend.port: '9050'
+clusters:
+  frontend:
+    services:
+    - breed:
+        name: monarch_front:0.1
+        deployable: magneticio/monarch:0.1
+        ports:
+          port: 8080/http
+        constants: {}
+        dependencies:
+          backend:
+            ref: monarch_backend:0.3
+    - breed:
+        name: monarch_front:0.2
+        deployable: magneticio/monarch:0.2
+        ports:
+          port: 8080/http
+        dependencies:
+          backend:
+            ref: monarch_backend:0.3
+  backend:
+    services:
+    - breed:
+        name: monarch_backend:0.3
+        deployable: magneticio/monarch:0.3
+        ports:
+          jdbc: 8080/http
+        environment_variables: {}
+```    
+
+If we want to delete the first service in the `frontend` cluster, we use the following blueprint as the request body in the `DELETE` action.
+
+	DELETE /api/v1/deployments/3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
+		
+```yaml
+name: 3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
+clusters:
+  frontend:
+    services:
+    - breed:
+        ref: monarch_front:0.1
+```    
+
+If we want to delete the whole deployment, we just specify all the clusters and services.
+
+	DELETE /api/v1/deployments/3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
+		  
+		  
+```yaml
+name: 3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
+clusters:
+  frontend:
+    services:
+    - breed:
+        ref: monarch_front:0.1
+    - breed:
+        ref: monarch_front:0.2
+  backend:
+    services:
+    - breed:
+        ref: monarch_backend:0.3
+```    
+
 
 --------------

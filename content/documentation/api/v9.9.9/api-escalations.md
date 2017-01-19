@@ -99,7 +99,7 @@ Stores a new escalation template.
 
 | parameter     | options           | default          | description       |
 | ------------- |:-----------------:|:----------------:| -----------------:|
-| `validate_only` | true or false     | false            | validates the escalation and returns a `201 Created` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the escalation and returns a `201 Created` if the escalation is valid. 
 
 
 ### Response
@@ -119,7 +119,7 @@ Update a stored escalation.
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the escalation and returns a `200 OK` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the escalation and returns a `200 OK` if the escalation is valid.
 
 
 ### Response
@@ -139,7 +139,7 @@ Delete a stored escalation. Note that delete operations are idempotent: sending 
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | returns a `204 No Content` without actual delete of the escalation.
+| `validate_only` | true or false     | false            | returns a `204 No Content` if the escalation is valid, without actual delete of the escalation.
 
 
 ### Response

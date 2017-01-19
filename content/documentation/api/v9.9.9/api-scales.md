@@ -64,9 +64,6 @@ Returns a list of all stored scales. For details on pagination see [common param
 ### Response
 If successful, will return a list of all stored [scale resources](/documentation/api/v9.9.9/api-scales/#scale-resource) in the specified `accept` format (default JSON).  
 
-### Errors
-* ???
-
 ------------------
 
 ## Get single scale
@@ -81,9 +78,6 @@ Returns a single stored scale.
 ### Response
 If successful, will return the named [scale resource](/documentation/api/v9.9.9/api-scales/#scale-resource) in the specified `accept` format (default JSON).  
 
-### Errors
-* ???
-
 ------------------
 
 ## Create scale
@@ -94,12 +88,15 @@ Create a new scale. Scales can be stored individually and then referenced from a
  * `POST`
  * `/api/v1/scales`
  * The request body should inclde at least a minimum [scale resource](/documentation/api/v9.9.9/api-scales/#scale-resource) in the specified `Content-Type` format (default JSON).
+* Optional headers:
+
+| Request parameters     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the breed and returns a `201 Created` if the condition is valid
 
 ### Response
 If successful, will return the newly stored [scale resource](/documentation/api/v9.9.9/api-scales/#scale-resource) in the specified `accept` format (default JSON).  
 
-### Errors
-* ???
 
 ------------------
 
@@ -111,6 +108,11 @@ Update a stored scale.
  * `PUT`
  * `/api/v1/scales/{scale_name}`
  * The request body should inclde at least a minimum [scale resource](/documentation/api/v9.9.9/api-scales/#scale-resource) in the specified `Content-Type` format (default JSON). The `name` field must match the `scale_name` specified in the request path.
+* Optional headers:
+
+| Request parameters     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | validates the breed and returns a `200 OK` if the scale is valid
 
 ### Response
 If successful, will return the newly stored [scale resource](/documentation/api/v9.9.9/api-scales/#scale-resource) in the specified `accept` format (default JSON).  
@@ -128,6 +130,11 @@ Delete a stored scale. Note that delete operations are idempotent: sending a sec
  * `DELETE`
  * `/api/v1/scales/{scale_name}`
  * The request body should be empty.
+* Optional headers:
+
+| parameter     | options           | default          | description      |
+| ------------- |:-----------------:|:----------------:| ----------------:|
+| `validate_only` | true or false     | false            | returns a `204 No Content` if the escalation is valid, without actual delete of the scale.
 
 ### Response
 A successful delete operation has status code 204 `No Content` or 202 `Accepted` with an empty response body.
