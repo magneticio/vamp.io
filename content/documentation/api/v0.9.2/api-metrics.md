@@ -1,12 +1,13 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: API - Metrics
+title: Metrics
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-metrics"
-    weight: 87
-draft: true
+    identifier: "api-reference-metrics-092"
+    weight: 180
+aliases:
+    - /documentation/api/api-metrics
 ---
 Metrics can be defined on gateways and deployment ports and retrieved via the API. Metrics are calculated using external services such as workflows. Read about [using workflows](documentation/using-vamp/workflows/).
 

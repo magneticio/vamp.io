@@ -1,24 +1,25 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: API - Config
+title: Config
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-config"
-    weight: 100
-draft: true
+    identifier: "api-reference-config-092"
+    weight: 70
+aliases:
+    - /documentation/api/api-config
 ---
 
 Vamp's parameters can be retrieved from the `/config` APi endpoint. Read more about [Vamp configuration](/documentation/installation/configure-vamp)
 	
 ## Actions
  
- * [List](/documentation/api/v9.9.9/api-config/#list-config) - returns a full list of all config parameters.
- * [Get](/documentation/api/v9.9.9/api-config/#get-specific-config-parameter) - explicitly request a specific config parameter.
+ * [List](/documentation/api/v0.9.2/api-config/#list-config) - returns a full list of all config parameters.
+ * [Get](/documentation/api/v0.9.2/api-config/#get-specific-config-parameter) - explicitly request a specific config parameter.
 
 ## Config parameters
 Config parameters are described in detail in the [configuration reference](/documentation/installation/configuration-reference).  
-The example below is in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this. 
+The example below is in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.2/using-the-api) for details on how to set this. 
 
 ```
 vamp.container-driver.rancher.workflow-name-prefix: {...}
@@ -158,10 +159,7 @@ Return details of Vamp's JVM environment and runtime status, the configured pers
 * The request body should be empty.
 
 ### Response
-If successful, will return a list of [all config parameters](/documentation/api/v9.9.9/api-config/#config-parameters). Parameters are described in detail in the [configuration reference](/documentation/installation/configuration-reference).  
-
-### Errors
-* ???
+If successful, will return a list of [all config parameters](/documentation/api/v0.9.2/api-config/#config-parameters). Parameters are described in detail in the [configuration reference](/documentation/installation/configuration-reference).  
 
 ------------------
 
@@ -176,7 +174,7 @@ Return a specific config parameter.
 * The request body should be empty.
 
 ### Response
-If successful, will return the specified [config parameter](/documentation/api/v9.9.9/api-config/#config-parameters). 
+If successful, will return the specified [config parameter](/documentation/api/v0.9.2/api-config/#config-parameters). 
 
 ### Errors
 * **empty response body** - the named config parameter does not exist.

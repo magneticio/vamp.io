@@ -1,23 +1,24 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: API - HAProxy
+title: HAProxy
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-haproxy"
-    weight: 110
-draft: true
+    identifier: "api-reference-haproxy-092"
+    weight: 150
+aliases:
+    - /documentation/api/api-haproxy
 ---
 
 Details of Vamp's HAProxy configuration. 
 	
 ## Actions
 
- * [Get](/documentation/api/v9.9.9/api-haproxy/#get-haproxy-configuration) - get the HAProxy configuration for a version.
+ * [Get](/documentation/api/v0.9.2/api-haproxy/#get-haproxy-configuration) - get the HAProxy configuration for a version.
 
 ## HAProxy config parameters
 
-The example below is in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v9.9.9/api-common-parameters) for details on how to set this. 
+The example below is in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.2/using-the-api) for details on how to set this. 
 
 ```
 # HAProxy 1.6, Frontends & Backends managed by Vamp
@@ -128,7 +129,7 @@ Return the configuration for the specified HAProxy version,
 * The request body should be empty.
 
 ### Response
-If successful, will return the [HA proxy configuration](/documentation/api/v9.9.9/api-haproxy/#haproxy-config-parameters) for the HAProxy `version_number` specified in the request path. 
+If successful, will return the [HA proxy configuration](/documentation/api/v0.9.2/api-haproxy/#haproxy-config-parameters) for the HAProxy `version_number` specified in the request path. 
 
 ### Errors
 * **blank response** - There is no configuration available for the specified HAProxy version number.

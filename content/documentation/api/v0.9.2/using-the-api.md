@@ -1,102 +1,40 @@
 ---
-date: 2016-10-19T09:00:00+00:00
-title: Using the Vamp API
+date: 2016-09-13T09:00:00+00:00
+title: Common parameters
 menu:
   main:
     parent: "API"
-    identifier: "using-vamp-api-0.9.2"
-    weight: 22
+    identifier: "api-reference-common-parameters-092"
+    weight: 20
 aliases:
     - /documentation/api/using-the-api/
+    - /documentation/api/common-parameters/
 ---
-{{< note title="Websockets support" >}}
-The HTTP API supports websockets. Further details coming soon.
-{{< /note >}}
 
-Vamp has one REST API. This page explains how to specify pagination, and json and yaml content types, and how to effectively use the Vamp REST API.
+The headers described below can be added to all API requests to [specify JSON or YAML](/documentation/api/v0.9.2/using-the-api/#request-and-response-format) for requests and responses, and [manage pagination](/documentation/api/v0.9.2/using-the-api/#pagination) for responses.
 
-#### See also
-* [Full details of all available API calls](/documentation/api/v0.9.2/api-reference/)
+## Request and response format
+Requests and responses can be formatted in JSON or YAML (default JSON). 
 
-## Content types
+| Request parameters         | options           | default          | description       |
+| ----------------- |:-----------------:|:----------------:| -----------------:|
+| `content-type`   | application/x-yaml or application/json   |      application/json       |  format of the request
+| `accept`   | application/x-yaml or application/json   |      application/json            | format of the response
 
-* Vamp requests can be in YAML format or JSON format. Set the `Content-Type` request header to `application/x-yaml` or `application/json` accordingly.
-* Vamp responses can be in YAML format or JSON format. Set the `Accept` request header to `application/x-yaml` or `application/json` accordingly.
 
 ## Pagination
 
-Vamp API endpoints support pagination with the following scheme:
+Vamp API endpoints support pagination. See Github's implementation for more info ([developer.github.com - traversing with pagination](https://developer.github.com/guides/traversing-with-pagination/)).
 
-* Request parameters `page` (starting from 1, not 0) and `per_page` (by default 30) e.g:
+| Request parameters         | options           | default          | description       |
+| ----------------- |:-----------------:|:----------------:| -----------------:|
+| `page`   | integer   |      1            | page to return. Starting from 1, not 0
+| `per_page`   | integer   |      30            | results to return per page
+| `X-Total-Count`   | integer   |                  |  the total amount of items (e.g. 349673)
+| `Link`   |    |                  |  for easy traversing. For example, `X-Total-Count: 5522 Link: <http://vamp:8080/api/v1/events/get?page=1&per_page=5>; rel=first, <http://vamp:8080/api/v1/events/get?page=1&per_page=5>; rel=prev, <http://vamp:8080/api/v1/events/get?page=2&per_page=5>; rel=next, <http://vamp:8080/api/v1/events/get?page=19&per_page=5>; rel=last`
+
+### Example request
 
 ```
 GET http://vamp:8080/api/v1/breeds?page=5&per_page=20
 ```
-
-* Response headers `X-Total-Count` giving the total amount of items (e.g. 349673) and a `Link` header for easy traversing, e.g.
-```
-X-Total-Count: 5522
-Link:
-  <http://vamp:8080/api/v1/events/get?page=1&per_page=5>; rel=first,
-  <http://vamp:8080/api/v1/events/get?page=1&per_page=5>; rel=prev,
-  <http://vamp:8080/api/v1/events/get?page=2&per_page=5>; rel=next,
-  <http://vamp:8080/api/v1/events/get?page=19&per_page=5>; rel=last
-```
-
-See [Github's implementation](https://developer.github.com/guides/traversing-with-pagination/) for more info.
-
-## Return codes
-
-* Create & Delete operations are idempotent: sending the second request with the same content will not result to an error response (4xx).
-* An update will fail (4xx) if a resource does not exist.
-* A successful create operation has status code 201 `Created` and the response body contains the created resource.
-* A successful update operation has status code 200 `OK` or 202 `Accepted` and the response body contains the updated resource.
-* A successful delete operation has status code 204 `No Content` or 202 `Accepted` with an empty response body.
-
-## Send multiple resources
-
-It is possible to `POST`, `PUT` or `DELETE` YAML or JSON documents containing more than one artifact definition.
-
-Artifacts of the same type can be grouped together and sent to a specific endpoint, such as `/api/v1/breeds`. Different artifact types can also be grouped together and sent to the general API endpoint `api/v1` by including a `kind` field in each artifact definition. The artifact kind corresponds to the singular form of the artifact type (for example `blueprint`, `breed`, `condition`).
-
-### Example (YAML) - post multiple artifacts to a specific endpoint 
-
-`POST /api/v1/breeds`
-
-```yaml
----
-name: ...
-# breed 1 definition ...
----
-name: ...
-# breed 2 definition ....
----
-name: ...
-# breed 3 definition ....
-```
-
-### Example (YAML) - post multiple artifact types to /api/v1
-When using the general `api/v1` endpoint, each artifact description  must include a `kind` field.
-
-`POST /api/v1`
-
-```yaml
----
-name: ...
-kind: blueprint
-# blueprint definition ...
----
-name: ...
-kind: breed
-# breed definition ...
----
-name: ...
-kind: condition
-# condition definition ...
-```
-
-
--------------
-
-#### See also
-* [Full details of all available API calls](/documentation/api/v0.9.2/api-reference/)
