@@ -1,99 +1,57 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Canary release with the Vamp API
+title: Canary release merged services with the Vamp API
 menu:
   main:
     parent: "Tutorials"
-    name: "Canary release with the Vamp API"
-    weight: 90
+    name: "Canary release merged services with the Vamp API"
+    weight: 100
 draft: true
 ---
 
+The Vamp UI interacts with the Vamp API, allowing you to easily create, deploy and manage artifacts and running services. It is perfectly possible to configure another system to interact directly with the Vamp API and perform these actions. This tutorial will walk you through running a standard canary release in API commands. 
 
+1. [Adjust traffic distribution between service versions](/documentation/tutorials/canary-release-with-vamp-api/#adjust-traffic-distribution-between-service-versions)
+- [Remove the old service version from the deployment](/documentation/tutorials/canary-release-with-vamp-api/#remove-the-old-service-version-from-the-deployment)
+- [Track updates to the the deployment in the Vamp events stream](/documentation/tutorials/canary-release-with-vamp-api/#track-updates-to-the-the-deployment-in-the-vamp-events-stream)
 
 ### Requirements
-* 
+* A running version of Vamp 0.9.x (this tutorial has been tested on the Vamp hello world set up using Vamp 0.9.2)
+* Access to the Docker hub
+* You might run into issues if your firewall is set to block connections in the ranges 31000-32000 (required by Mesos) or 40000-45000 (required by Vamp) 
+
+## Adjust traffic distribution between service versions
+We will control the traffic distribution manually to make it clear what is happening, but you could also automate this step using a Vamp workflow, see [automate a canary release with rollback](/documentation/tutorials/automate-a-canary-release/). 
+
+`PUT /api/v1/gateways/sava/sava/webport` 
+
+    name: sava/sava/webport
+    routes:
+      sava/sava/sava:1.0.0/webport:
+        weight: 90%          
+      sava/sava/sava:1.1.0/webport:
+        weight: 10%
 
 
-## API calls
-
-### 1) Initiate deployment
-
-* Create a deployment `sava` with a cluster `sava` containing the service `sava:1.0.0`.  
-* Create an internal gateway `sava/sava/port`, containing the route `sava/sava/sava:1.0.0/port`
-
-`PUT /api/v1/deployments/sava`
-
-```
----
-name: sava:1.0
-clusters:
-  sava:
-    services:
-      -
-        breed:
-          name: sava:1.0.0
-          deployable: magneticio/sava:1.0.0
-          ports:
-            port: 8080/http
-```
-
-### 2) Merge new service
-
-* Add the service `sava:1.1.0` to the deployment `sava` inside the cluster `sava`.  
-* Add the route `sava/sava/sava:1.1.0/port` to the internal gateway `sava/sava/port`
-
-`PUT /api/v1/deployments/sava`
-
-```
----
-name: sava:1.1
-clusters:
-  sava:
-    services:
-      -
-        breed:
-          name: sava:1.1.0
-          deployable: magneticio/sava:1.1.0
-          ports:
-            port: 8080/http
-```
-
-### 3) Distribute traffic
-
-* Add the stable endpoint `9050` to the internal gateway `sava/sava/port`  
 * Set a weight for the routes `sava/sava/sava:1.0.0/port` and `sava/sava/sava:1.1.0/port` to distribute traffic between the services.
 
-`PUT /api/v1/gateways/sava/sava/port` 
-
-```
-name: sava/sava/port
-port: 9050/http
-routes:
-  sava/sava/sava:1.0.0/port:
-    weight: 90%          
-  sava/sava/sava:1.1.0/port:
-    weight: 10%
-```
-
-### 4) Remove old service
+## Remove the old service version from the deployment
  
 First, set the route weight on the `sava:1.0.0` service to 0%.
 
-* Remove the service `sava:1.0.0` from the `sava` cluster of the `sava` deployment
-* Remove the route `sava/sava/sava:1.0.0/port` from the gateway `sava/sava/port`
-
 `DELETE /api/v1/deployments/sava`
 
-```
----
-name: sava:1.0
-clusters:
-  sava:
-    services:
-      - breed: sava:1.0.0
-```
+    ---
+    name: sava:1.0
+    clusters:
+      sava:
+        services:
+          - breed: sava:1.0.0
+    
+* Remove the service `sava:1.0.0` from the `sava` cluster of the `sava` deployment
+* Remove the route `sava/sava/sava:1.0.0/webport` from the gateway `sava/sava/webport`
 
+## Track updates to the the deployment in the Vamp events stream
 
 ## Summing up
 
