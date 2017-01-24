@@ -296,14 +296,16 @@ The API will return a response with the created `breed` and `deployment` resouce
 ```
 -----------------
 
-As the `sava` deployment, `sava_cluster` cluster and `sava_cluster/webport` internal gateway already exist, Vamp will deploy the new service there and update the internal gateway to include the new route.V amp Gateway Agent (VGA) will then update the HAProxy configuration to include the new gateways and routes.  The breed description included in the deployment will also be stored as a separate, static `sava:1.1.0` breed artifact.  
+As the `sava` deployment, `sava_cluster` cluster and `sava_cluster/webport` internal gateway already exist, Vamp does not need to create them. The new service version will be deployed directly to the existing cluster and a route to the new service will be added to the existing internal gateway. As before, the breed description included in the deployment will be stored as a separate, static `sava:1.1.0` breed artifact.  
 
-Note that the new service will be added to the gateway with a a `weight` of 0% (no traffic will be routed there).
-The `sava` deployment is now up and running - you can check it out in three places: 
+Note that the new service will be added to the gateway with a `weight` of 0%, this means that no traffic will be routed there.
 
-* **Vamp UI:** The deployment will be listed on the DEPLOYMENTS page. If you open the `sava` deployment you should see both service versions listed under the `sava_cluster` cluster
+Our running deployment has now been updated to include `sava:1.1.0` - you can check this out for yourself: 
+
+* **Vamp UI - DEPLOYMENTS:** The deployment will still be listed on the DEPLOYMENTS page. If you open the `sava` deployment you should see both service versions listed under the `sava_cluster` cluster
+* **Vamp UI - GATEWAYS:** The internal and external gateways will be listed on the GATEWAYS page. If you open the `sava/sava_cluster/webport` gateway you should see routes to `sava:1.0.0` (weight 100%) and `sava:1.1.0` (weight 0%) 
 * **Vamp API:** `GET <vamp url>/api/v1/deployments/sava`
-* **The deployment endpoint:** You can go to the exposed `9050` gateway... and still see the beautiful `sava:1.0.0` - no traffic will be sent to the new `sava:1.1.0` service
+* **The deployment endpoint:** You can go to the exposed `9050` gateway... and still see the beautiful `sava:1.0.0` - no traffic will be sent to the new `sava:1.1.0` service until you change the weight distribution of the `sava/sava_cluster/webport` gateway.
 
 ![](http://vamp.io/images/screens/v091/canary_sava10.png)
 
