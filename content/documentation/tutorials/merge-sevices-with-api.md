@@ -24,24 +24,18 @@ In this tutorial we will explain the Vamp API calls used to deploy services and 
 * You might run into issues if your firewall is set to block connections in the ranges 31000-32000 (required by Mesos) or 40000-45000 (required by Vamp) 
 
 ## Deploy a service
-Vamp deployments are initiated and managed using the `/deployments` API endpoint. To deploy a service with a custom name, we need to `PUT` a valid [blueprint resource](/documentation/api/v0.9.2/api-blueprints/#blueprint-resource) to the API endpoint `/deployments/{custom_deployment_name}`. The `custom_deployment_name` can be anything you choose - it doesn't need to be related to the blueprint resource you're sending or the service you're deploying, so feel free to come up with something inventive (or perhaps informative).   
+Vamp deployments are initiated and managed using the `/deployments` API endpoint. To deploy a service, we just need to `POST` a valid [blueprint resource](/documentation/api/v0.9.2/api-blueprints/#blueprint-resource).   
 
-Use the below API request to initiate a new deployment with the custom name `sava`. 
+Use the below API request to initiate a new deployment named `sava`. 
 
------------------
-
-### API request
-
-* Path: `PUT <vamp url>/api/v1/deployments/sava`
-* Headers:  
-_Our examples are formatted in YAML. To send/receive JSON, specify `application/json`_
-  * `Content-Type=application/x-yaml`
-  * `Accept=application/x-yaml`  
-* Body:  
+* **Path:** `POST <vamp url>/api/v1/deployments`  
+* **Headers:** `Content-Type=application/x-yaml`  
+_Our examples are formatted in YAML. To send/receive JSON, we would specify `application/json`_  
+* **Body:**  
 
 ```
 ---
-name: sava:1.0                      # blueprint name (required, but not used for deployment)
+name: sava                          # deployment name
 gateways:
   9050: sava_cluster/webport
 clusters:
@@ -55,126 +49,59 @@ clusters:
             webport: 8080/http      # internal gateway to create
 ```
 
+If all runs to plan, the API will return a response with the `breed` and `deployment` resouces. As there is no existing deployment with the name `sava`, Vamp will create it and deploy the required clusters and services. Vamp Gateway Agent (VGA) will then update the HAProxy configuration to include the new gateways and routes.  The breed description included in the deployment will also be stored as a separate, static breed artifact - `sava:1.0.0`.  
 
-### API response
-The API will return a response with the created `breed` and `deployment` resouces in the `Accept` format we specified.
-
-```
-- - name: sava:1.0.0
-    kind: breed
-    deployable:
-      type: container/docker
-      definition: magneticio/sava:1.0.0
-    ports:
-      webport: 8080/http
-    environment_variables: {}
-    constants: {}
-    arguments: []
-    dependencies: {}
-- - name: sava
-    kind: deployment
-    lookup_name: b745761242ab5566a44b556e62764beed46fa8de
-    clusters:
-      sava_cluster:
-        services:
-        - status:
-            intention: Deployment
-            since: '2017-01-24T13:35:37.665Z'
-            phase:
-              name: Initiated
-              since: '2017-01-24T13:35:37.665Z'
-          breed:
-            name: sava:1.0.0
-            kind: breed
-            deployable:
-              type: container/docker
-              definition: magneticio/sava:1.0.0
-            ports:
-              webport: 8080/http
-            environment_variables: {}
-            constants: {}
-            arguments: []
-            dependencies: {}
-          environment_variables: {}
-          scale:
-            cpu: 0.2
-            memory: 256.00MB
-            instances: 1
-          instances: []
-          arguments:
-          - privileged: 'true'
-          dependencies: {}
-          dialects: {}
-        gateways:
-          webport:
-            sticky: null
-            virtual_hosts:
-            - webport.sava-cluster.sava.vamp
-            routes:
-              sava:1.0.0:
-                lookup_name: a8edebeaad41ca61b19b250120b7fbc6b54b21ff
-                weight: 100%
-                balance: default
-                condition: null
-                condition_strength: 0%
-                rewrites: []
-        dialects: {}
-    ports: {}
-    environment_variables: {}
-    hosts:
-      sava_cluster: 192.168.99.100
-```
-
------------------
-
-As there is no existing deployment with the name `sava`, Vamp will create it and deploy the required clusters and services. Vamp Gateway Agent (VGA) will then update the HAProxy configuration to include the new gateways and routes.  The breed description included in the deployment will also be stored as a separate, static `sava:1.0.0` breed artifact.  
-The `sava` deployment is now up and running - you can check it out in three places: 
-
-* **Vamp UI:** The deployment will be listed on the DEPLOYMENTS page
-* **Vamp API:** `GET <vamp url>/api/v1/deployments/sava`
-* **The deployment endpoint:** You can go to the exposed `9050` gateway and see the beautiful `sava:1.0.0` for yourself. 
+The `sava` deployment is now up and running, you can see it at the exposed gateway `9050`
 
 ![](http://vamp.io/images/screens/v091/canary_sava10.png)
+
+### Track the deployment in Vamp 
+
+You can track the deployed service in the Vamp UI or using the Vamp API: 
+
+* The deployment will be listed on the DEPLOYMENTS page
+* The new gateways will be visible under GATEWAYS
+* The stored breed artifact will be listed under BREEDS
+* Return details of the sava deployment with `GET <vamp url>/api/v1/deployments/sava` 
+* Return the stored sava:1.0.0 breed artifact `GET <vamp url>/api/v1/breeds/sava:1.0.0`
+
+
     
 ## Create a template blueprint    
 
-We can use our deployed blueprint to create a template for future updates to the `sava` deployment. Whenever a new service version becomes available, we can create its blueprint by simply updating the three fields marked `~` in the blueprint template below. The cluster and internal gateway details remain the same, these point to the existing cluster (`sava/sava_cluster`) and internal gateway (`sava/sava_cluster/webport`), which will be updated when the new service is deployed.
+We can use our deployed blueprint resource to create a template for future updates to the `sava` deployment. Template blueprints are great because they let you quickly describe and merge new services to a known deployment. To create the template, we replace the fields unique to each service version with placeholders and remove any unnecesary details.
 
 ### Template sava blueprint
 
+The template sava blueprint below contains two fields to be entered for each new service (marked `~`). The deployment, cluster and internal gateway details will remain the same for every update. These point to the existing deployment (`sava`), cluster (`sava/sava_cluster`) and internal gateway (`sava/sava_cluster/webport`), which will be updated by Vamp when the new service is merged. The external gateway details have been removed as they are not required and will not be updated.
+
 ```
-name: ~                             # blueprint name (required, but not used for deployment)
+name: sava                          # existing deployment
 clusters:
-  sava_cluster:                     # existing cluster to update
+  sava_cluster:                     # existing cluster
     services:
       -
         breed:
-          name: ~                   # name of the service to be deployed
+          name: ~                   # new service to deploy (the breed name)
           deployable: ~             # new deployable
           ports:
-            webport: 8080/http      # existing internal gateway to update
+            webport: 8080/http      # existing internal
 ```
 
 
 ## Merge a new service version
 
-We can add new services to the running `sava` deployment at any time without affecting the live `sava:1.0.0` service. To do this, we just need to update the three `~` fields in our template blueprint (above) with the new service details, then `PUT` the blueprint to the same API endpoint `/deployments/sava`. 
+When a new version of the sava service becomes available, we can add it to the running `sava` deployment without affecting the live service `sava:1.0.0` . To do this, we just need to update the template blueprint and `POST` it to the `/deployments` API endpoint. 
 
 Use the below API request to add the service `sava:1.1.0` to the running `sava` deployment. 
 
------------------
-
-### API request
-
-* Path: `PUT <vamp url>/api/v1/deployments/sava`
-* Headers:   
+* Path: `POST <vamp url>/api/v1/deployments`
+* Headers: `Content-Type=application/x-yaml`  
 _Our examples are formatted in YAML. To send/receive JSON, specify `application/json`_  
-  * `Content-Type=application/x-yaml`
-  * `Accept=application/x-yaml`
 * Body:  
 
 ```
-name: sava:1.1                        # new blueprint name (required, but not used for deployment)
+name: sava
 clusters:
   sava_cluster: 
     services:
@@ -185,129 +112,22 @@ clusters:
           ports:
             webport: 8080/http      
 ```
-    
-### API response
-The API will return a response with the created `breed` and `deployment` resouces in the `Accept` format we specified.
-```
-- - name: sava:1.1.0
-    kind: breed
-    deployable:
-      type: container/docker
-      definition: magneticio/sava:1.1.0
-    ports:
-      webport: 8080/http
-    environment_variables: {}
-    constants: {}
-    arguments: []
-    dependencies: {}
-- - name: sava
-    kind: deployment
-    lookup_name: b745761242ab5566a44b556e62764beed46fa8de
-    clusters:
-      sava_cluster:
-        services:
-        - status:
-            intention: Deployment
-            since: '2017-01-24T13:35:37.68Z'
-            phase:
-              name: Done
-              since: '2017-01-24T13:35:45.304Z'
-          breed:
-            name: sava:1.0.0
-            kind: breed
-            deployable:
-              type: container/docker
-              definition: magneticio/sava:1.0.0
-            ports:
-              webport: 8080/http
-            environment_variables: {}
-            constants: {}
-            arguments: []
-            dependencies: {}
-          environment_variables: {}
-          scale:
-            cpu: 0.2
-            memory: 256.00MB
-            instances: 1
-          instances:
-          - name: sava_sava-1-0-0-6fd83b1fd01f7dd9eb7f.fe9268c4-e239-11e6-9c98-024224e28f52
-            host: 192.168.99.100
-            ports:
-              webport: 31486
-            deployed: true
-          arguments:
-          - privileged: 'true'
-          dependencies: {}
-          dialects: {}
-        - status:
-            intention: Deployment
-            since: '2017-01-24T15:05:38.719Z'
-            phase:
-              name: Initiated
-              since: '2017-01-24T15:05:38.719Z'
-          breed:
-            name: sava:1.1.0
-            kind: breed
-            deployable:
-              type: container/docker
-              definition: magneticio/sava:1.1.0
-            ports:
-              webport: 8080/http
-            environment_variables: {}
-            constants: {}
-            arguments: []
-            dependencies: {}
-          environment_variables: {}
-          scale:
-            cpu: 0.2
-            memory: 256.00MB
-            instances: 1
-          instances: []
-          arguments:
-          - privileged: 'true'
-          dependencies: {}
-          dialects: {}
-        gateways:
-          webport:
-            sticky: null
-            virtual_hosts:
-            - webport.sava-cluster.sava.vamp
-            routes:
-              sava:1.1.0:
-                lookup_name: 6b906858cd25aa6ef9cf45f47ae73b687d1eb8e2
-                weight: 0%
-                balance: default
-                condition: null
-                condition_strength: 0%
-                rewrites: []
-              sava:1.0.0:
-                lookup_name: a8edebeaad41ca61b19b250120b7fbc6b54b21ff
-                weight: 100%
-                balance: default
-                condition: null
-                condition_strength: 0%
-                rewrites: []
-        dialects: {}
-    ports:
-      sava_cluster.webport: '40007'
-    environment_variables: {}
-    hosts:
-      sava_cluster: 192.168.99.100
-```
------------------
 
-As the `sava` deployment, `sava_cluster` cluster and `sava_cluster/webport` internal gateway already exist, Vamp does not need to create them. The new service version will be deployed directly to the existing cluster and a route to the new service will be added to the existing internal gateway. As before, the breed description included in the deployment will be stored as a separate, static `sava:1.1.0` breed artifact.  
+The API will return a (JSON) response with the `breed` and `deployment` resouces. As the `sava` deployment, `sava_cluster` cluster and `sava_cluster/webport` internal gateway already exist, Vamp does not need to create them. The new service version will be deployed directly to the existing cluster and a route to the new service will be added to the existing internal gateway. As before, the breed description included in the deployment will be stored as a separate, static breed artifact `sava:1.1.0`.  
 
-Note that the new service will be added to the gateway with a `weight` of 0%, this means that no traffic will be routed there.
-
-Our running deployment has now been updated to include `sava:1.1.0` - you can check this out for yourself: 
-
-* **Vamp UI - DEPLOYMENTS:** The deployment will still be listed on the DEPLOYMENTS page. If you open the `sava` deployment you should see both service versions listed under the `sava_cluster` cluster
-* **Vamp UI - GATEWAYS:** The internal and external gateways will be listed on the GATEWAYS page. If you open the `sava/sava_cluster/webport` gateway you should see routes to `sava:1.0.0` (weight 100%) and `sava:1.1.0` (weight 0%) 
-* **Vamp API:** `GET <vamp url>/api/v1/deployments/sava`
-* **The deployment endpoint:** You can go to the exposed `9050` gateway... and still see the beautiful `sava:1.0.0` - no traffic will be sent to the new `sava:1.1.0` service until you change the weight distribution of the `sava/sava_cluster/webport` gateway.
+The running deployment has now been updated to include `sava:1.1.0`. You can go to the exposed `9050` gateway... and still see the beautiful `sava:1.0.0`. Behind the scenes Vamp has made all the requested updates, but no traffic will be sent to the new `sava:1.1.0` service until you change the weight distribution of the `sava/sava_cluster/webport` gateway. New services added to an existing gateway are given a default `weight` of 0%, this gives you full control over traffic routing within a deployment and helps avoid any unexpected surprises.
 
 ![](http://vamp.io/images/screens/v091/canary_sava10.png)
+
+### Track the deployment in Vamp 
+
+You can track the changes Vamp made to the deployment in the Vamp UI or using the Vamp API: 
+
+* The deployment will still be listed on the DEPLOYMENTS page. If you open the `sava` deployment you should see both service versions listed under the `sava_cluster` cluster
+* The internal and external gateways will be listed on the GATEWAYS page. If you open the `sava/sava_cluster/webport` internal gateway you should see routes to `sava:1.0.0` (weight 100%) and `sava:1.1.0` (weight 0%). No changes will have been made to the external gateway `9050`
+* Return details of the sava deployment with `GET <vamp url>/api/v1/deployments/sava` 
+* Return the newly stored sava:1.1.0 breed artifact `GET <vamp url>/api/v1/breeds/sava:1.1.0`
+* Return details of the updated gateway `GET <vamp url>/api/v1/gateways/sava/sava_cluster/webport`
 
 ## Summing up
 
