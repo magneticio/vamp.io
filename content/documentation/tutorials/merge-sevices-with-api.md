@@ -119,7 +119,7 @@ The running deployment has now been updated to include `sava:1.1.0`. You can go 
 
 ![](http://vamp.io/images/screens/v091/canary_sava10.png)
 
-### Track the deployment in Vamp 
+### Track updates to the deployment in Vamp 
 
 You can track the changes Vamp made to the deployment in the Vamp UI or using the Vamp API: 
 
