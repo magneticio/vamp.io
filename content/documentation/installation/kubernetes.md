@@ -98,7 +98,7 @@ kubectl expose deployment vamp --protocol=TCP --port=8080 --name=vamp --type="Lo
 ```
 
 
-As a reference, you can find the latest Vamp katana  Kubernetes configuration here: [github.com/magneticio - Vamp Kubernetes configuration](https://github.com/magneticio/vamp-docker/blob/master/vamp-kubernetes/application.conf). Vamp katana includes all changes since the last official release, check the [katana documentation](/documentation/release-notes/katana) for details.
+As a reference, you can find the latest Vamp katana  Kubernetes configuration here: [github.com/magneticio - Vamp Kubernetes configuration](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-kubernetes/application.conf). Vamp katana includes all changes since the last official release, check the [katana documentation](/documentation/release-notes/katana) for details.
 
 The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](contact) if you’d like further details.
 

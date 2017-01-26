@@ -55,7 +55,7 @@ java -Dvamp.gateway-driver.host=localhost \
 ## Use a custom application.conf file
 For more extensive customisations, you can create a new Docker image, extending one of the provided Vamp images with a custom `application.conf` file. The below example explains the steps for creating a Docker image with a custom DCOS config, if you are using a different container management platform you should use the associated `application.conf` and adjust the Docker file accordingly.
 
-1. Copy application.conf [(github.com/magneticio - Vamp DCOS application.conf)](https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf)
+1. Copy application.conf [(github.com/magneticio - Vamp DCOS application.conf)](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)
 2. Adjust as required. Check the list of configuration settings (below) for details of the available optionsa
 3. Create a Dockerfile with the lines:  
   `FROM magneticio/vamp-dcos:0.9.2`  
@@ -80,7 +80,7 @@ vamp {
 }
 ```
 
-This is as of 0.9.2 how [we configure our DC/OS Docker image]( https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf)
+This is as of 0.9.2 how [we configure our DC/OS Docker image]( https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)
 
 (Typesafe documentation on the topic covering system or env variable overrides)[https://github.com/typesafehub/config#optional-system-or-env-variable-overrides]
 

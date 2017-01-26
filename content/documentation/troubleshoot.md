@@ -50,7 +50,7 @@ Vamp uses Elasticsearch to store HAProxy logs and calculated metrics from its ev
 
 Problem |  Action
 ----|----
- no indices at all  |  Check Vamp Gateway Agent (or your custom HAProxy) is storing logs in the expected format ([HAproxy 1.7.1 log format](https://github.com/magneticio/vamp-gateway-agent/blob/master/haproxy.basic.cfg)).
+ no indices at all  |  Check Vamp Gateway Agent (or your custom HAProxy) is storing logs in the expected format ([HAproxy 1.7.1 log format](https://github.com/magneticio/vamp-gateway-agent/blob/master/files/usr/local/vamp/haproxy.basic.cfg)).
  no Logstash index  |  Check Logstash is correctly configured ([gituhub.com/magneticio - Logstash example configuration](https://github.com/magneticio/vamp-gateway-agent)).
    |  Check Logstash can read the HAProxy logs.
    |  Check Logstash can connect to Elasticsearch.

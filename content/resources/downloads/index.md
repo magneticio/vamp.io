@@ -37,9 +37,9 @@ Let's assume that the Vamp binary is `vamp.jar`.
 java -Dlogback.configurationFile=logback.xml -Dconfig.file=application.conf -jar vamp.jar
 ```
 
-* `logback.xml` is the log configuration file ([example logback.xml file](https://github.com/magneticio/vamp-docker/blob/master/quick-start/logback.xml))  
+* `logback.xml` is the log configuration file ([example logback.xml file](https://github.com/magneticio/vamp-docker-images/blob/master/quick-start/logback.xml))  
 Vamp uses the Logback library. Additional information about using Logback and the log file configuration format can be found on the Logback project page ([logback.qos.ch](http://logback.qos.ch/)).
-* `application.conf` is the main Vamp configuration file ([example application.conf file](https://github.com/magneticio/vamp-docker/blob/master/quick-start/application.conf))  
+* `application.conf` is the main Vamp configuration file ([example application.conf file](https://github.com/magneticio/vamp-docker-images/blob/master/quick-start/application.conf))  
 Default values ([github.com/magneticio - reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)) are loaded on start and application.conf may override any of them.
 Processing configuration is based on the typesafe library. Additional information about syntax and usage can be found on the project page ([github.com/typesafehub - config](https://github.com/typesafehub/config)).
 
@@ -116,7 +116,7 @@ If you build from source (master branch) without a specific tag, you will build 
 2. Run `./build-ui.sh && sbt test assembly`
 2. After the build `./bootstrap/target/scala-2.11` directory will contain the binary with name matching `vamp-assembly-*.jar`
 
-Check this example: [github.com/magneticio - Vamp docker quick start make.sh](https://github.com/magneticio/vamp-docker/blob/master/quick-start/make.sh).
+Check this example: [github.com/magneticio - Vamp docker quick start make.sh](https://github.com/magneticio/vamp-docker-images/blob/master/quick-start/make.sh).
 
 ### Running Vamp
 
@@ -126,9 +126,9 @@ Example:
 
 `java -Dlogback.configurationFile=logback.xml -Dconfig.file=application.conf -jar vamp.jar
 
-logback.xml` is log configuration. Vamp uses the [Logback](http://logback.qos.ch/) library and additional information about using the Logback and log file configuration format can be found on the Logback project page. An example file can be found [here](https://github.com/magneticio/vamp-docker/blob/master/quick-start/logback.xml).
+logback.xml` is log configuration. Vamp uses the [Logback](http://logback.qos.ch/) library and additional information about using the Logback and log file configuration format can be found on the Logback project page. An example file can be found [here](https://github.com/magneticio/vamp-docker-images/blob/master/quick-start/logback.xml).
 
-`application.conf` is the main Vamp configuration file. [Default](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf) values are loaded on start and `application.conf` may override any of them. Processing configuration is based on [this](https://github.com/typesafehub/config) library. Additional information about syntax and usage can be found on the library project page. An example of configuration can be found [here](https://github.com/magneticio/vamp-docker/blob/master/vamp-dcos/application.conf).
+`application.conf` is the main Vamp configuration file. [Default](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf) values are loaded on start and `application.conf` may override any of them. Processing configuration is based on [this](https://github.com/typesafehub/config) library. Additional information about syntax and usage can be found on the library project page. An example of configuration can be found [here](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf).
 
 ### Build Vamp Gateway Agent (VGA)
 
@@ -148,4 +148,4 @@ go install
 CGO_ENABLED=0 go build -v -a -installsuffix cgo
 ```
 
-Check this example: [github.com/magneticio - clique-base make.sh](https://github.com/magneticio/vamp-docker/blob/master/clique-base/make.sh). More details can found on the project page: [github.com/magneticio - Vamp gateway agent](https://github.com/magneticio/vamp-gateway-agent).
+Check this example: [github.com/magneticio - clique-base make.sh](https://github.com/magneticio/vamp-docker-images/blob/master/clique-base/make.sh). More details can found on the project page: [github.com/magneticio - Vamp gateway agent](https://github.com/magneticio/vamp-gateway-agent).
