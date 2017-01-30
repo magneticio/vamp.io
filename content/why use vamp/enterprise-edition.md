@@ -8,7 +8,7 @@ menu:
     weight: 60
 ---
 
-The Vamp Enterprise Edition (EE) offers extended features to those available in the open source Vamp Community Edition.  
+The Vamp Enterprise Edition (EE) extends the features available in the open source Vamp Community Edition.  
 
 ### Vamp feature matrix
 
