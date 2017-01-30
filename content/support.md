@@ -12,7 +12,7 @@ If you have a question about Vamp, please check the [Vamp documentation](/docume
 * **Twitter:** You can also follow us on Twitter: [@vamp_io](https://twitter.com/vamp_io)
 
 ## Professional support
-We offer five extended professional support plans. Contact us for pricing information and details of professional services and consultancy: [info@magnetic.io](mailto:info@magnetic.io?subject=Information request - Vamp professsional support) or call +31(0)88 555 33 99
+We offer five extended professional support plans. Contact us for pricing information, and details of professional services and consultancy: [info@magnetic.io](mailto:info@magnetic.io?subject=Information request - Vamp professsional support) or call +31(0)88 555 33 99
 
 ![](images/tables/201702-professional-support-plans.png)
 
