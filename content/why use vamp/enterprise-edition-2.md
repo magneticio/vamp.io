@@ -21,6 +21,7 @@ License costs are based on node size. A node is either a physical or a virtual m
 ![](images/tables/201702-license-costs.png)
 
 ## Commercial support
+We offer five plans for commercial support. A 12 month Silver support subscription is included with all commercial licenses.
 
 ![](images/tables/201702-commercial-support.png)
 
