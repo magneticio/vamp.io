@@ -8,30 +8,11 @@ menu:
     weight: 65
 draft: true
 ---
-## Pricing and plans
 
-![](images/tables/201702-pricing-and-plans.png)
+The Vamp Enterprise Edition (EE) offers extended features to those available in the open source Vamp Community Edition.  
 
-_All Commercial licenses entitle you to perpetual use of the software and include 12 months of software maintenance (support “Silver” and product updates). Beyond this initial 12 month period, you may renew your software maintenance for another 12 months at our discounted renewal prices._
+### Vamp features
 
+![](images/tables/201702-enterprise-feature-matrix.png)
 
-## License costs
-License costs are based on node size. A node is either a physical or a virtual machine instance running a single copy of an OS. We distinguish hosts by their unique host names.
-
-![](images/tables/201702-license-costs.png)
-
-## Commercial support
-We offer five plans for commercial support. A 12 month Silver support subscription is included with all commercial licenses.
-
-![](images/tables/201702-commercial-support.png)
-
-
- Incident priority level |  
-----|----
-**High**  |  Disruption of one or more components that impacts mission critical processes resulting in delays or outages.
-**Medium**  |  Service partly unavailable or party/effectively unusable.
-**Standard**  |  Any other incident not described in medium or high
-
-## Training
-
-€120/hr, in blocks of 8hrs
+Contact us for further details and pricing: [info@magnetic.io](mailto:info@magnetic.io?subject=Information request - Vamp Enterprise Edition) or call +31(0)88 555 33 99
