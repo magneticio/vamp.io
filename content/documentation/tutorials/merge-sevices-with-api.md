@@ -151,7 +151,7 @@ Using the Vamp API, we can also check the status of the deployment:
   `GET <vamp url>/api/v1/gateways/my_sava/sava_cluster/webport`
 
 ## Summing up
-You can continue to add new services to the my_sava deployment by updating the template blueprint. With each merge, a new service will be added to the cluster **my_sava/sava_cluster** and a new route will be added to the gateway **my_sava/sava_cluster/webport** with a default weight of 0%.
+You can continue to add new services to the my_sava deployment by updating the template blueprint and `POST`ing it to the `/deployments` API. With each merge, a new service will be added to the cluster **my_sava/sava_cluster** and a new route will be added to the gateway **my_sava/sava_cluster/webport** with a default weight of 0%.
 
 To recap what we have covered:
 
