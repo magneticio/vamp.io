@@ -67,15 +67,15 @@ You could also just leave out the whole `routes` section and use the UI to chang
 It is our goal to update the already running deployment with the new blueprint. Vamp will figure out that v1.0.0
 is already there and just add v1.1.0 while setting the correct routing between these services. You could also create a second blueprint with the new service, and merge this new service to the Sava-cluster so it becomes available for routing traffic to it.
 
-#### Deploy using the UI
+### Deploy using the UI
 
 Go to the **DEPLOYMENTS** tab, open the running deployment and click the **EDIT** button (top right). Copy the blueprint above and paste it over the the deployment that is there then click **SAVE**. Vamp will start working out the differences and update the deployment accordingly.
 
 ![](/images/screens/v091/tut2_canary.jpg)
 
-#### Deploy using the API
+### Deploy using the API
 
-Get the running deployment's name (the UUID) from `/api/v1/deployments` (or use the explicit name that you used for the deployment) and `PUT` the blueprint to that resource, e.g: `/api/v1/deployments/e1c99ca3-dc1f-4577-aa1b-27f37dba0325`
+Get the running deployment's name (the UUID) from `/api/v1/deployments` (or use the explicit name that you used for the deployment) and `PUT` the blueprint to that resource, e.g: `/api/v1/deployments/sava`
 
 ## Check the deployment and routing
 When Vamp has finished deploying, you can start refreshing your browser at the correct endpoint, e.g. `http://192.168.99.100:9050/`. The application should switch between responding with a 1.0 page and a 1.1 page. Note that this works best with the "Incognito" or "Anonymous" mode of your browser because of the caching of static assets.

@@ -85,7 +85,7 @@ Create a condition template.
 * `POST`
 * `/api/v1/conditions/`
 * The request body should include at least a [minimum condition resource](/documentation/api/v0.9.2/api-conditions/#condition-resource) in the specified `Content-Type` format (default JSON).
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -104,7 +104,7 @@ Update a stored condition template.
 * `PUT` 
 * `/api/v1/conditions/{condition_name}`
 * The request body should include at least a [minimum condition resource](/documentation/api/v0.9.2/api-conditions/#condition-resource) in the specified `Content-Type` format (default JSON). The `name` field must match the `{condition_name}` used in the request path.
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -126,7 +126,7 @@ Delete a stored condition template. Note that delete operations are idempotent: 
 * `DELETE` 
 * `/api/v1/conditions/{condition_name}`
 * The request body should be empty.
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|

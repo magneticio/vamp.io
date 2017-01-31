@@ -89,7 +89,7 @@ Create a new scale. Scales can be stored individually and then referenced from a
  * `POST`
  * `/api/v1/scales`
  * The request body should inclde at least a minimum [scale resource](/documentation/api/v0.9.2/api-scales/#scale-resource) in the specified `Content-Type` format (default JSON).
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -109,7 +109,7 @@ Update a stored scale.
  * `PUT`
  * `/api/v1/scales/{scale_name}`
  * The request body should inclde at least a minimum [scale resource](/documentation/api/v0.9.2/api-scales/#scale-resource) in the specified `Content-Type` format (default JSON). The `name` field must match the `scale_name` specified in the request path.
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -131,7 +131,7 @@ Delete a stored scale. Note that delete operations are idempotent: sending a sec
  * `DELETE`
  * `/api/v1/scales/{scale_name}`
  * The request body should be empty.
-* Optional headers:
+* Query string parameters:
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|

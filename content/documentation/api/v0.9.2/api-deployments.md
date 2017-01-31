@@ -108,7 +108,7 @@ Return a list of all running deployments. For details on pagination see [common 
 * `GET`
 * `/api/v1/deployments`
 * The request body should be empty.
-* Optional headers:
+* Query string parameters:
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -130,7 +130,7 @@ Return details of a specific running deployment.
 * `GET`
 * `/api/v1/deployments/{deployment_name}`
 * The request body should be empty.
-* Optional headers:
+* Query string parameters:
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -154,7 +154,7 @@ Initiate a deployment.
 * `POST` 
 * `/api/v1/deployments`
 * The request body should include at least the [minimum blueprint resource](/documentation/api/v0.9.2/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). 
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -177,7 +177,7 @@ Initiate a deployment with a custom name (non UUID).
 * `POST` 
 * `/api/v1/deployments/{deployment_name}`
 * The request body should include at least the [minimum blueprint resource](/documentation/api/v0.9.2/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). 
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -196,7 +196,7 @@ Add to a running deployment (merge).
 * `PUT`
 * `/api/v1/deployments/{deployment_name}`
 * The request body should include at least the [minimum blueprint resource](/documentation/api/v0.9.2/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). The `name` field must match the `deployment_name` specified in the request syntax.
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -216,7 +216,7 @@ Delete all or parts of a deployment.
 * `DELETE`
 * `/api/v1/deployments/{deployment_name}`
 * The request body should contain at least a [minimum blueprint resource](/documentation/api/v0.9.2/api-blueprints/#blueprint-resource) containing the services to be removed from the deployment. To delete a full deployment, include the complete blueprint or deployment resource. Note that `DELETE` on deployment with an empty request body will not delete anything.
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|

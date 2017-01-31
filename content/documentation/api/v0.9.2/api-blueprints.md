@@ -76,7 +76,7 @@ Return a list of all stored blueprint resources. For details on pagination see [
 * `GET` 
 * `/api/v1/blueprints`
 * The request body should be empty.
-* Optional headers:
+* Query string parameters:
 
 | Request parameters         | options           | default          | description       |
 | ----------------- |:-----------------:|:----------------:| -----------------:|
@@ -102,7 +102,7 @@ Return details of a single, specified blueprint.
 * `GET` 
 * `/api/v1/blueprints/{blueprint_name}`
 * The request body should be empty.
-* Optional headers:
+* Query string parameters:
 
 | Request parameters         | options           | default          | description       |
 | ----------------- |:-----------------:|:----------------:| -----------------:|
@@ -126,7 +126,7 @@ Store a new blueprint. Note that create operations are idempotent: sending a sec
 * `POST`
 * `/api/v1/blueprints`
 * The request body should contain at least a [minimum blueprint resource](/documentation/api/v0.9.2/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON).
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -146,7 +146,7 @@ Update the content of a stored blueprint.
 * `PUT`
 * `/api/v1/blueprints/{blueprint_name}`
 * The request body should contain at least a [minimum blueprint resource](/documentation/api/v0.9.2/api-blueprints/#blueprint-resource) in the specified `content-type` (default JSON). The name field must match the `blueprint_name` specified in the request path.
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -170,7 +170,7 @@ Delete a stored blueprint. Note that delete operations are idempotent: sending a
 * `DELETE` 
 * `/api/v1/blueprints/{blueprint_name}`
 * The request body should be empty.
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|

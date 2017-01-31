@@ -96,7 +96,7 @@ Stores a new escalation template.
 * `POST` 
 * `/api/v1/escalations`
 * The request body should include at least a mimnimum [escalation resource](/documentation/api/v0.9.2/api-escalations/#escalation-resource).
-* Optional headers:
+* Query string parameters:
 
 | parameter     | options           | default          | description       |
 | ------------- |:-----------------:|:----------------:| -----------------:|
@@ -116,7 +116,7 @@ Update a stored escalation.
 * `PUT` 
 * `/api/v1/escalations/{escalation_name}`
 * The request body should include at least a mimnimum [escalation resource](/documentation/api/v0.9.2/api-escalations/#escalation-resource). The `name` field must match the `escalation_name` specified in the request path.
-* Optional headers:
+* Query string parameters:
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -136,7 +136,7 @@ Delete a stored escalation. Note that delete operations are idempotent: sending 
 * `DELETE` 
 * `/api/v1/escalations/{escalation_name}`
 * The request body should be empty.
-* Optional headers:
+* Query string parameters:
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|

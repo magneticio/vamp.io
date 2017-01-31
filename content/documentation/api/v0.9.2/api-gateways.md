@@ -105,7 +105,7 @@ Create a new gateway.
 * `POST`
 * `/api/v1/gateways`
 * The request body should include at least a [minimum gateway resource](/documentation/api/v0.9.2/api-gateways/#gateway-resource) in the specified `Content-Type` format (default JSON).
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -127,7 +127,7 @@ Update a stored gateway.
 * `PUT`
 * `/api/v1/gateways/{gateway_name}`
 * The request body should include at least a [minimum gateway resource](/documentation/api/v0.9.2/api-gateways/#gateway-resource) in the specified `Content-Type` format (default JSON).  The `name` field must match the `gateway_name` specified in the request path.
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -149,7 +149,7 @@ Delete a gateway. Note that delete operations are idempotent: sending a second r
 * `DELETE`
 * `/api/v1/gateways/{gateway_name}`
 * The request body should be empty.
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|

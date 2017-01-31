@@ -69,7 +69,7 @@ Returns a list of all stored breeds. For details on pagination see [common param
 * `GET`
 * /api/v1/breeds
 * The request body should be empty.
-* Optional headers:
+* Query string parameters:
   
 | Request parameters         | options           | default          | description       |
 | ----------------- |:-----------------:|:----------------:| -----------------:|
@@ -93,7 +93,7 @@ Returns a specific stored breed.
 * `GET`
 * `/api/v1/breeds/{breed_name}`
 * The request body should be empty.
-* Optional headers:
+* Query string parameters:
   
 | Request parameters         | options           | default          | description       |
 | ----------------- |:-----------------:|:----------------:| -----------------:|
@@ -117,7 +117,7 @@ Creates a breed with the specified fields.
 * `POST` 
 * `/api/v1/breeds`
 * The request body should include at least the [minimum breed resource](/documentation/api/v0.9.2/api-breeds/#breed-resource) in the specified `content-type` format (default JSON). 
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -136,7 +136,7 @@ Updates the specified field(s) of a stored breed.
 * `PUT`
 * `/api/v1/breeds/{breed_name}`
 * The request body should include at least the [minimum breed resource](/documentation/api/v0.9.2/api-breeds/#breed-resource) in the specified `content-type` format (default JSON). The `name` field must match the `breed_name` specified in the request path.
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -159,7 +159,7 @@ Deletes the specified breed. Note that delete operations are idempotent: sending
 * `DELETE`
 * `/api/v1/breeds/{breed_name}`
 * The request body should be empty.
-* Optional headers:
+* Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|

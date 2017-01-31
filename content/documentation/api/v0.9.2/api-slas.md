@@ -101,7 +101,7 @@ Store a new SLA template.
 * `POST` 
 * `/api/v1/slas`
 * The request body should include at least a mimnimum [SLA resource](/documentation/api/v0.9.2/api-slas/#sla-resource).
-* Optional headers:
+* Query string parameters:
 
 | parameter     | options           | default          | description       |
 | ------------- |:-----------------:|:----------------:| -----------------:|
@@ -121,7 +121,7 @@ Update a stored SLA template.
 * `PUT` 
 * `/api/v1/slas/{sla_name}`
 * The request body should include at least a mimnimum [SLA resource](/documentation/api/v0.9.2/api-slas/#sla-resource). The `name` field must match the `sla_name` specified in the request path.
-* Optional headers:
+* Query string parameters:
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
@@ -141,7 +141,7 @@ Delete a stored SLA template. Note that delete operations are idempotent: sendin
 * `DELETE` 
 * `/api/v1/slas/{sla_name}`
 * The request body should be empty.
-* Optional headers:
+* Query string parameters:
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
