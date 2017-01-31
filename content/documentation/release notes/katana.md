@@ -21,6 +21,7 @@ All changes since the last official release are described below. This applies on
 * Querying events by type [#878](https://github.com/magneticio/vamp/issues/878)
 * Showing Vamp logs in UI [#863](https://github.com/magneticio/vamp/issues/863)
 * Kubernetes namespace support [#667](https://github.com/magneticio/vamp/issues/667)
+* Artifact metadata [#890](https://github.com/magneticio/vamp/issues/890)
 
 ## What has changed
 * Pulse storage type needs to be explicitly specified `vamp.pulse.type`: `elasticsearch` or `no-store` [#869](https://github.com/magneticio/vamp/issues/869)
