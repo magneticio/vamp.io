@@ -1,18 +1,22 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Deploy and merge services using the API
+title: Add canary releasing to your Continuous Integration pipeline
 menu:
   main:
     parent: "Tutorials"
-    name: "API: Deploy and merge services"
+    name: "Add canary releasing to your CI pipeline"
     weight: 90
 draft: true
 ---
 
-The Vamp UI interacts with the Vamp API to create, deploy and manage static artifacts and running services. You can easily configure another system to interact directly with the Vamp API and perform these same actions, for example using a CI tool to pass new service details to Vamp for deployment.
+If you have visited some of the popular conferences or meetups about devops, continuous delivery, containers or microservices over the last two years the changes are rather high that you’ve heard some of the “big boys” talk about how they are using “Canary testing and releasing” to great success. You might even have seen a nice demo or some screenshots from their super-cool canary-dashboards. But if you want to apply this magical canary-thing to your own CI or CD pipeline, it becomes quiet vague and surrounded with a lot of smoke and mirrors on how to actually achieve this, and with what tools.
+
+Luckily, with Vamp it’s now fast and easy to extend your CI/CD system with powerful canary functionalities. This enables you to avoid downtime and performance issues when testing, upgrading and scaling your applications and (micro)services. All you need is a CI tool that can talk JSON to our REST API, and the Vamp system running inside your favorite container-scheduler (like DC/OS or Kubernetes). And of course your application or microservice that you want to canary release, packaged inside a Docker container. 
+
+ So let’s get started!
 
 
-In this tutorial we will explain the Vamp API calls used to deploy services and update running deployments: 
+In this tutorial we will show how to extend  your CI system to deploy a Docker container and then canary release to an upgraded container using the Vamp API:
 
 1. [Deploy a service](/documentation/tutorials/merge-sevices-with-api/#deploy-a-service) - use the API to deploy the service sava:1.0.0
 - [Create a template blueprint](/documentation/tutorials/merge-sevices-with-api/#create-a-template-blueprint) - create a template blueprint to allow easy updates to the deployment
@@ -20,11 +24,11 @@ In this tutorial we will explain the Vamp API calls used to deploy services and 
 
 ### Requirements
 * A running version of Vamp 0.9.x (this tutorial has been tested on the Vamp 0.9.2 hello world setup)
-* Access to the Docker hub
-* You might run into issues if your firewall is set to block connections in the ranges 31000-32000 (required by Mesos) or 40000-45000 (required by Vamp) 
+* Access to a Docker container repository, like for example the Docker hub
+* A Continuous Integration application (like Jenkins, Travis, CircleCI, Wercker etc.) that can send JSON requests to a REST API.
 
 ## Deploy a service
-Vamp deployments are initiated and managed using the `/deployments` API endpoint. To deploy a service, we just need to `POST` a valid [blueprint resource](/documentation/api/v0.9.2/api-blueprints/#blueprint-resource).   
+Vamp deployments are initiated and managed using the `/deployments` API endpoint. To deploy a service, your CI tool just needs to POST a valid [blueprint resource](/documentation/api/v0.9.2/api-blueprints/#blueprint-resource) with a reference to the Docker container you want to deploy, and the port on which you want to expose your container to the outside world (typically using an edge load-balancer or DNS to connect to our external Vamp gateway which is an HAProxy based reverse-proxy).   
 
 Use the below API request to initiate a new deployment named my_sava. 
 
