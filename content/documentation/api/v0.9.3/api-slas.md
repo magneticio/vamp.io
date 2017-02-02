@@ -4,22 +4,24 @@ title: SLAs
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-slas-092"
+    identifier: "api-reference-slas-093"
     weight: 200
+aliases:
+    - /documentation/api/api-slas
 ---
 SLAs (Service Level Aggreemets) can be used to define a pre-described set of boundaries to a service and the actions that should take place once the service crosses those boundaries. You can save and manage SLA templates through the API, these can then be referenced in a blueprint or deployment. Read about [using SLAs](documentation/using-vamp/sla/).
 
 ## Actions
  
- * [List](/documentation/api/v0.9.2/api-slas/#list-slas) - return a list of all SLAs
- * [Get](/documentation/api/v0.9.2/api-slas/#get-sla) - get a single SLA
- * [Create](/documentation/api/v0.9.2/api-slas/#create-sla) - create a new SLA 
- * [Update](/documentation/api/v0.9.2/api-slas/#update-sla) - update a SLA
- * [Delete](/documentation/api/v0.9.2/api-slas/#delete-sla) - delete a SLA
+ * [List](/documentation/api/v0.9.3/api-slas/#list-slas) - return a list of all SLAs
+ * [Get](/documentation/api/v0.9.3/api-slas/#get-sla) - get a single SLA
+ * [Create](/documentation/api/v0.9.3/api-slas/#create-sla) - create a new SLA 
+ * [Update](/documentation/api/v0.9.3/api-slas/#update-sla) - update a SLA
+ * [Delete](/documentation/api/v0.9.3/api-slas/#delete-sla) - delete a SLA
 
 ## SLA resource
 You can define SLAs inline or store them separately under a unique name and reference them from a blueprintor deployment resource.
-The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.2/using-the-api) for details on how to set this. 
+The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.3/using-the-api) for details on how to set this. 
 
 ### Minimum resource
 The minimum fields required to successfully create a SLA.
@@ -54,7 +56,7 @@ The fields returned by the API after a SLA has been created (also visible in the
  Field name   | Options  |  Required   | description          
  -----------------|----|----|---------
  `name` |   | Required  | Unique name, used to reference the SLA.
- `kind` | `sla`  | Optional  | The resource type. Required to [send multiple resources](/documentation/api/v0.9.2/api-reference/#send-multiple-resources-post-put-and-delete) to `/api/v1`.
+ `kind` | `sla`  | Optional  | The resource type. Required to [send multiple resources](/documentation/api/v0.9.3/api-reference/#send-multiple-resources-post-put-and-delete) to `/api/v1`.
  `type` | `response_time_sliding_window`  | Required  |
  `window` |   | Required  |  
  `threshold` |   | Required  |
@@ -65,7 +67,7 @@ The fields returned by the API after a SLA has been created (also visible in the
 
 ## List SLAs
 
-Return a list of all stored SLA templates. For details on pagination see [common parameters](/documentation/api/v0.9.2/using-the-api).
+Return a list of all stored SLA templates. For details on pagination see [common parameters](/documentation/api/v0.9.3/using-the-api).
 
 ### Request
  * `GET` 
@@ -73,7 +75,7 @@ Return a list of all stored SLA templates. For details on pagination see [common
  * The request body should be empty.
 
 ### Response 
-If successful, will return a list of all stored [SLA resources](/documentation/api/v0.9.2/api-slas/#sla-resource) in the specified `accept` format (default JSON).  
+If successful, will return a list of all stored [SLA resources](/documentation/api/v0.9.3/api-slas/#sla-resource) in the specified `accept` format (default JSON).  
 
 -----------------
 
@@ -87,7 +89,7 @@ Return a the named SLA resource.
 * The request body should be empty.
 
 ### Response
-If successful, will return the named [SLA resource](/documentation/api/v0.9.2/api-slas/#sla-resource) in the specified `accept` format (default JSON).  
+If successful, will return the named [SLA resource](/documentation/api/v0.9.3/api-slas/#sla-resource) in the specified `accept` format (default JSON).  
 
 -----------------
 
@@ -98,7 +100,7 @@ Store a new SLA template.
 ### Request
 * `POST` 
 * `/api/v1/slas`
-* The request body should include at least a mimnimum [SLA resource](/documentation/api/v0.9.2/api-slas/#sla-resource).
+* The request body should include at least a mimnimum [SLA resource](/documentation/api/v0.9.3/api-slas/#sla-resource).
 * Query string parameters:
 
 | parameter     | options           | default          | description       |
@@ -107,7 +109,7 @@ Store a new SLA template.
 
 
 ### Response
-A successful create operation has status code 201 `Created` and the response body will contain the created [SLA resource](/documentation/api/v0.9.2/api-slas/#sla-resource) in the specified `accept` format (default JSON). 
+A successful create operation has status code 201 `Created` and the response body will contain the created [SLA resource](/documentation/api/v0.9.3/api-slas/#sla-resource) in the specified `accept` format (default JSON). 
 
 -----------------
 
@@ -118,7 +120,7 @@ Update a stored SLA template.
 ### Request
 * `PUT` 
 * `/api/v1/slas/{sla_name}`
-* The request body should include at least a mimnimum [SLA resource](/documentation/api/v0.9.2/api-slas/#sla-resource). The `name` field must match the `sla_name` specified in the request path.
+* The request body should include at least a mimnimum [SLA resource](/documentation/api/v0.9.3/api-slas/#sla-resource). The `name` field must match the `sla_name` specified in the request path.
 * Query string parameters:
 
 | parameter     | options           | default          | description      |
@@ -127,7 +129,7 @@ Update a stored SLA template.
 
 
 ### Response
-A successful update operation has status code 200 `OK` or 202 `Accepted` and the response body will contain the updated [SLA resource](/documentation/api/v0.9.2/api-slas/#sla-resource) in the specified `accept` format (default JSON).
+A successful update operation has status code 200 `OK` or 202 `Accepted` and the response body will contain the updated [SLA resource](/documentation/api/v0.9.3/api-slas/#sla-resource) in the specified `accept` format (default JSON).
 
 -----------------
 

@@ -4,16 +4,18 @@ title: Deployment SLAs
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-deployment-slas-092"
+    identifier: "api-reference-deployment-slas-093"
     weight: 110
+aliases:
+    - /documentation/api/api-deployment-slas
 ---
 Deployment scales are singular resources: you only have one scale per service. Deleting a scale is not a meaningful action. Read about [using deployments](documentation/using-vamp/deployments/) and [using scales](documentation/using-vamp/blueprints/#scale).
 
 ## Actions
  
- * [Get](/documentation/api/v0.9.2/api-deployment-slas/#get-single-deployment-sla) - return details of a specific deployment SLA
- * [Create](/documentation/api/v0.9.2/api-deployment-slas/#create-deployment-sla) - create or update a specific deployment SLA
- * [Delete](/documentation/api/v0.9.2/api-deployment-slas/#delete-deployment-sla) - delete a deployment SLA
+ * [Get](/documentation/api/v0.9.3/api-deployment-slas/#get-single-deployment-sla) - return details of a specific deployment SLA
+ * [Create](/documentation/api/v0.9.3/api-deployment-slas/#create-deployment-sla) - create or update a specific deployment SLA
+ * [Delete](/documentation/api/v0.9.3/api-deployment-slas/#delete-deployment-sla) - delete a deployment SLA
 
 --------------
 
@@ -27,7 +29,7 @@ Return details for a specific SLA that’s part of a specific cluster.
 * The request body should be empty.
 
 ### Response
-If successful, will return the specified [SLA resource](/documentation/api/v0.9.2/api-slas/#sla-resource) in the specified `accept` format (default JSON).
+If successful, will return the specified [SLA resource](/documentation/api/v0.9.3/api-slas/#sla-resource) in the specified `accept` format (default JSON).
 
 ### Errors
 * The requested resource could not be found.
@@ -41,10 +43,10 @@ Create or update a specific deployment SLA.
 ### Request
 * `PUT`
 * `/api/v1/deployments/{deployment_name}/clusters/{cluster_name}/sla`
-* The request body should include at least the [minimum SLA resource](/documentation/api/v0.9.2/api-slas/#sla-resource) in the specified `content-type` format (default JSON). 
+* The request body should include at least the [minimum SLA resource](/documentation/api/v0.9.3/api-slas/#sla-resource) in the specified `content-type` format (default JSON). 
 
 ### Response
-If successful, will return the updated [deployment resource](/documentation/api/v0.9.2/api-deployments/#deployment-resource) in the specified `content-type` format (default JSON). 
+If successful, will return the updated [deployment resource](/documentation/api/v0.9.3/api-deployments/#deployment-resource) in the specified `content-type` format (default JSON). 
 
 --------------
 

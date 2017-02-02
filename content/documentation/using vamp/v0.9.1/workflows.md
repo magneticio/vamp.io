@@ -9,7 +9,7 @@ menu:
 
 {{< note title="The information on this page is written for Vamp v0.9.1" >}}
 
-* Switch to the [latest version of this page](/documentation/using-vamp/workfows).
+* Switch to the [latest version of this page](/documentation/using-vamp/workflows).
 * Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
 {{< /note >}}
 

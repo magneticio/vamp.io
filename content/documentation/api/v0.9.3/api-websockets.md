@@ -4,14 +4,16 @@ title: Websockets
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-websockets-092"
+    identifier: "api-reference-websockets-093"
     weight: 30
+aliases:
+    - /documentation/api/api-websockets
 ---
 
 WebSocket API requests and responses are transmitted as text messages containing both meta-information and a payload.  
 
-* [WebSocket API requests](/documentation/api/v0.9.2/api-websockets/#websocket-api-requests)
-* [Websocket API responses](/documentation/api/v0.9.2/api-websockets/#websocket-api-responses)
+* [WebSocket API requests](/documentation/api/v0.9.3/api-websockets/#websocket-api-requests)
+* [Websocket API responses](/documentation/api/v0.9.3/api-websockets/#websocket-api-responses)
 
 ## WebSocket API requests
 REST API requests can be mapped 1-on-1 to WebSocket API requests using the properties described below. Note that all enum (symbolic) values like `Json`, `Peek` etc. are case-insensitive. The Vamp API accepts requests in JSON or YAML. 

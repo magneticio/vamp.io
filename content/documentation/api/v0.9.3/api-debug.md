@@ -4,15 +4,17 @@ title: Debug
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-debug-092"
+    identifier: "api-reference-debug-093"
     weight: 80
+aliases:
+    - /documentation/api/api-debug
 ---
 
 ## Actions
  
- * [Force sync](/documentation/api/v0.9.2/api-debug/#force-sync)
- * [Force SLA check](/documentation/api/v0.9.2/api-debug/#force-sla-check)
- * [Force escalation](/documentation/api/v0.9.2/api-debug/#force-escalation) 
+ * [Force sync](/documentation/api/v0.9.3/api-debug/#force-sync)
+ * [Force SLA check](/documentation/api/v0.9.3/api-debug/#force-sla-check)
+ * [Force escalation](/documentation/api/v0.9.3/api-debug/#force-escalation) 
 
 -------------------
 
