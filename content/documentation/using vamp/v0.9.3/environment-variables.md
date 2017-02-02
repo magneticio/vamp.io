@@ -3,9 +3,11 @@ date: 2016-09-13T09:00:00+00:00
 title: Environment variables
 menu:
   main:
-    identifier: "environment-variables-v092"
+    identifier: "environment-variables-v093"
     parent: "Using Vamp"
     weight: 50
+aliases:
+    - /documentation/using-vamp/environment-variables/
 ---
 
 Breeds, blueprints and workflows can include a list of environment variables to be injected into the container at runtime. You set environment variables with the `environment_variables` keyword or its shorter version `env`, e.g. both examples below are equivalent.
@@ -130,10 +132,10 @@ Effective use of scope is completely dependent on your use case. The various sco
 
 ### Examples of scope use
 
-* [Run two of the same services with different configurations](/documentation/using-vamp/v0.9.2/environment-variables/#example-1)
-* [Override the JVM_HEAP_SIZE in production](/documentation/using-vamp/v0.9.2/environment-variables/#example-2)
-* [Use a place holder](/documentation/using-vamp/v0.9.2/environment-variables/#example-3)
-* Just for fun - [combine all scopes and references](/documentation/using-vamp/v0.9.2/environment-variables/#example-4)
+* [Run two of the same services with different configurations](/documentation/using-vamp/v0.9.3/environment-variables/#example-1)
+* [Override the JVM_HEAP_SIZE in production](/documentation/using-vamp/v0.9.3/environment-variables/#example-2)
+* [Use a place holder](/documentation/using-vamp/v0.9.3/environment-variables/#example-3)
+* Just for fun - [combine all scopes and references](/documentation/using-vamp/v0.9.3/environment-variables/#example-4)
 
 #### Example 1
 **Run two of the same services with different configurations**
@@ -300,7 +302,7 @@ clusters:
 
 
 {{< note title="What next?" >}}
-* Read about [Vamp gateways](/documentation/using-vamp/v0.9.2/gateways/)
-* Check the [API documentation](/documentation/api/v0.9.2/api-reference)
+* Read about [Vamp gateways](/documentation/using-vamp/v0.9.3/gateways/)
+* Check the [API documentation](/documentation/api/v0.9.3/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

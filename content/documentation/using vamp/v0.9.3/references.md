@@ -3,9 +3,11 @@ date: 2016-09-13T09:00:00+00:00
 title: Referencing artifacts
 menu:
   main:
-    identifier: "referencing-artifacts-v092"
+    identifier: "referencing-artifacts-v093"
     parent: "Using Vamp"
     weight: 110
+aliases:
+    - /documentation/using-vamp/references/
 ---
 
 With any artifact, Vamp allows you to either use an inline notation or reference the artifact by name. For references, you use the `reference` keyword or its shorter version `ref`. Think of it like either using actual values or pointers to a value. This has a big impact on how complex or simple you can make any blueprint, breed or deployment. It also impacts how much knowledge you need to have of all the different artifacts that are used in a typical deployment or blueprint.
@@ -50,9 +52,9 @@ When you begin to work with Vamp, you will probably start with inline artifacts.
 
 ### Example use of references
 
-* [Create a library of containers](/documentation/using-vamp/v0.9.2/references/#example-1)
-* [Fix scales per environment](/documentation/using-vamp/v0.9.2/references/#example-2)
-* [Reuse a complex condition](/documentation/using-vamp/v0.9.2/references/#example-3)
+* [Create a library of containers](/documentation/using-vamp/v0.9.3/references/#example-1)
+* [Fix scales per environment](/documentation/using-vamp/v0.9.3/references/#example-2)
+* [Reuse a complex condition](/documentation/using-vamp/v0.9.3/references/#example-3)
 
 
 #### Example 1 
@@ -113,7 +115,7 @@ condition: Cookie SHOPSESSION Contains shopping_basket_items=0
 
 
 {{< note title="What next?" >}}
-* Read about [Vamp workflows](/documentation/using-vamp/v0.9.2/workflows/)
-* Check the [API documentation](/documentation/api/v0.9.2/api-reference)
+* Read about [Vamp workflows](/documentation/using-vamp/v0.9.3/workflows/)
+* Check the [API documentation](/documentation/api/v0.9.3/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

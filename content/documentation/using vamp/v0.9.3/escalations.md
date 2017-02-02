@@ -3,9 +3,11 @@ date: 2016-09-13T09:00:00+00:00
 title: Escalations
 menu:
   main:
-    identifier: "escalations-v092"
+    identifier: "escalations-v093"
     parent: "Using Vamp"
     weight: 100
+aliases:
+    - /documentation/using-vamp/escalations/
 ---
 
 An escalation is a workflow triggered by an escalation event. Vamp checks for these escalation events using a continuous background process with a configurable interval time. If the events match the escalation handlers defined in the DSL, the action is executed.
@@ -162,7 +164,7 @@ clusters:
 ```
 
 {{< note title="What next?" >}}
-* Read about [Referencing artifacts in Vamp](/documentation/using-vamp/v0.9.2/references/)
-* Check the [API documentation](/documentation/api/v0.9.2/api-reference)
+* Read about [Referencing artifacts in Vamp](/documentation/using-vamp/v0.9.3/references/)
+* Check the [API documentation](/documentation/api/v0.9.3/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
