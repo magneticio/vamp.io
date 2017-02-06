@@ -10,7 +10,8 @@ aliases:
     - /documentation/api/api-reference/
 ---
 
-Vamp has one REST API. For details on pagination, and request and response formats see [common parameters](/documentation/api/v0.9.3/using-the-api).
+Vamp has one REST API. For details on pagination, and request and response formats see [common parameters](/documentation/api/v0.9.3/using-the-api).  
+For details on formatting Websockets API requests see [Vamp API - websockets](/documentation/api/v0.9.3/api-websockets/).
 
 ## API endpoints and resource descriptions
 
