@@ -13,7 +13,7 @@ aliases:
 Vamp can use the full power of Marathon running on either a DCOS cluster or custom Mesos cluster. You can use Vamp's DSL, or you can pass native Marathon options by [using a dialect in a blueprint.](/documentation/using-vamp/blueprints/#dialects)  
 
 #### Install
-The instructions included on the [DC/OS installation page](/documentation/installation/dcos) will also work with Mesos/Marathon.
+The instructions included on the [DC/OS installation page](/documentation/installation/v0.9.3/dcos) will also work with Mesos/Marathon.
 
 #### set Marathon as the Vamp container driver
 
@@ -41,9 +41,9 @@ If you prefer, you can build your own Mesos/Marathon cluster. Here are some tuto
 5. (Re)start Vamp by restarting the Java process by hand.   
 
 {{< note title="What next?" >}}
-* Find out [how to configure Vamp](documentation/installation/configure-vamp)
-* Check the [configuration reference](documentation/installation/configuration-reference)
-* Look at some [example configurations](documentation/installation/example-configurations)
+* Find out [how to configure Vamp](documentation/installation/v0.9.3/configure-vamp)
+* Check the [configuration reference](documentation/installation/v0.9.3/configuration-reference)
+* Look at some [example configurations](documentation/installation/v0.9.3/example-configurations)
 * Follow the [tutorials](/documentation/tutorials/overview)
 {{< /note >}}
 

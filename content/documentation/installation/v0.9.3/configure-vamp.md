@@ -19,11 +19,11 @@ Vamp configuration is held in a combination of the Vamp `application.conf` and `
 
 ### On this page:
 
-* [Override specific configuration parameters](/documentation/installation/configure-vamp/#override-specific-configuration-parameters)
-* [Use a custom application.conf file](/documentation/installation/configure-vamp/#use-a-custom-application-conf-file)
-* [Parameterize application.conf](/documentation/installation/configure-vamp/#parameterize-application-conf)
-* [Include configuration not intended for Vamp](/documentation/installation/configure-vamp/#include-configuration-not-intended-for-vamp)
-* [Access configuration parameters through the API](/documentation/installation/configure-vamp/#access-configuration-parameters-through-the-api)
+* [Override specific configuration parameters](/documentation/installation/v0.9.3/configure-vamp/#override-specific-configuration-parameters)
+* [Use a custom application.conf file](/documentation/installation/v0.9.3/configure-vamp/#use-a-custom-application-conf-file)
+* [Parameterize application.conf](/documentation/installation/v0.9.3/configure-vamp/#parameterize-application-conf)
+* [Include configuration not intended for Vamp](/documentation/installation/v0.9.3/configure-vamp/#include-configuration-not-intended-for-vamp)
+* [Access configuration parameters through the API](/documentation/installation/v0.9.3/configure-vamp/#access-configuration-parameters-through-the-api)
 
 ## Override specific configuration parameters
 You can override specific parameters set in the `application.conf` and `reference.conf` configuration files using Vamp environment variables or Java/JVM system properties. It is advisable to use environment variables when overriding specific parameters.
@@ -110,8 +110,8 @@ api.config().each(function (config) {
 ```
 
 {{< note title="What next?" >}}
-* Check the [configuration reference](documentation/installation/configuration-reference)
-* Look at some [example configurations](documentation/installation/example-configurations)
+* Check the [configuration reference](documentation/installation/v0.9.3/configuration-reference)
+* Look at some [example configurations](documentation/installation/v0.9.3/example-configurations)
 * Follow the [tutorials](/documentation/tutorials/overview)
 * You can read in depth about [using Vamp](/documentation/using-vamp/artifacts/) or browse the [API reference](/documentation/api/api-reference/) or [CLI reference](/documentation/cli/cli-reference/) docs.
 {{< /note >}}

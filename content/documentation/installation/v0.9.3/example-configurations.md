@@ -17,7 +17,7 @@ aliases:
 The full `reference.conf` file can be found in the Vamp project repo ([github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)).
 
 ## application.conf
-You can use `application.conf` to tailor the Vamp configuration to fit your environment. Settings specified here, or in environment variables, will override any defaults included in `reference.conf`. Template configuration files are provided, which complete the standard required settings and include the Vamp Health and Metrics workflows (required by the Vamp UI).  If your environment requires extensive customisation, you can [use a custom application.conf file](/documentation/installation/configure-vamp/#use-a-custom-application-conf-file).
+You can use `application.conf` to tailor the Vamp configuration to fit your environment. Settings specified here, or in environment variables, will override any defaults included in `reference.conf`. Template configuration files are provided, which complete the standard required settings and include the Vamp Health and Metrics workflows (required by the Vamp UI).  If your environment requires extensive customisation, you can [use a custom application.conf file](/documentation/installation/v0.9.3/configure-vamp/#use-a-custom-application-conf-file).
 
 
 * [DC/OS application.conf](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)  
@@ -35,8 +35,8 @@ You can use `application.conf` to tailor the Vamp configuration to fit your envi
 
 
 {{< note title="What next?" >}}
-* Read about [how to configure Vamp](documentation/installation/configure-vamp)
-* Check the [configuration reference](documentation/installation/configuration-reference)
+* Read about [how to configure Vamp](documentation/installation/v0.9.3/configure-vamp)
+* Check the [configuration reference](documentation/installation/v0.9.3/configuration-reference)
 * Follow the [tutorials](/documentation/tutorials/overview)
 * You can read in depth about [using Vamp](/documentation/using-vamp/artifacts/) or browse the [API reference](/documentation/api/api-reference/) or [CLI reference](/documentation/cli/cli-reference/) docs.
 {{< /note >}}

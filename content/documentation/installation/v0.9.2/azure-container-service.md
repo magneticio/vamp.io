@@ -18,7 +18,7 @@ To run Vamp together with Azure Container Service ([azure.microsoft.com - Contai
 
 To install DC/OS in Azure you should follow these steps: https://dcos.io/docs/1.8/administration/installing/cloud/azure/
 
-After you have activated your ACS setup with DC/OS, go to your DC/OS admin environment and install Vamp using our [DC/OS installation instructions](/documentation/installation/dcos/).
+After you have activated your ACS setup with DC/OS, go to your DC/OS admin environment and install Vamp using our [DC/OS installation instructions](/documentation/installation/v0.9.2/dcos/).
 
 
 {{< note title="What next?" >}}

@@ -11,14 +11,14 @@ aliases:
 ---
 
 This page describes the structure and parameters in the Vamp configuration files (reference.conf and application.conf).  
-For details on how to customise your Vamp configuration, see [how to configure Vamp](/documentation/installation/configure-vamp/).
+For details on how to customise your Vamp configuration, see [how to configure Vamp](/documentation/installation/v0.9.3/configure-vamp/).
 
 
 ## Vamp configuration parameters
 The full `reference.conf` file can be found in the Vamp project repo ([github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)). 
 
 ### Vamp { }
-Vamp configuration is described in sections, nested inside a parent `vamp {}` tag. Usage, defaults and requirements for each section are outlined below: [info](documentation/installation/configuration-reference/#info), [stats](documentation/installation/configuration-reference/#stats), [model](documentation/installation/configuration-reference/#model), [persistence](documentation/installation/configuration-reference/#persistence), [container driver](documentation/installation/configuration-reference/#container-driver), [workflow driver](documentation/installation/configuration-reference/#workflow-driver), [http-api](documentation/installation/configuration-reference/#http-api), [gateway driver](documentation/installation/configuration-reference/#gateway-driver), [pulse](documentation/installation/configuration-reference/#pulse), [operation](documentation/installation/configuration-reference/#operation), [lifter](documentation/installation/configuration-reference/#lifter), [common](documentation/installation/configuration-reference/#common)
+Vamp configuration is described in sections, nested inside a parent `vamp {}` tag. Usage, defaults and requirements for each section are outlined below: [info](documentation/installation/v0.9.3/configuration-reference/#info), [stats](documentation/installation/v0.9.3/configuration-reference/#stats), [model](documentation/installation/v0.9.3/configuration-reference/#model), [persistence](documentation/installation/v0.9.3/configuration-reference/#persistence), [container driver](documentation/installation/v0.9.3/configuration-reference/#container-driver), [workflow driver](documentation/installation/v0.9.3/configuration-reference/#workflow-driver), [http-api](documentation/installation/v0.9.3/configuration-reference/#http-api), [gateway driver](documentation/installation/v0.9.3/configuration-reference/#gateway-driver), [pulse](documentation/installation/v0.9.3/configuration-reference/#pulse), [operation](documentation/installation/v0.9.3/configuration-reference/#operation), [lifter](documentation/installation/v0.9.3/configuration-reference/#lifter), [common](documentation/installation/v0.9.3/configuration-reference/#common)
 
 ### akka { }
 Vamp is based on the Akka library. Akka configuration is included in `reference.conf` inside the `akka {}` tag. These settings can be tweaked in `application.conf` (advanced use only). Refer to the akka documentation for details.
@@ -132,7 +132,7 @@ Parameter  |  Options  |  Default |  Details
 
 ## Container driver
 Vamp can be configured to work with Docker, Mesos/Marathon, Kubernetes or Rancher container drivers. Only configuration for the specified `container-driver.type` is required.  
-See the [example configurations](/documentation/installation/example-configurations).
+See the [example configurations](/documentation/installation/v0.9.3/example-configurations).
 ```
 container-driver {
   type = ""
@@ -210,7 +210,7 @@ Parameter  |  Options  |  Default |  Details
           
 ### Container-driver.kubernetes
 Required only when `container-driver.type = "kubernetes" `.  
-See the [example configuration](/documentation/installation/example-configurations).
+See the [example configuration](/documentation/installation/v0.9.3/example-configurations).
 ```
   kubernetes {
     url = ""
@@ -256,7 +256,7 @@ Parameter  |  Options  |  Default |  Details
 
 ### Container-driver.rancher
 Required only when `container-driver.type = "rancher" `.  
-See the [example configuration](/documentation/installation/example-configurations).
+See the [example configuration](/documentation/installation/v0.9.3/example-configurations).
 ```
   rancher {
     url = ""
@@ -670,8 +670,8 @@ Parameter  |  Options  |  Default |  Details
 
 
 {{< note title="What next?" >}}
-* Read about [how to configure Vamp](documentation/installation/configure-vamp)
-* Look at some [example configurations](documentation/installation/example-configurations)
+* Read about [how to configure Vamp](documentation/installation/v0.9.3/configure-vamp)
+* Look at some [example configurations](documentation/installation/v0.9.3/example-configurations)
 * Follow the [tutorials](/documentation/tutorials/overview)
 * You can read in depth about [using Vamp](/documentation/using-vamp/artifacts/) or browse the [API reference](/documentation/api/api-reference/) or [CLI reference](/documentation/cli/cli-reference/) docs.
 {{< /note >}}

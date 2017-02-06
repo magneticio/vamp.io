@@ -55,7 +55,7 @@ Next we need to create a Vamp stack. This can be done either from `catalog` or f
 
 ### Create a Vamp stack from catalog
 
-You can create a Vamp stack directly from the Rancher catalog. Just go to `Catalog`, find the `Vamp` entry and click the `Details` button. Now you are ready to [run Vamp](/documentation/installation/rancher/#run-vamp)
+You can create a Vamp stack directly from the Rancher catalog. Just go to `Catalog`, find the `Vamp` entry and click the `Details` button. Now you are ready to [run Vamp](/documentation/installation/v0.9.2/rancher/#run-vamp)
 
 ### Create a Vamp stack from scratch
 

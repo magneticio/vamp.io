@@ -40,8 +40,8 @@ Vamp can talk directly to a Docker daemon and its driver is configured by defaul
 ![](/images/logos/docker-member.jpg)
 
 {{< note title="What next?" >}}
-* Find out [how to configure Vamp](documentation/installation/configure-vamp)
-* Check the [configuration reference](documentation/installation/configuration-reference)
-* Look at some [example configurations](documentation/installation/example-configurations)
+* Find out [how to configure Vamp](documentation/installation/v0.9.3/configure-vamp)
+* Check the [configuration reference](documentation/installation/v0.9.3/configuration-reference)
+* Look at some [example configurations](documentation/installation/v0.9.3/example-configurations)
 * Follow the [tutorials](/documentation/tutorials/overview)
 {{< /note >}}

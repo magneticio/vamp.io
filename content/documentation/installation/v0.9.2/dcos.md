@@ -17,9 +17,9 @@ menu:
 
 There are different ways to install Vamp on DC.OS. On this page we start out with the most common setup, but if you are interested in doing a custom install or working with public and private nodes you should jump to that section.
 
-* [Standard install](/documentation/installation/dcos/#standard-install)
-* [Custom install](/documentation/installation/dcos/#custom-install)
-* [Public and private nodes](/documentation/installation/dcos/#public-and-private-nodes)
+* [Standard install](/documentation/installation/v0.9.2/dcos/#standard-install)
+* [Custom install](/documentation/installation/v0.9.2/dcos/#custom-install)
+* [Public and private nodes](/documentation/installation/v0.9.2/dcos/#public-and-private-nodes)
 
 
 ## Standard install
@@ -195,7 +195,7 @@ Vamp has now spun up all it's components and you should be able to access the ui
 The Vamp DC/OS Docker image ([github.com/magneticio - Vamp DC/OS](https://github.com/magneticio/vamp-docker/tree/master/vamp-dcos)) contains configuration ([github.com/magneticio - Vamp DC/OS configuration](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)) that can be overridden for specific needs by:
 
 * Making a new Docker image based on the Vamp DC/OS image
-* Using [environment variables](/documentation/installation/configure-vamp#environment-variable-configuration)
+* Using [environment variables](/documentation/installation/v0.9.2/configure-vamp#environment-variable-configuration)
 
 #### Example 1 - Remove the `metrics` and `health` workflows by Vamp configuration and keep the `kibana` workflow:
 
