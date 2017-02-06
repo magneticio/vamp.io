@@ -3,8 +3,11 @@ date: 2016-09-13T09:00:00+00:00
 title: Rancher
 menu:
   main:
+    identifier: "rancher-v093"
     parent: "Installation"
     weight: 60
+aliases:
+    - /documentation/installation/rancher
 ---
 This installation will run Vamp together with Consul, Elasticsearch and Logstash on Rancher. (We'll also deploy our demo Sava application to give you something to play around on). Before you begin, it is advisable to try out the official Rancher Quick Start Guide tutorial first ([rancher.com - quick start guide](http://docs.rancher.com/rancher/latest/en/quick-start-guide/)).
 

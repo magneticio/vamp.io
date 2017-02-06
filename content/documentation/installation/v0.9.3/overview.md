@@ -4,8 +4,10 @@ title: Installation
 aliases:
     - /documentation/installation/
     - /installation/
+    - /documentation/installation/overview/
 menu:
   main:
+    identifier: "installation-overview-v093"
     name: "Overview"
     parent: "Installation"
     weight: 10

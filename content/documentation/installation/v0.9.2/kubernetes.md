@@ -3,9 +3,17 @@ date: 2016-10-04T09:00:00+00:00
 title: Kubernetes
 menu:
   main:
+    identifier: "kubernetes-v092"
     parent: "Installation"
     weight: 50
 ---
+
+{{< note title="The information on this page applies to Vamp v0.9.2" >}}
+
+* Switch to the [latest version of this page](/documentation/installation/kubernetes).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 
 The installation will run Vamp together with etcd, Elasticsearch and Logstash on Google container engine and kubernetes. (We will also deploy our demo Sava application to give you something to play around on). Before you begin, it is advisable to try out the official Quickstart for Google Container Engine tutorial first ([google.com - container engine quickstart](https://cloud.google.com/container-engine/docs/quickstart)).  
 

@@ -3,9 +3,17 @@ date: 2016-09-13T09:00:00+00:00
 title: Configuration reference
 menu:
   main:
+    identifier: "configuration reference-v092"
     parent: "Installation"
     weight: 110
 ---
+
+{{< note title="The information on this page applies to Vamp v0.9.2" >}}
+
+* Switch to the [latest version of this page](/documentation/installation/configuration-reference).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 
 This page describes the structure and parameters in the Vamp configuration files (reference.conf and application.conf).  
 For details on how to customise your Vamp configuration, see [how to configure Vamp](/documentation/installation/configure-vamp/).

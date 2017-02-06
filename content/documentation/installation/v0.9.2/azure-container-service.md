@@ -3,9 +3,16 @@ date: 2016-09-30T12:00:00+00:00
 title: Azure Container Service
 menu:
   main:
+    identifier: "azure-container-service-v092"
     parent: "Installation"
     weight: 80
 ---
+
+{{< note title="The information on this page applies to Vamp v0.9.2" >}}
+
+* Switch to the [latest version of this page](/documentation/installation/azure-container-service).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
 
 To run Vamp together with Azure Container Service ([azure.microsoft.com - Container Service](https://azure.microsoft.com/en-us/services/container-service/)), you need to use DC/OS as the default ACS Docker container scheduler. 
 
