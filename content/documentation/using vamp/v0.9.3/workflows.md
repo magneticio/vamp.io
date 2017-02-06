@@ -17,6 +17,7 @@ Vamp ships with three default workflows:
 * Health  - checks and stores the status of running services. Events stored by the health workflow are used by the Vamp UI.
 * Metrics - stores metrics on running services. Events stored by the metrics workflow are used by the Vamp UI.
 * Kibana - supports the easy creation of Kibana dashboards.
+* Allocation - calculates resource usasge (CPU, memory)
 
 You can create your own workflows using Node JS based scripts running inside a Vamp workflow agent container, or use another language of preference - create an application or script that accesses the Vamp API and build it into a Docker container to be deployed by Vamp.
 
