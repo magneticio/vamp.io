@@ -10,12 +10,13 @@ aliases:
     - /documentation/installation/configure-vamp
 ---
 
-Vamp configuration is held in a combination of the Vamp `application.conf` and `reference.conf` files following the HOCON file standard ([github.com/typesafehub - config](https://github.com/typesafehub/config)). You can override settings in the configuration files using Vamp environment variables or Java/JVM system properties. Vamp configuration is built in layers following this order:
+Vamp configuration is held in a combination of the Vamp `application.conf` and `reference.conf` files following the HOCON file standard ([github.com/typesafehub - config](https://github.com/typesafehub/config)). You can override settings in the configuration files using Vamp environment variables or Java/JVM system properties, or update the applied configuration at runtime using a key value store. Vamp configuration is built in layers following this order:
 
-1. `reference.conf` - part of the Vamp code. Contains generic, default settings. Not a full configuration.
-2. `application.conf` - adds environment specifics to the generic `reference.conf` defaults.
+1. reference.conf - part of the Vamp code. Contains generic, default settings. Not a full configuration.
+2. application.conf - adds environment specifics to the generic reference.conf defaults.
 3. Java system properties - advised for advanced use only.
-4. Environment variables - override all other settings.
+4. Environment variables - overrides settings in reference.conf, application.conf and Java system properties.
+5. Key value store - overrides the applied configuration of Vamp at runtime. Note that `http-api` configuration cannot be updated in the key value store. If you need to update this, use environment variables.
 
 ### On this page:
 
