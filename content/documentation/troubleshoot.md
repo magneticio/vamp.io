@@ -29,13 +29,14 @@ The steps below will help you debug problems encountered when following our full
 
 ### Check the Vamp components
 - Check the step by step instructions for your container scheduler [DC/OS](/documentation/installation/dcos/), [Mesos/Marathon](/documentation/installation/mesos-marathon/), [Kubernetes](/documentation/installation/kubernetes/), [Rancher](/documentation/installation/rancher/) or [Docker](/documentation/installation/docker/). 
-- Check the information panel in the Vamp UI (click the i-icon in the top right corner). If some fields are empty, you may need to adjust your configuration. See the [example Vamp configurations](/documentation/installation/example-configurations).
+- Check the information panel in the Vamp UI (click the i-icon in the top right corner, or check Extended info under Admin). If some fields are empty, you may need to adjust your configuration. See the [example Vamp configurations](/documentation/installation/example-configurations).  
+  You can view and update the configuration in the Vamp UI at Admin > Backend configuration > Applied  
 - Check you are running supported versions of all components.
 - Check the [Vamp release notes](/documentation/release-notes/latest) for known issues and breaking changes.
-- Check that the `vamp` and `vamp-gateway-agent` docker containers are running using `docker ps`. 
-- Check the `vamp` and `vamp-gateway-agent` logs `docker logs {container ID}`  
+- Check that the vamp and vamp-gateway-agent docker containers are running using `docker ps`. 
+- Check the vamp and vamp-gateway-agent logs `docker logs {container ID}`  
   Any errors here should be clear, in case they aren't [report the issue](/documentation/troubleshoot/#report-an-issue).
-- Check the Vamp configuration (`/api/v1/config`): 
+- Check the Vamp configuration (using the API at `/api/v1/config` or in the Admin section of the Vamp UI): 
   - You should use `http://` in front of TCP/HTTP addresses, but not in front of UDP connections. 
   - Make sure there are no double ports (ie 9200:9200)
  
@@ -54,11 +55,12 @@ Problem |  Action
  no Logstash index  |  Check Logstash is correctly configured ([gituhub.com/magneticio - Logstash example configuration](https://github.com/magneticio/vamp-gateway-agent)).
    |  Check Logstash can read the HAProxy logs.
    |  Check Logstash can connect to Elasticsearch.
- no Health or Metrics indices  |  SSH into a Vamp Workflow Agent container and check you can telnet to the Elasticsearch url and the Vamp API set in your Vamp configuration (available from `/api/v1/inf` or `/api/v1/config` or open a workflow and check the environment variables). 
+ no Health or Metrics indices  |  SSH into a Vamp Workflow Agent container and check you can telnet to the Elasticsearch url and the Vamp API set in your Vamp configuration (available from the Admin section of the Vamp UI,  `/api/v1/info` or `/api/v1/config` or open a workflow and check the environment variables). 
 
 ### Check the key value store 
   - Check the key value store reports as connected in Vamp info `GET <vamp url>/api/v1/info`  
-  If not, correct the configuration in `application.conf`
+  If not, correct the configuration in application.conf.  
+  You can view and update the applied Vamp configuration in the Vamp UI under Admin > Backend configuration
   - Check you can communicate with the configured key value store from where Vamp is running.  
   Zookeeper:  
   Consul:  
@@ -68,8 +70,9 @@ Problem |  Action
 The default Vamp workflows should be running continuously and not restarting.
 
   - Check that the three default workflow containers are there using `docker ps`  
-  - Check the logs for each `vamp-workflow-agent` container using `docker logs {container ID}`  
-    If a `failure` is reported, the workflow may not be able to talk to Elasticsearch - check the Elasticsearch configuration in `application.conf`.  
+  - Check the logs for each vamp-workflow-agent container using `docker logs {container ID}`  
+    If a failure is reported, the workflow may not be able to talk to Elasticsearch 
+  - Check the Elasticsearch configuration in application.conf.  
     Any errors here should be clear, in case they aren't [report the issue](/documentation/troubleshoot/#report-an-issue).
 
 If you're still hitting problems, please [report the issue](/documentation/troubleshoot/#report-an-issue).
@@ -105,7 +108,7 @@ If you encounter problems running services on an installed version of Vamp, chec
 
 1. Confirm that everything is installed ok:
   - Check the Vamp info (using `GET <vamp url>/api/v1/info` or in the info pane of the Vamp UI).  
-    If a component is not listed or reported as `not connected`, check the instructions to [troubleshoot a full Vamp installation](/documentation/troubleshoot/#troubleshoot-a-full-vamp-installation) or [troubleshoot the Vamp Hello world quickstart](/documentation/troubleshoot/#troubleshoot-the-vamp-hello-world-quickstart).
+    If a component is not listed or reported as **not connected**, check the instructions to [troubleshoot a full Vamp installation](/documentation/troubleshoot/#troubleshoot-a-full-vamp-installation) or [troubleshoot the Vamp Hello world quickstart](/documentation/troubleshoot/#troubleshoot-the-vamp-hello-world-quickstart).
 - Time-out errors in the Vamp UI? Check that the WebSocket connections to the Vamp API are open and stable
 - Deployments hanging on status "deploying"? Make sure that there are enough resources (CPU and memory) available in your container cluster and that your key-value store is accessible by the Vamp Gateway Agent.
 - Take some time to read through the [documentation](/documentation/using-vamp/blueprints/) and [tutorials](/documentation/tutorials/overview/).

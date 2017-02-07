@@ -12,12 +12,12 @@ aliases:
 
 
 ## reference.conf
-`reference.conf` is part of the Vamp code and should not be modified. It contains generic defaults for many parameters, but does not constitute a full Vamp configuration. Environment-specific settings need to be added in in `application.conf` or using environment variables and/or Java system properties.  
+reference.conf files are part of the Vamp code and should not be modified. They contains generic defaults for many parameters, but does not constitute a full Vamp configuration. Environment-specific settings need to be added in in application.conf or using environment variables and/or Java system properties.  
 
-The full `reference.conf` file can be found in the Vamp project repo ([github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)).
+The Vamp reference.conf file can be found in the Vamp project repo ([github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)). For links to vendor-specific reference.conf files, see the [Vamp configuration reference](/documentation/installation/v0.9.3/configuration-reference/)
 
 ## application.conf
-You can use `application.conf` to tailor the Vamp configuration to fit your environment. Settings specified here, or in environment variables, will override any defaults included in `reference.conf`. Template configuration files are provided, which complete the standard required settings and include the Vamp Health and Metrics workflows (required by the Vamp UI).  If your environment requires extensive customisation, you can [use a custom application.conf file](/documentation/installation/v0.9.3/configure-vamp/#use-a-custom-application-conf-file).
+You can use application.conf to tailor the Vamp configuration to fit your environment. Settings specified here, or in environment variables, will override any defaults included in reference.conf. Template configuration files are provided, these complete the standard required settings and include the Vamp Health and Metrics workflows (required by the Vamp UI).  If your environment requires extensive customisation, you can [use a custom application.conf file](/documentation/installation/v0.9.3/configure-vamp/#use-a-custom-application-conf-file).
 
 
 * [DC/OS application.conf](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)  

@@ -47,7 +47,7 @@ To quickly get started with Vamp on Kubernetes use the following command to auto
 
 ```
 curl -s \
-  https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/vamp_kube_quickstart.sh \
+  https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v0.9.3/vamp_kube_quickstart.sh \
   | bash
 ```
 The script will poll for the external ip of Vamp, note that this process will take a while. if the installation was successful the ip will be displayed:
@@ -62,7 +62,7 @@ To remove the quickstart deployment, use the following command:
 
 ```
 curl -s \
-  https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/vamp_kube_uninstall.sh \
+  https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v0.9.3/vamp_kube_uninstall.sh \
   | bash
 ```
 
@@ -74,7 +74,7 @@ Now let's deploy `etcd` - this installation is based on the tutorial ([github.co
 First, execute:
 
 ```
-kubectl create -f https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/etcd.yml
+kubectl create -f https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v0.9.3/etcd.yml
 ```
 
 Then deploy Elasticsearch and Logstash with a proper Vamp Logstash configuration ([github.com/magneticio - elastic](https://github.com/magneticio/elastic)) using:
@@ -90,7 +90,7 @@ kubectl expose deployment elastic --protocol=TCP --port=5601 --name=kibana
 
 Now we can run Vamp gateway agent as a `daemon set`:
 ```
-kubectl create -f https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/vga.yml
+kubectl create -f https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v0.9.3/vga.yml
 ```
 
 To deploy Vamp, execute:

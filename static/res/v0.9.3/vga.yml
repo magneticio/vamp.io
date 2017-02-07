@@ -1,0 +1,43 @@
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: vamp-gateway-agent
+spec:
+  template:
+    metadata:
+      labels:
+        vamp: vamp-gateway-agent
+    spec:
+      containers:
+      - name: vamp-gateway-agent
+        image: magneticio/vamp-gateway-agent:0.9.2
+        ports:
+        - name: p80
+          containerPort: 80
+        command:
+        - /usr/local/vamp/vamp-gateway-agent
+        - --storeType=etcd
+        - --storeConnection=http://etcd-client:2379
+        - --storeKey=/vamp/gateways/haproxy/1.6/value
+        - --logstash=logstash:10001
+        resources:
+          requests:
+            cpu: 0.2
+            memory: 256
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vamp-gateway-agent
+  labels:
+    vamp: daemon
+spec:
+  selector:
+    vamp: vamp-gateway-agent
+  type: LoadBalancer
+  ports:
+  - name: p80
+    port: 80
+    protocol: TCP
+    targetPort: 80
