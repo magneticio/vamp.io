@@ -1,5 +1,5 @@
 ---
-date: 2016-09-30T12:00:00+00:00
+date: 2017-02-07T12:00:00+00:00
 title: DC/OS 1.7 and 1.8
 menu:
   main:
@@ -110,7 +110,7 @@ Create `vamp.json` with the following content:
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "magneticio/vamp:0.9.2-dcos",
+      "image": "magneticio/vamp:0.9.3-dcos",
       "network": "BRIDGE",
       "portMappings": [
         {
@@ -237,7 +237,7 @@ Running Vamp on public Mesos agent node(s) and disabling automatic Vamp Gateway 
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "magneticio/vamp:0.9.2-dcos",
+      "image": "magneticio/vamp:0.9.3-dcos",
       "network": "BRIDGE",
       "portMappings": [
         {
@@ -292,7 +292,7 @@ Deploying Vamp Gateway Agent on all public and private Mesos agent nodes through
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "magneticio/vamp-gateway-agent:0.9.2",
+      "image": "magneticio/vamp-gateway-agent:0.9.3",
       "network": "HOST",
       "privileged": true,
       "forcePullImage": true
