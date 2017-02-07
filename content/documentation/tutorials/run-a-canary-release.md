@@ -5,6 +5,8 @@ menu:
   main:
     parent: "Tutorials"
     weight: 30
+aliases:
+    - /documentation/guides/getting-started-tutorial/2-canary-release/
 ---
 
 In the [previous tutorial we deployed our app sava 1.0](/documentation/tutorials/deploy-your-first-blueprint/). If you haven't walked through that part already, please do so before continuing.
