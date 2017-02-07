@@ -62,7 +62,7 @@ For details on pagination see [common parameters](/documentation/api/v0.9.3/usin
   You can optionally filter returned events by tag(s) or type, for example:  
   `GET /api/v1/events?tag=archiving&tag=breeds` or  
   `GET /api/v1/events?type=metrics` 
-* The request body should be empty or specify an event `type:`
+* The request body should be empty or specify an event `type:` to filter the results by type.
 
 ### Response
 Will return a (filtered) list of [event resources](/documentation/api/v0.9.3/api-events/#event-resource)].

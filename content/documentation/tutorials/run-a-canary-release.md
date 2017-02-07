@@ -62,7 +62,7 @@ clusters:
 ```
 You could also just leave out the whole `routes` section and use the UI to change the weights after we've done the deployment.
 
-![](/images/screens/v091/tut2_sliders.jpg)
+![](/images/screens/v093/tut2_sliders.png)
 
 ## Deploy the new version of our application next to the old one
 
@@ -71,9 +71,9 @@ is already there and just add v1.1.0 while setting the correct routing between t
 
 ### Deploy using the UI
 
-Go to the **DEPLOYMENTS** tab, open the running deployment and click the **EDIT** button (top right). Copy the blueprint above and paste it over the the deployment that is there then click **SAVE**. Vamp will start working out the differences and update the deployment accordingly.
+Go to the **Deployments** page and open the running **Sava** deployment. Click **Edit deployment** (top right) and paste the blueprint above over the the deployment that is there, then click **Save**. Vamp will start working out the differences and update the deployment accordingly.
 
-![](/images/screens/v091/tut2_canary.jpg)
+![](/images/screens/v093/tut2_canary.png)
 
 ### Deploy using the API
 
@@ -150,10 +150,9 @@ clusters:
           instances: 1
 ```
 
-Using the UI, you can either use the **EDIT** button from the deployment details screen again and completely paste in this blueprint or just
-find the right place in the blueprint and edit it by hand. The result should be the same as using our UI to insert a condition:
+Using the UI, click **Edit deployment** from the deployment detail screen again and either completely paste the above blueprint over the current deployment, or just find the right place in the blueprint and edit it by hand. The result should be the same as using our UI to insert a condition:
 
-![](/images/screens/v091/tut2_canary-condition.jpg)
+![](/images/screens/v093/tut2_canary-condition.png)
 
 As we are not actually deploying anything but just reconfiguring routes, the update should be almost instantaneous. You can fire up a Chrome browser and a Safari browser and check the results. A hard refresh might be necessary because of your browser's caching routine.
 
