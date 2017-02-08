@@ -2,11 +2,11 @@
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-vamp_version="0.9.2"
+vamp_version="0.9.3"
 
 : "${NAMESPACE:=default}"
-: "${VGA_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/vga.yml}"
-: "${ETCD_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/etcd.yml}"
+: "${VGA_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v${vamp_version}/vga.yml}"
+: "${ETCD_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v${vamp_version}/etcd.yml}"
 
 reset=$(tput sgr0)
 red=$(tput setaf 1)
@@ -84,9 +84,10 @@ delete "-f ${ETCD_YAML}"
 delete "-f ${VGA_YAML}"
 
 delete "deployments,services,pods -l run=vamp"
-delete "deployments,services,pods -l run=elastic"
-delete "deployments,services,pods -l vamp=daemon"
-delete "deployments,services,pods -l vamp=gateway"
-delete "deployments,services,pods -l vamp=workflow"
-delete "deployments,services,pods -l vamp=daemon-set"
-delete "deployments,services,pods -l vamp=deployment-service"
+delete "deployments,services,pods -l run=elasticsearch"
+delete "deployments,services,pods -l run=kibana"
+delete "deployments,services,pods -l io.vamp=daemon"
+delete "deployments,services,pods -l io.vamp=gateway"
+delete "deployments,services,pods -l io.vamp=workflow"
+delete "deployments,services,pods -l io.vamp=daemon-set"
+delete "deployments,services,pods -l io.vamp=deployment-service"

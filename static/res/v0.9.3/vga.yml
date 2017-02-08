@@ -11,16 +11,19 @@ spec:
     spec:
       containers:
       - name: vamp-gateway-agent
-        image: magneticio/vamp-gateway-agent:0.9.2
+        image: magneticio/vamp-gateway-agent:0.9.3
         ports:
         - name: p80
           containerPort: 80
-        command:
-        - /usr/local/vamp/vamp-gateway-agent
-        - --storeType=etcd
-        - --storeConnection=http://etcd-client:2379
-        - --storeKey=/vamp/gateways/haproxy/1.6/value
-        - --logstash=logstash:10001
+        env:
+        - name: VAMP_KEY_VALUE_STORE_TYPE
+          value: etcd
+        - name: VAMP_KEY_VALUE_STORE_CONNECTION
+          value: http://etcd-client:2379
+        - name: VAMP_KEY_VALUE_STORE_PATH
+          value: /vamp/gateways/haproxy/1.7/configuration/value
+        - name: VAMP_ELASTICSEARCH_URL
+          value: http://elasticsearch:9200
         resources:
           requests:
             cpu: 0.2

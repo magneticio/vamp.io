@@ -6,8 +6,8 @@ vamp_version="0.9.2"
 
 : "${NAMESPACE:=default}"
 : "${VAMP_IMG:=magneticio/vamp:${vamp_version}-kubernetes}"
-: "${VGA_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/vga.yml}"
-: "${ETCD_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/etcd.yml}"
+: "${VGA_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v${vamp_version}/vga.yml}"
+: "${ETCD_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v${vamp_version}/etcd.yml}"
 : "${ES_IMG:=magneticio/elastic:2.2}"
 
 reset=$(tput sgr0)

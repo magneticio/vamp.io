@@ -5,8 +5,8 @@ dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 vamp_version="0.9.2"
 
 : "${NAMESPACE:=default}"
-: "${VGA_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/vga.yml}"
-: "${ETCD_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/etcd.yml}"
+: "${VGA_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v${vamp_version}/vga.yml}"
+: "${ETCD_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v${vamp_version}/etcd.yml}"
 
 reset=$(tput sgr0)
 red=$(tput setaf 1)

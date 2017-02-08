@@ -101,7 +101,7 @@ kubectl create -f https://raw.githubusercontent.com/magneticio/vamp.io/master/st
 To deploy Vamp, execute:
 
 ```
-kubectl run vamp --image=magneticio/vamp:0.9.1-kubernetes
+kubectl run vamp --image=magneticio/vamp:0.9.2-kubernetes
 kubectl expose deployment vamp --protocol=TCP --port=8080 --name=vamp --type="LoadBalancer"
 ```
 

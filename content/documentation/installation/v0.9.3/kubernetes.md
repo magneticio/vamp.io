@@ -80,10 +80,10 @@ kubectl create -f https://raw.githubusercontent.com/magneticio/vamp.io/master/st
 Then deploy Elasticsearch and Logstash with a proper Vamp Logstash configuration ([github.com/magneticio - elastic](https://github.com/magneticio/elastic)) using:
 
 ```
-kubectl run elastic --image=magneticio/elastic:2.2
-kubectl expose deployment elastic --protocol=TCP --port=9200 --name=elasticsearch
-kubectl expose deployment elastic --protocol=UDP --port=10001 --name=logstash
-kubectl expose deployment elastic --protocol=TCP --port=5601 --name=kibana
+kubectl run elasticsearch --image=elasticsearch:2.4.4
+kubectl run kibana --image=kibana:4.6.4 --env="ELASTICSEARCH_URL=http://elasticsearch:9200"
+kubectl expose deployment elasticsearch --protocol=TCP --port=9200 --name=elasticsearch
+kubectl expose deployment kibana --protocol=TCP --port=5601 --name=kibana
 ```
 
 #### Run Vamp
@@ -96,7 +96,7 @@ kubectl create -f https://raw.githubusercontent.com/magneticio/vamp.io/master/st
 To deploy Vamp, execute:
 
 ```
-kubectl run vamp --image=magneticio/vamp:0.9.1-kubernetes
+kubectl run vamp --image=magneticio/vamp:0.9.3-kubernetes
 kubectl expose deployment vamp --protocol=TCP --port=8080 --name=vamp --type="LoadBalancer"
 ```
 
