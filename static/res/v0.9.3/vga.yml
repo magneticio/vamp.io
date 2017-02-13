@@ -28,6 +28,8 @@ spec:
           requests:
             cpu: 0.2
             memory: 256
+        securityContext:
+          privileged: true
 ---
 apiVersion: v1
 kind: Service
