@@ -171,7 +171,7 @@ $ dcos marathon app list
 ID                        MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
 /elasticsearch            1024  0.2    1/1    1/1       ---        DOCKER   None
 /vamp/vamp                1024  0.5    1/1    1/1       ---        DOCKER   None
-/vamp/vamp-gateway-agent  256   0.2    3/3    ---       ---        DOCKER   ['--storeType=zookeeper', '--storeConnection=zk-1.zk:2181', '--storeKey=/vamp/gateways/haproxy/1.6', '--logstash=elasticsearch.marathon.mesos:10001']
+/vamp/vamp-gateway-agent  256   0.2    3/3    ---       ---        DOCKER   None
 /vamp/workflow-health      64   0.1    1/1    ---       ---        DOCKER   None
 /vamp/workflow-kibana      64   0.1    1/1    ---       ---        DOCKER   None
 /vamp/workflow-metrics     64   0.1    1/1    ---       ---        DOCKER   None
@@ -298,24 +298,31 @@ Deploying Vamp Gateway Agent on all public and private Mesos agent nodes through
       "forcePullImage": true
     }
   },
-  "args": [
-    "--storeType=zookeeper",
-    "--storeConnection=zk-1.zk:2181",
-    "--storeKey=/vamp/gateways/haproxy/1.6",
-    "--logstash=elasticsearch.marathon.mesos:10001"
-  ],
+  "env": {
+    "VAMP_KEY_VALUE_STORE_TYPE": "zookeeper",
+    "VAMP_KEY_VALUE_STORE_CONNECTION": "zk-1.zk:2181",
+    "VAMP_KEY_VALUE_STORE_PATH": "/vamp/gateways/haproxy/1.7/configuration",
+    "VAMP_ELASTICSEARCH_URL": "elasticsearch.marathon.mesos:10001"
+  },
   "constraints": [
-    [
-      "hostname",
-      "UNIQUE"
-    ]
+    ["hostname","UNIQUE"]
+  ],
+  "healthChecks": [
+    {
+      "path": "/health",
+      "protocol": "HTTP",
+      "port": 1988,
+      "gracePeriodSeconds": 30,
+      "intervalSeconds": 10,
+      "timeoutSeconds": 5,
+      "maxConsecutiveFailures": 3
+    }
   ],
   "acceptedResourceRoles": [
     "slave_public",
     "*"
   ]
 }
-
 ```
 
 {{< note title="What next?" >}}
