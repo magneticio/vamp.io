@@ -6,8 +6,6 @@ menu:
     identifier: "sticky-sessions-v092"
     parent: "Using Vamp"
     weight: 130
-aliases:
-    - /documentation/using-vamp/sticky-sessions/
 ---
 
 Vamp supports `route` and `instance` level sticky sessions.

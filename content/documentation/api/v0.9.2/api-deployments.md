@@ -6,8 +6,6 @@ menu:
     parent: "API"
     identifier: "api-reference-deployments-092"
     weight: 90
-aliases:
-    - /documentation/api/api-deployments
 ---
 
 Deployments are dynamic runtime structures, so changes to them take time to execute and can possibly fail. Most API calls to the `/deployments` endpoint will, therefore, return a `202: Accepted` return code, indicating the asynchronous nature of the call. Deployments have a set of sub resources: [deployment SLAs](/documentation/api/v0.9.2/api-deployment-slas), [deployment scales](/documentation/api/v0.9.2/api-deployment-scales) and [gateways](/documentation/api/v0.9.2/api-gateways). These are instantiations of their static counterparts.

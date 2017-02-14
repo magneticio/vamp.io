@@ -6,9 +6,6 @@ menu:
     parent: "Release notes"
     name: Version 0.9.2
     weight: 997
-aliases:
-    - /documentation/release-notes/
-    - /documentation/release-notes/latest/
 ---
 
 _22nd December 2016_

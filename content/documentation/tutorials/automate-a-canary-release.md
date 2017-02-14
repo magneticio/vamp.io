@@ -67,7 +67,7 @@ We can use Vamp Runner to quickly create and deploy all the artifacts required f
 
  The EVENTS stream in Vamp Runner will show the process of each step until our services are deployed. The created artifacts and deployments are visible in the Vamp UI (or via the API) and, if everything worked as expected, the deployed service can be accessed at the external gateway Vamp Runner created (9050).
 
-![](images/screens/v091/canary_deployments.png)
+![](images/screens/v093/canary_deployments.png)
 
 ![](images/screens/v091/canary_sava10.png)
 

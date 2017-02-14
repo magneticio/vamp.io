@@ -6,8 +6,6 @@ menu:
     parent: "API"
     identifier: "api-reference-debug-092"
     weight: 80
-aliases:
-    - /documentation/api/api-debug
 ---
 
 ## Actions

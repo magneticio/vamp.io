@@ -6,8 +6,6 @@ menu:
     parent: "API"
     identifier: "api-reference-slas-092"
     weight: 200
-aliases:
-    - /documentation/api/api-slas
 ---
 SLAs (Service Level Aggreemets) can be used to define a pre-described set of boundaries to a service and the actions that should take place once the service crosses those boundaries. You can save and manage SLA templates through the API, these can then be referenced in a blueprint or deployment. Read about [using SLAs](documentation/using-vamp/sla/).
 

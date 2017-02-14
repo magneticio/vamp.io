@@ -6,8 +6,6 @@ menu:
     identifier: "gateways-v092"
     parent: "Using Vamp"
     weight: 60
-aliases:
-    - /documentation/using-vamp/gateways/
 ---
 
 Gateways are dynmic runtime entities in the Vamp eco-system. They represent load balancer rules to deployment, cluster and service instances. There are two types of gateways:

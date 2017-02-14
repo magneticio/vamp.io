@@ -43,14 +43,14 @@ clusters:
 
 #### Deploy using the Vamp UI
 
-In the Vamp UI, go to the **BLUEPRINTS** tab and click the ADD button (top right). Paste in the above blueprint and press the SAVE button. Vamp will store the blueprint and make it available for deployment. 
-Now Press **DEPLOY AS**. You'll be prompted to give your deployment a name, let's call it **sava**, then press **DEPLOY** to start the deployment and you can skip to [Check out the deployed application](/documentation/tutorials/deploy-your-first-blueprint/#check-out-the-deployed-application).
+In the Vamp UI, go to the **Blueprints** page and click **Add new** button (top right). Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment. 
+Now click **Deploy as**. You'll be prompted to give your deployment a name, let's call it **sava**, then click **Deploy** to start the deployment.
 
-![](/images/screens/v091/tut1_deploy.jpg)
+![](/images/screens/v093/tut1_deploy.png)
 
 #### Deploy using the Vamp API
 
-You can use your favourite tools like Postman ([getpostman.com](https://www.getpostman.com/)), HTTPie ([github.com/jakubroztocil - httpie](https://github.com/jakubroztocil/httpie)) or Curl to post this blueprint directly to the `api/v1/deployments` endpoint of Vamp.
+You could also use your favourite tools like Postman ([getpostman.com](https://www.getpostman.com/)), HTTPie ([github.com/jakubroztocil - httpie](https://github.com/jakubroztocil/httpie)) or Curl to post this blueprint directly to the `api/v1/deployments` endpoint of Vamp.
 
 Take care to set the correct `Content-Type: application/x-yaml` header on the POST request. Vamp is kinda
 strict with regard to content types, because we support JSON and YAML so we need to know what you are sending.   
@@ -73,7 +73,7 @@ You can also use the RESTful API to create a deployment with a custom name - sim
 
 You can follow the deployment process of our container by checking the `/api/v1/deployments` endpoint and checking when the `state` field changes from `ReadyForDeployment` to `Deployed`. You can also check Marathon's GUI.
 
-When the application is fully deployed you can check it out at Vamp host address + the port that was assigned in the blueprint, e.g: `http://10.26.184.254:9050/`. It should report a refreshing hipster lorem ipsum ([hipsterjesus.com](http://hipsterjesus.com/)) upon each reload.  
+When the application is fully deployed, you can check it out at Vamp host address + the port that was assigned in the blueprint, e.g: `http://10.26.184.254:9050/`. It should report a refreshing hipster lorem ipsum ([hipsterjesus.com](http://hipsterjesus.com/)) upon each reload.  
 
 See [check Vamp is up and running](/documentation/installation/hello-world/#check-vamp-is-up-and-running) for a full ist of all services exposed in the hello world setup.
 
@@ -91,15 +91,15 @@ or
 ab -k -c 15 -n 10000 http://`docker-machine ip default`:9050/
 ```
 
-You should see the metrics spike and some pretty charts being drawn:
+You should see the metrics spike and some pretty charts being drawn on the **sava/9050** gateway page:
 
-![](/images/screens/v091/tut1_metrics.jpg)
+![](/images/screens/v093/tut1_metrics.png)
 
 ## Change scale and load-balancing
 
-Vamp will automatically load-balance services. Let's change the scale of the service. Go to the **DEPLOYMENTS** tab and open the **sava** deployment. Click the edit icon under **SCALE** and enter **3** in the **instances** field. click **SAVE** and Vamp will automatically scale up the number of running instances (of course permitting underlying resources) and load-balance these to the outside world using the gateway feature.
+Vamp will automatically load-balance services. Let's change the scale of the service. Go back to the **Deployments** page and open the **sava** deployment. Click the edit icon under **SCALE** and enter **3** in the **instances** field. Click **Save** and Vamp will automatically scale up the number of running instances (of course permitting underlying resources) and load-balance these to the outside world using the gateway feature.
 
-![](/images/screens/v091/tut1_scale.jpg)
+![](/images/screens/v093/tut1_scale.png)
 
 ## Chaos monkey
 

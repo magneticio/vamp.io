@@ -6,8 +6,6 @@ menu:
     parent: "API"
     identifier: "api-reference-blueprints-092"
     weight: 40
-aliases:
-    - /documentation/api/api-blueprints
 ---
 Blueprints are static artifacts. They describe how breeds work in runtime and what properties they should have. Read about [using blueprints](documentation/using-vamp/blueprints/).
 

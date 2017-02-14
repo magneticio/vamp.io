@@ -6,8 +6,6 @@ menu:
     identifier: "blueprints-v092"
     parent: "Using Vamp"
     weight: 30
-aliases:
-    - /documentation/using-vamp/blueprints/
 ---
 
 Blueprints are execution plans - they describe how your services should be hooked up and what their topology should look like at runtime. This means you reference your breeds (or define them inline) and add runtime configuration to them.

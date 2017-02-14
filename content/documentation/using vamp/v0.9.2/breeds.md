@@ -6,8 +6,6 @@ menu:
     identifier: "breeds-v092"
     parent: "Using Vamp"
     weight: 20
-aliases:
-    - /documentation/using-vamp/breeds/
 ---
 
 Breeds are static descriptions of applications and services available for deployment. Each breed is described by the DSL in YAML notation or JSON, whatever you like. This description includes name, version, available parameters, dependencies etc.
