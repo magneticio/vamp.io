@@ -28,6 +28,8 @@ spec:
           requests:
             cpu: 0.2
             memory: 256
+        securityContext:
+          privileged: true
 ---
 apiVersion: v1
 kind: Service
@@ -44,3 +46,7 @@ spec:
     port: 80
     protocol: TCP
     targetPort: 80
+  - name: p9050
+    port: 9050
+    protocol: TCP
+    targetPort: 9050

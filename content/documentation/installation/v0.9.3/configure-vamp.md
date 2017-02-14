@@ -41,7 +41,7 @@ docker run --net=host \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=$(docker-machine ip default)" \
            -e "VAMP_INFO_MESSAGE=hey YOU! " \
-           magneticio/vamp-docker:0.9.2
+           magneticio/vamp-docker:0.9.3
 ```
 
 ### Java system properties
@@ -62,7 +62,7 @@ For more extensive customisations, you can create a new Docker image, extending 
 1. Copy application.conf [(github.com/magneticio - Vamp DCOS application.conf)](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)
 2. Adjust as required. Check the list of configuration settings (below) for details of the available optionsa
 3. Create a Dockerfile with the lines:  
-  `FROM magneticio/vamp-dcos:0.9.2`  
+  `FROM magneticio/vamp-dcos:0.9.3`  
   `ADD application.conf /usr/local/vamp/conf/`
 4. Build the image with `docker build --tag <username>/vamp`
 
@@ -84,7 +84,7 @@ vamp {
 }
 ```
 
-This is as of 0.9.2 how [we configure our DC/OS Docker image]( https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)
+This is as of 0.9.3 how [we configure our DC/OS Docker image]( https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)
 
 (Typesafe documentation on the topic covering system or env variable overrides)[https://github.com/typesafehub/config#optional-system-or-env-variable-overrides]
 

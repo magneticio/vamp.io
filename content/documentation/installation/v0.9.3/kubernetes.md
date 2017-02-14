@@ -156,7 +156,7 @@ clusters:
 Be sure that the cluster has enough resources (CPU, memory), otherwise deployments will be in pending state. Once it's running we can check if all Vamp Gateway Agent services are up:
 
 ```
-kubectl get services --show-labels -l vamp=gateway
+kubectl get services --show-labels -l vamp=daemon
 ```
 
 
