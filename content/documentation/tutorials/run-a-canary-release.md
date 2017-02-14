@@ -27,7 +27,7 @@ Vamp allows you to do canary releases using blueprints. Take a look at the YAML 
 
 ```yaml
 ---
-name: sava:1.0
+name: sava
 gateways:
   9050: sava/webport
 clusters:

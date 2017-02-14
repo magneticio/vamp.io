@@ -1,5 +1,5 @@
 ---
-date: 2016-12-22T09:00:00+00:00
+date: 2017-02-14T09:00:00+00:00
 title: Version 0.9.3
 menu:
   main:
@@ -11,9 +11,9 @@ aliases:
     - /documentation/release-notes/latest/
 ---
 
-_February 2017_
+_14th February 2017_
 
-![](/img/006-mock-ups/VAMP-light-laptop-v091-hero.png)
+![](/images/screens/v093/VAMP-dark-laptop-v093-hero.png)
 
 
 
