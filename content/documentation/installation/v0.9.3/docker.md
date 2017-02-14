@@ -10,7 +10,12 @@ aliases:
     - /documentation/installation/docker
 ---
 
-Vamp can talk directly to a Docker daemon and its driver is configured by default. This is useful for local testing. Vamp can even run inside Docker while deploying to Docker.  You can pass native Docker options by [using the Docker dialect in a Vamp blueprint.](/documentation/using-vamp/blueprints/#dialects). Docker Swarm support is coming soon.
+{{< note title="Note!" >}}
+Vamp v0.9.3 has not been tested on the latest local version of Docker.  
+Docker Swarm support is coming soon, see [github.com - issue #690: Docker swarm support](https://github.com/magneticio/vamp/issues/690)
+{{< /note >}}
+
+Vamp can talk directly to a Docker daemon and its driver is configured by default. This is useful for local testing. Vamp can even run inside Docker while deploying to Docker.  You can pass native Docker options by [using the Docker dialect in a Vamp blueprint.](/documentation/using-vamp/blueprints/#dialects). 
 
 #### Set Docker as the Vamp container driver
 1. Install Docker as per Docker's installation manual ([docs.docker.com - install Docker engine](https://docs.docker.com/engine/installation/))
