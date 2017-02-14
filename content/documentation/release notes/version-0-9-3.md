@@ -37,7 +37,7 @@ _February 2017_
 * Default workflow parameters are applied only on `application/javascript` workflows [#880](https://github.com/magneticio/vamp/issues/880)
 
 ## Known issues
-
+* Rancher not currently supported - use [Vamp v0.9.2 Rancher install](/documentation/installation/v0.9.2/rancher/)
 
 {{< note title="What next?" >}}
 * Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases))
