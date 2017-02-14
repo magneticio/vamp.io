@@ -10,7 +10,7 @@ menu:
 
 {{< note title="The information on this page applies to Vamp v0.9.2" >}}
 
-* Switch to the [latest version of this page](/documentation/installation/v0.9.2/docker).
+* Switch to the [latest version of this page](/documentation/installation/docker).
 * Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
 {{< /note >}}
 
