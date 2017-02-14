@@ -24,6 +24,7 @@ Vamp has a few basic entities or artifacts you can work with, these can be class
 -   **Blueprints** are, well, blueprints! They describe how breeds work in runtime and what properties they should have.  [Read more...](/documentation/using-vamp/v0.9.3/blueprints/)  
 -   **Breeds** describe single services and their dependencies.  [Read more...](/documentation/using-vamp/v0.9.3/breeds/)
 -   **Scales** define the size of a deployed service [Read more...](documentation/using-vamp/v0.9.3/blueprints/#scale)
+-   **Conditions** define filters for incoming traffic [Read more...](documentation/using-vamp/v0.9.3/conditions)
 
 ## Working across multiple teams
 
