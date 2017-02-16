@@ -9,14 +9,16 @@ menu:
 ---
 
 {{< note title="Katana is not an official release">}}
-All changes since the last official release are described below. This applies only to binaries built from source (master branch). 
+All changes since the last official release are described below. This applies only to binaries built from source (master branch).
 {{< /note >}}
 
 ## What is new
-No changes since last release
+
+* Service level health checks DSL for Marathon [#709](https://github.com/magneticio/vamp/issues/709)
 
 ## What has changed
-No changes since last release
+
+* Synchronization when health checks are changed needs to be explicitly specified `vamp.operation.synchronization.check.health-check`: `true` or `false` [#709](https://github.com/magneticio/vamp/issues/709)
 
 {{< note title="What next?" >}}
 * Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases))
