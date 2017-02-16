@@ -132,10 +132,8 @@ Create `vamp.json` with the following content:
   },
   "env": {
     "VAMP_WAIT_FOR": "http://elasticsearch.marathon.mesos:9200/.kibana",
-    "VAMP_PERSISTENCE_DATABASE_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200",
-    "VAMP_GATEWAY_DRIVER_LOGSTASH_HOST": "elasticsearch.marathon.mesos",
     "VAMP_WORKFLOW_DRIVER_VAMP_URL": "http://10.20.0.100:8080",
-    "VAMP_PULSE_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200"
+    "VAMP_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200"
   },  
   "healthChecks": [
     {
@@ -260,10 +258,8 @@ Running Vamp on public Mesos agent node(s) and disabling automatic Vamp Gateway 
   "env": {
     "VAMP_LIFTER_ARTIFACT_FILES": "[\"breeds/health.js\",\"workflows/health.yml\",\"breeds/metrics.js\",\"workflows/metrics.yml\",\"breeds/kibana.js\",\"workflows/kibana.yml\"]",
     "VAMP_WAIT_FOR": "http://elasticsearch.marathon.mesos:9200/.kibana",
-    "VAMP_PERSISTENCE_DATABASE_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200",
-    "VAMP_GATEWAY_DRIVER_LOGSTASH_HOST": "elasticsearch.marathon.mesos",
-    "VAMP_WORKFLOW_DRIVER_VAMP_URL": "http://vamp-vamp.marathon.mesos:8080",
-    "VAMP_PULSE_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200"
+    "VAMP_WORKFLOW_DRIVER_VAMP_URL": "http://10.20.0.100:8080",
+    "VAMP_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200"
   },
   "acceptedResourceRoles": [
     "slave_public"
