@@ -10,7 +10,7 @@ aliases:
     - /documentation/installation/kubernetes
 ---
 
-The installation will run Vamp together with etcd, Elasticsearch and Logstash on Google container engine and kubernetes. (We will also deploy our demo Sava application to give you something to play around on). Before you begin, it is advisable to try out the official Quickstart for Google Container Engine tutorial first ([google.com - container engine quickstart](https://cloud.google.com/container-engine/docs/quickstart)).  
+The installation will run Vamp together with etcd and Elasticsearch on Google container engine and kubernetes. Before you begin, it is advisable to try out the official Quickstart for Google Container Engine tutorial first ([google.com - container engine quickstart](https://cloud.google.com/container-engine/docs/quickstart)).  
 
 {{< note title="Note!" >}}
 Kubernetes support is still in Alpha.
@@ -23,7 +23,7 @@ This guide has been tested on Kubernetes and kubectl 1.4.x and 1.5. Minikube 0.1
 
 * Google Container Engine cluster or Minikube (0.13.1 or later)
 * Key-value store (like ZooKeeper, Consul or etcd)
-* Elasticsearch and Logstash
+* Elasticsearch
 * Enough (CPU and memory) resources on your K8s cluster to deploy the Vamp dependencies AND the containers at the scale you define. NB take a look into the available resources when a deployment keeps "hanging" to see if you actually have enough resources available.
 * Vamp currently only supports the 'default' namespace, so this should be available.
 
@@ -68,7 +68,7 @@ curl -s \
 
 ## Manual deployment
 
-#### Deploy etcd, Elasticsearch and Logstash
+#### Deploy etcd, Elasticsearch
 
 Now let's deploy `etcd` - this installation is based on the tutorial ([github.com/coreos - etcd on Kubernetes](https://github.com/coreos/etcd/tree/master/hack/kubernetes-deploy)).  Note that this is not a production grade setup - you would also need to take care of persistence and running multiple replicas of each pod.
 First, execute:
@@ -77,7 +77,7 @@ First, execute:
 kubectl create -f https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v0.9.3/etcd.yml
 ```
 
-Then deploy Elasticsearch and Logstash with a proper Vamp Logstash configuration ([github.com/magneticio - elastic](https://github.com/magneticio/elastic)) using:
+Then deploy Elasticsearch with a proper Vamp configuration ([github.com/magneticio - elastic](https://github.com/magneticio/elastic)) using:
 
 ```
 kubectl run elasticsearch --image=elasticsearch:2.4.4
@@ -122,7 +122,6 @@ etcd0                10.3.251.13    <none>           2379/TCP,2380/TCP   4m
 etcd1                10.3.251.103   <none>           2379/TCP,2380/TCP   4m
 etcd2                10.3.250.20    <none>           2379/TCP,2380/TCP   4m
 kubernetes           10.3.240.1     <none>           443/TCP             5m
-logstash             10.3.254.16    <none>           10001/UDP           4m
 vamp                 10.3.242.93    146.148.118.45   8080/TCP            2m
 vamp-gateway-agent   10.3.254.234   146.148.22.145   80/TCP              2m
 ```
