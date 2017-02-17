@@ -46,18 +46,19 @@ We replaced the original Vamp Gateway Agent agent binary with confd (magneticio/
 * Configuration change: `vamp.workflow-driver.workflow.deployables."application/javascript"` has been changed to `vamp.workflow-driver.workflow.deployables.application.javascript`
 * Default workflow parameters are applied only on `application/javascript` workflows [#880](https://github.com/magneticio/vamp/issues/880)
 
-***Additions and changes in related Vamp components and projects***
-*Vamp Workflow Agent*
+## Additions and changes to related Vamp components and projects
+## Vamp Workflow Agent
+
 * Added elastic metricbeat https://github.com/magneticio/vamp-workflow-agent/issues/10
 * Upgraded to Alpine 3.5 https://github.com/magneticio/vamp-workflow-agent/issues/11
 
-*Vamp Gateway Agent*
+## Vamp Gateway Agent
 * Replaced VWA binary with confd https://github.com/magneticio/vamp-gateway-agent/issues/7 https://github.com/magneticio/vamp-gateway-agent/issues/25
 * Added Runit for supervisor and init system https://github.com/magneticio/vamp-gateway-agent/issues/27
 * Replaced logstash with filebeat https://github.com/magneticio/vamp-gateway-agent/issues/29
 * Added health check endpoints https://github.com/magneticio/vamp-gateway-agent/issues/21
 
-*Vamp UI*
+## Vamp UI
 * Added pagination https://github.com/magneticio/vamp-ui/issues/177
 * New navigation https://github.com/magneticio/vamp-ui/issues/196
 * Backend configuration panel https://github.com/magneticio/vamp-ui/issues/199
