@@ -14,7 +14,11 @@ All changes since the last official release are described below. This applies on
 
 ## What is new
 
-* Service level health checks DSL for Marathon [#709](https://github.com/magneticio/vamp/issues/709)
+* Service-, cluster-, workflow- and breed level health checks DSL for Marathon
+([#709](https://github.com/magneticio/vamp/issues/709), 
+[#914](https://github.com/magneticio/vamp/issues/914),
+[#899](https://github.com/magneticio/vamp/issues/899),
+[#913](https://github.com/magneticio/vamp/issues/913)).
 
 ## What has changed
 
