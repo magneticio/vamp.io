@@ -1,5 +1,5 @@
 ---
-date: 2016-09-13T09:00:00+00:00
+date: 2017-02-14T09:00:00+00:00
 title: Feature list
 menu:
   main:
@@ -7,7 +7,7 @@ menu:
     weight: 50
 ---
 
-Vamp 0.9.2 includes:
+Vamp 0.9.3 includes:
 
 * Container-scheduler agnostic API
 * Percentage and condition based programmable routing
@@ -23,7 +23,7 @@ Vamp 0.9.2 includes:
 * Multi-level metric aggregation
 * Port-based, virtual host names or external service (consul etc) based service discovery support
 * Lightweight design to run in high-available mission-critical architectures
-* Integrates with ELK stack (Elastic Search, Logstash, Kibana) for custom Kibana dashboards
+* Integrates with Elastic Search and Kibana for custom Kibana dashboards
 * Vamp Runner provides automated integration and workflows testing
 
 
