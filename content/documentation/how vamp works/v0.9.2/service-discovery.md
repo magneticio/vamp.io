@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: Service discovery
 menu:
   main:
-    identifier: "service-discovery-v092"
+    identifier: "hvw-service-discovery-v092"
     parent: "How Vamp works"
     weight: 40
 ---

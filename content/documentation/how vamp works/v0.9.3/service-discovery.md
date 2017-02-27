@@ -5,7 +5,7 @@ aliases:
     - /documentation/how-vamp-works/service-discovery
 menu:
   main:
-    identifier: "service-discovery-v093"
+    identifier: "hvw-service-discovery-v093"
     parent: "How Vamp works"
     weight: 40
 ---
