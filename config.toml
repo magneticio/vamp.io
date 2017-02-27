@@ -115,6 +115,13 @@ googleAnalytics = ""
 	weight = 40
 
 [[menu.main]]
+	name = "Troubleshoot"
+	identifier = "Troubleshooting"
+	url = "/documentation/troubleshoot"
+	parent = "Documentation"
+	weight = 50
+
+[[menu.main]]
 	name = "API documentation"
 	identifier = "API"
 	url = "/documentation/api/api-reference"
