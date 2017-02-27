@@ -46,15 +46,7 @@ $ docker run \
 
 
 ## Create a Vamp stack
-Next we need to create a Vamp stack. This can be done either from `catalog` or from scratch (adding all dependencies manually - Consul, Elasticsearch, Logstash).
-
-### Create a Vamp stack from catalog
-
-You can create a Vamp stack directly from the Rancher catalog. Just go to `Catalog`, find the `Vamp` entry and click the `Details` button. Now you are ready to [run Vamp](/documentation/installation/v0.9.2/rancher/#run-vamp)
-
-### Create a Vamp stack from scratch
-
-If you'd rather create a Vamp stack from scratch, our custom Docker image `magneticio/elastic:2.2` contains Elasticsearch, Logstash and Kibana with the proper Logstash configuration for Vamp. More details can be found on the github project page ([github.com/magneticio - elastic](https://github.com/magneticio/elastic)).
+Next we need to create a Vamp stack and add all dependencies (Consul, Elasticsearch, Logstash). Our custom Docker image `magneticio/elastic:2.2` contains Elasticsearch, Logstash and Kibana with the proper Logstash configuration for Vamp. More details can be found on the github project page ([github.com/magneticio - elastic](https://github.com/magneticio/elastic)).
 
 1. Go to `Add Stack` and create a new stack `vamp` (lowercase).
 2. Install Consul:  
