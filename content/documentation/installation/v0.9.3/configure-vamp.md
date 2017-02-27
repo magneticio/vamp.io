@@ -89,7 +89,7 @@ This is as of 0.9.3 how [we configure our DC/OS Docker image]( https://github.co
 (Typesafe documentation on the topic covering system or env variable overrides)[https://github.com/typesafehub/config#optional-system-or-env-variable-overrides]
 
 ## Include configuration not intended for Vamp
-It is possible to store configuration parameters not intended for use by Vamp itself in the Vamp `application.conf` file, such as configuration for Logstash or workflows. For example, you could chose to include the logstash URL in your custom `application.conf` file - Vamp would ignore the parameter, but it would be available to all workflows through the API. This is useful for storing shared local configuration parameters. Configuration specific to a single workflow is best set using environment variables or by hard coding the parameter.
+It is possible to store configuration parameters not intended for use by Vamp itself in the Vamp `application.conf` file, such as configuration for workflows. Vamp would ignore the parameter, but it would be available to all workflows through the API. This is useful for storing shared local configuration parameters. Configuration specific to a single workflow is best set using environment variables or by hard coding the parameter.
 
 ## Access configuration parameters through the API
 All configuration parameters can be retrieved from the Vamp API endpoint `config` or `configuration`. 
