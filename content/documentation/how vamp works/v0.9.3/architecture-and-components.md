@@ -4,8 +4,10 @@ title: Architecture and components
 aliases: 
     - /documentation/
     - /documentation/using-vamp/artifacts/
+    - /documentation/how-vamp-works/architecture-and-components/
 menu:
   main:
+    identifier: "architecture-and-components-v093"
     parent: "How Vamp works"
     weight: 10
 ---
@@ -15,7 +17,7 @@ Vamp and the Vamp Gateway Agent require specific elements in your architecture t
 
 #### Example topology
 The below diagram should be used more as an overview than required architecture. For example, in this diagram the Mesos/Marathon stack and Elasticsearch are included even though these are not a hard dependency. Vamp can be configured to run with other container schedulers, log-aggregators, key-value and event-stores.
-![architecture](/images/diagram/Architecture-and-components.svg)
+![architecture](/images/diagram/v093/Architecture-and-components.svg)
 
 ## Vamp components
 
@@ -39,5 +41,5 @@ Vamp Gateway Agent (VGA) reads the HAProxy configuration from ZooKeeper, etcd or
 Logs from HAProxy are read over socket and pushed to Logstash over UDP.  VGA will handle and recover from ZooKeeper, etcd, Consul and Logstash outages without interrupting the HAProxy process and client requests.  
 
 {{< note title="What next?" >}}
-* Read about the [requirements to run Vamp](/documentation/how-vamp-works/requirements)
+* Read about the [requirements to run Vamp](/documentation/how-vamp-works/v0.9.3/requirements)
 {{< /note >}}

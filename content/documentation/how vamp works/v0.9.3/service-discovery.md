@@ -1,8 +1,11 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Service discovery
+aliases: 
+    - /documentation/how-vamp-works/service-discovery
 menu:
   main:
+    identifier: "service-discovery-v093"
     parent: "How Vamp works"
     weight: 40
 ---
@@ -17,6 +20,6 @@ For Vamp, we recognise the following benefits of this pattern:
 * Easy integration using ENV variables.
 
 {{< note title="What next?" >}}
-* More about [service discovery](/documentation/using-vamp/service-discovery)
-* Read about how Vamp works with [routing and load balancing](/documentation/how-vamp-works/routing-and-load-balancing)
+* More about [service discovery](/documentation/using-vamp/v0.9.3/service-discovery)
+* Read about how Vamp works with [routing and load balancing](/documentation/how-vamp-works/v0.9.3/routing-and-load-balancing)
 {{< /note >}}
