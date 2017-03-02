@@ -150,7 +150,7 @@ vamp.operation.synchronization.timeout.ready-for-deployment: {...}
 
 ## List config
 
-Return details of Vamp's JVM environment and runtime status, the configured persistence layer and the container driver status. 
+Return the applied backend Vamp configuration. 
 
 ### Request
 
