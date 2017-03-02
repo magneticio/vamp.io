@@ -7,7 +7,7 @@ spec:
   template:
     metadata:
       labels:
-        vamp: vamp-gateway-agent
+        io.vamp: vamp-gateway-agent
     spec:
       containers:
       - name: vamp-gateway-agent
@@ -36,10 +36,10 @@ kind: Service
 metadata:
   name: vamp-gateway-agent
   labels:
-    vamp: daemon
+    io.vamp: daemon
 spec:
   selector:
-    vamp: vamp-gateway-agent
+    io.vamp: vamp-gateway-agent
   type: LoadBalancer
   ports:
   - name: p80
