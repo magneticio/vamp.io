@@ -298,7 +298,7 @@ Deploying Vamp Gateway Agent on all public and private Mesos agent nodes through
     "VAMP_KEY_VALUE_STORE_TYPE": "zookeeper",
     "VAMP_KEY_VALUE_STORE_CONNECTION": "zk-1.zk:2181",
     "VAMP_KEY_VALUE_STORE_PATH": "/vamp/gateways/haproxy/1.7/configuration",
-    "VAMP_ELASTICSEARCH_URL": "elasticsearch.marathon.mesos:10001"
+    "VAMP_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200"
   },
   "constraints": [
     ["hostname","UNIQUE"]
