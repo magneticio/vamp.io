@@ -10,7 +10,7 @@ aliases:
     - /documentation/using-vamp/gateways/
 ---
 
-Gateways are dynmic runtime entities in the Vamp eco-system. They represent load balancer rules to deployment, cluster and service instances. There are two types of gateways:
+Gateways are dynamic runtime entities in the Vamp eco-system. They represent load balancer rules to deployment, cluster and service instances. There are two types of gateways:
 
 * **Internal gateways** are created automatically for each deployment cluster and updated using the gateway/deployment API
 * **External gateways** are explicitly declared either in a deployment blueprint or using the gateway API
