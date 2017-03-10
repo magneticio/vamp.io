@@ -15,10 +15,11 @@ All changes since the last official release are described below. This applies on
 ## What is new
 
 * Service-, cluster-, workflow- and breed level health checks DSL for Marathon
-([#709](https://github.com/magneticio/vamp/issues/709), 
+([#709](https://github.com/magneticio/vamp/issues/709),
 [#914](https://github.com/magneticio/vamp/issues/914),
 [#899](https://github.com/magneticio/vamp/issues/899),
 [#913](https://github.com/magneticio/vamp/issues/913)).
+* Transform a docker-compose.yml to Blueprint ([#928](https://github.com/magneticio/vamp/issues/928))
 
 ## What has changed
 
