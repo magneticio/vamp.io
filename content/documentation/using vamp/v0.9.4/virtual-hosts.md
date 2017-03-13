@@ -3,9 +3,11 @@ date: 2016-09-13T09:00:00+00:00
 title: Virtual Hosts
 menu:
   main:
-    identifier: "virtual-hosts-v093"
+    identifier: "virtual-hosts-v094"
     parent: "Using Vamp"
     weight: 140
+aliases:
+    - /documentation/using-vamp/virtual-hosts/
 ---
 
 Vamp can be configured to support virtual host via HAProxy:
@@ -143,6 +145,6 @@ $ curl --resolve run.vamp.run:80:${VAMP_GATEWAY_AGENT_IP} http://run.vamp.run
 `9080.runner.vamp` is added if configuration parameter `vamp.operation.gateway.virtual-hosts` is set, otherwise just custom virtual hosts if any.
 
 {{< note title="What next?" >}}
-* Check the [API documentation](/documentation/api/v0.9.3/api-reference)
+* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

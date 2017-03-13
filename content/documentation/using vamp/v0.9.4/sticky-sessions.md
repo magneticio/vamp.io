@@ -3,9 +3,11 @@ date: 2016-09-13T09:00:00+00:00
 title: Sticky Sessions
 menu:
   main:
-    identifier: "sticky-sessions-v093"
+    identifier: "sticky-sessions-v094"
     parent: "Using Vamp"
     weight: 130
+aliases:
+    - /documentation/using-vamp/sticky-sessions/
 ---
 
 Vamp supports `route` and `instance` level sticky sessions.
@@ -133,7 +135,7 @@ clusters:
 ```
 
 {{< note title="What next?" >}}
-* Read about [using Vamp for service discovery](/documentation/using-vamp/v0.9.3/service-discovery/)
-* Check the [API documentation](/documentation/api/v0.9.3/api-reference)
+* Read about [using Vamp for service discovery](/documentation/using-vamp/v0.9.4/service-discovery/)
+* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

@@ -3,9 +3,11 @@ date: 2016-09-13T09:00:00+00:00
 title: Deployments
 menu:
   main:
-    identifier: "deployments-v093"
+    identifier: "deployments-v094"
     parent: "Using Vamp"
     weight: 40
+aliases:
+    - /documentation/using-vamp/deployments/
 ---
 
 A deployment is a "running" blueprint. Over time, new blueprints can be merged with existing deployments or parts of the running blueprint can be removed from it. Each deployment can be exported as a blueprint and 
@@ -227,7 +229,7 @@ We could also remove the newer version (monarch_1.1 with/without recommendation 
 
 
 {{< note title="What next?" >}}
-* Read about [Vamp environment variables](/documentation/using-vamp/v0.9.3/environment-variables/)
-* Check the [API documentation](/documentation/api/v0.9.3/api-reference)
+* Read about [Vamp environment variables](/documentation/using-vamp/v0.9.4/environment-variables/)
+* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

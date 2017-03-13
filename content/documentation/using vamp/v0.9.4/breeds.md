@@ -3,9 +3,11 @@ date: 2016-09-13T09:00:00+00:00
 title: Breeds
 menu:
   main:
-    identifier: "breeds-v093"
+    identifier: "breeds-v094"
     parent: "Using Vamp"
     weight: 20
+aliases:
+    - /documentation/using-vamp/breeds/
 ---
 
 Breeds are static descriptions of applications and services available for deployment. Each breed is described by the DSL in YAML notation or JSON, whatever you like. This description includes name, version, available parameters, dependencies etc.
@@ -13,10 +15,10 @@ To a certain degree, you could compare a breed to a Maven artifact or a Ruby Gem
 
 Breeds allow you to set the following properties:
 
-- [Deployable](/documentation/using-vamp/v0.9.3/breeds/#deployable): the name of actual container or command that should be run.
-- [Ports](/documentation/using-vamp/v0.9.3/breeds/#ports): a map of ports your container exposes.
-- [Dependencies](/documentation/using-vamp/v0.9.3/breeds/#dependencies): a list of other breeds this breed depends on.
-- [Environment variables](/documentation/using-vamp/v0.9.3/environment-variables/): a list of variables (interpolated or not) to be made available at runtime.
+- [Deployable](/documentation/using-vamp/v0.9.4/breeds/#deployable): the name of actual container or command that should be run.
+- [Ports](/documentation/using-vamp/v0.9.4/breeds/#ports): a map of ports your container exposes.
+- [Dependencies](/documentation/using-vamp/v0.9.4/breeds/#dependencies): a list of other breeds this breed depends on.
+- [Environment variables](/documentation/using-vamp/v0.9.4/environment-variables/): a list of variables (interpolated or not) to be made available at runtime.
 
 ## Deployable
 
@@ -145,12 +147,12 @@ dependencies:
 
 
 In a lot of cases, dependencies coexist with interpolated environment variables or constants because exact values are not known untill deploy time.  
-[Read more about environment variables](/documentation/using-vamp/v0.9.3/environment-variables/)
+[Read more about environment variables](/documentation/using-vamp/v0.9.4/environment-variables/)
 
 
 {{< note title="What next?" >}}
-* Read about [Vamp blueprints](/documentation/using-vamp/v0.9.3/blueprints/)
-* Check the [API documentation](/documentation/api/v0.9.3/api-reference)
+* Read about [Vamp blueprints](/documentation/using-vamp/v0.9.4/blueprints/)
+* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
 
