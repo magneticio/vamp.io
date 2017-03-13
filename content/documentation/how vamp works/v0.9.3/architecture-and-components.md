@@ -37,8 +37,8 @@ Vamp is the main API endpoint, business logic and service coordinator. Vamp talk
 Vamp workflows are small applications or scripts (for example using JavaScript or your own containers) that automate changes of the running system, and its deployments and gateways. We have included a set of useful workflows out of the box, such as health and metrics, which are used by the Vamp UI to report system status and to enable autoscaling and self-healing. Our [Vamp Runner project](https://github.com/magneticio/vamp-runner/) provides more advanced workflow recipes as an example.
 
 ### Vamp Gateway Agent (VGA)  
-Vamp Gateway Agent (VGA) reads the HAProxy configuration from ZooKeeper, etcd or Consul and reloads HAProxy on each configuration change with as close to zero client request interruptions as possible. Typically, there should be one Vamp instance and one or more VGA instances.     
-Logs from HAProxy are read over socket and pushed to Logstash over UDP.  VGA will handle and recover from ZooKeeper, etcd, Consul and Logstash outages without interrupting the HAProxy process and client requests.  
+Vamp Gateway Agent (VGA) uses confd to read the HAProxy configuration from ZooKeeper, etcd or Consul and reloads HAProxy on each configuration change with as close to zero client request interruptions as possible. Typically, there should be one Vamp instance and one or more VGA instances.
+Logs from HAProxy are read by Filebeat and shipped to Elasticsearch. VGA will handle and recover from ZooKeeper, etcd and Consul outages without interrupting the HAProxy process and client requests.
 
 {{< note title="What next?" >}}
 * Read about the [requirements to run Vamp](/documentation/how-vamp-works/v0.9.3/requirements)

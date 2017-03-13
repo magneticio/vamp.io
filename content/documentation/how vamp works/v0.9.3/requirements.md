@@ -27,7 +27,7 @@ Vamp and VGAs can use an existing Kubernetes etcd cluster.
 
 ## Elastic Search (persistence and metrics)
 Vamp uses Elastic Search (ES) for persistence (e.g. for artifacts and events) and for aggregating the metrics used by Vamp workflows and the Vamp UI. As Vamp is not demanding in ES resources, it can comfortably work with an existing ES cluster.  
-Currently we use Logstash to format and send data to Elastic Search, but you could also opt for an alternative solution.
+Currently we use Filebeat to send  HAproxy logs to Elastic Search, but you could also opt for an alternative solution.
 
 ## HAProxy  (routing)
 Each Vamp Gateway Agent (VGA) requires its own instance of HAProxy. This is a hard requirement, so to keep things simple we provide a Docker container with both Vamp Gateway Agent (VGA) and HAProxy ([hub.docker.com - magneticio/vamp-gateway-agent](https://hub.docker.com/r/magneticio/vamp-gateway-agent/)).  

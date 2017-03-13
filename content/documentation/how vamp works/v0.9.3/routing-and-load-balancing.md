@@ -24,7 +24,7 @@ Vamp load balancing is done transparently. Based on the scale setting of the run
 
 ## Topology and performance
 
-HAProxy can run as a container or as a standalone service. A Vamp Gateway Agent (VGA) Docker image (including HAProxy with specific logstash configuration to provide proxy logs to logstash for the Vamp UI) can be pulled from the Docker hub ([hub.docker.com - magneticio Vamp Gateway Agent](https://hub.docker.com/r/magneticio/vamp-gateway-agent/)).
+HAProxy can run as a container or as a standalone service. A Vamp Gateway Agent (VGA) Docker image can be pulled from the Docker hub ([hub.docker.com - magneticio Vamp Gateway Agent](https://hub.docker.com/r/magneticio/vamp-gateway-agent/)).
 
 HAProxy can run inside your cluster or on separate machines outside of your container cluster:
 
