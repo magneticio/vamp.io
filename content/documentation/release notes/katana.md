@@ -14,6 +14,15 @@ All changes since the last official release are described below. This applies on
 
 ## What is new
 
+* Vamp namespaces [#927](https://github.com/magneticio/vamp/issues/927)
+* Optional DC/OS driver namespace cluster constraint [#929](https://github.com/magneticio/vamp/issues/929)
+* Deployment level dialects [#922](https://github.com/magneticio/vamp/issues/922)
+* Vamp workflow agent port support and standalone UI [#909](https://github.com/magneticio/vamp/issues/909) & [#14](https://github.com/magneticio/vamp-workflow-agent/issues/14)
+* Workflow status endpoint [#939](https://github.com/magneticio/vamp/issues/939)
+* Access to configuration values from breed environment variables [#906](https://github.com/magneticio/vamp/issues/906)
+* Vamp JavaScript workflow agent breed as an external configurable breed [#908](https://github.com/magneticio/vamp/issues/908)
+* Access to workflow and deployment instances via Vamp reverser proxy [#912](https://github.com/magneticio/vamp/issues/912)
+* Unique ID assigned to each event [#907](https://github.com/magneticio/vamp/issues/907)
 * Service-, cluster-, workflow- and breed level health checks DSL for Marathon
 ([#709](https://github.com/magneticio/vamp/issues/709),
 [#914](https://github.com/magneticio/vamp/issues/914),
@@ -24,6 +33,7 @@ All changes since the last official release are described below. This applies on
 ## What has changed
 
 * Synchronization when health checks are changed needs to be explicitly specified `vamp.operation.synchronization.check.health-check`: `true` or `false` [#709](https://github.com/magneticio/vamp/issues/709)
+* Vamp JavaScript workflow breed configuration is removed from main configuration [#908](https://github.com/magneticio/vamp/issues/908)
 
 {{< note title="What next?" >}}
 * Read all release notes on github ([github.com/magneticio - Vamp releases](https://github.com/magneticio/vamp/releases))
