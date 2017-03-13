@@ -2,6 +2,7 @@
 date: 2016-09-13T09:00:00+00:00
 title: Canary releasing and autoscaling for microservice systems
 type: index
+draft: true
 ---
 * [try Vamp](/tryvamp/)
 * [learn more](whatisvamp/)
@@ -42,7 +43,7 @@ Avoid vendor lock-in with YAML based deployments.
 
 -------------
 
-## Vamp feature list
+## Vamp feature list (old)
 
 * graphical UI and dashboard
 * integrated javascript-based workflow system
