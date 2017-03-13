@@ -1,8 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Which container scheduler?
-aliases: 
-    - /documentation/how-vamp-works/which-container-scheduler
 menu:
   main:
     identifier: "which-container-scheduler-v093"

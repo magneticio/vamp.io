@@ -1,9 +1,13 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Architecture and components
+aliases: 
+    - /documentation/
+    - /documentation/using-vamp/artifacts/
+    - /documentation/how-vamp-works/architecture-and-components/
 menu:
   main:
-    identifier: "architecture-and-components-v093"
+    identifier: "architecture-and-components-v094"
     parent: "How Vamp works"
     weight: 10
 ---
@@ -37,5 +41,5 @@ Vamp Gateway Agent (VGA) uses confd to read the HAProxy configuration from ZooKe
 Logs from HAProxy are read by Filebeat and shipped to Elasticsearch. VGA will handle and recover from ZooKeeper, etcd and Consul outages without interrupting the HAProxy process and client requests.
 
 {{< note title="What next?" >}}
-* Read about the [requirements to run Vamp](/documentation/how-vamp-works/v0.9.3/requirements)
+* Read about the [requirements to run Vamp](/documentation/how-vamp-works/v0.9.4/requirements)
 {{< /note >}}
