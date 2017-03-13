@@ -4,8 +4,10 @@ title: Health
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-health-093"
+    identifier: "api-reference-health-094"
     weight: 160
+aliases:
+    - /documentation/api/api-health
 ---
 Health is a specific type of Vamp event, calculated by a Vamp workflow and required for the Vamp UI. Health can be defined on gateways and deployment ports and retrieved via the API. Read about [using workflows](documentation/using-vamp/workflows/).  
 

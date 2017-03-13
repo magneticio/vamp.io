@@ -4,25 +4,27 @@ title: Deployments
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-deployments-093"
+    identifier: "api-reference-deployments-094"
     weight: 90
+aliases:
+    - /documentation/api/api-deployments
 ---
 
-Deployments are dynamic runtime structures, so changes to them take time to execute and can possibly fail. Most API calls to the `/deployments` endpoint will, therefore, return a `202: Accepted` return code, indicating the asynchronous nature of the call. Deployments have a set of sub resources: [deployment SLAs](/documentation/api/v0.9.3/api-deployment-slas), [deployment scales](/documentation/api/v0.9.3/api-deployment-scales) and [gateways](/documentation/api/v0.9.3/api-gateways). These are instantiations of their static counterparts.
+Deployments are dynamic runtime structures, so changes to them take time to execute and can possibly fail. Most API calls to the `/deployments` endpoint will, therefore, return a `202: Accepted` return code, indicating the asynchronous nature of the call. Deployments have a set of sub resources: [deployment SLAs](/documentation/api/v0.9.4/api-deployment-slas), [deployment scales](/documentation/api/v0.9.4/api-deployment-scales) and [gateways](/documentation/api/v0.9.4/api-gateways). These are instantiations of their static counterparts.
 Read about [using deployments](documentation/using-vamp/deployments/).
 
 ## Actions
  
- * [List](/documentation/api/v0.9.3/api-deployments/#list-deployments) - return details of all running deployments
- * [Get](/documentation/api/v0.9.3/api-deployments/#get-single-deployment) - get details of a single running deployment
- * [Create](/documentation/api/v0.9.3/api-deployments/#create-deployment) - initiate a new deployment 
- * [Create named deployment](/documentation/api/v0.9.3/api-deployments/#create-named-deployment) - initiate a new deployment with a custom name (non UUID)
- * [Update](/documentation/api/v0.9.3/api-deployments/#update-deployment) - add to a running deployment (merge)
- * [Delete](/documentation/api/v0.9.3/api-deployments/#delete-deployment) - remove elements from a running deployment
+ * [List](/documentation/api/v0.9.4/api-deployments/#list-deployments) - return details of all running deployments
+ * [Get](/documentation/api/v0.9.4/api-deployments/#get-single-deployment) - get details of a single running deployment
+ * [Create](/documentation/api/v0.9.4/api-deployments/#create-deployment) - initiate a new deployment 
+ * [Create named deployment](/documentation/api/v0.9.4/api-deployments/#create-named-deployment) - initiate a new deployment with a custom name (non UUID)
+ * [Update](/documentation/api/v0.9.4/api-deployments/#update-deployment) - add to a running deployment (merge)
+ * [Delete](/documentation/api/v0.9.4/api-deployments/#delete-deployment) - remove elements from a running deployment
 
 ## Deployment resource
 
-The resource example below is in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.3/using-the-api) for details on how to set this. 
+The resource example below is in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.4/using-the-api) for details on how to set this. 
 
 ```
 name: sava
@@ -100,7 +102,7 @@ hosts:
   
 ## List deployments
 
-Return a list of all running deployments. For details on pagination see [common parameters](/documentation/api/v0.9.3/using-the-api).
+Return a list of all running deployments. For details on pagination see [common parameters](/documentation/api/v0.9.4/using-the-api).
 
 ### Request
 * `GET`
@@ -116,7 +118,7 @@ Return a list of all running deployments. For details on pagination see [common 
 
 
 ### Response
-If successful, will return a list of [deployment resources](/documentation/api/v0.9.3/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
+If successful, will return a list of [deployment resources](/documentation/api/v0.9.4/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
 
 --------------
 
@@ -137,7 +139,7 @@ Return details of a specific running deployment.
 | `only_references` | true or false     | false            | all breeds will be replaced with their references. It will be applied only if `?as_blueprint=true`.
 
 ### Response
-If successful, will return the specified [deployment resource](/documentation/api/v0.9.3/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
+If successful, will return the specified [deployment resource](/documentation/api/v0.9.4/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
 
 ### Errors
 * The requested resource could not be found.
@@ -151,7 +153,7 @@ Initiate a deployment.
 ### Request
 * `POST` 
 * `/api/v1/deployments`
-* The request body should include at least the [minimum blueprint resource](/documentation/api/v0.9.3/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). 
+* The request body should include at least the [minimum blueprint resource](/documentation/api/v0.9.4/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). 
 * Query string parameters:
 
 | Request parameters     | options           | default          | description      |
@@ -159,7 +161,7 @@ Initiate a deployment.
 | `validate_only` | true or false     | false            | validates the blueprint and returns a `201 Created` if the blueprint is valid.  
 
 ### Response
-If successful, will return the created [deployment resource](/documentation/api/v0.9.3/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
+If successful, will return the created [deployment resource](/documentation/api/v0.9.4/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
 
 ### Examples
 
@@ -174,7 +176,7 @@ Initiate a deployment with a custom name (non UUID).
 ### Request
 * `PUT` 
 * `/api/v1/deployments/{deployment_name}`
-* The request body should include at least the [minimum blueprint resource](/documentation/api/v0.9.3/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). 
+* The request body should include at least the [minimum blueprint resource](/documentation/api/v0.9.4/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). 
 * Query string parameters:
 
 | Request parameters     | options           | default          | description      |
@@ -182,7 +184,7 @@ Initiate a deployment with a custom name (non UUID).
 | `validate_only` | true or false     | false            | validates the blueprint and returns a `202 Accepted` if the blueprint is valid for deployment.   
 
 ### Response
-If successful, will return the created [deployment resource](/documentation/api/v0.9.3/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
+If successful, will return the created [deployment resource](/documentation/api/v0.9.4/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
 
 ------------
 
@@ -193,7 +195,7 @@ Add to a running deployment (merge).
 ### Request
 * `PUT`
 * `/api/v1/deployments/{deployment_name}`
-* The request body should include at least the [minimum blueprint resource](/documentation/api/v0.9.3/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). The `name` field must match the `deployment_name` specified in the request syntax.
+* The request body should include at least the [minimum blueprint resource](/documentation/api/v0.9.4/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). The `name` field must match the `deployment_name` specified in the request syntax.
 * Query string parameters:
 
 | Request parameters     | options           | default          | description      |
@@ -201,7 +203,7 @@ Add to a running deployment (merge).
 | `validate_only` | true or false     | false            | validates the blueprint and returns a `202 Accepted`  if the deployment after the update would be still valid.  
 
 ### Response
-If successful, will return the updated [deployment resource](/documentation/api/v0.9.3/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
+If successful, will return the updated [deployment resource](/documentation/api/v0.9.4/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
 
 --------------
 
@@ -213,7 +215,7 @@ Delete all or parts of a deployment.
 
 * `DELETE`
 * `/api/v1/deployments/{deployment_name}`
-* The request body should contain at least a [minimum blueprint resource](/documentation/api/v0.9.3/api-blueprints/#blueprint-resource) containing the services to be removed from the deployment. To delete a full deployment, include the complete blueprint or deployment resource. Note that `DELETE` on deployment with an empty request body will not delete anything.
+* The request body should contain at least a [minimum blueprint resource](/documentation/api/v0.9.4/api-blueprints/#blueprint-resource) containing the services to be removed from the deployment. To delete a full deployment, include the complete blueprint or deployment resource. Note that `DELETE` on deployment with an empty request body will not delete anything.
 * Query string parameters:
 
 | Request parameters     | options           | default          | description      |

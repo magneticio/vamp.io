@@ -6,8 +6,6 @@ menu:
     parent: "API"
     identifier: "api-overview-093"
     weight: 10
-aliases:
-    - /documentation/api/api-reference/
 ---
 
 Vamp has one REST API. For details on pagination, and request and response formats see [common parameters](/documentation/api/v0.9.3/using-the-api).  

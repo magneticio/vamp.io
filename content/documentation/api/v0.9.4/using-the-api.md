@@ -4,11 +4,14 @@ title: Common parameters
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-common-parameters-093"
+    identifier: "api-reference-common-parameters-094"
     weight: 20
+aliases:
+    - /documentation/api/using-the-api/
+    - /documentation/api/common-parameters/
 ---
 
-The headers described below can be added to all API requests to [specify JSON or YAML](/documentation/api/v0.9.3/using-the-api/#request-and-response-format) for requests and responses, and [manage pagination](/documentation/api/v0.9.3/using-the-api/#pagination) for responses.
+The headers described below can be added to all API requests to [specify JSON or YAML](/documentation/api/v0.9.4/using-the-api/#request-and-response-format) for requests and responses, and [manage pagination](/documentation/api/v0.9.4/using-the-api/#pagination) for responses.
 
 ## Request and response format
 Requests and responses can be formatted in JSON or YAML (default JSON). 
