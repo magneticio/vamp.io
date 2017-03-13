@@ -174,7 +174,7 @@ See [gateways - A/B TEST TWO DEPLOYMENTS USING ROUTE WEIGHT](/documentation/usin
 Initiate a deployment with a custom name (non UUID).
 
 ### Request
-* `POST` 
+* `PUT` 
 * `/api/v1/deployments/{deployment_name}`
 * The request body should include at least the [minimum blueprint resource](/documentation/api/v0.9.3/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). 
 * Query string parameters:
