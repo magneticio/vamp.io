@@ -1,0 +1,94 @@
+---
+date: 2016-09-13T09:00:00+00:00
+title: Health
+menu:
+  main:
+    identifier: "health-v094"
+    parent: "Using Vamp"
+    weight: 85
+aliases:
+    - /documentation/using-vamp/health/
+---
+
+Vamp tracks the health of deployed service instances and gateways. The [default Vamp health workflow](/documentation/using-vamp/v0.9.4/workflows/) reports the health of deployed services based on a combination of service health checks and gateway monitoring. The health status is stored in the Elasticsearch index `vamp-pulse-health-YYYY-MM-DD` and read by the Vamp UI. It can also be retrieved using the [Vamp API health endpoint](/documentation/api/v0.9.4/api-health/).
+
+## Health checks
+
+Health checks can be added on a service, cluster or breed level:
+
+### Service level health checks
+Defined in blueprint and applied to all instances of a service. Service level health checks override all health checks defined on a breed or cluster level. For example, including an empty health check specification for a service  (`healthchecks: []`) will cause all cluster and breed level health checks to be skipped for this service.
+
+### Cluster level health checks
+Defined in a blueprint and applied to all services within the cluster (unless overridden by a service level health check). cluster level health checks override breed level health checks 
+
+### Breed level health checks
+Defined in a breed (in individual artifact, or inline as part of a blueprint). Applied to all instances of a breed (unless overridden by cluster level  or service level health checks).
+
+## Defining health checks
+ 
+A health check definition contains the following fields (fields with a default value are optional):
+
+field  |  default   |   description
+----|----|----
+`protocol`  |  `HTTP`  |  protocol for health check requests (`HTTP` or `HTTPS`)
+`path`  |  `/`   |  path for health check requests (string value)
+`initial_delay`  |  - |  delay before initial health check request (time value)
+`port`   |  -  |  port for health check requests (string value referencing a defined port)
+`timeout`   |  -  |   how long a request can timeout before counting the request as a failure (time value)
+`interval`   |  -  |   interval between health check requests (time value)
+`failures`    |  -  |   maximum amount of failures before service is restarted due to being unhealthy (numerical value)
+
+### Example: Single health check
+Path in this example evaluates to `/` and protocol to HTTP.
+
+```
+---
+name: sava:1.0
+gateways:
+  9050: sava/webport
+clusters:
+  sava:
+    services:
+      breed:
+        name: sava:1.0.0
+        deployable: magneticio/sava:1.0.0
+        ports:
+          webport: 8080/http
+      scale:
+        cpu: 0.2
+        memory: 64MB
+        instances: 1
+      health_checks:
+        initial_delay: 10S
+        port: webport
+        timeout: 5S
+        interval: 10S
+        failures: 10
+```
+### Example: Multiple health checks
+
+```
+ health_checks:
+  -
+     initial_delay: 10S
+     port: webport
+     timeout: 5S
+     interval: 10S
+     failures: 10
+     protocol: HTTPS
+  -
+     initial_delay: 1M
+     port: webport
+     path: /test
+     timeout: 10S
+     interval: 1M
+     failures: 5
+     protocol: HTTPS 
+```
+
+{{< note title="What next?" >}}
+* Read about [Vamp SLAs (Service Level Agreements)](/documentation/using-vamp/v0.9.4/sla/)
+* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
+{{< /note >}}

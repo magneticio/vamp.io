@@ -264,7 +264,7 @@ The following query gives back the last set of delete actions executed in the Va
 
 {{< note title="What next?" >}}
 * Try the tutorial [Create a workflow that generates events](/documentation/tutorials/create-a-workflow/)
-* Read about [Vamp SLA (Service Level Agreement)](/documentation/using-vamp/v0.9.4/sla/)
+* Read about [Vamp health](/documentation/using-vamp/v0.9.4/health/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
