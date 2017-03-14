@@ -21,6 +21,7 @@ Blueprints allow you to add the following extra properties:
 - [Scale](/documentation/using-vamp/v0.9.4/blueprints/#scale): the CPU and memory and the amount of instance allocate to a service.
 - [Conditions](/documentation/using-vamp/v0.9.4/conditions/): how traffic should be directed based on HTTP and/or TCP properties.
 - [SLA](/documentation/using-vamp/v0.9.4/sla/) and [escalations](/documentation/using-vamp/escalations/): SLA definition that controls autoscaling.
+- [Health](/documentation/using-vamp/v0.9.4/health/): The health checks to be applied to a service, cluster or breed.
 
 #### Example - key concepts of blueprints
 
