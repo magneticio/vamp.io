@@ -8,6 +8,12 @@ menu:
     weight: 50
 ---
 
+{{< note title="The information on this page is written for Vamp v0.9.3" >}} 
+
+* Switch to the [latest version of this page](/documentation/using-vamp/environment-variables).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 Breeds, blueprints and workflows can include a list of environment variables to be injected into the container at runtime. You set environment variables with the `environment_variables` keyword or its shorter version `env`, e.g. both examples below are equivalent.
 
 ```yaml

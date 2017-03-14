@@ -7,6 +7,8 @@ menu:
     parent: "Troubleshooting"
     weight: 30
     name: Hello world quickstart
+aliases:
+    - /documentation/troubleshoot/hello-world-quickstart
 ---
 
 ## Try this first

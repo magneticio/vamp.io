@@ -8,6 +8,12 @@ menu:
     weight: 130
 ---
 
+{{< note title="The information on this page is written for Vamp v0.9.3" >}} 
+
+* Switch to the [latest version of this page](/documentation/using-vamp/sticky-sessions).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 Vamp supports `route` and `instance` level sticky sessions.
 
 ## Route Level

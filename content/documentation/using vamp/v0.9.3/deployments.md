@@ -8,6 +8,12 @@ menu:
     weight: 40
 ---
 
+{{< note title="The information on this page is written for Vamp v0.9.3" >}}
+
+* Switch to the [latest version of this page](/documentation/using-vamp/deployments).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 A deployment is a "running" blueprint. Over time, new blueprints can be merged with existing deployments or parts of the running blueprint can be removed from it. Each deployment can be exported as a blueprint and 
 copy / pasted to another environment, or even to the same environment to function as a clone.
 

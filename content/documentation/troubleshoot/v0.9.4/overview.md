@@ -7,6 +7,7 @@ menu:
     parent: "Troubleshooting"
 aliases:
     - /documentation/troubleshoot
+    - /documentation/troubleshoot/overview
 ---
 
 Troubleshoot and resolve common issues in case Vamp is not running or not behaving as expected.

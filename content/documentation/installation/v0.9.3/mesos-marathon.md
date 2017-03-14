@@ -6,9 +6,13 @@ menu:
     identifier: "mesos-marathon-v093"
     parent: "Installation"
     weight: 40
-aliases:
-    - /documentation/installation/mesos-marathon
 ---
+
+{{< note title="The information on this page applies to Vamp v0.9.3" >}}
+
+* Switch to the [latest version of this page](/documentation/installation/mesos-marathon).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
 
 Vamp can use the full power of Marathon running on either a DCOS cluster or custom Mesos cluster. You can use Vamp's DSL, or you can pass native Marathon options by [using a dialect in a blueprint.](/documentation/using-vamp/blueprints/#dialects)  
 

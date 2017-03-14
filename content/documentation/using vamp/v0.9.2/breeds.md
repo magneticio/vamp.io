@@ -8,6 +8,12 @@ menu:
     weight: 20
 ---
 
+{{< note title="The information on this page is written for Vamp v0.9.2" >}}
+
+* Switch to the [latest version of this page](/documentation/using-vamp/breeds).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 Breeds are static descriptions of applications and services available for deployment. Each breed is described by the DSL in YAML notation or JSON, whatever you like. This description includes name, version, available parameters, dependencies etc.
 To a certain degree, you could compare a breed to a Maven artifact or a Ruby Gem description.
 

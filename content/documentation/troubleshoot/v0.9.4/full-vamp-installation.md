@@ -7,6 +7,8 @@ menu:
     parent: "Troubleshooting"
     weight: 20
     name: Full Vamp installation
+aliases:
+    - /documentation/troubleshoot/full-vamp-installation
 ---
 
 ## Try this first

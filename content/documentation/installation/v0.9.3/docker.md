@@ -6,8 +6,6 @@ menu:
     identifier: "docker-v093"
     parent: "Installation"
     weight: 70
-aliases:
-    - /documentation/installation/docker
 ---
 
 {{< note title="Note!" >}}

@@ -9,6 +9,11 @@ menu:
     name: Tips for using Vamp
 ---
 
+{{< note title="The information on this page is written for Vamp v0.9.3" >}}
+* Switch to the [latest version of this page](/documentation/troubleshoot/tips-for-using-vamp).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 ## Try this first
 
 If you encounter problems running services on an installed version of Vamp, check the following: 

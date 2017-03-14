@@ -5,9 +5,12 @@ menu:
   main:
     identifier: "troubleshoot-v093"
     parent: "Troubleshooting"
-aliases:
-    - /documentation/troubleshoot
 ---
+
+{{< note title="The information on this page is written for Vamp v0.9.3" >}}
+* Switch to the [latest version of this page](/documentation/troubleshoot/overview).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
 
 Troubleshoot and resolve common issues in case Vamp is not running or not behaving as expected.
 

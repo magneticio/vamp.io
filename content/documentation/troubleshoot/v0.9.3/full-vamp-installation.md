@@ -9,6 +9,11 @@ menu:
     name: Full Vamp installation
 ---
 
+{{< note title="The information on this page is written for Vamp v0.9.3" >}}
+* Switch to the [latest version of this page](/documentation/troubleshoot/full-vamp-installation).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 ## Try this first
 
 The steps below will help you debug problems encountered when following our full install instructions. 

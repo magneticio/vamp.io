@@ -9,6 +9,11 @@ menu:
     name: Hello world quickstart
 ---
 
+{{< note title="The information on this page is written for Vamp v0.9.3" >}}
+* Switch to the [latest version of this page](/documentation/troubleshoot/hello-world-quickstart).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 ## Try this first
 
 The Vamp hello world quickstart is a self contained testing package. If you run into problems or unexpected behaviour, we advise that you clear everything out and reinstall.

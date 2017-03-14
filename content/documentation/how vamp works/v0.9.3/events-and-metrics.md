@@ -8,6 +8,12 @@ menu:
     weight: 60
 ---
 
+{{< note title="The information on this page is written for Vamp v0.9.3" >}}
+
+* Switch to the [latest version of this page](/documentation/how-vamp-works/events-and-metrics).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 To provide an effective feedback loop, HTTP/TCP logs should be collected, stored and analyzed. Collection and storing is done with a combination of HAProxy, VGA and Logstash setup. Logs are stored in Elasticsearch and can be later visualised by Kibana.
 
 ## How traffic is logged

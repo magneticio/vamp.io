@@ -8,6 +8,12 @@ menu:
     weight: 10
 ---
 
+{{< note title="The information on this page is written for Vamp v0.9.2" >}}
+
+* Switch to the [latest version of this page](/documentation/api/api-reference).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 Vamp has one REST API. For details on pagination, and request and response formats see [common parameters](/documentation/api/v0.9.2/using-the-api).
 
 ## API endpoints and resource descriptions

@@ -8,6 +8,12 @@ menu:
     weight: 10
 ---
 
+{{< note title="The information on this page is written for Vamp v0.9.2" >}}
+
+* Switch to the [latest version of this page](/documentation/how-vamp-works/architecture-and-components).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 ## Architecture
 Vamp and the Vamp Gateway Agent require specific elements in your architecture to handle orchestration, routing, persistence and metrics aggregation. There is no set architecture required for running Vamp and every use case or specific combination of tools and platforms can have its own set up.
 

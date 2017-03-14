@@ -8,6 +8,12 @@ menu:
     weight: 30
 ---
 
+{{< note title="The information on this page is written for Vamp v0.9.3" >}}
+
+* Switch to the [latest version of this page](/documentation/using-vamp/blueprints).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 Blueprints are execution plans - they describe how your services should be hooked up and what their topology should look like at runtime. This means you reference your breeds (or define them inline) and add runtime configuration to them.
 
 Blueprints allow you to add the following extra properties:

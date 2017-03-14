@@ -6,9 +6,13 @@ menu:
     identifier: "configure-vamp-v093"
     parent: "Installation"
     weight: 100
-aliases:
-    - /documentation/installation/configure-vamp
 ---
+
+{{< note title="The information on this page applies to Vamp v0.9.3" >}}
+
+* Switch to the [latest version of this page](/documentation/installation/configure-vamp).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
 
 Vamp configuration is held in a combination of the Vamp `application.conf` and `reference.conf` files following the HOCON file standard ([github.com/typesafehub - config](https://github.com/typesafehub/config)). You can override settings in the configuration files using Vamp environment variables or Java/JVM system properties, or update the applied configuration at runtime using a key value store. Vamp configuration is built in layers following this order:
 

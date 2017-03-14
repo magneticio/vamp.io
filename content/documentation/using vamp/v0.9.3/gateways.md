@@ -8,6 +8,12 @@ menu:
     weight: 60
 ---
 
+{{< note title="The information on this page is written for Vamp v0.9.3" >}} 
+
+* Switch to the [latest version of this page](/documentation/using-vamp/gateways).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 Gateways are dynamic runtime entities in the Vamp eco-system. They represent load balancer rules to deployment, cluster and service instances. There are two types of gateways:
 
 * **Internal gateways** are created automatically for each deployment cluster and updated using the gateway/deployment API

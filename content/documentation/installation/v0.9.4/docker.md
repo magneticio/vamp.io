@@ -11,7 +11,7 @@ aliases:
 ---
 
 {{< note title="Note!" >}}
-Vamp v0.9.3 has not been tested on the latest local version of Docker.  
+Vamp v0.9.4 has not been tested on the latest local version of Docker.  
 Docker Swarm support is coming soon, see [github.com - issue #690: Docker swarm support](https://github.com/magneticio/vamp/issues/690)
 {{< /note >}}
 

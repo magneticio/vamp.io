@@ -8,6 +8,12 @@ menu:
     weight: 110
 ---
 
+{{< note title="The information on this page is written for Vamp v0.9.3" >}}
+
+* Switch to the [latest version of this page](/documentation/using-vamp/references).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 With any artifact, Vamp allows you to either use an inline notation or reference the artifact by name. For references, you use the `reference` keyword or its shorter version `ref`. Think of it like either using actual values or pointers to a value. This has a big impact on how complex or simple you can make any blueprint, breed or deployment. It also impacts how much knowledge you need to have of all the different artifacts that are used in a typical deployment or blueprint.
 
 Vamp assumes that referenced artifcats (the breed called `my_breed` in the example below) is available to load from its datastore at deploy time. This goes for all basic artifacts in Vamp: SLA's, gateways, conditions, escalations, etc.

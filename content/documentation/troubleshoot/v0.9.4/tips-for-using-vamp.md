@@ -7,6 +7,8 @@ menu:
     parent: "Troubleshooting"
     weight: 40
     name: Tips for using Vamp
+aliases:
+    - /documentation/troubleshoot/tips-for-using-vamp
 ---
 
 ## Try this first

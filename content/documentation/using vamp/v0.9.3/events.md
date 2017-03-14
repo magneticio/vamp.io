@@ -8,6 +8,12 @@ menu:
     weight: 80
 ---
 
+{{< note title="The information on this page is written for Vamp v0.9.3" >}} 
+
+* Switch to the [latest version of this page](/documentation/using-vamp/events).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 Vamp is a distributed system tied together by a central events stream. Every action in Vamp creates events, which in turn can be used as triggers for new actions. For example, gateway updates are triggered by deployments (synchronisation events), while canary releases and autoscaling actions are based on calculated health and metrics events. Vamp collects events on all running services. Interaction with the API also creates events, like updating blueprints or deleting a deployment. Furthermore, Vamp allows third party applications to create events and trigger Vamp actions. All events are stored and retrieved using the Event API that is part of Vamp.
 
 ### Example - JSON "deployment create" event
