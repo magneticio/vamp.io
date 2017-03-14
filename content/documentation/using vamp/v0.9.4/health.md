@@ -17,13 +17,13 @@ Vamp tracks the health of deployed service instances and gateways. The [default 
 Health checks can be added on a service, cluster or breed level:
 
 ### Service level health checks
-Defined in blueprint and applied to all instances of a service. Service level health checks override all health checks defined on a breed or cluster level. For example, including an empty health check specification for a service  (`healthchecks: []`) will cause all cluster and breed level health checks to be skipped for this service.
+Defined in a blueprint and applied to all instances of a service. Service level health checks override all health checks defined on a breed or cluster level. For example, including an empty health check specification for a service  (`healthchecks: []`) will cause all cluster and breed level health checks to be skipped for this service.
 
 ### Cluster level health checks
-Defined in a blueprint and applied to all services within the cluster (unless overridden by a service level health check). cluster level health checks override breed level health checks 
+Defined in a blueprint and applied to all services within the cluster (unless overridden by a health check defined on a service level). Cluster level health checks override breed level health checks. 
 
 ### Breed level health checks
-Defined in a breed (in individual artifact, or inline as part of a blueprint). Applied to all instances of a breed (unless overridden by cluster level  or service level health checks).
+Defined in a breed (an individual artifact, or inline as part of a blueprint). Applied to all instances of the breed, unless overridden by health checks defined on the service or cluster level.
 
 ## Defining health checks
  
@@ -33,11 +33,19 @@ field  |  default   |   description
 ----|----|----
 `protocol`  |  `HTTP`  |  protocol for health check requests (`HTTP` or `HTTPS`)
 `path`  |  `/`   |  path for health check requests (string value)
-`initial_delay`  |  - |  delay before initial health check request (time value)
+`initial_delay`  |  - |  delay before initial health check request (time value *)
 `port`   |  -  |  port for health check requests (string value referencing a defined port)
-`timeout`   |  -  |   how long a request can timeout before counting the request as a failure (time value)
-`interval`   |  -  |   interval between health check requests (time value)
+`timeout`   |  -  |   how long a request can timeout before counting the request as a failure (time value *)
+`interval`   |  -  |   interval between health check requests (time value *)
 `failures`    |  -  |   maximum amount of failures before service is restarted due to being unhealthy (numerical value)
+
+* Time value must be specified in lower case:
+
+```
+s|sec|second|seconds
+m|min|minute|minutes
+h|hrs|hour|hour
+```
 
 ### Example: Single health check
 Path in this example evaluates to `/` and protocol to HTTP.
@@ -60,10 +68,10 @@ clusters:
         memory: 64MB
         instances: 1
       health_checks:
-        initial_delay: 10S
+        initial_delay: 10s
         port: webport
-        timeout: 5S
-        interval: 10S
+        timeout: 5s
+        interval: 10s
         failures: 10
 ```
 ### Example: Multiple health checks
@@ -71,18 +79,18 @@ clusters:
 ```
  health_checks:
   -
-     initial_delay: 10S
+     initial_delay: 10s
      port: webport
-     timeout: 5S
-     interval: 10S
+     timeout: 5s
+     interval: 10s
      failures: 10
      protocol: HTTPS
   -
-     initial_delay: 1M
+     initial_delay: 1m
      port: webport
      path: /test
-     timeout: 10S
-     interval: 1M
+     timeout: 10s
+     interval: 1m
      failures: 5
      protocol: HTTPS 
 ```
