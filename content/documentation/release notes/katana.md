@@ -23,6 +23,8 @@ All changes since the last official release are described below. This applies on
 * Vamp JavaScript workflow agent breed as an external configurable breed [#908](https://github.com/magneticio/vamp/issues/908)
 * Access to workflow and deployment instances via Vamp reverser proxy [#912](https://github.com/magneticio/vamp/issues/912)
 * Unique ID assigned to each event [#907](https://github.com/magneticio/vamp/issues/907)
+* Workflow dialects [#925](https://github.com/magneticio/vamp/issues/925)
+* Additional blueprint validation [#802](https://github.com/magneticio/vamp/issues/802)
 * Service-, cluster-, workflow- and breed level health checks DSL for Marathon
 ([#709](https://github.com/magneticio/vamp/issues/709),
 [#914](https://github.com/magneticio/vamp/issues/914),
