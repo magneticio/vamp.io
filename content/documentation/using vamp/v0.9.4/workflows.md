@@ -19,7 +19,18 @@ Vamp ships with four default workflows:
 * Kibana - supports the easy creation of Kibana dashboards.
 * Allocation - calculates resource usage (CPU, memory)
 
-You can create your own workflows using Node JS based scripts running inside a Vamp workflow agent container, or use another language of preference - create an application or script that accesses the Vamp API and build it into a Docker container to be deployed by Vamp.
+{{< note title="System breeds" >}}
+The breeds listed below are required by system workflows and should not be deleted:
+
+* allocation
+* health
+* kibana
+* metrics
+* vamp-workflow-javascript
+{{< /note >}}
+
+You can create your own workflows using Node JS based scripts running inside a Vamp workflow agent container, or use another language of preference - create an application or script that accesses the Vamp API and build it into a Docker container to be deployed by Vamp.  
+Vamp tracks all revisions made to workflows and breeds, so you can check back and compare the current version against a previous version.
 
 ## Schedules
 
@@ -55,32 +66,24 @@ schedule:
 ```
 
 
-## Example JavaScript workflow
-The below examples show a JavaScript workflow with a separately stored JavaScript breed.
-JavaScript breeds are executed by Vamp Workflow Agent ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)).  For additional information on using JavaScript to access the Vamp API check out the Vamp Node Client project ([github.com/magneticio - Vamp node client](https://github.com/magneticio/vamp-node-client)).
+## JavaScript workflows
+JavaScript workflows are executed by Vamp Workflow Agent ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)).  The system breed **vamp-workflow-javascript** is used to apply the standard enviroment variables, health checks and exposed ports.   
+Instructions for using JavaScript to access the Vamp API can be found in the Vamp Node Client project ([github.com/magneticio - Vamp node client](https://github.com/magneticio/vamp-node-client)).
 
 ### Metrics workflow
+The below examples show a JavaScript workflow with a separately stored JavaScript breed. All additional environment variables, health checks, ports and scale will be added from the **vamp-workflow-javascript** breed.
 ```
-name: metrics
-breed: metrics
-status: running
+name    : metrics
+breed   : metrics
 schedule: daemon
 environment_variables:
-  VAMP_WORKFLOW_EXECUTION_TIMEOUT: '7'
-  VAMP_KEY_VALUE_STORE_CONNECTION: 192.168.99.100:2181
-  VAMP_KEY_VALUE_STORE_PATH: /vamp/workflows/metrics
-  VAMP_WORKFLOW_EXECUTION_PERIOD: '5'
-  VAMP_KEY_VALUE_STORE_TYPE: zookeeper
-  VAMP_URL: http://192.168.99.100:8080
-scale:
-  cpu: 0.1
-  memory: 128.00MB
-  instances: 1
+  VAMP_WORKFLOW_EXECUTION_PERIOD:  5
+  VAMP_WORKFLOW_EXECUTION_TIMEOUT: 7
 ```
 
 ### Metrics breed
-The JavaScript breed will be executed by Vamp Workflow Agent ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)).  
-You can send the required JavaScript directly to the API to store as a breed:
+The JavaScript breed referenced in the metrics workflow will be executed by Vamp Workflow Agent ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)).  
+You could create a Javascript breed by sending the required JavaScript directly to the API to store as a breed:
 
 * Request syntax:
 

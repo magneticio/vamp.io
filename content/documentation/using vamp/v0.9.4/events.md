@@ -27,7 +27,7 @@ Vamp is a distributed system tied together by a central events stream. Every act
 }
 ```
 ## Storing events
-Vamp events are stored by default in Elasticsearch using the integrated Vamp Pulse module. Elasticsearch indexing is based on the event type and is updated for each event received by the API. Each event type will be indexed individually, including custom event types  .
+Vamp events are stored by default in Elasticsearch with a unique ID using the integrated Vamp Pulse module. Elasticsearch indexing is based on the event type and is updated for each event received by the API. Each event type will be indexed individually, including custom event types  .
 
 
 ## Basic event rules

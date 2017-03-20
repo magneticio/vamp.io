@@ -10,9 +10,15 @@ aliases:
     - /documentation/using-vamp/blueprints/
 ---
 
-Blueprints are execution plans - they describe how your services should be hooked up and what their topology should look like at runtime. This means you reference your breeds (or define them inline) and add runtime configuration to them.
+Blueprints are execution plans - they describe how your services should be hooked up and what their topology should look like at runtime. This means you reference your breeds (or define them inline) and add runtime configuration to them. Blueprints can be created and edited using the Vamp Domain Specific Language (DSL). Vamp tracks all revisions made to artifacts, so you can check back and compare the current blueprint against a previous version.
 
-Blueprints allow you to add the following extra properties:
+## Docker compose
+
+The Vamp UI includes a handy tool to convert Docker Compose files into the Vamp DSL format for deployment in Vamp. Note that some fields may need manual adjustment after conversion (see comments attached to the generated blueprint for details). 
+
+## Blueprint artifacts
+
+Blueprints allow you to specify the following properties:
 
 - [Gateways](/documentation/using-vamp/v0.9.4/blueprints/#gateways): a stable port where the service can be reached.
 - [Clusters and services](/documentation/using-vamp/v0.9.4/blueprints/#clusters-and-services): a cluster is a grouping of services with one purpose, i.e. two versions (a/b) of one service.
@@ -98,7 +104,7 @@ Clusters and services are just organisational items. Vamp uses them to order, re
 
 ## Dialects
 
-Vamp allows you to use container driver specific tags inside blueprints. We call this a “dialect”.  Dialects effectively enable you to make full use of, for instance, the underlying features like mounting disks, settings commands and providing access to private Docker registries.
+Vamp allows you to use container driver specific tags inside blueprints on a breed or deployment level. We call this a “dialect”.  Dialects effectively enable you to make full use of, for instance, the underlying features like mounting disks, settings commands and providing access to private Docker registries.
 
 We currently support the following dialects:
 
