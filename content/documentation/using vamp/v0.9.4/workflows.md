@@ -12,7 +12,7 @@ aliases:
 
 Vamp workflows are a convenient way to run Node JS based scripts that access the Vamp API to monitor and interact with running services. JavaScript workflows run in Vamp workflow agent containers ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)) and are managed just like any other container inside your cluster, making them robust, scalable and dynamic. Workflows can be scheduled to run as a daemon, be triggered by Vamp events or to run at specified times. 
 
-Vamp ships with three default workflows:
+Vamp ships with four default workflows:
 
 * Health  - checks and stores the status of running services. Events stored by the health workflow are used by the Vamp UI.
 * Metrics - stores metrics on running services. Events stored by the metrics workflow are used by the Vamp UI.

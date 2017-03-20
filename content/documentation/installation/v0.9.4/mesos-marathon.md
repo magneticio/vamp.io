@@ -12,10 +12,10 @@ aliases:
 
 Vamp can use the full power of Marathon running on either a DCOS cluster or custom Mesos cluster. You can use Vamp's DSL, or you can pass native Marathon options by [using a dialect in a blueprint.](/documentation/using-vamp/blueprints/#dialects)  
 
-#### Install
+## Install
 The instructions included on the [DC/OS installation page](/documentation/installation/v0.9.4/dcos) will also work with Mesos/Marathon.
 
-#### set Marathon as the Vamp container driver
+## Set Marathon as the Vamp container driver
 
 1. Set up a DCOS cluster using Mesosphere's assisted install on AWS ([mesosphere.com - product](https://mesosphere.com/product/)).  
 If you prefer, you can build your own Mesos/Marathon cluster. Here are some tutorials and scripts to help you get started:

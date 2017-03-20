@@ -10,7 +10,7 @@ aliases:
     - /documentation/installation/azure-container-service
 ---
 
-To run Vamp together with Azure Container Service ([azure.microsoft.com - Container Service](https://azure.microsoft.com/en-us/services/container-service/)), you need to use DC/OS as the default ACS Docker container scheduler. 
+To run Vamp together with Azure Container Service ([azure.microsoft.com - Container Service](https://azure.microsoft.com/en-us/services/container-service/)), use DC/OS as the default ACS Docker container scheduler. 
 
 To install DC/OS in Azure you should follow these steps: https://dcos.io/docs/1.8/administration/installing/cloud/azure/
 

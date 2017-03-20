@@ -16,10 +16,10 @@ The installation will run Vamp together with etcd and Elasticsearch on Google co
 Kubernetes support is still in Alpha.
 {{< /note >}}
 
-#### Tested against
+**Tested against**
 This guide has been tested on Kubernetes and kubectl 1.4.x and 1.5. Minikube 0.13.x or higher can also be used. ([github.com - minikube](https://github.com/kubernetes/minikube))
 
-#### Requirements
+**Requirements**
 
 * Google Container Engine cluster or Minikube (0.13.1 or later)
 * Key-value store (like ZooKeeper, Consul or etcd)
@@ -68,7 +68,7 @@ curl -s \
 
 ## Manual deployment
 
-#### Deploy etcd, Elasticsearch
+### Deploy etcd, Elasticsearch
 
 Now let's deploy `etcd` - this installation is based on the tutorial ([github.com/coreos - etcd on Kubernetes](https://github.com/coreos/etcd/tree/master/hack/kubernetes-deploy)).  Note that this is not a production grade setup - you would also need to take care of persistence and running multiple replicas of each pod.
 First, execute:
@@ -86,7 +86,7 @@ kubectl expose deployment elasticsearch --protocol=TCP --port=9200 --name=elasti
 kubectl expose deployment kibana --protocol=TCP --port=5601 --name=kibana
 ```
 
-#### Run Vamp
+### Run Vamp
 
 Now we can run Vamp gateway agent as a `daemon set`:
 ```

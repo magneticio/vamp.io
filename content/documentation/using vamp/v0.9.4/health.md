@@ -39,7 +39,7 @@ field  |  default   |   description
 `interval`   |  -  |   interval between health check requests (time value *)
 `failures`    |  -  |   maximum amount of failures before service is restarted due to being unhealthy (numerical value)
 
-* Time value must be specified in lower case:
+*) Note that time value must be specified in lower case:
 
 ```
 s|sec|second|seconds

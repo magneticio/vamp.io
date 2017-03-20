@@ -24,7 +24,8 @@ Vamp 0.9.3 includes:
 * Port-based, virtual host names or external service (consul etc) based service discovery support
 * Lightweight design to run in high-available mission-critical architectures
 * Integrates with Elastic Search and Kibana for custom Kibana dashboards
-* Vamp Runner provides automated integration and workflows testing
+* Vamp recipes provides automated integration and workflows testing
+* Convert Docker Compose files directly to Vamp blueprints
 
 
 {{< note title="What next?" >}}

@@ -23,12 +23,12 @@ There are different ways to install Vamp on DC.OS. On this page we start out wit
 
 
 ## Standard install
-This setup will run Vamp, Mesos and Marathon, together with Zookeeper, Elasticsearch and Logstash on DC/OS. 
+This setup will run Vamp, Mesos and Marathon, together with Zookeeper and Elasticsearch on DC/OS. 
 
-#### Tested against
+**Tested against**  
 This guide has been tested on both 1.7 and the latest 1.8 version of DC/OS.
 
-#### Requirements
+**Requirements**  
 Before you start you need to have a DC/OS cluster up and running, as well as the its CLI configured to use it. We assume you have it up and running on http://dcos.example.com/.
 Setting up DC/OS is outside the scope of this document, for that you need to refer to the official documentation:
 
@@ -39,7 +39,7 @@ Setting up DC/OS is outside the scope of this document, for that you need to ref
 
 ### Step 1: Install Elasticsearch
 
-Mesos, Marathon and ZooKeeper are all installed by DC/OS. In addition to these, Vamp requires Elasticsearch and Logstash for metrics collection and aggregation. You can use the magneticio Docker images to deploy a compatible Vamp Elastic Stack (hub.docker.com - magneticio elastic)
+Mesos, Marathon and ZooKeeper are all installed by DC/OS. In addition to these, Vamp requires Elasticsearch for metrics collection and aggregation. You can use the magneticio Docker images to deploy a compatible Vamp Elastic Stack (hub.docker.com - magneticio elastic)
 
 Create `elasticsearch.json` with the following content:
 
