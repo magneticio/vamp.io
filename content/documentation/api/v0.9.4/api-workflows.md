@@ -15,8 +15,10 @@ Read about [using workflows](documentation/using-vamp/workflows/).
  
  * [List](/documentation/api/v0.9.4/api-workflows/#list-workflows) - return a list of all workflows
  * [Get](/documentation/api/v0.9.4/api-workflows/#get-single-workflow) - get a single workflow
+ * [Get status](/documentation/api/v0.9.4/api-workflows/#get-workflow-status) - get status of a single workflow
  * [Create](/documentation/api/v0.9.4/api-workflows/#create-workflow) - create a new workflow 
  * [Update](/documentation/api/v0.9.4/api-workflows/#update-workflow) - update a workflow
+ * [Set status](/documentation/api/v0.9.4/api-workflows/#set-workflow-status) - set status of a single workflow
  * [Delete](/documentation/api/v0.9.4/api-workflows/#delete-workflow) - delete a workflow
 
 ## Workflow resource
@@ -103,6 +105,26 @@ If successful, will return the specified [workflow resource](/documentation/api/
 
 --------------
 
+## Get workflow status
+
+Return the status of a specific workflow.
+
+### Request
+* `GET`
+* `/api/v1/worflows/{workflow_name}/status`
+* The request body should be empty.
+
+### Response
+If successful, will return the status of the named workflow in the specified `accept` format (default JSON). Status can be:
+
+Status  |  Description  
+------------|------- 
+ `running`  |   The workflow is running
+ `restarting`  |   The workflow is in the process of restarting
+ `suspended`  |  The workflow is suspended (stopped, but not deleted)
+
+--------------
+
 ## Create workflow
 
 Initiate a workflow.
@@ -138,6 +160,36 @@ Request:
 
 Response:  
 Will return the updated [workflow resource](/documentation/api/v0.9.4/api-workflows/#workflow-resource).
+
+--------------
+
+## Set workflow status
+
+Set the status of a specific workflow.
+
+### Request
+* `PUT`
+* `/api/v1/worflows/{workflow_name}/status`
+* The request body should include the status you wish to set:
+
+Status  |  Description  
+------------|------- 
+ `running`  |   If the workflow is suspended, it will be restarted.
+ `restarting`  |   If the workflow is suspended or running, it will be restarted.
+ `suspended`  |  If the workflow is running or restarting, it will be suspended (stopped, but not deleted)
+
+### Response
+If successful, will return a workflow-status resource in the specified `accept` format (default JSON). For example:
+
+```
+- name: health
+  status: restarting
+  kind: workflow-status
+  metadata: {}
+```
+
+### Errors
+* **message: 'Illegal workflow status: '** - the status you specified was not a valid status.
 
 --------------
 
