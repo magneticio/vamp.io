@@ -20,51 +20,47 @@ Vamp ships with four default workflows:
 * Allocation - calculates resource usage (CPU, memory)
 
 {{< note title="System breeds" >}}
-The breeds listed below are required by system workflows and should not be deleted:
-
-* allocation
-* health
-* kibana
-* metrics
-* vamp-workflow-javascript
+The following breeds are required by system workflows and should not be deleted: allocation, health, kibana, metrics, vamp-workflow-javascript
 {{< /note >}}
 
-You can create your own workflows using Node JS based scripts running inside a Vamp workflow agent container, or use another language of preference - create an application or script that accesses the Vamp API and build it into a Docker container to be deployed by Vamp.  
+### On this page:
+- [Track running workflows](/documentation/using-vamp/v0.9.4/workflows/#track-running-workflows)
+- [Create a workflow](/documentation/using-vamp/v0.9.4/workflows/#create-a-workflow)
+- [JavaScript workflows](/documentation/using-vamp/v0.9.4/workflows/#javascript-workflows)
+
+## Track running workflows
+
+You can track executions of a running workflow in the Vamp UI. From the **Workflows** page, click on a workflow port to open the execution list. Click on a specific execution to open its log.
+
+## Create a workflow
+
+Workflows can be created using Node JS based scripts running inside a Vamp workflow agent container, or use another language of preference - create an application or script that accesses the Vamp API and build it into a Docker container to be deployed by Vamp.  
 Vamp tracks all revisions made to workflows and breeds, so you can check back and compare the current version against a previous version.
 
-## Schedules
+You can schedule a workflow to run as a daemon, be triggered by specific events or run according to a time schedule. See the examples for each below.
 
-Workflows can be scheduled to run as a daemon, be triggered by specific events or rn according to a time schedule. See the examples for each below.
-
-### Scheduled as a daemon
-For example:
-```
-schedule: daemon
-```
-
-### Triggered by events
-For example:
-```  
-schedule:
-  event: # event with following tags will trigger the workflow
-  - deployments:sava
-  - cluster:runner
-
-schedule:  # shortened notation in case of single event (still array can be used as above)
-  event: archive:bluprints
-```
-
-### Scheduled by time
-`period`, `start` (optional, by default starts now) and `repeat` (optional, by default runs forever). The time schedule period is in [ISO8601](http://en.wikipedia.org/wiki/ISO_8601) repeating interval notation.   
-For example:
-```
-schedule:
-  time:
-    period: P1Y2M3DT4H5M6S
-    start: now # or e.g. start: 2016-12-03T08:15:30Z
-    repeat: 10
-```
-
+* Scheduled as a daemon  
+  `schedule: daemon`
+* Triggered by events  
+    ```  
+    schedule:
+      event: # event with following tags will trigger the workflow
+      - deployments:sava
+      - cluster:runner
+    
+    schedule:  # shortened notation in case of single event (still array can be used as above)
+      event: archive:bluprints
+    ```
+* Scheduled by time  
+  `period`, `start` (optional, by default starts now) and `repeat` (optional, by default runs forever). The time schedule period is in [ISO8601](http://en.wikipedia.org/wiki/ISO_8601) repeating interval notation.   
+  For example:
+    ```
+    schedule:
+      time:
+        period: P1Y2M3DT4H5M6S
+        start: now # or e.g. start: 2016-12-03T08:15:30Z
+        repeat: 10
+    ```
 
 ## JavaScript workflows
 JavaScript workflows are executed by Vamp Workflow Agent ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)).  The system breed **vamp-workflow-javascript** is used to apply the standard enviroment variables, health checks and exposed ports.   
