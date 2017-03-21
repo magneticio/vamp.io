@@ -16,7 +16,7 @@ Vamp configuration is held in a combination of the Vamp `application.conf` and `
 2. application.conf - adds environment specifics to the generic reference.conf defaults.
 3. Java system properties - advised for advanced use only.
 4. Environment variables - overrides settings in reference.conf, application.conf and Java system properties.
-5. Key value store - overrides the applied configuration of Vamp at runtime. Note that `http-api` configuration cannot be updated in the key value store. If you need to update this, use environment variables.
+5. Key value store - overrides the applied configuration of Vamp at runtime. 
 
 ### On this page:
 
@@ -29,8 +29,25 @@ Vamp configuration is held in a combination of the Vamp `application.conf` and `
 ## Override specific configuration parameters
 You can override specific parameters set in the `application.conf` and `reference.conf` configuration files using Vamp environment variables or Java/JVM system properties. It is advisable to use environment variables when overriding specific parameters.
 
+### Key value store
+You can update the configuration applied to Vamp at runtime using the Vamp UI. These updates will be stored in the configured key value store. Note that `http-api` configuration cannot be updated in the key value store. If you need to update this, use environment variables.
+
+**Update the Vamp backend configuration**
+
+1. Got to **Admin** > **Backend configuration**
+* Select the **Zookeeper** tab and click **Edit**
+* Update the configuration as required and click **Save**
+  * Updates will be saved to the key value store. The full applied configuration (including saved updates) will be visible under the **Applied** tab.
+
+**Update the HAProxy templaten**
+
+1. Got to **Admin** > **VGA configuration**
+* Select the **Template** tab and click **Edit**
+* Update the template as required and click **Save**
+  * Updates will be saved to the key value store and generated HAProxy configuration will be based on the updated template.
+
 ### Environment variables
-Environment variables override all other settings. Convert the configuration parameter name to upper case and replace all non-alphanumerics with an underscore `_`.  So, `vamp.gateway-driver.timeout` becomes `VAMP_GATEWAY_DRIVER_TIMEOUT`.  
+Environment variables override settings from reference.conf, application.conf or Java system properties. Convert the configuration parameter name to upper case and replace all non-alphanumerics with an underscore `_`.  So, `vamp.gateway-driver.timeout` becomes `VAMP_GATEWAY_DRIVER_TIMEOUT`.  
 
 For example, to change the vamp.info.message you would set the environment variable VAMP_INFO_MESSAGE :
 

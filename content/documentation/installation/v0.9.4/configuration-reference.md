@@ -152,16 +152,12 @@ workflow-driver {
   response-timeout = 30 seconds
 
   workflow {
-    deployables = {
-      application.javascript = {
-        type = "container/docker"
-        definition = "" # workflow agent
-        environment-variables = []
-        arguments: []
-        network = "BRIDGE"
-        command = ""
+    deployables = [
+      {
+        type = "application/javascript"
+        breed = "vamp-workflow-javascript" # may be any custom breed
       }
-    }
+    ]
     scale {         # default scale, if not specified in workflow
       instances = 1
       cpu = 0.1
@@ -174,7 +170,7 @@ Parameter  |  Options  |  Default |  Details
 ------------|-------|--------|--------
   type  | docker, marathon, kubernetes, rancher, chronos, none |   none   |  Daemon (docker, marathon, kubernetes, rancher), time and event triggered (chronos). Can be combined (csv), e.g. `marathon,chronos`
   response-timeout  | -  |  30 seconds   |  Timeout for container operations
-  deployables.application.javascript  | - |   `type = `"container/docker", definition = "" # workflow agent, environment-variables = [], arguments: [], network = "BRIDGE", command = ""`  |   Applied to every application/javascript breed type.
+  deployables  | - |   `type = "application/javascript", breed = "vamp-workflow-javascript"`  |   Applied to every application/javascript breed type.
   scale   | - |    instances = 1 cpu = 0.1 memory = 64MB  |  Default scale. Used if not specified in workflow
 
 -------
