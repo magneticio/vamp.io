@@ -43,7 +43,7 @@ clusters:
 
 #### Deploy using the Vamp UI
 
-In the Vamp UI, go to the **Blueprints** page and click **Add new** button (top right). Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment. 
+In the Vamp UI, go to the **Blueprints** page and click **Add** (top right). Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment. 
 Now click **Deploy as**. You'll be prompted to give your deployment a name, let's call it **sava**, then click **Deploy** to start the deployment.
 
 ![](/images/screens/v093/tut1_deploy.png)
@@ -54,7 +54,6 @@ You could also use your favourite tools like Postman ([getpostman.com](https://w
 
 Take care to set the correct `Content-Type: application/x-yaml` header on the POST request. Vamp is kinda
 strict with regard to content types, because we support JSON and YAML so we need to know what you are sending.   
-If you run on Docker machine, use `docker-machine ip default` instead of `localhost`.
 
 * Using `curl`
 ```
@@ -85,10 +84,6 @@ We can use a simple tool like Apache Bench ([apache - ab](https://httpd.apache.o
 
 ```bash
 ab -k -c 15 -n 10000 http://localhost:9050/
-```
-or
-```bash
-ab -k -c 15 -n 10000 http://`docker-machine ip default`:9050/
 ```
 
 You should see the metrics spike and some pretty charts being drawn on the **sava/9050** gateway page:
