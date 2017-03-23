@@ -15,17 +15,17 @@ aliases:
 
 The Vamp hello world quickstart is a self contained testing package. If you run into problems or unexpected behaviour, we advise that you clear everything out and reinstall.
 
-1. Stop all running containers - for example using `docker ps | awk '{print $1}' | xargs docker stop 2>/dev/null`
+1. Stop all running containers - for example using `docker stop $( docker ps --quiet ) `
 - Clean up  your docker environment (remove stopped containers, dangling images and volumes). A script to do this: 
         
         docker rmi -f $(docker images -q -f dangling=true) 2>/dev/null
         
         echo "removing exited docker containers..."
-        docker ps -a | grep 'Exited' | awk '{print $1}' | xargs docker rm
-        docker ps -a | grep 'Created' | awk '{print $1}' | xargs docker rm
-        
+        docker rm $( docker ps --filter status=exited --quiet )
+        docker rm $( docker ps --filter status=created --quiet )
+
         echo "removing dangling docker volumes..."
-        docker volume rm $(docker volume ls -qf dangling=true) 2>/dev/null `
+        docker volume rm $( docker volume ls --filter dangling=true --quiet ) 2>/dev/null `
 - Restart docker machine using `docker-machine restart`.
 - Reinstall [Vamp hello world](/documentation/installation/v0.9.4/hello-world/).
 - If everything is installed ok and you're running into problems using Vamp, check the [troubleshooting tips for using Vamp](/documentation/troubleshoot/v0.9.4/tips-for-using-vamp).
