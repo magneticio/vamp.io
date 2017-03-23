@@ -30,7 +30,7 @@ We will run Vamp in a local Docker container. If you don't already have Docker i
 - **Windows 7+**: [Docker Toolbox 1.12.x](https://github.com/docker/toolbox/releases)
 
 Vamp hello world on Docker for Windows is currently not supported. We're working on this so please check back. 
-Mac running Docker toolbox can install [Vamp hello world v0.9.3](/documentation/installation/v0.9.3/hello-world/)
+Mac running Docker toolbox can install [Vamp hello world v0.9.4](/documentation/installation/v0.9.4/hello-world/)
 
 ## Run Vamp
 
@@ -79,8 +79,7 @@ Mounting volumes is important. [Read this great article about starting Docker co
 
 ## Check Vamp is up and running
 
-After some downloading and booting, your Docker log will show the Vamp has launched and report:  
-`...Binding: 0.0.0.0:8080`
+After some downloading and booting, your Docker log will show the blue Vamp ASCII logo.
 
 Now you can check if Vamp is home on `localhost:8080` and you're ready for the [Vamp getting started tutorials](/documentation/tutorials/overview)
 

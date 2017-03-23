@@ -1,6 +1,6 @@
 ---
 date: 2017-02-07T12:00:00+00:00
-title: DC/OS 1.7 and 1.8
+title: DC/OS 1.8
 menu:
   main:
     identifier: "dcos-v094"
@@ -12,29 +12,34 @@ aliases:
 
 There are different ways to install Vamp on DC.OS. On this page we start out with the most common setup, but if you are interested in doing a custom install or working with public and private nodes you should jump to that section.
 
-* [Standard install](/documentation/installation/v0.9.4/dcos/#standard-install)
+* [Universe package](/documentation/installation/v0.9.4/dcos/#universe-package)
+* [Manual install](/documentation/installation/v0.9.4/dcos/#manual-install)
 * [Custom install](/documentation/installation/v0.9.4/dcos/#custom-install)
 * [Public and private nodes](/documentation/installation/v0.9.4/dcos/#public-and-private-nodes)
 
 
-## Standard install
+## Universe package
+
+Vamp is available in the DC/OS Universe. Navigate to Universe in the DC/OS UI and search for Vamp and click "Install Package".
+
+For detailed steps on installing the Unvierse package refer to the tutorial here: https://github.com/dcos/examples/tree/master/1.8/vamp
+
+## Manual install
 This setup will run Vamp, Mesos and Marathon, together with Zookeeper and Elasticsearch on DC/OS. 
 
 **Tested against**  
-This guide has been tested on both 1.7 and the latest 1.8 version of DC/OS.
+This guide has been tested on the latest 1.8 version of DC/OS.
 
 **Requirements**  
 Before you start you need to have a DC/OS cluster up and running, as well as the its CLI configured to use it. We assume you have it up and running on http://dcos.example.com/.
 Setting up DC/OS is outside the scope of this document, for that you need to refer to the official documentation:
 
-* https://dcos.io/docs/1.7/administration/installing/
-* https://dcos.io/docs/1.7/usage/cli/
 * https://dcos.io/docs/1.8/administration/installing/
 * https://dcos.io/docs/1.8/usage/cli/
 
 ### Step 1: Install Elasticsearch
 
-Mesos, Marathon and ZooKeeper are all installed by DC/OS. In addition to these, Vamp requires Elasticsearch for metrics collection and aggregation. You can use the magneticio Docker images to deploy a compatible Vamp Elastic Stack (hub.docker.com - magneticio elastic)
+Mesos, Marathon and ZooKeeper are all installed by DC/OS. In addition to these, Vamp requires Elasticsearch for metrics collection and aggregation. If you don't have an Elasticsearch cluster setup already you can use the magneticio Docker images to deploy a compatible Vamp Elastic Stack [(hub.docker.com - magneticio elastic)](https://hub.docker.com/r/magneticio/elastic/)
 
 Create `elasticsearch.json` with the following content:
 
@@ -104,7 +109,7 @@ Create `vamp.json` with the following content:
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "magneticio/vamp:0.9.3-dcos",
+      "image": "magneticio/vamp:0.9.4-dcos",
       "network": "BRIDGE",
       "portMappings": [
         {
@@ -229,7 +234,7 @@ Running Vamp on public Mesos agent node(s) and disabling automatic Vamp Gateway 
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "magneticio/vamp:0.9.3-dcos",
+      "image": "magneticio/vamp:0.9.4-dcos",
       "network": "BRIDGE",
       "portMappings": [
         {
@@ -282,7 +287,7 @@ Deploying Vamp Gateway Agent on all public and private Mesos agent nodes through
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "magneticio/vamp-gateway-agent:0.9.3",
+      "image": "magneticio/vamp-gateway-agent:0.9.4",
       "network": "HOST",
       "privileged": true,
       "forcePullImage": true
@@ -291,7 +296,7 @@ Deploying Vamp Gateway Agent on all public and private Mesos agent nodes through
   "env": {
     "VAMP_KEY_VALUE_STORE_TYPE": "zookeeper",
     "VAMP_KEY_VALUE_STORE_CONNECTION": "zk-1.zk:2181",
-    "VAMP_KEY_VALUE_STORE_PATH": "/vamp/gateways/haproxy/1.7/configuration",
+    "VAMP_KEY_VALUE_STORE_PATH": "/vamp/vamp/gateways/haproxy/1.7/configuration",
     "VAMP_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200"
   },
   "constraints": [
