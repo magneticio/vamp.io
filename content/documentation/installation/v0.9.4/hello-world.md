@@ -78,8 +78,7 @@ Mounting volumes is important. [Read this great article about starting Docker co
 
 ## Check Vamp is up and running
 
-After some downloading and booting, your Docker log will show the Vamp has launched and report:  
-`...Binding: 0.0.0.0:8080`
+After some downloading and booting, your Docker log will show the blue Vamp ASCII logo.
 
 Now you can check if Vamp is home on `localhost:8080` and you're ready for the [Vamp getting started tutorials](/documentation/tutorials/overview)
 
