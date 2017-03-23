@@ -26,7 +26,7 @@ Each gateway defines a set of rules for filtering and distributing traffic acros
 
 ## Route weight and condition strength
 
-Each route in a gateway has a weight and optionally one or more conditions (used to target specific traffic for routing) with a `condition_strength`. Read more about [conditions](/documentation/using-vamp/v0.9.4/conditions)  
+Each route in a gateway has a weight and optionally one or more conditions with a `condition_strength` (used to target specific traffic for routing). Read more about [conditions](/documentation/using-vamp/v0.9.4/conditions)  
 
 Routing is calculated as followed:
 
