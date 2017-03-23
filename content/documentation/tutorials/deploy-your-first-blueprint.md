@@ -21,8 +21,7 @@ This application is conveniently called *Sava monolith* and is at version 1.0.
 
 You've managed to wrap your monolith in a Docker container, which lives in the Docker hub under `magneticio/sava:1.0.0`. Your app normally runs on port `8080` but you want to expose it under port `9050` in this case. Let's deploy this through Vamp using the following simple blueprint. Don't worry too much about what means what: we'll get there. You can choose to deploy this blueprint either using the Vamp UI or using the Vamp API.
 
-```yaml
----
+```
 name: sava:1.0
 gateways:
   9050: sava/webport
@@ -70,15 +69,21 @@ You can also use the RESTful API to create a deployment with a custom name - sim
 
 ## Check out the deployed application 
 
-You can follow the deployment process of our container by checking the `/api/v1/deployments` endpoint and checking when the `state` field changes from `ReadyForDeployment` to `Deployed`. You can also check Marathon's GUI.
+You can follow the deployment process of our container by checking the `/api/v1/deployments` endpoint and checking when the `state` field changes from `ReadyForDeployment` to `Deployed`. You can also check Marathon's GUI (see the [full list of all services exposed](/documentation/installation/hello-world/#check-vamp-is-up-and-running) in the hello world setup).
 
 When the application is fully deployed, you can check it out at Vamp host address + the port that was assigned in the blueprint, e.g: `http://10.26.184.254:9050/`. It should report a refreshing hipster lorem ipsum ([hipsterjesus.com](http://hipsterjesus.com/)) upon each reload.  
 
-You can also access the application through the Vamp UI. From the **Deployments** page, click on **sava** to open the deployment detail screen, then click on **sava:1.0.0** to see all running instances of the sava service (we only have one instance running right now). Click an instance name to open it.
+You can also access the application through the Vamp UI:
+
+* From the **Deployments** page:  
+  Click on **sava** to open the deployment detail screen, then click on **sava:1.0.0** to see all running instances of the sava service (we only have one instance running right now). Click an instance name to open it.
 
 ![](/images/screens/v094/deployments-monolith1.png)
 
-See [check Vamp is up and running](/documentation/installation/hello-world/#check-vamp-is-up-and-running) for a full ist of all services exposed in the hello world setup.
+* From the **Gateways** page:
+  Open the internal gateway (`sava/sava/webport`) or the external gateway (`sava/9050`) and click the **HOST - PORT/TYPE**
+
+![](/images/screens/v094/gateways-monolith1.png)
 
 ## Get some metrics on the running application
 
