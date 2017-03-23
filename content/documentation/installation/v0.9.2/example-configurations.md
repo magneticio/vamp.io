@@ -24,16 +24,16 @@ The full `reference.conf` file can be found in the Vamp project repo ([github.co
 You can use `application.conf` to tailor the Vamp configuration to fit your environment. Settings specified here, or in environment variables, will override any defaults included in `reference.conf`. Template configuration files are provided, which complete the standard required settings and include the Vamp Health and Metrics workflows (required by the Vamp UI).  If your environment requires extensive customisation, you can [use a custom application.conf file](/documentation/installation/v0.9.2/configure-vamp/#use-a-custom-application-conf-file).
 
 
-* [DC/OS application.conf](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)  
+* [DC/OS application.conf - Vamp v0.9.2](https://github.com/magneticio/vamp-docker-images/blob/0.9.2/vamp-dcos/application.conf)  
   _Container driver:_ Marathon  
   _Key-value store:_ Zookeeper
 
   
-* [Kubernetes application.conf](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-kubernetes/application.conf)  
+* [Kubernetes application.conf - Vamp v0.9.2](https://github.com/magneticio/vamp-docker-images/blob/0.9.2/vamp-kubernetes/application.conf)  
   _Container driver:_ Kubernetes  
   _Key-value store:_ etcd
   
-* [Rancher application.conf](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-rancher/application.conf)  
+* [Rancher application.conf - Vamp v0.9.2](https://github.com/magneticio/vamp-docker-images/blob/0.9.2/vamp-rancher/application.conf)  
   _Container driver:_ Rancher  
   _Key-value store:_ consul
 
