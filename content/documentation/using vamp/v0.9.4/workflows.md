@@ -62,6 +62,8 @@ You can schedule a workflow to run as a daemon, be triggered by specific events 
         repeat: 10
     ```
 
+Try it yourself: [Create a workflow that generates events](/documentation/tutorials/create-a-workflow/)
+
 ## JavaScript workflows
 JavaScript workflows are executed by Vamp Workflow Agent ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)).  The system breed **vamp-workflow-javascript** is used to apply the standard enviroment variables, health checks and exposed ports.   
 Instructions for using JavaScript to access the Vamp API can be found in the Vamp Node Client project ([github.com/magneticio - Vamp node client](https://github.com/magneticio/vamp-node-client)).

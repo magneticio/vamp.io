@@ -23,6 +23,12 @@ Reverse proxy access is available through the Vamp API (HTTP & WebSocket) at the
 http://localhost:8080/proxy/gateways/sava%2F9050/
 ```
 
+Alternatively, in the Vamp UI: 
+
+1. Go to the **Gateways** page
+- Click on the gateway
+- Click the **HOST - PORT/TYPE** and you will be routed according to the defined rules.
+
 {{< note title="What next?" >}}
 * Read about how Vamp works with [routing and load balancing](/documentation/how-vamp-works/v0.9.4/routing-and-load-balancing)
 {{< /note >}}

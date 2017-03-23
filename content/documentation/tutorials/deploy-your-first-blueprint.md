@@ -44,9 +44,9 @@ clusters:
 #### Deploy using the Vamp UI
 
 In the Vamp UI, go to the **Blueprints** page and click **Add** (top right). Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment. 
-Now click **Deploy as**. You'll be prompted to give your deployment a name, let's call it **sava**, then click **Deploy** to start the deployment.
+Now open the action menu and select **Deploy as**. You'll be prompted to give your deployment a name, let's call it **sava**, then click **Deploy** to start the deployment.
 
-![](/images/screens/v093/tut1_deploy.png)
+![](/images/screens/v094/tut1_action-menu.png)
 
 #### Deploy using the Vamp API
 
@@ -74,9 +74,11 @@ You can follow the deployment process of our container by checking the `/api/v1/
 
 When the application is fully deployed, you can check it out at Vamp host address + the port that was assigned in the blueprint, e.g: `http://10.26.184.254:9050/`. It should report a refreshing hipster lorem ipsum ([hipsterjesus.com](http://hipsterjesus.com/)) upon each reload.  
 
-See [check Vamp is up and running](/documentation/installation/hello-world/#check-vamp-is-up-and-running) for a full ist of all services exposed in the hello world setup.
+You can also access the application through the Vamp UI. From the **Deployments** page, click on **sava** to open the deployment detail screen, then click on **sava:1.0.0** to see all running instances of the sava service (we only have one instance running right now). Click an instance name to open it.
 
-![](/images/screens/monolith1.png)
+![](/images/screens/v094/deployments-monolith1.png)
+
+See [check Vamp is up and running](/documentation/installation/hello-world/#check-vamp-is-up-and-running) for a full ist of all services exposed in the hello world setup.
 
 ## Get some metrics on the running application
 
@@ -88,7 +90,7 @@ ab -k -c 15 -n 10000 http://localhost:9050/
 
 You should see the metrics spike and some pretty charts being drawn on the **sava/9050** gateway page:
 
-![](/images/screens/v093/tut1_metrics.png)
+![](/images/screens/v094/tut1_metrics.png)
 
 ## Change scale and load-balancing
 

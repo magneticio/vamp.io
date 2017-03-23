@@ -10,8 +10,15 @@ aliases:
     - /documentation/using-vamp/deployments/
 ---
 
-A deployment is a "running" blueprint. Over time, new blueprints can be merged with existing deployments or parts of the running blueprint can be removed from it. Each deployment can be exported as a blueprint and 
-copy / pasted to another environment, or even to the same environment to function as a clone.
+A deployment is a "running" blueprint with added runtime information, such as start times, resolved ports etc.
+Existing deployments can be updated, merging new blueprints or removing parts from it. Each deployment can be exported as a blueprint and copy / pasted to another environment, or even to the same environment to function as a clone.
+
+### On this page:
+
+* [Create a deployment](/documentation/using-vamp/v0.9.4/deployments/)
+* [Track running deployments](/documentation/using-vamp/v0.9.4/deployments/)
+* [Deployment scenarios](/documentation/using-vamp/v0.9.4/deployments/)
+
 
 ## Create a deployment
 
@@ -24,19 +31,9 @@ You can create a deployment in the following ways:
 
 The name of the deployment will be automatically assigned as a UUID (e.g. `123e4567-e89b-12d3-a456-426655440000`).
 
+## Track deployments
 
-
-## Vamp deployment process
-
-Once we have issued the deployment, Vamp will do the following:
-
-1. Update Vamps internal model.
-2. Issue and monitor deployment commands to the container platform.
-3. Update the ZooKeeper entry.
-4. Start collecting metrics.
-5. Monitor the container platform for changes.
-
-Vamp will add runtime information to the deployment model, like start times, resolved ports etc.
+Deployments contain clusters (groups of services). Each service can have one or multiple instances, according to its scale. In the Vamp UI you can track health of the overall deployment and individual services - read [how health is reported](/documentation/using-vamp/v0.9.4/health/). Each instance of a service can be accessed individually (go to the **Deployments** page, open the service and select an instance to view), or you can access the deployment through the [exposed gateways](/documentation/using-vamp/v0.9.4/gateways/) with any applied conditions or route weights.
 
 ## Deployment scenarios
 
