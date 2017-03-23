@@ -39,7 +39,7 @@ You can update the configuration applied to Vamp at runtime using the Vamp UI. T
 * Update the configuration as required and click **Save**
   * Updates will be saved to the key value store. The full applied configuration (including saved updates) will be visible under the **Applied** tab.
 
-**Update the HAProxy templaten**
+**Update the HAProxy template**
 
 1. Got to **Admin** > **VGA configuration**
 * Select the **Template** tab and click **Edit**
@@ -58,7 +58,7 @@ docker run --net=host \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=$(docker-machine ip default)" \
            -e "VAMP_INFO_MESSAGE=hey YOU! " \
-           magneticio/vamp-docker:0.9.3
+           magneticio/vamp-docker:0.9.4
 ```
 
 ### Java system properties
@@ -79,7 +79,7 @@ For more extensive customisations, you can create a new Docker image, extending 
 1. Copy application.conf [(github.com/magneticio - Vamp DCOS application.conf)](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)
 2. Adjust as required. Check the list of configuration settings (below) for details of the available optionsa
 3. Create a Dockerfile with the lines:  
-  `FROM magneticio/vamp-dcos:0.9.3`  
+  `FROM magneticio/vamp-dcos:0.9.4`  
   `ADD application.conf /usr/local/vamp/conf/`
 4. Build the image with `docker build --tag <username>/vamp`
 
@@ -101,7 +101,7 @@ vamp {
 }
 ```
 
-This is as of 0.9.3 how [we configure our DC/OS Docker image]( https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)
+This is as of 0.9.4 how [we configure our DC/OS Docker image]( https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)
 
 (Typesafe documentation on the topic covering system or env variable overrides)[https://github.com/typesafehub/config#optional-system-or-env-variable-overrides]
 

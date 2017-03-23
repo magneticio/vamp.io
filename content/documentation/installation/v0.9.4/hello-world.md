@@ -30,7 +30,7 @@ We will run Vamp in a local Docker container. If you don't already have Docker i
 - **Windows 7+**: [Docker Toolbox 1.12.x](https://github.com/docker/toolbox/releases)
 
 Vamp hello world on Docker for Windows is currently not supported. We're working on this so please check back. 
-Mac running Docker toolbox can install [Vamp hello world v0.9.3](/documentation/installation/v0.9.3/hello-world/)
+Mac running Docker toolbox can install [Vamp hello world v0.9.4](/documentation/installation/v0.9.4/hello-world/)
 
 ## Run Vamp
 
