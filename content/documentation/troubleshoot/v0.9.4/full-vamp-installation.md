@@ -29,6 +29,8 @@ The steps below will help you debug problems encountered when following our full
 - Check that the vamp and vamp-gateway-agent docker containers are running using `docker ps`. 
 - Check the vamp and vamp-gateway-agent logs `docker logs {container ID}`  
   Any errors here should be clear, in case they aren't [report the issue](/documentation/troubleshoot/v0.9.4/full-vamp-installation/#report-an-issue).
+- Check the [vamp workflow execution logs](/documentation/using-vamp/v0.9.4/workflows/#track-running-workflows)
+  Any errors here should be clear, in case they aren't [report the issue](/documentation/troubleshoot/v0.9.4/full-vamp-installation/#report-an-issue).
 - Check the Vamp configuration (using the API at `/api/v1/config` or in the Admin section of the Vamp UI): 
   - You should use `http://` in front of TCP/HTTP addresses, but not in front of UDP connections. 
   - Make sure there are no double ports (ie 9200:9200)
