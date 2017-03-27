@@ -26,7 +26,7 @@ In this tutorial we will:
 
 ### Requirements
 
-* A running version of Vamp (this tutorial has been tested on the [Vamp hello world set up](documentation/installation/hello-world))
+* A running version of Vamp (this tutorial has been tested on the [v0.9.4 Vamp hello world](documentation/installation/v0.9.4/hello-world))
 * Access to the Docker hub
 * You might run into issues if your firewall is set to block connections in the ranges 31000-32000 (required by Mesos) or 40000-45000 (required by Vamp)
   
@@ -63,7 +63,7 @@ environment_variables:         # required settings
 Now let's do the same for our Wordpress service. The official Wordpress container ([hub.docker.com - wordpress](https://hub.docker.com/_/wordpress/)) runs apache on port 80. We can specify an external database using the variables `WORDPRESS_DB_HOST`, `WORDPRESS_DB_USER` and `WORDPRESS_DB_PASSWORD`. 
 
   1.  In the Vamp UI, go the **Breeds** page 
-  * Click **Add new**
+  * Click **Add**
   * Paste in the below breed YAML and click **Save**
 
 ```
@@ -82,13 +82,13 @@ dependencies:                           # required for the Wordpress service to 
 
 Nothing has been deployed yet, but you will be able to see the two new breeds listed in the Vamp UI on the **Breeds** page:
 
-![](images/screens/v093/wordpress_breeds.png)
+![](images/screens/v094/wordpress_breeds.png)
 
 ### Create a scale
 Scales define the resources to assign to a service, that is the number of instances (servers) and allocated CPU and memory. We are going to create one scale, which will be used by both of our breeds.
 
   1. Go the **Scales** page
-  * Click **Add new**
+  * Click **Add**
   * Paste in the below scale YAML and click **Save**
 
 ```
@@ -103,7 +103,7 @@ Now we can create a simple blueprint that references our artifacts ready for dep
 Our blueprint will use two clusters - one for the database service and one for the Wordpress service.
 
 1. Go to the **Blueprints** page 
-* Click **Add new**
+* Click **Add**
 * Paste in the below blueprint YAML and click **Save**
 
 ```
@@ -121,7 +121,7 @@ clusters:
 
 Vamp will store the blueprint and make it available for deployment. You will see it listed on the **Blueprints** page.
 
-![](images/screens/v093/wordpress_blueprints.png)
+![](images/screens/v094/wordpress_blueprints.png)
 
 ### Deploy the blueprint
 Now it's a simple click to deploy mySQL and Wordpress.

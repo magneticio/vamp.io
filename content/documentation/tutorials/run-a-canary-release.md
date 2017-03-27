@@ -15,12 +15,13 @@ Now let's say we have a new version of this great application that we want to ca
 
 * Prepare our blueprint
 * Deploy the new version of our application next to the old one
+* Canary release the new application
 * Use conditions to target specific groups
 * Learn a bit more about conditions
 
 ## Prepare our blueprint
 
-Vamp allows you to do canary releases across a cluster by merging new services. Take a look at the YAML blueprint example below. It is quite similar to the blueprint we initially used to deploy sava 1.0.0, with one difference - this time the breed describes the sava:1.1.0 service.
+Vamp allows you to canary release application updates by merging new blueprints to a running deployment. Take a look at the YAML blueprint example below. It is almost identical to the blueprint we initially used to deploy sava 1.0.0, with one difference - this time the breed describes the sava:1.1.0 service.
 
 ``` 
 name: sava:1.1
@@ -41,7 +42,7 @@ clusters:
 ## Deploy the new version of our application next to the old one
 
 Let's introduce sava:1.1.0 to the running deployment.  
-We will use the above blueprint to merge our new service with the running deployment. This will deploy sava:1.1.0 alongside sava:1.0.0. The merge will not affect the running service and no traffic will be routed to the new sava:1.1.0 yet.
+We will use the above blueprint to merge our new service with the running deployment. This will deploy sava:1.1.0 alongside sava:1.0.0. The merge will not affect the running service and initially no traffic will be routed to the new sava:1.1.0.
 
 ### Merge using the UI
 

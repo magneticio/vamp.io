@@ -90,7 +90,7 @@ Open the application in a new tab and hit refresh a few times in your browser. Y
 
 ![](/images/screens/v094/tut1_metrics.png)
 
-## Change scale and load-balancing
+## Change scale and load balancing
 
 Vamp will automatically load-balance services. Let's change the scale of the service. 
 
