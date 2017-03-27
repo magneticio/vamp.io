@@ -41,7 +41,7 @@ clusters:
 ## Deploy the new version of our application next to the old one
 
 Let's introduce sava:1.1.0 to the running deployment.  
-We will use the above blueprint to merge our new service with the running deployment - this will deploy sava:1.1.0 alongside the running sava:1.0.0 service. The merge will not affect the running sava:1.0.0 service and no traffic will be routed to sava:1.1.0 yet.
+We will use the above blueprint to merge our new service with the running deployment. This will deploy sava:1.1.0 alongside sava:1.0.0. The merge will not affect the running service and no traffic will be routed to the new sava:1.1.0 yet.
 
 ### Merge using the UI
 
@@ -50,13 +50,13 @@ We will use the above blueprint to merge our new service with the running deploy
 * Open the action menu on the **sava:1.1** blueprint and select **Merge to** 
   ![](/images/screens/v094/tut2_merge.png)
 * You'll be prompted to select the deployment you wish to merge the blueprint with - select **sava**
-* Click **Merge** to deploy the sava:1.1.0 service to the running deployment.  
+* Click **Merge** to deploy the sava:1.1.0 service to the running sava deployment.  
   Vamp will work out the differences and update the deployment accordingly.
   ![](/images/screens/v094/tut2_merged_deployment.png)
 
 ### Merge using the API
 
-You can complete the same merge with the Vamp API - take care to set the `Content-Type: application/x-yaml`:
+You can complete the same merge with the Vamp API - remember to set the `Content-Type: application/x-yaml` for your requests:
 
 1. To create the blueprint, `POST` the above [blueprint YAML](/documentation/tutorials/run-a-canary-release/#prepare-our-blueprint) to `/api/v1/blueprints`  
 * To merge the blueprint, `PUT` the below YAML to `/api/v1/deployments/sava`  
@@ -66,13 +66,15 @@ You can complete the same merge with the Vamp API - take care to set the `Conten
   ```
 
 ## Canary release
-When Vamp has finished deploying, you can open the **sava/sava/webport** gateway.  You will see two routes listed - one for the sava:1.0.0 service and one for the new sava:1.1.0 service. The weight of our newly merged service is set to 0% - this means that no traffic is currently being routed here. Whenever Vamp merges a new service to an existing cluster it applies the default weight of 0%. Let's adjust the weight and start to send traffic to our new sava:1.1.0
+When Vamp has finished deploying, you can open the **sava/sava/webport** gateway.  You will see two routes listed - one for the sava:1.0.0 service and one for the new sava:1.1.0 service. The weight of our newly merged service is set to 0% - this means that no traffic is currently being routed here. Whenever Vamp merges a new service to an existing cluster it applies the default weight of 0%.  
+Let's adjust the weight and start to send traffic to our new sava:1.1.0
 
-1. Click the edit icon next to *WEIGHT*
+1. Click the edit icon next to **WEIGHT**
 * Adjust the weight slider to distribute traffic 50% / 50% between the two services
   ![](/images/screens/v094/tut2_sliders_canary.png)
 * Click **Save** and Vamp will update the load balancing rules accordingly
-* Click the **HOST - PORT/TYPE** to open the gateway. Each time you do this the application will switch between a 1.0 page and a 1.1 page. You can also use the Vamp reverse proxy URL to access the gateway (note that this works best with the "Incognito" or "Anonymous" mode of your browser because of the caching of static assets) `http://localhost:8080/proxy/gateways/sava%2Fsava%2Fwebport/`
+* Click the **HOST - PORT/TYPE** to open the gateway.  
+  Each time you do this the application will switch between a 1.0 page and a 1.1 page. You can also use the Vamp reverse proxy URL to access the gateway (note that this works best with the "Incognito" or "Anonymous" mode of your browser because of the caching of static assets) `http://localhost:8080/proxy/gateways/sava%2Fsava%2Fwebport/`
 
 ![](/images/screens/v094/monolith_canary1.png)
 
@@ -88,11 +90,11 @@ Let's start simple: We can use the Vamp UI to allow only Chrome users to access 
 * Click the edit condition icon for the **sava/sava/sava:1.1.0/webport** route and enter the condition `User-Agent = Chrome`
 ![](/images/screens/v094/tut2_edit_condition.png)
   Now we need to set a strength for the condition.  
-  As we want all Chrome users to be sent to this route, we will set the condition strength to 100%
-* Click the edit condition strength icon for the **sava/sava/sava:1.1.0/webport** route and move the slider to 100%
+  As we want all Chrome users to be sent to this route, we will set the condition strength to 100%.
+* Click the edit condition strength icon for the **sava/sava/sava:1.1.0/webport** route and move the slider to 100%.
 ![](/images/screens/v094/tut2_edit_condition_strength.png)
-  Finally, we need to account for routing of traffic that does not match the condition (that is, all non-Chrome users). We do this using the route weight.
-  As we want only Chrome users to be sent to the sava/sava/sava:1.1.0/webport route, we will set the route weight to 0%. That might sound confusing, but remember that the route weight is used for distributing traffic that didn't match the applied condition - and we want 0% of all non-Chrome users to be sent to the sava/sava/sava:1.1.0/webport route
+  Finally, we need to account for routing of traffic that does not match the condition (that is, all non-Chrome users). We do this using the route weight.  
+  As we want only Chrome users to be sent to the sava/sava/sava:1.1.0/webport route, we need to set the route weight to 0%. That might sound confusing, but remember that the route weight is used for distributing traffic that didn't match the applied condition - and we want 0% of all non-Chrome users to be sent to the sava/sava/sava:1.1.0/webport route
 * Click the edit icon next to **WEIGHT**
 * Adjust the weight slider to **0%** for the **sava/sava/sava:1.1.0/webport** route
     ![](/images/screens/v094/tut2_sliders_canary_2.png)
