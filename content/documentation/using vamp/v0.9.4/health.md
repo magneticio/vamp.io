@@ -12,9 +12,9 @@ aliases:
 
 Vamp tracks the health of deployed service instances and gateways. The [default Vamp health workflow](/documentation/using-vamp/v0.9.4/workflows/) reports health based on a combination of defined health checks and gateway monitoring. Health status is stored in the Elasticsearch index `vamp-pulse-health-YYYY-MM-DD` and displayed in the Vamp UI. It can also be retrieved directly using the [Vamp API health endpoint](/documentation/api/v0.9.4/api-health/).
 
-## Health checks
+## Custom health checks
 
-Health checks can be added on a service, cluster or breed level:
+Custom health checks can be added on a service, cluster or breed level:
 
 ### Service level health checks
 Defined in a blueprint and applied to all instances of a service. Service level health checks override all health checks defined on a breed or cluster level. For example, including an empty health check specification for a service  (`healthchecks: []`) will cause all cluster and breed level health checks to be skipped for this service.

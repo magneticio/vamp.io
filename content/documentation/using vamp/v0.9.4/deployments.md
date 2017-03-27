@@ -15,9 +15,9 @@ Existing deployments can be updated, merging new blueprints or removing parts fr
 
 ### On this page:
 
-* [Create a deployment](/documentation/using-vamp/v0.9.4/deployments/)
-* [Track running deployments](/documentation/using-vamp/v0.9.4/deployments/)
-* [Deployment scenarios](/documentation/using-vamp/v0.9.4/deployments/)
+* [Create a deployment](/documentation/using-vamp/v0.9.4/deployments/#create-a-deployment)
+* [Track running deployments](/documentation/using-vamp/v0.9.4/deployments/#track-deployments)
+* [Deployment scenarios](/documentation/using-vamp/v0.9.4/deployments/#deployment )
 
 
 ## Create a deployment

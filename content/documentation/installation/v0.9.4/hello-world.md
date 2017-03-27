@@ -39,15 +39,15 @@ Start the `magneticio/vamp-docker:0.9.4` container, taking care to pass in the r
 ### Docker for Mac
 
 ```
-docker run \
-       -v /var/run/docker.sock:/var/run/docker.sock \
-       -v /usr/bin/docker:/bin/docker \
-       -v "/sys/fs/cgroup:/sys/fs/cgroup" \
-       -e "DOCKER_HOST_IP=192.168.65.2" \
-       -p 8080:8080 -p 5050:5050 -p 9090:9090 -p 8989:8989 \
-       -p 4400:4400 -p 9200:9200 -p 5601:5601 -p 2181:2181 \
-       -p 9050:9050 -p 9060:9060 -p 9070:9070 \
-       magneticio/vamp-docker:0.9.4
+docker run -v /var/run/docker.sock:/var/run/docker.sock \
+           -v /usr/bin/docker:/bin/docker \
+           -v "/sys/fs/cgroup:/sys/fs/cgroup" \
+           -e "DOCKER_HOST_IP=192.168.65.2" \
+           -p 8080:8080 -p 5050:5050 \
+           -p 9090:9090 -p 8989:8989 \
+           -p 4400:4400 -p 9200:9200 \
+           -p 5601:5601 -p 2181:2181 \
+           magneticio/vamp-docker:0.9.4
 ```
 
 ### Docker toolbox (Windows 7+)
@@ -80,6 +80,8 @@ Mounting volumes is important. [Read this great article about starting Docker co
 ## Check Vamp is up and running
 
 After some downloading and booting, your Docker log will show the blue Vamp ASCII logo.
+
+![](/images/screens/v094/vamp_ascii_logo.png)
 
 Now you can check if Vamp is home on `localhost:8080` and you're ready for the [Vamp getting started tutorials](/documentation/tutorials/overview)
 
