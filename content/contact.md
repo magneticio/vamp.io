@@ -7,8 +7,8 @@ Vamp is being developed by [Magnetic.io](about/) in the heart of Amsterdam.
 
 **Our Amsterdam offices:**
 
-Sint Antoniesbreestraat 16  
-1011 HB Amsterdam  
+Raamgracht 6  
+1011 KK Amsterdam  
 The Netherlands  
 +31(0)88 555 33 99  
 [info@magnetic.io](mailto:info@magnetic.io)
