@@ -90,16 +90,21 @@ Open the application in a new tab and hit refresh a few times in your browser. Y
 
 ![](/images/screens/v094/tut1_metrics.png)
 
+Note that you can also use Vamp as a reverse proxy to access the exposed sava gateways:
+
+* `http://localhost:8080/proxy/gateways/sava%2Fsava%2Fwebport/`
+* `http://localhost:8080/proxy/gateways/sava%2F9050/`
+
 ## Change scale and load balancing
 
-Vamp will automatically load-balance services. Let's change the scale of the service. 
+Vamp will automatically load balance traffic across service instances as they scale. Let's change the scale of the sava service and see what happens. 
 
 1. Go back to the **Deployments** page 
 * Open the **sava** deployment and click the **sava:1.0.0** service
 * Click **Scale service** (top right) and set the **INSTANCES** to **3** 
 * Click **Save** 
 
-Vamp will automatically scale up the number of running instances (of course permitting underlying resources) and load-balance these to the outside world using the gateway feature. Refresh the **sava:1.0.0** service detail page to see all three running instances.
+Vamp will automatically scale up the number of running instances (of course permitting underlying resources) and load balance these to the outside world using the gateway feature. Refresh the **sava:1.0.0** service detail page to see all three running instances.
 
 ![](/images/screens/v094/tut1_scale.png)
 

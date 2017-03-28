@@ -30,11 +30,11 @@ Each route in a gateway has a weight and optionally one or more conditions with 
 
 Routing is calculated as followed:
 
-1. Vamp will first check for a condition that matches the incoming request. 
+1. Vamp will first check for a condition that matches the incoming request.   
   _for example, IOS users_
-- If a matching condition is found, Vamp will check the `condition_strength`. The `condition_strength` specifies the percentage of traffic matching the condition to target.
-  _for example, 10% of IOS users are selected_
-- Finally, if no matching condition was found or the request was not selected for routing based on the `condition_strength`, it will be routed according to the `weight` of **all** available routes.  
+- If a matching condition is found, Vamp will check the `condition_strength`. The condition strength specifies the percentage of traffic matching the condition to target.  
+  _for example, 10% of IOS_
+- Finally, if no matching condition was found or the request was not selected for routing based on the conditionstrength, it will be routed according to the route weight of **all** available routes.    
   _for example, all non-IOS traffic and 90% of IOS users are routed according to route weight_
 
 {{< note title="Route weights must always total 100%" >}}

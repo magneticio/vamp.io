@@ -14,12 +14,11 @@ menu:
 Want to give Vamp a go? The hello world setup described below runs Vamp inside a local Docker container - a perfect environment to try out Vamp's core features and work through the [Vamp tutorials](/documentation/tutorials/overview).
 Vamp hello world runs Mesos, Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)) and Vamp 0.9.4 together with Vamp's Marathon driver.  
 
-{{< note >}}
-This hello world set up is designed for demo purposes only - it is not production grade.
-{{< /note >}}
+**Requirements:**  At least 8GB of memory
 
-#### Requirements
-* At least 8GB of memory
+{{< note >}}
+This hello world set up is designed for testing purposes only - it is not production grade.
+{{< /note >}}
 
 ## Get Docker
 
