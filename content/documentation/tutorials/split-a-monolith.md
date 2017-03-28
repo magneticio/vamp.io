@@ -9,49 +9,41 @@ menu:
 In the [previous tutorial we did some basic canary releasing on two versions of a monolithic application](/documentation/tutorials/run-a-canary-release/). Very nice, but Vamp isn't
 called the *Very Awesome Microservices Platform* for nothing. The next step is to split our monolithic Sava application into separate services. In this tutorial we will:
 
-1. define a new service topology
-2. learn about environment variables and service discovery
+* define a new service topology
+* learn about Vamp environment variables and service discovery
 
 ## Define a new service topology
 
-To prove our point, we are going to slightly "over-engineer" our services solution. This will also help
-us demonstrate how we can later remove parts of our solution using Vamp. For now, we'll split the
-monolith into a topology of one frontend and two separate backend services. After our engineers
-are done with coding, we can catch this new topology in the following blueprint. Please notice a couple
-of things:
+To prove our point, we are going to slightly "over-engineer" our services solution. This will also help us demonstrate how we can later remove parts of our solution using Vamp. For now, we'll split the monolith into a topology of one frontend and two separate backend services. After our engineers are done with coding, we can catch this new topology in the following blueprint. Please notice a couple of things:
 
-* We now have three `clusters`: `sava`, `backend1` and `backend2`. Each cluster could have multiple
-services on which we could do separate canary releases and set separate filters.
-* The `sava` cluster has explicit dependencies on the two backends. Vamp will make sure these dependencies
-are checked and rolled out in the right order.
-* Using `environment_variables` we connect the dynamically assigned ports and hostnames of the backend
-services to the "customer facing" `sava` service.
-* We've change the gateway port to `9060` so it doesn't collide with the  monolithic deployment.
+* We now have three clusters: sava, backend1 and backend2. Each cluster can have multiple services for canary release and traffic filtering
+* The sava cluster has explicit dependencies on the two backends. Vamp will make sure these dependencies are checked and rolled out in the right order
+* We have used environment variables to connect the dynamically assigned ports and hostnames of the backend services to the "customer facing" sava service
+* The gateway port has been changed to 9060 so it doesn't collide with the monolithic deployment
 
-```yaml
----
+```
 name: sava:1.2
 gateways:
   9060: sava/webport
 clusters:
-  sava:
+  sava:  # cluster 1
     services:
       breed:
         name: sava-frontend:1.2.0
         deployable: magneticio/sava-frontend:1.2.0
         ports:
           webport: 8080/http                
-        environment_variables:
+        environment_variables: 
           BACKEND_1: http://$backend1.host:$backend1.ports.webport/api/message
           BACKEND_2: http://$backend2.host:$backend2.ports.webport/api/message
-        dependencies:
-          backend1: sava-backend1:1.2.0
+        dependencies: # Vamp will check dependencies are available
+          backend1: sava-backend1:1.2.0  
           backend2: sava-backend2:1.2.0
       scale:
         cpu: 0.2      
         memory: 64MB
         instances: 1               
-  backend1:
+  backend1:  # cluster 2
     services:
       breed:
         name: sava-backend1:1.2.0
@@ -62,7 +54,7 @@ clusters:
         cpu: 0.2       
         memory: 64MB
         instances: 1              
-  backend2:
+  backend2:  # cluster 3
     services:
       breed:
         name: sava-backend2:1.2.0
@@ -75,9 +67,14 @@ clusters:
         instances: 1
 ```
 
-Deploy this blueprint using either the UI or a REST call and when deployed check out the new topology in your browser (on port 9060 this time). When deployed it should yield something similar to:
+Deploy this blueprint using either the UI or a REST call and, when deployed, check out the new topology in the Vamp UI through the Gateways page or the Deployments page 
 
-![](/images/screens/services_2backends.png)
+![](/images/screens/v094/services_2backends.png)
+
+You can also use Vamp as a reverse proxy to access the exposed gateways:
+
+* `http://localhost:8080/proxy/gateways/sava%3A1.2%2F9070/`
+* `http://localhost:8080/proxy/gateways/sava%3A1.2%2Fsava%2Fwebport/`
 
 ## Learn about environment variables and service discovery
 

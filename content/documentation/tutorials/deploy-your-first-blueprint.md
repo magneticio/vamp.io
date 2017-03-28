@@ -84,16 +84,17 @@ When the application is fully deployed, you can check it out through the Vamp UI
 
 ![](/images/screens/v094/gateways-monolith1.png)
 
+* **By reverse proxy:**  
+  You can also use Vamp as a reverse proxy to access the application through the exposed sava gateways:
+
+  * `http://localhost:8080/proxy/gateways/sava%2Fsava%2Fwebport/`
+  * `http://localhost:8080/proxy/gateways/sava%2F9050/`
+
 ## Get some metrics on the running application
 
 Open the application in a new tab and hit refresh a few times in your browser. You should see the metrics spike and some pretty charts being drawn on the **sava/9050** gateway page:
 
 ![](/images/screens/v094/tut1_metrics.png)
-
-Note that you can also use Vamp as a reverse proxy to access the exposed sava gateways:
-
-* `http://localhost:8080/proxy/gateways/sava%2Fsava%2Fwebport/`
-* `http://localhost:8080/proxy/gateways/sava%2F9050/`
 
 ## Change scale and load balancing
 
