@@ -9,11 +9,11 @@ menu:
 
 In the [previous tutorial we "over-engineered" our service based solution a bit](/documentation/tutorials/split-a-monolith/) (on purpose of course). We don't really need two backends services, so in this tutorial we will introduce our newly engineered solution and transition to it using Vamp blueprints and canary releasing methods. In this tutorial we will:
 
-1. Get some background and theory on merging services
-2. Prepare our blueprint
-3. Transition from blueprints to deployments (and back)
-4. Delete parts of the deployment
-5. Answer the all important question _when would I use this?_
+* Get some background and theory on merging services
+* Prepare our blueprint
+* Transition from blueprints to deployments (and back)
+* Delete parts of the deployment
+* Answer the all important question _when would I use this?_
 
 ## Some background and theory
 
@@ -38,14 +38,13 @@ The below blueprint describes our more reasonable service topology. Again, this 
 valid by itself. You could just deploy it somewhere separately and not merge it with our over-engineered
 topology. Notice the following:
 
-- The blueprint only has one backend cluster with one service.
-- The blueprint does not specify a gateway using the `gateways` key because we are going to use the gateway already present and configured in the running deployment. However, it would be perfectly correct to specify the old gateway - the gateway would be updated as well.
+- There is only one backend cluster with one service
+- There is no gateway specified. This is because we will use the gateway already present and configured in the running deployment. It would be perfectly correct to specify the old gateway, just not necesary.
 
-```yaml
----
+```
 name: sava:1.3
 clusters:
-  sava:
+  sava: # cluster 1
     services:
       breed:
         name: sava-frontend:1.3.0
@@ -60,7 +59,7 @@ clusters:
         cpu: 0.2
         memory: 64MB
         instances: 1
-  backend:
+  backend: # cluster 4 - it's the 2nd cluster in this blueprint, but will be the 4th after the merge
     services:
       breed:
         name: sava-backend:1.3.0
@@ -73,34 +72,57 @@ clusters:
         instances: 1
 ```
 
-Updating our deployment using the UI or a `PUT` to the `/api/v1/deployments/{deployment_name}` should yield a deployment with the following properties (we left some irrelevant
-parts out):
+We are going to merge this blueprint with our running sava:1.2 deployment in the same way we approached the merge in the [run a canary release tutorial](/documentation/tutorials/run-a-canary-release/).  
+You can do this using either the Vamp UI or directly via the Vamp API.
 
-* Two `services` in the sava `cluster`: the old one at 100% and the new one at 0% weight.
-* Three backends in the `cluster` list: two old ones and one new one.
+### Merge using the UI
 
-So what happened here? Vamp has worked out what parts were already there and what parts should be merged or added. This is done based on naming, i.e. the sava cluster already existed, so Vamp added a service to it at 0% weight. A cluster named "backend" didn't exist yet, so it was created. Effectively, we have merged
-the running deployment with a new blueprint.
+1. Go to the **Blueprints** page and click **Add** (top right)
+* Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment 
+* Open the action menu on the **sava:1.3** blueprint and select **Merge to** 
+  ![](/images/screens/v094/tut4_merge.png)
+* You'll be prompted to select the deployment you wish to merge the blueprint with - select **sava:1.2**
+* Click **Merge** to deploy the services sava:1.3 and sava-backend:1.3 to the running sava:1.2 deployment.  
+
+### Merge using the API
+
+You can complete the same merge action with the Vamp API - remember to set the `Content-Type: application/x-yaml` for your requests:
+
+1. To create the blueprint, `POST` the above blueprint YAML to `/api/v1/blueprints`  
+* To merge the blueprint, `PUT` the below YAML to `/api/v1/deployments/sava:1.2`  
+
+  ```
+  name: sava:1.3
+  ```
+
+Vamp will work out the differences and update the deployment accordingly.  
+
+![](/images/screens/v094/tut4_merged_deployment.png)
+
+Notice we now have:
+
+* Three backend clusters: two old ones (backend1 and backend2) and one from the new merge.
+* Two services in the sava cluster: the old sava-frontend:1.2 and the new sava-frontend:1.3.  
+  If you open the sava cluster **webport** you will see that the sava-frontend:1.2.0 route has a weight of 100% and the new new sava-frontend:1.3.0 route has a weight of 0%. Whenever Vamp merges a new service to an existing cluster it applies the default weight of 0%. 
+![](/images/screens/v094/tut4_route_weights.png)
+
+So what happened here? Vamp has worked out what parts were already there and what parts should be added. This is done based on naming, i.e. the sava cluster already existed, so Vamp added a service to it with 0% route weight. A cluster named "backend" didn't exist yet, so it was created. Effectively, we have merged the running deployment with a new blueprint.
 
 ## Transition from blueprints to deployments and back
 
-Moving from the old to the new topology is now just a question of "turning the weight dial". You
-could do this in one go, or slowly adjust it. The easiest and neatest way is to just update the deployment as you go.
+Moving from the old to the new topology is now just a question of "turning the weight dial". You could do this in one go, or slowly adjust it. The easiest and neatest way is to update the deployment as you go.
 
-Vamp's API has a convenient option for this: you can export any deployment as a blueprint! By appending `?as_blueprint=true` to any deployment URI, Vamp strips all runtime info and outputs a perfectly valid blueprint of that specific deployment.
+Vamp has a convenient option for this: you can export any deployment as a blueprint! 
 
-The default output will be in JSON format, but you can also get a YAML format. Just set the header `Accept: application/x-yaml` and Vamp will give you a YAML format blueprint of that deployment.
+* In the API, append `?as_blueprint=true` to any deployment URI, Vamp strips all runtime info and outputs a perfectly valid blueprint of that specific deployment. The default output will be in JSON format, but you can also get a YAML format. Just set the header `Accept: application/x-yaml` and Vamp will give you a YAML format blueprint of that deployment.
+* In the UI, go to the **Deployments** page, open the action menu on a deployment and click **Export as a blueprint**, Vamp strips all runtime info and saves the output as a new blueprint resource.
 
-When using the graphical UI, this is all taken care of.
+![](/images/screens/v094/tut4_export_as_blueprint.png)
 
-
-In this specific example, we could export the deployment as a blueprint and update the weight to a 50% to
-50% split. Then we could do this again, but with a 80% to 20% split and so on. See the abbreviated example
-below where we set the `weight` keys to `50%` in both `routing` sections.
+In our specific example, we could export the deployment as a blueprint and update the weight to a 50% to 50% split. Then we could do this again, but with a 80% to 20% split and so on. See the abbreviated example below where we set the weight keys to 50% for both routes.
 
 
-```yaml
----
+```
 name: eb2d505e-f5cf-4aed-b4ae-326a8ca54577
 clusters:
   sava:
@@ -139,14 +161,14 @@ clusters:
         memory: 64MB
         instances: 1
       dialects: {}
-    gateways:
+    gateways:  # update the route weight here
       port:
         sticky: none
         routes:
           sava-frontend:1.2.0:
-            weight: 50%
+            weight: 50%  
           sava-frontend:1.3.0:
-            weight: 50%
+            weight: 50%  
 ```
 
 ## Delete parts of the deployment
