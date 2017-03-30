@@ -21,16 +21,14 @@ What we are going to do is create a new blueprint that is completely valid by it
 with our already running deployment. This might sound strange at first, but it makes sense. Why? Merging will enable us to slowly move from the previous solution to the next solution. Once moved over, we can
 remove any parts we no longer need, i.e. the former "over-engineered" topology.
 
-![](/images/services_atob.svg)
+![](/images/screens/v094/services_atob.png)
 
 In the diagram above, this is visualized as follows:
 
-1. We have a running deployment (the blue circle with the "1"). To this we introduce a new blueprint
-which is merged with the running deployment (the pink circle with the "2").
-2. At a point, both are active as we are transitioning from blue to pink.
-3. Once we are fully on pink, we actively remove/decommission the blue part.
-
-Is this the same as a blue/green release? Yes, but we like pink better ;o)
+1. We initiate a running deployment by deploying Blueprint A 
+* We introduce a new service to the deployment by merging Blueprint B
+* At a point, both are active as we are transitioning from Blueprint A to Blueprint B
+* Once we are fully on Blueprint B, we actively remove/decommission Blueprint A
 
 ## Prepare our blueprint
 
