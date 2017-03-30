@@ -5,6 +5,7 @@ menu:
   main:
     identifier: "troubleshoot-v094"
     parent: "Troubleshooting"
+    weight: 10
 aliases:
     - /documentation/troubleshoot
     - /documentation/troubleshoot/overview

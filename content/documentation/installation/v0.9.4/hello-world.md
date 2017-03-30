@@ -36,6 +36,7 @@ Mac running Docker toolbox can install [Vamp hello world v0.9.4](/documentation/
 Start the `magneticio/vamp-docker:0.9.4` container, taking care to pass in the right parameters for your system: 
 
 ### Docker for Mac
+Docker machine should have access to **at least 3GB memory**, make sure this is set correctly before you continue.
 
 ```
 docker run -v /var/run/docker.sock:/var/run/docker.sock \

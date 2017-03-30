@@ -14,6 +14,8 @@ If everything went to plan, you should have your Vamp installation up and runnin
 * Change the scale and load-balancing
 * Chaos monkey!    
 
+**Requirements:** Docker machine should have access to **at least 3GB memory**
+
 ## Deploy a monolith
 
 Imagine you or the company you work for still use monolithic applications. I know, it sounds far fetched...

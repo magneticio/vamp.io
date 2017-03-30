@@ -31,6 +31,7 @@ In this tutorial we will:
 ### Requirements
 
 * A running version of Vamp (this tutorial has been tested on [Vamp hello world v0.9.3](documentation/installation/v0.9.3/hello-world) running with Docker toolbox)
+* Docker machine should have access to **at least 3GB memory**
 * Access to the Docker hub
 * You might run into issues if your firewall is set to block connections in the ranges 31000-32000 (required by Mesos) or 40000-45000 (required by Vamp)
   

@@ -11,9 +11,11 @@ In the [previous tutorial we "over-engineered" our service based solution a bit]
 
 * Get some background and theory on merging services
 * Prepare our blueprint
-* Transition from blueprints to deployments (and back)
-* Delete parts of the deployment
+* Merge the blueprint with a running deployment
+* Decommision parts of the deployment
 * Answer the all important question _when would I use this?_
+
+**Requirements:** Docker machine should have access to **at least 3GB memory**
 
 ## Some background and theory
 
@@ -26,9 +28,9 @@ remove any parts we no longer need, i.e. the former "over-engineered" topology.
 In the diagram above, this is visualized as follows:
 
 1. We initiate a running deployment by deploying Blueprint A 
-* We introduce a new service to the deployment by merging Blueprint B
-* At a point, both are active as we are transitioning from Blueprint A to Blueprint B
-* Once we are fully on Blueprint B, we actively remove/decommission Blueprint A
+* We introduce a new service to the deployment by merging Blueprint B with the running deployment
+* At this point, both blueprints are active allowing for a smooth transition. For example by canary release
+* Once we are fully on running on Blueprint B, we can remove/decommission Blueprint A
 
 ## Prepare our blueprint
 
@@ -57,7 +59,7 @@ clusters:
         cpu: 0.2
         memory: 64MB
         instances: 1
-  backend: # cluster 4 - it's the 2nd cluster in this blueprint, but will be the 4th after the merge
+  backend: # cluster 2
     services:
       breed:
         name: sava-backend:1.3.0
@@ -70,10 +72,12 @@ clusters:
         instances: 1
 ```
 
-We are going to merge this blueprint with our running sava:1.2 deployment in the same way we approached the merge in the [run a canary release tutorial](/documentation/tutorials/run-a-canary-release/).  
-You can do this using either the Vamp UI or directly via the Vamp API.
+## Merge the blueprint
 
-### Merge using the UI
+We can merge our new blueprint with the running sava:1.2 deployment in the same way we approached the merge in the [run a canary release tutorial](/documentation/tutorials/run-a-canary-release/).  This will deploy the new sava:1.3. services alongside sava:1.2, without routing any traffic to them.  
+You can do this using either the Vamp UI or API.
+
+### Merge using the Vamp UI
 
 1. Go to the **Blueprints** page and click **Add** (top right)
 * Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment 
@@ -93,187 +97,61 @@ You can complete the same merge action with the Vamp API - remember to set the `
   name: sava:1.3
   ```
 
-Vamp will work out the differences and update the deployment accordingly.  
-
 ![](/images/screens/v094/tut4_merged_deployment.png)
 
 Notice we now have:
 
 * Three backend clusters: two old ones (backend1 and backend2) and one from the new merge.
 * Two services in the sava cluster: the old sava-frontend:1.2 and the new sava-frontend:1.3.  
-  If you open the sava cluster **webport** you will see that the sava-frontend:1.2.0 route has a weight of 100% and the new new sava-frontend:1.3.0 route has a weight of 0%. Whenever Vamp merges a new service to an existing cluster it applies the default weight of 0%. 
+  If you open the sava cluster **webport** you will see that the sava-frontend:1.2.0 route has a weight of 100% and the new new sava-frontend:1.3.0 route has a weight of 0%. Whenever Vamp merges a new service to an existing cluster it applies the default weight of 0%. This means no traffic will be routed to sava:1.3 yet.
+
 ![](/images/screens/v094/tut4_route_weights.png)
 
-So what happened here? Vamp has worked out what parts were already there and what parts should be added. This is done based on naming, i.e. the sava cluster already existed, so Vamp added a service to it with 0% route weight. A cluster named "backend" didn't exist yet, so it was created. Effectively, we have merged the running deployment with a new blueprint.
+So what happened here? Vamp worked out which parts of the blueprint were already in the deployment and which parts should be added. This is done based on naming:
 
-## Transition from blueprints to deployments and back
+* The sava cluster already existed, so Vamp added a service to it with 0% route weight
+* A cluster named "backend" didn't exist yet, so it was created 
 
-Moving from the old to the new topology is now just a question of "turning the weight dial". You could do this in one go, or slowly adjust it. The easiest and neatest way is to update the deployment as you go.
+Now we have both blueprints deployed, moving from the old to the new topology is just a question of “turning the weight dial”. You could do this in one go, or slowly adjust it. 
 
-Vamp has a convenient option for this: you can export any deployment as a blueprint! 
+![](/images/screens/v094/tut4_sava_weight.png)
 
-* In the API, append `?as_blueprint=true` to any deployment URI, Vamp strips all runtime info and outputs a perfectly valid blueprint of that specific deployment. The default output will be in JSON format, but you can also get a YAML format. Just set the header `Accept: application/x-yaml` and Vamp will give you a YAML format blueprint of that deployment.
-* In the UI, go to the **Deployments** page, open the action menu on a deployment and click **Export as a blueprint**, Vamp strips all runtime info and saves the output as a new blueprint resource.
+## Decomision parts of the deployment
 
-![](/images/screens/v094/tut4_export_as_blueprint.png)
+Once we are fully running on sava:1.3, we can decommision the old, over-engineered sava:1.2.  We do this by updating the deployment again, this time to remove the sava:1.2 blueprint, effectively deleting all deployed sava:1.2 services. 
 
-In our specific example, we could export the deployment as a blueprint and update the weight to a 50% to 50% split. Then we could do this again, but with a 80% to 20% split and so on. See the abbreviated example below where we set the weight keys to 50% for both routes.
+### Delete using the Vamp UI
 
+1. Go to the **Blueprints** page  
+* Open the action menu on the **sava:1.2** blueprint and select **Remove from** 
+  ![](/images/screens/v094/tut4_delete.png)
+* You'll be prompted to select the deployment you wish to remove the blueprint from - select **sava:1.2**
+* Click **Remove** to delete the services sava:1.2, sava-backend1:1.2 and sava-backend2:1.2 from the running sava:1.2 deployment.   
+  
+### Delete using the API
 
-```
-name: eb2d505e-f5cf-4aed-b4ae-326a8ca54577
-clusters:
-  sava:
-    services:
-    - breed:
-        name: sava-frontend:1.2.0
-        deployable: magneticio/sava-frontend:1.2.0
-        ports:
-          webport: 8080/http
-        environment_variables:
-          BACKEND_1: http://$backend1.host:$backend1.ports.webport/api/message
-          BACKEND_2: http://$backend2.host:$backend2.ports.webport/api/message
-        constants: {}
-        dependencies:
-          backend1: sava-backend1:1.2.0
-          backend2: sava-backend2:1.2.0
-      environment_variables: {}
-      scale:
-        cpu: 0.2
-        memory: 64MB
-        instances: 1
-      dialects: {}
-    - breed:
-        name: sava-frontend:1.3.0
-        deployable: magneticio/sava-frontend:1.3.0
-        ports:
-          webport: 8080/http
-        environment_variables:
-          BACKEND: http://$backend.host:$backend.ports.webport/api/message
-        constants: {}
-        dependencies:
-          backend: sava-backend:1.3.0
-      environment_variables: {}
-      scale:
-        cpu: 0.2
-        memory: 64MB
-        instances: 1
-      dialects: {}
-    gateways:  # update the route weight here
-      port:
-        sticky: none
-        routes:
-          sava-frontend:1.2.0:
-            weight: 50%  
-          sava-frontend:1.3.0:
-            weight: 50%  
-```
+You can complete the same delete action with the Vamp API - remember to set the `Content-Type: application/x-yaml` for your requests:
 
-## Delete parts of the deployment
+1. To delete the sava:1.2 blueprint from the deployment, `DELETE` the below YAML to `/api/v1/deployments/sava:1.2`  
 
-Vamp helps you transition between states and avoid "hard" switches, so deleting parts of a deployment is somewhat different than you might expect.
+  ```
+  name: sava:1.2
+  ```
 
-In essence, a delete is just another update of the deployment: you specify what you want to remove using a blueprint and send it to the deployment's URI using the `DELETE`HTTP verb: yes, it is HTTP Delete with a body, not just a URI and some id.
+![](/images/screens/v094/tut4_after_delete.png)
 
-This means you can specifically target parts of your deployment to be removed instead of deleting the whole thing. For this tutorial we are going to delete the "over-engineered" old part of our deployment.
-
-Currently, deleting works in two steps:
-- Set all routings to `weight: 0%` of the services you want to delete with a simple update.
-- Execute the delete.
-
-
-{{< note title="Note!" >}}
-You need to explicitly set the routing weight of the service you want to deploy to zero before deleting. Here is why: When you have, for example, four active services divided in a 25/25/20/30 split and you delete the one with 30%, Vamp doesn't know how you want to redistribute the "left over" 30% of traffic. For this reason the user should first explicitly divide this and then perform the delete.
-{{< /note >}}
-
-**Setting to zero**
-
-When you grab the YAML version of the deployment, just like above, you can set all the `weight` entries for the Sava 1.2.0 versions to `0` and update the deployment as usual. See the cleaned up example and make sure to adjust the name to your specific situation.
-
-
-```yaml
----
-name: 125fd95c-a756-4635-8e1a-361085037870
-clusters:
-  backend1:
-    services:
-    - breed:
-        ref: sava-backend1:1.2.0
-    gateways:
-      routes:
-        sava-backend1:1.2.0:
-          weight: 0%
-  backend2:
-    services:
-    - breed:
-        ref: sava-backend2:1.2.0
-    gateways:
-      routes:
-        sava-backend2:1.2.0:
-          weight: 0%
-  sava:
-    services:
-    - breed:
-        ref: sava-frontend:1.3.0
-
-    - breed:
-        ref: sava-frontend:1.2.0
-    gateways:
-      routes:
-        sava-frontend:1.3.0:
-          weight: 100%
-        sava-frontend:1.2.0:
-          weight: 0%
-```
-
-
-
-**Doing the delete**
-
-Now, you can take the exact same YAML blueprint or use one that's a bit cleaned up for clarity and send it in the body of the `DELETE` to the deployment resource, e.g. `/api/v1/deployments/sava`.
-
-
-Using the Vamp UI you can delete parts of your deployment by using the **REMOVE FROM** function under the **BLUEPRINTS** tab.
-
-
-
-```yaml
----
-name: sava:1.2
-clusters:
-  sava:
-    services:
-      breed:
-        ref: sava-frontend:1.2.0
-  backend1:
-    services:
-      breed:
-        ref: sava-backend1:1.2.0
-  backend2:
-    services:
-      breed:
-        ref: sava-backend2:1.2.0
-```
-
-
-We removed the `deployable`, `environment_variables`, `ports` and some other parts of the blueprint. These are actually not necessary for updating or deletion. Besides that, this is actually exactly the same blueprint we used to initially deploy the "old" topology.
-
-You can check the result in the UI: you should be left with just one backend and one frontend:
-
-![](/images/screens/v091/tut4_after_delete.png)
+Vamp will update the running deployment, removing all elements described in the sava:1.2 blueprint. This means that our running deployment **sava:1.2** now contains no sava:1.2 services - that's why including a version number in the name of a mutable deployment is a bad idea.
 
 ## When would I use this?
 
-Sounds cool, but when would I use this in practice? Well, basically anytime you release something new!
-For example a bugfix release for a mobile API that "didn't change anything significantly"? You could test
-this separately and describe it in its own blueprint. After testing, you would merge that exact same blueprint
-with your already running production version (the one without the bugfix) and slowly move over to new version.
+Sounds cool, but when would I use this in practice? Well, basically anytime you release something new!  
 
-New major release of your customer facing app? You probably also have some new dependencies that come with that
-release. You create some containers and write up a blueprint that describes this new situation, run it in acceptance and test and what have you. Later, you merge it into your production setup, effectively putting it next to it and then slowly move from the old situation to the new situation, including dependencies.
+For example a bugfix release for a mobile API that "didn't change anything significantly"? You could test this separately and describe it in its own blueprint. After testing, you would merge that exact same blueprint with your already running production version (the one without the bugfix) and slowly move over to new version.
+
+New major release of your customer facing app? You probably also have some new dependencies that come with that release. You create some containers and write up a blueprint that describes this new situation, run it in acceptance and test and what have you. Later, you merge it into your production setup, effectively putting it next to it and then slowly move from the old situation to the new situation, including dependencies.
 
 {{< note title="What next?" >}}
-* This is the end of this initial getting started tutorial. We haven't done anything with Vamp's SLA's yet, scaling or dictionary system, so there is much more to come!
+* This is the end of this initial getting started tutorials. But there's [much more to try out](/documentation/tutorials/overview/)
 * [Vamp use cases](/why-use-vamp/use-cases/use-cases/)
 * Find out how to [install a production-grade set up of Vamp](/documentation/installation/overview/)
 {{< /note >}}

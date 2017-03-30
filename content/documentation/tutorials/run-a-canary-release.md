@@ -19,6 +19,8 @@ Now let's say we have a new version of this great application that we want to ca
 * Use conditions to target specific groups
 * Learn a bit more about conditions
 
+**Requirements:** Docker machine should have access to **at least 3GB memory**
+
 ## Prepare our blueprint
 
 Vamp allows you to canary release application updates by merging new blueprints to a running deployment. Take a look at the YAML blueprint example below. It is almost identical to the blueprint we initially used to deploy sava 1.0.0, with one difference - this time the breed describes the sava:1.1.0 service.

@@ -16,6 +16,7 @@ aliases:
 The Vamp hello world quickstart is a self contained testing package. If you run into problems or unexpected behaviour, we advise that you clear everything out and reinstall.
 
 1. Stop all running containers - for example using `docker stop $( docker ps --quiet ) `
+- The Docker machine should have access to **at least 3GB memory**, make sure this has been set correctly.
 - Clean up  your docker environment (remove stopped containers, dangling images and volumes). A script to do this: 
         
         docker rmi -f $(docker images -q -f dangling=true) 2>/dev/null

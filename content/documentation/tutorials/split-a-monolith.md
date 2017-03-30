@@ -12,6 +12,8 @@ called the *Very Awesome Microservices Platform* for nothing. The next step is t
 * define a new service topology
 * learn about Vamp environment variables and service discovery
 
+**Requirements:** Docker machine should have access to **at least 3GB memory**
+
 ## Define a new service topology
 
 To prove our point, we are going to slightly "over-engineer" our services solution. This will also help us demonstrate how we can later remove parts of our solution using Vamp. For now, we'll split the monolith into a topology of one frontend and two separate backend services. After our engineers are done with coding, we can catch this new topology in the following blueprint. Please notice a couple of things:
