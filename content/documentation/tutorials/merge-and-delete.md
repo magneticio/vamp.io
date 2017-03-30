@@ -99,6 +99,8 @@ You can complete the same merge action with the Vamp API - remember to set the `
 
 ![](/images/screens/v094/tut4_merged_deployment.png)
 
+So what happened here? Vamp worked out which parts of the blueprint were already in the deployment and which parts should be added. This is done based on naming. The sava cluster already existed, so Vamp simply added a service to it with 0% route weight. A cluster named "backend" didn't exist, so Vamp created it.
+
 Notice we now have:
 
 * Three backend clusters: two old ones (backend1 and backend2) and one from the new merge.
@@ -107,18 +109,17 @@ Notice we now have:
 
 ![](/images/screens/v094/tut4_route_weights.png)
 
-So what happened here? Vamp worked out which parts of the blueprint were already in the deployment and which parts should be added. This is done based on naming:
 
-* The sava cluster already existed, so Vamp added a service to it with 0% route weight
-* A cluster named "backend" didn't exist yet, so it was created 
 
-Now we have both blueprints deployed, moving from the old to the new topology is just a question of “turning the weight dial”. You could do this in one go, or slowly adjust it. 
+Now both blueprints are deployed, moving from the old to the new topology is just a question of “turning the weight dial”. You could do this in one go, or slowly adjust it. 
 
 ![](/images/screens/v094/tut4_sava_weight.png)
 
 ## Decomision parts of the deployment
 
-Once we are fully running on sava:1.3, we can decommision the old, over-engineered sava:1.2.  We do this by updating the deployment again, this time to remove the sava:1.2 blueprint, effectively deleting all deployed sava:1.2 services. 
+Once we are fully running on sava:1.3, we can decommision the old, over-engineered sava:1.2.  We do this by updating the deployment again, this time to remove the sava:1.2 blueprint, effectively deleting all deployed sava:1.2 services.  
+
+Note that we won't be able to remove any service unless its weight is set to 0%. If traffic is still being directed to a service requested for removal, Vamp will report an error.
 
 ### Delete using the Vamp UI
 
