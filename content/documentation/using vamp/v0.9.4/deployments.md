@@ -226,7 +226,7 @@ We could also remove the newer version (monarch_1.1 with/without recommendation 
 
 
 {{< note title="What next?" >}}
-* Read about [Vamp environment variables](/documentation/using-vamp/v0.9.4/environment-variables/)
+* Read about [Vamp dialects](/documentation/using-vamp/v0.9.4/dialects/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
