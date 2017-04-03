@@ -17,6 +17,7 @@ _March 2017_
 * Vamp namespaces [#927](https://github.com/magneticio/vamp/issues/927)
 * Optional DC/OS driver namespace cluster constraint [#929](https://github.com/magneticio/vamp/issues/929)
 * Deployment level dialects [#922](https://github.com/magneticio/vamp/issues/922)
+* Workflow dialects [#925](https://github.com/magneticio/vamp/issues/925)
 * Vamp workflow agent port support and standalone UI [#909](https://github.com/magneticio/vamp/issues/909) & [#14](https://github.com/magneticio/vamp-workflow-agent/issues/14)
 * Workflow status endpoint [#939](https://github.com/magneticio/vamp/issues/939)
 * Access to configuration values from breed environment variables [#906](https://github.com/magneticio/vamp/issues/906)
@@ -29,6 +30,7 @@ _March 2017_
 [#899](https://github.com/magneticio/vamp/issues/899),
 [#913](https://github.com/magneticio/vamp/issues/913)).
 * Transform a docker-compose.yml to Blueprint ([#928](https://github.com/magneticio/vamp/issues/928))
+* Additional blueprint validation [#802](https://github.com/magneticio/vamp/issues/802)
 
 ## What has changed
 * Synchronization when health checks are changed needs to be explicitly specified `vamp.operation.synchronization.check.health-check`: `true` or `false` [#709](https://github.com/magneticio/vamp/issues/709)
