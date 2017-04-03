@@ -29,17 +29,17 @@ In the diagram above, this is visualized as follows:
 
 1. We initiate a running deployment by deploying Blueprint A 
 * We introduce a new service to the deployment by merging Blueprint B with the running deployment
-* At this point, both blueprints are active allowing for a smooth transition. For example by canary release
+* At this point, both blueprints are active allowing for a smooth transition, for example, by canary release
 * Once we are fully on running on Blueprint B, we can remove/decommission Blueprint A
 
 ## Prepare our blueprint
 
-The below blueprint describes our more reasonable service topology. Again, this blueprint is completely
-valid by itself. You could just deploy it somewhere separately and not merge it with our over-engineered
-topology. Notice the following:
+The below blueprint describes our more reasonable service topology. This blueprint is completely valid by itself - you could just deploy it somewhere separately and not merge it with the over-engineered sava:1.2 topology.  
 
-- There is only one backend cluster with one service
-- There is no gateway specified. This is because we will use the gateway already present and configured in the running deployment. It would be perfectly correct to specify the old gateway, just not necesary.
+Notice the following:
+
+- There is only one backend cluster, with one service
+- No gateway is specified (we will use the existing gateway in the running deployment)
 
 ```
 name: sava:1.3
@@ -72,10 +72,10 @@ clusters:
         instances: 1
 ```
 
-## Merge the blueprint
+## Merge the topologies
 
-We can merge our new blueprint with the running sava:1.2 deployment in the same way we approached the merge in the [run a canary release tutorial](/documentation/tutorials/run-a-canary-release/).  This will deploy the new sava:1.3. services alongside sava:1.2, without routing any traffic to them.  
-You can do this using either the Vamp UI or API.
+We can now merge the blueprint describing our new topology with the running sava:1.2 deployment. This is done in the same way we added a new service in the [run a canary release tutorial](/documentation/tutorials/run-a-canary-release/).  Merging the blueprint will deploy the new sava:1.3. services alongside sava:1.2, without routing any traffic to them.  
+You can complete the merge using either the Vamp UI or API.
 
 ### Merge using the Vamp UI
 
@@ -105,7 +105,7 @@ Notice we now have:
 
 * Three backend clusters: two old ones (backend1 and backend2) and one from the new merge.
 * Two services in the sava cluster: the old sava-frontend:1.2 and the new sava-frontend:1.3.  
-  If you open the sava cluster **webport** you will see that the sava-frontend:1.2.0 route has a weight of 100% and the new new sava-frontend:1.3.0 route has a weight of 0%. Whenever Vamp merges a new service to an existing cluster it applies the default weight of 0%. This means no traffic will be routed to sava:1.3 yet.
+  If you open the sava cluster **webport** you will see that the sava-frontend:1.2.0 route has a weight of 100% and the new new sava-frontend:1.3.0 route has a weight of 0%. Whenever Vamp merges a new service to an existing cluster, the default weight of 0% is applied. This means no traffic will be routed to sava:1.3 yet.
 
 ![](/images/screens/v094/tut4_route_weights.png)
 
@@ -119,7 +119,7 @@ Now both blueprints are deployed, moving from the old to the new topology is jus
 
 Once we are fully running on sava:1.3, we can decommision the old, over-engineered sava:1.2.  We do this by updating the deployment again, this time to remove the sava:1.2 blueprint, effectively deleting all deployed sava:1.2 services.  
 
-Note that we won't be able to remove any service unless its weight is set to 0%. If traffic is still being directed to a service requested for removal, Vamp will report an error.
+Note that we won't be able to remove any service unless its weight is first set to 0%.
 
 ### Delete using the Vamp UI
 
