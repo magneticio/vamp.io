@@ -14,6 +14,11 @@ One of the most powerful features of Vamp are workflows. Vamp workflows are cont
 
 This tutorial will show how workflows can be used to run an automated canary release, gradually introducing an updated service and initiating a rollback to the old version in case 500 errors are measured on the new service. We will use our nifty little demo and automation tool Vamp Runner to demonstrate this, but you could just as easily perform all the described actions manually in the Vamp UI or using the API.  
 
+
+{{< note title="Tested with Vamp v0.9.2" >}}
+This tutorial has been tested on [Vamp hello world v0.9.2](/documentation/installation/v0.9.2/hello-world/) running with Docker toolbox.
+{{< /note >}}
+
 In this tutorial we will:
 
 1. [Spin up Vamp Runner](documentation/tutorials/automate-a-canary-release/#spin-up-vamp-runner)  
@@ -25,7 +30,7 @@ In this tutorial we will:
 
 ### Requirements
 
-* A running version of Vamp 0.9.x (this tutorial has been tested on the [Vamp hello world set up](documentation/installation/hello-world) using Vamp 0.9.2)
+* A running version of Vamp 0.9.x (this tutorial has been tested on [Vamp hello world v0.9.2](documentation/installation/v0.9.2/hello-world) running with Docker toolbox)
 * Access to the Docker hub
 * You might run into issues if your firewall is set to block connections in the ranges 31000-32000 (required by Mesos) or 40000-45000 (required by Vamp)
   
