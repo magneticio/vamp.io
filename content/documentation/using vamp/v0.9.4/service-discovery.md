@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "service-discovery-v094"
     parent: "Using Vamp"
-    weight: 135
+    weight: 150
 aliases:
     - /documentation/using-vamp/service-discovery/
 ---
@@ -38,8 +38,8 @@ After this, you can scale the service up/down or in/out either by hand or using 
 ## Discovering a service
 
 So, how does one service find a dependent service? Services are found by just referencing them in the DSL. Take a look at the following example:
+
 ```
----
 name: my_blueprint:1.0
 clusters:
   my_frontend_cluster:
@@ -83,7 +83,7 @@ Even though Vamp provides this type of service discovery, it does not put any co
 
 The gateway-driver section of the Vamp configuration file `application.conf` configures how traffic should be routed through Vamp Gateway Agent. See the below example on how to configure this:
 
-```yaml
+```
 vamp {
   gateway-driver {
     host: "10.193.238.26"              # Vamp Gateway Agent / Haproxy, internal IP.
@@ -107,8 +107,7 @@ The reason for the need to configure `vamp.gateway-driver.host` is that when ser
 Let's use an example: `frontend` and `backend` service, `frontend` depends on `backend` - in Vamp DSL that would be 2 clusters (assuming the same deployment).
 There are different ways how `frontend` can discover its dependency `backend`, and to make things simpler Vamp supports using specific environment parameters.
 
-```yaml
----
+```
 name: my-web-app
 clusters:
   frontend:
@@ -139,7 +138,7 @@ Note that even without Vamp, you would need to setup access to `backend` in some
 With Vamp, access is via VGA's and that allows specific routing (conditions, weights) needed for A/B testing and canary releasing.
 
 {{< note title="What next?" >}}
-* Read about [using Vamp with virtual hosts](/documentation/using-vamp/v0.9.4/virtual-hosts/)
+* Read about [Vamp SLAs (Service Level Agreements)](/documentation/using-vamp/v0.9.4/sla/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

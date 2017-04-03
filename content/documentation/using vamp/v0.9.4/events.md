@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "events-v094"
     parent: "Using Vamp"
-    weight: 80
+    weight: 120
 aliases:
     - /documentation/using-vamp/events/
 ---

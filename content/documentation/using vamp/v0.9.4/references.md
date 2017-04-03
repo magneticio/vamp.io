@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "referencing-artifacts-v094"
     parent: "Using Vamp"
-    weight: 110
+    weight: 140
 aliases:
     - /documentation/using-vamp/references/
 ---
@@ -18,8 +18,7 @@ Vamp assumes that referenced artifcats (the breed called `my_breed` in the examp
 
 **inline notation**
 
-```yaml
----
+```
 name: my_blueprint
   clusters:
     my_cluster:
@@ -34,8 +33,7 @@ name: my_blueprint
 ```
 **reference notation**
 
-```yaml
----
+```
 name: my_blueprint
   clusters:
     my_cluster:
@@ -66,8 +64,7 @@ When you begin to work with Vamp, you will probably start with inline artifacts.
 
 `POST /api/v1/breeds`
 
-```yaml
----
+```
 name: redis:1.0
 deployable: redis
 ports: 6379/tcp
@@ -82,16 +79,14 @@ ports: 6379/tcp
 
 `POST /api/v1/scales`
 
-```yaml
----
+```
 name: medium_prod
 cpu: 2
 memory: 4096MB
 instances: 3
 ```
 
-```yaml
----
+```
 name: medium_test
 cpu: 0.5
 memory: 1024MB
@@ -107,15 +102,14 @@ instances: 1
 
 ```POST /api/v1/conditions```
 
-```yaml
----
+```
 name: condition_empty_shopping_cart
 condition: Cookie SHOPSESSION Contains shopping_basket_items=0 
 ```
 
 
 {{< note title="What next?" >}}
-* Read about [Vamp workflows](/documentation/using-vamp/v0.9.4/workflows/)
+* Read about [using Vamp for service discovery](/documentation/using-vamp/v0.9.4/service-discovery/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

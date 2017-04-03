@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "environment-variables-v094"
     parent: "Using Vamp"
-    weight: 50
+    weight: 100
 aliases:
     - /documentation/using-vamp/environment-variables/
 ---
@@ -302,7 +302,7 @@ clusters:
 
 
 {{< note title="What next?" >}}
-* Read about [Vamp gateways](/documentation/using-vamp/v0.9.4/gateways/)
+* Read about [Vamp escalations](/documentation/using-vamp/v0.9.4/escalations/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

@@ -37,7 +37,7 @@ In larger companies with multiple teams working together on a large project, all
 Read more about [referencing artifacts](/documentation/using-vamp/v0.9.4/references/) and [environment variables](/documentation/using-vamp/v0.9.4/environment-variables/).
 
 {{< note title="What next?" >}}
-* Read about [Vamp breeds](/documentation/using-vamp/v0.9.4/breeds/)
+* Read about [Vamp deployments](/documentation/using-vamp/v0.9.4/deployments/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

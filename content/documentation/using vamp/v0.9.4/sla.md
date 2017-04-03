@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "sla-v094"
     parent: "Using Vamp"
-    weight: 90
+    weight: 160
 aliases:
     - /documentation/using-vamp/sla/
 ---
@@ -43,8 +43,7 @@ The `response_time_sliding_window` SLA triggers events based on response times.
 
 **Notice** how the SLA is defined separately from the escalations. This is key to how Vamp approaches SLA's and how modular and extendable the system is.
 
-```yaml
----
+```
 name: sava
 
 gateways:
@@ -90,7 +89,7 @@ clusters:
 ```          
 
 {{< note title="What next?" >}}
-* Read about [Vamp escalations](/documentation/using-vamp/v0.9.4/escalations/)
+* Read about [Vamp sticky sessions](/documentation/using-vamp/v0.9.4/sticky-sessions/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "conditions-v094"
     parent: "Using Vamp"
-    weight: 70
+    weight: 80
 aliases:
     - /documentation/using-vamp/conditions/
 ---
@@ -87,7 +87,7 @@ gateways:
 
 
 {{< note title="What next?" >}}
-* Read about [Vamp events](/documentation/using-vamp/v0.9.4/events/)
+* Read about [Vamp dialects](/documentation/using-vamp/v0.9.4/dialects/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

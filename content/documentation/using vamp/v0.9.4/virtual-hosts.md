@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "virtual-hosts-v094"
     parent: "Using Vamp"
-    weight: 140
+    weight: 180
 aliases:
     - /documentation/using-vamp/virtual-hosts/
 ---

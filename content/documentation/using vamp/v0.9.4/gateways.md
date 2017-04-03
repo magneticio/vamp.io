@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "gateways-v094"
     parent: "Using Vamp"
-    weight: 60
+    weight: 30
 aliases:
     - /documentation/using-vamp/gateways/
 ---
@@ -169,7 +169,7 @@ routes:
 ```
 
 {{< note title="What next?" >}}
-* Read about [Vamp conditions](/documentation/using-vamp/v0.9.4/conditions/)
+* Read about [Vamp workflows](/documentation/using-vamp/v0.9.4/workflows/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

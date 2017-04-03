@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "sticky-sessions-v094"
     parent: "Using Vamp"
-    weight: 130
+    weight: 170
 aliases:
     - /documentation/using-vamp/sticky-sessions/
 ---
@@ -135,7 +135,7 @@ clusters:
 ```
 
 {{< note title="What next?" >}}
-* Read about [using Vamp for service discovery](/documentation/using-vamp/v0.9.4/service-discovery/)
+* Read about [using Vamp with virtual hosts](/documentation/using-vamp/v0.9.4/virtual-hosts/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

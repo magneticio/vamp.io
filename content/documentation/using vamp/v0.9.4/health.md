@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "health-v094"
     parent: "Using Vamp"
-    weight: 85
+    weight: 130
 aliases:
     - /documentation/using-vamp/health/
 ---
@@ -96,7 +96,7 @@ clusters:
 ```
 
 {{< note title="What next?" >}}
-* Read about [Vamp SLAs (Service Level Agreements)](/documentation/using-vamp/v0.9.4/sla/)
+* Read about [Referencing artifacts in Vamp](/documentation/using-vamp/v0.9.4/references/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "breeds-v094"
     parent: "Using Vamp"
-    weight: 20
+    weight: 60
 aliases:
     - /documentation/using-vamp/breeds/
 ---
@@ -159,7 +159,7 @@ In a lot of cases, dependencies coexist with interpolated environment variables 
 [Read more about environment variables](/documentation/using-vamp/v0.9.4/environment-variables/)
 
 {{< note title="What next?" >}}
-* Read about [Vamp blueprints](/documentation/using-vamp/v0.9.4/blueprints/)
+* Read about [Vamp conditions](/documentation/using-vamp/v0.9.4/conditions/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

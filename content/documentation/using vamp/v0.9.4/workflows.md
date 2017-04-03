@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "workflows-v094"
     parent: "Using Vamp"
-    weight: 120
+    weight: 40
 aliases:
     - /documentation/using-vamp/workflows/
 ---
@@ -26,8 +26,8 @@ The following breeds are required by system workflows and should not be deleted:
 ### On this page:
 - [Track running workflows](/documentation/using-vamp/v0.9.4/workflows/#track-running-workflows)
 - [Create a workflow](/documentation/using-vamp/v0.9.4/workflows/#create-a-workflow)
-  * [Schedules](/documentation/using-vamp/v0.9.4/workflows/#workflow-schedules)
-  * [Dialects](/documentation/using-vamp/v0.9.4/workflows/#workflow-dialects)
+  * [Workflow schedules](/documentation/using-vamp/v0.9.4/workflows/#workflow-schedules)
+  * [Workflow dialects](/documentation/using-vamp/v0.9.4/workflows/#workflow-dialects)
 - [JavaScript workflows](/documentation/using-vamp/v0.9.4/workflows/#javascript-workflows)
 
 ## Track running workflows
@@ -78,7 +78,7 @@ schedule:
 
 ### Workflow dialects
 You can use dialects to specify native commands for the underlying container platform in a workflow.  
-[Read more about Vamp dilects](/documentation/using-vamp/v0.9.4/dialects/)
+[Read more about Vamp dialects](/documentation/using-vamp/v0.9.4/dialects/)
 
 ## JavaScript workflows
 JavaScript workflows are executed by Vamp Workflow Agent ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)).  The system breed **vamp-workflow-javascript** is used to apply the standard enviroment variables, health checks and exposed ports.   
@@ -144,7 +144,7 @@ api.gateways().each(function (gateway) {
 
 {{< note title="What next?" >}}
 * Try the tutorial [Create a workflow that generates events](/documentation/tutorials/create-a-workflow/)
-* Read about [Sticky sessions](/documentation/using-vamp/v0.9.4/sticky-sessions/)
+* Read about [Vamp Blueprints](/documentation/using-vamp/v0.9.4/blueprints/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

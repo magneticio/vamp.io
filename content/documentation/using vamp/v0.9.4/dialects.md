@@ -5,9 +5,10 @@ menu:
   main:
     identifier: "dialects-v094"
     parent: "Using Vamp"
-    weight: 45
+    weight: 90
 aliases:
     - /documentation/using-vamp/dialects/
+    - /documentation/using-vamp/blueprints/#dialects
 ---
 
 A dialect is a set of native commands for the underlying container platform.  Vamp allows you to use container driver specific tags in workflows and inside blueprints on a breed or deployment level. Dialects effectively enable you to make full use of, for instance, the underlying features like mounting disks, settings commands and providing access to private Docker registries.
@@ -63,8 +64,7 @@ to pull from a private registry, in this case registry.example.com where these c
 * We set some labels with some arbitrary metadata.
 * We mount the `/tmp` to in Read/Write mode.
 
-```yaml
----
+```
 name: busy-top:1.0
 clusters:
   busyboxes:

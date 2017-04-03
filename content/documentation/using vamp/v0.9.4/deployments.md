@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "deployments-v094"
     parent: "Using Vamp"
-    weight: 40
+    weight: 20
 aliases:
     - /documentation/using-vamp/deployments/
 ---
@@ -226,7 +226,7 @@ We could also remove the newer version (monarch_1.1 with/without recommendation 
 
 
 {{< note title="What next?" >}}
-* Read about [Vamp dialects](/documentation/using-vamp/v0.9.4/dialects/)
+* Read about [Vamp gateways](/documentation/using-vamp/v0.9.4/gateways/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "blueprints-v094"
     parent: "Using Vamp"
-    weight: 30
+    weight: 50
 aliases:
     - /documentation/using-vamp/blueprints/
 ---
@@ -119,7 +119,7 @@ instances: 2  # Number of instances.
 ```
 
 {{< note title="What next?" >}}
-* Read about [Vamp deployments](/documentation/using-vamp/deployments/)
+* Read about [Vamp breeds](/documentation/using-vamp/v0.9.4/breeds/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

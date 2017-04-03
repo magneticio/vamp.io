@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "escalations-v094"
     parent: "Using Vamp"
-    weight: 100
+    weight: 110
 aliases:
     - /documentation/using-vamp/escalations/
 ---
@@ -164,7 +164,7 @@ clusters:
 ```
 
 {{< note title="What next?" >}}
-* Read about [Referencing artifacts in Vamp](/documentation/using-vamp/v0.9.4/references/)
+* Read about [Vamp events](/documentation/using-vamp/v0.9.4/events/)
 * Check the [API documentation](/documentation/api/v0.9.4/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
