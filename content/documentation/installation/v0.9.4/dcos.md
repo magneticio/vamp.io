@@ -50,6 +50,7 @@ Create `elasticsearch.json` with the following content:
   "cpus": 0.2,
   "mem": 1024.0,
   "container": {
+    "type": "DOCKER",
     "docker": {
       "image": "magneticio/elastic:2.2",
       "network": "HOST",
