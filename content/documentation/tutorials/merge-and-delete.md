@@ -11,7 +11,7 @@ In the [previous tutorial we "over-engineered" our service based solution a bit]
 
 * Get some background and theory on merging services
 * Prepare our blueprint
-* Merge the blueprint with a running deployment
+* Merge the new topology with the running deployment
 * Decommision parts of the deployment
 * Answer the all important question _when would I use this?_
 
