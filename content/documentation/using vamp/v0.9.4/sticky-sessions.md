@@ -10,14 +10,22 @@ aliases:
     - /documentation/using-vamp/sticky-sessions/
 ---
 
-Vamp supports `route` and `instance` level sticky sessions.
+Gateways can optionally be set as sticky on either a route or instance level.
 
-## Route Level
+* **Route level**  
+  Use when end users should always have the same experience, for example A/B testing service variants.
+* **Instance level**  
+  Use when end users need to be served by the same instance, for example a stateful application.
 
-A common use case is when the end users have to have the same experience in A/B testing setup thus they should get the same service always (either A or B).
+Vamp sticky sessions are managed using cookies. Traffic routed through a gateway set as sticky will receive a cookie with the unique hash for the route or instance served. Subsequent visits to the same gateway will result in the same hashed route or instance being served. In the case that a route or instance with the stored hash is not available (for example, when a service variant has been removed), cookie settings will be ignored and standard routing rules applied.
 
-```yaml
----
+![](/images/screens/v094/gateways_sticky_route.png)
+
+## Examples
+
+### Example - blueprint with route level sticky sessions
+
+```
 name: sava:1.0
 gateways:
   9050/http: sava/port
@@ -60,14 +68,11 @@ clusters:
           instances: 2
 ```
 
-
-
-## Instance Level 
+### Example - blueprint with instance level sticky sessions
 
 A common use case is when the end users need to be served by the same instance (e.g. stateful application).
 
-```yaml
----
+```
 name: sava:1.0
 gateways:
   9050/http: sava/port
@@ -108,30 +113,6 @@ clusters:
           cpu: 0.2
           memory: 256MB
           instances: 2
-```
-
-## Other Notes
-
-Resetting the `sticky` value can be done by: `sticky: none` or `sticky: ~` (setting it to `null`).
-
-Sticky sessions can be also used for gateways:
-
-```yaml
----
-name: sava:1.0
-gateways:
-  9050/http:
-    sticky: service
-    routes:           # let's say we have 2 clusters: sava1 (90%) and sava2 (10%)
-      sava1/port:   
-        weight: 90%
-      sava2/port:
-        weight: 10%
-clusters:
-  sava1: 
-    ...
-  sava2: 
-    ...
 ```
 
 {{< note title="What next?" >}}

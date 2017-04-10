@@ -16,7 +16,7 @@ Gateways allows for programmable routing.
 * **Internal gateways** created automatically for each deployment cluster and shared by all services deployed within it. Used to distribute traffic for canary releasing and A/B testing across service variants.
 * **External gateways**  explicitly declared either in a deployment blueprint or using the gateways API. Provide a stable entry point to a defined, existing route or routes.
 
-Each gateway defines a set of rules for filtering and distributing traffic across the included routes. You can access internal and external gateways through [Vamp reverse proxy](/documentation/how-vamp-works/v0.9.4/reverse-proxy).
+Each gateway defines a set of rules for filtering and distributing traffic across the included routes and can optionally be set as [sticky](/documentation/using-vamp/v0.9.4/sticky-sessions/). You can access internal and external gateways through [Vamp reverse proxy](/documentation/how-vamp-works/v0.9.4/reverse-proxy).
 
 ### On this page:
 
