@@ -30,7 +30,7 @@ In this tutorial we will:
 This tutorial has been tested on Vamp hello world v0.9.4 running on Docker Toolbox. 
 {{< /note >}}
 
-If you are running Vamp hello world v0.9.4 in Docker for Mac, you will need to install Docker Toolbox and run Vamp from the Docker Quickstart Terminal instead ([docker.com - install Docker Toolbox](https://www.docker.com/products/docker-toolbox)).   
+If you are running Vamp hello world v0.9.4 together with Docker for Mac, you will need to install Docker Toolbox and run Vamp from the Docker Quickstart Terminal instead ([docker.com - install Docker Toolbox](https://www.docker.com/products/docker-toolbox)).   
 A typical run command on Mac OS X with Docker Toolbox would be:
 
    ```
