@@ -19,7 +19,7 @@ In this tutorial we will:
 1. [Run Vamp with Docker Toolbox](/documentation/tutorials/automate-a-canary-release/#run-vamp-with-docker-toolbox)
 * [Spin up Vamp Runner](/documentation/tutorials/automate-a-canary-release/#spin-up-vamp-runner)  
 * [Create a Blueprint and deploy some services](/documentation/tutorials/automate-a-canary-release/#create-a-blueprint-and-deploy-some-services) 
-* [Create automation workflows](/documentation/tutorials/automate-a-canary-release/#create-workflows)
+* [Create automation workflows](/documentation/tutorials/automate-a-canary-release/#create-automation-workflows)
   * Generate traffic requests
   * Automate a canary release
 * [Force a rollback](/documentation/tutorials/automate-a-canary-release/#force-a-rollback)
@@ -90,10 +90,9 @@ With two versions of our service ready to go, we can get started with some autom
 * a workflow to generate traffic requests (so we can see metrics and introduce 500 errors) 
 * a workflow to adjust traffic distribution (for canary release and rollback). 
 
-First, breeds will be created with a Node.js script for each workflow. Next, the workflows will be created referencing the breeds. Vamp will deploy the workflows, injecting the JavaScript into workflow agent containers ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)) to run at the defined schedule (continuously, triggered by Vamp events or at a set time). 
+First, breeds are created with a Node.js script for each workflow. Next, workflows are created that reference the breeds. Vamp injects the JavaScript from the referenced breeds into workflow agent containers ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)) and these are deployed to run at the defined workflow schedule (continuously, triggered by Vamp events or at a set time). 
 
-Inside the deployed workflow containers, the Vamp Node.js client library enables JavaScript to easily speak to the Vamp API, see the gitHub project for details ([github.com/magneticio - Vamp Node.js Client](https://github.com/magneticio/vamp-node-client)).  
-[Read more about workflows](/documentation/using-vamp/workflows)
+Inside the deployed workflow containers, the Vamp Node.js client library enables JavaScript to easily speak with the Vamp API. See the gitHub project for details ([github.com/magneticio - Vamp Node.js Client](https://github.com/magneticio/vamp-node-client)) or [read more about workflows](/documentation/using-vamp/workflows)
 
 ### Workflow 1: Generate traffic requests
 The next step is to get some traffic requests flowing into the deployed services.    
