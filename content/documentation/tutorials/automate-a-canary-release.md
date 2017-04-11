@@ -14,32 +14,42 @@ One of the most powerful features of Vamp are workflows. Vamp workflows are cont
 
 This tutorial will show how workflows can be used to run an automated canary release, gradually introducing an updated service and initiating a rollback to the old version in case 500 errors are measured on the new service. We will use our nifty little demo and automation tool Vamp Runner to demonstrate this, but you could just as easily perform all the described actions manually in the Vamp UI or using the API.  
 
-
-{{< note title="Tested with Vamp v0.9.2" >}}
-This tutorial has been tested on [Vamp hello world v0.9.2](/documentation/installation/v0.9.2/hello-world/) running with Docker toolbox.
-{{< /note >}}
-
 In this tutorial we will:
 
-1. [Spin up Vamp Runner](documentation/tutorials/automate-a-canary-release/#spin-up-vamp-runner)  
-2. [Create a Blueprint and deploy some services](documentation/tutorials/automate-a-canary-release/#create-a-blueprint-and-deploy-some-services) 
-3. [Create workflows to:](documentation/tutorials/automate-a-canary-release/#create-workflows)
+1. [Run Vamp with Docker Toolbox](/documentation/tutorials/automate-a-canary-release/#run-vamp-with-docker-toolbox)
+* [Spin up Vamp Runner](/documentation/tutorials/automate-a-canary-release/#spin-up-vamp-runner)  
+* [Create a Blueprint and deploy some services](/documentation/tutorials/automate-a-canary-release/#create-a-blueprint-and-deploy-some-services) 
+* [Create workflows to:](/documentation/tutorials/automate-a-canary-release/#create-workflows)
   * Generate traffic requests
   * Automate a canary release
   * Force a rollback when detecting errors
 
-### Requirements
+## Run Vamp with Docker Toolbox
 
-* A running version of Vamp 0.9.x (this tutorial has been tested on [Vamp hello world v0.9.2](documentation/installation/v0.9.2/hello-world) running with Docker toolbox)
-* Access to the Docker hub
-* You might run into issues if your firewall is set to block connections in the ranges 31000-32000 (required by Mesos) or 40000-45000 (required by Vamp)
+{{< note title="Tested with Docker Toolbox" >}}
+This tutorial has been tested on Vamp hello world v0.9.4 running on Docker Toolbox. 
+{{< /note >}}
+
+If you are running Vamp hello world v0.9.4 in Docker for Mac, you will need to install Docker Toolbox and run Vamp from the Docker Quickstart Terminal instead ([docker.com - install Docker Toolbox](https://www.docker.com/products/docker-toolbox)).   
+A typical run command on Mac OS X with Docker Toolbox would be:
+
+   ```
+   docker run --net=host \
+              -v /var/run/docker.sock:/var/run/docker.sock \
+              -v `docker-machine ssh default "which docker"`:/bin/docker \
+              -v "/sys/fs/cgroup:/sys/fs/cgroup" \
+              -e "DOCKER_HOST_IP=$(docker-machine ip default)" \
+              magneticio/vamp-docker:0.9.4
+   ```
   
 ## Spin up Vamp Runner
 Vamp Runner is the tool we use to demonstrate how individual Vamp features can be combined to fit real world use cases. This unlocks the real power of Vamp. We developed Vamp Runner as an automated integration testing tool to make sure important patterns of Vamp worked as expected against all supported container scheduling stacks when building new versions of Vamp. After we realised how powerful the concept of recipes was, we added a graphical UI on top for demonstration purposes. Vamp Runner can still be used in CLI mode though for your automated integration testing purposes. All actions triggered by Vamp Runner can also be triggered by your CI or automation tool of choice, check out the recipes folder in the Github project ([github.com/magneticio - Vamp Runner recipes](https://github.com/magneticio/vamp-runner/tree/master/recipes)).
 
 Once Vamp is up and running, you can deploy Vamp Runner alongside it (if you don’t already have a running version of Vamp, check the [Vamp hello world set up](documentation/installation/hello-world) ). Vamp Runner connects to the Vamp API endpoint, specified as `VAMP_RUNNER_API_URL` in the below docker run command. Note that the IP of your Vamp API location might be different, change this accordingly.
 ```
-docker run --net=host -e VAMP_RUNNER_API_URL=http://192.168.99.100:8080/api/v1 magneticio/vamp-runner:0.9.2   
+docker run --net=host \
+        -e VAMP_RUNNER_API_URL=http://192.168.99.100:8080/api/v1 \
+        magneticio/vamp-runner:0.9.4   
 ```
 
 You can access the Vamp Runner UI at port 8088. Go ahead and click through the left menu:
