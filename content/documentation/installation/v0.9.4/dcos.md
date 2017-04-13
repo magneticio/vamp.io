@@ -22,7 +22,7 @@ There are different ways to install Vamp on DC.OS. On this page we start out wit
 
 Vamp is available in the DC/OS Universe. Navigate to Universe in the DC/OS UI and search for Vamp and click "Install Package".
 
-For detailed steps on installing the Unvierse package refer to the tutorial here: https://github.com/dcos/examples/tree/master/1.8/vamp
+For detailed steps on installing the Unvierse package refer to the tutorial here: https://github.com/dcos/examples/tree/master/vamp
 
 ## Manual install
 This setup will run Vamp, Mesos and Marathon, together with Zookeeper and Elasticsearch on DC/OS. 
