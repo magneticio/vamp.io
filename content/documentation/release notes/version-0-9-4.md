@@ -11,7 +11,7 @@ aliases:
     - /documentation/release-notes/latest/
 ---
 
-_March 2017_
+_13 April 2017_
 
 ## What is new
 * Vamp namespaces [#927](https://github.com/magneticio/vamp/issues/927)

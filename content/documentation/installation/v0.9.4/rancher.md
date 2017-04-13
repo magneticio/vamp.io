@@ -10,6 +10,6 @@ menu:
 
 {{< note title="Note!" >}}
 Vamp v0.9.4 support coming soon.  
-[Installation instructions for Vamp 0.9.2](/documentation/installation/v0.9.2/rancher/)
+[Installation instructions for Vamp v0.9.2](/documentation/installation/v0.9.2/rancher/)
 {{< /note >}}
 
