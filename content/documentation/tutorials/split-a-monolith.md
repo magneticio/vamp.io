@@ -69,15 +69,15 @@ clusters:
         instances: 1
 ```
 
-Deploy this blueprint using either the UI or a REST call  - let's name it after the blueprint this time **sava:1.2**.  
+Deploy this blueprint using either the UI or a REST call  - let's name it after the blueprint this time **sava-new**.  
 Once it's deployed, you can check out the new topology in the Vamp UI through the Gateways page or the Deployments page 
 
 ![](/images/screens/v094/services_2backends.png)
 
 You can also use Vamp as a reverse proxy to access the exposed gateways:
 
-* `http://localhost:8080/proxy/gateways/sava%3A1.2%2F9070/`
-* `http://localhost:8080/proxy/gateways/sava%3A1.2%2Fsava%2Fwebport/`
+* `http://localhost:8080/proxy/gateways/sava-new%2F9060/`
+* `http://localhost:8080/proxy/gateways/sava-new%2Fsava%2Fwebport/`
 
 ## Learn about environment variables and service discovery
 
@@ -87,8 +87,8 @@ If you were to check out the Docker containers using `docker inspect`, you would
 > docker inspect 66e64bc1c8ca
 ...
 "Env": [
-    "BACKEND_1=http://172.17.42.1:33021/api/message",
-    "BACKEND_2=http://172.17.42.1:33022/api/message",
+    "BACKEND_1=http://192.168.65.2:33021/api/message",
+    "BACKEND_2=http://192.168.65.2:33022/api/message",
     "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 ],
 ...

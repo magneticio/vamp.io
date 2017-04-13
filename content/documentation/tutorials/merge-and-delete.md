@@ -83,15 +83,15 @@ You can complete the merge using either the Vamp UI or API.
 * Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment 
 * Open the action menu on the **sava:1.3** blueprint and select **Merge to** 
   ![](/images/screens/v094/tut4_merge.png)
-* You'll be prompted to select the deployment you wish to merge the blueprint with - select **sava:1.2**
-* Click **Merge** to deploy the services sava:1.3 and sava-backend:1.3 to the running sava:1.2 deployment.  
+* You'll be prompted to select the deployment you wish to merge the blueprint with - select **sava-new**
+* Click **Merge** to deploy the services sava:1.3 and sava-backend:1.3 to the running sava-new deployment.  
 
 ### Merge using the API
 
 You can complete the same merge action with the Vamp API - remember to set the `Content-Type: application/x-yaml` for your requests:
 
 1. To create the blueprint, `POST` the above blueprint YAML to `/api/v1/blueprints`  
-* To merge the blueprint, `PUT` the below YAML to `/api/v1/deployments/sava:1.2`  
+* To merge the blueprint, `PUT` the below YAML to `/api/v1/deployments/sava-new`  
 
   ```
   name: sava:1.3
@@ -126,14 +126,14 @@ Note that we won't be able to remove any service unless its weight is first set 
 1. Go to the **Blueprints** page  
 * Open the action menu on the **sava:1.2** blueprint and select **Remove from** 
   ![](/images/screens/v094/tut4_delete.png)
-* You'll be prompted to select the deployment you wish to remove the blueprint from - select **sava:1.2**
-* Click **Remove** to delete the services sava:1.2, sava-backend1:1.2 and sava-backend2:1.2 from the running sava:1.2 deployment.   
+* You'll be prompted to select the deployment you wish to remove the blueprint from - select **sava-new**
+* Click **Remove** to delete the services sava:1.2, sava-backend1:1.2 and sava-backend2:1.2 from the running sava-new deployment.   
   
 ### Delete using the API
 
 You can complete the same delete action with the Vamp API - remember to set the `Content-Type: application/x-yaml` for your requests:
 
-1. To delete the sava:1.2 blueprint from the deployment, `DELETE` the below YAML to `/api/v1/deployments/sava:1.2`  
+1. To delete the sava:1.2 blueprint from the deployment, `DELETE` the below YAML to `/api/v1/deployments/sava-new`  
 
   ```
   name: sava:1.2
@@ -141,7 +141,7 @@ You can complete the same delete action with the Vamp API - remember to set the 
 
 ![](/images/screens/v094/tut4_after_delete.png)
 
-Vamp will update the running deployment, removing all elements described in the sava:1.2 blueprint. This means that our running deployment **sava:1.2** now contains no sava:1.2 services - that's why including a version number in the name of a mutable deployment is a bad idea.
+Vamp will update the running deployment, removing all elements described in the sava:1.2 blueprint. This means that our running deployment **sava-new** now contains no sava:1.2 services.
 
 ## When would I use this?
 
