@@ -34,6 +34,8 @@ The following breeds are required by system workflows and should not be deleted:
 
 You can track executions of a running workflow in the Vamp UI. From the **Workflows** page, click on a workflow port to open the execution list. Click on a specific execution to open its log.
 
+![](/images/screens/v094/workflow_execution_list.png)
+
 ## Create a workflow
 
 Workflows can be created using Node JS based scripts running inside a Vamp workflow agent container, or use another language of preference - create an application or script that accesses the Vamp API and build it into a Docker container to be deployed by Vamp.  
