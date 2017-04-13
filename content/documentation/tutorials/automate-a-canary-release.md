@@ -137,7 +137,7 @@ You will see the following happen:
 * Vamp will update its routing rules to respect the new location(s) of the Sava 1.1 container in the cluster
 * After 30 seconds of no errors, service health will return to 100% and the canary workflow will start the canary release process over again.
 
-![](images/screens/v091/canary_force_rollback_1.png)
+![](images/screens/v094/canary_force_rollback_1.png)
 
 
 ## Autoscale the services
