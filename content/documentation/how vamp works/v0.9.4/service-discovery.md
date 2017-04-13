@@ -21,5 +21,5 @@ For Vamp, we recognise the following benefits of this pattern:
 
 {{< note title="What next?" >}}
 * More about [service discovery](/documentation/using-vamp/v0.9.4/service-discovery)
-* Read about how Vamp works as a [reverse proxy](/documentation/how-vamp-works/v0.9.4/reverse-proxy)
+* Read about how Vamp works with [routing and load balancing](/documentation/how-vamp-works/v0.9.4/routing-and-load-balancing)
 {{< /note >}}

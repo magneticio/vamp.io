@@ -33,7 +33,8 @@ The name of the deployment will be automatically assigned as a UUID (e.g. `123e4
 
 ## Track deployments
 
-Deployments contain clusters (groups of services). Each service can have one or multiple instances, according to its scale. In the Vamp UI you can track health of the overall deployment and individual services - read [how health is reported](/documentation/using-vamp/v0.9.4/health/). Each instance of a service can be accessed individually (go to the **Deployments** page, open the service and select an instance to view), or you can access the deployment through the [exposed gateways](/documentation/using-vamp/v0.9.4/gateways/) with any applied conditions or route weights.
+Deployments contain clusters (groups of services). Each service can have one or multiple instances, according to its scale. In the Vamp UI you can track health of the overall deployment and individual services - read [how health is reported](/documentation/using-vamp/v0.9.4/health/). Each instance of a service can be accessed individually (go to the **Deployments** page, open the service and select an instance to view), or you can access the deployment through the [exposed gateways](/documentation/using-vamp/v0.9.4/gateways/) with any applied conditions or route weights.  
+[Read more about using Vamp as a reverse proxy to access deployment instances and gateways](/documentation/using-vamp/v0.9.4/reverse-proxy/).
 
 ## Deployment scenarios
 

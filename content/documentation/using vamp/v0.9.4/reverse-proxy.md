@@ -1,19 +1,19 @@
 ---
 title: Reverse proxy
 aliases: 
-    - /documentation/how-vamp-works/reverse-proxy
+    - /documentation/using-vamp/reverse-proxy
 menu:
   main:
-    identifier: "hvw-reverse-proxy-v094"
-    parent: "How Vamp works"
-    weight: 45
+    identifier: "uv-reverse-proxy-v094"
+    parent: "Using Vamp"
+    weight: 145
 ---
 
 Vamp can function as a reverse proxy to access elements inside the cluster and not visible outside the cluster. This is useful as it allows direct access to e.g. Mesos logs from within the Vamp UI and enables workflows to access details Vamp may be unaware of.
 
 Reverse proxy access is available through the Vamp API (HTTP & WebSocket) and used by the Vamp UI to display logs, deployment instances and gateways.
 
-## Available endpoints
+## Proxy endpoints
 
 Reverse proxy access is available through the Vamp API (HTTP & WebSocket) and through the Vamp UI. Note that the API endpoints for reverse proxy access are structured `<vamp uri>/proxy/...` (they do not include the standard `api/v1/...`)
 
@@ -52,5 +52,7 @@ You can access a specific instance of a workflow at the following endpoint:
 
 
 {{< note title="What next?" >}}
-* Read about how Vamp works with [routing and load balancing](/documentation/how-vamp-works/v0.9.4/routing-and-load-balancing)
+* Read about [using Vamp for service discovery](/documentation/using-vamp/v0.9.4/service-discovery/)
+* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
+* [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
