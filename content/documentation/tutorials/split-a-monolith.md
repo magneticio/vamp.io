@@ -69,7 +69,8 @@ clusters:
         instances: 1
 ```
 
-Deploy this blueprint using either the UI or a REST call and, when deployed, check out the new topology in the Vamp UI through the Gateways page or the Deployments page 
+Deploy this blueprint using either the UI or a REST call  - let's name it after the blueprint this time **sava:1.2**.  
+Once it's deployed, you can check out the new topology in the Vamp UI through the Gateways page or the Deployments page 
 
 ![](/images/screens/v094/services_2backends.png)
 
