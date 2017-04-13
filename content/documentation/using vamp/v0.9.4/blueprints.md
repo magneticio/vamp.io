@@ -14,7 +14,7 @@ Blueprints are execution plans - they describe how your services should be hooke
 
 ## Docker compose
 
-The Vamp UI includes a handy tool to convert Docker Compose files into the Vamp DSL format for deployment in Vamp. Note that some fields may need manual adjustment after conversion (see comments attached to the generated blueprint for details). 
+The Vamp UI includes a handy tool to import Docker Compose files and convert these into the Vamp DSL format for deployment in Vamp. Note that some fields may need manual adjustment after conversion (see comments attached to the generated blueprint for details). 
 
 ## Blueprint artifacts
 
