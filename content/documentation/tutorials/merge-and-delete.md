@@ -74,7 +74,7 @@ clusters:
 
 ## Merge the topologies
 
-We can now merge the blueprint describing our new topology with the running sava:1.2 deployment. This is done in the same way we added a new service in the [run a canary release tutorial](/documentation/tutorials/run-a-canary-release/).  Merging the blueprint will deploy the new sava:1.3. services alongside sava:1.2, without routing any traffic to them.  
+We can now merge the blueprint describing our new topology with the running sava-new deployment. This is done in the same way we added a new service in the [run a canary release tutorial](/documentation/tutorials/run-a-canary-release/).  Merging the blueprint will deploy the new sava:1.3 services alongside sava:1.2, without routing any traffic to them.  
 You can complete the merge using either the Vamp UI or API.
 
 ### Merge using the Vamp UI
@@ -127,7 +127,7 @@ Note that we won't be able to remove any service unless its weight is first set 
 * Open the action menu on the **sava:1.2** blueprint and select **Remove from** 
   ![](/images/screens/v094/tut4_delete.png)
 * You'll be prompted to select the deployment you wish to remove the blueprint from - select **sava-new**
-* Click **Remove** to delete the services sava:1.2, sava-backend1:1.2 and sava-backend2:1.2 from the running sava-new deployment.   
+* Click **Remove** to delete the services sava:1.2, sava-backend1:1.2 and sava-backend2:1.2 from the running sava-new deployment.
   
 ### Delete using the API
 
