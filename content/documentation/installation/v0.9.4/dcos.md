@@ -1,6 +1,6 @@
 ---
 date: 2017-02-07T12:00:00+00:00
-title: DC/OS 1.8
+title: DC/OS
 menu:
   main:
     identifier: "dcos-v094"
@@ -25,10 +25,10 @@ Vamp is available in the DC/OS Universe. Navigate to Universe in the DC/OS UI an
 For detailed steps on installing the Unvierse package refer to the tutorial here: https://github.com/dcos/examples/tree/master/vamp
 
 ## Manual install
-This setup will run Vamp, Mesos and Marathon, together with Zookeeper and Elasticsearch on DC/OS. 
+This setup will run Vamp, Mesos and Marathon, together with Zookeeper and Elasticsearch on DC/OS.
 
 **Tested against**  
-This guide has been tested on the latest 1.8 version of DC/OS.
+This guide has been tested on the 1.8 and 1.9 version of DC/OS.
 
 **Requirements**  
 Before you start you need to have a DC/OS cluster up and running, as well as the its CLI configured to use it. We assume you have it up and running on http://dcos.example.com/.
