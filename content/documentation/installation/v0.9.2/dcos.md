@@ -192,7 +192,7 @@ Vamp has now spun up all it's components and you should be able to access the ui
 
 ## Custom install
 
-The Vamp DC/OS Docker image ([github.com/magneticio - Vamp DC/OS](https://github.com/magneticio/vamp-docker/tree/master/vamp-dcos)) contains configuration ([github.com/magneticio - Vamp DC/OS configuration](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)) that can be overridden for specific needs by:
+The Vamp DC/OS Docker image ([github.com/magneticio - Vamp DC/OS](https://github.com/magneticio/vamp-docker-images/tree/master/vamp-dcos)) contains configuration ([github.com/magneticio - Vamp DC/OS configuration](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)) that can be overridden for specific needs by:
 
 * Making a new Docker image based on the Vamp DC/OS image
 * Using [environment variables](/documentation/installation/v0.9.2/configure-vamp#environment-variable-configuration)
