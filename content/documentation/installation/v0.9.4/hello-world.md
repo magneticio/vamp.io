@@ -85,11 +85,11 @@ After some downloading and booting, your Docker log will show the blue Vamp ASCI
 
 Now you can check if Vamp is home on `localhost:8080` and you're ready for the [Vamp getting started tutorials](/documentation/tutorials/overview)
 
-![](/images/screens/v093/quicksetup-marathon-infopanel.png)
+![](/images/screens/v094/quicksetup-marathon-infopanel.png)
   
 Click on the **?** in the top right corner of any screen for quick access to page help, related documentation and tutorials.
 
-![](/images/screens/v093/quicksetup-helppanel.png)
+![](/images/screens/v094/quicksetup-helppanel.png)
 
 ## Access the exposed services
 
