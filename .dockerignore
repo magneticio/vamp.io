@@ -1,4 +1,7 @@
 # generated stuff
+
+# do not ignore public when building production container
 public
+
 node_modules
 .git

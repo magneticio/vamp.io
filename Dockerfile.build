@@ -4,18 +4,20 @@ MAINTAINER Dimitris Stafylarakis "dimitris@magnetic.io"
 
 ENV HUGO_VERSION 0.20.7
 
-COPY src static themes content config.toml /tmp/
-
 # Install packages
 RUN set -x \
-  && apk add --no-cache wget ca-certificates nodejs git \ 
+  && apk add --no-cache wget alpine-sdk nodejs python git \ 
   && wget --quiet https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-64bit.tar.gz \
   && tar xzf hugo_${HUGO_VERSION}_linux-64bit.tar.gz \
   && mv hugo /usr/bin/hugo \
-  && rm hugo_${HUGO_VERSION}_linux-64bit.tar.gz \
-  && apk del wget ca-certificates \
-  rm /var/cache/apk/*
+  && rm hugo_${HUGO_VERSION}_linux-64bit.tar.gz 
 
 # Install gulp
 RUN set -x \
-    && npm install "gulpjs/gulp#4.0"
+    && npm install -g gulp \
+    && rm -rf /tmp/*
+
+RUN mkdir -p /data
+VOLUME /data
+WORKDIR /data
+

@@ -1,0 +1,8 @@
+:8080
+root public
+gzip
+
+# for now, log in a local file (access.log)
+# Caddy can log remotely via syslog if needed
+# see https://caddyserver.com/docs/log
+log 
