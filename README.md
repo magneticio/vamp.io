@@ -105,7 +105,7 @@ menu:
 ---test2.md
 ```
 
-3. Add them to the sidemenu like you would do with a normal file. **Don't forget to give every page a unique id and different weight. Weight will determain position in the dropdown menu**
+3. Add them to the sidemenu like you would do with a normal file. **Don't forget to give every page a unique id and different weight. Weight will determine position in the dropdown menu**
 
 
 ### Examples
