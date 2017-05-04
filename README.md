@@ -18,6 +18,28 @@ This is the source for the new [vamp.io](http://vamp.io) site.
 
     The site is server under `localhost:1313`
 
+## Build and deploy
+
+The site can be built in a container (using the image from Dockerfile.build). The following commands build a directory $PWD/public
+which contains the static contents of the site. These are subsequently copied to the container that will be deployed together with Caddy.
+
+```bash
+docker build -t magnetic/vamp.io-build:latest -f Dockerfile.build .
+docker run --rm -v $PWD:/data/ -ti magnetic/vamp.io-build:latest /bin/ash -c 'npm install && gulp build --env=production'
+docker build -t magnetic/vamp.io:latest .
+```
+
+The production site has base URL ```http://vamp.io```. It is possible to build the site for local inspection with base URL ```http://localhost:8080/```
+with the following commands:
+
+```bash
+docker run --rm -v $PWD:/data/ -ti magnetic/vamp.io-build:latest /bin/ash -c 'npm install && gulp build'
+docker build -t magnetic/vamp.io:latest .
+docker run --rm --name site -p 8080:8080 magnetic/vamp.io:latest -conf Caddyfile
+```
+
+The site will then be available on [http://localhost:8080](http://localhost:8080) for inspection.
+
 ## Adding menuitems
 
 ### Top menu item
