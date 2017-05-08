@@ -25,6 +25,7 @@ The following example show how you can mount a volume to a Docker container usin
 ### Example blueprint - using the Docker dialect
 
 ```
+
 name: busybox
 clusters:
   busyboxes:
@@ -32,9 +33,10 @@ clusters:
       breed:
         name: busybox-breed
         deployable: busybox:latest
-      docker:
-        Volumes:
-          "/tmp": ~
+      dialects:
+        docker:
+          Volumes:
+            "/tmp": ~
 ```
 
 Vamp will translate this into the proper API call. Inspecting the container after it's deployed should show something similar to this:
@@ -72,20 +74,21 @@ clusters:
       breed:
         name: busybox
         deployable: registry.example.com/busybox:latest
-      marathon:
-       cmd: "top"
-       uris:
-         -
-           "https://some_host/some_path/some_file_with_docker_credentials"
-       labels:
-         environment: "staging"
-         owner: "buffy the vamp slayer"
-       container:
-         volumes:
-           -
-             containerPath: "/tmp/"
-             hostPath: "/tmp/"
-             mode: "RW"
+      dialects:
+        marathon:
+          cmd: "top"
+          uris:
+            -
+              "https://some_host/some_path/some_file_with_docker_credentials"
+          labels:
+            environment: "staging"
+            owner: "buffy the vamp slayer"
+          container:
+            volumes:
+              -
+                containerPath: "/tmp/"
+                hostPath: "/tmp/"
+                mode: "RW"
 ```
 
 {{< note title="What next?" >}}
