@@ -46,6 +46,7 @@ The Vamp 0.9.4 release marks the beginning of a new level of sophistication and 
 ## What has changed
 * Synchronization when health checks are changed needs to be explicitly specified `vamp.operation.synchronization.check.health-check`: `true` or `false` [#709](https://github.com/magneticio/vamp/issues/709)
 * Vamp JavaScript workflow breed configuration is removed from main configuration [#908](https://github.com/magneticio/vamp/issues/908)
+* Dialects must be specified inside a `Dialects:` tag. See [using vamp - dialects](/documentation/using-vamp/v0.9.4/dialects/)
 
 ## Known issues
 * Sometimes errors are logged due to starting of Vamp dependencies

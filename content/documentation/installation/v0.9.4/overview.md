@@ -23,7 +23,7 @@ If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 #### Install Vamp
 The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](contact) if you’d like further details.
 
-* [DC/OS 1.7 and 1.8](/documentation/installation/v0.9.4/dcos)
+* [DC/OS 1.8](/documentation/installation/v0.9.4/dcos)
 * [Mesos/Marathon](/documentation/installation/v0.9.4/mesos-marathon)
 * [Kubernetes 1.x](/documentation/installation/v0.9.4/kubernetes)
 * [Rancher](/documentation/installation/v0.9.4/rancher)

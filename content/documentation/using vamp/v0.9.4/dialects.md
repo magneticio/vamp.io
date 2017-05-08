@@ -25,6 +25,7 @@ The following example show how you can mount a volume to a Docker container usin
 ### Example blueprint - using the Docker dialect
 
 ```
+
 name: busybox
 clusters:
   busyboxes:
@@ -32,9 +33,10 @@ clusters:
       breed:
         name: busybox-breed
         deployable: busybox:latest
-      docker:
-        Volumes:
-          "/tmp": ~
+      dialects:
+        docker:
+          Volumes:
+            "/tmp": ~
 ```
 
 Vamp will translate this into the proper API call. Inspecting the container after it's deployed should show something similar to this:
@@ -51,7 +53,7 @@ Vamp will translate this into the proper API call. Inspecting the container afte
 
 This is an example with Marathon that pulls an image from private repo, mounts some volumes, sets some labels and gets run with an ad hoc command: all taken care of by Marathon.
   
-We can provide the `marathon:` tag either on the service level, or the cluster level. Any `marathon:` tag set on the service level will override the cluster level as it is more specific. However, in 9 out of 10 cases the cluster level makes the most sense. Later, you can also mix dialects so you can prep your blueprint for multiple environments and run times within one description.
+We can provide the `dialects:` tag either on the service level, cluster level or deployment level and then use the `marathon` tag within this. Dialects set on the service level will override the cluster level as it is more specific. However, in 9 out of 10 cases the cluster level makes the most sense. Later, you can also mix dialects so you can prep your blueprint for multiple environments and run times within one description.
 
 
 ### example blueprint - using the Marathon dialect
@@ -72,20 +74,21 @@ clusters:
       breed:
         name: busybox
         deployable: registry.example.com/busybox:latest
-      marathon:
-       cmd: "top"
-       uris:
-         -
-           "https://some_host/some_path/some_file_with_docker_credentials"
-       labels:
-         environment: "staging"
-         owner: "buffy the vamp slayer"
-       container:
-         volumes:
-           -
-             containerPath: "/tmp/"
-             hostPath: "/tmp/"
-             mode: "RW"
+      dialects:
+        marathon:
+          cmd: "top"
+          uris:
+            -
+              "https://some_host/some_path/some_file_with_docker_credentials"
+          labels:
+            environment: "staging"
+            owner: "buffy the vamp slayer"
+          container:
+            volumes:
+              -
+                containerPath: "/tmp/"
+                hostPath: "/tmp/"
+                mode: "RW"
 ```
 
 {{< note title="What next?" >}}
