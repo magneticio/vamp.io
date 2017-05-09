@@ -24,7 +24,7 @@ You can define SLAs inline or store them separately under a unique name and refe
 The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.5/using-the-api) for details on how to set this. 
 
 ### Minimum resource (YAML)
-The minimum fields required to successfully create a SLA.
+The minimum (required) fields to successfully create a SLA.
 
 ```
 name: sla_name

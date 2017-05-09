@@ -24,7 +24,7 @@ Escalation templates are static artifacts. You can save and manage escalation te
 The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.5/using-the-api) for details on how to set this. 
 
 ### Minimum resource (YAML)
-The minimum fields required to successfully create an escalation.
+The minimum (required) fields to successfully create an escalation.
 
 ```
 - name: unique_name
