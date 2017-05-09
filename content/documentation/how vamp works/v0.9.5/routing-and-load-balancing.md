@@ -1,24 +1,19 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Routing and load balancing
+aliases: 
+    - /documentation/how-vamp-works/routing-and-load-balancing
 menu:
   main:
-    identifier: "routing-and-load-balancing-v094"
+    identifier: "routing-and-load-balancing-v095"
     parent: "How Vamp works"
     weight: 50
 ---
-
-{{< note title="The information on this page is written for Vamp v0.9.4" >}}
-
-* Switch to the [latest version of this page](/documentation/how-vamp-works/routing-and-load-balancing).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
-
 Vamp uses the tried and tested HAProxy reverse proxy software for routing/proxying and load balancing ([haproxy.com](https://www.haproxy.com)). Vamp Gateway Agent (VGA) manages the HAProxy configuration and HAProxy routes incoming traffic to endpoints (explicitly defined external gateways) or handles intra-service routing. By applying some iptables magic, Vamp makes sure that HAProxy configuration updates won't introduce dropped packages., that means zero-downtime reloads.  
 
 ## Routing
 
-So how does Vamp exactly route traffic to the designated destinations? First we look for the [conditions](/documentation/using-vamp/v0.9.4/conditions/) that might have been set for a route or gateway. This can be none, one or more conditions (see [boolean expression in conditions](/documentation/using-vamp/v0.9.4/conditions/#boolean-expression-in-conditions)). There are built-in short codes for common conditions, or you can use HAProxy ACLs directly.
+So how does Vamp exactly route traffic to the designated destinations? First we look for the [conditions](/documentation/using-vamp/v0.9.5/conditions/) that might have been set for a route or gateway. This can be none, one or more conditions (see [boolean expression in conditions](/documentation/using-vamp/v0.9.5/conditions/#boolean-expression-in-conditions)). There are built-in short codes for common conditions, or you can use HAProxy ACLs directly.
 
 If the condition is met, we evaluate the condition strength percentage. A 100% setting means everybody that meets the condition is sent to this route. A 5% setting means 5% of all visitors that meet the condition are sent to this route, the remaining 95% are returned into the "bucket" and distributed using the general weight settings. A weight setting for each available route defines the distribution of all remaining traffic not matching a condition or not targetted by condition strength.
 
@@ -43,6 +38,6 @@ Performance-wise, HAProxy is very efficient and uses few resources. In our exper
 Vamp is not a realtime system. As long as at least one HAProxy and one container-node are running your visitors will be able to reach the container - even with no Vamp or VGA running. On restart, Vamp and VGA will automatically sync and update themselves. 
 
 {{< note title="What next?" >}}
-* Read about how Vamp works with [events and metrics](/documentation/how-vamp-works/v0.9.4/events-and-metrics)
-* Find out more about using Vamp [conditions](/documentation/using-vamp/v0.9.4/conditions) and [gateways](/documentation/using-vamp/v0.9.4/gateways)
+* Read about how Vamp works with [events and metrics](/documentation/how-vamp-works/v0.9.5/events-and-metrics)
+* Find out more about using Vamp [conditions](/documentation/using-vamp/v0.9.5/conditions) and [gateways](/documentation/using-vamp/v0.9.5/gateways)
 {{< /note >}}

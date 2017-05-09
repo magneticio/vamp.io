@@ -1,11 +1,6 @@
 ---
 date: 2016-12-22T09:00:00+00:00
 title: Version 0.9.2
-menu:
-  main:
-    parent: "Release notes"
-    name: Version 0.9.2
-    weight: 997
 ---
 
 _22nd December 2016_

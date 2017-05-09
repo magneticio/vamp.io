@@ -1,19 +1,16 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Architecture and components
+aliases: 
+    - /documentation/
+    - /documentation/using-vamp/artifacts/
+    - /documentation/how-vamp-works/architecture-and-components/
 menu:
   main:
-    identifier: "architecture-and-components-v094"
+    identifier: "architecture-and-components-v095"
     parent: "How Vamp works"
     weight: 10
 ---
-
-
-{{< note title="The information on this page is written for Vamp v0.9.4" >}}
-
-* Switch to the [latest version of this page](/documentation/how-vamp-works/architecture-and-components).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
 
 ## Architecture
 Vamp and the Vamp Gateway Agent require specific elements in your architecture to handle orchestration, routing, persistence and metrics aggregation. There is no set architecture required for running Vamp and every use case or specific combination of tools and platforms can have its own set up.
@@ -44,5 +41,5 @@ Vamp Gateway Agent (VGA) uses confd to read the HAProxy configuration from ZooKe
 Logs from HAProxy are read by Filebeat and shipped to Elasticsearch. VGA will handle and recover from ZooKeeper, etcd and Consul outages without interrupting the HAProxy process and client requests.
 
 {{< note title="What next?" >}}
-* Read about the [requirements to run Vamp](/documentation/how-vamp-works/v0.9.4/requirements)
+* Read about the [requirements to run Vamp](/documentation/how-vamp-works/v0.9.5/requirements)
 {{< /note >}}
