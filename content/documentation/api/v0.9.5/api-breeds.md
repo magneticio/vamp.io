@@ -6,6 +6,8 @@ menu:
     parent: "API"
     identifier: "api-reference-breeds-094"
     weight: 50
+aliases:
+    - /documentation/api/api-breeds
 ---
 Breeds are static artifacts that describe individual services and can be referenced from blueprints or workflows. Read about [using breeds](documentation/using-vamp/breeds/).
 

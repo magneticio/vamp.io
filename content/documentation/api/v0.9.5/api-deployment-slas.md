@@ -6,6 +6,8 @@ menu:
     parent: "API"
     identifier: "api-reference-deployment-slas-094"
     weight: 110
+aliases:
+    - /documentation/api/api-deployment-slas
 ---
 Deployment scales are singular resources: you only have one scale per service. Deleting a scale is not a meaningful action. Read about [using deployments](documentation/using-vamp/deployments/) and [using scales](documentation/using-vamp/blueprints/#scale).
 

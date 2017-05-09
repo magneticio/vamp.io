@@ -6,6 +6,8 @@ menu:
     parent: "API"
     identifier: "api-reference-workflows-094"
     weight: 210
+aliases:
+    - /documentation/api/api-workflows
 ---
 Read about [using workflows](documentation/using-vamp/workflows/).
 

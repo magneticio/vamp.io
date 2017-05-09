@@ -6,6 +6,8 @@ menu:
     parent: "API"
     identifier: "api-reference-escalations-094"
     weight: 120
+aliases:
+    - /documentation/api/api-escalations
 ---
 Escalation templates are static artifacts. You can save and manage escalation templates through the API, these can then be referenced in an sla and applied to each cluster in a blueprint. Read about [using escalations](documentation/using-vamp/escalations/) and [using slas](documentation/using-vamp/sla/).
 

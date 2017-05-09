@@ -6,6 +6,8 @@ menu:
     parent: "API"
     identifier: "api-reference-config-094"
     weight: 70
+aliases:
+    - /documentation/api/api-config
 ---
 
 Vamp's parameters can be retrieved from the `/config` APi endpoint. Read more about [Vamp configuration](/documentation/installation/configure-vamp)

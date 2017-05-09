@@ -6,6 +6,8 @@ menu:
     parent: "API"
     identifier: "api-reference-conditions-094"
     weight: 60
+aliases:
+    - /documentation/api/api-conditions
 ---
 Condition templates are static artifacts. You can save and manage condition templates through the API, these can then be referenced and applied to gateways. Read about [using conditions](documentation/using-vamp/conditions/) and [using gateways](documentation/using-vamp/gateways/).
 

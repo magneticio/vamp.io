@@ -6,6 +6,8 @@ menu:
     parent: "API"
     identifier: "api-reference-scales-094"
     weight: 190
+aliases:
+    - /documentation/api/api-scales
 ---
 Read about [using scales](/documentation/using-vamp/blueprints/#scale).
 

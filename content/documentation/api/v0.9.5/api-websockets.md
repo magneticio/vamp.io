@@ -6,6 +6,8 @@ menu:
     parent: "API"
     identifier: "api-reference-websockets-094"
     weight: 30
+aliases:
+    - /documentation/api/api-websockets
 ---
 
 WebSocket API requests and responses are transmitted as text messages containing both meta-information and a payload.  

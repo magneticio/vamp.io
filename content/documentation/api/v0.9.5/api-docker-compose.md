@@ -6,6 +6,8 @@ menu:
     identifier: "api-reference-docker-compose-094"
     weight: 45
 draft: true
+aliases:
+    - /documentation/api/api-docker-compose
 ---
 
 The docker-compose API endpoint can be used to import Docker compose files and convert these to Vamp blueprints.
