@@ -7,26 +7,28 @@ menu:
     weight: 50
 ---
 
-Vamp 0.9.3 includes:
+Vamp Community Edition is open source (Apache 2.0), has a lightweight design to run in high-available mission-critical architectures and includes the features listed below.   
+Contact us for details of the [extended features](/why-use-vamp/enterprise-edition/) available with Vamp Enterprise Edition. 
 
 * Container-scheduler agnostic API
-* Percentage and condition based programmable routing
-* YAML based configuration blueprints with support for dependencies, clusters and environment variables
 * Graphical UI and dashboard
-* Integrated javascript-based workflow system
-* Metric-driven autoscaling, canary releasing and other optimisation and automation patterns
-* Automatic loadbalancing for autoscaled services
-* API gateway routing features like conditional rewrites
+* In-screen help
+* YAML configuration blueprints with support for dependencies, clusters and environment variables
+* Docker compose import
+* Browsable artifact revision history
+* Hot reloading of system configuration
+* Reverse proxy access to services and components
+* Customisable health definitions
 * CLI for integration with common CI/CD pipelines
-* Open source (Apache 2.0)
-* Event API and server-side events (SSE) stream
-* Multi-level metric aggregation
-* Port-based, virtual host names or external service (consul etc) based service discovery support
-* Lightweight design to run in high-available mission-critical architectures
-* Integrates with Elastic Search and Kibana for custom Kibana dashboards
-* Vamp recipes provides automated integration and workflows testing
-* Convert Docker Compose files directly to Vamp blueprints
+* Events API and Server-Sent Events (SSE) stream, integrates with Elastic Search and Kibana for custom Kibana dashboards
+* Multi-level metrics aggregation
+* JavaScript-based workflow automation, allowing for metrics-driven autoscaling, canary releasing and other optimisation patterns
+* Service discovery based on ports, virtual host names or external services (consul etc.)
+* Percentage and condition based programmable routing
+* Automatic load-balancing for scaled services
 
+[Extended features: Vamp Enterprise Edition](/why-use-vamp/enterprise-edition/)
+ 
 
 {{< note title="What next?" >}}
 * [Try Vamp](/documentation/installation/hello-world/)
