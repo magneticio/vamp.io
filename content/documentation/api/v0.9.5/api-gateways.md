@@ -22,14 +22,14 @@ Read about [using gateways](documentation/using-vamp/gateways/).
 ## Gateway resource
 You can define gateways inline as part of a blueprint, breed or deployment, or create them separately and reference them by name. The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.5/using-the-api) for details on how to set this. 
 
-### Minimum resource
+### Minimum resource (YAML)
 
 ```
 - name: sava_gateway
   port: 12345
 ```
 
-### API return resource
+### API return resource (YAML)
 
 ```
 name: sava_gateway
@@ -49,13 +49,13 @@ routes: {}
 
  Field name        |  Required | Description          
  -----------------|--------|---------
- name |  yes  | Unique name used to reference the gateway from a breed, blueprint or deployment.
+ name |  required  | Unique name used to reference the gateway from a breed, blueprint or deployment.
  kind |  optional  | The resource type. Required to [send multiple resources](/documentation/api/v0.9.5/api-reference/#send-multiple-resources) to `/api/v1`
  lookup_name |  -  |
  internal  |  -  |
  service  |  -  |
  deployed  |  -  |
- port  |  yes  | `port_number/port_type`.  Port type can be `http` (default) or `tcp`.
+ port  |  required  | `port_number/port_type`.  Port type can be `http` (default) or `tcp`.
  sticky |  optional  |
  virtual_hosts  |  -  |
  routes  |  optional  | 

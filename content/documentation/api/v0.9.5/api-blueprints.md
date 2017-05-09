@@ -23,7 +23,7 @@ Blueprints are static artifacts. They describe how breeds work in runtime and wh
 
 The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.5/using-the-api) for details on how to set this. 
 
-### Minimum resource
+### Minimum resource (YAML)
 The minimum fields required to successfully store a blueprint.
 
 ```
@@ -34,7 +34,7 @@ clusters:
     - breed: sava:1.0.0
 ```
 
-### API return resource
+### API return resource (YAML)
 The fields returned by the API for stored blueprints.
 
 ```
@@ -56,12 +56,12 @@ environment_variables: {}
 
  Field name    |  Required  | description          
  --------------|---|-----------------
- name | yes |
+ name | required |
  kind | optional | The resource type. Required to [send multiple resources](/documentation/api/v0.9.5/api-reference/#send-multiple-resources) to `/api/v1`
  gateways | optional |  Can be created separately and referenced from here or defined inline as part of the blueprint. See [gateway resource](/documentation/api/v0.9.5/api-gateways/#gateway-resource)
- clusters | yes  |
- services | yes |
- breed |  yes |Can be created separately and referenced from here or defined inline as part of the blueprint. See [breed resource](/documentation/api/v0.9.5/api-breeds)
+ clusters | required  |
+ services | required |
+ breed |  required |Can be created separately and referenced from here or defined inline as part of the blueprint. See [breed resource](/documentation/api/v0.9.5/api-breeds)
  environment variables | optional |
  scale | optional | Can be created separately and referenced from here or defined inline as part of the blueprint. If omitted, the default scale will be used (See [scale resource](/documentation/) and [reference.conf default scale](/documentation/installation/configuration-reference/#operation))
 

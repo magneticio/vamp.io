@@ -23,7 +23,7 @@ Breeds are static artifacts that describe individual services and can be referen
 You can define breeds inline or store them separately under a unique name and reference them from a blueprint, deployment or workflow resource.
 The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.5/using-the-api) for details on how to set this. 
 
-### Minimum resource
+### Minimum resource (YAML)
 The minimum fields required to successfully store a breed.
 
 ```
@@ -32,7 +32,7 @@ deployable: magneticio/sava:1.0.0
 
 ```
 
-### API return resource
+### API return resource (YAML)
 The fields returned by the API for stored breeds.
 
 ```
@@ -50,9 +50,9 @@ dependencies: {}
 
  Field name   |  Options   | Required | description          
  ------------|-----|--------|---------
-name  |   |  yes  | a unique name to reference the breed
+name  |   |  required  | a unique name to reference the breed
 kind  | `breed`  |  optional  | The resource type. Required to [send multiple resources](/documentation/api/v0.9.5/api-reference/#send-multiple-resources-post-put-and-delete) to `/api/v1`
-deployable  |   |  yes  |  the default deployable type is `container/docker`
+deployable  |   |  required  |  the default deployable type is `container/docker`
 ports  |   |  optional  |  
 environtment_variables  |   |  optional  |
 constants  |   |  optional  |

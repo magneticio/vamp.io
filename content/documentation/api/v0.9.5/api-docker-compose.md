@@ -17,7 +17,7 @@ The resource examples shown below are in YAML format. Vamp API requests and resp
 
 ### Minimum Docker compose resource
 
-### API return resource
+### API return resource (YAML)
 The API will return a [blueprint API returun resource](/documentation/api/api-blueprints/#api-return-resource)
 
 version: '2'

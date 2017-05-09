@@ -24,7 +24,7 @@ Condition templates are static artifacts. You can save and manage condition temp
 You can define conditions inline or store them separately as templates under a unique name and reference them from a blueprint, breed or gateway resource.
 The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.5/using-the-api) for details on how to set this. 
 
-### Minimum resource
+### Minimum resource (YAML)
 The minimum fields required to successfully store a condition.
 
 ```
@@ -32,7 +32,7 @@ name: sava
 condition: User-Agent = Chrome
 ```
 
-### API return resource
+### API return resource (YAML)
 The fields returned by the API for stored conditions.
 
 ```
@@ -43,9 +43,9 @@ condition: User-Agent = Chrome
 
  Field name    |  Required  | description          
  --------------|---|-----------------
- name | yes |  Unique name used to reference the condition from a gateway
+ name | required |  Unique name used to reference the condition from a gateway
  kind | optional | The resource type. Required to [send multiple resources](/documentation/api/v0.9.5/api-reference/#send-multiple-resources) to `/api/v1`
- condition | yes | Boolean condition statement. See [using conditions](/documentation/using-vamp/conditions/) for details on how to create a condition.
+ condition | required | Boolean condition statement. See [using conditions](/documentation/using-vamp/conditions/) for details on how to create a condition.
   
 -----------
 
