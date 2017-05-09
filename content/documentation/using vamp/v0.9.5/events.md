@@ -3,16 +3,12 @@ date: 2016-09-13T09:00:00+00:00
 title: Events
 menu:
   main:
-    identifier: "events-v094"
+    identifier: "events-v095"
     parent: "Using Vamp"
     weight: 120
+aliases:
+    - /documentation/using-vamp/events/
 ---
-
-{{< note title="The information on this page is written for Vamp v0.9.4" >}} 
-
-* Switch to the [latest version of this page](/documentation/using-vamp/events).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
 
 Vamp is a distributed system tied together by a central events stream. Every action in Vamp creates events, which in turn can be used as triggers for new actions. For example, gateway updates are triggered by deployments (synchronisation events), while canary releases and autoscaling actions are based on calculated health and metrics events. Vamp collects events on all running services. Interaction with the API also creates events, like updating blueprints or deleting a deployment. Furthermore, Vamp allows third party applications to create events and trigger Vamp actions. All events are stored and retrieved using the Event API that is part of Vamp.
 
@@ -39,7 +35,7 @@ Vamp events are stored by default in Elasticsearch with a unique ID using the in
 All events stick to some basic rules:
 
 * All data in Vamp are events. 
-* Events consist of an [event type](/documentation/using-vamp/v0.9.4/events/#event-types), one or more [event tags](/documentation/using-vamp/v0.9.4/events/#event-tags) and an optional [event value](/documentation/using-vamp/v0.9.4/events/#event-value). They are described in the format `['tag', 'tag1:tag2'], value, event_type` 
+* Events consist of an [event type](/documentation/using-vamp/v0.9.5/events/#event-types), one or more [event tags](/documentation/using-vamp/v0.9.5/events/#event-tags) and an optional [event value](/documentation/using-vamp/v0.9.5/events/#event-value). They are described in the format `['tag', 'tag1:tag2'], value, event_type` 
 * Event values can be empty or any JSON object.
 * Event timestamps are in ISO8601/RFC3339.
 * Timestamps are optional. If not provided, Vamp will insert the current time.
@@ -101,10 +97,10 @@ the default page size for a set of returned events is 30.
 
 ### Example queries
 
-* [Get all events](/documentation/using-vamp/v0.9.4/events/#example-1)
-* [Response time for a cluster](/documentation/using-vamp/v0.9.4/events/#example-2)
-* [Current sessions for a service](/documentation/using-vamp/v0.9.4/events/#example-3)
-* [All known events for a service](/documentation/using-vamp/v0.9.4/events/#example-4)
+* [Get all events](/documentation/using-vamp/v0.9.5/events/#example-1)
+* [Response time for a cluster](/documentation/using-vamp/v0.9.5/events/#example-2)
+* [Current sessions for a service](/documentation/using-vamp/v0.9.5/events/#example-3)
+* [All known events for a service](/documentation/using-vamp/v0.9.5/events/#example-4)
  
 #### Example 1
 **Get all events**
@@ -268,7 +264,7 @@ The following query gives back the last set of delete actions executed in the Va
 
 {{< note title="What next?" >}}
 * Try the tutorial [Create a workflow that generates events](/documentation/tutorials/create-a-workflow/)
-* Read about [Vamp health](/documentation/using-vamp/v0.9.4/health/)
-* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
+* Read about [Vamp health](/documentation/using-vamp/v0.9.5/health/)
+* Check the [API documentation](/documentation/api/v0.9.5/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

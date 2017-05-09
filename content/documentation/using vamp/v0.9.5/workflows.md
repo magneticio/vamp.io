@@ -3,16 +3,12 @@ date: 2016-09-13T09:00:00+00:00
 title: Workflows
 menu:
   main:
-    identifier: "workflows-v094"
+    identifier: "workflows-v095"
     parent: "Using Vamp"
     weight: 40
+aliases:
+    - /documentation/using-vamp/workflows/
 ---
-
-{{< note title="The information on this page is written for Vamp v0.9.4" >}}
-
-* Switch to the [latest version of this page](/documentation/using-vamp/workflows).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
 
 Vamp workflows are a convenient way to run Node JS based scripts that access the Vamp API to monitor and interact with running services. JavaScript workflows run in Vamp workflow agent containers ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)) and are managed just like any other container inside your cluster, making them robust, scalable and dynamic. Workflows can be scheduled to run as a daemon, be triggered by Vamp events or to run at specified times. 
 
@@ -28,17 +24,17 @@ The following breeds are required by system workflows and should not be deleted:
 {{< /note >}}
 
 ### On this page:
-- [Track running workflows](/documentation/using-vamp/v0.9.4/workflows/#track-running-workflows)
-- [Create a workflow](/documentation/using-vamp/v0.9.4/workflows/#create-a-workflow)
-  * [Workflow schedules](/documentation/using-vamp/v0.9.4/workflows/#workflow-schedules)
-  * [Workflow dialects](/documentation/using-vamp/v0.9.4/workflows/#workflow-dialects)
-- [JavaScript workflows](/documentation/using-vamp/v0.9.4/workflows/#javascript-workflows)
+- [Track running workflows](/documentation/using-vamp/v0.9.5/workflows/#track-running-workflows)
+- [Create a workflow](/documentation/using-vamp/v0.9.5/workflows/#create-a-workflow)
+  * [Workflow schedules](/documentation/using-vamp/v0.9.5/workflows/#workflow-schedules)
+  * [Workflow dialects](/documentation/using-vamp/v0.9.5/workflows/#workflow-dialects)
+- [JavaScript workflows](/documentation/using-vamp/v0.9.5/workflows/#javascript-workflows)
 
 ## Track running workflows
 
 You can track executions of a running workflow in the Vamp UI. From the **Workflows** page, click on a workflow port to open the execution list. Click on a specific execution to open its log.
 
-![](/images/screens/v094/workflow_execution_list.png)
+![](/images/screens/v095/workflow_execution_list.png)
 
 ## Create a workflow
 
@@ -84,7 +80,7 @@ schedule:
 
 ### Workflow dialects
 You can use dialects to specify native commands for the underlying container platform in a workflow.  
-[Read more about Vamp dialects](/documentation/using-vamp/v0.9.4/dialects/)
+[Read more about Vamp dialects](/documentation/using-vamp/v0.9.5/dialects/)
 
 ## JavaScript workflows
 JavaScript workflows are executed by Vamp Workflow Agent ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)).  The system breed **vamp-workflow-javascript** is used to apply the standard enviroment variables, health checks and exposed ports.   
@@ -150,7 +146,7 @@ api.gateways().each(function (gateway) {
 
 {{< note title="What next?" >}}
 * Try the tutorial [Create a workflow that generates events](/documentation/tutorials/create-a-workflow/)
-* Read about [Vamp Blueprints](/documentation/using-vamp/v0.9.4/blueprints/)
-* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
+* Read about [Vamp Blueprints](/documentation/using-vamp/v0.9.5/blueprints/)
+* Check the [API documentation](/documentation/api/v0.9.5/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

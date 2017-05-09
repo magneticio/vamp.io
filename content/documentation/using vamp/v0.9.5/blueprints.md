@@ -3,16 +3,12 @@ date: 2016-09-13T09:00:00+00:00
 title: Blueprints
 menu:
   main:
-    identifier: "blueprints-v094"
+    identifier: "blueprints-v095"
     parent: "Using Vamp"
     weight: 50
+aliases:
+    - /documentation/using-vamp/blueprints/
 ---
-
-{{< note title="The information on this page is written for Vamp v0.9.4" >}}
-
-* Switch to the [latest version of this page](/documentation/using-vamp/blueprints).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
 
 Blueprints are execution plans - they describe how your services should be hooked up and what their topology should look like at runtime. This means you reference your breeds (or define them inline) and add runtime configuration to them. Blueprints can be created and edited using the Vamp Domain Specific Language (DSL). Vamp tracks all revisions made to artifacts, so you can check back and compare the current blueprint against a previous version.
 
@@ -24,14 +20,14 @@ The Vamp UI includes a handy tool to import Docker Compose files and convert the
 
 Blueprints allow you to specify the following properties:
 
-- [Gateways](/documentation/using-vamp/v0.9.4/blueprints/#gateways): a stable port where the service can be reached.
-- [Clusters and services](/documentation/using-vamp/v0.9.4/blueprints/#clusters-and-services): a cluster is a grouping of services with one purpose, i.e. two versions (a/b) of one service.
-- [Environment variables](/documentation/using-vamp/v0.9.4/environment-variables/): a list of variables (interpolated or not) to be made available at runtime.
-- [Dialects](/documentation/using-vamp/v0.9.4/dialects): a dialect is a set of native commands for the underlying container platform, i.e. Docker or Mesosphere Marathon.
-- [Scale](/documentation/using-vamp/v0.9.4/blueprints/#scale): the CPU and memory and the amount of instance allocate to a service.
-- [Conditions](/documentation/using-vamp/v0.9.4/conditions/): how traffic should be directed based on HTTP and/or TCP properties.
-- [SLA](/documentation/using-vamp/v0.9.4/sla/) and [escalations](/documentation/using-vamp/escalations/): SLA definition that controls autoscaling.
-- [Health](/documentation/using-vamp/v0.9.4/health/): The health checks to be applied to a service, cluster or breed.
+- [Gateways](/documentation/using-vamp/v0.9.5/blueprints/#gateways): a stable port where the service can be reached.
+- [Clusters and services](/documentation/using-vamp/v0.9.5/blueprints/#clusters-and-services): a cluster is a grouping of services with one purpose, i.e. two versions (a/b) of one service.
+- [Environment variables](/documentation/using-vamp/v0.9.5/environment-variables/): a list of variables (interpolated or not) to be made available at runtime.
+- [Dialects](/documentation/using-vamp/v0.9.5/dialects): a dialect is a set of native commands for the underlying container platform, i.e. Docker or Mesosphere Marathon.
+- [Scale](/documentation/using-vamp/v0.9.5/blueprints/#scale): the CPU and memory and the amount of instance allocate to a service.
+- [Conditions](/documentation/using-vamp/v0.9.5/conditions/): how traffic should be directed based on HTTP and/or TCP properties.
+- [SLA](/documentation/using-vamp/v0.9.5/sla/) and [escalations](/documentation/using-vamp/escalations/): SLA definition that controls autoscaling.
+- [Health](/documentation/using-vamp/v0.9.5/health/): The health checks to be applied to a service, cluster or breed.
 
 #### Example - key concepts of blueprints
 
@@ -123,8 +119,8 @@ instances: 2  # Number of instances.
 ```
 
 {{< note title="What next?" >}}
-* Read about [Vamp breeds](/documentation/using-vamp/v0.9.4/breeds/)
-* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
+* Read about [Vamp breeds](/documentation/using-vamp/v0.9.5/breeds/)
+* Check the [API documentation](/documentation/api/v0.9.5/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
 

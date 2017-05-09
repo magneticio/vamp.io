@@ -3,16 +3,12 @@ date: 2016-09-13T09:00:00+00:00
 title: Gateways
 menu:
   main:
-    identifier: "gateways-v094"
+    identifier: "gateways-v095"
     parent: "Using Vamp"
     weight: 30
+aliases:
+    - /documentation/using-vamp/gateways/
 ---
-
-{{< note title="The information on this page is written for Vamp v0.9.4" >}} 
-
-* Switch to the [latest version of this page](/documentation/using-vamp/gateways).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
 
 Gateways are dynamic runtime entities in the Vamp eco-system defined by ports (incoming) and routes (outgoing). They represent load balancer rules to deployment, cluster and service instances. There are two types of Vamp gateway:
 Gateways allows for programmable routing. 
@@ -20,17 +16,17 @@ Gateways allows for programmable routing.
 * **Internal gateways** created automatically for each deployment cluster and shared by all services deployed within it. Used to distribute traffic for canary releasing and A/B testing across service variants.
 * **External gateways**  explicitly declared either in a deployment blueprint or using the gateways API. Provide a stable entry point to a defined, existing route or routes.
 
-Each gateway defines a set of rules for filtering and distributing traffic across the included routes and can optionally be set as [sticky](/documentation/using-vamp/v0.9.4/sticky-sessions/). You can access internal and external gateways through [Vamp reverse proxy](/documentation/using-vamp/v0.9.4/reverse-proxy).
+Each gateway defines a set of rules for filtering and distributing traffic across the included routes and can optionally be set as [sticky](/documentation/using-vamp/v0.9.5/sticky-sessions/). You can access internal and external gateways through [Vamp reverse proxy](/documentation/using-vamp/v0.9.5/reverse-proxy).
 
 ### On this page:
 
-* [Route weight and condition strength](/documentation/using-vamp/v0.9.4/gateways/#route-weight-and-condition-strength)
-* [URL path rewrite](/documentation/using-vamp/v0.9.4/gateways/#url-path-rewrite)
-* [Vamp managed and external routes](/documentation/using-vamp/v0.9.4/gateways/#vamp-managed-and-external-routes)
+* [Route weight and condition strength](/documentation/using-vamp/v0.9.5/gateways/#route-weight-and-condition-strength)
+* [URL path rewrite](/documentation/using-vamp/v0.9.5/gateways/#url-path-rewrite)
+* [Vamp managed and external routes](/documentation/using-vamp/v0.9.5/gateways/#vamp-managed-and-external-routes)
 
 ## Route weight and condition strength
 
-Each route in a gateway has a weight and optionally one or more conditions with a `condition_strength` (used to target specific traffic for routing). Read more about [conditions](/documentation/using-vamp/v0.9.4/conditions)  
+Each route in a gateway has a weight and optionally one or more conditions with a `condition_strength` (used to target specific traffic for routing). Read more about [conditions](/documentation/using-vamp/v0.9.5/conditions)  
 
 Routing is calculated as followed:
 
@@ -173,7 +169,7 @@ routes:
 ```
 
 {{< note title="What next?" >}}
-* Read about [Vamp workflows](/documentation/using-vamp/v0.9.4/workflows/)
-* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
+* Read about [Vamp workflows](/documentation/using-vamp/v0.9.5/workflows/)
+* Check the [API documentation](/documentation/api/v0.9.5/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

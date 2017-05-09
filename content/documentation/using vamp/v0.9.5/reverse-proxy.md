@@ -1,17 +1,13 @@
 ---
 title: Reverse proxy
+aliases: 
+    - /documentation/using-vamp/reverse-proxy
 menu:
   main:
-    identifier: "uv-reverse-proxy-v094"
+    identifier: "uv-reverse-proxy-v095"
     parent: "Using Vamp"
     weight: 145
 ---
-
-{{< note title="The information on this page is written for Vamp v0.9.4" >}}
-
-* Switch to the [latest version of this page](/documentation/using-vamp/reverse-proxy).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
 
 Vamp can function as a reverse proxy to access elements inside the cluster and not visible outside the cluster. This is useful as it allows direct access to e.g. Mesos logs from within the Vamp UI and enables workflows to access details Vamp may be unaware of.
 
@@ -56,7 +52,7 @@ You can access a specific instance of a workflow at the following endpoint:
 
 
 {{< note title="What next?" >}}
-* Read about [using Vamp for service discovery](/documentation/using-vamp/v0.9.4/service-discovery/)
-* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
+* Read about [using Vamp for service discovery](/documentation/using-vamp/v0.9.5/service-discovery/)
+* Check the [API documentation](/documentation/api/v0.9.5/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

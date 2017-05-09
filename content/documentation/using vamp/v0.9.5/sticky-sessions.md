@@ -3,16 +3,12 @@ date: 2016-09-13T09:00:00+00:00
 title: Sticky Sessions
 menu:
   main:
-    identifier: "sticky-sessions-v094"
+    identifier: "sticky-sessions-v095"
     parent: "Using Vamp"
     weight: 170
+aliases:
+    - /documentation/using-vamp/sticky-sessions/
 ---
-
-{{< note title="The information on this page is written for Vamp v0.9.4" >}} 
-
-* Switch to the [latest version of this page](/documentation/using-vamp/sticky-sessions).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
 
 Gateways can optionally be set as sticky on either a route or instance level.
 
@@ -23,7 +19,7 @@ Gateways can optionally be set as sticky on either a route or instance level.
 
 Vamp sticky sessions are managed using cookies. Traffic routed through a gateway set as sticky will receive a cookie with the unique hash for the route or instance served. Subsequent visits to the same gateway will result in the same hashed route or instance being served. In the case that a route or instance with the stored hash is not available (for example, when a service variant has been removed), cookie settings will be ignored and standard routing rules applied.
 
-![](/images/screens/v094/gateways_sticky_route.png)
+![](/images/screens/v095/gateways_sticky_route.png)
 
 ## Examples
 
@@ -120,7 +116,7 @@ clusters:
 ```
 
 {{< note title="What next?" >}}
-* Read about [using Vamp with virtual hosts](/documentation/using-vamp/v0.9.4/virtual-hosts/)
-* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
+* Read about [using Vamp with virtual hosts](/documentation/using-vamp/v0.9.5/virtual-hosts/)
+* Check the [API documentation](/documentation/api/v0.9.5/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

@@ -3,19 +3,15 @@ date: 2016-09-13T09:00:00+00:00
 title: Conditions
 menu:
   main:
-    identifier: "conditions-v094"
+    identifier: "conditions-v095"
     parent: "Using Vamp"
     weight: 80
+aliases:
+    - /documentation/using-vamp/conditions/
 ---
 
-{{< note title="The information on this page is written for Vamp v0.9.4" >}}
-
-* Switch to the [latest version of this page](/documentation/using-vamp/conditions).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
-
 Conditions are used by gateways to filter incoming traffic for routing between services in a cluster.
-Read more about [gateway usage](/documentation/using-vamp/v0.9.4/gateways/#gateway-usage). You can define conditions inline in a blueprint or store them separately under a unique name on the `/conditions` endpoint and just use that name to reference them from a blueprint. 
+Read more about [gateway usage](/documentation/using-vamp/v0.9.5/gateways/#gateway-usage). You can define conditions inline in a blueprint or store them separately under a unique name on the `/conditions` endpoint and just use that name to reference them from a blueprint. 
 
 #### Example - simple inline condition
 
@@ -91,8 +87,8 @@ gateways:
 
 
 {{< note title="What next?" >}}
-* Read about [Vamp dialects](/documentation/using-vamp/v0.9.4/dialects/)
-* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
+* Read about [Vamp dialects](/documentation/using-vamp/v0.9.5/dialects/)
+* Check the [API documentation](/documentation/api/v0.9.5/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
 

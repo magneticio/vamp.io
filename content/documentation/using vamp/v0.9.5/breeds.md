@@ -3,16 +3,12 @@ date: 2016-09-13T09:00:00+00:00
 title: Breeds
 menu:
   main:
-    identifier: "breeds-v094"
+    identifier: "breeds-v095"
     parent: "Using Vamp"
     weight: 60
+aliases:
+    - /documentation/using-vamp/breeds/
 ---
-
-{{< note title="The information on this page is written for Vamp v0.9.4" >}}
-
-* Switch to the [latest version of this page](/documentation/using-vamp/breeds).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
 
 Breeds are static descriptions of applications and services available for deployment. Each breed is described by the DSL in YAML notation or JSON, whatever you like. This description includes name, version, available parameters, dependencies etc.
 To a certain degree, you could compare a breed to a Maven artifact or a Ruby Gem description.  
@@ -20,11 +16,11 @@ Vamp tracks all revisions made to artifacts, so you can check back and compare a
 
 Breeds allow you to set the following properties:
 
-- [Deployable](/documentation/using-vamp/v0.9.4/breeds/#deployable): the name of actual container or command that should be run.
-- [Ports](/documentation/using-vamp/v0.9.4/breeds/#ports): a map of ports your container exposes.
-- [Dependencies](/documentation/using-vamp/v0.9.4/breeds/#dependencies): a list of other breeds this breed depends on.
-- [Environment variables](/documentation/using-vamp/v0.9.4/environment-variables/): a list of variables (interpolated or not) to be made available at runtime.
-- [Health checks](/documentation/using-vamp/v0.9.4/health/): a list of health checks to perform on this breed (note that these will be overridden by health checks defined on the service or cluster level)
+- [Deployable](/documentation/using-vamp/v0.9.5/breeds/#deployable): the name of actual container or command that should be run.
+- [Ports](/documentation/using-vamp/v0.9.5/breeds/#ports): a map of ports your container exposes.
+- [Dependencies](/documentation/using-vamp/v0.9.5/breeds/#dependencies): a list of other breeds this breed depends on.
+- [Environment variables](/documentation/using-vamp/v0.9.5/environment-variables/): a list of variables (interpolated or not) to be made available at runtime.
+- [Health checks](/documentation/using-vamp/v0.9.5/health/): a list of health checks to perform on this breed (note that these will be overridden by health checks defined on the service or cluster level)
 
 {{< note title="System breeds" >}}
 The breeds listed below are required by system workflows and should not be deleted:
@@ -160,11 +156,11 @@ dependencies:
 ```
 
 In a lot of cases, dependencies coexist with interpolated environment variables or constants because exact values are not known untill deploy time.  
-[Read more about environment variables](/documentation/using-vamp/v0.9.4/environment-variables/)
+[Read more about environment variables](/documentation/using-vamp/v0.9.5/environment-variables/)
 
 {{< note title="What next?" >}}
-* Read about [Vamp conditions](/documentation/using-vamp/v0.9.4/conditions/)
-* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
+* Read about [Vamp conditions](/documentation/using-vamp/v0.9.5/conditions/)
+* Check the [API documentation](/documentation/api/v0.9.5/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
 

@@ -3,23 +3,20 @@ date: 2017-04-03T09:00:00+00:00
 title: Dialects
 menu:
   main:
-    identifier: "dialects-v094"
+    identifier: "dialects-v095"
     parent: "Using Vamp"
     weight: 90
+aliases:
+    - /documentation/using-vamp/dialects/
+    - /documentation/using-vamp/blueprints/#dialects
 ---
-
-{{< note title="The information on this page is written for Vamp v0.9.4" >}} 
-
-* Switch to the [latest version of this page](/documentation/using-vamp/dialects).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
 
 A dialect is a set of native commands for the underlying container platform.  Vamp allows you to use container driver specific tags in workflows and inside blueprints on a breed or deployment level. Dialects effectively enable you to make full use of, for instance, the underlying features like mounting disks, settings commands and providing access to private Docker registries.
 
 We currently support the following dialects:
 
-* [Docker](/documentation/using-vamp/v0.9.4/dialects/#docker-dialect)
-* [Marathon](/documentation/using-vamp/v0.9.4/dialects/#marathon-dialect)
+* [Docker](/documentation/using-vamp/v0.9.5/dialects/#docker-dialect)
+* [Marathon](/documentation/using-vamp/v0.9.5/dialects/#marathon-dialect)
 
 ## Docker dialect
 
@@ -95,8 +92,8 @@ clusters:
 ```
 
 {{< note title="What next?" >}}
-* Read about [Vamp environment variables](/documentation/using-vamp/v0.9.4/environment-variables/)
-* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
+* Read about [Vamp environment variables](/documentation/using-vamp/v0.9.5/environment-variables/)
+* Check the [API documentation](/documentation/api/v0.9.5/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
 

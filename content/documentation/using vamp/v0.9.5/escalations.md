@@ -3,16 +3,12 @@ date: 2016-09-13T09:00:00+00:00
 title: Escalations
 menu:
   main:
-    identifier: "escalations-v094"
+    identifier: "escalations-v095"
     parent: "Using Vamp"
     weight: 110
+aliases:
+    - /documentation/using-vamp/escalations/
 ---
-
-{{< note title="The information on this page is written for Vamp v0.9.4" >}}
-
-* Switch to the [latest version of this page](/documentation/using-vamp/escalations).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
 
 An escalation is a workflow triggered by an escalation event. Vamp checks for these escalation events using a continuous background process with a configurable interval time. If the events match the escalation handlers defined in the DSL, the action is executed.
 
@@ -24,9 +20,9 @@ Any escalation that is triggered should be handled by an escalation handler
 
 Vamp ships with three escalation handlers, these can be composed into intricate escalation systems: 
 
-* [scale_instances](/documentation/using-vamp/v0.9.4/escalations/#scale-instances)
-* [scale_cpu](/documentation/using-vamp/v0.9.4/escalations/#scale-cpu)
-* [scale_memory](/documentation/using-vamp/v0.9.4/escalations/#scale-memory)
+* [scale_instances](/documentation/using-vamp/v0.9.5/escalations/#scale-instances)
+* [scale_cpu](/documentation/using-vamp/v0.9.5/escalations/#scale-cpu)
+* [scale_memory](/documentation/using-vamp/v0.9.5/escalations/#scale-memory)
 
 ### scale_instances   
 Scales up the number of running instances. It is applied only to the first service in the cluster (old or "A" version). You can set upper limits to how far you want to scale out or in, effectively guaranteeing a minimum set of running instances. This is very much like AWS auto-scaling. For example:
@@ -173,7 +169,7 @@ clusters:
 ```
 
 {{< note title="What next?" >}}
-* Read about [Vamp events](/documentation/using-vamp/v0.9.4/events/)
-* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
+* Read about [Vamp events](/documentation/using-vamp/v0.9.5/events/)
+* Check the [API documentation](/documentation/api/v0.9.5/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

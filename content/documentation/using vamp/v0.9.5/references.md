@@ -3,16 +3,12 @@ date: 2016-09-13T09:00:00+00:00
 title: Referencing artifacts
 menu:
   main:
-    identifier: "referencing-artifacts-v094"
+    identifier: "referencing-artifacts-v095"
     parent: "Using Vamp"
     weight: 140
+aliases:
+    - /documentation/using-vamp/references/
 ---
-
-{{< note title="The information on this page is written for Vamp v0.9.4" >}}
-
-* Switch to the [latest version of this page](/documentation/using-vamp/references).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
 
 With any artifact, Vamp allows you to either use an inline notation or reference the artifact by name. For references, you use the `reference` keyword or its shorter version `ref`. Think of it like either using actual values or pointers to a value. This has a big impact on how complex or simple you can make any blueprint, breed or deployment. It also impacts how much knowledge you need to have of all the different artifacts that are used in a typical deployment or blueprint.
 
@@ -54,9 +50,9 @@ When you begin to work with Vamp, you will probably start with inline artifacts.
 
 ### Example use of references
 
-* [Create a library of containers](/documentation/using-vamp/v0.9.4/references/#example-1)
-* [Fix scales per environment](/documentation/using-vamp/v0.9.4/references/#example-2)
-* [Reuse a complex condition](/documentation/using-vamp/v0.9.4/references/#example-3)
+* [Create a library of containers](/documentation/using-vamp/v0.9.5/references/#example-1)
+* [Fix scales per environment](/documentation/using-vamp/v0.9.5/references/#example-2)
+* [Reuse a complex condition](/documentation/using-vamp/v0.9.5/references/#example-3)
 
 
 #### Example 1 
@@ -113,7 +109,7 @@ condition: Cookie SHOPSESSION Contains shopping_basket_items=0
 
 
 {{< note title="What next?" >}}
-* Read about [using Vamp as a reverse proxy](/documentation/using-vamp/v0.9.4/reverse-proxy/)
-* Check the [API documentation](/documentation/api/v0.9.4/api-reference)
+* Read about [using Vamp as a reverse proxy](/documentation/using-vamp/v0.9.5/reverse-proxy/)
+* Check the [API documentation](/documentation/api/v0.9.5/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
