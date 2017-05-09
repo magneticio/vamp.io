@@ -4,7 +4,7 @@ title: Gateways
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-gateways-094"
+    identifier: "api-reference-gateways-v095"
     weight: 140
 aliases:
     - /documentation/api/api-gateways
@@ -13,14 +13,14 @@ Read about [using gateways](documentation/using-vamp/gateways/).
 
 ## Methods
  
- * [List](/documentation/api/v0.9.4/api-gateways/#list-gateways) - return a list of all gateways
- * [Get](/documentation/api/v0.9.4/api-gateways/#get-single-gateway) - get a single gateway
- * [Create](/documentation/api/v0.9.4/api-gateways/#create-gateway) - create a new gateway 
- * [Update](/documentation/api/v0.9.4/api-gateways/#update-gateway) - update a gateway
- * [Delete](/documentation/api/v0.9.4/api-gateways/#delete-gateway) - delete a gateway
+ * [List](/documentation/api/v0.9.5/api-gateways/#list-gateways) - return a list of all gateways
+ * [Get](/documentation/api/v0.9.5/api-gateways/#get-single-gateway) - get a single gateway
+ * [Create](/documentation/api/v0.9.5/api-gateways/#create-gateway) - create a new gateway 
+ * [Update](/documentation/api/v0.9.5/api-gateways/#update-gateway) - update a gateway
+ * [Delete](/documentation/api/v0.9.5/api-gateways/#delete-gateway) - delete a gateway
 
 ## Gateway resource
-You can define gateways inline as part of a blueprint, breed or deployment, or create them separately and reference them by name. The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.4/using-the-api) for details on how to set this. 
+You can define gateways inline as part of a blueprint, breed or deployment, or create them separately and reference them by name. The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.5/using-the-api) for details on how to set this. 
 
 ### Minimum resource
 
@@ -50,7 +50,7 @@ routes: {}
  Field name        |  Required | Description          
  -----------------|--------|---------
  name |  yes  | Unique name used to reference the gateway from a breed, blueprint or deployment.
- kind |  optional  | The resource type. Required to [send multiple resources](/documentation/api/v0.9.4/api-reference/#send-multiple-resources) to `/api/v1`
+ kind |  optional  | The resource type. Required to [send multiple resources](/documentation/api/v0.9.5/api-reference/#send-multiple-resources) to `/api/v1`
  lookup_name |  -  |
  internal  |  -  |
  service  |  -  |
@@ -64,7 +64,7 @@ routes: {}
     
 ## List gateways
 
-Return a list of all gateways. For details on pagination see [common parameters](/documentation/api/v0.9.4/using-the-api)
+Return a list of all gateways. For details on pagination see [common parameters](/documentation/api/v0.9.5/using-the-api)
 
 ### Request
 * `GET`
@@ -72,7 +72,7 @@ Return a list of all gateways. For details on pagination see [common parameters]
 * The request body should be empty.
 
 ### Response
-If successful, will return a list of all [gateway resources](/documentation/api/v0.9.4/api-gateways/#gateway-resource) in the specified `accept` format (default JSON).  
+If successful, will return a list of all [gateway resources](/documentation/api/v0.9.5/api-gateways/#gateway-resource) in the specified `accept` format (default JSON).  
 
 ### Examples
 
@@ -90,7 +90,7 @@ Get details of a single gateway.
 * The request body should be empty.
 
 ### Response
-If successful, will return the named [gateway resource](/documentation/using-vamp/v0.9.4/gateways/#example-a-b-test-two-deployments-using-route-weight) in the specified `accept` format (default JSON).  
+If successful, will return the named [gateway resource](/documentation/using-vamp/v0.9.5/gateways/#example-a-b-test-two-deployments-using-route-weight) in the specified `accept` format (default JSON).  
 
 ### Errors
 * **The requested resource could not be found.** - the named gateway does not exist.
@@ -104,7 +104,7 @@ Create a new gateway.
 ### Request
 * `POST`
 * `/api/v1/gateways`
-* The request body should include at least a [minimum gateway resource](/documentation/api/v0.9.4/api-gateways/#gateway-resource) in the specified `Content-Type` format (default JSON).
+* The request body should include at least a [minimum gateway resource](/documentation/api/v0.9.5/api-gateways/#gateway-resource) in the specified `Content-Type` format (default JSON).
 * Query string parameters:
 
 | Request parameters     | options           | default          | description      |
@@ -112,7 +112,7 @@ Create a new gateway.
 | `validate_only` | true or false     | false            | validates the breed and returns a `201 Created` if the gateway is valid
 
 ### Response
-If successful, will return the newly stored [gateway resource](/documentation/api/v0.9.4/api-gateways/#gateway-resource) in the specified `accept` format (default JSON).  
+If successful, will return the newly stored [gateway resource](/documentation/api/v0.9.5/api-gateways/#gateway-resource) in the specified `accept` format (default JSON).  
 
 ### Errors
 * **Gateway port '...' is/was in use by deployment: '...'** - Port already in use. Remove gateway or select another port.
@@ -126,7 +126,7 @@ Update a stored gateway.
 ### Request
 * `PUT`
 * `/api/v1/gateways/{gateway_name}`
-* The request body should include at least a [minimum gateway resource](/documentation/api/v0.9.4/api-gateways/#gateway-resource) in the specified `Content-Type` format (default JSON).  The `name` field must match the `gateway_name` specified in the request path.
+* The request body should include at least a [minimum gateway resource](/documentation/api/v0.9.5/api-gateways/#gateway-resource) in the specified `Content-Type` format (default JSON).  The `name` field must match the `gateway_name` specified in the request path.
 * Query string parameters:
 
 | Request parameters     | options           | default          | description      |
@@ -134,7 +134,7 @@ Update a stored gateway.
 | `validate_only` | true or false     | false            | validates the breed and returns a `200 OK` if the gateway is valid
 
 ### Response
-If successful, will return the newly stored [gateway resource](/documentation/api/v0.9.4/api-gateways/#gateway-resource) in the specified `accept` format (default JSON).  
+If successful, will return the newly stored [gateway resource](/documentation/api/v0.9.5/api-gateways/#gateway-resource) in the specified `accept` format (default JSON).  
 
 ### Errors
 * **Inconsistent name** - the `gateway_name` in the request path does not match the `name` field in the request body.

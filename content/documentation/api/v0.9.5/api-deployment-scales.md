@@ -4,7 +4,7 @@ title: Deployment scales
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-deployment-scales-094"
+    identifier: "api-reference-deployment-scales-v095"
     weight: 100
 aliases:
     - /documentation/api/api-deployment-scales
@@ -13,8 +13,8 @@ Deployment scales are singular resources: you only have one scale per service. D
 
 ## Actions
  
- * [Get](/documentation/api/v0.9.4/api-deployment-scales/#get-single-deployment-scale) - return details of a specific deployment scale
- * [Update](/documentation/api/v0.9.4/api-deployment-scales/#update-deployment-scale) - update a deployment scale
+ * [Get](/documentation/api/v0.9.5/api-deployment-scales/#get-single-deployment-scale) - return details of a specific deployment scale
+ * [Update](/documentation/api/v0.9.5/api-deployment-scales/#update-deployment-scale) - update a deployment scale
 
 --------------
 
@@ -28,7 +28,7 @@ Return details of a specific deployment scale that’s part of a service inside 
 * The request body should be empty.
 
 ### Response
-If successful, will return the specified [scale resource](/documentation/api/v0.9.4/api-scales/#scale-resource) in the specified `accept` format (default JSON).
+If successful, will return the specified [scale resource](/documentation/api/v0.9.5/api-scales/#scale-resource) in the specified `accept` format (default JSON).
 
 ### Errors
 * The requested resource could not be found.
@@ -42,7 +42,7 @@ Update the scale of a running deployment.
 ### Request
 * `PUT`
 * `/api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/scale`
-* The request body should include at least the [minimum scale resource](/documentation/api/v0.9.4/api-scales/#scale-resource) in the specified `content-type` format (default JSON). 
+* The request body should include at least the [minimum scale resource](/documentation/api/v0.9.5/api-scales/#scale-resource) in the specified `content-type` format (default JSON). 
 
 ### Response
 If successful, will return an empty response.

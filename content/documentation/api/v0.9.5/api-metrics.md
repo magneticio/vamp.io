@@ -4,7 +4,7 @@ title: Metrics
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-metrics-094"
+    identifier: "api-reference-metrics-v095"
     weight: 180
 aliases:
     - /documentation/api/api-metrics

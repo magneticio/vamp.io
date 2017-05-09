@@ -4,7 +4,7 @@ title: Info
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-info-094"
+    identifier: "api-reference-info-v095"
     weight: 170
 aliases:
     - /documentation/api/api-info
@@ -14,11 +14,11 @@ Details of Vamp's JVM environment and runtime status, the configured persistence
 	
 ## Actions
  
- * [List](/documentation/api/v0.9.4/api-info/#list-info) - returns a full list of all info parameters.
- * [Get](/documentation/api/v0.9.4/api-info/#get-specific-info-section) - explicitly request a specific info section.
+ * [List](/documentation/api/v0.9.5/api-info/#list-info) - returns a full list of all info parameters.
+ * [Get](/documentation/api/v0.9.5/api-info/#get-specific-info-section) - explicitly request a specific info section.
 
 ## Info parameters
-The example below is in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.4/using-the-api) for details on how to set this. 
+The example below is in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.5/using-the-api) for details on how to set this. 
 
 ```
 message: {...}
@@ -61,7 +61,7 @@ Return details of Vamp's JVM environment and runtime status, the configured pers
 * The request body should be empty.
 
 ### Response
-If successful, will return a list of [all info parameters](/documentation/api/v0.9.4/api-info/#info-parameters).
+If successful, will return a list of [all info parameters](/documentation/api/v0.9.5/api-info/#info-parameters).
 
 ### Errors
 * **500** - one of the `/info` response sections retured an error.
@@ -70,7 +70,7 @@ If successful, will return a list of [all info parameters](/documentation/api/v0
 
 ## Get specific info section
 
-Return a specific info section, see [info parameters](/documentation/api/v0.9.4/api-info/#info-parameters). 
+Return a specific info section, see [info parameters](/documentation/api/v0.9.5/api-info/#info-parameters). 
 
 ### Request
 
@@ -79,7 +79,7 @@ Return a specific info section, see [info parameters](/documentation/api/v0.9.4/
 * The request body should be empty.
 
 ### Response
-If successful, will return a list with only the standard and specified [info parameters](/documentation/api/v0.9.4/api-info/#info-parameters). 
+If successful, will return a list with only the standard and specified [info parameters](/documentation/api/v0.9.5/api-info/#info-parameters). 
 
 ### Errors
 * **500** - one of the `/info` response sections retured an error.

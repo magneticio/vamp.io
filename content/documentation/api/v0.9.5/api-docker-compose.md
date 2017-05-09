@@ -3,7 +3,7 @@ title: Docker compose
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-docker-compose-094"
+    identifier: "api-reference-docker-compose-v095"
     weight: 45
 draft: true
 aliases:
@@ -13,7 +13,7 @@ aliases:
 The docker-compose API endpoint can be used to import Docker compose files and convert these to Vamp blueprints.
 
 ## Resources
-The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.4/using-the-api) for details on how to set this. 
+The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.5/using-the-api) for details on how to set this. 
 
 ### Minimum Docker compose resource
 

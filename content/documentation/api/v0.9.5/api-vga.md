@@ -4,7 +4,7 @@ title: VGA
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-vga-094"
+    identifier: "api-reference-vga-v095"
     weight: 205
 aliases:
     - /documentation/api/api-vga
@@ -14,9 +14,9 @@ You can retrieve Vamp gateway driver marshaller configurations and templates usi
 
 ## Actions
 
-* [Get configuration](/documentation/api/v0.9.4/api-vga/#get-configuration) - view the current VGA configuration for a specified marshaller
-* [Get template](/documentation/api/v0.9.4/api-vga/#get-template) - view a stored configuration template
-* [Update template](/documentation/api/v0.9.4/api-vga/#update-template) - update a stored configuration template
+* [Get configuration](/documentation/api/v0.9.5/api-vga/#get-configuration) - view the current VGA configuration for a specified marshaller
+* [Get template](/documentation/api/v0.9.5/api-vga/#get-template) - view a stored configuration template
+* [Update template](/documentation/api/v0.9.5/api-vga/#update-template) - update a stored configuration template
 
 
 ## Get configuration

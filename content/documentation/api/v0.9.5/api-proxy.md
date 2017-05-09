@@ -4,7 +4,7 @@ title: Proxy
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-proxy-094"
+    identifier: "api-reference-proxy-v095"
     weight: 185
 aliases:
     - /documentation/api/api-proxy
@@ -16,10 +16,10 @@ Note that the API endpoints for reverse proxy access are structured `<vamp uri>/
 
 ## Actions
  
- * [Host and port](/documentation/api/v0.9.4/api-proxy/#host-and-port) - access a specific host and port
- * [Gateway](/documentation/api/v0.9.4/api-proxy/#gateway) - access an internal or external gateway
- * [Deployment instance](/documentation/api/v0.9.4/api-proxy/#deployment-instance) - access a specific deployment instance 
- * [Workflow instance](/documentation/api/v0.9.4/api-proxy/#workflow-instance) - access a specific workflow instance
+ * [Host and port](/documentation/api/v0.9.5/api-proxy/#host-and-port) - access a specific host and port
+ * [Gateway](/documentation/api/v0.9.5/api-proxy/#gateway) - access an internal or external gateway
+ * [Deployment instance](/documentation/api/v0.9.5/api-proxy/#deployment-instance) - access a specific deployment instance 
+ * [Workflow instance](/documentation/api/v0.9.5/api-proxy/#workflow-instance) - access a specific workflow instance
 
 -----------------  
   

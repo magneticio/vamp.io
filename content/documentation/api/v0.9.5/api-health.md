@@ -4,7 +4,7 @@ title: Health
 menu:
   main:
     parent: "API"
-    identifier: "api-reference-health-094"
+    identifier: "api-reference-health-v095"
     weight: 160
 aliases:
     - /documentation/api/api-health
