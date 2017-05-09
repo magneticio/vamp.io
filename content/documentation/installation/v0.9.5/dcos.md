@@ -3,23 +3,19 @@ date: 2017-02-07T12:00:00+00:00
 title: DC/OS
 menu:
   main:
-    identifier: "dcos-v094"
+    identifier: "dcos-v095"
     parent: "Installation"
     weight: 30
+aliases:
+    - /documentation/installation/dcos
 ---
-
-{{< note title="The information on this page applies to Vamp v0.9.4" >}}
-
-* Switch to the [latest version of this page](/documentation/installation/dcos).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
 
 There are different ways to install Vamp on DC.OS. On this page we start out with the most common setup, but if you are interested in doing a custom install or working with public and private nodes you should jump to that section.
 
-* [Universe package](/documentation/installation/v0.9.4/dcos/#universe-package)
-* [Manual install](/documentation/installation/v0.9.4/dcos/#manual-install)
-* [Custom install](/documentation/installation/v0.9.4/dcos/#custom-install)
-* [Public and private nodes](/documentation/installation/v0.9.4/dcos/#public-and-private-nodes)
+* [Universe package](/documentation/installation/v0.9.5/dcos/#universe-package)
+* [Manual install](/documentation/installation/v0.9.5/dcos/#manual-install)
+* [Custom install](/documentation/installation/v0.9.5/dcos/#custom-install)
+* [Public and private nodes](/documentation/installation/v0.9.5/dcos/#public-and-private-nodes)
 
 
 ## Universe package
@@ -192,7 +188,7 @@ Vamp has now spun up all it's components and you should be able to access the ui
 The Vamp DC/OS Docker image ([github.com/magneticio - Vamp DC/OS](https://github.com/magneticio/vamp-docker-images/tree/master/vamp-dcos)) contains configuration ([github.com/magneticio - Vamp DC/OS configuration](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)) that can be overridden for specific needs by:
 
 * Making a new Docker image based on the Vamp DC/OS image
-* Using [environment variables](/documentation/installation/v0.9.4/configure-vamp#environment-variable-configuration)
+* Using [environment variables](/documentation/installation/v0.9.5/configure-vamp#environment-variable-configuration)
 
 #### Example 1 - Remove the `metrics` and `health` workflows by Vamp configuration and keep the `kibana` workflow:
 

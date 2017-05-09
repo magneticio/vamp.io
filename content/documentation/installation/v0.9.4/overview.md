@@ -1,10 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Installation
-aliases:
-    - /documentation/installation/
-    - /installation/
-    - /documentation/installation/overview/
 menu:
   main:
     identifier: "installation-overview-v094"
@@ -12,6 +8,13 @@ menu:
     parent: "Installation"
     weight: 10
 ---
+
+{{< note title="The information on this page applies to Vamp v0.9.4" >}}
+
+* Switch to the [latest version of this page](/documentation/installation/overview).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 Before you get Vamp up and running on your architecture, it is helpful to understand [how vamp works](/documentation/how-vamp-works/architecture-and-components) and the role of each component and its preferred location in a typical architecture.  
 
 If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)

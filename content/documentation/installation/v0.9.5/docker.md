@@ -3,13 +3,15 @@ date: 2016-09-30T12:00:00+00:00
 title: Docker
 menu:
   main:
-    identifier: "docker-v094"
+    identifier: "docker-v095"
     parent: "Installation"
     weight: 70
+aliases:
+    - /documentation/installation/docker
 ---
 
 {{< note title="Note!" >}}
-Vamp v0.9.4 has not been tested on the latest local version of Docker.  
+Vamp v0.9.5 has not been tested on the latest local version of Docker.  
 Docker Swarm support is coming soon, see [github.com - issue #690: Docker swarm support](https://github.com/magneticio/vamp/issues/690)
 {{< /note >}}
 
@@ -43,8 +45,8 @@ Vamp can talk directly to a Docker daemon and its driver is configured by defaul
 ![](/images/logos/docker-member.jpg)
 
 {{< note title="What next?" >}}
-* Find out [how to configure Vamp](documentation/installation/v0.9.4/configure-vamp)
-* Check the [configuration reference](documentation/installation/v0.9.4/configuration-reference)
-* Look at some [example configurations](documentation/installation/v0.9.4/example-configurations)
+* Find out [how to configure Vamp](documentation/installation/v0.9.5/configure-vamp)
+* Check the [configuration reference](documentation/installation/v0.9.5/configuration-reference)
+* Look at some [example configurations](documentation/installation/v0.9.5/example-configurations)
 * Follow the [tutorials](/documentation/tutorials/overview)
 {{< /note >}}

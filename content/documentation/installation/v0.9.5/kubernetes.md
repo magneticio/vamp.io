@@ -3,16 +3,12 @@ date: 2016-10-04T09:00:00+00:00
 title: Kubernetes
 menu:
   main:
-    identifier: "kubernetes-v094"
+    identifier: "kubernetes-v095"
     parent: "Installation"
     weight: 50
+aliases:
+    - /documentation/installation/kubernetes
 ---
-
-{{< note title="The information on this page applies to Vamp v0.9.4" >}}
-
-* Switch to the [latest version of this page](/documentation/installation/kubernetes).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
 
 The installation will run Vamp together with etcd and Elasticsearch on Google container engine and kubernetes. Before you begin, it is advisable to try out the official Quickstart for Google Container Engine tutorial first ([google.com - container engine quickstart](https://cloud.google.com/container-engine/docs/quickstart)).  
 
@@ -51,7 +47,7 @@ To quickly get started with Vamp on Kubernetes use the following command to auto
 
 ```
 curl -s \
-  https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v0.9.4/vamp_kube_quickstart.sh \
+  https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v0.9.5/vamp_kube_quickstart.sh \
   | bash
 ```
 The script will poll for the external ip of Vamp, note that this process will take a while. if the installation was successful the ip will be displayed:
@@ -66,7 +62,7 @@ To remove the quickstart deployment, use the following command:
 
 ```
 curl -s \
-  https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v0.9.4/vamp_kube_uninstall.sh \
+  https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v0.9.5/vamp_kube_uninstall.sh \
   | bash
 ```
 
@@ -78,7 +74,7 @@ Now let's deploy `etcd` - this installation is based on the tutorial ([github.co
 First, execute:
 
 ```
-kubectl create -f https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v0.9.4/etcd.yml
+kubectl create -f https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v0.9.5/etcd.yml
 ```
 
 Then deploy Elasticsearch with a proper Vamp configuration ([github.com/magneticio - elastic](https://github.com/magneticio/elastic)) using:
@@ -94,7 +90,7 @@ kubectl expose deployment kibana --protocol=TCP --port=5601 --name=kibana
 
 Now we can run Vamp gateway agent as a `daemon set`:
 ```
-kubectl create -f https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v0.9.4/vga.yml
+kubectl create -f https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v0.9.5/vga.yml
 ```
 
 To deploy Vamp, execute:

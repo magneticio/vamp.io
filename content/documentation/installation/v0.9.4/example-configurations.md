@@ -6,10 +6,13 @@ menu:
     identifier: "example-configurations-v094"
     parent: "Installation"
     weight: 120
-aliases:
-    - /documentation/installation/example-configurations
 ---
 
+{{< note title="The information on this page applies to Vamp v0.9.4" >}}
+
+* Switch to the [latest version of this page](/documentation/installation/example-configurations).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
 
 ## reference.conf
 reference.conf files are part of the Vamp code and should not be modified. They contains generic defaults for many parameters, but does not constitute a full Vamp configuration. Environment-specific settings need to be added in in application.conf or using environment variables and/or Java system properties.  

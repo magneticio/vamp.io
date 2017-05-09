@@ -1,18 +1,15 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Hello world
+aliases:
+    - /getting-started/
+    - /documentation/installation/hello-world
 menu:
   main:
-    identifier: "hello-world-v094"
+    identifier: "hello-world-v095"
     parent: "Installation"
     weight: 20
 ---
-
-{{< note title="The information on this page applies to Vamp v0.9.4" >}}
-
-* Switch to the [latest version of this page](/documentation/installation/hello-world).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
 
 Want to give Vamp a go? The hello world setup described below runs Vamp inside a local Docker container - a perfect environment to try out Vamp's core features and work through the [Vamp tutorials](/documentation/tutorials/overview).
 Vamp hello world runs Mesos, Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)) and Vamp 0.9.4 together with Vamp's Marathon driver.  
@@ -32,7 +29,7 @@ We will run Vamp in a local Docker container. If you don't already have Docker i
 - **Windows 7+**: [Docker Toolbox 1.12.x](https://github.com/docker/toolbox/releases)
 
 Vamp hello world on Docker for Windows is currently not supported. We're working on this so please check back. 
-Mac running Docker toolbox can install [Vamp hello world v0.9.4](/documentation/installation/v0.9.4/hello-world/)
+Mac running Docker toolbox can install [Vamp hello world v0.9.5](/documentation/installation/v0.9.5/hello-world/)
 
 ## Run Vamp
 
@@ -84,15 +81,15 @@ Mounting volumes is important. [Read this great article about starting Docker co
 
 After some downloading and booting, your Docker log will show the blue Vamp ASCII logo.
 
-![](/images/screens/v094/vamp_ascii_logo.png)
+![](/images/screens/v095/vamp_ascii_logo.png)
 
 Now you can check if Vamp is home on `localhost:8080` and you're ready for the [Vamp getting started tutorials](/documentation/tutorials/overview)
 
-![](/images/screens/v094/quicksetup-marathon-infopanel.png)
+![](/images/screens/v095/quicksetup-marathon-infopanel.png)
   
 Click on the **?** in the top right corner of any screen for quick access to page help, related documentation and tutorials.
 
-![](/images/screens/v094/quicksetup-helppanel.png)
+![](/images/screens/v095/quicksetup-helppanel.png)
 
 ## Access the exposed services
 
