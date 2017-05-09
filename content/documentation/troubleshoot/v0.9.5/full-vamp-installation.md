@@ -3,37 +3,34 @@ date: 2017-01-09T09:00:00+00:00
 title: Troubleshoot - full Vamp installation
 menu:
   main:
-    identifier: "ts-full-vamp-installation-v094"
+    identifier: "ts-full-vamp-installation-v095"
     parent: "Troubleshooting"
     weight: 20
     name: Full Vamp installation
+aliases:
+    - /documentation/troubleshoot/full-vamp-installation
 ---
-
-{{< note title="The information on this page is written for Vamp v0.9.4" >}}
-* Switch to the [latest version of this page](/documentation/troubleshoot/full-vamp-installation).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
 
 ## Try this first
 
 The steps below will help you debug problems encountered when following our full install instructions. 
 
-* [Check the Vamp components](/documentation/troubleshoot/v0.9.4/full-vamp-installation/#check-the-vamp-components)
-* [Check Elasticsearch](/documentation/troubleshoot/v0.9.4/full-vamp-installation/#check-elasticsearch)
-* [Check the key value store](/documentation/troubleshoot/v0.9.4/full-vamp-installation/#check-the-key-value-store)
-* [Check the Vamp workflows](/documentation/troubleshoot/v0.9.4/full-vamp-installation/#check-the-vamp-workflows)
+* [Check the Vamp components](/documentation/troubleshoot/v0.9.5/full-vamp-installation/#check-the-vamp-components)
+* [Check Elasticsearch](/documentation/troubleshoot/v0.9.5/full-vamp-installation/#check-elasticsearch)
+* [Check the key value store](/documentation/troubleshoot/v0.9.5/full-vamp-installation/#check-the-key-value-store)
+* [Check the Vamp workflows](/documentation/troubleshoot/v0.9.5/full-vamp-installation/#check-the-vamp-workflows)
 
 ### Check the Vamp components
-- Check the step by step instructions for your container scheduler [DC/OS](/documentation/installation/v0.9.4/dcos/), [Mesos/Marathon](/documentation/installation/v0.9.4/mesos-marathon/), [Kubernetes](/documentation/installation/v0.9.4/kubernetes/), [Rancher](/documentation/installation/v0.9.4/rancher/) or [Docker](/documentation/installation/v0.9.4/docker/). 
-- Check the information panel in the Vamp UI (click the i-icon in the top right corner, or check Extended info under Admin). If some fields are empty, you may need to adjust your configuration. See the [example Vamp configurations](/documentation/installation/v0.9.4/example-configurations).  
+- Check the step by step instructions for your container scheduler [DC/OS](/documentation/installation/v0.9.5/dcos/), [Mesos/Marathon](/documentation/installation/v0.9.5/mesos-marathon/), [Kubernetes](/documentation/installation/v0.9.5/kubernetes/), [Rancher](/documentation/installation/v0.9.5/rancher/) or [Docker](/documentation/installation/v0.9.5/docker/). 
+- Check the information panel in the Vamp UI (click the i-icon in the top right corner, or check Extended info under Admin). If some fields are empty, you may need to adjust your configuration. See the [example Vamp configurations](/documentation/installation/v0.9.5/example-configurations).  
   You can view and update the configuration in the Vamp UI at Admin > Backend configuration > Applied  
 - Check you are running supported versions of all components.
 - Check the [Vamp release notes](/documentation/release-notes/latest) for known issues and breaking changes.
 - Check that the vamp and vamp-gateway-agent docker containers are running using `docker ps`. 
 - Check the vamp and vamp-gateway-agent logs `docker logs {container ID}`  
-  Any errors here should be clear, in case they aren't [report the issue](/documentation/troubleshoot/v0.9.4/full-vamp-installation/#report-an-issue).
-- Check the [vamp workflow execution logs](/documentation/using-vamp/v0.9.4/workflows/#track-running-workflows)
-  Any errors here should be clear, in case they aren't [report the issue](/documentation/troubleshoot/v0.9.4/full-vamp-installation/#report-an-issue).
+  Any errors here should be clear, in case they aren't [report the issue](/documentation/troubleshoot/v0.9.5/full-vamp-installation/#report-an-issue).
+- Check the [vamp workflow execution logs](/documentation/using-vamp/v0.9.5/workflows/#track-running-workflows)
+  Any errors here should be clear, in case they aren't [report the issue](/documentation/troubleshoot/v0.9.5/full-vamp-installation/#report-an-issue).
 - Check the Vamp configuration (using the API at `/api/v1/config` or in the Admin section of the Vamp UI): 
   - You should use `http://` in front of TCP/HTTP addresses, but not in front of UDP connections. 
   - Make sure there are no double ports (ie 9200:9200)
@@ -73,9 +70,9 @@ The default Vamp workflows should be running continuously and not restarting.
   - Check the logs for each vamp-workflow-agent container using `docker logs {container ID}`  
     If a failure is reported, the workflow may not be able to talk to Elasticsearch 
   - Check the Elasticsearch configuration in application.conf.  
-    Any errors here should be clear, in case they aren't [report the issue](/documentation/troubleshoot/v0.9.4/full-vamp-installation/#report-an-issue).
+    Any errors here should be clear, in case they aren't [report the issue](/documentation/troubleshoot/v0.9.5/full-vamp-installation/#report-an-issue).
 
-If you're still hitting problems, please [report the issue](/documentation/troubleshoot/v0.9.4/full-vamp-installation/#report-an-issue).
+If you're still hitting problems, please [report the issue](/documentation/troubleshoot/v0.9.5/full-vamp-installation/#report-an-issue).
 
 ## Report an issue
 

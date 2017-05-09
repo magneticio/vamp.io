@@ -3,17 +3,13 @@ date: 2017-01-09T09:00:00+00:00
 title: Troubleshoot - hello world quickstart
 menu:
   main:
-    identifier: "ts-hello-world-quickstart-v094"
+    identifier: "ts-hello-world-quickstart-v095"
     parent: "Troubleshooting"
     weight: 30
     name: Hello world quickstart
+aliases:
+    - /documentation/troubleshoot/hello-world-quickstart
 ---
-
-{{< note title="The information on this page is written for Vamp v0.9.4" >}}
-* Switch to the [latest version of this page](/documentation/troubleshoot/hello-world-quickstart).
-* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
-{{< /note >}}
-
 
 ## Try this first
 
@@ -32,8 +28,8 @@ The Vamp hello world quickstart is a self contained testing package. If you run 
         echo "removing dangling docker volumes..."
         docker volume rm $( docker volume ls --filter dangling=true --quiet ) 2>/dev/null `
 - Restart docker machine using `docker-machine restart`.
-- Reinstall [Vamp hello world](/documentation/installation/v0.9.4/hello-world/).
-- If everything is installed ok and you're running into problems using Vamp, check the [troubleshooting tips for using Vamp](/documentation/troubleshoot/v0.9.4/tips-for-using-vamp).
+- Reinstall [Vamp hello world](/documentation/installation/v0.9.5/hello-world/).
+- If everything is installed ok and you're running into problems using Vamp, check the [troubleshooting tips for using Vamp](/documentation/troubleshoot/v0.9.5/tips-for-using-vamp).
 
 
 ## Report an issue
