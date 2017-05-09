@@ -45,9 +45,9 @@ If you prefer, you can build your own Mesos/Marathon cluster. Here are some tuto
 5. (Re)start Vamp by restarting the Java process by hand.   
 
 {{< note title="What next?" >}}
-* Find out [how to configure Vamp](documentation/installation/v0.9.3/configure-vamp)
-* Check the [configuration reference](documentation/installation/v0.9.3/configuration-reference)
-* Look at some [example configurations](documentation/installation/v0.9.3/example-configurations)
+* Find out [how to configure Vamp](documentation/configure/v0.9.3/configure-vamp)
+* Check the [configuration reference](documentation/configure/v0.9.3/configuration-reference)
+* Look at some [example configurations](documentation/configure/v0.9.3/example-configurations)
 * Follow the [tutorials](/documentation/tutorials/overview)
 {{< /note >}}
 

@@ -3,14 +3,16 @@ date: 2016-09-13T09:00:00+00:00
 title: How to configure Vamp
 menu:
   main:
-    identifier: "configure-vamp-v094"
-    parent: "Installation"
-    weight: 100
+    identifier: "configure-vamp-v093"
+    parent: "Configuration"
+    weight: 10
+aliases:
+    - /documentation/installation/v0.9.3/configure-vamp
 ---
 
-{{< note title="The information on this page applies to Vamp v0.9.4" >}}
+{{< note title="The information on this page applies to Vamp v0.9.3" >}}
 
-* Switch to the [latest version of this page](/documentation/installation/configure-vamp).
+* Switch to the [latest version of this page](/documentation/configure/configure-vamp).
 * Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
 {{< /note >}}
 
@@ -20,38 +22,21 @@ Vamp configuration is held in a combination of the Vamp `application.conf` and `
 2. application.conf - adds environment specifics to the generic reference.conf defaults.
 3. Java system properties - advised for advanced use only.
 4. Environment variables - overrides settings in reference.conf, application.conf and Java system properties.
-5. Key value store - overrides the applied configuration of Vamp at runtime. 
+5. Key value store - overrides the applied configuration of Vamp at runtime. Note that `http-api` configuration cannot be updated in the key value store. If you need to update this, use environment variables.
 
 ### On this page:
 
-* [Override specific configuration parameters](/documentation/installation/v0.9.4/configure-vamp/#override-specific-configuration-parameters)
-* [Use a custom application.conf file](/documentation/installation/v0.9.4/configure-vamp/#use-a-custom-application-conf-file)
-* [Parameterize application.conf](/documentation/installation/v0.9.4/configure-vamp/#parameterize-application-conf)
-* [Include configuration not intended for Vamp](/documentation/installation/v0.9.4/configure-vamp/#include-configuration-not-intended-for-vamp)
-* [Access configuration parameters through the API](/documentation/installation/v0.9.4/configure-vamp/#access-configuration-parameters-through-the-api)
+* [Override specific configuration parameters](/documentation/configure/v0.9.3/configure-vamp/#override-specific-configuration-parameters)
+* [Use a custom application.conf file](/documentation/configure/v0.9.3/configure-vamp/#use-a-custom-application-conf-file)
+* [Parameterize application.conf](/documentation/configure/v0.9.3/configure-vamp/#parameterize-application-conf)
+* [Include configuration not intended for Vamp](/documentation/configure/v0.9.3/configure-vamp/#include-configuration-not-intended-for-vamp)
+* [Access configuration parameters through the API](/documentation/configure/v0.9.3/configure-vamp/#access-configuration-parameters-through-the-api)
 
 ## Override specific configuration parameters
 You can override specific parameters set in the `application.conf` and `reference.conf` configuration files using Vamp environment variables or Java/JVM system properties. It is advisable to use environment variables when overriding specific parameters.
 
-### Key value store
-You can update the configuration applied to Vamp at runtime using the Vamp UI. These updates will be stored in the configured key value store. Note that `http-api` configuration cannot be updated in the key value store. If you need to update this, use environment variables.
-
-**Update the Vamp backend configuration**
-
-1. Got to **Admin** > **Backend configuration**
-* Select the **Zookeeper** tab and click **Edit**
-* Update the configuration as required and click **Save**
-  * Updates will be saved to the key value store. The full applied configuration (including saved updates) will be visible under the **Applied** tab.
-
-**Update the HAProxy template**
-
-1. Got to **Admin** > **VGA configuration**
-* Select the **Template** tab and click **Edit**
-* Update the template as required and click **Save**
-  * Updates will be saved to the key value store and generated HAProxy configuration will be based on the updated template.
-
 ### Environment variables
-Environment variables override settings from reference.conf, application.conf or Java system properties. Convert the configuration parameter name to upper case and replace all non-alphanumerics with an underscore `_`.  So, `vamp.gateway-driver.timeout` becomes `VAMP_GATEWAY_DRIVER_TIMEOUT`.  
+Environment variables override all other settings. Convert the configuration parameter name to upper case and replace all non-alphanumerics with an underscore `_`.  So, `vamp.gateway-driver.timeout` becomes `VAMP_GATEWAY_DRIVER_TIMEOUT`.  
 
 For example, to change the vamp.info.message you would set the environment variable VAMP_INFO_MESSAGE :
 
@@ -62,7 +47,7 @@ docker run --net=host \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=$(docker-machine ip default)" \
            -e "VAMP_INFO_MESSAGE=hey YOU! " \
-           magneticio/vamp-docker:0.9.4
+           magneticio/vamp-docker:0.9.3
 ```
 
 ### Java system properties
@@ -83,7 +68,7 @@ For more extensive customisations, you can create a new Docker image, extending 
 1. Copy application.conf [(github.com/magneticio - Vamp DCOS application.conf)](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)
 2. Adjust as required. Check the list of configuration settings (below) for details of the available optionsa
 3. Create a Dockerfile with the lines:  
-  `FROM magneticio/vamp-dcos:0.9.4`  
+  `FROM magneticio/vamp-dcos:0.9.3`  
   `ADD application.conf /usr/local/vamp/conf/`
 4. Build the image with `docker build --tag <username>/vamp`
 
@@ -105,7 +90,7 @@ vamp {
 }
 ```
 
-This is as of 0.9.4 how [we configure our DC/OS Docker image]( https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)
+This is as of 0.9.3 how [we configure our DC/OS Docker image]( https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)
 
 (Typesafe documentation on the topic covering system or env variable overrides)[https://github.com/typesafehub/config#optional-system-or-env-variable-overrides]
 
@@ -132,8 +117,8 @@ api.config().each(function (config) {
 ```
 
 {{< note title="What next?" >}}
-* Check the [configuration reference](documentation/installation/v0.9.4/configuration-reference)
-* Look at some [example configurations](documentation/installation/v0.9.4/example-configurations)
+* Check the [configuration reference](documentation/configure/v0.9.3/configuration-reference)
+* Look at some [example configurations](documentation/configure/v0.9.3/example-configurations)
 * Follow the [tutorials](/documentation/tutorials/overview)
 * You can read in depth about [using Vamp](/documentation/using-vamp/artifacts/) or browse the [API reference](/documentation/api/api-reference/) or [CLI reference](/documentation/cli/cli-reference/) docs.
 {{< /note >}}

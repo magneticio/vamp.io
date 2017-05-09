@@ -4,26 +4,28 @@ title: Configuration reference
 menu:
   main:
     identifier: "configuration reference-v092"
-    parent: "Installation"
-    weight: 110
+    parent: "Configuration"
+    weight: 30
+aliases:
+    - /documentation/installation/v0.9.2/configuration-reference
 ---
 
 {{< note title="The information on this page applies to Vamp v0.9.2" >}}
 
-* Switch to the [latest version of this page](/documentation/installation/configuration-reference).
+* Switch to the [latest version of this page](/documentation/configure/configuration-reference).
 * Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
 {{< /note >}}
 
 
 This page describes the structure and parameters in the Vamp configuration files (reference.conf and application.conf).  
-For details on how to customise your Vamp configuration, see [how to configure Vamp](/documentation/installation/v0.9.2/configure-vamp/).
+For details on how to customise your Vamp configuration, see [how to configure Vamp](/documentation/configure/v0.9.2/configure-vamp/).
 
 
 ## Vamp configuration parameters
 The full `reference.conf` file can be found in the Vamp project repo ([github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)). 
 
 ### Vamp { }
-Vamp configuration is described in sections, nested inside a parent `vamp {}` tag. Usage, defaults and requirements for each section are outlined below: [info](documentation/installation/v0.9.2/configuration-reference/#info), [stats](documentation/installation/v0.9.2/configuration-reference/#stats), [model](documentation/installation/v0.9.2/configuration-reference/#model), [persistence](documentation/installation/v0.9.2/configuration-reference/#persistence), [container driver](documentation/installation/v0.9.2/configuration-reference/#container-driver), [workflow driver](documentation/installation/v0.9.2/configuration-reference/#workflow-driver), [http-api](documentation/installation/v0.9.2/configuration-reference/#http-api), [gateway driver](documentation/installation/v0.9.2/configuration-reference/#gateway-driver), [pulse](documentation/installation/v0.9.2/configuration-reference/#pulse), [operation](documentation/installation/v0.9.2/configuration-reference/#operation), [lifter](documentation/installation/v0.9.2/configuration-reference/#lifter), [common](documentation/installation/v0.9.2/configuration-reference/#common)
+Vamp configuration is described in sections, nested inside a parent `vamp {}` tag. Usage, defaults and requirements for each section are outlined below: [info](documentation/configure/v0.9.2/configuration-reference/#info), [stats](documentation/configure/v0.9.2/configuration-reference/#stats), [model](documentation/configure/v0.9.2/configuration-reference/#model), [persistence](documentation/configure/v0.9.2/configuration-reference/#persistence), [container driver](documentation/configure/v0.9.2/configuration-reference/#container-driver), [workflow driver](documentation/configure/v0.9.2/configuration-reference/#workflow-driver), [http-api](documentation/configure/v0.9.2/configuration-reference/#http-api), [gateway driver](documentation/configure/v0.9.2/configuration-reference/#gateway-driver), [pulse](documentation/configure/v0.9.2/configuration-reference/#pulse), [operation](documentation/configure/v0.9.2/configuration-reference/#operation), [lifter](documentation/configure/v0.9.2/configuration-reference/#lifter), [common](documentation/configure/v0.9.2/configuration-reference/#common)
 
 ### akka { }
 Vamp is based on the Akka library. Akka configuration is included in `reference.conf` inside the `akka {}` tag. These settings can be tweaked in `application.conf` (advanced use only). Refer to the akka documentation for details.
@@ -137,7 +139,7 @@ Parameter  |  Options  |  Default |  Details
 
 ## Container driver
 Vamp can be configured to work with Docker, Mesos/Marathon, Kubernetes or Rancher container drivers. Only configuration for the specified `container-driver.type` is required.  
-See the [example configurations](/documentation/installation/example-configurations).
+See the [example configurations](/documentation/configure/example-configurations).
 ```
 container-driver {
   type = ""
@@ -215,7 +217,7 @@ Parameter  |  Options  |  Default |  Details
           
 ### Container-driver.kubernetes
 Required only when `container-driver.type = "kubernetes" `.  
-See the [example configuration](/documentation/installation/example-configurations).
+See the [example configuration](/documentation/configure/example-configurations).
 ```
   kubernetes {
     url = ""
@@ -261,7 +263,7 @@ Parameter  |  Options  |  Default |  Details
 
 ### Container-driver.rancher
 Required only when `container-driver.type = "rancher" `.  
-See the [example configuration](/documentation/installation/example-configurations).
+See the [example configuration](/documentation/configure/example-configurations).
 ```
   rancher {
     url = ""
@@ -675,8 +677,8 @@ Parameter  |  Options  |  Default |  Details
 
 
 {{< note title="What next?" >}}
-* Read about [how to configure Vamp](documentation/installation/configure-vamp)
-* Look at some [example configurations](documentation/installation/example-configurations)
+* Read about [how to configure Vamp](documentation/configure/configure-vamp)
+* Look at some [example configurations](documentation/configure/example-configurations)
 * Follow the [tutorials](/documentation/tutorials/overview)
 * You can read in depth about [using Vamp](/documentation/using-vamp/artifacts/) or browse the [API reference](/documentation/api/api-reference/) or [CLI reference](/documentation/cli/cli-reference/) docs.
 {{< /note >}}

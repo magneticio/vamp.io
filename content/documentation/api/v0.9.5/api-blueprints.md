@@ -63,7 +63,7 @@ environment_variables: {}
  services | required |
  breed |  required |Can be created separately and referenced from here or defined inline as part of the blueprint. See [breed resource](/documentation/api/v0.9.5/api-breeds)
  environment variables | optional |
- scale | optional | Can be created separately and referenced from here or defined inline as part of the blueprint. If omitted, the default scale will be used (See [scale resource](/documentation/) and [reference.conf default scale](/documentation/installation/configuration-reference/#operation))
+ scale | optional | Can be created separately and referenced from here or defined inline as part of the blueprint. If omitted, the default scale will be used (See [scale resource](/documentation/) and [reference.conf default scale](/documentation/configure/configuration-reference/#operation))
 
 -----------
 

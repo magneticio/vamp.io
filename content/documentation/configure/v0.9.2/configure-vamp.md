@@ -4,13 +4,15 @@ title: How to configure Vamp
 menu:
   main:
     identifier: "configure-vamp-v092"
-    parent: "Installation"
-    weight: 100
+    parent: "Configuration"
+    weight: 10
+aliases:
+    - /documentation/installation/v0.9.2/configure-vamp
 ---
 
 {{< note title="The information on this page applies to Vamp v0.9.2" >}}
 
-* Switch to the [latest version of this page](/documentation/installation/configure-vamp).
+* Switch to the [latest version of this page](/documentation/configure/configure-vamp).
 * Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
 {{< /note >}}
 
@@ -24,11 +26,11 @@ Vamp configuration is held in a combination of the Vamp `application.conf` and `
 
 ### On this page:
 
-* [Override specific configuration parameters](/documentation/installation/v0.9.2/configure-vamp/#override-specific-configuration-parameters)
-* [Use a custom application.conf file](/documentation/installation/v0.9.2/configure-vamp/#use-a-custom-application-conf-file)
-* [Parameterize application.conf](/documentation/installation/v0.9.2/configure-vamp/#parameterize-application-conf)
-* [Include configuration not intended for Vamp](/documentation/installation/v0.9.2/configure-vamp/#include-configuration-not-intended-for-vamp)
-* [Access configuration parameters through the API](/documentation/installation/v0.9.2/configure-vamp/#access-configuration-parameters-through-the-api)
+* [Override specific configuration parameters](/documentation/configure/v0.9.2/configure-vamp/#override-specific-configuration-parameters)
+* [Use a custom application.conf file](/documentation/configure/v0.9.2/configure-vamp/#use-a-custom-application-conf-file)
+* [Parameterize application.conf](/documentation/configure/v0.9.2/configure-vamp/#parameterize-application-conf)
+* [Include configuration not intended for Vamp](/documentation/configure/v0.9.2/configure-vamp/#include-configuration-not-intended-for-vamp)
+* [Access configuration parameters through the API](/documentation/configure/v0.9.2/configure-vamp/#access-configuration-parameters-through-the-api)
 
 ## Override specific configuration parameters
 You can override specific parameters set in the `application.conf` and `reference.conf` configuration files using Vamp environment variables or Java/JVM system properties. It is advisable to use environment variables when overriding specific parameters.
@@ -115,8 +117,8 @@ api.config().each(function (config) {
 ```
 
 {{< note title="What next?" >}}
-* Check the [configuration reference](documentation/installation/v0.9.2/configuration-reference)
-* Look at some [example configurations](documentation/installation/v0.9.2/example-configurations)
+* Check the [configuration reference](documentation/configure/v0.9.2/configuration-reference)
+* Look at some [example configurations](documentation/configure/v0.9.2/example-configurations)
 * Follow the [tutorials](/documentation/tutorials/overview)
 * You can read in depth about [using Vamp](/documentation/using-vamp/artifacts/) or browse the [API reference](/documentation/api/api-reference/) or [CLI reference](/documentation/cli/cli-reference/) docs.
 {{< /note >}}

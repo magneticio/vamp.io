@@ -10,7 +10,7 @@ aliases:
     - /documentation/api/api-config
 ---
 
-Vamp's parameters can be retrieved from the `/config` APi endpoint. Read more about [Vamp configuration](/documentation/installation/configure-vamp)
+Vamp's parameters can be retrieved from the `/config` APi endpoint. Read more about [Vamp configuration](/documentation/configure/configure-vamp)
 	
 ## Actions
  
@@ -18,7 +18,7 @@ Vamp's parameters can be retrieved from the `/config` APi endpoint. Read more ab
  * [Get](/documentation/api/v0.9.5/api-config/#get-specific-config-parameter) - explicitly request a specific config parameter.
 
 ## Config parameters
-Config parameters are described in detail in the [configuration reference](/documentation/installation/configuration-reference).  
+Config parameters are described in detail in the [configuration reference](/documentation/configure/configuration-reference).  
 The example below is in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.5/using-the-api) for details on how to set this. 
 
 ```
@@ -159,7 +159,7 @@ Return the applied backend Vamp configuration.
 * The request body should be empty.
 
 ### Response
-If successful, will return a list of [all config parameters](/documentation/api/v0.9.5/api-config/#config-parameters). Parameters are described in detail in the [configuration reference](/documentation/installation/configuration-reference).  
+If successful, will return a list of [all config parameters](/documentation/api/v0.9.5/api-config/#config-parameters). Parameters are described in detail in the [configuration reference](/documentation/configure/configuration-reference).  
 
 ------------------
 

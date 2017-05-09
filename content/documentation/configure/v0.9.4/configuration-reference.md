@@ -4,42 +4,44 @@ title: Configuration reference
 menu:
   main:
     identifier: "configuration-reference-v094"
-    parent: "Installation"
-    weight: 110
+    parent: "Configuration"
+    weight: 30
+aliases:
+    - /documentation/installation/v0.9.4/configuration-reference
 ---
 
 {{< note title="The information on this page applies to Vamp v0.9.4" >}}
 
-* Switch to the [latest version of this page](/documentation/installation/configuration-reference).
+* Switch to the [latest version of this page](/documentation/configure/configuration-reference).
 * Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
 {{< /note >}}
 
 This page describes the structure and parameters in the Vamp configuration files (reference.conf and application.conf).  
-For details on how to customise your Vamp configuration, see [how to configure Vamp](/documentation/installation/v0.9.4/configure-vamp/).
+For details on how to customise your Vamp configuration, see [how to configure Vamp](/documentation/configure/v0.9.4/configure-vamp/).
 
 **Vamp:** 
 
-* [Vamp configuration](/documentation/installation/v0.9.4/configuration-reference/#vamp-configuration)
-* [Vamp lifter](/documentation/installation/v0.9.4/configuration-reference/#vamp-lifter-configuration)
+* [Vamp configuration](/documentation/configure/v0.9.4/configuration-reference/#vamp-configuration)
+* [Vamp lifter](/documentation/configure/v0.9.4/configuration-reference/#vamp-lifter-configuration)
 
 **By vendor:**
 
-* [DC/OS (Mesos, Marathon & Chronos)](/documentation/installation/v0.9.4/configuration-reference/#dc-os-configuration)
-* [Kubernetes](/documentation/installation/v0.9.4/configuration-reference/#kubernetes-configuration)
-* [Rancher](/documentation/installation/v0.9.4/configuration-reference/#rancher-configuration)
-* [Docker](/documentation/installation/v0.9.4/configuration-reference/#docker-configuration)
-* [Elasticsearch](/documentation/installation/v0.9.4/configuration-reference/#elasticsearch-configuration)
-* [Zookeeper](/documentation/installation/v0.9.4/configuration-reference/#zookeeper-configuration)
-* [Consul](/documentation/installation/v0.9.4/configuration-reference/#consul-configuration)
-* [etcd](/documentation/installation/v0.9.4/configuration-reference/#etcd-configuration)
-* [Redis](/documentation/installation/v0.9.4/configuration-reference/#redis-configuration)
-* [HAProxy](/documentation/installation/v0.9.4/configuration-reference/#haproxy-configuration)
+* [DC/OS (Mesos, Marathon & Chronos)](/documentation/configure/v0.9.4/configuration-reference/#dc-os-configuration)
+* [Kubernetes](/documentation/configure/v0.9.4/configuration-reference/#kubernetes-configuration)
+* [Rancher](/documentation/configure/v0.9.4/configuration-reference/#rancher-configuration)
+* [Docker](/documentation/configure/v0.9.4/configuration-reference/#docker-configuration)
+* [Elasticsearch](/documentation/configure/v0.9.4/configuration-reference/#elasticsearch-configuration)
+* [Zookeeper](/documentation/configure/v0.9.4/configuration-reference/#zookeeper-configuration)
+* [Consul](/documentation/configure/v0.9.4/configuration-reference/#consul-configuration)
+* [etcd](/documentation/configure/v0.9.4/configuration-reference/#etcd-configuration)
+* [Redis](/documentation/configure/v0.9.4/configuration-reference/#redis-configuration)
+* [HAProxy](/documentation/configure/v0.9.4/configuration-reference/#haproxy-configuration)
 
 ## Vamp configuration
 The full Vamp `reference.conf` file can be found in the Vamp project repo ([github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)). 
 
 ### Vamp { }
-Vamp configuration is described in sections, nested inside a parent `vamp {}` tag. Usage, defaults and requirements for each section are outlined below: [info](documentation/installation/v0.9.4/configuration-reference/#info), [stats](documentation/installation/v0.9.4/configuration-reference/#stats), [model](documentation/installation/v0.9.4/configuration-reference/#model), [persistence](documentation/installation/v0.9.4/configuration-reference/#persistence), [container driver](documentation/installation/v0.9.4/configuration-reference/#container-driver), [workflow driver](documentation/installation/v0.9.4/configuration-reference/#workflow-driver), [http-api](documentation/installation/v0.9.4/configuration-reference/#http-api), [gateway driver](documentation/installation/v0.9.4/configuration-reference/#gateway-driver), [pulse](documentation/installation/v0.9.4/configuration-reference/#pulse), [operation](documentation/installation/v0.9.4/configuration-reference/#operation), [common](documentation/installation/v0.9.4/configuration-reference/#common)
+Vamp configuration is described in sections, nested inside a parent `vamp {}` tag. Usage, defaults and requirements for each section are outlined below: [info](documentation/configure/v0.9.4/configuration-reference/#info), [stats](documentation/configure/v0.9.4/configuration-reference/#stats), [model](documentation/configure/v0.9.4/configuration-reference/#model), [persistence](documentation/configure/v0.9.4/configuration-reference/#persistence), [container driver](documentation/configure/v0.9.4/configuration-reference/#container-driver), [workflow driver](documentation/configure/v0.9.4/configuration-reference/#workflow-driver), [http-api](documentation/configure/v0.9.4/configuration-reference/#http-api), [gateway driver](documentation/configure/v0.9.4/configuration-reference/#gateway-driver), [pulse](documentation/configure/v0.9.4/configuration-reference/#pulse), [operation](documentation/configure/v0.9.4/configuration-reference/#operation), [common](documentation/configure/v0.9.4/configuration-reference/#common)
 
 ### akka { }
 Vamp is based on the Akka library. Akka configuration is included in `reference.conf` inside the `akka {}` tag. These settings can be tweaked in `application.conf` (advanced use only). Refer to the akka documentation for details.
@@ -128,7 +130,7 @@ Parameter  |  Options  |  Default |  Details
 
 ### Container driver
 Vamp can be configured to work with Docker, Mesos/Marathon, Kubernetes or Rancher container drivers. Only configuration for the specified `container-driver.type` is required.  
-See the [example configurations](/documentation/installation/v0.9.4/example-configurations).
+See the [example configurations](/documentation/configure/v0.9.4/example-configurations).
 ```
 container-driver {
   type = ""
@@ -314,14 +316,14 @@ Parameter  |  Options  |  Default |  Details
 ------------|-------|--------|--------
   reload-configuration   | true, false    |  true  |  if set to false, dynamic configuration will not be possible (configuration must be set at runtime)
   reload-configuration-delay   |      |  2s  |  allows for delay in initialisation when reloading config from external source (key value store)
-  synchronisation   | -    |  -  |  see below [operation.synchronisation](/documentation/installation/v0.9.4/configuration-reference/#operation-synchronisation)
-  deployment   | -    |  -  |  see below [operation.deployment](/documentation/installation/v0.9.4/configuration-reference/#operation-deployment)
-  gateway   | -    |  -  |  see below [operation.gateway](/documentation/installation/v0.9.4/configuration-reference/#operation-gateway)
+  synchronisation   | -    |  -  |  see below [operation.synchronisation](/documentation/configure/v0.9.4/configuration-reference/#operation-synchronisation)
+  deployment   | -    |  -  |  see below [operation.deployment](/documentation/configure/v0.9.4/configuration-reference/#operation-deployment)
+  gateway   | -    |  -  |  see below [operation.gateway](/documentation/configure/v0.9.4/configuration-reference/#operation-gateway)
   sla.period    | -   |  5 seconds  |  controls how often an SLA checks against metrics
   escalation.period   | -    |  5 seconds  |  controls how often Vamp checks for escalation events
   health.window    | -   |  30 seconds  |  
   metrics.window    | -   |  30 seconds  | 
-  gateway.virtual-hosts    | -   |  - |   see below [operation.gateway](/documentation/installation/v0.9.4/configuration-reference/#operation-gateway-virtual-hosts)
+  gateway.virtual-hosts    | -   |  - |   see below [operation.gateway](/documentation/configure/v0.9.4/configuration-reference/#operation-gateway-virtual-hosts)
      
 ### operation.synchronisation
 
@@ -661,8 +663,8 @@ vamp.persistence.key-value-store {
 ```
 
 {{< note title="What next?" >}}
-* Read about [how to configure Vamp](documentation/installation/v0.9.4/configure-vamp)
-* Look at some [example configurations](documentation/installation/v0.9.4/example-configurations)
+* Read about [how to configure Vamp](documentation/configure/v0.9.4/configure-vamp)
+* Look at some [example configurations](documentation/configure/v0.9.4/example-configurations)
 * Follow the [tutorials](/documentation/tutorials/overview)
 * You can read in depth about [using Vamp](/documentation/using-vamp/artifacts/) or browse the [API reference](/documentation/api/api-reference/) or [CLI reference](/documentation/cli/cli-reference/) docs.
 {{< /note >}}
