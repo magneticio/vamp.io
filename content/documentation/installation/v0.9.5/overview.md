@@ -30,11 +30,12 @@ The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely 
 * [Docker](/documentation/installation/v0.9.5/docker)
 * [Azure Container Service](/documentation/installation/v0.9.5/azure-container-service)
 
-#### Configuration
+#### Configure Vamp
 
 * [How to configure Vamp](/documentation/configure/v0.9.5/configure-vamp/)
-* [Configuration reference](/documentation/configure/v0.9.5/configuration-reference/)
 * [Example configurations](/documentation/configure/v0.9.5/example-configurations/)
+* [Configuration reference](/documentation/configure/v0.9.5/configuration-reference/)
+
 
 ## Try Vamp
 

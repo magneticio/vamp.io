@@ -17,7 +17,7 @@ aliases:
 {{< /note >}}
 
 
-## reference.conf defaults
+## reference.conf default settings
 `reference.conf` is part of the Vamp code and should not be modified. It contains generic defaults for many parameters, but does not constitute a full Vamp configuration. Environment-specific settings need to be added in in `application.conf` or using environment variables and/or Java system properties.  
 
 The full `reference.conf` file can be found in the Vamp project repo ([github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)).

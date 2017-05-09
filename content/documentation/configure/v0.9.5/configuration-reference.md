@@ -25,12 +25,16 @@ For details on how to customise your Vamp configuration, see [how to configure V
 * [Kubernetes](/documentation/configure/v0.9.5/configuration-reference/#kubernetes-configuration)
 * [Rancher](/documentation/configure/v0.9.5/configuration-reference/#rancher-configuration)
 * [Docker](/documentation/configure/v0.9.5/configuration-reference/#docker-configuration)
+* [AWS](/documentation/configure/v0.9.5/configuration-reference/#aws-configuration)
 * [Elasticsearch](/documentation/configure/v0.9.5/configuration-reference/#elasticsearch-configuration)
 * [Zookeeper](/documentation/configure/v0.9.5/configuration-reference/#zookeeper-configuration)
 * [Consul](/documentation/configure/v0.9.5/configuration-reference/#consul-configuration)
 * [etcd](/documentation/configure/v0.9.5/configuration-reference/#etcd-configuration)
 * [Redis](/documentation/configure/v0.9.5/configuration-reference/#redis-configuration)
 * [HAProxy](/documentation/configure/v0.9.5/configuration-reference/#haproxy-configuration)
+* [MySQL](/documentation/configure/v0.9.5/configuration-reference/#mysql-configuration)
+* [PostgreSQL](/documentation/configure/v0.9.5/configuration-reference/#postgresql-configuration)
+* [Microsoft SQL server](/documentation/configure/v0.9.5/configuration-reference/#microsoft-sql-server-configuration)
 
 ## Vamp configuration
 The full Vamp `reference.conf` file can be found in the Vamp project repo ([github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)). 
@@ -432,11 +436,22 @@ Parameter  |  Options  |  Default |  Details
 ([github.com/magneticio - vamp-lifter reference.conf](https://github.com/magneticio/vamp-lifter/blob/master/src/main/resources/reference.conf)). 
 
 ```
+30 lines (20 sloc)  342 Bytes
 vamp.lifter {
 
   pulse.enabled = true
 
   persistence.enabled = true
+
+  sql {
+    connection {
+      url = ""
+      database-url = ""
+    }
+    database = ""
+    user = ""
+    password = ""
+  }
 
   artifact {
 
@@ -471,7 +486,7 @@ vamp {
       sse = true
       expiration-period = 30 seconds
       reconciliation-period = 0 seconds
-      workflow-name-prefix = "/vamp/workflow-"
+      namespace-constraint = []
     }
   }
   workflow-driver {
@@ -493,7 +508,6 @@ vamp {
     # type = "kubernetes"
     kubernetes {
       url = ""
-      namespace = "default"
       workflow-name-prefix = "vamp-workflow-"
       service-type = "NodePort" # NodePort or LoadBalancer
       create-services = true
@@ -555,6 +569,30 @@ vamp {
 
 ---
 
+## AWS configuration
+([github.com/magneticio - vamp-aws reference.conf](https://github.com/magneticio/vamp-aws/blob/master/src/main/resources/reference.conf))
+
+```
+vamp {
+  container-driver {
+    # type = "ecs"
+    ecs {
+      workflow-name-prefix = "vamp_workflow"
+
+      aws {
+        region = ""
+        cluster = ""
+        access-key-id = ""
+        secret-access-key = ""
+      }
+    }
+  }
+  # workflow-driver.type = "ecs"
+}
+```
+
+---
+
 ## Elasticsearch configuration
 ([github.com/magneticio - vamp-elasticsearch reference.conf](https://github.com/magneticio/vamp-elasticsearch/blob/master/src/main/resources/reference.conf)). 
 
@@ -565,7 +603,7 @@ vamp {
     elasticsearch {
       url = ""
       response-timeout = 5 seconds # timeout for elasticsearch operations
-      index = "vamp-persistence"
+      index = "vamp-persistence-${namespace}"
     }
   }
   pulse {
@@ -573,7 +611,7 @@ vamp {
     elasticsearch {
       url = "" # e.g http://localhost:9200
       index {
-        name = "vamp-pulse"
+        name = "vamp-pulse-${namespace}"
         time-format.event = "YYYY-MM-dd"
       }
     }
@@ -591,7 +629,7 @@ The key-value store is also used to hold the HAProxy configuration and dynamic c
 vamp.persistence.key-value-store {
   # type = "zookeeper"
   zookeeper {
-    servers = ""   # "ip:port,ip:port" or "identifier:port, id:port" for example "127.0.0.1:2181,127.0.0.1:2181"
+    servers = ""
     session-timeout = 5000
     connect-timeout = 5000
   }
@@ -656,6 +694,41 @@ vamp.persistence.key-value-store {
 #   }
 # ]
 ```
+---
+
+## MySQL configuration
+([github.com/magneticio - vamp-mysql reference.conf](https://github.com/magneticio/vamp-mysql/blob/master/src/main/resources/reference.conf))
+
+```
+vamp.persistence.database {
+  # type: "mysql"
+}
+```
+
+---
+
+## PostgreSQL configuration
+([github.com/magneticio - vamp-postgresql reference.conf](https://github.com/magneticio/vamp-postgresql/blob/master/src/main/resources/reference.conf))
+
+```
+vamp.persistence.database {
+  # type: "postgres"
+}
+```
+
+---
+
+## Microsoft SQL server configuration
+([github.com/magneticio - vamp-sqlserver reference.conf](https://github.com/magneticio/vamp-sqlserver/blob/master/src/main/resources/reference.conf))
+
+```
+vamp.persistence.database {
+  # type: "sqlserver"
+}
+```
+
+---
+
 
 {{< note title="What next?" >}}
 * Read about [how to configure Vamp](documentation/configure/v0.9.5/configure-vamp)
