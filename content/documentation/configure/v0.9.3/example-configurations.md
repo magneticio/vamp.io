@@ -34,10 +34,6 @@ You can use application.conf to tailor the Vamp configuration to fit your enviro
   _Container driver:_ Kubernetes  
   _Key-value store:_ etcd
   
-* [Rancher application.conf - Vamp v0.9.3](https://github.com/magneticio/vamp-docker-images/blob/0.9.3/vamp-rancher/application.conf)  
-  _Container driver:_ Rancher  
-  _Key-value store:_ consul
-
 
 {{< note title="What next?" >}}
 * Read about [how to configure Vamp](documentation/configure/v0.9.3/configure-vamp)

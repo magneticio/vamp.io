@@ -37,53 +37,139 @@ For details on how to customise your Vamp configuration, see [how to configure V
 * [Microsoft SQL server](/documentation/configure/v0.9.5/configuration-reference/#microsoft-sql-server-configuration)
 
 ## Vamp configuration
-The full Vamp `reference.conf` file can be found in the Vamp project repo ([github.com/magneticio - Vamp reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)). 
+The Vamp reference.conf files can be found in the respective Vamp project repos. The usage, default setting and requirements for each section are outlined below:
 
-### Vamp { }
-Vamp configuration is described in sections, nested inside a parent `vamp {}` tag. Usage, defaults and requirements for each section are outlined below: [info](documentation/configure/v0.9.5/configuration-reference/#info), [stats](documentation/configure/v0.9.5/configuration-reference/#stats), [model](documentation/configure/v0.9.5/configuration-reference/#model), [persistence](documentation/configure/v0.9.5/configuration-reference/#persistence), [container driver](documentation/configure/v0.9.5/configuration-reference/#container-driver), [workflow driver](documentation/configure/v0.9.5/configuration-reference/#workflow-driver), [http-api](documentation/configure/v0.9.5/configuration-reference/#http-api), [gateway driver](documentation/configure/v0.9.5/configuration-reference/#gateway-driver), [pulse](documentation/configure/v0.9.5/configuration-reference/#pulse), [operation](documentation/configure/v0.9.5/configuration-reference/#operation), [common](documentation/configure/v0.9.5/configuration-reference/#common)
+[bootstrap](documentation/configure/v0.9.5/configuration-reference/#vamp-bootstrap), [common](documentation/configure/v0.9.5/configuration-reference/#vamp-common), [container driver](documentation/configure/v0.9.5/configuration-reference/#vamp-container-driver), [gateway driver](documentation/configure/v0.9.5/configuration-reference/#vamp-gateway-driver), [http-api](documentation/configure/v0.9.5/configuration-reference/#vamp-http-api), [model](documentation/configure/v0.9.5/configuration-reference/#vamp-model), [operation](documentation/configure/v0.9.5/configuration-reference/#vamp-operation), [persistence](documentation/configure/v0.9.5/configuration-reference/#vamp-persistence), [pulse](documentation/configure/v0.9.5/configuration-reference/#vamp-pulse), [workflow driver](documentation/configure/v0.9.5/configuration-reference/#vamp-workflow-driver)
 
-### akka { }
-Vamp is based on the Akka library. Akka configuration is included in `reference.conf` inside the `akka {}` tag. These settings can be tweaked in `application.conf` (advanced use only). Refer to the akka documentation for details.
+---
+
+### Vamp - bootstrap
+([github.com/magneticio - bootstrap reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf))
+
+Vamp is based on the Akka library. Akka configuration is included in the bootstrap reference.conf inside the `akka {}` tag. These settings can be tweaked in `application.conf` (advanced use only). Refer to the akka documentation for details.
+
+```
+vamp {
+  namespace = "default"
+  bootstrap.timeout = 3 seconds
+}
+
+akka {
+
+  loglevel = "INFO"
+  log-dead-letters = 0
+  log-config-on-start = off
+  log-dead-letters-during-shutdown = off
+  loggers = ["akka.event.slf4j.Slf4jLogger"]
+  event-handlers = ["akka.event.slf4j.Slf4jEventHandler"]
+
+  actor.default-mailbox.mailbox-type = "akka.dispatch.SingleConsumerOnlyUnboundedMailbox"
+
+  default-dispatcher.fork-join-executor.pool-size-max = 32
+  jvm-exit-on-fatal-error = true
+
+  http.server.server-header = ""
+}
+```
 
 -------
 
-### Info 
-Settings required for gathering information on Vamp and components (memory and load). You can also specify an intro message here.
+### Vamp - common
+([github.com/magneticio - common reference.conf](https://github.com/magneticio/vamp/blob/master/common/src/main/resources/reference.conf))
+
 ```
-info {
-  message = "Hi, I'm Vamp! How are you?"
-  timeout = 3 seconds
+vamp.common.http.client.tls-check = true
+```
+
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  http.client.tls-check  | true, false  |  true  |  If set to false tls-check will be disabled, for example to allow Vamp to accept invalid certificates.
+
+---
+
+### Vamp - container driver
+([github.com/magneticio - container_driver reference.conf](https://github.com/magneticio/vamp/blob/master/container_driver/src/main/resources/reference.conf))
+
+Vamp can be configured to work with Docker, Mesos/Marathon, Kubernetes or Rancher container drivers. Only configuration for the specified `container-driver.type` is required.  
+See the [example configurations](/documentation/configure/v0.9.5/example-configurations) and the associated reference.conf files: 
+
+* [DC/OS (Mesos, Marathon & Chronos)](/documentation/configure/v0.9.5/configuration-reference/#dc-os-configuration), [Kubernetes](/documentation/configure/v0.9.5/configuration-reference/#kubernetes-configuration), [Rancher](/documentation/configure/v0.9.5/configuration-reference/#rancher-configuration), [Docker](/documentation/configure/v0.9.5/configuration-reference/#docker-configuration), [AWS](/documentation/configure/v0.9.5/configuration-reference/#aws-configuration).
+
+```
+vamp.container-driver {
+  type = ""
+  network = "BRIDGE"
+  label-namespace = "io.vamp"
+  response-timeout = 30 seconds # timeout for container operations
 }
 ```
 
 Parameter  |  Options  |  Default |  Details  
 ------------|-------|--------|--------
-message  | - |    Hi, I'm Vamp! How are you? |  The welcome message displayed in the Vamp info pane
-timeout    | - |    3 seconds |  Response timeout for each component (e.g. Persistance, Container Driver...). How long we will wait for components to reply on an API info call. Should be less than `http-api.response-timeout`.
+ type            |  docker, kubernetes, marathon, rancher     |  -   |  set in `application.conf`. Also include the configuration section for the specified container driver type (see below).
+ network  | -   |  BRIDGE   |  Default network
+ namespace  | -   |  -   |  
+ response-timeout  | -   |  30 seconds   |  Timeout for container operations
 
+-------   
 
+### Vamp - gateway driver
+([github.com/magneticio - gateway_driver reference.conf](https://github.com/magneticio/vamp/blob/master/gateway_driver/src/main/resources/reference.conf))
 
--------
-
-### Stats
-Aggrgated statistics for Vamp.
+The gateway-driver section configures how traffic should be routed through Vamp Gateway Agent. Read more about how Vamp uses these parameters for [service discovery](/documentation/using-vamp/service-discovery).
 ```
-stats {
-  timeout = 5 seconds
+vamp.gateway-driver {
+  host = "" # vamg gateway agent host
+  response-timeout = 30 seconds # timeout for gateway operations
+  marshallers = []
 }
 ```
 
 Parameter  |  Options  |  Default |  Details  
 ------------|-------|--------|--------
-  timeout  | - |  5 seconds  |  Response timeout for each component
+  host    | - |   -  |  The Vamp Gateway Agent/HAProxy, internal IP. To simplify service discovery, Vamp supports using specific environment parameters. `{cluster_name}.host` will have the value of this parameter (`vamp.gateway-driver.host`)
+  response-timeout    | - |  30 seconds   |  timeout for gateway operations
+  marshallers   | -  |  -   |  set in application.conf or 3rd-party reference.conf
 
 -------
-### Model
+
+### Vamp - http-api
+([github.com/magneticio - http-api reference.conf](https://github.com/magneticio/vamp/blob/master/http_api/src/main/resources/reference.conf))
+
+Configuration for the Vamp API.
+```
+vamp.http-api {
+  port = 8080
+  interface = 0.0.0.0
+  response-timeout = 10 seconds # HTTP response timeout
+  strip-path-segments = 0
+  sse.keep-alive-timeout = 15 seconds # timeout after an empty comment (":\n") will be sent in order keep connection alive
+  websocket.stream-limit = 100
+  ui {
+    directory = ""
+    index = "" # index file, e.g. ${vamp.http-api.ui.directory}"/index.html"
+  }
+}
+```
+
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  port   | - |   8080   |  The port Vamp runs on
+  interface  | -   |   0.0.0.0  |  
+  response-timeout   | - |    10 seconds  |  HTTP response timeout
+  strip-path-segments   | - |    0  |  
+  sse.keep-alive-timeout   | - |    15 seconds  |  timeout after an empty comment (":\n") will be sent in order keep connection alive
+  websocket.stream-limit   | - |   100  |  
+  ui.directory   | - |   -  |  set in `application.conf` to use the Vamp UI
+  ui.index  | - |    -  |  index file, e.g. `${vamp.http-api.ui.directory}"/index.html"`. Set in `application.conf` to use the Vamp UI
+
+-------
+
+### Vamp - model
+([github.com/magneticio - model reference.conf](https://github.com/magneticio/vamp/blob/master/model/src/main/resources/reference.conf))
 
 ```
-model {
-  default-deployable-type = "container/docker"
-}
+vamp.model.default-deployable-type = "container/docker"
 ```
 
 Parameter  |  Options  |  Default |  Details  
@@ -92,174 +178,33 @@ Parameter  |  Options  |  Default |  Details
 
 -------
 
-### Persistence
-Vamp uses Elasticsearch or a key-value store for persistence. The key-value store is also used to hold the HAProxy configuration. Currently supported options: 
-                                                                                                
-* ZooKeeper ([apache.org - ZooKeeper](https://zookeeper.apache.org/))
-* etcd ([coreos.com  - etcd documentation](https://coreos.com/etcd/docs/latest/)) 
-* Consul ([consul.io](https://www.consul.io/))
+### Vamp - operation
+([github.com/magneticio - operation reference.conf](https://github.com/magneticio/vamp/blob/master/operation/src/main/resources/reference.conf))
 
-```
-persistence {
-  response-timeout = 5 seconds
-
-  database {
-    type: "" # key-value or in-memory
-    key-value {
-      caching = false
-    }
-  }
-
-  key-value-store {
-    type = ""
-    base-path = "/vamp"
-  }
-}
-```
-
-Parameter  |  Options  |  Default |  Details  
-------------|-------|--------|--------
-  response-timeout   |  -  |   5 seconds  |  
-  database.type   |  elasticsearch, key-value, in-memory  |   -  |  set in `application.conf`
-  database.key-value.caching               | true, false   |  false  |  set this to true to make it easier on the persistence store load
-  key-value-store.type                     | zookeeper, etcd, consul   |   -  |  set in `application.conf`
-  key-value-store.base-path                | -  |  /vamp  |  
-
--------
-
-### Container driver
-Vamp can be configured to work with Docker, Mesos/Marathon, Kubernetes or Rancher container drivers. Only configuration for the specified `container-driver.type` is required.  
-See the [example configurations](/documentation/configure/v0.9.5/example-configurations).
-```
-container-driver {
-  type = ""
-  network = "BRIDGE"
-  namespace = "io.vamp"
-  response-timeout = 30 seconds # timeout for container operations
-
-}
-```
-Parameter  |  Options  |  Default |  Details  
-------------|-------|--------|--------
- type            |  docker, kubernetes, marathon, rancher     |  -   |  set in `application.conf`. Also include the configuration section for the specified container driver type (see below).
- network  | -   |  BRIDGE   |  Default network
- namespace  | -   |  -   |  
- response-timeout  | -   |  30 seconds   |  Timeout for container operations
-
-
--------     
-     
-### Workflow driver
-Used for Vamp workflows. 
-```
-workflow-driver {
-  type = "none"
-  response-timeout = 30 seconds
-
-  workflow {
-    deployables = [
-      {
-        type = "application/javascript"
-        breed = "vamp-workflow-javascript" # may be any custom breed
-      }
-    ]
-    scale {         # default scale, if not specified in workflow
-      instances = 1
-      cpu = 0.1
-      memory = 64MB
-    }
-}
-```
-
-Parameter  |  Options  |  Default |  Details  
-------------|-------|--------|--------
-  type  | docker, marathon, kubernetes, rancher, chronos, none |   none   |  Daemon (docker, marathon, kubernetes, rancher), time and event triggered (chronos). Can be combined (csv), e.g. `marathon,chronos`
-  response-timeout  | -  |  30 seconds   |  Timeout for container operations
-  deployables  | - |   `type = "application/javascript", breed = "vamp-workflow-javascript"`  |   Applied to every application/javascript breed type.
-  scale   | - |    instances = 1 cpu = 0.1 memory = 64MB  |  Default scale. Used if not specified in workflow
-
--------
-
-### http-api
-Configuration for the Vamp API.
-```
-http-api {
-
-  interface = 0.0.0.0
-  port = 8080
-
-  response-timeout = 10 seconds
-
-  strip-path-segments = 0
-
-  sse.keep-alive-timeout = 15 seconds
-
-  ui {
-    directory = ""
-    index = "" 
-  }
-}
-```
-
-Parameter  |  Options  |  Default |  Details  
-------------|-------|--------|--------
-  interface  | -   |   0.0.0.0  |  
-  port   | - |   8080   |  The port Vamp runs on
-  response-timeout   | - |    10 seconds  |  HTTP response timeout
-  strip-path-segments   | - |    0  |  
-  sse.keep-alive-timeout   | - |    15 seconds  |  timeout after an empty comment (":\n") will be sent in order keep connection alive
-  ui.directory   | - |   -  |  set in `application.conf` to use the Vamp UI
-  ui.index  | - |    -  |  index file, e.g. `${vamp.http-api.ui.directory}"/index.html"`. Set in `application.conf` to use the Vamp UI
-
--------
-
-### Gateway driver
-The gateway-driver section configures how traffic should be routed through Vamp Gateway Agent. Read more about how Vamp uses these parameters for [service discovery](/documentation/using-vamp/service-discovery).
-```
-gateway-driver {
-  host = "localhost"
-  response-timeout = 30 seconds
-  marshallers = []
-}
-```
-
-Parameter  |  Options  |  Default |  Details  
-------------|-------|--------|--------
-  host    | - |   localhost  |  The Vamp Gateway Agent/HAProxy, internal IP. To simplify service discovery, Vamp supports using specific environment parameters. `{cluster_name}.host` will have the value of this parameter (`vamp.gateway-driver.host`)
-  response-timeout    | - |  30 seconds   |  timeout for gateway operations
-  marshallers   | -  |  -   |  set in application.conf or 3rd-party reference.conf
-
--------
-
-### Pulse
-Handles all Vamp events.
-
-```
-pulse {
-  type = "" # no-store
-  response-timeout = 30 seconds
-}
-```
-
-Parameter  |  Options  |  Default |  Details  
-------------|-------|--------|--------
-  type   | no-store or 3rd party option  |  ""   |  Set in application.conf. When set to no-store it will not be possible to aggregate events and there will be problems getting metrics.
-  response-timeout   | -   |  30 seconds   |  timeout for pulse operations
-
--------
-
-### Operation
 The operation section holds all parameters that control how Vamp executes against “external” services: this also includes Vamp Pulse and Vamp Gateway Agent.
+
+* **operation.gateway:** For each cluster and service port within the same cluster a gateway is created - this is exactly the same as one that can be created using Gateway API.
+That means specific conditions and weights can be applied on traffic to/from cluster services - A/B testing and canary releases support. 
+`vamp.operation.gateway.port-range` is range of port values that can be used for these cluster/port gateways. These ports need to be available on all Vamp Gateway Agent hosts.
+* **operation.gateway.virtual-hosts:** Defines the standard Vamp virtual host gateway format.
+
 ```
-operation {
+vamp.operation {
+
+  info {
+    message = "Hi, I'm Vamp! How are you?"
+    timeout = 3 seconds # response timeout for each component (e.g. Persistance, Container Driver...)
+  }
+
+  stats.timeout = 5 seconds # response timeout for each component
 
   reload-configuration = true
   reload-configuration-delay = 2s
 
   synchronization {
 
-    initial-delay = 5 seconds
-    period = 6 seconds
+    initial-delay = 5 seconds #
+    period = 6 seconds # synchronization will be active only if period is greater than 0
 
     mailbox {
       mailbox-type = "akka.dispatch.NonBlockingBoundedMailbox"
@@ -275,30 +220,31 @@ operation {
       cpu = false
       memory = false
       instances = true
+      health-checks = false
     }
   }
 
   deployment {
-    scale {   
+    scale {         # default scale, if not specified in blueprint
       instances = 1
       cpu = 1
       memory = 1GB
     }
 
-    arguments = [] 
+    arguments = []   # split by first '='
   }
 
   gateway {
     port-range = 40000-45000
-    response-timeout = 5 seconds
+    response-timeout = 5 seconds # timeout for container operations
   }
 
-  sla.period = 5 seconds 
-  escalation.period = 5 seconds 
+  sla.period = 5 seconds # sla monitor period
+  escalation.period = 5 seconds # escalation monitor period
 
-  health.window = 30 seconds 
+  health.window = 30 seconds #
 
-  metrics.window = 30 seconds 
+  metrics.window = 30 seconds #
 
   gateway.virtual-hosts = {
     enabled = true
@@ -313,124 +259,144 @@ operation {
 
 Parameter  |  Options  |  Default |  Details  
 ------------|-------|--------|--------
+  info.message  | - |    Hi, I'm Vamp! How are you? |  The welcome message displayed in the Vamp info pane
+  info.timeout    | - |    3 seconds |  Response timeout for each component (e.g. Persistance, Container Driver...). How long we will wait for components to reply on an API info call. Should be less than `http-api.response-timeout`.
+  stats.timeout  | - |  5 seconds  |  Response timeout for each component
   reload-configuration   | true, false    |  true  |  if set to false, dynamic configuration will not be possible (configuration must be set at runtime)
   reload-configuration-delay   |      |  2s  |  allows for delay in initialisation when reloading config from external source (key value store)
-  synchronisation   | -    |  -  |  see below [operation.synchronisation](/documentation/configure/v0.9.5/configuration-reference/#operation-synchronisation)
-  deployment   | -    |  -  |  see below [operation.deployment](/documentation/configure/v0.9.5/configuration-reference/#operation-deployment)
-  gateway   | -    |  -  |  see below [operation.gateway](/documentation/configure/v0.9.5/configuration-reference/#operation-gateway)
+ synchronisation.initial-delay  | -   |   5 seconds  |  
+ synchronisation.period  | -    |   6 seconds  |  controls how often Vamp performs a sync between Vamp and the container driver. synchronization will be active only if period is greater than 0
+ synchronisation.mailbox.mailbox-type   | -   |   akka.dispatch.NonBlockingBoundedMailbox   |  
+ synchronisation.mailbox.mailbox-capacity | -   |     100  |  Queue for operational tasks (deployments etc.)
+ synchronisation.timeout.ready-for-deployment   | -   |    600 seconds  |  controls how long Vamp waits for a service to start. If the service is not started before this time, the service is registered as "error". If set to 0, Vamp will keep trying forever.
+ synchronisation.timeout.ready-for-undeployment  | -    |   600 seconds   |  similar to "ready-for-deployment" (above), but for the removal of services.
+ synchronisation.check.cpu   | true, false   |    false  |  
+ synchronisation.check.memory  | true, false |    false   |  
+ synchronisation.check.instances  | true, false |    false   |  
+ synchronisation.check.health-checks  | true, false |    false   |  
+  deployment.scale   | - |  instances = 1 cpu = 1  memory = 1GB  |  default scale, used if not specified in blueprint
+  deployment.arguments | -  |   -  |  Docker command line arguments, e.g. "security-opt=seccomp:unconfined". Split by first '=' 
+  gateway.port-range   | - |  40000-45000   |   range of port values that can be used for Vamp internal gateways. These ports need to be available on all Vamp Gateway Agent hosts
+  gateway.response-timeout  | -   |   5 seconds  |  timeout for container operations
   sla.period    | -   |  5 seconds  |  controls how often an SLA checks against metrics
   escalation.period   | -    |  5 seconds  |  controls how often Vamp checks for escalation events
   health.window    | -   |  30 seconds  |  
   metrics.window    | -   |  30 seconds  | 
-  gateway.virtual-hosts    | -   |  - |   see below [operation.gateway](/documentation/configure/v0.9.5/configuration-reference/#operation-gateway-virtual-hosts)
-     
-### operation.synchronisation
+  gateway.virtual-hosts.enabled  | true, false |  true   |  if set to false, Vamp will not automatically generate gateway virtual host names. You can still specify in gateways/blueprints.
+  gateway.virtual-hosts.formats.gateways  | -  |   $gateway.vamp  |  name format
+  gateway.virtual-hosts.formats.deployment-port   | - |  $port.$deployment.vamp   |  name format
+  gateway.virtual-hosts.formats.deployment-cluster-port   | - |  $port.$cluster.$deployment.vamp   |  name format     
+
+
+-------
+
+### Vamp - persistence
+([github.com/magneticio - persistence reference.conf](https://github.com/magneticio/vamp/blob/master/persistence/src/main/resources/reference.conf))
+
+Vamp uses a database or memory for persistence. 
 
 ```
-  synchronization {
+vamp.persistence {
+    response-timeout = 5 seconds #
 
-    initial-delay = 5 seconds
-    period = 6 seconds
+    database {
+      index = "vamp-persistence-"${vamp.namespace}
 
-    mailbox {
-      mailbox-type = "akka.dispatch.NonBlockingBoundedMailbox"
-      mailbox-capacity = 100
+       type: "mysql" # mysql, postgres, sqlserver or in-memory
+       sql {
+        url = "jdbc:mysql://localhost:3306/vamp-${namespace}?useSSL=false"
+        user = "root"
+        password = "vamp"
+        delay = 3s
+        synchronization {
+          period = 30s
+        }
+       }
+
+      type: "postgres" # mysql, postgres, sqlserver or in-memory
+      sql {
+        url = "jdbc:postgresql://localhost:5432/vamp-${namespace}?useSSL=false"
+        user = "postgres"
+        password = "vamp"
+        delay = 3s
+        synchronization {
+          period = 30s
+        }
+      }
+
+      type: "sqlserver" # mysql, postgres, sqlserver or in-memory
+      sql {
+        url = "jdbc:sqlserver://localhost:1433;trustServerCertificate=false;database=vamp-${namespace};encrypt=false;loginTimeout=30;hostNameInCertificate=*.localhost;"
+        user = "sa"
+        password = "Vamp1234567890$$$"
+        delay = 3s
+        synchronization {
+          period = 30s
+        }
+      }
     }
-
-    timeout {
-      ready-for-deployment = 600 seconds
-      ready-for-undeployment = 600 seconds
-    }
-
-    check {
-      cpu = false
-      memory = false
-      instances = true
-    }
-  }
 ```
 
 Parameter  |  Options  |  Default |  Details  
 ------------|-------|--------|--------
- initial-delay  | -   |   5 seconds  |  
- period  | -    |   6 seconds  |  controls how often Vamp performs a sync between Vamp and the container driver. synchronization will be active only if period is greater than 0
- mailbox.mailbox-type   | -   |   akka.dispatch.NonBlockingBoundedMailbox   |  
- mailbox.mailbox-capacity | -   |     100  |  Queue for operational tasks (deployments etc.)
- timeout.ready-for-deployment   | -   |    600 seconds  |  controls how long Vamp waits for a service to start. If the service is not started before this time, the service is registered as "error". If set to 0, Vamp will keep trying forever.
- timeout.ready-for-undeployment  | -    |   600 seconds   |  similar to "ready-for-deployment" (above), but for the removal of services.
- check.cpu   | true, false   |    false  |  
- check.memory  | true, false |    false   |  
- check.instances  | true, false |    false   |  
-     
-### operation.deployment
+  response-timeout   |  -  |   5 seconds  |  
+  database.type   |  mysql, postgres, sqlserver, in-memory  |   -  |  set in `application.conf`
+  database.type.sql.url   |  -  |   varies according to database.type  |  
+  database.type.sql.user   |  -  |   varies according to database.type  |  
+  database.type.sql.password   |  - |   varies according to database.type  |  
+  database.type.sql.delay   |  -  |   3s |  
+  database.type.sql.sychronisation.period   |  -  |   30s  |   
+  
+  
+-------   
+
+### Vamp - pulse
+([github.com/magneticio - pulse reference.conf](https://github.com/magneticio/vamp/blob/master/pulse/src/main/resources/reference.conf))
+
+Handles all Vamp events.
 
 ```
-  deployment {
-    scale {        
+vamp.pulse {
+  type = "" # no-store
+  response-timeout = 30 seconds # timeout for pulse operations
+}
+```
+
+Parameter  |  Options  |  Default |  Details  
+------------|-------|--------|--------
+  type   | no-store or 3rd party option  |  ""   |  Set in application.conf. When set to no-store it will not be possible to aggregate events and there will be problems getting metrics.
+  response-timeout   | -   |  30 seconds   |  timeout for pulse operations
+
+-------
+     
+### Vamp - workflow driver
+([github.com/magneticio - workflow driver reference.conf](https://github.com/magneticio/vamp/blob/master/workflow_driver/src/main/resources/reference.conf))
+
+Used for Vamp workflows. 
+```
+vamp.workflow-driver {
+  type = "" # it's possible to combine (csv): 'type_x,type_y'
+  response-timeout = 30 seconds # timeout for container operations
+  workflow {
+    deployables = []
+    scale {         # default scale, if not specified in workflow
       instances = 1
-      cpu = 1
-      memory = 1GB
-    }
-
-    arguments = []  
-  }
-```
-
-Parameter  |  Options  |  Default |  Details  
-------------|-------|--------|--------
-  scale   | - |  instances = 1 cpu = 1  memory = 1GB  |  default scale, used if not specified in blueprint
-  arguments | -  |   -  |  Docker command line arguments, e.g. "security-opt=seccomp:unconfined". Split by first '=' 
-
-### operation.gateway
-For each cluster and service port within the same cluster a gateway is created - this is exactly as one that can be created using Gateway API.
-That means specific conditions and weights can be applied on traffic to/from cluster services - A/B testing and canary releases support. 
-`vamp.operation.gateway.port-range` is range of port values that can be used for these cluster/port gateways. These ports need to be available on all Vamp Gateway Agent hosts.
-```
-  gateway {
-    port-range = 40000-45000
-    response-timeout = 5 seconds
-  }
-```
-
-Parameter  |  Options  |  Default |  Details  
-------------|-------|--------|--------
-  port-range   | - |  40000-45000   |   range of port values that can be used for Vamp internal gateways. These ports need to be available on all Vamp Gateway Agent hosts
-  response-timeout  | -   |   5 seconds  |  timeout for container operations
-
-### operation.gateway.virtual-hosts
-Defines the standard Vamp virtual host gateway format.
-
-```
-  gateway.virtual-hosts = {
-    enabled = true
-    formats {
-      gateway = "$gateway.vamp"
-      deployment-port = "$port.$deployment.vamp"
-      deployment-cluster-port = "$port.$cluster.$deployment.vamp"
+      cpu = 0.1
+      memory = 64MB
     }
   }
+}
 ```
 
 Parameter  |  Options  |  Default |  Details  
 ------------|-------|--------|--------
-  enabled  | true, false |  true   |  if set to false, Vamp will not automatically generate gateway virtual host names. You can still specify in gateways/blueprints.
-  formats.gateways  | -  |   $gateway.vamp  |  name format
-  formats.deployment-port   | - |  $port.$deployment.vamp   |  name format
-  formats.deployment-cluster-port   | - |  $port.$cluster.$deployment.vamp   |  name format
-     
-------
+  type  | docker, marathon, kubernetes, rancher, chronos, none |   none   |  Daemon (docker, marathon, kubernetes, rancher), time and event triggered (chronos). Can be combined (csv), e.g. `marathon,chronos`
+  response-timeout  | -  |  30 seconds   |  Timeout for container operations
+  workflow.deployables  | - |   []  |  
+  workflow.scale   | - |    instances = 1 cpu = 0.1 memory = 64MB  |  Default scale. Used if not specified in workflow
 
-### Common
+-------
 
-```
-common.http.client.tls-check = true
-```
-
-Parameter  |  Options  |  Default |  Details  
-------------|-------|--------|--------
-  http.client.tls-check  | true, false  |  true  |  If set to false tls-check will be disabled, for example to allow Vamp to accept invalid certificates.
-
----
 
 ## Vamp Lifter configuration
 ([github.com/magneticio - vamp-lifter reference.conf](https://github.com/magneticio/vamp-lifter/blob/master/src/main/resources/reference.conf)). 
