@@ -9,7 +9,7 @@ node("mesos-slave-vamp.io") {
           gulp build:site
           gulp build --env=production
           '''
-          def site = docker.build 'magnetic.azurecr.io/vamp.io:$VAMP_VERSION', '.'
+          docker.build 'magnetic.azurecr.io/vamp.io:$VAMP_VERSION', '.'
         }
 
         stage('Test') {
@@ -28,7 +28,9 @@ node("mesos-slave-vamp.io") {
         stage('Publish') {
           if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
             withDockerRegistry([credentialsId: 'registry', url: 'https://magnetic.azurecr.io']) {
+                def site = docker.image('magnetic.azurecr.io/vamp.io:$VAMP_VERSION')
                 site.push(env.VAMP_VERSION)
+                site.push('latest')
             }
           }
         }
