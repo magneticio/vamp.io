@@ -4,13 +4,14 @@
   "description": "This is the source for the new [vamp.io](http://vamp.io) site.",
   "main": "buildMenu.js",
   "dependencies": {
-    "browser-sync": "^2.17.5",
+    "browser-sync": "^2.18.8",
+    "minimatch": "3.0.2",
     "colors": "^1.1.2",
     "del": "^2.2.2",
     "directory-tree": "^1.1.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
-    "gulp-clean-css": "^2.0.13",
+    "gulp-clean-css": "^3.2.0",
     "gulp-concat": "^2.6.0",
     "gulp-if": "^2.0.1",
     "gulp-imagemin": "^3.0.3",
@@ -24,7 +25,6 @@
     "remove-markdown": "^0.1.0"
   },
   "devDependencies": {
-    "flow-bin": "^0.36.0",
     "gulp-shell": "^0.5.2",
     "gulp-useref": "^3.1.2"
   },
