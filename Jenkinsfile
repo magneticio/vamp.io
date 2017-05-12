@@ -26,9 +26,11 @@ node("mesos-slave-vamp.io") {
         }
 
         stage('Publish') {
-          withDockerRegistry([credentialsId: 'registry', url: 'https://magnetic.azurecr.io']) {
-              site.push(env.VAMP_VERSION)
-              site.push('latest')
+          if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
+            withDockerRegistry([credentialsId: 'registry', url: 'https://magnetic.azurecr.io']) {
+                site.push("${env.VAMP_VERSION}")
+                site.push('latest')
+            }
           }
         }
 
