@@ -1,4 +1,4 @@
-name: vamp.io:VERSION
+name: vamp.io
 gateways:
   9050: site/webport
 clusters:
