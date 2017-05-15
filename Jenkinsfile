@@ -37,7 +37,7 @@ node("mesos-slave-vamp.io") {
     stage('Deploy') {
       if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
         sh script: '''
-        curl -s -d "$(sed s/VERSION/$VAMP_VERSION/g config/blueprint.yaml)" http://10.20.0.100:8080/api/v1/blueprints -H 'Content-type: application/x-yaml'
+        curl -s -d "$(sed s/VERSION/$VAMP_VERSION/g config/blueprint.yaml)" http://10.20.0.100:8080/api/v1/deployments -H 'Content-type: application/x-yaml'
         '''
       }
     }
