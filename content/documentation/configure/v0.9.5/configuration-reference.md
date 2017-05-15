@@ -181,7 +181,7 @@ Parameter  |  Options  |  Default |  Details
 ### Vamp - operation
 ([github.com/magneticio - operation reference.conf](https://github.com/magneticio/vamp/blob/master/operation/src/main/resources/reference.conf))
 
-The operation section holds all parameters that control how Vamp executes against “external” services: this also includes Vamp Pulse and Vamp Gateway Agent.
+The Vamp operation reference.conf holds all parameters that control how Vamp executes against “external” services: this also includes Vamp Pulse and Vamp Gateway Agent.
 
 * **operation.gateway:** For each cluster and service port within the same cluster a gateway is created - this is exactly the same as one that can be created using Gateway API.
 That means specific conditions and weights can be applied on traffic to/from cluster services - A/B testing and canary releases support. 

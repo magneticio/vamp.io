@@ -17,7 +17,8 @@ Vamp and the Vamp Gateway Agent require specific elements in your architecture t
 
 #### Example topology
 The below diagram should be used more as an overview than required architecture. For example, in this diagram the Mesos/Marathon stack and Elasticsearch are included even though these are not a hard dependency. Vamp can be configured to run with other container schedulers, log-aggregators, key-value and event-stores.
-![architecture](/images/diagram/v093/Architecture-and-components.svg)
+
+![architecture](/images/diagram/v095/architecture_and_components.png)
 
 ## Vamp components
 
