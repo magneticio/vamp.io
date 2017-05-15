@@ -1,6 +1,6 @@
 #!groovy​
 node("mesos-slave-vamp.io") {
-  withEnv(['VAMP_VERSION=0.9.5']) {
+  withEnv(['VAMP_VERSION=0.9.4']) {
     stage('Build') {
       checkout scm
       sh '''
@@ -19,7 +19,7 @@ node("mesos-slave-vamp.io") {
           assert !result.contains("localhost:8080")
           // check if the aliases are set properly
           sh script: '''
-          curl -s http://localhost:8080/documentation/ | grep "url=http://vamp.io/documentation/how-vamp-works/v0.9.4/architecture-and-components"
+          curl -s http://localhost:8080/documentation/ | grep "url=http://vamp.io/documentation/how-vamp-works/v${VAMP_VERSION}/architecture-and-components"
           '''
       }
     }
