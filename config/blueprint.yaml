@@ -1,0 +1,22 @@
+name: vamp.io:VERSION
+gateways:
+  9050: site/webport
+clusters:
+  site:
+    services:
+      breed:
+        name: site:VERSION
+        deployable: 
+          type: container/docker
+          definition: magnetic.azurecr.io/vamp.io:VERSION
+        ports:
+          webport: 8080/http
+      arguments: 
+      dialects:
+        marathon:
+          args: ['-conf', 'Caddyfile']
+          uris: ['https://s3.eu-central-1.amazonaws.com/magnetic-test-dcos/templates/dcos/docker.tar.gz']
+      scale:
+        cpu: 0.2       
+        memory: 512MB
+        instances: 1
