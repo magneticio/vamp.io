@@ -1,6 +1,6 @@
 #!groovy​
 node("mesos-slave-vamp.io") {
-  withEnv(['VAMP_VERSION=0.9.4']) {
+  withEnv(['VAMP_VERSION=0.9.5']) {
     stage('Build') {
       checkout scm
       sh '''
