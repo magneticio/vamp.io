@@ -34,7 +34,9 @@
     "type": "git",
     "url": "git+https://github.com/magneticio/vamp.io.git"
   },
-  "author": "",
+  "contributors": [
+    {"name": "Dimitris Stafylarakis", "email": "dimitris@magnetic.io"}
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/magneticio/vamp.io/issues"

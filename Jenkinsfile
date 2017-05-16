@@ -1,9 +1,12 @@
 #!groovy​
 node("mesos-slave-vamp.io") {
-  withEnv(['VAMP_VERSION=0.9.4']) {
+  version = 'nightly'
+
+  withEnv(["VAMP_VERSION=${version}"]) {
     stage('Build') {
       checkout scm
       sh '''
+      printenv
       npm install 
       gulp build:site
       gulp build --env=production
@@ -19,7 +22,7 @@ node("mesos-slave-vamp.io") {
           assert !result.contains("localhost:8080")
           // check if the aliases are set properly
           sh script: '''
-          curl -s http://localhost:8080/documentation/ | grep "url=http://vamp.io/documentation/how-vamp-works/v${VAMP_VERSION}/architecture-and-components"
+          curl -L -s http://localhost:8080/documentation/ | grep "url=.*/documentation/how-vamp-works/v\d.\d.\d/architecture-and-components"
           '''
       }
     }
@@ -36,11 +39,12 @@ node("mesos-slave-vamp.io") {
 
     stage('Deploy') {
       if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
-        sh script: '''
-        curl -s -d "$(sed s/VERSION/$VAMP_VERSION/g config/blueprint.yaml)" http://10.20.0.100:8080/api/v1/deployments -H 'Content-type: application/x-yaml'
-        '''
+        if (version != 'nightly') {
+          sh script: '''
+          curl -s -d "$(sed s/VERSION/$VAMP_VERSION/g config/blueprint.yaml)" http://10.20.0.100:8080/api/v1/deployments -H 'Content-type: application/x-yaml'
+          '''
+        }
       }
     }
-    stage('Smoke')
   }
 }
