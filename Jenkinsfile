@@ -1,6 +1,8 @@
 #!groovy​
 node("mesos-slave-vamp.io") {
   version = 'nightly'
+  gitBranch = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+  echo "branch: ${gitBranch}"
 
   withEnv(["VAMP_VERSION=${version}"]) {
     stage('Build') {
