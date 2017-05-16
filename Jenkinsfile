@@ -17,13 +17,11 @@ node("mesos-slave-vamp.io") {
     stage('Test') {
       docker.image('magnetic.azurecr.io/vamp.io:$VAMP_VERSION').withRun ('-p 8080:8080', '-conf Caddyfile') {c ->
           // check if the base url is set properly
-          sh 'curl -s http://localhost:8080 -o resp.txt'
-          def result = readFile('resp.txt').trim()
-          assert !result.contains("localhost:8080")
+          resp = sh( script: 'curl -s http://localhost:8080', returnStdout: true ).trim()
+          assert !resp.contains("localhost:8080")
           // check if the aliases are set properly
-          sh script: '''
-          curl -L -s http://localhost:8080/documentation/ | grep "url=.*/documentation/how-vamp-works/v\d.\d.\d/architecture-and-components"
-          '''
+          resp = sh script: "curl -Ls http://localhost:8080/documentation/", returnStdout: true
+          assert resp =~ /url=.*\/documentation\/how-vamp-works\/v\d.\d.\d\/architecture-and-components/
       }
     }
 
