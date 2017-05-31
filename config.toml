@@ -76,6 +76,12 @@ googleAnalytics = ""
 	url    = "/support/"
 	weight = 40
 
+[[menu.main]]
+	name   = "About us"
+	url    = "/about/about_us/about"
+	identifier = "about-vamp"
+	weight = 50
+
 # Side Menu Items, Parent should match the identifier of the Top Menu Item
 [[menu.main]]
 	name = "Use cases"
