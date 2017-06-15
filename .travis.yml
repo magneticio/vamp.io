@@ -12,8 +12,8 @@ cache:
   - /node_modules
 install:
   - . $HOME/.nvm/nvm.sh
-  - nvm install stable
-  - nvm use stable
+  - nvm install v6.9.0
+  - nvm use v6.9.0
   - npm install -g "gulpjs/gulp#4.0"
   - curl -sSL https://github.com/spf13/hugo/releases/download/v0.18.1/hugo_0.18.1_Linux-64bit.tar.gz | tar -zxf - -C /tmp/
   - mv /tmp/hugo_0.18.1_linux_amd64/hugo_0.18.1_linux_amd64 /tmp/hugo
@@ -21,15 +21,12 @@ install:
   - export PATH="/tmp:$PATH"
 script: npm install && gulp build:prod
 after_success: |
-  if [ -n "$GITHUB_API_KEY" ] && [ ${TRAVIS_PULL_REQUEST} == "false" ] && [ $TRAVIS_BRANCH == "master" ]; then
+  if [ -n "$GITHUB_TOKEN" ] && [ ${TRAVIS_PULL_REQUEST} == "false" ] && [ $TRAVIS_BRANCH == "master" ]; then
     GIT_COMMIT=`git rev-parse --short HEAD`
     cd ./public && cp ../CNAME ./CNAME && cp ../robots.txt ./robots.txt
     git init > /dev/null 2>&1
     git add .
     git -c user.name='Travis-CI' -c user.email='travis@magnetic.io' commit -m "build ${GIT_COMMIT}" > /dev/null 2>&1
     echo "pushing content to gh-pages"
-    git push --force --quiet "https://${GITHUB_API_KEY}@github.com/magneticio/vamp.io.git" master:gh-pages > /dev/null 2>&1
+    git push --force --quiet "https://${GITHUB_TOKEN}@github.com/magneticio/vamp.io.git" master:gh-pages > /dev/null 2>&1
   fi
-env:
-  matrix:
-    secure: HdfrUaeAiAVnPfnBqPQKfiyhczW6nDOrzubQw6H/5hVWxzR+zMIyO5G90RPospL5l5oZwk/6Fl0gT+Li/9W1pgplOFV4dUl10FxmkrRp98DHjNyDluMrJGS1UnlbM7GJvN+jvNZ23t8ZRFh/dNvRf00wZC8ucEAMwT+i462e7ziKdqo4dCdXn55uMGRbFrD7MvA9kZ7gZeOg3IPzhfMoDh1KjgIRiqDXCv8LojR12HHyKw1pCfNyCYEkuDZ+C5y2gkGKZEO8T6p81dDNbOJVdH9vv8Pp+RzjEx5Ce1sfvU9tN4xJOkDgk01DkIYNEPGahugWyO4UM911q0Ug3eqBDRa05r1P47tF1GRMwU1iM/vKzmG/0xgSxJ/T9JL86UxBo/ImpDb/+8LpA2AF4kVvQwFm29V7gq0DIM+EFeKnT+3UHzW4IIyc1vqcE5fcaJIwoB9B4vypwmXNWqujYEBvvsukja2Z6jrUfgukczNC5ReTSoGt5/byGO2arRpXKZeVS0RTZeLr4eTQV3QJYv9UM2XMbqVRGc/oIofF29iiaUS59KWbxQjTEBVazWcySchfMJDWtSueOV0v3mRvaoh2uMQcqKEePppHSWZ4Z5/mKkyGTdmQxt/l3m+njtIDwplYFHJP6WCmEkg4hyoEM5ZIQQ8WvL61vPOSF60hzGOYig8=

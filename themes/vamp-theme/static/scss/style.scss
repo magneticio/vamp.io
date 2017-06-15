@@ -330,6 +330,8 @@ body {
 
 }
 
+// Ribbons
+
 .hero-space {
   padding-top: 14px + 40px;
   padding-bottom: 0;
@@ -387,6 +389,15 @@ body {
       }
     }
   }
+
+  .row-ribbon {
+    position: absolute;
+    //background-color: red;
+    right: 0;
+    top: 80px;
+    z-index: 5;
+    display: flex;
+  }
 }
 
 // Inputs
@@ -440,9 +451,9 @@ body {
   //         margin-left: 20px;
   //       }
 
-   
+
   //     }
- 
+
   //   }
   // }
 

@@ -1,6 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: contact
+title: Contact
+menu:
+  main:
+    parent: "about-vamp"
+    weight: 40
 ---
 
 Vamp is being developed by [Magnetic.io](about/) in the heart of Amsterdam.

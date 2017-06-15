@@ -1,6 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: about us
+title: About us
+menu:
+  main:
+    parent: "about-vamp"
+    weight: 10
 ---
 Vamp is being developed by Magnetic.io from the heart of beautiful [Amsterdam](http://www.iamsterdam.com/en/).  
 
@@ -14,7 +18,7 @@ Time is precious. We believe people should focus their efforts on the things the
 We encourage anyone to [join the Vamp community](/resources/community/) and pitch in with pull requests, bug reports and feature requests to make Vamp even more awesome.
 
 ## Working at Vamp
-We're alway on the lookout for smart, talented and motivated people that love to work on products and understand real-world problems and how to solve them in the best possible way. If you would love to join our team and work on Vamp and related products, please get in [touch](/contact/)!
+We're alway on the lookout for smart, talented and motivated people that love to work on products and understand real-world problems and how to solve them in the best possible way. If you would love to join our team and work on Vamp and related products, please get in [touch](/about/contact/contact)!
 
 ## Contact
-You can contact us [here](/contact/)
+You can contact us [here](/about/contact/contact)
