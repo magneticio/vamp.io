@@ -1,7 +1,7 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Requirements
-aliases: 
+aliases:
     - /documentation/how-vamp-works/requirements
 menu:
   main:
@@ -10,7 +10,7 @@ menu:
     weight: 20
 ---
 
-Vamp's components work together with elements in your architecture to handle orchetstration, routing, persistence and metrics aggregation. To achieve this, Vamp requires access to a container scheduler, key value store, Elastic Search and HAProxy.
+Vamp's components work together with elements in your architecture to handle orchestration, routing, persistence and metrics aggregation. To achieve this, Vamp requires access to a container scheduler, key value store, a relational database (optionally), Elastic Search and HAProxy.
 
 ## Container scheduler  (orchestration)
 Vamp talks directly to your choice of container scheduler. Currently we support [Mesos/Marathon](/documentation/installation/v0.9.5/mesos-marathon), [DC/OS](/documentation/installation/v0.9.5/dcos), [Kubernetes](/documentation/installation/v0.9.5/kubernetes) and [Rancher](/documentation/installation/v0.9.5/rancher). In case you’re “greenfield” and don’t have anything selected or running yet, check [which container scheduler?](/documentation/how-vamp-works/v0.9.5/which-container-scheduler)
@@ -25,8 +25,11 @@ Vamp and VGAs can use an existing DC/OS ZooKeeper cluster.
 Vamp and VGAs can use an existing Kubernetes etcd cluster.
 * **Consul** ([consul.io](https://www.consul.io/))
 
-## Elastic Search (persistence and metrics)
-Vamp uses Elastic Search (ES) for persistence (e.g. for artifacts and events) and for aggregating the metrics used by Vamp workflows and the Vamp UI. As Vamp is not demanding in ES resources, it can comfortably work with an existing ES cluster.  
+## Relational Database
+Vamp persists artifacts such as blueprints, breeds and more. These artifacts are kept in-memory, but can also be persisted to a relational database. This will allow VAMP restarts and upgrades without any data loss. Currently, Vamp supports MySQL, PostgreSQL and Microsoft SQL Server.
+
+## Elastic Search
+Vamp uses Elastic Search (ES) for aggregating the metrics used by Vamp workflows and the Vamp UI. As Vamp is not demanding in ES resources, it can comfortably work with an existing ES cluster.  
 Currently we use Filebeat to send  HAproxy logs to Elastic Search, but you could also opt for an alternative solution.
 
 ## HAProxy  (routing)
@@ -36,4 +39,3 @@ Each Vamp Gateway Agent (VGA) requires its own instance of HAProxy. This is a ha
 * Find out how to [install Vamp](/documentation/installation/v0.9.5/overview)
 * High level pointers for [choosing a container scheduler](/documentation/how-vamp-works/v0.9.5/which-container-scheduler)
 {{< /note >}}
-
