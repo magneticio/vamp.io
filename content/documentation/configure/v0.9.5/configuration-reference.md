@@ -14,7 +14,7 @@ aliases:
 This page describes the structure and parameters in the default Vamp configuration files (reference.conf).  
 For details on how to customise your Vamp configuration, see [how to configure Vamp](/documentation/configure/v0.9.5/configure-vamp/).
 
-**Vamp:** 
+**Vamp:**
 
 * [Vamp configuration](/documentation/configure/v0.9.5/configuration-reference/#vamp-configuration)
 * [Vamp lifter](/documentation/configure/v0.9.5/configuration-reference/#vamp-lifter-configuration)
@@ -27,14 +27,14 @@ For details on how to customise your Vamp configuration, see [how to configure V
 * [Docker](/documentation/configure/v0.9.5/configuration-reference/#docker-configuration)
 * [AWS](/documentation/configure/v0.9.5/configuration-reference/#aws-configuration)
 * [Elasticsearch](/documentation/configure/v0.9.5/configuration-reference/#elasticsearch-configuration)
+* [MySQL](/documentation/configure/v0.9.5/configuration-reference/#mysql-configuration)
+* [PostgreSQL](/documentation/configure/v0.9.5/configuration-reference/#postgresql-configuration)
+* [Microsoft SQL server](/documentation/configure/v0.9.5/configuration-reference/#microsoft-sql-server-configuration)
 * [Zookeeper](/documentation/configure/v0.9.5/configuration-reference/#zookeeper-configuration)
 * [Consul](/documentation/configure/v0.9.5/configuration-reference/#consul-configuration)
 * [etcd](/documentation/configure/v0.9.5/configuration-reference/#etcd-configuration)
 * [Redis](/documentation/configure/v0.9.5/configuration-reference/#redis-configuration)
 * [HAProxy](/documentation/configure/v0.9.5/configuration-reference/#haproxy-configuration)
-* [MySQL](/documentation/configure/v0.9.5/configuration-reference/#mysql-configuration)
-* [PostgreSQL](/documentation/configure/v0.9.5/configuration-reference/#postgresql-configuration)
-* [Microsoft SQL server](/documentation/configure/v0.9.5/configuration-reference/#microsoft-sql-server-configuration)
 
 ## Vamp configuration
 The Vamp reference.conf files can be found in the respective Vamp project repos. The usage, default setting and requirements for each section are outlined below:
@@ -91,7 +91,7 @@ Parameter  |  Options  |  Default |  Details
 ([github.com/magneticio - container_driver reference.conf](https://github.com/magneticio/vamp/blob/master/container_driver/src/main/resources/reference.conf))
 
 Vamp can be configured to work with Docker, Mesos/Marathon, Kubernetes or Rancher container drivers. Only configuration for the specified `container-driver.type` is required.  
-See the [example configurations](/documentation/configure/v0.9.5/example-configurations) and the associated reference.conf files: 
+See the [example configurations](/documentation/configure/v0.9.5/example-configurations) and the associated reference.conf files:
 
 * [DC/OS (Mesos, Marathon & Chronos)](/documentation/configure/v0.9.5/configuration-reference/#dc-os-configuration), [Kubernetes](/documentation/configure/v0.9.5/configuration-reference/#kubernetes-configuration), [Rancher](/documentation/configure/v0.9.5/configuration-reference/#rancher-configuration), [Docker](/documentation/configure/v0.9.5/configuration-reference/#docker-configuration), [AWS](/documentation/configure/v0.9.5/configuration-reference/#aws-configuration).
 
@@ -184,7 +184,7 @@ Parameter  |  Options  |  Default |  Details
 The Vamp operation reference.conf holds all parameters that control how Vamp executes against “external” services: this also includes Vamp Pulse and Vamp Gateway Agent.
 
 * **operation.gateway:** For each cluster and service port within the same cluster a gateway is created - this is exactly the same as one that can be created using Gateway API.
-That means specific conditions and weights can be applied on traffic to/from cluster services - A/B testing and canary releases support. 
+That means specific conditions and weights can be applied on traffic to/from cluster services - A/B testing and canary releases support.
 `vamp.operation.gateway.port-range` is range of port values that can be used for these cluster/port gateways. These ports need to be available on all Vamp Gateway Agent hosts.
 * **operation.gateway.virtual-hosts:** Defines the standard Vamp virtual host gateway format.
 
@@ -275,13 +275,13 @@ Parameter  |  Options  |  Default |  Details
  synchronisation.check.instances  | true, false |    false   |  
  synchronisation.check.health-checks  | true, false |    false   |  
   deployment.scale   | - |  instances = 1 cpu = 1  memory = 1GB  |  default scale, used if not specified in blueprint
-  deployment.arguments | -  |   -  |  Docker command line arguments, e.g. "security-opt=seccomp:unconfined". Split by first '=' 
+  deployment.arguments | -  |   -  |  Docker command line arguments, e.g. "security-opt=seccomp:unconfined". Split by first '='
   gateway.port-range   | - |  40000-45000   |   range of port values that can be used for Vamp internal gateways. These ports need to be available on all Vamp Gateway Agent hosts
   gateway.response-timeout  | -   |   5 seconds  |  timeout for container operations
   sla.period    | -   |  5 seconds  |  controls how often an SLA checks against metrics
   escalation.period   | -    |  5 seconds  |  controls how often Vamp checks for escalation events
   health.window    | -   |  30 seconds  |  
-  metrics.window    | -   |  30 seconds  | 
+  metrics.window    | -   |  30 seconds  |
   gateway.virtual-hosts.enabled  | true, false |  true   |  if set to false, Vamp will not automatically generate gateway virtual host names. You can still specify in gateways/blueprints.
   gateway.virtual-hosts.formats.gateways  | -  |   $gateway.vamp  |  name format
   gateway.virtual-hosts.formats.deployment-port   | - |  $port.$deployment.vamp   |  name format
@@ -293,7 +293,7 @@ Parameter  |  Options  |  Default |  Details
 ### Vamp - persistence
 ([github.com/magneticio - persistence reference.conf](https://github.com/magneticio/vamp/blob/master/persistence/src/main/resources/reference.conf))
 
-Vamp uses a database or memory for persistence. 
+Vamp uses a database or memory for persistence.
 
 ```
 vamp.persistence {
@@ -346,8 +346,8 @@ Parameter  |  Options  |  Default |  Details
   database.type.sql.password   |  - |   varies according to database.type  |  
   database.type.sql.delay   |  -  |   3s |  
   database.type.sql.sychronisation.period   |  -  |   30s  |   
-  
-  
+
+
 -------   
 
 ### Vamp - pulse
@@ -368,11 +368,11 @@ Parameter  |  Options  |  Default |  Details
   response-timeout   | -   |  30 seconds   |  timeout for pulse operations
 
 -------
-     
+
 ### Vamp - workflow driver
 ([github.com/magneticio - workflow driver reference.conf](https://github.com/magneticio/vamp/blob/master/workflow_driver/src/main/resources/reference.conf))
 
-Used for Vamp workflows. 
+Used for Vamp workflows.
 ```
 vamp.workflow-driver {
   type = "" # it's possible to combine (csv): 'type_x,type_y'
@@ -399,7 +399,7 @@ Parameter  |  Options  |  Default |  Details
 
 
 ## Vamp Lifter configuration
-([github.com/magneticio - vamp-lifter reference.conf](https://github.com/magneticio/vamp-lifter/blob/master/src/main/resources/reference.conf)). 
+([github.com/magneticio - vamp-lifter reference.conf](https://github.com/magneticio/vamp-lifter/blob/master/src/main/resources/reference.conf)).
 
 ```
 30 lines (20 sloc)  342 Bytes
@@ -436,8 +436,8 @@ vamp.lifter {
 
 ---
 
-## DC/OS configuration 
-([github.com/magneticio - vamp-dcos reference.conf](https://github.com/magneticio/vamp-dcos/blob/master/src/main/resources/reference.conf)). 
+## DC/OS configuration
+([github.com/magneticio - vamp-dcos reference.conf](https://github.com/magneticio/vamp-dcos/blob/master/src/main/resources/reference.conf)).
 
 ```
 
@@ -466,7 +466,7 @@ vamp {
 ---
 
 ## Kubernetes configuration
-([github.com/magneticio - vamp-kubernetes reference.conf](https://github.com/magneticio/vamp-kubernetes/blob/master/src/main/resources/reference.conf)). 
+([github.com/magneticio - vamp-kubernetes reference.conf](https://github.com/magneticio/vamp-kubernetes/blob/master/src/main/resources/reference.conf)).
 
 ```
 vamp {
@@ -489,7 +489,7 @@ vamp {
 ---
 
 ## Rancher configuration
-([github.com/magneticio - vamp-rancher reference.conf](https://github.com/magneticio/vamp-rancher/blob/master/src/main/resources/reference.conf)). 
+([github.com/magneticio - vamp-rancher reference.conf](https://github.com/magneticio/vamp-rancher/blob/master/src/main/resources/reference.conf)).
 
 ```
 vamp {
@@ -513,7 +513,7 @@ vamp {
 ---
 
 ## Docker configuration
-([github.com/magneticio - vamp-docker reference.conf](https://github.com/magneticio/vamp-docker/blob/master/src/main/resources/reference.conf)). 
+([github.com/magneticio - vamp-docker reference.conf](https://github.com/magneticio/vamp-docker/blob/master/src/main/resources/reference.conf)).
 
 ```
 vamp {
@@ -560,7 +560,7 @@ vamp {
 ---
 
 ## Elasticsearch configuration
-([github.com/magneticio - vamp-elasticsearch reference.conf](https://github.com/magneticio/vamp-elasticsearch/blob/master/src/main/resources/reference.conf)). 
+([github.com/magneticio - vamp-elasticsearch reference.conf](https://github.com/magneticio/vamp-elasticsearch/blob/master/src/main/resources/reference.conf)).
 
 ```
 vamp {
@@ -582,6 +582,39 @@ vamp {
       }
     }
   }
+}
+```
+
+---
+
+## MySQL configuration
+([github.com/magneticio - vamp-mysql reference.conf](https://github.com/magneticio/vamp-mysql/blob/master/src/main/resources/reference.conf))
+
+```
+vamp.persistence.database {
+  # type: "mysql"
+}
+```
+
+---
+
+## PostgreSQL configuration
+([github.com/magneticio - vamp-postgresql reference.conf](https://github.com/magneticio/vamp-postgresql/blob/master/src/main/resources/reference.conf))
+
+```
+vamp.persistence.database {
+  # type: "postgres"
+}
+```
+
+---
+
+## Microsoft SQL server configuration
+([github.com/magneticio - vamp-sqlserver reference.conf](https://github.com/magneticio/vamp-sqlserver/blob/master/src/main/resources/reference.conf))
+
+```
+vamp.persistence.database {
+  # type: "sqlserver"
 }
 ```
 
@@ -631,7 +664,7 @@ vamp.persistence.key-value-store {
 ---
 
 ## Redis configuration
-([github.com/magneticio - vamp-redis reference.conf](https://github.com/magneticio/vamp-redis/blob/master/src/main/resources/reference.conf)). 
+([github.com/magneticio - vamp-redis reference.conf](https://github.com/magneticio/vamp-redis/blob/master/src/main/resources/reference.conf)).
 
 ```
 vamp.persistence.key-value-store {
@@ -646,7 +679,7 @@ vamp.persistence.key-value-store {
 ---
 
 ## HAProxy configuration
-([github.com/magneticio - vamp-haproxy reference.conf](https://github.com/magneticio/vamp-haproxy/blob/master/src/main/resources/reference.conf)). 
+([github.com/magneticio - vamp-haproxy reference.conf](https://github.com/magneticio/vamp-haproxy/blob/master/src/main/resources/reference.conf)).
 
 ```
 # vamp.gateway-driver.marshallers = [
@@ -659,38 +692,6 @@ vamp.persistence.key-value-store {
 #     }
 #   }
 # ]
-```
----
-
-## MySQL configuration
-([github.com/magneticio - vamp-mysql reference.conf](https://github.com/magneticio/vamp-mysql/blob/master/src/main/resources/reference.conf))
-
-```
-vamp.persistence.database {
-  # type: "mysql"
-}
-```
-
----
-
-## PostgreSQL configuration
-([github.com/magneticio - vamp-postgresql reference.conf](https://github.com/magneticio/vamp-postgresql/blob/master/src/main/resources/reference.conf))
-
-```
-vamp.persistence.database {
-  # type: "postgres"
-}
-```
-
----
-
-## Microsoft SQL server configuration
-([github.com/magneticio - vamp-sqlserver reference.conf](https://github.com/magneticio/vamp-sqlserver/blob/master/src/main/resources/reference.conf))
-
-```
-vamp.persistence.database {
-  # type: "sqlserver"
-}
 ```
 
 ---
