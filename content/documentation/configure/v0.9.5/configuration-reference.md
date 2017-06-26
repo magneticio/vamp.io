@@ -30,6 +30,7 @@ For details on how to customise your Vamp configuration, see [how to configure V
 * [MySQL](/documentation/configure/v0.9.5/configuration-reference/#mysql-configuration)
 * [PostgreSQL](/documentation/configure/v0.9.5/configuration-reference/#postgresql-configuration)
 * [Microsoft SQL server](/documentation/configure/v0.9.5/configuration-reference/#microsoft-sql-server-configuration)
+* [In-Memory only](/documentation/configure/v0.9.5/configuration-reference/#in-memory-only-persistence)
 * [Zookeeper](/documentation/configure/v0.9.5/configuration-reference/#zookeeper-configuration)
 * [Consul](/documentation/configure/v0.9.5/configuration-reference/#consul-configuration)
 * [etcd](/documentation/configure/v0.9.5/configuration-reference/#etcd-configuration)
@@ -619,6 +620,14 @@ vamp.persistence.database {
 ```
 
 ---
+
+## In-Memory only persistence
+
+```
+vamp.persistence.database {
+  type: "in-memory"
+}
+``
 
 ## Zookeeper configuration
 ([github.com/magneticio - vamp-zookeeper reference.conf](https://github.com/magneticio/vamp-zookeeper/blob/master/src/main/resources/reference.conf)).   

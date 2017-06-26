@@ -102,56 +102,6 @@ If the artifacts that are created by Vamp need to be persisted (available after 
 
 Once you have elasticsearch and one of the supported relational databases up and running it's time to move on to Vamp. The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](contact) if you’d like further details.
 
-If you want Vamp to keep the artifacts only in-memory, create a `vamp.json` with the following content:
-
-```json
-{
-  "id": "vamp/vamp",
-  "instances": 1,
-  "cpus": 0.5,
-  "mem": 1024,
-  "container": {
-    "type": "DOCKER",
-    "docker": {
-      "image": "magneticio/vamp:0.9.5-dcos",
-      "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 0,
-          "name": "vip0",
-          "labels": {
-            "VIP_0": "10.20.0.100:8080"
-          }
-        }
-      ],
-      "forcePullImage": true
-    }
-  },
-  "labels": {
-    "DCOS_SERVICE_NAME": "vamp",
-    "DCOS_SERVICE_SCHEME": "http",
-    "DCOS_SERVICE_PORT_INDEX": "0"
-  },
-  "env": {
-    "VAMP_WAIT_FOR": "http://elasticsearch.marathon.mesos:9200/.kibana",
-    "VAMP_WORKFLOW_DRIVER_VAMP_URL": "http://10.20.0.100:8080",
-    "VAMP_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200",
-    "VAMP_DB_TYPE": "in-memory"
-  },  
-  "healthChecks": [
-    {
-      "protocol": "TCP",
-      "gracePeriodSeconds": 30,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 5,
-      "portIndex": 0,
-      "maxConsecutiveFailures": 0
-    }
-  ]
-}
-```
-
 If you want Vamp to persist to one of the supported relational databases, create a `vamp.json` with the following content (the database configuration values may have to be adjusted to the specific relational database, this is for the standard DC/OS MySQL universe package):
 
 ```json
@@ -206,7 +156,7 @@ If you want Vamp to persist to one of the supported relational databases, create
 }
 ```
 
-Note that the `VAMP_DB_URL` needs to contain the `${namespace}` string interpolation. The `VAMP_DB_CREATE_URL` needs to connect either to the default database or in the case of MySQL no database needs to be specified. From that JDBC URI the needed Vamp database will be created. For different examples of other supported relational databases see [configuration reference](/documentation/configure/v0.9.5/configuration-reference/).
+Note that the `VAMP_DB_URL` needs to contain the `${namespace}` string interpolation. The `VAMP_DB_CREATE_URL` needs to connect either to the default database or in the case of MySQL no database needs to be specified. From that JDBC URI the needed Vamp database will be created. For different examples of other supported relational databases or in-memory only persistence see [configuration reference](/documentation/configure/v0.9.5/configuration-reference/).
 
 This service definition will download our Vamp container and spin it up in your DC/OS cluster on a private node in bridge networking mode. It will also configure the apporiate labels for the AdminRouter to expose the UI through DC/OS, as well as an internal VIP for other applications to talk to Vamp, adjusting some defaults to work inside DC/OS, and finally a health check for monitoring.
 
