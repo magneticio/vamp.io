@@ -12,7 +12,7 @@ menu:
 ---
 
 Want to give Vamp a go? The hello world setup described below runs Vamp inside a local Docker container - a perfect environment to try out Vamp's core features and work through the [Vamp tutorials](/documentation/tutorials/overview).
-Vamp hello world runs Mesos, Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)) and Vamp 0.9.4 together with Vamp's Marathon driver.  
+Vamp hello world runs Mesos, Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)) and Vamp 0.9.5 together with Vamp's Marathon driver.  
 
 **Requirements:**  At least 8GB of memory
 
@@ -28,12 +28,12 @@ We will run Vamp in a local Docker container. If you don't already have Docker i
 - **Linux**: Docker 1.9.x (Vamp works with Docker 1.12 too)
 - **Windows 7+**: [Docker Toolbox 1.12.x](https://github.com/docker/toolbox/releases)
 
-Vamp hello world on Docker for Windows is currently not supported. We're working on this so please check back. 
+Vamp hello world on Docker for Windows is currently not supported. We're working on this so please check back.
 Mac running Docker toolbox can install [Vamp hello world v0.9.5](/documentation/installation/v0.9.5/hello-world/)
 
 ## Run Vamp
 
-Start the `magneticio/vamp-docker:0.9.4` container, taking care to pass in the right parameters for your system: 
+Start the `magneticio/vamp-docker:0.9.5` container, taking care to pass in the right parameters for your system:
 
 ### Docker for Mac
 Docker machine should have access to **at least 3GB memory**, make sure this is set correctly before you continue.
@@ -47,7 +47,7 @@ docker run -v /var/run/docker.sock:/var/run/docker.sock \
            -p 9090:9090 -p 8989:8989 \
            -p 4400:4400 -p 9200:9200 \
            -p 5601:5601 -p 2181:2181 \
-           magneticio/vamp-docker:0.9.4
+           magneticio/vamp-docker:0.9.5
 ```
 
 ### Docker toolbox (Windows 7+)
@@ -60,7 +60,7 @@ docker run --net=host \
            -v `docker-machine ssh default "which docker"`:/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=$(docker-machine ip default)" \
-           magneticio/vamp-docker:0.9.4
+           magneticio/vamp-docker:0.9.5
 ```
 
 #### Docker (Linux)
@@ -72,7 +72,7 @@ docker run --privileged \
            -v $(which docker):/bin/docker \
            -v "/sys/fs/cgroup:/sys/fs/cgroup" \
            -e "DOCKER_HOST_IP=$(hostname -I | awk '{print $1;}')" \
-           magneticio/vamp-docker:0.9.4
+           magneticio/vamp-docker:0.9.5
 ```
 
 Mounting volumes is important. [Read this great article about starting Docker containers from/within another Docker container](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/).
@@ -86,7 +86,7 @@ After some downloading and booting, your Docker log will show the blue Vamp ASCI
 Now you can check if Vamp is home on `localhost:8080` and you're ready for the [Vamp getting started tutorials](/documentation/tutorials/overview)
 
 ![](/images/screens/v095/quicksetup-marathon-infopanel.png)
-  
+
 Click on the **?** in the top right corner of any screen for quick access to page help, related documentation and tutorials.
 
 ![](/images/screens/v095/quicksetup-helppanel.png)
