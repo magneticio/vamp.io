@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: vamp-gateway-agent
-        image: magneticio/vamp-gateway-agent:0.9.4
+        image: magneticio/vamp-gateway-agent:0.9.5
         ports:
         - name: p80
           containerPort: 80

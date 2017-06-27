@@ -2,7 +2,7 @@
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-vamp_version="0.9.4"
+vamp_version="0.9.5"
 
 : "${NAMESPACE:=default}"
 : "${VAMP_IMAGE:=magneticio/vamp:${vamp_version}-kubernetes}"

@@ -2,7 +2,7 @@
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-vamp_version="0.9.4"
+vamp_version="0.9.5"
 
 : "${NAMESPACE:=default}"
 : "${VGA_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v${vamp_version}/vga.yml}"
