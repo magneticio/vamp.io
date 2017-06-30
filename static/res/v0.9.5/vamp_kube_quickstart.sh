@@ -2,12 +2,12 @@
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-vamp_version=$(<"${dir}/../version")
+vamp_version="0.9.5"
 
-: "${NAMESPACE:=default}"
+: "${NAMESPACE:=vamp}"
 : "${VAMP_IMAGE:=magneticio/vamp:${vamp_version}-kubernetes}"
-: "${VGA_YAML:=${dir}/vga.yml}"
-: "${ETCD_YAML:=${dir}/etcd.yml}"
+: "${VGA_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v${vamp_version}/vga.yml}"
+: "${ETCD_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v${vamp_version}/etcd.yml}"
 : "${ELASTICSEARCH_IMAGE:=elasticsearch:2.4.4}"
 : "${KIBANA_IMAGE:=kibana:4.6.4}"
 
@@ -131,7 +131,7 @@ install
 if [ ${flag_minikube} -eq 1 ]; then
   step "Polling minikube for Vamp URL (this might take a while)..."
   echo ${yellow}
-  url=$(minikube service --url vamp)
+  url=$(minikube service -n ${NAMESPACE} --url vamp)
   echo ${reset}
 
   if [ ! $? = 0 ]; then
@@ -140,7 +140,7 @@ if [ ${flag_minikube} -eq 1 ]; then
 
   [[ -n "$url" ]] \
       && ok "Quickstart finished, Vamp is running on $url" \
-      && minikube service vamp &>/dev/null \
+      && minikube service -n ${NAMESPACE} vamp &>/dev/null \
       || error "Couldn't get Vamp URL, please check logs for more info."
 else
   step "Polling kubernetes for external IP of Vamp (this might take a while)..."
