@@ -2,12 +2,12 @@
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-vamp_version="0.9.5"
+vamp_version=$(<"${dir}/../version")
 
-: "${NAMESPACE:=vamp}"
+: "${NAMESPACE:=default}"
 : "${VAMP_IMAGE:=magneticio/vamp:${vamp_version}-kubernetes}"
-: "${VGA_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v${vamp_version}/vga.yml}"
-: "${ETCD_YAML:=https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v${vamp_version}/etcd.yml}"
+: "${VGA_YAML:=${dir}/vga.yml}"
+: "${ETCD_YAML:=${dir}/etcd.yml}"
 : "${ELASTICSEARCH_IMAGE:=elasticsearch:2.4.4}"
 : "${KIBANA_IMAGE:=kibana:4.6.4}"
 
