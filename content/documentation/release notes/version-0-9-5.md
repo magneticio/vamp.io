@@ -39,9 +39,8 @@ The 095 release of Vamp is focused on increasing stability, scalability and perf
 ## Known issues
 
 * When in Marathon/DCOS Zookeeper is unavailable/restarted Vamp can sometimes become out of sync, showing failed deployments when the deployments are running normally. Going into scale and saving syncs Vamp again.
-* The Vamp UI currently isn't fully responsive
-* Running Vamp 095 with Kubernetes 1.6.x latest stable still has some gateway issues
-* Showing container logs on DC/OS is not working correctly.
+* The Vamp UI currently isn't fully responsive.
+* Showing container logs on DC/OS is a beta feature, that may not always work correctly.
 
 ## All closed issues can be found here:
 
