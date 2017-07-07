@@ -6,9 +6,13 @@ menu:
     identifier: "workflows-v094"
     parent: "Using Vamp"
     weight: 40
-aliases:
-    - /documentation/using-vamp/workflows/
 ---
+
+{{< note title="The information on this page is written for Vamp v0.9.4" >}}
+
+* Switch to the [latest version of this page](/documentation/using-vamp/workflows).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
 
 Vamp workflows are a convenient way to run Node JS based scripts that access the Vamp API to monitor and interact with running services. JavaScript workflows run in Vamp workflow agent containers ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)) and are managed just like any other container inside your cluster, making them robust, scalable and dynamic. Workflows can be scheduled to run as a daemon, be triggered by Vamp events or to run at specified times. 
 

@@ -6,9 +6,13 @@ menu:
     identifier: "blueprints-v094"
     parent: "Using Vamp"
     weight: 50
-aliases:
-    - /documentation/using-vamp/blueprints/
 ---
+
+{{< note title="The information on this page is written for Vamp v0.9.4" >}}
+
+* Switch to the [latest version of this page](/documentation/using-vamp/blueprints).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
 
 Blueprints are execution plans - they describe how your services should be hooked up and what their topology should look like at runtime. This means you reference your breeds (or define them inline) and add runtime configuration to them. Blueprints can be created and edited using the Vamp Domain Specific Language (DSL). Vamp tracks all revisions made to artifacts, so you can check back and compare the current blueprint against a previous version.
 

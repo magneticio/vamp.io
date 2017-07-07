@@ -6,10 +6,14 @@ menu:
     identifier: "artifacts-v094"
     parent: "Using Vamp"
     weight: 10
-aliases:
-    - /using-vamp/
-    - /documentation/using-vamp/artifacts/
 ---
+
+{{< note title="The information on this page is written for Vamp v0.9.4" >}}
+
+* Switch to the [latest version of this page](/documentation/using-vamp/artifacts).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 
 Vamp has a few basic entities or artifacts you can work with, these can be classed as static resource descriptions and dynamic runtime entities. Note that API actions on static resource descriptions are mostly synchronous, while API actions on dynamic runtime entities are largely asychronous.
 

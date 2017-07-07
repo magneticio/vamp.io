@@ -6,9 +6,13 @@ menu:
     identifier: "escalations-v094"
     parent: "Using Vamp"
     weight: 110
-aliases:
-    - /documentation/using-vamp/escalations/
 ---
+
+{{< note title="The information on this page is written for Vamp v0.9.4" >}}
+
+* Switch to the [latest version of this page](/documentation/using-vamp/escalations).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
 
 An escalation is a workflow triggered by an escalation event. Vamp checks for these escalation events using a continuous background process with a configurable interval time. If the events match the escalation handlers defined in the DSL, the action is executed.
 

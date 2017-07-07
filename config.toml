@@ -121,25 +121,32 @@ googleAnalytics = ""
 	weight = 40
 
 [[menu.main]]
+	name = "Configure"
+	identifier = "Configuration"
+	url = "/documentation/configure"
+	parent = "Documentation"
+	weight = 50
+
+[[menu.main]]
 	name = "Troubleshoot"
 	identifier = "Troubleshooting"
 	url = "/documentation/troubleshoot"
 	parent = "Documentation"
-	weight = 50
+	weight = 60
 
 [[menu.main]]
 	name = "API documentation"
 	identifier = "API"
 	url = "/documentation/api/api-reference"
 	parent = "Documentation"
-	weight = 60
+	weight = 70
 
 [[menu.main]]
 	name = "CLI documentation"
 	identifier = "CLI"
 	url = "/documentation/cli/cli-reference/"
 	parent = "Documentation"
-	weight = 70
+	weight = 80
 
 [[menu.main]]
 	name = "Release notes"

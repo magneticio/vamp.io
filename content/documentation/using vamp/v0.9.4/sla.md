@@ -6,9 +6,13 @@ menu:
     identifier: "sla-v094"
     parent: "Using Vamp"
     weight: 160
-aliases:
-    - /documentation/using-vamp/sla/
 ---
+
+{{< note title="The information on this page is written for Vamp v0.9.4" >}}
+
+* Switch to the [latest version of this page](/documentation/using-vamp/sla).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
 
 SLA stands for "Service Level Agreement". Vamp uses it to define a pre-described set of boundaries to a service and the actions that should take place once the service crosses those boundaries. In essence, an SLA and its associated escalation is a workflow that is checked and controlled by Vamp based on the runtime behaviour of a service. SLAs and escalations are defined with the VAMP DSL.
 

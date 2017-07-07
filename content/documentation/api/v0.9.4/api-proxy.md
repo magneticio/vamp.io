@@ -6,8 +6,6 @@ menu:
     parent: "API"
     identifier: "api-reference-proxy-094"
     weight: 185
-aliases:
-    - /documentation/api/api-proxy
 draft: true
 ---
 

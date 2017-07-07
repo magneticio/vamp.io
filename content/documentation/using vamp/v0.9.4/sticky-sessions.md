@@ -6,9 +6,13 @@ menu:
     identifier: "sticky-sessions-v094"
     parent: "Using Vamp"
     weight: 170
-aliases:
-    - /documentation/using-vamp/sticky-sessions/
 ---
+
+{{< note title="The information on this page is written for Vamp v0.9.4" >}} 
+
+* Switch to the [latest version of this page](/documentation/using-vamp/sticky-sessions).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
 
 Gateways can optionally be set as sticky on either a route or instance level.
 

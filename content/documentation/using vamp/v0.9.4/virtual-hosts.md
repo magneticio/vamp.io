@@ -6,9 +6,14 @@ menu:
     identifier: "virtual-hosts-v094"
     parent: "Using Vamp"
     weight: 180
-aliases:
-    - /documentation/using-vamp/virtual-hosts/
 ---
+
+{{< note title="The information on this page is written for Vamp v0.9.4" >}} 
+
+* Switch to the [latest version of this page](/documentation/using-vamp/virtual-hosts).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 
 Vamp can be configured to support virtual host via HAProxy:
 

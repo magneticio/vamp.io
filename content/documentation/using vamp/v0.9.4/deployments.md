@@ -6,9 +6,13 @@ menu:
     identifier: "deployments-v094"
     parent: "Using Vamp"
     weight: 20
-aliases:
-    - /documentation/using-vamp/deployments/
 ---
+
+{{< note title="The information on this page is written for Vamp v0.9.4" >}}
+
+* Switch to the [latest version of this page](/documentation/using-vamp/deployments).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
 
 A deployment is a "running" blueprint with added runtime information, such as start times, resolved ports etc.
 Existing deployments can be updated, merging new blueprints or removing parts from it. Each deployment can be exported as a blueprint and copy / pasted to another environment, or even to the same environment to function as a clone.

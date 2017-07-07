@@ -1,14 +1,18 @@
 ---
 date: 2016-10-21T09:00:00+00:00
 title: Events and metrics
-aliases: 
-    - /documentation/how-vamp-works/events-and-metrics
 menu:
   main:
     identifier: "events-and-metrics-v094"
     parent: "How Vamp works"
     weight: 60
 ---
+
+{{< note title="The information on this page is written for Vamp v0.9.4" >}}
+
+* Switch to the [latest version of this page](/documentation/how-vamp-works/events-and-metrics).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
 
 To provide an effective feedback loop, HTTP/TCP logs should be collected, stored and analyzed. 
 
@@ -40,7 +44,7 @@ All events are stored and retrieved using the Event API, part of the [Vamp API](
 ## Kibana
 
   Vamp can be configured to create Kibana `searches`, `visualisations` and `dashboards` automatically with the `vamp.gateway-driver.kibana.enabled` configuration parameter.
-  Vamp will do this by inserting ES documents to the Kibana index, so only the URL to access ES is needed (by default reusing the same as for persistence). Read more about [Vamp configuration](/documentation/installation/v0.9.4/configure-vamp)
+  Vamp will do this by inserting ES documents to the Kibana index, so only the URL to access ES is needed (by default reusing the same as for persistence). Read more about [Vamp configuration](/documentation/configure/v0.9.4/configure-vamp)
 
 {{< note title="What next?" >}}
 * Let's [install Vamp](/documentation/installation/v0.9.4/overview) 

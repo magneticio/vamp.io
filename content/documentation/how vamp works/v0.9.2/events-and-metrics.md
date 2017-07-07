@@ -53,7 +53,7 @@ All events are stored and retrieved using the Event API, part of the [Vamp API](
 ## Kibana
 
   Vamp can be configured to create Kibana `searches`, `visualisations` and `dashboards` automatically with the `vamp.gateway-driver.kibana.enabled` configuration parameter.
-  Vamp will do this by inserting ES documents to the Kibana index, so only the URL to access ES is needed (by default reusing the same as for persistence). Read more about [Vamp configuration](/documentation/installation/v0.9.2/configure-vamp)
+  Vamp will do this by inserting ES documents to the Kibana index, so only the URL to access ES is needed (by default reusing the same as for persistence). Read more about [Vamp configuration](/documentation/configure/v0.9.2/configure-vamp)
 
 {{< note title="What next?" >}}
 * Let's [install Vamp](/documentation/installation/v0.9.2/overview) 

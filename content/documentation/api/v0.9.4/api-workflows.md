@@ -6,8 +6,6 @@ menu:
     parent: "API"
     identifier: "api-reference-workflows-094"
     weight: 210
-aliases:
-    - /documentation/api/api-workflows
 ---
 Read about [using workflows](documentation/using-vamp/workflows/).
 
@@ -60,43 +58,18 @@ scale:
 network: BRIDGE
 arguments:
 - privileged: 'true'
-```
-```
-name: health
-kind: workflow
-metadata: {}
-breed:
-  reference: health
-status: running
-schedule: daemon
-environment_variables:
-  VAMP_NAMESPACE: vamp
-  VAMP_WORKFLOW_EXECUTION_TIMEOUT: '7'
-  VAMP_KEY_VALUE_STORE_CONNECTION: 192.168.65.2:2181
-  VAMP_KEY_VALUE_STORE_PATH: /vamp/vamp/workflows/health
-  VAMP_WORKFLOW_EXECUTION_PERIOD: '5'
-  VAMP_ELASTICSEARCH_URL: http://192.168.65.2:9200
-  VAMP_KEY_VALUE_STORE_TYPE: zookeeper
-  VAMP_URL: http://192.168.65.2:8080
-scale:
-  cpu: 0.1
-  memory: 128.00MB
-  instances: 1
-network: BRIDGE
-arguments:
-- privileged: 'true'
 instances:
-- name: vamp_workflow-health.52cd1983-0e38-11e7-98f5-0242ac110002
+- name: vamp_workflow-health.0ecf4abe-34aa-11e7-887a-0242ac110002
   host: 192.168.65.2
   ports:
-    webport: 31294
+    webport: 31295
   deployed: true
   metadata: {}
 health:
   staged: 0
   running: 1
   healthy: 0
-  unhealthy: 1
+  unhealthy: 0
 ```
 
     

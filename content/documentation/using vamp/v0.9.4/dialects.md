@@ -6,10 +6,13 @@ menu:
     identifier: "dialects-v094"
     parent: "Using Vamp"
     weight: 90
-aliases:
-    - /documentation/using-vamp/dialects/
-    - /documentation/using-vamp/blueprints/#dialects
 ---
+
+{{< note title="The information on this page is written for Vamp v0.9.4" >}} 
+
+* Switch to the [latest version of this page](/documentation/using-vamp/dialects).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
 
 A dialect is a set of native commands for the underlying container platform.  Vamp allows you to use container driver specific tags in workflows and inside blueprints on a breed or deployment level. Dialects effectively enable you to make full use of, for instance, the underlying features like mounting disks, settings commands and providing access to private Docker registries.
 

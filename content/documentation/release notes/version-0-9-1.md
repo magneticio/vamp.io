@@ -26,7 +26,7 @@ This release of Vamp introduces:
 ## What has changed
 * **BREAKING CHANGE**: In the Vamp configuration the “rest-api” section has changed to “http-api”. When running Vamp 0.9.1 you need to change this setting accordingly. NB REST and websockets are both a part of our HTTP API. Check this [Vamp configuration](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf) example.
 * **BREAKING CHANGE**: The default value for Vamp Gateway Agent `storeKey` has `/vamp/gateways/haproxy/1.6` - changed from `/vamp/haproxy/1.6`
-* In the [Vamp configuration](/documentation/installation/configure-vamp/#persistence) we set `persistence caching` by default to `false`. In our pre-build Vamp images we set this to `true` to make it easier on the persistence store load. https://github.com/magneticio/vamp/issues/792
+* In the [Vamp configuration](/documentation/configure/configure-vamp/#persistence) we set `persistence caching` by default to `false`. In our pre-build Vamp images we set this to `true` to make it easier on the persistence store load. https://github.com/magneticio/vamp/issues/792
 * We've changed the updating deployment service states. https://github.com/magneticio/vamp/issues/797
 
 ## Known issues

@@ -12,6 +12,7 @@ aliases:
 
 ## All release notes
 
+* [Vamp version 0.9.5](/documentation/release-notes/version-0-9-5/)
 * [Vamp version 0.9.4](/documentation/release-notes/version-0-9-4/)
 * [Vamp version 0.9.3](/documentation/release-notes/version-0-9-3/)
 * [Vamp version 0.9.2](/documentation/release-notes/version-0-9-2/)

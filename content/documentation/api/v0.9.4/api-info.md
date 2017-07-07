@@ -6,8 +6,6 @@ menu:
     parent: "API"
     identifier: "api-reference-info-094"
     weight: 170
-aliases:
-    - /documentation/api/api-info
 ---
 
 Details of Vamp's JVM environment and runtime status, the configured persistence layer and container driver status can be retrieved from the `/info` APi endpoint. 

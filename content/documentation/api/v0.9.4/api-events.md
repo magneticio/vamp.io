@@ -6,8 +6,6 @@ menu:
     parent: "API"
     identifier: "api-reference-events-094"
     weight: 130
-aliases:
-    - /documentation/api/api-events
 ---
 Read about [using events](documentation/using-vamp/events/) and [the Vamp events system](/documentation/tutorials/create-a-workflow/#the-vamp-events-system).
 

@@ -6,9 +6,13 @@ menu:
     identifier: "kubernetes-v094"
     parent: "Installation"
     weight: 50
-aliases:
-    - /documentation/installation/kubernetes
 ---
+
+{{< note title="The information on this page applies to Vamp v0.9.4" >}}
+
+* Switch to the [latest version of this page](/documentation/installation/kubernetes).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
 
 The installation will run Vamp together with etcd and Elasticsearch on Google container engine and kubernetes. Before you begin, it is advisable to try out the official Quickstart for Google Container Engine tutorial first ([google.com - container engine quickstart](https://cloud.google.com/container-engine/docs/quickstart)).  
 

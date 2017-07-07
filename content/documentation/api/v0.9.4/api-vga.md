@@ -6,8 +6,6 @@ menu:
     parent: "API"
     identifier: "api-reference-vga-094"
     weight: 205
-aliases:
-    - /documentation/api/api-vga
 ---
 
 You can retrieve Vamp gateway driver marshaller configurations and templates using the Vamp API.

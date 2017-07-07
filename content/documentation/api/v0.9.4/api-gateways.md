@@ -6,8 +6,6 @@ menu:
     parent: "API"
     identifier: "api-reference-gateways-094"
     weight: 140
-aliases:
-    - /documentation/api/api-gateways
 ---
 Read about [using gateways](documentation/using-vamp/gateways/).
 

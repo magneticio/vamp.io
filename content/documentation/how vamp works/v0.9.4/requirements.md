@@ -1,14 +1,19 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Requirements
-aliases: 
-    - /documentation/how-vamp-works/requirements
 menu:
   main:
     identifier: "requirements-v094"
     parent: "How Vamp works"
     weight: 20
 ---
+
+{{< note title="The information on this page is written for Vamp v0.9.4" >}}
+
+* Switch to the [latest version of this page](/documentation/how-vamp-works/requirements).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
+
 
 Vamp's components work together with elements in your architecture to handle orchetstration, routing, persistence and metrics aggregation. To achieve this, Vamp requires access to a container scheduler, key value store, Elastic Search and HAProxy.
 

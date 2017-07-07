@@ -6,9 +6,13 @@ menu:
     identifier: "health-v094"
     parent: "Using Vamp"
     weight: 130
-aliases:
-    - /documentation/using-vamp/health/
 ---
+
+{{< note title="The information on this page is written for Vamp v0.9.4" >}}
+
+* Switch to the [latest version of this page](/documentation/using-vamp/health).
+* Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
+{{< /note >}}
 
 Vamp tracks the health of deployed service instances and gateways. The [default Vamp health workflow](/documentation/using-vamp/v0.9.4/workflows/) reports health based on a combination of defined health checks and gateway monitoring. Health status is stored in the Elasticsearch index `vamp-pulse-health-YYYY-MM-DD` and displayed in the Vamp UI. It can also be retrieved directly using the [Vamp API health endpoint](/documentation/api/v0.9.4/api-health/).
 

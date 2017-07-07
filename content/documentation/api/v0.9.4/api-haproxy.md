@@ -6,8 +6,6 @@ menu:
     parent: "API"
     identifier: "api-reference-haproxy-094"
     weight: 150
-aliases:
-    - /documentation/api/api-haproxy
 ---
 
 Details of Vamp's HAProxy configuration. 
