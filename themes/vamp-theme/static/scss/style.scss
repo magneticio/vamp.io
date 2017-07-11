@@ -11,11 +11,8 @@ body {
 .page {
   min-height: 100vh;
   position: relative;
-  //padding-top: 80px;
 
   &.documentation {
-    //background-color: red;
-    //background: linear-gradient(90deg, $light-grey 33%, white 33%);
 
     .header {
       color: $color-radical-red;
@@ -24,7 +21,7 @@ body {
 
     .content {
       @media all and (min-width: 1025px) {
-        padding-top: 60px;
+        padding-top: 3 * $spacer;
       }
 
     }
@@ -123,11 +120,11 @@ body {
 }
 
 .text {
-  font-weight: 300;
-  letter-spacing: 0.05em;
-  font-size: 15px;
+  font-weight: $font-weight-default;
+  letter-spacing: $letter-spacing-default;
+  font-size: $font-size-default;
   color: $color-big-stone;
-  line-height: 1.7;
+  line-height: $line-height-default;
 }
 
 // Buttons
@@ -394,7 +391,7 @@ body {
     position: absolute;
     //background-color: red;
     right: 0;
-    top: 80px;
+    top: 0;
     z-index: 5;
     display: flex;
   }
@@ -430,44 +427,11 @@ body {
   }
 }
 
-// single page
-#side-menu {
-
-
-  // ul {
-  //   >li {
-  //     >a {
-  //       display: flex;
-  //       cursor: pointer;
-  //       align-items: center;
-  //       text-decoration: none;
-  //       padding: 10px 0;
-
-  //       img {
-  //         width: 22px;
-  //       }
-
-  //       p {
-  //         margin-left: 20px;
-  //       }
-
-
-  //     }
-
-  //   }
-  // }
-
-}
-
 .side-menu {
   display: none;
-  background-color: $color-white-squeeze;
-  padding: 40px + 80px 40px 40px 40px;
+  padding-top: 3 * $spacer;
   height: 100vh;
-  position: fixed;
   bottom: 0;
-  overflow-y: scroll;
-  width: 280px + 40px + 40px;
 
   @media all and (min-width: 1025px) {
     display: block;
@@ -501,7 +465,6 @@ body {
     align-items: center;
     text-decoration: none;
     padding-bottom: 10px;
-    border-bottom: 1px solid $color-cascade;
 
     &__icon {
       width: 22px;
@@ -510,10 +473,10 @@ body {
     &__text {
       color: $color-big-stone;
       margin-left: 18px;
-      font-weight: 300;
-      letter-spacing: 0.05em;
-      font-size: 15px;
-      line-height: 1.7;
+      font-weight: $font-weight-default;
+      letter-spacing: $letter-spacing-default;
+      font-size: $font-size-small;
+      line-height: $line-height-default;
     }
   }
 
@@ -528,22 +491,16 @@ body {
       &__text {
         display: none;
         color: $color-big-stone;
-        padding: 7px 0 7px 60px;
-        font-weight: 300;
-        letter-spacing: 0.05em;
-        font-size: 15px;
-        line-height: 1.7;
+        padding: .25 * $spacer 0 .25 * $spacer 2 * $spacer;
+        font-weight: $font-weight-light;
+        letter-spacing: $letter-spacing-default;
+        font-size: $font-size-small;
+        line-height: $line-height-default;
         text-decoration: none;
       }
     }
   }
 }
-
-
-
-
-
-
 
 .side-menu-item {
   display: flex;
@@ -607,59 +564,41 @@ body {
 }
 
 .content {
-  padding: 30px 40px 40px 40px;
+  padding-left: 1.5 * $spacer;
+  padding-right: 1.5 * $spacer;
   background-color: white;
   min-height: 100vh;
-  max-width: 980px;
-
-  @media all and (min-width: 1025px) {
-    //display: block;
-    margin-left: 370px;
-    padding: 0 40px 40px 80px;
-  }
 
 
   .content-header {
-    font-size: 32px;
-    font-weight: 100;
+    font-size: $font-size-biggest;
+    font-weight: $font-weight-light;
     color: $color-radical-red;
-    line-height: 1.5;
-    letter-spacing: 0.05em;
+    line-height: $line-height-default;
+    letter-spacing: $letter-spacing-wide;
     text-transform: uppercase;
-    margin-top: 50px;
+    margin-bottom: 2 * $spacer;
   }
 }
 
 // Markdown implementation
 .markdowned {
   h1 {
-   font-size: 32px;
-   font-weight: 100;
+   font-size: $font-size-biggest;
+   font-weight: $font-weight-lightest;
    color: $color-radical-red;
-   line-height: 1.5;
-   letter-spacing: 0.05em;
-   margin: 25px 0;
- }
-
-  h2 {
-    font-size: 24px;
-    font-weight: 500;
-    color: $color-big-stone;
-    line-height: 1.5em;
-    letter-spacing: 0.05em;
-    margin: 32px 0 12.5px 0;
-
-    //padding for anchor tags
-    padding-top: 100px;
-    margin-top: -68px;
+   line-height: $line-height-default;
+   letter-spacing: $letter-spacing-default;
+    margin-bottom: 2 * $spacer;
   }
 
-  h2 + h3 {
-    margin-top: 0;
-
-    //padding for anchor tags
-    padding-top: 100px;
-    margin-top: -100px !important;
+  h2 {
+    font-size: $font-size-big;
+    font-weight: $font-weight-heavy;
+    color: $color-big-stone;
+    line-height: $line-height-default;
+    letter-spacing: $letter-spacing-wide;
+    margin-bottom: $spacer;
   }
 
   h2 + p {
@@ -671,17 +610,13 @@ body {
   }
 
   h3 {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: $font-size-default;
+    font-weight: $font-weight-heavy;
     color: $color-big-stone;
-    line-height: 1.8;
+    line-height: $line-height-default;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin: 32px 0 0 0;
-
-    //padding for anchor tags
-    padding-top: 100px;
-    margin-top: -100px + 16px !important;
+    letter-spacing: $letter-spacing-default;
+    margin-bottom: $spacer;
 
   }
 
@@ -698,17 +633,13 @@ body {
   }
 
   h4 {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: $font-size-small;
+    font-weight: $font-weight-heavy;
     color: $color-big-stone;
-    line-height: 1.8;
+    line-height: $line-height-default;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin: 32px 0 0 0;
-
-    //padding for anchor tags
-    padding-top: 100px;
-    margin-top: -68px;
+    letter-spacing: $letter-spacing-default;
+    margin-bottom:  .5 * $spacer;
   }
 
   h4 + h5 {
@@ -756,13 +687,12 @@ body {
   }
 
   p {
-    font-size: 15px;
-    font-weight: 300;
+    font-size: $font-size-default;
+    font-weight: $font-weight-default;
     color: $color-big-stone;
-    line-height: 1.5;
-    letter-spacing: 0.025em;
-    margin: 25px 0;
-
+    line-height: $line-height-default;
+    letter-spacing: $letter-spacing-default;
+    margin-bottom: $spacer;
   }
 
   p + ul {
@@ -774,29 +704,26 @@ body {
   }
 
   a {
-    font-size: 15px;
-    font-weight: 300;
-    color: $color-bermuda-gray;
-    line-height: 1.7;
-    letter-spacing: 0.025em;
-    text-decoration: underline;
-    margin: 25px 0;
+    color: $color-picton-blue;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
 
   }
 
   ol {
-    margin: 10px 30px;
-
+    margin: $spacer $spacer;
   }
 
   ul {
     list-style-type: square;
-    margin: 10px 30px;
+    margin: $spacer $spacer;
   }
 
   li {
-    font-weight: 300;
-    margin: 10px 0;
+    font-weight: inherit;
+    margin: .5rem auto;
     @extend .text;
 
     &:first-of-type {
@@ -818,6 +745,9 @@ body {
     font-weight: 500;
   }
 
+  pre {
+    margin-bottom: $spacer;
+  }
   code {
     font-family: 'Roboto Mono', monospace;
   }
@@ -889,25 +819,33 @@ body {
 
 }
 
-//Menu
-//#header {
-//  display: flex;
-//  justify-content: space-between;
-//  padding: 0 30px;
-//  position: fixed;
-//}
-
 .top-menu {
   display: none;
+  position: relative;
   justify-content: space-between;
-  position: fixed;
   height: 80px;
-  width: 100vw;
   padding: 0 10px;
-  background-color:  transparent;
+  background-color: $color-white-squeeze;
   z-index: 999;
-  border-bottom: 1px solid rgba($color-white-squeeze, 0.1);
-  transition: 0.3s ease-in all;
+
+  &.top-menu-light {
+    .logo {
+      background-image: url('../img/005-vamp/Logo/logo-long-colour.svg');
+      background-repeat: no-repeat;
+    }
+
+    .top-menu-item {
+      color: $color-big-stone;
+    }
+
+    .github-logo{
+      color: $color-big-stone;
+    }
+
+    .search-button {
+      color: $color-big-stone;
+    }
+  }
 
   @media all and (min-width: 1025px) {
     display: flex;
@@ -928,6 +866,7 @@ body {
     height: 40px;
     width: 120px;
     background-image: url('../img/005-vamp/Logo/logo-long-white.svg');
+    background-repeat: no-repeat;
     background-size: contain;
   }
 
@@ -965,39 +904,15 @@ body {
     height: 100%;
 
     &.active {
-      border-bottom: 1px solid $color-radical-red;
+      border-bottom: 3px solid $color-radical-red;
       font-weight: 500;
+      margin-bottom: -2px;
     }
   }
 
   .github-logo, .search-button {
     color: $color-white-squeeze;
     cursor: pointer;
-  }
-}
-
-// Top menu is considered active when the menu is not on top anymore at the landing page
-.top-menu.active {
-  background-color: white;
-  border-bottom: none;
-  box-shadow: 0 4px 2px -2px rgba($color-big-stone, 0.25);
-
-
-
-  .logo {
-    background-image: url('../img/005-vamp/Logo/logo-long-colour.svg');
-  }
-
-  .top-menu-item {
-    color: $color-big-stone;
-  }
-
-  .github-logo{
-    color: $color-big-stone;
-  }
-
-  .search-button {
-    color: $color-big-stone;
   }
 }
 
@@ -1181,11 +1096,12 @@ body {
 
 // Note box
 .admonition {
-  padding: 20px;
+  padding: $spacer;
   border-left: 5px solid;
   border-radius: 0 5px 5px 0;
   position: relative;
-  margin: 40px 0;
+  margin-top: 2 * $spacer;
+  margin-bottom: 2 * $spacer;
 
   .admonition-icon {
     position: absolute;
@@ -1217,11 +1133,11 @@ body {
 
   p {
     display: inline;
-    font-weight: 300;
+    font-weight: inherit;
   }
 
   li {
-    font-weight: 300;
+    font-weight: inherit;
   }
 
   &.note {
@@ -1233,7 +1149,7 @@ body {
     }
 
     .admonition-title {
-      color: #234B5F;
+      color: $color-blue-dianne;
     }
   }
 
@@ -1321,13 +1237,6 @@ body {
 
 .magnetic-logo {
   height: 40px;
-}
-
-.single-page {
-  .top-menu {
-    transition: none;
-    background-color: white;
-  }
 }
 
 .features-top {
@@ -1858,7 +1767,6 @@ pre + pre {
 }
 
 .dropdown {
-  margin: 20px 0;
   background-color: $color-white-squeeze;
   height: 40px;
   width: 240px;
@@ -1867,8 +1775,7 @@ pre + pre {
   border-radius: 5px;
   z-index: 100;
   display: none;
-
-
+  margin-bottom: 2 * $spacer;
 
   &__active {
     border-radius: 5px 5px 0 0;
@@ -2046,6 +1953,11 @@ pre + pre {
 .landing-page {
   .search-bar {
     opacity: 0;
+  }
+
+  .top-menu {
+    background-color: $color-big-stone !important;
+    border-bottom: 1px solid rgba($color-white-squeeze, 0.1) !important;
   }
 }
 

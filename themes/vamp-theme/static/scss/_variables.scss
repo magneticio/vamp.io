@@ -1,5 +1,8 @@
 /* Variables */
 
+
+$spacer: 20px;
+
 /* Grid */
 $container-width-desktop: 1160px;
 $container-width-laptop: 1018px;
@@ -14,6 +17,7 @@ $gutter-size: 40px;
 /* For naming colors use: // http://chir.ag/projects/name-that-color/ */
 $color-radical-red: #FF405E;
 $color-brick-red: #C33750;
+$color-picton-blue: #4EB6F6;
 $color-big-stone: #142D3C;
 $color-blue-dianne: #234B5F;
 $color-ming: #37647D;
@@ -22,14 +26,25 @@ $color-jungle-mist: #C3D2DC;
 $color-cascade: #96ADAA;
 $color-white-squeeze: #F0F5FA;
 
-/* Font-sizes */
-$font-size-biggest: 52px;
-$font-size-big: 40px;
+/* Typography */
+$font-size-biggest: 32px;
+$font-size-big: 24px;
 $font-size-medium: 24px;
 $font-size-medium-small: 15px;
-$font-size-small: 13px;
+$font-size-small: 14px;
+$font-size-default: 16px;
+
+$line-height-default: 1.9;
+
+$font-weight-lightest: 100;
+$font-weight-light: 300;
+$font-weight-default: 400;
+$font-weight-heavy: 500;
+
+$letter-spacing-default: 0.01em;
+$letter-spacing-wide: 0.05em;
 
 /* Margins */
-$small-margin: 20px;
-$medium-margin: 40px;
-$big-margin: 60px;
+$small-margin: $spacer;
+$medium-margin: 2 * $spacer;
+$big-margin: 3 * $spacer;
