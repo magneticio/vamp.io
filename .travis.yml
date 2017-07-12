@@ -24,8 +24,8 @@ install:
   - npm install
 
 script:
-  - if [ "$TRAVIS_BRANCH" = "develop" ]; then gulp build:staging
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then gulp build:prod
+  - if [ "$TRAVIS_BRANCH" == "develop" ]; then gulp build:staging; fi
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then gulp build:prod; fi
 
 # Set correct robots.txt and CNAME files
 
