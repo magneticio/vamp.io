@@ -19,7 +19,7 @@ Vamp is a JVM application and is typically deployed as a Docker container inside
 
 Vamp and the Vamp Gateway Agent require specific components in your architecture to handle orchestration (like a database for persistence data, a key-value store for proxy configurations, and elasticsearch for aggregated metrics). There is no set architecture required for running Vamp and every use case or specific combination of tools and platforms can have its own set up.
 
-#### Example topology
+### Example topology
 The below diagram should be used more as an overview than required architecture. For example, in this diagram the Mesos/Marathon stack and Elasticsearch are included even though these are not a hard dependency and can be replaced by f.e. Kubernetes as a container-scheduler and cluster-manager and in-memory for aggregated metrics. Vamp can be configured to run with other container schedulers, log-aggregators, key-value and event-stores.
 
 ![architecture](/images/diagram/v095/architecture_and_components.png)
