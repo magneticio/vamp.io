@@ -1,6 +1,8 @@
-# New vamp.io
+# vamp.io
 
-This is the source for the new [vamp.io](http://vamp.io) site. 
+[![Build Status](https://travis-ci.org/magneticio/vamp.io.svg?branch=master)](https://travis-ci.org/magneticio/vamp.io)
+
+This is the source for the [vamp.io](http://vamp.io) site. 
 ## Setup HUGO
     
 1. Clone this repo
