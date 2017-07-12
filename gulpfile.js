@@ -49,8 +49,8 @@ productionBase +='\ntheBaseUrl = "'+ prodUrl + '";';
 productionBase +='\n</script>';
 
 let stagingBase = '\n<script type="text/javascript">';
-productionBase +='\ntheBaseUrl = "'+ stagingUrl + '";';
-productionBase +='\n</script>';
+stagingBase +='\ntheBaseUrl = "'+ stagingUrl + '";';
+stagingBase +='\n</script>';
 
 gulp.task('set-base:development', [], function() {
     fs.writeFileSync('./themes/vamp-theme/layouts/partials/base-url.html', developmentBase);
@@ -68,6 +68,6 @@ gulp.task('build-search-index',['sass:dev'], shell.task(['node ./buildSearchInde
 gulp.task('hugo', ['sass:dev', 'build-search-index'], shell.task(['hugo']));
 
 gulp.task('build:prod', ['hugo', 'set-base:production', 'js']);
-gulp.task('build:prod', ['hugo', 'set-base:staging', 'js']);
+gulp.task('build:staging', ['hugo', 'set-base:staging', 'js']);
 gulp.task('build:dev', ['hugo', 'set-base:development', 'js']);
 
