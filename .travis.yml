@@ -31,9 +31,9 @@ script:
 
 before_deploy: |
   if [ $TRAVIS_BRANCH == "master" ]; then
-    cd ./public && cp ../CNAME ./CNAME && cp ../robots.prod.txt ./robots.txt
+    cp ./CNAME ./public/CNAME && cp ./robots.prod.txt ./public/robots.txt
   else
-    cd ./public && cp ../robots.dev.txt ./robots.txt
+    cp ./robots.dev.txt ./public/robots.txt
   fi
 
 # Deploy master to Github
