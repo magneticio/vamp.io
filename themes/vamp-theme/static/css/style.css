@@ -585,12 +585,14 @@ body {
 .page {
   min-height: 100vh;
   position: relative; }
-  .page.documentation .header {
-    color: #FF405E;
-    margin: 40px 0; }
-  @media all and (min-width: 1025px) {
-    .page.documentation .content {
-      padding-top: 60px; } }
+  .page.documentation {
+    margin-top: 20px; }
+    .page.documentation .header {
+      color: #FF405E;
+      margin: 40px 0; }
+    @media all and (min-width: 1025px) {
+      .page.documentation .content {
+        padding-top: 40px; } }
 
 .header {
   font-weight: 100;

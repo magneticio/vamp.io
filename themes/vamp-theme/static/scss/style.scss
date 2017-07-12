@@ -14,6 +14,8 @@ body {
 
   &.documentation {
 
+    margin-top: $spacer;
+
     .header {
       color: $color-radical-red;
       margin: 40px 0;
@@ -21,7 +23,7 @@ body {
 
     .content {
       @media all and (min-width: 1025px) {
-        padding-top: 3 * $spacer;
+        padding-top: 2 * $spacer;
       }
 
     }
