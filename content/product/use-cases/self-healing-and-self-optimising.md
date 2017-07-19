@@ -7,7 +7,7 @@ menu:
         weight: 60
 ---
 
-_"Our website traffic can be unpredictable, it's hard to plan and dimension the exact resources we're going to need to run within SLA's"_
+> "Our website traffic can be unpredictable, it's hard to plan and dimension the exact resources we're going to need to run within SLA's"
 
 Why overdimension your whole system? Using Vamp you can auto-scale individual services based on clearly defined SLAs (Service Level Agreements). It's also easy to create advanced workflows for up and down scaling, based on your application or business specific requirements. Vamp can also make sure that unhealthy and failing services are corrected based on clearly defined metrics and treshholds.
 

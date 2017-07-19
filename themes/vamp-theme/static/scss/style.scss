@@ -947,7 +947,7 @@ body {
 }
 
 .laptop {
-  z-index: 1000;
+  z-index: 100;
   transform: translateY(16px);
   position: relative;
   max-width: 70%}
@@ -1617,7 +1617,6 @@ pre + pre {
 }
 
 #mobile-menu {
-  position: fixed;
   top: 40px;
   z-index: 500;
   width: 100%;

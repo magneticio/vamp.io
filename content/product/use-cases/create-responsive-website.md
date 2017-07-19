@@ -8,7 +8,7 @@ menu:
         weight: 20
 ---
 
-_“We need to upgrade our website frontend to make it responsive”_
+> “We need to upgrade our website frontend to make it responsive”
   
 Developing a responsive web frontend is often a major undertaking, requiring a large investment of hours and extensive testing. Until you go live, it's difficult to predict how the upgrade will be received by users - will it actually improve important metrics, will it work on all browser, devices and resolutions, etc.?   
 

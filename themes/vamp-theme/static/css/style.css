@@ -378,6 +378,12 @@ button:focus {
   font-family: "PT Serif", serif;
   font-weight: inherit; }
 
+.markdowned blockquote p {
+  color: #6991AA;
+  font-family: "PT Serif", serif;
+  font-weight: inherit;
+  font-size: 24px; }
+
 .markdowned strong {
   font-weight: 500; }
 
@@ -1104,7 +1110,7 @@ body {
       color: #1AA379; }
 
 .laptop {
-  z-index: 1000;
+  z-index: 100;
   -webkit-transform: translateY(16px);
   transform: translateY(16px);
   position: relative;
@@ -1628,7 +1634,6 @@ pre + pre {
       border-bottom: 1px #F0F5FA solid; }
 
 #mobile-menu {
-  position: fixed;
   top: 40px;
   z-index: 500;
   width: 100%;

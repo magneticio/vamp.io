@@ -160,6 +160,15 @@
     font-weight: inherit;
   }
 
+  blockquote {
+    p {
+      color: $color-bermuda-gray;
+      font-family: "PT Serif", serif;
+      font-weight: inherit;
+      font-size: $font-size-big;
+    }
+  }
+
   strong {
     font-weight: 500;
   }

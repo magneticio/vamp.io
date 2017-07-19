@@ -8,7 +8,7 @@ menu:
         weight: 40
 ---
 
-_“We want to move to microservices, but we can’t upgrade all components at once and want to do a gradual migration”_
+> “We want to move to microservices, but we can’t upgrade all components at once and want to do a gradual migration”
   
 Refactoring a monolithic application to a microservice architecture is a major project. A big bang style re-write to upgrade all components at once is a risky approach and requires a large investment in development, testing and refactoring.
 

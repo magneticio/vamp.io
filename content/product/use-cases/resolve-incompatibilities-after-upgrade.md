@@ -8,7 +8,7 @@ menu:
         weight: 30
 ---
 
-_“We upgraded our website self-management portal, but our biggest client is running an unsupported old browser version”_
+> “We upgraded our website self-management portal, but our biggest client is running an unsupported old browser version”
   
 Leaving an important client unable to access your services after a major upgrade is a big and potentially costly problem. The traditional response would be to rollback the upgrade asap - if that's even possible.  
 

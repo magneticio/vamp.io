@@ -7,7 +7,7 @@ menu:
         weight: 50
 ---
 
-_"How would our system react if... the number of users increased x10 ... the response time of a service increased with 20 seconds ... an entire tier of our application would be killed ..."_  
+> "How would our system react if... the number of users increased x10 ... the response time of a service increased with 20 seconds ... an entire tier of our application would be killed ..."  
 
 Your company might dream of overnight success, but what if it actually happened? Stress tests rarely cater to extreme real world circumstances and usage patterns, and are often done on systems that are not identical to production environments. It's not uncommon the bottleneck sits in the system generating the load itself, so it's difficult to predict how your microservices would actually scale or to know if your planned responses will really help.
 

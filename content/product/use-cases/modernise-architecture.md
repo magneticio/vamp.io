@@ -8,7 +8,7 @@ menu:
         name: "Modernise architecture"
 ---
 
-_"We want to switch to a NoSQL database for our microservices, but don't know which solution will run best for our purposes"_
+> "We want to switch to a NoSQL database for our microservices, but don't know which solution will run best for our purposes"
 
 With multiple NoSQL database options available, it's hard to know which is the best fit for your specific circumstances. You can try things out in a test lab, but the real test comes when you go live with production load.
 
