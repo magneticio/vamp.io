@@ -3,7 +3,7 @@ date: 2017-02-14T09:00:00+00:00
 title: Feature list
 menu:
   main:
-    parent: "why-use-vamp-top"
+    parent: "product-top"
     weight: 50
 ---
 
@@ -12,7 +12,6 @@ Contact us for details of the [extended features](/why-use-vamp/enterprise-editi
 
 * Container-scheduler agnostic API
 * Graphical UI and dashboard
-* In-screen help
 * YAML configuration blueprints with support for dependencies, clusters and environment variables
 * Docker compose import
 * Browsable artifact revision history
@@ -22,7 +21,7 @@ Contact us for details of the [extended features](/why-use-vamp/enterprise-editi
 * CLI for integration with common CI/CD pipelines
 * Events API and Server-Sent Events (SSE) stream, integrates with Elastic Search and Kibana for custom Kibana dashboards
 * Multi-level metrics aggregation
-* JavaScript-based workflow automation, allowing for metrics-driven autoscaling, canary releasing and other optimisation patterns
+* Wrkflow automation, allowing for metrics-driven autoscaling, canary releasing and other optimisation patterns
 * Service discovery based on ports, virtual host names or external services (consul etc.)
 * Percentage and condition based programmable routing
 * Automatic load-balancing for scaled services

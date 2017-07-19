@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: Vacancies
 menu:
   main:
-    parent: "about-vamp"
+    parent: "about"
     weight: 30
 ---
 ## Help us create the future!

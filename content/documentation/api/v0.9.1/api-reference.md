@@ -2,7 +2,7 @@
 date: 2016-09-13T09:00:00+00:00
 title: API Reference
 menu:
-  main:
+  sidenav:
     parent: "API"
     identifier: "api-reference-0.9.1"
     weight: 12

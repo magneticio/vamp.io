@@ -18,6 +18,28 @@ function documentReady() {
 
   });
 
+
+  if (thePath === '/') {
+    // initialize tying on hero text
+    var typed = new Typed('.typed', {
+      stringsElement: '.typed-strings',
+      typeSpeed: 80,
+      backDelay: 1500,
+      showCursor: true,
+      autoInsertCss: true,
+      loop: true
+    });
+  }
+  // initialize top menu drop downs
+  var popoverOptions = {
+    trigger: 'hover',
+    animation: 'pop'
+  };
+
+  // $('.top-nav-product').webuiPopover({title:'Title 1', content:'lalala', trigger: 'hover', animation: 'pop' });
+  // $('.top-nav-developers').webuiPopover({title:'Title 1', content:'lalala', trigger: 'hover', animation: 'pop' });
+
+
   // make the top menu light on all pages except the homepage
   if (thePath !== '/') {
     $("#header").addClass("top-menu-light");

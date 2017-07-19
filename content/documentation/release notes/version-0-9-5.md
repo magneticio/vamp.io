@@ -2,7 +2,7 @@
 date: 2017-03-14T09:00:00+00:00
 title: Version 0.9.5
 menu:
-  main:
+  sidenav:
     parent: "Release notes"
     name: Version 0.9.5
     weight: 994

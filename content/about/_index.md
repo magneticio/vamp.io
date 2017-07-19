@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: About us
 menu:
   main:
-    parent: "about-vamp"
+    parent: "about"
     weight: 10
 ---
 Vamp is being developed by Magnetic.io from the heart of beautiful [Amsterdam](http://www.iamsterdam.com/en/).  

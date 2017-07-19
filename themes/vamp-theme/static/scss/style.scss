@@ -1,6 +1,8 @@
 @import 'reset';
 @import 'variables';
-@import 'grid';
+@import 'cursor';
+@import 'cards';
+@import 'markdown';
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -33,36 +35,34 @@ body {
 // Fonts
 .header {
   font-weight: 100;
-  text-transform: uppercase;
   letter-spacing: 0.1em;
   color: $color-big-stone;
   font-size: 26px;
 
   @media all and (min-width: 641px) {
-    font-size: 52px;
+    font-size: 42px;
   }
 }
 
 .h1 {
   font-size: 26px;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.05em;
-  color: $color-big-stone;
+  color: $color-white-squeeze;
+  padding-top: $spacer;
+
+  .typed {
+    font-weight: 500;
+    font-size: 52px;
+    color: white;
+  }
+
+  &.hero-text {
+    margin-bottom: $spacer;
+  }
 
   @media all and (min-width: 641px) {
-    font-size: 40px;
-  }
-
-  &:not(:first-child):not(:last-child) {
-    margin: $small-margin 0;
-  }
-
-  &:first-child {
-    margin-bottom: $small-margin;
-  }
-
-  &:last-child {
-    margin-bottom: $small-margin;
+    font-size: 32px;
   }
 }
 
@@ -74,11 +74,13 @@ body {
 
 
     @media all and (min-width: 1025px) {
-    font-size: 22px;
+    font-size: 20px;
+    line-height: 1.5;
   }
 
   @media all and (min-width: 1201px) {
-    font-size: 24px;
+    font-size: 20px;
+    line-height: 1.5;
   }
 
   &:not(:first-child):not(:last-child) {
@@ -97,7 +99,7 @@ body {
 .h3 {
   font-weight: 500;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: $font-size-small;
   letter-spacing: 0.1em;
   color: $color-cascade;
 }
@@ -131,18 +133,22 @@ body {
 
 // Buttons
 .button {
-  @extend .h3;
-  //font-weight: 300;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.1em;
   border: none;
   height: 40px;
-  min-width: 120px;
-  padding: 0 40px;
+  min-width: 160px;
+  padding: .5rem 1.5rem;
   border-radius: 5px;
   transition: all 0.15s ease-in-out;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
+  text-align: -webkit-center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  line-height: $line-height-default;
 
   p {
     line-height: 1;
@@ -245,11 +251,10 @@ body {
 .lander-row {
   display: flex;
   justify-content: center;
-  padding: 8px 0;
+  padding: 22px 0;
 
   @media all and (min-width: 321px) {
-    padding: 8px 0;
-
+    padding: 22px 0;
   }
 
   @media all and (min-width: 641px) {
@@ -263,41 +268,13 @@ body {
   }
 
   @media all and (min-width: 1025px) {
-    padding: 80px 0;
+    padding: 40px 0;
 
   }
 
   @media all and (min-width: 1201px) {
-   padding: 80px 0;
+   padding: 40px 0;
   }
-
-  &--small-padding {
-    @media all and (min-width: 321px) {
-      padding: 4px 0;
-
-    }
-
-    @media all and (min-width: 641px) {
-      padding: 11px 0;
-
-    }
-
-    @media all and (min-width: 769px) {
-      padding: 20px 0;
-
-    }
-
-    @media all and (min-width: 1025px) {
-      padding: 40px 0;
-
-    }
-
-    @media all and (min-width: 1201px) {
-      padding: 40px 0;
-    }
-
-  }
-
 
   &--blue {
     background-color: $color-big-stone;
@@ -309,10 +286,17 @@ body {
 
   &--white {
     background-color: white;
+
+    .h1 {
+      color: $color-blue-dianne;
+    }
   }
 
   &--grey {
     background-color: $color-white-squeeze;
+    .h1 {
+      color: $color-blue-dianne;
+    }
   }
 
   &--red {
@@ -332,31 +316,32 @@ body {
 // Ribbons
 
 .hero-space {
-  padding-top: 14px + 40px;
+  $hero-spacer: 2 * $spacer;
+
+  padding-top: 14px + $hero-spacer;
   padding-bottom: 0;
   background: linear-gradient(45deg, $color-blue-dianne, $color-big-stone);
   position: relative;
 
   @media all and (min-width: 321px) {
-    padding-top: 14px + 80px;
+    padding-top: 14px + $hero-spacer;
   }
 
   @media all and (min-width: 641px) {
-    padding-top: 20px + 80px;
+    padding-top: 20px + $hero-spacer;
   }
 
   @media all and (min-width: 769px) {
-    padding-top: 60px + 80px;
+    padding-top: 60px + $hero-spacer;
   }
 
   @media all and (min-width: 1025px) {
-    padding-top: 80px + 80px;
+    padding-top: 80px + $hero-spacer;
   }
 
   @media all and (min-width: 1201px) {
-    padding-top: 80px + 80px;
+    padding-top: 80px + $hero-spacer;
   }
-
 
   .bottom-background {
     position: absolute;
@@ -583,237 +568,6 @@ body {
   }
 }
 
-// Markdown implementation
-.markdowned {
-  h1 {
-   font-size: $font-size-biggest;
-   font-weight: $font-weight-lightest;
-   color: $color-radical-red;
-   line-height: $line-height-default;
-   letter-spacing: $letter-spacing-default;
-    margin-bottom: 2 * $spacer;
-  }
-
-  h2 {
-    font-size: $font-size-big;
-    font-weight: $font-weight-heavy;
-    color: $color-big-stone;
-    line-height: $line-height-default;
-    letter-spacing: $letter-spacing-wide;
-    margin-bottom: $spacer;
-  }
-
-  h2 + p {
-    margin-top: 0;
-  }
-
-  h2 + ul {
-    margin-top: 0;
-  }
-
-  h3 {
-    font-size: $font-size-default;
-    font-weight: $font-weight-heavy;
-    color: $color-big-stone;
-    line-height: $line-height-default;
-    text-transform: uppercase;
-    letter-spacing: $letter-spacing-default;
-    margin-bottom: $spacer;
-
-  }
-
-  h3 + h4 {
-    margin-top: 0;
-  }
-
-  h3 + p {
-    margin-top: 0;
-  }
-
-  h3 + ul {
-    margin-top: 0;
-  }
-
-  h4 {
-    font-size: $font-size-small;
-    font-weight: $font-weight-heavy;
-    color: $color-big-stone;
-    line-height: $line-height-default;
-    text-transform: uppercase;
-    letter-spacing: $letter-spacing-default;
-    margin-bottom:  .5 * $spacer;
-  }
-
-  h4 + h5 {
-    margin-top: 0;
-  }
-
-  h4 + p {
-    margin-top: 0;
-  }
-
-  h4 + ul {
-    margin-top: 0;
-  }
-
-  h5 {
-    font-size: 13px;
-    font-weight: 500;
-    color: $color-radical-red;
-    line-height: 1.8;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin: 25px 0 0 0;
-  }
-
-  h5 + h6 {
-    margin-top: 0;
-  }
-
-  h5 + p {
-    margin-top: 0;
-  }
-
-  h5 + ul {
-    margin-top: 0;
-  }
-
-  h6 {
-    font-size: 15px;
-    font-weight: 500;
-    color: $color-big-stone;
-    line-height: 1.7;
-    letter-spacing: 0.025em;
-    margin: 25px 0;
-
-  }
-
-  p {
-    font-size: $font-size-default;
-    font-weight: $font-weight-default;
-    color: $color-big-stone;
-    line-height: $line-height-default;
-    letter-spacing: $letter-spacing-default;
-    margin-bottom: $spacer;
-  }
-
-  p + ul {
-    margin-top: 0;
-  }
-
-  p + ol {
-    margin-top: 0;
-  }
-
-  a {
-    color: $color-picton-blue;
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-
-  }
-
-  ol {
-    margin: $spacer $spacer;
-  }
-
-  ul {
-    list-style-type: square;
-    margin: $spacer $spacer;
-  }
-
-  li {
-    font-weight: inherit;
-    margin: .5rem auto;
-    @extend .text;
-
-    &:first-of-type {
-      margin-top: 0;
-    }
-
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-  }
-
-
-  em {
-    color: $color-big-stone;
-    font-weight: 200;
-  }
-
-  strong {
-    font-weight: 500;
-  }
-
-  pre {
-    margin-bottom: $spacer;
-  }
-  code {
-    font-family: 'Roboto Mono', monospace;
-  }
-
-  p > code, li > code {
-    background-color: #F7F8F9;
-    padding: 0 5px;
-  }
-
-  .hljs {
-    padding: 40px 20px 40px 20px;
-    font-size: 14px;
-    background-color: #F7F8F9;
-    span {
-      font-weight: 300;
-    }
-  }
-
-  table {
-    margin: 40px 0;
-    width: 100%;
-  }
-
-  th {
-    @extend .text-header;
-    text-transform: capitalize;
-  }
-
-  td, th {
-    text-align: left;
-    padding: 20px 40px;
-
-    &:first-of-type {
-      padding-left: 10px;
-    }
-
-    &:last-of-type {
-      padding-right: 10px;
-    }
-
-    border-bottom: 1px solid $color-white-squeeze;
-  }
-
-  td {
-    @extend .text;
-  }
-
-  tr {
-    &:last-of-type {
-      td {
-        transition: 0.1s ease-in background-color;
-        border-bottom: none;
-      }
-    }
-  }
-
-  tr:hover {
-    td {
-      background-color: $color-white-squeeze;
-    }
-  }
-
-}
-
 .date {
   @extend .text;
   color: $color-bermuda-gray;
@@ -838,6 +592,10 @@ body {
 
     .top-menu-item {
       color: $color-big-stone;
+
+      &:hover {
+        color: $color-radical-red;
+      }
     }
 
     .github-logo{
@@ -899,11 +657,16 @@ body {
     align-items: center;
     padding: 0 20px;
 
-    color: white;
+    color: $color-white-squeeze;
     font-size: 15px;
     font-weight: 300;
     text-decoration: none;
     height: 100%;
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+      color: white;
+    }
 
     &.active {
       border-bottom: 3px solid $color-radical-red;
@@ -938,7 +701,8 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 
   .button {
     min-width: 180px;
@@ -1183,14 +947,13 @@ body {
 }
 
 .laptop {
-  transform: translateY(40px);
+  z-index: 1000;
+  transform: translateY(16px);
   position: relative;
-
-  max-width: 70%;
-}
+  max-width: 70%}
 
 .image--smaller {
-  width: 60%;
+  height: 120px;
 }
 
 .vamp-bat {
@@ -1557,10 +1320,6 @@ pre + pre {
     transform: translate(0,3px);
   }
 
-}
-
-.third-icon + h2 {
-  margin-top: 0 !important;
 }
 
 #partners-row {

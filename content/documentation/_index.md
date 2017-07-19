@@ -1,19 +1,11 @@
 ---
-date: 2016-09-13T09:00:00+00:00
-title: Why use Vamp?
-aliases:
-    - /why-use-vamp/
+date: 2017-07-19T09:00:00+00:00
+title: Documentation
 menu:
   main:
-    parent: "why-use-vamp-top"
-    identifier: "why-use-vamp-page"
+    parent: "developers-top"
     weight: 5
 ---
-
-We recognise the pain and risk involved with delivering microservice applications.  We've been there too - facing downtime and unexpected issues while transitioning from one release to the next.
-In microservice architectures, these concerns can quickly multiply. It's all too easy to get stuck dealing with the added complexities and miss out on the potential benefits.
-
-![](/images/typical-systems-vs-vamp.png)
 
 ## What is Vamp?
 
@@ -33,8 +25,7 @@ After deployment, Vamp workflows monitor running applications and can act automa
 
 
 {{< note title="What next?" >}}
-* [Try Vamp](/documentation/installation/hello-world)
-* Read the full [Vamp feature list](/why-use-vamp/feature-list/)
-* [What Vamp offers compared to other tools and services](/why-use-vamp/vamp-compared-to/proxies-and-load-balancers/)
-* [How Vamp works](/documentation/how-vamp-works/architecture-and-components)
+* [Learn how Vamp works](/documentation/how-vamp-works/architecture-and-components/)
+* Get started with [installation](/documentation/installation/overview)
+* Dive into one of our [tutorials](/documentation/tutorials/overview)
 {{< /note >}}

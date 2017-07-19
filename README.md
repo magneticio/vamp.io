@@ -133,4 +133,6 @@ aliases:
     - /using-vamp/
 ```
 
+## Styling & CSS
 
+This site uses the Bootstrap V3 grid.

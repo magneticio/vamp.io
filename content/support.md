@@ -1,6 +1,8 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: support   
+title: support
+type: page
+layout: overview
 ---
 Vamp is actively developed by Magnetic.io. Vamp Community Edition is open source and Apache 2.0 licensed. For details of the **Vamp Enterprise Edition** please check the [Vamp feature matrix](/why-use-vamp/enterprise-edition/) or [contact us](mailto:info@magnetic.io) to discuss your requirements, pricing and features.
 

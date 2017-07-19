@@ -1,0 +1,38 @@
+.card {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.08), inset 0 0 0 1px #DBE3E7;
+  color: #536171;
+  display: block;
+  position: relative;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  &:hover {
+    transform: translateY(-10px);
+  }
+}
+
+.card-title {
+  font-weight: 500 !important;
+}
+
+.card-text {
+  margin-bottom: $spacer;
+}
+
+.card-image {
+  max-width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.card-content {
+  text-align: center;
+  padding: $spacer $spacer 2 * $spacer $spacer;
+  margin-bottom: 2 * $spacer;
+  min-height: 120px;
+
+  .h2 {
+    color: $color-blue-dianne !important;
+  }
+}

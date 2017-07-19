@@ -1,31 +1,24 @@
 <nav aria-label="Header" id="header" class="top-menu">
-  <div class="left">
-    <a href="/">
-      <div id="logo" class="logo"></div>
-    </a>
-  </div>
-
-  <div class="right">
-    <div class="top-menu-items" id="top-menu-items">
-      {{ range .Site.Menus.main }}
-        <a href="{{.URL}}" data-parenturl="{{.URL}}" class="top-menu-item">{{.Name}}</a>
-      {{ end }}
-    </div>
-
-    <div class="download">
-      <a href="/documentation/installation/hello-world/" class="button button--red">
-        Try Vamp
+    <div class="left">
+      <a href="/">
+        <div id="logo" class="logo"></div>
+        <span class="poporve"></span>
       </a>
     </div>
 
-    <a href="https://github.com/magneticio/vamp" target="_blank" class="github-logo">
-      <i class="fa fa-2x fa-github" aria-hidden="true"></i>
-    </a>
+    <div class="right">
+      <div class="top-menu-items" id="top-menu-items">
+        {{ range .Site.Menus.topnav }}
+        <a href="{{.URL}}" data-parenturl="{{.URL}}" class="top-menu-item top-nav-{{.Identifier}}">{{.Name}}</a>
+        {{ end }}
+      </div>
 
-    <div class="search-button">
-      <i class="fa fa-lg fa-search"></i>
+      <div class="download">
+        <a href="/documentation/installation/hello-world/" class="button button--red">
+          Try Vamp
+        </a>
+      </div>
     </div>
-  </div>
 </nav>
 
 <nav aria-label="Header" id="mobile-header">

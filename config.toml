@@ -11,7 +11,7 @@ googleAnalytics = ""
 [params]
 	# General information
 	author = "magnetic.io"
-	description = "Vamp - Deploy and manage microservices with power and ease."
+	description = "Canary releasing and autoscaling for microservice systems"
 	copyright = "Released under the Apache 2 license"
 
 	# Repository
@@ -54,11 +54,39 @@ googleAnalytics = ""
 	smartDashes = true
 	plainIDAnchors = true
 
-# Top Menu Items
+
+# Top nav
+
+[[menu.topnav]]
+    name = "Product"
+    identifier = "product"
+    url = "/product/"
+    weight = 10
+
+[[menu.topnav]]
+	name   = "Developers"
+    identifier = "developers"
+	url    = "/documentation/"
+	weight = 30
+
+[[menu.topnav]]
+	name   = "Support"
+	identifier = "support"
+	url    = "/support/"
+	weight = 40
+
+[[menu.topnav]]
+	name   = "Blog"
+	identifier = "blog"
+	url    = "/blog/"
+	weight = 50
+
+# Main categories
+
 [[menu.main]]
 	name   = "Why use Vamp?"
-	url    = "/why-use-vamp/why-use-vamp/"
-	identifier = "why-use-vamp-top"
+	url    = "/product/why-use-vamp/"
+	identifier = "product-top"
 	weight = 10
 
 [[menu.main]]
@@ -76,23 +104,18 @@ googleAnalytics = ""
 	url    = "/support/"
 	weight = 40
 
-[[menu.main]]
-	name   = "About us"
-	url    = "/about/about_us/about"
-	identifier = "about-vamp"
-	weight = 50
+# Side Menu Items, Parent should match the identifier of the main categories
 
-# Side Menu Items, Parent should match the identifier of the Top Menu Item
 [[menu.main]]
 	name = "Use cases"
-	url = "/why-use-vamp/use-cases/use-cases"
-	parent = "why-use-vamp-top"
+	url = "/product/use-cases"
+	parent = "product-top"
 	weight = 10
 
 [[menu.main]]
 	name  = "Vamp compared to..."
-	url   = "/why-use-vamp/vamp-compared-to/proxies-and-load-balancers/"
-	parent = "why-use-vamp-top"
+	url   = "/product/vamp-compared-to/proxies-and-load-balancers/"
+	parent = "product-top"
 	weight = 30
 
 [[menu.main]]
@@ -102,8 +125,9 @@ googleAnalytics = ""
 	weight = 10
 
 [[menu.main]]
-	name = "Using Vamp"
-	url = "documentation/using-vamp/artifacts/"
+	name = "Install"
+	identifier = "Installation"
+	url = "/documentation/installation/overview"
 	parent = "Documentation"
 	weight = 20
 
@@ -114,9 +138,8 @@ googleAnalytics = ""
 	weight = 30
 
 [[menu.main]]
-	name = "Install"
-	identifier = "Installation"
-	url = "/documentation/installation/overview"
+	name = "Using Vamp"
+	url = "documentation/using-vamp/artifacts/"
 	parent = "Documentation"
 	weight = 40
 
