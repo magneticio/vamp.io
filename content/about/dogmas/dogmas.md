@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: Dogmas
 menu:
   main:
-    parent: "about"
+    parent: "About"
     weight: 20
 ---
 ## 1 Build revolutionarily

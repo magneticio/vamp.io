@@ -95,14 +95,16 @@ googleAnalytics = ""
 	weight = 20
 
 [[menu.main]]
-	name   = "Resources"
-	url    = "/resources/downloads/"
-	weight = 30
-
-[[menu.main]]
 	name   = "Support"
 	url    = "/support/"
+	weight = 30
+
+
+[[menu.main]]
+	name   = "About"
+	url    = "/about/"
 	weight = 40
+
 
 # Side Menu Items, Parent should match the identifier of the main categories
 
