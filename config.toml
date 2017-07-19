@@ -18,7 +18,7 @@ googleAnalytics = ""
 	provider = "GitHub"
 	repo_url = "https://github.com/magneticio/vamp"
 
-	version = "0.9.0"
+	version = "0.9.5"
 	logo = "images/logo.svg"
 	favicon = "images/logo.svg"
 
@@ -84,7 +84,7 @@ googleAnalytics = ""
 # Main categories
 
 [[menu.main]]
-	name   = "Why use Vamp?"
+	name   = "Product"
 	url    = "/product/why-use-vamp/"
 	identifier = "product-top"
 	weight = 10

@@ -3,7 +3,7 @@ date: 2017-07-19T09:00:00+00:00
 title: What is Vamp?
 menu:
   main:
-    parent: "developers-top"
+    parent: "Documentation"
     weight: 5
 ---
 
