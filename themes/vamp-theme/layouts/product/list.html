@@ -1,0 +1,34 @@
+{{ partial "head" . }}
+
+{{ partial "nav" . }}
+
+<div class="page">
+  <div class="lander-row--grey">
+    <div class="container py-5">
+      <div class="row text-center">
+        <div class="col-sm-12">
+          <h1 class="h1 mb-5">Learn how Vamp helps your organisation</h1>
+          <img src="img/vendor/Speed.svg" alt="speed">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      {{ $currentNode := .}}
+      {{ range .Site.Menus.main }}
+      {{ range .Children }}
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-content">
+            <h1 class="card-title">{{.Name}}</h1>
+          </div>
+        </div>
+      </div>
+      {{end}}
+      {{end}}
+    </div>
+  </div>
+</div>
+
+{{ partial "footer" .}}

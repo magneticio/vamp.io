@@ -1,9 +1,11 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Overview
+url: /product/use-cases/
 aliases:
-    - /product/use-cases/
     - /why-use-vamp/use-cases/
+type: page
+layout: default    
 menu:
     main:
       parent: "Use cases"

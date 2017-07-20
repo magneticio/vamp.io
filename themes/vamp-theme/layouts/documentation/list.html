@@ -1,0 +1,24 @@
+{{ partial "head" . }}
+
+{{ partial "nav" . }}
+
+<div class="page container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="side-menu" id="side-menu">
+        {{ $currentNode := .}}
+        {{ range .Site.Menus.main }}
+          {{ range .Children }}
+          <div class="card">
+            <div class="card-content">
+              <p>{{.Name}}</p>
+            </div>
+          </div>
+          {{end}}
+        {{end}}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ partial "footer" .}}
