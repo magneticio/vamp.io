@@ -4,6 +4,8 @@ title: Why use Vamp?
 aliases:
     - /why-use-vamp/
     - /product/why-use-vamp/
+type: page
+layout: overview
 menu:
   main:
     parent: "product-top"

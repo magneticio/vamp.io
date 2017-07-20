@@ -105,75 +105,85 @@ googleAnalytics = ""
 	url    = "/about/"
 	weight = 40
 
-
-# Side Menu Items, Parent should match the identifier of the main categories
-
-[[menu.main]]
-	name = "Use cases"
-	url = "/product/use-cases"
+[[menu.product]]
+	name = "Why Vamp?"
+	url = "/product"
 	parent = "product-top"
 	weight = 10
 
-[[menu.main]]
+
+[[menu.product]]
+	name = "Use cases"
+	url = "/product/use-cases"
+	parent = "product-top"
+	weight = 20
+
+[[menu.product]]
 	name  = "Vamp compared to..."
 	url   = "/product/vamp-compared-to/proxies-and-load-balancers/"
 	parent = "product-top"
 	weight = 30
 
-[[menu.main]]
+[[menu.product]]
+	name  = "Vamp Enterprise Edition (EE)."
+	url   = "/product/enterprise-edition"
+	parent = "product-top"
+	weight = 40
+
+[[menu.documentation]]
 	name	= "How Vamp works"
 	url = "/documentation/how-vamp-works/architecture-and-components/"
 	parent = "Documentation"
 	weight = 10
 
-[[menu.main]]
+[[menu.documentation]]
 	name = "Install"
 	identifier = "Installation"
 	url = "/documentation/installation/overview"
 	parent = "Documentation"
 	weight = 20
 
-[[menu.main]]
+[[menu.documentation]]
 	name = "Tutorials"
 	url = "/documentation/tutorials/overview"
 	parent = "Documentation"
 	weight = 30
 
-[[menu.main]]
+[[menu.documentation]]
 	name = "Using Vamp"
 	url = "documentation/using-vamp/artifacts/"
 	parent = "Documentation"
 	weight = 40
 
-[[menu.main]]
+[[menu.documentation]]
 	name = "Configure"
 	identifier = "Configuration"
 	url = "/documentation/configure"
 	parent = "Documentation"
 	weight = 50
 
-[[menu.main]]
+[[menu.documentation]]
 	name = "Troubleshoot"
 	identifier = "Troubleshooting"
 	url = "/documentation/troubleshoot"
 	parent = "Documentation"
 	weight = 60
 
-[[menu.main]]
+[[menu.documentation]]
 	name = "API documentation"
 	identifier = "API"
 	url = "/documentation/api/api-reference"
 	parent = "Documentation"
 	weight = 70
 
-[[menu.main]]
+[[menu.documentation]]
 	name = "CLI documentation"
 	identifier = "CLI"
 	url = "/documentation/cli/cli-reference/"
 	parent = "Documentation"
 	weight = 80
 
-[[menu.main]]
+[[menu.documentation]]
 	name = "Release notes"
 	url = "/documentation/release-notes/"
 	parent = "Documentation"

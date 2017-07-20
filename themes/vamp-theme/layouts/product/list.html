@@ -3,11 +3,11 @@
 {{ partial "nav" . }}
 
 <div class="page">
-  <div class="lander-row--grey">
+  <div class="lander-row--grey mb-5">
     <div class="container py-5">
       <div class="row text-center">
         <div class="col-sm-12">
-          <h1 class="h1 mb-5">Learn how Vamp helps your organisation</h1>
+          <h2 class="h2 mb-5">Learn how Vamp can help your organisation</h2>
           <img src="img/vendor/Speed.svg" alt="speed">
         </div>
       </div>
@@ -16,7 +16,7 @@
   <div class="container">
     <div class="row">
       {{ $currentNode := .}}
-      {{ range .Site.Menus.main }}
+      {{ range .Site.Menus.product }}
       {{ range .Children }}
       <div class="col-sm-3">
         <div class="card">

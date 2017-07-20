@@ -585,6 +585,8 @@ body {
   z-index: 999;
 
   &.top-menu-light {
+
+    border-bottom: 1px solid transparentize($color-jungle-mist, .5);
     .logo {
       background-image: url('../img/005-vamp/Logo/logo-long-colour.svg');
       background-repeat: no-repeat;
@@ -620,6 +622,8 @@ body {
   .left {
     display: flex;
     align-items: center;
+    float: left;
+    height: 100%;
   }
 
   .logo {
@@ -636,6 +640,7 @@ body {
     align-items: center;
     position: relative;
     height: 100%;
+    float: right;
   }
 
   .top-menu-items, .download, .github-logo, .search-button {

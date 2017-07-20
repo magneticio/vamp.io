@@ -821,17 +821,19 @@ body {
   padding: 0 10px;
   background-color: #F0F5FA;
   z-index: 999; }
-  .top-menu.top-menu-light .logo {
-    background-image: url("../img/005-vamp/Logo/logo-long-colour.svg");
-    background-repeat: no-repeat; }
-  .top-menu.top-menu-light .top-menu-item {
-    color: #142D3C; }
-    .top-menu.top-menu-light .top-menu-item:hover {
-      color: #FF405E; }
-  .top-menu.top-menu-light .github-logo {
-    color: #142D3C; }
-  .top-menu.top-menu-light .search-button {
-    color: #142D3C; }
+  .top-menu.top-menu-light {
+    border-bottom: 1px solid rgba(195, 210, 220, 0.5); }
+    .top-menu.top-menu-light .logo {
+      background-image: url("../img/005-vamp/Logo/logo-long-colour.svg");
+      background-repeat: no-repeat; }
+    .top-menu.top-menu-light .top-menu-item {
+      color: #142D3C; }
+      .top-menu.top-menu-light .top-menu-item:hover {
+        color: #FF405E; }
+    .top-menu.top-menu-light .github-logo {
+      color: #142D3C; }
+    .top-menu.top-menu-light .search-button {
+      color: #142D3C; }
   @media all and (min-width: 1025px) {
     .top-menu {
       display: -webkit-box;
@@ -845,7 +847,9 @@ body {
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center; }
+    align-items: center;
+    float: left;
+    height: 100%; }
   .top-menu .logo {
     height: 40px;
     width: 120px;
@@ -860,7 +864,8 @@ body {
     -ms-flex-align: center;
     align-items: center;
     position: relative;
-    height: 100%; }
+    height: 100%;
+    float: right; }
   .top-menu .top-menu-items, .top-menu .download, .top-menu .github-logo, .top-menu .search-button {
     display: -webkit-box;
     display: -ms-flexbox;
