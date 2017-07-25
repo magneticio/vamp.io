@@ -58,10 +58,21 @@ body {
   }
 
   &.hero-text {
+    font-weight: 500;
+    font-size: 52px;
+    color: white;
     margin-bottom: $spacer;
+
+    @media (max-width: 321px) {
+      font-size: 32px;
+    }
+
+    @media all and (max-width: 769px) {
+      font-size: 36px;
+    }
   }
 
-  @media all and (min-width: 641px) {
+  @media all and (min-width: 321px) {
     font-size: 32px;
   }
 }

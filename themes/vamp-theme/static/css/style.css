@@ -463,8 +463,17 @@ body {
     font-size: 52px;
     color: white; }
   .h1.hero-text {
+    font-weight: 500;
+    font-size: 52px;
+    color: white;
     margin-bottom: 20px; }
-  @media all and (min-width: 641px) {
+    @media (max-width: 321px) {
+      .h1.hero-text {
+        font-size: 32px; } }
+    @media all and (max-width: 769px) {
+      .h1.hero-text {
+        font-size: 36px; } }
+  @media all and (min-width: 321px) {
     .h1 {
       font-size: 32px; } }
 
