@@ -75,12 +75,6 @@ googleAnalytics = ""
 	url    = "/support/"
 	weight = 40
 
-[[menu.topnav]]
-	name   = "Blog"
-	identifier = "blog"
-	url    = "/blog/"
-	weight = 50
-
 # Main categories
 
 [[menu.main]]

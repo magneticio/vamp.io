@@ -260,7 +260,7 @@ button:focus {
   color: #FF405E;
   line-height: 1.9;
   letter-spacing: 0.01em;
-  margin-bottom: 40px; }
+  margin-bottom: 20px; }
 
 .markdowned h2 {
   font-size: 24px;
@@ -380,7 +380,6 @@ button:focus {
 
 .markdowned blockquote p {
   color: #6991AA;
-  font-family: "PT Serif", serif;
   font-weight: inherit;
   font-size: 24px; }
 
@@ -814,7 +813,7 @@ body {
     line-height: 1.9;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    margin-bottom: 40px; }
+    margin-bottom: 20px; }
 
 .date {
   color: #6991AA;
