@@ -31,11 +31,7 @@ script:
 
 before_deploy: |
   if [ $TRAVIS_BRANCH == "master" ]; then
-    GIT_COMMIT=`git rev-parse --short HEAD`
     cp ./CNAME ./public/CNAME && cp ./robots.prod.txt ./public/robots.txt
-    git init > /dev/null 2>&1
-    git add .
-    git -c user.name='Travis-CI' -c user.email='travis@magnetic.io' commit -m "build ${GIT_COMMIT}" > /dev/null 2>&1
   else
     cp ./robots.dev.txt ./public/robots.txt
   fi
@@ -43,8 +39,10 @@ before_deploy: |
 # Deploy master to Github
 
 deploy:
-  - provider: script
-    script: scripts/deploy_github.sh
+  - provider: pages
+    local_dir: public
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
     on:
       branch: master
   - provider: s3
