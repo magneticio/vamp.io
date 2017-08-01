@@ -56,7 +56,7 @@ docker run --net=host \
 
 You can access the Vamp Runner UI at port 8088. 
 
-![](images/screens/v094/runner_recipes_canary.png)
+![](/images/screens/v094/runner_recipes_canary.png)
 
 * The available RECIPES (demos) are listed on the left  
   Each recipe contains a number of steps that you can click through one by one. We are going to work through the recipe **Canary Release - Introducing New Service Version**
@@ -80,9 +80,9 @@ Vamp Runner will quickly create and deploy all the artifacts required for our ca
 
  You can watch the created artifacts and deployments appear in the Vamp UI (or via the API) and, once deployed, you can access the sava service at the external gateway Vamp Runner created (9050).
 
-![](images/screens/v094/canary_deployments.png)
+![](/images/screens/v094/canary_deployments.png)
 
-![](images/screens/v091/canary_sava10.png)
+![](/images/screens/v091/canary_sava10.png)
 
 ## Create automation workflows
 With two versions of our service ready to go, we can get started with some automation. Conveniently, Vamp Runner can set all this up for us. This recipe automates a canary release using two workflows:
@@ -102,7 +102,7 @@ The next step is to get some traffic requests flowing into the deployed services
   
 The created traffic workflow will send generated traffic requests to our services at the defined port (9050). The workflow is scheduled to run as a daemon, so it will begin generating traffic requests as soon as it is created. You can watch them arrive at the gateway in the Vamp UI.
 
-![](images/screens/v094/canary_traffic_gateways.png)
+![](/images/screens/v094/canary_traffic_gateways.png)
 
 The routing weights are currenctly set to **sava:1.0 - 100%** and **sava:1.1 - 0%**. This means that all incoming traffic will routed to sava:1.0. 
 
@@ -113,11 +113,11 @@ Now it's time to introduce sava:1.1 to the world by canary release.
 1. Click **Run** next to **Automated canary release**  
   Vamp will create a breed and a workflow named **canary**. Go ahead and click INFO to see the YAML.
   
-  ![](images/screens/v094/canary_yaml.png)
+  ![](/images/screens/v094/canary_yaml.png)
 
 Once created, the canary workflow will begin to gradually rebalance traffic routing, introducing sava:1.1 while phasing out sava:1.0. You can see the weight distribution on the internal gateway updating in the Vamp UI.
 
-![](images/screens/v094/canary_gateways.png)
+![](/images/screens/v094/canary_gateways.png)
 
 You can also use the WEIGHT slider in the Vamp UI to adjust the weight manually, the canary workflow will kick back in and take over from your setting.
 
@@ -127,7 +127,7 @@ As there are generated traffic requests flowing in to the sava service, the cana
 1. Go the Marathon UI (on port 9090) and find the sava:1.1 container running inside the sava group.
 * Select **destroy** to kill the container, this will cause the required 500 errors to appear
 
-![](images/screens/v091/canary_marathon_destroy.png)
+![](/images/screens/v091/canary_marathon_destroy.png)
 
 You will see the following happen:
 
@@ -137,7 +137,7 @@ You will see the following happen:
 * Vamp will update its routing rules to respect the new location(s) of the Sava 1.1 container in the cluster
 * After 30 seconds of no errors, service health will return to 100% and the canary workflow will start the canary release process over again.
 
-![](images/screens/v094/canary_force_rollback_1.png)
+![](/images/screens/v094/canary_force_rollback_1.png)
 
 
 ## Autoscale the services

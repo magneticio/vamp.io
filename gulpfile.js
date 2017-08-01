@@ -36,40 +36,14 @@ gulp.task('js', function() {
         .pipe(gulp.dest('./themes/vamp-theme/static/js/'));
 });
 
-let developmentBase = '\n<script type="text/javascript">';
-developmentBase +='\ntheBaseUrl = "http://" + location.host + "/";';
-developmentBase +='\ndocument.write(\'<base href="\' + theBaseUrl + \'"/>\');';
-developmentBase +='\n</script>';
+gulp.task('hugo:prod',shell.task(['hugo --baseUrl http://vamp.io']));
+gulp.task('hugo:staging',shell.task(['hugo --baseUrl http://staging.vamp.io']));
+gulp.task('hugo:dev',shell.task(['hug']));
 
-const prodUrl = env.prod.baseUrl;
-const stagingUrl = env.staging.baseUrl;
 
-let productionBase = '\n<script type="text/javascript">';
-productionBase +='\ntheBaseUrl = "'+ prodUrl + '";';
-productionBase +='\n</script>';
-
-let stagingBase = '\n<script type="text/javascript">';
-stagingBase +='\ntheBaseUrl = "'+ stagingUrl + '";';
-stagingBase +='\n</script>';
-
-gulp.task('set-base:development', [], function() {
-    fs.writeFileSync('./themes/vamp-theme/layouts/partials/base-url.html', developmentBase);
-});
-
-gulp.task('set-base:staging', [], function() {
-    fs.writeFileSync('./themes/vamp-theme/layouts/partials/base-url.html', '\n'+stagingBase+'\n<base href="'+ stagingUrl + '" />');
-});
-
-gulp.task('set-base:production', [], function() {
-  fs.writeFileSync('./themes/vamp-theme/layouts/partials/base-url.html', '\n'+productionBase+'\n<base href="'+ prodUrl + '" />');
-});
-
-gulp.task('build-search-index',['sass:dev'], shell.task(['node ./buildSearchIndex.js']));
-gulp.task('hugo', ['sass:dev', 'build-search-index'], shell.task(['hugo']));
-
-gulp.task('build:prod', ['hugo', 'set-base:production', 'js']);
-gulp.task('build:staging', ['hugo', 'set-base:staging', 'js']);
-gulp.task('build:dev', ['hugo', 'set-base:development', 'js']);
+gulp.task('build:prod',['hugo:prod','sass:dev', 'js']);
+gulp.task('build:staging',['hugo:staging','sass:dev', 'js']);
+gulp.task('build:dev',['hugo:dev','sass:dev', 'js']);
 
 gulp.task('watch', function () {
   gulp.watch('themes/vamp-theme/static/js/**/*.js',['js']);

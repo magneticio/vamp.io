@@ -12,6 +12,6 @@ The Vamp Enterprise Edition (EE) extends the features available in the open sour
 
 ### Vamp feature matrix
 
-![](images/tables/201702-enterprise-feature-matrix.png)
+![](/images/tables/201702-enterprise-feature-matrix.png)
 
 Contact us for further details and pricing: [info@magnetic.io](mailto:info@magnetic.io?subject=Information request - Vamp Enterprise Edition) or call +31(0)88 555 33 99

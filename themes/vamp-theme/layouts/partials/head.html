@@ -5,8 +5,6 @@
 <!--[if IE 9 ]><html class="no-js ie9"><![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-  {{ partial "base-url" . }}
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
@@ -22,13 +20,13 @@
 
   <meta property="og:url" content="{{ .Permalink }}">
   {{ with .Site.Title }}<meta property="og:title" content="{{ . }}">{{ end }}
-  {{ with .Site.Params.logo }}<meta property="og:image" content="{{ $.Site.BaseURL }}{{ . }}">{{ end }}
+  {{ with .Site.Params.logo }}<meta property="og:image" content="{{ $.Site.BaseURL }}/{{ . }}">{{ end }}
   {{ with .Site.Title }}<meta name="apple-mobile-web-app-title" content="{{ . }}">{{ end }}
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <link rel="shortcut icon" type="image/x-icon" href="{{ $.Site.BaseURL }}{{ with .Site.Params.favicon }}{{ . }}{{ else }}images/favicon.ico{{ end }}">
-  <link rel="icon" type="image/x-icon" href="{{ $.Site.BaseURL }}{{ with .Site.Params.favicon }}{{ . }}{{ else }}images/favicon.ico{{ end }}">
+  <link rel="shortcut icon" type="image/x-icon" href="{{ $.Site.BaseURL }}{{ with .Site.Params.favicon }}/{{ . }}{{ else }}/images/favicon.ico{{ end }}">
+  <link rel="icon" type="image/x-icon" href="{{ $.Site.BaseURL }}{{ with .Site.Params.favicon }}/{{ . }}{{ else }}/images/favicon.ico{{ end }}">
 
 
   <style>

@@ -39,8 +39,10 @@ before_deploy: |
 # Deploy master to Github
 
 deploy:
-  - provider: script
-    script: scripts/deploy_github.sh
+  - provider: pages
+    local_dir: public
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
     on:
       branch: master
   - provider: s3

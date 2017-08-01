@@ -1,4 +1,4 @@
-baseurl = "."
+baseurl = "http://vamp.io"
 languageCode = "en-us"
 title = "Vamp"
 theme = "vamp-theme"
@@ -74,12 +74,6 @@ googleAnalytics = ""
 	identifier = "support"
 	url    = "/support/"
 	weight = 40
-
-[[menu.topnav]]
-	name   = "Blog"
-	identifier = "blog"
-	url    = "/blog/"
-	weight = 50
 
 # Main categories
 

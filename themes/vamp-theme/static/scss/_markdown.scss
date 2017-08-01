@@ -7,7 +7,7 @@
     color: $color-radical-red;
     line-height: $line-height-default;
     letter-spacing: $letter-spacing-default;
-    margin-bottom: 2 * $spacer;
+    margin-bottom: $spacer;
   }
 
   h2 {
@@ -163,9 +163,8 @@
   blockquote {
     p {
       color: $color-bermuda-gray;
-      font-family: "PT Serif", serif;
       font-weight: inherit;
-      font-size: $font-size-big;
+      font-size: $font-size-medium;
     }
   }
 
