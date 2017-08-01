@@ -75,7 +75,7 @@ If all runs to plan, you will receive a response from the API with the accepted 
 
 You will notice that a timestamp has been added and the the event tag has been expanded. This means we will be able to search for this event using both the generic tag (`tag1`) and the combined generic:specific tag (`tag1:tag2`). If you check in the Vamp UI, you will see the created event show up in the EVENTS stream at the bottom of the screen (of course you need to open the events stream panel first :).
 
-![](images/screens/v094/events_vampui_hello_api.png)
+![](/images/screens/v094/events_vampui_hello_api.png)
 
 
 ## Create events with a simple workflow
@@ -110,7 +110,7 @@ deployable:
     api.event('tag1:tag2', 'optional_value', 'hello_workflow');   
   
 ```
-![](images/screens/v094/events_vampui_breeds.png)
+![](/images/screens/v094/events_vampui_breeds.png)
 
 ### Deploy the hello_workflow breed as a workflow
 After successfully saving the `hello_workflow` breed, we can create a workflow that references it. Once the workflow is created, the script from the breed will be deployed inside a Vamp workflow agent container. We will schedule our workflow to run as a daemon, so it will immediately start running and use environment variables to set the run interval (execution period) to 5 seconds.
@@ -129,14 +129,14 @@ schedule: daemon
 ```
 The workflow will be deployed and you will see the created events appearing in the Vamp UI EVENTS stream. 
 
-![](images/screens/v094/events_vampui_hello_workflow_5.png)
+![](/images/screens/v094/events_vampui_hello_workflow_5.png)
 
 ### Update the running workflow
 Updates made to a breed or workflow will not be directly carried over to the running workflow. To apply updates to a running workflow, it must be restarted. Let's update our running workflow so it creates an event every second. We will need to suspend it first as It is not possible to update workflows while they are running.
  
 1. Go the **Workflows** page in the Vamp UI
 * Open the action menu on the **hello_workflow** workflow and click **Suspend**  
-![](images/screens/v094/events_vampui_workflows_suspend.png)
+![](/images/screens/v094/events_vampui_workflows_suspend.png)
 * Open the **hello_workflow** workflow and click **Edit**
 * Set the `VAMP_WORKFLOW_EXECUTION_PERIOD` environment variable to 1 (this will cause the events to be generated every second)
 * Click **Save**
@@ -146,17 +146,17 @@ Updates made to a breed or workflow will not be directly carried over to the run
 
 Check the events stream again. **hello_workflow** will now be generating events every second - that's a lot of events! Feel free to click **Suspend** to temporarily stop the workflow running or delete it completely.
  
-![](images/screens/v094/events_vampui_hello_workflow_1.png)
+![](/images/screens/v094/events_vampui_hello_workflow_1.png)
 
 ## Retrieve and filter events using the REST API
 Now we have a lot of events stored we can use the same REST API `/events` endpoint to retrieve them. We can search for specific events and filter for specific types and tags. You can try this out in Postman or curl by sending a GET request to the `/api/v1/events` endpoint, you can even do this in your browser. Search through stored events using `?type=` or `?tags=` (following the tag format `generic` or `generic:specifc`). Note that it is not possible to filter for specific values.  
 See [using the Vamp API](/documentation/api/using-the-api) for details on pagination.
 
-![](images/screens/v091/events_retrieve_events.png)
+![](/images/screens/v091/events_retrieve_events.png)
 
 The API can also be used to retrieve an events stream `/api/v1/events/stream`
 
-![](images/screens/v094/events_stream.png)
+![](/images/screens/v094/events_stream.png)
 
 ## Summing up
 You should now know a bit more about the Vamp events system and how it is used by the distributed components of Vamp, such as workflows. Now you understand how to build, deploy and update your own workflows there should be no stopping you - what will you automate?
