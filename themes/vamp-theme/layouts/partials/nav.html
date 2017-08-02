@@ -12,6 +12,8 @@
         <a href="{{.URL}}" data-parenturl="{{.URL}}" class="top-menu-item top-nav-{{.Identifier}}">{{.Name}}</a>
         {{ end }}
       </div>
+      {{ partial "nav-product-popover" . }}
+      {{ partial "nav-developers-popover" . }}
 
       <div class="download">
         <a href="/documentation/installation/hello-world/" class="button button--red">

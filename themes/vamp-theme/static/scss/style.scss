@@ -3,6 +3,7 @@
 @import 'cursor';
 @import 'cards';
 @import 'markdown';
+@import 'nav-popover';
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -597,7 +598,7 @@ body {
 
   &.top-menu-light {
 
-    border-bottom: 1px solid transparentize($color-jungle-mist, .5);
+    border-bottom: $light-border;
     .logo {
       background-image: url('../img/005-vamp/Logo/logo-long-colour.svg');
       background-repeat: no-repeat;

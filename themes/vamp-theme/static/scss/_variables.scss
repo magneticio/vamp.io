@@ -47,3 +47,7 @@ $letter-spacing-wide: 0.05em;
 $small-margin: $spacer;
 $medium-margin: 2 * $spacer;
 $big-margin: 3 * $spacer;
+
+/* Borders */
+$light-border-color: transparentize($color-jungle-mist, .5);
+$light-border: 1px solid $light-border-color;
