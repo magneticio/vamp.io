@@ -9,7 +9,7 @@ menu:
 
 Vamp is being developed by [Magnetic.io](about/) in the heart of Amsterdam.
 
-**Our Amsterdam offices:**
+**Our Amsterdam office:**
 
 Raamgracht 6  
 1011 KK Amsterdam  
