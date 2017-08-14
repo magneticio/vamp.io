@@ -8,7 +8,7 @@ menu:
 ---
 
 Vamp Community Edition is open source (Apache 2.0), has a lightweight design to run in high-available mission-critical architectures and includes the features listed below.   
-Contact us for details of the [extended features](/why-use-vamp/enterprise-edition/) available with Vamp Enterprise Edition. 
+Contact us for details of the [extended features](/product/enterprise-edition/) available with Vamp Enterprise Edition. 
 
 * Container-scheduler agnostic API
 * Graphical UI and dashboard
@@ -26,12 +26,12 @@ Contact us for details of the [extended features](/why-use-vamp/enterprise-editi
 * Percentage and condition based programmable routing
 * Automatic load-balancing for scaled services
 
-[Extended features: Vamp Enterprise Edition](/why-use-vamp/enterprise-edition/)
+[Extended features: Vamp Enterprise Edition](/product/enterprise-edition/)
  
 
 {{< note title="What next?" >}}
 * [Try Vamp](/documentation/installation/hello-world/)
-* [Use cases](/why-use-vamp/use-cases/use-cases): Vamp solutions to practical problems
-* [What Vamp offers compared to other tools and services](/why-use-vamp/vamp-compared-to/proxies-and-load-balancers/)
+* [Use cases](/product/use-cases/use-cases): Vamp solutions to practical problems
+* [What Vamp offers compared to other tools and services](/product/vamp-compared-to/proxies-and-load-balancers/)
 * [How Vamp works](/documentation/how-vamp-works/architecture-and-components/)
 {{< /note >}}

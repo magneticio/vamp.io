@@ -19,7 +19,7 @@ Why guess? Using Vamp you could A/B test different versions of your services wit
 3. __Keep the best performing option:__ Once you have made your decision, Vamp can route all traffic to your chosen architecture. Services from the alternative options will be drained to ensure customer experience is not impacted by the test.
 
 {{< note title="What next?" >}}
-* Read about using Vamp to [simulate and test scaling behaviour](/why-use-vamp/use-cases/simulate-and-test-scaling-behaviour/)
-* See [how Vamp measures up](/why-use-vamp/vamp-compared-to/proxies-and-load-balancers/) to common platforms, tools and frameworks  
+* Read about using Vamp to [simulate and test scaling behaviour](/product/use-cases/simulate-and-test-scaling-behaviour/)
+* See [how Vamp measures up](/product/vamp-compared-to/proxies-and-load-balancers/) to common platforms, tools and frameworks  
 * Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}
