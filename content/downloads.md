@@ -6,20 +6,20 @@ layout: overview
 ---
 
 #### Binaries
-* [Vamp](/resources/downloads/#vamp)
-* [Vamp Gateway Agent (VGA)](/resources/downloads/#vamp-gateway-agent-vga)
-* [Vamp CLI](/resources/downloads/#vamp-cli)
+* [Vamp](/downloads/#vamp)
+* [Vamp Gateway Agent (VGA)](/downloads/#vamp-gateway-agent-vga)
+* [Vamp CLI](/downloads/#vamp-cli)
 
 #### Homebrew
-* [Vamp CLI for MacOS X](/resources/downloads/#vamp-cli-for-macos-x)
+* [Vamp CLI for MacOS X](/downloads/#vamp-cli-for-macos-x)
 
 #### Docker images
-* [Vamp Gateway Agent (VGA) and HAProxy](/resources/downloads/#vamp-gateway-agent-vga-and-haproxy)
-* [Vamp workflow agent](/resources/downloads/#vamp-workflow-agent)
+* [Vamp Gateway Agent (VGA) and HAProxy](/downloads/#vamp-gateway-agent-vga-and-haproxy)
+* [Vamp workflow agent](/downloads/#vamp-workflow-agent)
 
 #### Build from source
-* [Build Vamp](/resources/downloads/#build-vamp)
-* [Build Vamp Gateway Agent (VGA)](/resources/downloads/#build-vamp-gateway-agent-vga)
+* [Build Vamp](/downloads/#build-vamp)
+* [Build Vamp Gateway Agent (VGA)](/downloads/#build-vamp-gateway-agent-vga)
 
 -----------
 
