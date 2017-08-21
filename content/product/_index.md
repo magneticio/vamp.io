@@ -2,10 +2,8 @@
 date: 2016-09-13T09:00:00+00:00
 title: Why use Vamp?
 aliases:
-    - /why-use-vamp/
+    - /product/
     - /product/why-use-vamp/
-type: page
-layout: overview
 menu:
   main:
     parent: "product-top"
@@ -20,7 +18,7 @@ In microservice architectures, these concerns can quickly multiply. It's all too
 
 {{< note title="What next?" >}}
 * See Vamp [use cases](/product/uses-cases/)
-* Read the full [Vamp feature list](/why-use-vamp/feature-list/)
-* [What Vamp offers compared to other tools and services](/why-use-vamp/vamp-compared-to/proxies-and-load-balancers/)
+* Read the full [Vamp feature list](/product/feature-list/)
+* [What Vamp offers compared to other tools and services](/product/vamp-compared-to/proxies-and-load-balancers/)
 * [How Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}

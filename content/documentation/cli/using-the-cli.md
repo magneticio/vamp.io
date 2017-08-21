@@ -15,7 +15,7 @@ primarily developed to work in continuous delivery situations. In these setups, 
 
 ## Installation
 
-Check the [download page](resources/downloads/) for details on how to install the Vamp CLI on your platform. 
+Check the [download page](/downloads/) for details on how to install the Vamp CLI on your platform. 
 
 ## Configuration
 

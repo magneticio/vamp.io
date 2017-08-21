@@ -18,18 +18,6 @@ function documentReady() {
 
   });
 
-
-  if (thePath === '/') {
-    // initialize tying on hero text
-    var typed = new Typed('.typed', {
-      stringsElement: '.typed-strings',
-      typeSpeed: 80,
-      backDelay: 1500,
-      showCursor: true,
-      autoInsertCss: true,
-      loop: true
-    });
-  }
   // initialize top menu drop downs
   var popoverOptions = {
     trigger: 'hover',

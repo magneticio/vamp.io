@@ -19,7 +19,7 @@ Why rollback? Using Vamp's smart conditional routing you could send specific cli
 3. __Resolve the incompatibility:__ Once the client upgrades to a compatible browser Vamp can automatically route them to the new portal version.
 
 {{< note title="What next?" >}}
-* Read about using Vamp to [move from monoliths and VMs to microservices](/why-use-vamp/use-cases/refactor-monolithic-to-microsystems/)
-* See [how Vamp measures up](/why-use-vamp/vamp-compared-to/proxies-and-load-balancers/) to common platforms, tools and frameworks  
+* Read about using Vamp to [move from monoliths and VMs to microservices](/product/use-cases/refactor-monolithic-to-microsystems/)
+* See [how Vamp measures up](/product/vamp-compared-to/proxies-and-load-balancers/) to common platforms, tools and frameworks  
 * Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}

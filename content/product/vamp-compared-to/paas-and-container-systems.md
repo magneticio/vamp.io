@@ -16,7 +16,7 @@ _Cloud foundry, OpenStack, IBM Bluemix, Openshift_
 Vamp adds an experimentation layer to PaaS infrastructures by providing canary-releasing features that integrate with common PaaS proxies like HAProxy. For continuous delivery and auto-scaling features, Vamp integrates with common container-schedulers included in PaaS systems, like Kubernetes in Openshift V3.   
 
 {{< note title="What next?" >}}
-* Read about [Vamp compared to common frameworks and tools](/why-use-vamp/vamp-compared-to/frameworks-and-tools)
+* Read about [Vamp compared to common frameworks and tools](/product/vamp-compared-to/frameworks-and-tools)
 * [Try Vamp](/documentation/installation/hello-world)
 * Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}
