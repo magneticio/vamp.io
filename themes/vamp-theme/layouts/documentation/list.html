@@ -2,61 +2,53 @@
 
 {{ partial "nav" . }}
 
-<div class="page documentation container">
-  <div class="row">
-    <div class="col-sm-3">
-      <div class="side-menu" id="side-menu">
-        {{ $currentNode := .}}
+<div class="page">
+  <div class="lander-row--grey mb-5">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h1 class="h1 mb-5">Documentation</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card card-simple">
+            <div class="card-content">
+              <h2 class="h2 card-title">Getting Started</h2>
+              <div class="p-2 text-left">
+                <a>What is Vamp?</a>
+                <hr>
+                <a>How Vamp works</a>
+                <hr>
+                <a>Requirements</a>
+                <a href="" class="text-right">More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
 
-        {{ range .Site.Menus.main }}
-        <ul class="side-menu-list" data-parenturl="{{.URL}}" style="display: none;">
-          {{ range .Children }}
-          <li class="side-menu__item{{if $currentNode.HasMenuCurrent "main" . }} active{{end}}{{if $currentNode.IsMenuCurrent "main" . }} active{{end}}">
-          <a href="{{.URL}}" class="side-menu__item__link">
-            <p class="side-menu__item__link__text">{{ .Name }}</p>
-          </a>
+        </div>
+        <div class="col-sm-4">
 
-          {{ if .HasChildren }}
-          {{if $currentNode.HasMenuCurrent "main" . }}
-          <ul class="side-menu__sub">
-            {{ range .Children }}
-            <li class="side-menu__sub__item{{if $currentNode.IsMenuCurrent "main" . }} active{{end}}">
-            <a id="menu-link-{{.URL}}" class="side-menu__sub__item__text" href="{{.URL}}" data-url="{{.URL}}">{{ .Name }}</a>
-            </li>
-            {{ end }}
-          </ul>
-          {{ end }}
-          {{ end }}
-          </li>
-          {{ end }}
-        </ul>
-        {{ end }}
+        </div>
       </div>
     </div>
-    <div class="col-sm-9">
-      <div class="content">
-
-        <h1 class="content-header">{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
-
-        <div id="versions-dropdown" class="dropdown">
-          <div class="dropdown__core">
-            <div class="dropdown__selected">
-              Selected version
-            </div>
-            <div class="dropdown__chevon">
-              <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      {{ $currentNode := .}}
+      {{ range .Site.Menus.documentation }}
+      {{ range .Children }}
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-content">
+            <a class="card-title" href="{{ .URL }}">{{.Name}}</a>
           </div>
-
-          <div class="dropdown__items">
-
-          </div>
-        </div>
-
-        <div class="markdowned">
-          {{ .Content }}
         </div>
       </div>
+      {{end}}
+      {{end}}
     </div>
   </div>
 </div>

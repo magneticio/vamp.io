@@ -227,14 +227,17 @@ button:focus {
 .card {
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08), inset 0 0 0 1px #DBE3E7;
   color: #536171;
   display: block;
   position: relative;
   transition: 0.4s; }
   .card:hover {
-    -webkit-transform: translateY(-10px);
-    transform: translateY(-10px); }
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1); }
+  .card.card-simple {
+    background-color: white;
+    box-shadow: none; }
+    .card.card-simple:hover {
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1); }
 
 .card-title {
   font-weight: 500 !important; }
@@ -559,6 +562,9 @@ body {
   color: #142D3C;
   line-height: 1.9; }
 
+.text-muted {
+  color: #96ADAA; }
+
 .button {
   text-transform: uppercase;
   font-size: 13px;
@@ -875,10 +881,26 @@ body {
       color: #142D3C; }
       .top-menu.top-menu-light .top-menu-item:hover {
         color: #FF405E; }
-    .top-menu.top-menu-light .github-logo {
-      color: #142D3C; }
-    .top-menu.top-menu-light .search-button {
-      color: #142D3C; }
+    .top-menu.top-menu-light .search .fa-search {
+      position: absolute;
+      top: 32px;
+      left: 11px;
+      font-size: 15px;
+      color: #C3D2DC; }
+    .top-menu.top-menu-light .search .search-input {
+      padding: 1.25rem;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      font-size: 16px;
+      letter-spacing: 0.05em;
+      font-weight: 300;
+      background: white;
+      border: none;
+      height: 1rem;
+      border-radius: 4px;
+      text-indent: 16px;
+      width: 300px; }
   @media all and (min-width: 1025px) {
     .top-menu {
       display: -webkit-box;
@@ -911,7 +933,7 @@ body {
     position: relative;
     height: 100%;
     float: right; }
-  .top-menu .top-menu-items, .top-menu .download, .top-menu .github-logo, .top-menu .search-button {
+  .top-menu .top-menu-items, .top-menu .download, .top-menu .github-logo, .top-menu .search {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

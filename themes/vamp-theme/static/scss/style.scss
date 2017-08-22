@@ -143,6 +143,10 @@ body {
   line-height: $line-height-default;
 }
 
+.text-muted {
+  color: $font-color-muted;
+}
+
 // Buttons
 .button {
   text-transform: uppercase;
@@ -612,12 +616,29 @@ body {
       }
     }
 
-    .github-logo{
-      color: $color-big-stone;
-    }
-
-    .search-button {
-      color: $color-big-stone;
+    .search {
+      .fa-search {
+        position: absolute;
+        top: 32px;
+        left: 11px;
+        font-size: 15px;
+        color: $color-jungle-mist;
+      }
+      .search-input {
+        padding: 1.25rem;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        font-size: $font-size-default;
+        letter-spacing: 0.05em;
+        font-weight: 300;
+        background: white;
+        border: none;
+        height: 1rem;
+        border-radius: 4px;
+        text-indent: 16px;
+        width: 300px;
+      }
     }
   }
 
@@ -655,7 +676,7 @@ body {
     float: right;
   }
 
-  .top-menu-items, .download, .github-logo, .search-button {
+  .top-menu-items, .download, .github-logo, .search {
     display: flex;
     align-items: center;
     position: relative;

@@ -24,8 +24,8 @@ function documentReady() {
     animation: 'pop'
   };
 
-  $('.top-nav-product').webuiPopover({url: '#productPopover', trigger: 'hover', animation: 'pop', offsetTop: -20, padding: false, style: 'vamp'});
-  $('.top-nav-developers').webuiPopover({url: '#developersPopover', trigger: 'hover', animation: 'pop', offsetTop: -20, offsetLeft: 20, padding: false, style: 'vamp'});
+  $('.top-nav-product').webuiPopover({url: '#productPopover', trigger: 'click', animation: 'pop', offsetTop: -20, padding: false, style: 'vamp'});
+  $('.top-nav-developers').webuiPopover({url: '#developersPopover', trigger: 'click', animation: 'pop', offsetTop: -20, offsetLeft: 20, padding: false, style: 'vamp'});
 
 
   // make the top menu light on all pages except the homepage
@@ -137,7 +137,7 @@ function documentReady() {
 
 
 
-// Set side menu 
+// Set side menu
 function setSideMenu() {
   var firstPartUrl = thePath.split('/')[1];
   $('.side-menu-list').each(function () {
