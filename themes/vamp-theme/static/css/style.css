@@ -258,6 +258,9 @@ button:focus {
   .card-content .h2 {
     color: #234B5F !important; }
 
+.card-footer {
+  display: block; }
+
 .markdowned h1 {
   font-size: 32px;
   font-weight: 100;
