@@ -140,7 +140,7 @@ function documentReady() {
 
 
 
-// Set side menu 
+// Set side menu
 function setSideMenu() {
   var firstPartUrl = thePath.split('/')[1];
   $('.side-menu-list').each(function () {
