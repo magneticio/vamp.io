@@ -85,7 +85,7 @@ googleAnalytics = ""
 
 [[menu.main]]
 	name   = "Documentation"
-	url    = "/documentation/how-vamp-works/architecture-and-components/"
+	url    = "/documentation/"
 	weight = 20
 
 [[menu.main]]
@@ -124,60 +124,66 @@ googleAnalytics = ""
 	parent = "product-top"
 	weight = 40
 
-[[menu.documentation]]
+[[menu.main]]
+	name = "API reference"
+	identifier = "API"
+	url = "/documentation/api/api-reference"
+	weight = 10
+
+[[menu.main]]
 	name	= "How Vamp works"
 	url = "/documentation/how-vamp-works/architecture-and-components/"
 	parent = "Documentation"
 	weight = 10
 
-[[menu.documentation]]
-	name = "Install"
+[[menu.main]]
+	name = "Installation"
 	identifier = "Installation"
 	url = "/documentation/installation/overview"
 	parent = "Documentation"
 	weight = 20
 
-[[menu.documentation]]
+[[menu.main]]
 	name = "Tutorials"
 	url = "/documentation/tutorials/overview"
 	parent = "Documentation"
 	weight = 30
 
-[[menu.documentation]]
+[[menu.main]]
 	name = "Using Vamp"
 	url = "/documentation/using-vamp/artifacts/"
 	parent = "Documentation"
 	weight = 40
 
-[[menu.documentation]]
+[[menu.main]]
 	name = "Configure"
 	identifier = "Configuration"
 	url = "/documentation/configure"
 	parent = "Documentation"
 	weight = 50
 
-[[menu.documentation]]
+[[menu.main]]
 	name = "Troubleshoot"
 	identifier = "Troubleshooting"
 	url = "/documentation/troubleshoot"
 	parent = "Documentation"
 	weight = 60
 
-[[menu.documentation]]
+[[menu.main]]
 	name = "API documentation"
 	identifier = "API"
 	url = "/documentation/api/api-reference"
 	parent = "Documentation"
 	weight = 70
 
-[[menu.documentation]]
+[[menu.main]]
 	name = "CLI documentation"
 	identifier = "CLI"
 	url = "/documentation/cli/cli-reference/"
 	parent = "Documentation"
 	weight = 80
 
-[[menu.documentation]]
+[[menu.main]]
 	name = "Release notes"
 	url = "/documentation/release-notes/"
 	parent = "Documentation"

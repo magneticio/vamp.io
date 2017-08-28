@@ -140,9 +140,12 @@ function documentReady() {
 // Set side menu
 function setSideMenu() {
   var firstPartUrl = thePath.split('/')[1];
+  console.log(firstPartUrl)
   $('.side-menu-list').each(function () {
     var parentUrl = $(this).data('parenturl');
+    console.log(parentUrl)
     var firstPartUrlMenu = parentUrl.split('/')[1];
+    console.log(firstPartUrlMenu)
     if (firstPartUrl === firstPartUrlMenu) {
       $(this).css('display', 'block');
     }
