@@ -902,9 +902,27 @@ body {
       border-bottom: 3px solid #FF405E;
       font-weight: 500;
       margin-bottom: -2px; }
-  .top-menu .github-logo, .top-menu .search-button {
-    color: #F0F5FA;
-    cursor: pointer; }
+  .top-menu .search .fa-search {
+    position: relative;
+    left: 30px;
+    top: 10px;
+    z-index: 1000;
+    font-size: 15px;
+    color: #C3D2DC; }
+  .top-menu .search .search-input {
+    padding: 1.25rem;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    font-weight: 300;
+    background: white;
+    border: none;
+    height: 1rem;
+    border-radius: 4px;
+    text-indent: 16px;
+    width: 300px; }
 
 .slicknav_menu {
   display: block;

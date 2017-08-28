@@ -686,9 +686,30 @@ body {
     }
   }
 
-  .github-logo, .search-button {
-    color: $color-white-squeeze;
-    cursor: pointer;
+  .search {
+    .fa-search {
+      position: relative;
+      left: 30px;
+      top: 10px;
+      z-index: 1000;
+      font-size: 15px;
+      color: $color-jungle-mist;
+    }
+    .search-input {
+      padding: 1.25rem;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      font-size: $font-size-default;
+      letter-spacing: 0.05em;
+      font-weight: 300;
+      background: white;
+      border: none;
+      height: 1rem;
+      border-radius: 4px;
+      text-indent: 16px;
+      width: 300px;
+    }
   }
 }
 
