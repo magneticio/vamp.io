@@ -54,18 +54,21 @@ googleAnalytics = ""
 	smartDashes = true
 	plainIDAnchors = true
 
+[taxonomies]
+  platform = "platforms"
+  serie = "series"
 
 # Top nav
 
 [[menu.topnav]]
     name = "Product"
-    identifier = "product"
+    identifier = "product-top"
     url = "/product/"
     weight = 10
 
 [[menu.topnav]]
 	name   = "Developers"
-    identifier = "developers"
+    identifier = "developers-top"
 	url    = "/documentation/"
 	weight = 30
 
@@ -79,8 +82,8 @@ googleAnalytics = ""
 
 [[menu.main]]
 	name   = "Product"
-	url    = "/product/why-use-vamp/"
-	identifier = "product-top"
+	url    = "/product/"
+	identifier = "product"
 	weight = 10
 
 [[menu.main]]
@@ -99,36 +102,30 @@ googleAnalytics = ""
 	url    = "/about/"
 	weight = 40
 
-[[menu.product]]
+[[menu.main]]
 	name = "Why Vamp?"
 	url = "/product"
-	parent = "product-top"
+	parent = "Product"
 	weight = 10
 
-
-[[menu.product]]
-	name = "Use cases"
-	url = "/product/use-cases"
-	parent = "product-top"
-	weight = 20
-
-[[menu.product]]
-	name  = "Vamp compared to..."
-	url   = "/product/vamp-compared-to/proxies-and-load-balancers/"
-	parent = "product-top"
-	weight = 30
-
-[[menu.product]]
-	name  = "Vamp Enterprise Edition (EE)."
-	url   = "/product/enterprise-edition"
-	parent = "product-top"
-	weight = 40
 
 [[menu.main]]
-	name = "API reference"
-	identifier = "API"
-	url = "/documentation/api/api-reference"
-	weight = 10
+	name = "Use cases"
+	url = "/product/use-cases/"
+	parent = "Product"
+	weight = 20
+
+[[menu.main]]
+	name  = "Vamp compared to..."
+	url   = "/product/vamp-compared-to/proxies-and-load-balancers/"
+	parent = "Product"
+	weight = 30
+
+[[menu.main]]
+	name  = "Vamp Enterprise Edition (EE)."
+	url   = "/product/enterprise-edition"
+	parent = "Product"
+	weight = 40
 
 [[menu.main]]
 	name	= "How Vamp works"
@@ -145,7 +142,7 @@ googleAnalytics = ""
 
 [[menu.main]]
 	name = "Tutorials"
-	url = "/documentation/tutorials/overview"
+	url = "/documentation/tutorials/"
 	parent = "Documentation"
 	weight = 30
 

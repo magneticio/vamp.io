@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: Vamp Enterprise Edition
 menu:
   main:
-    parent: "product-top"
+    parent: "product"
     name: "Enterprise edition (EE)"
     weight: 60
 ---

@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: Simulate and test scaling behaviour
 menu:
     main: 
-        parent: "Use cases"
+        parent: "use-cases-overview"
         weight: 50
 ---
 

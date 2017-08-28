@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: Service discovery
 menu:
     main: 
-        parent: "Use cases"
+        parent: "use-cases-overview"
         identifier: "use-cases-service-disc"
         weight: 70
 ---

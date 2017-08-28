@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: Move from monoliths and VM's to microservices
 menu:
     main: 
-        parent: "Use cases"
+        parent: "use-cases-overview"
         name: "Refactor to microservices"
         weight: 40
 ---

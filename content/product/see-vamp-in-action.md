@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: See Vamp in action
 menu:
   main:
-    parent: "product-top"
+    parent: "product"
     weight: 40
 ---
 
