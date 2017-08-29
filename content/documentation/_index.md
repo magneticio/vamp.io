@@ -1,8 +1,6 @@
 ---
 date: 2017-07-19T09:00:00+00:00
 title: Documentation overview
-menu:
-  main
 ---
 
 Vamp is an open source, self-hosted platform for managing (micro)service oriented architectures that rely on container

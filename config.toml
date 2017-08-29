@@ -103,13 +103,6 @@ googleAnalytics = ""
 	weight = 40
 
 [[menu.main]]
-	name = "Why Vamp?"
-	url = "/product"
-	parent = "Product"
-	weight = 10
-
-
-[[menu.main]]
 	name = "Use cases"
 	url = "/product/use-cases/"
 	parent = "product"
