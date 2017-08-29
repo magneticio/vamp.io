@@ -3,9 +3,9 @@ date: 2016-09-13T09:00:00+00:00
 title: Vamp Enterprise Edition
 menu:
   main:
-    parent: "product"
+    parent: product
     name: "Enterprise edition (EE)"
-    weight: 60
+    weight: 30
 ---
 
 The Vamp Enterprise Edition (EE) extends the features available in the open source Vamp Community Edition.  

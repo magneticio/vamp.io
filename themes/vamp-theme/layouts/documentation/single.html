@@ -35,8 +35,27 @@
     </div>
     <div class="col-sm-9">
       <div class="content">
-
         <h1 class="content-header">{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
+        <div class="badges-wrapper">
+          {{ if .Params.platforms }}
+            <ul class="badges d-inline">
+              <li class="text-muted d-inline mr-3">platforms:</li>
+              {{ range .Params.platforms }}
+              <li class="badge">
+                <a href="{{ "/platforms/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> </li>
+              {{ end }}
+            </ul>
+          {{end}}
+          {{ if .Params.series }}
+            <ul class="badges d-inline">
+              <li class="text-muted d-inline mr-3">series:</li>
+              {{ range .Params.series }}
+              <li class="badge">
+                <a href="{{ "/series/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> </li>
+              {{ end }}
+            </ul>
+          {{end}}
+        </div>
         <div id="versions-dropdown" class="dropdown">
           <div class="dropdown__core">
             <div class="dropdown__selected">

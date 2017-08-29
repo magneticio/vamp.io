@@ -3,9 +3,9 @@ date: 2016-09-13T09:00:00+00:00
 title: Test and modernise architecture
 menu:
     main: 
-        parent: "use-cases-overview"
-        weight: 40
-        name: "Modernise architecture"
+      parent: "Use cases"
+      weight: 40
+      name: "Modernising your architecture"
 ---
 
 > "We want to switch to a NoSQL database for our microservices, but don't know which solution will run best for our purposes"

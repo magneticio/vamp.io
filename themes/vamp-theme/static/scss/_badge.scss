@@ -1,0 +1,30 @@
+.badges-wrapper {
+  margin-bottom: $spacer;
+}
+.badges {
+  padding: 0;
+  list-style-type: none;
+}
+
+.badge {
+  display: inline;
+  padding: .3em .5em;
+  margin-right: 1em;
+  font-size: 75%;
+  font-weight: $font-weight-default;
+  line-height: 1;
+  color: #fff;
+  background-color: $color-cascade;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+
+  > a {
+    color: #fff;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

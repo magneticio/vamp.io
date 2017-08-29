@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: Self-healing and self-optimising
 menu:
     main: 
-        parent: "use-cases-overview"
+        parent: "Use cases"
         weight: 60
 ---
 

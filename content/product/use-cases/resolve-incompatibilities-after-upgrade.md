@@ -3,7 +3,7 @@ date: 2016-09-13T09:00:00+00:00
 title: Resolve client-side incompatibilities after an upgrade
 menu:
     main: 
-        parent: "use-cases-overview"
+        parent: "Use cases"
         name: "Resolve incompatibilities"
         weight: 30
 ---

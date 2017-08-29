@@ -3,8 +3,8 @@ date: 2016-09-13T09:00:00+00:00
 title: Canary test and release a responsive frontend
 menu:
   main: 
-    parent: "use-cases-overview"
-    name: "Create responsive website"
+    parent: "Use cases"
+    name: "Create a responsive website"
     weight: 20
 ---
 

@@ -1,6 +1,8 @@
 ---
 date: 2017-02-07T12:00:00+00:00
 title: DC/OS
+platforms: ["DCOS","Mesosphere"]
+type: installation
 menu:
   main:
     identifier: "dcos-v095"

@@ -1,7 +1,8 @@
 ---
 date: 2016-09-30T12:00:00+00:00
 title: Mesos/Marathon
-platforms: ["DC/OS","Mesosphere"]
+platforms: ["DCOS","Mesosphere"]
+type: installation
 menu:
   main:
     identifier: "mesos-marathon-v095"

@@ -1,6 +1,8 @@
 ---
 date: 2016-09-30T12:00:00+00:00
 title: Docker
+platforms: ["Docker"]
+type: installation
 menu:
   main:
     identifier: "docker-v095"

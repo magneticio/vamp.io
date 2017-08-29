@@ -94,7 +94,8 @@ hr {
   padding: 0; }
 
 input, select {
-  vertical-align: middle; }
+  vertical-align: middle;
+  -webkit-appearance: none; }
 
 input[type="radio"] {
   vertical-align: text-bottom; }
@@ -468,6 +469,32 @@ button:focus {
   border: 1px solid rgba(195, 210, 220, 0.5) !important; }
   .webui-popover-vamp .webui-arrow {
     border-bottom-color: rgba(195, 210, 220, 0.5) !important; }
+
+.badges-wrapper {
+  margin-bottom: 20px; }
+
+.badges {
+  padding: 0;
+  list-style-type: none; }
+
+.badge {
+  display: inline;
+  padding: .3em .5em;
+  margin-right: 1em;
+  font-size: 75%;
+  font-weight: 400;
+  line-height: 1;
+  color: #fff;
+  background-color: #96ADAA;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem; }
+  .badge > a {
+    color: #fff;
+    text-decoration: none; }
+    .badge > a:hover {
+      text-decoration: underline; }
 
 body {
   font-family: 'Roboto', sans-serif; }

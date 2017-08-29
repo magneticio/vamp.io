@@ -1,8 +1,9 @@
 ---
 date: 2017-08-28T09:00:00+00:00
 title: "Automated canary releasing with Jenkins on DC/OS with Vamp: Part 1"
-platforms: ["DC/OS","Mesosphere"]
-series: ["CI/CD","Jenkins"]
+platforms: ["DCOS","Mesosphere"]
+series: ["CI","Jenkins"]
+type: tutorial
 menu:
   main:
     parent: "Tutorials"

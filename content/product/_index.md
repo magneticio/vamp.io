@@ -5,7 +5,9 @@ aliases:
     - /product/
     - /product/why-use-vamp/
 menu:
-  main
+  main:
+    parent: product
+    weight: 10
 ---
 
 We recognise the pain and risk involved with delivering microservice applications.  We've been there too - facing downtime and unexpected issues while transitioning from one release to the next.
