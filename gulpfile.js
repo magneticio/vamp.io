@@ -33,7 +33,7 @@ const jsLibsBase = './themes/vamp-theme/static/js/libs/';
 gulp.task('js', function() {
     gulp.src([jsLibsBase + 'jquery-3.1.0.min.js', jsLibsBase + 'lunrjs.min.js', jsLibsBase + 'highlight.pack.js', jsLibsBase + 'debounce.min.js', jsLibsBase + 'clipboard.min.js', jsLibsBase + 'jquery.webui-popover.min.js', jsLibsBase + 'typed.min.js'])
       .pipe(concat('vendor.js'))
-      .pipe(gulp.dest('./themes/vamp-theme/static/js/'));
+      .pipe(gulp.dest('./themes/vamp-theme/static/js/'))
       .pipe(rename({ suffix: '.min' }))
       .pipe(uglify())
       .pipe(gulp.dest('./themes/vamp-theme/static/js/'));
