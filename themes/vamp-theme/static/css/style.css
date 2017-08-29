@@ -94,7 +94,8 @@ hr {
   padding: 0; }
 
 input, select {
-  vertical-align: middle; }
+  vertical-align: middle;
+  -webkit-appearance: none; }
 
 input[type="radio"] {
   vertical-align: text-bottom; }
@@ -185,6 +186,7 @@ button:focus {
 /* For naming colors use: // http://chir.ag/projects/name-that-color/ */
 /* Typography */
 /* Margins */
+/* Borders */
 .typed-cursor {
   opacity: 1;
   font-weight: 100;
@@ -226,14 +228,17 @@ button:focus {
 .card {
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08), inset 0 0 0 1px #DBE3E7;
   color: #536171;
   display: block;
   position: relative;
   transition: 0.4s; }
   .card:hover {
-    -webkit-transform: translateY(-10px);
-    transform: translateY(-10px); }
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1); }
+  .card.card-simple {
+    background-color: white;
+    box-shadow: none; }
+    .card.card-simple:hover {
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1); }
 
 .card-title {
   font-weight: 500 !important; }
@@ -253,6 +258,9 @@ button:focus {
   min-height: 120px; }
   .card-content .h2 {
     color: #234B5F !important; }
+
+.card-footer {
+  display: block; }
 
 .markdowned h1 {
   font-size: 32px;
@@ -426,6 +434,68 @@ button:focus {
 .markdowned tr:hover td {
   background-color: #F0F5FA; }
 
+.popover-menu-body {
+  width: 250px;
+  padding: 15px; }
+
+.popover-menu-item {
+  display: block;
+  padding: 10px 20px;
+  margin-left: -15px;
+  margin-right: -15px;
+  text-decoration: none;
+  font-weight: 400;
+  color: inherit; }
+  .popover-menu-item:hover {
+    color: #FF405E;
+    background: rgba(255, 64, 94, 0.1); }
+    .popover-menu-item:hover i {
+      transition: margin-left .5s ease;
+      margin-left: 8px; }
+  .popover-menu-item i {
+    transition: margin-left .5s ease;
+    margin-left: 5px; }
+
+.popover-menu-header {
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 15px 20px;
+  display: block;
+  color: #6991AA;
+  background: rgba(240, 245, 250, 0.4); }
+
+.webui-popover-vamp {
+  box-shadow: 0 0 20px 0 rgba(178, 194, 212, 0.3) !important;
+  border: 1px solid rgba(195, 210, 220, 0.5) !important; }
+  .webui-popover-vamp .webui-arrow {
+    border-bottom-color: rgba(195, 210, 220, 0.5) !important; }
+
+.badges-wrapper {
+  margin-bottom: 20px; }
+
+.badges {
+  padding: 0;
+  list-style-type: none; }
+
+.badge {
+  display: inline;
+  padding: .3em .5em;
+  margin-right: 1em;
+  font-size: 75%;
+  font-weight: 400;
+  line-height: 1;
+  color: #fff;
+  background-color: #96ADAA;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem; }
+  .badge > a {
+    color: #fff;
+    text-decoration: none; }
+    .badge > a:hover {
+      text-decoration: underline; }
+
 body {
   font-family: 'Roboto', sans-serif; }
 
@@ -521,6 +591,9 @@ body {
   font-size: 16px;
   color: #142D3C;
   line-height: 1.9; }
+
+.text-muted {
+  color: #96ADAA; }
 
 .button {
   text-transform: uppercase;
@@ -829,17 +902,35 @@ body {
   padding: 0 10px;
   background-color: #F0F5FA;
   z-index: 999; }
-  .top-menu.top-menu-light .logo {
-    background-image: url("../img/005-vamp/Logo/logo-long-colour.svg");
-    background-repeat: no-repeat; }
-  .top-menu.top-menu-light .top-menu-item {
-    color: #142D3C; }
-    .top-menu.top-menu-light .top-menu-item:hover {
-      color: #FF405E; }
-  .top-menu.top-menu-light .github-logo {
-    color: #142D3C; }
-  .top-menu.top-menu-light .search-button {
-    color: #142D3C; }
+  .top-menu.top-menu-light {
+    border-bottom: 1px solid rgba(195, 210, 220, 0.5); }
+    .top-menu.top-menu-light .logo {
+      background-image: url("../img/005-vamp/Logo/logo-long-colour.svg");
+      background-repeat: no-repeat; }
+    .top-menu.top-menu-light .top-menu-item {
+      color: #142D3C; }
+      .top-menu.top-menu-light .top-menu-item:hover {
+        color: #FF405E; }
+    .top-menu.top-menu-light .search .fa-search {
+      position: absolute;
+      top: 32px;
+      left: 11px;
+      font-size: 15px;
+      color: #C3D2DC; }
+    .top-menu.top-menu-light .search .search-input {
+      padding: 1.25rem;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      font-size: 16px;
+      letter-spacing: 0.05em;
+      font-weight: 300;
+      background: white;
+      border: none;
+      height: 1rem;
+      border-radius: 4px;
+      text-indent: 16px;
+      width: 300px; }
   @media all and (min-width: 1025px) {
     .top-menu {
       display: -webkit-box;
@@ -853,7 +944,9 @@ body {
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center; }
+    align-items: center;
+    float: left;
+    height: 100%; }
   .top-menu .logo {
     height: 40px;
     width: 120px;
@@ -868,8 +961,9 @@ body {
     -ms-flex-align: center;
     align-items: center;
     position: relative;
-    height: 100%; }
-  .top-menu .top-menu-items, .top-menu .download, .top-menu .github-logo, .top-menu .search-button {
+    height: 100%;
+    float: right; }
+  .top-menu .top-menu-items, .top-menu .download, .top-menu .github-logo, .top-menu .search {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

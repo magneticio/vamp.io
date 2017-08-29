@@ -1,0 +1,82 @@
+{{ partial "head" . }}
+
+{{ partial "nav" . }}
+
+<div class="page documentation container">
+  <div class="row">
+    <div class="col-sm-3 ">
+      <div class="side-menu" id="side-menu">
+        {{ $currentNode := .}}
+
+        {{ range .Site.Menus.main }}
+        <ul class="side-menu-list" data-parenturl="{{.URL}}" style="display: none;">
+          {{ range .Children }}
+          <li class="side-menu__item{{if $currentNode.HasMenuCurrent "main" . }} active{{end}}{{if $currentNode.IsMenuCurrent "main" . }} active{{end}}">
+          <a href="{{.URL}}" class="side-menu__item__link">
+            <p class="side-menu__item__link__text">{{ .Name }}</p>
+          </a>
+
+          {{ if .HasChildren }}
+          {{if $currentNode.HasMenuCurrent "main" . }}
+          <ul class="side-menu__sub">
+            {{ range .Children }}
+            <li class="side-menu__sub__item{{if $currentNode.IsMenuCurrent "main" . }} active{{end}}">
+            <a id="menu-link-{{.URL}}" class="side-menu__sub__item__text" href="{{.URL}}" data-url="{{.URL}}">{{ .Name }}</a>
+            </li>
+            {{ end }}
+          </ul>
+          {{ end }}
+          {{ end }}
+          </li>
+          {{ end }}
+        </ul>
+        {{ end }}
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="content">
+        <h1 class="content-header">{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
+        <div class="badges-wrapper">
+          {{ if .Params.platforms }}
+            <ul class="badges d-inline">
+              <li class="text-muted d-inline mr-3">platforms:</li>
+              {{ range .Params.platforms }}
+              <li class="badge">
+                <a href="{{ "/platforms/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> </li>
+              {{ end }}
+            </ul>
+          {{end}}
+          {{ if .Params.series }}
+            <ul class="badges d-inline">
+              <li class="text-muted d-inline mr-3">series:</li>
+              {{ range .Params.series }}
+              <li class="badge">
+                <a href="{{ "/series/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> </li>
+              {{ end }}
+            </ul>
+          {{end}}
+        </div>
+        <div id="versions-dropdown" class="dropdown">
+          <div class="dropdown__core">
+            <div class="dropdown__selected">
+              Selected version
+            </div>
+            <div class="dropdown__chevon">
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <div class="dropdown__items">
+
+          </div>
+        </div>
+
+        <div class="markdowned">
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ partial "footer" .}}

@@ -3,6 +3,8 @@
 @import 'cursor';
 @import 'cards';
 @import 'markdown';
+@import 'nav-popover';
+@import 'badge';
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -140,6 +142,10 @@ body {
   font-size: $font-size-default;
   color: $color-big-stone;
   line-height: $line-height-default;
+}
+
+.text-muted {
+  color: $font-color-muted;
 }
 
 // Buttons
@@ -596,6 +602,8 @@ body {
   z-index: 999;
 
   &.top-menu-light {
+
+    border-bottom: $light-border;
     .logo {
       background-image: url('../img/005-vamp/Logo/logo-long-colour.svg');
       background-repeat: no-repeat;
@@ -609,12 +617,29 @@ body {
       }
     }
 
-    .github-logo{
-      color: $color-big-stone;
-    }
-
-    .search-button {
-      color: $color-big-stone;
+    .search {
+      .fa-search {
+        position: absolute;
+        top: 32px;
+        left: 11px;
+        font-size: 15px;
+        color: $color-jungle-mist;
+      }
+      .search-input {
+        padding: 1.25rem;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        font-size: $font-size-default;
+        letter-spacing: 0.05em;
+        font-weight: 300;
+        background: white;
+        border: none;
+        height: 1rem;
+        border-radius: 4px;
+        text-indent: 16px;
+        width: 300px;
+      }
     }
   }
 
@@ -631,6 +656,8 @@ body {
   .left {
     display: flex;
     align-items: center;
+    float: left;
+    height: 100%;
   }
 
   .logo {
@@ -647,9 +674,10 @@ body {
     align-items: center;
     position: relative;
     height: 100%;
+    float: right;
   }
 
-  .top-menu-items, .download, .github-logo, .search-button {
+  .top-menu-items, .download, .github-logo, .search {
     display: flex;
     align-items: center;
     position: relative;

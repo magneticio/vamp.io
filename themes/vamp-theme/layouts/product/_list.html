@@ -1,0 +1,39 @@
+{{ partial "head" . }}
+
+{{ partial "nav" . }}
+
+<div class="page">
+  <div class="lander-row--grey mb-5">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-sm-6 text-left">
+          <h1 class="h1 mb-3">
+            Innovation starts with a modern delivery platform.</h1>
+          <h2 class="h2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, assumenda cum dolore doloremque id impedit in
+            iure, molestiae necessitatibus nemo quasi quia recusandae rem repellendus similique suscipit tempore ut
+            velit!</h2>
+        </div>
+        <div class="col-sm-6">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      {{ $currentNode := .}}
+      {{ range .Site.Menus.product }}
+      {{ range .Children }}
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-content">
+            <a href="{{.URL}}" class="card-title">{{.Name}}</a>
+          </div>
+        </div>
+      </div>
+      {{end}}
+      {{end}}
+    </div>
+  </div>
+</div>
+
+{{ partial "footer" .}}

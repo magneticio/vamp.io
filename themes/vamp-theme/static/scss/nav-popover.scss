@@ -1,0 +1,46 @@
+.popover-menu-body {
+  width: 250px;
+  padding: .75 * $spacer;
+}
+
+.popover-menu-item {
+  display: block;
+  padding: .5 * $spacer $spacer;
+  margin-left: -0.75 * $spacer;
+  margin-right: -0.75 * $spacer;
+  text-decoration: none;
+  font-weight: $font-weight-default;
+  color: inherit;
+  &:hover {
+    color: $color-radical-red;
+    background: transparentize($color-radical-red, .9);
+    i {
+      transition: margin-left .5s ease;
+      margin-left: .4 * $spacer;
+    }
+  }
+  i {
+    transition: margin-left .5s ease;
+    margin-left: .25 * $spacer;
+  }
+}
+
+.popover-menu-header {
+  margin-left: -0.75 * $spacer;
+  margin-right: -0.75 * $spacer;
+  padding: .75 * $spacer $spacer;
+  display: block;
+  color: $color-bermuda-gray;
+  background: transparentize($color-white-squeeze, .6);
+}
+
+// style the stock webui popover
+
+
+.webui-popover-vamp {
+  box-shadow: 0 0 20px 0 rgba(178, 194, 212, .3) !important;
+  border: $light-border !important;
+  .webui-arrow {
+    border-bottom-color: $light-border-color !important;
+  }
+}

@@ -4,12 +4,6 @@ title: Why use Vamp?
 aliases:
     - /product/
     - /product/why-use-vamp/
-    - /why-use-vamp/
-menu:
-  main:
-    parent: "product-top"
-    identifier: "why-use-vamp-page"
-    weight: 5
 ---
 
 We recognise the pain and risk involved with delivering microservice applications.  We've been there too - facing downtime and unexpected issues while transitioning from one release to the next.

@@ -2,7 +2,17 @@
 
 [![Build Status](https://travis-ci.org/magneticio/vamp.io.svg?branch=master)](https://travis-ci.org/magneticio/vamp.io)
 
-This is the source for the [vamp.io](http://vamp.io) site. 
+## Deployment
+
+Every push to Github triggers a build on [Travis](https://travis-ci.org/magneticio/vamp.io). Each branch is deployed
+to a different environment
+
+master: https://vamp.io, hosted on Github pages and fronted by Cloudflare for SSL and caching  
+develop: http://staging.vamp.io, hosted in an AWS S3 bucket.  
+
+When developing new parts, please branch off of `develop`.
+
+
 ## Setup HUGO
     
 1. Clone this repo

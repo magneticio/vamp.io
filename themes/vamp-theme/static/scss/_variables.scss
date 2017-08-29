@@ -43,7 +43,13 @@ $font-weight-heavy: 500;
 $letter-spacing-default: 0.01em;
 $letter-spacing-wide: 0.05em;
 
+$font-color-muted: $color-cascade;
+
 /* Margins */
 $small-margin: $spacer;
 $medium-margin: 2 * $spacer;
 $big-margin: 3 * $spacer;
+
+/* Borders */
+$light-border-color: transparentize($color-jungle-mist, .5);
+$light-border: 1px solid $light-border-color;

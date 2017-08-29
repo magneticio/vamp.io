@@ -2,7 +2,7 @@
 date: 2016-09-13T09:00:00+00:00
 title: Architecture and components
 aliases: 
-    - /documentation/
+    - /documentation/how-vamp-works/
     - /documentation/using-vamp/artifacts/
     - /documentation/how-vamp-works/architecture-and-components/
 menu:

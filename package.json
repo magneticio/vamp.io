@@ -25,8 +25,11 @@
   },
   "devDependencies": {
     "flow-bin": "^0.36.0",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-cachebust": "0.0.8",
+    "gulp-rename": "^1.2.2",
     "gulp-shell": "^0.5.2",
-    "gulp-useref": "^3.1.2"
+    "pump": "^1.0.2"
   },
   "scripts": {
     "build-index": "hugo-lunr -o themes/vamp-theme/static/lunr.json"

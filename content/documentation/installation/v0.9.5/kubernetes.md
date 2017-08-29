@@ -1,6 +1,8 @@
 ---
 date: 2016-10-04T09:00:00+00:00
 title: Kubernetes
+platforms: ["Kubernetes"]
+type: installation
 menu:
   main:
     identifier: "kubernetes-v095"

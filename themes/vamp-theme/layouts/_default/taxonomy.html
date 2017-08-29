@@ -1,0 +1,25 @@
+{{ partial "head" . }}
+
+    {{ partial "nav" . }}
+
+    <div class="page documentation container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="content markdowned">
+            <h1 class="content-header">{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
+            {{ range .Data.Pages.GroupBy "Type" }}
+            <h3>{{ .Key }}</h3>
+            <ul>
+              {{ range .Pages }}
+              <li>
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+              </li>
+              {{ end }}
+            </ul>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{ partial "footer" .}}
