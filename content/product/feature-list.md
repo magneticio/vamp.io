@@ -3,7 +3,7 @@ date: 2017-02-14T09:00:00+00:00
 title: Feature list
 menu:
   main:
-    parent: "product-top"
+    parent: "product"
     weight: 50
 ---
 

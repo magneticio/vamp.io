@@ -1,6 +1,8 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Rancher
+platforms: ["Rancher"]
+type: installation
 menu:
   main:
     identifier: "rancher-v095"

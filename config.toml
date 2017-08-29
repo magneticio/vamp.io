@@ -54,18 +54,21 @@ googleAnalytics = ""
 	smartDashes = true
 	plainIDAnchors = true
 
+[taxonomies]
+  platform = "platforms"
+  serie = "series"
 
 # Top nav
 
 [[menu.topnav]]
     name = "Product"
-    identifier = "product"
+    identifier = "product-top"
     url = "/product/"
     weight = 10
 
 [[menu.topnav]]
 	name   = "Developers"
-    identifier = "developers"
+    identifier = "developers-top"
 	url    = "/documentation/"
 	weight = 30
 
@@ -79,13 +82,13 @@ googleAnalytics = ""
 
 [[menu.main]]
 	name   = "Product"
-	url    = "/product/why-use-vamp/"
-	identifier = "product-top"
+	url    = "/product/"
+	identifier = "product"
 	weight = 10
 
 [[menu.main]]
 	name   = "Documentation"
-	url    = "/documentation/how-vamp-works/architecture-and-components/"
+	url    = "/documentation/"
 	weight = 20
 
 [[menu.main]]
@@ -99,20 +102,24 @@ googleAnalytics = ""
 	url    = "/about/"
 	weight = 40
 
+[[menu.main]]
+	name = "Why Vamp?"
+	url = "/product"
+	parent = "Product"
+	weight = 10
 
-# Side Menu Items, Parent should match the identifier of the main categories
 
 [[menu.main]]
 	name = "Use cases"
-	url = "/product/use-cases"
-	parent = "product-top"
-	weight = 10
+	url = "/product/use-cases/"
+	parent = "product"
+	weight = 20
 
 [[menu.main]]
 	name  = "Vamp compared to..."
 	url   = "/product/vamp-compared-to/proxies-and-load-balancers/"
-	parent = "product-top"
-	weight = 30
+	parent = "product"
+	weight = 50
 
 [[menu.main]]
 	name	= "How Vamp works"
@@ -121,7 +128,7 @@ googleAnalytics = ""
 	weight = 10
 
 [[menu.main]]
-	name = "Install"
+	name = "Installation"
 	identifier = "Installation"
 	url = "/documentation/installation/overview"
 	parent = "Documentation"
@@ -129,7 +136,7 @@ googleAnalytics = ""
 
 [[menu.main]]
 	name = "Tutorials"
-	url = "/documentation/tutorials/overview"
+	url = "/documentation/tutorials/"
 	parent = "Documentation"
 	weight = 30
 

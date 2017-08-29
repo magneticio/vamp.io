@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "flow-bin": "^0.36.0",
+    "gulp-autoprefixer": "^3.1.1",
     "gulp-shell": "^0.5.2",
     "gulp-useref": "^3.1.2"
   },

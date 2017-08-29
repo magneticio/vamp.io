@@ -8,20 +8,15 @@
     <div class="right">
       <div class="top-menu-items" id="top-menu-items">
         {{ range .Site.Menus.topnav }}
-        <a href="{{.URL}}" data-parenturl="{{.URL}}" class="top-menu-item top-nav-{{.Identifier}}">{{.Name}}</a>
+        <a href="{{.URL}}" data-parenturl="{{.URL}}" class="top-menu-item top-nav-{{.Identifier}}">{{.Name}} {{if ne .Identifier "support" }}<i class="ml-2 fa fa-angle-down"></i>{{end}}</a>
         {{ end }}
         <a href="https://medium.com/vamp-io" data-parenturl="/blog/" target="_blank" class="top-menu-item">Blog</a>
       </div>
-
+      {{ partial "nav-product-popover" . }}
+      {{ partial "nav-developers-popover" . }}
       <div class="search">
         <i class="fa fa-search"></i>
-        <input type="search" placeholder="search the docs..." class="search-input" autofocus>
-      </div>
-
-      <div class="download">
-        <a href="/documentation/installation/hello-world/" class="button button--red">
-          Try Vamp
-        </a>
+        <input type="search" placeholder="search the docs..." class="search-input" autofocus="autofocus">
       </div>
     </div>
 </nav>

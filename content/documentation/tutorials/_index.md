@@ -24,6 +24,12 @@ You can work with Sava in the [Vamp hello world](/documentation/installation/hel
 
 ## Learn more
 
+* [Canary releasing with Jenkins on DC/OS: part 1](/documentation/tutorials/vamp-jenkins-dcos-pt1)  
+Setup a Jenkins instance and deploy from your CI/CD pipeline
+
+* [Canary releasing with Jenkins on DC/OS: part 2](/documentation/tutorials/vamp-jenkins-dcos-pt2)  
+Setup a Jenkins instance and deploy from your CI/CD pipeline
+
 * [Deploy and canary release Wordpress](/documentation/tutorials/deploy-wordpress-and-mysql)  
 This tutorial shows how to deploy Wordpress together with mySQL and set up a gateway to run a canary release
 
