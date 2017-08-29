@@ -7,7 +7,7 @@ type: tutorial
 menu:
   main:
     parent: "Tutorials"
-    name: "Automated canary releasing with Jenkins on DC/OS with Vamp: Part 1"
+    name: "Automated canary releasing with Jenkins on DCOS with Vamp: Part 1"
     weight: 90
 ---
 
