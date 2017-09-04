@@ -627,7 +627,7 @@ vamp.persistence.database {
 vamp.persistence.database {
   type: "in-memory"
 }
-``
+```
 
 ## Zookeeper configuration
 ([github.com/magneticio - vamp-zookeeper reference.conf](https://github.com/magneticio/vamp-zookeeper/blob/master/src/main/resources/reference.conf)).   
