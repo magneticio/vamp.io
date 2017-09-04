@@ -12,7 +12,7 @@ In microservice architectures, these concerns can quickly multiply. It's all too
 ![](/images/typical-systems-vs-vamp.png)
 
 {{< note title="What next?" >}}
-* See Vamp [use cases](/product/uses-cases/)
+* See Vamp [use cases](/product/use-cases/)
 * Read the full [Vamp feature list](/product/feature-list/)
 * [What Vamp offers compared to other tools and services](/product/vamp-compared-to/proxies-and-load-balancers/)
 * [How Vamp works](/documentation/how-vamp-works/architecture-and-components)
