@@ -45,7 +45,7 @@ gulp.task('js', function() {
 
 });
 
-gulp.task('hugo:prod',shell.task(['hugo --baseUrl http://vamp.io']));
+gulp.task('hugo:prod',shell.task(['hugo --baseUrl https://vamp.io']));
 gulp.task('hugo:staging',shell.task(['hugo --baseUrl http://staging.vamp.io']));
 gulp.task('hugo:dev',shell.task(['hugo']));
 
