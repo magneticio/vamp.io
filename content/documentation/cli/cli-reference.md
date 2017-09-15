@@ -8,9 +8,14 @@ menu:
 ---
 
 The VAMP CLI supports the following commands:  
-[create](/documentation/cli/cli-reference/#create), [deploy](/documentation/cli/cli-reference/#deploy), [generate](/documentation/cli/cli-reference/#generate), [help](/documentation/cli/cli-reference/#help), [info](/documentation/cli/cli-reference/#info), [inspect](/documentation/cli/cli-reference/#inspect), [list](/documentation/cli/cli-reference/#list), [merge](/documentation/cli/cli-reference/#merge), [remove](/documentation/cli/cli-reference/#remove), [undeploy](/documentation/cli/cli-reference/#undeploy), [update](/documentation/cli/cli-reference/#update), [version](/documentation/cli/cli-reference/#version)  
+[create](/documentation/cli/cli-reference/#create), [deploy](/documentation/cli/cli-reference/#deploy),
+ [generate](/documentation/cli/cli-reference/#generate), [describe](/documentation/cli/cli-reference/#describe), 
+ [list](/documentation/cli/cli-reference/#list), [merge](/documentation/cli/cli-reference/#merge),
+ [update-gateway](/documentation/cli/cli-reference/#update-gateway), [undeploy](/documentation/cli/cli-reference/#undeploy),
+ [delete](/documentation/cli/cli-reference/#delete).  
+ 
+ 
 See [using the Vamp CLI](/documentation/cli/using-the-cli) for details on installation, configuration and effective use of the CLI
-
 For details about a specific command, use `vamp COMMAND --help`
 
 -------------
@@ -19,7 +24,7 @@ For details about a specific command, use `vamp COMMAND --help`
 Create an artifact read from the specified filename or read from stdin.
 
 ```
-vamp create blueprint|breed|deployment|escalation|condition|scale|sla [--file|--stdin]
+vamp create blueprint|breed [--file|--stdin]
 ```
 
 Parameter | purpose
@@ -29,11 +34,11 @@ Parameter | purpose
   
 #### Example
 ```bash
-> vamp create scale --file my_scale.yaml
-name: my_scale
-cpu: 2.0
-memory: 2GB
-instances: 2
+# read from a file
+vamp create breed --file my_breed.yaml
+
+# read from stdin
+cat my_breed.yml | vamp create breed
 ```
 
 -------------
@@ -42,144 +47,55 @@ instances: 2
 Deploys a blueprint
 
 ```
-vamp deploy NAME --deployment [--file|--stdin]
+vamp deploy <blueprint> <deployment>
 ```
-
-Parameter | purpose
-----------|--------
-`--file`      |         Name of the yaml file [Optional]
-`--stdin`     |         Read file from stdin [Optional]
-`--deployment`|         Name of the deployment to update [Optional]
 
 #### Example
 ```bash
-> vamp deploy --deployment 1111-2222-3333-4444 --file my_new_blueprint.yaml
+vamp deploy my_blueprint my_deployment
 ```
 
 -------------
 ## Generate
 
-Generates an artifact
+Generate a breed or blueprint based on an existing one.
 
-```
-vamp generate breed|blueprint|condition|scale [NAME] [--file|--stdin]
+```bash
+vamp generate breed|blueprint
 ```
 | Parameter | purpose |
 |-----------|---------|
-`--file`    |           Name of the yaml file to preload the generation [Optional]
-`--stdin`   |           Read file from stdin [Optional]
-
-### generate breed
-
-| Parameter | purpose |
-|-----------|---------|
-`--deployable`  |       Deployable specification [Optional]
+`--source`    |          The name of the artifact to use as a source for generating a new artifact. [Required]
+`--deployable`  |        Only valid for breeds, the deployable to replace in the breed source. [Optional]   
+`--cluster`     |        Only valid for blueprints, the cluster to place the new breed in.' [Optional]
+`--breed`       |        Only valid for blueprint, the breed to replace in the blueprint source. [Optional]
+`--target`      |        The name of the to be created artifact. [Required]
 
 #### Example
 ```bash
-> vamp generate breed my_new_breed --json
-{
-  "name":"my_new_breed",
-  "deployable":"docker://",
-  "ports":{
-    
-  },
-  "environment_variables":{
-    
-  },
-  "constants":{
-    
-  },
-  "dependencies":{
-    
-  }
-}
-```
+# generate a breed: pick a source, replace the deployable and output a new breed
+vamp generate breed --source my_breed:1.0.0 --deployable docker-repo/my-service:1.1.0 --target my_breed:1.1.0
 
-### generate blueprint
-
-| Parameter | purpose |
-|-----------|---------|
-`--cluster`   |         Name of the cluster
-`--breed`     |         Name of the breed   [Optional, requires --cluster]
-`--scale`     |         Name of the scale   [Optional, requires --breed]
-
--------------
-## Help
-
-Displays the Vamp help message
-
-#### Example
-```bash
-> vamp help
-Usage: vamp COMMAND [args..]
-
-Commands:
-  create              Create an artifact
-  deploy              Deploys a blueprint
-  help                This message
-  generate            Generates an artifact
-  info                Information from Vamp
-  inspect             Shows the details of the specified artifact
-  list                Shows a list of artifacts
-  merge               Merge a blueprint with an existing deployment or blueprint
-  remove              Removes an artifact
-  undeploy            Removes (part of) a deployment
-  update              Update an artifact
-  version             Shows the version of the VAMP CLI client
-  
-Run vamp COMMMAND --help  for additional help about the different command options
+# generate a blueprint: pick a source, pick the cluster in the source and replace the existing breed with a new breed
+vamp generate blueprint --source my_blueprint:1.0.0 --cluster my_cluster --breed my_breed:1.1.0 --target my_blueprint:1.1.0
 ```
 
 -------------
-## Info
-
-Displays the Vamp Info message
-
-#### Example
-```bash
-> vamp info
-message: Hi, I'm Vamp! How are you?
-jvm:
-  operating_system:
-    name: Mac OS X
-    architecture: x86_64
-    version: 10.9.5
-    available_processors: 8.0
-    system_load_average: 4.8095703125
-  runtime:
-    process: 12871@MacMatthijs-4.local
-    virtual_machine_name: Java HotSpot(TM) 64-Bit Server VM
-    virtual_machine_vendor: Oracle Corporation
-    virtual_machine_version: 25.31-b07
-    start_time: 1433415167162
-    up_time: 1305115
-...    
-```
-
--------------
-## Inspect
+## Describe
 Shows the details of the specified artifact
 
 ```
-vamp inspect blueprint|breed|deployment|escalation|condition|scale|sla NAME --json
+vamp describe blueprint|breed|deployment|gateway|workflow <name>
 ```
 
-| Parameter | purpose |
-|-----------|---------|
-`--as_blueprint` | Returns a blueprint (only for inspect deployment) [Optional]|
-`--json`    |  Output Json instead of Yaml [Optional]|
 
 #### Example
 ```bash
-> vamp inspect breed sava:1.0.0
-name: sava:1.0.0
-deployable: magneticio/sava:1.0.0
-ports:
-  port: 80/http
-environment_variables: {}
-constants: {}
-dependencies: {}
+vamp describe deployment simpleservice:1.0.0
+ SERVICE               DEPLOYABLE                       STATUS     CLUSTER         CPU   MEM        INSTANCES   RUNNING   STAGED   HEALTHY   UNHEALTHY 
+ simpleservice:1.0.0   magneticio/simpleservice:1.0.0   Deployed   simpleservice   0.2   128.00MB   1           n/a       n/a      n/a       n/a       
+ ROUTE                 WEIGHT   CONDITION   STRENGTH   GATEWAY 
+ simpleservice:1.0.0   100%     -           0%         web   
 ```
 
 -------------
@@ -187,89 +103,87 @@ dependencies: {}
 Shows a list of artifacts
 
 ```
-vamp list blueprints|breeds|deployments|escalations|conditions|gateways|scales|slas
+vamp list blueprints|breeds|deployments|gateways|workflows
 ```
 
 #### Example 
 ```bash
-> vamp list deployments
-NAME                                    CLUSTERS
-80b310eb-027e-44e8-b170-5bf004119ef4    sava
-06e4ace5-41ce-46d7-b32d-01ee2c48f436    sava
-a1e2a68b-295f-4c9b-bec5-64158d84cd00    sava, backend1, backend2
+vamp list workflows
+ NAME                  SCHEDULE   STATUS       BREED               
+ kibana                daemon     running      kibana              
+ allocation            daemon     running      allocation          
+ metrics               daemon     running      metrics             
+ health                daemon     running      health              
+ event-based-trigger   event      restarting   event-based-trigger 
+ vga                   daemon     running      vga   
 ```
 
 -------------
 ## Merge
 
 Merges a blueprint with an existing deployment or blueprint.
-Either specify a deployment or blueprint in which the blueprint should be merged
-The blueprint can be specified by NAME, read from the specified filename or read from stdin.
 
-`vamp merge --deployment|--blueprint [NAME] [--file|--stdin]` 
-      
-| Parameter | purpose |
-|-----------|---------|
-`--file`     | Name of the yaml file [Optional]
-`--stdin`    | Read file from stdin [Optional]
+`vamp merge <blueprint> <deployment>` 
 
 #### Example
 ```bash
-vamp merge --blueprint my_existing_blueprint -- file add_this_blueprint.yaml
+vamp merge my_blueprint my_deployment
 ```
 
 -------------
-## Remove
+## Update Gateway
+Updates either weight or condition for a gateway and its routes.
 
-Removes artifact
+```
+vamp update-gateway <name> 
+```
 
-`vamp remove blueprint|breed|escalation|condition|scale|sla NAME`
+Parameter | purpose
+----------|--------
+`--condition`|    The routing condition applied to the specified route. [Optional]
+`--route` | Specifies the route to target in a gateway condition update. [Optional]
+`--strength` The condition strength in % applied to the specified route, i.e. "50%"' [Optional]
+`--weights`A comma separated set of "route@weight" combinations to apply to each route, i.e. --weights route1@70%,route2@30%' [Optional]
 
 #### Example
 ```bash
-> vamp remove scale my_scale
+# Update the weights in a set of routes.
+vamp update-gateway my_gateway --weights my_route_a@50%,my_route_a@50%
+
+# set a condition with a strength
+vamp update-gateway my_gateway--route  my_route_a --condition "User-Agent == Safari" --strength 100%
 ```
+
 -------------
 ## Undeploy
 
-Removes (part of) a deployment.
-By only specifying the name, the whole deployment will be removed. To remove part of a deployment, specify a blueprint. The contents of the blueprint will be subtracted from the active deployment.
+Removes a deployment or just a service in a deployment.
 
-`vamp undeploy NAME [--blueprint|--file|--stdin]` 
-
-Parameter | purpose
-----------|--------
-`--blueprint`|    Name of the stored blueprint to subtract from the deployment
-`--file`   |       Name of the yaml file [Optional]
-`--stdin`  |      Read file from stdin [Optional]
-
-#### Example
-```bash
-> vamp undeploy 9ec50a2a-33d7-4dd3-a027-9eeaeaf925c1 --blueprint sava:1.0
-```
--------------
-## Update
-
-Updates an existing artifact read from the specified filename or read from stdin.
-
-`vamp update blueprint|breed|deployment|escalation|condition|scale|sla NAME [--file] [--stdin]`
+`vamp undeploy <deployment>`
 
 Parameter | purpose
 ----------|--------
-`--file`   |      Name of the yaml file [Optional]
-`--stdin`  |      Read file from stdin [Optional]
-
--------------
-## Version
-
-Displays the Vamp CLI version information 
+`--service`|    Name of the service to undeploy from the deployment [Optional]
 
 #### Example
 ```bash
-> vamp version
-CLI version: 0.7.9
+vamp undeploy my_deployment --service my_old_service:1.0
 ```
+
 -------------
+## Delete
+Deletes an artifact
+
+```
+vamp delete blueprint|breed|gateway|workflow <name>
+```
+
+#### Example
+
+```bash
+vamp delete breed my_breed
+```
+
 
 #### See also
 
