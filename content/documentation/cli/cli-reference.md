@@ -142,8 +142,8 @@ Parameter | purpose
 ----------|--------
 `--condition`|    The routing condition applied to the specified route. [Optional]
 `--route` | Specifies the route to target in a gateway condition update. [Optional]
-`--strength` The condition strength in % applied to the specified route, i.e. "50%"' [Optional]
-`--weights`A comma separated set of "route@weight" combinations to apply to each route, i.e. --weights route1@70%,route2@30%' [Optional]
+`--strength` | The condition strength in % applied to the specified route, i.e. "50%"' [Optional]
+`--weights` |  A comma separated set of "route@weight" combinations to apply to each route, i.e. --weights route1@70%,route2@30%' [Optional]
 
 #### Example
 ```bash
