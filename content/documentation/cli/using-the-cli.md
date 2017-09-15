@@ -10,6 +10,7 @@ menu:
 Vamp's command line interface (CLI) can be used to perform basic actions against the Vamp API. The CLI was
 primarily developed to work in continuous delivery situations. In these setups, the CLI takes care of automating (canary) 
 releasing new artifacts to Vamp deployments and clusters.   
+  
 Source is at [https://github.com/magneticio/vamp-cli](https://github.com/magneticio/vamp-cli)  
 Npm distribution is at [https://www.npmjs.com/package/vamp-cli](https://www.npmjs.com/package/vamp-cli)
 
@@ -87,4 +88,20 @@ Or merge to an existing deployment
 
 ```bash
 vamp merge my_blueprint:1.1.0 my_deployment
+```
+
+## Using the CLI programmatically
+
+You can include the vamp-cli package in your code. It will expose the api object which you can use to interact with Vamp in your Node.js code.
+Configure the host by either setting the VAMP_HOST environment variable or pass in a config object with a host entry
+
+
+```javascript
+const vamp = require('vamp-cli')({ host: 'http://localhost:8080'})
+
+vamp.breed.list()
+  .then(res => console.info(res))
+  
+vamp.deployment.describe('mydeployment')
+.then(res => console.info(res))
 ```
