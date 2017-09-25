@@ -43,3 +43,15 @@ curl -s \
   https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v0.9.5/vamp_kube_quickstart.sh \
   | bash
 ```
+
+3. When the Vamp installation finishes, start a proxy and you should be able to connect to the Kubernetes and Vamp UI
+
+```bash
+kubectl proxy
+Starting to serve on 127.0.0.1:8001
+```
+
+The Kubernetes UI is now reachable at http://localhost:8001/ui/
+You can find a link to the Vamp UI on the services tab
+
+![](/images/screens/v095/acs_kubernetes.png)
