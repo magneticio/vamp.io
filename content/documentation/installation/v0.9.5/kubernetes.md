@@ -11,6 +11,12 @@ aliases:
     - /documentation/installation/kubernetes
 ---
 
+## Azure Container Service
+
+Please refer to our dedicated [Azure Kubernetes installation guide](/documentation/installation/azure-container-service/#kubernetes-orchestrator) for deploying Vamp and Kubernetes on Azure Container Service
+
+## Google Container Engine
+
 The installation will run Vamp together with etcd and Elasticsearch on Google container engine and kubernetes. Before you begin, it is advisable to try out the official Quickstart for Google Container Engine tutorial first ([google.com - container engine quickstart](https://cloud.google.com/container-engine/docs/quickstart)).  
 
 {{< note title="Note!" >}}
@@ -28,7 +34,7 @@ This guide has been tested on Kubernetes and kubectl 1.4.x, 1.5.x and 1.6.0. Min
 * Enough (CPU and memory) resources on your K8s cluster to deploy the Vamp dependencies AND the containers at the scale you define. NB take a look into the available resources when a deployment keeps "hanging" to see if you actually have enough resources available.
 * Vamp currently only supports the 'default' namespace, so this should be available.
 
-## Create a new GKE cluster
+### Create a new GKE cluster
 
 The simple way to create a new GKE cluster:
 
@@ -42,7 +48,7 @@ You can use `kubectl` directly from the Google Cloud Shell, e.g. to check the Ku
 ```
 kubectl version
 ```
-## Quickstart
+### Quickstart
 
 To quickly get started with Vamp on Kubernetes use the following command to automate the quick start described below (requires curl):
 
@@ -67,9 +73,9 @@ curl -s \
   | bash
 ```
 
-## Manual deployment
+### Manual deployment
 
-### Deploy etcd, Elasticsearch
+#### Deploy etcd, Elasticsearch
 
 Now let's deploy `etcd` - this installation is based on the tutorial ([github.com/coreos - etcd on Kubernetes](https://github.com/coreos/etcd/tree/master/hack/kubernetes-deploy)).  Note that this is not a production grade setup - you would also need to take care of persistence and running multiple replicas of each pod.
 First, execute:
@@ -87,7 +93,7 @@ kubectl expose deployment elasticsearch --protocol=TCP --port=9200 --name=elasti
 kubectl expose deployment kibana --protocol=TCP --port=5601 --name=kibana
 ```
 
-### Run Vamp
+#### Run Vamp
 
 Now we can run Vamp gateway agent as a `daemon set`:
 ```

@@ -1,7 +1,7 @@
 ---
 date: 2016-09-30T12:00:00+00:00
 title: Azure Container Service
-platforms: ["Azure"]
+platforms: ["Azure", "Kubernetes", "DCOS"]
 menu:
   main:
     identifier: "azure-container-service-v095"
@@ -11,11 +11,14 @@ aliases:
     - /documentation/installation/azure-container-service
 ---
 
-To run Vamp together with Azure Container Service ([azure.microsoft.com - Container Service](https://azure.microsoft.com/en-us/services/container-service/)), use DC/OS as the default ACS Docker container scheduler. 
+You can run Vamp on [Azure Container Service](https://azure.microsoft.com/en-us/services/container-service/) with either the DC/OS or Kubernetes orchestrator.
 
-To install DC/OS in Azure you should follow these steps: https://dcos.io/docs/1.8/administration/installing/cloud/azure/
+## DC/OS Orchestrator
 
-After you have activated your ACS setup with DC/OS, go to your DC/OS admin environment and install Vamp using our [DC/OS installation instructions](/documentation/installation/v0.9.5/dcos/).
+To install DC/OS on ACS you should follow these steps: 
+
+1. Follow the instructions in the [ACS DC/OS quickstart](https://docs.microsoft.com/en-us/azure/container-service/dcos-swarm/container-service-dcos-quickstart).
+2. After you have activated your ACS setup with DC/OS, go to your DC/OS admin environment and install Vamp using our [DC/OS installation instructions](/documentation/installation/v0.9.5/dcos/).
 
 
 {{< note title="What next?" >}}
@@ -25,3 +28,18 @@ After you have activated your ACS setup with DC/OS, go to your DC/OS admin envir
 
 If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 {{< /note >}}
+
+## Kubernetes Orchestrator
+
+To install Kubernetes on ACS you should follow these steps. Make sure you have created a `resource group`  beforehand.
+
+1. Follow the instructions in the [ACS Kubernetes quickstart](https://docs.microsoft.com/en-us/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster).
+2. After the installation, make sure `kubetctl` is running. Then execute the following script. This will install Vamp on
+your Kubernetes cluster
+
+
+```
+curl -s \
+  https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v0.9.5/vamp_kube_quickstart.sh \
+  | bash
+```
