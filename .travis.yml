@@ -52,3 +52,6 @@ deploy:
     skip_cleanup: true
     on:
       branch: develop
+
+after_deploy:
+  - curl -X DELETE "https://api.cloudflare.com/client/v4/zones/d398c5b6e2d191e2d6865081facab63b/purge_cache" -H "X-Auth-Email: $CLOUDFLARE_USER" -H "X-Auth-Key: CLOUDFLARE_KEY" -H "Content-Type: application/json" --data '{"purge_everything":true}'
