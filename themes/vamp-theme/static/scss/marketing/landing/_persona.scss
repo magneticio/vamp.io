@@ -1,0 +1,32 @@
+.persona {
+  display: inline-block;
+  padding: 12px;
+  .persona-image {
+    position: relative;
+    width: 80px;
+    display: inline;
+    float: left;
+    margin-right: 60px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .persona-quote {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 32px;
+    font-style: italic;
+    margin-left: 140px;
+    &:before {
+      content: '';
+      position: absolute;
+      left: 130px;
+      display: block;
+      width: 5px;
+      height: 64px;
+      background: $color-cascade;
+    }
+  }
+}

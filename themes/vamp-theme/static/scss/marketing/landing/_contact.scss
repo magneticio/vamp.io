@@ -1,0 +1,36 @@
+.contact {
+  padding: 60px 0;
+  background-color: $color-white-squeeze;
+
+  .contact-header {
+    font-size: 34px;
+    font-weight: 400;
+    margin-bottom: 60px;
+  }
+
+  .contact-form {
+    padding: 30px;
+    border-radius: 5px;
+    background-color: white;
+    text-align: left;
+  }
+
+  .booking-form {
+    padding: 30px;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+    max-width: 400px;
+    height: 320px;
+
+    .booking-image {
+      width: 140px;
+    }
+
+    .booking-text {
+      padding: 24px;
+      font-size: 18px;
+      //max-width: 300px;
+    }
+  }
+}

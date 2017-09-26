@@ -1779,6 +1779,13 @@ pre + pre {
     background-color: $color-big-stone !important;
     border-bottom: 1px solid rgba($color-white-squeeze, 0.1) !important;
   }
+
+  &.landing-page-light {
+    .top-menu {
+      background-color: white !important;
+      border-bottom: 1px solid rgba($color-white-squeeze, 0.1) !important;
+    }
+  }
 }
 
 .search-bar {
@@ -2000,3 +2007,4 @@ h4:hover .anchor-hover {
 
 // Dev
 #__bs_notify__ { top:95% !important; right: 10px !important; border-radius: 15px !important; height:60px !important; }
+@import "marketing/landing/style";
