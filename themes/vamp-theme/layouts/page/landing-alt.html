@@ -1,0 +1,150 @@
+{{ partial "head" . }}
+
+<div class="landing-page landing-page-light">
+  {{ partial "nav-home" . }}
+
+  <div class="masthead">
+    <div class="header-content">
+      <div class="header-content-inner">
+        <h1>{{.Params.hero.header}}</h1>
+        <p>{{.Params.hero.sub}}</p>
+        <button id="cta-button1" class="button button--red">Learn more</button>
+      </div>
+    </div>
+  </div>
+  <section id="lead1" class="lead">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-left">
+          <div class="lead-inner">
+            <p class="lead-top-header">{{.Params.leads.lead1.topheader}}</p>
+            <h2 class="lead-header">{{.Params.leads.lead1.header}}</h2>
+            <p class="lead-body">{{.Params.leads.lead1.body}}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <ul class="lead-features-list">
+            <li class="lead-features-list-item">
+              <img src="/img/002-Medium-icons/Medium-icons-06.svg" alt="">
+              <p>Load balancing of scaled<br>out services and containers.</p>
+            </li>
+            <li class="lead-features-list-item">
+              <img src="/img/002-Medium-icons/Medium-icons-05.svg" alt="">
+              <p>A/B split and merge traffic based<br>on conditions, percentages or both.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="persona">
+            <div class="persona-image">
+              <img src="/img/marketing/landing/persona1.png" alt="persona1">
+            </div>
+            <p class="persona-quote">
+              {{.Params.personas.persona1.quote}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="lead">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="lead-features-list">
+            <li class="lead-features-list-item">
+              <img src="/img/002-Medium-icons/Medium-icons-01.svg" alt="">
+              <p>Graphical UI and dashboards for clear information and easy management.</p>
+            </li>
+            <li class="lead-features-list-item">
+              <img src="/img/002-Medium-icons/Medium-icons-03.svg" alt="">
+              <p>Integrated metrics and events system exposing critical application runtime information.</p>
+            </li>
+            <li class="lead-features-list-item">
+              <img src="/img/002-Medium-icons/Medium-icons-04.svg" alt="">
+              <p>Integrate into existing deployment pipelines using the API or the command line interface.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 text-left">
+          <div class="lead-inner">
+            <p class="lead-top-header">{{.Params.leads.lead2.topheader}}</p>
+            <h2 class="lead-header">{{.Params.leads.lead2.header}}</h2>
+            <p class="lead-body">{{.Params.leads.lead2.body}}</p>
+          </div>
+          <div class="persona">
+            <div class="persona-image">
+              <img src="/img/marketing/landing/persona2.png" alt="persona1">
+            </div>
+            <p class="persona-quote">
+              {{.Params.personas.persona2.quote}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="lead">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-left">
+          <div class="lead-inner">
+            <p class="lead-top-header">{{.Params.leads.lead3.topheader}}</p>
+            <h2 class="lead-header">{{.Params.leads.lead3.header}}</h2>
+            <p class="lead-body">{{.Params.leads.lead3.body}}</p>
+          </div>
+          <div class="persona">
+            <div class="persona-image">
+              <img src="/img/marketing/landing/persona3.png " alt="persona1">
+            </div>
+            <p class="persona-quote">
+              {{.Params.personas.persona3.quote}}
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 text-center">
+          <h3 class="lead-features-header">Vamp works with</h3>
+          <img src="/img/marketing/landing/works_with1.png" alt="works_with">
+          <img src="/img/marketing/landing/works_with2.png" alt="works_with">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="contact">
+    <div class="container">
+      <div class="row lander-row--grey">
+        <div class="col-sm-12 text-center">
+          <h2 class="contact-header">Want to know more?</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="contact-form">
+            <div class="pipedriveWebForms" data-pd-webforms="https://pipedrivewebforms.com/form/9be5a8caa284d6026dddf40b69b16521810301"><script src="https://webforms.pipedriveassets.com/webforms.min.js"></script></div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="booking-form text-center">
+            <img  class="booking-image" src="/img/marketing/landing/calendar.png" alt="calendar">
+            <p class="booking-text">{{.Params.forms.booking}}</p>
+            <a class="button button--red" href="https://calendly.com/diederick" target="_blank">Book a call now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{{ partial "footer" .}}
+
+<script>
+  $('#cta-button1').click(function() {
+    $('html, body').animate({
+      scrollTop: $('#lead1').offset().top
+    }, 1000);
+  });
+</script>

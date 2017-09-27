@@ -1,7 +1,7 @@
 ---
 title: Microservices
 type: "page"
-layout: "landing"
+layout: "landing-alt"
 hero: 
     header: "Are you stressed when upgrading your microservices?" 
     sub: "Discover Vamp: enterprise-grade lifecycle management for microservices."
@@ -26,7 +26,7 @@ personas:
     persona3:
         quote: "For the last 12 months we've been modernising our application landscape with the latest microservice, container and continuous delivery technologies. Our budgets and time have been fully consumed, but we're still on the same release velocity with the same amount of issues."
 forms:
-    booking: "Want to talk or book a demo?"                     
+    booking: "Want to talk or book a demo?"             
 ---
 
 
