@@ -4,11 +4,16 @@
   <!--{{ partial "nav-home" . }}-->
 
   <div class="masthead">
-    <div class="header-content">
-      <div class="header-content-inner">
-        <h1>{{.Params.hero.header}}</h1>
-        <p>{{.Params.hero.sub}}</p>
-        <button id="cta-button1" class="button button--red">Learn more</button>
+    <div class="container">
+      <div class="header-content row">
+        <div class="header-content-inner col-sm-4">
+          <h1>{{.Params.hero.header}}</h1>
+          <p>{{.Params.hero.sub}}</p>
+          <button id="cta-button1" class="button button--red">Learn more</button>
+        </div>
+        <div class="col-sm-8">
+          <div class="hero-image"></div>
+        </div>
       </div>
     </div>
   </div>

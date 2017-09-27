@@ -19,6 +19,12 @@
     line-height: 32px;
     font-style: italic;
     margin-left: 140px;
+
+    @media only screen
+    and (max-device-width: 320px) {
+      margin-left: 0;
+    }
+
     &:before {
       content: '';
       position: absolute;
