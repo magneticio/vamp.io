@@ -6,23 +6,20 @@
   <div class="masthead">
     <div class="header-content">
       <div class="header-content-inner">
-        <h1>Are you stressed when upgrading your microservices?<br>Are you in control?</h1>
-        <p>Discover Vamp: enterprise-grade lifecycle management for microservices</p>
-        <button class="button button--red">Learn more</button>
+        <h1>{{.Params.hero.header}}</h1>
+        <p>{{.Params.hero.sub}}</p>
+        <button id="cta-button1" class="button button--red">Learn more</button>
       </div>
     </div>
   </div>
-  <section class="lead">
+  <section id="lead1" class="lead">
     <div class="container">
       <div class="row">
         <div class="col-md-6 text-left">
           <div class="lead-inner">
-            <p class="lead-top-header">smart routing & workflow automation</p>
-            <h2 class="lead-header">Are releases still a headache for your and your team?</h2>
-            <p class="lead-body">
-              Vamp provides smart automation workflows for testing and releasing microservices out-of-the-box. 
-              You can start applying automated canary-test and -release strategies immediately. 
-            </p>
+            <p class="lead-top-header">{{.Params.leads.lead1.topheader}}</p>
+            <h2 class="lead-header">{{.Params.leads.lead1.header}}</h2>
+            <p class="lead-body">{{.Params.leads.lead1.body}}</p>
           </div>
         </div>
         <div class="col-md-6">
@@ -47,9 +44,7 @@
               <img src="/img/marketing/landing/persona1.png" alt="persona1">
             </div>
             <p class="persona-quote">
-              "Releasing new versions of the microservices that power our growing SaaS platform are still giving me 
-              a huge headache. Devops resources are scarce, there is still a lot of manual work involved, and testing
-              a release takes more time than we have."
+              {{.Params.personas.persona1.quote}}
             </p>
           </div>
         </div>
@@ -77,22 +72,16 @@
         </div>
         <div class="col-md-6 text-left">
           <div class="lead-inner">
-            <p class="lead-top-header">actionable insights</p>
-            <h2 class="lead-header">Are your recently deployed microservices performing?</h2>
-            <p class="lead-body">
-              Vamp enables percentage based conditional traffic routing per service to test and compare all aspects of
-              your applications in production. 
-              <br>
-              Vamp aggregates technical and business data into high-level health metrics for full actionable insights and control. 
-            </p>
+            <p class="lead-top-header">{{.Params.leads.lead2.topheader}}</p>
+            <h2 class="lead-header">{{.Params.leads.lead2.header}}</h2>
+            <p class="lead-body">{{.Params.leads.lead2.body}}</p>
           </div>
           <div class="persona">
             <div class="persona-image">
               <img src="/img/marketing/landing/persona2.png" alt="persona1">
             </div>
             <p class="persona-quote">
-              "We've just released an improved version of our customer subscription API, but i'm not sure if it actually
-              performs better, and now i also see issues appearing in other related services. What's going on?"
+              {{.Params.personas.persona2.quote}}
             </p>
           </div>
         </div>
@@ -104,21 +93,16 @@
       <div class="row">
         <div class="col-md-6 text-left">
           <div class="lead-inner">
-            <p class="lead-top-header">batteries included</p>
-            <h2 class="lead-header">Are you reinventing the wheel with DIY scripts?</h2>
-            <p class="lead-body">
-              Vamp packages microservice and devops best-practices from the Silicon Valley unicorns into out-of-the-box
-              automation and optimisation workflows. Vamp works with all major clouds and container schedulers. 
-            </p>
+            <p class="lead-top-header">{{.Params.leads.lead3.topheader}}</p>
+            <h2 class="lead-header">{{.Params.leads.lead3.header}}</h2>
+            <p class="lead-body">{{.Params.leads.lead3.body}}</p>
           </div>
           <div class="persona">
             <div class="persona-image">
               <img src="/img/marketing/landing/persona3.png " alt="persona1">
             </div>
             <p class="persona-quote">
-              "For the last 12 months we've been modernising our application landscape with the latest microservice,
-              container and continuous delivery technologies. Our budgets and time have been fully consumed,
-              but we're still on the same release velocity with the same amount of issues."
+              {{.Params.personas.persona3.quote}}
             </p>
           </div>
         </div>
@@ -132,7 +116,7 @@
   </section>
   <section class="contact">
     <div class="container">
-      <div class="row">
+      <div class="row lander-row--grey">
         <div class="col-sm-12 text-center">
           <h2 class="contact-header">Want to know more?</h2>
         </div>
@@ -156,3 +140,11 @@
 </div>
 
 {{ partial "footer" .}}
+
+<script>
+  $('#cta-button1').click(function() {
+    $('html, body').animate({
+      scrollTop: $('#lead1').offset().top
+    }, 1000);
+  });
+</script>
