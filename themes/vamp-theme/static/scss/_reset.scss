@@ -76,6 +76,10 @@ a {
   font-size: 100%;
   vertical-align: baseline;
   background: transparent;
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 del {
