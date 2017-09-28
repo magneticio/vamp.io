@@ -3,7 +3,7 @@ title: Microservices
 type: "page"
 layout: "landing"
 hero: 
-    header: "Are you stressed when upgrading your microservices?" 
+    header: "Are you in control when upgrading your services?" 
     sub: "Discover Vamp: enterprise-grade lifecycle management for microservices."
 leads:
     lead1:
