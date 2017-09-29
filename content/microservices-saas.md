@@ -22,7 +22,7 @@ personas:
     persona1:
         quote: "Releasing new versions of the microservices that power our growing SaaS platform is giving me a huge headache. DevOps resources are scarce, there is still a lot of manual work involved, and testing a release takes more time than we have."
     persona2:
-        quote: "We've just released an improved version of our customer subscription API, but I'm not sure if it actually performs better, and now I'm also see issues appearing in other related services. What's going on?"
+        quote: "We've just released an improved version of our customer subscription API, but I'm not sure if it actually performs better, and now I'm also seeing issues appearing in other related services. What's going on?"
     persona3:
         quote: "For the last 12 months we've been modernising our application landscape with the latest microservice, container and continuous delivery technologies. Our budgets and time have been fully consumed, but we still have the same release velocity and the same number of issues."
 forms:
