@@ -7,8 +7,8 @@
     <div class="container">
       <div class="header-content row">
         <div class="header-content-inner col-md-12">
-          <h1>{{.Params.hero.header}}</h1>
-          <p>{{.Params.hero.sub}}</p>
+          <h1>{{.Params.hero.header | markdownify}}</h1>
+          <p>{{.Params.hero.sub | markdownify}}</p>
           <button id="cta-button1" class="button button--red">Learn more</button>
         </div>
         <!--<div class="header-content-inner col-sm-4">-->
@@ -27,16 +27,16 @@
       <div class="row">
         <div class="col-md-8 offset-md-2 text-left">
           <div class="lead-inner">
-            <h2 class="lead-header">{{.Params.leads.lead1.header}}</h2>
+            <h2 class="lead-header">{{.Params.leads.lead1.header | markdownify}}</h2>
             <div class="persona">
               <div class="persona-image">
                 <img src="/img/marketing/landing/persona1.png" alt="persona1">
               </div>
               <p class="persona-quote">
-                {{.Params.personas.persona1.quote}}
+                {{.Params.personas.persona1.quote | markdownify}}
               </p>
             </div>
-            <p class="lead-body">{{.Params.leads.lead1.body}}</p>
+            <p class="lead-body">{{.Params.leads.lead1.body | markdownify}}</p>
           </div>
         </div>
         <!--<div class="col-md-6">-->
@@ -59,16 +59,16 @@
       <div class="row">
         <div class="col-md-8 offset-md-2">
           <div class="lead-inner">
-            <h2 class="lead-header">{{.Params.leads.lead2.header}}</h2>
+            <h2 class="lead-header">{{.Params.leads.lead2.header | markdownify}}</h2>
             <div class="persona">
               <div class="persona-image">
                 <img src="/img/marketing/landing/persona2.png" alt="persona1">
               </div>
               <p class="persona-quote">
-                {{.Params.personas.persona2.quote}}
+                {{.Params.personas.persona2.quote | markdownify}}
               </p>
             </div>
-            <p class="lead-body">{{.Params.leads.lead2.body}}</p>
+            <p class="lead-body">{{.Params.leads.lead2.body | markdownify}}</p>
           </div>
         </div>
         <!--<div class="col-md-6 text-left">-->
@@ -95,16 +95,16 @@
       <div class="row">
         <div class="col-md-8 offset-md-2 text-left">
           <div class="lead-inner">
-            <h2 class="lead-header">{{.Params.leads.lead3.header}}</h2>
+            <h2 class="lead-header">{{.Params.leads.lead3.header | markdownify}}</h2>
             <div class="persona">
               <div class="persona-image">
                 <img src="/img/marketing/landing/persona3.png " alt="persona1">
               </div>
               <p class="persona-quote">
-                {{.Params.personas.persona3.quote}}
+                {{.Params.personas.persona3.quote | markdownify}}
               </p>
             </div>
-            <p class="lead-body">{{.Params.leads.lead3.body}}</p>
+            <p class="lead-body">{{.Params.leads.lead3.body | markdownify}}</p>
           </div>
         </div>
         <!--<div class="col-md-6 text-center">-->
@@ -131,7 +131,7 @@
         <div class="col-sm-6">
           <div class="booking-form text-center">
             <img  class="booking-image" src="/img/marketing/landing/calendar.png" alt="calendar">
-            <p class="booking-text">{{.Params.forms.booking}}</p>
+            <p class="booking-text">{{.Params.forms.booking | markdownify}}</p>
             <a class="button button--red" href="https://calendly.com/diederick" target="_blank">Book a call now</a>
           </div>
         </div>
