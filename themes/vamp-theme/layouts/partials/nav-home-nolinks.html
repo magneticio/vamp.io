@@ -5,26 +5,6 @@
         <div id="logo" class="logo"></div>
       </a>
     </div>
-
-    <div class="right">
-      <div class="top-menu-items" id="top-menu-items">
-        {{ range .Site.Menus.topnav }}
-        <a href="{{.URL}}" data-parenturl="{{.URL}}" class="top-menu-item top-nav-{{.Identifier}}">{{.Name}} {{if ne .Identifier "support" }}<i class="ml-2 fa fa-angle-down"></i>{{end}}</a>
-        {{ end }}
-        <a href="https://medium.com/vamp-io" data-parenturl="/blog/" target="_blank" class="top-menu-item">Blog</a>
-      </div>
-      {{ partial "nav-product-popover" . }}
-      {{ partial "nav-developers-popover" . }}
-      <div class="search" style="display: none">
-        <i class="fa fa-search"></i>
-        <input type="search" placeholder="search the docs..." class="search-input" autofocus="autofocus">
-      </div>
-      <div class="download">
-        <a href="/documentation/installation/hello-world/" class="button button--red">
-          Try Vamp
-        </a>
-      </div>
-    </div>
   </div>
 
 </nav>
@@ -33,15 +13,6 @@
   <a href="/" class="logo">
     <img id="logo" class="logo" src="/img/005-vamp/Logo/logo-long-colour.svg" alt="">
   </a>
-  <div class="right">
-    <a href="https://github.com/magneticio/vamp" target="_blank" class="github-logo">
-      <i class="fa fa-lg fa-github" aria-hidden="true"></i>
-    </a>
-    <div class="hamburger">
-      <i class="fa fa-lg fa-bars" aria-hidden="true"></i>
-    </div>
-  </div>
-
 </nav>
 
 <ul id="mobile-menu">

@@ -1,7 +1,7 @@
 {{ partial "landing-head" . }}
 
 <div class="landing-page landing-page-light">
-  {{ partial "nav-home" . }}
+  {{ partial "nav-home-nolinks" . }}
 
   <div class="masthead hero-background">
     <div class="container">
@@ -25,7 +25,7 @@
   <section id="lead1" class="lead">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 offset-md-2 text-left">
+        <div class="col-md-10 offset-md-1 text-left">
           <div class="lead-inner">
             <h2 class="lead-header">{{.Params.leads.lead1.header | markdownify}}</h2>
             <div class="persona">
@@ -57,7 +57,7 @@
   <section class="lead">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-10 offset-md-1">
           <div class="lead-inner">
             <h2 class="lead-header">{{.Params.leads.lead2.header | markdownify}}</h2>
             <div class="persona">
@@ -93,7 +93,7 @@
   <section class="lead">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 offset-md-2 text-left">
+        <div class="col-md-10 offset-md-1 text-left">
           <div class="lead-inner">
             <h2 class="lead-header">{{.Params.leads.lead3.header | markdownify}}</h2>
             <div class="persona">
@@ -123,16 +123,18 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12 text-center">
+            <div class="booking-form text-center">
+              <img  class="booking-image" src="/img/marketing/landing/calendar.png" alt="calendar">
+              <p class="booking-text">{{.Params.forms.booking | markdownify}}</p>
+              <a class="button button--red" href="https://calendly.com/diederick" target="_blank">Book a call now</a>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
           <div class="contact-form">
             <div class="pipedriveWebForms" data-pd-webforms="https://pipedrivewebforms.com/form/9be5a8caa284d6026dddf40b69b16521810301"><script src="https://webforms.pipedriveassets.com/webforms.min.js"></script></div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="booking-form text-center">
-            <img  class="booking-image" src="/img/marketing/landing/calendar.png" alt="calendar">
-            <p class="booking-text">{{.Params.forms.booking | markdownify}}</p>
-            <a class="button button--red" href="https://calendly.com/diederick" target="_blank">Book a call now</a>
           </div>
         </div>
       </div>

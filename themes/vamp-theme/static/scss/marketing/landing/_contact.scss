@@ -9,10 +9,12 @@
   }
 
   .contact-form {
-    text-align: left;
+    text-align: center;
   }
 
   .booking-form {
+    display: inline-block;
+    border-radius: 4px;
     padding: 30px;
     background-color: white;
     text-align: center;

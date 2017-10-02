@@ -1,10 +1,10 @@
 <nav aria-label="Header" id="header" class="top-menu">
+  <div class="container">
     <div class="left">
       <a href="/">
         <div id="logo" class="logo"></div>
       </a>
     </div>
-
     <div class="right">
       <div class="top-menu-items" id="top-menu-items">
         {{ range .Site.Menus.topnav }}
@@ -19,6 +19,7 @@
         <input type="search" placeholder="search the docs..." class="search-input" autofocus="autofocus">
       </div>
     </div>
+  </div>
 </nav>
 
 <nav aria-label="Header" id="mobile-header">

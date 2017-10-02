@@ -1,0 +1,55 @@
+{{ partial "landing-head-alt" . }}
+
+<div class="careers-page landing-page-light">
+  {{ partial "nav-home" . }}
+
+  <div class="career-masthead hero-background">
+    <div class="container">
+      <div class="header-content row">
+        <div class="header-content-inner col-md-12">
+          <h1>{{.Params.hero.header | markdownify}}</h1>
+          <p>{{.Params.hero.sub | markdownify}}</p>
+          <button id="cta-button1" class="button button--red">See current openings</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section id="perks" class="">
+
+  </section>
+  <section id="about" class="">
+
+  </section>
+  <section id="current-openings" class="openings">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="openings-header">Current openings</h1>
+          <ul class="openings-list">
+            {{ range .Data.Pages }}
+              <li class="openings-list-item">
+                <div class="openings-body">
+                  {{.Content}}
+                </div>
+                <div class="openings-cta">
+                  <p>Sounds good? Apply for this job by sending us your motivation and resume.</p>
+                  <a class="button button--red" href="mailto:info@magnetic.io">Apply now</a>
+                </div>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{{ partial "footer" .}}
+
+<script>
+  $('#cta-button1').click(function() {
+    $('html, body').animate({
+      scrollTop: $('#current-openings').offset().top
+    }, 1000);
+  });
+</script>
