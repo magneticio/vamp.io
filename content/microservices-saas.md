@@ -20,8 +20,8 @@ leads:
         body: "Vamp packages microservice and DevOps best-practices into out-of-the-box automation and optimisation workflows. Vamp works with all major clouds and container schedulers."
 features:
     list1:
-        item1: "Load balancing of scaled<br>out services and containers."
-        item2: "A/B split and merge traffic based<br>on conditions, percentages or both."
+        item1: "Load balancing of scaled-out services and containers."
+        item2: "A/B split and merge traffic based on conditions, percentages or both."
     list2:
         item1: "Graphical UI and dashboards for clear information and easy management."
         item2: "Integrated metrics and events system exposing critical application runtime information."
