@@ -20,5 +20,5 @@ After deployment, Vamp workflows monitor running applications and can act automa
 {{< note title="What's next?" >}}
 * [Learn how Vamp works](/documentation/how-vamp-works/architecture-and-components/)
 * Get started with [installation](/documentation/installation/overview)
-* Dive into one of our [tutorials](/documentation/tutorials/overview)
+* Dive into one of our [tutorials](/documentation/tutorials/)
 {{< /note >}}

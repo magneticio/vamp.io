@@ -1,15 +1,18 @@
 .masthead {
+  background: linear-gradient(45deg,#6991AA,#142D3C) ;
+  .hero-image {
+    background: url('../img/marketing/landing/planes_cropped.jpg');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 350px;
+  }
   position: relative;
   width: 100%;
   min-height: auto;
   text-align: center;
   color: white;
-  background: #2f549d  url('../img/marketing/landing/planes_cropped.jpg') left;
-  background-position: 70% 50%;
-  background-size: cover;
-  margin-bottom: 30px;
   .header-content {
-    position: relative;
     padding: 150px 15px 100px;
     text-align: center;
     .header-content-inner {
@@ -31,17 +34,8 @@
     }
   }
   @media (min-width: 768px) {
-    height: 100%;
-    min-height: 600px;
     background-position: center;
     .header-content {
-      position: absolute;
-      top: 50%;
-      right: 0;
-      padding: 0 50px;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
       .header-content-inner {
         max-width: 500px;
         margin-right: auto;
@@ -54,36 +48,6 @@
           max-width: 90%;
         }
       }
-    }
-  }
-
-  @media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 568px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-    background-position: 70% 50%;
-  }
-
-  @media only screen
-  and (min-device-width: 375px)
-  and (max-device-width: 667px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-
-  }
-
-  @media screen
-  and (min-device-width: 1439px)
-  {
-    .header-content {
-      right: 0;
-    }
-  }
-
-  @media screen
-  and (min-device-width: 2200px)
-  and (-webkit-min-device-pixel-ratio: 1) {
-    .header-content {
-      right: 22%;
     }
   }
 }
