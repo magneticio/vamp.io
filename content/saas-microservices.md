@@ -9,7 +9,7 @@ leads:
     lead1:
         topheader: "smart routing & workflow automation"
         header: "Are releases still a headache for you and your team?"
-        body: "Vamp provides smart, out-of-the-box automation workflows for testing and releasing microservices. You can start applying automated canary-test and release strategies immediately."
+        body: "**Vamp provides smart, out-of-the-box automation workflows for testing and releasing microservices.** You can start applying automated canary-test and release strategies immediately."
     lead2:
         topheader: "actionable insights"
         header: "Service deployments: how does your performance rate?"
