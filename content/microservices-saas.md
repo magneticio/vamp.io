@@ -25,7 +25,7 @@ features:
     list2:
         item1: "Graphical UI and dashboards for clear information and easy management."
         item2: "Integrated metrics and events system exposing critical application runtime information."
-        item3: "Integrate into existing deployment pipelines using the API or the command line interface."
+        item3: "Integrates with existing deployment pipelines using the API or the command line interface."
 personas:
     persona1:
         quote: "Releasing new versions of the microservices that power our growing SaaS platform is giving me a huge headache. DevOps resources are scarce, there is still a lot of manual work involved, and testing a release takes more time than we have."
