@@ -9,15 +9,15 @@ leads:
     lead1:
         topheader: "smart routing & workflow automation"
         header: "Are releases still a headache for you and your team?"
-        body: "Vamp provides smart, out-of-the-box automation workflows for testing and releasing microservices. You can start applying automated canary-test and release strategies immediately."
+        body: "Vamp provides smart, out-of-the-box automation workflows for testing and releasing microservices. **You can start applying automated canary-test and release strategies immediately.**"
     lead2:
         topheader: "actionable insights"
         header: "Service deployments: how does your performance rate?"
-        body: "Vamp provides conditional traffic routing per service, allowing you to test and compare all aspects of your applications in production. Vamp aggregates business and technical data into high-level health metrics for fully actionable insights and control."
+        body: "Vamp provides conditional traffic routing per service, allowing you to **test and compare all aspects of your applications in production.** Vamp aggregates business and technical data into high-level health metrics for fully actionable insights and control."
     lead3:
         topheader: "batteries included"
         header: "Are you reinventing the wheel with DIY scripts?"
-        body: "Vamp packages microservice and DevOps best-practices into out-of-the-box automation and optimisation workflows. Vamp works with all major clouds and container schedulers."
+        body: "**Vamp packages microservice and DevOps best-practices into out-of-the-box automation and optimisation workflows.** Vamp works with all major clouds and container schedulers."
 features:
     list1:
         item1: "Load balancing of scaled-out services and containers."

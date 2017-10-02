@@ -13,11 +13,11 @@ leads:
     lead2:
         topheader: "actionable insights"
         header: "Service deployments: how does your performance rate?"
-        body: "Vamp provides conditional traffic routing per service, allowing you to test and compare all aspects of your applications in production. Vamp aggregates business and technical data into high-level health metrics for fully actionable insights and control. "
+        body: "Vamp provides conditional traffic routing per service, allowing you to test and compare all aspects of your applications in production. **Vamp aggregates business and technical data into high-level health metrics for fully actionable insights and control.** "
     lead3:
         topheader: "batteries included"
         header: "Are you reinventing the wheel with DIY scripts?"
-        body: "Vamp packages microservice and DevOps best-practices into out-of-the-box automation and optimisation workflows. Vamp works with all major clouds and container schedulers."
+        body: "**Vamp packages microservice and DevOps best-practices into out-of-the-box automation and optimisation workflows.** Vamp works with all major clouds and container schedulers."
 personas:
     persona1:
         quote: "Releasing new versions of the microservices that power our growing SaaS platform is giving me a huge headache. DevOps resources are scarce, there is still a lot of manual work involved, and testing a release takes more time than we have."
