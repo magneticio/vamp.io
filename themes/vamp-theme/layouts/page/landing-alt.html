@@ -3,17 +3,22 @@
 <div class="landing-page landing-page-light">
   {{ partial "nav-home" . }}
 
-  <div class="masthead">
+  <div class="masthead hero-background">
     <div class="container">
       <div class="header-content row">
-        <div class="header-content-inner col-sm-4">
+        <div class="header-content-inner col-md-12">
           <h1>{{.Params.hero.header}}</h1>
           <p>{{.Params.hero.sub}}</p>
           <button id="cta-button1" class="button button--red">Learn more</button>
         </div>
-        <div class="col-sm-8">
-          <div class="hero-image"></div>
-        </div>
+        <!--<div class="header-content-inner col-sm-4">-->
+          <!--<h1>{{.Params.hero.header}}</h1>-->
+          <!--<p>{{.Params.hero.sub}}</p>-->
+          <!--<button id="cta-button1" class="button button&#45;&#45;red">Learn more</button>-->
+        <!--</div>-->
+        <!--<div class="col-sm-8">-->
+          <!--<div class="hero-image"></div>-->
+        <!--</div>-->
       </div>
     </div>
   </div>
@@ -31,11 +36,11 @@
           <ul class="lead-features-list">
             <li class="lead-features-list-item">
               <img src="/img/002-Medium-icons/Medium-icons-06.svg" alt="">
-              <p>Load balancing of scaled<br>out services and containers.</p>
+              <p>{{.Params.features.list1.item1}}</p>
             </li>
             <li class="lead-features-list-item">
               <img src="/img/002-Medium-icons/Medium-icons-05.svg" alt="">
-              <p>A/B split and merge traffic based<br>on conditions, percentages or both.</p>
+              <p>{{.Params.features.list1.item2}}</p>
             </li>
           </ul>
         </div>
@@ -63,15 +68,15 @@
           <ul class="lead-features-list">
             <li class="lead-features-list-item">
               <img src="/img/002-Medium-icons/Medium-icons-01.svg" alt="">
-              <p>Graphical UI and dashboards for clear information and easy management.</p>
+              <p>{{.Params.features.list2.item1}}</p>
             </li>
             <li class="lead-features-list-item">
               <img src="/img/002-Medium-icons/Medium-icons-03.svg" alt="">
-              <p>Integrated metrics and events system exposing critical application runtime information.</p>
+              <p>{{.Params.features.list2.item2}}</p>
             </li>
             <li class="lead-features-list-item">
               <img src="/img/002-Medium-icons/Medium-icons-04.svg" alt="">
-              <p>Integrate into existing deployment pipelines using the API or the command line interface.</p>
+              <p>{{.Params.features.list2.item3}}</p>
             </li>
           </ul>
         </div>
