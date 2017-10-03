@@ -10,8 +10,8 @@ layout: overview
 * [Vamp Gateway Agent (VGA)](/downloads/#vamp-gateway-agent-vga)
 * [Vamp CLI](/downloads/#vamp-cli)
 
-#### Homebrew
-* [Vamp CLI for MacOS X](/downloads/#vamp-cli-for-macos-x)
+#### NPM
+* [Vamp CLI](/downloads/#vamp-cli)
 
 #### Docker images
 * [Vamp Gateway Agent (VGA) and HAProxy](/downloads/#vamp-gateway-agent-vga-and-haproxy)
@@ -46,44 +46,25 @@ Processing configuration is based on the typesafe library. Additional informatio
 **Download: [bintray.com/magnetic-io - Vamp Gateway Agent](https://bintray.com/magnetic-io/downloads/vamp-gateway-agent/view)**
 
 Documentation can be found on the project page ([github.com/magneticio - Vamp Gateway Agent](https://github.com/magneticio/vamp-gateway-agent)).
+
 ### Vamp CLI
 
 **Download: [bintray.com/magnetic-io - Vamp CLI](https://bintray.com/magnetic-io/downloads/vamp-cli/view)**  
-**Requirements:** OpenJDK or Oracle Java version 1.8.0_40 or higher
+**Requirements:** Node.JS 6+
 
-#### Manual install - Windows and Linux
-Inside the extracted Vamp CLI binary package ([bintray.com/magnetic-io - Vamp CLI](https://bintray.com/magnetic-io/downloads/vamp-cli/view)) is a `bin` directory. Add it to your PATH statement, open a Console/CMD window and type `vamp`.  
-After installation, set Vamp’s host location:
-
-* Vamp’s host location specified as a command line option ( `--host` )
+Install the Vamp-CLI package globally
 
 ```
-vamp list breeds --host=http://192.168.59.103:8080
+npm install --global vamp-cli
 ```
 
-* Vamp’s host location specified via the environment variable `VAMP_HOST`
+Set the Vamp’s host location specified via the environment variable `VAMP_HOST`
 
 ```
 export VAMP_HOST=http://192.168.59.103:8080
 ```
 
-## Homebrew
-### Vamp CLI for MacOS X
-**Download:** We have Homebrew support to install the Vamp CLI on MacOS X  
-**Requirements:** OpenJDK or Oracle Java version 1.8.0_40 or higher  
-
-#### Homebrew install - MacOS X
-
-```bash
-brew tap magneticio/vamp
-brew install vamp
-```
-
-After installation, check if everything is properly installed with `vamp version`, then export the location of the Vamp host and check that the CLI can talk to Vamp:
-```bash
-export VAMP_HOST=http://localhost:8080
-vamp info
-```
+Checkout the [CLI documentation](/documentation/cli/cli-reference/) for further usage
 
 ## Docker images
 
