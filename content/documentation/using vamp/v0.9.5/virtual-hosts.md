@@ -14,7 +14,7 @@ Vamp can leverage the virtual hosting offered by HAproxy to support serving mult
 and port 443. This mostly comes in handy when you are offering public (internet) facing services where adding a port number
 to a URL is not an option.
 
-## Enabling Gateways 
+## Enabling Virtual Hosts 
 
 To enable the use of virtual hosts you need to configure the following options in the Vamp configuration.
 The option `virtual-hosts-domain` functions as the TLD and can be anything you like. In our example this means we could
