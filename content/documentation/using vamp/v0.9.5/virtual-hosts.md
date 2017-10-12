@@ -10,7 +10,15 @@ aliases:
     - /documentation/using-vamp/virtual-hosts/
 ---
 
-Vamp can be configured to support virtual host via HAProxy:
+Vamp can leverage the virtual hosting offered by HAproxy to support serving multiple endpoints on for example port 80 
+and port 443. This mostly comes in handy when you are offering public (internet) facing services where adding a port number
+to a URL is not an option.
+
+## Enabling Gateways 
+
+To enable the use of virtual hosts you need to configure the following options in the Vamp configuration.
+The option `virtual-hosts-domain` functions as the TLD and can be anything you like. In our example this means we could
+create virtual hosts like `myservices.mydomain.vamp`
 
 ```
 vamp.operation.gateway {
@@ -19,130 +27,89 @@ vamp.operation.gateway {
 }
 ```
 
-#### Example - Virtual hosts
- 
- `PUT ${VAMP_URL}/api/v1/deployments/runner` with body:
+## Automatic Virtual Hosts
 
+When Vamp is configured to allow virtual hosting, Vamp automatically creates a virtual host and binds it to port 80 
+for each gateway you define using the following pattern:
+
+```
+{ PORT }.{ DEPLOYMENT NAME }.{ DOMAIN }
+```
+
+{{< note title="Note!" >}}
+Virtual hosts are automatically bound to port 80! You do not need supply that port anywhere in the configuration.
+{{< /note >}}
+
+
+Let's say we deploy the following blueprint: a deployment called `simpleservice` with a gateway defined on port `9050`.
 
 ```yaml
----
-name: runner
-
+name: simpleservice
 gateways:
-  9070: runner1/port
-  9080: runner2/port
-
+9050: simpleservice/web
 clusters:
-  runner1:
-    services:
-      breed:
-        name: http:1.0.0
-        deployable: magneticio/sava:runner_1.0
-        ports:
-          port: 8081/http
-        environment_variables:
-          SAVA_RUNNER_ID: 1.0.0
-  runner2:
-    services:
-      breed:
-        name: http:2.0.0
-        deployable: magneticio/sava:runner_1.0
-        ports:
-          port: 8081/http
-        environment_variables:
-          SAVA_RUNNER_ID: 2.0.0
+simpleservice:
+  services:
+    breed:
+      name: simpleservice:1.0.0
+      deployable: magneticio/simpleservice:1.0.0
+      ports:
+        web: 3000/http
+    scale:
+      cpu: 0.2
+      memory: 128MB
+      instances: 1
 ```
 
-Now you can request:
+After deployment, we have an external gateway called `simpleservice/9050` with a virtual host called `9050.simpleservice.vamp`.
+This service is now available on port `9050` but also on port `80` when explicitly using the virtual host name in het HOST
+header of the HTTP request, 
+
+i.e using HTTPie
 
 ```bash
-$ curl --resolve 9070.runner.vamp:80:${VAMP_GATEWAY_AGENT_IP} http://9070.runner.vamp
-{"id":"1.0.0","runtime":"CF2136D9CA81282E","port":8081,"path":""}
-
-$ curl --resolve 9080.runner.vamp:80:${VAMP_GATEWAY_AGENT_IP} http://9080.runner.vamp
-{"id":"2.0.0","runtime":"1E188B006FF44AA6","port":8081,"path":""}
+http ${VAMP_GATEWAY_AGENT_IP} Host:9050.simpleservice.vamp 
 ```
+
+or using Curl
+
+```bash
+curl --resolve 9050.simpleservice.vamp:80:${VAMP_GATEWAY_AGENT_IP} http://9050.simpleservice.vamp
+```
+
+This means you could put a `CNAME` record in your DNS pointing `9050.simpleservice.vamp` to the IP of your public facing 
+Vamp Gateway. 
+
 {{< note title="Note!" >}}
 If you are running Vamp in one of the quick setups, `${VAMP_GATEWAY_AGENT_IP}` should have value of `${DOCKER_HOST_IP}` - See the [hello world quick setup instructions](/documentation/installation/hello-world#step-2-run-vamp).
 {{< /note >}}
 
-Vamp creates a virtual host for each gateway - name of the gateway (`/` replaced with `.`) appended to value from `vamp.gateway-driver.virtual-hosts-domain`.
-In case of above example:
 
-- 9050.runner.vamp
-- 9060.runner.vamp
-- port.runner1.runner.vamp
-- port.runner2.runner.vamp
+## Custom Virtual Hosts
 
-Using Gateway API it is possible to get virtual hosts for each gateway, e.g.
-```
-GET ${VAMP_URL}/api/v1/gateways
-```
-
-## Custom virtual hosts
-
-As you could see each gateways has `virtual_hosts` field.
-Using that field it is also possible to set list of custom virtual hosts.
-Let's see that in the following example:
-
+In addition to automatically generated virtual hosts, you can also provide your own virtual host name(s). We just need to 
+expand the gateway definition a bit, adding separate `routes` and `virtual_hosts` keys. Afte deployment, you can leverage
+the same 
 
 ```yaml
----
-name: runner
-
+name: simpleservice
 gateways:
-  9080:
-    virtual_hosts: [
-      "run.vamp.run"
-    ]
-    routes:
-      runner1/port:
-        weight: 50%
-      runner2/port:
-        weight: 50%
-
+  9050:
+    routes: simpleservice/web
+    virtual_hosts: ["my.simple-vhost.service", "alternative.simple-vhost.name"]
 clusters:
-  runner1:
+  simpleservice:
     services:
       breed:
-        name: http:1.0.0
-        deployable: magneticio/sava:runner_1.0
+        name: simpleservice:1.0.0
+        deployable: magneticio/simpleservice:1.0.0
         ports:
-          port: 8081/http
-        environment_variables:
-          SAVA_RUNNER_ID: 1.0.0
-  runner2:
-    services:
-      breed:
-        name: http:2.0.0
-        deployable: magneticio/sava:runner_1.0
-        ports:
-          port: 8081/http
-        environment_variables:
-          SAVA_RUNNER_ID: 2.0.0
+          web: 3000/http
+      scale:
+        cpu: 0.2
+        memory: 128MB
+        instances: 1
 ```
-
-If you deploy this blueprint as `runner` and check gateway `9080/runner`:
-
-```bash
-GET ${VAMP_URL}/api/v1/gateways/runner/9080
-```
-```yaml
-{
-  "name": "runner/9080",
-  "virtual_hosts": [
-    "9080.runner.vamp",
-    "run.vamp.run"
-  ]
-  ...
-```
-
-```bash
-$ curl --resolve run.vamp.run:80:${VAMP_GATEWAY_AGENT_IP} http://run.vamp.run
-{"id":"1.0.0","runtime":"C0013E858F213AE0","port":8081,"path":""}
-```
-
-`9080.runner.vamp` is added if configuration parameter `vamp.operation.gateway.virtual-hosts` is set, otherwise just custom virtual hosts if any.
 
 {{< note title="What next?" >}}
 * Check the [API documentation](/documentation/api/v0.9.5/api-reference)
