@@ -141,7 +141,7 @@ googleAnalytics = ""
 
 [[menu.main]]
 	name = "Routing & Load balancing"
-	url = "/documentation/routing_and_loadbalancing/"
+	url = "/documentation/routing-and-loadbalancing/"
 	parent = "Documentation"
 	weight = 50
 
