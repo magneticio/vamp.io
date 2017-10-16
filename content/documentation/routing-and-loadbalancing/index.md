@@ -108,7 +108,7 @@ the remaining 95% are returned into the "bucket" and distributed using the gener
 or not targeted by condition strength.
  
 We also support **sticky sessions** allowing traffic to either be routed to permanent routes or instances during one session.
-Jump to our [dedicated page on sticky sessin](/documentation/using-vamp/sticky-sessions) to learn more.
+Jump to our [dedicated page on sticky sessions](/documentation/using-vamp/sticky-sessions) to learn more.
  
 ## Service Discovery
 
