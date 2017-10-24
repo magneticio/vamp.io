@@ -34,7 +34,6 @@ personas:
     persona3:
         quote: "For the last 12 months we've been modernising our application landscape with the latest microservice, container and continuous delivery technologies. Our budgets and time have been fully consumed, but we still have the same release velocity and the same number of issues."
 forms:
-    booking: "Want to talk or book a demo?"             
 ---
 
 
