@@ -57,9 +57,9 @@ gulp.task('hugo:staging',shell.task(['hugo --baseUrl http://staging.vamp.io']));
 gulp.task('hugo:dev',shell.task(['hugo']));
 
 
-gulp.task('build:prod',['hugo:prod','sass', 'js']);
-gulp.task('build:staging',['hugo:staging','sass', 'js']);
-gulp.task('build:dev',['hugo:dev','sass', 'js']);
+gulp.task('build:prod',['sass', 'js']);
+gulp.task('build:staging',['sass', 'js']);
+gulp.task('build:dev',['sass', 'js']);
 
 gulp.task('watch', function () {
   gulp.watch(['themes/vamp-theme/static/js/**/*.js','!themes/vamp-theme/static/js/dist/*.js'],['js']);
