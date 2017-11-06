@@ -1,7 +1,3 @@
-/* @flow */
-
-/* File: gulpfile.js */
-
 // grab our gulp packages
 const gulp  = require('gulp');
 const sass = require('gulp-sass');
@@ -12,8 +8,10 @@ const concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
+const hash = require('gulp-hash');
 
-gulp.task('sass:dev', function() {
+
+gulp.task('sass', function() {
     const sassStream = gulp.src('./themes/vamp-theme/static/scss/style.scss')
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(autoprefixer({cascade: false}));
@@ -24,7 +22,10 @@ gulp.task('sass:dev', function() {
     const mergedStream = merge(sassStream, cssStream)
         .pipe(cleanCSS())
         .pipe(concat('style.min.css'))
-        .pipe(gulp.dest('./themes/vamp-theme/static/css'));
+        .pipe(hash())
+        .pipe(gulp.dest('./themes/vamp-theme/static/css/dist/'))
+        .pipe(hash.manifest("hash.json"))
+        .pipe(gulp.dest("data/css"));
     return mergedStream;
 });
 
@@ -36,12 +37,18 @@ gulp.task('js', function() {
       .pipe(gulp.dest('./themes/vamp-theme/static/js/dist/'))
       .pipe(rename({ suffix: '.min' }))
       .pipe(uglify())
-      .pipe(gulp.dest('./themes/vamp-theme/static/js/dist/'));
+      .pipe(hash())
+      .pipe(gulp.dest('./themes/vamp-theme/static/js/dist/'))
+      .pipe(hash.manifest("hash.json"))
+      .pipe(gulp.dest("data/js"));
 
     gulp.src('./themes/vamp-theme/static/js/app.js')
       .pipe(rename({ suffix: '.min' }))
       .pipe(uglify())
+      .pipe(hash())
       .pipe(gulp.dest('./themes/vamp-theme/static/js/dist/'))
+      .pipe(hash.manifest("hash.json"))
+      .pipe(gulp.dest("data/js"));
 
 });
 
@@ -50,11 +57,11 @@ gulp.task('hugo:staging',shell.task(['hugo --baseUrl http://staging.vamp.io']));
 gulp.task('hugo:dev',shell.task(['hugo']));
 
 
-gulp.task('build:prod',['hugo:prod','sass:dev', 'js']);
-gulp.task('build:staging',['hugo:staging','sass:dev', 'js']);
-gulp.task('build:dev',['hugo:dev','sass:dev', 'js']);
+gulp.task('build:prod',['hugo:prod','sass', 'js']);
+gulp.task('build:staging',['hugo:staging','sass', 'js']);
+gulp.task('build:dev',['hugo:dev','sass', 'js']);
 
 gulp.task('watch', function () {
   gulp.watch(['themes/vamp-theme/static/js/**/*.js','!themes/vamp-theme/static/js/dist/*.js'],['js']);
-  gulp.watch('themes/vamp-theme/static/scss/**/*.scss',['sass:dev']);
+  gulp.watch('themes/vamp-theme/static/scss/**/*.scss',['sass']);
 });

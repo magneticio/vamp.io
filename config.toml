@@ -1,6 +1,6 @@
 baseurl = "http://vamp.io"
 languageCode = "en-us"
-title = "Vamp"
+title = "Vamp | Smart Application Releasing for Modern Cloud Platforms"
 theme = "vamp-theme"
 metadataformat = "yaml"
 canonifyurls = true
@@ -11,7 +11,7 @@ googleAnalytics = ""
 [params]
 	# General information
 	author = "magnetic.io"
-	description = "Canary releasing and autoscaling for microservice systems"
+	description = "Vamp gives you all the tools to release, control and optimize your containerised apps on cloud native platforms."
 	copyright = "Released under the Apache 2 license"
 
 	# Repository

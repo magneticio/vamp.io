@@ -26,7 +26,7 @@
     background-color: $color-white-squeeze;
     border-bottom: $light-border;
     .logo {
-      background-image: url('../img/005-vamp/Logo/logo-long-colour.svg');
+      background-image: url('/img/005-vamp/Logo/logo-long-colour.svg');
       background-repeat: no-repeat;
     }
 
@@ -84,7 +84,7 @@
   .logo {
     height: 40px;
     width: 120px;
-    background-image: url('../img/005-vamp/Logo/logo-long-white.svg');
+    background-image: url('/img/005-vamp/Logo/logo-long-white.svg');
     background-repeat: no-repeat;
     background-size: contain;
   }
