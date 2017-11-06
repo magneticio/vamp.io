@@ -18,29 +18,41 @@ function documentReady() {
 
   });
 
-  // initialize top menu drop downs
-  var popoverOptions = {
-    trigger: 'hover',
-    animation: 'pop'
-  };
+  /**
+   * START Navbar
+   */
 
+  // initialize top menu drop downs
   $('.top-nav-product-top').webuiPopover({url: '#productPopover', trigger: 'click', animation: 'pop', offsetTop: -20, padding: false, style: 'vamp'});
   $('.top-nav-developers-top').webuiPopover({url: '#developersPopover', trigger: 'click', animation: 'pop', offsetTop: -20, offsetLeft: 20, padding: false, style: 'vamp'});
 
-
   // make the top menu light on all pages except the homepage
+  // make the menu smaller on scroll, only on the homepage
   if (thePath !== '/') {
-    $("#header").addClass("top-menu-light");
+    $("#header").addClass("navbar-light");
+  } else {
+    $(document).on("scroll", function() {
+      if($(document).scrollTop()>100) {
+        $("#header").addClass("navbar-small");
+      } else {
+        $("#header").removeClass("navbar-small");
+      }
+    });
   }
+
 
   // Set mobile menu
   $('#menu-toggle').on('click', function (e) {
-    $('.top-menu-items').toggleClass('open');
+    $('.navbar-items').toggleClass('open');
   });
 
-  $('top-menu-item').on('click', function(e) {
-    $('.top-menu-items').removeClass('open');
+  $('navbar-item').on('click', function(e) {
+    $('.navbar-items').removeClass('open');
   });
+
+  /**
+   * END Navbar
+   */
 
   // Create codeblocks when this code is present
   $('pre code').each(function(i, block) {
@@ -148,7 +160,7 @@ function setSideMenu() {
     }
   });
 
-  $('.top-menu-item').each(function () {
+  $('.navbar-item').each(function () {
     var parentUrl = $(this).data('parenturl');
     var firstPartUrlMenu = parentUrl.split('/')[1];
     $(this).removeClass('active');

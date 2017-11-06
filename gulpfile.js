@@ -33,15 +33,15 @@ const jsLibsBase = './themes/vamp-theme/static/js/libs/';
 gulp.task('js', function() {
     gulp.src([jsLibsBase + 'jquery-3.1.0.min.js', jsLibsBase + 'lunrjs.min.js', jsLibsBase + 'highlight.pack.js', jsLibsBase + 'debounce.min.js', jsLibsBase + 'clipboard.min.js', jsLibsBase + 'jquery.webui-popover.min.js', jsLibsBase + 'typed.min.js'])
       .pipe(concat('vendor.js'))
-      .pipe(gulp.dest('./themes/vamp-theme/static/js/'))
+      .pipe(gulp.dest('./themes/vamp-theme/static/js/dist/'))
       .pipe(rename({ suffix: '.min' }))
       .pipe(uglify())
-      .pipe(gulp.dest('./themes/vamp-theme/static/js/'));
+      .pipe(gulp.dest('./themes/vamp-theme/static/js/dist/'));
 
     gulp.src('./themes/vamp-theme/static/js/app.js')
       .pipe(rename({ suffix: '.min' }))
       .pipe(uglify())
-      .pipe(gulp.dest('./themes/vamp-theme/static/js/'))
+      .pipe(gulp.dest('./themes/vamp-theme/static/js/dist/'))
 
 });
 
@@ -55,6 +55,6 @@ gulp.task('build:staging',['hugo:staging','sass:dev', 'js']);
 gulp.task('build:dev',['hugo:dev','sass:dev', 'js']);
 
 gulp.task('watch', function () {
-  gulp.watch('themes/vamp-theme/static/js/**/*.js',['js']);
+  gulp.watch(['themes/vamp-theme/static/js/**/*.js','!themes/vamp-theme/static/js/dist/*.js'],['js']);
   gulp.watch('themes/vamp-theme/static/scss/**/*.scss',['sass:dev']);
 });

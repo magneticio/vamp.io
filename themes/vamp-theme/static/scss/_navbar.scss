@@ -3,12 +3,27 @@
   position: relative;
   justify-content: space-between;
   height: 80px;
+  background-color: $color-big-stone;
   padding: 0 10px;
-  background-color: $color-white-squeeze;
   z-index: 999;
+  transition: height .4s;
+
+  &.navbar-small {
+    height: 60px !important;
+  }
+
+  > .container {
+    height: 79px;
+  }
+
+  &.navbar-sticky {
+    position: fixed;
+    width: 100%;
+    top: 0;
+  }
 
   &.navbar-light {
-
+    background-color: $color-white-squeeze;
     border-bottom: $light-border;
     .logo {
       background-image: url('../img/005-vamp/Logo/logo-long-colour.svg');
@@ -23,12 +38,29 @@
       }
     }
 
-    .github-logo{
-      color: $color-big-stone;
-    }
-
-    .search-button {
-      color: $color-big-stone;
+    .search {
+      .fa-search {
+        position: absolute;
+        top: 32px;
+        left: 11px;
+        font-size: 15px;
+        color: $color-jungle-mist;
+      }
+      .search-input {
+        padding: 1.25rem;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        font-size: $font-size-default;
+        letter-spacing: 0.05em;
+        font-weight: 300;
+        background: white;
+        border: none;
+        height: 1rem;
+        border-radius: 4px;
+        text-indent: 16px;
+        width: 300px;
+      }
     }
   }
 
@@ -66,7 +98,7 @@
     float: right;
   }
 
-  .navbar-items, .download, .github-logo, .search-button {
+  .navbar-items, .download, .github-logo, .search {
     display: flex;
     align-items: center;
     position: relative;
@@ -103,8 +135,79 @@
     }
   }
 
-  .github-logo, .search-button {
-    color: $color-white-squeeze;
-    cursor: pointer;
+  .search {
+    .fa-search {
+      position: relative;
+      left: 30px;
+      top: 10px;
+      z-index: 1000;
+      font-size: 15px;
+      color: $color-jungle-mist;
+    }
+    .search-input {
+      padding: 1.25rem;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      font-size: $font-size-default;
+      letter-spacing: 0.05em;
+      font-weight: 300;
+      background: white;
+      border: none;
+      height: 1rem;
+      border-radius: 4px;
+      text-indent: 16px;
+      width: 300px;
+    }
   }
+
+  .hiring-popover {
+    position: relative;
+    background: $color-radical-red;
+    font-size: .75rem;
+    padding: .5rem .75rem;
+    margin-left: 1rem;
+    border-radius: 2px;
+    animation-delay: 2s;
+    animation: bounce .3s 4;
+    &:after {
+      right: 100%;
+      top: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0px;
+      width: 0px;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(213,26,26,0);
+      border-right-color: $color-radical-red;
+      border-width: 8px;
+      margin-top: -9px
+    }
+
+    a {
+      color: $color-white-squeeze;
+    }
+  }
+}
+
+// mobile menu
+.slicknav_menu {
+  display: block;
+  position: fixed;
+  top:0;
+  width: 100%;
+  z-index: 9999;
+  @media all and (min-width: 1025px) {
+    display: none;
+  }
+
+  border-bottom: 1px solid $color-jungle-mist;
+}
+
+@-webkit-keyframes bounce {
+  0%       { left: 5px; }
+  25%, 75% { left: 15px; }
+  50%      { left: 20px; }
+  100%     { left: 0;}
 }
