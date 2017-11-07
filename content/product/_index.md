@@ -1,14 +1,36 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Why use Vamp?
+title: Product
 aliases:
     - /product/
     - /product/why-use-vamp/
     - /why-use-vamp/
+header:
+    title: "Innovation starts with a modern delivery platform."
+    sub: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum in odio ac viverra. Curabitur laoreet luctus quam. Curabitur in sagittis erat, vel feugiat nisl. Nulla elit nisl, venenatis eu lacus vitae, cursus porta neque. Proin aliquet ante nibh, ac porttitor diam condimentum quis."
+section1:
+    title: "Why Vamp?"
+    sub: "This is the sub text of section 1. This section contains a list of three items spread over the page."
+    featurelist:
+        item1:
+            title: "Crank up release velocity"
+            sub: "Release fast and often without service disruptions with Vamp's gradual rollouts and upgrades."
+        item2:
+            title: "more stuff"
+            sub: "more text"
+        item3:
+            title: "even more stuff"
+            sub: "even more text"                       
+section2:
+    title: "This is the title of section 2"
+    sub: "This is the sub text of section 2. This section contains a table you can fill with comparisons or lists of data."
+    image: 
+section3:
+    title: "This is the title of section 3"
+    sub: "This is the sub text of section 3.<br> This is where you **dive deeper** into the topic prompted by the title."
+    
 ---
 
-We recognise the pain and risk involved with delivering microservice applications.  We've been there too - facing downtime and unexpected issues while transitioning from one release to the next.
-In microservice architectures, these concerns can quickly multiply. It's all too easy to get stuck dealing with the added complexities and miss out on the potential benefits.
 
 ![](/images/typical-systems-vs-vamp.png)
 

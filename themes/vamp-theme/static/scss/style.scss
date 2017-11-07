@@ -5,6 +5,7 @@
 @import 'markdown';
 @import 'nav-popover';
 @import 'badge';
+@import 'table';
 @import 'mixins';
 
 body {
@@ -1516,10 +1517,6 @@ pre + pre {
 }
 
 .landing-page {
-  .search-bar {
-    opacity: 0;
-  }
-
   .navbar {
     background-color: $color-big-stone !important;
     border-bottom: 1px solid rgba($color-white-squeeze, 0.1) !important;
@@ -1530,204 +1527,6 @@ pre + pre {
       background-color: white !important;
       border-bottom: 1px solid rgba($color-white-squeeze, 0.1) !important;
     }
-  }
-}
-
-.search-bar {
-  top: 0;
-  z-index: 20;
-  background-color: $color-white-squeeze;
-  height: 80px;
-  width: 100%;
-  align-items: center;
-  box-shadow: 0 4px 2px -2px rgba(20, 45, 60, 0.25);
-  display: none;
-  position: fixed;
-  transition: 0.3s ease-in left;
-  top: 0;
-  opacity: 0;
-  left: 100vw;
-
-  .inline-search-results {
-    position: absolute;
-    //box-shadow: 0 0 8px 1px rgba(20, 45, 60, 0.25);
-    top: 82px;
-    min-width: 250px;
-    max-width: 800px;
-    left: 80px;
-    opacity: 0;
-    transition: opacity ease-in 0.3s;
-
-    &.active {
-      opacity: 1;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    li {
-      padding: 10px 20px;
-      font-weight: 300;
-      letter-spacing: 0.01em;
-      cursor: pointer;
-      border-bottom: 1px solid $color-bermuda-gray;
-      background-color: $color-white-squeeze;
-      border-left: 2px $color-radical-red solid;
-      transition: 0.07s all ease-in;
-
-      &:last-of-type {
-        border-bottom: none;;
-      }
-
-      .title {
-        font-weight: 500;
-        color: $color-blue-dianne;
-        font-size: 15px;
-        margin-bottom: 5px;
-      }
-
-      .text {
-        font-weight: 300;
-        font-size: $font-size-small;
-        line-height: 1.2;
-      }
-
-      &.selected {
-        background-color: $color-jungle-mist;
-        //background-color: red;
-      }
-
-      &:hover {
-        background-color: darken($color-white-squeeze, 5) !important;
-        border-left: 4px $color-radical-red solid;
-
-      }
-
-      b {
-        font-weight: 700;
-      }
-    }
-  }
-
-  @media all and (min-width: 1025px) {
-    display: flex;
-
-  }
-
-  &.active {
-    opacity: 1;
-    z-index: 9999;
-    left: 0;
-
-  }
-
-  &__icon {
-    height: 80px;
-    width: 80px;
-    background-color: $color-radical-red;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-  }
-
-  &__input {
-    position: relative;
-    height: 100%;
-    width: calc(100% - 160px);
-    border: none;
-    //background-color: transparent;
-
-
-    input {
-      position: absolute;
-      padding: 0 20px;
-      top: 0;
-      bottom: 0;
-      width: 100%;
-      font-size: $font-size-medium;
-      letter-spacing: 0.05em;
-      font-weight: 300;
-      background: transparent;
-      border: none;
-      height: 100%;
-    }
-  }
-
-  &__exit {
-    height: 50%;
-    width: 80px;
-    height: 80px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-  }
-}
-
-.search-page {
-  width: 100vw;
-  height: 100vh;
-  overflow-y: scroll;
-
-  @media all and (min-width: 1025px) {
-    padding-top: 80px + 40px;
-  }
-
-
-  .search-results-for {
-    display: flex;
-
-    h1 {
-      display: inline-block;
-      height: 48px;
-    }
-
-    p {
-      margin-left: 10px;
-      font-size: $font-size-medium;
-      display: inline-block;
-      align-self: flex-end;
-      line-height: 1;
-      padding-bottom: 4px;
-    }
-  }
-
-  .search-result-item {
-    padding: 20px 0;
-
-    border-bottom: 1px solid $color-bermuda-gray;
-
-    &:last-of-type {
-      border-bottom: none;
-    }
-
-    h2 {
-      margin: 0;
-      padding: 0;
-    }
-
-    .text {
-      margin: 0;
-      padding: 0;
-    }
-
-    .path {
-      margin: -4px 0 2px 0;
-      opacity: 0.7;
-      padding: 0;
-      font-size: 13px;
-    }
-
-    a {
-      margin: 0;
-      padding: 0;
-      text-decoration: none;
-      color: $color-radical-red;
-    }
-
   }
 }
 
@@ -1750,7 +1549,10 @@ h4:hover .anchor-hover {
   opacity: 1;
 }
 
-// Dev
-#__bs_notify__ { top:95% !important; right: 10px !important; border-radius: 15px !important; height:60px !important; }
+img.screenshot {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 5px;
+}
+
 @import "marketing/landing/style";
 @import "careers/style";

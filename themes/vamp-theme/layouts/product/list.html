@@ -1,0 +1,124 @@
+{{ partial "head" . }}
+
+{{ partial "nav" . }}
+
+<div class="page product">
+
+  <!--header -->
+
+  <header class="lander-row--white">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-sm-6 text-left">
+          <h1 class="h1 mb-5 hero-text">{{.Params.header.title | print | markdownify}}</h1>
+          <h2 class="h2">{{.Params.header.sub | print | markdownify}}</h2>
+        </div>
+        <div class="col-sm-6">
+          <a href="https://placeholder.com">
+            <img class="pt-4" src="http://via.placeholder.com/450x350">
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!--section 1-->
+
+  <section class="lander-row--grey">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="h1 text-center mb-5">{{.Params.section1.title}}</h1>
+        </div>
+        <div class="col-sm-12 col-md-10 offset-md-1">
+          <h2 class="h2 text-center">{{.Params.section1.sub}}</h2>
+        </div>
+        <div class="row mb-4">
+          <div class="col-sm-4 text-center">
+            <img src="/img/001-Big-icons/illustration-01.svg" alt="Easy canary releasing"  class="image--smaller">
+            <h2 class="h2">{{.Params.section1.featurelist.item1.title}}</h2>
+            <p class="text">
+              {{.Params.section1.featurelist.item1.sub}}
+            </p>
+          </div>
+          <div class="col-sm-4 text-center">
+            <img src="/img/001-Big-icons/illustration-02.svg" alt="Powerful autoscaling" class="image--smaller">
+            <h2 class="h2">{{.Params.section1.featurelist.item2.title}}</h2>
+            <p class="text">
+              {{.Params.section1.featurelist.item2.sub}}
+            </p>
+          </div>
+          <div class="col-sm-4 text-center">
+            <img src="/img/001-Big-icons/illustration-03.svg" alt="Container agnostic deploys" class="image--smaller">
+            <h2 class="h2">Avoid vendor lock-in</h2>
+            <p class="text">
+              {{.Params.section1.featurelist.item3.sub}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--section 2-->
+
+  <section class="lander-row--white">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="h1 text-center mb-5">{{.Params.section2.title}}</h1>
+        </div>
+        <div class="col-sm-12 col-md-10 offset-md-1">
+          <h2 class="h2 text-center">{{.Params.section2.sub}}</h2>
+        </div>
+        <div class="col-sm-12">
+          <table class="table table-striped vamp-table">
+            <thead>
+            <tr>
+              <th>Typical Systems</th>
+              <th>Vamp</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>over dimensioned infra</td>
+              <td>auto up & down scaling, self-optimising</td>
+            </tr>
+            <tr>
+              <td>downtime when upgrading</td>
+              <td>seamless canary releasing</td>
+            </tr>
+            <tr>
+              <td>even more things</td>
+              <td>and even more other things</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--section 3-->
+
+  <section class="lander-row--grey">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-sm-6">
+          <img src="/img/product/deployment_screen.png" class="screenshot">
+        </div>
+        <div class="col-sm-6 text-left">
+          <h1 class="h1 mb-5">{{.Params.section3.title | print | markdownify}}</h1>
+          <h2 class="h2">{{.Params.section3.sub | print | markdownify}}</h2>
+          <p class="text">{{.Params.section3.list | print | markdownify}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--cta 1-->
+
+  {{ partial "book-a-demo" . }}
+</div>
+
+{{ partial "footer" .}}

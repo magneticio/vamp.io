@@ -32,14 +32,14 @@
   <style>
     @font-face {
       font-family: 'Icon';
-      src: url('fonts/icon.eot?52m981');
-      src: url('fonts/icon.eot?#iefix52m981')
+      src: url('/fonts/icon.eot?52m981');
+      src: url('/fonts/icon.eot?#iefix52m981')
       format('embedded-opentype'),
-      url('fonts/icon.woff?52m981')
+      url('/fonts/icon.woff?52m981')
       format('woff'),
-      url('fonts/icon.ttf?52m981')
+      url('/fonts/icon.ttf?52m981')
       format('truetype'),
-      url('fonts/icon.svg?52m981#icon')
+      url('/fonts/icon.svg?52m981#icon')
       format('svg');
       font-weight: normal;
       font-style: normal;
@@ -47,13 +47,12 @@
   </style>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/style.min.css">
+  <link rel="stylesheet" href="/css/dist/{{ index .Site.Data.css.hash "style.min.css" }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
-  <script src="/js/vendor.min.js"></script>
+  <script src="/js/dist/{{ index .Site.Data.js.hash "vendor.min.js" }}" ></script>
 
-  <script src="/js/app.min.js"></script>
-
+  <script src="/js/dist/{{ index .Site.Data.js.hash "app.min.js" }}" ></script>
   {{ with .RSSLink }}
   <link href="index.xml" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
   <link href="index.xml" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
