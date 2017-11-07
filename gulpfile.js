@@ -1,4 +1,3 @@
-// grab our gulp packages
 const gulp  = require('gulp');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
@@ -9,9 +8,11 @@ const cleanCSS = require('gulp-clean-css');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 const hash = require('gulp-hash');
+const del = require('del')
 
 
 gulp.task('sass', function() {
+    del('./themes/vamp-theme/static/css/dist/**/*')
     const sassStream = gulp.src('./themes/vamp-theme/static/scss/style.scss')
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(autoprefixer({cascade: false}));
@@ -32,6 +33,7 @@ gulp.task('sass', function() {
 const jsLibsBase = './themes/vamp-theme/static/js/libs/';
 
 gulp.task('js', function() {
+    del('./themes/vamp-theme/static/js/dist/**/*')
     gulp.src([jsLibsBase + 'jquery-3.1.0.min.js', jsLibsBase + 'lunrjs.min.js', jsLibsBase + 'highlight.pack.js', jsLibsBase + 'debounce.min.js', jsLibsBase + 'clipboard.min.js', jsLibsBase + 'jquery.webui-popover.min.js', jsLibsBase + 'typed.min.js'])
       .pipe(concat('vendor.js'))
       .pipe(gulp.dest('./themes/vamp-theme/static/js/dist/'))
