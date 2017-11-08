@@ -21,9 +21,12 @@ If everything went to plan, you should have your Vamp installation up and runnin
 Imagine you or the company you work for still use monolithic applications. I know, it sounds far fetched...
 This application is conveniently called *Sava monolith* and is at version 1.0.  
 
-You've managed to wrap your monolith in a Docker container, which lives in the Docker hub under `magneticio/sava:1.0.0`. Your app normally runs on port `8080` but you want to expose it under port `9050` in this case. Let's deploy this through Vamp using the following simple blueprint. Don't worry too much about what means what: we'll get there. You can choose to deploy this blueprint either using the Vamp UI or using the Vamp API.
+You've managed to wrap your monolith in a Docker container, which lives in the Docker hub under `magneticio/sava:1.0.0`. 
+Your app normally runs on port `8080` but you want to expose it under port `9050` in this case.
+ Let's deploy this through Vamp using the following simple blueprint. Don't worry too much about what means what: we'll get there. 
+ You can choose to deploy this blueprint either using the Vamp UI or using the Vamp API.
 
-```
+```yaml
 name: sava:1.0
 gateways:
   9050: sava/webport
@@ -39,7 +42,12 @@ clusters:
         cpu: 0.2       
         memory: 64MB
         instances: 1
-
+      health_checks:
+        initial_delay: 10s
+        port: webport
+        timeout: 5s
+        interval: 10s
+        failures: 10     
 ```
 
 

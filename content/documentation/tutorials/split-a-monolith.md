@@ -23,7 +23,7 @@ To prove our point, we are going to slightly "over-engineer" our services soluti
 * We have used environment variables to connect the dynamically assigned ports and hostnames of the backend services to the "customer facing" sava service
 * The gateway port has been changed to 9060 so it doesn't collide with the monolithic deployment
 
-```
+```yaml
 name: sava:1.2
 gateways:
   9060: sava/webport
@@ -44,7 +44,13 @@ clusters:
       scale:
         cpu: 0.2      
         memory: 64MB
-        instances: 1               
+        instances: 1
+      health_checks:
+        initial_delay: 10s
+        port: webport
+        timeout: 5s
+        interval: 10s
+        failures: 10                    
   backend1:  # cluster 2
     services:
       breed:
@@ -55,7 +61,7 @@ clusters:
       scale:
         cpu: 0.2       
         memory: 64MB
-        instances: 1              
+        instances: 1                     
   backend2:  # cluster 3
     services:
       breed:
@@ -66,7 +72,7 @@ clusters:
       scale:
         cpu: 0.2       
         memory: 64MB
-        instances: 1
+        instances: 1          
 ```
 
 Deploy this blueprint using either the UI or a REST call  - let's name it after the blueprint this time **sava-new**.  

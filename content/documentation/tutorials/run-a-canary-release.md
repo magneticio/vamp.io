@@ -25,7 +25,7 @@ Now let's say we have a new version of this great application that we want to ca
 
 Vamp allows you to canary release application updates by merging new blueprints to a running deployment. Take a look at the YAML blueprint example below. It is almost identical to the blueprint we initially used to deploy sava 1.0.0, with one difference - this time the breed describes the sava:1.1.0 service.
 
-``` 
+```yaml
 name: sava:1.1
 clusters:
   sava:
@@ -39,6 +39,12 @@ clusters:
         cpu: 0.2       
         memory: 64MB
         instances: 1
+      health_checks:
+        initial_delay: 10s
+        port: webport
+        timeout: 5s
+        interval: 10s
+        failures: 10          
 ```
 
 ## Deploy the new version of our application next to the old one
