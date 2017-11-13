@@ -3,12 +3,12 @@ title: Microservices Life Cycle Management
 type: "page"
 layout: "landing-alt"
 hero: 
-    header: "Are you in control when upgrading your services?" 
-    sub: "Discover Vamp: enterprise-grade lifecycle management for microservices."
+    header: "Reduce containerised application release complexity" 
+    sub: "Vamp: enterprise-grade lifecycle management for containerised applications."
 leads:
     lead1:
         topheader: "smart routing & workflow automation"
-        header: "Are releases still a headache for you and your team?"
+        header: "Refactor your monolith with advanced phased deployment strategies"
         body: "Vamp provides smart, out-of-the-box automation workflows for testing and releasing microservices. **You can start applying automated canary-test and release strategies immediately.**"
     lead2:
         topheader: "actionable insights"
@@ -16,7 +16,7 @@ leads:
         body: "Vamp provides conditional traffic routing per service, allowing you to **test and compare all aspects of your applications in production.** Vamp aggregates business and technical data into high-level health metrics for fully actionable insights and control."
     lead3:
         topheader: "batteries included"
-        header: "Are you reinventing the wheel with DIY scripts?"
+        header: "Sustain growth, power DevOps teams to deploy containerised apps safe, quick and often "
         body: "**Vamp packages microservice and DevOps best-practices into out-of-the-box automation and optimisation workflows.** Vamp works with all major clouds and container schedulers."
 features:
     list1:
@@ -28,7 +28,7 @@ features:
         item3: "Integrates with existing deployment pipelines using the API or the command line interface."
 personas:
     persona1:
-        quote: "Releasing new versions of the microservices that power our growing SaaS platform is giving me a huge headache. DevOps resources are scarce, there is still a lot of manual work involved, and testing a release takes more time than we have."
+        quote: "We want to modernise our monolith architecture but also avoid big bang releases. What we need is advanced and better planned data driven deployment strategies. "
     persona2:
         quote: "We've just released an improved version of our customer subscription API, but I'm not sure if it actually performs better, and now I'm also seeing issues appearing in other related services. What's going on?"
     persona3:
