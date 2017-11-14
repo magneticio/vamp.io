@@ -138,7 +138,7 @@ The below query gets the most recent response time events for the "frontend" clu
 
 ```json
 {
-  "tags": ["routes:d9b42796-d8f6-431b-9230-9d316defaf6d_frontend_8080","metrics:rtime","route"],
+  "tags": ["routes:d9b42796-d8f6-431b-9230-9d316defaf6d_frontend_8080","metrics:responseTime","route"],
     "timestamp" : {
       "lte" : "now"
     }
