@@ -8,10 +8,10 @@ hero:
 leads:
     lead1:
         topheader: "data-driven canary deployment strategies"
-        header: "Refactor your monolith with advanced phased deployment strategies"
+        header: "Test your services to perfection... in production"
         body: "Vamp provides smart, out-of-the-box automation workflows for testing and releasing microservices. **You can start applying automated canary-test and release strategies immediately.**"
     lead2:
-        topheader: "actionable insights"
+        topheader: "actionable insights & control"
         header: "Refactor your monolith with advanced and phased deployment strategies"
         body: "Vamp provides conditional traffic routing per service, allowing you to **test and compare all aspects of your applications in production.** Vamp aggregates business and technical data into high-level health metrics for fully actionable insights and control."
     lead3:
@@ -28,7 +28,7 @@ features:
         item3: "Integrates with existing deployment pipelines using the API or the command line interface."
 personas:
     persona1:
-        quote: "We want to modernise our monolith architecture but also avoid big bang releases. What we need is advanced and better planned data driven deployment strategies. "
+        quote: "Releasing new versions of services is done manually, error-prone and DevOps resources are scarce. Testing a release takes more time than we have. As business demands keep coming we suffer from release anxiety, rollbacks are costly and complex. "
     persona2:
         quote: "We've just released an improved version of our customer subscription API, but I'm not sure if it actually performs better, and now I'm also seeing issues appearing in other related services. What's going on?"
     persona3:
