@@ -3,11 +3,11 @@ title: Microservices Life Cycle Management
 type: "page"
 layout: "landing-alt"
 hero: 
-    header: "Automate your application deployment strategy" 
+    header: "Automate and advance your application deployment strategy" 
     sub: "Vamp: enterprise-grade lifecycle management for containerised applications"
 leads:
     lead1:
-        topheader: "smart routing & workflow automation"
+        topheader: "data-driven canary deployment strategies"
         header: "Refactor your monolith with advanced phased deployment strategies"
         body: "Vamp provides smart, out-of-the-box automation workflows for testing and releasing microservices. **You can start applying automated canary-test and release strategies immediately.**"
     lead2:
