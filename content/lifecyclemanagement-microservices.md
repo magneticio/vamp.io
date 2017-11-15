@@ -32,8 +32,7 @@ personas:
     persona2:
         quote: "We've just released an improved version of our customer subscription API, but I'm not sure if it actually performs better, and now I'm also seeing issues appearing in other related services. What's going on?"
     persona3:
-        quote: "We use our own tools to manage microservice lifecycles, but our platform and services are growing rapidly.
-We need to increase the velocity and reduce of our deployments to keep up. I want an automated, scalable and future proof solution for all DevOps teams to keep supporting our growth."
+        quote: "We use our own tools to manage microservice lifecycles, but now our platform and services are growing rapidly. We need to increase velocity and reduce errors of our deployments to keep up. I want an automated, scalable and future proof solution for all DevOps teams to support our growth."
 forms:
 ---
 
