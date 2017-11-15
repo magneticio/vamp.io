@@ -48,6 +48,11 @@ body {
   }
 }
 
+a {
+  color: $color-picton-blue;
+  text-decoration: none;
+}
+
 .h1 {
   font-size: 26px;
   font-weight: 400;
@@ -168,6 +173,10 @@ body {
 
 .text-red {
   color: $color-radical-red !important;
+}
+
+.text-green {
+  color: $color-green-ok !important;
 }
 
 // Buttons

@@ -14,6 +14,7 @@
   &:hover {
     color: $color-radical-red;
     background: transparentize($color-radical-red, .9);
+    text-decoration: none;
     i {
       transition: margin-left .5s ease;
       margin-left: .4 * $spacer;

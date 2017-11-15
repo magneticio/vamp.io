@@ -83,54 +83,87 @@
     </div>
   </section>
 
-  <section class="lander-row--red">
-    <div class="container py-3 text-center">
-      <div class="row">
-        <div class="col-sm-12  col-md-10 offset-md-1">
-          <h1 class="h1 mb-3">
-            Get started with Vamp today
-          </h1>
-          <div class="download mb-3">
-            <a href="https://calendly.com/diederick" target="_blank" class="button button--white">
-              Book a demo
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!--enterprise section -->
 
   <section class="lander-row--white">
     <div class="container py-5">
       <div class="row">
-        <div class="col-sm-12 col-smd-10 offset-md-1">
-          <h1 class="h1 text-center mb-5 hero-sub-text">{{.Params.enterprise.title}}</h1>
+        <div class="col-sm-12 col-md-10 offset-md-1">
+          <h1 id="enterprise" class="h1 text-center mb-5 hero-sub-text">{{.Params.enterprise.title}}</h1>
         </div>
         <div class="col-sm-12 col-md-10 offset-md-1 mb-4">
           <h2 class="h2 text-center">{{.Params.enterprise.sub}}</h2>
         </div>
         <div class="col-sm-12">
+          {{.Params.enterprise.data}}
           <table class="table table-striped vamp-table">
             <thead>
             <tr>
-              <th>Typical Systems</th>
-              <th>Vamp</th>
+              <th>Feature</th>
+              <th>Vamp Community Edition</th>
+              <th>Vamp Enterprise Edition</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-              <td>over dimensioned infra</td>
-              <td>auto up & down scaling, self-optimising</td>
+              <td>Blueprints & Deployments</td>
+              <td><div class="fa fa-check text-green"></div></td>
+              <td><div class="fa fa-check text-green"></div></td>
             </tr>
             <tr>
-              <td>downtime when upgrading</td>
-              <td>seamless canary releasing</td>
+              <td>Gateways</td>
+              <td><div class="fa fa-check text-green"></div></td>
+              <td><div class="fa fa-check text-green"></div></td>
             </tr>
             <tr>
-              <td>even more things</td>
-              <td>and even more other things</td>
+              <td>REST API</td>
+              <td><div class="fa fa-check text-green"></div></td>
+              <td><div class="fa fa-check text-green"></div></td>
+            </tr>
+            <tr>
+              <td>CLI</td>
+              <td><div class="fa fa-check text-green"></div></td>
+              <td><div class="fa fa-check text-green"></div></td>
+            </tr>
+            <tr>
+              <td>Graphical UI</td>
+              <td><div class="fa fa-check text-green"></div></td>
+              <td><div class="fa fa-check text-green"></div></td>
+            </tr>
+            <tr>
+              <td>Workflows</td>
+              <td><div class="fa fa-check text-green"></div></td>
+              <td><div class="fa fa-check text-green"></div></td>
+            </tr>
+            <tr>
+              <td>Advanced Graphical UI with wizards and rich dashboards</td>
+              <td><div class="fa fa-remove text-red"></div></td>
+              <td><div class="fa fa-check text-green"></div></td>
+            </tr>
+            <tr>
+              <td>Organisations, namespaces, zones and environments support</td>
+              <td><div class="fa fa-remove text-red"></div></td>
+              <td><div class="fa fa-check text-green"></div></td>
+            </tr>
+            <tr>
+              <td>User Management & Access Control (ACL) for authorisation</td>
+              <td><div class="fa fa-remove text-red"></div></td>
+              <td><div class="fa fa-check text-green"></div></td>
+            </tr>
+            <tr>
+              <td>SSL/TLS support</td>
+              <td><div class="fa fa-remove text-red"></div></td>
+              <td><div class="fa fa-check text-green"></div></td>
+            </tr>
+            <tr>
+              <td>Installer & Upgrade tools</td>
+              <td><div class="fa fa-remove text-red"></div></td>
+              <td><div class="fa fa-check text-green"></div></td>
+            </tr>
+            <tr>
+              <td>Professional support</td>
+              <td><div class="fa fa-remove text-red"></div></td>
+              <td><div class="fa fa-check text-green"></div></td>
             </tr>
             </tbody>
           </table>
@@ -139,18 +172,76 @@
     </div>
   </section>
 
-  <!--section 3-->
+  <section class="lander-row--red">
+    <div class="container py-3 text-center">
+      <div class="row">
+        <div class="col-sm-12  col-md-10 offset-md-1">
+          <h1 class="h1 mb-4">
+            For more information on Vamp Enterprise Edition
+          </h1>
+          <div class="download mb-4">
+            <a href="https://calendly.com/diederick" target="_blank" class="button button--white">
+              Contact Sales
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- use cases section -->
 
   <section class="lander-row--grey">
     <div class="container py-5">
       <div class="row">
-        <div class="col-sm-6">
-          <img src="/img/product/deployment_screen.png" class="screenshot">
+        <div class="col-sm-12 col-md-10 offset-md-1">
+          <h1 class="h1 text-center mb-5 hero-sub-text">{{.Params.usecases.title}}</h1>
         </div>
-        <div class="col-sm-6 text-left">
-          <h1 class="h1 mb-5">{{.Params.section3.title | print | markdownify}}</h1>
-          <h2 class="h2">{{.Params.section3.sub | print | markdownify}}</h2>
-          <p class="text">{{.Params.section3.list | print | markdownify}}</p>
+        <div class="col-md-10 offset-md-1 col-sm-12 text-center">
+          <h2 class="h2 mb-5">{{.Params.usecases.sub | print | markdownify}}</h2>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-sm-4">
+          <h1 class="h1">{{.Params.usecases.item1.title}}</h1>
+          <p class="text">{{.Params.usecases.item1.sub | print | markdownify }}</p>
+        </div>
+        <div class="col-sm-4">
+          <h1 class="h1">{{.Params.usecases.item2.title}}</h1>
+          <p class="text">{{.Params.usecases.item2.sub | print | markdownify }}</p>
+        </div>
+        <div class="col-sm-4">
+          <h1 class="h1">{{.Params.usecases.item3.title}}</h1>
+          <p class="text">{{.Params.usecases.item3.sub | print | markdownify }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- compared to section -->
+
+  <section class="lander-row--white">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-sm-12 col-md-10 offset-md-1">
+          <h1 class="h1 text-center mb-5 hero-sub-text">{{.Params.comparedto.title}}</h1>
+        </div>
+        <div class="col-md-10 offset-md-1 col-sm-12 text-center">
+          <h2 class="h2 mb-5">{{.Params.comparedto.sub | print | markdownify}}</h2>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-sm-4">
+          <h1 class="h1">{{.Params.comparedto.item1.title}}</h1>
+          <p class="text">{{.Params.comparedto.item1.sub | print | markdownify }}</p>
+        </div>
+        <div class="col-sm-4">
+          <h1 class="h1">{{.Params.comparedto.item2.title}}</h1>
+          <p class="text">{{.Params.comparedto.item2.sub | print | markdownify }}</p>
+        </div>
+        <div class="col-sm-4">
+          <h1 class="h1">{{.Params.comparedto.item3.title}}</h1>
+          <p class="text">{{.Params.comparedto.item3.sub | print | markdownify }}</p>
         </div>
       </div>
     </div>

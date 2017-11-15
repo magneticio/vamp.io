@@ -8,7 +8,8 @@ aliases:
 header:
     title: "Don't reinvent the wheel"
     subtitle: "Delivering cloud native and data intensive applications is hard enough."
-    sub: "Vamp provides a business-oriented enterprise-grade suite that delivers automation, integration and management insights for controlling the lifecycle of services-based solutions."
+    sub: "Vamp provides a business-oriented enterprise-grade suite that delivers automation, integration and management 
+    insights for controlling the lifecycle of services-based solutions."
 features:
     list1:
         item1: "Graphical UI and dashboards for clear information and easy management."
@@ -18,24 +19,47 @@ features:
         item1: "Load balancing of scaled-out services and containers."
         item2: "A/B split and merge traffic based on conditions, percentages or both."
     footer: "Vamp Community Edition has a lightweight design to run in high-available mission-critical architectures.<br> 
-             Vamp Enterprise Edition extends these features with security, multi-tenancy and role based access controls." 
+             [Vamp Enterprise Edition](/product/#enterprise) extends these features with security, multi-tenancy and role based access controls." 
 action:
     title: "See Vamp in action"
-    sub: "**Microsoft**’s Rob Bagby show cases Vamp workflows on DC/OS.  Using application specific triggers, Rob achieves **dynamic micro scaling** in a Kafka
+    sub: "**Microsoft**’s Rob Bagby show cases Vamp workflows on DC/OS.  Using application specific triggers, Rob achieves 
+    **dynamic micro scaling** in a Kafka
           based real time data pipeline."
 enterprise:
     title: "Vamp Enterprise Edition"
-    sub: "The Vamp Enterprise Edition (EE) extends the features available in the open source Vamp Community Edition."
-section2:
-    title: "This is the title of section 2"
-    sub: "This is the sub text of section 2. This section contains a table you can fill with comparisons or lists of data."
-    image: 
-section3:
-    title: "This is the title of section 3"
-    sub: "This is the sub text of section 3.<br> This is where you **dive deeper** into the topic prompted by the title."
+    sub: "The Vamp Enterprise Edition (EE) extends the features available in the open source Vamp Community Edition (CE)with 
+    security, authorization and multi-tenancy. See below how Vamp EE compares to Vamp CE."     
+usecases:
+    title: "Vamp Usecases"
+    sub: "The integrated deployment, routing and workflow features of Vamp support a broad range of scenarios and industry 
+    verticals. We specifically see powerful use cases in the areas of testing in production, migrating to microservices, 
+    and realtime system optimisation."
+    item1: 
+        title: "Testing in Production"
+        sub: "A/B test architectural changes in production. Resolve client-side incompatiblities after an upgrade. [Read more](/product/use-cases/overview/)"
+    item2: 
+        title: "Migrating to Microservices"
+        sub: "Move from a VM based monolith architectures to a modern, cloud-native and microservices based architecture. [Read more](/product/use-cases/overview/)" 
+    item3: 
+        title: "Realtime System Optimization"
+        sub: "Test *what would happen if* scenarios by simulating and testing autoscaling behaviour. [Read more](/product/use-cases/overview/)"                 
+comparedto:
+    title: "Vamp compared to..."
+    sub: "How does Vamp compare to other products in the cloud native, container and delivery space?"  
+    item1: 
+        title: "Proxies and load balancers"
+        sub: "Vamp works together with all common container-schedulers to provide continuous delivery and auto-scaling features. 
+        [Read more](/product/product/vamp-compared-to/proxies-and-load-balancers/)"
+    item2: 
+        title: "PaaS and container systems"
+        sub: "Vamp adds an experimentation layer to PaaS infrastructures by providing canary-releasing features that 
+        integrate with common PaaS proxies. [Read more](/product/vamp-compared-to/paas-and-container-systems/)" 
+    item3: 
+        title: "Frameworks and tools"
+        sub: "Vamp closes the loop between the development and operations elements of a CI/CD pipeline, while feeding
+         back runtime technical and business metrics. [Read more](/product/vamp-compared-to/frameworks-and-tools/)"   
     
 ---
-
 
 ![](/images/typical-systems-vs-vamp.png)
 
