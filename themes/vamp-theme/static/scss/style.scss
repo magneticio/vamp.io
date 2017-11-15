@@ -74,10 +74,26 @@ body {
     @media all and (max-width: 769px) {
       font-size: 36px;
     }
+
+  }
+
+  &.hero-sub-text {
+    font-weight: 500;
+    font-size: 42px;
+    color: white;
+    margin-bottom: $spacer;
+
+    @media (max-width: 321px) {
+      font-size: 22px;
+    }
+
+    @media all and (max-width: 769px) {
+      font-size: 26px;
+    }
   }
 
   @media all and (min-width: 321px) {
-    font-size: 32px;
+    font-size: 22px;
   }
 }
 
@@ -150,7 +166,12 @@ body {
   color: $font-color-muted;
 }
 
+.text-red {
+  color: $color-radical-red !important;
+}
+
 // Buttons
+
 .button {
   text-transform: uppercase;
   font-size: 13px;
@@ -168,6 +189,12 @@ body {
   vertical-align: middle;
   user-select: none;
   line-height: $line-height-default;
+
+  &.button__huge {
+    font-size: 18px;
+    height: 60px;
+    padding: .8rem 4.5rem;
+  }
 
   p {
     line-height: 1;
@@ -263,7 +290,36 @@ body {
     }
   }
 
+  &--white {
+    background-color: #fff;
+    color: $color-radical-red;
 
+    &:hover {
+      background-color: $color-brick-red;
+    }
+
+    &--ghost {
+      background-color: transparent;
+      color: $color-radical-red;
+      border: 1px solid $color-radical-red;
+
+      &:hover {
+        background-color: $color-radical-red;
+        color: white;
+      }
+    }
+  }
+
+
+}
+
+.video-play-button {
+  color: white;
+  font-size: 56px !important;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-33%,-50%)
 }
 
 // Lander rows

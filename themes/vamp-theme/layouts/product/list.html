@@ -9,67 +9,107 @@
   <header class="lander-row--white">
     <div class="container py-5">
       <div class="row">
-        <div class="col-sm-6 text-left">
-          <h1 class="h1 mb-5 hero-text">{{.Params.header.title | print | markdownify}}</h1>
-          <h2 class="h2">{{.Params.header.sub | print | markdownify}}</h2>
+        <div class="col-sm-12 text-center">
+          <h1 class="h1 hero-text mb-0 text-red">{{.Params.header.title | print | markdownify}}</h1>
+          <h1 class="h1 mb-5 hero-sub-text">{{.Params.header.subtitle | print | markdownify}}</h1>
         </div>
-        <div class="col-sm-6">
-          <a href="https://placeholder.com">
-            <img class="pt-4" src="http://via.placeholder.com/450x350">
-          </a>
+        <div class="col-md-10 offset-md-1 col-sm-12 text-center">
+          <h2 class="h2 mb-0">{{.Params.header.sub | print | markdownify}}</h2>
         </div>
       </div>
     </div>
   </header>
 
-  <!--section 1-->
+
+  <section class="lead">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h3 class="h3">key features</h3>
+        </div>
+        <div class="col-sm-6">
+          <ul class="lead-features-list">
+            <li class="lead-features-list-item">
+              <img src="/img/002-Medium-icons/Medium-icons-01.svg" alt="">
+              <p class="text">{{.Params.features.list1.item1 | markdownify}}</p>
+            </li>
+            <li class="lead-features-list-item">
+              <img src="/img/002-Medium-icons/Medium-icons-03.svg" alt="">
+              <p class="text">{{.Params.features.list1.item2 | markdownify}}</p>
+            </li>
+            <li class="lead-features-list-item">
+              <img src="/img/002-Medium-icons/Medium-icons-04.svg" alt="">
+              <p class="text">{{.Params.features.list1.item3 | markdownify}}</p>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-6">
+          <ul class="lead-features-list">
+            <li class="lead-features-list-item">
+              <img src="/img/002-Medium-icons/Medium-icons-06.svg" alt="">
+              <p class="text">{{.Params.features.list2.item1 | markdownify}}</p>
+            </li>
+            <li class="lead-features-list-item">
+              <img src="/img/002-Medium-icons/Medium-icons-05.svg" alt="">
+              <p class="text">{{.Params.features.list2.item2 | markdownify}}</p>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-10 offset-md-1 col-sm-12 text-center">
+          <p class="text mb-0">{{.Params.features.footer | print | markdownify}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vamp in action section -->
 
   <section class="lander-row--grey">
     <div class="container py-5">
       <div class="row">
         <div class="col-sm-12">
-          <h1 class="h1 text-center mb-5">{{.Params.section1.title}}</h1>
+          <h1 class="h1 text-center mb-5 hero-sub-text">{{.Params.action.title}}</h1>
         </div>
-        <div class="col-sm-12 col-md-10 offset-md-1">
-          <h2 class="h2 text-center">{{.Params.section1.sub}}</h2>
+        <div class="col-sm-12 col-md-10 offset-md-1 mb-5">
+          <h2 class="h2 text-center">{{.Params.action.sub | markdownify }}</h2>
         </div>
-        <div class="row mb-4">
-          <div class="col-sm-4 text-center">
-            <img src="/img/001-Big-icons/illustration-01.svg" alt="Easy canary releasing"  class="image--smaller">
-            <h2 class="h2">{{.Params.section1.featurelist.item1.title}}</h2>
-            <p class="text">
-              {{.Params.section1.featurelist.item1.sub}}
-            </p>
-          </div>
-          <div class="col-sm-4 text-center">
-            <img src="/img/001-Big-icons/illustration-02.svg" alt="Powerful autoscaling" class="image--smaller">
-            <h2 class="h2">{{.Params.section1.featurelist.item2.title}}</h2>
-            <p class="text">
-              {{.Params.section1.featurelist.item2.sub}}
-            </p>
-          </div>
-          <div class="col-sm-4 text-center">
-            <img src="/img/001-Big-icons/illustration-03.svg" alt="Container agnostic deploys" class="image--smaller">
-            <h2 class="h2">Avoid vendor lock-in</h2>
-            <p class="text">
-              {{.Params.section1.featurelist.item3.sub}}
-            </p>
+        <div class="col-sm-12 text-center">
+          <a href="https://youtu.be/UYSchHnp1JE?t=31m33s" target="_blank">
+            <img src="/images/screens/ms_mesoscon_video_still.jpg" alt="" width="700px">
+            <div class="video-play-button fa fa-play-circle"></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lander-row--red">
+    <div class="container py-3 text-center">
+      <div class="row">
+        <div class="col-sm-12  col-md-10 offset-md-1">
+          <h1 class="h1 mb-3">
+            Get started with Vamp today
+          </h1>
+          <div class="download mb-3">
+            <a href="https://calendly.com/diederick" target="_blank" class="button button--white">
+              Book a demo
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!--section 2-->
+  <!--enterprise section -->
 
   <section class="lander-row--white">
     <div class="container py-5">
       <div class="row">
-        <div class="col-sm-12">
-          <h1 class="h1 text-center mb-5">{{.Params.section2.title}}</h1>
+        <div class="col-sm-12 col-smd-10 offset-md-1">
+          <h1 class="h1 text-center mb-5 hero-sub-text">{{.Params.enterprise.title}}</h1>
         </div>
-        <div class="col-sm-12 col-md-10 offset-md-1">
-          <h2 class="h2 text-center">{{.Params.section2.sub}}</h2>
+        <div class="col-sm-12 col-md-10 offset-md-1 mb-4">
+          <h2 class="h2 text-center">{{.Params.enterprise.sub}}</h2>
         </div>
         <div class="col-sm-12">
           <table class="table table-striped vamp-table">
@@ -118,7 +158,7 @@
 
   <!--cta 1-->
 
-  {{ partial "book-a-demo" . }}
+  {{ partial "book-a-demo-footer" . }}
 </div>
 
 {{ partial "footer" .}}
