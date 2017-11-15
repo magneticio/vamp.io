@@ -17,7 +17,7 @@ leads:
     lead3:
         topheader: "Off the shelve automation"
         header: "Sustain platform growth, power DevOps teams to deploy new services quick, safe and often "
-        body: "**Vamp packages microservice and DevOps best-practices into out-of-the-box automation and optimisation workflows.** Vamp works with all major clouds and container schedulers."
+        body: "**Vamp packages microservice and DevOps best-practices into out-of-the-box automation and optimisation workflows.** Vamp offers multi tenancy to reliably deploy services across multiple DevOps teams."
 features:
     list1:
         item1: "Load balancing of scaled-out services and containers."
