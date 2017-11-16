@@ -8,11 +8,11 @@ hero:
 leads:
     lead1:
         topheader: "data-driven canary deployment strategies"
-        header: "Test your services to perfection... in production"
+        header: "Test microservices in production"
         body: "Vamp provides smart, out-of-the-box automation workflows for testing and releasing microservices. **You can start applying automated canary-test, release and rollback strategies immediately.**"
     lead2:
         topheader: "actionable insights & control"
-        header: "Refactor your monolith with phased deployment strategies"
+        header: "Service deployments: how does your performance rate?"
         body: "Vamp provides conditional traffic routing per service, allowing you to **test and compare all aspects of your applications in production.** Vamp aggregates business and technical data into high-level health metrics for fully actionable insights and control."
     lead3:
         topheader: "Off the shelve automation"
