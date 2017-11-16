@@ -28,7 +28,7 @@ features:
         item3: "Integrates with existing deployment pipelines using the API or the command line interface."
 personas:
     persona1:
-        quote: "Releasing new versions of services is done manually, error-prone and DevOps resources are increasingly scarce. Testing a release takes more time than we have. Business demands keep coming while we suffer from release anxiety as rollbacks are costly and complex. "
+        quote: "Releasing new versions of services is done manually, error-prone and DevOps resources are increasingly scarce. Testing a release takes more time than we have. Business demands keep coming in while we suffer from release anxiety as rollbacks are costly and complex. "
     persona2:
         quote: "We've just released an improved version of our customer subscription API, but I'm not sure if it actually performs better, and now I'm also seeing issues appearing in other related services. What's going on?"
     persona3:
