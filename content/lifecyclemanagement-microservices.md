@@ -8,7 +8,7 @@ hero:
 leads:
     lead1:
         topheader: "Test microservices in production"
-        header: "data-driven canary deployment strategies"
+        header: "Automated, data-driven canary deployments & rollbacks"
         body: "Vamp provides smart, out-of-the-box automation workflows for testing and releasing microservices. **You can start applying automated canary-test, release and rollback strategies immediately.**"
     lead2:
         topheader: "actionable insights & control"
