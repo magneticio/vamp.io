@@ -21,4 +21,4 @@ We encourage anyone to [join the Vamp community](/resources/community/) and pitc
 We're alway on the lookout for smart, talented and motivated people that love to work on products and understand real-world problems and how to solve them in the best possible way. If you would love to join our team and work on Vamp and related products, please get in [touch](/about/contact/contact)!
 
 ## Contact
-You can contact us [here](/about/contact/contact)
+You can contact us [here](/about/contact/)
