@@ -6,10 +6,10 @@ aliases:
     - /product/why-use-vamp/
     - /why-use-vamp/
 header:
-    title: "Don't reinvent the wheel"
-    subtitle: "Delivering cloud native and data intensive applications is hard enough."
+    title: "Unlock the power of your microservices with automated canary releasing"
+    subtitle: ""
     sub: "Vamp provides a business-oriented enterprise-grade suite that delivers automation, integration and management 
-    insights for controlling the lifecycle of services-based solutions."
+    insights for controlling the lifecycle of micro services and services-based solutions."
 features:
     list1:
         item1: "Graphical UI and dashboards for clear information and easy management."

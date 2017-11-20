@@ -1,11 +1,13 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Health
+title: Health checks
 menu:
   main:
     identifier: "health-v094"
     parent: "Using Vamp"
     weight: 130
+aliases:
+    - /documentation/using-vamp/health/    
 ---
 
 {{< note title="The information on this page is written for Vamp v0.9.4" >}}

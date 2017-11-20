@@ -59,6 +59,12 @@ clusters:
         cpu: 0.2
         memory: 64MB
         instances: 1
+      health_checks:
+        initial_delay: 10s
+        port: webport
+        timeout: 5s
+        interval: 10s
+        failures: 10        
   backend: # cluster 2
     services:
       breed:
