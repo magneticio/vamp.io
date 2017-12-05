@@ -60,4 +60,4 @@ Experience with Docker, Akka, Scala, Golang, Mesos, Marathon, K8s, FP, Angular, 
 
 • Powerful notebook (mac, linux or windows) with big monitor
 
-Contact us by emailing your motivation and resume to info@magnetic.io
+Contact us by emailing your motivation and resume to info@vamp.io

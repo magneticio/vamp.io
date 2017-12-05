@@ -195,7 +195,7 @@ To recap what we have covered:
 * You can adjust traffic distribution within a gateway manually (using the Vamp UI or API) or automatically (using workflows).
 
 {{< note title="What next?" >}}
-* What would you like to see for our next tutorial? [let us know](mailto:info@magnetic.io)
+* What would you like to see for our next tutorial? [let us know](mailto:info@vamp.io)
 * Find our more about [using Vamp](documentation/using-vamp/artifacts)
 * Read more about the [Vamp API](documentation/api/api-reference)
 {{< /note >}}

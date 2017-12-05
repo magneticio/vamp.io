@@ -265,7 +265,7 @@ Just for fun, you could try these:
 * Could you set up external gateways for the mySQL deployments and connect Wordpress to the mySQL server running in the other deployment?
 
 {{< note title="What next?" >}}
-* What would you like to see for our next tutorial? [let us know](mailto:info@magnetic.io)
+* What would you like to see for our next tutorial? [let us know](mailto:info@vamp.io)
 * Find our more about [using Vamp](documentation/using-vamp/artifacts)
 {{< /note >}}
 

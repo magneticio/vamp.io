@@ -4,7 +4,7 @@ title: Join the Vamp community
 type: page
 layout: overview
 ---
-Vamp is an open source project, actively developed by Magnetic.io. We encourage anyone to pitch in with pull requests, bug reports etc. 
+Vamp is an open source project, actively at the vamp.io HQ in Amsterdam. We encourage anyone to pitch in with pull requests, bug reports etc.
 
 ## Contribute to Vamp 
 Vamp is split into separate repos and projects. Check the source on Github for an overview of all key repos ([github.com - magneticio](https://github.com/magneticio)).   

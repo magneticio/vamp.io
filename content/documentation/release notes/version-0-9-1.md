@@ -13,7 +13,7 @@ _1st November 2016_
 This release of Vamp introduces:
 
 * The biggie: We've added Websockets support to our HTTP API. And we're now using this heavily in our new UI to improve responsiveness, smoothness and speed. https://github.com/magneticio/vamp/issues/529
-* We've updated our UI to a nice dark theme due to public demand, we love it as it's much easier on the eyes, and of course we're very interested in hearing [your thoughts](mailto:info@magnetic.io)!
+* We've updated our UI to a nice dark theme due to public demand, we love it as it's much easier on the eyes, and of course we're very interested in hearing [your thoughts](mailto:info@vamp.io)!
 * We've updated our charts with the amazing Smoothie Charts library for smooth running charts and sparklines.
 * You can now configure Vamp to use a key-value store for persistence data storage. By default nothing is defined, and you need to choose either ElasticSearch or key-value. Take a look at the [Vamp Quickstart configuration](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf) for possible settings. The design reasons for this addition are having less dependencies on Elasticsearch, better re-use of the available key-value stores that come with cluster-managers (like Zookeeper in DC/OS or Etcd in Kubernetes) and more robustness (i.e. if we temporarily loose ES the persistence data is still available in the K/V store, only the metrics data is temporarily unavailable). Possible issues might be the performance of the key-value store after some time. This is a known issue being investigated. https://github.com/magneticio/vamp/issues/750
 * Gateway stickyness is now editable through the UI

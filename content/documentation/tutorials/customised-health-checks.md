@@ -61,7 +61,7 @@ Just for fun, you could try these:
 *
  
 {{< note title="What next?" >}}
-* What would you like to see for our next tutorial? [let us know](mailto:info@magnetic.io)
+* What would you like to see for our next tutorial? [let us know](mailto:info@vamp.io)
 * Find our more about [using Vamp](documentation/using-vamp/artifacts)
 * Read more about the [Vamp API](documentation/api/api-reference)
 {{< /note >}}

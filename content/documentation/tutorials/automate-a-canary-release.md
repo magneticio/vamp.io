@@ -156,7 +156,7 @@ Just for fun, you could try these:
 * Can you adapt the canary workflow so it is triggered by a new deployment of the Sava service?
 
 {{< note title="What next?" >}}
-* What would you like to see for our next tutorial? [let us know](mailto:info@magnetic.io)
+* What would you like to see for our next tutorial? [let us know](mailto:info@vamp.io)
 * Find our more about [using Vamp](documentation/using-vamp/artifacts)
 {{< /note >}}
 

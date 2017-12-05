@@ -6,7 +6,7 @@ menu:
     parent: "About"
     weight: 10
 ---
-Vamp is being developed by Magnetic.io from the heart of beautiful [Amsterdam](http://www.iamsterdam.com/en/).  
+Vamp is developed in the heart of beautiful [Amsterdam](http://www.iamsterdam.com/en/).
 
 We’re dedicated to helping organisations and companies of all sizes increase efficiency, save time and reduce costs.
 We provide powerful and easy-to-use solutions to optimise modern architectures and systems, often based around microservices and/or containers.
