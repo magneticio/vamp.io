@@ -7,8 +7,8 @@ title: Distributed systems software developer
 ## About the role
 
 You have experience with JVM and functional programming (Java, Scala etc.) based development and tooling. You are not
- afraid to also work on the UI side of procuct-features using UI frameworks like Angular, React, Typescript, Vue, Polymer.
-You have experience with application development in “the cloud”. Your ambition is to be a true software crafts(wo)man, 
+ afraid to also work on the UI side of product features using UI frameworks like Angular, React, Typescript, Vue, Polymer.
+You have experience with application development in “the cloud”. Your ambition is to be a true software crafts(wo)man,
 and thus you are aiming for the perfect balance between elegance and pragmatism. DevOps tickles your fancy. You love 
 coming into work and enjoy the people you work with. You love making software!
 You are quick to pick up on new stuff and enjoy the process of learning new things.
