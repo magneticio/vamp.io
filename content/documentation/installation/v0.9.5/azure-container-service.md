@@ -15,7 +15,7 @@ You can run Vamp on [Azure Container Service](https://azure.microsoft.com/en-us/
 
 ## DC/OS Orchestrator
 
-To install DC/OS on ACS you should follow these steps: 
+To install DC/OS on ACS you should follow these steps:
 
 1. Follow the instructions in the [ACS DC/OS quickstart](https://docs.microsoft.com/en-us/azure/container-service/dcos-swarm/container-service-dcos-quickstart).
 2. After you have activated your ACS setup with DC/OS, go to your DC/OS admin environment and install Vamp using our [DC/OS installation instructions](/documentation/installation/v0.9.5/dcos/).
@@ -23,7 +23,7 @@ To install DC/OS on ACS you should follow these steps:
 
 {{< note title="What next?" >}}
 
-* Once you have Vamp up and running you can jump into the [getting started tutorials](/documentation/tutorials/overview).
+* Once you have Vamp up and running you can jump into the [getting started tutorials](/documentation/tutorials/).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 
 If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)

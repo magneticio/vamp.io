@@ -22,7 +22,7 @@ The steps below will help you debug problems encountered when following our full
 
 ### Check the Vamp components
 - Check the step by step instructions for your container scheduler [DC/OS](/documentation/installation/v0.9.5/dcos/), [Mesos/Marathon](/documentation/installation/v0.9.5/mesos-marathon/), [Kubernetes](/documentation/installation/v0.9.5/kubernetes/), [Rancher](/documentation/installation/v0.9.5/rancher/) or [Docker](/documentation/installation/v0.9.5/docker/). 
-- Check the information panel in the Vamp UI (click the i-icon in the top right corner, or check Extended info under Admin). If some fields are empty, you may need to adjust your configuration. See the [example Vamp configurations](/documentation/installation/v0.9.5/example-configurations).  
+- Check the information panel in the Vamp UI (click the i-icon in the top right corner, or check Extended info under Admin). If some fields are empty, you may need to adjust your configuration. See the [example Vamp configurations](/documentation/configure/v0.9.5/example-configurations).
   You can view and update the configuration in the Vamp UI at Admin > Backend configuration > Applied  
 - Check you are running supported versions of all components.
 - Check the [Vamp release notes](/documentation/release-notes/latest) for known issues and breaking changes.

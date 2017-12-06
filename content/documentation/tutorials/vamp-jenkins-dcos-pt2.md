@@ -111,5 +111,5 @@ Stay tuned for the **third part of our series** where we will dive into [Vamp’
 
 {{< note title="What's next?" >}}
 * [Proceed to part 2 of this guide](/documentation/how-vamp-works/architecture-and-components/)
-* Dive into one of our other [tutorials](/documentation/tutorials/overview)
+* Dive into one of our other [tutorials](/documentation/tutorials/)
 {{< /note >}}

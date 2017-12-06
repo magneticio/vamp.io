@@ -26,7 +26,7 @@ layout: overview
 ## Binaries
 
 ### Vamp
-**Download: [bintray.com/magnetic-io - Vamp](https://bintray.com/magnetic-io/downloads/vamp/view)**  
+**Download: [bintray.com/magnetic-io - Vamp](https://bintray.com/magnetic-io/downloads/vamp/view)**
 **Requirements:** OpenJDK or Oracle Java version 1.8.0_40 or higher
 
 #### Example
@@ -35,9 +35,9 @@ Let's assume that the Vamp binary is `vamp.jar`.
 java -Dlogback.configurationFile=logback.xml -Dconfig.file=application.conf -jar vamp.jar
 ```
 
-* `logback.xml` is the log configuration file ([example logback.xml file](https://github.com/magneticio/vamp-docker-images/blob/master/quick-start/logback.xml))  
+* `logback.xml` is the log configuration file ([example logback.xml file](https://github.com/magneticio/vamp-docker-images/blob/master/quick-start/logback.xml))
 Vamp uses the Logback library. Additional information about using Logback and the log file configuration format can be found on the Logback project page ([logback.qos.ch](http://logback.qos.ch/)).
-* `application.conf` is the main Vamp configuration file ([example application.conf file](https://github.com/magneticio/vamp-docker-images/blob/master/quick-start/application.conf))  
+* `application.conf` is the main Vamp configuration file ([example application.conf file](https://github.com/magneticio/vamp-docker-images/blob/master/quick-start/application.conf))
 Default values ([github.com/magneticio - reference.conf](https://github.com/magneticio/vamp/blob/master/bootstrap/src/main/resources/reference.conf)) are loaded on start and application.conf may override any of them.
 Processing configuration is based on the typesafe library. Additional information about syntax and usage can be found on the project page ([github.com/typesafehub - config](https://github.com/typesafehub/config)).
 
@@ -49,7 +49,7 @@ Documentation can be found on the project page ([github.com/magneticio - Vamp Ga
 
 ### Vamp CLI
 
-**Download: [bintray.com/magnetic-io - Vamp CLI](https://bintray.com/magnetic-io/downloads/vamp-cli/view)**  
+**Download: [bintray.com/magnetic-io - Vamp CLI](https://bintray.com/magnetic-io/downloads/vamp-cli/view)**
 **Requirements:** Node.JS 6+
 
 Install the Vamp-CLI package globally
@@ -78,17 +78,17 @@ A container for running small JavaScript-based workflows can be pulled from the 
 ## Build from source
 
 ### Build Vamp
-**Requirements:** OpenJDK or Oracle Java version of 1.8.0_40 or higher, git ([git-scm.com](https://git-scm.com/)), sbt ([scala-sbt.org](http://www.scala-sbt.org/index.html)), npm ([npmjs.com](https://www.npmjs.com/)) and Gulp ([gulpjs.com](http://gulpjs.com/))  
+**Requirements:** OpenJDK or Oracle Java version of 1.8.0_40 or higher, git ([git-scm.com](https://git-scm.com/)), sbt ([scala-sbt.org](http://www.scala-sbt.org/index.html)), npm ([npmjs.com](https://www.npmjs.com/)) and Gulp ([gulpjs.com](http://gulpjs.com/))
 {{< note >}}
-If you build from source (master branch) without a specific tag, you will build katana not the official release. Check the [katana documentation](documentation/release-notes/katana) for details of all changes since the last official release.
+If you build from source (master branch) without a specific tag, you will build katana not the official release. Check the [katana documentation](/documentation/release-notes/katana) for details of all changes since the last official release.
 {{< /note >}}
 
-1. Checkout the source from the official repo ([github.com/magneticio - Vamp](https://github.com/magneticio/vamp)):   
+1. Checkout the source from the official repo ([github.com/magneticio - Vamp](https://github.com/magneticio/vamp)):
   {{< note title="Note!" >}}
   * `master` branch contains the latest released version (e.g. 0.9.2). Versions are tagged.
-  * `vamp-ui` is a separate project added as a git submodule to Vamp (`ui` subdirectory) it is, therefore, necessary to also checkout the submodule  
+  * `vamp-ui` is a separate project added as a git submodule to Vamp (`ui` subdirectory) it is, therefore, necessary to also checkout the submodule
   {{< /note >}}
-  * `git clone --recursive git@github.com:magneticio/vamp.git`  
+  * `git clone --recursive git@github.com:magneticio/vamp.git`
   * or specific branch: `git clone --recursive --branch 0.9.2 git@github.com:magneticio/vamp.git`
 
 
@@ -113,7 +113,7 @@ logback.xml` is log configuration. Vamp uses the [Logback](http://logback.qos.ch
 
 **Requirements:** Go ([golang.org](https://golang.org/)) and git ([git-scm.com](https://git-scm.com/))
 {{< note >}}
-If you build from source (master branch) without a specific tag, you will build katana not the official release. Check the [katana documentation](documentation/release-notes/katana) for details of all changes since the last official release.
+If you build from source (master branch) without a specific tag, you will build katana not the official release. Check the [katana documentation](/documentation/release-notes/katana) for details of all changes since the last official release.
 {{< /note >}}
 
 1. Checkout the source from the official repo ([github.com/magneticio - Vamp gateway agent](https://github.com/magneticio/vamp-gateway-agent)). Current `master` branch is backward compatible with the latest 0.9.2 Vamp build.

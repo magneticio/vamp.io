@@ -11,8 +11,8 @@ menu:
     weight: 20
 ---
 
-Want to give Vamp a go? The hello world setup described below runs Vamp inside a local Docker container - a perfect environment to try out Vamp's core features and work through the [Vamp tutorials](/documentation/tutorials/overview).
-Vamp hello world runs Mesos, Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)) and Vamp 0.9.5 together with Vamp's Marathon driver.  
+Want to give Vamp a go? The hello world setup described below runs Vamp inside a local Docker container - a perfect environment to try out Vamp's core features and work through the [Vamp tutorials](/documentation/tutorials/).
+Vamp hello world runs Mesos, Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)) and Vamp 0.9.5 together with Vamp's Marathon driver.
 
 **Requirements:**  At least 8GB of memory
 
@@ -83,7 +83,7 @@ After some downloading and booting, your Docker log will show the blue Vamp ASCI
 
 ![](/images/screens/v095/vamp_ascii_logo.png)
 
-Now you can check if Vamp is home on `localhost:8080` and you're ready for the [Vamp getting started tutorials](/documentation/tutorials/overview)
+Now you can check if Vamp is home on `localhost:8080` and you're ready for the [Vamp getting started tutorials](/documentation/tutorials/)
 
 ![](/images/screens/v095/quicksetup-marathon-infopanel.png)
 
@@ -95,7 +95,7 @@ Click on the **?** in the top right corner of any screen for quick access to pag
 
 All the services exposed in this demo are listed below.
 
-Exposed services |  
+Exposed services |
 ----------|--------
 HAProxy statistics        |       [http://localhost:1988](http://localhost:1988) (username/password: haproxy) not on Docker for Mac
 Elasticsearch HTTP        |      [http://localhost:9200](http://localhost:9200)
@@ -110,10 +110,10 @@ Vamp UI       |      [http://localhost:8080](http://localhost:8080)
 ## Summing up
 
 This set up runs all of Vamp's components in one container. You will run into CPU, memory and storage issues pretty soon though. Also, random ports from 31000 - 32000 and 40000 - 45000 are assigned by Vamp which you might not have exposed on either Docker or your Docker Toolbox Vagrant box.  This is definitely not ideal, but works fine for kicking the tires.
-Now you're all set to follow our [getting started tutorials](/documentation/tutorials/overview).
+Now you're all set to follow our [getting started tutorials](/documentation/tutorials/).
 
 {{< note title="What next?" >}}
-* Follow the [getting started tutorials](/documentation/tutorials/overview)
+* Follow the [getting started tutorials](/documentation/tutorials/)
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 * Remember, this is not a production grade setup!
 

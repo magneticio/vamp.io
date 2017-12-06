@@ -33,7 +33,7 @@ $ docker run -d --restart=always -p 8080:8080 rancher/server
 ```
 The Rancher UI is exposed on port 8080, so go to http://SERVER_IP:8080 - for instance [http://192.168.99.100:8080](http://192.168.99.100:8080), [http://localhost:8080](http://localhost:8080) or something similar depending on your Docker setup.
 
-Follow the instructions on the screen to add a new Rancher host. Click on "Add Host" and then on "Save". You should get instructions (bullet point 5) to run an `agent` Docker image:  
+Follow the instructions on the screen to add a new Rancher host. Click on "Add Host" and then on "Save". You should get instructions (bullet point 5) to run an `agent` Docker image:
 
 ```
 $ docker run \
@@ -49,8 +49,8 @@ $ docker run \
 Next we need to create a Vamp stack and add all dependencies (Consul, Elasticsearch, Logstash). Our custom Docker image `magneticio/elastic:2.2` contains Elasticsearch, Logstash and Kibana with the proper Logstash configuration for Vamp. More details can be found on the github project page ([github.com/magneticio - elastic](https://github.com/magneticio/elastic)).
 
 1. Go to `Add Stack` and create a new stack `vamp` (lowercase).
-2. Install Consul:  
-  * Use the `vamp` stack and go to `Add Service`:  
+2. Install Consul:
+  * Use the `vamp` stack and go to `Add Service`:
     1. `Name` ⇒ `consul`
     2. `Select Image` ⇒ `gliderlabs/consul-server`
     3. Set `Command` ⇒ `-server -bootstrap`
@@ -59,7 +59,7 @@ Next we need to create a Vamp stack and add all dependencies (Consul, Elasticsea
     6. Click the `Create` button
 
 3. Install Elasticsearch and Logstash:
-  * Use the `vamp` stack and go to `Add Service`:  
+  * Use the `vamp` stack and go to `Add Service`:
     1. `Name` ⇒ `elastic`
     2. `Select Image` ⇒ `magneticio/elastic:2.2`
     3. Go to the `Networking` tab
@@ -77,7 +77,7 @@ First we'll run the Vamp Gateway Agent:
 * Set `Command` ⇒ `--storeType=consul --storeConnection=consul:8500 --storeKey=/vamp/gateways/haproxy/1.6 --logstash=elastic:10001`
 * Go to `Networking` tab
 * Under `Hostname` select `Set a specific hostname:` and enter `vamp-gateway-agent`
-* Click `Create` 
+* Click `Create`
 
 Now let's find a Rancher API endpoint that can be accessed from running container:
 
@@ -102,13 +102,13 @@ Now we can deploy Vamp:
 * `Default Target Port` ⇒ 8080 and `Target Service` ⇒ `vamp`
 
 If you go to http://SERVER_IP:9090 (e.g [http://192.168.99.100:9090](http://192.168.99.100:9090)), you should get the Vamp UI.  You should also notice that Vamp Gateway Agent is running (one instance on each node) and you can see some [Vamp workflows](/documentation/using-vamp/workflows/) running.
-The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](contact) if you’d like further details.  
+The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](/contact) if you’d like further details.
 
 
 To access HAProxy stats, go to `Add Load Balancer` (click the arrow next to `Add Service`). Choose a name (e.g. `vamp-gateway-agent-lb`) and set:
- 
+
 * `Source IP/Port` ⇒ 1988
-* `Default Target Port` ⇒ 1988 
+* `Default Target Port` ⇒ 1988
 * `Target Service` ⇒ `vamp-gateway-agent`
 
 You can access the HAProxy stats page with username/password `haproxy`.
@@ -147,7 +147,7 @@ If you want the gateway port to be exposed outside of the cluster via a Rancher 
 
 {{< note title="What next?" >}}
 
-* Once you have Vamp up and running you can jump into the [getting started tutorials](/documentation/tutorials/overview)
+* Once you have Vamp up and running you can jump into the [getting started tutorials](/documentation/tutorials/)
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 * Remember, this is not a production grade setup!
 

@@ -110,7 +110,7 @@ kubectl expose deployment vamp --protocol=TCP --port=8080 --name=vamp --type="Lo
 
 As a reference, you can find the latest Vamp katana  Kubernetes configuration here: [github.com/magneticio - Vamp Kubernetes configuration](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-kubernetes/application.conf). Vamp katana includes all changes since the last official release, check the [katana documentation](/documentation/release-notes/katana) for details.
 
-The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](contact) if you’d like further details.
+The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](/contact) if you’d like further details.
 
 Wait a bit until Vamp is running and check out the Kubernetes services:
 
@@ -193,7 +193,7 @@ Don't forget to clean up your Kubernetes cluster and firewall rules  if you don'
 
 {{< note title="What next?" >}}
 
-* Once you have Vamp up and running you can jump into the [getting started tutorials](/documentation/tutorials/overview).
+* Once you have Vamp up and running you can jump into the [getting started tutorials](/documentation/tutorials/).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 
 If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)

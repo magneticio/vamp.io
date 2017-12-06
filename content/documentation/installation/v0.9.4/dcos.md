@@ -31,10 +31,10 @@ For detailed steps on installing the Unvierse package refer to the tutorial here
 ## Manual install
 This setup will run Vamp, Mesos and Marathon, together with Zookeeper and Elasticsearch on DC/OS.
 
-**Tested against**  
+**Tested against**
 This guide has been tested on the 1.8 and 1.9 version of DC/OS.
 
-**Requirements**  
+**Requirements**
 Before you start you need to have a DC/OS cluster up and running, as well as the its CLI configured to use it. We assume you have it up and running on http://dcos.example.com/.
 Setting up DC/OS is outside the scope of this document, for that you need to refer to the official documentation:
 
@@ -86,22 +86,22 @@ If you get no error message you should now be able to see it being deployed:
 
 ```bash
 $ dcos marathon app list
-ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD   
-/elasticsearch  1024  0.2    0/1    0/0      scale       DOCKER   None  
+ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
+/elasticsearch  1024  0.2    0/1    0/0      scale       DOCKER   None
 ```
 
 Once it's fully up and running you should see all tasks and health checks being up:
 
 ```bash
 $ dcos marathon app list
-ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD   
-/elasticsearch  1024  0.2    1/1    1/1       ---        DOCKER   None  
+ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
+/elasticsearch  1024  0.2    1/1    1/1       ---        DOCKER   None
 ```
 
 
 ### Step 2: Deploy Vamp
 
-Once you have elasticsearch up and running it's time to move on to Vamp. The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](contact) if you’d like further details.
+Once you have elasticsearch up and running it's time to move on to Vamp. The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](/contact) if you’d like further details.
 
 Create `vamp.json` with the following content:
 
@@ -138,7 +138,7 @@ Create `vamp.json` with the following content:
     "VAMP_WAIT_FOR": "http://elasticsearch.marathon.mesos:9200/.kibana",
     "VAMP_WORKFLOW_DRIVER_VAMP_URL": "http://10.20.0.100:8080",
     "VAMP_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200"
-  },  
+  },
   "healthChecks": [
     {
       "protocol": "TCP",
@@ -160,9 +160,9 @@ Deploy it with the CLI, like with did with elasticsearch:
 $ dcos marathon app add vamp.json
 
 $ dcos marathon app list
-ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD   
-/elasticsearch  1024  0.2    1/1    1/1       ---        DOCKER   None  
-/vamp/vamp      1024  0.5    0/1    0/0      scale       DOCKER   None  
+ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
+/elasticsearch  1024  0.2    1/1    1/1       ---        DOCKER   None
+/vamp/vamp      1024  0.5    0/1    0/0      scale       DOCKER   None
 
 ```
 
@@ -182,7 +182,7 @@ ID                        MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
 
 Vamp has now spun up all it's components and you should be able to access the ui by opening http://dcos.example.com/service/vamp/ in your browser.
 
-* Now you're ready to follow our [Vamp getting started tutorials](/documentation/tutorials/overview).
+* Now you're ready to follow our [Vamp getting started tutorials](/documentation/tutorials/).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 
 > NB If you need help you can also find us on [Gitter] (https://gitter.im/magneticio/vamp)
@@ -327,7 +327,7 @@ Deploying Vamp Gateway Agent on all public and private Mesos agent nodes through
 
 {{< note title="What next?" >}}
 
-* Once you have Vamp up and running you can follow our [getting started tutorials](/documentation/tutorials/overview).
+* Once you have Vamp up and running you can follow our [getting started tutorials](/documentation/tutorials/).
 * Chcek the [Vamp documentation](/documentation/how-vamp-works/architecture-and-components/)
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 

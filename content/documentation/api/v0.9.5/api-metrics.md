@@ -9,7 +9,7 @@ menu:
 aliases:
     - /documentation/api/api-metrics
 ---
-Metrics can be defined on gateways and deployment ports and retrieved via the API. Metrics are calculated using external services such as workflows. Read about [using workflows](documentation/using-vamp/workflows/).
+Metrics can be defined on gateways and deployment ports and retrieved via the API. Metrics are calculated using external services such as workflows. Read about [using workflows](/documentation/using-vamp/workflows/).
 
 ```
 /api/v1/metrics/gateways/{gateway}/{metrics}

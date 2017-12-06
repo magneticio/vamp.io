@@ -34,15 +34,15 @@ clusters:
         name: sava-frontend:1.2.0
         deployable: magneticio/sava-frontend:1.2.0
         ports:
-          webport: 8080/http                
-        environment_variables: 
+          webport: 8080/http
+        environment_variables:
           BACKEND_1: http://$backend1.host:$backend1.ports.webport/api/message
           BACKEND_2: http://$backend2.host:$backend2.ports.webport/api/message
         dependencies: # Vamp will check dependencies are available
-          backend1: sava-backend1:1.2.0  
+          backend1: sava-backend1:1.2.0
           backend2: sava-backend2:1.2.0
       scale:
-        cpu: 0.2      
+        cpu: 0.2
         memory: 64MB
         instances: 1
       health_checks:
@@ -50,7 +50,7 @@ clusters:
         port: webport
         timeout: 5s
         interval: 10s
-        failures: 10                    
+        failures: 10
   backend1:  # cluster 2
     services:
       breed:
@@ -59,9 +59,9 @@ clusters:
         ports:
           webport: 8080/http
       scale:
-        cpu: 0.2       
+        cpu: 0.2
         memory: 64MB
-        instances: 1                     
+        instances: 1
   backend2:  # cluster 3
     services:
       breed:
@@ -70,13 +70,13 @@ clusters:
         ports:
           webport: 8080/http
       scale:
-        cpu: 0.2       
+        cpu: 0.2
         memory: 64MB
-        instances: 1          
+        instances: 1
 ```
 
-Deploy this blueprint using either the UI or a REST call  - let's name it after the blueprint this time **sava-new**.  
-Once it's deployed, you can check out the new topology in the Vamp UI through the Gateways page or the Deployments page 
+Deploy this blueprint using either the UI or a REST call  - let's name it after the blueprint this time **sava-new**.
+Once it's deployed, you can check out the new topology in the Vamp UI through the Gateways page or the Deployments page
 
 ![](/images/screens/v094/services_2backends.png)
 
@@ -104,7 +104,7 @@ Host names and ports are configured at runtime and injected in the right parts o
 
 Remember, there is no "point-to-point" wiring. The exposed host and port are actually service
 endpoints. The location, amount and version of containers running behind that service endpoint can vary.
-Learn more about [how Vamp does service discovery](/documentation/how-vamp-works/service-discovery/).
+Learn more about [how Vamp does service discovery](/documentation/routing-and-loadbalancing//).
 
 {{< note title="What next?" >}}
 * Great! We just demonstrated that Vamp can handle dependencies between services and configure these services with host and port information at runtime. Now let's do a [more complex migration to a new service based topology →](/documentation/tutorials/merge-and-delete/).

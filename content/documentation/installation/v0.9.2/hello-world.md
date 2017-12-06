@@ -15,7 +15,7 @@ menu:
 {{< /note >}}
 
 
-The Vamp hello world setup will run Mesos, Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)) and Vamp 0.9.2 inside a local Docker container with Vamp's Marathon driver.  We will do this in three simple steps (although it's really just one `docker run` command). You can use the hello world setup to work through the [getting started tutorials](/documentation/tutorials/overview) and try out some of Vamp's core features.
+The Vamp hello world setup will run Mesos, Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)) and Vamp 0.9.2 inside a local Docker container with Vamp's Marathon driver.  We will do this in three simple steps (although it's really just one `docker run` command). You can use the hello world setup to work through the [getting started tutorials](/documentation/tutorials/) and try out some of Vamp's core features.
 
 {{< note >}}
 This hello world set up is designed for demo purposes only - it is not production grade.
@@ -29,13 +29,13 @@ This hello world set up is designed for demo purposes only - it is not productio
 Please install one of the following for your platform/architecture
 
 - Docker 1.9.x (Linux) or higher (Vamp works with Docker 1.12 too), OR
-- [Docker Toolbox 1.12.x] (https://github.com/docker/toolbox/releases) if on Mac OS X 10.8+ or Windows 7+ 
+- [Docker Toolbox 1.12.x] (https://github.com/docker/toolbox/releases) if on Mac OS X 10.8+ or Windows 7+
 
-Vamp hello world on Docker for Mac or Windows is currently not supported. We're working on this so please check back. 
+Vamp hello world on Docker for Mac or Windows is currently not supported. We're working on this so please check back.
 
 ## Run Vamp
 
-Start the `magneticio/vamp-docker:0.9.2-marathon` container, taking care to pass in the right parameters for your system: 
+Start the `magneticio/vamp-docker:0.9.2-marathon` container, taking care to pass in the right parameters for your system:
 
 #### Mac OS X 10.8+ or Windows 7+
 
@@ -65,13 +65,13 @@ Mounting volumes is important. [Read this great article about starting Docker co
 
 ## Check Vamp is up and running
 
-After some downloading and booting, your Docker log will show the Vamp has launched and report:  
+After some downloading and booting, your Docker log will show the Vamp has launched and report:
 `...Binding: 0.0.0.0:8080`
 
-Now you can check if Vamp is home on `http://{docker-machine ip default}:8080/` and you're ready for the [Vamp getting started tutorials](/documentation/tutorials/overview)
+Now you can check if Vamp is home on `http://{docker-machine ip default}:8080/` and you're ready for the [Vamp getting started tutorials](/documentation/tutorials/)
 
 ![](/images/screens/v092/quicksetup-marathon-infopanel.png)
-  
+
 Click on the **?** in the top right corner of any screen for quick access to page help, related documentation and tutorials.
 
 ![](/images/screens/v092/quicksetup-helppanel.png)
@@ -81,7 +81,7 @@ Click on the **?** in the top right corner of any screen for quick access to pag
 All the services exposed in this demo are listed below. Note that if you run on Docker machine you will need to switch `localhost` for `docker-machine ip default`.
 
 
-Exposed services |  
+Exposed services |
 ----------|--------
 HAProxy statistics        |       [http://localhost:1988](http://localhost:1988) (username/password: haproxy)
 Elasticsearch HTTP        |      [http://localhost:9200](http://localhost:9200)
@@ -96,10 +96,10 @@ Vamp UI       |      [http://localhost:8080](http://localhost:8080)
 ## Summing up
 
 This set up runs all of Vamp's components in one container. You will run into cpu, memory and storage issues pretty soon though. Also, random ports from 31000 - 32000 and 40000 - 45000 are assigned by Vamp which you might not have exposed on either Docker or your Docker Toolbox Vagrant box.  This is definitely not ideal, but works fine for kicking the tires.
-Now you're all set to follow our [getting started tutorials](/documentation/tutorials/overview).
+Now you're all set to follow our [getting started tutorials](/documentation/tutorials/).
 
 {{< note title="What next?" >}}
-* Follow the [getting started tutorials](/documentation/tutorials/overview).
+* Follow the [getting started tutorials](/documentation/tutorials/).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 * Remember, this is not a production grade setup!
 

@@ -64,7 +64,7 @@ clusters:
         port: webport
         timeout: 5s
         interval: 10s
-        failures: 10        
+        failures: 10
   backend: # cluster 2
     services:
       breed:
@@ -159,8 +159,8 @@ New major release of your customer facing app? You probably also have some new d
 
 {{< note title="What next?" >}}
 
-* This is the end of this initial getting started tutorials. But there's [much more to try out](/documentation/tutorials/overview/)
-* [Vamp use cases](/product/use-cases/use-cases/)
+* This is the end of this initial getting started tutorials. But there's [much more to try out](/documentation/tutorials//)
+* [Vamp use cases](/product/use-cases/overview/ )
 * Find out how to [install a production-grade set up of Vamp](/documentation/installation/overview/)
 
 {{< /note >}}

@@ -22,7 +22,6 @@ Vamp can automatically deploy a VampGatewayAgent(VGA)+HAProxy on every node of y
 
 
 {{< note title="What next?" >}}
-* Read more about [Vamp service discovery](/documentation/how-vamp-works/service-discovery)
-* See [how Vamp measures up](/product/vamp-compared-to/proxies-and-load-balancers/) to common platforms, tools and frameworks  
+* See [how Vamp measures up](/product/vamp-compared-to/proxies-and-load-balancers/) to common platforms, tools and frameworks
 * Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}

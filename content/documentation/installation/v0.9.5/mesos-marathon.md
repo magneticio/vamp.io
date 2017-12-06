@@ -11,21 +11,21 @@ aliases:
     - /documentation/installation/mesos-marathon
 ---
 
-Vamp can use the full power of Marathon running on either a DCOS cluster or custom Mesos cluster. You can use Vamp's DSL, or you can pass native Marathon options by [using a dialect in a blueprint.](/documentation/using-vamp/dialects)  
+Vamp can use the full power of Marathon running on either a DCOS cluster or custom Mesos cluster. You can use Vamp's DSL, or you can pass native Marathon options by [using a dialect in a blueprint.](/documentation/using-vamp/dialects)
 
 ## Install
 The instructions included on the [DC/OS installation page](/documentation/installation/v0.9.5/dcos) will also work with Mesos/Marathon.
 
 ## Set Marathon as the Vamp container driver
 
-1. Set up a DCOS cluster using Mesosphere's assisted install on AWS ([mesosphere.com - product](https://mesosphere.com/product/)).  
+1. Set up a DCOS cluster using Mesosphere's assisted install on AWS ([mesosphere.com - product](https://mesosphere.com/product/)).
 If you prefer, you can build your own Mesos/Marathon cluster. Here are some tutorials and scripts to help you get started:
 
   * Mesos Ansible playbook ([github.com/mhamrah - ansible mesos playbook](https://github.com/mhamrah/ansible-mesos-playbook))
   * Mesos Vagrant ([github.com/everpeace - vagrant-mesos](https://github.com/everpeace/vagrant-mesos))
   * Mesos Terraform ([github.com/ContainerSolutions - Terraform Mesos](https://github.com/ContainerSolutions/terraform-mesos))
 
-3. Whichever way you set up Marathon, in the end you should be able to see something like this:  
+3. Whichever way you set up Marathon, in the end you should be able to see something like this:
 ![](/images/screens/marathon-screenshot.png)
 
 4. Make a note of the Marathon endpoint (host:port) and update the `container-driver` section in the Vamp `application.conf` config file. If you use a package installer like `yum` or `apt-get` you can find this file in `/usr/share/vamp/conf/application.conf`. Set the "url" option to the Marathon endpoint.
@@ -38,13 +38,13 @@ If you prefer, you can build your own Mesos/Marathon cluster. Here are some tuto
       response-timeout = 30 # seconds, timeout for container operations
     }
     ...
-    ```    
-5. (Re)start Vamp by restarting the Java process by hand.   
+    ```
+5. (Re)start Vamp by restarting the Java process by hand.
 
 {{< note title="What next?" >}}
-* Find out [how to configure Vamp](documentation/configure/v0.9.5/configure-vamp)
-* Check the [configuration reference](documentation/configure/v0.9.5/configuration-reference)
-* Look at some [example configurations](documentation/configure/v0.9.5/example-configurations)
-* Follow the [tutorials](/documentation/tutorials/overview)
+* Find out [how to configure Vamp](/documentation/configure/v0.9.5/configure-vamp)
+* Check the [configuration reference](/documentation/configure/v0.9.5/configuration-reference)
+* Look at some [example configurations](/documentation/configure/v0.9.5/example-configurations)
+* Follow the [tutorials](/documentation/tutorials/)
 {{< /note >}}
 

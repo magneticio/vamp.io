@@ -40,7 +40,7 @@ For details on how to customise your Vamp configuration, see [how to configure V
 ## Vamp configuration
 The Vamp reference.conf files can be found in the respective Vamp project repos. The usage, default setting and requirements for each section are outlined below:
 
-[bootstrap](documentation/configure/v0.9.5/configuration-reference/#vamp-bootstrap), [common](documentation/configure/v0.9.5/configuration-reference/#vamp-common), [container driver](documentation/configure/v0.9.5/configuration-reference/#vamp-container-driver), [gateway driver](documentation/configure/v0.9.5/configuration-reference/#vamp-gateway-driver), [http-api](documentation/configure/v0.9.5/configuration-reference/#vamp-http-api), [model](documentation/configure/v0.9.5/configuration-reference/#vamp-model), [operation](documentation/configure/v0.9.5/configuration-reference/#vamp-operation), [persistence](documentation/configure/v0.9.5/configuration-reference/#vamp-persistence), [pulse](documentation/configure/v0.9.5/configuration-reference/#vamp-pulse), [workflow driver](documentation/configure/v0.9.5/configuration-reference/#vamp-workflow-driver)
+[bootstrap](/documentation/configure/v0.9.5/configuration-reference/#vamp-bootstrap), [common](/documentation/configure/v0.9.5/configuration-reference/#vamp-common), [container driver](/documentation/configure/v0.9.5/configuration-reference/#vamp-container-driver), [gateway driver](/documentation/configure/v0.9.5/configuration-reference/#vamp-gateway-driver), [http-api](/documentation/configure/v0.9.5/configuration-reference/#vamp-http-api), [model](/documentation/configure/v0.9.5/configuration-reference/#vamp-model), [operation](/documentation/configure/v0.9.5/configuration-reference/#vamp-operation), [persistence](/documentation/configure/v0.9.5/configuration-reference/#vamp-persistence), [pulse](/documentation/configure/v0.9.5/configuration-reference/#vamp-pulse), [workflow driver](/documentation/configure/v0.9.5/configuration-reference/#vamp-workflow-driver)
 
 ---
 
@@ -707,8 +707,8 @@ vamp.persistence.key-value-store {
 
 
 {{< note title="What next?" >}}
-* Read about [how to configure Vamp](documentation/configure/v0.9.5/configure-vamp)
-* Look at some [example configurations](documentation/configure/v0.9.5/example-configurations)
-* Follow the [tutorials](/documentation/tutorials/overview)
+* Read about [how to configure Vamp](/documentation/configure/v0.9.5/configure-vamp)
+* Look at some [example configurations](/documentation/configure/v0.9.5/example-configurations)
+* Follow the [tutorials](/documentation/tutorials/)
 * You can read in depth about [using Vamp](/documentation/using-vamp/artifacts/) or browse the [API reference](/documentation/api/api-reference/) or [CLI reference](/documentation/cli/cli-reference/) docs.
 {{< /note >}}

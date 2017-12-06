@@ -7,19 +7,19 @@ menu:
     identifier: "api-reference-breeds-094"
     weight: 50
 ---
-Breeds are static artifacts that describe individual services and can be referenced from blueprints or workflows. Read about [using breeds](documentation/using-vamp/breeds/).
+Breeds are static artifacts that describe individual services and can be referenced from blueprints or workflows. Read about [using breeds](/documentation/using-vamp/breeds/).
 
 ## Actions
- 
+
  * [List](/documentation/api/v0.9.4/api-breeds/#list-breeds) - return a list of all stored breeds
  * [Get](/documentation/api/v0.9.4/api-breeds/#get-single-breed) - get a single stored breed
- * [Create](/documentation/api/v0.9.4/api-breeds/#create-breed) - create a new breed 
+ * [Create](/documentation/api/v0.9.4/api-breeds/#create-breed) - create a new breed
  * [Update](/documentation/api/v0.9.4/api-breeds/#update-breed) - update a stored breed
  * [Delete](/documentation/api/v0.9.4/api-breeds/#delete-breed) - delete a stored breed
 
 ## Breed resource
 You can define breeds inline or store them separately under a unique name and reference them from a blueprint, deployment or workflow resource.
-The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.4/using-the-api) for details on how to set this. 
+The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.4/using-the-api) for details on how to set this.
 
 ### Minimum resource
 The minimum fields required to successfully store a breed.
@@ -46,19 +46,19 @@ arguments: []
 dependencies: {}
 ```
 
- Field name   |  Options   | Required | description          
+ Field name   |  Options   | Required | description
  ------------|-----|--------|---------
 name  |   |  yes  | a unique name to reference the breed
 kind  | `breed`  |  optional  | The resource type. Required to [send multiple resources](/documentation/api/v0.9.4/api-reference/#send-multiple-resources-post-put-and-delete) to `/api/v1`
 deployable  |   |  yes  |  the default deployable type is `container/docker`
-ports  |   |  optional  |  
+ports  |   |  optional  |
 environtment_variables  |   |  optional  |
 constants  |   |  optional  |
 arguments  |   |  optional  |
-dependencies  |   |  optional  |  
+dependencies  |   |  optional  |
 
---------------  
-  
+--------------
+
 ## List breeds
 
 Returns a list of all stored breeds. For details on pagination see [common parameters](/documentation/api/v0.9.4/using-the-api).
@@ -68,10 +68,10 @@ Returns a list of all stored breeds. For details on pagination see [common param
 * /api/v1/breeds
 * The request body should be empty.
 * Query string parameters:
-  
+
 | Request parameters         | options           | default          | description       |
 | ----------------- |:-----------------:|:----------------:| -----------------:|
-| `expand_references` | true or false     | false            | all breed dependencies will be replaced (recursively) with full breed definitions. 
+| `expand_references` | true or false     | false            | all breed dependencies will be replaced (recursively) with full breed definitions.
 | `only_references`   | true or false     | false            | all full breed dependencies will be replaced with their references.
 
 
@@ -92,10 +92,10 @@ Returns a specific stored breed.
 * `/api/v1/breeds/{breed_name}`
 * The request body should be empty.
 * Query string parameters:
-  
+
 | Request parameters         | options           | default          | description       |
 | ----------------- |:-----------------:|:----------------:| -----------------:|
-| `expand_references` | true or false     | false            | all breed dependencies will be replaced (recursively) with full breed definitions. 
+| `expand_references` | true or false     | false            | all breed dependencies will be replaced (recursively) with full breed definitions.
 | `only_references`   | true or false     | false            | all full breed dependencies will be replaced with their references.
 
 ### Response
@@ -112,9 +112,9 @@ If successful, will return the specified [breed resource](/documentation/api/v0.
 Creates a breed with the specified fields.
 
 ### Request
-* `POST` 
+* `POST`
 * `/api/v1/breeds`
-* The request body should include at least the [minimum breed resource](/documentation/api/v0.9.4/api-breeds/#breed-resource) in the specified `content-type` format (default JSON). 
+* The request body should include at least the [minimum breed resource](/documentation/api/v0.9.4/api-breeds/#breed-resource) in the specified `content-type` format (default JSON).
 * Query string parameters:
 
 | Request parameters     | options           | default          | description      |

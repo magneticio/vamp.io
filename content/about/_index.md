@@ -16,7 +16,7 @@ Time is precious. We believe people should focus their efforts on the things the
 computers do the repeatable and automatable tasks - they’re far more suited to that than we are. Smart automation FTW!
 
 ## Community
-We encourage anyone to [join the Vamp community](/resources/community/) and pitch in with pull requests, bug reports and
+We encourage anyone to [join the Vamp community](/community/) and pitch in with pull requests, bug reports and
  feature requests to make Vamp even more awesome.
 
 ## Working at Vamp

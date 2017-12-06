@@ -9,20 +9,20 @@ menu:
 ---
 
 Deployments are dynamic runtime structures, so changes to them take time to execute and can possibly fail. Most API calls to the `/deployments` endpoint will, therefore, return a `202: Accepted` return code, indicating the asynchronous nature of the call. Deployments have a set of sub resources: [deployment SLAs](/documentation/api/v0.9.4/api-deployment-slas), [deployment scales](/documentation/api/v0.9.4/api-deployment-scales) and [gateways](/documentation/api/v0.9.4/api-gateways). These are instantiations of their static counterparts.
-Read about [using deployments](documentation/using-vamp/deployments/).
+Read about [using deployments](/documentation/using-vamp/deployments/).
 
 ## Actions
- 
+
  * [List](/documentation/api/v0.9.4/api-deployments/#list-deployments) - return details of all running deployments
  * [Get](/documentation/api/v0.9.4/api-deployments/#get-single-deployment) - get details of a single running deployment
- * [Create](/documentation/api/v0.9.4/api-deployments/#create-deployment) - initiate a new deployment 
+ * [Create](/documentation/api/v0.9.4/api-deployments/#create-deployment) - initiate a new deployment
  * [Create named deployment](/documentation/api/v0.9.4/api-deployments/#create-named-deployment) - initiate a new deployment with a custom name (non UUID)
  * [Update](/documentation/api/v0.9.4/api-deployments/#update-deployment) - add to a running deployment (merge)
  * [Delete](/documentation/api/v0.9.4/api-deployments/#delete-deployment) - remove elements from a running deployment
 
 ## Deployment resource
 
-The resource example below is in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.4/using-the-api) for details on how to set this. 
+The resource example below is in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.4/using-the-api) for details on how to set this.
 
 ```
 name: sava
@@ -85,19 +85,19 @@ hosts:
   sava: 192.168.99.100
 ```
 
- Field name        | description          
+ Field name        | description
  -----------------|-----------------
- name |  
+ name |
  kind |
- lookup_name |  
+ lookup_name |
  clusters |
-  |  
+  |
  ports |
- environment_variables |  
+ environment_variables |
  hosts |
 
------------------  
-  
+-----------------
+
 ## List deployments
 
 Return a list of all running deployments. For details on pagination see [common parameters](/documentation/api/v0.9.4/using-the-api).
@@ -149,14 +149,14 @@ If successful, will return the specified [deployment resource](/documentation/ap
 Initiate a deployment.
 
 ### Request
-* `POST` 
+* `POST`
 * `/api/v1/deployments`
-* The request body should include at least the [minimum blueprint resource](/documentation/api/v0.9.4/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). 
+* The request body should include at least the [minimum blueprint resource](/documentation/api/v0.9.4/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON).
 * Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the blueprint and returns a `201 Created` if the blueprint is valid.  
+| `validate_only` | true or false     | false            | validates the blueprint and returns a `201 Created` if the blueprint is valid.
 
 ### Response
 If successful, will return the created [deployment resource](/documentation/api/v0.9.4/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
@@ -172,14 +172,14 @@ See [gateways - A/B TEST TWO DEPLOYMENTS USING ROUTE WEIGHT](/documentation/usin
 Initiate a deployment with a custom name (non UUID).
 
 ### Request
-* `PUT` 
+* `PUT`
 * `/api/v1/deployments/{deployment_name}`
-* The request body should include at least the [minimum blueprint resource](/documentation/api/v0.9.4/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON). 
+* The request body should include at least the [minimum blueprint resource](/documentation/api/v0.9.4/api-blueprints/#blueprint-resource) in the specified `content-type` format (default JSON).
 * Query string parameters:
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the blueprint and returns a `202 Accepted` if the blueprint is valid for deployment.   
+| `validate_only` | true or false     | false            | validates the blueprint and returns a `202 Accepted` if the blueprint is valid for deployment.
 
 ### Response
 If successful, will return the created [deployment resource](/documentation/api/v0.9.4/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
@@ -198,7 +198,7 @@ Add to a running deployment (merge).
 
 | Request parameters     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the blueprint and returns a `202 Accepted`  if the deployment after the update would be still valid.  
+| `validate_only` | true or false     | false            | validates the blueprint and returns a `202 Accepted`  if the deployment after the update would be still valid.
 
 ### Response
 If successful, will return the updated [deployment resource](/documentation/api/v0.9.4/api-deployments/#deployment-resource) in the specified `accept` format (default JSON).
@@ -261,12 +261,12 @@ clusters:
         ports:
           jdbc: 8080/http
         environment_variables: {}
-```    
+```
 
 If we want to delete the first service in the `frontend` cluster, we use the following blueprint as the request body in the `DELETE` action.
 
 	DELETE /api/v1/deployments/3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
-		
+
 ```yaml
 name: 3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
 clusters:
@@ -274,13 +274,13 @@ clusters:
     services:
     - breed:
         ref: monarch_front:0.1
-```    
+```
 
 If we want to delete the whole deployment, we just specify all the clusters and services.
 
 	DELETE /api/v1/deployments/3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
-		  
-		  
+
+
 ```yaml
 name: 3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
 clusters:
@@ -294,7 +294,7 @@ clusters:
     services:
     - breed:
         ref: monarch_backend:0.3
-```    
+```
 
 
 --------------

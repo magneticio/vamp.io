@@ -33,7 +33,7 @@ Vamp has no ambition to provide a Heroku-like environment for containers. Vamp i
 
 {{< note title="What next?" >}}
 * [Try Vamp](/documentation/installation/hello-world)
-* [Use cases](/product/use-cases/use-cases) -  some Vamp solutions to practical problems
+* [Use cases](/product/use-cases/overview) -  some Vamp solutions to practical problems
 * Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}
 

@@ -11,7 +11,7 @@ draft: true
 
 If you have visited some of the popular conferences or meetups about devops, continuous delivery, containers or microservices over the last two years the changes are rather high that you’ve heard some of the “big boys” talk about how they are using “Canary testing and releasing” to great success. You might even have seen a nice demo or some screenshots from their super-cool canary-dashboards. But if you want to apply this magical canary-thing to your own CI or CD pipeline, it becomes quiet vague and surrounded with a lot of smoke and mirrors on how to actually achieve this, and with what tools.
 
-Luckily, with Vamp it’s now fast and easy to extend your CI/CD system with powerful canary functionalities. This enables you to avoid downtime and performance issues when testing, upgrading and scaling your applications and (micro)services. All you need is a CI tool that can talk JSON to our REST API, and the Vamp system running inside your favorite container-scheduler (like DC/OS or Kubernetes). And of course your application or microservice that you want to canary release, packaged inside a Docker container. 
+Luckily, with Vamp it’s now fast and easy to extend your CI/CD system with powerful canary functionalities. This enables you to avoid downtime and performance issues when testing, upgrading and scaling your applications and (micro)services. All you need is a CI tool that can talk JSON to our REST API, and the Vamp system running inside your favorite container-scheduler (like DC/OS or Kubernetes). And of course your application or microservice that you want to canary release, packaged inside a Docker container.
 
 So let’s get started!
 
@@ -28,14 +28,14 @@ In this tutorial we will show how to extend  your CI system to deploy a Docker c
 * A Continuous Integration application (like Jenkins, Travis, CircleCI, Wercker etc.) that can send JSON requests to a REST API.
 
 ## Deploy a service
-Vamp deployments are initiated and managed using the `/deployments` API endpoint. To deploy a service, your CI tool just needs to POST a valid [blueprint resource](/documentation/api/v0.9.2/api-blueprints/#blueprint-resource) with a reference to the Docker container you want to deploy, and the port on which you want to expose your container to the outside world (typically using an edge load-balancer or DNS to connect to our external Vamp gateway which is an HAProxy based reverse-proxy).   
+Vamp deployments are initiated and managed using the `/deployments` API endpoint. To deploy a service, your CI tool just needs to POST a valid [blueprint resource](/documentation/api/v0.9.2/api-blueprints/#blueprint-resource) with a reference to the Docker container you want to deploy, and the port on which you want to expose your container to the outside world (typically using an edge load-balancer or DNS to connect to our external Vamp gateway which is an HAProxy based reverse-proxy).
 
-Use the below API request to initiate a new deployment named sava. 
+Use the below API request to initiate a new deployment named sava.
 
-* **Path:** `POST <vamp url>/api/v1/deployments`  
-* **Headers:** `Content-Type=application/x-yaml`  
-_The example below is formatted in YAML. To send JSON, specify `application/json`_  
-* **Body:**  
+* **Path:** `POST <vamp url>/api/v1/deployments`
+* **Headers:** `Content-Type=application/x-yaml`
+_The example below is formatted in YAML. To send JSON, specify `application/json`_
+* **Body:**
 
 ```
 name: sava                          # deployment name
@@ -52,35 +52,35 @@ clusters:
             webport: 8080/http      # internal route to connect to container port
 ```
 
-If all runs to plan, the Vamp API will return a (JSON) response with the fully parsed deployment document. As there is no existing deployment with the name sava, Vamp will create it and add the required clusters (one or more containers that belong together, like for example a Kubernetes pod) and services, effectively deploying and running the specified container on your container-scheduler. Vamp will then update the HAProxies to include the new gateways and routes. 
+If all runs to plan, the Vamp API will return a (JSON) response with the fully parsed deployment document. As there is no existing deployment with the name sava, Vamp will create it and add the required clusters (one or more containers that belong together, like for example a Kubernetes pod) and services, effectively deploying and running the specified container on your container-scheduler. Vamp will then update the HAProxies to include the new gateways and routes.
 You would typically replace the deployment name (“sava”) with a descriptive name of your service or service-cluster, the cluster name with the same name but with “_cluster” added, the breed name with the name and unique identifier (for example, a version number or hash) and the deployable with the location of the newly built Docker container. The sava deployment is now up and running, you can see it at the exposed gateway 9050.
 
 ![](/images/screens/v091/canary_sava10.png)
 
-### Track the deployment in Vamp 
+### Track the deployment in Vamp
 
 You can track the deployed service in the Vamp UI or using the Vamp API.
 
-In the Vamp UI, the **sava** deployment will be listed on the DEPLOYMENTS page.  
+In the Vamp UI, the **sava** deployment will be listed on the DEPLOYMENTS page.
 If you open it, you will see the sava:1.0.0 service running inside the sava_cluster cluster.
 
 ![](/images/screens/v092/sava_deployments_1.png)
 
-The newly deployed gateways will be listed on the GATEWAYS page.  
+The newly deployed gateways will be listed on the GATEWAYS page.
 If you open the **sava/sava_cluster/webport** gateway, you will see one route pointing to the sava:1.0.0 service.
 
 ![](/images/screens/v092/sava_gateway_1.png)
 
 Using the Vamp API, we can also check the status of the deployment:
 
-* Retrieve details of the deployment **sava**   
-  `GET <vamp url>/api/v1/deployments/sava` 
-* Retrieve the stored breed artifact **sava:1.0.0**   
+* Retrieve details of the deployment **sava**
+  `GET <vamp url>/api/v1/deployments/sava`
+* Retrieve the stored breed artifact **sava:1.0.0**
   `GET <vamp url>/api/v1/breeds/sava:1.0.0`
-* Retrieve details of the gateway **sava/sava_cluster/webport**   
+* Retrieve details of the gateway **sava/sava_cluster/webport**
   `GET <vamp url>/api/v1/gateways/sava/sava_cluster/webport`
-    
-## Create a template blueprint    
+
+## Create a template blueprint
 
 We can now  create a template for future updates to the sava deployment. Template blueprints are great because they help us quickly describe and merge new services to a known deployment, effectively canary releasing. To create the template, we will add placeholders to fields that will be unique for each service version and remove any unnecessary details. This blueprint can be stored in your version control system like, for example, Github or inside your CI tool as a template with replaceable placeholders.
 
@@ -109,46 +109,46 @@ When a new version of the sava service is built and packaged into a Docker conta
 Use the below API request to add the service sava:1.1.0 to the running sava deployment.
 
 * Path: `POST <vamp url>/api/v1/deployments`
-* Headers: `Content-Type=application/x-yaml`  
-_The example below is formatted in YAML. To send JSON, specify `application/json`_   
-* Body:  
+* Headers: `Content-Type=application/x-yaml`
+_The example below is formatted in YAML. To send JSON, specify `application/json`_
+* Body:
 
 ```
 name: sava
 clusters:
-  sava_cluster: 
+  sava_cluster:
     services:
       -
         breed:
           name: sava:1.1.0    # new service to deploy (breed name and specific unique version)
           deployable: magneticio/sava:1.1.0    # new deployable Docker container
           ports:
-            webport: 8080/http      
+            webport: 8080/http
 ```
 
 The API will return a (JSON) response with the fully parsed and updated deployment when succesful. As the sava deployment, sava_cluster cluster and sava_cluster/webport internal gateway already exist, Vamp does not need to create them. The new service version will be deployed directly into the existing cluster and a new route to the new service will be added to the existing internal gateway so traffic can be re-balanced from the current to the new container. The running deployment has now been updated to include sava:1.1.0. You can go to the exposed external 9050 gatewayand see the current sava:1.0.0. Behind the scenes Vamp has made all the required updates, but no traffic will be sent to the new sava:1.1.0 service unless we change the weight distribution in the sava/sava_cluster/webport gateway. New services added to an existing gateway have a default weight of 0%, (unless explicitly defined) this gives you full control over the traffic routing within the deployment and helps avoid unexpected surprises.
 
 ![](/images/screens/v091/canary_sava10.png)
 
-### Track updates to the deployment in Vamp 
+### Track updates to the deployment in Vamp
 
 You can track the changes Vamp made to the deployment in the Vamp UI or using the Vamp API.
 
 In the **sava** deployment, the sava:1.0.0 and sava:1.1.0 services are now running inside the cluster **sava_cluster**.
 
 ![](/images/screens/v092/sava_deployments_2.png)
- 
-In the gateway **sava/sava_cluster/webport** there are now routes to sava:1.0.0 (weight 100%) and sava:1.1.0 (weight 0%). Note that no changes have been made to the external gateway 9050. 
+
+In the gateway **sava/sava_cluster/webport** there are now routes to sava:1.0.0 (weight 100%) and sava:1.1.0 (weight 0%). Note that no changes have been made to the external gateway 9050.
 
 ![](/images/screens/v092/sava_gateway_2.png)
 
 Using the Vamp API, we can also check the status of the deployment:
 
-* Retrieve details of the deployment **sava**:  
-  `GET <vamp url>/api/v1/deployments/sava` 
-* Retrieve the newly stored breed artifact **sava:1.1.0**:  
+* Retrieve details of the deployment **sava**:
+  `GET <vamp url>/api/v1/deployments/sava`
+* Retrieve the newly stored breed artifact **sava:1.1.0**:
   `GET <vamp url>/api/v1/breeds/sava:1.1.0`
-* Retrieve details of the updated gateway **sava/sava_cluster/webport**:  
+* Retrieve details of the updated gateway **sava/sava_cluster/webport**:
   `GET <vamp url>/api/v1/gateways/sava/sava_cluster/webport`
 
 ## Changing the traffic distribution
@@ -163,18 +163,18 @@ In the Gateways screen, open the **sava/sava_cluster/webport** internal gateway.
 ### Using the Vamp API
 You can also adjust the route weights of a gateway directly with the API. For example, we can update the **sava/sava_cluster/webport** gateway to start sending traffic to the sava:1.1.0 service:
 
-`PUT <vamp url>/api/v1/gateways/sava/sava_cluster/webport` 
+`PUT <vamp url>/api/v1/gateways/sava/sava_cluster/webport`
 
     name: sava/sava_cluster/webport
     port: 8080
     routes:
       sava/sava_cluster/sava:1.0.0/webport:
-        weight: 90%          
+        weight: 90%
       sava/sava_cluster/sava:1.1.0/webport:
         weight: 10%
 
 
-Note that the total weight of all routes in a gateway must add up to 0% or 100%. 
+Note that the total weight of all routes in a gateway must add up to 0% or 100%.
 
 
 ### Automating traffic distribution with workflows
@@ -196,7 +196,7 @@ To recap what we have covered:
 
 {{< note title="What next?" >}}
 * What would you like to see for our next tutorial? [let us know](mailto:info@magnetic.io)
-* Find our more about [using Vamp](documentation/using-vamp/artifacts)
-* Read more about the [Vamp API](documentation/api/api-reference)
+* Find our more about [using Vamp](/documentation/using-vamp/artifacts)
+* Read more about the [Vamp API](/documentation/api/api-reference)
 {{< /note >}}
 

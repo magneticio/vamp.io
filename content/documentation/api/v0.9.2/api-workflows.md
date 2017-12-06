@@ -7,18 +7,18 @@ menu:
     identifier: "api-reference-workflows-092"
     weight: 210
 ---
-Read about [using workflows](documentation/using-vamp/workflows/).
+Read about [using workflows](/documentation/using-vamp/workflows/).
 
 ## Actions
- 
+
  * [List](/documentation/api/v0.9.2/api-workflows/#list-workflows) - return a list of all workflows
  * [Get](/documentation/api/v0.9.2/api-workflows/#get-single-workflow) - get a single workflow
- * [Create](/documentation/api/v0.9.2/api-workflows/#create-workflow) - create a new workflow 
+ * [Create](/documentation/api/v0.9.2/api-workflows/#create-workflow) - create a new workflow
  * [Update](/documentation/api/v0.9.2/api-workflows/#update-workflow) - update a workflow
  * [Delete](/documentation/api/v0.9.2/api-workflows/#delete-workflow) - delete a workflow
 
 ## Workflow resource
-The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.2/using-the-api) for details on how to set this. 
+The resource examples shown below are in YAML format. Vamp API requests and responses can be in JSON (default) or YAML format, see [common parameters](/documentation/api/v0.9.2/using-the-api) for details on how to set this.
 
 ### Minimum resource
 The minimum fields required to successfully create a workflow.
@@ -51,24 +51,24 @@ The fields returned by the API after a workflow has been created (also visible i
     memory: 128.00MB
     instances: 1
   network: HOST
-  arguments: [] 
+  arguments: []
 ```
 
-    
-Field name  |  Options  |  Required |  Description  
+
+Field name  |  Options  |  Required |  Description
 ------------|-------|--------|--------
-name  | - |   Required |  
+name  | - |   Required |
 kind |  -  | Optional | The resource type. Required to [send multiple resources](/documentation/api/v0.9.2/api-reference/#send-multiple-resources) to `/api/v1`
 breed  | - |   Required |  either a reference or inline definition, similar to blueprints. Best practice would be to store the breed separately and reference it from the workflow
 status  |  running, stopping, suspending, starting, restarting |   Optional |  `restarting` will first suspend and then start the workflow (applying any changes since last start). `suspending` will stop a workflow from running without deleting it. `stopping` a workflow will delete it (not reversible).
 schedule  | daemon, event, time |   Required |  The workflow schedule. See [using workflows - schedules](/documentation/using-vamp/v0.9.2/workflows/#schedules).
 environment_variables (or env) | - |   Optional |  Overrides breed environment variables. You can provide your own variabes here. The following variables are required when using Vamp workflow agent, if not specified here, the configured defaults will be applied: `VAMP_WORKFLOW_EXECUTION_TIMEOUT`, `VAMP_KEY_VALUE_STORE_CONNECTION`, `VAMP_KEY_VALUE_STORE_PATH`,  `VAMP_WORKFLOW_EXECUTION_PERIOD`, `VAMP_KEY_VALUE_STORE_TYPE`, `VAMP_URL`. For a workflow that will run forever, also set VAMP_API_CACHE=false (by default this is set to true).
-scale  | - |   Optional |  when not specified, the default scale will be applied.    
+scale  | - |   Optional |  when not specified, the default scale will be applied.
  network |   |  Optional |
- arguments |    | Optional |    
-    
-    
------------- 
+ arguments |    | Optional |
+
+
+------------
 
 ## List workflows
 
@@ -106,9 +106,9 @@ If successful, will return the specified [workflow resource](/documentation/api/
 Initiate a workflow.
 
 ### Request
-* `POST` 
+* `POST`
 * `/api/v1/workflows`
-* The request body should include at least the [minimum workflow resource](/documentation/api/v0.9.2/api-workflows/#workflow-resource) in the specified `content-type` format (default JSON). 
+* The request body should include at least the [minimum workflow resource](/documentation/api/v0.9.2/api-workflows/#workflow-resource) in the specified `content-type` format (default JSON).
 
 ### Response
 If successful, will return the created [workflow resource](/documentation/api/v0.9.2/api-workflows/#workflow-resource) in the specified `accept` format (default JSON).
@@ -134,7 +134,7 @@ Request:
 * `/api/v1/workflows/{workflow_name}`
 * The request body should include the current workflow resource (`GET <vamp url>/api/v1/workflows/{workflow_name}`) with the status adjusted to `status: restarting`
 
-Response:  
+Response:
 Will return the updated [workflow resource](/documentation/api/v0.9.2/api-workflows/#workflow-resource).
 
 --------------

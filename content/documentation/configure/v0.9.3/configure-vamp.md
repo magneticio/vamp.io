@@ -7,7 +7,7 @@ menu:
     parent: "Configuration"
     weight: 10
 aliases:
-    - /documentation/installation/v0.9.3/configure-vamp
+    - /documentation/configure/v0.9.3/configure-vamp/
 ---
 
 {{< note title="The information on this page applies to Vamp v0.9.3" >}}
@@ -117,8 +117,8 @@ api.config().each(function (config) {
 ```
 
 {{< note title="What next?" >}}
-* Check the [configuration reference](documentation/configure/v0.9.3/configuration-reference)
-* Look at some [example configurations](documentation/configure/v0.9.3/example-configurations)
-* Follow the [tutorials](/documentation/tutorials/overview)
+* Check the [configuration reference](/documentation/configure/v0.9.3/configuration-reference)
+* Look at some [example configurations](/documentation/configure/v0.9.3/example-configurations)
+* Follow the [tutorials](/documentation/tutorials/)
 * You can read in depth about [using Vamp](/documentation/using-vamp/artifacts/) or browse the [API reference](/documentation/api/api-reference/) or [CLI reference](/documentation/cli/cli-reference/) docs.
 {{< /note >}}

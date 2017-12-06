@@ -23,7 +23,7 @@ There are different ways to install Vamp on DC.OS. On this page we start out wit
 
 
 ## Standard install
-This setup will run Vamp, Mesos and Marathon, together with Zookeeper, Elasticsearch and Logstash on DC/OS. 
+This setup will run Vamp, Mesos and Marathon, together with Zookeeper, Elasticsearch and Logstash on DC/OS.
 
 #### Tested against
 This guide has been tested on both 1.7 and the latest 1.8 version of DC/OS.
@@ -42,7 +42,7 @@ Setting up DC/OS is outside the scope of this document, for that you need to ref
 Mesos, Marathon and ZooKeeper are all installed by DC/OS. In addition to these, Vamp requires Elasticsearch and Logstash for metrics collection and aggregation.
 
 You could install Elasticsearch on DC/OS by following the Mesos Elasticsearch documentation ([mesos-elasticsearch - Elasticsearch Mesos Framework](http://mesos-elasticsearch.readthedocs.org/en/latest/)).
-However, Vamp will also need Logstash (not currently available as a DC/OS package) with a specific Vamp Logstash configuration ([github.com/magneticio - Vamp Docker logstash.conf](https://github.com/magneticio/vamp-docker-images/blob/master/clique-base/logstash/logstash.conf)).  
+However, Vamp will also need Logstash (not currently available as a DC/OS package) with a specific Vamp Logstash configuration ([github.com/magneticio - Vamp Docker logstash.conf](https://github.com/magneticio/vamp-docker-images/blob/master/clique-base/logstash/logstash.conf)).
 
 To make life easier, we have created compatible Docker images for a Vamp Elastic Stack ([hub.docker.com - magneticio elastic](https://hub.docker.com/r/magneticio/elastic/)) that you can use with the Mesos elasticsearch documentation ([mesos-elasticsearch - How to install on Marathon](http://mesos-elasticsearch.readthedocs.org/en/latest/#how-to-install-on-marathon)).
 Our advice is to use our custom Elasticsearch+Logstash Docker image. Let's get started!
@@ -87,22 +87,22 @@ If you get no error message you should now be able to see it being deployed:
 
 ```bash
 $ dcos marathon app list
-ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD   
-/elasticsearch  1024  0.2    0/1    0/0      scale       DOCKER   None  
+ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
+/elasticsearch  1024  0.2    0/1    0/0      scale       DOCKER   None
 ```
 
 Once it's fully up and running you should see all tasks and health checks being up:
 
 ```bash
 $ dcos marathon app list
-ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD   
-/elasticsearch  1024  0.2    1/1    1/1       ---        DOCKER   None  
+ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
+/elasticsearch  1024  0.2    1/1    1/1       ---        DOCKER   None
 ```
 
 
 ### Step 2: Deploy Vamp
 
-Once you have elasticsearch up and running it's time to move on to Vamp. The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](contact) if you’d like further details.
+Once you have elasticsearch up and running it's time to move on to Vamp. The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](/contact) if you’d like further details.
 
 Create `vamp.json` with the following content:
 
@@ -141,7 +141,7 @@ Create `vamp.json` with the following content:
     "VAMP_GATEWAY_DRIVER_LOGSTASH_HOST": "elasticsearch.marathon.mesos",
     "VAMP_WORKFLOW_DRIVER_VAMP_URL": "http://10.20.0.100:8080",
     "VAMP_PULSE_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200"
-  },  
+  },
   "healthChecks": [
     {
       "protocol": "TCP",
@@ -163,9 +163,9 @@ Deploy it with the CLI, like with did with elasticsearch:
 $ dcos marathon app add vamp.json
 
 $ dcos marathon app list
-ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD   
-/elasticsearch  1024  0.2    1/1    1/1       ---        DOCKER   None  
-/vamp/vamp      1024  0.5    0/1    0/0      scale       DOCKER   None  
+ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
+/elasticsearch  1024  0.2    1/1    1/1       ---        DOCKER   None
+/vamp/vamp      1024  0.5    0/1    0/0      scale       DOCKER   None
 
 ```
 
@@ -185,7 +185,7 @@ ID                        MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
 
 Vamp has now spun up all it's components and you should be able to access the ui by opening http://dcos.example.com/service/vamp/ in your browser.
 
-* Now you're ready to follow our [Vamp getting started tutorials](/documentation/tutorials/overview).
+* Now you're ready to follow our [Vamp getting started tutorials](/documentation/tutorials/).
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 
 > NB If you need help you can also find us on [Gitter] (https://gitter.im/magneticio/vamp)
@@ -325,7 +325,7 @@ Deploying Vamp Gateway Agent on all public and private Mesos agent nodes through
 
 {{< note title="What next?" >}}
 
-* Once you have Vamp up and running you can follow our [getting started tutorials](/documentation/tutorials/overview).
+* Once you have Vamp up and running you can follow our [getting started tutorials](/documentation/tutorials/).
 * Chcek the [Vamp documentation](/documentation/how-vamp-works/architecture-and-components/)
 * Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
 

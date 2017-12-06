@@ -120,7 +120,7 @@ With that out of the way, we need to get Jenkins talking to Vamp, for this we ne
 
 Using this endpoint, we can talk to Vamp inside the DC/OS cluster, without having to provide any credentials. That is exactly what we are doing in this additional stage to our pipeline script.
 
- {{< gist 8795f5e3ce86c1a3fb4275259650a96b >}} 
+ {{< gist 8795f5e3ce86c1a3fb4275259650a96b >}}
 
 This script does the following:
 
@@ -149,6 +149,6 @@ In the Vamp UI, go to the simpleservice **gateway** **marked** **as** **“exter
 Congratulations! You’ve worked through all of the tedious installation and setup stuff and are now ready to *really* start fleshing out this CI/CD pipeline and explore some of the rather cool functions Vamp offers in conjunction with DC/OS and Jenkins.
 
 {{< note title="What's next?" >}}
-* [Proceed to part 2 of this guide](/documentation/tutorials/vamp-jenkins-docs-pt2)
-* Dive into one of our other [tutorials](/documentation/tutorials/overview)
+* [Proceed to part 2 of this guide](/documentation/tutorials/vamp-jenkins-dcos-pt2)
+* Dive into one of our other [tutorials](/documentation/tutorials/)
 {{< /note >}}

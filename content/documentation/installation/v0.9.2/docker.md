@@ -39,14 +39,14 @@ Vamp can talk directly to a Docker daemon and its driver is configured by defaul
     }
     ...
     ```
-5. (Re)start Vamp by restarting the Java process by hand.   
+5. (Re)start Vamp by restarting the Java process by hand.
 
 
 ![](/images/logos/docker-member.jpg)
 
 {{< note title="What next?" >}}
-* Find out [how to configure Vamp](documentation/configure/v0.9.2/configure-vamp)
-* Check the [configuration reference](documentation/configure/v0.9.2/configuration-reference)
-* Look at some [example configurations](documentation/configure/v0.9.2/example-configurations)
-* Follow the [tutorials](/documentation/tutorials/overview)
+* Find out [how to configure Vamp](/documentation/configure/v0.9.2/configure-vamp)
+* Check the [configuration reference](/documentation/configure/v0.9.2/configuration-reference)
+* Look at some [example configurations](/documentation/configure/v0.9.2/example-configurations)
+* Follow the [tutorials](/documentation/tutorials/)
 {{< /note >}}

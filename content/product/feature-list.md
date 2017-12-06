@@ -31,7 +31,7 @@ Contact us for details of the [extended features](/product/enterprise-edition/) 
 
 {{< note title="What next?" >}}
 * [Try Vamp](/documentation/installation/hello-world/)
-* [Use cases](/product/use-cases/use-cases): Vamp solutions to practical problems
+* [Use cases](/product/use-cases/overview): Vamp solutions to practical problems
 * [What Vamp offers compared to other tools and services](/product/vamp-compared-to/proxies-and-load-balancers/)
 * [How Vamp works](/documentation/how-vamp-works/architecture-and-components/)
 {{< /note >}}

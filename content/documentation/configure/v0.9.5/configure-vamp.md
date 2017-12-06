@@ -130,8 +130,8 @@ api.config().each(function (config) {
 ```
 
 {{< note title="What next?" >}}
-* Check the [configuration reference](documentation/configure/v0.9.5/configuration-reference)
-* Look at some [example configurations](documentation/configure/v0.9.5/example-configurations)
-* Follow the [tutorials](/documentation/tutorials/overview)
+* Check the [configuration reference](/documentation/configure/v0.9.5/configuration-reference)
+* Look at some [example configurations](/documentation/configure/v0.9.5/example-configurations)
+* Follow the [tutorials](/documentation/tutorials/)
 * You can read in depth about [using Vamp](/documentation/using-vamp/artifacts/) or browse the [API reference](/documentation/api/api-reference/) or [CLI reference](/documentation/cli/cli-reference/) docs.
 {{< /note >}}

@@ -10,7 +10,7 @@ menu:
 
 {{< note title="The information on this page is written for Vamp v0.9.4" >}}
 
-* Switch to the [latest version of this page](/documentation/how-vamp-works/service-discovery).
+* Switch to the [latest version of this page](/documentation/routing-and-loadbalancing/).
 * Read the [release notes](/documentation/release-notes/latest) for the latest Vamp release.
 {{< /note >}}
 

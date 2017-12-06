@@ -49,7 +49,7 @@ comparedto:
     item1: 
         title: "Proxies and load balancers"
         sub: "Vamp works together with all common container-schedulers to provide continuous delivery and auto-scaling features. 
-        [Read more](/product/product/vamp-compared-to/proxies-and-load-balancers/)"
+        [Read more](/product/vamp-compared-to/proxies-and-load-balancers/)"
     item2: 
         title: "PaaS and container systems"
         sub: "Vamp adds an experimentation layer to PaaS infrastructures by providing canary-releasing features that 

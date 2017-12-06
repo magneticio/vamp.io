@@ -24,7 +24,7 @@ If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
 * [Vamp requirements](/documentation/how-vamp-works/requirements)
 
 #### Install Vamp
-The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](contact) if you’d like further details.
+The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](/contact) if you’d like further details.
 
 * [DC/OS 1.7 and 1.8](/documentation/installation/v0.9.2/dcos)
 * [Mesos/Marathon](/documentation/installation/v0.9.2/mesos-marathon)
@@ -41,6 +41,6 @@ The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely 
 
 ## Try Vamp
 
-We've put together a [hello world walkthrough](/documentation/installation/v0.9.2/hello-world/) to let you try out some of Vamp's core features in a local docker container. You can use this to work through the [getting started tutorials](/documentation/tutorials/overview).
+We've put together a [hello world walkthrough](/documentation/installation/v0.9.2/hello-world/) to let you try out some of Vamp's core features in a local docker container. You can use this to work through the [getting started tutorials](/documentation/tutorials/).
 
 

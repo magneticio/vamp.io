@@ -16,16 +16,16 @@ menu:
 
 This page gives full details of all available API calls. See [using the Vamp API](/documentation/api/v0.9.1/using-the-api) for details on pagination, JSON and YAML content types and effective use of the API.
 
-* **Resource descriptions:** [blueprints](documentation/api/v0.9.1/api-reference/#blueprints), [breeds](documentation/api/v0.9.1/api-reference/#breeds), [conditions](documentation/api/v0.9.1/api-reference/#conditions), [escalations](documentation/api/v0.9.1/api-reference/#escalations), [scales](documentation/api/v0.9.1/api-reference/#scales), [slas](documentation/api/v0.9.1/api-reference/#slas)
-* **Runtime entities:** [deployments](documentation/api/v0.9.1/api-reference/#deployments), [deployment scales](documentation/api/v0.9.1/api-reference/#deployment-scales), [deployment SLAs](documentation/api/v0.9.1/api-reference/#deployment-slas), [gateways](documentation/api/v0.9.1/api-reference/#gateways)  
-* **Data:** [events](documentation/api/v0.9.1/api-reference/#events), [health](documentation/api/v0.9.1/api-reference/#health), [metrics](documentation/api/v0.9.1/api-reference/#metrics)
-* **System:** [info, config, haproxy](documentation/api/v0.9.1/api-reference/#system)
-* **Debug:** [sync, sla, escalation](documentation/api/v0.9.1/api-reference/#debug)
+* **Resource descriptions:** [blueprints](/documentation/api/v0.9.1/api-reference/#blueprints), [breeds](/documentation/api/v0.9.1/api-reference/#breeds), [conditions](/documentation/api/v0.9.1/api-reference/#conditions), [escalations](/documentation/api/v0.9.1/api-reference/#escalations), [scales](/documentation/api/v0.9.1/api-reference/#scales), [slas](/documentation/api/v0.9.1/api-reference/#slas)
+* **Runtime entities:** [deployments](/documentation/api/v0.9.1/api-reference/#deployments), [deployment scales](/documentation/api/v0.9.1/api-reference/#deployment-scales), [deployment SLAs](/documentation/api/v0.9.1/api-reference/#deployment-slas), [gateways](/documentation/api/v0.9.1/api-reference/#gateways)
+* **Data:** [events](/documentation/api/v0.9.1/api-reference/#events), [health](/documentation/api/v0.9.1/api-reference/#health), [metrics](/documentation/api/v0.9.1/api-reference/#metrics)
+* **System:** [info, config, haproxy](/documentation/api/v0.9.1/api-reference/#system)
+* **Debug:** [sync, sla, escalation](/documentation/api/v0.9.1/api-reference/#debug)
 
 --------------
 
 ## Blueprints
-Read about [using blueprints](documentation/using-vamp/v0.9.1/blueprints/).  
+Read about [using blueprints](/documentation/using-vamp/v0.9.1/blueprints/).
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List blueprints
@@ -60,7 +60,7 @@ Creates a new blueprint. Accepts JSON or YAML formatted blueprints. Set the `Con
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the blueprint and returns a `201 Created` if the blueprint is valid.This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.     
+| `validate_only` | true or false     | false            | validates the blueprint and returns a `201 Created` if the blueprint is valid.This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
 ### Update a blueprint
 
@@ -70,11 +70,11 @@ Updates the content of a specific blueprint.
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the blueprint and returns a `200 OK` if the blueprint is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the blueprint and returns a `200 OK` if the blueprint is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
 ### Delete a blueprint
 
-Deletes a blueprint.        
+Deletes a blueprint.
 
     DELETE /api/v1/blueprints/{blueprint_name}
 
@@ -85,7 +85,7 @@ Deletes a blueprint.
 ------------
 
 ## Breeds
-Read about [using breeds](documentation/using-vamp/v0.9.1/breeds/).  
+Read about [using breeds](/documentation/using-vamp/v0.9.1/breeds/).
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List breeds
@@ -112,13 +112,13 @@ Lists all details for one specific breed.
 
 ### Create breed
 
-Creates a new breed. Accepts JSON or YAML formatted breeds. Set the `Content-Type` request header to `application/json` or `application/x-yaml` accordingly.    
+Creates a new breed. Accepts JSON or YAML formatted breeds. Set the `Content-Type` request header to `application/json` or `application/x-yaml` accordingly.
 
     POST /api/v1/breeds
 
 | parameter     | options           | default          | description       |
 | ------------- |:-----------------:|:----------------:| -----------------:|
-| `validate_only` | true or false     | false            | validates the breed and returns a `201 Created` if the breed is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the breed and returns a `201 Created` if the breed is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
 ### Update a breed
 
@@ -128,14 +128,14 @@ Updates the content of a specific breed.
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the breed and returns a `200 OK` if the breed is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the breed and returns a `200 OK` if the breed is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
 ### Delete a breed
 
-Deletes a breed.        
+Deletes a breed.
 
     DELETE /api/v1/breeds/{breed_name}
-    
+
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
 | `validate_only` | true or false     | false            | returns a `204 No Content` without actual delete of the breed.
@@ -143,7 +143,7 @@ Deletes a breed.
 ---------
 
 ## Conditions
-Read about [using conditions](documentation/using-vamp/v0.9.1/conditions/).  
+Read about [using conditions](/documentation/using-vamp/v0.9.1/conditions/).
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List conditions
@@ -166,7 +166,7 @@ Creates a new condition. Accepts JSON or YAML formatted conditions. Set the `Con
 
 | parameter     | options           | default          | description       |
 | ------------- |:-----------------:|:----------------:| -----------------:|
-| `validate_only` | true or false     | false            | validates the escalation and returns a `201 Created` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the escalation and returns a `201 Created` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
 ### Update a condition
 
@@ -176,7 +176,7 @@ Updates the content of a specific condition.
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the escalation and returns a `200 OK` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the escalation and returns a `200 OK` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
 ### Delete a condition
 
@@ -193,7 +193,7 @@ Deletes a condition.
 
 ## Escalations
 
-Read about [using escalations](documentation/using-vamp/v0.9.1/escalations/).  
+Read about [using escalations](/documentation/using-vamp/v0.9.1/escalations/).
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List escalations
@@ -210,13 +210,13 @@ Lists all details for one specific escalation.
 
 ### Create escalation
 
-Creates a new escalation. Accepts JSON or YAML formatted escalations. Set the `Content-Type` request header to `application/json` or `application/x-yaml` accordingly.   
+Creates a new escalation. Accepts JSON or YAML formatted escalations. Set the `Content-Type` request header to `application/json` or `application/x-yaml` accordingly.
 
     POST /api/v1/escalations
 
 | parameter     | options           | default          | description       |
 | ------------- |:-----------------:|:----------------:| -----------------:|
-| `validate_only` | true or false     | false            | validates the escalation and returns a `201 Created` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the escalation and returns a `201 Created` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
 ### Update an escalation
 
@@ -226,11 +226,11 @@ Updates the content of a specific escalation.
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the escalation and returns a `200 OK` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the escalation and returns a `200 OK` if the escalation is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
 ### Delete an escalation
 
-Deletes an escalation.        
+Deletes an escalation.
 
     DELETE /api/v1/escalations/{escalation_name}
 
@@ -242,7 +242,7 @@ Deletes an escalation.
 
 ## Scales
 
-Read about [using scales](documentation/using-vamp/v0.9.1/blueprints/#scale).  
+Read about [using scales](/documentation/using-vamp/v0.9.1/blueprints/#scale).
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List scales
@@ -259,13 +259,13 @@ Lists all details for one specific scale.
 
 ### Create scale
 
-Creates a new scale. Accepts JSON or YAML formatted scales. Set the `Content-Type` request header to `application/json` or `application/x-yaml` accordingly.    
+Creates a new scale. Accepts JSON or YAML formatted scales. Set the `Content-Type` request header to `application/json` or `application/x-yaml` accordingly.
 
     POST /api/v1/scales
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| -----------------:|
-| `validate_only` | true or false     | false            | validates the scale and returns a `201 Created` if the scale is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the scale and returns a `201 Created` if the scale is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
 ### Update a scale
 
@@ -275,11 +275,11 @@ Updates the content of a specific scale.
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the scale and returns a `200 OK` if the scale is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the scale and returns a `200 OK` if the scale is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
 ### Delete a scale
 
-Deletes a scale.        
+Deletes a scale.
 
     DELETE /api/v1/scales/{scale_name}
 
@@ -291,7 +291,7 @@ Deletes a scale.
 
 ## SLAs
 
-Read about [using SLAs](documentation/using-vamp/v0.9.1/sla/).  
+Read about [using SLAs](/documentation/using-vamp/v0.9.1/sla/).
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List SLAs
@@ -310,11 +310,11 @@ Lists all details for one specific breed.
 
 Creates a new SLA
 
-    POST /api/v1/slas   
+    POST /api/v1/slas
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| -----------------:|
-| `validate_only` | true or false     | false            | validates the SLA and returns a `201 Created` if the SLA is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the SLA and returns a `201 Created` if the SLA is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
 ### Update an SLA
 
@@ -324,11 +324,11 @@ Updates the content of a specific SLA.
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the SLA and returns a `200 OK` if the SLA is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the SLA and returns a `200 OK` if the SLA is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
 ### Delete an SLA
 
-Deletes an SLA.        
+Deletes an SLA.
 
     DELETE /api/v1/slas/{sla_name}
 
@@ -345,7 +345,7 @@ Deployments are non-static entities in the Vamp eco-system. They represent runti
 
 Deployments have a set of sub resources: **SLAs**, **scales** and **gateways**. These are instantiations of their static counterparts.
 
-Read more about [using deployments](documentation/using-vamp/v0.9.1/deployments/).  
+Read more about [using deployments](/documentation/using-vamp/v0.9.1/deployments/).
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List deployments
@@ -379,10 +379,10 @@ Creates a new deployment
 Create a named (non UUID) deployment
 
 	PUT /api/v1/deployments/{deployment_name}
-	
+
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the blueprint and returns a `202 Accepted` if the blueprint is valid for deployment. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.     
+| `validate_only` | true or false     | false            | validates the blueprint and returns a `202 Accepted` if the blueprint is valid for deployment. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
 ### Update a deployment using a blueprint
 
@@ -392,11 +392,11 @@ Updates the settings of a specific deployment.
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the blueprint and returns a `202 Accepted` if the deployment after the update would be still valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the blueprint and returns a `202 Accepted` if the deployment after the update would be still valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
 ### Delete a deployment using a blueprint
 
-Deletes all or parts of a deployment.        
+Deletes all or parts of a deployment.
 
     DELETE /api/v1/deployments/{deployment_name}
 
@@ -410,7 +410,7 @@ In contrast to most API's, doing a `DELETE` in Vamp takes a request body that de
 `DELETE` on deployment with an empty request body will not delete anything.
 {{< /note >}}
 
-The most common way to specify what you want to delete is by exporting the target deployment as a blueprint using the `?as_blueprint=true` parameter. You then either programmatically or by hand edit the resulting blueprint and specify which of the services you want to delete. You can also use the blueprint as a whole in the `DELETE` request. The result is the removal of the full deployment. 
+The most common way to specify what you want to delete is by exporting the target deployment as a blueprint using the `?as_blueprint=true` parameter. You then either programmatically or by hand edit the resulting blueprint and specify which of the services you want to delete. You can also use the blueprint as a whole in the `DELETE` request. The result is the removal of the full deployment.
 
 #### example - delete service
 
@@ -451,12 +451,12 @@ clusters:
         ports:
           jdbc: 8080/http
         environment_variables: {}
-```    
+```
 
 If we want to delete the first service in the `frontend` cluster, we use the following blueprint as the request body in the `DELETE` action.
 
 	DELETE /api/v1/deployments/3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
-		
+
 ```yaml
 name: 3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
 clusters:
@@ -464,13 +464,13 @@ clusters:
     services:
     - breed:
         ref: monarch_front:0.1
-```    
+```
 
 If we want to delete the whole deployment, we just specify all the clusters and services.
 
 	DELETE /api/v1/deployments/3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
-		  
-		  
+
+
 ```yaml
 name: 3df5c37c-5137-4d2c-b1e1-1cb3d03ffcdd
 clusters:
@@ -484,7 +484,7 @@ clusters:
     services:
     - breed:
         ref: monarch_backend:0.3
-```    
+```
 
 -------------
 
@@ -497,13 +497,13 @@ Deployment scales are singular resources: you only have one scale per service. D
 Lists all details for a specific deployment scale that's part of a service inside a cluster.
 
 	GET /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/scale
-	
-### Set a deployment scale	
+
+### Set a deployment scale
 
 Updates a deployment scale.
 
 	POST|PUT /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}/scale
-	
+
 --------------
 
 ## Deployment SLAs
@@ -513,13 +513,13 @@ Updates a deployment scale.
 Lists all details for a specific SLA that's part of a specific cluster.
 
 	GET /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/sla
-	
+
 ### Set a deployment SLA
 
 Creates or updates a specific deployment SLA.
 
 	POST|PUT /api/v1/deployments/{deployment_name}/clusters/{cluster_name}/sla
-	
+
 ### Delete a deployment SLA
 
 Deletes as specific deployment SLA.
@@ -529,7 +529,7 @@ Deletes as specific deployment SLA.
 --------------
 
 ## Gateways
-Read about [using gateways](documentation/using-vamp/v0.9.1/gateways/).  
+Read about [using gateways](/documentation/using-vamp/v0.9.1/gateways/).
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List gateways
@@ -541,14 +541,14 @@ Details on pagination, JSON and YAML content types and effective use of the API 
     GET /api/v1/gateways/{gateway_name}
 
 ### Create gateway
-Accepts JSON or YAML formatted gateways. Set the `Content-Type` request header to `application/json` or `application/x-yaml` accordingly.    
+Accepts JSON or YAML formatted gateways. Set the `Content-Type` request header to `application/json` or `application/x-yaml` accordingly.
 
     POST /api/v1/gateways
 
 
 | parameter     | options           | default          | description       |
 | ------------- |:-----------------:|:----------------:| -----------------:|
-| `validate_only` | true or false     | false            | validates the gateway and returns a `201 Created` if the gateway is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the gateway and returns a `201 Created` if the gateway is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
 ### Update a gateway
 
@@ -556,12 +556,12 @@ Accepts JSON or YAML formatted gateways. Set the `Content-Type` request header t
 
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
-| `validate_only` | true or false     | false            | validates the gateway and returns a `200 OK` if the gateway is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON. 
+| `validate_only` | true or false     | false            | validates the gateway and returns a `200 OK` if the gateway is valid. This can be used together with the header `Accept: application/x-yaml` to return the result in YAML format instead of the default JSON.
 
-### Delete a gateway     
+### Delete a gateway
 
     DELETE /api/v1/gateways/{gateway_name}
-    
+
 | parameter     | options           | default          | description      |
 | ------------- |:-----------------:|:----------------:| ----------------:|
 | `validate_only` | true or false     | false            | returns a `204 No Content` without actual delete of the gateway.
@@ -570,12 +570,12 @@ Accepts JSON or YAML formatted gateways. Set the `Content-Type` request header t
 
 ## Events
 
-For specific usage examples, see [using events](documentation/using-vamp/v0.9.1/events/).  
+For specific usage examples, see [using events](/documentation/using-vamp/v0.9.1/events/).
 Details on pagination, JSON and YAML content types and effective use of the API can be found in [using the Vamp API](/documentation/api/v0.9.1/using-the-api).
 
 ### List events
 
-Lists events (for example health and metrics). You can optionally filter the returned events by tag(s) or type. 
+Lists events (for example health and metrics). You can optionally filter the returned events by tag(s) or type.
 
     GET /api/v1/events
 
@@ -590,8 +590,8 @@ search criteria can be set in request body, checkout [examples](/documentation/u
 
 ### Create events
 
-    POST /api/v1/events    
-    
+    POST /api/v1/events
+
 ### Server-sent events (SSE)
 
     GET  /api/v1/events/stream
@@ -647,11 +647,11 @@ Vamp provides a set of API endpoints that help with getting general health/confi
 
 ### Get runtime info
 
-Lists information about Vamp's JVM environment and runtime status. 
+Lists information about Vamp's JVM environment and runtime status.
 Also lists info for configured persistence layer and container driver status.
 
 	GET /api/v1/info
-	
+
 Sections are `jvm`, `persistence`, `key_value`, `pulse`, `gateway_driver`, `container_driver` and `workflow_driver`:
 
 ```yaml
@@ -684,21 +684,21 @@ You can retrieve the HAProxy configuration generated by Vamp. Details will only 
 
 	GET /api/v1/haproxy/{version_number}
 
-## Debug 
+## Debug
 
 ### Force sync
 
 Forces Vamp to perform a synchronization cycle, regardless of the configured default interval.
 
 	GET /api/v1/sync
-	
-### Force SLA check	
+
+### Force SLA check
 
 Forces Vamp to perform an SLA check, regardless of the configured default interval.
 
 	GET /api/v1/sla
 
-### Force escalation	
+### Force escalation
 
 Forces Vamp to perform an escalation check, regardless of the configured default interval.
 
