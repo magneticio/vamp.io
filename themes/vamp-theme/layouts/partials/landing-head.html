@@ -58,11 +58,7 @@
   {{ with .Site.Title }}<meta name="apple-mobile-web-app-title" content="{{ . }}">{{ end }}
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-  <link rel="shortcut icon" type="image/x-icon" href="{{ $.Site.BaseURL }}{{ with .Site.Params.favicon }}/{{ . }}{{ else }}/images/favicon.ico{{ end }}">
-  <link rel="icon" type="image/x-icon" href="{{ $.Site.BaseURL }}{{ with .Site.Params.favicon }}/{{ . }}{{ else }}/images/favicon.ico{{ end }}">
-
-
+  <link rel="icon" href="{{ $.Site.BaseURL }}{{ with .Site.Params.favicon }}/{{ . }}{{ else }}/images/favicon.ico{{ end }}">
   <style>
     @font-face {
       font-family: 'Icon';

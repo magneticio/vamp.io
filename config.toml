@@ -19,8 +19,8 @@ googleAnalytics = ""
 	repo_url = "https://github.com/magneticio/vamp"
 
 	version = "0.9.5"
-	logo = "images/logo.svg"
-	favicon = "images/logo.svg"
+	logo = "images/favicon.png?v=1.0"
+	favicon = "images/favicon.png?v=1.0"
 
 	permalink = "#"
 
