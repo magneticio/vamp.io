@@ -24,4 +24,4 @@ The integrated deployment, routing and workflow features of Vamp support a broad
 * What would happen if...... Simulate and test auto scaling behaviour. [Read more ...](/product/use-cases/simulate-and-test-scaling-behaviour)
 * Self-healing and self-optimising. [Read more ...](/product/use-cases/self-healing-and-self-optimising)
 
-We're always interested to hear specific use-cases. If you have one to share, send us an email at [info@magnetic.io](mailto:info@magnetic.io)
+We're always interested to hear specific use-cases. If you have one to share, send us an email at [info@vamp.io](mailto:info@vamp.io)
