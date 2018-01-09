@@ -26,14 +26,9 @@
   <section class="lander-row--white markdowned">
     <div class="container py-5">
       <div class="row">
-
-        {{ $cols := split .RawContent "||" }}
-
-        {{ range $cols }}
-          <div class="col-sm-6 ">
-            {{ . | markdownify }}
+          <div class="col-sm-12 ">
+            {{ .Content | markdownify }}
           </div>
-        {{ end }}
       </div>
     </div>
   </section>

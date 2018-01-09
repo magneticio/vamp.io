@@ -9,10 +9,18 @@ aliases:
 header:
     title: "Test drive Vamp, fully supported from install to evaluation"
     subtitle: "The Vamp team can help you with installing and running Vamp in your on-prem or cloud based environment. Sign up
-    for the Vamp Discovery Pilot and get all the benefits of Vamp in record time."
+    for the **Vamp Discovery Pilot** and get all the benefits of Vamp in record time."
 ---
+## What is the Vamp Discovery Pilot?
 
-## Stages
+Wether you are considering adopting container technology or already deploy multiple daily releases of your containerised 
+applications in the cloud, managing the stack and business expectations presents a daunting challenge. Vamp automates many of these challenges. 
+
+To get you up and running with Vamp, we created the Vamp discovery pilot program: a guided, 90 day hands-on program where 
+we help you get all the benefits of Vamp on your environment and infrastructure. We ask a fee in return for our services 
+which may be redeemed for Vamp Enterprise Edition licenses should you decide to implement Vamp permanently. 
+
+## The Three Pilot Stages
 
 The pilot is set-up in three stages: the preparation stage, the pilot stage and the evaluation stage.
 
@@ -42,7 +50,6 @@ After a maximum of 90 days we end the pilot
 - We will evaluate to share lessons learned.
 - If the pilot is evaluated as a success: we will work out a commercial model for after the pilot.
  
-||
  
 ## Terms and conditions
 
