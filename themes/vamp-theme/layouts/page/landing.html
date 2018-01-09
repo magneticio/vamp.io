@@ -1,7 +1,7 @@
-{{ partial "landing-head-alt" . }}
+{{ partial "landing-head" . }}
 
 <div class="landing-page landing-page-light">
-  {{ partial "nav-landing" . }}
+  {{ partial "nav-home-nolinks" . }}
 
   <div class="masthead hero-background">
     <div class="container">
@@ -17,75 +17,39 @@
   <section id="lead1" class="lead">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 text-left">
+        <div class="col-md-10 offset-md-1 text-left">
           <div class="lead-inner">
-            <p class="lead-top-header">{{.Params.leads.lead1.topheader | markdownify}}</p>
             <h2 class="lead-header">{{.Params.leads.lead1.header | markdownify}}</h2>
+            <div class="persona">
+              <div class="persona-image">
+                <img src="/img/marketing/landing/persona1.png" alt="persona1">
+              </div>
+              <p class="persona-quote">
+                {{.Params.personas.persona1.quote | markdownify}}
+              </p>
+            </div>
             <p class="lead-body">{{.Params.leads.lead1.body | markdownify}}</p>
           </div>
         </div>
-        <div class="col-md-6">
-          <ul class="lead-features-list">
-            <li class="lead-features-list-item">
-              <img src="/img/002-Medium-icons/Medium-icons-06.svg" alt="">
-              <p>{{.Params.features.list1.item1 | markdownify}}</p>
-            </li>
-            <li class="lead-features-list-item">
-              <img src="/img/002-Medium-icons/Medium-icons-05.svg" alt="">
-              <p>{{.Params.features.list1.item2 | markdownify}}</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="persona">
-            <div class="persona-image">
-              <img src="/img/marketing/landing/persona1.png" alt="persona1">
-            </div>
-            <p class="persona-quote">
-              {{.Params.personas.persona1.quote | markdownify}}
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
   <section class="lead">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
-          <ul class="lead-features-list">
-            <li class="lead-features-list-item">
-              <img src="/img/002-Medium-icons/Medium-icons-01.svg" alt="">
-              <p>{{.Params.features.list2.item1 | markdownify}}</p>
-            </li>
-            <li class="lead-features-list-item">
-              <img src="/img/002-Medium-icons/Medium-icons-03.svg" alt="">
-              <p>{{.Params.features.list2.item2 | markdownify}}</p>
-            </li>
-            <li class="lead-features-list-item">
-              <img src="/img/002-Medium-icons/Medium-icons-04.svg" alt="">
-              <p>{{.Params.features.list2.item3 | markdownify}}</p>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-6 text-left">
+        <div class="col-md-10 offset-md-1">
           <div class="lead-inner">
-            <p class="lead-top-header">{{.Params.leads.lead2.topheader | markdownify}}</p>
             <h2 class="lead-header">{{.Params.leads.lead2.header | markdownify}}</h2>
+            <div class="persona">
+              <div class="persona-image">
+                <img src="/img/marketing/landing/persona2.png" alt="persona1">
+              </div>
+              <p class="persona-quote">
+                {{.Params.personas.persona2.quote | markdownify}}
+              </p>
+            </div>
             <p class="lead-body">{{.Params.leads.lead2.body | markdownify}}</p>
           </div>
-          <div class="persona">
-            <div class="persona-image">
-              <img src="/img/marketing/landing/persona2.png" alt="persona1">
-            </div>
-            <p class="persona-quote">
-              {{.Params.personas.persona2.quote | markdownify}}
-            </p>
-          </div>
         </div>
       </div>
     </div>
@@ -93,25 +57,19 @@
   <section class="lead">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 text-left">
+        <div class="col-md-10 offset-md-1 text-left">
           <div class="lead-inner">
-            <p class="lead-top-header">{{.Params.leads.lead3.topheader | markdownify}}</p>
             <h2 class="lead-header">{{.Params.leads.lead3.header | markdownify}}</h2>
+            <div class="persona">
+              <div class="persona-image">
+                <img src="/img/marketing/landing/persona3.png " alt="persona1">
+              </div>
+              <p class="persona-quote">
+                {{.Params.personas.persona3.quote | markdownify}}
+              </p>
+            </div>
             <p class="lead-body">{{.Params.leads.lead3.body | markdownify}}</p>
           </div>
-          <div class="persona">
-            <div class="persona-image">
-              <img src="/img/marketing/landing/persona3.png " alt="persona1">
-            </div>
-            <p class="persona-quote">
-              {{.Params.personas.persona3.quote | markdownify}}
-            </p>
-          </div>
-        </div>
-        <div class="col-md-6 text-center">
-          <h3 class="lead-features-header">Vamp works with</h3>
-          <img src="/img/marketing/landing/works_with1.png" alt="works_with">
-          <img src="/img/marketing/landing/works_with2.png" alt="works_with">
         </div>
       </div>
     </div>
@@ -125,10 +83,10 @@
       </div>
       <div class="row">
         <div class="col-sm-12 text-center">
-          <div class="booking-form text-center">
-            <img  class="booking-image" src="/img/marketing/landing/calendar.png" alt="calendar">
-            <a class="button button--red booking-button" href="https://calendly.com/diederick" target="_blank">Book a call or demo now</a>
-          </div>
+            <div class="booking-form text-center">
+              <img  class="booking-image" src="/img/marketing/landing/calendar.png" alt="calendar">
+              <a class="button button--red booking-button" href="https://calendly.com/diederick" target="_blank">Book a call or demo now</a>
+            </div>
         </div>
       </div>
       <div class="row">
@@ -151,3 +109,6 @@
     }, 1000);
   });
 </script>
+
+
+
