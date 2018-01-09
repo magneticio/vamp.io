@@ -1,7 +1,7 @@
 ---
 title: Microservices
 type: "page"
-layout: "landing"
+layout: "landing-alt"
 hero: 
     header: "Are you in control when upgrading your services?" 
     sub: "Discover Vamp: enterprise-grade lifecycle management for microservices."

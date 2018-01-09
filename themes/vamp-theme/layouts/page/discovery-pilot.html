@@ -1,0 +1,61 @@
+{{ partial "head" . }}
+
+{{ partial "nav" . }}
+
+<div class="page product discovery-pilot">
+  <section class="lander-row--white py-3 py-lg-5 hero-background">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h1 class="h1 text-left mb-5 hero-text">{{.Params.header.title | markdownify}}</h1>
+          <p class="hero-sub-text mb-3">{{.Params.header.subtitle | markdownify}}</p>
+          <div class="download">
+            <a href="https://calendly.com/diederick" target="_blank" class="button button--red">
+              Contact Sales
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- content section -->
+
+  <section class="lander-row--white markdowned">
+    <div class="container py-5">
+      <div class="row">
+
+        {{ $cols := split .RawContent "||" }}
+
+        {{ range $cols }}
+          <div class="col-sm-6 ">
+            {{ . | markdownify }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!--cta section -->
+
+  <section class="lander-row--red">
+    <div class="container py-3 text-center">
+      <div class="row">
+        <div class="col-sm-12  col-md-10 offset-md-1">
+          <h1 class="h1 mb-4">
+            For more information on the Vamp Discovery Pilot
+          </h1>
+          <div class="download mb-4">
+            <a href="https://calendly.com/diederick" target="_blank" class="button button--white">
+              Contact Sales
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{{ partial "footer" .}}

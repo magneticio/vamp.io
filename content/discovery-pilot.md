@@ -1,0 +1,55 @@
+---
+date: 2016-09-13T09:00:00+00:00
+title: Vamp Discovery Pilot
+type: page
+layout: discovery-pilot
+aliases:
+    - /discovery-pilot/
+    - /product/discovery-pilot/    
+header:
+    title: "Test drive Vamp, fully supported from install to evaluation"
+    subtitle: "The Vamp team can help you with installing and running Vamp in your on-prem or cloud based environment. Sign up
+    for the Vamp Discovery Pilot and get all the benefits of Vamp in record time."
+---
+
+## Stages
+
+The pilot is set-up in three stages: the preparation stage, the pilot stage and the evaluation stage.
+
+### Preparation stage (pre - 90 days)
+    
+To create the right environment to achieve succes in which we perform the following activities:
+
+- Discovery session to define fitting use case(s) and the measures of success. This is done remotely by a video conference or face2face on customer request.
+- The measure of success will be agreed. Objective is to accurately measure succes metrics such as improved margins, reduced labor and systems related costs. Any use case should be based on operational challenges where value can be added to prominent and urgent operational issues
+- Once the use case and succes criteria are defined we set a kick-off date for the pilot and what the expected end date should be.
+- On the kick-off day Vamp will be installed on-premise with an Unlimited use Vamp Enterprise edition. In this stage all necessary steps will be taken to get a working Vamp environment. This is a cooperative effort supported remotely by Vamp consultants. This should typically not take more than two business days.
+- After installation follows one day of hands-on training and testing of Vamp. This is also supported remotely by a Vamp consultant.
+
+### Pilot stage (day 0 - day 75)
+    
+In this stage the pilot can run its course. You’ll be handling Vamp yourself but are supported by our engineers. 
+
+We will stay in close contact by checking in regularly or when questions or issues arise. There’s the option of direct contact through Slack, phone or email with the Vamp engineer.
+
+Every 30 days we’ll check-in to see how Vamp is performing and if we’re on track to achieve success. These sessions are meant to qualify intermediate results, receive feedback and adjust if necessary.
+
+### Evaluation stage (~ day 75)
+    
+After a maximum of 90 days we end the pilot
+
+- The evaluation meeting will be planned before the end of the pilot (typically around day 75.
+- We will evaluate to share lessons learned.
+- If the pilot is evaluated as a success: we will work out a commercial model for after the pilot.
+ 
+||
+ 
+## Terms and conditions
+
+- For the agreed 90 days we will lend dedicated product support during business hours to help solve Vamp related problems and provide dedicated support.
+- During the pilot you may use Vamp Enterprise Edition (Vamp EE) on an unlimited amount of vCPU’s.
+- At the end of the pilot the paid fee will act as a discount on your license purchase if you decide to purchase Vamp within 30 days after the pilot ends and commit to a 12 month contract.
+- You may expect two business days of implementation support and one business day of training effort.
+- We commit to a working and tested Vamp EE environment after installation.
+- The preparation stage will only commence once a pilot order form is signed and received by us.
+
