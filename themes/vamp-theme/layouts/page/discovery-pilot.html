@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-sm-6">
           <h1 class="h1 text-left mb-5 hero-text">{{.Params.header.title | markdownify}}</h1>
-          <p class="mb-4">{{.Params.header.subtitle | markdownify}}</p>
+          <h2 class="h2 mb-4 hero-sub-text">{{.Params.header.subtitle | markdownify}}</h2>
           <div class="download">
             <a href="https://calendly.com/diederick" target="_blank" class="button button--red">
               Contact Sales
@@ -23,11 +23,16 @@
 
   <!-- content section -->
 
-  <section class="lander-row--white markdowned mb-3 pt-5">
+  <section class="lander-row--white mb-3 pt-5">
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 ">
-          {{ .Content | markdownify }}
+        <div class="col-sm-12">
+          <h2 class="h2">
+            {{ .Params.lead.header | markdownify }}
+          </h2>
+        </div>
+        <div class="col-sm-12 markdowned">
+          <p class="text">{{ .Params.lead.content | markdownify }}</p>
         </div>
       </div>
     </div>
@@ -38,20 +43,83 @@
   <section class="lander-row--white mb-5">
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 markdowned">
+        <div class="col-sm-12">
           <h2 class="h2">
             {{ .Params.stages.header | markdownify }}
           </h2>
         </div>
-        <div class="col-sm-12 mb-3">
-          <div class="card">
-            <div class="card-content text-left markdowned mb-0 pb-4">
-              <div class="h5 mb-3">
-                {{ .Params.stages.one.header | markdownify }}
+        <!--<div class="col-sm-12 mb-3 markdowned">-->
+          <!--<div class="card">-->
+            <!--<div class="card-content text-left markdowned mb-0 pb-4">-->
+              <!--<div class="h5 mb-3">-->
+                <!--{{ .Params.stages.one.header | markdownify }}-->
+              <!--</div>-->
+              <!--<p>-->
+                <!--{{ .Params.stages.one.subheader | markdownify }}-->
+              <!--</p>-->
+              <!--<ul class="mb-0">-->
+                <!--{{ range .Params.stages.one.bullets }}-->
+                <!--<li>{{ . }}</li>-->
+                <!--{{ end }}-->
+              <!--</ul>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-12 mb-3">-->
+          <!--<div class="card">-->
+            <!--<div class="card-content text-left markdowned mb-0 pb-4">-->
+              <!--<div class="h5 mb-3">-->
+                <!--{{ .Params.stages.two.header | markdownify }}-->
+              <!--</div>-->
+              <!--<p>-->
+                <!--{{ .Params.stages.two.subheader | markdownify }}-->
+              <!--</p>-->
+              <!--<ul class="mb-0">-->
+                <!--{{ range .Params.stages.two.bullets }}-->
+                <!--<li>{{ . }}</li>-->
+                <!--{{ end }}-->
+              <!--</ul>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-12">-->
+          <!--<div class="card">-->
+            <!--<div class="card-content text-left markdowned mb-0 pb-4">-->
+              <!--<div class="h5 mb-3">-->
+                <!--{{ .Params.stages.three.header | markdownify }}-->
+              <!--</div>-->
+              <!--<p>-->
+                <!--{{ .Params.stages.three.subheader | markdownify }}-->
+              <!--</p>-->
+              <!--<ul class="mb-0">-->
+                <!--{{ range .Params.stages.three.bullets }}-->
+                <!--<li>{{ . }}</li>-->
+                <!--{{ end }}-->
+              <!--</ul>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      </div>
+    </div>
+    <div class="container">
+      <div class="qa-message-list" id="wallmessages">
+        <div class="message-item">
+          <div class="message-inner">
+            <div class="message-head clearfix">
+              <div class="avatar pull-left"><img src="/img/vendor/start.png"></div>
+              <div class="user-detail">
+                <h5 class="h5 mb-2">{{ .Params.stages.one.header | markdownify }}</h5>
+                <div class="post-meta">
+                  <div class="asker-meta">
+                    <span class="qa-message-what"></span>
+                    <span class="qa-message-when">
+												<p class="text text-left">{{ .Params.stages.one.subheader | markdownify }}</p>
+											</span>
+                  </div>
+                </div>
               </div>
-              <p>
-                {{ .Params.stages.one.subheader | markdownify }}
-              </p>
+            </div>
+            <div class="qa-message-content markdowned">
               <ul class="mb-0">
                 {{ range .Params.stages.one.bullets }}
                 <li>{{ . }}</li>
@@ -60,15 +128,23 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-12 mb-3">
-          <div class="card">
-            <div class="card-content text-left markdowned mb-0 pb-4">
-              <div class="h5 mb-3">
-                {{ .Params.stages.two.header | markdownify }}
+        <div class="message-item">
+          <div class="message-inner">
+            <div class="message-head clearfix">
+              <div class="avatar pull-left"><img src="/img/vendor/bike.png"></div>
+              <div class="user-detail">
+                <h5 class="h5 mb-2">{{ .Params.stages.two.header | markdownify }}</h5>
+                <div class="post-meta">
+                  <div class="asker-meta">
+                    <span class="qa-message-what"></span>
+                    <span class="qa-message-when">
+												<p class="text text-left">{{ .Params.stages.two.subheader | markdownify }}</p>
+											</span>
+                  </div>
+                </div>
               </div>
-              <p>
-                {{ .Params.stages.two.subheader | markdownify }}
-              </p>
+            </div>
+            <div class="qa-message-content markdowned">
               <ul class="mb-0">
                 {{ range .Params.stages.two.bullets }}
                 <li>{{ . }}</li>
@@ -77,15 +153,23 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-12">
-          <div class="card">
-            <div class="card-content text-left markdowned mb-0 pb-4">
-              <div class="h5 mb-3">
-                {{ .Params.stages.three.header | markdownify }}
+        <div class="message-item">
+          <div class="message-inner">
+            <div class="message-head clearfix">
+              <div class="avatar pull-left"><img src="/img/vendor/finish.png"></div>
+              <div class="user-detail">
+                <h5 class="h5 mb-2">{{ .Params.stages.three.header | markdownify }}</h5>
+                <div class="post-meta">
+                  <div class="asker-meta">
+                    <span class="qa-message-what"></span>
+                    <span class="qa-message-when">
+												<p class="text text-left">{{ .Params.stages.three.subheader | markdownify }}</p>
+											</span>
+                  </div>
+                </div>
               </div>
-              <p>
-                {{ .Params.stages.three.subheader | markdownify }}
-              </p>
+            </div>
+            <div class="qa-message-content markdowned">
               <ul class="mb-0">
                 {{ range .Params.stages.three.bullets }}
                 <li>{{ . }}</li>
@@ -94,27 +178,32 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- terms & conditions -->
 
-  <section class="lander-row--white mb-5">
+  <section class="lander-row--grey pt-5">
     <div class="container">
-      <div class="col-sm-12 mb-3">
-          <div class="text-left markdowned mb-0 pb-4">
-            <div class="h5 mb-3">
+      <div class="row">
+        <div class="col-sm-12 mb-3">
+          <div class="text-left mb-0 pb-4">
+            <h2 class="h2 mb-3">
               {{ .Params.terms.header | markdownify }}
+            </h2>
+            <div class="markdowned">
+              <ul>
+                {{ range .Params.terms.bullets }}
+                <li>{{ . }}</li>
+                {{ end }}
+              </ul>
             </div>
-            <ul>
-              {{ range .Params.terms.bullets }}
-              <li>{{ . }}x</li>
-              {{ end }}
-            </ul>
           </div>
         </div>
       </div>
+    </div>
   </section>
 
   <!--cta section -->
