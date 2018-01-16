@@ -7,8 +7,13 @@
 
   .message-item {
     margin-bottom: 25px;
-    margin-left: 40px;
+    margin-left: 75px;
     position: relative;
+  }
+
+  .message-item .avatar {
+    position: absolute;
+    left: -75px;
   }
   .message-item .message-inner {
     background: #fff;
@@ -43,38 +48,14 @@
     top: 6px;
     width: 0;
   }
-  .message-item:before {
-    background: #fff;
-    border-radius: 2px;
-    bottom: -30px;
-    content: "";
-    height: 100%;
-    left: -30px;
-    position: absolute;
-    border: 1px solid #ddd;
-  }
-  .message-item:after {
-    background: #fff;
-    border: 2px solid #ddd;
-    border-radius: 50%;
-    content: "";
-    height: 15px;
-    left: -36px;
-    position: absolute;
-    top: 10px;
-    width: 15px;
-  }
   .clearfix:before, .clearfix:after {
     content: " ";
     display: table;
   }
   .message-item .message-head {
     border-bottom: 1px solid #eee;
-    margin-bottom: 8px;
-    padding-bottom: 8px;
-  }
-  .message-item .message-head .avatar {
-    margin-right: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
   }
   .message-item .message-head .user-detail {
     overflow: hidden;
