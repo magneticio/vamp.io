@@ -179,6 +179,17 @@ a {
   color: $color-green-ok !important;
 }
 
+.text-big {
+  font-size: $font-size-big;
+}
+
+.text-biggest {
+  font-size: $font-size-biggest;
+}
+
+.text-small {
+  font-size: $font-size-small;
+}
 // Buttons
 
 .button {

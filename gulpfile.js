@@ -31,10 +31,12 @@ gulp.task('sass', function() {
 });
 
 const jsLibsBase = './themes/vamp-theme/static/js/libs/';
+const jsAppsBase = './themes/vamp-theme/static/js/apps/';
+
 
 gulp.task('js', function() {
     del('./themes/vamp-theme/static/js/dist/**/*')
-    gulp.src([jsLibsBase + 'jquery-3.1.0.min.js', jsLibsBase + 'lunrjs.min.js', jsLibsBase + 'highlight.pack.js', jsLibsBase + 'debounce.min.js', jsLibsBase + 'clipboard.min.js', jsLibsBase + 'jquery.webui-popover.min.js', jsLibsBase + 'typed.min.js'])
+    gulp.src([jsLibsBase + 'jquery-3.1.0.min.js', jsLibsBase + 'highlight.pack.js', jsLibsBase + 'debounce.min.js', jsLibsBase + 'clipboard.min.js', jsLibsBase + 'jquery.webui-popover.min.js', jsLibsBase + 'typed.min.js'])
       .pipe(concat('vendor.js'))
       .pipe(gulp.dest('./themes/vamp-theme/static/js/dist/'))
       .pipe(rename({ suffix: '.min' }))
@@ -45,6 +47,14 @@ gulp.task('js', function() {
       .pipe(gulp.dest("data/js"));
 
     gulp.src('./themes/vamp-theme/static/js/index.js')
+      .pipe(rename({ suffix: '.min' }))
+      .pipe(uglify())
+      .pipe(hash())
+      .pipe(gulp.dest('./themes/vamp-theme/static/js/dist/'))
+      .pipe(hash.manifest("hash.json"))
+      .pipe(gulp.dest("data/js"));
+
+    gulp.src('./themes/vamp-theme/static/js/apps.js')
       .pipe(rename({ suffix: '.min' }))
       .pipe(uglify())
       .pipe(hash())
