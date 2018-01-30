@@ -44,7 +44,7 @@ gulp.task('js', function() {
       .pipe(hash.manifest("hash.json"))
       .pipe(gulp.dest("data/js"));
 
-    gulp.src('./themes/vamp-theme/static/js/app.js')
+    gulp.src('./themes/vamp-theme/static/js/index.js')
       .pipe(rename({ suffix: '.min' }))
       .pipe(uglify())
       .pipe(hash())
