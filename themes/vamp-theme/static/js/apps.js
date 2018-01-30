@@ -75,7 +75,8 @@ const maturityCalculator = new Vue({
     },
     isBold: function (level) {
       return {
-        'font-weight-bold': level === this.score
+        'font-weight-bold': level === this.score,
+        'text-muted': level !== this.score
       }
     },
     getWinner: function () {
