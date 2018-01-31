@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 text-center">
-        <h1 class="h1 mb-3">Maturity calculator</h1>
-        <h2 class="h2 mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt dictum neque vel
+        <h1 class="h1 mb-3">Check your DevOps Maturity Level</h1>
+        <h2 class="h2 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt dictum neque vel
           efficitur. Proin rutrum sit amet elit semper rutrum. Integer mattis velit a erat mollis, eu rutrum metus luctus
         </h2>
       </div>
@@ -11,70 +11,87 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="container" id="app-maturity-calculator">
-          <div v-if="showResults" class="row">
-            <div class="col-sm-6 offset-sm-3 text-center">
-              <div class="card">
-                <div class="card-header">
-                  <h3> (( levels[2].name )) </h3>
-                </div>
-                <div class="card-body">
-                  <div class="card-title">
-                  </div>
-                  <div class="card-text">
-                    <h3 class="h3">DEVOPS MATURITY LEVEL 3</h3>
-                    <img class="py-3" src="https://previews.123rf.com/images/vectorshowstudio/vectorshowstudio1608/vectorshowstudio160800408/61234649-vector-trophy-champion-cup-flat-icon-champion-cup-winner-trophy-award-and-victory-prize-champion-cup.jpg" alt="" width="100px">
-                    <p class="py-3">
-                      We deploy daily or weekly for several apps and microservices.
 
-                      We can track status between code completion and actual production release, and its automated.
+          <!--Start -->
+          <transition name="drop-down" mode="out-in">
 
-                      Performance metrics are on our dashboard, and we can rightscale our capacity to some extent.
-                    </p>
-                    <button class="btn button--red btn-block mb-2">Book a demo</button>
-                    <a href="#" class="text-small" @click.prevent="startAgain()">start again</a>
-                  </div>
-                </div>
+            <div v-if="showStartScreen" class="row" v-cloak key="start">
+              <div class="col-sm-12 text-center">
+                <button class="button button--red" @click="startSurvey()">Take the five question survey</button>
+                <p class="text-muted pt-3">no redirects - it only takes one minute</p>
               </div>
             </div>
-          </div>
-          <div v-if="questions.length > 0 && !showResults">
-            <div class="row">
-              <div class="col-sm-12">
-                <b-progress class="mb-5" :value="progress" :max="max" show-progress></b-progress>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="card-title">
-                      <h3 class="h1 pt-0 mb-3">((question))</h3>
-                    </div>
-                    <div class="card-text">
-                      <b-form-group>
-                        <b-form-radio-group id="radios1" v-model="questions[step].selected" :options="answers" stacked class="mb-3">
-                        </b-form-radio-group>
-                      </b-form-group>
-                      <button class="btn button--red btn-block mb-2" @click="next()">(( lastQuestion ? "See results" : "Next question"))</button>
 
-                      <a href="#" class="text-small" @click.prevent="previous()">previous question</a>
+            <div v-else key="survey">
+
+              <!--Results -->
+
+              <transition name="move-left" mode="out-in">
+
+                <div v-if="showResults" class="row" v-cloak key="result">
+                  <div class="col-sm-6 offset-sm-3 text-center">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="card-title">
+                        </div>
+                        <div class="card-text">
+                          <h3 class="h3">DEVOPS MATURITY LEVEL ((currentLevel.index))</h3>
+                          <h1 class="result-title"> (( currentLevel.name )) </h1>
+                          <img class="py-4" src="/img/vendor/trophy.svg" alt="" width="100px">
+                          <p class="py-3 text-left">
+                            ((levelDescriptions[currentLevel.index - 1].text))
+                          </p>
+                          <a href="https://calendly.com/diederick" target="_blank" class="btn button--red btn-block mb-2">Book a demo</a>
+                          <a href="#" class="text-small" @click.prevent="startAgain()">Start the survey again</a>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <p>current answer: ((questions[step].selected))</p>
-                <p>current score: ((score))</p>
-                <p>step: ((step))</p>
-              </div>
-              <div class="col-sm-6 text-center">
-                <ul>
-                  <li class="p-3" :class="isBold(3)">((levels[3].name))</li>
-                  <li class="p-3" :class="isBold(2)">((levels[2].name))</li>
-                  <li class="p-3" :class="isBold(1)">((levels[1].name))</li>
-                  <li class="p-3" :class="isBold(0)">((levels[0].name))</li>
-                </ul>
-              </div>
+
+                <!--Questions -->
+
+                <div v-if="questions.length > 0 && !showResults" v-cloak key="questions">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <b-progress class="mb-5" :value="progress" :max="max" show-progress></b-progress>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="card-title mb-4">
+                            <h3 class="h1 pt-0">((step + 1)). ((question))</h3>
+                          </div>
+                          <div class="card-text">
+                            <b-form-group>
+                              <b-form-radio-group id="radios1" v-model="questions[step].selected" :options="answers" stacked class="mb-3">
+                              </b-form-radio-group>
+                            </b-form-group>
+                            <div class="button-bar">
+                              <button v-show="step !== 0" class="btn button--grey--ghost mr-3" @click.prevent="previous()">Back</button>
+                              <button class="btn button--red text-r" @click="next()">(( lastQuestion ? "See results" : "Next question"))</button>
+                            </div>
+                            <!--<a v-show="step !== 0" href="#" class="text-small" @click.prevent="previous()">previous question</a>-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                      <ul>
+                        <li class="level-block" :class="isActive(3)">((levels[3].name))</li>
+                        <li class="level-block" :class="isActive(2)">((levels[2].name))</li>
+                        <li class="level-block" :class="isActive(1)">((levels[1].name))</li>
+                        <li class="level-block" :class="isActive(0)">((levels[0].name))</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </transition>
+
             </div>
-          </div>
+          </transition>
         </div>
       </div>
     </div>

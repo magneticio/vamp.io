@@ -7,6 +7,10 @@
 @import 'badge';
 @import 'table';
 @import 'mixins';
+@import 'transitions';
+
+// apps
+@import 'apps/maturity-calculator';
 
 body {
   font-family: 'Roboto', sans-serif;

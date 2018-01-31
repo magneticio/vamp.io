@@ -1,0 +1,54 @@
+#app-maturity-calculator {
+  [v-cloak] {
+    display: none;
+  }
+
+  .card {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+  }
+
+  .button-bar {
+    text-align: end;
+  }
+
+  .result-title {
+    padding-top: .75rem;
+    font-size: 2rem;
+    font-weight: 500
+  }
+
+  .level-block {
+    background: #e9ecef;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    padding: 1rem;
+    font-weight: 300;
+
+    &.level-block-active {
+      font-weight: 400;
+      background: #007aff;
+      color: white;
+
+      &.level-block-color-0 {
+        background-color: #F7E400;
+      }
+
+      &.level-block-color-1 {
+        background-color: #F8AC1C;
+      }
+
+      &.level-block-color-2 {
+        background-color: #1CB8F8;
+      }
+
+      &.level-block-color-3 {
+        background-color: #1CF864;
+      }
+    }
+  }
+
+  .custom-radio {
+    margin-bottom: .75rem;
+  }
+}
