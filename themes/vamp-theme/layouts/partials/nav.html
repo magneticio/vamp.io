@@ -8,8 +8,9 @@
     <div class="right">
       <div class="navbar-items" id="navbar-items">
         {{ range .Site.Menus.topnav }}
-        <a href="{{.URL}}" data-parenturl="{{.URL}}" class="navbar-item top-nav-{{.Identifier}}">{{.Name}} {{if ne .Identifier "support" }}<i class="ml-2 fa fa-angle-down"></i>{{end}}</a>
+        <a href="{{.URL}}" data-parenturl="{{.URL}}" class="navbar-item top-nav-{{.Identifier}}">{{.Name}} {{if ne .Identifier "support"}}<i class="ml-2 fa fa-angle-down"></i>{{end}}</a>
         {{ end }}
+        <a href="/about/" data-parenturl="/about/" class="navbar-item">About</a>
         <a href="https://medium.com/vamp-io" data-parenturl="/blog/" target="_blank" class="navbar-item">Blog</a>
       </div>
       {{ partial "popovers/nav-product-popover" . }}
