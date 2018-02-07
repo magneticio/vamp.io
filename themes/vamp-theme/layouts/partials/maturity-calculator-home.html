@@ -13,6 +13,7 @@
         <div class="container" id="app-maturity-calculator">
 
           <!--Start -->
+
           <transition name="drop-down" mode="out-in">
 
             <div v-if="showStartScreen" class="row" v-cloak key="start">
@@ -22,41 +23,131 @@
               </div>
             </div>
 
-            <div v-else key="survey">
+            <div v-else key="survey" class="py-3">
 
               <!--Results -->
 
               <transition name="move-left" mode="out-in">
 
                 <div v-if="showResults" class="row" v-cloak key="result">
-                  <div class="col-sm-6 offset-sm-3 text-center">
-                    <div class="card">
-                      <div class="card-body">
+                  <div class="col-sm-12 text-center py-3">
+                    <h3 class="h3">DEVOPS MATURITY LEVEL ((currentLevel.index))</h3>
+                    <h1 class="result-title"> (( currentLevel.name )) </h1>
+                    <img class="py-4" src="/img/vendor/trophy.svg" alt="" width="100px">
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="result-card">
+                      <div class="result-card-upper">
                         <div class="card-title">
+                          <h5 class="h5">Short title</h5>
                         </div>
                         <div class="card-text">
-                          <h3 class="h3">DEVOPS MATURITY LEVEL ((currentLevel.index))</h3>
-                          <h1 class="result-title"> (( currentLevel.name )) </h1>
-                          <img class="py-4" src="/img/vendor/trophy.svg" alt="" width="100px">
-                          <p class="py-3 text-left">
-                            ((levelDescriptions[currentLevel.index - 1].text))
-                          </p>
-                          <a href="https://calendly.com/diederick" target="_blank" class="btn button--red btn-block mb-2">Book a demo</a>
-                          <a href="#" class="text-small" @click.prevent="startAgain()">Start the survey again</a>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                          Sed do eiusmod tempor incididunt ut labore et dolore magna
                         </div>
                       </div>
+                      <div class="result-card-lower">
+                        <div class="card-title">
+                          <h5 class="h5">How Vamp helps</h5>
+                        </div>
+                        <div class="card-text">
+                          <ul class="result-card-usp-list">
+                            <li>
+                              <span class="fa fa-check color text-success mr-2"></span>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                            </li>
+                            <li>
+                              <span class="fa fa-check color text-success mr-2"></span>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                            </li>
+                            <li>
+                              <span class="fa fa-check color text-success mr-2"></span>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                            </li>
+                          </ul>
+                        </div>
+                        <button class="button button--red btn-block">Learn more</button>
+                      </div>
                     </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="result-card">
+                      <div class="result-card-upper">
+                        <div class="card-title">
+                          <h5 class="h5">Short title</h5>
+                        </div>
+                        <div class="card-text">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                          Sed do eiusmod tempor incididunt ut labore et dolore magna
+                        </div>
+                      </div>
+                      <div class="result-card-lower">
+                        <div class="card-title">
+                          <h5 class="h5">How Vamp helps</h5>
+                        </div>
+                        <div class="card-text">
+                          <ul class="result-card-usp-list">
+                            <li>
+                              <span class="fa fa-check color text-success mr-2"></span>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                            </li>
+                            <li>
+                              <span class="fa fa-check color text-success mr-2"></span>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                            </li>
+                            <li>
+                              <span class="fa fa-check color text-success mr-2"></span>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                            </li>
+                          </ul>
+                        </div>
+                        <button class="button button--red btn-block">Learn more</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="result-card">
+                      <div class="result-card-upper">
+                        <div class="card-title">
+                          <h5 class="h5">Short title</h5>
+                        </div>
+                        <div class="card-text">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                          Sed do eiusmod tempor incididunt ut labore et dolore magna
+                        </div>
+                      </div>
+                      <div class="result-card-lower">
+                        <div class="card-title">
+                          <h5 class="h5">How Vamp helps</h5>
+                        </div>
+                        <div class="card-text">
+                          <ul class="result-card-usp-list">
+                            <li>
+                              <span class="fa fa-check color text-success mr-2"></span>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                            </li>
+                            <li>
+                              <span class="fa fa-check color text-success mr-2"></span>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                            </li>
+                            <li>
+                              <span class="fa fa-check color text-success mr-2"></span>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                            </li>
+                          </ul>
+                        </div>
+                        <button class="button button--red btn-block">Learn more</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 pt-3">
+                    <a href="#" class="text-small" @click.prevent="startAgain()">Start the survey again</a>
                   </div>
                 </div>
 
                 <!--Questions -->
 
                 <div v-if="questions.length > 0 && !showResults" v-cloak key="questions">
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <b-progress class="mb-5" :value="progress" :max="max" show-progress></b-progress>
-                    </div>
-                  </div>
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="card">
@@ -70,10 +161,9 @@
                               </b-form-radio-group>
                             </b-form-group>
                             <div class="button-bar">
-                              <button v-show="step !== 0" class="btn button--grey--ghost mr-3" @click.prevent="previous()">Back</button>
-                              <button class="btn button--red text-r" @click="next()">(( lastQuestion ? "See results" : "Next question"))</button>
+                              <button v-show="step !== 0" class="button button--grey--ghost mr-3" @click.prevent="previous()">Back</button>
+                              <button class="button button--red text-r" @click="next()">(( lastQuestion ? "See results" : "Next question"))</button>
                             </div>
-                            <!--<a v-show="step !== 0" href="#" class="text-small" @click.prevent="previous()">previous question</a>-->
                           </div>
                         </div>
                       </div>
@@ -93,6 +183,11 @@
                           1. ((levels[0].name))
                         </li>
                       </ul>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <b-progress class="mt-5 w-50 d-inline-flex" :value="progress" height=".5rem" :max="max"></b-progress>
                     </div>
                   </div>
                 </div>
