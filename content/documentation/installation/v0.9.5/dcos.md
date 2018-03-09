@@ -241,12 +241,12 @@ Running Vamp on public Mesos agent node(s) and disabling automatic Vamp Gateway 
 {
   "id": "vamp/vamp",
   "instances": 1,
-  "cpus": 0.5,
-  "mem": 1024,
+  "cpus": 1,
+  "mem": 4096,
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "magneticio/vamp:0.9.4-dcos",
+      "image": "magneticio/vamp:0.9.5.6-dcos",
       "network": "BRIDGE",
       "portMappings": [
         {
@@ -299,7 +299,7 @@ Deploying Vamp Gateway Agent on all public and private Mesos agent nodes through
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "magneticio/vamp-gateway-agent:0.9.4",
+      "image": "magneticio/vamp-gateway-agent:0.9.5.6",
       "network": "HOST",
       "privileged": true,
       "forcePullImage": true
