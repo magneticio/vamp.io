@@ -109,12 +109,12 @@ If you want Vamp to persist to one of the supported relational databases, create
 {
   "id": "vamp/vamp",
   "instances": 1,
-  "cpus": 0.5,
-  "mem": 1024,
+  "cpus": 1,
+  "mem": 4096,
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "magneticio/vamp:0.9.5-dcos",
+      "image": "magneticio/vamp:0.9.5.6-dcos",
       "network": "BRIDGE",
       "portMappings": [
         {
