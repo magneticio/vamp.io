@@ -36,7 +36,7 @@ const jsAppsBase = './themes/vamp-theme/static/js/apps/';
 
 gulp.task('js', function() {
     del('./themes/vamp-theme/static/js/dist/**/*')
-    gulp.src([jsLibsBase + 'jquery-3.1.0.min.js', jsLibsBase + 'highlight.pack.js', jsLibsBase + 'debounce.min.js', jsLibsBase + 'clipboard.min.js', jsLibsBase + 'jquery.webui-popover.min.js', jsLibsBase + 'typed.min.js'])
+    gulp.src([jsLibsBase + 'jquery-3.1.0.min.js', jsLibsBase + 'highlight.pack.js', jsLibsBase + 'debounce.min.js', jsLibsBase + 'clipboard.min.js', jsLibsBase + 'jquery.webui-popover.min.js'])
       .pipe(concat('vendor.js'))
       .pipe(gulp.dest('./themes/vamp-theme/static/js/dist/'))
       .pipe(rename({ suffix: '.min' }))

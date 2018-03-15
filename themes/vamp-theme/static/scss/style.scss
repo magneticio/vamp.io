@@ -243,6 +243,7 @@ a {
 
     &--mail {
       background-image: url('/img/003-Small-icons/White/Mail-White.svg');
+      margin: auto;
     }
   }
 
@@ -483,36 +484,6 @@ a {
   }
 }
 
-// Inputs
-.input-group {
-  display: flex;
-
-  input {
-    border: none;
-    border-radius: 5px 0 0 5px;
-    flex: 1;
-    padding: 0 10px;
-
-    &:focus {
-      border: none;
-      outline: none !important;
-    }
-
-  }
-
-  .button {
-    padding: 0;
-    border-radius: 0 5px 5px 0;
-    width: 80px;
-    min-width: 80px;
-    max-width: 80px;
-  }
-
-  a {
-    cursor: pointer;
-  }
-}
-
 .side-menu {
   display: none;
   padding-top: 3 * $spacer;
@@ -740,6 +711,37 @@ a {
 .footer {
   position: relative;
   z-index: 999;
+
+  // Inputs
+  .input-group {
+    display: flex;
+
+    input {
+      border: none;
+      border-radius: 5px 0 0 5px;
+      flex: 1;
+      padding: 10px 10px;
+      width: 90%;
+
+      &:focus {
+        border: none;
+        outline: none !important;
+      }
+
+    }
+
+    .button {
+      padding: 0;
+      border-radius: 0 5px 5px 0;
+      width: 80px;
+      min-width: 80px;
+      max-width: 80px;
+    }
+
+    a {
+      cursor: pointer;
+    }
+  }
 
   .text {
     color: $color-jungle-mist !important;
