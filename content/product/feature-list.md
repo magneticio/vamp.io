@@ -21,7 +21,7 @@ Contact us for details of the [extended features](/product/enterprise-edition/) 
 * CLI for integration with common CI/CD pipelines
 * Events API and Server-Sent Events (SSE) stream, integrates with Elastic Search and Kibana for custom Kibana dashboards
 * Multi-level metrics aggregation
-* Wrkflow automation, allowing for metrics-driven autoscaling, canary releasing and other optimisation patterns
+* Workflow automation, allowing for metrics-driven autoscaling, canary releasing and other optimisation patterns
 * Service discovery based on ports, virtual host names or external services (consul etc.)
 * Percentage and condition based programmable routing
 * Automatic load-balancing for scaled services
