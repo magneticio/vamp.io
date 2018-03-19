@@ -77,6 +77,8 @@ const levelDescriptions = [
 
 ]
 
+Vue.config.devtools = true
+
 const maturityCalculator = new Vue({
   el: '#app-maturity-calculator',
   delimiters: ["((","))"],
@@ -88,8 +90,12 @@ const maturityCalculator = new Vue({
     levels: levels,
     levelDescriptions: levelDescriptions,
     step: 0,
-    showStartScreen: true,
-    showResults: false
+    showResults: false,
+    emailAddress: '',
+    showSubscribeSuccess: false,
+    showSubscribeError: false,
+    showSubscribeErrorMessage: ''
+
   },
   methods: {
     prepQuestions: function () {
@@ -106,12 +112,10 @@ const maturityCalculator = new Vue({
         }
       })
     },
-    startSurvey: function () {
-      this.showStartScreen = false
-    },
     next: function () {
       if (this.lastQuestion) {
-        this.showResults = true
+        this.$root.$emit('bv::show::modal','emailmodal')
+
       } else {
         this.step = this.step === this.questions.length ? this.step : this.step + 1
       }
@@ -138,9 +142,44 @@ const maturityCalculator = new Vue({
         const level = levels[i]
         if (score >= level.lower && score <= level.upper ) {
           this.currentLevel = level.name
-          console.log(this.currentLevel)
         }
       }
+    },
+    showEmailModal: function () {
+      this.$root.$emit('bv::show::modal','emailmodal')
+    },
+    hideEmailModal: function () {
+      this.$root.$emit('bv::hide::modal','emailmodal')
+    },
+    goToResults: function () {
+      this.showSubscribeSuccess = this.showSubscribeError = false
+      this.hideEmailModal()
+      this.showResults = true
+    },
+    subscribeToNewsletter: function () {
+      const that = this
+      $.ajax({
+        type: 'GET',
+        url: 'https://magnetic.us9.list-manage.com/subscribe/post-json?u=c709b3ab8cce9e00d617e01b6&id=c1465e21d0&c=?',
+        data: 'EMAIL=' + this.emailAddress,
+        cache: false,
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        error: function (err) {
+          that.showSubscribeError = true
+          showSubscribeErrorMessage = err.msg
+        },
+        success: function (data) {
+          if (data.result != "success") {
+            that.showSubscribeError = true
+          } else {
+            that.showSubscribeSuccess = true
+            setTimeout(function () {
+              that.goToResults()
+            }, 1000)
+          }
+        }
+      });
     }
   },
   computed: {
@@ -155,6 +194,9 @@ const maturityCalculator = new Vue({
     },
     progress: function () {
       return this.step + 1
+    },
+    percentageCompleted: function () {
+      return (this.progress / this.max).toPrecision(1) * 100 + '%'
     },
     max: function () {
       return this.questions.length

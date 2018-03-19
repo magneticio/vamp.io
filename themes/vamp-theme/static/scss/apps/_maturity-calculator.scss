@@ -6,7 +6,7 @@
   .card {
     box-shadow: 0 10px 30px rgba(0,0,0,.08);
     border: none;
-    padding: 3rem;
+    padding: 2rem;
   }
 
   .result-card {
@@ -86,5 +86,47 @@
 
   .progress-bar {
     background-color: $color-blue-dianne !important;
+  }
+
+  .email-modal {
+    margin: -1rem;
+
+    .email-modal-top {
+      padding: 2rem 3rem;
+      height: 300px;
+      background: linear-gradient(45deg, #234B5F, #142D3C);
+      text-align: center;
+    }
+    .email-modal-bottom {
+      padding: 1rem 2rem 2rem 2rem;
+      margin-top: 7rem;
+      background: white;
+      height: auto;
+      text-align: center;
+      p {
+        font-size: 18px;
+      }
+    }
+
+    .email-modal-logo {
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+      background-image: url('/img/005-vamp/Logo/logo.svg');
+      background-repeat: no-repeat;
+    }
+
+    .email-modal-header {
+      font-size: 28px;
+      color: $color-white-squeeze;
+      padding: 1rem 0;
+      margin-bottom: 1rem;
+    }
+
+    .email-modal-whitepaper {
+      width: 180px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      border-radius: 2px;
+    }
   }
 }

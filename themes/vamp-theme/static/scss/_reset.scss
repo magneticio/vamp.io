@@ -219,7 +219,6 @@ input[type=button] {
 
 input:focus,
 select:focus,
-textarea:focus,
-button:focus {
-  outline: none !important;
+textarea:focus {
+  outline:  !important;
 }

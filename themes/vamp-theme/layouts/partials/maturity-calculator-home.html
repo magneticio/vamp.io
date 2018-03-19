@@ -14,16 +14,8 @@
 
           <!--Start -->
 
-          <transition name="drop-down" mode="out-in">
-
-            <div v-if="showStartScreen" class="row" v-cloak key="start">
-              <div class="col-sm-12 text-center">
-                <button class="button button--red" @click="startSurvey()">Take the five question survey</button>
-                <p class="text-muted pt-3">no redirects - it only takes one minute</p>
-              </div>
-            </div>
-
-            <div v-else key="survey" class="py-3">
+          <transition name="drop-down" mode="out-in" appear>
+            <div key="survey" class="py-3">
 
               <!--Results -->
 
@@ -187,7 +179,9 @@
                   </div>
                   <div class="row">
                     <div class="col-sm-12">
-                      <b-progress class="mt-5 w-50 d-inline-flex" :value="progress" height=".5rem" :max="max"></b-progress>
+                      <b-progress class="mt-5 w-50 d-inline-flex" :value="progress" height="1rem" :max="max">
+                        <b-progress-bar :value="progress">((percentageCompleted))</b-progress-bar>
+                      </b-progress>
                     </div>
                   </div>
                 </div>
@@ -195,6 +189,43 @@
 
             </div>
           </transition>
+          <b-btn v-b-modal.emailmodal>Launch demo modal</b-btn>
+
+          <!-- Modal Component -->
+          <b-modal id="emailmodal" :hide-footer="true" :hide-header="true">
+            <div class="email-modal">
+              <div class="email-modal-top">
+                <div class="email-modal-logo"></div>
+                <h2 class="email-modal-header">The Experimental Enterprise is coming</h2>
+                <img class="email-modal-whitepaper" src="/img/marketing/landing/whitepaper.png">
+              </div>
+              <div class="email-modal-bottom">
+                <p class="mb-3">Sign up to our newsletter and receive a free white paper on the future of DevOps and Cloud Native technology
+                </p>
+                <transition-group name="drop-down" mode="out-in">
+                  <div key="input" v-show="!showSubscribeSuccess">
+                    <div class="input-group" >
+                      <input type="email" class="form-control" placeholder="Email address" v-model="emailAddress" aria-label="email address" aria-describedby="basic-addon2" tabindex="1">
+                      <div class="input-group-append">
+                        <button class="input-group-text button button--red" id="basic-addon2" @click.prevent="subscribeToNewsletter()" tabindex="2">SUBSCRIBE</button>
+                      </div>
+                    </div>
+                    <div class="pt-3">
+                      <a href="#" @click.prevent="goToResults()" tabindex="3"><small>Just show me the results</small></a>
+                    </div>
+                  </div>
+
+                  <div v-show="showSubscribeSuccess" key="confirmation">
+                    <div class="h1 mb-4 text-green">Subscription confirmed</div>
+                  </div>
+                </transition-group>
+                <transition name="drop-down" mode="out-in" appear>
+                  <p class="text-red pt-3" v-show="showSubscribeError"><small>Something went wrong subscribing you to the newsletter</small></p>
+                  <p v-show="showSubscribeErrorMessage">{{showSubscribeErrorMessage}}</p>
+                </transition>
+              </div>
+            </div>
+          </b-modal>
         </div>
       </div>
     </div>
