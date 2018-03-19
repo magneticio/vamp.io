@@ -9,7 +9,7 @@ menu:
 
 > "Our website traffic can be unpredictable, it's hard to plan and dimension the exact resources we're going to need to run within SLA's"
 
-Why overdimension your whole system? Using Vamp you can auto-scale individual services based on clearly defined SLAs (Service Level Agreements). It's also easy to create advanced workflows for up and down scaling, based on your application or business specific requirements. Vamp can also make sure that unhealthy and failing services are corrected based on clearly defined metrics and treshholds.
+Why overdimension your whole system? Using Vamp you can auto-scale individual services based on clearly defined SLAs (Service Level Agreements). It's also easy to create advanced workflows for up and down scaling, based on your application or business specific requirements. Vamp can also make sure that unhealthy and failing services are corrected based on clearly defined metrics and thresholds.
 
 1. __Set SLAs:__ You can define SLA metrics, tresholds and escalation workflows. You can do this in Vamp YAML blueprints, modify our packaged workflows, or create your own workflow scripts for advanced use-cases.
 2. __Optimise:__ Vamp workflows can automatically optimise your running system based on metrics that are relevant to your application or services.
