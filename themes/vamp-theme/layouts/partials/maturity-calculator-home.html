@@ -196,7 +196,7 @@
             <div class="email-modal">
               <div class="email-modal-top">
                 <div class="email-modal-logo"></div>
-                <h2 class="email-modal-header">The Experimental Enterprise is coming</h2>
+                <h2 class="email-modal-header">The <strong>Experimental Enterprise</strong> is coming</h2>
                 <img class="email-modal-whitepaper" src="/img/marketing/landing/whitepaper.png">
               </div>
               <div class="email-modal-bottom">
@@ -221,7 +221,6 @@
                 </transition-group>
                 <transition name="drop-down" mode="out-in" appear>
                   <p class="text-red pt-3" v-show="showSubscribeError"><small>Something went wrong subscribing you to the newsletter</small></p>
-                  <p v-show="showSubscribeErrorMessage">{{showSubscribeErrorMessage}}</p>
                 </transition>
               </div>
             </div>

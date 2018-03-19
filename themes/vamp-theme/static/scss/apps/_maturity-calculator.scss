@@ -121,6 +121,12 @@
       color: $color-white-squeeze;
       padding: 1rem 0;
       margin-bottom: 1rem;
+      letter-spacing: 3px;
+      font-weight: 100;
+      text-transform: uppercase;
+      strong {
+        font-weight: 400;
+      }
     }
 
     .email-modal-whitepaper {

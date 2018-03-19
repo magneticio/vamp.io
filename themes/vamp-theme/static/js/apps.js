@@ -167,7 +167,7 @@ const maturityCalculator = new Vue({
         contentType: "application/json; charset=utf-8",
         error: function (err) {
           that.showSubscribeError = true
-          showSubscribeErrorMessage = err.msg
+          that.showSubscribeErrorMessage = err.msg
         },
         success: function (data) {
           if (data.result != "success") {
