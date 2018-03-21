@@ -6,7 +6,7 @@
   .card {
     box-shadow: 0 10px 30px rgba(0,0,0,.08);
     border: none;
-    padding: 2rem;
+    padding: 1rem;
   }
 
   .result-card {
@@ -99,7 +99,7 @@
     }
     .email-modal-bottom {
       padding: 1rem 2rem 2rem 2rem;
-      margin-top: 7rem;
+      margin-top: 9rem;
       background: white;
       height: auto;
       text-align: center;
@@ -130,9 +130,11 @@
     }
 
     .email-modal-whitepaper {
-      width: 180px;
+      width: 160px;
       box-shadow: 0 10px 30px rgba(0,0,0,.08);
       border-radius: 2px;
+      box-sizing: content-box;
+      border: 1px solid $color-white-squeeze;
     }
   }
 }

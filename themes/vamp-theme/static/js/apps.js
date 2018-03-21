@@ -17,23 +17,23 @@ const questions = [
   },{
     q: 'How transparent is deployment and production for you?',
     a: [
-      'We have some basic measurement and mainly infrequent reporting',
-      'I have a dashboard with real time production KPI\'s and deployment stats',
-      'I have a real time production and deployment dashboard with automated criteria and deployment scenario\'s linked with customer success criteria'
+      'We have some basic measurement and infrequent reporting',
+      'I have a dashboard with real time production KPI\'s',
+      'I have a real time dashboard linked with customer success criteria'
     ]
   },{
     q: 'Who are involved in the software release pipeline and decision making?',
     a: [
-      'Developers check in their code and testers then pick this up, QA puts it forward for business to validate: then the devops engineer puts it live',
-      'The build pipeline is automated. When the developer checks in code it automatically will be tested, and only the final go-live is done manually',
-      'Several devops teams deploy independently, immediate transparancy about success is transparent to all stakeholders, business is real time involved in decisions regarding deployment decisions'
+      'Developers check in code; testers pick this up, QA and business validate. The devops engineer puts it live',
+      'When developers check in code it is automatically tested. Only the final go-live is done manually',
+      'Teams deploy independently. Success is transparent to all stakeholders. Business is involved in deployment decisions.'
     ]
   },{
     q: 'My organisational state is best described as...',
     a: [
       'Development, test and operations have some basic form of cooperation',
-      'Our devops teams make small and quick deployments and the team has the mandate to deploy and roll-back anything, testing is automated',
-      'we have cross functional teams with business integrated, developing software happens in these teams and they dependencies are minimal, business gets involved if things go wrong'
+      'Our teams make small and quick deployments. Each team has the mandate to deploy and roll back. Testing is automated',
+      'We have cross functional teams with business integrated. Development happens in these teams with minimal dependencies'
     ]
   }
 ]
