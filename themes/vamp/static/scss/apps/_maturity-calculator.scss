@@ -5,10 +5,13 @@
 
   .card {
     box-shadow: 0 10px 30px rgba(0,0,0,.08);
-    border: none;
-    padding: 1rem;
+    padding: 2rem 1rem;
   }
 
+  .card-page-number {
+    float: right;
+    font-size: $font-size-small;
+  }
   .result-card {
     box-shadow: 0 10px 30px rgba(0,0,0,.08);
     border: none;
@@ -28,6 +31,7 @@
     }
 
     ul.result-card-usp-list {
+
       li {
         margin-bottom: 1rem;
       }
@@ -36,6 +40,11 @@
 
   .button-bar {
     text-align: end;
+    .back-button {
+      min-width: 0;
+      padding: .5rem 1rem;
+      float: left;
+    }
   }
 
   .result-title {
@@ -53,10 +62,15 @@
     font-weight: 300;
     border-left: 10px solid #e9ecef;
     letter-spacing: 1px;
-    height: 75px;
+    height: 86px;
     display: flex;
     align-items: center;
     margin-left: 1rem;
+
+    .level-block-inner {
+      width: 100%;
+      text-align: center;
+    }
 
     &.level-block-active {
       font-weight: 500;
@@ -64,18 +78,26 @@
 
       &.level-block-color-0 {
         border-left: 10px solid #F7E400;
+        border-right: 10px solid #F7E400;
+        background-color: transparentize(#F7E400,.8);
       }
 
       &.level-block-color-1 {
         border-left: 10px solid #F8AC1C;
+        border-right: 10px solid #F8AC1C;
+        background-color: transparentize(#F8AC1C,.8);
       }
 
       &.level-block-color-2 {
         border-left: 10px solid #1CB8F8;
+        border-right: 10px solid #1CB8F8;
+        background-color: transparentize(#1CB8F8,.8);
       }
 
       &.level-block-color-3 {
         border-left: 10px solid #1CF864;
+        border-right: 10px solid #1CF864;
+        background-color: transparentize(#1CF864,.8);
       }
     }
   }
@@ -105,6 +127,10 @@
       text-align: center;
       p {
         font-size: 18px;
+      }
+
+      @media (max-width: 769px) {
+        margin-top: 11rem;
       }
     }
 

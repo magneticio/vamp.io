@@ -2,13 +2,14 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-3">
-        <p class="text h2">
+        <h3 class="h3">Address</h3>
+        <address class="text">
           Raamgracht 6<br>
           1011 KK Amsterdam<br>
           The Netherlands<br>
           +31(0)88 555 33 99<br>
           info@vamp.io<br>
-        </p>
+        </address>
         <div class="social-buttons mt-3">
           <div class="social-icons">
             <a href="https://twitter.com/vamp_io" target="_blank">
@@ -21,7 +22,7 @@
         </div>
       </div>
       <div class="col-sm-3">
-        <h2 class="h2">Learn more</h2>
+        <h3 class="h3">Learn more</h3>
         <a href="/product/">
           <p class="text">Why use Vamp?</p>
         </a>
@@ -45,7 +46,7 @@
         </a>
       </div>
         <div class="col-sm-3">
-        <h2 class="h2">All things code</h2>
+        <h3 class="h3">All things code</h3>
           <a href="/downloads/">
             <p class="text">Downloads</p>
           </a>
@@ -66,7 +67,7 @@
           </a>
       </div>
       <div class="col-sm-3">
-        <h2 class="h2">Stay up to date</h2>
+        <h3 class="h3">Stay up to date</h3>
         <p class="text">
           Leave your email for the latest news: We won’t spam you and won’t go off topic.
         </p>
@@ -121,6 +122,6 @@
   }
 </script>
 
-<script src="//unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
 <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
 <script src="/js/dist/{{ index .Site.Data.js.hash "apps.min.js" }}" ></script>

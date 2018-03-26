@@ -1,0 +1,149 @@
+<div class="lander-row lander-row--white">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2 class="h2 mb-3">Check your DevOps Maturity Level</h2>
+        <p class="text-lead">At Vamp we help customers put their DevOps and Cloud Native strategy to work by
+          adding an average of 30% business value to their current setup. Want to know how far your organisation is on the road to a fully realised DevOps & Cloud Native strategy?
+          Take this two minute survey to find out.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="container" id="app-maturity-calculator">
+
+          <!--Start -->
+
+          <transition name="drop-down" mode="out-in" appear>
+            <div key="survey" class="py-3">
+
+              <!--Results -->
+
+              <transition name="move-left" mode="out-in">
+
+                <div v-if="showResults" class="row" v-cloak key="result">
+                  <div class="col-sm-12 text-center py-3">
+                    <h3 class="h3">DEVOPS MATURITY LEVEL ((currentLevel.index))</h3>
+                    <h1 class="result-title"> (( currentLevel.name )) </h1>
+                    <img class="py-4" src="/img/vendor/trophy.svg" alt="" width="100px">
+                  </div>
+                  <div class="col-sm-12 col-md-8 offset-md-2">
+                    <div class="result-card mb-3">
+                      <div class="result-card-upper">
+                        <div class="card-title">
+                          <h5 class="h5">(( currentLevelDescription.title ))</h5>
+                        </div>
+                        <div class="card-text">
+                          (( currentLevelDescription.description ))
+                        </div>
+                      </div>
+                      <div class="result-card-lower">
+                        <div class="card-title">
+                          <h5 class="h5">How Vamp helps</h5>
+                        </div>
+                        <div class="card-text">
+                          <p class="mb-3">(( currentLevelDescription.solution ))</p>
+                          <ul class="result-card-usp-list">
+                            <li v-for="bullet in currentLevelDescription.bullets">
+                              <span class="fa fa-check color text-success mr-2"></span>
+                              (( bullet ))
+                            </li>
+                          </ul>
+                        </div>
+                        <a class="button button--red btn-block" href="/discovery-pilot/">Try Vamp</a>
+                      </div>
+                    </div>
+                    <a href="#" class="text-small" @click.prevent="startAgain()">Start the survey again</a>
+                  </div>
+                </div>
+
+                <!--Questions -->
+
+                <div v-if="questions.length > 0 && !showResults" v-cloak key="questions">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="card-page-number">
+                            ((step + 1)) / ((questions.length))
+                          </div>
+                          <div class="card-title mb-4">
+                            <h3 class="h1 pt-0">((step + 1)). ((question))</h3>
+                          </div>
+                          <div class="card-text">
+                            <b-form-group>
+                              <b-form-radio-group id="radios1" v-model="questions[step].selected" :options="answers" stacked class="mb-3">
+                              </b-form-radio-group>
+                            </b-form-group>
+                            <div class="button-bar">
+                              <button v-show="step !== 0" class="button button--grey--ghost mr-3 back-button  " @click.prevent="previous()">Back</button>
+                              <button class="button button--red text-r" @click="next()">(( lastQuestion ? "See results" : "Next question"))</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                      <ul>
+                        <li class="level-block" :class="isActive(3)">
+                          <div class="level-block-inner">4. ((levels[3].name))</div>
+                        </li>
+                        <li class="level-block" :class="isActive(2)">
+                          <div class="level-block-inner">3. ((levels[2].name))</div>
+                        </li>
+                        <li class="level-block" :class="isActive(1)">
+                          <div class="level-block-inner">2. ((levels[1].name))</div>
+                        </li>
+                        <li class="level-block" :class="isActive(0)">
+                          <div class="level-block-inner">1. ((levels[0].name))</div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </transition>
+
+            </div>
+          </transition>
+
+          <!-- Modal Component -->
+          <b-modal id="emailmodal" :hide-footer="true" :hide-header="true" v-cloak>
+            <div class="email-modal">
+              <div class="email-modal-top">
+                <div class="email-modal-logo"></div>
+                <h2 class="email-modal-header">Exploring <strong>New Frontiers</strong> in CI/CD and DevOps</h2>
+                <img class="email-modal-whitepaper" src="/img/marketing/landing/whitepaper.png">
+              </div>
+              <div class="email-modal-bottom">
+                <p class="mb-3">Sign up to our newsletter and receive a free white paper on the future of DevOps and Cloud Native technology
+                </p>
+                <transition-group name="drop-down" mode="out-in">
+                  <div key="input" v-show="!showSubscribeSuccess">
+                    <div class="input-group" >
+                      <input type="email" class="form-control" placeholder="Email address" v-model="emailAddress" aria-label="email address" aria-describedby="basic-addon2" tabindex="1">
+                      <div class="input-group-append">
+                        <button class="input-group-text button button--red" id="basic-addon2" @click.prevent="subscribeToNewsletter()" tabindex="2">SUBSCRIBE</button>
+                      </div>
+                    </div>
+                    <div class="pt-3">
+                      <a href="#" @click.prevent="goToResults()" tabindex="3"><small>Just show me the results</small></a>
+                    </div>
+                  </div>
+
+                  <div v-show="showSubscribeSuccess" key="confirmation">
+                    <div class="h1 mb-4 text-green">Subscription confirmed</div>
+                  </div>
+                </transition-group>
+                <transition name="drop-down" mode="out-in" appear>
+                  <p class="text-red pt-3" v-show="showSubscribeError"><small>Something went wrong subscribing you to the newsletter</small></p>
+                </transition>
+              </div>
+            </div>
+          </b-modal>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

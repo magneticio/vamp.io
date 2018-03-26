@@ -46,35 +46,49 @@ const levels = [
 ]
 
 const levelDescriptions = [
-  { text: 'Business is requesting better Time-To-Market\n\n' +
-    'Dev teams work Agile - still deployment and feedback is waterfall based\n\n' +
-    'Hard to get performance metrics on our apps and operations\n' +
-    'Development and Operations start cooperating more and more as a team\n' +
-    'There is a business need for migrating to cloud native, but most of my apps are running still on on-prem equipment and are monolithic\n' +
-    'Some of the tech team went to DevOps conference and came back with great ideas about microservices and containers - it sounds fairly trivial\n' +
-    'Little automation in the build and deploy pipeline'},
-  { text: 'We start deploying our software more often (2x per day and up)\n' +
-    'We have several applications running on cloud native \n' +
-    'We have several DevOps teams working, too many meetings to keep this coordinated\n' +
-    'Business is not yet involved in deployment decisions\n' +
-    'Been running cloud native now for a while Oops: running containers and microservices with our containerplatform is not really straightforward\n' +
-    'Business sees improved TimeToMarket, but starts to get involved more thru the DevOps team link with the product owners\n' +
-    'We have some of our release pipeline automated (like with Jenkins, Puppet) '},
-  { text: 'Too many deployments with manual scripts are resulting in outages in production and is becoming a labor burden and driving customer dissatisfaction\n' +
-    'We deploy daily or weekly for several apps and microservices\n' +
-    'Infrastructure as code is the mantra today - this starts to look like true Continuous Deployment\n' +
-    'We can track status between code completion and actual production release, and its automated\n' +
-    'Business starts questioning about the AWS, Azure or Google cloud monthly bill and how this all of a sudden costs so much opex\n' +
-    'We deploy 24hours a day and releasing software is a matter of minutes, rolling back is a matter of seconds, we get instant feedback about success\n' +
-    'Performance metrics are on our dashboard, and we can rightscale our capacity to some extent on that bases'},
-  { text: 'Too many teams that deploy, it became that easy that we need structure and workflow around releasing SW with different roles\n' +
-    'My release pipeline is completely automated and transparent, even integration testing is automated\n' +
-    'Right scaling the infrastrucure for all my services and ensuring not too much slack capacity is an art\n' +
-    'It looks like these microservices can be run with 5 9\'s after all - that was not a walk in the park!\n' +
-    'Business requires more observability, transparancy and control without those non-techies disturbing production, can i put them in a sandbox?\n' +
-    'Business wants to be involved in which applications should be exposed to which customers based on transparent customer satisfaction metrics and other crazy things IFTTT style.\n' +
-    'Would like to automatically cost optimize and performance optimize between on-prem, AWS, Azure, Google cloud from 1 console'}
-
+  {
+    title: 'Starting with DevOps',
+    description: 'Congratulations! Great that you are planning and starting the DevOps transition. It will not be easy unfortunately. You are trying to think how to migrate away from your monolith and how to do this without interrupting your current pipelines and without incurring tons of costs.',
+    solution: 'Vamp helps you migrate to a microservices and cloud native platform. It will help you with automated staged deployments to production and make it data driven, counter weighting the increased volume and complexity of microservices.',
+    bullets: [
+      'Migration from on-prem to cloud native',
+      'Running a multi cloud environment',
+      'Automated and staged releasing to your CI/CD pipeline (Canary+ releasing)'
+    ]
+  },
+  {
+    title: 'Learning & Adapting',
+    description: 'Congratulations! You are very much aware of the challenges with microservices used by multiple teams. This adds complexity that increases rapidly when scaling up.',
+    solution: 'Vamp helps you run a multi cloud environment, temporary or multi homed. Vamp will help you manage your technical inter-dependencies of microservices by automating the extension of your CI/CD pipeline into production.',
+    bullets: [
+      'Migration from on-prem to cloud native',
+      'Running a multi cloud environment',
+      'Automated and staged releasing to your CI/CD pipeline (Canary+ releasing)',
+      'Cost optimize your cloud native production environment'
+    ]
+  },
+  {
+    title: 'Predictable & Scaled',
+    description: 'Congratulations! You have some scar tissue from running microservices in production. Launching and managing microservices day-to-day on the bases of the right data and health metrics is really challenging',
+    solution: 'Vamp helps you to optimize the cost of your cloud native stack and optimize the extension of your CI/CD pipeline by adding data driven staged deployments. If a release causes a production issue, an automated policy responds to that real time.',
+    bullets: [
+      'Automated and staged releasing to your CI/CD pipeline (Canary+ releasing) with tech health KPI\'s',
+      'Running a multi cloud environment',
+      'Real time production decisions based on application health KPI\'s',
+      'Cost optimize your cloud native production environment'
+    ]
+  },
+  {
+    title: 'Data Driven',
+    description: '	Congratulations! You have come a long way in the cloud native domain. Are you considering to make changes to your cloud native stack? Is your business or product owner asking how the newly released software is performing?',
+    solution: 'Vamp helps you connect business KPI\'s to any software rollout. Vamp extends your CI/CD pipeline into production by adding biz and ops data driven staged deployments. If your new release performs great on business metrics and tech KPI\'s you can automatically promote the release to a larger audience.',
+    bullets: [
+      'Automated and staged releasing to your CI/CD pipeline (Canary+ releasing) with tech health KPI\'s',
+      'Running a multi cloud environment',
+      'Real time production decisions based on application health KPI\'s',
+      'Cost optimize your cloud native production environment'
+    ]
+  }
 ]
 
 Vue.config.devtools = true
@@ -213,6 +227,9 @@ const maturityCalculator = new Vue({
       return this.levels.filter(function(level) {
         return that.score >= level.lower && that.score <= level.upper
       })[0]
+    },
+    currentLevelDescription: function () {
+      return this.levelDescriptions[this.currentLevel.index -1]
     }
   }
 })

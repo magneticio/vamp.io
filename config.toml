@@ -1,7 +1,7 @@
-baseurl = "http://vamp.io"
+baseurl = "/"
 languageCode = "en-us"
 title = "Vamp | Smart Application Releasing for Modern Cloud Platforms"
-theme = "vamp-theme"
+theme = "vamp"
 metadataformat = "yaml"
 canonifyurls = true
 
