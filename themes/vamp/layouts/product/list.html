@@ -3,31 +3,11 @@
 {{ partial "nav" . }}
 
 <div class="page product">
-
-  <!--header -->
-
-  <!--
-  <header class="lander-row--white">
-    <div class="container py-5">
-      <div class="row">
-        <div class="col-sm-12 text-center">
-          <h1 class="h1 hero-text mb-0 text-red">{{.Params.header.title | print | markdownify}}</h1>
-          <h1 class="h1 mb-5 hero-sub-text">{{.Params.header.subtitle | print | markdownify}}</h1>
-        </div>
-        <div class="col-md-10 offset-md-1 col-sm-12 text-center">
-          <h2 class="h2 mb-0">{{.Params.header.sub | print | markdownify}}</h2>
-        </div>
-      </div>
-    </div>
-  </header>
-
--->
-
   <section class="lead lander-row--white">
     <div class="container">
       <div class="row">
         <div class="col-sm-12 text-center">
-          <h1 class="h1 text-center mb-5 hero-sub-text">Key Vamp features</h1>
+          <h1 class="h1 text-center mb-5 hero-text">Key Vamp features</h1>
         </div>
         <div class="col-sm-6">
           <ul class="lead-features-list">
@@ -70,10 +50,10 @@
     <div class="container py-5">
       <div class="row">
         <div class="col-sm-12">
-          <h1 class="h1 text-center mb-5 hero-sub-text">{{.Params.action.title}}</h1>
+          <h1 class="h1 text-center mb-5 hero-text">{{.Params.action.title}}</h1>
         </div>
         <div class="col-sm-12 col-md-10 offset-md-1 mb-5">
-          <h2 class="h2 text-center">{{.Params.action.sub | markdownify }}</h2>
+          <p class="text-lead text-center">{{.Params.action.sub | markdownify }}</p>
         </div>
         <div class="col-sm-12 text-center">
           <a href="https://youtu.be/UYSchHnp1JE?t=31m33s" target="_blank">
@@ -91,10 +71,10 @@
     <div class="container py-5">
       <div class="row">
         <div class="col-sm-12 col-md-10 offset-md-1">
-          <h1 id="enterprise" class="h1 text-center mb-5 hero-sub-text">{{.Params.enterprise.title}}</h1>
+          <h1 id="enterprise" class="h1 text-center mb-5 hero-text">{{.Params.enterprise.title}}</h1>
         </div>
         <div class="col-sm-12 col-md-10 offset-md-1 mb-4">
-          <h2 class="h2 text-center">{{.Params.enterprise.sub}}</h2>
+          <p class="text-lead text-center">{{.Params.enterprise.sub}}</p>
         </div>
         <div class="col-sm-12">
           {{.Params.enterprise.data}}
@@ -127,10 +107,10 @@
     <div class="container py-5">
       <div class="row">
         <div class="col-sm-12 col-md-10 offset-md-1">
-          <h1 class="h1 text-center mb-5 hero-sub-text">{{.Params.usecases.title}}</h1>
+          <h1 class="h1 text-center mb-5 hero-text">{{.Params.usecases.title}}</h1>
         </div>
         <div class="col-md-10 offset-md-1 col-sm-12 text-center">
-          <h2 class="h2 mb-5">{{.Params.usecases.sub | print | markdownify}}</h2>
+          <p class="text-lead mb-5">{{.Params.usecases.sub | print | markdownify}}</p>
         </div>
       </div>
       <div class="row mb-4">
@@ -156,7 +136,7 @@
     <div class="container py-5">
       <div class="row">
         <div class="col-sm-12 col-md-10 offset-md-1">
-          <h1 class="h1 text-center mb-5 hero-sub-text">{{.Params.comparedto.title}}</h1>
+          <h1 class="h1 text-center mb-5 hero-text">{{.Params.comparedto.title}}</h1>
         </div>
         <div class="col-md-10 offset-md-1 col-sm-12 text-center">
           <h2 class="h2 mb-5">{{.Params.comparedto.sub | print | markdownify}}</h2>
