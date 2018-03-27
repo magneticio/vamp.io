@@ -108,6 +108,7 @@
           </transition>
 
           <!-- Modal Component -->
+
           <b-modal id="emailmodal" :hide-footer="true" :hide-header="true" v-cloak>
             <div class="email-modal">
               <div class="email-modal-top">
@@ -116,7 +117,7 @@
                 <img class="email-modal-whitepaper" src="/img/marketing/landing/whitepaper.png">
               </div>
               <div class="email-modal-bottom">
-                <p class="mb-3">Sign up to our newsletter and receive a free white paper on the future of DevOps and Cloud Native technology
+                <p class="mb-3">Sign up to our newsletter and receive a white paper on the future of DevOps and Cloud Native technology
                 </p>
                 <transition-group name="drop-down" mode="out-in">
                   <div key="input" v-show="!showSubscribeSuccess">
