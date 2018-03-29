@@ -45,8 +45,8 @@
                         <div class="card-text">
                           <p class="mb-3">(( currentLevelDescription.solution ))</p>
                           <ul class="result-card-usp-list">
-                            <li v-for="bullet in currentLevelDescription.bullets">
-                              <span class="fa fa-check color text-success mr-2"></span>
+                            <li v-for="bullet, index in currentLevelDescription.bullets" class="result-bullet">
+                              <img :src="bulletImages[index]" class="result-bullet-image" width="30px">
                               (( bullet ))
                             </li>
                           </ul>
@@ -62,14 +62,14 @@
 
                 <div v-if="questions.length > 0 && !showResults" v-cloak key="questions">
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-8">
                       <div class="card">
                         <div class="card-body">
                           <div class="card-page-number">
                             ((step + 1)) / ((questions.length))
                           </div>
                           <div class="card-title mb-4">
-                            <h3 class="h1 pt-0">((step + 1)). ((question))</h3>
+                            <h3 class="h1 pt-0">((question))</h3>
                           </div>
                           <div class="card-text">
                             <b-form-group>
@@ -84,7 +84,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-6 text-center">
+                    <div class="col-sm-4 text-center">
                       <ul>
                         <li class="level-block" :class="isActive(3)">
                           <div class="level-block-inner">4. ((levels[3].name))</div>

@@ -72,7 +72,7 @@ const levelDescriptions = [
     description: 'Congratulations! You have some scar tissue from running microservices in production. Launching and managing microservices day-to-day on the bases of the right data and health metrics is really challenging.',
     solution: 'Vamp helps you to optimize the cost of your cloud native stack and optimize the extension of your CI/CD pipeline by adding data driven staged deployments. If a release causes a production issue, an automated policy responds to that real time.',
     bullets: [
-      'Automated and data driven canary releasing for CI/CD pipelines with technical KPI\'s',
+      'Data driven canary releasing for CI/CD pipelines with technical KPI\'s',
       'Running a multi cloud environment',
       'Real time production decisions based on application health KPI\'s',
       'Cost optimize your cloud native production environment'
@@ -81,14 +81,21 @@ const levelDescriptions = [
   {
     title: 'Data Driven',
     description: 'Congratulations! You have come a long way in the cloud native domain. Are you considering to make changes to your cloud native stack? Is your business or product owner asking how the newly released software is performing?',
-    solution: 'Vamp helps you connect business KPI\'s to any rollout. Vamp extends your CI/CD pipeline into production by adding business and operation data driven deployments. If your new release performs according to business metrics and technical KPI\'s you can automatically promote the release to a larger audience.',
+    solution: 'Vamp helps you connect business KPI\'s to any rollout. Vamp extends your CI/CD pipeline into production by adding business and operation data driven deployments. If your new release performs according to business metrics and technical KPI\'s Vamp automatically promotes the release to a larger audience.',
     bullets: [
-      'Automated and data driven canary releasing for CI/CD pipelines with technical KPI\'s and business KPI\'s',
+      'Data driven canary releasing for CI/CD pipelines with technical KPI\'s and business KPI\'s',
       'Running a multi cloud environment',
       'Real time production decisions based on application health KPI\'s',
       'Cost optimize your cloud native production environment'
     ]
   }
+]
+
+const bulletImages = [
+  '/img/vendor/051-cloud-computing.svg',
+  '/img/vendor/051-internet.svg',
+  '/img/vendor/051-analytics.svg',
+  '/img/vendor/051-money-bag.svg'
 ]
 
 Vue.config.devtools = true
@@ -103,6 +110,7 @@ const maturityCalculator = new Vue({
     questions: [],
     levels: levels,
     levelDescriptions: levelDescriptions,
+    bulletImages: bulletImages,
     step: 0,
     showResults: false,
     emailAddress: '',
@@ -144,7 +152,7 @@ const maturityCalculator = new Vue({
     },
     isActive: function (i) {
       return {
-        'level-block-active': this.levels[i].name === this.currentLevel.name,
+        'level-block-active bounceIn': this.levels[i].name === this.currentLevel.name,
         'level-block-color-0': i === 0,
         'level-block-color-1': i === 1,
         'level-block-color-2': i === 2,
