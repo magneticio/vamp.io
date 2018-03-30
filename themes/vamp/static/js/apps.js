@@ -26,7 +26,7 @@ const questions = [
     a: [
       'Developers check in code; testers pick this up, QA and business validate. The devops engineer puts it live',
       'When developers check in code it is automatically tested. Only the final go-live is done manually',
-      'Teams deploy independently. Success is transparent to all stakeholders. Business is involved in deployment decisions.'
+      'Teams deploy independently. Success is transparent to all stakeholders. Business is involved in deployment decisions'
     ]
   },{
     q: 'My organisational state is best described as...',
@@ -51,9 +51,9 @@ const levelDescriptions = [
     description: 'Congratulations! Great that you are planning and starting the DevOps transition. It will not be easy unfortunately. You are trying to think how to migrate away from your monolith and how to do this without interrupting your current pipelines and without incurring tons of costs.',
     solution: 'Vamp helps you migrate to a microservices and cloud native platform. It will help you with automated staged deployments to production and make it data driven, counter weighting the increased volume and complexity of microservices.',
     bullets: [
-      'Migration from on-prem to cloud native',
-      'Running a multi cloud environment',
-      'Automated and data driven canary releasing for CI/CD pipelines'
+      { img: 0, text: 'Migration from on-prem to cloud native'},
+      { img: 1, text: 'Running a multi cloud environment'},
+      { img: 2, text: 'Automated and data driven canary releasing for CI/CD pipelines'}
     ]
   },
   {
@@ -61,10 +61,10 @@ const levelDescriptions = [
     description: 'Congratulations! You are very much aware of the challenges with microservices used by multiple teams. This adds complexity that increases rapidly when scaling up.',
     solution: 'Vamp helps you run a multi cloud environment, temporary or multi homed. Vamp will help you manage your technical inter-dependencies of microservices by automating the extension of your CI/CD pipeline into production.',
     bullets: [
-      'Migration from on-prem to cloud native',
-      'Running a multi cloud environment',
-      'Automated and data driven canary releasing for CI/CD pipelines',
-      'Cost optimize your cloud native production environment'
+      { img: 0, text: 'Migration from on-prem to cloud native' },
+      { img: 1, text: 'Running a multi cloud environment'},
+      { img: 2, text: 'Automated and data driven canary releasing for CI/CD pipelines'},
+      { img: 3, text: 'Cost optimize your cloud native production environment'}
     ]
   },
   {
@@ -72,21 +72,21 @@ const levelDescriptions = [
     description: 'Congratulations! You have some scar tissue from running microservices in production. Launching and managing microservices day-to-day on the bases of the right data and health metrics is really challenging.',
     solution: 'Vamp helps you to optimize the cost of your cloud native stack and optimize the extension of your CI/CD pipeline by adding data driven staged deployments. If a release causes a production issue, an automated policy responds to that real time.',
     bullets: [
-      'Data driven canary releasing for CI/CD pipelines with technical KPI\'s',
-      'Running a multi cloud environment',
-      'Real time production decisions based on application health KPI\'s',
-      'Cost optimize your cloud native production environment'
+      { img: 4, text: 'Data driven canary releasing for CI/CD pipelines with technical KPI\'s'},
+      { img: 1, text: 'Running a multi cloud environment'},
+      { img: 2, text: 'Real time production decisions based on application health KPI\'s'},
+      { img: 3, text: 'Cost optimize your cloud native production environment'}
     ]
   },
   {
     title: 'Data Driven',
     description: 'Congratulations! You have come a long way in the cloud native domain. Are you considering to make changes to your cloud native stack? Is your business or product owner asking how the newly released software is performing?',
-    solution: 'Vamp helps you connect business KPI\'s to any rollout. Vamp extends your CI/CD pipeline into production by adding business and operation data driven deployments. If your new release performs according to business metrics and technical KPI\'s Vamp automatically promotes the release to a larger audience.',
+    solution: 'Vamp helps you connect business KPI\'s to any rollout. Vamp extends your CI/CD pipeline into production by adding business and operation data driven deployments. If your new release performs according to business metrics and technical KPI\'s, Vamp automatically promotes the release to a larger audience.',
     bullets: [
-      'Data driven canary releasing for CI/CD pipelines with technical KPI\'s and business KPI\'s',
-      'Running a multi cloud environment',
-      'Real time production decisions based on application health KPI\'s',
-      'Cost optimize your cloud native production environment'
+      { img: 4, text: 'Data driven canary releasing for CI/CD pipelines with technical and business KPI\'s'},
+      { img: 1, text: 'Running a multi cloud environment'},
+      { img: 2, text: 'Real time production decisions based on application health KPI\'s'},
+      { img: 3, text: 'Cost optimize your cloud native production environment'}
     ]
   }
 ]
@@ -95,7 +95,8 @@ const bulletImages = [
   '/img/vendor/051-cloud-computing.svg',
   '/img/vendor/051-internet.svg',
   '/img/vendor/051-analytics.svg',
-  '/img/vendor/051-money-bag.svg'
+  '/img/vendor/051-money-bag.svg',
+  '/img/vendor/051-target.svg'
 ]
 
 Vue.config.devtools = true

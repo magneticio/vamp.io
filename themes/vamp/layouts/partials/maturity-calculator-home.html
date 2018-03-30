@@ -46,8 +46,14 @@
                           <p class="mb-3">(( currentLevelDescription.solution ))</p>
                           <ul class="result-card-usp-list">
                             <li v-for="bullet, index in currentLevelDescription.bullets" class="result-bullet">
-                              <img :src="bulletImages[index]" class="result-bullet-image" width="30px">
-                              (( bullet ))
+                              <div class="row">
+                                <div class="col-sm-1">
+                                  <img :src="bulletImages[bullet.img]" class="result-bullet-image" width="30px">
+                                </div>
+                                <div class="col-sm-11">
+                                  (( bullet.text ))
+                                </div>
+                              </div>
                             </li>
                           </ul>
                         </div>
@@ -77,7 +83,7 @@
                               </b-form-radio-group>
                             </b-form-group>
                             <div class="button-bar">
-                              <button v-show="step !== 0" class="button button--grey--ghost mr-3 back-button  " @click.prevent="previous()">Back</button>
+                              <button v-show="step !== 0" class="button button--grey--ghost back-button  " @click.prevent="previous()">Back</button>
                               <button class="button button--red text-r" @click="next()">(( lastQuestion ? "See results" : "Next question"))</button>
                             </div>
                           </div>

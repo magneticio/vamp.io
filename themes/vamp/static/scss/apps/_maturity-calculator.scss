@@ -37,11 +37,17 @@
         padding: 1rem 0;
         &.result-bullet {
           font-size: 1rem;
+          line-height: 35px;
         }
         .result-bullet-image {
           vertical-align: middle;
-          width: 45px;
           margin-right: 2rem;
+          max-width: 35px;
+          width: 35px;
+
+          @media (max-width: 769px) {
+            margin-bottom: 1rem;
+          }
         }
       }
     }
