@@ -4,7 +4,6 @@ title: "Vamp.io appoints Nico Vierhout as new CEO"
 type: page
 layout: overview
 ---
-
 *Amsterdam, 1 February 2018*
 
 Nico Vierhout, formerly VP Engineering, Online and VP Product
@@ -14,7 +13,7 @@ the new CEO of software company Vamp.io.
 Vierhout has extensive experience in the
 enterprise software development arena. At Liberty Global, he was
 responsible for all software development for Ziggo, Virgin Media,
-Telenet, UPC and UnityMedia. 
+Telenet, UPC and UnityMedia.
 
 <!--more-->
 
@@ -94,7 +93,7 @@ II.
 
 
 ### Press contact:
-*Charly Lammers van Toorenburg  
-LVTPR  
-Tel: + 31 30 6565 070  
-Email: charly@lvtpr.nl*  
+*Charly Lammers van Toorenburg
+LVTPR
+Tel: + 31 30 6565 070
+Email: charly@lvtpr.nl*

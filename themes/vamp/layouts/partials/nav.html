@@ -11,6 +11,7 @@
         <a href="{{.URL}}" data-parenturl="{{.URL}}" class="navbar-item top-nav-{{.Identifier}}">{{.Name}} {{if ne .Identifier "support" }}<i class="ml-2 fa fa-angle-down"></i>{{end}}</a>
         {{ end }}
         <a href="https://medium.com/vamp-io" data-parenturl="/blog/" target="_blank" class="navbar-item">Blog</a>
+        <a href="/news/" data-parenturl="/news/" class="navbar-item">News</a>
       </div>
       {{ partial "popovers/nav-product-popover" . }}
       {{ partial "popovers/nav-developers-popover" . }}
