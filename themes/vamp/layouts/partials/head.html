@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="no-js ie6"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8"><![endif]-->
+<!--[if IE 9 ]><html class="no-js ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | Vamp {{ end }}</title>
+  {{ .Hugo.Generator }}
+
+  {{ with .Site.Params.description }}
+  <meta name="description" content="{{ . }}">
+  {{ end }}
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ with .Site.Params.author }}
+  <meta name="author" content="{{ . }}">
+  {{ end }}
+
+  <meta property="og:url" content="{{ .Permalink }}">
+  {{ with .Site.Title }}<meta property="og:title" content="{{ . }}">{{ end }}
+  <meta property="og:image" content="/img/006-mock-ups/VAMP-light-laptop-v091-hero.png">
+  {{ with .Site.Title }}<meta name="apple-mobile-web-app-title" content="{{ . }}">{{ end }}
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" type="image/x-icon" href="{{ $.Site.BaseURL }}{{ with .Site.Params.favicon }}/{{ . }}{{ else }}/images/favicon.ico{{ end }}">
+  <style>
+    @font-face {
+      font-family: 'Icon';
+      src: url('/fonts/icon.eot?52m981');
+      src: url('/fonts/icon.eot?#iefix52m981')
+      format('embedded-opentype'),
+      url('/fonts/icon.woff?52m981')
+      format('woff'),
+      url('/fonts/icon.ttf?52m981')
+      format('truetype'),
+      url('/fonts/icon.svg?52m981#icon')
+      format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!--<link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css"/>-->
+
+  <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
+
+  <link rel="stylesheet" href="/css/dist/{{ index .Site.Data.css.hash "style.min.css" }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+  <!--google analytics and google optimize-->
+
+  <style>.async-hide { opacity: 0 !important} </style>
+  <script>
+    if (location.host === 'www.vamp.io' || location.host === 'vamp.io') {
+
+      (function (a, s, y, n, c, h, i, d, e) {
+        s.className += ' ' + y;
+        h.start = 1 * new Date;
+        h.end = i = function () {
+          s.className = s.className.replace(RegExp(' ?' + y), '')
+        };
+        (a[n] = a[n] || []).hide = h;
+        setTimeout(function () {
+          i();
+          h.end = null
+        }, c);
+        h.timeout = c;
+      })(window, document.documentElement, 'async-hide', 'dataLayer', 4000,
+        {'GTM-TN6W53W': true});
+    }
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      if (location.host === 'www.vamp.io' || location.host === 'vamp.io') {
+        (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r;
+          i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+          }, i[r].l = 1 * new Date();
+          a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-59948816-1', 'auto');
+        ga('require', 'GTM-TN6W53W');
+        ga('send', 'pageview');
+      }
+    })
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+  <script src="/js/dist/{{ index .Site.Data.js.hash "vendor.min.js" }}" ></script>
+
+  <script src="/js/dist/{{ index .Site.Data.js.hash "index.min.js" }}" ></script>
+
+  {{ with .RSSLink }}
+  <link href="index.xml" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
+  <link href="index.xml" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
+  {{ end }}
+
+</head>
+<body class="{{ with .Site.Params.palette.primary }}palette-primary-{{ . }}{{end }} {{ with .Site.Params.palette.accent }}palette-accent-{{ .  }}{{ end }}">
+

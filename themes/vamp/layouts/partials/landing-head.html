@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+  <!--[if lt IE 7 ]><html class="no-js ie6"><![endif]-->
+  <!--[if IE 7 ]><html class="no-js ie7"><![endif]-->
+  <!--[if IE 8 ]><html class="no-js ie8"><![endif]-->
+  <!--[if IE 9 ]><html class="no-js ie9"><![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <!-- Google Analytics Content Experiment code -->
+  <script>
+    if (location.host === 'www.vamp.io' || location.host === 'vamp.io') {
+      function utmx_section() {
+      }
+
+      function utmx() {
+      }
+
+      (function () {
+        var
+          k = '98207451-0', d = document, l = d.location, c = d.cookie;
+        if (l.search.indexOf('utm_expid=' + k) > 0) return;
+
+        function f(n) {
+          if (c) {
+            var i = c.indexOf(n + '=');
+            if (i > -1) {
+              var j = c.indexOf(';', i);
+              return escape(c.substring(i + n.length + 1, j < 0 ? c.length : j))
+            }
+          }
+        }
+
+        var x = f('__utmx'), xx = f('__utmxx'), h = l.hash;
+        d.write(
+          '<sc' + 'ript src="' + 'http' + (l.protocol == 'https:' ? 's://ssl' :
+          '://www') + '.google-analytics.com/ga_exp.js?' + 'utmxkey=' + k +
+          '&utmx=' + (x ? x : '') + '&utmxx=' + (xx ? xx : '') + '&utmxtime=' + new Date().valueOf() + (h ? '&utmxhash=' + escape(h.substr(1)) : '') +
+          '" type="text/javascript" charset="utf-8"><\/sc' + 'ript>')
+      })();
+    }
+  </script><script>utmx('url','A/B');</script>
+  <!-- End of Google Analytics Content Experiment code -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+  {{ .Hugo.Generator }}
+
+  {{ with .Site.Params.description }}
+  <meta name="description" content="{{ . }}">
+  {{ end }}
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ with .Site.Params.author }}
+  <meta name="author" content="{{ . }}">
+  {{ end }}
+
+  <meta property="og:url" content="{{ .Permalink }}">
+  {{ with .Site.Title }}<meta property="og:title" content="{{ . }}">{{ end }}
+  {{ with .Site.Params.logo }}<meta property="og:image" content="{{ $.Site.BaseURL }}/{{ . }}">{{ end }}
+  {{ with .Site.Title }}<meta name="apple-mobile-web-app-title" content="{{ . }}">{{ end }}
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" href="{{ $.Site.BaseURL }}{{ with .Site.Params.favicon }}/{{ . }}{{ else }}/images/favicon.ico{{ end }}">
+  <style>
+    @font-face {
+      font-family: 'Icon';
+      src: url('/fonts/icon.eot?52m981');
+      src: url('/fonts/icon.eot?#iefix52m981')
+      format('embedded-opentype'),
+      url('/fonts/icon.woff?52m981')
+      format('woff'),
+      url('/fonts/icon.ttf?52m981')
+      format('truetype'),
+      url('/fonts/icon.svg?52m981#icon')
+      format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/dist/{{ index .Site.Data.css.hash "style.min.css" }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+  <script src="/js/dist/{{ index .Site.Data.js.hash "vendor.min.js" }}" ></script>
+
+  <script src="/js/dist/{{ index .Site.Data.js.hash "index.min.js" }}" ></script>
+
+  {{ with .RSSLink }}
+  <link href="index.xml" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
+  <link href="index.xml" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
+  {{ end }}
+</head>
+<body class="{{ with .Site.Params.palette.primary }}palette-primary-{{ . }}{{end }} {{ with .Site.Params.palette.accent }}palette-accent-{{ .  }}{{ end }}">
+</title>
+</head>
+<body>
+
+</body>
+</html>
