@@ -10,7 +10,6 @@
 @import 'transitions';
 @import 'animations';
 
-
 // apps
 @import 'apps/maturity-calculator';
 
@@ -26,6 +25,7 @@ body {
 
   &.documentation {
 
+    margin-top: $spacer;
     margin-top: $spacer;
 
     .header {

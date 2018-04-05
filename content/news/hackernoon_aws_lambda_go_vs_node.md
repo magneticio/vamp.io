@@ -8,6 +8,9 @@ layout: overview
 
 Cloud providers are coming out with new container based solutions at a rapid pace. We looked at how
 Azure Container Instances compares to the recently launched AWS Fargate service.
+
+{{< figure src="https://cdn-images-1.medium.com/max/1600/1*sHwjEadMpmPaw_bHcURM6g.jpeg" link="https://hackernoon.com/azure-container-instances-vs-aws-fargate-3216607f63f4" width="50%" >}}
+
 Read the full article on [hackernoon.com](https://hackernoon.com/azure-container-instances-vs-aws-fargate-3216607f63f4)
 
 <!--more-->

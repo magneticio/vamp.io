@@ -104,6 +104,12 @@ googleAnalytics = ""
 	weight = 40
 
 [[menu.main]]
+	name   = "News"
+	url    = "/news/"
+	weight = 50
+
+
+[[menu.main]]
 	name = "Use cases"
 	url = "/product/use-cases/overview"
 	parent = "product"

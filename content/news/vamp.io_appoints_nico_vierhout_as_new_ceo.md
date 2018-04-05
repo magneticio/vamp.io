@@ -9,6 +9,7 @@ layout: overview
 Nico Vierhout, formerly VP Engineering, Online and VP Product
 Development at KPNQwest and Liberty Global, has been appointed as
 the new CEO of software company Vamp.io.
+{{< tweet 960505447110365184 >}}
 
 Vierhout has extensive experience in the
 enterprise software development arena. At Liberty Global, he was
