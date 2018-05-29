@@ -1,0 +1,63 @@
+{{ partial "head" . }}
+
+{{ partial "nav" . }}
+
+<div class="page product trial-signup">
+	<section class="lander-row--white py-3 py-lg-5 hero-background">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<h1 class="h1 text-left mb-5 hero-text">{{.Params.header.title | markdownify}}</h1>
+					<p class="h2 mb-4 text-lead">{{.Params.header.subtitle | markdownify}}</p>
+				</div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="pipedriveWebForms" data-pd-webforms="https://pipedrivewebforms.com/form/e30d10b4dc72b5df3aa21546dcf74c82810301"><script src="https://webforms.pipedriveassets.com/webforms.min.js"></script></div>
+          </div>
+        </div>
+			</div>
+		</div>
+	</section>
+
+  <section id="about-vamp-row" class="lander-row lander-row--white">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-sm-12 text-center">
+          <h2 class="h2 mb-4">It's a smart business move</h2>
+        </div>
+        <div class="col-sm-4 text-center">
+          <img src="/img/001-Big-icons/illustration-01.svg" alt="Easy canary releasing"  class="image--smaller">
+          <h3 class="h3">Crank up release velocity</h3>
+          <p class="text">
+            Release fast and often without service disruptions with Vamp's gradual rollouts and upgrades.
+          </p>
+        </div>
+        <div class="col-sm-4 text-center">
+          <img src="/img/001-Big-icons/illustration-02.svg" alt="Powerful autoscaling" class="image--smaller">
+          <h3 class="h3">Drive decisions based on data</h3>
+          <p class="text">
+            Don’t trust your gut, trust the data. Vamp's built-in health monitoring instantly reacts to increases in traffic or error situations.
+          </p>
+        </div>
+        <div class="col-sm-4 text-center">
+          <img src="/img/001-Big-icons/illustration-03.svg" alt="Container agnostic deploys" class="image--smaller">
+          <h3 class="h3">Avoid vendor lock-in</h3>
+          <p class="text">
+            Run Vamp on any cloud or on-prem. Vamp integrates with all major cloud and container suppliers.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <a href="/product/" class="button button--red--ghost"> Learn more
+            <span class="button__icon button__icon--arrow">
+              </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+{{ partial "footer" .}}
