@@ -136,9 +136,9 @@ const maturityCalculator = new Vue({
       })
     },
     next: function () {
+      if (this.step === 0) this.trackEvent('maturity-calculator', 'started')
       if (this.lastQuestion) {
         this.$root.$emit('bv::show::modal','emailmodal')
-
       } else {
         this.step = this.step === this.questions.length ? this.step : this.step + 1
       }
@@ -178,6 +178,7 @@ const maturityCalculator = new Vue({
       this.showSubscribeSuccess = this.showSubscribeError = false
       this.hideEmailModal()
       this.showResults = true
+      this.trackEvent('maturity-calculator', 'show-results')
     },
     subscribeToNewsletter: function () {
       const that = this
@@ -197,13 +198,22 @@ const maturityCalculator = new Vue({
             that.showSubscribeError = true
           } else {
             that.showSubscribeSuccess = true
+            this.trackEvent('maturity-calculator', 'subscribed')
             setTimeout(function () {
               that.goToResults()
             }, 1000)
           }
         }
       });
-    }
+    },
+    trackEvent: function (category, action, label) {
+      window.ga('send', {
+        hitType: 'event',
+        eventCategory: category,
+        eventAction: action,
+        eventLabel: label
+      })
+    },
   },
   computed: {
     question: function () {
