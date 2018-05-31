@@ -5,7 +5,13 @@ type: page
 layout: trial-signup
 header:
     title: "Start using Vamp Enterprise Edition for free for 30 days!"
-    subtitle: "Your Vamp EE trial has expired. We hope the trial period was insightful and helped you understand
-    the benefits Vamp brings to Cloud Native application management. If you still have questions or want to extend your trial
-    period, just get in touch with the form below."
 ---
+
+Fill out the form an get access to the Vamp Enterprise Edition trial. After submitting the form, we will send you a
+link where you can download link. This download contains a complete Vamp Enterprise Edition installation allowing you to experiment with
+the complete powerful set of features out of the box. We offer Vamp in two versions for:
+
+ - Kubernetes
+ - DC/OS (available as DC/OS universe package)
+
+You will need a compute cluster with a minimum of 4 nodes to install and test Vamp.

@@ -8,7 +8,9 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<h1 class="h1 text-left mb-5 hero-text">{{.Params.header.title | markdownify}}</h1>
-					<p class="h2 mb-4 text-lead">{{.Params.header.subtitle | markdownify}}</p>
+          <div class="markdowned">
+            {{ .Content }}
+          </div>
 				</div>
         <div class="col-sm-6">
           <div class="card">
@@ -23,36 +25,28 @@
     <div class="container">
       <div class="row mb-4">
         <div class="col-sm-12 text-center">
-          <h2 class="h2 mb-4">It's a smart business move</h2>
+          <h2 class="h2 mb-5">Vamp EE features</h2>
         </div>
         <div class="col-sm-4 text-center">
-          <img src="/img/001-Big-icons/illustration-01.svg" alt="Easy canary releasing"  class="image--smaller">
-          <h3 class="h3">Crank up release velocity</h3>
+          <img src="/img/002-Medium-icons/Medium-icons-05.svg" alt="Experiment with releasing your applications"  class="image--small mb-4">
+          <h3 class="h3">Experiment with releasing your applications</h3>
           <p class="text">
-            Release fast and often without service disruptions with Vamp's gradual rollouts and upgrades.
+            Simulate a A/B split and merge traffic based on conditions, percentages or both. Canary Release your applications using automated workflows.
           </p>
         </div>
         <div class="col-sm-4 text-center">
-          <img src="/img/001-Big-icons/illustration-02.svg" alt="Powerful autoscaling" class="image--smaller">
-          <h3 class="h3">Drive decisions based on data</h3>
+          <img src="/img/002-Medium-icons/Medium-icons-04.svg" alt="Build on and extend your stack" class="image--small mb-4">
+          <h3 class="h3">Build on and extend your stack</h3>
           <p class="text">
-            Don’t trust your gut, trust the data. Vamp's built-in health monitoring instantly reacts to increases in traffic or error situations.
+            Integrate with existing deployment pipelines using the API or the command line interface.
           </p>
         </div>
         <div class="col-sm-4 text-center">
-          <img src="/img/001-Big-icons/illustration-03.svg" alt="Container agnostic deploys" class="image--smaller">
-          <h3 class="h3">Avoid vendor lock-in</h3>
+          <img src="/img/002-Medium-icons/Medium-icons-01.svg" alt="Single pane of glass" class="image--small mb-4">
+          <h3 class="h3">Single pane of glass</h3>
           <p class="text">
-            Run Vamp on any cloud or on-prem. Vamp integrates with all major cloud and container suppliers.
+            Graphical UI and dashboards for clear information and easy management of existing point solutions.
           </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12 text-center">
-          <a href="/product/" class="button button--red--ghost"> Learn more
-            <span class="button__icon button__icon--arrow">
-              </span>
-          </a>
         </div>
       </div>
     </div>
