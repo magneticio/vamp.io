@@ -16,7 +16,7 @@ If you have a question about Vamp, please check the [Vamp documentation](/docume
 ## Professional support
 We offer five extended professional support plans. Contact us for pricing information, and details of professional services and consultancy: [info@vamp.io](mailto:info@vamp.io?subject=Information request - Vamp professsional support) or call +31(0)88 555 33 99
 
-![](/images/tables/201702-professional-support-plans.png)
+![](/images/tables/Support levels table.png)
 
 
 {{< note title="What next?" >}}
