@@ -4,14 +4,14 @@ title: Using the Vamp CLI
 menu:
   main:
     parent: "CLI"
-    weight: 20
+    weight: 10
 ---
 
 Vamp's command line interface (CLI) can be used to perform basic actions against the Vamp API. The CLI was
-primarily developed to work in continuous delivery situations. In these setups, the CLI takes care of automating (canary) 
-releasing new artifacts to Vamp deployments and clusters.   
-  
-Source is at [https://github.com/magneticio/vamp-cli](https://github.com/magneticio/vamp-cli)  
+primarily developed to work in continuous delivery situations. In these setups, the CLI takes care of automating (canary)
+releasing new artifacts to Vamp deployments and clusters.
+
+Source is at [https://github.com/magneticio/vamp-cli](https://github.com/magneticio/vamp-cli)
 Npm distribution is at [https://www.npmjs.com/package/vamp-cli](https://www.npmjs.com/package/vamp-cli)
 
 ## Installation
@@ -36,22 +36,22 @@ The basic commands of the CLI, like `list`, allow you to do exactly what you wou
 
 ```
 $ vamp list breeds
- NAME                       DEPLOYABLE                              
- kibana                     javascript                              
- recommended:1.0            magneticio/vamp-music-recommended:1.0.0 
- activity:1.0               magneticio/vamp-music-activity:1.0.0    
- allocation                 javascript                              
- gateway:1.0                magneticio/vamp-music-gateway:1.0.0     
- web-client:1.0             magneticio/vamp-music-web-client:1.0.0  
- profile-mongo              mongo:latest                            
- runner:2                   magneticio/sava:runner_1.0              
- auth-redis                 redis:latest                     
+ NAME                       DEPLOYABLE
+ kibana                     javascript
+ recommended:1.0            magneticio/vamp-music-recommended:1.0.0
+ activity:1.0               magneticio/vamp-music-activity:1.0.0
+ allocation                 javascript
+ gateway:1.0                magneticio/vamp-music-gateway:1.0.0
+ web-client:1.0             magneticio/vamp-music-web-client:1.0.0
+ profile-mongo              mongo:latest
+ runner:2                   magneticio/sava:runner_1.0
+ auth-redis                 redis:latest
 ```
 
 ```
 $ vamp list deployments
- NAME                  CLUSTERS        PORTS                     STATUS 
- simpleservice:1.0.0   simpleservice   simpleservice.web:40010   Deployed 
+ NAME                  CLUSTERS        PORTS                     STATUS
+ simpleservice:1.0.0   simpleservice   simpleservice.web:40010   Deployed
 ```
 
 [Full list of available CLI commands](/documentation/cli/cli-reference/)
@@ -64,7 +64,7 @@ In more complex continuous integration situations you can use the CLI with the `
 * create the breed in the backend
 
 ```bash
-vamp generate breed --source my_service:1.0.0 --deployable repo/image:1.1.0 --target my_service:1.1.0 | \ 
+vamp generate breed --source my_service:1.0.0 --deployable repo/image:1.1.0 --target my_service:1.1.0 | \
 vamp create breed --stdin
 ```
 
@@ -101,7 +101,7 @@ const vamp = require('vamp-cli')({ host: 'http://localhost:8080'})
 
 vamp.breed.list()
   .then(res => console.info(res))
-  
+
 vamp.deployment.describe('mydeployment')
 .then(res => console.info(res))
 ```

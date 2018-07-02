@@ -2,7 +2,6 @@
 date: 2016-09-13T09:00:00+00:00
 title: Tutorials
 aliases:
-    - /documentation/tutorials/
     - /documentation/guides/
 menu:
   main:
@@ -24,18 +23,18 @@ You can work with Sava in the [Vamp hello world](/documentation/installation/hel
 
 ## Learn more
 
-* [Canary releasing with Jenkins on DC/OS: part 1](/documentation/tutorials/vamp-jenkins-dcos-pt1)  
+* [Canary releasing with Jenkins on DC/OS: part 1](/documentation/tutorials/vamp-jenkins-dcos-pt1)
 Setup a Jenkins instance and deploy from your CI/CD pipeline
 
-* [Canary releasing with Jenkins on DC/OS: part 2](/documentation/tutorials/vamp-jenkins-dcos-pt2)  
+* [Canary releasing with Jenkins on DC/OS: part 2](/documentation/tutorials/vamp-jenkins-dcos-pt2)
 Setup a Jenkins instance and deploy from your CI/CD pipeline
 
-* [Deploy and canary release Wordpress](/documentation/tutorials/deploy-wordpress-and-mysql)  
+* [Deploy and canary release Wordpress](/documentation/tutorials/deploy-wordpress-and-mysql)
 This tutorial shows how to deploy Wordpress together with mySQL and set up a gateway to run a canary release
 
-* [Automate a canary release with rollback](/documentation/tutorials/automate-a-canary-release)  
+* [Automate a canary release with rollback](/documentation/tutorials/automate-a-canary-release)
 Use workflows to automate a canary release and force a rollback (Vamp Runner)
 
-* [Create a workflow that generates events](/documentation/tutorials/create-a-workflow)  
-Learn about the Vamp events system and create a simple workflow that interacts with the Vamp API 
+* [Create a workflow that generates events](/documentation/tutorials/create-a-workflow)
+Learn about the Vamp events system and create a simple workflow that interacts with the Vamp API
 

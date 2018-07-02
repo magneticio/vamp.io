@@ -7,8 +7,6 @@ menu:
     identifier: "dcos-v095"
     parent: "Installation"
     weight: 30
-aliases:
-    - /documentation/installation/dcos
 ---
 
 There are different ways to install Vamp on DC.OS. On this page we start out with the most common setup, but if you are interested in doing a custom install or working with public and private nodes you should jump to that section.

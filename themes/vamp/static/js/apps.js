@@ -207,13 +207,15 @@ const maturityCalculator = new Vue({
       });
     },
     trackEvent: function (category, action, label) {
-      window.ga('send', {
-        hitType: 'event',
-        eventCategory: category,
-        eventAction: action,
-        eventLabel: label
-      })
-    },
+      if (window.ga) {
+        window.ga('send', {
+          hitType: 'event',
+          eventCategory: category,
+          eventAction: action,
+          eventLabel: label
+        })
+      }
+    }
   },
   computed: {
     question: function () {

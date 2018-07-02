@@ -6,8 +6,7 @@ menu:
     identifier: "referencing-artifacts-v095"
     parent: "Using Vamp"
     weight: 140
-aliases:
-    - /documentation/using-vamp/references/
+
 ---
 
 With any artifact, Vamp allows you to either use an inline notation or reference the artifact by name. For references, you use the `reference` keyword or its shorter version `ref`. Think of it like either using actual values or pointers to a value. This has a big impact on how complex or simple you can make any blueprint, breed or deployment. It also impacts how much knowledge you need to have of all the different artifacts that are used in a typical deployment or blueprint.
@@ -41,12 +40,12 @@ name: my_blueprint
         breed:
           reference: my_breed
         scale:
-          reference: medium  
+          reference: medium
 ```
 
 ## Working with references
 
-When you begin to work with Vamp, you will probably start with inline artifacts. You have everything in one place and can directly see what properties each artifact has. Later, you can start specialising and basically build a library of often used architectural components. 
+When you begin to work with Vamp, you will probably start with inline artifacts. You have everything in one place and can directly see what properties each artifact has. Later, you can start specialising and basically build a library of often used architectural components.
 
 ### Example use of references
 
@@ -55,10 +54,10 @@ When you begin to work with Vamp, you will probably start with inline artifacts.
 * [Reuse a complex condition](/documentation/using-vamp/v0.9.5/references/#example-3)
 
 
-#### Example 1 
+#### Example 1
 **Create a library of containers**
 
-**Use case:** You have a Redis container you have tweaked and setup exactly the way you want it. You want to use that exact container in all your environments (dev, test, prod etc.). 
+**Use case:** You have a Redis container you have tweaked and setup exactly the way you want it. You want to use that exact container in all your environments (dev, test, prod etc.).
 
 **Implementation:** Put all that info inside a breed and use either the Vamp UI or API to save it (below). Now you can just use the `ref: redis:1.0` notation anywhere in a blueprint.
 
@@ -96,7 +95,7 @@ instances: 1
 #### Example 3
 **Reuse a complex condition**
 
-**Use case:** You have created a complex condition to target a specific part of your traffic. In this case users with a cookie that have a specific session variable set in that cookie. You want to use that condition now and then to do some testing. 
+**Use case:** You have created a complex condition to target a specific part of your traffic. In this case users with a cookie that have a specific session variable set in that cookie. You want to use that condition now and then to do some testing.
 
 **Implementation:** Put all that info inside a condition and use either the Vamp API to save it (below). Now you can use the  `ref: condition_empty_shopping_cart` anywhere that `condition` is required.
 
@@ -104,7 +103,7 @@ instances: 1
 
 ```
 name: condition_empty_shopping_cart
-condition: Cookie SHOPSESSION Contains shopping_basket_items=0 
+condition: Cookie SHOPSESSION Contains shopping_basket_items=0
 ```
 
 

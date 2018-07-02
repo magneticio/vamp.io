@@ -6,8 +6,7 @@ menu:
     identifier: "health-v095"
     parent: "Using Vamp"
     weight: 130
-aliases:
-    - /documentation/using-vamp/health/
+
 ---
 
 Vamp tracks the health of deployed service instances and gateways. The [default Vamp health workflow](/documentation/using-vamp/v0.9.5/workflows/) reports health based on a combination of defined health checks and gateway monitoring. Health status is stored in the Elasticsearch index `vamp-pulse-health-YYYY-MM-DD` and displayed in the Vamp UI. It can also be retrieved directly using the [Vamp API health endpoint](/documentation/api/v0.9.5/api-health/).
@@ -20,13 +19,13 @@ Custom health checks can be added on a service, cluster or breed level:
 Defined in a blueprint and applied to all instances of a service. Service level health checks override all health checks defined on a breed or cluster level. For example, including an empty health check specification for a service  (`healthchecks: []`) will cause all cluster and breed level health checks to be skipped for this service.
 
 ### Cluster level health checks
-Defined in a blueprint and applied to all services within the cluster (unless overridden by a health check defined on a service level). Cluster level health checks override breed level health checks. 
+Defined in a blueprint and applied to all services within the cluster (unless overridden by a health check defined on a service level). Cluster level health checks override breed level health checks.
 
 ### Breed level health checks
 Defined in a breed (an individual artifact, or inline as part of a blueprint). Applied to all instances of the breed, unless overridden by health checks defined on the service or cluster level.
 
 ## Defining health checks
- 
+
 A health check definition contains the following fields (fields with a default value are optional):
 
 field  |  default   |   description
@@ -92,7 +91,7 @@ clusters:
      timeout: 10s
      interval: 1m
      failures: 5
-     protocol: HTTPS 
+     protocol: HTTPS
 ```
 
 {{< note title="What next?" >}}

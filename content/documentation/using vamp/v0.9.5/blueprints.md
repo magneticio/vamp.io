@@ -6,15 +6,14 @@ menu:
     identifier: "blueprints-v095"
     parent: "Using Vamp"
     weight: 50
-aliases:
-    - /documentation/using-vamp/blueprints/
+
 ---
 
 Blueprints are execution plans - they describe how your services should be hooked up and what their topology should look like at runtime. This means you reference your breeds (or define them inline) and add runtime configuration to them. Blueprints can be created and edited using the Vamp Domain Specific Language (DSL). Vamp tracks all revisions made to artifacts, so you can check back and compare the current blueprint against a previous version.
 
 ## Docker compose
 
-The Vamp UI includes a handy tool to import Docker Compose files and convert these into the Vamp DSL format for deployment in Vamp. Note that some fields may need manual adjustment after conversion (see comments attached to the generated blueprint for details). 
+The Vamp UI includes a handy tool to import Docker Compose files and convert these into the Vamp DSL format for deployment in Vamp. Note that some fields may need manual adjustment after conversion (see comments attached to the generated blueprint for details).
 
 ## Blueprint artifacts
 
@@ -38,7 +37,7 @@ gateways:
   8080/http: my_frontend/port
 clusters:
   my_frontend:                            # Custom cluster name.
-  
+
     gateways:                             # Gateway for this cluster services.
       routes:                             # Makes sense only with
         some_cool_breed:                  # multiple services per cluster.
@@ -46,7 +45,7 @@ clusters:
           condition: User-Agent = Chrome
         some_other_breed:                 # Second service.
           weight: 5%
-          
+
     services:                             # List of services
       -
         breed:
@@ -55,10 +54,10 @@ clusters:
           cpu: 2                          # Number of CPUs per instance.
           memory: 2048MB                  # Memory per instance (MB/GB units).
           instances: 2                    # Number of instances
-      -                                          
-        breed: 
-          ref: some_other_breed           # Another service in the same cluster.  
-        scale: large                      # Notice we used a reference to a "scale". 
+      -
+        breed:
+          ref: some_other_breed           # Another service in the same cluster.
+        scale: large                      # Notice we used a reference to a "scale".
                                           # More on this later.
 ```
 
@@ -88,7 +87,7 @@ Clusters are configured by defining an array of services. A cluster can be given
 ---
 my_cool_cluster
   services
-   - breed: 
+   - breed:
       ref: my_cool_service_A      # reference to an existing breed
    -
      breed:                       # shortened inline breed

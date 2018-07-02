@@ -6,11 +6,10 @@ menu:
     identifier: "workflows-v095"
     parent: "Using Vamp"
     weight: 40
-aliases:
-    - /documentation/using-vamp/workflows/
+
 ---
 
-Vamp workflows are a convenient way to run Node JS based scripts that access the Vamp API to monitor and interact with running services. JavaScript workflows run in Vamp workflow agent containers ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)) and are managed just like any other container inside your cluster, making them robust, scalable and dynamic. Workflows can be scheduled to run as a daemon, be triggered by Vamp events or to run at specified times. 
+Vamp workflows are a convenient way to run Node JS based scripts that access the Vamp API to monitor and interact with running services. JavaScript workflows run in Vamp workflow agent containers ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)) and are managed just like any other container inside your cluster, making them robust, scalable and dynamic. Workflows can be scheduled to run as a daemon, be triggered by Vamp events or to run at specified times.
 
 Vamp ships with four default workflows:
 
@@ -38,7 +37,7 @@ You can track executions of a running workflow in the Vamp UI. From the **Workfl
 
 ## Create a workflow
 
-Workflows can be created using Node JS based scripts running inside a Vamp workflow agent container, or use another language of preference - create an application or script that accesses the Vamp API and build it into a Docker container to be deployed by Vamp.  
+Workflows can be created using Node JS based scripts running inside a Vamp workflow agent container, or use another language of preference - create an application or script that accesses the Vamp API and build it into a Docker container to be deployed by Vamp.
 Vamp tracks all revisions made to workflows and breeds, so you can check back and compare the current version against a previous version.
 
 Try it yourself: [Create a workflow that generates events](/documentation/tutorials/create-a-workflow/)
@@ -47,16 +46,16 @@ Try it yourself: [Create a workflow that generates events](/documentation/tutori
 
 You can schedule a workflow to run as a daemon, be triggered by specific events or run according to a time schedule. See the examples for each below.
 
-* **Scheduled as a daemon**  
+* **Scheduled as a daemon**
 A workflow scheduled as a daemon will run continuously.
 
   ```
   schedule: daemon
   ```
 
-* **Triggered by events**  
+* **Triggered by events**
 
-```  
+```
 schedule:
   event: # event with following tags will trigger the workflow
   - deployments:sava
@@ -66,9 +65,9 @@ schedule:  # shortened notation in case of single event (still array can be used
   event: archive:bluprints
 ```
 
-* **Scheduled by time**  
-`period`, `start` (optional, by default starts now) and `repeat` (optional, by default runs forever). The time schedule period is in [ISO8601](http://en.wikipedia.org/wiki/ISO_8601) repeating interval notation.   
-  For example:  
+* **Scheduled by time**
+`period`, `start` (optional, by default starts now) and `repeat` (optional, by default runs forever). The time schedule period is in [ISO8601](http://en.wikipedia.org/wiki/ISO_8601) repeating interval notation.
+  For example:
 
 ```
 schedule:
@@ -79,11 +78,11 @@ schedule:
 ```
 
 ### Workflow dialects
-You can use dialects to specify native commands for the underlying container platform in a workflow.  
+You can use dialects to specify native commands for the underlying container platform in a workflow.
 [Read more about Vamp dialects](/documentation/using-vamp/v0.9.5/dialects/)
 
 ## JavaScript workflows
-JavaScript workflows are executed by Vamp Workflow Agent ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)).  The system breed **vamp-workflow-javascript** is used to apply the standard enviroment variables, health checks and exposed ports.   
+JavaScript workflows are executed by Vamp Workflow Agent ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)).  The system breed **vamp-workflow-javascript** is used to apply the standard enviroment variables, health checks and exposed ports.
 Instructions for using JavaScript to access the Vamp API can be found in the Vamp Node Client project ([github.com/magneticio - Vamp node client](https://github.com/magneticio/vamp-node-client)).
 
 ### Example: Metrics workflow and breed
@@ -97,14 +96,14 @@ environment_variables:
   VAMP_WORKFLOW_EXECUTION_TIMEOUT: 7
 ```
 
-The JavaScript breed referenced in the metrics workflow will be executed by Vamp Workflow Agent ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)).  
+The JavaScript breed referenced in the metrics workflow will be executed by Vamp Workflow Agent ([github.com/magneticio - Vamp workflow agent](https://github.com/magneticio/vamp-workflow-agent)).
 You could create a Javascript breed by sending the required JavaScript directly to the API to store as a breed:
 
 * Request syntax:
 
 ```
-PUT  
-/api/v1/breeds/metrics  
+PUT
+/api/v1/breeds/metrics
 Content-Type: application/javascript
 ```
 * Request body:

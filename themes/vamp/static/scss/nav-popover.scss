@@ -1,6 +1,9 @@
 .popover-menu-body {
   width: 250px;
   padding: .75 * $spacer;
+  &.popover-menu-body-wide {
+    width: 350px;
+  }
 }
 
 .popover-menu-item {
@@ -23,6 +26,13 @@
   i {
     transition: margin-left .5s ease;
     margin-left: .25 * $spacer;
+  }
+
+  img {
+    height: 20px;
+    display: inline;
+    vertical-align: text-bottom;
+    margin-right: .5rem;
   }
 }
 

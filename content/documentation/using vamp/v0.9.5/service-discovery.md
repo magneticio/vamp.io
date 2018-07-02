@@ -6,8 +6,7 @@ menu:
     identifier: "service-discovery-v095"
     parent: "Using Vamp"
     weight: 150
-aliases:
-    - /documentation/using-vamp/service-discovery/
+
 ---
 Vamp uses a service discovery pattern called server-side service discovery, which allows for service discovery without the need to change your code or run any other daemon or agent ([microservices.io - server side discovery](http://microservices.io/patterns/server-side-discovery.html)). In addition to service discovery, Vamp also functions as a service registry ([microservices.io - service registry](http://microservices.io/patterns/service-registry.html)).
 
@@ -55,7 +54,7 @@ clusters:
          BACKEND_HOST: $backend.host
          BACKEND_PORT: $backend.ports.jdbc
       scale:
-        instances: 3         
+        instances: 3
   my_backend_cluster:
     services:
       breed:
@@ -100,7 +99,7 @@ vamp {
       }
     }
   }
-}  
+}
 ```
 
 The reason for the need to configure `vamp.gateway-driver.host` is that when services are deployed, they need to be able to find Vamp Gateway Agent in their respective networks. This can be a totally different network than where Vamp is running.

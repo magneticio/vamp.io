@@ -9,27 +9,27 @@
         {{ $currentNode := .}}
 
         {{ range .Site.Menus.main }}
-        <ul class="side-menu-list" data-parenturl="{{.URL}}" style="display: none;">
-          {{ range .Children }}
-          <li class="side-menu__item{{if $currentNode.HasMenuCurrent "main" . }} active{{end}}{{if $currentNode.IsMenuCurrent "main" . }} active{{end}}">
-          <a href="{{.URL}}" class="side-menu__item__link">
-            <p class="side-menu__item__link__text">{{ .Name }}</p>
-          </a>
-
-          {{ if .HasChildren }}
-          {{if $currentNode.HasMenuCurrent "main" . }}
-          <ul class="side-menu__sub">
+          <ul class="side-menu-list" data-parenturl="{{.URL}}" style="display: none;">
             {{ range .Children }}
-            <li class="side-menu__sub__item{{if $currentNode.IsMenuCurrent "main" . }} active{{end}}">
-            <a id="menu-link-{{.URL}}" class="side-menu__sub__item__text" href="{{.URL}}" data-url="{{.URL}}">{{ .Name }}</a>
+            <li class="side-menu__item{{if $currentNode.HasMenuCurrent "main" . }} active{{end}}{{if $currentNode.IsMenuCurrent "main" . }} active{{end}}">
+            <a href="{{.URL}}" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">{{ .Name }}</p>
+            </a>
+
+            {{ if .HasChildren }}
+            {{if $currentNode.HasMenuCurrent "main" . }}
+            <ul class="side-menu__sub">
+              {{ range .Children }}
+              <li class="side-menu__sub__item{{if $currentNode.IsMenuCurrent "main" . }} active{{end}}">
+              <a id="menu-link-{{.URL}}" class="side-menu__sub__item__text" href="{{.URL}}" data-url="{{.URL}}">{{ .Name }}</a>
+              </li>
+              {{ end }}
+            </ul>
+            {{ end }}
+            {{ end }}
             </li>
             {{ end }}
           </ul>
-          {{ end }}
-          {{ end }}
-          </li>
-          {{ end }}
-        </ul>
         {{ end }}
       </div>
     </div>
