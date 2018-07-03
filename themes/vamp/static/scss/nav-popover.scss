@@ -15,8 +15,8 @@
   font-weight: $font-weight-default;
   color: inherit;
   &:hover {
-    color: $color-radical-red;
-    background: transparentize($color-radical-red, .9);
+    color: $red;
+    background: transparentize($red, .9);
     text-decoration: none;
     i {
       transition: margin-left .5s ease;
@@ -41,8 +41,8 @@
   margin-right: -0.75 * $spacer;
   padding: .75 * $spacer $spacer;
   display: block;
-  color: $color-bermuda-gray;
-  background: transparentize($color-white-squeeze, .6);
+  color: $gray;
+  background: transparentize($white, .6);
 }
 
 // style the stock webui popover

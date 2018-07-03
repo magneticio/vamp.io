@@ -1,13 +1,13 @@
 table.vamp-table  {
   thead > tr > th {
-    color: $color-white-squeeze;
-    background-color: $color-big-stone;
+    color: $white;
+    background-color: $blue-darker;
     border-bottom: 0;
     font-weight: $font-weight-default;
     padding: $spacer;
   }
   tbody > tr > td {
-    color: $color-big-stone;
+    color: $blue-darker;
     //border-bottom: 0;
     font-weight: $font-weight-default;
     padding: $spacer;
@@ -15,7 +15,7 @@ table.vamp-table  {
 
   &.table-striped {
     tbody > tr:nth-of-type(odd) {
-      background-color: $color-white-squeeze;
+      background-color: $white;
     }
   }
 }

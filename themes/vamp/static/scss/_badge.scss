@@ -14,11 +14,22 @@
   font-weight: $font-weight-default;
   line-height: 1;
   color: #fff;
-  background-color: $color-cascade;
+  background-color: $gray-light;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25rem;
+
+  &.badge-info {
+    color: #fff;
+    background-color: #17a2b8;
+  }
+
+  &.badge-pill {
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 10rem;
+  }
 
   > a {
     color: #fff;

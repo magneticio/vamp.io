@@ -21,14 +21,14 @@
     .result-card-upper {
       padding: 2rem;
       border-radius: 8px 8px 0 0;
-      background-color: $color-white-squeeze;
-      color: $color-blue-dianne;
+      background-color: $white;
+      color: $blue-dark;
     }
 
     .result-card-lower {
       padding: 2rem;
       border-radius: 0 0 8px 8px;
-      color: $color-blue-dianne;
+      color: $blue-dark;
     }
 
     ul.result-card-usp-list {
@@ -115,7 +115,7 @@
   }
 
   .progress-bar {
-    background-color: $color-blue-dianne !important;
+    background-color: $blue-dark !important;
   }
 
   .email-modal {
@@ -152,7 +152,7 @@
 
     .email-modal-header {
       font-size: 28px;
-      color: $color-white-squeeze;
+      color: $white;
       padding: 1rem 0;
       margin-bottom: 1rem;
       letter-spacing: 3px;
@@ -168,7 +168,7 @@
       box-shadow: 0 10px 30px rgba(0,0,0,.08);
       border-radius: 2px;
       box-sizing: content-box;
-      border: 1px solid $color-white-squeeze;
+      border: 1px solid $white;
     }
   }
 }
