@@ -8,11 +8,11 @@
 
     <div class="right">
       <div class="navbar-items" id="navbar-items">
-        {{ range .Site.Menus.topnav }}
-        <a href="{{.URL}}" data-parenturl="{{.URL}}" class="navbar-item top-nav-{{.Identifier}}">{{.Name}} {{if ne .Identifier "support" }}<i class="ml-2 fa fa-angle-down"></i>{{end}}</a>
-        {{ end }}
-        <a href="https://medium.com/vamp-io" target="_blank" class="navbar-item">Blog</a>
-        <a href="/news/" class="navbar-item">News</a>
+        <a href="/product/" data-parenturl="/product/" class="navbar-item top-nav-product-top" data-target="webuiPopover0">Product <i class="ml-2 fa fa-angle-down"></i></a>
+        <a href="https://medium.com/vamp-io" data-parenturl="/blog/" target="_blank" class="navbar-item">Blog</a>
+        <a href="/news/" data-parenturl="/news/" class="navbar-item">News</a>
+        <a href="/documentation/" data-parenturl="/documentation/" class="navbar-item top-nav-developers-top" data-target="webuiPopover1">Resources <i class="ml-2 fa fa-angle-down"></i></a>
+        <a href="/support/" data-parenturl="/support/" class="navbar-item">Support</a>s
       </div>
       {{ partial "popovers/nav-product-popover" . }}
       {{ partial "popovers/nav-developers-popover" . }}
