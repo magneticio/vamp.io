@@ -281,6 +281,7 @@ a {
 
     &:hover {
       background-color: $blue-dark;
+      color: white;
     }
 
     &--ghost {
@@ -302,6 +303,7 @@ a {
 
     &:hover {
       background-color: $red-dark;
+      color: white;
     }
 
     &--ghost {
@@ -357,7 +359,11 @@ a {
     }
   }
 
-
+  & a {
+    &:hover {
+      color: inherit;
+    }
+  }
 }
 
 .video-play-button {
