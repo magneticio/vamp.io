@@ -2,6 +2,9 @@
   article {
     margin-bottom: 5 * $spacer;
   }
+  .blog-content {
+
+  }
   .blog-header {
     font-size: 45px;
     color: $blue-darker;
@@ -19,7 +22,7 @@
     }
   }
   .blog-meta-data {
-    margin-bottom: $spacer;
+    margin-bottom: 1.5 * $spacer;
     letter-spacing: .01em;
     img.blog-meta-data-avatar {
       width: 48px;
@@ -41,6 +44,23 @@
     .blog-meta-data-tags {
       display: inline-block;
       vertical-align: baseline;
+    }
+  }
+
+  .blog-body {
+    font-family: 'Merriweather', serif;
+    font-size: 17px !important;
+    p {
+      font-size: 17px !important;
+      font-weight: 300;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    strong {
+      font-weight: 600 !important;
     }
   }
 }

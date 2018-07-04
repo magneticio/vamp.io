@@ -4,14 +4,14 @@
 
 <div class="page documentation container blog mb-3">
   <div class="row">
-    <div class="col-sm-12 col-md-10 offset-md-1">
-      <div class="content">
+    <div class="col-sm-12 col-md-8 offset-md-2">
+      <div class="content blog-content">
 
         {{ partial "blog-meta-data" . }}
 
         <h1 class="blog-header">{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
 
-        <div class="markdowned mb-md-5">
+        <div class="markdowned blog-body mb-md-5">
           {{ .Content }}
         </div>
 

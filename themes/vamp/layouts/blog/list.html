@@ -4,7 +4,7 @@
 
 <div class="page documentation blog container">
   <div class="row">
-    <div class="col-sm-12 col-md-10 offset-md-1">
+    <div class="col-sm-12 col-md-8 offset-md-2">
       <div class="content">
         {{ range (.Paginator 10).Pages.ByPublishDate.Reverse }}
 
@@ -13,7 +13,7 @@
         <article>
           <a class="blog-header" href="{{ .RelPermalink }}">{{ .Title }}
           </a>
-          <div class="markdowned">
+          <div class="markdowned blog-body">
             {{ .Summary | markdownify }}
           </div>
           {{ if .Truncated }}

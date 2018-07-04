@@ -37,7 +37,7 @@ To get started you will need:
 
 * **kubectl** installed on you local computer and authorized to access the cluster
 
-* A **Slack **account, if you want *Lamia* to send notifications
+* A **Slack** account, if you want *Lamia* to send notifications
 
 *Lamia* should work on any K8s 1.9 cluster but we’ve only tested it on Google Cloud.
 
@@ -101,7 +101,7 @@ The simplest policy is the **TimeCanaryReleasingPolicy**. This policy gradually 
 
 ![](https://cdn-images-1.medium.com/max/5760/1*J6c3QdxjR6hYrX6LS9sRgg.png)
 
-This is, of course, a pretty limited example. Typically, you would want to ensure that a version only receives traffic if it is healthy. The **HealthBasedGatewayCanaryReleasingPolicy **performs the gradually shift of traffic to the **target** version but it will only update the weights if the target version is healthy.
+This is, of course, a pretty limited example. Typically, you would want to ensure that a version only receives traffic if it is healthy. The **HealthBasedGatewayCanaryReleasingPolicy** performs the gradually shift of traffic to the **target** version but it will only update the weights if the target version is healthy.
 
 The default metric is:
 
@@ -109,7 +109,7 @@ The default metric is:
 
 If the percentage of errors exceeds 20%, the policy will shift traffic away from the target and back to the original version.
 
-The **MetricBasedGatewayCanaryReleasingPolicy **allows you to define your own health metric based on the data that Envoy stores in Prometheus. The available metrics include:
+The **MetricBasedGatewayCanaryReleasingPolicy** allows you to define your own health metric based on the data that Envoy stores in Prometheus. The available metrics include:
 
 * **external_upstream_rq_200**
 

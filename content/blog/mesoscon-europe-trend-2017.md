@@ -9,7 +9,7 @@ publishdate: 2017-10-26
 
 ![](https://cdn-images-1.medium.com/max/720/1*nxks34PDE35QNFOEQMjBig.png)
 
-Let’s look at some of the themes and trends at **[MesosCon Europe 2017](http://events.linuxfoundation.org/events/mesoscon-europe)** in Prague 🇨🇿 I’m interested in anything that has to do with **adoption, security, state **and anything “**day 2 operations**” related.
+Let’s look at some of the themes and trends at **[MesosCon Europe 2017](http://events.linuxfoundation.org/events/mesoscon-europe)** in Prague. I’m interested in anything that has to do with **adoption, security, state** and anything “day 2 operations” related.
 
 <!--more-->
 
