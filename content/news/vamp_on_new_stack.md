@@ -1,8 +1,8 @@
 ---
 date: 2016-06-02T09:00:00+00:00
 title: "No More Voodo Testing: Vamp on thenewstack.io"
-type: page
-layout: overview
+
+
 ---
 *Amsterdam, 2 June 2016*
 

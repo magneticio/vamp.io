@@ -1,8 +1,6 @@
 ---
 date: 2017-12-20T09:00:00+00:00
 title: "New eBook on Containers and Microservices by The New Stack"
-type: page
-layout: overview
 ---
 *Amsterdam, 20 December 2017*
 

@@ -1,8 +1,8 @@
 ---
 date: 2016-01-27T09:00:00+00:00
 title: "Magnetic.io founder on Fast Moving Targets"
-type: page
-layout: overview
+
+
 ---
 *Amsterdam, 27 January 2016*
 

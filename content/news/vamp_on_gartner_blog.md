@@ -1,8 +1,8 @@
 ---
 date: 2016-07-14T09:00:00+00:00
 title: "Vamp on Gartner blog on operating Docker container"
-type: page
-layout: overview
+
+
 ---
 *Amsterdam, 14 July 2016*
 

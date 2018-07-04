@@ -1,9 +1,8 @@
 ---
 date: 2014-12-30T09:00:00+00:00
 title: "2015: Year of the Experimental Enterprise"
-type: news
-layout: single
 ---
+
 *Amsterdam, 30 December 2014*
 
 IT news blog AGconnect.nl interviewed Magnetic.io founder Olaf Molenveld on digital trends for 2015.

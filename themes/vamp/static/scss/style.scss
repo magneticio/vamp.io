@@ -5,6 +5,7 @@
 @import 'markdown';
 @import 'nav-popover';
 @import 'badge';
+@import 'blog';
 @import 'table';
 @import 'mixins';
 @import 'transitions';
@@ -36,6 +37,7 @@ body {
     .content {
       @media all and (min-width: 1025px) {
         padding-top: 2 * $spacer;
+        padding-bottom: 2 * $spacer;
       }
 
     }

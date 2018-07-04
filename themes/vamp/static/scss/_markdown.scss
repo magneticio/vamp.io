@@ -141,7 +141,7 @@
 
   li {
     font-weight: inherit;
-    margin: .5rem auto;
+    margin: auto;
     @extend .text;
 
     &:first-of-type {
@@ -149,6 +149,10 @@
     }
 
     &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    p {
       margin-bottom: 0;
     }
   }
