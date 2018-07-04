@@ -454,15 +454,15 @@ a {
   position: relative;
 
   @media all and (min-width: 321px) {
-    padding-top: 20px
+    padding-top: 30px
   }
 
   @media all and (min-width: 641px) {
-    padding-top: 20px + $hero-spacer;
+    padding-top: 10px + $hero-spacer;
   }
 
   @media all and (min-width: 769px) {
-    padding-top: 60px + $hero-spacer;
+    padding-top: 20px + $hero-spacer;
   }
 
   @media all and (min-width: 1025px) {
@@ -624,6 +624,10 @@ a {
   background-color: white;
   min-height: 100vh;
 
+  @media (max-width: 769px) {
+    padding-left: .5 * $spacer;
+    padding-right: .5 * $spacer;
+  }
 
   .content-header {
     font-size: $font-size-biggest;
