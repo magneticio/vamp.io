@@ -1,0 +1,38 @@
+.testimonial {
+  .testimonial-image {
+    position: relative;
+    width: 80px;
+    display: inline;
+    float: left;
+    margin-right: 60px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .testimonial-quote {
+    font-size: $font-size-big;
+    font-weight: $font-weight-light;
+    font-style: italic;
+    text-align: left;
+    margin-bottom: .5 * $spacer;
+
+    @media only screen
+    and (max-device-width: 320px) {
+      margin-left: 0;
+    }
+  }
+
+  .testimonial-sub {
+    font-size: $font-size-medium;
+    font-weight: $font-weight-default;
+    text-align: left;
+    color: $blue-dark;
+
+    @media only screen
+    and (max-device-width: 320px) {
+      margin-left: 0;
+    }
+  }
+}
