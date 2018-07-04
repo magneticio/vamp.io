@@ -20,8 +20,16 @@
 
   <meta property="og:url" content="{{ .Permalink }}">
   {{ with .Site.Title }}<meta property="og:title" content="{{ . }}">{{ end }}
-  <meta property="og:image" content="/img/006-mock-ups/VAMP-light-laptop-v091-hero.png">
+  <meta property="og:image" content="/img/006-mock-ups/VAMP-light-laptop-v100-hero.png">
   {{ with .Site.Title }}<meta name="apple-mobile-web-app-title" content="{{ . }}">{{ end }}
+
+
+  <meta property='twitter:card' content='summary'>
+  <meta property='twitter:title' content='{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | Vamp.io {{ end }}'>
+  <meta property='twitter:description' content='{{.Description | default .Site.Params.Description}}'>
+  <meta property='twitter:image' content='content="/img/006-mock-ups/VAMP-light-laptop-v100-hero.png'>
+
+
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" type="image/x-icon" href="{{ $.Site.BaseURL }}{{ with .Site.Params.favicon }}/{{ . }}{{ else }}/images/favicon.ico{{ end }}">
