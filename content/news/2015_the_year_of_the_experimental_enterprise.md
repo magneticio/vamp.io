@@ -1,8 +1,8 @@
 ---
 date: 2014-12-30T09:00:00+00:00
 title: "2015: Year of the Experimental Enterprise"
-type: page
-layout: overview
+type: news
+layout: single
 ---
 *Amsterdam, 30 December 2014*
 
