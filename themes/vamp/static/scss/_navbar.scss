@@ -3,7 +3,7 @@
   position: relative;
   justify-content: space-between;
   height: 80px;
-  background-color: $white;
+  background-color: $ash;
   padding: 0 10px;
   z-index: 999;
   transition: height .4s;
@@ -23,7 +23,7 @@
   }
 
   &.navbar-light {
-    background-color: $white;
+    background-color: $ash;
     border-bottom: $light-border;
     .logo {
       background-image: url('/img/005-vamp/Logo/logo-long-colour.svg');
@@ -117,7 +117,7 @@
     align-items: center;
     padding: 0 20px;
 
-    color: $white;
+    color: $ash;
     font-size: 15px;
     font-weight: 300;
     text-decoration: none;
@@ -185,7 +185,7 @@
     }
 
     a {
-      color: $white;
+      color: $ash;
     }
   }
 }

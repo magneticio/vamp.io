@@ -1,6 +1,6 @@
 table.vamp-table  {
   thead > tr > th {
-    color: $white;
+    color: $ash;
     background-color: $blue-darker;
     border-bottom: 0;
     font-weight: $font-weight-default;
@@ -15,7 +15,7 @@ table.vamp-table  {
 
   &.table-striped {
     tbody > tr:nth-of-type(odd) {
-      background-color: $white;
+      background-color: $ash;
     }
   }
 }

@@ -9,13 +9,13 @@
 
 .badge {
   display: inline;
-  padding: .3em .5em;
+  padding: .5em .7em;
   margin-right: 1em;
   font-size: 75%;
-  font-weight: $font-weight-light;
+  font-weight: $font-weight-default;
   line-height: 1;
-  color: #fff;
-  background-color: $gray-light;
+  color: $blue-darker;
+  background-color: $ash;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
@@ -33,7 +33,7 @@
   }
 
   > a {
-    color: #fff;
+    color: $blue-darker;
     text-decoration: none;
     &:hover {
       text-decoration: underline;

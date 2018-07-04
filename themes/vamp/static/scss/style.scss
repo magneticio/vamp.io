@@ -66,7 +66,7 @@ a {
   font-size: 26px;
   font-weight: 400;
   letter-spacing: 0.05em;
-  color: $white;
+  color: $ash;
   padding-top: 2 * $spacer;
 
   &.hero-text {
@@ -410,7 +410,7 @@ a {
     background-color: $blue-darker;
 
     .header, .h1, .h2, .text-header, .text, .fa {
-      color: $white;
+      color: $ash;
     }
   }
 
@@ -423,7 +423,7 @@ a {
   }
 
   &--grey {
-    background-color: $white;
+    background-color: $ash;
     .h1, .h2, .h3 {
       color: $blue-dark;
     }
@@ -800,7 +800,7 @@ a {
   }
 
   a {
-    color: $white;
+    color: $ash;
   }
 
   @media all and (min-width: 769px) {
@@ -1111,7 +1111,7 @@ $color_hover_text: $blue-darker;
   font-size: 16px;
   list-style: none;
   overflow: hidden;
-  background-color: $white;
+  background-color: $ash;
   margin: 0 -5px -5px -5px;
   max-height: calc(100vh - 51px);
   overflow: auto;
@@ -1397,7 +1397,7 @@ pre + pre {
 }
 
 .dropdown {
-  background-color: $white;
+  background-color: $ash;
   height: 40px;
   width: 240px;
   cursor: pointer;
@@ -1428,7 +1428,7 @@ pre + pre {
     justify-content: space-between;
     position: relative;
     z-index: 10;
-    background-color: $white;
+    background-color: $ash;
     border-radius: 5px;
 
   }
@@ -1451,9 +1451,9 @@ pre + pre {
     top: 40px;
     left: 0;
     right: 0;
-    border-left: 1px $white solid;
-    border-right: 1px $white solid;
-    border-bottom: 1px $white solid;
+    border-left: 1px $ash solid;
+    border-right: 1px $ash solid;
+    border-bottom: 1px $ash solid;
     border-radius: 0 0 4px 4px;
     display: none;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
@@ -1480,7 +1480,7 @@ pre + pre {
     }
 
     &:not(:last-of-type) {
-      border-bottom: 1px $white solid;
+      border-bottom: 1px $ash solid;
     }
   }
 }

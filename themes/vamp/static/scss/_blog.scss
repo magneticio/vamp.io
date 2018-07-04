@@ -3,7 +3,7 @@
     margin-bottom: 5 * $spacer;
   }
   .blog-header {
-    font-size: 50px;
+    font-size: 45px;
     color: $blue-darker;
     font-weight: $font-weight-heavy;
     letter-spacing: .03em;
@@ -11,11 +11,6 @@
     margin-bottom: $spacer;
     @media (max-width: 321px) {
       font-size: 35px;
-    }
-
-    @media all and (max-width: 769px) {
-      font-size: 45px;
-
     }
   }
   a.blog-header {
