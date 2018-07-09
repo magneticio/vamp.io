@@ -8,5 +8,10 @@ header:
 ---
 There are two ways to get started with a Vamp Enterprise Edition trial.
 
-- **Option 1:** You follow the [instructions on our installation page](/documentation/installation/) and set up your own environment.
-- **Option 2:** We set up a environment for your on our cloud. Just fill in the form on the left and we'll be in touch.
+## 1. Install yourself
+
+You follow the [instructions on our installation page](/documentation/installation/) and set up your own environment.
+
+## 2. Request a cloud hosted environment
+
+We set up a environment for your on our cloud. Just fill in the form on the left and we'll be in touch.
