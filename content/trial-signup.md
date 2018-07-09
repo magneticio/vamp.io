@@ -5,7 +5,8 @@ type: page
 layout: trial-signup
 header:
     title: "Start using Vamp Enterprise Edition for free for 30 days!"
-    subtitle: "Your Vamp EE trial has expired. We hope the trial period was insightful and helped you understand
-    the benefits Vamp brings to Cloud Native application management. If you still have questions or want to extend your trial
-    period, just get in touch with the form below."
 ---
+There are two ways to get started with a Vamp Enterprise Edition trial.
+
+- **Option 1:** You follow the [instructions on our installation page](/documentation/installation/) and set up your own environment.
+- **Option 2:** We set up a environment for your on our cloud. Just fill in the form on the left and we'll be in touch.
