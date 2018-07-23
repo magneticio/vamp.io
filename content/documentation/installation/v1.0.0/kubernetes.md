@@ -101,7 +101,7 @@ kubectl --namespace default get pods -l app=lifter -o go-template --template '{{
 
 8. Complete the Vamp EE Quick Start installation
   * Open the generated link in your web browser to view the installer
-  * ![ss-lifter-installer-deploy.png](url missing)
+  ![ss-lifter-installer-deploy.png](url missing)
   * With the *Deploy* tab selected, click on the green icon at the top right of the page
   * This will start start the installation and:
     * Deploy *MySQL, Hashicorp Vault and Elasticsearch* into the *default* Kubernetes namespace
@@ -119,31 +119,6 @@ kubectl --namespace default get pods -l app=lifter -o go-template --template '{{
 ```
   kubectl --namespace default get pods -l app=vamp -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/default/pods/{{.metadata.name}}/proxy/{{"\n"}}{{end}}'
 ```
-
-**WARNING: Old Stuff below**
-
-```
-curl -s \
-  https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v1.0.0/vamp_kube_quickstart.sh \
-  | bash
-```
-The script will poll for the external ip of Vamp, note that this process will take a while. if the installation was successful the ip will be displayed:
-
-```
-$ [OK] Quickstart finished, Vamp is running on http://104.xxx.xxx.xxx:8080
-```
-
-We don't recommend running this setup in production. You might want to add a HTTPS proxy in front of Vamp with at least basic authentication.
-
-To remove the quickstart deployment, use the following command:
-
-```
-curl -s \
-  https://raw.githubusercontent.com/magneticio/vamp.io/master/static/res/v1.0.0/vamp_kube_uninstall.sh \
-  | bash
-```
-
-**WARNING: end of old Stuff here**
 
 ### Manual deployment
 
