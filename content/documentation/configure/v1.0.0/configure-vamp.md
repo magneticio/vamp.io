@@ -107,28 +107,6 @@ This is as of 0.9.4 how [we configure our DC/OS Docker image]( https://github.co
 
 (Typesafe documentation on the topic covering system or env variable overrides)[https://github.com/typesafehub/config#optional-system-or-env-variable-overrides]
 
-## Include configuration not intended for Vamp
-It is possible to store configuration parameters not intended for use by Vamp itself in the Vamp `application.conf` file, such as configuration for workflows. Vamp would ignore the parameter, but it would be available to all workflows through the API. This is useful for storing shared local configuration parameters. Configuration specific to a single workflow is best set using environment variables or by hard coding the parameter.
-
-## Access configuration parameters through the API
-All configuration parameters can be retrieved from the Vamp API endpoint `config` or `configuration`.
-
-* Return all configuration parameters as a JSON object:
-  `GET` `/api/v1/config` .
-
-* Return a single paramater:
-  `GET` `/api/v1/config/<configuration parameter name>`
-
-For example `GET` `<vamp url>/api/v1/config/vamp.info.message`
-
-Or, from a workflow using Vamp node.JS client ([github.com/magneticio - Vamp Node.js Client](https://github.com/magneticio/vamp-node-client)):
-
-```
-api.config().each(function (config) {
-    _.log(config['vamp.info.message']);
-});
-```
-
 {{< note title="What next?" >}}
 * Check the [configuration reference](/documentation/configure/v1.0.0/configuration-reference)
 * Look at some [example configurations](/documentation/configure/v1.0.0/example-configurations)
