@@ -24,21 +24,23 @@ The below diagram should be used more as an overview than required architecture.
 
 ## Concepts
 
-### Multitenancy
+### Multi-tenancy
 Vamp supports multiple tenants. Tenants can be different teams within a business division, different business divisions inside the same organization, or entirely different organizations. Each tenant's data is isolated and remains invisible to other tenants.
 
 ### Namespaces
-Vamp implements multitenancy using a two-level namespace model.
+Vamp implements multi-tenancy using a two-level namespace model.
 
 #### Organizations
-
+The first-level namespace is the organization and holds shared configuration. Settings such as password salts are always defined at the organization level. The settings for the persistent storage are also normally defined at the organization level.
 
 #### Environments
+The second-level namespace is the environment. An environment typically represents part of a DTAP-pipeline (Development > Testing > Acceptance > Production). The container scheduler (kubernetes or marathon) is defined at the environment level. When a high degree of isolation is required, the dedicated persistent storage can be defined at the environment level.
 
-### Role-based access control
-A tenant is a group of users who share access to a specific set of resources.
+### Role-Based Access Control
+A tenant can be thought of as a group of users who share access to a specific set of resources. Role-Based Access Control (RBAC) enables fine-grained access management for Vamp. Using RBAC, you can segregate duties within your team and grant only the amount of access to users that they need to perform their jobs.
 
 ### Workflows
+Vamp workflows are event-driven scripts or small applications that can be used to automate cloud-native deployment strategies, integrate with third-party service discovery registries or send notifications to interested parties, for example. Workflows can be run standalone or arranged into multi-stage pipelines.
 
 ### Gateways
 
