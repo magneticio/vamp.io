@@ -24,7 +24,7 @@ The below diagram should be used more as an overview than required architecture.
 
 ## Concepts
 
-### Multi-tenancy
+### Multi-Tenancy
 Vamp supports multiple tenants. Tenants can be different teams within a business division, different business divisions inside the same organization, or entirely different organizations. Each tenant's data is isolated and remains invisible to other tenants.
 
 ### Namespaces
@@ -40,25 +40,24 @@ The second-level namespace is the environment. An environment typically represen
 A tenant can be thought of as a group of users who share access to a specific set of resources. Role-Based Access Control (RBAC) enables fine-grained access management for Vamp. Using RBAC, you can segregate duties within your team and grant only the amount of access to users that they need to perform their jobs.
 
 ### Workflows
-Vamp workflows are event-driven scripts or small applications that can be used to automate cloud-native deployment strategies, integrate with third-party service discovery registries or send notifications to interested parties, for example. Workflows can be run standalone or arranged into multi-stage pipelines.
+Vamp Workflows are event-driven scripts or small applications that can be used to automate cloud-native deployment strategies, integrate with third-party service discovery registries or send notifications to interested parties, for example. Workflows can be run standalone or arranged into multi-stage pipelines.
 
 ### Gateways
+Vamp Gateways fulfill two essential roles in a microservice architecture: service discovery and exposing services at the cluster edge. Vamp Gateways provide a service mesh that allows services to discover the location of upstream services and then directly connect to them safely and reliably. Vamp Gateways are also function as API gateways, providing ingress with vhost support, request routing and API composition for microservices-based applications. 
 
-## Vamp components
-
-Vamp consists of server- and client-side components that work together with elements in your architecture to handle orchestration, routing, persistence and metrics aggregation.
+## Vamp Components
 
 ### Dependencies
 Vamp has three dependencies a secure key-value store, a SQL database, and Elasticsearch for aggregated metrics.
 
 #### Hashicorp Vault
-Vamp uses Hashicorp Vault as a secure key-value store keep
+Vamp uses Hashicorp Vault as a secure key-value store the namespaces configurations, workflow scripts and Vamp Gateway Agent (VGA) configuration.
 
 #### MySQL
-
+Vamp uses MySQL to store the definitions and current states of the services, gateways and workflows. The SQL database is also used to store the user role definitions and users. All data is securely stored.
 
 #### Elasticsearch
-
+Vamp uses Elasticsearch to store raw traffic logs and aggregated health and traffic metrics. Elasticsearch is also used by Vamp for audit logging. 
 
 ### Vamp
 Vamp is the main API endpoint, business logic and service coordinator. Vamp talks to the configured container manager (Docker, Marathon, Kubernetes etc.) and synchronizes it with Vamp Gateway Agent (VGA)  via ZooKeeper, etcd or Consul (distributed key-value stores). Vamp can use a SQL database or Elasticsearch for artifact persistence and Elasticsearch to store events (e.g. changes in deployments). Typically, there should be one Vamp instance and one or more VGA instances (we conform to the AirBnB Smartstack pattern). Vamp is not a realtime application and only updates deployments and routing when asked to (reactive) and thus doesn't need to run with multiple instances in HA mode. If this is a hard requirement of your project please contact us for the [Vamp Enterprise Edition](/product/enterprise-edition/).
