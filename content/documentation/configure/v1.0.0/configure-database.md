@@ -139,7 +139,7 @@ The key changes are:
 3. Change `vamp.persistence.database.sql.database` to replace `${parent}` with `${namespace}` in the the operation template
 4. Change `vamp.persistence.database.sql.url` to replace `${parent}` with `${namespace}` in the the operation template
 
-If you will be using use the same database server for all tenants, then you should do this by editing the admin template and operation template. The database server host and port, username and password must be the same in both templates. You can override the username and password settings when you create the tenant (organization) and tenant environments.
+If you will be using use the same database server for all tenants, then you should edit the admin template and operation template. The database server host and port, username and password must be the same in both templates. You can override the username and password settings when you create the tenant (organization) and tenant environments.
 
 If you will be using different database servers for each tenant, then you must configure each tenant (organization) and tenant environment separately.
 
