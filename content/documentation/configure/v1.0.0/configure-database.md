@@ -70,6 +70,7 @@ Vamp supports a number of data at rest encryption strategies.
 Vamp recommends using MySQL as the relational database.
 
 Vamp has been tested with:
+
 * Cloud SQL for MySQL service on Google Cloud Platform
 * The Amazon Relational Database Service MySQL engine
 * Azure Database for MySQL service
@@ -130,6 +131,7 @@ vamp:
 To use the database-schema-per-namespace model, you need to replace the default configuration.
 
 The key changes are:
+
 1. Delete the `table: ${namespace}` line from the admin template
 2. Delete the `table: ${namespace}` line from the operation template
 3. Edit `vamp.persistence.database.sql.url` to replace `${parent}` with `${namespace}` in the the operation template
