@@ -15,7 +15,7 @@ aliases:
 Vamp uses a Vamp uses a relational database to persist the definitions and current states of the services, gateways and workflows. This database is also used to store the user role definitions and users.
 
 ### Database Models
-Vamp supports two models: database-schema-per-namespace and table-per-namespace.
+Vamp supports two models: *database-schema-per-namespace* and *table-per-namespace*.
 
 #### Schema per Namespace
 The *database-schema-per-namespace* model offers the greatest flexibility but also has the highest overhead.
@@ -100,7 +100,8 @@ vamp:
         table: ${namespace}
         password: secret
       type: mysql
-
+```
+```
   model:
     resolvers:
       namespace:
@@ -120,7 +121,8 @@ vamp:
         table: ${namespace}
         password: secret
       type: mysql
-
+```
+```
   model:
     resolvers:
       namespace:
@@ -134,7 +136,7 @@ The key changes are:
 
 1. Delete the `table: ${namespace}` line from the admin template
 2. Delete the `table: ${namespace}` line from the operation template
-3. Edit `vamp.persistence.database.sql.url` to replace `${parent}` with `${namespace}` in the the operation template
+3. Change `vamp.persistence.database.sql.url` to replace `${parent}` with `${namespace}` in the the operation template
 
 If you will be using use the same database server for all tenants, then you should do this by editing the admin template and operation template. The database server host and port, username and password must be the same in both templates. You can override the username and password settings when you create the tenant (organization) and tenant environments.
 
