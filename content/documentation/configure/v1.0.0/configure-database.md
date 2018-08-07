@@ -94,8 +94,8 @@ vamp:
     database:
       sql:
         database: vamp-${namespace}
-        url: jdbc:mysql://mysql.marathon.mesos:3306/vamp-${namespace}?useSSL=false
-        database-server-url: jdbc:mysql://mysql.marathon.mesos:3306?useSSL=false
+        url: jdbc:mysql://mysql.default.svc.cluster.local:3306/vamp-${namespace}?useSSL=false
+        database-server-url: jdbc:mysql://mysql.default.svc.cluster.local:3306?useSSL=false
         user: root
         table: ${namespace}
         password: secret
@@ -115,8 +115,8 @@ vamp:
     database:
       sql:
         database: vamp-${parent}
-        url: jdbc:mysql://mysql.marathon.mesos:3306/vamp-${parent}?useSSL=false
-        database-server-url: jdbc:mysql://mysql.marathon.mesos:3306?useSSL=false
+        url: jdbc:mysql://mysql.default.svc.cluster.local:3306/vamp-${parent}?useSSL=false
+        database-server-url: jdbc:mysql://mysql.default.svc.cluster.local:3306?useSSL=false
         user: root
         table: ${namespace}
         password: secret
@@ -136,7 +136,8 @@ The key changes are:
 
 1. Delete the `table: ${namespace}` line from the admin template
 2. Delete the `table: ${namespace}` line from the operation template
-3. Change `vamp.persistence.database.sql.url` to replace `${parent}` with `${namespace}` in the the operation template
+3. Change `vamp.persistence.database.sql.database` to replace `${parent}` with `${namespace}` in the the operation template
+4. Change `vamp.persistence.database.sql.url` to replace `${parent}` with `${namespace}` in the the operation template
 
 If you will be using use the same database server for all tenants, then you should do this by editing the admin template and operation template. The database server host and port, username and password must be the same in both templates. You can override the username and password settings when you create the tenant (organization) and tenant environments.
 
@@ -149,8 +150,8 @@ vamp:
     database:
       sql:
         database: vamp-${namespace}
-        url: jdbc:mysql://mysql.marathon.mesos:3306/vamp-${namespace}?useSSL=false
-        database-server-url: jdbc:mysql://mysql.marathon.mesos:3306?useSSL=false
+        url: jdbc:mysql://mysql.default.svc.cluster.local:3306/vamp-${namespace}?useSSL=false
+        database-server-url: jdbc:mysql://mysql.default.svc.cluster.local:3306?useSSL=false
         user: root
         password: secret
       type: mysql
@@ -163,8 +164,8 @@ vamp:
     database:
       sql:
         database: vamp-${namespace}
-        url: jdbc:mysql://mysql.marathon.mesos:3306/vamp-${namespace}?useSSL=false
-        database-server-url: jdbc:mysql://mysql.marathon.mesos:3306?useSSL=false
+        url: jdbc:mysql://mysql.default.svc.cluster.local:3306/vamp-${namespace}?useSSL=false
+        database-server-url: jdbc:mysql://mysql.default.svc.cluster.local:3306?useSSL=false
         user: root
         password: secret
       type: mysql
