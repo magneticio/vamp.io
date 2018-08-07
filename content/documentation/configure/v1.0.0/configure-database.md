@@ -31,7 +31,7 @@ In this model, each namespace is mapped to a separate database schema. A minimum
 
 **Drawbacks**
 
-* Higher overheads: there are more schemas, users and potentially more database server instances to mananage
+* Higher overheads: there are more schemas, users and potentially more database server instances to manage
 * Lower performance : maintaining separate database connection pools for each schema has a small performance impact when scaling Vamp
 
 #### Table per Namespace
@@ -46,7 +46,7 @@ In this model, each tenant is a separate database schema and each namespace is a
   * A different user id can be assigned to each tenant
   * Each tenant can use a different database server instance for added security
 * Best performance: only one database connection is required for each tenant
-* Lowest overheads: there are fewer schemas, users and database server instances to mananage
+* Lowest overheads: there are fewer schemas, users and database server instances to manage
 
 **Drawbacks**
 
@@ -61,7 +61,7 @@ In this model, each tenant is a separate database schema and each namespace is a
 
 **Drawbacks**
 
-* Higher overheads: there are more schemas, users and potentially more database server instances to mananage.
+* Higher overheads: there are more schemas, users and potentially more database server instances to manage.
 
 ### Security
 Vamp supports a number of data at rest encryption strategies.
