@@ -11,7 +11,7 @@ aliases:
     - /documentation/installation/configure-database
 ---
 
-Vamp uses a Vamp uses a relational database to persist the definitions and current states of the services, gateways and workflows. This database is also used to store the user role definitions and users.
+Vamp uses a relational database to persist the definitions and current states of the services, gateways and workflows. This database is also used to store the user role definitions and users.
 
 Vamp recommends using MySQL as the relational database. Though it’s possible to use PostgreSQL or Microsoft SQL server, we don’t recommend it, and if you get stuck we’re going to suggest that you to use MySQL.
 
