@@ -11,13 +11,21 @@ aliases:
     - /documentation/installation/configure-database
 ---
 
-## Relational Database
 Vamp uses a Vamp uses a relational database to persist the definitions and current states of the services, gateways and workflows. This database is also used to store the user role definitions and users.
 
-### Database Models
+Vamp recommends using MySQL as the relational database. Though it’s possible to use PostgreSQL or Microsoft SQL server, we don’t recommend it, and if you get stuck we’re going to suggest that you to use MySQL.
+
+Vamp has been tested with:
+
+* Cloud SQL for MySQL service on Google Cloud Platform
+* The Amazon Relational Database Service MySQL engine
+* Azure Database for MySQL service
+* Standalone MySQL instances
+
+## Database Models
 Vamp supports two models: *database-schema-per-namespace* and *table-per-namespace*.
 
-#### Schema per Namespace
+### Schema per Namespace
 The *database-schema-per-namespace* model offers the greatest flexibility but also has the highest overhead.
 
 In this model, each namespace is mapped to a separate database schema. A minimum of two schemas are required for each tenant, one for the organization namespace and one for each environment.
@@ -34,7 +42,7 @@ In this model, each namespace is mapped to a separate database schema. A minimum
 * Higher overheads: there are more schemas, users and potentially more database server instances to manage
 * Lower performance : maintaining separate database connection pools for each schema has a small performance impact when scaling Vamp
 
-#### Table per Namespace
+### Table per Namespace
 The *table-per-namespace* model offers the best performance and the lowest overhead.
 
 In this model, each tenant is a separate database schema and each namespace is a table within that schema.
@@ -63,18 +71,8 @@ In this model, each tenant is a separate database schema and each namespace is a
 
 * Higher overheads: there are more schemas, users and potentially more database server instances to manage.
 
-### Security
+## Security
 Vamp supports a number of data at rest encryption strategies.
-
-### MySQL
-Vamp recommends using MySQL as the relational database.
-
-Vamp has been tested with:
-
-* Cloud SQL for MySQL service on Google Cloud Platform
-* The Amazon Relational Database Service MySQL engine
-* Azure Database for MySQL service
-* Standalone MySQL instances
 
 ## Configuration
 
