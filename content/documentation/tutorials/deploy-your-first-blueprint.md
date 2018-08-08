@@ -62,23 +62,6 @@ clusters:
   ![](/images/screens/v100/tut1/vampee-environment-deployments-sava)
   
 
-#### Deploy using the Vamp API
-
-You could also use your favourite tools like Postman ([getpostman.com](https://www.getpostman.com/)), HTTPie ([github.com/jakubroztocil - httpie](https://github.com/jakubroztocil/httpie)) or Curl to post this blueprint directly to the `api/v1/deployments` endpoint of Vamp. Take care to set the correct `Content-Type: application/x-yaml` header on the POST request. Vamp is kinda strict with regard to content types, because we support JSON and YAML so we need to know what you are sending.   
-
-**curl:**
-```
-curl -v -X POST --data-binary @sava_1.0.yaml -H "Content-Type: application/x-yaml" http://localhost:8080/api/v1/deployments
-```
-
-**httpie:**
-```
-http POST http://localhost:8080/api/v1/deployments Content-Type:application/x-yaml < sava_1.0.yaml
-```
-
-After POST-ing, Vamp should respond with a `202 Accepted` message and return a JSON blob. This means Vamp is trying to deploy your container. You'll notice some parts are filled in for you, like a default scale, a default routing and of course a UUID as a name.
-You can also use the RESTful API to create a deployment with a custom name - simple `PUT` request to `http://localhost:8080/api/v1/deployments/DEPLOYMENT_CUSTOM_NAME`
-
 ## Check out the deployed application 
 
 You can follow the deployment process of our container by checking the `/api/v1/deployments` endpoint and checking when the `state` field changes from `ReadyForDeployment` to `Deployed`. You can also check Marathon's GUI (see the [full list of all services exposed](/documentation/installation/hello-world/#check-vamp-is-up-and-running) in the hello world setup).
