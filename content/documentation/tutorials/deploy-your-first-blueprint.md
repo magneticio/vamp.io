@@ -82,12 +82,6 @@ When the service is fully deployed, you can check it out through the Vamp UI.
 
 ![](/images/screens/v100/tut1/vampee-environment-gateways-sava-internal-mono10.png)
 
-* **By reverse proxy:**  
-  You can also use Vamp as a reverse proxy to access the application through the exposed sava gateways:
-
-  * `http://localhost:8080/proxy/gateways/sava%2Fsava%2Fwebport/`
-  * `http://localhost:8080/proxy/gateways/sava%2F9050/`
-
 ## Get some metrics on the running application
 
 Open the application in a new tab and hit refresh a few times in your browser. You should see the metrics spike and some pretty charts being drawn on the **sava/9050** gateway page:
