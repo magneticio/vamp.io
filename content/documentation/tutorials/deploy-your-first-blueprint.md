@@ -73,7 +73,8 @@ When the service is fully deployed, you can check it out through the Vamp UI.
 
 * **From the Deployments page:**  
   Click on **sava** to open the deployment detail screen, then click on **sava:1.0.0** to see all running instances of the sava service (we only have one instance running right now).
-  Click an instance name to open it.
+  
+  Click an instance name to open it and then click the **webport** tab.
 
 ![](/images/screens/v100/tut1/vampee-environment-deployments-sava-instance-mono10.png)
 
