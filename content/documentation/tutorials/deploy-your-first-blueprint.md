@@ -87,11 +87,9 @@ When the service is fully deployed, you can check it out through the Vamp UI.
   You can also use the Vamp Gateway Agent (VGA) to access the service using the virtual host name **9050.sava.vamp**.
   
   If you are using Kubernetes, you can find the external IP address of the VGA using `kubectl`:
-  ```
-  $ kubectl --namespace vampio-organization-environment get service vamp-gateway-agent
   
-  NAME                 TYPE           CLUSTER-IP      EXTERNAL-IP       PORT(S)        AGE
-  vamp-gateway-agent   LoadBalancer   10.55.243.115   930.811.777.628   80:31041/TCP   8d
+  ```
+  kubectl --namespace vampio-organization-environment get service vamp-gateway-agent
   ```
   
   If you are using DC/OS, you will need the external IP address of the public agent load balancer.
@@ -99,7 +97,7 @@ When the service is fully deployed, you can check it out through the Vamp UI.
   Once you have the external IP address for the VGA, you can access the service using `curl`:
   
   ```
-  curl -H "Host: 9050.sava.vamp" http://930.811.777.628/
+  curl -H "Host: 9050.sava.vamp" http://<external-ip>/
   ```
 
 ## Get some metrics on the running application
@@ -111,7 +109,7 @@ If you checked out the deployed service, then you should see a small metrics spi
 You can general additional traffic to the service using [ApacheBench](https://httpd.apache.org/docs/2.4/programs/ab.html):
 
 ```
-ab -c 7 -n 10000 -l -H "Host: 9050.sava.vamp" http://930.811.777.628/
+ab -c 7 -n 10000 -l -H "Host: 9050.sava.vamp" http://<external-ip>/
 ```
 
 ![](/images/screens/v100/tut1/vampee-environment-gateways-sava-external.png)
