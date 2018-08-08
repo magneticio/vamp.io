@@ -56,27 +56,11 @@ clusters:
 1. In the Vamp UI, go to the **Blueprints** page and click **Add** (top right)
 * Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment 
 * Open the action menu on the **sava:1.0** blueprint and select **Deploy as** 
-  ![](/images/screens/v094/tut1_action-menu.png)
+  ![](/images/screens/v100/tut1/vampee-environment-blueprints-sava10-deployas.png)
 * You'll be prompted to give your deployment a name, let's call it **sava**
 * Click **Deploy** to start the deployment
-  ![](/images/screens/v094/tut1_sava_deploy.png)
-
-#### Deploy using the Vamp API
-
-You could also use your favourite tools like Postman ([getpostman.com](https://www.getpostman.com/)), HTTPie ([github.com/jakubroztocil - httpie](https://github.com/jakubroztocil/httpie)) or Curl to post this blueprint directly to the `api/v1/deployments` endpoint of Vamp. Take care to set the correct `Content-Type: application/x-yaml` header on the POST request. Vamp is kinda strict with regard to content types, because we support JSON and YAML so we need to know what you are sending.   
-
-**curl:**
-```
-curl -v -X POST --data-binary @sava_1.0.yaml -H "Content-Type: application/x-yaml" http://localhost:8080/api/v1/deployments
-```
-
-**httpie:**
-```
-http POST http://localhost:8080/api/v1/deployments Content-Type:application/x-yaml < sava_1.0.yaml
-```
-
-After POST-ing, Vamp should respond with a `202 Accepted` message and return a JSON blob. This means Vamp is trying to deploy your container. You'll notice some parts are filled in for you, like a default scale, a default routing and of course a UUID as a name.
-You can also use the RESTful API to create a deployment with a custom name - simple `PUT` request to `http://localhost:8080/api/v1/deployments/DEPLOYMENT_CUSTOM_NAME`
+  ![](/images/screens/v100/tut1/vampee-environment-deployments-sava)
+  
 
 ## Check out the deployed application 
 
@@ -87,12 +71,12 @@ When the application is fully deployed, you can check it out through the Vamp UI
 * **From the Deployments page:**  
   Click on **sava** to open the deployment detail screen, then click on **sava:1.0.0** to see all running instances of the sava service (we only have one instance running right now). Click an instance name to open it.
 
-![](/images/screens/v094/deployments-monolith1.png)
+![](/images/screens/v100/tut1/vampee-environment-deployments-sava-instance-mono10.png)
 
 * **From the Gateways page:**  
   Open the internal gateway (`sava/sava/webport`) or the external gateway (`sava/9050`) and click the **HOST - PORT/TYPE**
 
-![](/images/screens/v094/gateways-monolith1.png)
+![](/images/screens/v100/tut1/vampee-environment-gateways-sava-internal-mono10.png)
 
 * **By reverse proxy:**  
   You can also use Vamp as a reverse proxy to access the application through the exposed sava gateways:
@@ -104,7 +88,7 @@ When the application is fully deployed, you can check it out through the Vamp UI
 
 Open the application in a new tab and hit refresh a few times in your browser. You should see the metrics spike and some pretty charts being drawn on the **sava/9050** gateway page:
 
-![](/images/screens/v094/tut1_metrics.png)
+![](/images/screens/v100/tut1/vampee-environment-gateways-sava-external.png)
 
 ## Change scale and load balancing
 
@@ -117,7 +101,7 @@ Vamp will automatically load balance traffic across service instances as they sc
 
 Vamp will automatically scale up the number of running instances (of course permitting underlying resources) and load balance these to the outside world using the gateway feature. Refresh the **sava:1.0.0** service detail page to see all three running instances.
 
-![](/images/screens/v094/tut1_scale.png)
+![](/images/screens/v100/tut1/vampee-environment-deployments-sava-instances-3.png)
 
 ## Chaos monkey
 
