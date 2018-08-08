@@ -19,7 +19,7 @@ Now you're ready to check out some of Vamp's features. In this tutorial we will:
 
 Imagine the company you work for still uses monolithic applications. I know, it sounds far fetched but..
 
-One such application is conveniently called *Monolith* and is at version 1.0. This version serves plain old lorem ipsum on a light background.
+One such application is conveniently called *sava Monolith* and is at version 1.0. This version serves plain old lorem ipsum on a light background.
 
 You've managed to wrap your monolith in a Docker container, which lives in the Docker hub under `magneticio/sava:1.0.0`. Your app normally runs on port `8080` but you want to expose it under port `9050` in this case.
 
@@ -60,17 +60,17 @@ In the Vamp UI, select the environment "environment" and
 * Click **Deploy** to start the deployment
   ![](/images/screens/v100/tut1/vampee-environment-deployments-sava.png)
   
-## Check out the deployed service 
+## Check out the deployed application 
 
-You can follow the deployment process of the **Deployments** page. When the service is deployed, the **status** will change from **deploying** to **deployed**.
+You can follow the deployment process of the **Deployments** page. When the application is deployed, the **status** will change from **deploying** to **deployed**.
 
 You can also watch the Vamp event stream by clicking **Events** (bottom left)
 ![](/images/screens/v100/tut1/vampee-environment-deployments-sava-deployed-events.png)
 
-When the service is fully deployed, you can check it out through the Vamp UI.
+When the application is fully deployed, you can check it out through the Vamp UI.
 
 ### From the Deployments page
-Click on **sava** to open the deployment detail page, then click on **sava:1.0.0** to see all running instances of the sava service.
+Click on **sava** to open the deployment detail page, then click on **sava:1.0.0** to see all running instances of the sava application.
 
 Click an instance name to open it and then click the **webport** tab.
 
@@ -82,7 +82,7 @@ Open the internal gateway (`sava/sava/webport`) or the external gateway (`sava/9
 ![](/images/screens/v100/tut1/vampee-environment-gateways-sava-internal-mono10.png)
 
 ### Via the Vamp Gateway Agent
-You can also use the Vamp Gateway Agent (VGA) to access the service using the virtual host name **9050.sava.vamp**.
+You can also use the Vamp Gateway Agent (VGA) to access the application using the virtual host name **9050.sava.vamp**.
 
 If you are using Kubernetes, you can find the external IP address of the VGA using `kubectl`:
 
@@ -92,7 +92,7 @@ kubectl --namespace vampio-organization-environment get service vamp-gateway-age
 
 If you are using DC/OS, you will need the external IP address of the public agent load balancer.
   
-Once you have the external IP address for the VGA, you can access the service using `curl`:
+Once you have the external IP address for the VGA, you can access the application using `curl`:
 
 ```
 curl -H "Host: 9050.sava.vamp" http://<vga-external-ip>/
@@ -102,9 +102,9 @@ curl -H "Host: 9050.sava.vamp" http://<vga-external-ip>/
 
 Open the **sava/9050** external gateway page.
 
-If you checked out the deployed service, then you should see a small metrics spike after a few seconds.
+If you checked out the deployed application, then you should see a small metrics spike after a few seconds.
 
-You can general additional traffic to the service using [ApacheBench](https://httpd.apache.org/docs/2.4/programs/ab.html):
+You can general additional traffic to the application using [ApacheBench](https://httpd.apache.org/docs/2.4/programs/ab.html):
 
 ```
 ab -c 7 -n 10000 -l -H "Host: 9050.sava.vamp" http://<vga-external-ip>/
@@ -114,11 +114,11 @@ ab -c 7 -n 10000 -l -H "Host: 9050.sava.vamp" http://<vga-external-ip>/
 
 ## Change scale
 
-Vamp will automatically load balance traffic across service instances as they scale. Let's change the scale of the sava service and see what happens. 
+Vamp will automatically load balance traffic across application instances as they scale. Let's change the scale of the sava application and see what happens. 
 
 1. Go to the **Deployments** page 
 * Click on **sava** to open the deployment detail page
-* Now click on **sava:1.0.0** to see all running instances of the sava service (we only have one instance running right now)
+* Now click on **sava:1.0.0** to see all running instances of the sava application (we only have one instance running right now)
 * Click **Scale service** (top right) and set the **INSTANCES** to **3**
   ![](/images/screens/v100/tut1/vampee-environment-deployments-sava-instances-scale.png)
 * Click **Save** 
