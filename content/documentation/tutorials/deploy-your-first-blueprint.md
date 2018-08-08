@@ -123,7 +123,7 @@ Vamp will automatically load balance traffic across service instances as they sc
   ![](/images/screens/v100/tut1/vampee-environment-deployments-sava-instances-scale.png)
 * Click **Save** 
 
-Vamp will automatically scale up the number of running instances (assuming your cluster has enough resources) and add the additional resources to the gateway internal.
+Vamp will automatically scale up the number of running instances (assuming your cluster has enough resources) and add the additional resources to the internal gateway.
 
 Refresh the **sava:1.0.0** service detail page to see all three running instances.
 
