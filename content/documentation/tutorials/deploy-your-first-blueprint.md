@@ -50,7 +50,6 @@ clusters:
 ```
 
 ### Deploy using the Vamp UI
-In the Vamp UI, select the environment "environment" and 
 
 1. In the Vamp UI, select the environment *environment* and go to the **Blueprints** page and click **Add** (top right)
 * Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment 

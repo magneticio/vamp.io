@@ -19,11 +19,11 @@ Now let's say we have a new version of this great application that we want to ca
 * Use conditions to target specific groups
 * Learn a bit more about conditions
 
-**Requirements:** Docker machine should have access to **at least 3GB memory**
-
 ## Prepare our blueprint
 
-Vamp allows you to canary release application updates by merging new blueprints to a running deployment. Take a look at the YAML blueprint example below. It is almost identical to the blueprint we initially used to deploy sava 1.0.0, with one difference - this time the breed describes the sava:1.1.0 service.
+Vamp allows you to canary release application updates by merging new blueprints to a running deployment.
+
+Take a look at the YAML blueprint example below. It is almost identical to the blueprint we initially used to deploy the sava 1.0.0 application, with two differences - this time the blueprint does not include a gateway, and the breed describes the sava:1.1.0 service.
 
 ```yaml
 name: sava:1.1
@@ -50,7 +50,10 @@ clusters:
 ## Deploy the new version of our application next to the old one
 
 Let's introduce sava:1.1.0 to the running sava deployment.  
-We can merge the above blueprint to deploy sava:1.1.0 alongside the existing sava:1.0.0. The merge will not affect the running service and initially no traffic will be routed to the new sava:1.1.0.
+
+We can merge our new blueprint with the blueprint we deployed in the previous tutorial, to deploy sava:1.1.0 version of the application alongside the existing sava:1.0.0 version.
+
+The merge adds a new route to the existing internal (`sava/sava/webport`) gateway. This is why the new blueprint does not define a gateway. Merging the blueprints will not affect the running application and initially no traffic will be routed to the new version.
 
 ### Merge using the UI
 
