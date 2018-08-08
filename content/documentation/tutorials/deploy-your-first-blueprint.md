@@ -131,10 +131,6 @@ Refresh the **sava:1.0.0** service detail page to see all three running instance
 
 ![](/images/screens/v100/tut1/vampee-environment-deployments-sava-instances-3.png)
 
-## Chaos monkey
-
-Now let's try something fun. Go to the Marathon UI (on port 9090) and find the Sava container running. Now select destroy to kill the container. Watch Vamp detecting that issue and making sure that the defined number of instances is spun up again as soon as possible, while making sure the load balancing routing rules are also updated to reflect the changed IPs and ports of the instances.
-
 {{< note title="What next?" >}}
 * Let's [run a canary release in the second part of this getting started tutorial →](/documentation/tutorials/run-a-canary-release/)
 {{< /note >}}
