@@ -51,20 +51,20 @@ clusters:
 
 Let's introduce sava:1.1.0 to the running sava deployment.  
 
-We can merge our new blueprint with the blueprint we deployed in the previous tutorial, to deploy sava:1.1.0 version of the application alongside the existing sava:1.0.0 version.
+We can merge our new blueprint with the blueprint we deployed in the previous tutorial, this will deploy the new sava:1.1.0 version of the application alongside the existing sava:1.0.0 version.
 
 The merge adds a new route to the existing internal (`sava/sava/webport`) gateway. This is why the new blueprint does not define a gateway. Merging the blueprints will not affect the running application and initially no traffic will be routed to the new version.
 
 ### Merge using the UI
 
-1. Go to the **Blueprints** page and click **Add** (top right)
+1. In the Vamp UI, select the environment *environment* and go to the **Blueprints** page and click **Add** (top right)
 * Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment 
 * Open the action menu on the **sava:1.1** blueprint and select **Merge to** 
-  ![](/images/screens/v094/tut2_merge.png)
+  ![](/images/screens/v100/tut2/vampee-environment-blueprints-sava11-mergeto.png)
 * You'll be prompted to select the deployment you wish to merge the blueprint with - select **sava**
 * Click **Merge** to deploy the sava:1.1.0 service to the running sava deployment.  
   Vamp will work out the differences and update the deployment accordingly.
-  ![](/images/screens/v094/tut2_merged_deployment.png)
+  ![](/images/screens/v100/tut2/vampee-environment-deployments-sava.png)
 
 ### Merge using the API
 
