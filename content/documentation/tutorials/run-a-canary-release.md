@@ -66,17 +66,6 @@ The merge adds a new route to the existing internal (`sava/sava/webport`) gatewa
   Vamp will work out the differences and update the deployment accordingly.
   ![](/images/screens/v100/tut2/vampee-environment-deployments-sava.png)
 
-### Merge using the API
-
-You can complete the same merge action with the Vamp API - remember to set the `Content-Type: application/x-yaml` for your requests:
-
-1. To create the blueprint, `POST` the above [blueprint YAML](/documentation/tutorials/run-a-canary-release/#prepare-our-blueprint) to `/api/v1/blueprints`  
-* To merge the blueprint, `PUT` the below YAML to `/api/v1/deployments/sava`  
-
-  ```
-  name: sava:1.1
-  ```
-
 ## Canary release
 When Vamp has finished deploying, open the **sava/sava/webport** gateway.  You will see two routes listed - one for the sava:1.0.0 service and one for the new sava:1.1.0 service. The weight of our newly merged service is set to 0%, this means that no traffic is currently being routed here. Whenever Vamp merges a new service to an existing cluster it applies the default weight of 0%.  
 Let's adjust the weight and start to send traffic to our new sava:1.1.0
