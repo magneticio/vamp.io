@@ -62,7 +62,7 @@ In the Vamp UI, select the environment "environment" and
 * Click **Deploy** to start the deployment
   ![](/images/screens/v100/tut1/vampee-environment-deployments-sava.png)
   
-## Check out the deployed application 
+## Check out the deployed service 
 
 You can follow the deployment process of the **Deployments** page. When the service is deployed, the **status** will change from **deploying** to **deployed**.
 
@@ -83,9 +83,30 @@ When the service is fully deployed, you can check it out through the Vamp UI.
 
 ![](/images/screens/v100/tut1/vampee-environment-gateways-sava-internal-mono10.png)
 
+* **Via the Vamp Gateway Agent:**  
+  You can also use the Vamp Gateway Agent (VGA) to access the service using the virtual host name **9050.sava.vamp**.
+  
+  If you are using Kubernetes, you can find the external IP address of the VGA using `kubectl`:
+  ```
+  $ kubectl --namespace vampio-organization-environment get service vamp-gateway-agent
+  
+  NAME                 TYPE           CLUSTER-IP      EXTERNAL-IP       PORT(S)        AGE
+  vamp-gateway-agent   LoadBalancer   10.55.243.115   930.811.777.628   80:31041/TCP   8d
+  ```
+  
+  If you are using DC/OS, you will need external IP address of one of the public agents or preferably the public agent load balancer.
+  
+  Once you have the external IP address for the VGA, you can access the service using `curl`:
+  
+  ```
+  curl -H "Host: 9050.sava.vamp" http://930.811.777.628/
+  ```
+
 ## Get some metrics on the running application
 
-Open the application in a new tab and hit refresh a few times in your browser. You should see the metrics spike and some pretty charts being drawn on the **sava/9050** gateway page:
+Open the **sava/9050** external gateway page.
+
+If you checked out the deployed service, then you should see a small metrics spike after a few seconds.
 
 ![](/images/screens/v100/tut1/vampee-environment-gateways-sava-external.png)
 
