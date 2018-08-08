@@ -6,25 +6,24 @@ menu:
     parent: "Tutorials"
     weight: 20
 ---
-If everything went to plan, you should have your Vamp installation up and running. If not, please follow the [Vamp hello world](/documentation/installation/hello-world) quick setup steps. Now we're ready to check out some of Vamp's features. In this tutorial we will:  
+If everything went to plan, you should have your Vamp installation up and running. If not, please follow the [Vamp hello world](/documentation/installation/hello-world) quick setup steps.
 
-* Deploy a monolith, using either the Vamp UI or the Vamp API
+Now you're ready to check out some of Vamp's features. In this tutorial we will:  
+
+* Deploy a monolith, using the Vamp UI
 * Check out the deployed application  
 * Get some metrics on the running application  
-* Change the scale and load-balancing
-* Chaos monkey!    
-
-**Requirements:** Docker machine should have access to **at least 3GB memory**
+* Change the scale   
 
 ## Deploy a monolith
 
-Imagine you or the company you work for still use monolithic applications. I know, it sounds far fetched...
-This application is conveniently called *Sava monolith* and is at version 1.0. This version serves plain old lorem ipsum on a light background.
+Imagine the company you work for still uses monolithic applications. I know, it sounds far fetched but..
 
-You've managed to wrap your monolith in a Docker container, which lives in the Docker hub under `magneticio/sava:1.0.0`. 
-Your app normally runs on port `8080` but you want to expose it under port `9050` in this case.
- Let's deploy this through Vamp using the following simple blueprint. Don't worry too much about what means what: we'll get there. 
- You can choose to deploy this blueprint either using the Vamp UI or using the Vamp API.
+One such application is conveniently called *Monolith* and is at version 1.0. This version serves plain old lorem ipsum on a light background.
+
+You've managed to wrap your monolith in a Docker container, which lives in the Docker hub under `magneticio/sava:1.0.0`. Your app normally runs on port `8080` but you want to expose it under port `9050` in this case.
+
+Let's deploy this through Vamp using the following simple blueprint. Don't worry too much about what it all means: we'll get there. 
 
 ```yaml
 name: sava:1.0
@@ -49,7 +48,6 @@ clusters:
         interval: 10s
         failures: 10     
 ```
-
 
 ### Deploy using the Vamp UI
 In the Vamp UI, select the environment "environment" and 
