@@ -71,34 +71,34 @@ You can also watch the Vamp event stream by clicking **Events** (bottom left)
 
 When the service is fully deployed, you can check it out through the Vamp UI.
 
-* **From the Deployments page:**  
-  Click on **sava** to open the deployment detail page, then click on **sava:1.0.0** to see all running instances of the sava service.
-  
-  Click an instance name to open it and then click the **webport** tab.
+### From the Deployments page
+Click on **sava** to open the deployment detail page, then click on **sava:1.0.0** to see all running instances of the sava service.
+
+Click an instance name to open it and then click the **webport** tab.
 
 ![](/images/screens/v100/tut1/vampee-environment-deployments-sava-instance-mono10.png)
 
-* **From the Gateways page:**  
-  Open the internal gateway (`sava/sava/webport`) or the external gateway (`sava/9050`) and click the **HOST - PORT/TYPE**
+### From the Gateways page
+Open the internal gateway (`sava/sava/webport`) or the external gateway (`sava/9050`) and click the **HOST - PORT/TYPE**
 
 ![](/images/screens/v100/tut1/vampee-environment-gateways-sava-internal-mono10.png)
 
-* **Via the Vamp Gateway Agent:**  
-  You can also use the Vamp Gateway Agent (VGA) to access the service using the virtual host name **9050.sava.vamp**.
+### Via the Vamp Gateway Agent
+You can also use the Vamp Gateway Agent (VGA) to access the service using the virtual host name **9050.sava.vamp**.
+
+If you are using Kubernetes, you can find the external IP address of the VGA using `kubectl`:
+
+```
+kubectl --namespace vampio-organization-environment get service vamp-gateway-agent
+```
+
+If you are using DC/OS, you will need the external IP address of the public agent load balancer.
   
-  If you are using Kubernetes, you can find the external IP address of the VGA using `kubectl`:
-  
-  ```
-  kubectl --namespace vampio-organization-environment get service vamp-gateway-agent
-  ```
-  
-  If you are using DC/OS, you will need the external IP address of the public agent load balancer.
-  
-  Once you have the external IP address for the VGA, you can access the service using `curl`:
-  
-  ```
-  curl -H "Host: 9050.sava.vamp" http://<external-ip>/
-  ```
+Once you have the external IP address for the VGA, you can access the service using `curl`:
+
+```
+curl -H "Host: 9050.sava.vamp" http://<external-ip>/
+```
 
 ## Get some metrics on the running application
 
