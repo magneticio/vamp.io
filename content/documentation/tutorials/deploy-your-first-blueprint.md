@@ -97,7 +97,7 @@ If you are using DC/OS, you will need the external IP address of the public agen
 Once you have the external IP address for the VGA, you can access the service using `curl`:
 
 ```
-curl -H "Host: 9050.sava.vamp" http://<external-ip>/
+curl -H "Host: 9050.sava.vamp" http://<vga-external-ip>/
 ```
 
 ## Get some metrics on the running application
@@ -109,7 +109,7 @@ If you checked out the deployed service, then you should see a small metrics spi
 You can general additional traffic to the service using [ApacheBench](https://httpd.apache.org/docs/2.4/programs/ab.html):
 
 ```
-ab -c 7 -n 10000 -l -H "Host: 9050.sava.vamp" http://<external-ip>/
+ab -c 7 -n 10000 -l -H "Host: 9050.sava.vamp" http://<vga-external-ip>/
 ```
 
 ![](/images/screens/v100/tut1/vampee-environment-gateways-sava-external.png)
