@@ -19,7 +19,7 @@ If everything went to plan, you should have your Vamp installation up and runnin
 ## Deploy a monolith
 
 Imagine you or the company you work for still use monolithic applications. I know, it sounds far fetched...
-This application is conveniently called *Sava monolith* and is at version 1.0.  
+This application is conveniently called *Sava monolith* and is at version 1.0. This version serves plain old lorem ipsum on a light background.
 
 You've managed to wrap your monolith in a Docker container, which lives in the Docker hub under `magneticio/sava:1.0.0`. 
 Your app normally runs on port `8080` but you want to expose it under port `9050` in this case.
@@ -51,25 +51,29 @@ clusters:
 ```
 
 
-#### Deploy using the Vamp UI
+### Deploy using the Vamp UI
+In the Vamp UI, select the environment "environment" and 
 
-1. In the Vamp UI, go to the **Blueprints** page and click **Add** (top right)
+1. In the Vamp UI, select the environment *environment* and go to the **Blueprints** page and click **Add** (top right)
 * Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment 
 * Open the action menu on the **sava:1.0** blueprint and select **Deploy as** 
   ![](/images/screens/v100/tut1/vampee-environment-blueprints-sava10-deployas.png)
 * You'll be prompted to give your deployment a name, let's call it **sava**
 * Click **Deploy** to start the deployment
-  ![](/images/screens/v100/tut1/vampee-environment-deployments-sava)
+  ![](/images/screens/v100/tut1/vampee-environment-deployments-sava.png)
   
-
 ## Check out the deployed application 
 
-You can follow the deployment process of our container by checking the `/api/v1/deployments` endpoint and checking when the `state` field changes from `ReadyForDeployment` to `Deployed`. You can also check Marathon's GUI (see the [full list of all services exposed](/documentation/installation/hello-world/#check-vamp-is-up-and-running) in the hello world setup).
+You can follow the deployment process of the **Deployments** page. When the service is deployed, the **status** will change from **deploying** to **deployed**.
 
-When the application is fully deployed, you can check it out through the Vamp UI. It should report a refreshing hipster lorem ipsum upon each reload ([HipsterJesus.com](http://hipsterjesus.com/)):
+You can also watch the Vamp event stream by clicking **Events** (bottom left)
+![](/images/screens/v100/tut1/vampee-environment-deployments-sava-deployed-events.png)
+
+When the service is fully deployed, you can check it out through the Vamp UI.
 
 * **From the Deployments page:**  
-  Click on **sava** to open the deployment detail screen, then click on **sava:1.0.0** to see all running instances of the sava service (we only have one instance running right now). Click an instance name to open it.
+  Click on **sava** to open the deployment detail screen, then click on **sava:1.0.0** to see all running instances of the sava service (we only have one instance running right now).
+  Click an instance name to open it.
 
 ![](/images/screens/v100/tut1/vampee-environment-deployments-sava-instance-mono10.png)
 
