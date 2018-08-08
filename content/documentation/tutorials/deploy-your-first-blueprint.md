@@ -94,7 +94,7 @@ When the service is fully deployed, you can check it out through the Vamp UI.
   vamp-gateway-agent   LoadBalancer   10.55.243.115   930.811.777.628   80:31041/TCP   8d
   ```
   
-  If you are using DC/OS, you will need external IP address of one of the public agents or preferably the public agent load balancer.
+  If you are using DC/OS, you will need the external IP address of the public agent load balancer.
   
   Once you have the external IP address for the VGA, you can access the service using `curl`:
   
@@ -107,6 +107,12 @@ When the service is fully deployed, you can check it out through the Vamp UI.
 Open the **sava/9050** external gateway page.
 
 If you checked out the deployed service, then you should see a small metrics spike after a few seconds.
+
+You can general additional traffic to the service using [ApacheBench](https://httpd.apache.org/docs/2.4/programs/ab.html):
+
+```
+ab -c 7 -n 10000 -l -H "Host: 9050.sava.vamp" http://930.811.777.628/
+```
 
 ![](/images/screens/v100/tut1/vampee-environment-gateways-sava-external.png)
 
