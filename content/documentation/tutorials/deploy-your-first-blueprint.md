@@ -72,7 +72,7 @@ You can also watch the Vamp event stream by clicking **Events** (bottom left)
 When the service is fully deployed, you can check it out through the Vamp UI.
 
 * **From the Deployments page:**  
-  Click on **sava** to open the deployment detail screen, then click on **sava:1.0.0** to see all running instances of the sava service (we only have one instance running right now).
+  Click on **sava** to open the deployment detail page, then click on **sava:1.0.0** to see all running instances of the sava service.
   
   Click an instance name to open it and then click the **webport** tab.
 
@@ -114,16 +114,20 @@ ab -c 7 -n 10000 -l -H "Host: 9050.sava.vamp" http://<external-ip>/
 
 ![](/images/screens/v100/tut1/vampee-environment-gateways-sava-external.png)
 
-## Change scale and load balancing
+## Change scale
 
 Vamp will automatically load balance traffic across service instances as they scale. Let's change the scale of the sava service and see what happens. 
 
-1. Go back to the **Deployments** page 
-* Open the **sava** deployment and click the **sava:1.0.0** service
-* Click **Scale service** (top right) and set the **INSTANCES** to **3** 
+1. Go to the **Deployments** page 
+* Click on **sava** to open the deployment detail page
+* Now click on **sava:1.0.0** to see all running instances of the sava service (we only have one instance running right now)
+* Click **Scale service** (top right) and set the **INSTANCES** to **3**
+  ![](/images/screens/v100/tut1/vampee-environment-deployments-sava-instances-scale.png)
 * Click **Save** 
 
-Vamp will automatically scale up the number of running instances (of course permitting underlying resources) and load balance these to the outside world using the gateway feature. Refresh the **sava:1.0.0** service detail page to see all three running instances.
+Vamp will automatically scale up the number of running instances (assuming your cluster has enough resources) and add the additional resources to the gateway internal.
+
+Refresh the **sava:1.0.0** service detail page to see all three running instances.
 
 ![](/images/screens/v100/tut1/vampee-environment-deployments-sava-instances-3.png)
 
