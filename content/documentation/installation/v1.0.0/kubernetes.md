@@ -46,12 +46,6 @@ TODO
 kubectl create -f clusterrolebinding.yml
 ```
 
-4. Create a secret to allow the Vamp docker images to be pulled from our private Docker Hub repos.
-
-```
-kubectl create secret docker-registry regsecret --docker-server=https://index.docker.io/v1/ --docker-username=vampro --docker-password=roUser4Vamp --docker-email=docker@[vamp.io](http://mvamp.io/)
-```
-
 5. Deploy the Vamp Lifter application into the *default* Kubernetes namespace:
 
 ```
