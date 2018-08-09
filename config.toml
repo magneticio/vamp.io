@@ -4,6 +4,7 @@ title = "Vamp | Automation and Controls for Enterprise Devops"
 theme = "vamp"
 metadataformat = "yaml"
 canonifyurls = true
+enableGitInfo = true
 
 # Enable Google Analytics by entering your tracking id
 googleAnalytics = ""
