@@ -13,13 +13,13 @@ Routing, load balancing and also service discovery are big topics for container 
 split the topic into the following parts, but if anything is missing our your setup is different please don't hesitate
 to reach out using one of the support channels.
 
-[1. Components](#components)
-[2. Example topologies](#topologies)
-[3. Load balancing](#load-balancing)
-[4. Routing](#routing)
-[5. Service discovery](#service-discovery)
-[6. Virtual hosting](#virtual-hosting)
-[7. Performance](#performance)
+[1. Components](#components)  
+[2. Example topologies](#topologies)  
+[3. Load balancing](#load-balancing)  
+[4. Routing](#routing)  
+[5. Service discovery](#service-discovery)  
+[6. Virtual hosting](#virtual-hosting)  
+[7. Performance](#performance)  
 
 ## Components
 
