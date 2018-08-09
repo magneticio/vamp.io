@@ -67,22 +67,27 @@ The merge adds a new route to the existing internal (`sava/sava/webport`) gatewa
   ![](/images/screens/v100/tut2/vampee-environment-deployments-sava.png)
 
 ## Canary release
-When Vamp has finished deploying, open the **sava/sava/webport** gateway.  You will see two routes listed - one for the sava:1.0.0 service and one for the new sava:1.1.0 service. The weight of our newly merged service is set to 0%, this means that no traffic is currently being routed here. Whenever Vamp merges a new service to an existing cluster it applies the default weight of 0%.  
-Let's adjust the weight and start to send traffic to our new sava:1.1.0
+
+When the new version of the application is fully deployed, open the **sava/sava/webport** internal gateway page.
+
+You will see two routes - one for the sava:1.0.0 version and one for the new sava:1.1.0 version. The weight of our newly merged version is set to 0%, this means that no traffic is currently being routed there. Whenever Vamp merges a new version of a service, it applies the default weight of 0%.
+
+Let's adjust the weight and start to send traffic to our new sava:1.1.0 application
 
 1. Click the edit icon next to **WEIGHT**
-* Adjust the weight slider to distribute traffic 50% / 50% between the two services
-  ![](/images/screens/v094/tut2_sliders_canary.png)
-* Click **Save** and Vamp will update the load balancing rules accordingly
+* Adjust the weight slider to distribute traffic 50% / 50% between the two versions
+  ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editweights.png)
+* Click **Save** and Vamp will adjust the route weights accordingly
 * Click the **HOST - PORT/TYPE** to open the gateway.  
-  Each time you do this the application will switch between a 1.0 page and a 1.1 page. 
+  Each time you do this the application will switch between a version 1.0 page (light background) and a version 1.1 page (dark background).
 
-![](/images/screens/v094/monolith_canary1.png)
+You can also use send traffic to the different versions of the application using [ApacheBench](https://httpd.apache.org/docs/2.4/programs/ab.html):
 
-You can also use Vamp as a reverse proxy to access the exposed sava gateways (note that this works best with the "Incognito" or "Anonymous" mode of your browser because of the caching of static assets):
-  
-* `http://localhost:8080/proxy/gateways/sava%2Fsava%2Fwebport/`
-* `http://localhost:8080/proxy/gateways/sava%2F9050/`
+```
+ab -c 7 -n 10000 -l -H "Host: 9050.sava.vamp" http://<vga-external-ip>/
+```
+
+![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-2routes.png)
 
 ## Use conditions to target specific groups
 
