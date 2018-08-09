@@ -103,7 +103,7 @@ Open the **sava/9050** external gateway page.
 
 If you checked out the deployed application, then you should see a small metrics spike after a few seconds.
 
-You can general additional traffic to the application using [ApacheBench](https://httpd.apache.org/docs/2.4/programs/ab.html):
+You can send additional traffic to the application using [ApacheBench](https://httpd.apache.org/docs/2.4/programs/ab.html):
 
 ```
 ab -c 7 -n 10000 -l -H "Host: 9050.sava.vamp" http://<vga-external-ip>/
