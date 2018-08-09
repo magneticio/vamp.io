@@ -49,7 +49,7 @@ A DC/OS cluster on which to install Vamp:
 
 * Open the Vamp Lifter UI:
   * In the DC/OS UI, click the icon next to the vamp-ee-lifter service name to open the Vamp Lifter UI in a new window
-  ![](/images/screens/v100/lifteree-installer-deploy.png)
+  ![](/images/screens/v100/dcos-vamp-lifteree.png)
 * Complete the Vamp EE Quick Start installation:
   ![](/images/screens/v100/lifteree-installer-deploy.png)
   * With the **Deploy** tab selected, click on the **Deploy** button at the top right of the page
@@ -61,6 +61,7 @@ A DC/OS cluster on which to install Vamp:
     * Install the **Vamp Gateway Agent** (VGA) into the *vampio-organisation-environment* namespace
     * Deploy the **Vamp** application into the *default* Kubernetes namespace
 * To view the progress of the installation, click on the **Log** tab
+  ![](/images/screens/v100/lifteree-installer-log.png)
 
 ### Login to the Vamp UI
 
@@ -68,7 +69,7 @@ In the DC/OS UI, click the icon next to the vamp-ee service name to open the Vam
 ![](/images/screens/v100/lifteree-installer-deploy.png)
 
 You can login using the username: **admin** and password: **abc12345**
-![](/images/screens/v100/vampee-login.png)
+![](/images/screens/v100/dcos-vamp-vampee.png)
 
 {{< note title="What next?" >}}
 
