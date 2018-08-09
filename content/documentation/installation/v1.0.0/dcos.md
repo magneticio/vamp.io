@@ -11,326 +11,64 @@ aliases:
     - /documentation/installation/dcos
 ---
 
-There are different ways to install Vamp on DC.OS. On this page we start out with the most common setup, but if you are interested in doing a custom install or working with public and private nodes you should jump to that section.
+This section describes how to quickly install Vamp 1.0 on DC/OS so you can evaluate it. The installation uses an installer built into the Vamp Lifter application to bootstrap a full Vamp installation.
 
-* [Universe package](/documentation/installation/v1.0.0/dcos/#universe-package)
-* [Manual install](/documentation/installation/v1.0.0/dcos/#manual-install)
-* [Custom install](/documentation/installation/v1.0.0/dcos/#custom-install)
-* [Public and private nodes](/documentation/installation/v1.0.0/dcos/#public-and-private-nodes)
+After a successful installation, you will be able to login to Vamp EE as an admin user and deploy services. 
 
+{{< note title="Note!" >}}
+**Do not run this default installation in production!** It does not include persistent storage and makes use of a [Hashicorp Vault 'dev' server](https://www.vaultproject.io/docs/concepts/dev-server.html).
+{{< /note >}}
 
-## Universe package
+### What You'll Need
 
-Vamp is available in the DC/OS Universe. Navigate to Universe in the DC/OS UI and search for Vamp and click "Install Package".
+A DC/OS cluster on which to install Vamp:
+* This can be a 1.10.x, or 1.11.x cluster
+* It should have 4 nodes:
+  * A minimum of 3 private agents
+  * A minimum of 1 public agent
+  * Each node should have a minimum of 4 vCPUs and 12 GB memory 
 
-For detailed steps on installing the Unvierse package refer to the tutorial here: https://github.com/dcos/examples/tree/master/vamp
+### Deploying Vamp Lifter
 
-## Manual install
-This setup will run Vamp, Mesos and Marathon, together with Zookeeper and Elasticsearch on DC/OS.
+* Sign up for a [Vamp Enterprise Edition trial](/trial-signup/), if you haven't already. Then download the **lifter-standalone.json** file
+* Deploy the Vamp Lifter application:
+  * Using the DC/OS CLI:
+    
+    ```
+    dcos marathon app add lifter-standalone.json
+    ```
+    
+  * Using the DC/OS UI:
+    * Select Services → Run a Service
+    * Select **JSON Configuration**
+    * Paste the contents of the **lifter-standalone.json** file into the editor
+    * Click the **Review & Run** button
+    * Click the **Run Service** button to deploy the Vamp Lifter application
 
-**Tested against**
-This guide has been tested on the 1.8 and 1.9 version of DC/OS.
+### Install Vamp and dependencies
 
-**Requirements**
-Before you start you need to have a DC/OS cluster up and running, as well as the its CLI configured to use it. We assume you have it up and running on http://dcos.example.com/.
-Setting up DC/OS is outside the scope of this document, for that you need to refer to the official documentation:
+* Open the Vamp Lifter UI:
+  * In the DC/OS UI, click the icon next to the vamp-ee-lifter service name to open the Vamp Lifter UI in a new window
+  ![](/images/screens/v100/lifteree-installer-deploy.png)
+* Complete the Vamp EE Quick Start installation:
+  ![](/images/screens/v100/lifteree-installer-deploy.png)
+  * With the **Deploy** tab selected, click on the **Deploy** button at the top right of the page
+  * This will start the installation and:
+    * Deploy **MySQL**, **Hashicorp Vault** and **Elasticsearch** into the *default* Kubernetes namespace
+    * Create a sample organisation called **organisation**
+    * Create a sample environment called **environment** for the sample organisation
+    * Create a Kubernetes namespace called **vampio-organisation-environment**
+    * Install the **Vamp Gateway Agent** (VGA) into the *vampio-organisation-environment* namespace
+    * Deploy the **Vamp** application into the *default* Kubernetes namespace
+* To view the progress of the installation, click on the **Log** tab
 
-* https://dcos.io/docs/1.8/administration/installing/
-* https://dcos.io/docs/1.8/usage/cli/
+### Login to the Vamp UI
 
-### Step 1: Install Elasticsearch
+In the DC/OS UI, click the icon next to the vamp-ee service name to open the Vamp UI in a new window
+![](/images/screens/v100/lifteree-installer-deploy.png)
 
-Mesos, Marathon and ZooKeeper are all installed by DC/OS. In addition to these, Vamp requires Elasticsearch for metrics collection and aggregation. If you don't have an Elasticsearch cluster setup already you can use the magneticio Docker images to deploy a compatible Vamp Elastic Stack [(hub.docker.com - magneticio elastic)](https://hub.docker.com/r/magneticio/elastic/)
-
-Create `elasticsearch.json` with the following content:
-
-```json
-{
-  "id": "elasticsearch",
-  "instances": 1,
-  "cpus": 0.2,
-  "mem": 1024.0,
-  "container": {
-    "type": "DOCKER",
-    "docker": {
-      "image": "magneticio/elastic:2.2",
-      "network": "HOST",
-      "forcePullImage": true
-    }
-  },
-  "healthChecks": [
-    {
-      "protocol": "TCP",
-      "gracePeriodSeconds": 30,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 5,
-      "port": 9200,
-      "maxConsecutiveFailures": 0
-    }
-  ]
-}
-```
-
-This will run the container with 1G of RAM and a basic health check on the elasticsearch port.
-
-Using the CLI we can install this in our cluster:
-
-```bash
-$ dcos marathon app add elasticsearch.json
-```
-
-If you get no error message you should now be able to see it being deployed:
-
-```bash
-$ dcos marathon app list
-ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
-/elasticsearch  1024  0.2    0/1    0/0      scale       DOCKER   None
-```
-
-Once it's fully up and running you should see all tasks and health checks being up:
-
-```bash
-$ dcos marathon app list
-ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
-/elasticsearch  1024  0.2    1/1    1/1       ---        DOCKER   None
-```
-
-### Step 2: Install a Relational Database
-
-If the artifacts that are created by Vamp need to be persisted (available after restart and upgrades), than it is necessary to install one of the relational databases that Vamp supports. Currently, there is support for MySQL, PostgreSQL and Microsoft SQL Server. Pending on the choice of database, different universe packages are available for installing these databases on a DC/OS cluster. Also custom images or externally hosted databases can be used, as long it is available from the location where Vamp is running.
-
-### Step 3: Deploy Vamp
-
-Once you have elasticsearch and one of the supported relational databases up and running it's time to move on to Vamp. The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely to inform our ongoing product development. Feel free to block this at your firewall, or [contact us](/contact) if you’d like further details.
-
-If you want Vamp to persist to one of the supported relational databases, create a `vamp.json` with the following content (the database configuration values may have to be adjusted to the specific relational database, this is for the standard DC/OS MySQL universe package):
-
-```json
-{
-  "id": "vamp/vamp",
-  "instances": 1,
-  "cpus": 1,
-  "mem": 4096,
-  "container": {
-    "type": "DOCKER",
-    "docker": {
-      "image": "magneticio/vamp:0.9.5.6-dcos",
-      "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 0,
-          "name": "vip0",
-          "labels": {
-            "VIP_0": "10.20.0.100:8080"
-          }
-        }
-      ],
-      "forcePullImage": true
-    }
-  },
-  "labels": {
-    "DCOS_SERVICE_NAME": "vamp",
-    "DCOS_SERVICE_SCHEME": "http",
-    "DCOS_SERVICE_PORT_INDEX": "0"
-  },
-  "env": {
-    "VAMP_WAIT_FOR": "http://elasticsearch.marathon.mesos:9200/.kibana",
-    "VAMP_WORKFLOW_DRIVER_VAMP_URL": "http://10.20.0.100:8080",
-    "VAMP_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200",
-    "VAMP_DB_TYPE": "mysql",
-    "VAMP_DB_URL": "jdbc:mysql://mysql.marathon.l4lb.thisdcos.directory:3306/vamp-${namespace}?useSSL=false",
-    "VAMP_DB_CREATE_URL": "jdbc:mysql://mysql.marathon.l4lb.thisdcos.directory:3306?useSSL=false",
-    "VAMP_DB_USER": "root",
-    "VAMP_DB_PASSWORD": "root"
-  },
-  "healthChecks": [
-    {
-      "protocol": "TCP",
-      "gracePeriodSeconds": 30,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 5,
-      "portIndex": 0,
-      "maxConsecutiveFailures": 0
-    }
-  ]
-}
-```
-
-Note that the `VAMP_DB_URL` needs to contain the `${namespace}` string interpolation. The `VAMP_DB_CREATE_URL` needs to connect either to the default database or in the case of MySQL no database needs to be specified. From that JDBC URI the needed Vamp database will be created. For different examples of other supported relational databases or in-memory only persistence see [configuration reference](/documentation/configure/v1.0.0/configuration-reference/).
-
-This service definition will download our Vamp container and spin it up in your DC/OS cluster on a private node in bridge networking mode. It will also configure the apporiate labels for the AdminRouter to expose the UI through DC/OS, as well as an internal VIP for other applications to talk to Vamp, adjusting some defaults to work inside DC/OS, and finally a health check for monitoring.
-
-Deploy it with the CLI, like with did with elasticsearch:
-
-```bash
-$ dcos marathon app add vamp.json
-
-$ dcos marathon app list
-ID              MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
-/elasticsearch  1024  0.2    1/1    1/1       ---        DOCKER   None
-/vamp/vamp      1024  0.5    0/1    0/0      scale       DOCKER   None
-
-```
-
-It will take a minute for Vamp to deploy all its components, you can see that by looking in the "tasks" column, where Vamp is listed as 0/1. Run the list command again and you should see all the components coming online:
-
-```bash
-$ dcos marathon app list
-ID                        MEM   CPUS  TASKS  HEALTH  DEPLOYMENT  CONTAINER  CMD
-/elasticsearch            1024  0.2    1/1    1/1       ---        DOCKER   None
-/vamp/vamp                1024  0.5    1/1    1/1       ---        DOCKER   None
-/vamp/vamp-gateway-agent  256   0.2    3/3    ---       ---        DOCKER   None
-/vamp/workflow-health      64   0.1    1/1    ---       ---        DOCKER   None
-/vamp/workflow-kibana      64   0.1    1/1    ---       ---        DOCKER   None
-/vamp/workflow-metrics     64   0.1    1/1    ---       ---        DOCKER   None
-/vamp/workflow-vga         64   0.1    1/1    ---       ---        DOCKER   None
-```
-
-Vamp has now spun up all it's components and you should be able to access the ui by opening http://dcos.example.com/service/vamp/ in your browser.
-
-* Now you're ready to follow our [Vamp getting started tutorials](/documentation/tutorials/).
-* Things still not running? [We're here to help →](https://github.com/magneticio/vamp/issues)
-
-> NB If you need help you can also find us on [Gitter] (https://gitter.im/magneticio/vamp)
-
-## Custom install
-
-The Vamp DC/OS Docker image ([github.com/magneticio - Vamp DC/OS](https://github.com/magneticio/vamp-docker-images/tree/master/vamp-dcos)) contains configuration ([github.com/magneticio - Vamp DC/OS configuration](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)) that can be overridden for specific needs by:
-
-* Making a new Docker image based on the Vamp DC/OS image
-* Using [environment variables](/documentation/configure/v1.0.0/configure-vamp#environment-variable-configuration)
-
-#### Example 1 - Remove the `metrics` and `health` workflows by Vamp configuration and keep the `kibana` workflow:
-
-```yaml
-vamp.lifter.artifact.resources = [
-    "breeds/kibana.js", "workflows/kibana.yml"
-  ]
-```
-
-or doing the same using Marathon JSON
-
-```json
-"env": {
-  "VAMP_LIFTER_ARTIFACT_RESOURCES": "[\"breeds/kibana.js\",\"workflows/kibana.yml\"]"
-}
-```
-
-#### Example 2 - Avoid automatic deployment of Vamp Gateway Agent
-
-Remove `vga-marathon` breed and workflow from `vamp.lifter.artifact.files`:
-
-```yaml
-vamp.lifter.artifact.files = []
-```
-
-or using Marathon JSON
-
-```json
-"env": {
-  "VAMP_LIFTER_ARTIFACT_FILES": "[]"
-}
-```
-
-## Public and private nodes
-
-Running Vamp on public Mesos agent node(s) and disabling automatic Vamp Gateway Agent deployments (but keeping other default workflows) can be done with the following Marathon JSON:
-
-```json
-{
-  "id": "vamp/vamp",
-  "instances": 1,
-  "cpus": 1,
-  "mem": 4096,
-  "container": {
-    "type": "DOCKER",
-    "docker": {
-      "image": "magneticio/vamp:0.9.5.6-dcos",
-      "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 0,
-          "name": "vip0",
-          "labels": {
-            "VIP_0": "10.20.0.100:8080"
-          }
-        }
-      ],
-      "forcePullImage": true
-    }
-  },
-  "labels": {
-    "DCOS_SERVICE_NAME": "vamp",
-    "DCOS_SERVICE_SCHEME": "http",
-    "DCOS_SERVICE_PORT_INDEX": "0"
-  },
-  "env": {
-    "VAMP_LIFTER_ARTIFACT_FILES": "[\"breeds/health.js\",\"workflows/health.yml\",\"breeds/metrics.js\",\"workflows/metrics.yml\",\"breeds/kibana.js\",\"workflows/kibana.yml\"]",
-    "VAMP_WAIT_FOR": "http://elasticsearch.marathon.mesos:9200/.kibana",
-    "VAMP_WORKFLOW_DRIVER_VAMP_URL": "http://10.20.0.100:8080",
-    "VAMP_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200"
-  },
-  "acceptedResourceRoles": [
-    "slave_public"
-  ],
-  "healthChecks": [
-    {
-      "protocol": "TCP",
-      "gracePeriodSeconds": 30,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 5,
-      "portIndex": 0,
-      "maxConsecutiveFailures": 0
-    }
-  ]
-}
-```
-
-Deploying Vamp Gateway Agent on all public and private Mesos agent nodes through Marathon JSON - NB replace `$INSTANCES` (e.g. to be the same as total number of Mesos agent nodes) and optionally other parameters:
-
-```json
-{
-  "id": "vamp/vamp-gateway-agent",
-  "instances": $INSTANCES,
-  "cpus": 0.2,
-  "mem": 256.0,
-  "container": {
-    "type": "DOCKER",
-    "docker": {
-      "image": "magneticio/vamp-gateway-agent:0.9.5.6",
-      "network": "HOST",
-      "privileged": true,
-      "forcePullImage": true
-    }
-  },
-  "env": {
-    "VAMP_KEY_VALUE_STORE_TYPE": "zookeeper",
-    "VAMP_KEY_VALUE_STORE_CONNECTION": "zk-1.zk:2181",
-    "VAMP_KEY_VALUE_STORE_PATH": "/vamp/vamp/gateways/haproxy/1.7/configuration",
-    "VAMP_ELASTICSEARCH_URL": "http://elasticsearch.marathon.mesos:9200"
-  },
-  "constraints": [
-    ["hostname","UNIQUE"]
-  ],
-  "healthChecks": [
-    {
-      "path": "/health",
-      "protocol": "HTTP",
-      "port": 1988,
-      "gracePeriodSeconds": 30,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 5,
-      "maxConsecutiveFailures": 3
-    }
-  ],
-  "acceptedResourceRoles": [
-    "slave_public",
-    "*"
-  ]
-}
-```
+You can login using the username: **admin** and password: **abc12345**
+![](/images/screens/v100/vampee-login.png)
 
 {{< note title="What next?" >}}
 
