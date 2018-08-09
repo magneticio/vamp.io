@@ -29,39 +29,31 @@ After a successful installation, you will be able to login to Vamp EE as an admi
 ### Deploying Vamp Lifter
 
 1. Signed up for a [Vamp Enterprise Edition trial](/trial-signup/), if you haven't already. Then download the **lifter-standalone.yml** file
-2. Download the [clusterrolebinding.yml](https://gist.github.com/jason-magnetic-io/3be85e096a038e5c17f536bc52e439d0) file
-3. Configure [kubectl](http://kubernetes.io/docs/user-guide/kubectl-overview/) command line access to your Kubernetes cluster
+1. Download the [clusterrolebinding.yml](https://gist.github.com/jason-magnetic-io/3be85e096a038e5c17f536bc52e439d0) file
+1. Configure [kubectl](http://kubernetes.io/docs/user-guide/kubectl-overview/) command line access to your Kubernetes cluster
   * TODO link to Google Cloud Platform page
   * TODO link to Azure Container Service page
-4. Create a *cluster-admin* user. This step can be skipped if you already have a suitable user with the *cluster-admin* role.
-
+1. Create a *cluster-admin* user. This step can be skipped if you already have a suitable user with the *cluster-admin* role.
   ```
   kubectl create -f clusterrolebinding.yml
   ```
-
-5. Deploy the Vamp Lifter application into the *default* Kubernetes namespace:
-
+1. Deploy the Vamp Lifter application into the *default* Kubernetes namespace:
   ```
   kubectl --namespace default create -f lifter-standalone.yml
   ```
-  
+
 ### Install Vamp and dependencies
 
 1. Start a [HTTP Proxy](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/) to allow access the Vamp Lifter UI
-
   ```
   kubectl proxy &
   ```
-
-  This will start a proxy server on [http://localhost:8001]()
-  
-2. Create a link to the Vamp Lifter UI
-
-	```
-	kubectl --namespace default get pods -l app=lifter -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/default/pods/{{.metadata.name}}/proxy/{{"\n"}}{{end}}'
-	```
-
-3. Complete the Vamp EE Quick Start installation
+  This will start a proxy server on http://localhost:8001
+1. Create a link to the Vamp Lifter UI
+  ```
+  kubectl --namespace default get pods -l app=lifter -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/default/pods/{{.metadata.name}}/proxy/{{"\n"}}{{end}}'
+  ```
+1. Complete the Vamp EE Quick Start installation
   * Open the link to the Vamp Lifter UI in your web browser
   ![ss-lifter-installer-deploy.png](url missing)
   * With the **Deploy** tab selected, click on the green icon at the top right of the page
@@ -72,7 +64,7 @@ After a successful installation, you will be able to login to Vamp EE as an admi
     * Create a Kubernetes namespace called "vampio-organisation-environment"
     * Install the *Vamp Gateway Agent* (VGA) into the *vampio-organisation-environment* namespace
     * Deploy the *Vamp* application into the *default* Kubernetes namespace
-4. To view the progress of the installation, click on the *Log* tab
+1. To view the progress of the installation, click on the *Log* tab
 
 ### Login to the Vamp UI
 
