@@ -54,6 +54,7 @@ After a successful installation, you will be able to login to Vamp EE as an admi
   ```
 
   This will start a proxy server on [http://localhost:8001]()
+  
 2. Create a link to the Vamp Lifter UI
 
 	```
@@ -71,9 +72,10 @@ After a successful installation, you will be able to login to Vamp EE as an admi
     * Create a Kubernetes namespace called "vampio-organisation-environment"
     * Install the *Vamp Gateway Agent* (VGA) into the *vampio-organisation-environment* namespace
     * Deploy the *Vamp* application into the *default* Kubernetes namespace
-9. To view the progress of the installation, click on the *Log* tab
+4. To view the progress of the installation, click on the *Log* tab
 
 ### Login to the Vamp UI
+
 At the end of the installer log there is a message with a link to the Vamp UI, paste this into your web browser
 
 You can login using the username: *admin* and password: *abc12345*
