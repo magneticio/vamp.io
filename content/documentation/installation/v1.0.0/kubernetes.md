@@ -34,10 +34,12 @@ After a successful installation, you will be able to login to Vamp EE as an admi
   * TODO link to Google Cloud Platform page
   * TODO link to Azure Container Service page
 1. Create a *cluster-admin* user. This step can be skipped if you already have a suitable user with the *cluster-admin* role.
+  
   ```
   kubectl create -f clusterrolebinding.yml
   ```
 1. Deploy the Vamp Lifter application into the *default* Kubernetes namespace:
+  
   ```
   kubectl --namespace default create -f lifter-standalone.yml
   ```
@@ -45,11 +47,14 @@ After a successful installation, you will be able to login to Vamp EE as an admi
 ### Install Vamp and dependencies
 
 1. Start a [HTTP Proxy](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/) to allow access the Vamp Lifter UI
+  
   ```
   kubectl proxy &
   ```
+  
   This will start a proxy server on http://localhost:8001
 1. Create a link to the Vamp Lifter UI
+  
   ```
   kubectl --namespace default get pods -l app=lifter -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/default/pods/{{.metadata.name}}/proxy/{{"\n"}}{{end}}'
   ```
@@ -57,20 +62,20 @@ After a successful installation, you will be able to login to Vamp EE as an admi
   * Open the link to the Vamp Lifter UI in your web browser
   ![ss-lifter-installer-deploy.png](url missing)
   * With the **Deploy** tab selected, click on the green icon at the top right of the page
-  * This will start start the installation and:
-    * Deploy *MySQL, Hashicorp Vault and Elasticsearch* into the *default* Kubernetes namespace
-    * Create a sample organisation called "organisation"
-    * Create a sample environment called "environment" for the sample organisation
-    * Create a Kubernetes namespace called "vampio-organisation-environment"
-    * Install the *Vamp Gateway Agent* (VGA) into the *vampio-organisation-environment* namespace
-    * Deploy the *Vamp* application into the *default* Kubernetes namespace
-1. To view the progress of the installation, click on the *Log* tab
+  * This will start the installation and:
+    * Deploy **MySQL**, **Hashicorp Vault** and **Elasticsearch** into the *default* Kubernetes namespace
+    * Create a sample organisation called **organisation**
+    * Create a sample environment called **environment** for the sample organisation
+    * Create a Kubernetes namespace called **vampio-organisation-environment**
+    * Install the **Vamp Gateway Agent** (VGA) into the *vampio-organisation-environment* namespace
+    * Deploy the **Vamp** application into the *default* Kubernetes namespace
+1. To view the progress of the installation, click on the **Log** tab
 
 ### Login to the Vamp UI
 
 At the end of the installer log there is a message with a link to the Vamp UI, paste this into your web browser
 
-You can login using the username: *admin* and password: *abc12345*
+You can login using the username: **admin** and password: **abc12345**
 
 If necessary, you can regenerate the link with the following command:
 
