@@ -53,14 +53,14 @@ After a successful installation, you will be able to login to Vamp EE as an admi
   ```
   
   This will start a proxy server on http://localhost:8001
+  
 1. Create a link to the Vamp Lifter UI
   
   ```
   kubectl --namespace default get pods -l app=lifter -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/default/pods/{{.metadata.name}}/proxy/{{"\n"}}{{end}}'
   ```
-1. Complete the Vamp EE Quick Start installation
-  * Open the link to the Vamp Lifter UI in your web browser
-  ![ss-lifter-installer-deploy.png](url missing)
+1. Open the link to the Vamp Lifter UI in your web browser
+  ![](/images/screens/v100/lifteree-installer-deploy.png)
   * With the **Deploy** tab selected, click on the green icon at the top right of the page
   * This will start the installation and:
     * Deploy **MySQL**, **Hashicorp Vault** and **Elasticsearch** into the *default* Kubernetes namespace
@@ -76,7 +76,7 @@ After a successful installation, you will be able to login to Vamp EE as an admi
 At the end of the installer log there is a message with a link to the Vamp UI, paste this into your web browser
 
 You can login using the username: **admin** and password: **abc12345**
-
+![](/images/screens/v100/vampee-login.png)
 If necessary, you can regenerate the link with the following command:
 
 ```
