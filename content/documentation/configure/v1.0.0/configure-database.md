@@ -23,24 +23,13 @@ Vamp has been tested with:
 * Standalone MySQL instances
 
 ## Database Models
-Vamp supports two models: *database-schema-per-namespace* and *table-per-namespace*.
 
-### Schema per Namespace
-The *database-schema-per-namespace* model offers the greatest flexibility but also has the highest overhead.
+Vamp's multi tenancy always uses separate schemas for each tenant. However, each tenant can also have multiple namespace.
+We offer two options to handle these namespace at the database level:
 
-In this model, each namespace is mapped to a separate database schema. A minimum of two schemas are required for each tenant, one for the organization namespace and one for each environment.
+- **Just one schema**. Each namespace is a table in the schema, we call this *table-per-namespace*
+- **Multiple schemas**. One schema for each namespace: *database-schema-per-namespace*
 
-**Benefits**
-
-* Namespaces are loosely coupled: changes to the schema for one namespace does affect any other namespace
-* Security:
-  * A different user id can be assigned to each namespace
-  * Each namespace can use a different database server instance for added security
-
-**Drawbacks**
-
-* Higher overheads: there are more schemas, users and potentially more database server instances to manage
-* Lower performance : maintaining separate database connection pools for each schema has a small performance impact when scaling Vamp
 
 ### Table per Namespace
 The *table-per-namespace* model offers the best performance and the lowest overhead.
@@ -60,23 +49,29 @@ In this model, each tenant is a separate database schema and each namespace is a
 
 * Namespaces are more tightly coupled
 
+### Schema per Namespace
+The *database-schema-per-namespace* model offers the greatest flexibility but also has the highest overhead.
+
+In this model, each namespace is mapped to a separate database schema. A minimum of two schemas are required for each tenant, one for the organization namespace and one for each environment.
+
 **Benefits**
 
-* Namespaces are loosely coupled: changes to the schema for one namespace does affect any other namespace.
-* Improved security:
+* Namespaces are loosely coupled: changes to the schema for one namespace does affect any other namespace
+* Security:
   * A different user id can be assigned to each namespace
   * Each namespace can use a different database server instance for added security
 
 **Drawbacks**
 
-* Higher overheads: there are more schemas, users and potentially more database server instances to manage.
+* Higher overheads: there are more schemas, users and potentially more database server instances to manage
+* Lower performance : maintaining separate database connection pools for each schema has a small performance impact when scaling Vamp
 
 ## Security
 Vamp supports a number of data at rest encryption strategies.
 
 ## Configuration
 
-Lifter...
+TODO Lifter...
 
 ### Table per Namespace
 The default configuration is table-per-namespace.
