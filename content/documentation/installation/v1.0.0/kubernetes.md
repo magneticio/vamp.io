@@ -62,9 +62,9 @@ After a successful installation, you will be able to login to Vamp EE as an admi
 	```
 
 3. Complete the Vamp EE Quick Start installation
-  * Open the generated link in your web browser to view the installer
+  * Open the link to the Vamp Lifter UI in your web browser
   ![ss-lifter-installer-deploy.png](url missing)
-  * With the *Deploy* tab selected, click on the green icon at the top right of the page
+  * With the **Deploy** tab selected, click on the green icon at the top right of the page
   * This will start start the installation and:
     * Deploy *MySQL, Hashicorp Vault and Elasticsearch* into the *default* Kubernetes namespace
     * Create a sample organisation called "organisation"
