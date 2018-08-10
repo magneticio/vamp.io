@@ -22,6 +22,7 @@ After a successful installation, you will be able to login to Vamp EE as an admi
 ### What You'll Need
 
 A DC/OS cluster on which to install Vamp:
+
 * This can be a 1.10.x, or 1.11.x cluster
 * It should have 4 nodes:
   * A minimum of 3 private agents
@@ -47,8 +48,7 @@ A DC/OS cluster on which to install Vamp:
 
 ### Install Vamp and dependencies
 
-* Open the Vamp Lifter UI:
-  * In the DC/OS UI, click the icon next to the vamp-ee-lifter service name to open the Vamp Lifter UI in a new window
+* In the DC/OS UI, click the icon next to the **vamp-ee-lifter** service name to open the Vamp Lifter UI in a new window
   ![](/images/screens/v100/dcos-vamp-lifteree.png)
 * Complete the Vamp EE Quick Start installation:
   ![](/images/screens/v100/lifteree-installer-deploy.png)
@@ -65,7 +65,7 @@ A DC/OS cluster on which to install Vamp:
 
 ### Login to the Vamp UI
 
-In the DC/OS UI, click the icon next to the vamp-ee service name to open the Vamp UI in a new window
+In the DC/OS UI, click the icon next to the **vamp-ee** service name to open the Vamp UI in a new window
 ![](/images/screens/v100/lifteree-installer-deploy.png)
 
 You can login using the username: **admin** and password: **abc12345**
