@@ -66,10 +66,10 @@ A DC/OS cluster on which to install Vamp:
 ### Login to the Vamp UI
 
 In the DC/OS UI, click the icon next to the **vamp-ee** service name to open the Vamp UI in a new window
-![](/images/screens/v100/lifteree-installer-deploy.png)
+![](/images/screens/v100/dcos-vamp-vampee.png)
 
 You can login using the username: **admin** and password: **abc12345**
-![](/images/screens/v100/dcos-vamp-vampee.png)
+![](/images/screens/v100/vampee-login.png)
 
 {{< note title="What next?" >}}
 
