@@ -62,23 +62,25 @@ After a successful installation, you will be able to login to Vamp EE as an admi
   ```
   
 * Open the link to the Vamp Lifter UI in your web browser
-  ![](/images/screens/v100/lifteree-installer-deploy.png)
-  * With the **Deploy** tab selected, click on the green icon at the top right of the page
-  * This will start the installation and:
-    * Deploy **MySQL**, **Hashicorp Vault** and **Elasticsearch** into the *default* Kubernetes namespace
-    * Create a sample organisation called **organisation**
-    * Create a sample environment called **environment** for the sample organisation
-    * Create a Kubernetes namespace called **vampio-organisation-environment**
-    * Install the **Vamp Gateway Agent** (VGA) into the *vampio-organisation-environment* namespace
-    * Deploy the **Vamp** application into the *default* Kubernetes namespace
+![](/images/screens/v100/lifteree-installer-deploy.png)
+* Select **Installer → Deploy**
+* Click on the **Deploy** button (top right), this will start the installation and:
+  * Deploy **MySQL**, **Hashicorp Vault** and **Elasticsearch** into the *default* Kubernetes namespace
+  * Create a sample organisation called **organisation**
+  * Create a sample environment called **environment** for the sample organisation
+  * Create a Kubernetes namespace called **vampio-organisation-environment**
+  * Install the **Vamp Gateway Agent** (VGA) into the *vampio-organisation-environment* namespace
+  * Deploy the **Vamp** application into the *default* Kubernetes namespace
 * To view the progress of the installation, click on the **Log** tab
+  ![](/images/screens/v100/lifteree-installer-log-kubernetes.png)
 
 ### Login to the Vamp UI
 
-At the end of the installer log there is a message with a link to the Vamp UI, paste this into your web browser
+At the end of the installer log there is a message with a link to the Vamp UI, paste this link into your web browser
 
 You can login using the username: **admin** and password: **abc12345**
 ![](/images/screens/v100/vampee-login.png)
+
 If necessary, you can regenerate the link with the following command:
 
 ```
