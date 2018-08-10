@@ -4,7 +4,7 @@ title: Vamp EE Trial Signup
 type: page
 layout: trial-signup
 header:
-    title: "Start using Vamp Enterprise Edition for free for 30 days!"
+    title: "Start using Vamp Enterprise Edition for free for 30 days"
 ---
 There are two ways to get started with a Vamp Enterprise Edition trial.
 
