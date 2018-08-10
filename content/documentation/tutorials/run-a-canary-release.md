@@ -32,7 +32,7 @@ clusters:
     services:
       breed:
         name: sava:1.1.0
-        deployable: magneticio/sava:1.1.0
+        deployable: vampio/sava:1.1.0
         ports:
           webport: 8080/http
       scale:
@@ -58,11 +58,11 @@ The merge adds a new route to the existing internal (`sava/sava/webport`) gatewa
 ### Merge using the UI
 
 1. In the Vamp UI, select the environment *environment* and go to the **Blueprints** page and click **Add** (top right)
-* Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment 
-* Open the action menu on the **sava:1.1** blueprint and select **Merge to** 
+2. Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment 
+3. Open the action menu on the **sava:1.1** blueprint and select **Merge to** 
   ![](/images/screens/v100/tut2/vampee-environment-blueprints-sava11-mergeto.png)
-* You'll be prompted to select the deployment you wish to merge the blueprint with - select **sava**
-* Click **Merge** to deploy the sava:1.1.0 service to the running sava deployment.  
+4. You'll be prompted to select the deployment you wish to merge the blueprint with - select **sava**
+5. Click **Merge** to deploy the sava:1.1.0 service to the running sava deployment.  
   Vamp will work out the differences and update the deployment accordingly.
   ![](/images/screens/v100/tut2/vampee-environment-deployments-sava.png)
 
@@ -75,10 +75,10 @@ You will see two routes - one for the sava:1.0.0 version and one for the new sav
 Let's adjust the weight and start to send traffic to our new sava:1.1.0 application
 
 1. Click the edit icon next to **WEIGHT**
-* Adjust the weight slider to distribute traffic 50% / 50% between the two versions
+2. Adjust the weight slider to distribute traffic 50% / 50% between the two versions
   ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editweights.png)
-* Click **Save** and Vamp will adjust the route weights accordingly
-* Click the **HOST - PORT/TYPE** to open the gateway.  
+3. Click **Save** and Vamp will adjust the route weights accordingly
+4. Click the **HOST - PORT/TYPE** to open the gateway.  
   Each time you do this the application will switch between a version 1.0 page (light background) and a version 1.1 page (dark background).
 
 You can also use send traffic to the different versions of the application using [ApacheBench](https://httpd.apache.org/docs/2.4/programs/ab.html):
