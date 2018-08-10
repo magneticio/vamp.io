@@ -62,7 +62,7 @@ After a successful installation, you will be able to login to Vamp EE as an admi
   ```
   
 * Open the link to the Vamp Lifter UI in your web browser
-![](/images/screens/v100/lifteree-installer-deploy.png)
+  ![](/images/screens/v100/lifteree-installer-deploy.png)
 * Select **Installer → Deploy**
 * Click on the **Deploy** button (top right), this will start the installation and:
   * Deploy **MySQL**, **Hashicorp Vault** and **Elasticsearch** into the *default* Kubernetes namespace
