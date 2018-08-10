@@ -34,7 +34,7 @@ clusters:
     services:
       breed:
         name: sava:1.0.0
-        deployable: magneticio/sava:1.0.0
+        deployable: vampio/sava:1.0.0
         ports:
           webport: 8080/http
       scale:
@@ -52,11 +52,11 @@ clusters:
 ### Deploy using the Vamp UI
 
 1. In the Vamp UI, select the environment *environment* and go to the **Blueprints** page and click **Add** (top right)
-* Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment 
-* Open the action menu on the **sava:1.0** blueprint and select **Deploy as** 
+2. Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment 
+3. Open the action menu on the **sava:1.0** blueprint and select **Deploy as** 
   ![](/images/screens/v100/tut1/vampee-environment-blueprints-sava10-deployas.png)
-* You'll be prompted to give your deployment a name, let's call it **sava**
-* Click **Deploy** to start the deployment
+4. You'll be prompted to give your deployment a name, let's call it **sava**
+5. Click **Deploy** to start the deployment
   ![](/images/screens/v100/tut1/vampee-environment-deployments-sava.png)
   
 ## Check out the deployed application 
@@ -116,11 +116,11 @@ ab -c 7 -n 10000 -l -H "Host: 9050.sava.vamp" http://<vga-external-ip>/
 Vamp will automatically load balance traffic across application instances as they scale. Let's change the scale of the sava application and see what happens. 
 
 1. Go to the **Deployments** page 
-* Click on **sava** to open the deployment detail page
-* Now click on **sava:1.0.0** to see all running instances of the sava application (we only have one instance running right now)
-* Click **Scale service** (top right) and set the **INSTANCES** to **3**
+2. Click on **sava** to open the deployment detail page
+3. Now click on **sava:1.0.0** to see all running instances of the sava application (we only have one instance running right now)
+4. Click **Scale service** (top right) and set the **INSTANCES** to **3**
   ![](/images/screens/v100/tut1/vampee-environment-deployments-sava-instances-scale.png)
-* Click **Save** 
+5. Click **Save** 
 
 Vamp will automatically scale up the number of running instances (assuming your cluster has enough resources) and add the additional resources to the internal gateway.
 
