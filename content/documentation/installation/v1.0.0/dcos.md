@@ -31,37 +31,40 @@ A DC/OS cluster on which to install Vamp:
 
 ### Deploying Vamp Lifter
 
-* Sign up for a [Vamp Enterprise Edition trial](/trial-signup/), if you haven't already. Then download the **lifter-standalone.json** file
-* Deploy the Vamp Lifter application:
-  * Using the DC/OS CLI:
+Sign up for a [Vamp Enterprise Edition trial](/trial-signup/), if you haven't already. Then download the **lifter-standalone.json** file
+
+### Using the DC/OS CLI
+Deploy the Vamp Lifter application using the DC/OS CLI:
     
-    ```
-    dcos marathon app add lifter-standalone.json
-    ```
-    
-  * Using the DC/OS UI:
-    * Select **Services → Run a Service**
-    * Select **JSON Configuration**
-    * Paste the contents of the **lifter-standalone.json** file into the editor
-    * Click the **Review & Run** button
-    * Click the **Run Service** button to deploy the Vamp Lifter application
+```
+dcos marathon app add lifter-standalone.json
+```
+
+### Using the DC/OS UI
+Deploy the Vamp Lifter application using the DC/OS CLI:
+* Select **Services → Run a Service**
+* Select **JSON Configuration**
+* Paste the contents of the **lifter-standalone.json** file into the editor
+* Click the **Review & Run** button
+* Click the **Run Service** button to deploy the Vamp Lifter application
 
 ### Install Vamp and dependencies
 
-* In the DC/OS UI, click the icon next to the **vamp-ee-lifter** service name to open the Vamp Lifter UI in a new window
-  ![](/images/screens/v100/dcos-vamp-lifteree.png)
-* Complete the Vamp EE Quick Start installation:
-  ![](/images/screens/v100/lifteree-installer-deploy.png)
-  * With the **Deploy** tab selected, click on the **Deploy** button at the top right of the page
-  * This will start the installation and:
-    * Deploy **MySQL**, **Hashicorp Vault** and **Elasticsearch**
-    * Create a sample organisation called **organisation**
-    * Create a sample environment called **environment** for the sample organisation
-    * Create a Kubernetes namespace called **vampio-organisation-environment**
-    * Install the **Vamp Gateway Agent** (VGA) into the *vampio-organisation-environment* namespace
-    * Deploy the **Vamp** application
+In the DC/OS UI, click the icon next to the **vamp-ee-lifter** service name to open the Vamp Lifter UI in a new window
+![](/images/screens/v100/dcos-vamp-lifteree.png)
+
+Complete the Vamp EE Quick Start installation:
+![](/images/screens/v100/lifteree-installer-deploy.png)
+* Select **Installer → Deploy**
+* Click on the **Deploy** button (top right), this will start the installation and:
+  * Deploy **MySQL**, **Hashicorp Vault** and **Elasticsearch**
+  * Create a sample organisation called **organisation**
+  * Create a sample environment called **environment** for the sample organisation
+  * Create a Kubernetes namespace called **vampio-organisation-environment**
+  * Install the **Vamp Gateway Agent** (VGA) into the *vampio-organisation-environment* namespace
+  * Deploy the **Vamp** application
 * To view the progress of the installation, click on the **Log** tab
-  ![](/images/screens/v100/lifteree-installer-log.png)
+  ![](/images/screens/v100/lifteree-installer-log-dcos.png)
 
 ### Login to the Vamp UI
 
