@@ -59,7 +59,7 @@ A DC/OS cluster on which to install Vamp:
     * Create a sample environment called **environment** for the sample organisation
     * Create a Kubernetes namespace called **vampio-organisation-environment**
     * Install the **Vamp Gateway Agent** (VGA) into the *vampio-organisation-environment* namespace
-    * Deploy the **Vamp** application into the *default* Kubernetes namespace
+    * Deploy the **Vamp** application
 * To view the progress of the installation, click on the **Log** tab
   ![](/images/screens/v100/lifteree-installer-log.png)
 
