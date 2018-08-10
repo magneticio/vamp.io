@@ -40,7 +40,7 @@ A DC/OS cluster on which to install Vamp:
     ```
     
   * Using the DC/OS UI:
-    * Select Services → Run a Service
+    * Select **Services → Run a Service**
     * Select **JSON Configuration**
     * Paste the contents of the **lifter-standalone.json** file into the editor
     * Click the **Review & Run** button
@@ -54,7 +54,7 @@ A DC/OS cluster on which to install Vamp:
   ![](/images/screens/v100/lifteree-installer-deploy.png)
   * With the **Deploy** tab selected, click on the **Deploy** button at the top right of the page
   * This will start the installation and:
-    * Deploy **MySQL**, **Hashicorp Vault** and **Elasticsearch** into the *default* Kubernetes namespace
+    * Deploy **MySQL**, **Hashicorp Vault** and **Elasticsearch**
     * Create a sample organisation called **organisation**
     * Create a sample environment called **environment** for the sample organisation
     * Create a Kubernetes namespace called **vampio-organisation-environment**
