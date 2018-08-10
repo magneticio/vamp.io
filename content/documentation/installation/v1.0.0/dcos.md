@@ -53,9 +53,9 @@ Deploy the Vamp Lifter application using the DC/OS CLI:
 In the DC/OS UI, click the icon next to the **vamp-ee-lifter** service name to open the Vamp Lifter UI in a new window
 ![](/images/screens/v100/dcos-vamp-lifteree.png)
 
-Complete the Vamp EE Quick Start installation:
-![](/images/screens/v100/lifteree-installer-deploy.png)
+Open the link to the Vamp Lifter UI in your web browser:
 * Select **Installer → Deploy**
+  ![](/images/screens/v100/lifteree-installer-deploy.png)
 * Click on the **Deploy** button (top right), this will start the installation and:
   * Deploy **MySQL**, **Hashicorp Vault** and **Elasticsearch**
   * Create a sample organisation called **organisation**
