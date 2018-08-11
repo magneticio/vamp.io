@@ -42,6 +42,7 @@ dcos marathon app add lifter-standalone.json
 
 ### Using the DC/OS UI
 Deploy the Vamp Lifter application using the DC/OS CLI:
+
 * Select **Services → Run a Service**
 * Select **JSON Configuration**
 * Paste the contents of the **lifter-standalone.json** file into the editor
