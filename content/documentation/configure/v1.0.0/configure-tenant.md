@@ -15,6 +15,13 @@ aliases:
 
 ### Using the Vamp Lifter UI
 
+#### Kubernetes
+Open the Vamp Lifter UI in your web browser. Details of how to access the Vamp Lifter UI are in the Vamp EE [Kubernetes quickstart](/documentation/installation/kubernetes).
+
+#### DC/OS
+In the DC/OS UI, click the icon next to the **vamp-ee-lifter** service name to open the Vamp Lifter UI in a new window
+![](/images/screens/v100/dcos-vamp-lifteree.png)
+
 1. Select **Organizations** from the left-hand menu
 2. Click on the **Add** button (top right)
 3. Enter the name of the organization namespace and click **Ok**
