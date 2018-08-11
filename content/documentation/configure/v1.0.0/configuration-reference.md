@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "configuration-reference-v100"
     parent: "Configuration"
-    weight: 30
+    weight: 50
 aliases:
     - /documentation/configure/configuration-reference
     - /documentation/installation/configuration-reference

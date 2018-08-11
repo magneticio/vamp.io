@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "configure-database-v100"
     parent: "Configuration"
-    weight: 30
+    weight: 40
 aliases:
     - /documentation/configure/configure-database
     - /documentation/installation/configure-database

@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "configure-pulse-v100"
     parent: "Configuration"
-    weight: 30
+    weight: 40
 aliases:
     - /documentation/configure/configure-pulse
     - /documentation/installation/configure-pulse

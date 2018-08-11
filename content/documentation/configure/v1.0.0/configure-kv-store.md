@@ -5,7 +5,7 @@ menu:
   main:
     identifier: "configure-kv-store-v100"
     parent: "Configuration"
-    weight: 30
+    weight: 40
 aliases:
     - /documentation/configure/configure-kv-store
     - /documentation/installation/configure-kv-store
