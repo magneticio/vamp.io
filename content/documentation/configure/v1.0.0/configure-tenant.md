@@ -22,15 +22,15 @@ Open the Vamp Lifter UI in your web browser. Details of how to access the Vamp L
 In the DC/OS UI, click the icon next to the **vamp-ee-lifter** service name to open the Vamp Lifter UI in a new window
 ![](/images/screens/v100/dcos-vamp-lifteree.png)
 
-### Create a tenant origanization
+### Create a tenant organization
 The organization namespace holds configuration that is common to all environments such as password salts, users and roles. The configuration for the persistent storage are also normally defined at the organization level.
 
 1. Select **Organizations** from the left-hand menu
 2. Click on the **Add** button (top right)
 3. Enter the name of the organization namespace and click **Ok**
-  * The name must be web safe and should only contain lowercase  letters (`a-z`), digits (`0-9`). It must not contain dashes (`-`) as these are used are delimiters
-  * **DC/OS only** the name may contain underscore (`_`) characters
-  * **Kubernetes only** the name must not contain underscore (`_`) characters
+  * The name must be web safe and should only contain lowercase  letters (`a-z`), digits (`0-9`). It must not contain dash (`-`) characters as Vamp uses dashes as namespace delimiters
+  * **DC/OS only**: the name may contain underscore (`_`) characters
+  * **Kubernetes only**: the name must not contain underscore (`_`) characters
   * The organization will be created with a default display name, you will have an opportunity to change this later
   ![](/images/screens/v100/lifteree-organizations-add.png)
 4. Click on the card for the newly created organization
@@ -40,7 +40,7 @@ The organization namespace holds configuration that is common to all environment
 6. To change the display name, edit the `metadata.namespace.title` and click the **Apply** button
   ![](/images/screens/v100/lifteree-configuration-neworg.png)
 7. Select **Setup** from the left-hand menu and click **Run**
-  This configures the **key-value store** (Hashicorp Vault), **persistence** (MySQL), and **pulse** (Elasticsearch)
+  * This configures the **key-value store** (Hashicorp Vault), **persistence** (MySQL), and **pulse** (Elasticsearch)
   ![](/images/screens/v100/lifteree-setup-neworg.png)
 8. You can check the setup by selecting **Connections** from the left-hand menu
   ![](/images/screens/v100/lifteree-connections-neworg.png)
@@ -51,7 +51,7 @@ The tenant cannot be accessed until at least one admin user has been created. On
 To add an admin user:
 
 1. Select **Organizations** from the left-hand menu
-2. Click on the card for the organization where you want to add the admin user
+2. Click on the card for the organization to which you want to add the admin user
 3. Select **Administrators** from the left-hand menu
 4. Click on the **Add** button (top right)
   ![](/images/screens/v100/lifteree-administrators-add.png)
@@ -60,18 +60,18 @@ To add an admin user:
   ![](/images/screens/v100/lifteree-administrators-neworg.png)
 
 ### Add a tenant environment
-An environment namespace typically represents part of a DTAP-pipeline (Development > Testing > Acceptance > Production). The container scheduler (Kubernetes or Marathon) is defined at the environment level. 
+An environment namespace typically represents part of a DTAP-pipeline (Development > Testing > Acceptance > Production). 
 
 When using Kubernetes, there is a one-to-one mapping between a Vamp namespace and a Kubernetes namespace.
 
 1. Select **Organizations** from the left-hand menu
-2. Click on the card for the organization where you want to add the environment
+2. Click on the card for the organization to which you want to add the environment
 3. Select **Environments** from the left-hand menu
 4. Click on the **Add** button (top right)
 5. Enter the name of the environment namespace and click **Ok**
-  * The name must be web safe and should only contain lowercase  letters (`a-z`), digits (`0-9`). It must not contain dashes (`-`) as these are used are delimiters
-  * **DC/OS only** the name may contain underscore (`_`) characters
-  * **Kubernetes only** the name must not contain underscore (`_`) characters
+  * The name must be web safe and should only contain lowercase  letters (`a-z`), digits (`0-9`). It must not contain dash (`-`) characters as Vamp uses dashes as namespace delimiters
+  * **DC/OS only**: the name may contain underscore (`_`) characters
+  * **Kubernetes only**: the name must not contain underscore (`_`) characters
   * The environement will be created with a default display name, you will have an opportunity to change this later
   ![](/images/screens/v100/lifteree-environments-add.png)
 6. Click on the card for the newly created environment
@@ -81,7 +81,8 @@ When using Kubernetes, there is a one-to-one mapping between a Vamp namespace an
 8. To change the display name, edit the `metadata.namespace.title` and click the **Apply** button
   ![](/images/screens/v100/lifteree-configuration-neworg-newenv.png)
 9. Select **Setup** from the left-hand menu and click **Run**
-  This configures:
+  
+  This:
   
   * (Kubernetes only) creates a Kubernetes **namespace**
   * **key-value store** stores the environment configuration in Hashicorp Vault
