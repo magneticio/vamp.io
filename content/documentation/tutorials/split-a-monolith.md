@@ -111,7 +111,7 @@ curl -H "Host: webport.backend2.sava-new.vamp" http://<vga-external-ip>/api/mess
 
 ## Learn about environment variables and service discovery
 
-If you check the environment varibales passed to the **sava-frontend:1.2.0** containers, you will see the environment variables that we set in the blueprint.
+If you check the environment variables passed to the **sava-frontend:1.2.0** containers, you will see the environment variables that we set in the blueprint.
 
 ### Kubernetes
 Using `kubectl` and a label selector:
