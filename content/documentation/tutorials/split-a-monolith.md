@@ -138,7 +138,7 @@ To find the `app-id` of the frontend service:
 3. Now click on **sava-frontend:1.2.0** to see all running instances
 4. Click an instance name to open the detail page
 5. Copy the first part of page title, before the dot (`.`)
-  ![](/images/screens/v100/tut3/vampee-environment-deployments-savanew-frontend-instance)
+  ![](/images/screens/v100/tut3/vampee-environment-deployments-savanew-frontend-instance.png)
 6. Paste the copied text into your favourite text editor and replace `_deployment` with a slash `/deployment`, the resulting text is the `app-id`
 
 ```bash
@@ -151,7 +151,7 @@ $ dcos marathon app show vampio-organization-environment/deployment-sava-new-ser
 ...
 ```
 
-Host names and ports are configured at runtime and injected in the right parts of your running deployment. You can then use this these variables as a simple means of service discovery.
+Host names and ports are configured at runtime and injected in the right parts of your running deployment. You can then use these variables as a simple means of service discovery.
 
 Remember, there is no "point-to-point" wiring. **The injected host and port points to the internal gateway** which acts as a load balanced service endpoint for that service. This means you can canary release on your internal services as well as your external (public) services.
 
