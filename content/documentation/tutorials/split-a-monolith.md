@@ -139,7 +139,7 @@ To find the `app-id` of the frontend service:
 4. Click an instance name to open the detail page
 5. Copy the first part of page title, before the dot (`.`)
   ![](/images/screens/v100/tut3/vampee-environment-deployments-savanew-frontend-instance.png)
-6. Paste the copied text into your favourite text editor and replace `_deployment` with a slash `/deployment`, the resulting text is the `app-id`
+6. Paste the copied text into your favourite text editor and replace `_deployment` with `/deployment`, the resulting text is the `app-id`
 
 ```bash
 $ dcos marathon app show vampio-organization-environment/deployment-sava-new-service-e989b44b06a8ace5089411e4061bb0542d8dbfaa
