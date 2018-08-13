@@ -76,9 +76,31 @@ clusters:
 ```
 
 Deploy this blueprint using the UI  - let's name it after the blueprint this time **sava-new**.
+
+## Check out the deployed services 
+
 Once it's deployed, you can check out the new topology in the Vamp UI through the Gateways page or the Deployments page
 
-![](/images/screens/v094/services_2backends.png)
+### From the Deployments page
+Click on **sava-new** to open the deployment detail page, then click on **sava-frontend:1.2.0** to see all running instances of the sava-frontend service.
+
+Click an instance name (we only have one instance running) to open it and then click the **webport** tab. If page looks in the webport tab, you can click the **Open in a new tab** button.
+
+The **webport** tab is only useful for services that respond to requests on `/`.
+
+The **sava-backend1** service only responds to requests for `/api/message1` and the **sava-backend2** service only responds to requests for `/api/message2`. So the **webport** tab for these services shows "404 page not found".
+
+### From the Gateways page
+Open the internal gateway (`sava-new/sava/webport`) or the external gateway (`sava/9060`) and click the **HOST - PORT/TYPE**
+
+![](/images/screens/v100/tut1/vampee-environment-gateways-savanew-internal-fe2be.png)
+
+### Via the Vamp Gateway Agent
+You can also use the Vamp Gateway Agent (VGA) to access the **sava-frontend** using the virtual host name **9060.sava-new.vamp**.
+
+```
+curl -H "Host: 9060.sava-new.vamp" http://<vga-external-ip>/
+```
 
 ## Learn about environment variables and service discovery
 
