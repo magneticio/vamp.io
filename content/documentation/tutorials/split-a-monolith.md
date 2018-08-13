@@ -153,7 +153,7 @@ $ dcos marathon app show vampio-organization-environment/deployment-sava-new-ser
 
 Host names and ports are configured at runtime and injected in the right parts of your running deployment. You can then use these variables as a simple means of service discovery.
 
-Remember, there is no "point-to-point" wiring. **The injected host and port points to the internal gateway** which acts as a load balanced service endpoint for that service. This means you can canary release on your internal services as well as your external (public) services.
+Remember, there is no "point-to-point" wiring. **The injected host and port points to the internal gateway** which acts as a load balanced service endpoint for that service. This means you can canary release your internal services as well as your external (public) services.
 
 Learn more about [how Vamp does service discovery](/documentation/routing-and-loadbalancing//).
 
