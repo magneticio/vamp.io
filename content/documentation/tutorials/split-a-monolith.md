@@ -93,7 +93,7 @@ The **sava-backend1** service only responds to requests for `/api/message1` and 
 ### From the Gateways page
 Open the internal gateway (`sava-new/sava/webport`) or the external gateway (`sava/9060`) and click the **HOST - PORT/TYPE**
 
-![](/images/screens/v100/tut1/vampee-environment-gateways-savanew-internal-fe2be.png)
+![](/images/screens/v100/tut3/vampee-environment-gateways-savanew-internal-fe2be.png)
 
 ### Via the Vamp Gateway Agent
 You can also use the Vamp Gateway Agent (VGA) to access the **sava-frontend** using the virtual host name **9060.sava-new.vamp**.
