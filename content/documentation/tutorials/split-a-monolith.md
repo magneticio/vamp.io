@@ -129,7 +129,7 @@ Containers:
 ```
 
 ### DC/OS
-On DC/OS you need to know the `app-id`.
+To use the `dcos` CLI, you first need to know the `app-id`.
 
 To find the `app-id` of the frontend service:
 
