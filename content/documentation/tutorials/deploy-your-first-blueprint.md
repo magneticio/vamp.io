@@ -15,6 +15,8 @@ Now you're ready to check out some of Vamp's features. In this tutorial we will:
 * Get some metrics on the running application  
 * Change the scale   
 
+**Requirements:** A Kubernetes cluster with at least 4 nodes (8 vCPUs and 30GB memory); or a DC/OS cluster with at least 4 nodes (1 public agent, 8 vCPUs and 30GB memory)
+
 ## Deploy a monolith
 
 Imagine the company you work for still uses monolithic applications. I know, it sounds far fetched but..
