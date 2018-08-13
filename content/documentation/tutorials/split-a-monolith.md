@@ -88,7 +88,7 @@ Click an instance name (we only have one instance running) to open it and then c
 
 The **webport** tab provides a quick way of checking if an individual instance of a service is working as expected but it assumes that the servce responds to requests on `/`.
 
-The **sava-backend1** service only responds to requests for `/api/message1` and the **sava-backend2** service only responds to requests for `/api/message2`. So the **webport** tab for these services shows "404 page not found".
+The **sava-backend1** and **sava-backend2** services only respond to requests for `/api/message`. So the **webport** tab for these services shows "404 page not found".
 
 ### From the Gateways page
 Open the internal gateway (`sava-new/sava/webport`) or the external gateway (`sava/9060`) and click the **HOST - PORT/TYPE**
@@ -102,26 +102,59 @@ You can also use the Vamp Gateway Agent (VGA) to access the **sava-frontend** us
 curl -H "Host: 9060.sava-new.vamp" http://<vga-external-ip>/
 ```
 
+During development, it can be useful to have direct access to the internal gateways. By default, Vamp creates virtual host names for the internal gateways, so you can use these to access the backend services via the VGA.
+
+```
+curl -H "Host: webport.backend1.sava-new.vamp" http://<vga-external-ip>/api/message
+curl -H "Host: webport.backend2.sava-new.vamp" http://<vga-external-ip>/api/message
+```
+
 ## Learn about environment variables and service discovery
 
-If you were to check out the Docker containers using `docker inspect`, you would see the environment variables that we set in the blueprint.
+If you check the environment varibales passed to the **sava-frontend:1.2.0** containers, you will see the environment variables that we set in the blueprint.
+
+### Kubernetes
+Using `kubectl` and a label selector:
 
 ```bash
-> docker inspect 66e64bc1c8ca
+$ kubectl --namespace vampio-organization-environment describe pod -l io.vamp.service=sava-frontend_1.2.0
 ...
-"Env": [
-    "BACKEND_1=http://192.168.65.2:33021/api/message",
-    "BACKEND_2=http://192.168.65.2:33022/api/message",
-    "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-],
+Containers:
+  sava-new-...
+    ...
+    Environment:
+      BACKEND_1:  http://10.55.246.121:40003/api/message
+      BACKEND_2:  http://10.55.246.180:40001/api/message
 ...
 ```
 
-Host names and ports are configured at runtime and injected in the right parts of your running deployment. Your service/app should pick up these variables to configure itself. Luckily, this is quite easy and common in almost all languages and frameworks.
+### DC/OS
+On DC/OS you need to know the `app-id`.
 
-Remember, there is no "point-to-point" wiring. The exposed host and port are actually service
-endpoints. The location, amount and version of containers running behind that service endpoint can vary.
-Learn more about [how Vamp does service discovery](/documentation/routing-and-loadbalancing//).
+To find the `app-id` of the frontend service:
+
+1. Go to the **Deployments** page 
+2. Click on **sava-new** to open the deployment detail page
+3. Now click on **sava-frontend:1.2.0** to see all running instances
+4. Click an instance name to open the detail page
+5. Copy the first part of page title, before the dot (`.`)
+  ![](/images/screens/v100/tut3/vampee-environment-deployments-savanew-frontend-instance)
+6. Paste the copied text into your favourite text editor and replace `_deployment` with a slash `/deployment`, the resulting text is the `app-id`
+
+```bash
+$ dcos marathon app show vampio-organization-environment/deployment-sava-new-service-e989b44b06a8ace5089411e4061bb0542d8dbfaa
+...
+  "env": {
+    "BACKEND_1": "http://10.0.0.4:40004/api/message",
+    "BACKEND_2": "http://10.0.0.4:40002/api/message"
+  },
+...
+```
+
+Host names and ports are configured at runtime and injected in the right parts of your running deployment. You can then use this these variables as a simple means of service discovery.
+
+Remember, there is no "point-to-point" wiring. The exposed host and port are actually load balanced service
+endpoints. Learn more about [how Vamp does service discovery](/documentation/routing-and-loadbalancing//).
 
 {{< note title="What next?" >}}
 * Great! We just demonstrated that Vamp can handle dependencies between services and configure these services with host and port information at runtime. Now let's do a [more complex migration to a new service based topology →](/documentation/tutorials/merge-and-delete/).
