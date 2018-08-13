@@ -23,7 +23,7 @@ Now let's say we have a new version of this great application that we want to ca
 
 Vamp allows you to canary release application updates by merging new blueprints to a running deployment.
 
-Take a look at the YAML blueprint example below. It is almost identical to the blueprint we initially used to deploy the sava 1.0.0 application, with two differences - this time the blueprint does not include a gateway, and the breed describes the sava:1.1.0 service.
+Take a look at the YAML blueprint example below. It is almost identical to the blueprint we initially used to deploy the sava 1.0.0 application, with two differences - this time the blueprint does not include an external gateway, and the breed describes the sava:1.1.0 service.
 
 ```yaml
 name: sava:1.1
