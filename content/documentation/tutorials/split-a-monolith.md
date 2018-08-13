@@ -86,7 +86,7 @@ Click on **sava-new** to open the deployment detail page, then click on **sava-f
 
 Click an instance name (we only have one instance running) to open it and then click the **webport** tab. If page looks in the webport tab, you can click the **Open in a new tab** button.
 
-The **webport** tab is only useful for services that respond to requests on `/`.
+The **webport** tab provides a quick way of checking if an individual instance of a service is working as expected but it assumes that the servce responds to requests on `/`.
 
 The **sava-backend1** service only responds to requests for `/api/message1` and the **sava-backend2** service only responds to requests for `/api/message2`. So the **webport** tab for these services shows "404 page not found".
 
