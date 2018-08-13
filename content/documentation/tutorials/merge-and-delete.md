@@ -95,7 +95,7 @@ You can complete the merge using either the Vamp UI.
 3. Open the action menu on the **sava:1.3** blueprint and select **Merge to** 
   ![](/images/screens/v100/tut4/vampee-environment-blueprints-sava13-mergeto.png)
 4. You'll be prompted to select the deployment you wish to merge the blueprint with - select **sava-new**
-5. Click **Merge** to deploy the **sava:1.3** and **sava-backend:1.3** services to the running sava deployment.  
+5. Click **Merge** to deploy the **sava-fontend:1.3** and **sava-backend:1.3** services to the running sava deployment.  
   Vamp will work out the differences and update the deployment accordingly.
   ![](/images/screens/v100/tut4/vampee-environment-deployments-savanew-5clusters.png)
 
@@ -105,13 +105,14 @@ Notice we now have:
 
 * Three backend clusters: the two original ones (backend1 and backend2) and one from the new merge.
 * Two services in the sava cluster: the original sava-frontend:1.2 and the new sava-frontend:1.3.
+  
   If you open the **sava-new/sava/webport** internal gateway, you will see that the sava-frontend:1.2.0 route has a weight of 100% and the new sava-frontend:1.3.0 route has a weight of 0%. Whenever Vamp merges a new service to an existing cluster, the default weight of 0% is applied. This means **no traffic will be routed to the sava:1.3 services yet**.
 
 ![](/images/screens/v100/tut4/vampee-environment-gateways-savanew-sava-internal-2routes.png)
 
 Now both blueprints are deployed, moving from the old to the new topology is just a question of “turning the weight dial”. You could do this in one go, or slowly adjust it.
 
-![](/images/screens/v100/tut4/vampee-environment-gateways-savanew-sava-internal-editweights.png.png)
+![](/images/screens/v100/tut4/vampee-environment-gateways-savanew-sava-internal-editweights.png)
 
 ## Decommission parts of the deployment
 
