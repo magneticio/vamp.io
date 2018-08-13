@@ -12,7 +12,7 @@ called the *Very Awesome Microservices Platform* for nothing. The next step is t
 * define a new service topology
 * learn about Vamp environment variables and service discovery
 
-**Requirements:** Docker machine should have access to **at least 3GB memory**
+**Requirements:** A Kubernetes cluster with at least 4 nodes (8 vCPUs and 30GB memory); or a DC/OS cluster with at least 4 nodes (1 public agent, 8 vCPUs and 30GB memory)
 
 ## Define a new service topology
 
@@ -32,7 +32,7 @@ clusters:
     services:
       breed:
         name: sava-frontend:1.2.0
-        deployable: magneticio/sava-frontend:1.2.0
+        deployable: vampio/sava-frontend:1.2.0
         ports:
           webport: 8080/http
         environment_variables:
@@ -75,15 +75,10 @@ clusters:
         instances: 1
 ```
 
-Deploy this blueprint using either the UI or a REST call  - let's name it after the blueprint this time **sava-new**.
+Deploy this blueprint using the UI  - let's name it after the blueprint this time **sava-new**.
 Once it's deployed, you can check out the new topology in the Vamp UI through the Gateways page or the Deployments page
 
 ![](/images/screens/v094/services_2backends.png)
-
-You can also use Vamp as a reverse proxy to access the exposed gateways:
-
-* `http://localhost:8080/proxy/gateways/sava-new%2F9060/`
-* `http://localhost:8080/proxy/gateways/sava-new%2Fsava%2Fwebport/`
 
 ## Learn about environment variables and service discovery
 
