@@ -94,9 +94,15 @@ ab -c 7 -n 10000 -l -H "Host: 9050.sava.vamp" http://<vga-external-ip>/
 
 Using percentages to divide traffic between versions is already quite powerful, but also very simplistic.
 What if, for instance, you want to specifically target a group of users? Or channel specific requests
-from an internal service? Vamp allows you to do this right from the blueprint DSL.
+from an internal service?
 
 Let's start simple: We can use the Vamp UI to allow only Chrome users to access v1.1.0 of our application.
+
+We do this by adding a condition (`User-Agent = Chrome`) to the **sava/sava/sava:1.1.0/webport** route.
+
+Since we want only requests from Chrome users to use the sava/sava/sava:1.1.0/webport route, **we also need to set the weight on that route to 0%**. That might sound confusing, but route weights are used for distributing traffic that don't match a condition - and **we want 0% of all non-Chrome users to be sent to the sava/sava/sava:1.1.0/webport route**.
+
+[Read more about route weight and condition strength](/documentation/using-vamp/gateways/#route-weight-and-condition-strength)
 
 1. In the Vamp UI, select the environment *environment* and go to the **Gateways** page and open the **sava/sava/webport** gateway
 * Click the edit condition icon for the **sava/sava/sava:1.1.0/webport** route and enter the condition `User-Agent = Chrome` 
@@ -105,15 +111,15 @@ Let's start simple: We can use the Vamp UI to allow only Chrome users to access 
   As we want all Chrome users to be sent to this route, we will set the condition strength to 100%.
 * Click the edit condition strength icon for the **sava/sava/sava:1.1.0/webport** route and move the slider to 100%.
   ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editconditionweight.png)
-  Finally, we need to account for routing of traffic that does not match the condition (that is, all non-Chrome users). We do this using the route weight.  
-  As we want only Chrome users to be sent to the sava/sava/sava:1.1.0/webport route, we need to set its route weight to 0%. That might sound confusing, but remember that the route weight is used for distributing traffic that didn't match the applied condition - and we want 0% of all non-Chrome users to be sent to the sava/sava/sava:1.1.0/webport route  
-  [Read more about route weight and condition strength](/documentation/using-vamp/gateways/#route-weight-and-condition-strength)
+  Finally, we need to account for routing of traffic that does not match the condition (that is, all non-Chrome users). We do this using the route weight.
 * Click the edit icon next to **WEIGHT**
 * Adjust the weight slider to **0%** for the **sava/sava/sava:1.1.0/webport** route
   ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editweights1000.png)
 * Click **Save**
 
-As we are not actually deploying anything, just reconfiguring routes, the update should be almost instantaneous. You can fire up a Chrome browser and a Safari browser and go to `http://localhost:8080/proxy/gateways/sava%2Fsava%2Fwebport/` to check the results. A hard refresh might be necessary because of your browser's caching routine.
+As we are not actually deploying anything, just reconfiguring routes, the update should be almost instantaneous.
+
+You can fire up a Chrome browser and a Safari browser and go to `http://localhost:8080/proxy/gateways/sava%2Fsava%2Fwebport/` to check the results. A hard refresh might be necessary because of your browser's caching routine.
 
 ![](/images/screens/screencap_canary1.gif)
 
