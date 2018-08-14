@@ -80,6 +80,7 @@ Let's adjust the weight and start to send traffic to our new sava:1.1.0 applicat
 3. Click **Save** and Vamp will adjust the route weights accordingly
 4. Click the **HOST - PORT/TYPE** to open the gateway.  
   Each time you do this the application will switch between a version 1.0 page (light background) and a version 1.1 page (dark background).
+  ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-mono-canary.png)
 
 You can also use send traffic to the different versions of the application using [ApacheBench](https://httpd.apache.org/docs/2.4/programs/ab.html):
 
@@ -97,9 +98,9 @@ from an internal service? Vamp allows you to do this right from the blueprint DS
 
 Let's start simple: We can use the Vamp UI to allow only Chrome users to access v1.1.0 of our application.
 
-1. Go to the **Gateways** page and open the **sava/sava/webport** gateway
-* Click the edit condition icon for the **sava/sava/sava:1.1.0/webport** route and enter the condition `User-Agent = Chrome`
-![](/images/screens/v094/tut2_edit_condition.png)
+1. In the Vamp UI, select the environment *environment* and go to the **Gateways** page and open the **sava/sava/webport** gateway
+* Click the edit condition icon for the **sava/sava/sava:1.1.0/webport** route and enter the condition `User-Agent = Chrome` 
+  ![](/images/screens/v094/tut2_edit_condition.png)
   Now we need to set a strength for the condition.  
   As we want all Chrome users to be sent to this route, we will set the condition strength to 100%.
 * Click the edit condition strength icon for the **sava/sava/sava:1.1.0/webport** route and move the slider to 100%.
