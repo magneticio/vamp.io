@@ -76,7 +76,7 @@ Let's adjust the weight and start to send traffic to our new sava:1.1.0 applicat
 
 1. Click the edit icon next to **WEIGHT**
 2. Adjust the weight slider to distribute traffic 50% / 50% between the two versions
-  ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editweights.png)
+  ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editweights5050.png)
 3. Click **Save** and Vamp will adjust the route weights accordingly
 4. Click the **HOST - PORT/TYPE** to open the gateway.  
   Each time you do this the application will switch between a version 1.0 page (light background) and a version 1.1 page (dark background).
@@ -100,17 +100,17 @@ Let's start simple: We can use the Vamp UI to allow only Chrome users to access 
 
 1. In the Vamp UI, select the environment *environment* and go to the **Gateways** page and open the **sava/sava/webport** gateway
 * Click the edit condition icon for the **sava/sava/sava:1.1.0/webport** route and enter the condition `User-Agent = Chrome` 
-  ![](/images/screens/v094/tut2_edit_condition.png)
+  ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editcondition.png)
   Now we need to set a strength for the condition.  
   As we want all Chrome users to be sent to this route, we will set the condition strength to 100%.
 * Click the edit condition strength icon for the **sava/sava/sava:1.1.0/webport** route and move the slider to 100%.
-![](/images/screens/v094/tut2_edit_condition_strength.png)
+  ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editconditionweight.png)
   Finally, we need to account for routing of traffic that does not match the condition (that is, all non-Chrome users). We do this using the route weight.  
   As we want only Chrome users to be sent to the sava/sava/sava:1.1.0/webport route, we need to set its route weight to 0%. That might sound confusing, but remember that the route weight is used for distributing traffic that didn't match the applied condition - and we want 0% of all non-Chrome users to be sent to the sava/sava/sava:1.1.0/webport route  
   [Read more about route weight and condition strength](/documentation/using-vamp/gateways/#route-weight-and-condition-strength)
 * Click the edit icon next to **WEIGHT**
 * Adjust the weight slider to **0%** for the **sava/sava/sava:1.1.0/webport** route
-    ![](/images/screens/v094/tut2_sliders_canary_2.png)
+  ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editweights1000.png)
 * Click **Save**
 
 As we are not actually deploying anything, just reconfiguring routes, the update should be almost instantaneous. You can fire up a Chrome browser and a Safari browser and go to `http://localhost:8080/proxy/gateways/sava%2Fsava%2Fwebport/` to check the results. A hard refresh might be necessary because of your browser's caching routine.
