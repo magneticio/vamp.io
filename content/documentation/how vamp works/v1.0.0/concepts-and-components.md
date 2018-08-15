@@ -1,13 +1,13 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Architecture and components
+title: Concepts and components
 aliases:
     - /documentation/how-vamp-works/
     - /documentation/using-vamp/artifacts/
     - /documentation/how-vamp-works/architecture-and-components/
 menu:
   main:
-    identifier: "architecture-and-components-v100"
+    identifier: "concepts-and-components-v100"
     parent: "How Vamp works"
     weight: 10
 ---
