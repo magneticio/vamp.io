@@ -125,9 +125,9 @@ Do this using Chrome and you'll see only the sava:1.1.0 version. Do it again usi
 
 ## A bit more about conditions
 
-Our browser example is easily testable on a laptop, but of course a bit contrived. Checking Headers, Cookies, Hosts are all possible, so you can create much more powerful conditions quite easily.
+Our browser example is easily testable on a laptop, but of course is a bit contrived. 
 
-Under the hood, Vamp uses Haproxy's ACL's ([HAProxy version 1.8 - ACL basics](http://cbonte.github.io/haproxy-dconv/1.8/configuration.html#7.1)) and you can use the exact ACL definition in the blueprint in the 'condition` field.
+Under the hood, Vamp uses Haproxy's ACLs ([HAProxy version 1.8 - ACL basics](http://cbonte.github.io/haproxy-dconv/1.8/configuration.html#7.1)) Vamp uses the exact ACL definition in the 'condition` field, so no syntax conversion is required. **Checking headers, cookies and hosts are all possible** and you can create much more powerful conditions quite easily.
 
 ### Vamp short codes
 
