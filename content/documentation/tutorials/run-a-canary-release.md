@@ -121,7 +121,7 @@ As we are not actually deploying anything, just reconfiguring routes, the update
 
 To test the condition is working, login to the Vamp UI, go to **environment → Gateways → sava/9050** and click the **HOST - PORT/TYPE** link.
 
-Do this using Chrome and you'll see only the sava:1.1.0 version. Do it again in Firefox or Safari and you'll see only the sava:1.0.0 version. A hard refresh might be necessary to bypass your browser's cache.
+Do this using Chrome and you'll see only the sava:1.1.0 version. Do it again using Firefox or Safari and you'll see only the sava:1.0.0 version. A hard refresh might be necessary to bypass your browser's cache.
 
 ## A bit more about conditions
 
@@ -167,7 +167,7 @@ User-Agent = Chrome AND Has Header X-VAMP-TUTORIAL
 You can easily test this using `curl`:
 
 ```
-curl -H "Host: 9050.sava.vamp" -H "User-Agent: Chrome/68.0.3440.106" -H "X-VAMP-TUTORIAL: 2" http://<vga-external-ip>/
+curl -H "Host: 9050.sava.vamp" -H "User-Agent: Chrome" -H "X-VAMP-TUTORIAL: 2" http://<vga-external-ip>/
 ```
 
 {{< note title="What next?" >}}
