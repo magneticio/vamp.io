@@ -119,19 +119,22 @@ Since we want only requests from Chrome users to use the sava/sava/sava:1.1.0/we
 
 As we are not actually deploying anything, just reconfiguring routes, the update should be almost instantaneous.
 
-Login to the Vamp UI and go to **environment → Gateways → sava/9050** and click the **HOST - PORT/TYPE** link. Do this using Chrome and you'll see only the sava:1.1.0 version. Do it again in Firefox or Safari and you'll see only the sava:1.0.0 version. A hard refresh might be necessary to bypass your browser's cache.
+To test the condition is working, login to the Vamp UI, go to **environment → Gateways → sava/9050** and click the **HOST - PORT/TYPE** link.
+
+Do this using Chrome and you'll see only the sava:1.1.0 version. Do it again in Firefox or Safari and you'll see only the sava:1.0.0 version. A hard refresh might be necessary to bypass your browser's cache.
 
 ## A bit more about conditions
 
-Our browser example is easily testable on a laptop, but of course a bit contrived. Luckily you can
-create much more powerful conditions quite easily. Checking Headers, Cookies, Hosts etc. is all possible.
-Under the hood, Vamp uses Haproxy's ACL's ([cbonte.github.io/haproxy-dconv/configuration-1.5 - ACL basics](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#7.1)) and you can use the exact ACL definition right in the blueprint in the 'condition` field.
+Our browser example is easily testable on a laptop, but of course a bit contrived. Checking Headers, Cookies, Hosts are all possible, so you can create much more powerful conditions quite easily.
+
+Under the hood, Vamp uses Haproxy's ACL's ([HAProxy version 1.8 - ACL basics](http://cbonte.github.io/haproxy-dconv/1.8/configuration.html#7.1)) and you can use the exact ACL definition in the blueprint in the 'condition` field.
 
 ### Vamp short codes
 
-ACLs can be somewhat opaque and cryptic. That's why Vamp has a set of convenient "short codes"
-to address common use cases. Currently, we support the following, but we will be expanding on this in the future:
+HAProxy's ACLs can be somewhat opaque and cryptic. So Vamp provides a set of convenient "short codes"
+to address common use cases.
 
+Currently, we support the following:
 ```
 User-Agent = *string*
 Host = *string*
@@ -153,20 +156,19 @@ user-agent = Android          # lower case, white space
 ```
 
 ### Add multiple conditions
-Multiple conditions can be included using boolean expressions. For example, the following condition would first check whether the string "Chrome" exists in the User-Agent header of a
-request and then it would check whether the request has the header "X-VAMP-TUTORIAL". So any request matching both conditions would go to this service.
+Multiple conditions can be included using boolean expressions.
+
+For example, the following condition would first check whether the string "Chrome" exists in the User-Agent header of a request and then it would check whether the request has the header "X-VAMP-TUTORIAL". So only requests matching both conditions would go to this service.
 
 ```
-gateways:
-  weight: 100%
-  condition: "User-Agent = Chrome AND Has Header X-VAMP-TUTORIAL"
+User-Agent = Chrome AND Has Header X-VAMP-TUTORIAL
 ```
 
-Using a tool like httpie ([github.com/jkbrzt/httpie](https://github.com/jakubroztocil/httpie)) makes testing this a breeze.
+You can easily test this using `curl`:
 
-    http GET http://10.26.184.254:9050/ X-VAMP-TUTORIAL:stuff
-
-![](/images/screens/screencap_canary2.gif)
+```
+curl -H "Host: 9050.sava.vamp" -H "User-Agent: Chrome/68.0.3440.106" -H "X-VAMP-TUTORIAL: 2" http://<vga-external-ip>/
+```
 
 {{< note title="What next?" >}}
 * Cool stuff. But we are dealing here with single, monolithic applications. Where are the microservices?  We will [chop up this monolith into services and deploy them with Vamp](/documentation/tutorials/split-a-monolith/) in the third part of our tutorial →
