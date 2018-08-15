@@ -91,7 +91,7 @@ The **webport** tab provides a quick way of checking if an individual instance o
 The **sava-backend1** and **sava-backend2** services only respond to requests for `/api/message`. So the **webport** tab for these services shows "404 page not found".
 
 ### From the Gateways page
-Open the internal gateway (`sava-new/sava/webport`) or the external gateway (`sava/9060`) and click the **HOST - PORT/TYPE**
+Open the internal gateway (`sava-new/sava/webport`) or the external gateway (`sava/9060`) and click the **HOST - PORT/TYPE** link.
 
 ![](/images/screens/v100/tut3/vampee-environment-gateways-savanew-internal-fe2be.png)
 
