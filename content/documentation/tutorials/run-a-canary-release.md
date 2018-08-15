@@ -119,9 +119,7 @@ Since we want only requests from Chrome users to use the sava/sava/sava:1.1.0/we
 
 As we are not actually deploying anything, just reconfiguring routes, the update should be almost instantaneous.
 
-You can fire up a Chrome browser and a Safari browser and go to `http://localhost:8080/proxy/gateways/sava%2Fsava%2Fwebport/` to check the results. A hard refresh might be necessary because of your browser's caching routine.
-
-![](/images/screens/screencap_canary1.gif)
+Login to the Vamp UI and go to **environment → Gateways → sava/9050** and click the **HOST - PORT/TYPE** link. Do this using Chrome and you'll see only the sava:1.1.0 version. Do it again in Firefox or Safari and you'll see only the sava:1.0.0 version. A hard refresh might be necessary to bypass your browser's cache.
 
 ## A bit more about conditions
 
