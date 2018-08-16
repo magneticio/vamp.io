@@ -19,6 +19,10 @@ Now let's say we have a new version of this great application that we want to ca
 * Use conditions to target specific groups
 * Learn a bit more about conditions
 
+#### Requirements:
+* A Kubernetes cluster with at least 4 nodes (8 vCPUs and 28GB memory); or
+* A DC/OS cluster with at least 4 nodes (1 public agent, 8 vCPUs and 28GB memory)
+
 ## Prepare our blueprint
 
 Vamp allows you to canary release application updates by merging new blueprints to a running deployment.
