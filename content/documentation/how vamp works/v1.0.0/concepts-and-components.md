@@ -12,16 +12,6 @@ menu:
     weight: 10
 ---
 
-## Architecture
-Vamp's architecture consists of several components that work together to deliver canary releasing, microscaling and other valueable release and runtime optimisation and automation workflows. The main components of Vamp are Vamp "core" (the brains), Vamp Gateway Agent (creating an ingress and intra-service mesh based on reverse proxies) and Vamp Workflow Agent (running automation scripts injected in containers managed by Vamp).
-
-Vamp and the Vamp Gateway Agent require specific components in your architecture to handle orchestration (like a database for persistence data, a key-value store for proxy configurations, and elasticsearch for aggregated metrics). There is no set architecture required for running Vamp and every use case or specific combination of tools and platforms can have its own set up.
-
-### Example topology
-The below diagram should be used more as an overview than required architecture. For example, in this diagram the Mesos/Marathon stack and Elasticsearch are included even though these are not a hard dependency and can be replaced by f.e. Kubernetes as a container-scheduler and cluster-manager and in-memory for aggregated metrics. Vamp can be configured to run with other container schedulers, log-aggregators, key-value and event-stores.
-
-![architecture](/images/diagram/v100/architecture_and_components.png)
-
 ## Concepts
 
 ### Multi-Tenancy
