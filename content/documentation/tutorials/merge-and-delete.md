@@ -17,9 +17,9 @@ In the [previous tutorial](/documentation/tutorials/split-a-monolith/) we "over-
 
 #### Requirements:
 * A Kubernetes cluster with at least 4 nodes (8 vCPUs and 28GB memory); or
-* A DC/OS cluster with at least 4 nodes (1 public agent, 8 vCPUs and 28GB memory)
+* A DC/OS cluster with at least 4 nodes (1 public agent, 16 vCPUs and 48GB memory)
 
-{{< note title="Note!" >}} You will need **a cluster with 10 vCPUs** if you want to run this tutorial alongside the first two tutorials. {{< /note >}}
+{{< note title="Note!" >}} **Kubernetes only**: you will need **a cluster with 10 vCPUs** if you want to run this tutorial alongside the first two tutorials. {{< /note >}}
 
 ## Some background and theory
 
