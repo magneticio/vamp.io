@@ -12,7 +12,9 @@ called the *Very Awesome Microservices Platform* for nothing. The next step is t
 * define a new service topology
 * learn about Vamp environment variables and service discovery
 
-**Requirements:** A Kubernetes cluster with at least 4 nodes (8 vCPUs and 30GB memory); or a DC/OS cluster with at least 4 nodes (1 public agent, 8 vCPUs and 30GB memory)
+#### Requirements:
+* A Kubernetes cluster with at least 4 nodes (8 vCPUs and 28GB memory); or
+* A DC/OS cluster with at least 4 nodes (1 public agent, 8 vCPUs and 28GB memory)
 
 ## Define a new service topology
 
