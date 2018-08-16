@@ -12,16 +12,22 @@ menu:
 ## Architecture
 The Vamp architecture consists seven key components: four core components and three dependencies. The core Vamp components are Vamp, Lifter, the Vamp Gateway Agents (VGAs) and Vamp Workflow Agents. The dependencies are Hashicorp Vault (Vault), MySQL and Elasticsearch.
 
-Whilst Vamp can be deployed in a number of different configurations, there are some key architectural considerations that should be followed:
+Whilst Vamp can be deployed in a number of different configurations, there are some key data and security architecture that require consideration:
 
-1. The lifecycle of the configuration data is longer than the lifecycle of the core components
-  * The data held in both Vault and MySQL is needed to "recover" Vamp to it's previous state after a cluster restart
-  * This data must be stored outside cluster on which Vamp is running
-2. The lifecycle of the audit data is longer than the lifecycle of the core components
-  * The data held in Elasticsearch provides a detailed and precise history of the actions carried out using Vamp, when each action happened and who ultimately initiated each action
-  * This data should be stored outside cluster on which Vamp is running, for reasons of security
-3. **Only the Vamp Gateway Agents are mission critical** 
-  * You must deploy multiple, load balanced VGAs - 
+1. **Containers are short-lived**. For example, the Kubernetes documentation specifically says pods [won’t survive scheduling failures, node failures, or other evictions, such as due to lack of resources, or in the case of node maintenance](https://kubernetes.io/docs/concepts/workloads/pods/pod/)
+2. **Nodes are frequently short-lived**, they can be removed if the cluster is resized, they can fail like any other VM, or be replaced in the case of maintenance
+3. **Services are generally longer lived** than both the containers which implement the service and the nodes which the containers run
+4. **Cluster and service configuration data is longer lived** than the clusters and services that they define
+5. Depending on the regulatory frameworks under which your organization operates your **audit data may need to be very long-lived**. 
+
+In terms of Vamp topology:
+
+1. Vault, MySQL and Elasticsearch must use external storage
+2. The data held in both Vault and MySQL is needed to "recover" Vamp to it's previous state after a restart
+3. Vamp Gateway Agents
+  * To reduce the risk of traffic loss, you must always have a minimum of two VGAs running, load-balanced and on different nodes
+  * The VGAs have short-term resilience. Running VGAs will continue to function if they lose their connection to Vault but new instances cannot be started without a Vault connection
+
 
 ### Quickstart topology
 
