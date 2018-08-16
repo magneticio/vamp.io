@@ -24,7 +24,7 @@ After a successful installation, you will be able to login to Vamp EE as an admi
 * A machine on which to run the installation. This can be your laptop, a virtual machine instance or a Docker container that has [kubectl](http://kubernetes.io/docs/user-guide/kubectl-overview/) installed
 * A Kubernetes cluster on which to install Vamp
   * This can be a 1.8.x, 1.9.x or 1.10.x cluster
-  * The cluster should have 4 nodes and a minimum of 2 vCPUs and 7.5 GB memory per node
+  * The cluster should have 4 nodes and a minimum of 2 vCPUs and 7GB memory per node
 
 ### Deploying Vamp Lifter
 
