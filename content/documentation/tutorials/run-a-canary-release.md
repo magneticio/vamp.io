@@ -21,7 +21,7 @@ Now let's say we have a new version of this great application that we want to ca
 
 #### Requirements:
 * A Kubernetes cluster with at least 4 nodes (8 vCPUs and 28GB memory); or
-* A DC/OS cluster with at least 4 nodes (1 public agent, 8 vCPUs and 28GB memory)
+* A DC/OS cluster with at least 4 nodes (1 public agent, 16 vCPUs and 48GB memory)
 
 ## Prepare our blueprint
 
