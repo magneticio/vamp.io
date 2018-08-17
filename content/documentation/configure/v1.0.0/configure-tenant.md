@@ -39,10 +39,11 @@ The organization namespace holds configuration that is common to all environment
   * The configuration is copied from the **admin template**
 6. To change the display name, edit the `metadata.namespace.title` and click the **Apply** button
   ![](/images/screens/v100/lifteree-configuration-neworg.png)
-7. Select **Setup** from the left-hand menu and click **Run**
+7. After you have finished making changes, click the **Push to KV Store** button
+8. Select **Setup** from the left-hand menu and click **Run**
   * This configures the **key-value store** (Hashicorp Vault), **persistence** (MySQL), and **pulse** (Elasticsearch)
   ![](/images/screens/v100/lifteree-setup-neworg.png)
-8. You can check the setup by selecting **Connections** from the left-hand menu
+9. You can check the setup by selecting **Connections** from the left-hand menu
   ![](/images/screens/v100/lifteree-connections-neworg.png)
 
 ### Add an admin user
@@ -80,7 +81,8 @@ When using Kubernetes, there is a one-to-one mapping between a Vamp namespace an
   * The configuration is copied from the **operation template**
 8. To change the display name, edit the `metadata.namespace.title` and click the **Apply** button
   ![](/images/screens/v100/lifteree-configuration-neworg-newenv.png)
-9. Select **Setup** from the left-hand menu and click **Run**
+9. After you have finished making changes, click the **Push to KV Store** button
+10. Select **Setup** from the left-hand menu and click **Run**
   
   This:
   
