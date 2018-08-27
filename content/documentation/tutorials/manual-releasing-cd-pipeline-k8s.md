@@ -15,17 +15,20 @@ We define **deployment** as the process of installing a new version of **softwar
 ### Release
 We define a deployed version of your software as being **released** when it is **responsible for serving production traffic**. And we define **releasing** as **the process of moving production traffic to the new version**. 
 
-## Example microservices topology
-The service topologies we've used in the previous tutorials have been useful for demonstrating some of core concepts and features of Vamp but they are @@
+## Micro-services topology
+In the previous tutorials, we've used "lab only" service topologies that are great for demonstrating the core concepts and features of Vamp but that are well suited to production use. In this tutorial and the ones that follow, we will be using a service topology that highlights some of the best practices of real world micro-service projects.
+
+* **Cohesive design** - inter-service communication is minimised with no dependencies on shared databases
+* **Independently deployable** - loosely coupled dependencies
+  * Clients are [Tolerant Reader](http://servicedesignpatterns.com/WebServiceEvolution/TolerantReader)s that expect changes to occur in the messages and media types their receive
+  * Versioning is done by media type. APIs default to the latest version and clients that care about the stability of the API can request a specific version in the `Accept` header - [GitHub's approach](https://developer.github.com/v3/media/)
+* **Failure isolation** - self-contained, stateless micro-services
+  * WebApps revert to cached or studded data if a realtime dependency is unavailable
+  * APIs return an empty response which UIs can then ignore ("fail silent")
+
+### Implementation
+Fictitious e-commerce application
+* The **sava-cart** store front is a fork of [gtsopour/nodejs-shopping-cart](https://github.com/gtsopour/nodejs-shopping-cart)
+* The APIs are implemented using a Dockerized [typicode/json-server](https://github.com/typicode/json-server) forked from [clue/docker-json-server](https://github.com/clue/docker-json-server)
 
 
-### Using the Accept Header to version your API
-There are differing opinions on how to version a REST API
-
-We are going to use the Github's approach.
-
-Github chose to use the latest API version when the client doesn't request a specific version.
-
-But there is a good argument to always require the clients to specify a version; when you would default to the latest version, a lot of clients will break as soon as you update your API.
-
-https://tools.ietf.org/html/rfc4288#section-3.2
