@@ -1,6 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Run a canary release
+title: 2. Run a canary release
 menu:
   main:
     parent: "Tutorials"
