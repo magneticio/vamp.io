@@ -7,13 +7,17 @@ menu:
     weight: 60
 ---
 
-Build, test, deploy, and release. 
+Build, publish, deploy, and release. 
 
 ### Deploy
-Deployment is your team’s process for installing the new version of your service’s code on production infrastructure. When we say a new version of software is deployed, we mean it is running somewhere in your production infrastructure. That could be a newly spun-up EC2 instance on AWS, or a Docker container running in a pod in your data center’s Kubernetes cluster. Your software has started successfully, passed health checks, and is ready (you hope!) to handle production traffic, but may not actually be receiving any.
+We define **deployment** as the process of installing a new version of **software on production** infrastructure. In Kubernetes terms, one or more containers have been created from the newly published Docker image and are running in pods on your production Kubernetes cluster. The Docker containers have started successfully, they are passing their health checks and are **ready to handle production traffic** but may not actually be receiving any.
 
 ### Release
-When we say a version of a service is released, we mean that it is responsible for serving production traffic. In verb form, releasing is the process of moving production traffic to the new version.
+We define a deployed version of your software as being **released** when it is **responsible for serving production traffic**. And we define **releasing** as **the process of moving production traffic to the new version**. 
+
+## Example microservices topology
+The service topologies we've used in the previous tutorials have been useful for demonstrating some of core concepts and features of Vamp but they are @@
+
 
 ### Using the Accept Header to version your API
 There are differing opinions on how to version a REST API
