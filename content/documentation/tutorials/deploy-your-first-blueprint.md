@@ -1,6 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Deploy your first blueprint
+title: 1. Deploy your first blueprint
 menu:
   main:
     parent: "Tutorials"
