@@ -1,6 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Split a monolith
+title: 3. Split a monolith
 menu:
   main:
     parent: "Tutorials"
