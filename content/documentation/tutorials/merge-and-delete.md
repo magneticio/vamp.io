@@ -1,6 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Merge and delete
+title: 4. Merge and delete
 menu:
   main:
     parent: "Tutorials"
