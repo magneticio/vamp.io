@@ -26,13 +26,15 @@ After a successful installation, you will be able to login to Vamp EE as an admi
   * This can be a 1.8.x, 1.9.x or 1.10.x cluster
   * The cluster should have 4 nodes and a minimum of 2 vCPUs and 7GB memory per node
 
+To launch a cluster on Azure follow the Azure Kubernetes Service (AKS) [Quickstart guide](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough).
+
+To launch a cluster suitable cluster on Google Cloud follow the Kubernetes Engine (GKE) [Quickstart guide](https://cloud.google.com/kubernetes-engine/docs/quickstart).
+
 ### Deploying Vamp Lifter
 
 * Sign up for a [Vamp Enterprise Edition trial](/trial-signup/), if you haven't already. Then download the **lifter-standalone.yml** file
 * Download the [clusterrolebinding.yml](https://gist.github.com/jason-magnetic-io/3be85e096a038e5c17f536bc52e439d0) file
 * Configure [kubectl](http://kubernetes.io/docs/user-guide/kubectl-overview/) command line access to your Kubernetes cluster
-  * TODO link to Google Cloud Platform page
-  * TODO link to Azure Container Service page
 * Create a *cluster-admin* user. This step can be skipped if you already have a suitable user with the *cluster-admin* role.
   
   ```
