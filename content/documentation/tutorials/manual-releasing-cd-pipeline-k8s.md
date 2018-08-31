@@ -31,4 +31,61 @@ Fictitious e-commerce application
 * The **sava-cart** store front is a fork of [gtsopour/nodejs-shopping-cart](https://github.com/gtsopour/nodejs-shopping-cart)
 * The APIs are implemented using a Dockerized [typicode/json-server](https://github.com/typicode/json-server) forked from [clue/docker-json-server](https://github.com/clue/docker-json-server)
 
+#### sava-product service
+TODO describe service
 
+Deployment
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sava-product-1.0.3
+spec:
+  selector:
+    matchLabels:
+      app: sava-product
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sava-product
+        version: 1.0.3
+    spec:
+      containers:
+      - name: sava-product
+        image: vampio/sava-product:1.0.3
+        ports:
+        - containerPort: 8080
+```
+
+With `kubectl proxy` running:
+```bash
+http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/sava-product-1.0.3-7bc5dfcc68-m8bbl/proxy/products
+```
+
+TODO describe output
+
+Service
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: sava-product
+spec:
+  ports:
+  - port: 9070
+    protocol: TCP
+    targetPort: 8080
+  type: NodePort
+  selector:
+    app: sava-product
+```
+
+With `kubectl proxy` running:
+```bash
+http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/products
+```
+Same output as above
+
+#### sava cart service
+TODO
