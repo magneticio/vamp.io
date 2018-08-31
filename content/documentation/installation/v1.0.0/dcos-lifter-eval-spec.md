@@ -1,10 +1,10 @@
 ---
 date: 2018-08-31T14:00:00+00:00
 title: DC/OS Lifter Evaluation 
-platforms: ["DCOS"]
+platforms: ["DCOS","Mesosphere"]
 ---
 
-If you’re new to Vamp Enterprise Edition and you want a quick way to evaluate it, copy the Vamp Lifter application specification below and save it as file named **lifter-standalone.yml**. Then follow the [DC/OS Quickstart](/documentation/installation/dcos) guide. 
+If you’re new to Vamp Enterprise Edition and you want a quick way to evaluate it, copy the Vamp Lifter application specification below and save it as file named **lifter-standalone.json**. Then follow the [DC/OS Quickstart](/documentation/installation/dcos) guide. 
 
 ```json
 {
