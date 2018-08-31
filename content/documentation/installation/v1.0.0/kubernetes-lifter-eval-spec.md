@@ -4,11 +4,7 @@ title: Kubernetes Lifter Evaluation
 platforms: ["Kubernetes"]
 ---
 
-Thank you for choosing to evaluate Vamp Enterprise Edition.
-
-TODO link to concepts page
-
-To get started, copy the Vamp Lifter application specification below and save it as file named **lifter-standalone.yml**. Then follow the [Kubernetes Quickstart](/documentation/installation/kubernetes) guide. 
+If you’re new to Vamp Enterprise Edition and you want a quick way to evaluate it, copy the Vamp Lifter application specification below and save it as file named **lifter-standalone.yml**. Then follow the [Kubernetes Quickstart](/documentation/installation/kubernetes) guide. 
 
 ```yaml
 apiVersion: v1
@@ -69,6 +65,7 @@ spec:
 ```
 {{< note title="What next?" >}}
 
-Head over the [Kubernetes Quickstart guide →](/documentation/installation/kubernetes)
+* If you want to evaluate Vamp, follow the [Kubernetes Quickstart guide →](/documentation/installation/kubernetes)
+* If you’re curious how Vamp works, take a look at the Vamp [Concepts and Components](/documentation/how-vamp-works/).
 
 {{< /note >}}
