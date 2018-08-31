@@ -4,6 +4,12 @@ title: Kubernetes Lifter Evaluation
 platforms: ["Kubernetes"]
 ---
 
+Thank you for choosing to evaluate Vamp Enterprise Edition.
+
+TODO link to concepts page
+
+To get started, copy the Vamp Lifter application specification below and save it as file named **lifter-standalone.yml**. Then follow the [Kubernetes Quickstart](/documentation/installation/kubernetes) guide. 
+
 ```yaml
 apiVersion: v1
 kind: Service
@@ -35,7 +41,7 @@ spec:
     spec:
       containers:
       - name: lifter
-        image: vampio/vamp-ee-lifter:1.0.3-kubernetes-evaluation
+        image: vampio/vamp-ee-lifter:latest-kubernetes-evaluation
         ports:
         - containerPort: 8081
           protocol: TCP
@@ -61,3 +67,8 @@ spec:
         securityContext:
           privileged: false
 ```
+{{< note title="What next?" >}}
+
+Head over the [Kubernetes Quickstart guide →](/documentation/installation/kubernetes)
+
+{{< /note >}}
