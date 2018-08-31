@@ -26,8 +26,10 @@ After a successful installation, you will be able to login to Vamp EE as an admi
   * This can be a 1.8.x, 1.9.x or 1.10.x cluster
   * The cluster should have 4 nodes and a minimum of 2 vCPUs and 7GB memory per node
 
+#### Azure
 To launch a suitable cluster on Azure follow the Azure Kubernetes Service (AKS) [Quickstart guide](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough).
 
+#### Google Cloud
 To launch a suitable cluster on Google Cloud follow the Kubernetes Engine (GKE) [Quickstart guide](https://cloud.google.com/kubernetes-engine/docs/quickstart).
 
 ### Deploying Vamp Lifter
