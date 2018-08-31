@@ -1,6 +1,6 @@
 ---
 date: 2017-02-07T12:00:00+00:00
-title: DC/OS
+title: DC/OS Quickstart
 platforms: ["DCOS","Mesosphere"]
 menu:
   main:
