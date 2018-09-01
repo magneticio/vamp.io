@@ -16,25 +16,30 @@ We define **deployment** as the process of installing a new version of **softwar
 We define a deployed version of your software as being **released** when it is **responsible for serving production traffic**. And we define **releasing** as **the process of moving production traffic to the new version**. 
 
 ## Micro-services topology
-In the previous tutorials, we've used "lab only" service topologies that are great for demonstrating the core concepts and features of Vamp but that are well suited to production use. In this tutorial and the ones that follow, we will be using a service topology that highlights some of the best practices of real world micro-service projects.
+In the previous tutorials, we've used "lab only" service topologies that are great for demonstrating the core concepts and features of Vamp but that are not well suited to production use. In this tutorial and the ones that follow, we will be using a fictitious e-commerce application that highlights some of the best practices of real world micro-service projects.
 
+![architecture](/images/diagram/v100/tut5/k8s-arch-without-vamp.png)
+
+Best practicies:
 * **Cohesive design** - inter-service communication is minimised with no dependencies on shared databases
 * **Independently deployable** - loosely coupled dependencies
-  * Clients are [Tolerant Reader](http://servicedesignpatterns.com/WebServiceEvolution/TolerantReader)s that expect changes to occur in the messages and media types their receive
+  * Clients are [Tolerant Readers](http://servicedesignpatterns.com/WebServiceEvolution/TolerantReader) that expect changes to occur in the messages and media types their receive
   * Versioning is done by media type. APIs default to the latest version and clients that care about the stability of the API can request a specific version in the `Accept` header - [GitHub's approach](https://developer.github.com/v3/media/)
 * **Failure isolation** - self-contained, stateless micro-services
-  * WebApps revert to cached or studded data if a realtime dependency is unavailable
+  * Webapps revert to cached or studded data if a realtime dependency is unavailable
   * APIs return an empty response which UIs can then ignore ("fail silent")
 
-### Implementation
-Fictitious e-commerce application
+### Minimum Viable Product
+Our fictitious **sava** e-commerce application allow users to engage in fantasy shopping for awesome [hipster ipsum](https://hipsum.co/) inspired products. The [MVP](http://theleanstartup.com/principles) provides a responsive store front which depends on a product service.
 * The **sava-cart** store front is a fork of [gtsopour/nodejs-shopping-cart](https://github.com/gtsopour/nodejs-shopping-cart)
-* The APIs are implemented using a Dockerized [typicode/json-server](https://github.com/typicode/json-server) forked from [clue/docker-json-server](https://github.com/clue/docker-json-server)
 
 #### sava-product service
-TODO describe service
+The **sava-product** service is implemented using a Dockerized [typicode/json-server](https://github.com/typicode/json-server) forked from [clue/docker-json-server](https://github.com/clue/docker-json-server).
 
-Deployment
+The service provides a REST API that returns a list (array) of products in JSON format for the specified locale, for example: `/products/ie` will return a list of products available in the Republic of Ireland store.
+
+To deploy the initial version of the service (v1.0.3), copy the deployment specification below and save it in a file called **sava-product-1.0.3.yml**.
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -58,10 +63,25 @@ spec:
         - containerPort: 8080
 ```
 
-With `kubectl proxy` running:
+Next, create the deployment on your Kubernetes cluster.
+
+{{< note title="Note!" >}}
+The commands shown in this tutorial assume you are using the [Kubernetes Quickstart](/documentation/installation/kubernetes) and that there is an existing namespace called **vampio-organization-environment**.
+{{< /note >}}
+
 ```bash
-http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/sava-product-1.0.3-7bc5dfcc68-m8bbl/proxy/products
+kubectl --namespace vampio-organization-environment create -f sava-product-1.0.3.yml
 ```
+
+If you have `kubectl proxy` running, you check the deployment by:
+
+* Creating a link to the **sava-product** pod
+  
+  ```bash
+  kubectl --namespace vampio-organization-environment get pods -l app=sava-product -o go-template --template 'ms}}http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/{{.metadata.name}}/proxy/products/ie{{"\n"}}{{end}}'
+  ```
+  
+* Open the link in your web browser
 
 TODO describe output
 
