@@ -91,7 +91,7 @@ The commands shown in this tutorial assume you are using the [Kubernetes Quickst
      kubectl --namespace vampio-organization-environment get pods -l app=sava-product -o go-template --template 'ms}}http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/{{.metadata.name}}/proxy/products/ie{{"\n"}}{{end}}'
      ```
   * Open the link in your web browser
-    TODO describe output
+    ![sava-products/products/ie](/images/screens/v100/tut5/sava-product-products-ie.png)
 
 ### Release sava-product service
 TODO not receiving traffic, NodePort
@@ -123,8 +123,7 @@ TODO not receiving traffic, NodePort
   ```
   http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/products/ie
   ```
-
-TODO Same output as above
+  You should see exactly the same results as you did when you accessed the sava-product pod directly.
 
 ### Deploy sava-cart service
 
