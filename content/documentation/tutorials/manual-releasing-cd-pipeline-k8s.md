@@ -53,38 +53,38 @@ The commands shown in this tutorial assume you are using the [Kubernetes Quickst
 
 ### Deploy sava-product service
 
-1. To **deploy the initial version of sava-product** (v1.0.3), copy the deployment specification below and save it in a file called **sava-product-1.0.3.yml**.
+* To **deploy the initial version of sava-product** (v1.0.3), copy the deployment specification below and save it in a file called **sava-product-1.0.3.yml**.
 
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: sava-product-1.0.3
-spec:
-  selector:
-    matchLabels:
-      app: sava-product
-  replicas: 1
-  template:
-    metadata:
-      labels:
+  ```yaml
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: sava-product-1.0.3
+  spec:
+    selector:
+      matchLabels:
         app: sava-product
-        version: 1.0.3
-    spec:
-      containers:
-      - name: sava-product
-        image: vampio/sava-product:1.0.3
-        ports:
-        - containerPort: 8080
-```
+    replicas: 1
+    template:
+      metadata:
+        labels:
+          app: sava-product
+          version: 1.0.3
+      spec:
+        containers:
+        - name: sava-product
+          image: vampio/sava-product:1.0.3
+          ports:
+          - containerPort: 8080
+    ```
 
-2. Create the deployment on your Kubernetes cluster.
+* Create the deployment on your Kubernetes cluster.
 
-```bash
-kubectl --namespace vampio-organization-environment create -f sava-product-1.0.3.yml
-```
+  ```bash
+  kubectl --namespace vampio-organization-environment create -f sava-product-1.0.3.yml
+  ```
 
-3. Now, if you have `kubectl proxy` running, you check the deployment by:
+* If you have `kubectl proxy` running on port 8001 (default), you check the deployment by:
   * Creating a link to the **sava-product** pod
   
      ```bash
@@ -96,33 +96,33 @@ kubectl --namespace vampio-organization-environment create -f sava-product-1.0.3
 ### Release sava-product service
 TODO not receiving traffic, NodePort
 
-1. To **release the initial version of sava-product**, copy the deployment specification below and save it in a file called **sava-product-svc.yml**.
+* To **release the initial version of sava-product**, copy the deployment specification below and save it in a file called **sava-product-svc.yml**.
 
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: sava-product
-spec:
-  ports:
-  - port: 9070
-    protocol: TCP
-    targetPort: 8080
-  type: NodePort
-  selector:
-    app: sava-product
-```
+  ```yaml
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: sava-product
+  spec:
+    ports:
+    - port: 9070
+      protocol: TCP
+      targetPort: 8080
+    type: NodePort
+    selector:
+      app: sava-product
+  ```
 
-2. Create the deployment on your Kubernetes cluster.
+* Create the deployment on your Kubernetes cluster.
 
-```bash
-kubectl --namespace vampio-organization-environment create -f sava-product-svc.yml
-```
+  ```bash
+  kubectl --namespace vampio-organization-environment create -f sava-product-svc.yml
+  ```
 
-3. Now, if you have `kubectl proxy` running, you check the deployment by opening the this link in your web browser:
-```
-http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/products/ie
-```
+* With `kubectl proxy` running, you check the deployment by opening the this link in your web browser:
+  ```
+  http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/products/ie
+  ```
 
 TODO Same output as above
 
