@@ -120,9 +120,11 @@ TODO not receiving traffic, NodePort
   ```
 
 * With `kubectl proxy` running, you check the deployment by opening the this link in your web browser:
+
   ```
   http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/products/ie
   ```
+  
   You should see exactly the same results as you did when you accessed the sava-product pod directly.
 
 ### Deploy sava-cart service
