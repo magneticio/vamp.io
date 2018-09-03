@@ -99,7 +99,7 @@ To **deploy the initial version of sava-product** (v1.0.3):
      kubectl --namespace vampio-organization-environment get pods -l app=sava-product -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/{{.metadata.name}}/proxy/products/ie{{"\n"}}{{end}}'
      ```
   * Open the link in your web browser and you should see the following output:
-    ![sava-products/products/ie](/images/screens/v100/tut5/sava-product-products-ie.png)
+    ![sava-product/products/ie](/images/screens/v100/tut5/sava-product-products-ie.png)
 
 ### Release the sava-product service
 At this point version 1.0 of the **sava-product is deployed but not released**. The deployment is healthy but cannot yet be found by the clients that depend on it. 
@@ -206,7 +206,7 @@ To **deploy the initial version of sava-cart for the Republic of Ireland** (v1.0
      kubectl --namespace vampio-organization-environment get pods -l app=sava-cart,locale=UK -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/{{.metadata.name}}/proxy/{{"\n"}}{{end}}'
      ```
   * Open the link in your web browser and you should see the IE product page:
-    ![sava-products/products/ie](/images/screens/v100/tut5/sava-cart-uk-v1.png)
+    ![sava-cart-ie-v1](/images/screens/v100/tut5/sava-cart-ie-v1.png)
 
 To **deploy the initial version of sava-cart for the United Kingdom** (v1.0.5):
 
@@ -253,7 +253,7 @@ To **deploy the initial version of sava-cart for the United Kingdom** (v1.0.5):
      kubectl --namespace vampio-organization-environment get pods -l app=sava-cart,locale=UK -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/{{.metadata.name}}/proxy/{{"\n"}}{{end}}'
      ```
   * Open the link in your web browser and you should see the IE product page:
-    ![sava-products/products/ie](/images/screens/v100/tut5/sava-cart-uk-v1.png)
+    ![sava-cart-uk-v1](/images/screens/v100/tut5/sava-cart-uk-v1.png)
 
 ### Release the sava-cart store fronts
 
