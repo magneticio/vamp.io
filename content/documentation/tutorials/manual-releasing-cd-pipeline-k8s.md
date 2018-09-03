@@ -85,7 +85,7 @@ The commands shown in this tutorial assume you are using the [Kubernetes Quickst
   ```
 
 * If you have `kubectl proxy` running on port 8001 (default), you check the deployment by:
-  * Creating a link to the **sava-product** pod
+  * Creating a link to the **sava-product** proxy
   
      ```bash
      kubectl --namespace vampio-organization-environment get pods -l app=sava-product -o go-template --template 'ms}}http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/{{.metadata.name}}/proxy/products/ie{{"\n"}}{{end}}'
@@ -94,7 +94,22 @@ The commands shown in this tutorial assume you are using the [Kubernetes Quickst
     ![sava-products/products/ie](/images/screens/v100/tut5/sava-product-products-ie.png)
 
 ### Release sava-product service
-TODO not receiving traffic, NodePort
+At this point version 1.0 of the **sava-product is deployed but not released**, the deployment is healthy but receiving traffic. Since sava-product is an internal service we need it to be discoverable but it doesn't need a public IP address.
+
+#### Service discovery
+Since we only have one sava-product [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/) (Docker container) running, we could pass the IP address and port of that Pod to sava-cart but that would be a bad idea. Kubernetes will maintain the requested number of Pods over time but individual [Pods can be destroyed at any time and new Pods created to replace them](https://kubernetes.io/docs/concepts/workloads/pods/pod/#durability-of-pods-or-lack-thereof). So whilst sava-product will get its own IP address, that address cannot be relied upon to be stable over time.
+
+To avoid this tight coupling, Kubernetes provides the [Service](https://kubernetes.io/docs/concepts/services-networking/service/) abstraction. **Creating a Kubernetes Service for our sava-product service will provide a stable address which our sava-cart frontend can then use.** Decoupling sava-cart from sava-product in this was allows us to scale up the number of Pods as the number of request for increases and also to transparently introduce new versions of the sava-product.
+
+There are three types of Kubernetes Service we could use:
+
+* **ClusterIP**: this exposes the service on a cluster-internal IP address. Choosing this value means the service will only be reachable from within the cluster
+* **[NodePort](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport)**: this exposes the service outside the cluster on the private network used by the Kubernetes Nodes. A ClusterIP service, to which the NodePort service will route, is automatically created.
+* **[LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)**: this exposes the service externally. If you are using a public cloud such as AWS, Azure or Google Cloud, the service will be given a public IP address. NodePort and ClusterIP services, to which the external load balancer will route, are automatically created.
+
+Since we don't a public IP address, **NodePort is the best option for sava-product service**. It give us both an cluster-internal IP address and the flexibility to share the service between clusters on the same private network.
+
+TODO service discovery
 
 * To **release the initial version of sava-product**, copy the deployment specification below and save it in a file called **sava-product-svc.yml**.
 
