@@ -96,7 +96,7 @@ The commands shown in this tutorial assume you are using the [Kubernetes Quickst
 ### Release sava-product service
 At this point version 1.0 of the **sava-product is deployed but not released**, the deployment is healthy but receiving traffic. Since sava-product is an internal service we need it to be discoverable but it doesn't need a public IP address.
 
-#### Service discovery
+#### Kubernetes Services
 Since we only have one sava-product [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/) (Docker container) running, we could pass the IP address and port of that Pod to sava-cart but that would be a bad idea. Kubernetes will maintain the requested number of Pods over time but individual [Pods can be destroyed at any time and new Pods created to replace them](https://kubernetes.io/docs/concepts/workloads/pods/pod/#durability-of-pods-or-lack-thereof). So whilst sava-product will get its own IP address, that address cannot be relied upon to be stable over time.
 
 To avoid this tight coupling, Kubernetes provides the [Service](https://kubernetes.io/docs/concepts/services-networking/service/) abstraction. **Creating a Kubernetes Service for our sava-product service will provide a stable address which our sava-cart frontend can then use.** Decoupling sava-cart from sava-product in this was allows us to scale up the number of Pods as the number of request for increases and also to transparently introduce new versions of the sava-product.
@@ -109,9 +109,9 @@ There are three types of Kubernetes Service we could use:
 
 Since we don't a public IP address, **NodePort is the best option for sava-product service**. It give us both an cluster-internal IP address and the flexibility to share the service between clusters on the same private network.
 
-TODO service discovery
+To **release the initial version of sava-product**:
 
-* To **release the initial version of sava-product**, copy the deployment specification below and save it in a file called **sava-product-svc.yml**.
+* Copy the deployment specification below and save it in a file called **sava-product-svc.yml**.
 
   ```yaml
   apiVersion: v1
@@ -144,3 +144,14 @@ TODO service discovery
 
 ### Deploy sava-cart service
 
+TODO
+
+#### Service discovery
+Kubernetes provides two mechanism for [finding a Service](https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services):
+
+* **Environment variables**: when a Pod runs it receives `{SVCNAME}_SERVICE_HOST` and `{NAME}_SERVICE_PORT` environment variables for each active Service. Every Pod created after our sava-product Service is created it will have `SAVA_PRODUCT_SERVICE_HOST` (the cluster IP) and `SAVA_PRODUCT_SERVICE_PORT` environment variables defined. However, **to use environment variables for discovery, sava-cart must be deployed after the sava-product Service has been created**.
+* **DNS**: A Pod can also lookup the cluster IP address of a Service by name. **Pods in same [Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) as the our sava-product Service can do a name lookup for "sava-product"**. Pods in other Namespaces must look it up using the qualified name **"sava-product.vampio-organization.environment"**. DNS does not have the ordering restrictions that environment variables have.
+
+The first version of sava-cart uses environment variables to find sava-product.
+
+### Release sava-cart service
