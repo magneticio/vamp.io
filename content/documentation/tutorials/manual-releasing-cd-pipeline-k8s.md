@@ -102,7 +102,7 @@ To **deploy the initial version of sava-product** (v1.0.3):
     ![sava-products/products/ie](/images/screens/v100/tut5/sava-product-products-ie.png)
 
 ### Release sava-product service
-At this point version 1.0 of the **sava-product is deployed but not released**, the deployment is healthy but cannot yet receive traffic from the clients that depend on it. 
+At this point version 1.0 of the **sava-product is deployed but not released**. The deployment is healthy but cannot yet be found by the clients that depend on it. 
 
 #### Kubernetes Services
 Since we only have one sava-product [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/) (Docker container) running, we could pass the IP address and port of that Pod to sava-cart but that would be a bad idea. Kubernetes will maintain the requested number of Pods over time but individual [Pods can be destroyed at any time and new Pods created to replace them](https://kubernetes.io/docs/concepts/workloads/pods/pod/#durability-of-pods-or-lack-thereof). So whilst sava-product will get its own IP address, that address cannot be relied upon to be stable over time.
@@ -198,12 +198,93 @@ To **deploy the initial version of sava-cart for the Republic of Ireland** (v1.0
   ```
 
 * If you have `kubectl proxy` running on port 8001 (default), you check the deployment by:
-  * Creating a link to the **sava-cart** proxy
+  * Creating a link to the **IE sava-cart** proxy
   
      ```bash
-     kubectl --namespace vampio-organization-environment get pods -l app=sava-cart -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/{{.metadata.name}}/proxy/{{"\n"}}{{end}}'
+     kubectl --namespace vampio-organization-environment get pods -l app=sava-cart,locale=UK -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/{{.metadata.name}}/proxy/{{"\n"}}{{end}}'
      ```
   * Open the link in your web browser and you should see the IE product page:
-    ![sava-products/products/ie](/images/screens/v100/tut5/sava-product-products-ie-v1.png)
+    ![sava-products/products/ie](/images/screens/v100/tut5/sava-cart-uk-v1.png)
+
+To **deploy the initial version of sava-cart for the United Kingdom** (v1.0.5):
+
+* Copy the deployment specification below and save it in a file called **sava-cart-1.0.5-uk.yml**.
+
+  ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: sava-cart-1.0.5-uk
+    spec:
+      selector:
+        matchLabels:
+          app: sava-cart
+      replicas: 1
+      template:
+        metadata:
+          labels:
+            app: sava-cart
+            version: 1.0.5
+            locale: UK
+        spec:
+          containers:
+          - name: sava-cart
+            image: vampio/sava-cart:1.0.5
+            ports:
+            - containerPort: 3000
+            env:
+            - name: LOCALE
+              value: EN
+  ```
+  **Note**: confusing language and locale is a common mistake, in this case it is a deliberate mistake that we will correct in a later version.
+
+* Create the deployment on your Kubernetes cluster.
+
+  ```bash
+  kubectl --namespace vampio-organization-environment create -f sava-cart-1.0.5-uk.yml
+  ```
+
+* If you have `kubectl proxy` running on port 8001 (default), you check the deployment by:
+  * Creating a link to the **UK sava-cart** proxy
+  
+     ```bash
+     kubectl --namespace vampio-organization-environment get pods -l app=sava-cart,locale=UK -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/{{.metadata.name}}/proxy/{{"\n"}}{{end}}'
+     ```
+  * Open the link in your web browser and you should see the IE product page:
+    ![sava-products/products/ie](/images/screens/v100/tut5/sava-cart-uk-v1.png)
 
 ### Release sava-cart for the Republic of Ireland
+
+To **release the initial version of sava-cart for **:
+
+* Copy the deployment specification below and save it in a file called **sava-product-svc.yml**.
+
+  ```yaml
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: sava-product
+  spec:
+    ports:
+    - port: 9070
+      protocol: TCP
+      targetPort: 8080
+    type: NodePort
+    selector:
+      app: sava-product
+  ```
+
+* Create the deployment on your Kubernetes cluster.
+
+  ```bash
+  kubectl --namespace vampio-organization-environment create -f sava-product-svc.yml
+  ```
+
+* With `kubectl proxy` running, you check the deployment by opening the this link in your web browser:
+
+  ```
+  http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/products/ie
+  ```
+  
+  You should see exactly the same results as you did when you accessed the sava-product Pod directly.
+
