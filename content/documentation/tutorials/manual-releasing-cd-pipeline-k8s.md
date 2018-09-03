@@ -47,9 +47,9 @@ It also tries to isolate users from realtime dependency failures by showing cach
 
 The store front locale is configured by setting the `LOCALE` environment variable.
 
-## Initial Deployment
+## Initial Deployment and Release
 
-TODO The team has been through a few interations and **we are now ready to deploy the MVP on production**. The MVP consists of **sava-product version 1.0.3** and **sava-cart version 1.0.5**.
+Our development team has been working hard and after a few interations **we are now ready to deploy the MVP on production**. The MVP consists of **sava-product version 1.0.3** and **sava-cart version 1.0.5**.
 
 To make this tutorial easy to follow, we are going to use `kubectl` to **simulate the actions of a continuious deployment pipeline deploying our application** to Kubernetes.
 
@@ -57,7 +57,7 @@ To make this tutorial easy to follow, we are going to use `kubectl` to **simulat
 The commands shown in this tutorial assume you are using the [Kubernetes Quickstart](/documentation/installation/kubernetes) and that there is an existing namespace called **vampio-organization-environment**.
 {{< /note >}}
 
-### Deploy sava-product service
+### Deploy the sava-product service
 
 To **deploy the initial version of sava-product** (v1.0.3):
 
@@ -86,7 +86,7 @@ To **deploy the initial version of sava-product** (v1.0.3):
           - containerPort: 8080
     ```
 
-* Create the deployment on your Kubernetes cluster.
+* Create the Deployment on your Kubernetes cluster.
 
   ```bash
   kubectl --namespace vampio-organization-environment create -f sava-product-1.0.3.yml
@@ -101,7 +101,7 @@ To **deploy the initial version of sava-product** (v1.0.3):
   * Open the link in your web browser and you should see the following output:
     ![sava-products/products/ie](/images/screens/v100/tut5/sava-product-products-ie.png)
 
-### Release sava-product service
+### Release the sava-product service
 At this point version 1.0 of the **sava-product is deployed but not released**. The deployment is healthy but cannot yet be found by the clients that depend on it. 
 
 #### Kubernetes Services
@@ -136,7 +136,7 @@ To **release the initial version of sava-product**:
       app: sava-product
   ```
 
-* Create the deployment on your Kubernetes cluster.
+* Create the Service on your Kubernetes cluster.
 
   ```bash
   kubectl --namespace vampio-organization-environment create -f sava-product-svc.yml
@@ -149,8 +149,10 @@ To **release the initial version of sava-product**:
   ```
   
   You should see exactly the same results as you did when you accessed the sava-product Pod directly.
+  
+Great! **You've just released the sava-product service!**
 
-### Deploy sava-cart service
+### Deploy sava-cart store fronts
 
 #### Service discovery
 Kubernetes provides two mechanisms for [finding a Service](https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services):
@@ -191,7 +193,7 @@ To **deploy the initial version of sava-cart for the Republic of Ireland** (v1.0
             value: IE
   ```
 
-* Create the deployment on your Kubernetes cluster.
+* Create the Deployment on your Kubernetes cluster.
 
   ```bash
   kubectl --namespace vampio-organization-environment create -f sava-cart-1.0.5-ie.yml
@@ -238,7 +240,7 @@ To **deploy the initial version of sava-cart for the United Kingdom** (v1.0.5):
   ```
   **Note**: confusing language and locale is a common mistake, in this case it is a deliberate mistake that we will correct in a later version.
 
-* Create the deployment on your Kubernetes cluster.
+* Create the Deployment on your Kubernetes cluster.
 
   ```bash
   kubectl --namespace vampio-organization-environment create -f sava-cart-1.0.5-uk.yml
@@ -253,38 +255,85 @@ To **deploy the initial version of sava-cart for the United Kingdom** (v1.0.5):
   * Open the link in your web browser and you should see the IE product page:
     ![sava-products/products/ie](/images/screens/v100/tut5/sava-cart-uk-v1.png)
 
-### Release sava-cart for the Republic of Ireland
+### Release the sava-cart store fronts
 
-To **release the initial version of sava-cart for **:
+#### Service Selectors
+The set of Pods targeted by a Service is determined by a [Label Selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). The sava-product Service targets Pods that have an "app" label with the value "sava-product". Since we have sava-cart Pods running for IE and UK locales, the sava-cart Services target Pods using both the "app" label and the "locale" label.
 
-* Copy the deployment specification below and save it in a file called **sava-product-svc.yml**.
+To **release the initial version of sava-cart for the Republic of Ireland**:
+
+* Copy the deployment specification below and save it in a file called **sava-cart-svc-ie.yml**.
 
   ```yaml
   apiVersion: v1
   kind: Service
   metadata:
-    name: sava-product
+    name: sava-cart-ie
   spec:
     ports:
-    - port: 9070
+    - port: 80
       protocol: TCP
-      targetPort: 8080
-    type: NodePort
+      targetPort: 3000
+    type: LoadBalancer
     selector:
-      app: sava-product
+      app: sava-cart
+      locale: IE
   ```
 
-* Create the deployment on your Kubernetes cluster.
+* Create the Service on your Kubernetes cluster.
 
   ```bash
-  kubectl --namespace vampio-organization-environment create -f sava-product-svc.yml
+  kubectl --namespace vampio-organization-environment create -f sava-cart-svc-ie.yml
   ```
 
-* With `kubectl proxy` running, you check the deployment by opening the this link in your web browser:
+* Get the external IP address of service.
 
+  ```bash
+  kubectl get services --namespace vampio-organization-environment
   ```
-  http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/products/ie
-  ```
-  
-  You should see exactly the same results as you did when you accessed the sava-product Pod directly.
+  Initially you will probably see the external IP as `<pending>`. If so, wait a few minutes and try again. Depending on your cloud provider you may need to run the command a few times before an IP address is assigned.
 
+* If you open the external IP in your web browser, you should see exactly the same IE product page as you did when you accessed the IE sava-cart Pod directly.
+
+Great! **You've released the sava-cart store front for the Republic of Ireland!**
+
+To **release the initial version of sava-cart for the United Kingdom**:
+
+* Copy the deployment specification below and save it in a file called **sava-cart-svc-uk.yml**.
+
+  ```yaml
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: sava-cart-uk
+  spec:
+    ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 3000
+    type: LoadBalancer
+    selector:
+      app: sava-cart
+      locale: UK
+  ```
+
+* Create the Service on your Kubernetes cluster.
+
+  ```bash
+  kubectl --namespace vampio-organization-environment create -f sava-cart-svc-uk.yml
+  ```
+
+* Get the external IP address of service.
+
+  ```bash
+  kubectl get services --namespace vampio-organization-environment
+  ```
+  Initially you will probably see the external IP as `<pending>`. If so, wait a few minutes and try again. Depending on your cloud provider you may need to run the command a few times before an IP address is assigned.
+
+* If you open the external IP in your web browser, you should see exactly the same UK product page as you did when you accessed the UK sava-cart Pod directly.
+
+Great! **You've now released both sava-cart store fronts!**
+
+## Release a new version of the store front
+
+TODO deploy and release v2 for IE
