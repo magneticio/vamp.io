@@ -36,10 +36,16 @@ The service provides a REST API that returns a list (array) of products in JSON 
 
 Versioning of the API is done by media type. The API defaults to the latest version and clients that care about the stability of the API can request a specific version in the `Accept` header - [GitHub's approach](https://developer.github.com/v3/media/)
 
-#### sava-cart service
+#### sava-cart store front
 The **sava-cart** store front is a fork of [gtsopour/nodejs-shopping-cart](https://github.com/gtsopour/nodejs-shopping-cart)
 
-TODO brief functional description, v1.x depends on s-p v1 `Accept: application/vnd.sava.v1+json`, service discovery
+The store front provides a responsive web app consisting of a products page, a shopping cart and a checkout page.
+
+It is implemented to a [Tolerant Reader](http://servicedesignpatterns.com/WebServiceEvolution/TolerantReader) that expects changes to occur in the messages and media types it receives. For example, version 1.0 requests version 1 of the sava-product service (`Accept: application/vnd.sava.v1+json`) but will try to work with later versions.
+
+It also tries to isolate users from realtime dependency failures by showing cached or stubbed data. For example, if the sava-product service is unavailable users can choose from a list of fruit (a throw back to the original project).
+
+The store front locale is configured by setting the `LOCALE` environment variable.
 
 ## Initial Deployment
 
@@ -53,7 +59,9 @@ The commands shown in this tutorial assume you are using the [Kubernetes Quickst
 
 ### Deploy sava-product service
 
-* To **deploy the initial version of sava-product** (v1.0.3), copy the deployment specification below and save it in a file called **sava-product-1.0.3.yml**.
+To **deploy the initial version of sava-product** (v1.0.3):
+
+* Copy the deployment specification below and save it in a file called **sava-product-1.0.3.yml**.
 
   ```yaml
   apiVersion: apps/v1
@@ -88,13 +96,13 @@ The commands shown in this tutorial assume you are using the [Kubernetes Quickst
   * Creating a link to the **sava-product** proxy
   
      ```bash
-     kubectl --namespace vampio-organization-environment get pods -l app=sava-product -o go-template --template 'ms}}http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/{{.metadata.name}}/proxy/products/ie{{"\n"}}{{end}}'
+     kubectl --namespace vampio-organization-environment get pods -l app=sava-product -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/{{.metadata.name}}/proxy/products/ie{{"\n"}}{{end}}'
      ```
-  * Open the link in your web browser
+  * Open the link in your web browser and you should see the following output:
     ![sava-products/products/ie](/images/screens/v100/tut5/sava-product-products-ie.png)
 
 ### Release sava-product service
-At this point version 1.0 of the **sava-product is deployed but not released**, the deployment is healthy but receiving traffic. Since sava-product is an internal service we need it to be discoverable but it doesn't need a public IP address.
+At this point version 1.0 of the **sava-product is deployed but not released**, the deployment is healthy but cannot yet receive traffic from the clients that depend on it. 
 
 #### Kubernetes Services
 Since we only have one sava-product [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/) (Docker container) running, we could pass the IP address and port of that Pod to sava-cart but that would be a bad idea. Kubernetes will maintain the requested number of Pods over time but individual [Pods can be destroyed at any time and new Pods created to replace them](https://kubernetes.io/docs/concepts/workloads/pods/pod/#durability-of-pods-or-lack-thereof). So whilst sava-product will get its own IP address, that address cannot be relied upon to be stable over time.
@@ -140,18 +148,62 @@ To **release the initial version of sava-product**:
   http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/products/ie
   ```
   
-  You should see exactly the same results as you did when you accessed the sava-product pod directly.
+  You should see exactly the same results as you did when you accessed the sava-product Pod directly.
 
 ### Deploy sava-cart service
 
-TODO
-
 #### Service discovery
-Kubernetes provides two mechanism for [finding a Service](https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services):
+Kubernetes provides two mechanisms for [finding a Service](https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services):
 
 * **Environment variables**: when a Pod runs it receives `{SVCNAME}_SERVICE_HOST` and `{NAME}_SERVICE_PORT` environment variables for each active Service. Every Pod created after our sava-product Service is created it will have `SAVA_PRODUCT_SERVICE_HOST` (the cluster IP) and `SAVA_PRODUCT_SERVICE_PORT` environment variables defined. However, **to use environment variables for discovery, sava-cart must be deployed after the sava-product Service has been created**.
 * **DNS**: A Pod can also lookup the cluster IP address of a Service by name. **Pods in same [Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) as the our sava-product Service can do a name lookup for "sava-product"**. Pods in other Namespaces must look it up using the qualified name **"sava-product.vampio-organization.environment"**. DNS does not have the ordering restrictions that environment variables have.
 
 The first version of sava-cart uses environment variables to find sava-product.
 
-### Release sava-cart service
+To **deploy the initial version of sava-cart for the Republic of Ireland** (v1.0.5):
+
+* Copy the deployment specification below and save it in a file called **sava-cart-1.0.5-ie.yml**.
+
+  ```yaml
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: sava-cart-1.0.5-ie
+  spec:
+    selector:
+      matchLabels:
+        app: sava-cart
+    replicas: 1
+    template:
+      metadata:
+        labels:
+          app: sava-cart
+          version: 1.0.5
+          locale: IE
+      spec:
+        containers:
+        - name: sava-cart
+          image: vampio/sava-cart:1.0.5
+          ports:
+          - containerPort: 3000
+          env:
+          - name: LOCALE
+            value: IE
+  ```
+
+* Create the deployment on your Kubernetes cluster.
+
+  ```bash
+  kubectl --namespace vampio-organization-environment create -f sava-cart-1.0.5-ie.yml
+  ```
+
+* If you have `kubectl proxy` running on port 8001 (default), you check the deployment by:
+  * Creating a link to the **sava-cart** proxy
+  
+     ```bash
+     kubectl --namespace vampio-organization-environment get pods -l app=sava-cart -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/{{.metadata.name}}/proxy/{{"\n"}}{{end}}'
+     ```
+  * Open the link in your web browser and you should see the IE product page:
+    ![sava-products/products/ie](/images/screens/v100/tut5/sava-product-products-ie-v1.png)
+
+### Release sava-cart for the Republic of Ireland
