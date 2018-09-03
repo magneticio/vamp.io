@@ -336,4 +336,10 @@ Great! **You've now released both sava-cart store fronts!**
 
 ## Release a new version of the store front
 
-TODO deploy and release v2 for IE
+TODO deploy and release v1.1 for IE
+
+![canary release](/images/diagram/v100/tut5/k8s-arch-without-vamp-crelease.png)
+
+## Using Vamp to canary release the store front
+
+TODO canary release v1.1 for IE using vamp
