@@ -51,7 +51,7 @@ The store front locale is configured by setting the `LOCALE` environment variabl
 
 Our development team has been working hard and after a few interations **we are now ready to deploy the MVP on production**. The MVP consists of **sava-product version 1.0.3** and **sava-cart version 1.0.5**.
 
-To make this tutorial easy to follow, we are going to use `kubectl` to **simulate the actions of a continuious deployment pipeline deploying our application** to Kubernetes.
+To make this tutorial easy to follow, we are going to use `kubectl` to **simulate the actions of a continuous delivery (CD) pipeline deploying our application** on a Kubernetes cluster.
 
 {{< note title="Note!" >}}
 The commands shown in this tutorial assume you are using the [Kubernetes Quickstart](/documentation/installation/kubernetes) and that there is an existing namespace called **vampio-organization-environment**.
