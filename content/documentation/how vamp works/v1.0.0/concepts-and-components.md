@@ -69,11 +69,9 @@ Vamp workflows are script s or small applications that automate and optimise the
 We have included a set of useful "Vamp native" workflows out of the box, such as health and traffic metrics, which are used by the Vamp UI to report system status and to enable autoscaling and self-healing. We also provide a Node.js library to simplify the job of writing your own.
 
 ### Vamp Gateway Agent (VGA)
-Vamp Gateway Agent (VGA) uses confd to read the Vamp-generated HAProxy configuration from a secure key-value store and update HAProxy.
+Vamp Gateway Agent (VGA) uses confd to read the Vamp-generated HAProxy configuration from a secure key-value store and update HAProxy. Logs from HAProxy are read by Filebeat and shipped to Elasticsearch. 
 
-The VGA are designed to be resilient to to short-term losses of connection to the secure key-value store, and will continue to handle service traffic as normal during any outages. To provide redundancy in the case of node failures, etc a minimum of 2 VGAs should be running for each environment, to provide redundancy. 
-
-Logs from HAProxy are read by Filebeat and shipped to Elasticsearch. 
+The VGAs have short-term resilience. Running VGAs will continue to function if they lose their connection to the secure key-value store and will continue to handle service traffic as normal but new instances cannot be started without a key-value store connection. To reduce the risk of traffic loss, you must always have a minimum of two VGAs running, load-balanced and on different nodes. 
 
 {{< note title="What next?" >}}
 * Read about the [requirements to run Vamp](/documentation/how-vamp-works/v1.0.0/requirements)
