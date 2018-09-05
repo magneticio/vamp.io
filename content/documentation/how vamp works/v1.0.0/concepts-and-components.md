@@ -49,24 +49,32 @@ Vamp uses MySQL to store the definitions and current states of the services, gat
 #### Elasticsearch
 Vamp uses Elasticsearch to store raw traffic logs and aggregated health and traffic metrics. Elasticsearch is also used by Vamp for audit logging. 
 
-### Vamp
-Vamp is the main API endpoint, business logic and service coordinator. Vamp talks to the configured container manager (Docker, Marathon, Kubernetes etc.) and synchronizes it with Vamp Gateway Agent (VGA)  via ZooKeeper, etcd or Consul (distributed key-value stores). Vamp can use a SQL database or Elasticsearch for artifact persistence and Elasticsearch to store events (e.g. changes in deployments). Typically, there should be one Vamp instance and one or more VGA instances (we conform to the AirBnB Smartstack pattern). Vamp is not a realtime application and only updates deployments and routing when asked to (reactive) and thus doesn't need to run with multiple instances in HA mode. If this is a hard requirement of your project please contact us for the [Vamp Enterprise Edition](/product/enterprise-edition/).
-
 ### Vamp Lifter
+Vamp Lifter provides an API and UI for creating, configuring and managing tenants. It also includes an installer which is useful for bootstrapping a minimal, all-in-one topology for non-production purposes.
+
+### Vamp
+Vamp is the main API endpoint, business logic and service coordinator. Vamp talks to the configured container scheduler (Kubernetes or DC/OS) and synchronizes it with Vamp Gateway Agent (VGA) via the secure key-value store.
+
+Vamp is not a realtime application and only updates deployments and routing when asked to (reactive) and thus doesn't need to run with multiple instances in HA mode. Typically, there should be one Vamp instance and two or more VGA instances per environment. 
 
 ### Vamp UI
 The Vamp UI is a graphical web interface for managing Vamp in a web browser. It is packaged with Vamp.
 
 ### Vamp CLI
-The Vamp CLI is a command line interface for managing Vamp and providing integration with (shell) scripts. It's currently not very well maintained but still can be useful if our REST API cannot be used for your integration requirements.
+The Vamp CLI is a command line interface for managing Vamp and providing integration with (shell) scripts.
 
 ### Vamp workflows
-Vamp workflows are small applications or scripts (for example using (Node.js) JavaScript or your own containers that access the Vamp API) that automate and optimise the deployment and runtime of your system that consists of applications and services running inside containers. We have included a set of useful workflows out of the box, such as health and metrics, which are used by the Vamp UI to report system status and to enable autoscaling and self-healing. Our [Vamp Runner project](https://github.com/magneticio/vamp-runner/) provides more advanced workflow recipes as an example.
+Vamp workflows are script s or small applications that automate and optimise the deployment and runtime of your application and services.
+
+We have included a set of useful "Vamp native" workflows out of the box, such as health and traffic metrics, which are used by the Vamp UI to report system status and to enable autoscaling and self-healing. We also provide a Node.js library to simplify the job of writing your own.
 
 ### Vamp Gateway Agent (VGA)
-Vamp Gateway Agent (VGA) uses confd to read the Vamp-generated HAProxy configuration from ZooKeeper, etcd or Consul and reloads HAProxy on each configuration change with as close to zero client request interruptions as possible. Typically, there is one Vamp instance and one VGA instances on every cluster-node.
-Logs from HAProxy are read by Filebeat and shipped to Elasticsearch. VGA will handle and recover from ZooKeeper, etcd and Consul outages without interrupting the HAProxy process and client requests.
+Vamp Gateway Agent (VGA) uses confd to read the Vamp-generated HAProxy configuration from a secure key-value store and update HAProxy.
+
+The VGA are designed to be resilient to to short-term losses of connection to the secure key-value store, and will continue to handle service traffic as normal during any outages. To provide redundancy in the case of node failures, etc a minimum of 2 VGAs should be running for each environment, to provide redundancy. 
+
+Logs from HAProxy are read by Filebeat and shipped to Elasticsearch. 
 
 {{< note title="What next?" >}}
-* Read about the [requirements to run Vamp](/documentation/how-vamp-works/v0.9.5/requirements)
+* Read about the [requirements to run Vamp](/documentation/how-vamp-works/v1.0.0/requirements)
 {{< /note >}}
