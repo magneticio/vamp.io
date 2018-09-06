@@ -14,8 +14,6 @@ menu:
 ---
 Before you get Vamp up and running on your architecture, it is helpful to understand [how vamp works](/documentation/how-vamp-works/architecture-and-components) and the role of each component and its preferred location in a typical architecture.
 
-If you need help you can find us on [Gitter] (https://gitter.im/magneticio/vamp)
-
 #### Requirements
 
 * [Vamp requirements](/documentation/how-vamp-works/requirements)
@@ -25,8 +23,6 @@ The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely 
 
 * [Kubernetes](/documentation/installation/kubernetes)
 * [DC/OS](/documentation/installation/dcos)
-* [Google Kubernetes Engine](/documentation/installation/google-cloud-kubernetes)
-* [Azure Container Service](/documentation/installation/azure-container-service)
 
 #### Configure Vamp
 

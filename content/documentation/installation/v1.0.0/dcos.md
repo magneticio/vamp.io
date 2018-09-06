@@ -1,6 +1,6 @@
 ---
 date: 2017-02-07T12:00:00+00:00
-title: DC/OS
+title: DC/OS Quickstart
 platforms: ["DCOS","Mesosphere"]
 menu:
   main:
@@ -42,6 +42,7 @@ dcos marathon app add lifter-standalone.json
 
 ### Using the DC/OS UI
 Deploy the Vamp Lifter application using the DC/OS CLI:
+
 * Select **Services → Run a Service**
 * Select **JSON Configuration**
 * Paste the contents of the **lifter-standalone.json** file into the editor
@@ -53,9 +54,8 @@ Deploy the Vamp Lifter application using the DC/OS CLI:
 In the DC/OS UI, click the icon next to the **vamp-ee-lifter** service name to open the Vamp Lifter UI in a new window
 ![](/images/screens/v100/dcos-vamp-lifteree.png)
 
-Complete the Vamp EE Quick Start installation:
-![](/images/screens/v100/lifteree-installer-deploy.png)
 * Select **Installer → Deploy**
+  ![](/images/screens/v100/lifteree-installer-deploy.png)
 * Click on the **Deploy** button (top right), this will start the installation and:
   * Deploy **MySQL**, **Hashicorp Vault** and **Elasticsearch**
   * Create a sample organisation called **organisation**

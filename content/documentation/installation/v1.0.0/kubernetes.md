@@ -1,6 +1,6 @@
 ---
 date: 2016-10-04T09:00:00+00:00
-title: Kubernetes
+title: Kubernetes Quickstart
 platforms: ["Kubernetes"]
 menu:
   main:
@@ -24,15 +24,19 @@ After a successful installation, you will be able to login to Vamp EE as an admi
 * A machine on which to run the installation. This can be your laptop, a virtual machine instance or a Docker container that has [kubectl](http://kubernetes.io/docs/user-guide/kubectl-overview/) installed
 * A Kubernetes cluster on which to install Vamp
   * This can be a 1.8.x, 1.9.x or 1.10.x cluster
-  * The cluster should have 4 nodes and a minimum of 2 vCPUs and 7.5 GB memory per node
+  * The cluster should have 4 nodes and a minimum of 2 vCPUs and 7GB memory per node
+
+#### Azure
+To launch a suitable cluster on Azure follow the Azure Kubernetes Service (AKS) [Quickstart guide](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough).
+
+#### Google Cloud
+To launch a suitable cluster on Google Cloud follow the Kubernetes Engine (GKE) [Quickstart guide](https://cloud.google.com/kubernetes-engine/docs/quickstart).
 
 ### Deploying Vamp Lifter
 
 * Sign up for a [Vamp Enterprise Edition trial](/trial-signup/), if you haven't already. Then download the **lifter-standalone.yml** file
 * Download the [clusterrolebinding.yml](https://gist.github.com/jason-magnetic-io/3be85e096a038e5c17f536bc52e439d0) file
 * Configure [kubectl](http://kubernetes.io/docs/user-guide/kubectl-overview/) command line access to your Kubernetes cluster
-  * TODO link to Google Cloud Platform page
-  * TODO link to Azure Container Service page
 * Create a *cluster-admin* user. This step can be skipped if you already have a suitable user with the *cluster-admin* role.
   
   ```
@@ -62,7 +66,7 @@ After a successful installation, you will be able to login to Vamp EE as an admi
   ```
   
 * Open the link to the Vamp Lifter UI in your web browser
-![](/images/screens/v100/lifteree-installer-deploy.png)
+  ![](/images/screens/v100/lifteree-installer-deploy.png)
 * Select **Installer → Deploy**
 * Click on the **Deploy** button (top right), this will start the installation and:
   * Deploy **MySQL**, **Hashicorp Vault** and **Elasticsearch** into the *default* Kubernetes namespace

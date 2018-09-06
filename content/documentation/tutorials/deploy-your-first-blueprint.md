@@ -1,6 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Deploy your first blueprint
+title: 1. Deploy your first blueprint
 menu:
   main:
     parent: "Tutorials"
@@ -14,6 +14,10 @@ Now you're ready to check out some of Vamp's features. In this tutorial we will:
 * Check out the deployed application  
 * Get some metrics on the running application  
 * Change the scale   
+
+#### Requirements:
+* A Kubernetes cluster with at least 4 nodes (8 vCPUs and 28GB memory); or
+* A DC/OS cluster with at least 4 nodes (1 public agent, 16 vCPUs and 48GB memory)
 
 ## Deploy a monolith
 
