@@ -104,5 +104,4 @@ This topology is suitable for smaller, lower volume development clusters where c
 
 {{< note title="What next?" >}}
 * Find out how to [install Vamp](/documentation/installation/v1.0.0/overview)
-* Read about the [requirements to run Vamp](/documentation/how-vamp-works/v1.0.0/requirements)
 {{< /note >}}
