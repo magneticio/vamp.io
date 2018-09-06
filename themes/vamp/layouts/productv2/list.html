@@ -1,0 +1,86 @@
+{{ partial "head" . }}
+
+{{ partial "nav" . }}
+
+<div class="page product">
+  <section class="lead lander-row--white">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h1 class="h1 text-center mb-0 hero-text">{{.Params.header.hero | markdownify}}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roles Section-->
+
+  <section class="lander-row--white">
+    <div class="container py-5">
+      <div class="row mb-4">
+        <div class="col-sm-4">
+          <h3 class="h2 product-role-title">{{.Params.roles.list1.title}}</h3>
+          <ul class="product-roles">
+            {{ range .Params.roles.list1.items }}
+            <li class="text">{{ . }}</li>
+            {{ end }}
+          </ul>
+        </div>
+        <div class="col-sm-4">
+          <h2 class="h2 product-role-title">{{.Params.roles.list2.title}}</h2>
+          <ul class="product-roles">
+            {{ range .Params.roles.list2.items }}
+            <li class="text">{{ . }}</li>
+            {{ end }}
+          </ul>
+        </div>
+        <div class="col-sm-4">
+          <h2 class="h2 product-role-title">{{.Params.roles.list3.title}}</h2>
+          <ul class="product-roles">
+            {{ range .Params.roles.list3.items }}
+            <li class="text">{{ . }}</li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+
+  <section class="lander-row--white product-features">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="h1 text-center mb-5 hero-text">Vamp Features</h2>
+        </div>
+      </div>
+      <div class="row py-3">
+        {{ range $index, $element := .Params.features }}
+          {{ if (mod $index 2) gt 0}}
+            <div class="col-sm-6 product-features-img-col">
+              <img src="/img/product/450x250.png" alt="">
+            </div>
+            <div class="col-sm-6 product-features-text-col">
+              <h3 class="product-features-title">{{.title}}</h3>
+              <p class="text">{{ .description }}</p>
+            </div>
+          {{else}}
+            <div class="col-sm-6 product-features-text-col">
+              <h3 class="product-features-title">{{.title}}</h3>
+              <p class="text">{{ .description }}</p>
+            </div>
+            <div class="col-sm-6 product-features-img-col">
+              <img src="/img/product/450x250.png" alt="">
+            </div>
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  {{ partial "start-a-trial-section" . }}
+
+</div>
+
+{{ partial "footer" .}}
