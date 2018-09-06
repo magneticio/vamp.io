@@ -23,7 +23,7 @@ Whilst Vamp can be deployed in a number of different configurations, there are s
 
 In terms of Vamp topology:
 
-* If Vamp will be managing services on two or more clusters, then Vamp, Vault, MySQL and Elasticsearch should be deployed on a separate cluster
+* If Vamp will be managing services on two or more clusters, then Vamp, Lifter and the dependencies should be deployed on a separate cluster
 * Vault, MySQL and Elasticsearch must use storage that will survive a cluster restart
 * Data from both Vault and MySQL is needed to "recover" Vamp to it's previous state after a cluster restart
 * Vamp Gateway Agents
@@ -47,22 +47,17 @@ We highly recommend separating the management-focused components (Lifter and Vam
 
 As a minimum, we highly recommend using a managed MySQL service rather than running MySQL in the management cluster with external storage.
 
-TODO image
+![architecture](/images/diagram/v100/vampee-arch-mgnt-svc-ext-mysql.png)
 
 Vault should also be outside the management cluster but if you choose to run Vault in the management cluster we highly recommend using MySQL as the storage backend.
 
-TODO image
+![architecture](/images/diagram/v100/vampee-arch-mgnt-svc-ext-mysql-vault.png)
 
 In all cases, external storage should be used for Elasticsearch. A single Elasticsearch node is sufficient for where the total traffic volume across all environments is low.
 
 A multi-node Elasticsearch cluster should be used for high traffic volume applications or lower volume applications where the audit logging needs to meet specific regulatory requirements.
 
-TODO image
 
-![architecture](/images/diagram/v100/vampee-arch-mgnt-svc.png)
-
-![architecture](/images/diagram/v100/vampee-arch-mgnt-svc-ext-alldeps.png)
-
-![architecture](/images/diagram/v100/vampee-arch-mgnt-svc-ext-mysql-vault.png)
-
-![architecture](/images/diagram/v100/vampee-arch-mgnt-svc-ext-alldeps.png)
+{{< note title="What next?" >}}
+* Read about the [requirements to run Vamp](/documentation/how-vamp-works/v1.0.0/requirements)
+{{< /note >}}
