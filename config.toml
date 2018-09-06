@@ -124,7 +124,7 @@ googleAnalytics = ""
 
 [[menu.main]]
 	name	= "How Vamp works"
-	url = "/documentation/how-vamp-works/architecture-and-components/"
+	url = "/documentation/how-vamp-works/"
 	parent = "Documentation"
 	weight = 10
 
@@ -143,7 +143,7 @@ googleAnalytics = ""
 
 [[menu.main]]
 	name = "Using Vamp"
-	url = "/documentation/using-vamp/artifacts/"
+	url = "/documentation/using-vamp/"
 	parent = "Documentation"
 	weight = 40
 

@@ -6,9 +6,6 @@ menu:
     identifier: "configure-database-v100"
     parent: "Configuration"
     weight: 40
-aliases:
-    - /documentation/configure/configure-database
-    - /documentation/installation/configure-database
 ---
 
 Vamp uses a relational database to persist the definitions and current states of the services, gateways and workflows. This database is also used to store the user role definitions and users.

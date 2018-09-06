@@ -1,14 +1,13 @@
 ---
 date: 2018-08-11T09:00:00+00:00
-title: Create a tenant
+title: Create a Tenant
+aliases:
+    - /documentation/configure/
 menu:
   main:
     identifier: "configure-tenant-v100"
     parent: "Configuration"
     weight: 30
-aliases:
-    - /documentation/configure/configure-tenant
-    - /documentation/installation/configure-tenant
 ---
 
 Tenants can be different teams within a business division, different business divisions inside the same organization, or entirely different organizations. Each tenant's data is isolated and remains invisible to other tenants.

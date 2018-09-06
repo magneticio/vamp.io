@@ -2,6 +2,7 @@
 date: 2016-09-15T09:00:00+00:00
 title: Architecture
 aliases:
+    - /documentation/how-vamp-works/
 menu:
   main:
     identifier: "architecture-v100"

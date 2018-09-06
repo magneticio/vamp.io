@@ -1,10 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Concepts and components
-aliases:
-    - /documentation/how-vamp-works/
-    - /documentation/using-vamp/artifacts/
-    - /documentation/how-vamp-works/architecture-and-components/
 menu:
   main:
     identifier: "concepts-and-components-v100"
