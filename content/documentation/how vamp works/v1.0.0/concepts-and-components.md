@@ -51,7 +51,7 @@ Vamp Lifter provides an API and UI for creating, configuring and managing tenant
 ### Vamp
 Vamp is the main API endpoint, business logic and service coordinator. Vamp talks to the configured container scheduler (Kubernetes or DC/OS) and synchronizes it with Vamp Gateway Agent (VGA) via the secure key-value store.
 
-Vamp is not a realtime application and only updates deployments and routing when asked to (reactive) and thus doesn't need to run with multiple instances in HA mode. Typically, there should be one Vamp instance and two or more VGA instances per environment. 
+Vamp is not a realtime application and only updates deployments and routing when asked to (reactive) and thus doesn't need to run with multiple instances in HA mode.
 
 ### Vamp UI
 The Vamp UI is a graphical web interface for managing Vamp in a web browser. It is packaged with Vamp.
