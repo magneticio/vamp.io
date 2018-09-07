@@ -10,32 +10,24 @@ roles:
     list1:
         title: "For Developers"
         items:
-            - "easily expose services and API’s with full conditional routing and gateway control"
-            - "automated canary releasing with rollbacks on issues"
-            - "self-service environments for releasing and traffic routing"
-            - "API gateway and orchestration features"
+            - "automated canary releasing with rollback and reporting on issues"
+            - "self-service system for releasing and traffic routing"
             - "easy load balancing and flexible service-discovery"
+            - "API gateway and orchestration features"
     list2:
         title: "For DevOps Engineers"
         items:
-            - "integrate with CD tools to extend into intelligent release automation"
-            - "customisable canary test and release automation workflows"
-            - "SLA based optimisation and micro scaling automation workflows"
-            - "custom KPI, metric and event driven automation workflows-as-code"
-            - "multi-cloud, multi-scheduler, multi-cluster support"
-            - "enterprise security model with Role Based Acces Control (RBAC)"
+            - "customisable canary test, release and SLA-based performance optimization workflows"
+            - "flexible integrated metrics and events system"
+            - "multi-cloud, multi-scheduler, multi-environment features with Role Based Access Control (RBAC)"
             - "powerful installation and configuration management tools"
     list3:
         title: "For Product Owners"
         items:
+            - "multi-stage feature releases (geo, device, time, customer-segments, manual checks)"
             - "feature A/B testing with configuration-based feature toggles/flags"
-            - "segmented multi-step feature releases (geo, device, time, customer-segments, custom)"
-            - "external analytics and business-data integration for release automation and optimisation"
-            - "rich dashboards for full insights and observability"
-            - "audit logging"
-            - "Better TimeToMarket of features and releases through automation"
-            - "Gain more control on the performance of your new feature releases"
-  
+            - "integrate with external analytics, APM and business systems"
+            - "rich dashboards and wizardsfor full insights, observability and control" 
 features:
     -
         title: "Canary releasing workflows with smart rollbacks"
