@@ -6,7 +6,7 @@ layout: overview
 aliases:
     - /community/
 ---
-Vamp Community Edition is open source and Apache 2.0 licensed. For details of the **Vamp Enterprise Edition** please check the [Vamp feature matrix](/product/enterprise-edition/) or [contact us](mailto:info@vamp.io) to discuss your requirements, pricing and features.
+Vamp Community Edition is open source and Apache 2.0 licensed. For details of the **Vamp Enterprise Edition** please check the [Vamp feature matrix](/product/enterprise-edition/), [start a free trial] (/ee-trial-signup/), or [contact us](mailto:info@vamp.io) to discuss your requirements, pricing and features.
 
 ## Community support
 If you have a question about Vamp, please check the [Vamp documentation](/documentation/using-vamp/artifacts) first  - we're always adding new resources, tutorials and examples.
@@ -22,7 +22,7 @@ We offer five extended professional support plans. Contact us for pricing inform
 
 
 {{< note title="What next?" >}}
-* [Try Vamp](/documentation/installation/hello-world)
+* [Try Vamp](/ee-trial-signup/)
 * Learn [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
 * Get your teeth into the [Vamp documentation](/documentation/using-vamp/artifacts)
 {{< /note >}}
