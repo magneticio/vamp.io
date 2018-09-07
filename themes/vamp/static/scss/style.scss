@@ -5,10 +5,13 @@
 @import 'markdown';
 @import 'nav-popover';
 @import 'badge';
+@import 'blog';
+@import 'testimonial';
 @import 'table';
 @import 'mixins';
 @import 'transitions';
 @import 'animations';
+@import 'product';
 
 // apps
 @import 'apps/maturity-calculator';
@@ -29,13 +32,14 @@ body {
     margin-top: $spacer;
 
     .header {
-      color: $color-radical-red;
+      color: $red;
       margin: 40px 0;
     }
 
     .content {
       @media all and (min-width: 1025px) {
         padding-top: 2 * $spacer;
+        padding-bottom: 2 * $spacer;
       }
 
     }
@@ -47,7 +51,7 @@ body {
 .header {
   font-weight: 100;
   letter-spacing: 0.1em;
-  color: $color-big-stone;
+  color: $blue-darker;
   font-size: 26px;
 
   @media all and (min-width: 641px) {
@@ -56,7 +60,7 @@ body {
 }
 
 a {
-  color: $color-picton-blue;
+  color: $blue-light;
   text-decoration: none;
 }
 
@@ -64,20 +68,25 @@ a {
   font-size: 26px;
   font-weight: 400;
   letter-spacing: 0.05em;
-  color: $color-white-squeeze;
-  padding-top: $spacer;
+  color: $ash;
+  padding-top: 2 * $spacer;
 
   &.hero-text {
-    font-weight: 500;
-    font-size: 42px;
+    font-weight: 400;
+    font-size: 50px;
     color: white;
-    margin-bottom: $spacer !important;
+    padding-top: $spacer;
+    margin-bottom: 2 * $spacer;
 
     @media (max-width: 321px) {
       font-size: 22px;
+      padding-top: $spacer;
+      margin-bottom: $spacer;
     }
 
     @media all and (max-width: 769px) {
+      padding-top: $spacer;
+      margin-bottom: $spacer;
       font-size: 26px;
     }
 
@@ -109,7 +118,7 @@ a {
   font-size: $font-size-biggest;
   font-weight: $font-weight-heavy;
   letter-spacing: 0.05em;
-  color: $color-big-stone;
+  color: $blue-darker;
   padding-top: $spacer;
 
 
@@ -141,7 +150,7 @@ a {
   text-transform: uppercase;
   font-size: $font-size-small;
   letter-spacing: 0.1em;
-  color: $color-cascade;
+  color: $gray-light;
 }
 
 .text-lead {
@@ -159,7 +168,7 @@ a {
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0.05em;
-  color: $color-big-stone;
+  color: $blue-darker;
 
   &:not(:first-child):not(:last-child) {
     margin: 10px 0;
@@ -178,7 +187,7 @@ a {
   font-weight: $font-weight-default;
   letter-spacing: $letter-spacing-default;
   font-size: $font-size-default;
-  color: $color-big-stone;
+  color: $blue-darker;
   line-height: $line-height-default;
 }
 
@@ -187,11 +196,11 @@ a {
 }
 
 .text-red {
-  color: $color-radical-red !important;
+  color: $red !important;
 }
 
 .text-green {
-  color: $color-green-ok !important;
+  color: $green !important;
 }
 
 .text-big {
@@ -231,6 +240,12 @@ a {
     padding: .8rem 4.5rem;
   }
 
+  &.button__large {
+    font-size: 16px;
+    height: 45px;
+    padding: .5rem 3rem;
+  }
+
   p {
     line-height: 1;
     text-decoration: none;
@@ -265,20 +280,21 @@ a {
   }
 
   &--grey {
-    background-color: $color-bermuda-gray;
+    background-color: $gray;
     color: white;
 
     &:hover {
-      background-color: $color-blue-dianne;
+      background-color: $blue-dark;
+      color: white;
     }
 
     &--ghost {
       background-color: transparent;
-      color: $color-bermuda-gray;
-      border: 1px solid $color-bermuda-gray;
+      color: $gray;
+      border: 1px solid $gray;
 
       &:hover {
-        background-color: $color-bermuda-gray;
+        background-color: $gray;
         color: white;
       }
     }
@@ -286,40 +302,41 @@ a {
   }
 
   &--red {
-    background-color: $color-radical-red;
+    background-color: $red;
     color: white;
 
     &:hover {
-      background-color: $color-brick-red;
+      background-color: $red-dark;
+      color: white;
     }
 
     &--ghost {
       background-color: transparent;
-      color: $color-radical-red;
-      border: 1px solid $color-radical-red;
+      color: $red;
+      border: 1px solid $red;
 
       &:hover {
-        background-color: $color-radical-red;
+        background-color: $red;
         color: white;
       }
     }
   }
 
   &--blue {
-    background-color: $color-big-stone;
+    background-color: $blue-darker;
     color: white;
 
     &:hover {
-      background-color: $color-blue-dianne;
+      background-color: $blue-dark;
     }
 
     &--ghost {
       background-color: transparent;
-      color: $color-big-stone;
-      border: 1px solid $color-big-stone;
+      color: $blue-darker;
+      border: 1px solid $blue-darker;
 
       &:hover {
-        background-color: $color-big-stone;
+        background-color: $blue-darker;
         color: white;
       }
 
@@ -328,25 +345,29 @@ a {
 
   &--white {
     background-color: #fff;
-    color: $color-radical-red;
+    color: $red;
 
     &:hover {
-      background-color: $color-brick-red;
+      background-color: $red-dark;
     }
 
     &--ghost {
       background-color: transparent;
-      color: $color-radical-red;
-      border: 1px solid $color-radical-red;
+      color: $red;
+      border: 1px solid $red;
 
       &:hover {
-        background-color: $color-radical-red;
+        background-color: $red;
         color: white;
       }
     }
   }
 
-
+  & a {
+    &:hover {
+      color: inherit;
+    }
+  }
 }
 
 .video-play-button {
@@ -388,10 +409,10 @@ a {
   }
 
   &--blue {
-    background-color: $color-big-stone;
+    background-color: $blue-darker;
 
     .header, .h1, .h2, .text-header, .text, .fa {
-      color: $color-white-squeeze;
+      color: $ash;
     }
   }
 
@@ -399,19 +420,19 @@ a {
     background-color: white;
 
     .h1 {
-      color: $color-blue-dianne;
+      color: $blue-dark;
     }
   }
 
   &--grey {
-    background-color: $color-white-squeeze;
-    .h1 {
-      color: $color-blue-dianne;
+    background-color: $ash;
+    .h1, .h2, .h3 {
+      color: $blue-dark;
     }
   }
 
   &--red {
-    background-color: $color-radical-red;
+    background-color: $red;
 
     .header, .h2, .h3, .text, .fa {
       color: white;
@@ -431,19 +452,19 @@ a {
 
   padding-top: 14px + $hero-spacer;
   padding-bottom: 0;
-  background: linear-gradient(45deg, $color-blue-dianne, $color-big-stone);
+  background-color: white;
   position: relative;
 
   @media all and (min-width: 321px) {
-    padding-top: 14px + $hero-spacer;
+    padding-top: 30px
   }
 
   @media all and (min-width: 641px) {
-    padding-top: 20px + $hero-spacer;
+    padding-top: 10px + $hero-spacer;
   }
 
   @media all and (min-width: 769px) {
-    padding-top: 60px + $hero-spacer;
+    padding-top: 20px + $hero-spacer;
   }
 
   @media all and (min-width: 1025px) {
@@ -454,40 +475,8 @@ a {
     padding-top: 80px + $hero-spacer;
   }
 
-  .bottom-background {
-    position: absolute;
-    //background-color: red;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 138px;
-    z-index: 5;
-    display: flex;
-
-    .left-pixels {
-      //background-color: red;
-      height: 100%;
-      width: 50%;
-
-      img {
-        height: 100%;
-      }
-    }
-
-    .right-pixels {
-      height: 100%;
-      width: 50%;
-
-      img {
-        float: right;
-        height: 100%;
-      }
-    }
-  }
-
   .row-ribbon {
     position: absolute;
-    //background-color: red;
     right: 0;
     top: 0;
     z-index: 5;
@@ -521,7 +510,7 @@ a {
     &.active {
       >a {
         p {
-          color: $color-radical-red;
+          color: $red;
         }
       }
     }
@@ -539,7 +528,7 @@ a {
     }
 
     &__text {
-      color: $color-big-stone;
+      color: $blue-darker;
       margin-left: 18px;
       font-weight: $font-weight-default;
       letter-spacing: $letter-spacing-default;
@@ -558,7 +547,7 @@ a {
 
       &__text {
         display: none;
-        color: $color-big-stone;
+        color: $blue-darker;
         padding: .25 * $spacer 0 .25 * $spacer 2 * $spacer;
         font-weight: $font-weight-light;
         letter-spacing: $letter-spacing-default;
@@ -604,7 +593,7 @@ a {
 
   &.active {
     .text {
-      color: $color-radical-red;
+      color: $red;
     }
   }
 
@@ -613,7 +602,7 @@ a {
   }
 
   &:not(:last-child) {
-    border-bottom: 1px solid $color-cascade;
+    border-bottom: 1px solid $gray-light;
   }
 }
 
@@ -622,7 +611,7 @@ a {
   width: 100%;
   text-decoration: none;
   padding: 7px 0 7px 60px;
-  color: $color-big-stone;
+  color: $blue-darker;
 
   &.active {
     .text {
@@ -637,11 +626,15 @@ a {
   background-color: white;
   min-height: 100vh;
 
+  @media (max-width: 769px) {
+    padding-left: .5 * $spacer;
+    padding-right: .5 * $spacer;
+  }
 
   .content-header {
     font-size: $font-size-biggest;
     font-weight: $font-weight-light;
-    color: $color-radical-red;
+    color: $red;
     line-height: $line-height-default;
     letter-spacing: $letter-spacing-wide;
     text-transform: uppercase;
@@ -651,31 +644,12 @@ a {
 
 .date {
   @extend .text;
-  color: $color-bermuda-gray;
+  color: $gray;
   margin: 40px 0;
 
 }
 
 // Custom
-.hero-space-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-
-  .button {
-    min-width: 180px;
-  }
-
-  @media all and (min-width: 641px) {
-    flex-direction: row;
-    width: 400px;
-  }
-
-
-}
 
 .offer-item {
   display: flex;
@@ -714,7 +688,7 @@ a {
 }
 
 .top-bar {
-  border-top: 1px solid $color-jungle-mist;
+  border-top: 1px solid $gray-lighter;
 }
 
 // footer
@@ -755,7 +729,7 @@ a {
   }
 
   .text {
-    color: $color-jungle-mist !important;
+    color: $gray-lighter !important;
     text-align: center;
     font-weight: 100;
   }
@@ -764,7 +738,7 @@ a {
     font-weight: 400;
     padding-top: 20px;
     margin-bottom: .5 * $spacer;
-    color: $color-jungle-mist !important;
+    color: $gray-lighter !important;
     text-align: center;
   }
 
@@ -774,13 +748,13 @@ a {
 
     .text {
       font-weight: 100;
-      color: $color-jungle-mist !important;
+      color: $gray-lighter !important;
 
     }
 
     &.rss-feed-link {
       text-decoration: underline;
-      color: $color-radical-red;
+      color: $red;
     }
   }
 
@@ -809,10 +783,10 @@ a {
   position: relative;
   z-index: 999;
   padding: 20px 0;
-  border-top: 1px solid rgba($color-ming, 0.3);
+  border-top: 1px solid rgba($gray-darker, 0.3);
 
   .text {
-    color: $color-jungle-mist !important;
+    color: $gray-lighter !important;
   }
 
   .vamp-bat {
@@ -832,7 +806,7 @@ a {
   }
 
   a {
-    color: $color-white-squeeze;
+    color: $ash;
   }
 
   @media all and (min-width: 769px) {
@@ -909,7 +883,7 @@ a {
     }
 
     .admonition-title {
-      color: $color-blue-dianne;
+      color: $blue-dark;
     }
   }
 
@@ -991,7 +965,7 @@ a {
 }
 
 .dark-it-up {
-  color: $color-bermuda-gray !important;
+  color: $gray !important;
 }
 
 .magnetic-logo {
@@ -1102,11 +1076,11 @@ a {
 //colors
 $color_0: rgba(255, 255, 255, 0.75);
 $color_btn: transparent;
-$color_text: $color-big-stone;
+$color_text: $blue-darker;
 $color_shadow: #000;
 $color_bg: white;
 $color_hover_bg: transparent;
-$color_hover_text: $color-big-stone;
+$color_hover_text: $blue-darker;
 
 .slicknav_menu {
   font-size: 16px;
@@ -1143,7 +1117,7 @@ $color_hover_text: $color-big-stone;
   font-size: 16px;
   list-style: none;
   overflow: hidden;
-  background-color: $color-white-squeeze;
+  background-color: $ash;
   margin: 0 -5px -5px -5px;
   max-height: calc(100vh - 51px);
   overflow: auto;
@@ -1236,7 +1210,7 @@ pre + pre {
     line-height: 1;
     font-weight: 500;
     font-size: 12px;
-    color: $color-big-stone;
+    color: $blue-darker;
   }
 }
 
@@ -1262,7 +1236,7 @@ pre + pre {
     line-height: 1;
     font-weight: 500;
     font-size: 12px;
-    color: $color-big-stone;
+    color: $blue-darker;
 
     .fa-check {
       transform: translate(0, -1px);
@@ -1275,14 +1249,14 @@ pre + pre {
 
   &.zeroclipboard-is-hover {
     transition: 0.1s ease-in all;
-    background-color: $color-jungle-mist;
+    background-color: $gray-lighter;
     cursor: pointer;
     color: white;
   }
 
   &.clicked {
 
-    background-color: $color-big-stone;
+    background-color: $blue-darker;
     color: white;
     width: 200px;
 
@@ -1393,7 +1367,7 @@ pre + pre {
     margin-bottom: 10px;
     font-weight: 300;
     letter-spacing: 0.05em;
-    color: $color-radical-red;
+    color: $red;
     text-align: center;
   }
 
@@ -1429,7 +1403,7 @@ pre + pre {
 }
 
 .dropdown {
-  background-color: $color-white-squeeze;
+  background-color: $ash;
   height: 40px;
   width: 240px;
   cursor: pointer;
@@ -1460,7 +1434,7 @@ pre + pre {
     justify-content: space-between;
     position: relative;
     z-index: 10;
-    background-color: $color-white-squeeze;
+    background-color: $ash;
     border-radius: 5px;
 
   }
@@ -1483,9 +1457,9 @@ pre + pre {
     top: 40px;
     left: 0;
     right: 0;
-    border-left: 1px $color-white-squeeze solid;
-    border-right: 1px $color-white-squeeze solid;
-    border-bottom: 1px $color-white-squeeze solid;
+    border-left: 1px $ash solid;
+    border-right: 1px $ash solid;
+    border-bottom: 1px $ash solid;
     border-radius: 0 0 4px 4px;
     display: none;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
@@ -1512,7 +1486,7 @@ pre + pre {
     }
 
     &:not(:last-of-type) {
-      border-bottom: 1px $color-white-squeeze solid;
+      border-bottom: 1px $ash solid;
     }
   }
 }
@@ -1563,11 +1537,11 @@ pre + pre {
     align-items: center;
     justify-content: space-between;
     font-weight: 300;
-    color: $color-big-stone;
+    color: $blue-darker;
     cursor: pointer;
 
     a {
-      color: $color-big-stone;
+      color: $blue-darker;
       text-decoration: none;
     }
 
@@ -1598,7 +1572,7 @@ pre + pre {
   }
 
   a {
-    color: $color-big-stone;
+    color: $blue-darker;
   }
 
   .right {
@@ -1611,24 +1585,10 @@ pre + pre {
   }
 }
 
-.landing-page {
-  .navbar {
-    background-color: $color-big-stone !important;
-    border-bottom: 1px solid rgba($color-white-squeeze, 0.1) !important;
-  }
-
-  &.landing-page-light {
-    .navbar {
-      background-color: white !important;
-      border-bottom: 1px solid rgba($color-white-squeeze, 0.1) !important;
-    }
-  }
-}
-
 .anchor-hover {
   padding-left: 8px;
   opacity: 0;
-  color: $color-bermuda-gray;
+  color: $gray;
   transition: 0.07s ease-in-out all;
 }
 

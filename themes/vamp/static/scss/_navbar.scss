@@ -3,7 +3,7 @@
   position: relative;
   justify-content: space-between;
   height: 80px;
-  background-color: $color-big-stone;
+  background-color: $ash;
   padding: 0 10px;
   z-index: 999;
   transition: height .4s;
@@ -23,7 +23,7 @@
   }
 
   &.navbar-light {
-    background-color: $color-white-squeeze;
+    background-color: $ash;
     border-bottom: $light-border;
     .logo {
       background-image: url('/img/005-vamp/Logo/logo-long-colour.svg');
@@ -31,10 +31,10 @@
     }
 
     .navbar-item {
-      color: $color-big-stone;
+      color: $blue-darker;
 
       &:hover {
-        color: $color-radical-red;
+        color: $red;
       }
     }
 
@@ -44,7 +44,7 @@
         top: 32px;
         left: 11px;
         font-size: 15px;
-        color: $color-jungle-mist;
+        color: $gray-lighter;
       }
       .search-input {
         padding: 1.25rem;
@@ -117,7 +117,7 @@
     align-items: center;
     padding: 0 20px;
 
-    color: $color-white-squeeze;
+    color: $ash;
     font-size: 15px;
     font-weight: 300;
     text-decoration: none;
@@ -129,7 +129,7 @@
     }
 
     &.active {
-      border-bottom: 3px solid $color-radical-red;
+      border-bottom: 3px solid $red;
       font-weight: 500;
       margin-bottom: -2px;
     }
@@ -142,7 +142,7 @@
       top: 10px;
       z-index: 1000;
       font-size: 15px;
-      color: $color-jungle-mist;
+      color: $gray-lighter;
     }
     .search-input {
       padding: 1.25rem;
@@ -157,19 +157,17 @@
       height: 1rem;
       border-radius: 4px;
       text-indent: 16px;
-      width: 300px;
+      //width: 300px;
     }
   }
 
   .hiring-popover {
     position: relative;
-    background: $color-radical-red;
+    background: $gray;
     font-size: .75rem;
     padding: .5rem .75rem;
     margin-left: 1rem;
     border-radius: 2px;
-    animation-delay: 2s;
-    animation: bounce .3s 4;
     &:after {
       right: 100%;
       top: 50%;
@@ -179,14 +177,13 @@
       width: 0px;
       position: absolute;
       pointer-events: none;
-      border-color: rgba(213,26,26,0);
-      border-right-color: $color-radical-red;
+      border-right-color: $gray;
       border-width: 8px;
       margin-top: -9px
     }
 
     a {
-      color: $color-white-squeeze;
+      color: $ash;
     }
   }
 }
@@ -202,12 +199,5 @@
     display: none;
   }
 
-  border-bottom: 1px solid $color-jungle-mist;
-}
-
-@-webkit-keyframes bounce {
-  0%       { left: 5px; }
-  25%, 75% { left: 15px; }
-  50%      { left: 20px; }
-  100%     { left: 0;}
+  border-bottom: 1px solid $gray-lighter;
 }

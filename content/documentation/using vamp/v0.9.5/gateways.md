@@ -6,12 +6,11 @@ menu:
     identifier: "gateways-v095"
     parent: "Using Vamp"
     weight: 30
-aliases:
-    - /documentation/using-vamp/gateways/
+
 ---
 
 Gateways are dynamic runtime entities in the Vamp eco-system defined by ports (incoming) and routes (outgoing). They represent load balancer rules to deployment, cluster and service instances. There are two types of Vamp gateway:
-Gateways allows for programmable routing. 
+Gateways allows for programmable routing.
 
 * **Internal gateways** created automatically for each deployment cluster and shared by all services deployed within it. Used to distribute traffic for canary releasing and A/B testing across service variants.
 * **External gateways**  explicitly declared either in a deployment blueprint or using the gateways API. Provide a stable entry point to a defined, existing route or routes.
@@ -26,19 +25,19 @@ Each gateway defines a set of rules for filtering and distributing traffic acros
 
 ## Route weight and condition strength
 
-Each route in a gateway has a weight and optionally one or more conditions with a `condition_strength` (used to target specific traffic for routing). Read more about [conditions](/documentation/using-vamp/v0.9.5/conditions)  
+Each route in a gateway has a weight and optionally one or more conditions with a `condition_strength` (used to target specific traffic for routing). Read more about [conditions](/documentation/using-vamp/v0.9.5/conditions)
 
 Routing is calculated as followed:
 
-1. Vamp will first check for a condition that matches the incoming request.   
+1. Vamp will first check for a condition that matches the incoming request.
   _for example, IOS users_
-- If a matching condition is found, Vamp will check the `condition_strength`. The condition strength specifies the percentage of traffic matching the condition to target.  
+- If a matching condition is found, Vamp will check the `condition_strength`. The condition strength specifies the percentage of traffic matching the condition to target.
   _for example, 10% of IOS_
-- Finally, if no matching condition was found or the request was not selected for routing based on the conditionstrength, it will be routed according to the route weight of **all** available routes.    
+- Finally, if no matching condition was found or the request was not selected for routing based on the conditionstrength, it will be routed according to the route weight of **all** available routes.
   _for example, all non-IOS traffic and 90% of IOS users are routed according to route weight_
 
 {{< note title="Route weights must always total 100%" >}}
-Vamp has to account for all traffic.  
+Vamp has to account for all traffic.
 When defining weights, the total weight of all routes must always add up to 100%.
 This means that in a straight three-way split one service must be given 34% as `33%+33%+33%=99%` - 1% can be a lot of traffic in high volume environments.
 {{< /note >}}
@@ -66,7 +65,7 @@ service_B:
 ```
 
 ### Example - A/B test two deployments using route weight
-Below is a basic example, similar to putting both deployments (`sava:1.0.0` and `sava:1.1.0`) in the same cluster.  
+Below is a basic example, similar to putting both deployments (`sava:1.0.0` and `sava:1.1.0`) in the same cluster.
 It is easy to imagine having an older legacy application and the new one and doing a full canary release (or A/B testing) in seamless way by using gateways like this.
 
 Deployment 1: `PUT /api/v1/deployments/sava:1.0`
@@ -84,7 +83,7 @@ clusters:
           deployable: magneticio/sava:1.0.0
           ports:
             port: 8080/http
-            
+
         scale:
           cpu: 0.2
           memory: 256MB
@@ -107,7 +106,7 @@ clusters:
           deployable: magneticio/sava:1.1.0
           ports:
             port: 8080/http
-            
+
         scale:
           cpu: 0.2
           memory: 256MB

@@ -1,6 +1,8 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Proxies and load balancers
+aliases:
+    - /product/vamp-compared-to/
 menu:
   main:
     parent: "Vamp compared to..."

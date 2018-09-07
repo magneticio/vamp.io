@@ -6,10 +6,6 @@ menu:
     identifier: "configure-vamp-v095"
     parent: "Configuration"
     weight: 10
-aliases:
-    - /documentation/installation/configure-vamp
-    - /documentation/configure
-    - /documentation/configure/configure-vamp
 ---
 
 Vamp configuration is held in a combination of the Vamp `application.conf` and `reference.conf` files following the HOCON file standard ([github.com/typesafehub - config](https://github.com/typesafehub/config)). You can override settings in the configuration files using Vamp environment variables or Java/JVM system properties, or update the applied configuration at runtime using a key value store. Vamp configuration is built in layers following this order:
@@ -18,7 +14,7 @@ Vamp configuration is held in a combination of the Vamp `application.conf` and `
 2. application.conf - adds environment specifics to the generic reference.conf defaults.
 3. Java system properties - advised for advanced use only.
 4. Environment variables - overrides settings in reference.conf, application.conf and Java system properties.
-5. Key value store - overrides the applied configuration of Vamp at runtime. 
+5. Key value store - overrides the applied configuration of Vamp at runtime.
 
 ### On this page:
 
@@ -49,7 +45,7 @@ You can update the configuration applied to Vamp at runtime using the Vamp UI. T
   * Updates will be saved to the key value store and generated HAProxy configuration will be based on the updated template.
 
 ### Environment variables
-Environment variables override settings from reference.conf, application.conf or Java system properties. Convert the configuration parameter name to upper case and replace all non-alphanumerics with an underscore `_`.  So, `vamp.gateway-driver.timeout` becomes `VAMP_GATEWAY_DRIVER_TIMEOUT`.  
+Environment variables override settings from reference.conf, application.conf or Java system properties. Convert the configuration parameter name to upper case and replace all non-alphanumerics with an underscore `_`.  So, `vamp.gateway-driver.timeout` becomes `VAMP_GATEWAY_DRIVER_TIMEOUT`.
 
 For example, to change the vamp.info.message you would set the environment variable VAMP_INFO_MESSAGE :
 
@@ -80,15 +76,15 @@ For more extensive customisations, you can create a new Docker image, extending 
 
 1. Copy application.conf [(github.com/magneticio - Vamp DCOS application.conf)](https://github.com/magneticio/vamp-docker-images/blob/master/vamp-dcos/application.conf)
 2. Adjust as required. Check the list of configuration settings (below) for details of the available optionsa
-3. Create a Dockerfile with the lines:  
-  `FROM magneticio/vamp-dcos:0.9.4`  
+3. Create a Dockerfile with the lines:
+  `FROM magneticio/vamp-dcos:0.9.4`
   `ADD application.conf /usr/local/vamp/conf/`
 4. Build the image with `docker build --tag <username>/vamp`
 
 
 ## Parameterize application.conf
 
-To avoid duplication of configuration and make it easier to overwrite specific settings you can define global variables outside the `vamp { }` stanza, at the top of `application.conf`. 
+To avoid duplication of configuration and make it easier to overwrite specific settings you can define global variables outside the `vamp { }` stanza, at the top of `application.conf`.
 
 For example:
 ```
@@ -99,7 +95,7 @@ vamp {
   info {
     message = "Hi, I'm Vamp! I'm running on: "${vamp_host}
     timeout = 3 seconds
-  }  
+  }
 }
 ```
 
@@ -111,15 +107,15 @@ This is as of 0.9.4 how [we configure our DC/OS Docker image]( https://github.co
 It is possible to store configuration parameters not intended for use by Vamp itself in the Vamp `application.conf` file, such as configuration for workflows. Vamp would ignore the parameter, but it would be available to all workflows through the API. This is useful for storing shared local configuration parameters. Configuration specific to a single workflow is best set using environment variables or by hard coding the parameter.
 
 ## Access configuration parameters through the API
-All configuration parameters can be retrieved from the Vamp API endpoint `config` or `configuration`. 
+All configuration parameters can be retrieved from the Vamp API endpoint `config` or `configuration`.
 
-* Return all configuration parameters as a JSON object:  
+* Return all configuration parameters as a JSON object:
   `GET` `/api/v1/config` .
-  
-* Return a single paramater:  
-  `GET` `/api/v1/config/<configuration parameter name>`  
 
-For example `GET` `<vamp url>/api/v1/config/vamp.info.message` 
+* Return a single paramater:
+  `GET` `/api/v1/config/<configuration parameter name>`
+
+For example `GET` `<vamp url>/api/v1/config/vamp.info.message`
 
 Or, from a workflow using Vamp node.JS client ([github.com/magneticio - Vamp Node.js Client](https://github.com/magneticio/vamp-node-client)):
 

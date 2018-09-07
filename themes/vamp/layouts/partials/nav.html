@@ -7,12 +7,11 @@
     </div>
     <div class="right">
       <div class="navbar-items" id="navbar-items">
-        {{ range .Site.Menus.topnav }}
-        <a href="{{.URL}}" data-parenturl="{{.URL}}" class="navbar-item top-nav-{{.Identifier}}">{{.Name}} {{if ne .Identifier "support"}}<i class="ml-2 fa fa-angle-down"></i>{{end}}</a>
-        {{ end }}
-        <a href="/about/" data-parenturl="/about/" class="navbar-item">About</a>
-        <a href="https://medium.com/vamp-io" data-parenturl="/blog/" target="_blank" class="navbar-item">Blog</a>
+        <a href="/product/" data-parenturl="/product/" class="navbar-item top-nav-product-top" data-target="webuiPopover0">Product <i class="ml-2 fa fa-angle-down"></i></a>
+        <a href="/blog/" data-parenturl="/blog/" class="navbar-item">Blog</a>
         <a href="/news/" data-parenturl="/news/" class="navbar-item">News</a>
+        <a href="/documentation/" data-parenturl="/documentation/" class="navbar-item top-nav-developers-top" data-target="webuiPopover1">Resources <i class="ml-2 fa fa-angle-down"></i></a>
+        <a href="/support/" data-parenturl="/support/" class="navbar-item">Support</a>
       </div>
       {{ partial "popovers/nav-product-popover" . }}
       {{ partial "popovers/nav-developers-popover" . }}
@@ -39,35 +38,4 @@
 
 </nav>
 
-<ul id="mobile-menu">
-
-  {{ $currentNode := .}}
-
-  {{range .Site.Menus.main}}
-    <li>
-      <a href="{{.URL}}">{{ .Name }}</a>
-      {{if .HasChildren }}
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      {{ end }}
-    </li>
-    <ul>
-
-      {{range .Children}}
-        <li>
-          <a href="{{.URL}}">{{.Name}}</a>
-          {{if .HasChildren }}
-            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-          {{ end }}
-        </li>
-
-          <ul>
-            {{range .Children}}
-              <li>
-                <a href="{{.URL}}">{{ .Name }}</a>
-              </li>
-            {{ end }}
-          </ul>
-      {{ end }}
-    </ul>
-  {{ end }}
-</ul>
+{{ partial "mobile-menu" . }}

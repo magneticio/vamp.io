@@ -1,8 +1,8 @@
 ---
 date: 2016-05-15T09:00:00+00:00
 title: "Q&A with Vamp founder on InfoQ"
-type: page
-layout: overview
+
+
 ---
 *Amsterdam, 15 May 2016*
 

@@ -1,8 +1,6 @@
 ---
 date: 2017-03-21T09:00:00+00:00
 title: "Zero Downtime Deployments Webinar with Mesosphere"
-type: page
-layout: overview
 ---
 *Amsterdam, 27 March 2017*
 

@@ -1,8 +1,8 @@
 ---
 date: 2016-03-17T09:00:00+00:00
 title: "Voxxed: Vamp and the Container Race"
-type: page
-layout: overview
+
+
 ---
 *Amsterdam, 17 March 2016*
 

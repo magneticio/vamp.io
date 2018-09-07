@@ -1,6 +1,9 @@
 .popover-menu-body {
   width: 250px;
   padding: .75 * $spacer;
+  &.popover-menu-body-wide {
+    width: 350px;
+  }
 }
 
 .popover-menu-item {
@@ -12,8 +15,8 @@
   font-weight: $font-weight-default;
   color: inherit;
   &:hover {
-    color: $color-radical-red;
-    background: transparentize($color-radical-red, .9);
+    color: $red;
+    background: transparentize($red, .9);
     text-decoration: none;
     i {
       transition: margin-left .5s ease;
@@ -24,6 +27,13 @@
     transition: margin-left .5s ease;
     margin-left: .25 * $spacer;
   }
+
+  img {
+    height: 20px;
+    display: inline;
+    vertical-align: text-bottom;
+    margin-right: .5rem;
+  }
 }
 
 .popover-menu-header {
@@ -31,8 +41,8 @@
   margin-right: -0.75 * $spacer;
   padding: .75 * $spacer $spacer;
   display: block;
-  color: $color-bermuda-gray;
-  background: transparentize($color-white-squeeze, .6);
+  color: $gray;
+  background: transparentize($ash, .6);
 }
 
 // style the stock webui popover

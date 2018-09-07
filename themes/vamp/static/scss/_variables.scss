@@ -13,18 +13,18 @@ $columns: 15;
 $gutter-size: 40px;
 
 /* Colors */
-/* For naming colors use: // http://chir.ag/projects/name-that-color/ */
-$color-radical-red: #FF405E;
-$color-brick-red: #C33750;
-$color-picton-blue: #4EB6F6;
-$color-big-stone: #142D3C;
-$color-blue-dianne: #234B5F;
-$color-ming: #37647D;
-$color-bermuda-gray: #6991AA;
-$color-jungle-mist: #C3D2DC;
-$color-cascade: #96ADAA;
-$color-white-squeeze: #F0F5FA;
-$color-green-ok: #5cca7c;
+$red: #FF405E;
+$red-dark: #C33750;
+$blue-light: #4EB6F6;
+$blue-darker: #142D3C;
+$blue-dark: #234B5F;
+$gray-darker: #37647D;
+$gray: #6991AA;
+$gray-lighter: #C3D2DC;
+$gray-light: #96ADAA;
+$ash: #F0F5FA;
+$white: #FFF;
+$green: #5cca7c;
 
 /* Typography */
 $font-size-biggest: 32px;
@@ -44,7 +44,7 @@ $font-weight-heavy: 500;
 $letter-spacing-default: 0.01em;
 $letter-spacing-wide: 0.05em;
 
-$font-color-muted: $color-cascade;
+$font-color-muted: $gray-light;
 
 /* Margins */
 $small-margin: $spacer;
@@ -52,5 +52,5 @@ $medium-margin: 2 * $spacer;
 $big-margin: 3 * $spacer;
 
 /* Borders */
-$light-border-color: transparentize($color-jungle-mist, .5);
+$light-border-color: transparentize($gray-lighter, .5);
 $light-border: 1px solid $light-border-color;

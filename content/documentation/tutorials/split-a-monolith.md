@@ -1,6 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Split a monolith
+title: 3. Split a monolith
 menu:
   main:
     parent: "Tutorials"
@@ -12,7 +12,9 @@ called the *Very Awesome Microservices Platform* for nothing. The next step is t
 * define a new service topology
 * learn about Vamp environment variables and service discovery
 
-**Requirements:** Docker machine should have access to **at least 3GB memory**
+#### Requirements:
+* A Kubernetes cluster with at least 4 nodes (8 vCPUs and 28GB memory); or
+* A DC/OS cluster with at least 4 nodes (1 public agent, 16 vCPUs and 48GB memory)
 
 ## Define a new service topology
 
@@ -32,7 +34,7 @@ clusters:
     services:
       breed:
         name: sava-frontend:1.2.0
-        deployable: magneticio/sava-frontend:1.2.0
+        deployable: vampio/sava-frontend:1.2.0
         ports:
           webport: 8080/http
         environment_variables:
@@ -55,7 +57,7 @@ clusters:
     services:
       breed:
         name: sava-backend1:1.2.0
-        deployable: magneticio/sava-backend1:1.2.0
+        deployable: vampio/sava-backend1:1.2.0
         ports:
           webport: 8080/http
       scale:
@@ -66,7 +68,7 @@ clusters:
     services:
       breed:
         name: sava-backend2:1.2.0
-        deployable: magneticio/sava-backend2:1.2.0
+        deployable: vampio/sava-backend2:1.2.0
         ports:
           webport: 8080/http
       scale:
@@ -75,35 +77,86 @@ clusters:
         instances: 1
 ```
 
-Deploy this blueprint using either the UI or a REST call  - let's name it after the blueprint this time **sava-new**.
+Deploy this blueprint using the UI  - let's name it after the blueprint this time **sava-new**.
+
+## Check out the deployed services 
+
 Once it's deployed, you can check out the new topology in the Vamp UI through the Gateways page or the Deployments page
 
-![](/images/screens/v094/services_2backends.png)
+### From the Deployments page
+Click on **sava-new** to open the deployment detail page, then click on **sava-frontend:1.2.0** to see all running instances of the sava-frontend service.
 
-You can also use Vamp as a reverse proxy to access the exposed gateways:
+Click an instance name (we only have one instance running) to open it and then click the **webport** tab. If page looks in the webport tab, you can click the **Open in a new tab** button.
 
-* `http://localhost:8080/proxy/gateways/sava-new%2F9060/`
-* `http://localhost:8080/proxy/gateways/sava-new%2Fsava%2Fwebport/`
+The **webport** tab provides a quick way of checking if an individual instance of a service is working as expected but it assumes that the servce responds to requests on `/`.
+
+The **sava-backend1** and **sava-backend2** services only respond to requests for `/api/message`. So the **webport** tab for these services shows "404 page not found".
+
+### From the Gateways page
+Open the internal gateway (`sava-new/sava/webport`) or the external gateway (`sava/9060`) and click the **HOST - PORT/TYPE** link.
+
+![](/images/screens/v100/tut3/vampee-environment-gateways-savanew-internal-fe2be.png)
+
+### Via the Vamp Gateway Agent
+You can also use the Vamp Gateway Agent (VGA) to access the **sava-frontend** using the virtual host name **9060.sava-new.vamp**.
+
+```
+curl -H "Host: 9060.sava-new.vamp" http://<vga-external-ip>/
+```
+
+During development, it can be useful to have direct access to the internal gateways. By default, Vamp creates virtual host names for the internal gateways, so you can use these to access the backend services via the VGA.
+
+```
+curl -H "Host: webport.backend1.sava-new.vamp" http://<vga-external-ip>/api/message
+curl -H "Host: webport.backend2.sava-new.vamp" http://<vga-external-ip>/api/message
+```
 
 ## Learn about environment variables and service discovery
 
-If you were to check out the Docker containers using `docker inspect`, you would see the environment variables that we set in the blueprint.
+If you check the environment variables passed to the **sava-frontend:1.2.0** containers, you will see the environment variables that we set in the blueprint.
+
+### Kubernetes
+Using `kubectl` and a label selector:
 
 ```bash
-> docker inspect 66e64bc1c8ca
+$ kubectl --namespace vampio-organization-environment describe pod -l io.vamp.service=sava-frontend_1.2.0
 ...
-"Env": [
-    "BACKEND_1=http://192.168.65.2:33021/api/message",
-    "BACKEND_2=http://192.168.65.2:33022/api/message",
-    "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-],
+Containers:
+  sava-new-...
+    ...
+    Environment:
+      BACKEND_1:  http://10.55.246.121:40003/api/message
+      BACKEND_2:  http://10.55.246.180:40001/api/message
 ...
 ```
 
-Host names and ports are configured at runtime and injected in the right parts of your running deployment. Your service/app should pick up these variables to configure itself. Luckily, this is quite easy and common in almost all languages and frameworks.
+### DC/OS
+To use the `dcos` CLI, you first need to know the `app-id`.
 
-Remember, there is no "point-to-point" wiring. The exposed host and port are actually service
-endpoints. The location, amount and version of containers running behind that service endpoint can vary.
+To find the `app-id` of the frontend service:
+
+1. Go to the **Deployments** page 
+2. Click on **sava-new** to open the deployment detail page
+3. Now click on **sava-frontend:1.2.0** to see all running instances
+4. Click an instance name to open the detail page
+5. Copy the first part of page title, before the dot (`.`)
+  ![](/images/screens/v100/tut3/vampee-environment-deployments-savanew-frontend-instance.png)
+6. Paste the copied text into your favourite text editor and replace `_deployment` with `/deployment`, the resulting text is the `app-id`
+
+```bash
+$ dcos marathon app show vampio-organization-environment/deployment-sava-new-service-e989b44b06a8ace5089411e4061bb0542d8dbfaa
+...
+  "env": {
+    "BACKEND_1": "http://10.0.0.4:40004/api/message",
+    "BACKEND_2": "http://10.0.0.4:40002/api/message"
+  },
+...
+```
+
+Host names and ports are configured at runtime and injected in the right parts of your running deployment. You can then use these variables as a simple means of service discovery.
+
+Remember, there is no "point-to-point" wiring. **The injected host and port points to the internal gateway** which acts as a load balanced service endpoint for that service. This means you can canary release your internal services as well as your external (public) services.
+
 Learn more about [how Vamp does service discovery](/documentation/routing-and-loadbalancing//).
 
 {{< note title="What next?" >}}

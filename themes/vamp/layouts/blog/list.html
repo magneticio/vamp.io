@@ -1,0 +1,35 @@
+{{ partial "head" . }}
+
+<div class="landing-page">
+  {{ partial "nav-home" . }}
+</div>
+
+<div class="page documentation blog container pt-5">
+  <div class="row">
+    <div class="col-sm-12 col-lg-8 offset-lg-2">
+      <div class="content">
+        {{ range (.Paginator 10).Pages.ByPublishDate.Reverse }}
+
+        {{ partial "blog-meta-data" . }}
+
+        <article>
+          <a class="blog-header" href="{{ .RelPermalink }}">{{ .Title }}
+          </a>
+          <div class="markdowned blog-body">
+            {{ .Summary | markdownify }}
+          </div>
+          {{ if .Truncated }}
+          <div>
+            <a href="{{ .RelPermalink }}">Read More…</a>
+          </div>
+          {{ end }}
+        </article>
+        {{ end }}
+
+      </div>
+      {{ partial "pagination" .}}
+    </div>
+  </div>
+</div>
+
+{{ partial "footer" .}}

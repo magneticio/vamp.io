@@ -1,8 +1,8 @@
 ---
 date: 2018-02-01T09:00:00+00:00
 title: "Vamp.io appoints Nico Vierhout as new CEO"
-type: page
-layout: overview
+
+
 ---
 *Amsterdam, 1 February 2018*
 

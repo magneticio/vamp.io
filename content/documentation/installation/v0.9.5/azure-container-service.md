@@ -7,8 +7,6 @@ menu:
     identifier: "azure-container-service-v095"
     parent: "Installation"
     weight: 80
-aliases:
-    - /documentation/installation/azure-container-service
 ---
 
 You can run Vamp on [Azure Container Service](https://azure.microsoft.com/en-us/services/container-service/) with either the DC/OS or Kubernetes orchestrator.

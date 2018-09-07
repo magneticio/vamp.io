@@ -1,11 +1,6 @@
 ---
 date: 2016-11-02T09:00:00+00:00
 title: Release notes archive
-menu:
-  main:
-    parent: "Release notes"
-    name: "Archive"
-    weight: 1000
 aliases:
     - /documentation/release-notes/older-versions/
 ---

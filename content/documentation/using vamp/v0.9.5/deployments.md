@@ -6,8 +6,7 @@ menu:
     identifier: "deployments-v095"
     parent: "Using Vamp"
     weight: 20
-aliases:
-    - /documentation/using-vamp/deployments/
+
 ---
 
 A deployment is a "running" blueprint with added runtime information, such as start times, resolved ports etc.
@@ -26,14 +25,14 @@ You can create a deployment in the following ways:
 
 * Send a `POST` request to the `/deployments` endpoint.
 * Use the UI to deploy a blueprint using the "deploy" button on the "blueprints" tab.
-* Use the CLI `vamp deploy` command  
+* Use the CLI `vamp deploy` command
  `$ vamp deploy my_blueprint`.
 
 The name of the deployment will be automatically assigned as a UUID (e.g. `123e4567-e89b-12d3-a456-426655440000`).
 
 ## Track deployments
 
-Deployments contain clusters (groups of services). Each service can have one or multiple instances, according to its scale. In the Vamp UI you can track health of the overall deployment and individual services - read [how health is reported](/documentation/using-vamp/v0.9.5/health/). Each instance of a service can be accessed individually (go to the **Deployments** page, open the service and select an instance to view), or you can access the deployment through the [exposed gateways](/documentation/using-vamp/v0.9.5/gateways/) with any applied conditions or route weights.  
+Deployments contain clusters (groups of services). Each service can have one or multiple instances, according to its scale. In the Vamp UI you can track health of the overall deployment and individual services - read [how health is reported](/documentation/using-vamp/v0.9.5/health/). Each instance of a service can be accessed individually (go to the **Deployments** page, open the service and select an instance to view), or you can access the deployment through the [exposed gateways](/documentation/using-vamp/v0.9.5/gateways/) with any applied conditions or route weights.
 [Read more about using Vamp as a reverse proxy to access deployment instances and gateways](/documentation/using-vamp/v0.9.5/reverse-proxy/).
 
 ## Deployment scenarios
@@ -45,7 +44,7 @@ A common Vamp deployment scenario is to introduce a new version of the service t
 Merging of new services is performed as a deployment update. You can merge in many ways:
 
 - Send a `PUT` request to the `/deployments/{deployment_name}` endpoint.
-- Use the UI to update a deployment using the "Edit deployment" button. 
+- Use the UI to update a deployment using the "Edit deployment" button.
 - Use the CLI with a combination of the `vamp merge` and `vamp deploy` commands.
 
 If a service already exists then only the gateways and scale will be updated. Otherwise a new service will be added. If a new cluster doesn't exist in the deployment, it will be added.
@@ -59,7 +58,7 @@ name: monarch_1.0
 clusters:
   monarch:
     # Specifying only a reference to the breed.
-    breed: monarch_1.0   
+    breed: monarch_1.0
 ```
 
 After this point we may have another version ready for deployment and now instead of only one service, we have added another one:
@@ -82,7 +81,7 @@ clusters:
 
   recommendation:
     breed: recommendation_1.0
- 
+
 ```
 
 Now our deployment (in simplified blueprint format) looks like this:
@@ -100,7 +99,7 @@ clusters:
     services:
       -  breed: monarch_1.0
       -  breed: monarch_1.1
-          
+
     gateways:
       monarch_1.0:
         weight: 100%
@@ -110,7 +109,7 @@ clusters:
   recommendation:
     services:
       - breed: recommendation_1.0
-    
+
     gateways:
       recommendation_1.0:
         weight: 100%
@@ -127,7 +126,7 @@ clusters:
     services:
       - breed: monarch_1.0
       - breed: monarch_1.1
-          
+
     gateways:
       monarch_1.0:
         weight: 90%
@@ -148,7 +147,7 @@ In the last few examples we have shown the following:
 Removal is done using the REST API `DELETE` request together with the new blueprint as request body.
 If a service exists it will be removed, otherwise the request is ignored. If a cluster has no more services left the cluster will be removed completely. Lastly, if a deployment has no more clusters it will be completely removed (destroyed).
 
-Let's use the example from the previous section. Notice the weight is evenly distributed (50/50). 
+Let's use the example from the previous section. Notice the weight is evenly distributed (50/50).
 
 ```yaml
 ---
@@ -163,7 +162,7 @@ clusters:
     services:
       - breed: monarch_1.0
       - breed: monarch_1.1
-          
+
     gateways:
       monarch_1.0:
         weight: 50%

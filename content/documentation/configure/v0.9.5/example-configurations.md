@@ -6,9 +6,6 @@ menu:
     identifier: "example-configurations-v095"
     parent: "Configuration"
     weight: 20
-aliases:
-    - /documentation/installation/example-configurations
-    - /documentation/configure/example-configurations
 ---
 
 

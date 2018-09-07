@@ -7,8 +7,6 @@ menu:
     identifier: "mesos-marathon-v095"
     parent: "Installation"
     weight: 40
-aliases:
-    - /documentation/installation/mesos-marathon
 ---
 
 Vamp can use the full power of Marathon running on either a DCOS cluster or custom Mesos cluster. You can use Vamp's DSL, or you can pass native Marathon options by [using a dialect in a blueprint.](/documentation/using-vamp/dialects)

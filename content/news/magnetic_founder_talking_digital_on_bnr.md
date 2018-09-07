@@ -1,8 +1,8 @@
 ---
 date: 2015-01-08T09:00:00+00:00
 title: "Magnetic.io founder on digital complexity on BNR radio"
-type: page
-layout: overview
+
+
 ---
 *Amsterdam, 8 January 2015*
 

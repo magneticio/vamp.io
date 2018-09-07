@@ -1,9 +1,8 @@
 ---
 date: 2018-02-28T09:00:00+00:00
 title: "New Hackernoon: Exploring new frontiers in CI/CD and DevOps"
-type: page
-layout: overview
 ---
+
 *Amsterdam, 28 February 2018*
 
 Ten years ago, the idea of DevOps sprang from the minds of Andrew Shafer and Patrick Debois (source).

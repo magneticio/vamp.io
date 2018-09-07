@@ -6,8 +6,7 @@ menu:
     identifier: "events-v095"
     parent: "Using Vamp"
     weight: 120
-aliases:
-    - /documentation/using-vamp/events/
+
 ---
 
 Vamp is a distributed system tied together by a central events stream. Every action in Vamp creates events, which in turn can be used as triggers for new actions. For example, gateway updates are triggered by deployments (synchronisation events), while canary releases and autoscaling actions are based on calculated health and metrics events. Vamp collects events on all running services. Interaction with the API also creates events, like updating blueprints or deleting a deployment. Furthermore, Vamp allows third party applications to create events and trigger Vamp actions. All events are stored and retrieved using the Event API that is part of Vamp.
@@ -34,8 +33,8 @@ Vamp events are stored by default in Elasticsearch with a unique ID using the in
 
 All events stick to some basic rules:
 
-* All data in Vamp are events. 
-* Events consist of an [event type](/documentation/using-vamp/v0.9.5/events/#event-types), one or more [event tags](/documentation/using-vamp/v0.9.5/events/#event-tags) and an optional [event value](/documentation/using-vamp/v0.9.5/events/#event-value). They are described in the format `['tag', 'tag1:tag2'], value, event_type` 
+* All data in Vamp are events.
+* Events consist of an [event type](/documentation/using-vamp/v0.9.5/events/#event-types), one or more [event tags](/documentation/using-vamp/v0.9.5/events/#event-tags) and an optional [event value](/documentation/using-vamp/v0.9.5/events/#event-value). They are described in the format `['tag', 'tag1:tag2'], value, event_type`
 * Event values can be empty or any JSON object.
 * Event timestamps are in ISO8601/RFC3339.
 * Timestamps are optional. If not provided, Vamp will insert the current time.
@@ -68,18 +67,18 @@ Each event created by Vamp is given one or more tags. Tags provide meta-informat
 
 In all of Vamp's components we follow a REST (resource oriented) schema, for instance:
 ```
-/deployments/{deployment_name} 
+/deployments/{deployment_name}
 /deployments/{deployment_name}/clusters/{cluster_name}/services/{service_name}
 ```
 Tagging is done using a very similar schema: "{resource_group}", "{resource_group}:{name}". For example:
 
 ```
 [
-    "deployments", 
-    "deployments:{deployment_name}", 
-    "clusters", 
-    "clusters:{cluster_name}", 
-    "services", 
+    "deployments",
+    "deployments:{deployment_name}",
+    "clusters",
+    "clusters:{cluster_name}",
+    "services",
     "services:{service_name}"
 ]
 ```
@@ -101,7 +100,7 @@ the default page size for a set of returned events is 30.
 * [Response time for a cluster](/documentation/using-vamp/v0.9.5/events/#example-2)
 * [Current sessions for a service](/documentation/using-vamp/v0.9.5/events/#example-3)
 * [All known events for a service](/documentation/using-vamp/v0.9.5/events/#example-4)
- 
+
 #### Example 1
 **Get all events**
 
@@ -123,12 +122,12 @@ GET request with body - similar to approach used by Elasticsearch.
 }
 ```
 
-#### Example 2 
+#### Example 2
 **Response time for a cluster**
 
 The below query gets the most recent response time events for the "frontend" cluster in the "d9b42796-d8f6-431b-9230-9d316defaf6d" deployment.
 
-**Notice** the "gateways:<UUID>", "metrics:responseTime" and "gateways" tags. This means "give me the response time of this specific gateway at the gateway level". The response will echo back the events in the time range with the original set of tags associated with the events. 
+**Notice** the "gateways:<UUID>", "metrics:responseTime" and "gateways" tags. This means "give me the response time of this specific gateway at the gateway level". The response will echo back the events in the time range with the original set of tags associated with the events.
 
 `GET /api/v1/events`
 
@@ -168,7 +167,7 @@ The below query gets the most recent response time events for the "frontend" clu
         "timestamp": "2015-06-08T10:28:32.001Z",
         "type": "gateway-metric"
     }
-]    
+]
 ```
 
 #### Example 3
@@ -228,7 +227,7 @@ GET method can be also used with `tag` parameter (may be more convenient):
 
 ## Archiving
 
-All changes in artifacts (creation, update or deletion) triggered by REST API calls are archived. We store the type of event and the original representation of the artifact. It's a bit like a Git log. 
+All changes in artifacts (creation, update or deletion) triggered by REST API calls are archived. We store the type of event and the original representation of the artifact. It's a bit like a Git log.
 
 Here is an example event:
 
