@@ -68,7 +68,28 @@ Vamp supports a number of data at rest encryption strategies.
 
 ## Configuration
 
-TODO Lifter...
+### Using the Vamp Lifter UI
+
+#### Kubernetes
+Open the Vamp Lifter UI in your web browser. Details of how to access the Vamp Lifter UI using `kubectl` can be found in the in the Vamp EE [Kubernetes quickstart](/documentation/installation/kubernetes).
+
+#### DC/OS
+In the DC/OS UI, click the icon next to the **vamp-ee-lifter** service name to open the Vamp Lifter UI in a new window
+![](/images/screens/v100/dcos-vamp-lifteree.png)
+
+**To edit the deafult organization configuration**:
+
+1. Select **Configuration** from the left-hand menu
+2. Select the **Admin Template**
+  ![](/images/screens/v100/lifteree-configuration-admintemplate.png)
+3. After making your changes, click the **Push to KV Store** button
+
+**To edit the deafult organization configuration**:
+
+1. Select **Configuration** from the left-hand menu
+2. Select the **Operation Template**
+  ![](/images/screens/v100/lifteree-configuration-operationtemplate.png)
+3. After making your changes, click the **Push to KV Store** button
 
 ### Table per Namespace
 The default configuration is table-per-namespace.
