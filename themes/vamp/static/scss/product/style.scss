@@ -1,4 +1,4 @@
-$product-feature-col-height: 200px;
+$product-feature-col-height: 250px;
 $product-headers-font-size: 20px;
 .product {
 
@@ -22,7 +22,7 @@ $product-headers-font-size: 20px;
   .product-features {
     .product-features-text-col {
       min-height: $product-feature-col-height;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       .product-features-title {
         font-size: $product-headers-font-size;
         margin-bottom: $spacer;
@@ -31,14 +31,31 @@ $product-headers-font-size: 20px;
         font-weight: $font-weight-heavy;
       }
     }
-    .product-features-img-col {
-      min-height: $product-feature-col-height;
-      margin-bottom: 2rem;
-      background-image: url('/img/product/VampEE-automatedcanaryreleaseworkflow-static.png');
-      background-repeat: no-repeat;
-      &:hover {
-        cursor: pointer;
-        background-image: url('/img/product/VampEE-automatedcanaryreleaseworkflow.gif');
+
+    @for $i from 0 through 12 {
+      .product-features-img-col-#{$i} {
+        min-height: $product-feature-col-height;
+        margin-bottom: 3rem;
+        background-image: url('/img/product/feature-#{$i}-static.png');
+        background-repeat: no-repeat;
+        height: 100%;
+
+        .video-play-button {
+          color: white;
+          font-size: 56px !important;
+          position: absolute;
+          left: 36%;
+          top: 50%;
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-image: url('/img/product/feature-#{$i}-anim.gif');
+
+          .video-play-button {
+            display: none;
+          }
+        }
       }
     }
   }

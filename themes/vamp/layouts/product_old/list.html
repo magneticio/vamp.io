@@ -1,0 +1,167 @@
+{{ partial "head" . }}
+
+{{ partial "nav" . }}
+
+<div class="page product">
+  <section class="lead lander-row--white">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h1 class="h1 text-center mb-5 hero-text">Key Vamp features</h1>
+        </div>
+        <div class="col-sm-6">
+          <ul class="lead-features-list">
+            <li class="lead-features-list-item">
+              <img src="/img/002-Medium-icons/Medium-icons-01.svg" alt="">
+              <p class="text">{{.Params.features.list1.item1 | markdownify}}</p>
+            </li>
+            <li class="lead-features-list-item">
+              <img src="/img/002-Medium-icons/Medium-icons-03.svg" alt="">
+              <p class="text">{{.Params.features.list1.item2 | markdownify}}</p>
+            </li>
+            <li class="lead-features-list-item">
+              <img src="/img/002-Medium-icons/Medium-icons-04.svg" alt="">
+              <p class="text">{{.Params.features.list1.item3 | markdownify}}</p>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-6">
+          <ul class="lead-features-list">
+            <li class="lead-features-list-item">
+              <img src="/img/002-Medium-icons/Medium-icons-06.svg" alt="">
+              <p class="text">{{.Params.features.list2.item1 | markdownify}}</p>
+            </li>
+            <li class="lead-features-list-item">
+              <img src="/img/002-Medium-icons/Medium-icons-05.svg" alt="">
+              <p class="text">{{.Params.features.list2.item2 | markdownify}}</p>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-10 offset-md-1 col-sm-12 text-center">
+          <p class="text mb-5">{{.Params.features.footer | print | markdownify}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vamp in action section -->
+
+  <section class="lander-row--grey">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="h1 text-center mb-5 hero-text">{{.Params.action.title}}</h1>
+        </div>
+        <div class="col-sm-12 col-md-10 offset-md-1 mb-5">
+          <p class="text-lead text-center">{{.Params.action.sub | markdownify }}</p>
+        </div>
+        <div class="col-sm-12 text-center">
+          <a href="https://youtu.be/UYSchHnp1JE?t=31m33s" target="_blank">
+            <img src="/images/screens/ms_mesoscon_video_still.jpg" alt="" width="700px">
+            <div class="video-play-button fa fa-play-circle"></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--enterprise section -->
+
+  <section class="lander-row--white">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-sm-12 col-md-10 offset-md-1">
+          <h1 id="enterprise" class="h1 text-center mb-5 hero-text">{{.Params.enterprise.title}}</h1>
+        </div>
+        <div class="col-sm-12 col-md-10 offset-md-1 mb-4">
+          <p class="text-lead text-center">{{.Params.enterprise.sub}}</p>
+        </div>
+        <div class="col-sm-12">
+          {{.Params.enterprise.data}}
+          {{ partial "enterprise-table" .}}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lander-row--red">
+    <div class="container py-3 text-center">
+      <div class="row">
+        <div class="col-sm-12  col-md-10 offset-md-1">
+          <h1 class="h1 mb-4">
+            For more information on Vamp Enterprise Edition
+          </h1>
+          <div class="download mb-4">
+            <a href="https://calendly.com/diederick" target="_blank" class="button button--white">
+              Contact Sales
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- use cases section -->
+
+  <section class="lander-row--grey">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-sm-12 col-md-10 offset-md-1">
+          <h1 class="h1 text-center mb-5 hero-text">{{.Params.usecases.title}}</h1>
+        </div>
+        <div class="col-md-10 offset-md-1 col-sm-12 text-center">
+          <p class="text-lead mb-5">{{.Params.usecases.sub | print | markdownify}}</p>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-sm-4">
+          <h1 class="h1">{{.Params.usecases.item1.title}}</h1>
+          <p class="text">{{.Params.usecases.item1.sub | print | markdownify }}</p>
+        </div>
+        <div class="col-sm-4">
+          <h1 class="h1">{{.Params.usecases.item2.title}}</h1>
+          <p class="text">{{.Params.usecases.item2.sub | print | markdownify }}</p>
+        </div>
+        <div class="col-sm-4">
+          <h1 class="h1">{{.Params.usecases.item3.title}}</h1>
+          <p class="text">{{.Params.usecases.item3.sub | print | markdownify }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- compared to section -->
+
+  <section class="lander-row--white">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-sm-12 col-md-10 offset-md-1">
+          <h1 class="h1 text-center mb-5 hero-text">{{.Params.comparedto.title}}</h1>
+        </div>
+        <div class="col-md-10 offset-md-1 col-sm-12 text-center">
+          <h2 class="h2 mb-5">{{.Params.comparedto.sub | print | markdownify}}</h2>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-sm-4">
+          <h1 class="h1">{{.Params.comparedto.item1.title}}</h1>
+          <p class="text">{{.Params.comparedto.item1.sub | print | markdownify }}</p>
+        </div>
+        <div class="col-sm-4">
+          <h1 class="h1">{{.Params.comparedto.item2.title}}</h1>
+          <p class="text">{{.Params.comparedto.item2.sub | print | markdownify }}</p>
+        </div>
+        <div class="col-sm-4">
+          <h1 class="h1">{{.Params.comparedto.item3.title}}</h1>
+          <p class="text">{{.Params.comparedto.item3.sub | print | markdownify }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--cta 1-->
+
+  {{ partial "book-a-demo-footer" . }}
+</div>
+
+{{ partial "footer" .}}

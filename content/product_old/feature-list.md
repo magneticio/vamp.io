@@ -1,10 +1,6 @@
 ---
 date: 2017-02-14T09:00:00+00:00
 title: Feature list
-menu:
-  main:
-    parent: "product"
-    weight: 20
 ---
 
 Vamp Community Edition is open source (Apache 2.0), has a lightweight design to run in high-available mission-critical architectures and includes the features listed below.   

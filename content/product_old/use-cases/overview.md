@@ -1,12 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Use cases
-menu:
-  main:
-    parent: "Use cases"
-    name: "Overview"
-    identifier: "use-cases-overview"
-    weight: 10
 ---
 
 The integrated deployment, routing and workflow features of Vamp support a broad range of scenarios and industry verticals. We specifically see powerful use cases in the areas of testing in production, migrating to microservices, and realtime system optimisation. In this section we describe specific scenarios and how Vamp can effectively solve these.

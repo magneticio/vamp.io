@@ -1,10 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Self-healing and self-optimising
-menu:
-    main: 
-        parent: "Use cases"
-        weight: 60
 ---
 
 > "Our website traffic can be unpredictable, it's hard to plan and dimension the exact resources we're going to need to run within SLA's"
