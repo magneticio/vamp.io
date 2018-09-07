@@ -109,6 +109,32 @@ googleAnalytics = ""
 	url    = "/news/"
 	weight = 50
 
+
+[[menu.main]]
+	name = "Features"
+	url = "/product/"
+	parent = "product"
+	weight = 10
+
+[[menu.main]]
+	name = "Use cases"
+	url = "/product/use-cases/overview"
+	parent = "product"
+	weight = 20
+
+[[menu.main]]
+	name  = "Vamp compared to..."
+	url   = "/product/vamp-compared-to/proxies-and-load-balancers/"
+	parent = "product"
+	weight = 30
+
+[[menu.main]]
+	name = "Vamp version comparison"
+	url = "/product/vamp-version-comparison/"
+	parent = "product"
+	weight = 40
+
+
 [[menu.main]]
 	name	= "How Vamp works"
 	url = "/documentation/how-vamp-works/"
