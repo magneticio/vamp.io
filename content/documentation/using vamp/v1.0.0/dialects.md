@@ -79,7 +79,7 @@ for multiple environments and run times within one description.
 
 {{< note title="What next?" >}}
 * Read about [Vamp environment variables](/documentation/using-vamp/v1.0.0/environment-variables/)
-* Check the [API documentation](/documentation/api/v1.0.0/api-reference)
+* Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
 

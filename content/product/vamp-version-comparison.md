@@ -3,6 +3,8 @@ date: 2016-09-13T09:00:00+00:00
 title: Vamp Enterprise Edition vs. Vamp Community Edition
 type: "page"
 layout: "enterprise-edition"
+aliases:
+ - /product/enterprise-edition/
 menu:
   main:
     parent: "Vamp version comparison"

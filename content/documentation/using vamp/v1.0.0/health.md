@@ -10,7 +10,7 @@ aliases:
     - /documentation/using-vamp/health/
 ---
 
-Vamp tracks the health of deployed service instances and gateways. The [default Vamp health workflow](/documentation/using-vamp/v1.0.0/workflows/) reports health based on a combination of defined health checks and gateway monitoring. Health status is stored in the Elasticsearch index `vamp-pulse-health-YYYY-MM-DD` and displayed in the Vamp UI. It can also be retrieved directly using the [Vamp API health endpoint](/documentation/api/v1.0.0/api-health/).
+Vamp tracks the health of deployed service instances and gateways. The [default Vamp health workflow](/documentation/using-vamp/v1.0.0/workflows/) reports health based on a combination of defined health checks and gateway monitoring. Health status is stored in the Elasticsearch index `vamp-pulse-health-YYYY-MM-DD` and displayed in the Vamp UI. It can also be retrieved directly using the [Vamp API health endpoint](/documentation/api/api-health/).
 
 ## Custom health checks
 
@@ -97,6 +97,6 @@ clusters:
 
 {{< note title="What next?" >}}
 * Read about [Referencing artifacts in Vamp](/documentation/using-vamp/v1.0.0/references/)
-* Check the [API documentation](/documentation/api/v1.0.0/api-reference)
+* Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

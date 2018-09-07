@@ -31,7 +31,7 @@ A DC/OS cluster on which to install Vamp:
 
 ### Deploying Vamp Lifter
 
-Sign up for a [Vamp Enterprise Edition trial](/trial-signup/), if you haven't already. Then download the **lifter-standalone.json** file
+Sign up for a [Vamp Enterprise Edition trial](/ee-trial-signup/), if you haven't already. Then download the **lifter-standalone.json** file
 
 ### Using the DC/OS CLI
 Deploy the Vamp Lifter application using the DC/OS CLI:

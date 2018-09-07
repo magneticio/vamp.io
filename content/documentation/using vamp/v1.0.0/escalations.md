@@ -170,6 +170,6 @@ clusters:
 
 {{< note title="What next?" >}}
 * Read about [Vamp events](/documentation/using-vamp/v1.0.0/events/)
-* Check the [API documentation](/documentation/api/v1.0.0/api-reference)
+* Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

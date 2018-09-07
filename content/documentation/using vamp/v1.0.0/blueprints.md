@@ -120,7 +120,7 @@ instances: 2  # Number of instances.
 
 {{< note title="What next?" >}}
 * Read about [Vamp breeds](/documentation/using-vamp/v1.0.0/breeds/)
-* Check the [API documentation](/documentation/api/v1.0.0/api-reference)
+* Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
 

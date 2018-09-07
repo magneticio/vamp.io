@@ -112,6 +112,6 @@ clusters:
 ```
 
 {{< note title="What next?" >}}
-* Check the [API documentation](/documentation/api/v1.0.0/api-reference)
+* Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

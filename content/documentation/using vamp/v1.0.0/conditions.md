@@ -88,7 +88,7 @@ gateways:
 
 {{< note title="What next?" >}}
 * Read about [Vamp dialects](/documentation/using-vamp/v1.0.0/dialects/)
-* Check the [API documentation](/documentation/api/v1.0.0/api-reference)
+* Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
 

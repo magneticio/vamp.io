@@ -53,6 +53,6 @@ You can access a specific instance of a workflow at the following endpoint:
 
 {{< note title="What next?" >}}
 * Read about [using Vamp for service discovery](/documentation/using-vamp/v1.0.0/service-discovery/)
-* Check the [API documentation](/documentation/api/v1.0.0/api-reference)
+* Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

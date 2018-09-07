@@ -147,6 +147,6 @@ api.gateways().each(function (gateway) {
 {{< note title="What next?" >}}
 * Try the tutorial [Create a workflow that generates events](/documentation/tutorials/create-a-workflow/)
 * Read about [Vamp Blueprints](/documentation/using-vamp/v1.0.0/blueprints/)
-* Check the [API documentation](/documentation/api/v1.0.0/api-reference)
+* Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

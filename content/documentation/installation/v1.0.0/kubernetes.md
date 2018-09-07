@@ -34,7 +34,7 @@ To launch a suitable cluster on Google Cloud follow the Kubernetes Engine (GKE) 
 
 ### Deploying Vamp Lifter
 
-* Sign up for a [Vamp Enterprise Edition trial](/trial-signup/), if you haven't already. Then download the **lifter-standalone.yml** file
+* Sign up for a [Vamp Enterprise Edition trial](/ee-trial-signup/), if you haven't already. Then download the **lifter-standalone.yml** file
 * Download the [clusterrolebinding.yml](https://gist.github.com/jason-magnetic-io/3be85e096a038e5c17f536bc52e439d0) file
 * Configure [kubectl](http://kubernetes.io/docs/user-guide/kubectl-overview/) command line access to your Kubernetes cluster
 * Create a *cluster-admin* user. This step can be skipped if you already have a suitable user with the *cluster-admin* role.

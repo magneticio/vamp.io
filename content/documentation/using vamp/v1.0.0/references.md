@@ -110,6 +110,6 @@ condition: Cookie SHOPSESSION Contains shopping_basket_items=0
 
 {{< note title="What next?" >}}
 * Read about [using Vamp as a reverse proxy](/documentation/using-vamp/v1.0.0/reverse-proxy/)
-* Check the [API documentation](/documentation/api/v1.0.0/api-reference)
+* Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

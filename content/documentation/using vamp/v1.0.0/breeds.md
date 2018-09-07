@@ -160,7 +160,7 @@ In a lot of cases, dependencies coexist with interpolated environment variables 
 
 {{< note title="What next?" >}}
 * Read about [Vamp conditions](/documentation/using-vamp/v1.0.0/conditions/)
-* Check the [API documentation](/documentation/api/v1.0.0/api-reference)
+* Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
 

@@ -170,6 +170,6 @@ routes:
 
 {{< note title="What next?" >}}
 * Read about [Vamp workflows](/documentation/using-vamp/v1.0.0/workflows/)
-* Check the [API documentation](/documentation/api/v1.0.0/api-reference)
+* Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

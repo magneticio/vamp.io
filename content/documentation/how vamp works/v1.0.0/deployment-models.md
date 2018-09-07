@@ -3,6 +3,7 @@ date: 2016-09-15T09:00:00+00:00
 title: Deployment Models
 aliases:
     - /documentation/how-vamp-works/
+    - /documentation/how-vamp-works/architecture-and-components/
 menu:
   main:
     identifier: "deployment-models-v100"

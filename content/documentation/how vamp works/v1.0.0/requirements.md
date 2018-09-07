@@ -69,7 +69,7 @@ Vamp uses Elasticsearch to store raw traffic logs and aggregated health and traf
 
 We highly recommend separating the management-focused components (Lifter and Vamp) from the operational-focused components (the Vamp Gateway Agents and workflows).
 
-**Cluster and service configuration data is longer lived** than the clusters and services that they define. There are increasing **legal requirements to hold data within national data centres** and depending on the regulatory frameworks under which your organization operates your **audit data may need to be very long-lived**. [Vamp is designed with these requirements in mind](/documentation/how-vamp-works/v1.0.0/architecture).
+**Cluster and service configuration data is longer lived** than the clusters and services that they define. There are increasing **legal requirements to hold data within national data centres** and depending on the regulatory frameworks under which your organization operates your **audit data may need to be very long-lived**. [Vamp is designed with these requirements in mind](/documentation/how-vamp-works/).
 
 #### Minimum Requirements
 

@@ -139,6 +139,6 @@ With Vamp, access is via VGA's and that allows specific routing (conditions, wei
 
 {{< note title="What next?" >}}
 * Read about [Vamp SLAs (Service Level Agreements)](/documentation/using-vamp/v1.0.0/sla/)
-* Check the [API documentation](/documentation/api/v1.0.0/api-reference)
+* Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

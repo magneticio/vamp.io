@@ -303,6 +303,6 @@ clusters:
 
 {{< note title="What next?" >}}
 * Read about [Vamp escalations](/documentation/using-vamp/v1.0.0/escalations/)
-* Check the [API documentation](/documentation/api/v1.0.0/api-reference)
+* Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}

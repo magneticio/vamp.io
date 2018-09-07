@@ -228,6 +228,6 @@ We could also remove the newer version (monarch_1.1 with/without recommendation 
 
 {{< note title="What next?" >}}
 * Read about [Vamp gateways](/documentation/using-vamp/v1.0.0/gateways/)
-* Check the [API documentation](/documentation/api/v1.0.0/api-reference)
+* Check the [API documentation](/documentation/api/api-reference)
 * [Try Vamp](/documentation/installation/hello-world)
 {{< /note >}}
