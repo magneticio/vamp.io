@@ -157,7 +157,7 @@
       height: 1rem;
       border-radius: 4px;
       text-indent: 16px;
-      width: 300px;
+      //width: 300px;
     }
   }
 
@@ -168,8 +168,6 @@
     padding: .5rem .75rem;
     margin-left: 1rem;
     border-radius: 2px;
-    animation-delay: 2s;
-    animation: bounce .3s 4;
     &:after {
       right: 100%;
       top: 50%;
@@ -202,11 +200,4 @@
   }
 
   border-bottom: 1px solid $gray-lighter;
-}
-
-@-webkit-keyframes bounce {
-  0%       { left: 5px; }
-  25%, 75% { left: 15px; }
-  50%      { left: 20px; }
-  100%     { left: 0;}
 }
