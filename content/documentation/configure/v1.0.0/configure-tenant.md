@@ -93,3 +93,20 @@ When using Kubernetes, there is a one-to-one mapping between a Vamp namespace an
   ![](/images/screens/v100/lifteree-setup-neworg-newenv.png)
 10. You can check the setup by selecting **Connections** from the left-hand menu
   ![](/images/screens/v100/lifteree-connections-neworg-newenv.png)
+
+## Restart Vamp
+
+The updates you make to tenants in Lifter will not take effect until you restart Vamp.
+
+Vamp is not a realtime application and restarting it has no effect on gateways or deployments Vamp is managing.
+
+### Kubernetes
+Restarting a healthy Pod is hard to achieve in Kubernetes. The simplest option is to delete the current **vamp** Pod. Kubernetes will immediately replace the deleted Pod with a new one.
+
+You can delete the **vamp** Pod using:
+```bash
+kubectl --namespace default delete pods -l app=vamp
+```
+
+### DC/OS
+In the DC/OS UI, click the "More actions" icon on the right of the **vamp-ee** service name and then click **Restart**.
