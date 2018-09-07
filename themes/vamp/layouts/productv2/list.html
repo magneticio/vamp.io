@@ -19,28 +19,34 @@
     <div class="container py-5">
       <div class="row mb-4">
         <div class="col-sm-4">
-          <h3 class="h2 product-role-title">{{.Params.roles.list1.title}}</h3>
-          <ul class="product-roles">
-            {{ range .Params.roles.list1.items }}
-            <li class="text">{{ . }}</li>
-            {{ end }}
-          </ul>
+          <div class="product-role">
+            <h2 class="h2 product-role-title">{{.Params.roles.list1.title}}</h2>
+            <ul class="product-roles">
+              {{ range .Params.roles.list1.items }}
+              <li class="text">{{ . }}</li>
+              {{ end }}
+            </ul>
+          </div>
         </div>
         <div class="col-sm-4">
-          <h2 class="h2 product-role-title">{{.Params.roles.list2.title}}</h2>
-          <ul class="product-roles">
-            {{ range .Params.roles.list2.items }}
-            <li class="text">{{ . }}</li>
-            {{ end }}
-          </ul>
+          <div class="product-role">
+            <h2 class="h2 product-role-title">{{.Params.roles.list2.title}}</h2>
+            <ul class="product-roles">
+              {{ range .Params.roles.list2.items }}
+              <li class="text">{{ . }}</li>
+              {{ end }}
+            </ul>
+          </div>
         </div>
         <div class="col-sm-4">
-          <h2 class="h2 product-role-title">{{.Params.roles.list3.title}}</h2>
-          <ul class="product-roles">
-            {{ range .Params.roles.list3.items }}
-            <li class="text">{{ . }}</li>
-            {{ end }}
-          </ul>
+          <div class="product-role">
+            <h2 class="h2 product-role-title">{{.Params.roles.list3.title}}</h2>
+            <ul class="product-roles">
+              {{ range .Params.roles.list3.items }}
+              <li class="text">{{ . }}</li>
+              {{ end }}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -58,21 +64,17 @@
       <div class="row py-3">
         {{ range $index, $element := .Params.features }}
           {{ if (mod $index 2) gt 0}}
-            <div class="col-sm-6 product-features-img-col">
-              <img src="/img/product/450x250.png" alt="">
-            </div>
-            <div class="col-sm-6 product-features-text-col">
+            <div class="col-sm-6 product-features-text-col push-md-6">
               <h3 class="product-features-title">{{.title}}</h3>
               <p class="text">{{ .description }}</p>
             </div>
+            <div class="col-sm-6 product-features-img-col pull-md-6"></div>
           {{else}}
             <div class="col-sm-6 product-features-text-col">
               <h3 class="product-features-title">{{.title}}</h3>
               <p class="text">{{ .description }}</p>
             </div>
-            <div class="col-sm-6 product-features-img-col">
-              <img src="/img/product/450x250.png" alt="">
-            </div>
+            <div class="col-sm-6 product-features-img-col"></div>
           {{ end }}
         {{ end }}
       </div>

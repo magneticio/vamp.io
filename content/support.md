@@ -3,6 +3,8 @@ date: 2016-09-13T09:00:00+00:00
 title: support
 type: page
 layout: overview
+aliases:
+    - /community/
 ---
 Vamp Community Edition is open source and Apache 2.0 licensed. For details of the **Vamp Enterprise Edition** please check the [Vamp feature matrix](/product/enterprise-edition/) or [contact us](mailto:info@vamp.io) to discuss your requirements, pricing and features.
 

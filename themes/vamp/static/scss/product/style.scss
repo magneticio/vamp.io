@@ -2,6 +2,11 @@ $product-feature-col-height: 200px;
 $product-headers-font-size: 20px;
 .product {
 
+  .product-role {
+    box-shadow:  rgba(0, 0, 0, 0.08) 0 10px 30px 0;
+    padding: 1rem 2rem;
+  }
+
   .product-role-title {
     font-size: $product-headers-font-size;
   }
@@ -29,6 +34,12 @@ $product-headers-font-size: 20px;
     .product-features-img-col {
       min-height: $product-feature-col-height;
       margin-bottom: 2rem;
+      background-image: url('/img/product/VampEE-automatedcanaryreleaseworkflow-static.png');
+      background-repeat: no-repeat;
+      &:hover {
+        cursor: pointer;
+        background-image: url('/img/product/VampEE-automatedcanaryreleaseworkflow.gif');
+      }
     }
   }
 }

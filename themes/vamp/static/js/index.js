@@ -51,6 +51,8 @@ function documentReady() {
    * END Navbar
    */
 
+
+
   // Create codeblocks when this code is present
   $('pre code').each(function(i, block) {
     var codeText = $(this).text();

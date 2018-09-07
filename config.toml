@@ -174,10 +174,3 @@ googleAnalytics = ""
 	url = "/documentation/troubleshoot"
 	parent = "Documentation"
 	weight = 100
-
-
-[[menu.main]]
-	name = "Release notes"
-	url = "/documentation/release-notes/"
-	parent = "Documentation"
-	weight = 110
