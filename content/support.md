@@ -20,6 +20,11 @@ We offer five extended professional support plans. Contact us for pricing inform
 
 ![](/images/tables/Support levels table.png)
 
+## Terms & Conditions
+
+You can download the latest version of our terms & conditions with the link below
+
+[Vamp Service / Support Terms & Conditions](/eula/vamp-service-support-terms-and-conditions.pdf)  
 
 {{< note title="What next?" >}}
 * [Try Vamp](/documentation/installation/hello-world)
