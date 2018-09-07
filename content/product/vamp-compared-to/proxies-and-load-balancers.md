@@ -15,7 +15,7 @@ Vamp adds programmable routing (percentage and condition based) and load balanci
 
 {{< note title="What next?" >}}
 * Read about [Vamp compared to PaaS and container systems](/product/vamp-compared-to/paas-and-container-systems/)
-* [Try Vamp](/documentation/installation/hello-world)
+* [Try Vamp](/documentation/installation/v1.0.0/overview/)
 * Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}
 
