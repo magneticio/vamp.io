@@ -12,7 +12,7 @@ menu:
     parent: "Installation"
     weight: 10
 ---
-Before you get Vamp up and running on your architecture, it is helpful to understand [how vamp works](/documentation/how-vamp-works/architecture-and-components) and the role of each component and its preferred location in a typical architecture.
+Before you get Vamp up and running on your architecture, it is helpful to understand [how vamp works](/documentation/how-vamp-works/concepts-and-components) and the role of each component and its preferred location in a typical deployment model.
 
 #### Requirements
 
@@ -26,6 +26,5 @@ The Vamp UI includes mixpanel integration. We monitor data on Vamp usage solely 
 
 #### Configure Vamp
 
-* [How to configure Vamp](/documentation/configure/v1.0.0/configure-vamp/)
-* [Example configurations](/documentation/configure/v1.0.0/example-configurations/)
-* [Configuration reference](/documentation/configure/v1.0.0/configuration-reference/)
+* [How to create a tenant Vamp](/documentation/configure/v1.0.0/configure-tenant/)
+* [Configure MySQL](/documentation/configure/v1.0.0/configure-database/)

@@ -70,5 +70,6 @@ Vamp Gateway Agent (VGA) uses confd to read the Vamp-generated HAProxy configura
 The VGAs have short-term resilience. Running VGAs will continue to function if they lose their connection to the secure key-value store and will continue to handle service traffic as normal but new instances cannot be started without a key-value store connection. To reduce the risk of traffic loss, you must always have a minimum of two VGAs running, load-balanced and on different nodes. 
 
 {{< note title="What next?" >}}
+* Choose a [deployment model](/documentation/how-vamp-works/v1.0.0/deployment-models)
 * Read about the [requirements to run Vamp](/documentation/how-vamp-works/v1.0.0/requirements)
 {{< /note >}}
