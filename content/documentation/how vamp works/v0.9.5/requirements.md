@@ -1,8 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Requirements
-aliases:
-    - /documentation/how-vamp-works/requirements
 menu:
   main:
     identifier: "requirements-v095"
@@ -20,9 +18,9 @@ Vamp depends on a key-value (KV) store for non-direct communication between Vamp
 
 Currently we support the following KV stores:
 
-* **ZooKeeper** ([apache.org - zookeeper](https://zookeeper.apache.org/)).  
+* **ZooKeeper** ([apache.org - zookeeper](https://zookeeper.apache.org/)).
 Vamp and VGAs can use an existing DC/OS ZooKeeper cluster.
-* **etcd** ([coreos.com - etcd](https://coreos.com/etcd/docs/latest/))  
+* **etcd** ([coreos.com - etcd](https://coreos.com/etcd/docs/latest/))
 Vamp and VGAs can use an existing Kubernetes etcd cluster.
 * **Consul** ([consul.io](https://www.consul.io/))
 
@@ -35,7 +33,7 @@ Vamp uses Elastic Search (ES) for aggregating and storing the metrics used by Va
 Currently we use Filebeat to send HAproxy logs to Elastic Search, but you could also opt for an alternative solution.
 
 ## HAProxy  (routing and reverse proxying)
-Each Vamp Gateway Agent (VGA) requires its own instance of HAProxy. This is a hard requirement, so to keep things simple we provide a Docker container with both Vamp Gateway Agent (VGA) and HAProxy ([hub.docker.com - magneticio/vamp-gateway-agent](https://hub.docker.com/r/magneticio/vamp-gateway-agent/)).  
+Each Vamp Gateway Agent (VGA) requires its own instance of HAProxy. This is a hard requirement, so to keep things simple we provide a Docker container with both Vamp Gateway Agent (VGA) and HAProxy ([hub.docker.com - magneticio/vamp-gateway-agent](https://hub.docker.com/r/magneticio/vamp-gateway-agent/)).
 
 {{< note title="What next?" >}}
 * Find out how to [install Vamp](/documentation/installation/v0.9.5/overview)

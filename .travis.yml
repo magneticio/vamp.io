@@ -22,6 +22,7 @@ install:
   - npm install
 
 script:
+  - if [ "$TRAVIS_BRANCH" == "vamp-ee" ]; then gulp build:staging && gulp hugo:vamp-ee-staging; fi
   - if [ "$TRAVIS_BRANCH" == "develop" ]; then gulp build:staging && gulp hugo:staging; fi
   - if [ "$TRAVIS_BRANCH" == "master" ]; then gulp build:prod && gulp hugo:prod; fi
 
@@ -52,6 +53,15 @@ deploy:
     skip_cleanup: true
     on:
       branch: develop
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: vamp-ee-staging.vamp.io
+    region: eu-central-1
+    local_dir: public
+    skip_cleanup: true
+    on:
+      branch: vamp-ee
 
 after_deploy:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then curl -X DELETE "https://api.cloudflare.com/client/v4/zones/d398c5b6e2d191e2d6865081facab63b/purge_cache" -H "X-Auth-Email:$CLOUDFLARE_USER" -H "X-Auth-Key:$CLOUDFLARE_KEY" -H "Content-Type:application/json" --data '{"purge_everything":true}'; fi

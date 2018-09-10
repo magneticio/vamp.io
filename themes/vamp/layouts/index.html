@@ -5,69 +5,65 @@
 </div>
 
 <!--HEROSPACE ROW-->
+
 <div class="page">
-  <div class="lander-row lander-row--blue hero-space">
+  <div class="lander-row lander-row--white hero-space">
     <div class="container">
-      <div class="row mb-5">
+      <div class="row mb-4">
         <div class="col-sm-12">
           <div class="row">
-            <div class="col-md-10 offset-md-1">
-              <h1 class="h1 text-center hero-text">
-                Smart & stress free application releasing for modern cloud platforms.
+            <div class="col-md-12 text-center">
+              <div>
+                <a href="/ee-trial-signup/" style="color: #212529;">
+                  <span class="badge badge-pill badge-info mr-2">new</span>
+                  Vamp Enterprise Edition 1.0 released
+                </a>
+              </div>
+            </div>
+            <div class="col-md-8 offset-md-2 text-center">
+              <h1 class="h1 hero-text">
+                Automation and Controls for Enterprise Devops
               </h1>
             </div>
           </div>
           <div class="row">
             <div class="col-md-8 offset-md-2">
               <p class="h1 mb-4 text-center hero-sub-text">
-                Vamp gives you all the tools to release, control and optimize your containerised apps
-                on cloud native platforms.
+                Vamp gives you all the tools to release, control and optimize your containerised apps on cloud and on-prem platforms.
               </p>
             </div>
           </div>
-          <div class="hero-space-buttons text-center">
-            <a href="/discovery-pilot/" class="button button--red">
-              Try Vamp
-            </a>
-            <p class="text dark-it-up">or</p>
-            <a href="/why-use-vamp" class="button button--grey">
+          <div class="text-center">
+            <a href="/product" class="button button--blue--ghost mr-md-3 mb-3 mb-md-0">
               Learn More
-              <span class="button__icon button__icon--arrow">
-              </span>
+            </a>
+            <a href="/ee-trial-signup" class="button button--red mb-3 mb-md-0">
+              Start a free trial
             </a>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12 text-center">
-        <a href="/documentation/installation/hello-world"><img class="laptop" src="img/006-mock-ups/VAMP-light-laptop-v091-hero.png" alt=""></a>
+        <a href="/product/"><img class="laptop" src="img/006-mock-ups/VAMP-light-laptop-v100-hero.png" alt=""></a>
         </div>
-      </div>
-    </div>
-
-    <div class="bottom-background">
-      <div class="left-pixels">
-        <img src="img/herospace/pixels-header-left.png" alt="">
-      </div>
-      <div class="right-pixels">
-        <img src="img/herospace/pixels-header-right.png" alt="">
       </div>
     </div>
   </div>
 
   <!--ABOUT VAMP ROW-->
 
-  <div id="about-vamp-row" class="lander-row lander-row--white">
+  <div id="about-vamp-row" class="lander-row lander-row--grey">
     <div class="container">
       <div class="row mb-4">
         <div class="col-sm-12 text-center">
-          <h2 class="h2 mb-4">It's a smart business move</h2>
+          <h2 class="h2 mb-4">Release your software often and with confidence</h2>
         </div>
         <div class="col-sm-4 text-center">
           <img src="img/001-Big-icons/illustration-01.svg" alt="Easy canary releasing"  class="image--smaller">
           <h3 class="h3">Crank up release velocity</h3>
           <p class="text">
-            Release fast and often without service disruptions with Vamp's gradual rollouts and upgrades.
+            Release often with 0 downtime and limited blast radius with Vamp's gradual rollouts and upgrades.
           </p>
         </div>
         <div class="col-sm-4 text-center">
@@ -95,6 +91,10 @@
       </div>
     </div>
   </div>
+
+
+  {{ partial "testimonial-row" . }}
+
 
   <!--CALCULATOR-->
 
@@ -244,6 +244,7 @@
     </div>
   </div>
 
+
   <div id="partners-row" class="lander-row lander-row--white">
     <div class="container">
       <div class="row">
@@ -279,6 +280,9 @@
       </div>
     </div>
   </div>
-
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+<script src="/js/dist/{{ index .Site.Data.js.hash "apps.min.js" }}" ></script>
+
 {{ partial "footer" .}}

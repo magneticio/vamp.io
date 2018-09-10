@@ -1,15 +1,13 @@
 ---
 date: 2016-09-13T09:00:00+00:00
 title: Which container scheduler?
-aliases: 
-    - /documentation/how-vamp-works/which-container-scheduler
 menu:
   main:
     identifier: "which-container-scheduler-v095"
     parent: "How Vamp works"
     weight: 30
 ---
-Vamp can run on top of Mesos/Marathon, DC/OS, Kubernetes and Rancher (Docker Swarm support is coming soon). In case you’re “greenfield” and don’t have anything selected or running yet, here are some high-level pointers to help you make an informed decision: 
+Vamp can run on top of Mesos/Marathon, DC/OS, Kubernetes and Rancher (Docker Swarm support is coming soon). In case you’re “greenfield” and don’t have anything selected or running yet, here are some high-level pointers to help you make an informed decision:
 
 * [Working with big data](/documentation/how-vamp-works/v0.9.5/which-container-scheduler/#working-with-big-data) - Mesos/Marathon, DC/OS, Azure Container Service
 * [Running web-based applications](/documentation/how-vamp-works/v0.9.5/which-container-scheduler/#running-web-based-applications) - Kubernetes, Google Container Engine
@@ -20,7 +18,7 @@ Whichever option you choose now, Vamp is container systems agnostic, so all your
 
 -------
 
-## Working with big data 
+## Working with big data
 If you are working with typical big data solutions like Kafka, Cassandra or Spark (often combined in something called SMACK stack), and/or want to run not only containers on your cluster it makes sense to investigate [Mesos/Marathon](/documentation/installation/v0.9.5/mesos-marathon/) first. A lot of big data frameworks can run as native Mesos frameworks and you can combine the underlying infrastructure to share resources between these frameworks running on Mesos and your containers running inside Marathon (which is a Mesos framework in itself).
 
 ### Add in commercial support
@@ -31,14 +29,14 @@ If you're looking for a hosted version of DC/OS you could investigate [Azure Con
 
 -------
 
-## Running web-based applications  
-If you're solely interested in running (micro)services, APIs and other web-based applications, [Kubernetes](/documentation/installation/v0.9.5/kubernetes/) is an integrated cluster-manager and -scheduler, and is specifically designed for running containers with web-focused payloads. 
+## Running web-based applications
+If you're solely interested in running (micro)services, APIs and other web-based applications, [Kubernetes](/documentation/installation/v0.9.5/kubernetes/) is an integrated cluster-manager and -scheduler, and is specifically designed for running containers with web-focused payloads.
 
 ### Add in commercial support
 At this point, commercial support and fancy dashboards are less easy to find for Kubernetes. However, Kubernetes is the scheduler used in Redhat software (Openshift V3), so if your company used Redhat software this might make sense to investigate.
 
 ### hosted solution
-A hosted version of Kubernetes is available from Google (Google Container Engine). 
+A hosted version of Kubernetes is available from Google (Google Container Engine).
 
 -------
 
@@ -51,10 +49,10 @@ If you want to manage and provision (virtual) infrastructure as well as manage a
 If you want to stay within the Docker ecosystem, Vamp works nicely with (single machine) [Docker](/documentation/installation/v0.9.5/docker/). Docker Swarm support is coming up soon.
 
 -------
-  
+
 _* Note that Vamp [dialects](/documentation/using-vamp/v0.9.5/blueprints#dialects) and some specific metric store settings are scheduler or container cloud specific._
 
 {{< note title="What next?" >}}
-* Find out how to [install Vamp](/documentation/installation/v0.9.5/overview) 
-* Read about the [requirments to run Vamp](/documentation/how-vamp-works/v0.9.5/requirements) 
+* Find out how to [install Vamp](/documentation/installation/v0.9.5/overview)
+* Read about the [requirments to run Vamp](/documentation/how-vamp-works/v0.9.5/requirements)
 {{< /note >}}

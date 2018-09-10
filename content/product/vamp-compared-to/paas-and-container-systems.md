@@ -17,7 +17,7 @@ Vamp adds an experimentation layer to PaaS infrastructures by providing canary-r
 
 {{< note title="What next?" >}}
 * Read about [Vamp compared to common frameworks and tools](/product/vamp-compared-to/frameworks-and-tools)
-* [Try Vamp](/documentation/installation/hello-world)
+* [Try Vamp](/documentation/installation/v1.0.0/overview/)
 * Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}
 

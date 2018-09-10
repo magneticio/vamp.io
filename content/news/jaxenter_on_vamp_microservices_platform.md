@@ -1,8 +1,8 @@
 ---
 date: 2016-03-15T09:00:00+00:00
 title: "Jaxenter on Vamp Microservics platform"
-type: page
-layout: overview
+
+
 ---
 *Amsterdam, 15 March 2016*
 

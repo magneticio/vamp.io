@@ -6,16 +6,9 @@
   position: relative;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  &:hover {
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
-  }
-
   &.card-simple {
     background-color: white;
     box-shadow: none;
-    &:hover {
-      box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
-    }
   }
 }
 
@@ -40,7 +33,7 @@
   min-height: 120px;
 
   .h2 {
-    color: $color-blue-dianne !important;
+    color: $blue-dark !important;
   }
 }
 

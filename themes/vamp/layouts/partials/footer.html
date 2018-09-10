@@ -24,12 +24,12 @@
       <div class="col-sm-3">
         <h3 class="h3">Learn more</h3>
         <a href="/product/">
-          <p class="text">Why use Vamp?</p>
+          <p class="text">Product</p>
         </a>
-        <a href="/documentation/how-vamp-works/architecture-and-components">
+        <a href="/documentation/">
           <p class="text">Documentation</p>
         </a>
-        <a href="https://medium.com/vamp-io" target="_blank">
+        <a href="/blog/">
           <p class="text">Blog</p>
         </a>
         <a href="/about/">
@@ -47,17 +47,14 @@
       </div>
         <div class="col-sm-3">
         <h3 class="h3">All things code</h3>
-          <a href="/downloads/">
-            <p class="text">Downloads</p>
+          <a href="/documentation/installation/">
+            <p class="text">Installation</p>
           </a>
           <a href="/documentation/api/api-reference/">
             <p class="text">API docs</p>
           </a>
           <a href="/support/">
             <p class="text">Support</p>
-          </a>
-          <a href="/community/">
-            <p class="text">Community</p>
           </a>
           <a href="https://github.com/magneticio/vamp" target="_blank">
             <p class="text">GitHub</p>
@@ -122,6 +119,34 @@
   }
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
-<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
-<script src="/js/dist/{{ index .Site.Data.js.hash "apps.min.js" }}" ></script>
+<!-- Start of Async Drift Code -->
+<script>
+  if (location.host === 'www.vamp.io' || location.host === 'vamp.io' || location.host === 'vamp-ee-staging.vamp.io') {
+    !function () {
+      var t = window.driftt = window.drift = window.driftt || [];
+      if (!t.init) {
+        if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+        t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+          t.factory = function (e) {
+            return function () {
+              var n = Array.prototype.slice.call(arguments);
+              return n.unshift(e), t.push(n), t;
+            };
+          }, t.methods.forEach(function (e) {
+          t[e] = t.factory(e);
+        }), t.load = function (t) {
+          var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+          o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+          var i = document.getElementsByTagName("script")[0];
+          i.parentNode.insertBefore(o, i);
+        };
+      }
+    }();
+    drift.SNIPPET_VERSION = '0.3.1';
+    drift.load('y5f3mtg4w6nd');
+  }
+</script>
+<!-- End of Async Drift Code -->
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b3cc10130bbdb11"></script>

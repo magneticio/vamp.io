@@ -7,8 +7,6 @@ menu:
     identifier: "kubernetes-v095"
     parent: "Installation"
     weight: 50
-aliases:
-    - /documentation/installation/kubernetes
 ---
 
 ## Azure Container Service
@@ -17,14 +15,10 @@ Please refer to our dedicated [Azure Kubernetes installation guide](/documentati
 
 ## Google Container Engine
 
-The installation will run Vamp together with etcd and Elasticsearch on Google container engine and kubernetes. Before you begin, it is advisable to try out the official Quickstart for Google Container Engine tutorial first ([google.com - container engine quickstart](https://cloud.google.com/container-engine/docs/quickstart)).  
-
-{{< note title="Note!" >}}
-Kubernetes support is still in Alpha.
-{{< /note >}}
+The installation will run Vamp together with etcd and Elasticsearch on Google container engine and kubernetes. Before you begin, it is advisable to try out the official Quickstart for Google Container Engine tutorial first ([google.com - container engine quickstart](https://cloud.google.com/container-engine/docs/quickstart)).
 
 **Tested against**
-This guide has been tested on Kubernetes and kubectl 1.4.x, 1.5.x and 1.6.0. Minikube 0.13.x or higher can also be used. ([github.com - minikube](https://github.com/kubernetes/minikube))
+This guide has been tested on Kubernetes 1.8.x, 1.9.x and 1.10.x. Minikube 0.13.x or higher can also be used. ([github.com - minikube](https://github.com/kubernetes/minikube))
 
 **Requirements**
 
@@ -154,7 +148,7 @@ clusters:
         ports:
           port: 8080/http
       scale:
-        cpu: 0.2       
+        cpu: 0.2
         memory: 64MB
         instances: 1
 ```

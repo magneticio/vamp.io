@@ -6,8 +6,7 @@ menu:
     identifier: "sla-v095"
     parent: "Using Vamp"
     weight: 160
-aliases:
-    - /documentation/using-vamp/sla/
+
 ---
 
 SLA stands for "Service Level Agreement". Vamp uses it to define a pre-described set of boundaries to a service and the actions that should take place once the service crosses those boundaries. In essence, an SLA and its associated escalation is a workflow that is checked and controlled by Vamp based on the runtime behaviour of a service. SLAs and escalations are defined with the VAMP DSL.
@@ -16,9 +15,9 @@ SLA stands for "Service Level Agreement". Vamp uses it to define a pre-described
 
 You can define an SLA for each cluster in a blueprint. A common example would be to check if the average response time of the cluster (averaged across all services) is higher or lower than a certain threshold. Under the hood, an SLA workflow creates two distinct events. These are are sent from Vamp and stored to Elasticsearch.
 
-* **Escalate** for a specific deployment and cluster  
+* **Escalate** for a specific deployment and cluster
 e.g. if the response time is higher than the upper threshold.
-* **DeEscalate** for a specific deployment and cluster  
+* **DeEscalate** for a specific deployment and cluster
 e.g. if the response time is lower than the lower threshold.
 
 SLA monitoring is a continuous background process with a configurable interval time. On each run an SLA workflow is executed for each deployment & cluster that has an SLA defined. Within the same SLA definition it's possible to define a list of escalations. Escalations are triggered by escalation events (Escalate/DeEscalate).
@@ -33,9 +32,9 @@ Vamp currently ships with the following SLA types:
 
 * response_time_sliding_window
 
-### Response time with sliding window 
+### Response time with sliding window
 
-The `response_time_sliding_window` SLA triggers events based on response times. 
+The `response_time_sliding_window` SLA triggers events based on response times.
 
 #### Example - SLA defined inline in a blueprint.
 
@@ -73,20 +72,20 @@ clusters:
       window:
         interval: 600 # Time period in seconds used for
                       # average response time aggregation.
-        cooldown: 600 # Time period in seconds. During this 
-                      # period no new escalation events will 
-                      # be generated. New event may be expected 
-                      # not before cooldown + interval time has 
-                      # been reached after the last event. 
-     
+        cooldown: 600 # Time period in seconds. During this
+                      # period no new escalation events will
+                      # be generated. New event may be expected
+                      # not before cooldown + interval time has
+                      # been reached after the last event.
+
       # List of escalations.
       escalations:
-        - 
+        -
           type: scale_instances
           minimum: 1
           maximum: 3
           scale_by: 1
-```          
+```
 
 {{< note title="What next?" >}}
 * Read about [Vamp sticky sessions](/documentation/using-vamp/v0.9.5/sticky-sessions/)

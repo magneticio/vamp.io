@@ -6,12 +6,11 @@ menu:
     identifier: "breeds-v095"
     parent: "Using Vamp"
     weight: 60
-aliases:
-    - /documentation/using-vamp/breeds/
+
 ---
 
 Breeds are static descriptions of applications and services available for deployment. Each breed is described by the DSL in YAML notation or JSON, whatever you like. This description includes name, version, available parameters, dependencies etc.
-To a certain degree, you could compare a breed to a Maven artifact or a Ruby Gem description.  
+To a certain degree, you could compare a breed to a Maven artifact or a Ruby Gem description.
 Vamp tracks all revisions made to artifacts, so you can check back and compare a current breed against a previous version.
 
 Breeds allow you to set the following properties:
@@ -34,7 +33,7 @@ The breeds listed below are required by system workflows and should not be delet
 
 ## Deployable
 
-Deployables are pointers to the actual artifacts that get deployed. Vamp supports Docker containers or can support any other artifacts supported by your container manager. 
+Deployables are pointers to the actual artifacts that get deployed. Vamp supports Docker containers or can support any other artifacts supported by your container manager.
 
 #### Example breed - deploy a Docker container
 
@@ -44,10 +43,10 @@ name: my_breed:0.1
 deployable: company/my_frontend_service:0.1
 
 ports:
-  web: 8080/http   
+  web: 8080/http
 ```
 
-This breed, with a unique name, describes a deployable and the port it works on. 
+This breed, with a unique name, describes a deployable and the port it works on.
 
 ### Docker deployables
 
@@ -61,14 +60,14 @@ deployable: company/my_frontend_service:0.1
 
 ```yaml
 ---
-deployable: 
+deployable:
   type: container/docker
   definition: company/my_frontend_service:0.1
 ```
 
 This shows the full (expanded) deployable with `type` and `definition`.
 
-### JavaScript deployables 
+### JavaScript deployables
 
 Breeds can have type `application/javascript` and definition should be a JavaScript script:
 
@@ -89,8 +88,8 @@ Running "other" artifacts such as zips or jars heavily depends on the underlying
 When Vamp is set up to run with Marathon ([mesosphere.github.io - Marathon](https://mesosphere.github.io/marathon/)), `command` (or `cmd`) deployable types can be used.
 In that case cmd ([Marathon REST API - post v2/apps](https://mesosphere.github.io/marathon/docs/rest-api.html#post-v2-apps)) parameter will have value of deployable.
 
-#### Example breed - run a custom jar after it has been downloaded 
-Combining this definition and the Vamp Marathon dialect  `uris` parameter allows the requested jar to be downloaded from a remote location ([Marathon REST API - uris Array of Strings](https://mesosphere.github.io/marathon/docs/rest-api.html#uris-array-of-strings)). 
+#### Example breed - run a custom jar after it has been downloaded
+Combining this definition and the Vamp Marathon dialect  `uris` parameter allows the requested jar to be downloaded from a remote location ([Marathon REST API - uris Array of Strings](https://mesosphere.github.io/marathon/docs/rest-api.html#uris-array-of-strings)).
 
 
 ```yaml
@@ -101,7 +100,7 @@ clusters:
     services:
       breed:
         name: location
-        deployable: 
+        deployable:
           type: cmd
           definition: java -jar location.jar
       marathon:
@@ -123,7 +122,7 @@ deployable: company/my_frontend_service:0.1
 ports:
   web: 8080/http
   admin: 8081/http
-  redis: 9023/tcp   
+  redis: 9023/tcp
 ```
 
 Ports come in two flavors:
@@ -145,7 +144,7 @@ Breeds can also have dependencies on other breeds. These dependencies should be 
 ---
 dependencies:
   cache: redis:1.1
-``` 
+```
 
 It is also possible to use wildcard `*` at the end of the name. This will match any breed name that starts with `redis:1.`:
 
@@ -155,7 +154,7 @@ dependencies:
   cache: redis:1.*
 ```
 
-In a lot of cases, dependencies coexist with interpolated environment variables or constants because exact values are not known untill deploy time.  
+In a lot of cases, dependencies coexist with interpolated environment variables or constants because exact values are not known untill deploy time.
 [Read more about environment variables](/documentation/using-vamp/v0.9.5/environment-variables/)
 
 {{< note title="What next?" >}}

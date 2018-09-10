@@ -32,7 +32,7 @@ _Deis, Flynn, Dokku_
 Vamp has no ambition to provide a Heroku-like environment for containers. Vamp integrates programmable routing and load balancing, container deployments and orchestration to enable canary testing and canary releasing features. Vamp also adds metrics-driven workflows for auto-scaling and other optimisations. Vamp sees business as a first class citizen in DevOps teams, providing a graphical UI and tools for non-technical roles.   
 
 {{< note title="What next?" >}}
-* [Try Vamp](/documentation/installation/hello-world)
+* [Try Vamp](/documentation/installation/v1.0.0/overview/)
 * [Use cases](/product/use-cases/overview) -  some Vamp solutions to practical problems
 * Find out [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
 {{< /note >}}

@@ -1,11 +1,6 @@
 ---
 date: 2017-02-14T09:00:00+00:00
 title: Version 0.9.3
-menu:
-  main:
-    parent: "Release notes"
-    name: Version 0.9.3
-    weight: 996
 ---
 
 _14th February 2017_

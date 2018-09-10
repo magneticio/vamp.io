@@ -2,69 +2,64 @@
 date: 2016-09-13T09:00:00+00:00
 title: Product
 aliases:
-    - /product/why-use-vamp/
-    - /why-use-vamp/
+    - /product/why-use-vamp-v2/
+    - /why-use-vamp-v2/
 header:
-    title: "Unlock the power of your microservices with automated canary releasing"
-    subtitle: ""
-    sub: "Vamp provides a business-oriented enterprise-grade suite that delivers automation, integration and management
-    insights for controlling the lifecycle of micro services and services-based solutions."
-features:
+    hero: "Intelligent canary-releasing, feature-testing and optimisation for cloud-native applications"
+roles:
     list1:
-        item1: "Graphical UI and dashboards for clear information and easy management."
-        item2: "Integrated metrics and events system exposing critical application runtime information."
-        item3: "Integrates with existing deployment pipelines using the API or the command line interface."
+        title: "For Developers"
+        items:
+            - "automated canary releasing with rollback and reporting on issues"
+            - "self-service system for releasing and traffic routing"
+            - "easy load balancing and flexible service-discovery"
+            - "API gateway and orchestration features"
     list2:
-        item1: "Load balancing of scaled-out services and containers."
-        item2: "A/B split and merge traffic based on conditions, percentages or both."
-    footer: "Vamp Community Edition has a lightweight design to run in high-available mission-critical architectures.<br>
-             [Vamp Enterprise Edition](/product/#enterprise) extends these features with security, multi-tenancy and role based access controls."
-action:
-    title: "See Vamp in action"
-    sub: "**Microsoft**’s Rob Bagby show cases Vamp workflows on DC/OS.  Using application specific triggers, Rob achieves
-    **dynamic micro scaling** in a Kafka
-          based real time data pipeline."
-enterprise:
-    title: "Vamp Enterprise Edition"
-    sub: "The Vamp Enterprise Edition (EE) extends the features available in the open source Vamp Community Edition (CE)with
-    security, authorization and multi-tenancy. See below how Vamp EE compares to Vamp CE."
-usecases:
-    title: "Vamp Usecases"
-    sub: "The integrated deployment, routing and workflow features of Vamp support a broad range of scenarios and industry
-    verticals. We specifically see powerful use cases in the areas of testing in production, migrating to microservices,
-    and realtime system optimisation."
-    item1:
-        title: "Testing in Production"
-        sub: "A/B test architectural changes in production. Resolve client-side incompatiblities after an upgrade. [Read more](/product/use-cases/overview/)"
-    item2:
-        title: "Migrating to Microservices"
-        sub: "Move from a VM based monolith architectures to a modern, cloud-native and microservices based architecture. [Read more](/product/use-cases/overview/)"
-    item3:
-        title: "Realtime System Optimization"
-        sub: "Test *what would happen if* scenarios by simulating and testing autoscaling behaviour. [Read more](/product/use-cases/overview/)"
-comparedto:
-    title: "Vamp compared to..."
-    sub: "How does Vamp compare to other products in the cloud native, container and delivery space?"
-    item1:
-        title: "Proxies and load balancers"
-        sub: "Vamp works together with all common container-schedulers to provide continuous delivery and auto-scaling features.
-        [Read more](/product/vamp-compared-to/proxies-and-load-balancers/)"
-    item2:
-        title: "PaaS and container systems"
-        sub: "Vamp adds an experimentation layer to PaaS infrastructures by providing canary-releasing features that
-        integrate with common PaaS proxies. [Read more](/product/vamp-compared-to/paas-and-container-systems/)"
-    item3:
-        title: "Frameworks and tools"
-        sub: "Vamp closes the loop between the development and operations elements of a CI/CD pipeline, while feeding
-         back runtime technical and business metrics. [Read more](/product/vamp-compared-to/frameworks-and-tools/)"
-
+        title: "For DevOps Engineers"
+        items:
+            - "customisable canary test, release and SLA-based performance optimization workflows"
+            - "flexible integrated metrics and events system"
+            - "multi-cloud, multi-scheduler, multi-environment features with Role Based Access Control (RBAC)"
+            - "powerful installation and configuration management tools"
+    list3:
+        title: "For Product Owners"
+        items:
+            - "multi-stage feature releases (geo, device, time, customer-segments, manual checks)"
+            - "feature A/B testing with configuration-based feature toggles/flags"
+            - "integrate with external analytics, APM and business systems"
+            - "rich dashboards and wizardsfor full insights, observability and control" 
+features:
+    -
+        title: "Canary releasing workflows with smart rollbacks"
+        description: "automatically trigger workflows to incrementally release your services while constantly measuring full application performance and health, and rollback on health issues to minimise blast-radius."
+    -
+        title: "Self-service PaaS-style deployments and releasing"
+        description: " teams can deploy and release single services or full application topologies in a secure, unified and abstracted way using a rich GUI, CLI or API automation. RBAC features allow full granular control over roles and rights. All actions and events are logged for audits and analytics"
+    -
+        title: "Label-based service gateway creation"
+        description: "based on labels set in deployments Vamp can automatically create and configure gateways to expose services with the conditions and percentage-weights that you define. This allows you to use your favourite means of deploying services onto your cluster, and have Vamp automatically setup the routing for your canary-releasing needs."        
+    -
+        title: "Flexible service routing and API orchestration"
+        description: "Vamp service gateways allow you to handle service API orchestrations like conditional URL rewrites, combining multiple services behind API endpoints, and provide path-based routing to specific services and even versions of services. Vamp gateways can also integrate with external services and non-containerised applications, f.e. to apply strangler patterns for canary-migrations."
+    -
+        title: "Feature flagging/toggling"
+        description: "using container configuration methods like environment variables, Vamp allows you to create A/B tests with feature-flags/toggles that can be exposed to specific segments and percentages of users, using the flexible routing of Vamp service gateways.Vamp’s integrated event and metrics and workflow-based automation system enables you to automate the release of features based on the outcome of these A/B tests, and you can even integrate business KPI’s from external system like analytics or APM systems."
+    -
+        title: "Intelligent SLA-based autoscaling"
+        description: "Vamp provides rich configurable workflows that can use technical and business health and performance metrics to scale and optimise your services and applications health and performance, while keeping your costs in check. Scaling can be on both services and infrastructure levels, for full application-sensitive intelligence."
+    -
+        title: "Multi cloud/cluster/scheduler"
+        description: "Vamp’s modular driver-based architecture supports multiple schedulers (DC/OS, K8s), multiple clusters (both hard and virtual clusters) over multiple clouds. You can mix and match to create the optimal balance between performance, security and cost. Especially dynamically created short-lived virtual clusters can be a huge cost-saver, compared to creating a seperate “hard” cluster for each environment or project."
+    -
+        title: "Installer and configuration manager"
+        description: "Vamp has a full-blown API-driven installation and configuration manager, that supports industry-standards like Hashicorp’s Vault for secure configuration management. A first Vamp setup with full dependencies installed can be up and running in less than 5 minutes without any specialised knowledge."
+    -
+        title: "Event and metric system"
+        description: "Vamp’s powerful event and metric system is used to aggregate technical and performance metrics and KPIs on several levels, stores historical time-based data, logs all events for auditing, and can be used to trigger automation workflows based on internal or external events and data, f.e. from an external APM system. Vamp uses industry standards like ElasticSearch."                                                
+    -
+        title: "Role Based Access Control"
+        description: "Vamp’s multi-environment features support fine-grained role based access control"
+    - 
+        title: "Configuration and automation as code"
+        description: "Vamp’s YAML API’s can be used to create environments, configurations and automation workflows using code."                                       
 ---
-
-![](/images/typical-systems-vs-vamp.png)
-
-{{< note title="What next?" >}}
-* See Vamp [use cases](/product/use-cases/)
-* Read the full [Vamp feature list](/product/feature-list/)
-* [What Vamp offers compared to other tools and services](/product/vamp-compared-to/proxies-and-load-balancers/)
-* [How Vamp works](/documentation/how-vamp-works/architecture-and-components)
-{{< /note >}}

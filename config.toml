@@ -1,9 +1,10 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "Vamp | Smart Application Releasing for Modern Cloud Platforms"
+title = "Vamp | Automation and Controls for Enterprise Devops"
 theme = "vamp"
 metadataformat = "yaml"
 canonifyurls = true
+enableGitInfo = true
 
 # Enable Google Analytics by entering your tracking id
 googleAnalytics = ""
@@ -67,7 +68,7 @@ googleAnalytics = ""
     weight = 10
 
 [[menu.topnav]]
-	name   = "Developers"
+	name   = "Resources"
     identifier = "developers-top"
 	url    = "/documentation/"
 	weight = 30
@@ -110,6 +111,12 @@ googleAnalytics = ""
 
 
 [[menu.main]]
+	name = "Features"
+	url = "/product/"
+	parent = "product"
+	weight = 10
+
+[[menu.main]]
 	name = "Use cases"
 	url = "/product/use-cases/overview"
 	parent = "product"
@@ -119,11 +126,18 @@ googleAnalytics = ""
 	name  = "Vamp compared to..."
 	url   = "/product/vamp-compared-to/proxies-and-load-balancers/"
 	parent = "product"
-	weight = 50
+	weight = 30
+
+[[menu.main]]
+	name = "Vamp version comparison"
+	url = "/product/vamp-version-comparison/"
+	parent = "product"
+	weight = 40
+
 
 [[menu.main]]
 	name	= "How Vamp works"
-	url = "/documentation/how-vamp-works/architecture-and-components/"
+	url = "/documentation/how-vamp-works/"
 	parent = "Documentation"
 	weight = 10
 
@@ -142,15 +156,9 @@ googleAnalytics = ""
 
 [[menu.main]]
 	name = "Using Vamp"
-	url = "/documentation/using-vamp/artifacts/"
+	url = "/documentation/using-vamp/"
 	parent = "Documentation"
 	weight = 40
-
-[[menu.main]]
-	name = "Routing & Load balancing"
-	url = "/documentation/routing-and-loadbalancing/"
-	parent = "Documentation"
-	weight = 50
 
 [[menu.main]]
 	name = "Configure"
@@ -158,13 +166,6 @@ googleAnalytics = ""
 	url = "/documentation/configure"
 	parent = "Documentation"
 	weight = 60
-
-[[menu.main]]
-	name = "Troubleshoot"
-	identifier = "Troubleshooting"
-	url = "/documentation/troubleshoot"
-	parent = "Documentation"
-	weight = 70
 
 [[menu.main]]
 	name = "API documentation"
@@ -176,12 +177,13 @@ googleAnalytics = ""
 [[menu.main]]
 	name = "CLI documentation"
 	identifier = "CLI"
-	url = "/documentation/cli/cli-reference/"
+	url = "/documentation/cli/using-the-cli/"
 	parent = "Documentation"
 	weight = 90
 
 [[menu.main]]
-	name = "Release notes"
-	url = "/documentation/release-notes/"
+	name = "Troubleshoot"
+	identifier = "Troubleshooting"
+	url = "/documentation/troubleshoot"
 	parent = "Documentation"
 	weight = 100

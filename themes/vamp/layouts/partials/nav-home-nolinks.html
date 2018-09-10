@@ -15,37 +15,4 @@
   </a>
 </nav>
 
-<ul id="mobile-menu">
-
-  {{ $currentNode := .}}
-
-  {{range .Site.Menus.main}}
-  <li>
-    <a href="{{.URL}}">{{ .Name }}</a>
-    {{if .HasChildren }}
-    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-    {{ end }}
-  </li>
-  <ul>
-
-    {{range .Children}}
-    <li>
-      <a href="{{.URL}}">{{.Name}}</a>
-      {{if .HasChildren }}
-      <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      {{ end }}
-    </li>
-
-    <ul>
-      {{range .Children}}
-      <li>
-        <a href="{{.URL}}">{{ .Name }}</a>
-      </li>
-      {{ end }}
-    </ul>
-    {{ end }}
-  </ul>
-  {{ end }}
-</ul>
-
-
+{{ partial "mobile-menu" . }}

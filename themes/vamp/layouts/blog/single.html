@@ -1,0 +1,27 @@
+{{ partial "head" . }}
+
+<div class="landing-page">
+  {{ partial "nav-home" . }}
+</div>
+
+<div class="page documentation container blog mb-3 pt-5">
+  <div class="row">
+    <div class="col-sm-12 col-lg-8 offset-lg-2">
+      <div class="content blog-content">
+
+        {{ partial "blog-meta-data" . }}
+
+        <h1 class="blog-header">{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
+
+        <div class="markdowned blog-body mb-md-5">
+          {{ .Content }}
+        </div>
+
+        {{ partial "social-share" . }}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ partial "footer" .}}

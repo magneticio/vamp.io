@@ -1,9 +1,22 @@
-<div class="row">
-  <div class="container">
-    <div class="col-sm-12">
-      <div class="markdowned news">
-        {{ .Content }}
+{{ partial "head" . }}
+
+<div class="landing-page">
+  {{ partial "nav-home" . }}
+</div>
+
+<div class="page documentation container news pt-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 offset-md-1">
+      <div class="content">
+
+        <h1 class="content-header">{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
+
+        <div class="markdowned">
+          {{ .Content }}
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+{{ partial "footer" .}}
