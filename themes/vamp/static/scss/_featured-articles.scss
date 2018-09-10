@@ -1,0 +1,26 @@
+.featured-articles {
+  height: 90px;
+  background-color: #1ea3b7;
+  padding: 19px 0;
+  .featured-articles-content {
+    .featured-article {
+      color: $white;
+      font-weight: $font-weight-lightest;
+      font-size: 20px;
+      a {
+        color: $white;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .slick-dots li button:before {
+    font-size: 30px;
+  }
+
+  .slick-dots li.slick-active button:before {
+    color: $white;
+  }
+}

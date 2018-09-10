@@ -1,0 +1,27 @@
+<section class="featured-articles">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="text-center featured-articles-content">
+          <div class="featured-article">
+            {{ range first 1 (where .Data.Pages "Section" "in" (slice "news")) }}
+            {{ .Title }}
+            <a href="{{ .Permalink }}" class="ml-2">Read more
+              <span class="fa fa-arrow-circle-o-right"></span>
+            </a>
+            {{ end }}
+          </div>
+          <div class="featured-article">
+            {{ range first 1 (where .Data.Pages "Section" "in" (slice "blog")) }}
+            <span class="mr-2">Now on the blog:</span>
+            {{ .Title }}
+            <a href="{{ .Permalink }}" class="ml-2">Read more
+              <span class="fa fa-arrow-circle-o-right"></span>
+            </a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
