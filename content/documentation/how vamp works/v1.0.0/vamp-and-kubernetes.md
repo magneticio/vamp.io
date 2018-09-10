@@ -28,17 +28,27 @@ A Vamp [deployment](/documentation/using-vamp/v1.0.0/deployments) is a dynamic e
 
 During the lifecycle of the deployment, Vamp monitors the state of each deployment and when differences arise **Vamp will adjust the state of that deployment so that it's *current state* matches the *desired state***.
 
-A Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) uses a Deployment object to describe a desired state, and **a Deployment controller which is responsible for changing the *actual state* into the *desired state***.
+A Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) uses a Deployment object to describe a *desired state*, and **a Deployment controller which is responsible for changing the *actual state* into the *desired state***.
 
-On Kubernetes, Vamp deployments are realised using Kubernetes Deployments.
-
-You describe a desired state in a Deployment object, and the Deployment controller changes the actual state to the desired state at a controlled rate.
-
-TODO these directly map to Kubernetes Deployments
+On Kubernetes, Vamp deployments are realised using one or more Kubernetes Deployments.
 
 ### Vamp gateways
 
-TODO these provide a super set of Service and Ingress features
+Vamp gateways provide a super set of Kubernetes [Service](https://kubernetes.io/docs/concepts/services-networking/service/) and [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) controller features.
+
+TODO Kubernetes services are simple transparent proxies 
+
+Single Service Ingress
+Simple Fanout 
+Name based virtual hosting
+TLS
+Load Balancing
+
+Vamp Gateway Agents (VGAs) are not implemented as a Ingress controller on Kubernetes this is because the VGAs offer a much richer set of features than is supported by the Ingress controller API.
+
+Service.Type=LoadBalancer
+Service.Type=NodePort
+
 
 {{< note title="What next?" >}}
 * Find out how to [install Vamp](/documentation/installation/v1.0.0/overview)
