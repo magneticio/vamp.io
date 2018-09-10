@@ -12,6 +12,11 @@
         &:hover {
           text-decoration: underline;
         }
+
+        i {
+          font-size: 16px;
+          font-weight: $font-weight-light;
+        }
       }
     }
   }
@@ -24,3 +29,4 @@
     color: $white;
   }
 }
+

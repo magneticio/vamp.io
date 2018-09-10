@@ -5,18 +5,19 @@
         <div class="text-center featured-articles-content">
           <div class="featured-article">
             {{ range first 1 (where .Data.Pages "Section" "in" (slice "news")) }}
+            <small class="mr-2 text-uppercase ">News</small>
             {{ .Title }}
-            <a href="{{ .Permalink }}" class="ml-2">Read more
-              <span class="fa fa-arrow-circle-o-right"></span>
+            <a href="{{ .Permalink }}" class="ml-2">
+              <i class="fa fa-chevron-right"></i>
             </a>
             {{ end }}
           </div>
           <div class="featured-article">
             {{ range first 1 (where .Data.Pages "Section" "in" (slice "blog")) }}
-            <span class="mr-2">Now on the blog:</span>
+            <small class="mr-2 text-uppercase ">Now on the blog</small>
             {{ .Title }}
-            <a href="{{ .Permalink }}" class="ml-2">Read more
-              <span class="fa fa-arrow-circle-o-right"></span>
+            <a href="{{ .Permalink }}" class="ml-2">
+              <i class="fa fa-chevron-right"></i>
             </a>
             {{ end }}
           </div>
