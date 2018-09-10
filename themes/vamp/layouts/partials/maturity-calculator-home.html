@@ -143,7 +143,7 @@
                   </div>
                 </transition-group>
                 <transition name="drop-down" mode="out-in" appear>
-                  <p class="text-red pt-3" v-show="showSubscribeError"><small>Something went wrong subscribing you to the newsletter</small></p>
+                  <p class="text-red pt-3" v-show="showSubscribeError"><small v-html="showSubscribeErrorMessage"></small></p>
                 </transition>
               </div>
             </div>

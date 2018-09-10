@@ -190,13 +190,15 @@ const maturityCalculator = new Vue({
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
         error: function (err) {
-          that.showSubscribeError = true
           that.showSubscribeErrorMessage = err.msg
+          that.showSubscribeError = true
         },
         success: function (data) {
           if (data.result != "success") {
             that.showSubscribeError = true
+            that.showSubscribeErrorMessage = data.msg
           } else {
+            that.showSubscribeError = false
             that.showSubscribeSuccess = true
             this.trackEvent('maturity-calculator', 'subscribed')
             setTimeout(function () {
