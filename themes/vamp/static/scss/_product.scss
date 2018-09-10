@@ -60,7 +60,7 @@ $product-headers-font-size: 20px;
           top: 50%;
         }
 
-        &:hover {
+        &:hover, &:focus {
           cursor: pointer;
           background-image: url('/img/product/feature-#{$i}-anim.gif');
 

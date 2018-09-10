@@ -70,7 +70,7 @@
               <h3 class="product-features-title">{{.title}}</h3>
               <p class="text">{{ .description }}</p>
             </div>
-            <div class="col-sm-6 product-features-img-col-{{add 1 $index}} pull-md-6">
+            <div class="col-sm-6 product-features-img-col-{{add 1 $index}} pull-md-6" tabindex="{{$index}}">
               <div class="video-play-button fa fa-play-circle"></div>
             </div>
           {{else}}
@@ -78,7 +78,7 @@
               <h3 class="product-features-title">{{.title}}</h3>
               <p class="text">{{ .description }}</p>
             </div>
-            <div class="col-sm-6 product-features-img-col-{{add 1 $index}}">
+            <div class="col-sm-6 product-features-img-col-{{add 1 $index}}" tabindex="{{$index}}">
               <div class="video-play-button fa fa-play-circle"></div>
             </div>
           {{ end }}
