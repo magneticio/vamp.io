@@ -1,6 +1,6 @@
 ---
 date: 2018-08-31T14:00:00+00:00
-title: Kubernetes Lifter Evaluation 
+title: Vamp Enterprise Edition Trial for Kubernetes 
 platforms: ["Kubernetes"]
 ---
 
