@@ -34,17 +34,57 @@ On Kubernetes, Vamp deployments are realised using one or more Kubernetes Deploy
 
 ### Vamp gateways
 
-Vamp gateways provide a super set of Kubernetes Service and [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) controller features.
+Vamp gateways provide a super set of Kubernetes Service and Ingress controller features.
 
-Kubernetes [Services](https://kubernetes.io/docs/concepts/services-networking/service/) are simple transparent proxies with basic load balancing capabilities. Services can be used to expose microservices an external network ([Service.Type=LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)) or on the private network used by the nodes ([Service.Type=NodePort](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport)).
+Kubernetes [Services](https://kubernetes.io/docs/concepts/services-networking/service/) are simple transparent proxies with basic load balancing capabilities. Services can be used to expose microservices running in a cluster on an external network ([Service.Type=LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)) or on the private network used by the nodes ([Service.Type=NodePort](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport)).
 
-TODO Kubernetes services are simple transparent proxies 
+Kubernetes [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) offers richer load balancing functionality than Services, name based virtual hosting, path-based routing ([simple fanout](https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout), , path rewriting, TLS termination and simple weight-based routing.
 
-Single Service Ingress
-Simple Fanout 
-Name based virtual hosting
-TLS
-Load Balancing
+Vamp gateways are direct replacements for Kubernetes Services that provide all the features of Ingress plus powerful condition-based routing.
+
+An example Kubernetes Service might look like this:
+```yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: foo
+spec:
+  selector:
+    app: foo
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 9376
+```
+
+And the corresponding Kubernetes Ingress might look like this:
+```yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: foo-ingress
+spec:
+  rules:
+  - host: foo.bar.com
+    http:
+      paths:
+      - backend:
+          serviceName: foo
+          servicePort: 80
+```
+
+This exposes a Service called *foo* on an external IP address on port 80 using the virtual host *foo.bar.com*.
+
+The equivalent Vamp gateway config would be:
+```yaml
+name: foo-ingress
+kind: gateways
+virtual_hosts:
+- foo.bar.com
+selector: label(app)(foo) && label(version)((.*))
+```
+
+This also exposes a Service called *foo* on an external IP address on port 80 (default) using the virtual host *foo.bar.com*.
 
 Vamp Gateway Agents (VGAs) are not implemented as a Ingress controller on Kubernetes this is because the VGAs offer a much richer set of features than is supported by the Ingress controller API.
 
