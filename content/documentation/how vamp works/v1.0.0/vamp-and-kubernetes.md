@@ -40,7 +40,7 @@ Kubernetes [Services](https://kubernetes.io/docs/concepts/services-networking/se
 
 Kubernetes [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) offers name based virtual hosting, path-based routing ([simple fanout](https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout), path rewriting, TLS termination and simple weight-based routing.
 
-**Vamp gateways allow you to do fine grained automated or manual blue/green or canary releases of your internal-facing and external-facing microservices.**
+**Vamp gateways allow you to do fine-grained, automated or manual blue/green or canary releases of your internal-facing and external-facing microservices.**
 
 Vamp Gateway Agents (VGAs) are not implemented as a Ingress controller on Kubernetes, this is because the VGAs offer a much richer set of features than is supported by the Ingress controller API. Instead, Vamp gateways are dropin replacements for Kubernetes Services that provide all the features of Ingress plus powerful condition-based routing and traffic metrics which can be used for data-driven release automation.
 
