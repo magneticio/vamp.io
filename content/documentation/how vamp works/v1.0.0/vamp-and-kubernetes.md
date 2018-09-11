@@ -84,13 +84,19 @@ virtual_hosts:
 selector: label(app)(foo) && label(version)((.*))
 ```
 
-This also exposes a Service called *foo* on an external IP address on port 80 (default) using the virtual host *foo.bar.com*.
+This also exposes a Service called *foo* on an external IP address on port 80 (default) using the virtual host *foo.bar.com* but adds weight-based routing, condition-based routing and traffic metrics to that Service.
+
+```bash
+NAME                 TYPE           CLUSTER-IP     EXTERNAL-IP       PORT(S)           AGE
+foo-ingress          NodePort       10.0.117.255   <none>            40001:32036/TCP   1h
+vamp-gateway-agent   LoadBalancer   10.0.34.200    104.215.188.161   80:30606/TCP      13d
+```
+
+The *vamp-gateway-agent* Service is shared between all gateways. So public DNS entry for *foo.bar.com* should be mapped to external IP address of the *vamp-gateway-agent*. The Service can be looked up as *foo-ingress* using kube-dns and, by default, it is also reachable at *<node-ip>:<node-port>* on the private network used by the nodes, in this example the node port is 40001.
+    
+The power of using a Vamp gateway is in `&& label(version)((.*))` part of the selector. If the current version Kubernetes Deployment with the labels *app:foo* and *version:1.0.3* and then create a new Deployment with the labels *app:foo* and *version:2.0.1*. A new route called *(2.0.1)* is automatically added to the gateway, this can then be used to do condition-based or weight-based, automated or manual blue/green or canary release of the new version. This applies to the gateways  used for internal microservices not just external facing "ingress" gateways.
 
 Vamp Gateway Agents (VGAs) are not implemented as a Ingress controller on Kubernetes this is because the VGAs offer a much richer set of features than is supported by the Ingress controller API.
-
-
-
-
 
 {{< note title="What next?" >}}
 * Find out how to [install Vamp](/documentation/installation/v1.0.0/overview)
