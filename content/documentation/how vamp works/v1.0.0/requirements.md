@@ -7,7 +7,7 @@ menu:
   main:
     identifier: "requirements-v100"
     parent: "How Vamp works"
-    weight: 20
+    weight: 30
 ---
 
 Vamp requires access to a container scheduler (Kubernetes or DC/OS), a secure key-value store, a SQL database, and Elasticsearch.
