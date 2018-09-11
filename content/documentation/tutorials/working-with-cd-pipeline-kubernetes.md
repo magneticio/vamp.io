@@ -13,6 +13,12 @@ The most common use case would be canary releasing a Deployment made using a CD 
 
 TODO look no blueprints!
 
+To make this tutorial easy to follow, we are going to use `kubectl` to **simulate the actions of a CD pipeline deploying to our Kubernetes cluster.
+
+{{< note title="Note!" >}}
+The commands shown in this tutorial assume you are using the [Kubernetes Quickstart](/documentation/installation/kubernetes) and that there is an existing namespace called **vampio-organization-environment**.
+{{< /note >}}
+
 ## Deploying versus releasing
 
 ### Deploy
@@ -52,12 +58,6 @@ The store front locale is configured by setting the `LOCALE` environment variabl
 ## Initial Deployment and Release
 
 Our development team has been working hard and after a few interations **we are now ready to deploy the MVP on production**. The MVP consists of **sava-product version 1.0.3** and **sava-cart version 1.0.5**.
-
-To make this tutorial easy to follow, we are going to use `kubectl` to **simulate the actions of a continuous delivery (CD) pipeline deploying our application** on a Kubernetes cluster.
-
-{{< note title="Note!" >}}
-The commands shown in this tutorial assume you are using the [Kubernetes Quickstart](/documentation/installation/kubernetes) and that there is an existing namespace called **vampio-organization-environment**.
-{{< /note >}}
 
 ### Deploy the sava-product service
 
@@ -106,4 +106,48 @@ To **deploy the initial version of sava-product** (v1.0.3):
 ### Release the sava-product service
 At this point version 1.0 of the **sava-product is deployed but not released**. The deployment is healthy but cannot yet be found by the clients that depend on it. 
 
+#### Kubernetes Services
+Since we only have one sava-product [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/) (Docker container) running, we could pass the IP address and port of that Pod to sava-cart but that would be a bad idea.
+
+Kubernetes will maintain the requested number of Pods over time but individual [Pods can be destroyed at any time and new Pods created to replace them](https://kubernetes.io/docs/concepts/workloads/pods/pod/#durability-of-pods-or-lack-thereof). So whilst sava-product will get its own IP address, that address cannot be relied upon to be stable over time.
+
+To avoid this tight coupling, Kubernetes provides the [Service](https://kubernetes.io/docs/concepts/services-networking/service/) abstraction. **Creating a Kubernetes Service for our sava-product service will provide a stable address which our sava-cart frontend can then use.**
+
+If we were going to create a Kubernetes Service for our sava-product service, it would look something like this:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: sava-product
+spec:
+  ports:
+  - port: 9070
+    protocol: TCP
+    targetPort: 8080
+  type: NodePort
+  selector:
+    app: sava-product
+```
+
+#### Vamp gateways
+Instead of using a Kubernetes Service for our sava-product service, we're going to use a Vamp gateway.
+
+Vamp gateways provide [a super set of Kubernetes Service and Ingress controller features](/documentation/how-vamp-works/v1.0.0/vamp-and-kubernetes/#vamp-deployments) and allow you to do fine-grained, automated or manual blue/green or canary releases of your internal-facing and external-facing microservices.
+
+```yaml
+name: sava-product
+port: 9070
+selector: label(app)(sava-product) && label(version)((.*))
+```
+
+1. In the Vamp UI, select the environment *environment* and go to the **Gateways** page and click **Add** (top right)
+2. Paste in the above gateway config and click **Save**.
+  Vamp will create a Service of type NodePort. 
+3. You can check that the gateway Service has be created correctly using:
+  ```
+  kubectl get services --namespace vampio-organization-environment
+  ```
+4. Click **Deploy** to start the deployment
+  ![](/images/screens/v100/tut1/vampee-environment-deployments-sava.png)
 
