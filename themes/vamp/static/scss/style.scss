@@ -12,6 +12,7 @@
 @import 'transitions';
 @import 'animations';
 @import 'product';
+@import 'featured-articles';
 
 // apps
 @import 'apps/maturity-calculator';
@@ -468,11 +469,11 @@ a {
   }
 
   @media all and (min-width: 1025px) {
-    padding-top: 80px + $hero-spacer;
+    padding-top: 20px + $hero-spacer;
   }
 
   @media all and (min-width: 1201px) {
-    padding-top: 80px + $hero-spacer;
+    padding-top: 20px + $hero-spacer;
   }
 
   .row-ribbon {

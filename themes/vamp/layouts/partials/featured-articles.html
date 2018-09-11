@@ -1,0 +1,29 @@
+<section class="featured-articles">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="feature-articles-dots"></div>
+        <div class="text-center featured-articles-content">
+          <div class="featured-article">
+            <small class="mr-1 text-uppercase ">News</small>
+            {{ range first 1 (where .Data.Pages "Section" "in" (slice "news")) }}
+            <a href="{{ .Permalink }}" class="ml-2">
+              {{ .Title }}
+              →
+            </a>
+            {{ end }}
+          </div>
+          <div class="featured-article">
+            <small class="mr-1 text-uppercase ">Now on the blog</small>
+            {{ range first 1 (where .Data.Pages "Section" "in" (slice "blog")) }}
+            <a href="{{ .Permalink }}" class="ml-2">
+              {{ .Title }}
+              →
+            </a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

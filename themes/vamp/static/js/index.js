@@ -144,6 +144,15 @@ function documentReady() {
   });
 
 
+  // Carousel / slider
+
+  $('.featured-articles-content').slick({
+    arrows: false,
+    dots: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    appendDots: '.feature-articles-dots'
+  })
 }
 
 
@@ -205,5 +214,3 @@ function setSideMenu() {
     return urlInfo && urlInfo.version && (((urlInfo.version.substring(0,1) === 'v') && !isNaN(urlInfo.version.substring(1,2))) || urlInfo.version === 'katana') ? urlInfo : false;
   }
 }
-
-
