@@ -2,22 +2,23 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
+        <div class="feature-articles-dots"></div>
         <div class="text-center featured-articles-content">
           <div class="featured-article">
+            <small class="mr-1 text-uppercase ">News</small>
             {{ range first 1 (where .Data.Pages "Section" "in" (slice "news")) }}
-            <small class="mr-2 text-uppercase ">News</small>
-            {{ .Title }}
             <a href="{{ .Permalink }}" class="ml-2">
-              <i class="fa fa-chevron-right"></i>
+              {{ .Title }}
+              →
             </a>
             {{ end }}
           </div>
           <div class="featured-article">
+            <small class="mr-1 text-uppercase ">Now on the blog</small>
             {{ range first 1 (where .Data.Pages "Section" "in" (slice "blog")) }}
-            <small class="mr-2 text-uppercase ">Now on the blog</small>
-            {{ .Title }}
             <a href="{{ .Permalink }}" class="ml-2">
-              <i class="fa fa-chevron-right"></i>
+              {{ .Title }}
+              →
             </a>
             {{ end }}
           </div>

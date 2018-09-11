@@ -151,6 +151,7 @@ function documentReady() {
     dots: true,
     autoplay: true,
     autoplaySpeed: 4000,
+    appendDots: '.feature-articles-dots'
   })
 }
 
