@@ -19,7 +19,7 @@ Before you get Vamp up and running on your architecture, it is helpful to unders
 * [Vamp requirements](/documentation/how-vamp-works/requirements)
 
 #### Vamp quickstart installation
-As the name suggests, quickstart guides you through a few simple steps to deploys an evaluation version of Vamp. **Quickstart uses a [all-in-one cluster model](/documentation/how-vamp-works/v1.0.0/deployment-models/#all-in-one-cluster-model) that is only suitable for evaluating Vamp**. 
+As the name suggests, quickstart guides you through a few simple steps to deploys an evaluation version of Vamp. **Quickstart uses an [all-in-one cluster model](/documentation/how-vamp-works/v1.0.0/deployment-models/#all-in-one-cluster-model) that is only suitable for evaluating Vamp**. 
 
 * [Kubernetes](/documentation/installation/kubernetes)
 * [DC/OS](/documentation/installation/dcos)
