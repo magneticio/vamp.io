@@ -6,18 +6,18 @@ menu:
     parent: "Tutorials"
     weight: 20
 ---
-If everything went to plan, you should have your Vamp installation up and running. If not, please follow the [Vamp hello world](/documentation/installation/hello-world) quick setup steps.
+Before you start this tutorial you should have your Vamp installation up and running. If not, please follow the [Vamp Quickstart](/documentation/installation/v1.0.0/overview/#vamp-quickstart-installation) guide.
 
-Now you're ready to check out some of Vamp's features. In this tutorial we will:  
+#### Requirements:
+* A Kubernetes cluster with at least 4 nodes (8 vCPUs and 28GB memory); or
+* A DC/OS cluster with at least 4 nodes (1 public agent, 16 vCPUs and 48GB memory)
+
+In this tutorial we will check out some of Vamp's features:  
 
 * Deploy a monolith, using the Vamp UI
 * Check out the deployed application  
 * Get some metrics on the running application  
 * Change the scale   
-
-#### Requirements:
-* A Kubernetes cluster with at least 4 nodes (8 vCPUs and 28GB memory); or
-* A DC/OS cluster with at least 4 nodes (1 public agent, 16 vCPUs and 48GB memory)
 
 ## Deploy a monolith
 
