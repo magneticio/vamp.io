@@ -16,7 +16,7 @@ There is a strong synergy between Vamp artifacts such as Environments, Deploymen
 
 Vamp implements multi-tenancy using a two-level [namespace model](/documentation/how-vamp-works/v1.0.0/concepts-and-components/#namespaces). A tenant has exactly one organisation namespace plus one or more environment namespaces.
 
-Kubernetes [Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)s are a logical construct which can be use as a way to divide cluster resources between multiple users.
+Kubernetes [Namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) are a logical construct which can be use as a way to divide cluster resources between multiple users.
 
 On Kubernetes, Vamp environment namespaces are implemented using Kubernetes Namespaces.
 
@@ -34,7 +34,9 @@ On Kubernetes, Vamp deployments are realised using one or more Kubernetes Deploy
 
 ### Vamp gateways
 
-Vamp gateways provide a super set of Kubernetes [Service](https://kubernetes.io/docs/concepts/services-networking/service/) and [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) controller features.
+Vamp gateways provide a super set of Kubernetes Service and [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) controller features.
+
+Kubernetes [Services](https://kubernetes.io/docs/concepts/services-networking/service/) are simple transparent proxies with basic load balancing capabilities. Services can be used to expose microservices an external network ([Service.Type=LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)) or on the private network used by the nodes ([Service.Type=NodePort](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport)).
 
 TODO Kubernetes services are simple transparent proxies 
 
@@ -46,8 +48,8 @@ Load Balancing
 
 Vamp Gateway Agents (VGAs) are not implemented as a Ingress controller on Kubernetes this is because the VGAs offer a much richer set of features than is supported by the Ingress controller API.
 
-Service.Type=LoadBalancer
-Service.Type=NodePort
+
+
 
 
 {{< note title="What next?" >}}
