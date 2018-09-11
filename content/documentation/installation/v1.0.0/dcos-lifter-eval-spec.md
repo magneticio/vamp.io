@@ -1,6 +1,6 @@
 ---
 date: 2018-08-31T14:00:00+00:00
-title: DC/OS Lifter Evaluation 
+title: Vamp Enterprise Edition Trial for DC/OS 
 platforms: ["DCOS","Mesosphere"]
 ---
 
