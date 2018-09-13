@@ -68,6 +68,7 @@ So the DevOps team has been working hard and after a few interations **we are no
 To **deploy the initial version of sava-product** (v1.0.3):
 
 * Copy the deployment specification below and save it in a file called **sava-product-1.0.3.yml**.
+
   ```yaml
   apiVersion: apps/v1
   kind: Deployment
@@ -90,10 +91,13 @@ To **deploy the initial version of sava-product** (v1.0.3):
           ports:
           - containerPort: 8080
     ```
+
 * Create the Deployment on your Kubernetes cluster.
+
   ```bash
   kubectl --namespace vampio-organization-environment create -f sava-product-1.0.3.yml
   ```
+
 * If you have `kubectl proxy` running on port 8001 (the default port), you check the deployment by:
   * Creating a link to the **sava-product** proxy
   
