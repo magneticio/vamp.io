@@ -90,7 +90,7 @@ To **deploy the initial version of sava-product** (v1.0.3):
           image: vampio/sava-product:1.0.3
           ports:
           - containerPort: 8080
-    ```
+  ```
 
 * Create the Deployment on your Kubernetes cluster.
 
