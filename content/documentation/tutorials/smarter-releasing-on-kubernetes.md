@@ -155,7 +155,7 @@ selector: label(app)(sava-product) && label(version)((.*))
 Great! **You've released the sava-product service!**
 
 ### Debugging gateways
-The **sava-product** Service created by Vamp behaves exactly like a normal Kubernetes Service but it points to the vamp-gateway-agent Pods (Selector: io.vamp=vamp-gateway-agent) instead of the sava-product (selector: app=sava-product) Pod.
+The **sava-product** Service created by Vamp behaves exactly like a normal Kubernetes Service but it **points to the vamp-gateway-agent Pods** (Selector: io.vamp=vamp-gateway-agent) **instead of the sava-product Pod** (selector: app=sava-product).
 
 The Kubernetes [service discovery](https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services) mechanisms work like normal but URLs like [http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/](http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/) don't work.
 
