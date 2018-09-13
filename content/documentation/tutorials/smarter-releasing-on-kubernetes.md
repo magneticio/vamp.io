@@ -68,7 +68,6 @@ So the DevOps team has been working hard and after a few interations **we are no
 To **deploy the initial version of sava-product** (v1.0.3):
 
 * Copy the deployment specification below and save it in a file called **sava-product-1.0.3.yml**.
-
   ```yaml
   apiVersion: apps/v1
   kind: Deployment
@@ -91,13 +90,10 @@ To **deploy the initial version of sava-product** (v1.0.3):
           ports:
           - containerPort: 8080
     ```
-
 * Create the Deployment on your Kubernetes cluster.
-
   ```bash
   kubectl --namespace vampio-organization-environment create -f sava-product-1.0.3.yml
   ```
-
 * If you have `kubectl proxy` running on port 8001 (the default port), you check the deployment by:
   * Creating a link to the **sava-product** proxy
   
@@ -105,7 +101,7 @@ To **deploy the initial version of sava-product** (v1.0.3):
      kubectl --namespace vampio-organization-environment get pods -l app=sava-product -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/{{.metadata.name}}/proxy/products/ie{{"\n"}}{{end}}'
      ```
   * Open the link in your web browser and you should see the following output:
-    ![sava-product/products/ie](/images/screens/v100/tut5/sava-product-products-ie.png)
+    ![sava-product/products/ie](/images/screens/v100/tut5/sava-product-products-ie-v1.png)
 
 ### Release the sava-product service
 At this point version 1.0 of the **sava-product is deployed but not released**. The deployment is healthy but cannot yet be found by the clients that depend on it. 
