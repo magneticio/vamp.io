@@ -17,6 +17,12 @@ To make this tutorial easy to follow, we are going to use `kubectl` to **simulat
 The commands shown in this tutorial assume you are using the [Kubernetes Quickstart](/documentation/installation/kubernetes) and that there is an existing namespace called **vampio-organization-environment**.
 {{< /note >}}
 
+In this tutorial we will:
+
+* [Deploy and release an internal microservice](#deploy-the-sava-product-service)
+* [Deploy and release a public-facing microservice](#deploy-sava-cart-store-front)
+* [Canary release a new version of a microservice](#canary-release)
+
 ## Deploying versus releasing
 
 ### Deploy
