@@ -310,13 +310,14 @@ To **deploy the new version of sava-product** (v2.0.1):
 
 As soon as the new version has been deployed it will be automatically detected and a new route added to the gateway. The weight of the newly added route is set to 0%, this means that no traffic is currently being routed there. Whenever Vamp adds a new route to a gateway, it applies the default weight of 0%.
 
-As we did in [tutorial 2], let's adjust the weight and **start to send traffic to the new version of sava-product**:
+As we did in [tutorial 2](/documentation/tutorials/run-a-canary-release/), let's adjust the weight and **start to send traffic to the new version of sava-product**:
 
-1. Click the edit icon next to **WEIGHT**
-2. Adjust the weight slider to distribute traffic 50% / 50% between the two versions
+1. In the Vamp UI, select the environment *environment* and go to the Gateways page and select the **sava-product** gateway
+2. Click the edit icon next to **WEIGHT**
+3. Adjust the weight slider to distribute traffic 50% / 50% between the two versions
   ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editweights5050.png)
-3. Click **Save** and Vamp will adjust the route weights accordingly
-4. If you have `kubectl proxy` running on port 8001, open [http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/products/ie] in your web browser.
+4. Click **Save** and Vamp will adjust the route weights accordingly
+5. If you have `kubectl proxy` running on port 8001, open [http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/products/ie] in your web browser.
   Each time you refresh the page the output will switch between version 1.0 (without image data) and a version 2.0 (with image data).
 
 {{< note title="What next?" >}}
