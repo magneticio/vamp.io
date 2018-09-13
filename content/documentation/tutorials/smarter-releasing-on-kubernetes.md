@@ -53,9 +53,7 @@ The **sava-cart** store front is a fork of [gtsopour/nodejs-shopping-cart](https
 
 The store front provides a responsive web app consisting of a products page, a shopping cart and a checkout page.
 
-It is implemented to a [Tolerant Reader](http://servicedesignpatterns.com/WebServiceEvolution/TolerantReader) that expects changes to occur in the messages and media types it receives. For example, version 1.0 requests version 1 of the sava-product service (`Accept: application/vnd.sava.v1+json`) but will try to work with later versions.
-
-It also tries to isolate users from realtime dependency failures by showing cached or stubbed data. For example, if the sava-product service is unavailable users can choose from a list of fruit (a throw back to the original project).
+It tries to isolate users from realtime dependency failures by showing cached or stubbed data. For example, if the sava-product service is unavailable users can choose from a list of fruit (a throw back to the original project).
 
 The store front locale is configured by setting the `LOCALE` environment variable.
 
@@ -153,6 +151,20 @@ selector: label(app)(sava-product) && label(version)((.*))
   ```
   kubectl --namespace vampio-organization-environment get service sava-product
   ```
+
+{{< note title="Note!" >}}
+The **sava-product** Service created by Vamp behaves exactly like a normal Kubernetes Service but it points to the vamp-gateway-agent Pods (Selector: io.vamp=vamp-gateway-agent) instead of the sava-product (selector: app=sava-product) Pod.
+
+The Kubernetes [service discovery](https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services) mechanisms work like normal but URLs like [http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/](http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/) don't work.
+
+**If you need to debug a Service created by Vamp, you should use port forwarding**, like this:
+
+```bash
+kubectl port-forward --namespace vampio-organization-environment $(kubectl get pod --namespace vampio-organization-environment --selector="io.vamp=vamp-gateway-agent" --output jsonpath='{.items[0].metadata.name}') 9070:9070
+```
+
+The **sava-product** Service can then be accessed on [http://localhost:9070/products/ie](http://localhost:9070/products/ie).
+{{< /note >}}
 
 Great! **You've released the sava-product service!**
 
@@ -285,7 +297,9 @@ curl -H "Host: ie.tutorial5.vamp.cloud" http://<vga-external-ip>/
 
 ## Canary release
 
-The MVP store front is "good enough" but our hister customers are always looking for something new. I prepartion for the version 2.0 store front, the DevOps team want to **release a new version of the sava-product service and canary test it in production**.
+The MVP store front is "good enough" but our hister customers are always looking for something new.
+
+In prepartion for the version 2.0 store front, the DevOps team want to **release a new version of the sava-product service and canary test it in production**.
 
 To **deploy the new version of sava-product** (v2.0.1):
 
@@ -327,8 +341,12 @@ As we did in [tutorial 2](/documentation/tutorials/run-a-canary-release/), let's
 1. In the Vamp UI, select the environment *environment* and go to the Gateways page and select the **sava-product** gateway
 2. Click the edit icon next to **WEIGHT**
 3. Adjust the weight slider to distribute traffic 50% / 50% between the two versions
-  ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editweights5050.png)
+  ![](/images/screens/v100/tut5/vampee-environment-gateways-sava-product-editweights5050.png)
 4. Click **Save** and Vamp will adjust the route weights accordingly
+
+The store front is implemented as a [Tolerant Reader](http://servicedesignpatterns.com/WebServiceEvolution/TolerantReader) that expects changes to occur in the messages and media types it receives. For example, version 1.0 requests version 1 of the sava-product service (`Accept: application/vnd.sava.v1+json`) but will try to work with later versions.
+
+If you `curl` the store front a few times and check the results, you won't see any difference but if you look at the metrics on the **sava-cart-ie** gateway page, you'll see that the requests were distributed equally between the two versions.
 
 {{< note title="What next?" >}}
 * Find out more about the synergy between [Vamp and Kubernetes](/documentation/how-vamp-works/v1.0.0/vamp-and-kubernetes/)
