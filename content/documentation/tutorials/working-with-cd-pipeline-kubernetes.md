@@ -265,3 +265,6 @@ selector: label(app)(sava-cart) && label(locale)(IE) && label(version)((.*))
   
 Great! **You've released the sava-cart store front for the Republic of Ireland using Vamp!**
 
+{{< note title="What next?" >}}
+* Find out more about the synergy between [Vamp and Kubernetes](/documentation/how-vamp-works/v1.0.0/vamp-and-kubernetes/)
+{{< /note >}}
