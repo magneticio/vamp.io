@@ -151,11 +151,9 @@ selector: label(app)(sava-product) && label(version)((.*))
 3. You can check that the gateway Service has be created correctly using:
   
   ```
-  kubectl get services --namespace vampio-organization-environment
+  kubectl --namespace vampio-organization-environment get service sava-product
   ```
-4. If you have `kubectl proxy` running on port 8001, you check the Service by opening the following link in your web browser. The result should be the same as you saw with the the **sava-product** proxy.
-  http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/products/ie
-  
+
 Great! **You've released the sava-product service!**
 
 ### Deploy sava-cart store front
@@ -256,7 +254,7 @@ Instead of using a Kubernetes Service and an Ingress controller, we're going to 
 ```yaml
 name: sava-cart-ie
 virtual_hosts:
-- ie.tutorials.vamp.cloud
+- ie.tutorial5.vamp.cloud
 selector: label(app)(sava-cart) && label(locale)(IE) && label(version)((.*))
 ```
 
@@ -266,12 +264,24 @@ selector: label(app)(sava-cart) && label(locale)(IE) && label(version)((.*))
 3. You can check that the gateway Service has be created correctly using:
   
   ```
-  kubectl get services --namespace vampio-organization-environment
+  kubectl --namespace vampio-organization-environment get service sava-cart-ie
   ```
-4. If you have `kubectl proxy` running on port 8001, you check the Service by opening the following link in your web browser. You should see exactly the same product page as you did when you accessed the sava-cart-ie Pod directly.
-  http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-cart-ie/proxy/
-  
+
 Great! **You've released the sava-cart store front for the Republic of Ireland using Vamp!**
+
+You can now access the store front through the Vamp Gateway Agent (VGA) using the virtual host name **ie.tutorial5.vamp.cloud**.
+
+If you are using Kubernetes, you can find the external IP address of the VGA using `kubectl`:
+
+```
+kubectl --namespace vampio-organization-environment get service vamp-gateway-agent
+```
+
+Once you have the external IP address for the VGA, you can access the application using `curl`:
+
+```
+curl -H "Host: ie.tutorial5.vamp.cloud" http://<vga-external-ip>/
+```
 
 ## Canary release
 
@@ -319,8 +329,6 @@ As we did in [tutorial 2](/documentation/tutorials/run-a-canary-release/), let's
 3. Adjust the weight slider to distribute traffic 50% / 50% between the two versions
   ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editweights5050.png)
 4. Click **Save** and Vamp will adjust the route weights accordingly
-5. If you have `kubectl proxy` running on port 8001, open http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/products/ie in your web browser.
-  Each time you refresh the page the output will switch between version 1.0 (without image data) and a version 2.0 (with image data).
 
 {{< note title="What next?" >}}
 * Find out more about the synergy between [Vamp and Kubernetes](/documentation/how-vamp-works/v1.0.0/vamp-and-kubernetes/)
