@@ -265,6 +265,54 @@ selector: label(app)(sava-cart) && label(locale)(IE) && label(version)((.*))
   
 Great! **You've released the sava-cart store front for the Republic of Ireland using Vamp!**
 
+## Canary release
+
+The MVP store front is "good enough" but our hister customers are always looking for something new. I prepartion for the version 2.0 store front, the DevOps team want to **release a new version of the sava-product service and canary test it in production**.
+
+To **deploy the new version of sava-product** (v2.0.1):
+
+* Copy the deployment specification below and save it in a file called **sava-product-2.0.1.yml**.
+
+  ```yaml
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: sava-product-2.0.1
+  spec:
+    selector:
+      matchLabels:
+        app: sava-product
+    replicas: 1
+    template:
+      metadata:
+        labels:
+          app: sava-product
+          version: 2.0.1
+      spec:
+        containers:
+        - name: sava-product
+          image: vampio/sava-product:2.0.1
+          ports:
+          - containerPort: 8080
+    ```
+
+* Create the Deployment on your Kubernetes cluster.
+
+  ```bash
+  kubectl --namespace vampio-organization-environment create -f sava-product-2.0.1.yml
+  ```
+
+As soon as the new version has been deployed it will be automatically detected and a new route added to the gateway. The weight of the newly added route is set to 0%, this means that no traffic is currently being routed there. Whenever Vamp adds a new route to a gateway, it applies the default weight of 0%.
+
+As we did in [tutorial 2], let's adjust the weight and **start to send traffic to the new version of sava-product**:
+
+1. Click the edit icon next to **WEIGHT**
+2. Adjust the weight slider to distribute traffic 50% / 50% between the two versions
+  ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editweights5050.png)
+3. Click **Save** and Vamp will adjust the route weights accordingly
+4. If you have `kubectl proxy` running on port 8001, open [http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/products/ie] in your web browser.
+  Each time you refresh the page the output will switch between version 1.0 (without image data) and a version 2.0 (with image data).
+
 {{< note title="What next?" >}}
 * Find out more about the synergy between [Vamp and Kubernetes](/documentation/how-vamp-works/v1.0.0/vamp-and-kubernetes/)
 {{< /note >}}
