@@ -152,11 +152,14 @@ selector: label(app)(sava-product) && label(version)((.*))
   kubectl --namespace vampio-organization-environment get service sava-product
   ```
 
-{{< note title="Note!" >}}
+Great! **You've released the sava-product service!**
+
+### Debugging gateways
 The **sava-product** Service created by Vamp behaves exactly like a normal Kubernetes Service but it points to the vamp-gateway-agent Pods (Selector: io.vamp=vamp-gateway-agent) instead of the sava-product (selector: app=sava-product) Pod.
 
 The Kubernetes [service discovery](https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services) mechanisms work like normal but URLs like [http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/](http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/) don't work.
 
+{{< note title="Note!" >}}
 **If you need to debug a Service created by Vamp, you should use port forwarding**, like this:
 
 ```bash
@@ -165,8 +168,6 @@ kubectl port-forward --namespace vampio-organization-environment $(kubectl get p
 
 The **sava-product** Service can then be accessed on [http://localhost:9070/products/ie](http://localhost:9070/products/ie).
 {{< /note >}}
-
-Great! **You've released the sava-product service!**
 
 ### Deploy sava-cart store front
 
