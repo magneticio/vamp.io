@@ -36,11 +36,13 @@ On Kubernetes, Vamp deployments are realised using one or more Kubernetes Deploy
 
 Vamp gateways provide a super set of Kubernetes Service and Ingress controller features.
 
-Kubernetes [Services](https://kubernetes.io/docs/concepts/services-networking/service/) are simple transparent proxies with basic load balancing capabilities. Services can be used to expose microservices running in a cluster on an external network ([Service.Type=LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)) or on the private network used by the nodes ([Service.Type=NodePort](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport)).
+Kubernetes [Services](https://kubernetes.io/docs/concepts/services-networking/service/) are simple transparent proxies with load balancing capabilities. Services can be used to expose microservices running in a cluster on an external network ([Service.Type=LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)) or on the private network used by the nodes ([Service.Type=NodePort](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport)).
 
-Kubernetes [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) offers richer load balancing functionality than Services, name based virtual hosting, path-based routing ([simple fanout](https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout), , path rewriting, TLS termination and simple weight-based routing.
+Kubernetes [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) offers name based virtual hosting, path-based routing ([simple fanout](https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout), path rewriting, TLS termination and simple weight-based routing.
 
-Vamp gateways are direct replacements for Kubernetes Services that provide all the features of Ingress plus powerful condition-based routing.
+**Vamp gateways allow you to do fine-grained, automated or manual blue/green or canary releases of your internal-facing and external-facing microservices.**
+
+Vamp Gateway Agents (VGAs) are not implemented as a Ingress controller on Kubernetes, this is because the VGAs offer a much richer set of features than is supported by the Ingress controller API. Instead, Vamp gateways are dropin replacements for Kubernetes Services that provide all the features of Ingress plus powerful condition-based routing and traffic metrics which can be used for data-driven release automation.
 
 An example Kubernetes Service might look like this:
 ```yaml
@@ -92,11 +94,11 @@ foo-ingress          NodePort       10.0.117.255   <none>            40001:32036
 vamp-gateway-agent   LoadBalancer   10.0.34.200    104.215.188.161   80:30606/TCP      13d
 ```
 
-The *vamp-gateway-agent* Service is shared between all gateways. So public DNS entry for *foo.bar.com* should be mapped to external IP address of the *vamp-gateway-agent*. The Service can be looked up as *foo-ingress* using kube-dns and, by default, it is also reachable at *<node-ip>:<node-port>* on the private network used by the nodes, in this example the node port is 40001.
+The *vamp-gateway-agent* Service is shared between all gateways. So the public DNS entry for *foo.bar.com* should be mapped to external IP address of the *vamp-gateway-agent*. The Service can be looked up as *foo-ingress* using kube-dns and, by default, it is also reachable at *<node-ip>:<node-port>* on the private network used by the nodes, in this example the node port is 40001.
     
-The power of using a Vamp gateway is in `&& label(version)((.*))` part of the selector. If the current version Kubernetes Deployment with the labels *app:foo* and *version:1.0.3* and then create a new Deployment with the labels *app:foo* and *version:2.0.1*. A new route called *(2.0.1)* is automatically added to the gateway, this can then be used to do condition-based or weight-based, automated or manual blue/green or canary release of the new version. This applies to the gateways  used for internal microservices not just external facing "ingress" gateways.
+The power of using a Vamp gateway is in `&& label(version)((.*))` part of the selector. The variable part `(.*)` causes Vamp to monitor for Deployments that match the selector and create a new route on the gateway if it finds a version label that doesn't match an existing route. The gateway also reacts to Deployments being removed and to changes in the number of Replicas.
 
-Vamp Gateway Agents (VGAs) are not implemented as a Ingress controller on Kubernetes this is because the VGAs offer a much richer set of features than is supported by the Ingress controller API.
+If you have a current version of a Kubernetes Deployment with the labels *app:foo* and *version:1.0.3* and then create a new Deployment with the labels *app:foo* and *version:2.0.1*, A new route called *(2.0.1)* is automatically added to the gateway. You can then do a condition-based and/or weight-based, automated or manual blue/green or canary release of the new version.
 
 {{< note title="What next?" >}}
 * Find out how to [install Vamp](/documentation/installation/v1.0.0/overview)
