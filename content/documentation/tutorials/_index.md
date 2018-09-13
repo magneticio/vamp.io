@@ -14,7 +14,7 @@ menu:
 ## Getting started
 We’ve created a set of showcase applications, services and corresponding blueprints that demonstrate Vamp’s core features - together we call them “Sava”. Sava is a mythical vampire from Serbia ([wiki](http://en.wikipedia.org/wiki/Sava_Savanovi%C4%87)), but in our case they are examples to help us demonstrate Vamp.
 
-You can work with Sava in the [Vamp hello world](/documentation/installation/hello-world/) setup (or any other Vamp installation).
+You can work with Sava in the [Kubernetes Quickstart](/documentation/installation/v1.0.0/kubernetes/) setup (or any other [Vamp installation](documentation/installation/v1.0.0/overview/)).
 
 1. [Deploy your first blueprint](/documentation/tutorials/deploy-your-first-blueprint/)
 2. [Run a canary release](/documentation/tutorials/run-a-canary-release/)
