@@ -203,6 +203,10 @@ To **deploy the initial version of sava-cart for the Republic of Ireland** (v1.0
 
 At this point version 1.0 of the **sava-cart-ie is deployed but not released**. Once again, the deployment is healthy but cannot yet be found by the customers.
 
+We want the store front to be available to customers in the Republic of Ireland using an **ie.** sub-domain, so we need an external IP address we can use in our public DNS A record.
+
+To get an external IP address we could use a ([Service.Type=LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)) or we could use a Kubernetes [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) controller.
+
 If we were going to create a Kubernetes Service for our sava-cart-ie store front, it would look something like this:
 
 ```yaml
@@ -221,7 +225,26 @@ spec:
     locale: IE
 ```
 
-Instead of using a Kubernetes Service and Ingress, we're going to use a Vamp gateway.
+And the Kubernetes Ingress would look something like this:
+
+```yanl
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sava-cart-ie
+spec:
+  rules:
+  - host: ie.tutorials.vamp.cloud
+    http:
+      paths:
+      - backend:
+          serviceName: sava-cart-ie
+          servicePort: 80
+```
+
+The `host` rule isn't strictly necessary but is included for completeness.
+
+Instead of using a Kubernetes Service and an Ingress controller, we're going to use a Vamp gateway.
 
 ```yaml
 name: sava-cart-ie
