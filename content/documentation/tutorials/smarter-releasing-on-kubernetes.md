@@ -46,8 +46,6 @@ The **sava-product** service is implemented using a Dockerized [typicode/json-se
 
 The service provides a REST API that returns a list (array) of products in JSON format for the specified locale, for example: `/products/ie` will return a list of products available in the Republic of Ireland store.
 
-Versioning of the API is done by media type. The API defaults to the latest version and clients that care about the stability of the API can request a specific version in the `Accept` header - [GitHub's approach](https://developer.github.com/v3/media/)
-
 #### sava-cart store front
 The **sava-cart** store front is a fork of [gtsopour/nodejs-shopping-cart](https://github.com/gtsopour/nodejs-shopping-cart)
 
@@ -339,15 +337,36 @@ As soon as the new version has been deployed it will be automatically detected a
 
 As we did in [tutorial 2](/documentation/tutorials/run-a-canary-release/), let's adjust the weight and **start to send traffic to the new version of sava-product**:
 
-1. In the Vamp UI, select the environment *environment* and go to the Gateways page and select the **sava-product** gateway
+1. In the Vamp UI, select the environment *environment* and go to the **Gateways** page and open the **sava-product** gateway
 2. Click the edit icon next to **WEIGHT**
 3. Adjust the weight slider to distribute traffic 50% / 50% between the two versions
   ![](/images/screens/v100/tut5/vampee-environment-gateways-sava-product-editweights5050.png)
 4. Click **Save** and Vamp will adjust the route weights accordingly
 
-The store front is implemented as a [Tolerant Reader](http://servicedesignpatterns.com/WebServiceEvolution/TolerantReader) that expects changes to occur in the messages and media types it receives. For example, version 1.0 requests version 1 of the sava-product service (`Accept: application/vnd.sava.v1+json`) but will try to work with later versions.
+The store front is implemented as a [Tolerant Reader](http://servicedesignpatterns.com/WebServiceEvolution/TolerantReader) that expects changes to occur in the messages and media types it receives.
 
-If you `curl` the store front a few times and check the results, you won't see any difference but if you look at the metrics on the **sava-cart-ie** gateway page, you'll see that the requests were distributed equally between the two versions.
+### API versioning using conditional routing
+
+**Versioning of the sava-product API is done by media type**. The API defaults to the latest version and clients that care about the stability of the API can request a specific version in the HTTP `Accept` header - [GitHub's approach](https://developer.github.com/v3/media/). For example, **version 1.0 of sava-cart requests version 1 of the sava-product service using `Accept: application/vnd.sava.v1+json`** but will try to work with later versions.
+
+If you `curl` the store front a few times and check the results, you won't see any difference but if you look at the metrics on the **sava-product** gateway page, you'll see that the requests were distributed equally between the two versions.
+
+Now let's add conditions to the two routes, so that client requests are correctly handled based on what is set in the HTTP Accept header.
+
+1. In the Vamp UI, select the environment *environment* and go to the **Gateways** page and open the **sava-product** gateway
+* Click the edit condition icon for the **(1.0.3)** route and enter the condition `Header Accept Contains v1`.
+  Now we need to set a strength for the condition.  
+  We want all requests that request version 1 of the API to be sent to this route, so set the condition strength to 100%.
+* Click the edit condition strength icon for the **(1.0.3)** route and move the slider to 100%.
+* Next, click the edit condition icon for the **(2.0.1)** route and enter the condition `Header Accept Contains v2`.
+  Again, we want all requests that request version 2 of the API to be sent to this route, so set the condition strength to 100%.
+* Click the edit condition strength icon for the **(2.0.1)** route and move the slider to 100%.
+  Finally, we want version 2 of the API to be the default for all requests that don't specify a version. We do this using the route weight.
+* Click the edit icon next to **WEIGHT**
+* Adjust the weight slider to **100%** for the **(2.0.1)** route.
+* Click **Save**
+
+If you `curl` the store front a few more times and check the metrics on the **sava-product** gateway page, you'll see that all the requests are routed to version 1 of the API.
 
 {{< note title="What next?" >}}
 * Find out more about the synergy between [Vamp and Kubernetes](/documentation/how-vamp-works/v1.0.0/vamp-and-kubernetes/)
