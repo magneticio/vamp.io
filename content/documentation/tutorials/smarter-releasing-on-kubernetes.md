@@ -347,24 +347,28 @@ The store front is implemented as a [Tolerant Reader](http://servicedesignpatter
 
 ### API versioning using conditional routing
 
-**Versioning of the sava-product API is done by media type**. The API defaults to the latest version and clients that care about the stability of the API can request a specific version in the HTTP `Accept` header - [GitHub's approach](https://developer.github.com/v3/media/). For example, **version 1.0 of sava-cart requests version 1 of the sava-product service using `Accept: application/vnd.sava.v1+json`** but will try to work with later versions.
+**Versioning of the sava-product API is done by media type**. The API defaults to the latest version and clients that care about the stability of the API can request a specific version in the HTTP `Accept` header - [GitHub's approach](https://developer.github.com/v3/media/).
+
+For example, **version 1.0 of sava-cart requests version 1 of the sava-product service using `Accept: application/vnd.sava.v1+json`** but will try to work with later versions.
 
 If you `curl` the store front a few times and check the results, you won't see any difference but if you look at the metrics on the **sava-product** gateway page, you'll see that the requests were distributed equally between the two versions.
 
 Now let's add conditions to the two routes, so that client requests are correctly handled based on what is set in the HTTP Accept header.
 
 1. In the Vamp UI, select the environment *environment* and go to the **Gateways** page and open the **sava-product** gateway
-* Click the edit condition icon for the **(1.0.3)** route and enter the condition `Header Accept Contains v1`.
-  Now we need to set a strength for the condition.  
+2. Click the edit condition icon for the **(1.0.3)** route and enter the condition `Header Accept Contains v1`.
+  
   We want all requests that request version 1 of the API to be sent to this route, so set the condition strength to 100%.
-* Click the edit condition strength icon for the **(1.0.3)** route and move the slider to 100%.
-* Next, click the edit condition icon for the **(2.0.1)** route and enter the condition `Header Accept Contains v2`.
+3. Click the edit condition strength icon for the **(1.0.3)** route and move the slider to 100%.
+4. Next, click the edit condition icon for the **(2.0.1)** route and enter the condition `Header Accept Contains v2`.
+  
   Again, we want all requests that request version 2 of the API to be sent to this route, so set the condition strength to 100%.
-* Click the edit condition strength icon for the **(2.0.1)** route and move the slider to 100%.
+5. Click the edit condition strength icon for the **(2.0.1)** route and move the slider to 100%.
+  
   Finally, we want version 2 of the API to be the default for all requests that don't specify a version. We do this using the route weight.
-* Click the edit icon next to **WEIGHT**
-* Adjust the weight slider to **100%** for the **(2.0.1)** route.
-* Click **Save**
+6. Click the edit icon next to **WEIGHT**
+7. Adjust the weight slider to **100%** for the **(2.0.1)** route.
+8. Click **Save**
 
 If you `curl` the store front a few more times and check the metrics on the **sava-product** gateway page, you'll see that all the requests are routed to version 1 of the API.
 
