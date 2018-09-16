@@ -62,9 +62,11 @@ A single node Elasticsearch cluster residing in the management cluster is suffic
 
 If some of the service clusters are located in a different data centre (cloud region) to the one used for the management cluster, then it may make sense to use an Elasticsearch that is located in the same cloud region. Different Elasticsearch clusters can be specified at the tenant (organization) level and also at the environment level.
 
+![vampee-arch-mgnt-svc-ext-mysql-vault-remote-es model](/images/diagram/v100/vampee-arch-mgnt-svc-ext-mysql-vault-remote-es.png)
+
 The VGAs use Elasticsearch to log extensive meta-data about the service traffic passing through each gateways. The Quantification Workflow then aggregates this data for use by other workflows and also for display in the Vamp UI. Since Vamp only makes use of the aggregated data, for high traffic volume applications it makes sense to store and process the VGA logs within the same region.
 
-Vamp is designed to provide strong data security. Vamp only collects meta-data, it does not in any way store or process the payloads of the traffic passing VGAs. However, to simplify compliance with the EU General Data Protection Regulation (GDPR) and other national data protection regulations, we recommend that you use an Elasticsearch cluster that is located in the same data centre (cloud region) as your application.
+Vamp is designed to provide strong data security and only collects meta-data, it does not in any way store or process the payloads of the traffic passing VGAs. However, to simplify compliance with the EU General Data Protection Regulation (GDPR) and other national data protection regulations, we recommend that you use an Elasticsearch cluster that is located in the same data centre (cloud region) as your application.
 
 
 {{< note title="What next?" >}}
