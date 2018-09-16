@@ -357,18 +357,13 @@ Now let's add conditions to the two routes, so that client requests are correctl
 
 1. In the Vamp UI, select the environment *environment* and go to the **Gateways** page and open the **sava-product** gateway
 2. Click the edit condition icon for the **(1.0.3)** route and enter the condition `Header Accept Contains v1`.
-  
-  We want all requests that request version 1 of the API to be sent to this route, so set the condition strength to 100%.
-3. Click the edit condition strength icon for the **(1.0.3)** route and move the slider to 100%.
+3. Click the edit condition strength icon for the **(1.0.3)** route and move the slider to 100%, so that all requests for version 1 of the API to be sent to this route.
 4. Next, click the edit condition icon for the **(2.0.1)** route and enter the condition `Header Accept Contains v2`.
-  
-  Again, we want all requests that request version 2 of the API to be sent to this route, so set the condition strength to 100%.
-5. Click the edit condition strength icon for the **(2.0.1)** route and move the slider to 100%.
-  
-  Finally, we want version 2 of the API to be the default for all requests that don't specify a version. We do this using the route weight.
-6. Click the edit icon next to **WEIGHT**
-7. Adjust the weight slider to **100%** for the **(2.0.1)** route.
-8. Click **Save**
+5. Click the edit condition strength icon for the **(2.0.1)** route and move the slider to 100%, so that all requests for version 2 of the API to be sent to this route.
+6. Finally, we want version 2 of the API to be the default for all requests that don't specify a version. We do this using the route weight:
+  * Click the edit icon next to **WEIGHT**
+  * Adjust the weight slider to **100%** for the **(2.0.1)** route.
+  * Click **Save**
 
 If you `curl` the store front a few more times and check the metrics on the **sava-product** gateway page, you'll see that all the requests are routed to version 1 of the API.
 
