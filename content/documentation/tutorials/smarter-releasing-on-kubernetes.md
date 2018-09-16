@@ -22,6 +22,7 @@ In this tutorial we will:
 * [Deploy and release an internal microservice](#deploy-the-sava-product-service)
 * [Deploy and release a public-facing microservice](#deploy-sava-cart-store-front)
 * [Canary release a new version of a microservice](#canary-release)
+* [API versioning using conditional routing](#api-versioning-using-conditional-routing)
 
 ## Deploying versus releasing
 
