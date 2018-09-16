@@ -366,7 +366,7 @@ Now let's add conditions to the two routes, so that client requests are correctl
   * Adjust the weight slider to **100%** for the **(2.0.1)** route.
   * Click **Save**
 
-If you `curl` the store front a few more times and check the metrics on the **sava-product** gateway page, you'll see that all the requests are routed to version 1 of the API.
+If you `curl` the store front a few more times and check the metrics on the **sava-product** gateway page, you'll see that all the requests are now correctly routed to version 1 of the API.
 
 {{< note title="What next?" >}}
 * Find out more about the synergy between [Vamp and Kubernetes](/documentation/how-vamp-works/v1.0.0/vamp-and-kubernetes/)
