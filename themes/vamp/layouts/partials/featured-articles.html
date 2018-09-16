@@ -14,7 +14,7 @@
             {{ end }}
           </div>
           <div class="featured-article">
-            <small class="mr-1 text-uppercase ">Now on the blog</small>
+            <small class="mr-1 text-uppercase ">On the blog</small>
             {{ range first 1 (where .Data.Pages "Section" "in" (slice "blog")) }}
             <a href="{{ .Permalink }}" class="ml-2">
               {{ .Title }}
