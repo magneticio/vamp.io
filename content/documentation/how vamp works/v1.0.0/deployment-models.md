@@ -70,7 +70,7 @@ Vamp is designed to provide strong data security and only collects meta-data, it
 
 1. That you use an Elasticsearch cluster in the same data centre (cloud region) as your management cluster to store the audit logs and also for countries that do not have geographical restrictions on data processing and storage. Co-located Elasticsearch clusters should be used if the traffic volumes are high
 1. That you use an Elasticsearch cluster in a EU data centre (cloud region) for applications that service users in the EU
-2. Where necessary, that you use a spearate Elasticsearch cluster in each country that has it's own national regulatory requirements. For example, a separate Elasticsearch cluster in Germay for applications that service users in Germany
+2. Where necessary, that you use a separate Elasticsearch cluster in each country that has it's own national regulatory requirements. For example, a separate Elasticsearch cluster in Germay for applications that service users in Germany
 
 {{< note title="What next?" >}}
 * Read about the [requirements to run Vamp](/documentation/how-vamp-works/v1.0.0/requirements)
