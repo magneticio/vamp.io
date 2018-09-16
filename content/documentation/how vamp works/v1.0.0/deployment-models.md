@@ -66,8 +66,11 @@ If some of the service clusters are located in a different data centre (cloud re
 
 The VGAs use Elasticsearch to log extensive meta-data about the service traffic passing through each gateways. The Quantification Workflow then aggregates this data for use by other workflows and also for display in the Vamp UI. Since Vamp only makes use of the aggregated data, for high traffic volume applications it makes sense to store and process the VGA logs within the same region.
 
-Vamp is designed to provide strong data security and only collects meta-data, it does not in any way store or process the payloads of the traffic passing VGAs. However, to simplify compliance with the EU General Data Protection Regulation (GDPR) and other national data protection regulations, we recommend that you use an Elasticsearch cluster that is located in the same data centre (cloud region) as your application.
+Vamp is designed to provide strong data security and only collects meta-data, it does not in any way store or process the payloads of the traffic passing VGAs. However, to simplify compliance with the EU General Data Protection Regulation (GDPR) and other national data protection regulations, we recommend the following:
 
+1. That you use an Elasticsearch cluster in the same data centre (cloud region) as your management cluster to store the audit logs and also for countries that do not have geographical restrictions on data processing and storage. Co-located Elasticsearch clusters should be used if the traffic volumes are high
+1. That you use an Elasticsearch cluster in a EU data centre (cloud region) for applications that service users in the EU
+2. Where necessary, that you use a spearate Elasticsearch cluster in each country that has it's own national regulatory requirements. For example, a separate Elasticsearch cluster in Germay for applications that service users in Germany
 
 {{< note title="What next?" >}}
 * Read about the [requirements to run Vamp](/documentation/how-vamp-works/v1.0.0/requirements)
