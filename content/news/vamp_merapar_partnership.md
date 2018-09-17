@@ -3,7 +3,7 @@ date: 2018-09-17T09:00:00+00:00
 title: "Vamp.io and Merapar announce strategic partnership to help cloud native adopters to increase velocity and minimize blast radius"
 categories: ["news"]
 publishdate: 2018-09-17
-featured_image: "/img/news/merapar.png"
+featured_image: "https://vamp.io/img/news/merapar.png"
 ---
 
 *Amsterdam / Eindhoven, 17 September 2018*
