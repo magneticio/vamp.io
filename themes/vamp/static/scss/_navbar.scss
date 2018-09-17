@@ -162,10 +162,10 @@
   }
 
   .hiring-popover {
-    position: relative;
+    position: fixed;
     background: $gray;
     font-size: .75rem;
-    padding: .5rem .75rem;
+    padding: .5rem .5rem;
     margin-left: 1rem;
     border-radius: 2px;
     &:after {
