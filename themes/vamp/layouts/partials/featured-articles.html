@@ -6,7 +6,7 @@
         <div class="text-center featured-articles-content">
           <div class="featured-article">
             <small class="mr-1 text-uppercase ">News</small>
-            {{ range first 1 (where .Data.Pages "Section" "in" (slice "news")) }}
+            {{ range last 1 (where .Data.Pages.ByPublishDate "Section" "in" (slice "news")) }}
             <a href="{{ .Permalink }}" class="ml-2">
               {{ .Title }}
               →
@@ -15,7 +15,7 @@
           </div>
           <div class="featured-article">
             <small class="mr-1 text-uppercase ">On the blog</small>
-            {{ range first 1 (where .Data.Pages "Section" "in" (slice "blog")) }}
+            {{ range last 1 (where .Data.Pages.ByPublishDate "Section" "in" (slice "blog")) }}
             <a href="{{ .Permalink }}" class="ml-2">
               {{ .Title }}
               →
