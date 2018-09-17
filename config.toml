@@ -22,6 +22,7 @@ googleAnalytics = ""
 	version = "0.9.5"
 	logo = "images/favicon.png?v=1.0"
 	favicon = "images/favicon.png?v=1.0"
+	og_image = "/img/006-mock-ups/VAMP-light-laptop-v100-hero.png"
 
 	permalink = "#"
 

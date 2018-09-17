@@ -18,16 +18,26 @@
   <meta name="author" content="{{ . }}">
   {{ end }}
 
-  <meta property="og:url" content="{{ .Permalink }}">
-  {{ with .Site.Title }}<meta property="og:title" content="{{ . }}">{{ end }}
-  <meta property="og:image" content="/img/006-mock-ups/VAMP-light-laptop-v100-hero.png">
-  {{ with .Site.Title }}<meta name="apple-mobile-web-app-title" content="{{ . }}">{{ end }}
 
+  <!--OPEN GRAPH-->
+  <meta property='og:title' content='{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | Vamp.io {{ end }}'>
+  <!--<meta property="og:image" content="/img/006-mock-ups/VAMP-light-laptop-v100-hero.png">-->
+
+  <meta property="og:image" content='{{ if .IsPage }}{{if isset .Params "featured_image"}} {{with .Params.featured_image}}{{ . }}{{end}}{{else}}{{.Site.Params.og_image}}{{end}}{{else}}{{.Site.Params.og_image}}{{end}}'>
+  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+  {{ with .Site.Title }}
+  <meta name="apple-mobile-web-app-title" content="{{ . }}">
+  {{ end }}
+
+
+  <!--TWITTER CARD-->
 
   <meta property='twitter:card' content='summary'>
   <meta property='twitter:title' content='{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | Vamp.io {{ end }}'>
-  <meta property='twitter:description' content='{{.Description | default .Site.Params.Description}}'>
-  <meta property='twitter:image' content='content="/img/006-mock-ups/VAMP-light-laptop-v100-hero.png'>
+  <meta property="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
+  <meta property="twitter:image" content='{{ if .IsPage }}{{if isset .Params "featured_image"}} {{with .Params.featured_image}}{{ . }}{{end}}{{else}}{{.Site.Params.og_image}}{{end}}{{else}}{{.Site.Params.og_image}}{{end}}'>
 
 
   <meta name="apple-mobile-web-app-capable" content="yes">

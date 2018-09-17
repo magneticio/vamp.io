@@ -3,6 +3,7 @@ date: 2018-09-06T09:00:00+00:00
 title: "Meet Vamp at IBC 2018 in Amsterdam"
 categories: ["news"]
 publishdate: 2018-09-06
+featured_image: "https://vamp.io/img/news/ibc2018.png"
 ---
 
 *Amsterdam, 6 September 2018*
