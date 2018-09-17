@@ -1,8 +1,7 @@
 ---
 date: 2017-10-18T09:00:00+00:00
 title: "New on DZone: extending Marathon-LB with Canary Releasing"
-
-
+publishdate: 2017-10-18
 ---
 *Amsterdam, 18 October 2017*
 

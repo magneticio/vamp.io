@@ -1,6 +1,7 @@
 ---
 date: 2018-02-28T09:00:00+00:00
 title: "New Hackernoon: Exploring new frontiers in CI/CD and DevOps"
+publishdate: 2018-02-28
 ---
 
 *Amsterdam, 28 February 2018*

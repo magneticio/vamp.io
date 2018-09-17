@@ -1,8 +1,7 @@
 ---
 date: 2016-12-08T09:00:00+00:00
 title: "Microsoft Technet: Enabling Vamp on Azure Container Service (DC/OS)"
-
-
+publishdate: 2016-12-12
 ---
 *Amsterdam, 12 December 2016*
 

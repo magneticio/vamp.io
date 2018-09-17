@@ -1,8 +1,7 @@
 ---
 date: 2018-01-17T09:00:00+00:00
 title: "New on Hackernoon: AWS Lambda Go vs. Node.js"
-
-
+publishdate: 2018-01-17
 ---
 *Amsterdam, 17 Jan 2018*
 

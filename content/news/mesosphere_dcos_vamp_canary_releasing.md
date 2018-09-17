@@ -1,8 +1,7 @@
 ---
 date: 2016-08-15T09:00:00+00:00
 title: "Canary Releasing with DC/OS and Vamp on Mesosphere"
-
-
+publishdate: 2016-08-15
 ---
 *Amsterdam, 15 August 2016*
 

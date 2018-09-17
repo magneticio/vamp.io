@@ -1,8 +1,7 @@
 ---
 date: 2017-12-04T09:00:00+00:00
 title: "New on Hackernoon: Azure Container Instances vs. AWS Fargate "
-
-
+publishdate: 2017-12-04
 ---
 *Amsterdam, 4 Dec 2017*
 
