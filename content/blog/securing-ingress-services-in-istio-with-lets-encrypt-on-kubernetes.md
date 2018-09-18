@@ -5,6 +5,7 @@ author: "Berk Gökden"
 avatar: "alessandrov.jpg"
 tags: ["Kubernetes", "Istio" ,"Microservices", "Security"]
 publishdate: 2018-08-15
+featured_image: "https://cdn-images-1.medium.com/max/720/1*rclb9okYbeFN-jJmgbT3bw.jpeg"
 ---
 
 ![](https://cdn-images-1.medium.com/max/720/1*rclb9okYbeFN-jJmgbT3bw.jpeg)
