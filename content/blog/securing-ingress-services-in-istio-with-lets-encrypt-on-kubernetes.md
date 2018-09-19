@@ -2,7 +2,7 @@
 date: 2018-07-18T09:00:00+00:00
 title: "Securing Ingress Services in Istio with Let’s Encrypt on Kubernetes"
 author: "Berk Gökden"
-avatar: "alessandrov.jpg"
+avatar: "berkg.jpg"
 tags: ["Kubernetes", "Istio" ,"Microservices", "Security"]
 publishdate: 2018-08-15
 featured_image: "https://cdn-images-1.medium.com/max/720/1*rclb9okYbeFN-jJmgbT3bw.jpeg"
