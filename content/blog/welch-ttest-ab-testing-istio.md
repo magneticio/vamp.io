@@ -49,15 +49,17 @@ For this example we deployed a nodejs webservice exposing two endpoints that sim
 As already shown in the previous blog post we also set up a Service, Destination Rule and Gateway to allow access to our webservice.
 After doing all that we can now create the Experiment itself as shown in the image below.
 
+![Experiment configuration](https://cdn-images-1.medium.com/max/1600/1*hiZhf5AT6pdz6hEe6tIOQA.png)
+
 Once the experiment has been created and the first minute has expired a running instance of Elasticsearch will be queried for the metrics of each subset and the data thus gathered will be used to calculate the Welch's test result.
 
 More specifically these are the steps that will take place:
-* Number of elements, average and variance get gathered from Elasticsearch
-* For each Tag the Welch t-test hypothesis gets evaluated against the aggregated values of the other tags.
-* If the averages are comparable the highest average gets identified.
-* The results of the test are aggregated per Subset based on the tags associated with each subset.
-* Subsets that obtained a positive score get a weight increase, while all others get a weight decrease.
-* The new routing weights thus obtained are normalised so that their sum doesn't exceed 100%.
+- Number of elements, average and variance get gathered from Elasticsearch
+- For each Tag the Welch t-test hypothesis gets evaluated against the aggregated values of the other tags.
+- If the averages are comparable the highest average gets identified.
+- The results of the test are aggregated per Subset based on the tags associated with each subset.
+- Subsets that obtained a positive score get a weight increase, while all others get a weight decrease.
+- The new routing weights thus obtained are normalised so that their sum doesn't exceed 100%.
 
 This, in short, is how the Experiment will calculate statistically relevant result to identify the best Subset among those configured for our service.
 
