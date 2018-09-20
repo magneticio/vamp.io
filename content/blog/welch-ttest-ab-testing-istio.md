@@ -11,7 +11,7 @@ featured_image: "https://cdn-images-1.medium.com/max/720/1*SEDs0n1m8vhTPlxOhrudJ
 ![](https://cdn-images-1.medium.com/max/720/1*SEDs0n1m8vhTPlxOhrudJA.png)
 
 Welcome back to our ongoing series on the development of Vamp Lamia and our experiences in using Istio for traffic routing on Kubernetes.
-In [one of our previous posts](https://vamp.io/blog/ab-testing-istio/), we presented our approach to A/B testing with Vamp Lamia through the use of Experiments, which enable the user to quickly create a complex Virtual Services configuration and set up a Policy that will redirect the traffic based on the users behaviour, for example moving all visitors to the winning variant of an Experiment.
+In [one of our previous posts](https://vamp.io/blog/ab-testing-istio/), we presented our approach to A/B testing with Vamp Lamia through the use of Experiments, which enable the user to quickly create a complex Virtual Service configuration and set up a Policy that will redirect the traffic based on the users' behaviour, for example moving all visitors to the winning variant of an Experiment.
 As we stated at the end of the post, however, our implementation was, at that time, pretty simple. 
 Since then, we made quite a few improvements and we are now ready to share them.
 
@@ -24,7 +24,7 @@ In our initial implementation the outcome of the A/B test was calculated by comp
 While this is a sensible approach, it is far from being ideal. 
 Differences in the statistical distributions of the two (or more) sets of user interactions could in fact lead to erroneous results.
 
-For this reason we decided to use a different method: Welch's t-test.
+For this reason we decided to use a different method: Welch's t-test.  
 Welch's t-test, also known as unequal variances test, is, as the name implies, a statistical test widely employed to verify the hypothesis that two populations of different size and with different variances have equal, or close enough, averages.
 In order to verify this hypothesis we have to calculate two values.
 First is the statistic t, obtained through the formula
@@ -36,12 +36,12 @@ Secondly, we need the degrees of freedom, defined as
 
 ![](/images/blog/welch2.png)
 
-Once we have these two value we can then use them with the t-distribution in order to verify that the averages are close enough.
+Once we have these two values we can then use them with the t-distribution in order to verify that the averages are close enough.
 
 This scenario is however a bit simplistic, especially because it compares only two populations. 
 In our case, instead, we might typically find ourselves comparing three or more versions of a given service at the same time and, on top of that, some of these versions might share common features which should be considered individually in the outcome of the test.
 
-For example we might have three versions of an e-commerce frontend where the first version has a blue background and white text, the second has a white background and red text and the third one has a blue background and black text. Let's say at the end of the A/B testing the second version is the winner that means white background and red text is the best combination, however both the first and the third version had a blue background, so their combined results over this feature might actually show that the blue background is actually overall better than the white background regardless of the color of the text. Our goal is to be able to detect this.
+For example we might have three versions of an e-commerce frontend where the first version has a blue background and white text, the second has a white background and red text and the third one has a blue background and black text. Let's say at the end of the A/B testing the second version is the winner, that means white background and red text is the best combination, however both the first and the third version had a blue background, so their combined results over this feature might actually show that the blue background is overall better than the white background regardless of the color of the text. Our goal is to be able to detect this.
 
 In order to better showcase how Welch's t-test is used to implement Experiments in Vamp Lamia, let's create a simple example and look more closely at how the A/B testing winner will be determined.
 
@@ -63,6 +63,8 @@ More specifically these are the steps that will take place:
 - The new routing weights thus obtained are normalised so that their sum doesn't exceed 100%.
 
 This, in short, is how the Experiment will calculate statistically relevant result to identify the best Subset among those configured for our service.
+
+## Conclusions
 
 This new way of handling A/B testing in Vamp Lamia can, of course, still be improved, for example by providing more details about the test outcome and about how each of the features actually performed. 
 In addition to that, we are also planning to add more configuration options and make the creation of Experiments more intuitive and straightforward.
