@@ -29,12 +29,12 @@ Welch's t-test, also known as unequal variances test, is, as the name implies, a
 In order to verify this hypothesis we have to calculate two values.
 First is the statistic t, obtained through the formula
 
-![](https://cdn-images-1.medium.com/max/1600/1*OSlYGzrfs0lPJEN5o0atNQ.png)
+![](/images/blog/welch1.png)
 
 Where X is the average of the population, while s and N are its variance and the number of its elements.
 Secondly, we need the degrees of freedom, defined as
 
-![](https://cdn-images-1.medium.com/max/1600/1*Mg-bWrYM0dLhkxLCNEFlQA.png)
+![](/images/blog/welch2.png)
 
 Once we have these two value we can then use them with the t-distribution in order to verify that the averages are close enough.
 
@@ -49,7 +49,7 @@ For this example we deployed a nodejs webservice exposing two endpoints that sim
 As already shown in the previous blog post we also set up a Service, Destination Rule and Gateway to allow access to our webservice.
 After doing all that we can now create the Experiment itself as shown in the image below.
 
-![Experiment configuration](https://cdn-images-1.medium.com/max/1600/1*hiZhf5AT6pdz6hEe6tIOQA.png)
+![Experiment configuration](/images/blog/experiment_configuration.png)
 
 Once the experiment has been created and the first minute has expired a running instance of Elasticsearch will be queried for the metrics of each subset and the data thus gathered will be used to calculate the Welch's test result.
 
