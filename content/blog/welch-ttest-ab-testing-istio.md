@@ -54,6 +54,7 @@ After doing all that we can now create the Experiment itself as shown in the ima
 Once the experiment has been created and the first minute has expired a running instance of Elasticsearch will be queried for the metrics of each subset and the data thus gathered will be used to calculate the Welch's test result.
 
 More specifically these are the steps that will take place:
+
 - Number of elements, average and variance get gathered from Elasticsearch
 - For each Tag the Welch t-test hypothesis gets evaluated against the aggregated values of the other tags.
 - If the averages are comparable the highest average gets identified.
