@@ -5,10 +5,10 @@ author: "Alessandro Valcepina"
 avatar: "alessandrov.jpg"
 tags: ["Kubernetes", "Istio" ,"Microservices", "AB Testing"]
 publishdate: 2018-09-19
-featured_image: "https://cdn-images-1.medium.com/max/720/1*SEDs0n1m8vhTPlxOhrudJA.png"
+featured_image: "/images/blog/ab_testing.png"
 ---
 
-![](https://cdn-images-1.medium.com/max/720/1*SEDs0n1m8vhTPlxOhrudJA.png)
+![](/images/blog/ab_testing.png)
 
 Welcome back to our ongoing series on the development of Vamp Lamia and our experiences in using Istio for traffic routing on Kubernetes.
 In [one of our previous posts](https://vamp.io/blog/ab-testing-istio/), we presented our approach to A/B testing with Vamp Lamia through the use of Experiments, which enable the user to quickly create a complex Virtual Service configuration and set up a Policy that will redirect the traffic based on the users' behaviour, for example moving all visitors to the winning variant of an Experiment.
