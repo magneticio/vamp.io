@@ -69,7 +69,7 @@ This, in short, is how the Experiment will calculate statistically relevant resu
 This new way of handling A/B testing in Vamp Lamia can, of course, still be improved, for example by providing more details about the test outcome and about how each of the features actually performed. 
 In addition to that, we are also planning to add more configuration options and make the creation of Experiments more intuitive and straightforward.
 Nonetheless we believe this shows the potential in using Istio in combination with Vamp Lamia to handle complex A/B testing scenarios.
-We hope the example we presented piqued your interest and, if that's the case, we invite you to visit our [Github repository](https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fmagneticio%2Fvamp2setup), download Vamp Lamia test version and take a look at the extensive readme to try it out for yourselves . 
+We hope the example we presented piqued your interest and, if that's the case, we invite you to visit our [Github repository](https://github.com/magneticio/vamp2setup), download Vamp Lamia test version and take a look at the extensive readme to try it out for yourselves . 
 If you have any suggestions or feedback, please let us know. We look forward to hearing what you think.
 See you soon with a new blog post!
 
