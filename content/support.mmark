@@ -1,0 +1,54 @@
+---
+date: 2016-09-13T09:00:00+00:00
+title: support
+type: page
+layout: overview
+aliases:
+    - /community/
+---
+Vamp Community Edition is open source and Apache 2.0 licensed. For details of the **Vamp Enterprise Edition** please check the [Vamp feature matrix](/product/enterprise-edition/), [start a free trial] (/ee-trial-signup/), or [contact us](mailto:info@vamp.io) to discuss your requirements, pricing and features.
+
+## Community support
+If you have a question about Vamp, please check the [Vamp documentation](/documentation/using-vamp/artifacts) first  - we're always adding new resources, tutorials and examples.
+
+* **Bug reports:** If you found a bug, please report it! [Create an issue on GitHub](https://github.com/magneticio/vamp/issues) and provide as much info as you can, specifically the version of Vamp you are running and the container driver you are using.
+* **Gitter:** You can post questions directly to us on our [public Gitter channel](https://gitter.im/magneticio/vamp)
+* **Twitter:** You can also follow us on Twitter: [@vamp_io](https://twitter.com/vamp_io)
+
+## Professional support
+We offer five extended professional support plans. Contact us for pricing information, and details of professional
+services and consultancy: [info@vamp.io](mailto:info@vamp.io?subject=Information request - Vamp professsional support)
+or call +31(0)88 555 33 99
+
+### Support levels
+
+{.table .vamp-table .table-striped}
+| Support levels                               | basic           | enterprise      | gold            |
+|----------------------------------------------|-----------------|-----------------|-----------------|
+| Service window for incident                  | 09:00 - 17:00   | 08:00 - 22:00   | 00:00 - 24:00   |
+| Weekends                                     | No              | No              | Yes             |
+| Response time for incident (Major impact)    | 2 hours         | 2 hours         | 15 minutes      |
+| Response time for incident (Moderate impact) | 8 hours         | 4 hours         | 2 hours         |
+| Response time for incident (Minor impact)    | 16 hours        | 8 hours         | 4 hours         |
+| Number of included support hours             | 0 hours         | 8 hours         | 15 hours        |
+
+
+### Support priority levels
+
+{.table .vamp-table .table-striped}
+| Priority levels |                                                                                                                                                                                                                                    |
+|-------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Major impact            | The Software is inoperable or the performance of the Software is so severely reduced that Licensee cannot reasonably continue to operate the Software because of the Error and the Error cannot be circumvented with a Workaround. |
+| Moderate impact         | The Software's performance is significantly degraded such that Licensee's use of the Software as permitted is materially impaired, but the Error can be circumvented with a Workaround.                                            |
+| Minor impact            | Licensee is experiencing a performance, operational, or functional Error that can be circumvented with Workaround and the Error causes only minimal impact to the Licensee's ability to use the Software as authorized.            |
+## Vamp Support Terms & Conditions
+
+You can download the latest version of our terms & conditions with the link below
+
+[Vamp Support Terms & Conditions](/terms/vamp-support-terms-conditions-1.1.pdf)
+
+{{< note title="What next?" >}}
+* [Try Vamp](/ee-trial-signup/)
+* Learn [how Vamp works](/documentation/how-vamp-works/architecture-and-components)
+* Get your teeth into the [Vamp documentation](/documentation/using-vamp/artifacts)
+{{< /note >}}
