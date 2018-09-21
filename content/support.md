@@ -20,11 +20,11 @@ We offer five extended professional support plans. Contact us for pricing inform
 
 ![](/images/tables/Support levels table.png)
 
-## Terms & Conditions
+## Vamp Support Terms & Conditions
 
 You can download the latest version of our terms & conditions with the link below
 
-[Vamp Service / Support Terms & Conditions](/terms/vamp-service-support-terms-and-conditions.pdf)  
+[Vamp Support Terms & Conditions](/terms/vamp-support-terms-conditions-1.1.pdf)  
 
 {{< note title="What next?" >}}
 * [Try Vamp](/ee-trial-signup/)
