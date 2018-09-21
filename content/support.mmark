@@ -3,8 +3,6 @@ date: 2016-09-13T09:00:00+00:00
 title: Vamp Enterprise Edition Support
 type: page
 layout: overview
-aliases:
-    - /community/
 ---
 Vamp Enterprise Edition is a licensed software product for which we offer three levels of support which are described below. For details of the **Vamp Enterprise Edition** please check the [Vamp feature matrix](/product/enterprise-edition/), [start a free trial] (/ee-trial-signup/), or [contact us](mailto:info@vamp.io) to discuss your requirements, pricing and features.
 
@@ -37,6 +35,10 @@ We offer three support plans. Contact us for pricing information and details of 
 You can download the latest version of our terms & conditions with the link below
 
 [Vamp Support Terms & Conditions](/terms/vamp-support-terms-conditions-1.1.pdf)
+
+## Community support
+
+Please find details on support for the Vamp Community edition [on our community page](/community/).
 
 {{< note title="What next?" >}}
 * [Try Vamp](/ee-trial-signup/)
