@@ -4,6 +4,7 @@ title: Product
 aliases:
     - /product/why-use-vamp-v2/
     - /why-use-vamp-v2/
+    - /product/feature-list/
 header:
     hero: "Intelligent canary-releasing, feature-testing and optimisation for cloud-native applications"
 roles:
