@@ -14,7 +14,7 @@ Welcome to our ongoing series of post on our experiences in using Istio during t
 
 In [our previous post](https://vamp.io/blog/welch-ttest-ab-testing-istio/), we presented Vamp Lamia's approach to A/B testing and then delved deeper into how Experiments use Welch's t-test to identify the test's winner in a statistically sound way.
 
-In both scenarios, however, we relied solely on Elasticsearch to gather the necessary statistics to calculate the A/B test outcome.
+In both scenarios, however, we relied solely on Elasticsearch to gather the necessary statistics to calculate the A/B test outcome. 
 This begs the question: what if we wanted to use a different source?
 In this post we will discuss the possibility of employing a custom data source, be it a different database or another application, deployed inside or outside the cluster.
 
@@ -40,7 +40,7 @@ You can see below an example of such a json.
 }
 ```
 
-In this sample the number of elements is the number of users that got to the landing page of the service we are testing, while the average and standard deviation are calculated over the number of successful interactions of each user, i.e. the interactions that reached the specified target.
+In this sample the number of elements is the number of users that got to the landing page of the service we are testing, while the average and standard deviation are calculated over the number of successful interactions of each user, i.e. the interactions that reached the specified target. 
 Of course it is also possible for those number to have a different meaning. There's nothing preventing us, for example, from calculating the required statistics over the amount of each order submitted on an e-commerce or the time spent on the target page by each user. 
 
 Exposing the endpoint we just described is basically the only requirement a custom data source has to meet in order to be used as an Elasticsearch replacement for A/B testing with Vamp Lamia. 
@@ -51,7 +51,7 @@ To have a clearer idea of what these changes are are we will refer to the pictur
 
 If you have read our previous blog post, you will notice that the configuration we are using here is very similar to the one used back then. 
 We are configuring the names of the Service and Gateway that the Experiment will use, the time interval of each update and the amount by which the routes weights should be shifted, and, finally, we are defining three Subsets, each one with its own tags or features. 
-In addition to all that, however we are also providing, through the Data Source path field, the the uri towards our mock data source. This will allow the Experiment to query it for data at each interval.
+In addition to all that, however we are also providing, through the Data Source path field, the uri towards our mock data source. This will allow the Experiment to query it for data at each interval.
 
 On its own, however, specifying this uri is not enough.  
 As we said earlier, we also have to tell Vamp Lamia to use a different implementation for the Driver responsible for querying Elasticsearch. 
@@ -64,7 +64,7 @@ Once the form is submitted the Experiment will start and perform the same operat
 ## Conclusions
 
 Setting up this example was a useful test for us, because it proved that the goal we set for ourselves while first approaching Vamp Lamia development has been met, that is Vamp Lamia Drivers can be easily replaced in order to change its functionalities. 
-In the future we plan to make use of this feature more and more in order to tackle specific requirements that our customers might have int he future.
+In the future we plan to make use of this feature more and more in order to tackle specific requirements that our customers might have in the future.
 
-If you are curious about Vamp Lamia and want to check out its features more in depth we invite you to take a look at our Github repository where you can find a more comprehensive tutorial and try it out on your own. 
+If you are curious about Vamp Lamia and want to check out its features more in depth we invite you to take a look at our [Github repository](https://github.com/magneticio/vamp2setup) where you can find a more comprehensive tutorial and try it out on your own. 
 And, of course, keep an eye on our blog for new updates!
