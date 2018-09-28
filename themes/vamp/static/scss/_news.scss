@@ -1,0 +1,20 @@
+.news {
+  .news-header {
+    display: inline-block;
+    font-size: 45px;
+    color: $blue-darker;
+    font-weight: $font-weight-heavy;
+    letter-spacing: .03em;
+    line-height: 1.3;
+    margin-bottom: $spacer;
+    @media (max-width: 321px) {
+      font-size: 35px;
+    }
+  }
+  a.news-header {
+    &:hover {
+      color: $blue-light !important;
+      text-decoration: none;
+    }
+  }
+}

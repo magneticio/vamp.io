@@ -13,8 +13,7 @@
         {{ partial "blog-meta-data" . }}
 
         <article>
-          <a class="blog-header" href="{{ .RelPermalink }}">{{ .Title }}
-          </a>
+          <a class="blog-header" href="{{ .RelPermalink }}">{{ .Title }}</a>
           <div class="markdowned blog-body">
             {{ .Summary | markdownify }}
           </div>
