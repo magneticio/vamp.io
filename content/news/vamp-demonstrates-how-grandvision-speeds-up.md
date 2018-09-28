@@ -1,6 +1,6 @@
 ---
 date: 2018-09-28T09:00:00+00:00
-title: "Vamp demonstrates how GrandVision speeds-up digital innovation"
+title: "Vamp.io demonstrates how GrandVision speeds-up digital innovation"
 categories: ["news"]
 publishdate: 2018-09-28
 featured_image: "https://vamp.io/img/news/grandvision1.png"
