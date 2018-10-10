@@ -28,7 +28,7 @@ roles:
             - "multi-stage feature releases (geo, device, time, customer-segments, manual checks)"
             - "feature A/B testing with configuration-based feature toggles/flags"
             - "integrate with external analytics, APM and business systems"
-            - "rich dashboards and wizardsfor full insights, observability and control" 
+            - "rich dashboards and wizards for full insights, observability and control" 
 features:
     -
         title: "Canary releasing workflows with smart rollbacks"
