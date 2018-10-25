@@ -4,13 +4,13 @@ table.vamp-table  {
     background-color: $blue-darker;
     border-bottom: 0;
     font-weight: $font-weight-default;
-    padding: $spacer;
+    padding: .6 * $spacer !important;
   }
   tbody > tr > td {
     color: $blue-darker;
     border-bottom: 1px solid $ash;
     font-weight: $font-weight-default;
-    padding: $spacer;
+    padding: .6 * $spacer;
   }
 
   &.table-striped {

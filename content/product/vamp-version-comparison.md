@@ -4,7 +4,7 @@ title: Vamp Enterprise Edition vs. Vamp Community Edition
 type: "page"
 layout: "enterprise-edition"
 aliases:
- - /product/enterprise-edition/
+ - /product/enterprise-edition-old/
 menu:
   main:
     parent: "Vamp version comparison"

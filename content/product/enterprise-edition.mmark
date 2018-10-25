@@ -1,0 +1,105 @@
+---
+date: 2016-09-13T09:00:00+00:00
+title: Vamp Enterprise Edition 1.0
+type: "page"
+layout: "enterprise-edition"
+aliases:
+ - /product/enterprise-edition/
+menu:
+  main:
+    parent: "Vamp Enterprise Edition 1.0"
+    weight: 10
+---
+
+{{% centered-section %}}
+# Release with confidence
+Vamp offers release, control and optimisation of your containerised apps.
+
+
+### Increase release velocity of new features
+Limited blast radius with Vamp’s automated & segmented gradual canary rollouts in production; including a safety net.
+
+### Optimise new feature release
+Vamp A/B tests new features releases with real time business data driven decisions on succes or failure.
+
+### Optimise cloud costs performance
+Vamp optimises cloud usage through priorities and real time load control.
+
+### Improve Quality of Experience
+Vamp’s real time integration with monitoring systems enable real time workflows for automatically actioning on issues with QoE.
+
+{{<contact-sales-block-button>}}
+
+{{% /centered-section %}}
+
+{{% left-section-half %}}
+
+## Product Owners
+Use Vamp for Multi stage feature releases based on Geo, Device, Time, Customer Segment or Manual Checks.
+
+Can feature A/B test with configuration-based feature toggles/flags integrated with external analytics, APM and business systems.
+
+Get control on new feature releases: observe, analyse and act through rich dashboards and wizards.
+
+## DevOps teams
+Can sleep easy when a release is performed; Vamp offers safeguarded automated Canary Releasing with rollback and reporting on issues.
+
+Will love the automation, separation of roles, teams and concerns thanks to multi-cloud multi-environment, multi-scheduler features and fine-grained Role Based Access Control.
+
+Get the tools to design customisable canary test, release and SLA-based performance optimization workflows with flexible metrics and events systems.
+
+Get a self service system for releasing and traffic routing, an API gateway and powerful orchestration features.
+
+{{% /left-section-half %}}
+
+{{% right-section-half %}}
+
+## Vamp Enterprise key features
+
+{{< enterprise-table >}}
+
+{{% /right-section-half %}}
+
+
+{{% left-section-full %}}
+
+## Subscribing to a Vamp Enterprise License
+
+Vamp Enterprise is installed on any cloud platform, on-premise or bare metal. We offer a subscription pay-per-use model that caters for all these situations.
+
+How a Vamp Enterprise subscription works:
+
+- You only pay for what you use as you grow based on the vCPU nodes in production environments.
+- We bill per month based on the on last month’s actual usage of Vamp in production environments.
+- You choose your level of support as part of our contract available in three flavours: Basic/Enterprise & Gold.  More details about [support can be found here](/support).
+- Vamp should be installed on your preferred cloud platform, on-premise, or both.
+
+Please {{<contact-sales-link>}} to request a Vamp Enterprise subscription quote that fits your requirements.
+
+{{% /left-section-full %}}
+
+{{% left-section-full %}}
+
+## Vamp Enterprise Support
+
+### Vamp Support levels
+Vamp Enterprise is a licensed software product for which we offer three levels of support: Basic, Enterprise and Gold.
+The tables below provide a high level overview.
+
+### Implementation support
+Our team will help you get to production state as soon as possible. Vamp is easy pluggable into your environment. Training and support from our product team is one click away.
+
+Contact us for pricing information and details on support here: {{<contact-sales-link>}}
+
+{.table .vamp-table .table-striped}
+| Support levels                               | basic           | enterprise      | gold            |
+|----------------------------------------------|-----------------|-----------------|-----------------|
+| **Service window for incident**              | 09:00 - 17:00   | 08:00 - 22:00   | 24x7            |
+| **Weekends**                                 | -               | -               | Yes             |
+| **Support through Slack**                    | -               | Yes             | Yes             |
+| **Basic email**                              | Yes             | Yes             | Yes             |
+| **Deployment choice**                        |                 |                 |                 |
+| On-premises                                  | -               | Yes             | Yes             |
+| Cloud                                        | Yes             | Yes             | Yes             |
+
+{{% /left-section-full %}}
