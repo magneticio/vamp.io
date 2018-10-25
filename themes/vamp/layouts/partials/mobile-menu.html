@@ -2,7 +2,7 @@
 
   {{ $currentNode := .}}
 
-  {{range .Site.Menus.mobile}}
+  {{range .Site.Menus.main}}
   <li>
     <a href="{{.URL}}">{{ .Name }}</a>
     {{if .HasChildren }}
