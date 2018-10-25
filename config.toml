@@ -81,6 +81,35 @@ googleAnalytics = ""
 	url    = "/support/"
 	weight = 40
 
+
+# Mobile menu
+[[menu.mobile]]
+	name   = "Product"
+	url    = "/product/"
+	identifier = "product"
+	weight = 10
+
+[[menu.mobile]]
+	name   = "Blog"
+	url    = "/blog/"
+	weight = 20
+
+[[menu.mobile]]
+	name   = "News"
+	url    = "/news/"
+	weight = 30
+
+[[menu.mobile]]
+	name   = "Documentation"
+	url    = "/documentation/"
+	weight = 40
+
+[[menu.mobile]]
+	name   = "Support"
+	url    = "/support/"
+	weight = 50
+
+
 # Main categories
 
 [[menu.main]]

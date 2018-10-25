@@ -2,7 +2,7 @@
 
   {{ $currentNode := .}}
 
-  {{range .Site.Menus.main}}
+  {{range .Site.Menus.mobile}}
   <li>
     <a href="{{.URL}}">{{ .Name }}</a>
     {{if .HasChildren }}
@@ -29,4 +29,7 @@
     {{ end }}
   </ul>
   {{ end }}
+  <li>
+    <a href="#" data-parenturl="/support/"  class="navbar-item" data-toggle="modal" data-target="#contactFormModal">Get pricing</a>
+  </li>
 </ul>
