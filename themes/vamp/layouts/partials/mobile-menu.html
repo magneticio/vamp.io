@@ -1,34 +1,43 @@
 <ul id="mobile-menu">
-
   {{ $currentNode := .}}
-
+  {{ $versionedDocs := .Site.Params.versionedDocs }}
+  {{ $currentVersion := .Site.Params.version }}
   {{range .Site.Menus.main}}
-  <li>
-    <a href="{{.URL}}">{{ .Name }}</a>
-    {{if .HasChildren }}
-    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-    {{ end }}
-  </li>
-  <ul>
 
-    {{range .Children}}
     <li>
-      <a href="{{.URL}}">{{.Name}}</a>
+      <a href="{{.URL}}" data-url="{{.URL}}">{{ .Name }}</a>
       {{if .HasChildren }}
-      <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
       {{ end }}
     </li>
-
     <ul>
-      {{range .Children}}
-      <li>
-        <a href="{{.URL}}">{{ .Name }}</a>
-      </li>
+      {{ range .Children}}
+        <li>
+          <a href="{{.URL}}">{{.Name}}</a>
+          {{if .HasChildren }}
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          {{ end }}
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="{{.URL}}">
+          {{ range .Children }}
+            {{ if in $versionedDocs .Parent }}
+              {{ if in .URL $currentVersion }}
+                <li>
+                  <a href="{{.URL}}" data-url="{{.URL}}">{{ .Name }} </a>
+                </li>
+              {{ end }}
+            {{else}}
+              <li>
+                <a href="{{.URL}}" data-url="{{.URL}}">{{ .Name }} </a>
+              </li>
+            {{ end }}
+          {{ end }}
+        </ul>
       {{ end }}
     </ul>
-    {{ end }}
-  </ul>
+
   {{ end }}
+
   <li>
     <a href="#" data-parenturl="/support/"  class="navbar-item" data-toggle="modal" data-target="#contactFormModal">Get pricing</a>
   </li>
