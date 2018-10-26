@@ -19,7 +19,7 @@ googleAnalytics = ""
 	provider = "GitHub"
 	repo_url = "https://github.com/magneticio/vamp"
 
-	version = "0.9.5"
+	version = "1.0.0"
 	logo = "images/favicon.png?v=1.0"
 	favicon = "images/favicon.png?v=1.0"
 	og_image = "https://vamp.io/img/006-mock-ups/VAMP-light-laptop-v100-hero.png"
@@ -33,6 +33,15 @@ googleAnalytics = ""
 	custom_js   = [
 	  "javascripts/lunr.min.js",
 	  "javascripts/version.js"
+	]
+
+	versionedDocs = [
+	    "API",
+	    "Configuration",
+	    "Using Vamp",
+	    "How Vamp works",
+	    "Installation",
+	    "Troubleshooting"
 	]
 
 	# Syntax highlighting theme

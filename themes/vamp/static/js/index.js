@@ -137,7 +137,6 @@ function documentReady() {
     $('#mobile-menu').toggleClass('show');
   });
 
-
   // Carousel / slider
 
   $('.featured-articles-content').slick({
@@ -154,6 +153,7 @@ function documentReady() {
 // Set side menu
 function setSideMenu() {
   var firstPartUrl = thePath.split('/')[1];
+
   $('.side-menu-list').each(function () {
     var parentUrl = $(this).data('parenturl');
     var firstPartUrlMenu = parentUrl.split('/')[1];
