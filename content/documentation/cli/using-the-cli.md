@@ -6,7 +6,6 @@ menu:
     parent: "CLI"
     weight: 10
 ---
-# Vamp CLI Enterprise Edition
 
 [![Build Status](https://travis-ci.org/magneticio/vamp-cli.svg?branch=master)](https://travis-ci.org/magneticio/vamp-cli)
 
@@ -25,8 +24,10 @@ You will need to authenticate and provide the correct namespace to further use t
 ## Tokens & Namespaces
 
 To use the CLI, you need have an API token and set the correct namespace.
-- API token: can be set by `export VAMP_TOKEN=<token uuid>` or as an CLI argument --token <token uuid>
-- Namespace: can be set by `export VAMP_NAMESPACE=<namespace uuid>` or as an CLI argument --namespace <namespace uuid>
+
+- API token: can be set by `export VAMP_TOKEN=<token uuid>` or as an CLI argument `--token <token uuid>` 
+- Namespace: can be set by `export VAMP_NAMESPACE=<namespace uuid>` or as an CLI argument `--namespace <namespace uuid>` 
+
 
 ### Logging in as a non admin
 
