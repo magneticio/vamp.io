@@ -1,6 +1,6 @@
-
 // Markdown implementation
 .markdowned {
+
   h1 {
     font-size: $font-size-biggest;
     font-weight: $font-weight-lightest;
@@ -240,4 +240,15 @@
     padding-left: 1rem
   }
 
+  &.markdowned-h2-as-h1 {
+    h2 {
+      font-size: $font-size-big;
+      font-weight: $font-weight-default;
+      color: $red;
+      line-height: $line-height-default;
+      letter-spacing: $letter-spacing-wide;
+      margin-bottom: $spacer;
+      text-transform: uppercase;
+    }
+  }
 }
