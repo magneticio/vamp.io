@@ -6,11 +6,9 @@ menu:
     parent: "CLI"
     weight: 10
 ---
+# Vamp CLI Enterprise Edition
 
-Vamp's command line interface (CLI) can be used to perform most actions against the Vamp API. The CLI was
-primarily developed to work with continuous delivery (CD) pipelines. In these setups, the CLI can be used to release new deployments from your pipeline.
-
-Npm distribution is at [https://www.npmjs.com/package/vamp-cli-ee](https://www.npmjs.com/package/vamp-cli-ee)
+[![Build Status](https://travis-ci.org/magneticio/vamp-cli.svg?branch=master)](https://travis-ci.org/magneticio/vamp-cli)
 
 ## Installation
 
@@ -51,6 +49,12 @@ NAME   CLUSTERS                   PORTS                                         
 sava   sava, backend1, backend2   sava.webport:40000, backend1.webport:40002, backend2.webport:40001   Deployed
 ```
 
+Credentials are evaluated in the following order:
+1. passed in on CLI with --namespace etc
+2. passed in via ENV vars
+3. passed in via `~/.vamp` file. This file is written when logging in as an admin
+
+
 ### Logging in as an admin
 
 Admins are a bit different from other users:
@@ -83,6 +87,8 @@ NAME   CLUSTERS                   PORTS                                         
 sava   sava, backend1, backend2   sava.webport:40000, backend1.webport:40002, backend2.webport:40001   Deployed
 ```
 
+> Admin credentials are written to a `.vamp` file in the user's home directory. 
+
 ## Note for Windows users
 
 On Windows, the '%' sign is reserved. The Vamp CLI uses this character when updating the weight on gateways.
@@ -95,8 +101,11 @@ vamp update-gateway myDeployment/myService/web --weights "route1@50%,route2@50%"
 ## Examples
 
 ```bash
-# deploy a blueprint
+# deploy a blueprint from a stored blueprint
 vamp deploy myService:1.0.0 myDeployment
+
+# deploy a blueprint directly from a file and wait for the deploy to finish
+vamp deploy -f blueprint.yml myDeployment --wait
 
 # get the details of a deployment
 vamp describe deployment myDeployment
@@ -113,9 +122,14 @@ vamp update-gateway myDeployment/myService/web --route  myDeployment/myCluster/m
 # set the weight distribution on set of routes in a gateway
 vamp update-gateway myDeployment/myService/web --weights myDeployment/myCluster/myService:1.0.0/web@50%,myDeployment/myCluster/myService:1.1.0/web@50%
 
+# undeploy a complete deployment, waiting for the undeploy to finish
+vamp undeploy myDeployment --wait
+
 # undeploy a specific service of a deployment
 vamp undeploy myDeployment --service myService:1.0.0
 
+# list metrics, filtered with tags and paginated
+vamp list events --tags metrics --per-page 10 --page 1
 # list all the roles
 vamp list roles
 
@@ -172,12 +186,14 @@ Configure the host by either setting the `VAMP_HOST` environment variable or pas
 
 
 ```javascript
-const vamp = require('vamp-cli-ee')({ host: 'http://localhost:8080', token: <token>, namespace: <namespace> })
+const vamp = require('vamp-cli-ee/src/api')({ host: 'http://localhost:8080', token: <token>, namespace: <namespace> })
 
 vamp.breed.list()
   .then(res => console.info(res))
 
-vamp.deployment.describe('mydeployment')
+vamp.deployment.get('mydeployment')
 .then(res => console.info(res))
 
 ```
+
+Checkout the `api.md` file for jsDoc styled API docs
