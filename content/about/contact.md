@@ -21,7 +21,7 @@ The Netherlands
 
 
 ## Vamp Enterprise 1.0
-Vamp [Enterprise 1.0](/product/enterprise-edition/) with features specifically tuned to enterprise usage. Contact us to get more information.
+Vamp [Enterprise 1.0](/product/enterprise-edition/) can be licensed and includes features specifically tuned to enterprise usage. Contact us to get more information.
 
 ##  Support
 Check our [support](/support/) page for SLA's and other forms of support.
