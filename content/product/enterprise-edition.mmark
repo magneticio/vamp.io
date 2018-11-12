@@ -19,16 +19,13 @@ Vamp offers release, control and optimisation of your containerised apps.
 ### Increase release velocity of new features
 Limited blast radius with Vamp’s automated & segmented gradual canary rollouts in production.
 
-### Optimise new feature release
-Vamp A/B tests new features releases with real time business data driven decisions on succes or failure.
-
 ### Optimise cloud costs performance
 Vamp optimises cloud usage through priorities and real time load control.
 
 ### Improve Quality of Experience
 Vamp’s real time integration with monitoring systems enable real time workflows for automatically actioning on issues with QoE.
 
-{{<contact-sales-block-button>}}
+{{<contact-sales-button>}}
 
 {{% /centered-section %}}
 
@@ -81,9 +78,6 @@ Contact us for pricing information and details on support here: {{<contact-sales
 | **Service window for incident**              | 09:00 - 17:00   | 08:00 - 22:00   | 24x7            |
 | **Weekends**                                 | -               | -               | Yes             |
 | **Support through Slack**                    | -               | Yes             | Yes             |
-| **Email**                              | Yes             | Yes             | Yes             |
-| **Deployment choice**                        |                 |                 |                 |
-| On-premises                                  | -               | Yes             | Yes             |
-| Cloud                                        | Yes             | Yes             | Yes             |
+| **Email**                                    | Yes             | Yes             | Yes             |
 
 {{% /right-section-7 %}}
