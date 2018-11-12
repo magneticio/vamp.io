@@ -19,14 +19,15 @@ The Netherlands
 +31(0)88 555 33 99  
 [info@vamp.io](mailto:info@vamp.io)
 
-## Professional services and consultancy
-We can provide professional services and consultancy around the implementation and use of Vamp. Send us an email on [info@vamp.io](mailto:info@vamp.io) or call +31(0)88 555 33 99.
 
-## Vamp Enterprise Edition (EE)
-We also provide a commercial [Enterprise Edition](/product/enterprise-edition/) of Vamp with features specifically tuned to enterprise usage. Contact us to get more information.
+## Vamp Enterprise 1.0
+Vamp [Enterprise 1.0](/product/enterprise-edition/) with features specifically tuned to enterprise usage. Contact us to get more information.
 
 ##  Support
 Check our [support](/support/) page for SLA's and other forms of support.
+
+## Professional services and consultancy
+We provide in professional services and consultancy around the implementation and use of Vamp. Send us an email on [info@vamp.io](mailto:info@vamp.io) or call +31(0)88 555 33 99.
 
 ## Community
 Join the [Vamp community](/community/) to make Vamp even better.
