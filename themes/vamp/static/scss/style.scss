@@ -2,7 +2,6 @@
 @import 'variables';
 @import 'navbar';
 @import 'cards';
-@import 'markdown';
 @import 'nav-popover';
 @import 'badge';
 @import 'blog';
@@ -14,6 +13,7 @@
 @import 'product';
 @import 'featured-articles';
 @import 'news';
+@import 'markdown';
 
 // apps
 @import 'apps/maturity-calculator';
@@ -74,24 +74,7 @@ a {
   padding-top: 2 * $spacer;
 
   &.hero-text {
-    font-weight: 400;
-    font-size: 50px;
-    color: white;
-    padding-top: $spacer;
-    margin-bottom: 2 * $spacer;
-
-    @media (max-width: 321px) {
-      font-size: 22px;
-      padding-top: $spacer;
-      margin-bottom: $spacer;
-    }
-
-    @media all and (max-width: 769px) {
-      padding-top: $spacer;
-      margin-bottom: $spacer;
-      font-size: 26px;
-    }
-
+    @include hero-text();
   }
 
   &.hero-sub-text {

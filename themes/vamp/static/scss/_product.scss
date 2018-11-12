@@ -71,4 +71,23 @@ $product-headers-font-size: 20px;
       }
     }
   }
+
+  // override some markdown settings so we can create product pages with markdown
+  .markdowned {
+
+    h1 {
+      @include hero-text();
+      color: $blue-dark;
+      margin-bottom: .5 * $spacer;
+      line-height: 1.5;
+    }
+
+    h2 {
+      margin-bottom: .5 * $spacer;
+    }
+
+    h4 {
+      margin-bottom: 0;
+    }
+  }
 }

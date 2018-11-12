@@ -133,17 +133,17 @@ googleAnalytics = ""
 	weight = 20
 
 [[menu.main]]
-	name  = "Vamp compared to..."
-	url   = "/product/vamp-compared-to/proxies-and-load-balancers/"
+	name = "Vamp Enterprise 1.0"
+	url = "/product/enterprise-edition/"
 	parent = "product"
 	weight = 30
 
+
 [[menu.main]]
-	name = "Vamp version comparison"
-	url = "/product/vamp-version-comparison/"
+	name  = "Vamp compared to..."
+	url   = "/product/vamp-compared-to/proxies-and-load-balancers/"
 	parent = "product"
 	weight = 40
-
 
 [[menu.main]]
 	name	= "How Vamp works"

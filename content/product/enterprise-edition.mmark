@@ -1,0 +1,79 @@
+---
+date: 2016-09-13T09:00:00+00:00
+title: Vamp Enterprise Edition 1.0
+type: "page"
+layout: "enterprise-edition"
+aliases:
+ - /product/enterprise-edition/
+menu:
+  main:
+    parent: "Vamp Enterprise Edition 1.0"
+    weight: 10
+---
+
+{{% centered-section %}}
+# Release with confidence
+Vamp offers release, control and optimisation of your containerised apps.
+
+
+#### Increase release velocity of new features
+Limited blast radius with Vamp’s automated & segmented gradual canary rollouts in production.
+
+#### Optimise cloud costs performance
+Vamp optimises cloud usage through priorities and real time load control.
+
+#### Improve Quality of Experience
+Vamp’s real time integration with monitoring systems enable real time workflows for automatically actioning on issues with QoE.
+
+{{<contact-sales-button>}}
+
+{{% /centered-section %}}
+
+{{% left-section-half %}}
+
+## Vamp Enterprise 1.0 License
+
+Vamp Enterprise is installed on any cloud platform, on-premise or bare metal. We offer a subscription pay-per-use model that caters for all these situations.
+
+How a Vamp Enterprise subscription works:
+
+- You only pay for what you use as you grow based on the vCPU nodes in production environments.
+- We bill per month based on the on last month’s actual usage of Vamp in production environments.
+- You choose your level of support as part of our contract available in three flavours: Basic/Enterprise & Gold.  More details about [support can be found here](/support).
+- Vamp should be installed on your preferred cloud platform, on-premise, or both.
+
+Please {{<contact-sales-link>}} to request a Vamp Enterprise subscription quote that fits your requirements.
+
+{{% /left-section-half %}}
+
+{{% right-section-half %}}![Vamp Enterprise architecture](/img/product/vamp_ee_architecture.png){{% /right-section-half %}}
+
+{{% left-section-5 %}}
+
+## Vamp Enterprise 1.0 Support
+
+### Vamp Support levels
+Vamp Enterprise is a licensed software product for which we offer three levels of support: Basic, Enterprise and Gold.
+The table provides a high level overview.
+
+### Implementation support
+Our team will help you get to production state as soon as possible. Vamp is pluggable into your environment. Training and
+support from our product team is one click away.
+
+We have several global and industry focused implementation partners available for consulting, architecture and operational support.
+
+Contact us for pricing information and details on support here: {{<contact-sales-link>}}
+
+{{% /left-section-5 %}}
+
+{{% right-section-7 %}}
+
+{.table .vamp-table .table-striped}
+| Support levels                               | basic           | enterprise      | gold            |
+|----------------------------------------------|-----------------|-----------------|-----------------|
+| **Service window for incident**              | 09:00 - 17:00   | 08:00 - 22:00   | 24x7            |
+| **Weekends**                                 | -               | -               | Yes             |
+| **Support through Slack**                    | -               | Yes             | Yes             |
+| **Email**                                    | Yes             | Yes             | Yes             |
+
+{{% /right-section-7 %}}
