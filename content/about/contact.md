@@ -28,6 +28,3 @@ Check our [support](/support/) page for SLA's and other forms of support.
 
 ## Professional services and consultancy
 We provide in professional services and consultancy around the implementation and use of Vamp. Send us an email on [info@vamp.io](mailto:info@vamp.io) or call +31(0)88 555 33 99.
-
-## Community
-Join the [Vamp community](/community/) to make Vamp even better.
