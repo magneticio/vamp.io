@@ -20,7 +20,7 @@ We encourage anyone to [join the Vamp community](/community/) and pitch in with 
  feature requests to make Vamp even more awesome.
 
 ## Working at Vamp
-We're alway on the lookout for smart, talented and motivated people that love to work on products and understand real-world
+We're always on the lookout for smart, talented and motivated people that love to work on products and understand real-world
 problems and how to solve them in the best possible way. If you would love to join our team and work on Vamp and related products,
 check our [open positions](/careers/) or get in [touch](/about/contact)!
 
