@@ -1,6 +1,6 @@
 ---
 date: 2019-01-13T09:00:00+00:00
-title: Frontend software developer
+title: Partner Marketing Manager
 ---
 # Partner Marketing Manager
 

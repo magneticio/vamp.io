@@ -25,13 +25,21 @@
       <div class="row">
         <div class="col-sm-12">
           <h1 class="openings-header">Current openings</h1>
+          <ul class="text-center mb-4">
+            {{ range .Data.Pages }}
+            <li>
+              <a href="{{ .URL }}">{{ .Title }}</a>
+            </li>
+            {{ end }}
+          </ul>
+
           <ul class="openings-list">
             {{ range .Data.Pages }}
               <li class="openings-list-item">
                 <div class="openings-body">
                   {{.Content}}
                 </div>
-                <div class="openings-cta">
+                <div class="openings-cta mb-5">
                   <p>Sounds good? Apply for this job by sending us your motivation and resume.</p>
                   <a class="button button--red" href="mailto:info@vamp.io">Apply now</a>
                 </div>
