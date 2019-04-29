@@ -44,7 +44,7 @@ API's, CLI's, manual pages and admin screens also need a proper UI and UX.
 
 ## 10 Don't be a stranger
 
-It's 2018: Brazil, India and China are just around the corner. Use I18N.
+It's 2019: Brazil, India and China are just around the corner. Use I18N.
 
 ## Disclaimer
 These are our dogmas. Some of these dogmas contradict each other.

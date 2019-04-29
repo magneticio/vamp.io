@@ -12,11 +12,11 @@ cache:
 
 before_install:
   - . $HOME/.nvm/nvm.sh
-  - nvm install v6.9.0
-  - nvm use v6.9.0
+  - nvm install v8.12.0
+  - nvm use v8.12.0
 
 install:
-  - npm install -g gulp@next
+  - npm install -g gulp
   - curl -sSL https://github.com/gohugoio/hugo/releases/download/v0.25.1/hugo_0.25.1_Linux-64bit.tar.gz | tar -zxf - -C /tmp/
   - export PATH="/tmp:$PATH"
   - npm install

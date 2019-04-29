@@ -13,7 +13,7 @@ Vamp is being developed by [vamp.io](/about/) in the heart of Amsterdam.
 
 **Our Amsterdam office:**
 
-Raamgracht 6  
+Raamgracht 8  
 1011 KK Amsterdam  
 The Netherlands  
 +31(0)88 555 33 99  
