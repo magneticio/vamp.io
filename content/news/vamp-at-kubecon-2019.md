@@ -36,6 +36,8 @@ of mash-ups.
 - Hall 8.0 C1
 - Check the Kubecon schedule [here](https://kccnceu19.sched.com/event/MPau/a-tale-of-two-worlds-canary-testing-for-both-ml-models-and-microservices-jorg-schad-mesosphere-vincent-lesierse-vampio)
 
+**If you want to meet us in Barcelona, [you can schedule a meeting with Richard, our sales manager]( https://calendly.com/richard-vamp)**
+
  Whether you can or can’t make it to this year’s KubeCon, stay tuned as we’ll be keeping you informed on the future of 
 DevOps and all that good stuff with KubeCon event summaries, videos, mini-conference guides and more. 
 
