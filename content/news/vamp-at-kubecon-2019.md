@@ -21,8 +21,7 @@ Your engineering teams might already be overworked at DevOps maturity 0 or 1, so
 ‘the space age’? Because the future is coming and it’s a bright, shiny CI/CD pipeline powered by machine-learning.  
 
 We’ve tinkered with the CD tech long enough to create a way of releasing microservices fast and frequently without 
-crashing your whole dependency ecosystem.   
-The key is smart canary-releasing. But what happens when you add data models 
+crashing your whole dependency ecosystem. The key is smart canary-releasing. But what happens when you add data models 
 into the go-to production mix? Well, our engineers are confident that what happens isn’t panic; but a smooth 
 continuous-delivery process of ML models.
 
@@ -36,12 +35,10 @@ of mash-ups.
 - Hall 8.0 C1
 - Check the Kubecon schedule [here](https://kccnceu19.sched.com/event/MPau/a-tale-of-two-worlds-canary-testing-for-both-ml-models-and-microservices-jorg-schad-mesosphere-vincent-lesierse-vampio)
 
-**If you want to meet us in Barcelona, [you can schedule a meeting with Richard, our sales manager](https://calendly.com/richard-vamp/meeting-kubecon)**
-
  Whether you can or can’t make it to this year’s KubeCon, stay tuned as we’ll be keeping you informed on the future of 
 DevOps and all that good stuff with KubeCon event summaries, videos, mini-conference guides and more. 
 
-At Vamp, we eat, sleep and breath containerization to cloud, so we see it as our mission to share knowledge wherever we can.
+Or **[meet our team] (https://calendly.com/richard-vamp/meeting-kubecon)** in Barcelona! Our CTO and tech team will be on hand. At Vamp, we eat, sleep and breath containerization to cloud, so we see it as our mission to share knowledge wherever we can.
 
 
 
