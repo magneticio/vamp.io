@@ -1,94 +1,71 @@
 .announcement {
+  display: block;
   top: 0;
   height: 60px;
+  overflow: hidden;
   background-color: $white;
-  padding: 4px 0 2px 0;
-  .featured-articles-content {
-    .featured-article {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      color: $white;
-      font-weight: $font-weight-lightest;
+  border-bottom: 2px solid #f05485;
+  &.announcement-kubecon {
+    color: $blue-dark;
+    font-weight: 500;
+
+    .kubecon-background {
+      height: 60px;
+      background-image: url("/img/news/kubecon-banner.png");
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: 600px;
+      background-position-y: bottom;
+
+    }
+    .kubecon-text {
+      display: inline-block;
+      padding: 20px;
       font-size: 15px;
-      a {
-        color: $white;
-        &:hover {
-          text-decoration: underline;
-        }
 
-        i {
-          font-size: 16px;
-          font-weight: $font-weight-light;
-        }
+    }
+
+    img.kubecon-icons {
+      height: 30px;
+      vertical-align: middle;
+      display: inline-block;
+      margin-left: 10px;
+    }
+  }
+
+  @media all and (max-width: 426px) {
+    text-align: center;
+    height: 70px;
+    border-bottom: 2px solid #f05485;
+    &.announcement-kubecon {
+      img.kubecon-icons {
+        vertical-align: baseline;
       }
-    }
-  }
-
-  .slick-dots li button:before {
-    font-size: 30px;
-  }
-
-  .slick-dots li.slick-active button:before {
-    color: $ash;
-  }
-
-  .slick-dots {
-    position: absolute;
-    bottom: 32px;
-    display: block;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-align: right;
-  }
-
-  @media all and (max-width: 321px) {
-    margin-top: 0;
-    padding: 6px 0 2px 0;
-    .featured-articles-content {
-      .featured-article {
-        font-size: 13px;
+      .kubecon-text {
+        width: 150px;
+        text-align: left;
+        padding: 16px 0 0 12px;
       }
-    }
-
-    .slick-dots {
-      bottom: 0;
-    }
-  }
-
-  @media all and (min-width: 321px) {
-    margin-top: 0;
-
-    .slick-dots {
-      bottom: 0;
     }
   }
 
   @media all and (min-width: 641px) {
-    margin-top: 0;
+    text-align: center;
+    height: 60px;
   }
 
   @media all and (min-width: 769px) {
-    margin-top: 0;
-
-    .slick-dots {
-      bottom: 32px;
-    }
+    text-align: left;
+    //border-bottom: none;
   }
 
   @media all and (min-width: 1025px) {
-    .slick-dots {
-      bottom: 32px;
-    }
+    text-align: left;
+
   }
 
   @media all and (min-width: 1201px) {
-    .slick-dots {
-      bottom: 32px;
-    }
+    text-align: left;
   }
-
 }
 

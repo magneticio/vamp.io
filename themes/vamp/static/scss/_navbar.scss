@@ -19,7 +19,7 @@
   &.navbar-sticky {
     position: fixed;
     width: 100%;
-    top: 0;
+    top: 60px; // 0px when no announcement, 60px otherwise
   }
 
   &.navbar-light {
@@ -162,7 +162,7 @@
   }
 
   .hiring-popover {
-    position: fixed;
+    position: relative;
     background: $gray;
     font-size: .75rem;
     padding: .5rem .5rem;
