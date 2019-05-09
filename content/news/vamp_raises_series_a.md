@@ -12,8 +12,9 @@ featured_image: "https://vamp.io/img/news/series_a.jpg"
 ![](/img/news/series_a.jpg)
 
 Smart DevOps release management solution Vamp.io announced today a series A investment of 2.5 million euros led by European 
-technology growth investor Vortex Capital Partners. Vortex is heading the investment round with additional funding coming 
-from existing investors Volta Ventures venture capital fund, as well as web hosting service MijnDomein and cloud migration specialist Merapar. 
+technology growth investor [Vortex Capital Partners](https://www.vortexcp.com). Vortex is heading the investment round with additional funding coming 
+from existing investors [Volta Ventures venture capital fund](https://www.volta.ventures/), as well as web hosting service 
+[MijnDomein](https://www.mijndomein.nl/) and cloud migration specialist [Merapar](https://merapar.com/). 
 The financing will be used to fuel the development and international launch of Vamp.io’s smart solution that makes cloud-native, 
 container-based software delivery faster, safer and more scalable.
 
