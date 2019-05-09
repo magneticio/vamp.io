@@ -37,13 +37,13 @@ today by adding simplicity, controls and validation of new software intoproducti
 for any organization that wants to go faster, smarter and with no or fewer issues.“
 
 As validation of its vision, Vamp.io is looking forward to the future of DevOps and SRE with its talk at industry-leading 
-event KubeCon + CloudNativeCon Europe 2019, taking place this year in Barcelona. Together with partner Mesosphere, 
+event KubeCon + CloudNativeCon Europe 2019, taking place this year in Barcelona. Together with partner [Mesosphere](https://mesosphere.com/), 
 the topic of the talk [“A Tale of Two Worlds: Canary-Testing for Both Machine-Learning Models and Microservices”](/news/vamp-at-kubecon-2019/) 
 will offer the industry a peak into the newly emerging field of DataDevOps.
 
 ## About Vamp.io
 
-Vamp.io, formerly known as Magnetic.io, is a StartupBootcamp alumnus. Vamp.iois based in Amsterdam. Vamp is the release 
+Vamp.io, formerly known as Magnetic.io, is a StartupBootcamp alumnus. Vamp.io is based in Amsterdam. Vamp is the release 
 management solution that makes container-based software delivery smoother and business move faster, working with global 
 companies that continuously need to release, validate and optimise new versions of their software. Vamp.io partners include 
 Microsoft, Mesosphere and Docker. For more information: [www.vamp.io](https://vamp.io)
