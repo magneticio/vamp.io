@@ -1,9 +1,9 @@
 ---
 date: 2019-05-14T09:00:00+00:00
-title: "Your Top 4 Must-See Talks at KubeCon + CloudNativeCon Europe 2019: True Confessions of Cloud-Native Addicts"
+title: "Your Top 4 Must-See Talks at KubeCon 2019: True Confessions of Cloud-Native Addicts"
 author: "Agnes"
 avatar: "agnes.jpg"
-tags: ["Kubernetes", "Istio", "Microservices", "KubeCon", "CloudNativeCon", "Machine-Learning", "DevOps"]
+tags: ["Kubernetes", "Istio", "Microservices", "KubeCon", "Machine-Learning", "DevOps"]
 publishdate: 2019-05-14
 featured_image: "/images/blog/kubecon-syringe-1024px.jpg"
 ---
@@ -34,8 +34,8 @@ Humans. Don't they always mess up your grand plan for transitioning to microserv
 
 Once you've figured out a way to release microservices frequently without crashing a whole dependency ecosystem, you can start asking: what happens when you add data models to the go-to-production mix? Can data science learn from the microservices space? [In this session](https://kccnceu19.sched.com/event/MPau/a-tale-of-two-worlds-canary-testing-for-both-ml-models-and-microservices-jorg-schad-mesosphere-vincent-lesierse-vampio), Mesosphere's Jörg Schad and Vamp's very own Vincent Lesierse show how experiences learned from releasing microservices on Kubernetes can be applied to deploying machine-learning models without impacting users.
 
-## Just can't stop
+## Just...can't...stop
 
 Our top 4 covers some of the stepping stones on any cloud-native journey, from just figuring out migration, to having a smooth CD release pipeline in place. Our next blog installment will unpack how to handle smooth release through canary-testing, so subscribe or stay tuned. At Vamp, we eat, sleep and breath containerization to cloud, so it's our mission to share knowledge wherever we can.
 
-<a class="button button--red" style="color: white;" href="http://eepurl.com/dkyWQz" target="_blank">Subscribe to our newsletter to stay up to date of all things Vamp!</a>
+<a class="button button--red" style="color: white;" href="http://eepurl.com/dkyWQz" target="_blank">Keep me up to date</a>
