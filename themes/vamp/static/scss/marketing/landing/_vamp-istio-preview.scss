@@ -1,8 +1,12 @@
 .vamp-istio-preview {
+  background: $ash;
+  .hero-background {
+    background: $ash;
+  }
   .card {
+    padding: 2rem 4rem;
     background: white;
     border-radius: 10px;
-    padding: 1rem 3rem;
     border: none;
   }
 }

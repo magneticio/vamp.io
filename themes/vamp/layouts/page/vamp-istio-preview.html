@@ -1,42 +1,50 @@
 {{ partial "head" . }}
 
-{{ partial "nav" . }}
-
 <div class="page product vamp-istio-preview">
 	<section class="lander-row--white py-3 py-lg-5 hero-background">
-		<div class="container card">
-			<div class="row">
-				<div class="col-sm-12">
-					<h1 class="h1 text-center mb-3 hero-text">{{.Params.header.title | markdownify}}</h1>
-				</div>
-      </div>
-      <div class="row markdowned">
-        <div class="col-sm-10 offset-sm-1 text-center">
-          <h2>
-            We're working on an exciting integration between Vamp, Kubernetes and Istio. Request early access by leaving your
-            email address below.
-          </h2>
-          <div class="py-4">
-            <a class="button button--red" style="width: 280px; color: white;" href="https://pipedrivewebforms.com/form/8c5cb7cf4bac4f9e15fb857dbe51d82c810301" target="_blank">Sign up for the preview</a>
+		<div class="container">
+      <div class="card">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="text-center">
+              <a href="https://vamp.io">
+                <img src="/img/005-vamp/Logo/logo-long-colour.svg" alt="vamp logo">
+              </a>
+            </div>
+            <h1 class="h1 text-center mb-3 hero-text">{{.Params.header.title | markdownify}}</h1>
+          </div>
+        </div>
+        <div class="row markdowned">
+          <div class="col-sm-10 offset-sm-1 text-center">
+            <h2>
+              We're working on an exciting integration between Vamp, Kubernetes and Istio. Request early access by leaving your
+              email address below.
+            </h2>
+            <div class="py-4">
+              <a class="button button--red" style="width: 280px; color: white;" href="https://pipedrivewebforms.com/form/8c5cb7cf4bac4f9e15fb857dbe51d82c810301" target="_blank">Sign up for the preview</a>
+            </div>
+          </div>
+        </div>
+        <div class="row markdowned py-4">
+          <div class="col-sm-4">
+            <h3>Automated releases</h3>
+            <p>Automatically run canary releases while monitoring health, metrics from live traffic or your own custom metrics</p>
+          </div>
+          <div class="col-sm-4">
+            <h3>Data drive experimentation</h3>
+            <p>Drive experimentation like A/B testing. Don’t rely on guess-work to set your next steps for development</p>
+          </div>
+          <div class="col-sm-4">
+            <h3>Easy to install</h3>
+            <p>Install to your own Kubernetes cluster. Installation happens with just one CLI command</p>
           </div>
         </div>
       </div>
-      <div class="row markdowned py-4">
-        <div class="col-sm-4">
-          <h3>Automated releases</h3>
-          <p>Automatically run canary releases while monitoring health, metrics from live traffic or your own custom metrics</p>
-        </div>
-        <div class="col-sm-4">
-          <h3>Data drive experimentation</h3>
-          <p>Drive experimentation like A/B testing. Don’t rely on guess-work to set your next steps for development</p>
-        </div>
-        <div class="col-sm-4">
-          <h3>Easy to install</h3>
-          <p>Install to your own Kubernetes cluster. Installation happens with just one CLI command</p>
+      <div class="row markdowned py-2">
+        <div class="col-sm-12 text-right">
+          <small class="text">© 2019 <a href="/about/">vamp.io</a></small>
         </div>
       </div>
 		</div>
 	</section>
 </div>
-
-{{ partial "footer" .}}
