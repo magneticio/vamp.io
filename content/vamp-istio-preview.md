@@ -1,10 +1,10 @@
 ---
 date: 2019-05-15T09:00:00+00:00
-title: Vamp EE Trial Signup
+title: Release management now integrated with Istio and Kubernetes
 type: page
 layout: vamp-istio-preview
 header:
-    title: "Release management and experimentation integrated with Istio and Kubernetes"
+    title: "Release management now integrated with Istio and Kubernetes"
 ---
 
 #### Automated releases
