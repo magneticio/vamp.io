@@ -109,6 +109,17 @@
       }
     })
   </script>
+  <!-- Google Tag Manager -->
+  <script>
+    if (location.host === 'www.vamp.io' || location.host === 'vamp.io') {
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-K55QZJQ');
+    }
+  </script>
+  <!-- End Google Tag Manager -->
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
@@ -123,4 +134,7 @@
 
 </head>
 <body class="{{ with .Site.Params.palette.primary }}palette-primary-{{ . }}{{end }} {{ with .Site.Params.palette.accent }}palette-accent-{{ .  }}{{ end }}">
-
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K55QZJQ"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->

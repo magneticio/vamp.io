@@ -1,0 +1,71 @@
+.announcement {
+  display: block;
+  top: 0;
+  height: 60px;
+  overflow: hidden;
+  background-color: $white;
+  border-bottom: 2px solid #f05485;
+  &.announcement-kubecon {
+    color: $blue-dark;
+    font-weight: 500;
+
+    .kubecon-background {
+      height: 60px;
+      background-image: url("/img/news/kubecon-banner.png");
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: 600px;
+      background-position-y: bottom;
+
+    }
+    .kubecon-text {
+      display: inline-block;
+      padding: 20px;
+      font-size: 15px;
+
+    }
+
+    img.kubecon-icons {
+      height: 30px;
+      vertical-align: middle;
+      display: inline-block;
+      margin-left: 10px;
+    }
+  }
+
+  @media all and (max-width: 426px) {
+    text-align: center;
+    height: 70px;
+    border-bottom: 2px solid #f05485;
+    &.announcement-kubecon {
+      img.kubecon-icons {
+        vertical-align: baseline;
+      }
+      .kubecon-text {
+        width: 150px;
+        text-align: left;
+        padding: 16px 0 0 12px;
+      }
+    }
+  }
+
+  @media all and (min-width: 641px) {
+    text-align: center;
+    height: 60px;
+  }
+
+  @media all and (min-width: 769px) {
+    text-align: left;
+    //border-bottom: none;
+  }
+
+  @media all and (min-width: 1025px) {
+    text-align: left;
+
+  }
+
+  @media all and (min-width: 1201px) {
+    text-align: left;
+  }
+}
+
