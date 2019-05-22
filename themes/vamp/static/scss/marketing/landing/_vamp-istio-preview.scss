@@ -9,4 +9,13 @@
     border-radius: 10px;
     border: none;
   }
+  &-row {
+    min-height: 30px;
+    background-color: $blue-dark;
+    padding: 8px 0 8px 0;
+    overflow: hidden;
+    color: $white;
+    font-weight: $font-weight-lightest;
+    font-size: 15px;
+  }
 }
