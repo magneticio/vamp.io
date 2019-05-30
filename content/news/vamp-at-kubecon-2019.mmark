@@ -3,23 +3,35 @@ date: 2019-04-29T09:00:00+00:00
 title: "Forecasting the Future of DevOps at KubeCon 2019"
 categories: ["news","events","kubecon"]
 publishdate: 2019-04-29
-featured_image: "https://vamp.io/img/news/kubecon2019.png"
+featured_image: "https://vamp.io/img/news/kubecon-vid-banner.png"
 ---
 
 *Amsterdam, 29 April 2019*
 
 
-![](/img/news/kubecon2019.png)
+**update 30 May 2019**
+
+Last week, the Vamp team was at KubeCon exploring DevOps maturity anno 2025.What happens when you add data models to your
+continuous delivery process?
+
+Well, our engineers are confident that what happens isn’t panic. Watch below as our very own
+Vincent Lesierse and Mesosphere’s Jörg Schad present A Tale of TwoWorlds: Canary-Testing for Both ML Models and Microservices.
+
+{{< youtube ctATGBxDzRg >}}
+
+For those of you who missed the big event, we also have [a handy mini-conference guide](https://vamp.io/blog/kubecon-top4-must-sees/?utm_source=newsletter&utm_medium=newsletter&utm_campaign=20190529-KubeCon&utm_content=Video)
+for all your KubeCon catch-up needs.
+
+<!--more-->
+
+**original message below**
 
 Come with us on a journey through time and space as Vamp explores what DevOps maturity anno 2025 might look like at this
 year's KubeCon 2019. You might be on roll or just getting started on your journey to cloud-native with tools like Kubernetes and crew.
 At Vamp, we get it – it’s cool, but complex.
 
-<!--more-->
-
 Your engineering teams might already be overworked at DevOps maturity 0 or 1, so why are we talking about DevOps maturity
 ‘the space age’? Because the future is coming and it’s a bright, shiny CI/CD pipeline powered by machine-learning.
-
 
 We’ve tinkered with the CD tech long enough to create a way of releasing microservices fast and frequently without
 crashing your whole dependency ecosystem. The key is smart canary-releasing. But what happens when you add data models

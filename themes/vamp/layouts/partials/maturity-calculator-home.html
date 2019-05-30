@@ -116,7 +116,7 @@
           <!-- Modal Component -->
 
           <b-modal id="emailmodal" :hide-footer="true" :hide-header="true" v-cloak>
-            <div class="email-modal">
+            <div class="maturity-calculator-email-modal">
               <div class="email-modal-top">
                 <div class="email-modal-logo"></div>
                 <h2 class="email-modal-header">Exploring <strong>New Frontiers</strong> in CI/CD and DevOps</h2>
@@ -125,26 +125,28 @@
               <div class="email-modal-bottom">
                 <p class="mb-3">Sign up to our newsletter and receive a white paper on the future of DevOps and Cloud Native technology
                 </p>
-                <transition-group name="drop-down" mode="out-in">
-                  <div key="input" v-show="!showSubscribeSuccess">
-                    <div class="input-group" >
-                      <input type="email" class="form-control" placeholder="Email address" v-model="emailAddress" aria-label="email address" aria-describedby="basic-addon2" tabindex="1">
-                      <div class="input-group-append">
-                        <button class="input-group-text button button--red" id="basic-addon2" @click.prevent="subscribeToNewsletter()" tabindex="2">SUBSCRIBE</button>
-                      </div>
-                    </div>
-                    <div class="pt-3">
-                      <a href="#" @click.prevent="goToResults()" tabindex="3"><small>Just show me the results</small></a>
-                    </div>
-                  </div>
+                <a class="button button--red" style="color: white;" href="http://eepurl.com/dkyWQz" target="_blank">Subscribe to our newsletter</a>
 
-                  <div v-show="showSubscribeSuccess" key="confirmation">
-                    <div class="h1 mb-4 text-green">Subscription confirmed</div>
-                  </div>
-                </transition-group>
-                <transition name="drop-down" mode="out-in" appear>
-                  <p class="text-red pt-3" v-show="showSubscribeError"><small v-html="showSubscribeErrorMessage"></small></p>
-                </transition>
+                <!--                <transition-group name="drop-down" mode="out-in">-->
+<!--                  <div key="input" v-show="!showSubscribeSuccess">-->
+<!--                    <div class="input-group" >-->
+<!--                      <input type="email" class="form-control" placeholder="Email address" v-model="emailAddress" aria-label="email address" aria-describedby="basic-addon2" tabindex="1">-->
+<!--                      <div class="input-group-append">-->
+<!--                        <button class="input-group-text button button&#45;&#45;red" id="basic-addon2" @click.prevent="subscribeToNewsletter()" tabindex="2">SUBSCRIBE</button>-->
+<!--                      </div>-->
+<!--                    </div>-->
+                <div class="pt-3">
+                  <a href="#" @click.prevent="goToResults()" tabindex="3"><small>Just show me the results</small></a>
+                </div>
+<!--                  </div>-->
+
+<!--                  <div v-show="showSubscribeSuccess" key="confirmation">-->
+<!--                    <div class="h1 mb-4 text-green">Subscription confirmed</div>-->
+<!--                  </div>-->
+<!--                </transition-group>-->
+<!--                <transition name="drop-down" mode="out-in" appear>-->
+<!--                  <p class="text-red pt-3" v-show="showSubscribeError"><small v-html="showSubscribeErrorMessage"></small></p>-->
+<!--                </transition>-->
               </div>
             </div>
           </b-modal>
