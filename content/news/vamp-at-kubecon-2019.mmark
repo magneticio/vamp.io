@@ -15,12 +15,9 @@ The key is smart canary-releasing.
 But what happens when you add data models into the go-to production mix? Well, our engineers are confident that what happens
 **isn’t panic**; but a smooth continuous-delivery process of machine learning models.
 
-Watch below as our very own Vincent Lesierse and Mesosphere’s Jörg Schad present A Tale of Two Worlds: Canary-Testing for Both ML
-Models and Microservices.
+Watch below as our very own Vincent Lesierse and Mesosphere’s Jörg Schad present A Tale of Two Worlds: Canary-Testing for Both Machine Learning Models and Microservices.
 
 {{< youtube ctATGBxDzRg >}}
-
-
 
 For those of you who missed the big event, see our handy **true confessions of cloud-native addicts** [mini-conference guide here](https://vamp.io/blog/kubecon-top4-must-sees/?utm_source=newsletter&utm_medium=newsletter&utm_campaign=20190529-KubeCon&utm_content=Video). It's been specially prepared to serve all your KubeCon catch-up needs.
 
