@@ -8,12 +8,12 @@ featured_image: "https://vamp.io/img/news/kubecon-vid-banner.png"
 
 *Amsterdam, 30 May 2019*
 
-Last week, the Vamp team was at KubeCon exploring DevOps maturity anno 2025. We’ve tinkered with today's DevOps CD tech long
-enough to have created a way of releasing microservices fast and frequently without crashing your whole dependency ecosystem.
+Last week, the Vamp team was at KubeCon exploring DevOps maturity anno 2025! We’ve tinkered with today's DevOps CD tech long
+enough to have created a way of **releasing microservices safely and frequently** without crashing your whole dependency ecosystem.
 The key is smart canary-releasing. 
 
 But what happens when you add data models into the go-to production mix? Well, our engineers are confident that what happens
-isn’t panic; but a smooth continuous-delivery process of machine learning models.
+**isn’t panic**; but a smooth continuous-delivery process of machine learning models.
 
 Watch below as our very own Vincent Lesierse and Mesosphere’s Jörg Schad present A Tale of Two Worlds: Canary-Testing for Both ML
 Models and Microservices.
@@ -21,12 +21,12 @@ Models and Microservices.
 {{< youtube ctATGBxDzRg >}}
 
 
-For those of you who missed the big event, see our handy **true confessions of cloud-native addicts [mini-conference guide here]**(https://vamp.io/blog/kubecon-top4-must-sees/?utm_source=newsletter&utm_medium=newsletter&utm_campaign=20190529-KubeCon&utm_content=Video). It's been specially prepared to serve all your KubeCon catch-up needs.
+For those of you who missed the big event, see our handy **true confessions of cloud-native addicts** [mini-conference guide here](https://vamp.io/blog/kubecon-top4-must-sees/?utm_source=newsletter&utm_medium=newsletter&utm_campaign=20190529-KubeCon&utm_content=Video). It's been specially prepared to serve all your KubeCon catch-up needs.
 
 <!--more-->
 
 For those of you wanting to read more about our presentation, check the [Kubecon schedule here](https://kccnceu19.sched.com/event/MPau/a-tale-of-two-worlds-canary-testing-for-both-ml-models-and-microservices-jorg-schad-mesosphere-vincent-lesierse-vampio)
 
-At Vamp, we eat, sleep and breath containerization to cloud, so we see it as our mission to share knowledge wherever we can. Subscribe to our newsletter and stay up-to-date on how you can achieve fast, frequent, safe release of your microservices to production.
+At Vamp, we eat, sleep and breath containerization to cloud, so we see it as our mission to share knowledge wherever we can. Subscribe to our newsletter and stay up-to-date on all things related to releasing microservices safely, frequently and at scale.
 
 <a class="button button--red" style="color: white;" href="http://eepurl.com/dkyWQz" target="_blank">Keep me informed</a>
