@@ -8,7 +8,7 @@ publishdate: 2019-05-14
 featured_image: "/images/blog/kubecon-syringe-1024px.jpg"
 ---
 
-![KubeCon1M&Ms](static/images/blog/KubeCon1M&Ms.jpg)
+![](/images/blog/KubeCon1M&Ms.jpg)
 
 Lurid tales of failure, heartwarming stories of human triumph and big visions on the [future of DevOps](https://vamp.io/news/vamp-at-kubecon-2019/), whoever dares claim that going cloud-native is dry has yet to see our top picks for this year's KubeCon Europe in Barcelona.
 
