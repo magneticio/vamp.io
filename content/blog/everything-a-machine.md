@@ -5,7 +5,7 @@ author: "Agnes"
 avatar: "agnes.jpg"
 tags: ["Microservices", "KubeCon", "Machine-Learning", "DevOps"]
 publishdate: 2019-06-05
-featured_image: "/images/blog/devops_diagram1.png"
+featured_image: "/images/blog/Code-bending.jpg"
 ---
 
 ![](/images/blog/Code-bending.jpg)
