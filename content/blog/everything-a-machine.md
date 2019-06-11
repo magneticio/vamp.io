@@ -8,7 +8,7 @@ publishdate: 2019-06-05
 featured_image: "/images/blog/devops_diagram1.png"
 ---
 
-![Devops Diagram](/images/blog/devops_diagram1.png)
+![](Code-bending.jpg)
 
 Fast! Microservices! Cloud! A bright, shiny CI/CD pipeline that pumps out innovative but reliable software at scale –
 how often have you thought “sure, I’ll get right on that!”  while in digital transformation meetings. We all know that
