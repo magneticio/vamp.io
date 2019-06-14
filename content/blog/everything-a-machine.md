@@ -8,11 +8,11 @@ publishdate: 2019-06-05
 featured_image: "/images/blog/Code-bending.jpg"
 ---
 
-![](/images/blog/Code-bending.jpg) 
+![](/images/blog/Code-bending.jpg)  
 
 Fast! Microservices! Cloud! A bright, shiny CI/CD pipeline that pumps out innovative but reliable software at scale –
 how often have you thought “sure, I’ll get right on that!”  while in digital transformation meetings. We all know that
-the move to microservices-based architecture is [”the newblack”] (https://www.mindtree.com/blog/look-devops-microservices) for many enterprises. But being tasked with **balancing
+the move to microservices-based architecture is [”the new black”] (https://www.mindtree.com/blog/look-devops-microservices) for many enterprises. But being tasked with **balancing
 flexible software release with reliable working software** in production can sometimes feel like being in the Twilight
 Zone. At least, you inevitably end up in the Outage Zone. Code that worked on someone’s machine is mysteriously broken
 in production. And now you’re in a post-mortem.
@@ -27,12 +27,12 @@ together by a stick of tape and a paperclip.
 
 ## Set policies that allow your infrastructure to bend, even when code breaks
 
-The solution, however, is the same for DevOps present as for DevOps future – you will always have broken code, **so
+The solution is the same for DevOps present as for DevOps future – you will always have broken code, **so
 architect for failure**, automate validation early on in your release process and the result is microservice releases
 that won’t crash your whole dependency ecosystem.
 
 Architecting for failure for the release part of your pipeline means
-not just implementing canary-testing, but policy-based [canaryreleasing](https://cloud.google.com/blog/products/gcp/how-release-canaries-can-save-your-bacon-cre-life-lessons). This
+not just implementing canary-testing, but policy-based [canary releasing](https://cloud.google.com/blog/products/gcp/how-release-canaries-can-save-your-bacon-cre-life-lessons). This
 is done by setting approval gates early in the deployment pipeline to remove much of the hasty final approval chaos
 usually seen in bigger, slower release trains. 
 
@@ -40,7 +40,7 @@ Policies around approval gates are set by including input from business,
 operations and development stakeholders, as each group will have different parameters to measure a release’s health and
 success in real-time. 
 
-By defining parameters against the four [‘goldenmetrics’](https://landing.google.com/sre/sre-book/chapters/monitoring-distributed-systems/) as defined by Google’s SRE
+By defining parameters against the four [‘golden metrics’](https://landing.google.com/sre/sre-book/chapters/monitoring-distributed-systems/) as defined by Google’s SRE
 methodology, each release can be measured and compared to historical data. Set values for performance of your existing
 version compared to your new version and bake those “if-then” statements into the code of your approval gates. That way
 the quality of each release can be definitively and continuously validated against your custom service-level objectives
