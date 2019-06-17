@@ -13,11 +13,13 @@
 
         <h1 class="blog-header">{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
 
-        <div class="markdowned blog-body mb-md-5">
+        <div class="markdowned blog-body mb-md-3">
           {{ .Content }}
         </div>
 
         {{ partial "social-share" . }}
+
+        {{ partial "whitepaper-cta" . }}
 
       </div>
     </div>

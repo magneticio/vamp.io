@@ -122,9 +122,23 @@
   }
 </script>
 
+
+{{ if .IsHome }}
+
+<!-- Start of Async BotSquad Code -->
+
+<!--<script data-botsquad='{"id":"caad0a50-37d8-4896-94d4-c3d62b001c1b", "socket": "wss://bsqd.me/socket", "container_id": "chat", "layout": "contained"}' src="https://bsqd.me/js/host.js"></script>-->
+
+<!-- End of Async Botsquad Code -->
+
+
+{{ else }}
+
 <!-- Start of Async Drift Code -->
+
+
 <script>
-  if (location.host === 'www.vamp.io' || location.host === 'vamp.io' || location.host === 'vamp-ee-staging.vamp.io') {
+  if (location.host === 'www.vamp.io' || location.host === 'vamp.io' || location.host === 'staging.vamp.io') {
     !function () {
       var t = window.driftt = window.drift = window.driftt || [];
       if (!t.init) {
@@ -149,7 +163,12 @@
     drift.load('y5f3mtg4w6nd');
   }
 </script>
+
 <!-- End of Async Drift Code -->
+
+
+{{end}}
+
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b3cc10130bbdb11"></script>
