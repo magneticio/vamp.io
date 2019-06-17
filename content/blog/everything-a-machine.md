@@ -12,14 +12,11 @@ featured_image: "/images/blog/Code-bending.jpg"
 
 Fast! Microservices! Cloud! A bright, shiny CI/CD pipeline that pumps out innovative but reliable software at scale –
 how often have you thought “sure, I’ll get right on that!”  while in digital transformation meetings. We all know that
-the move to microservices-based architecture is [”the new black”] (https://www.mindtree.com/blog/look-devops-microservices) for many enterprises. But being tasked with **balancing
-flexible software release with reliable working software** in production can sometimes feel like being in the Twilight
-Zone. At least, you inevitably end up in the Outage Zone. Code that worked on someone’s machine is mysteriously broken
-in production. And now you’re in a post-mortem.
+the move to microservices-based architecture is [”the new black”] (https://www.mindtree.com/blog/look-devops-microservices) for many enterprises. But being tasked with **balancing flexible software release with reliable working software** in production can sometimes feel like being in the Twilight Zone. At least, you inevitably end up in the Outage Zone. Code that worked on someone’s machine is mysteriously broken in production. And now you’re in a post-mortem.
 
 <!--more-->
 
-Last week, our team was at KubeCon talking about [the future of
+Last month, our team was at KubeCon talking about [the future of
 DevOps](https://vamp.io/news/vamp-at-kubecon-2019/?utm_source=blog&utm_medium=blog2&utm_campaign=20190529-KubeCon&utm_content=EverythingAMachine)
 and canary-testing for machine-learning models. But what about the present of DevOps? For those of us entrusted with
 building that present, it can seem that rather than a bright, shiny CI/CD pipeline, we have a clunky juggernaut held
@@ -72,5 +69,10 @@ and (2) deviations from the established norm are captured and acted upon, rollin
 insight into how to repair it. 
 
 This is what we call continuous validation: architecting for continuous validation not
-only prevents application-wide outages but ensures a smoother continuous delivery process that you can rely on as a
+only prevents application-environment-wide outages but ensures a smoother continuous delivery process that you can rely on as a
 stepping-stone to scale.
+
+Interested in better managing your release process? Go to [Vamp trial](https://vamp.io/ee-trial-signup/) for an install-yourself or hosted environment of VAMP, and use the documentation [here](https://vamp.io/documentation/installation/v1.0.0/overview/) to learn how.
+
+Or if you would like to learn more about how to engineer your release process for continuous validation, download our free whitepaper.
+
