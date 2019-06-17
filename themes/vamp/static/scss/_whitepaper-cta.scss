@@ -1,0 +1,49 @@
+.whitepaper-cta {
+  padding-top: $spacer;
+  margin-bottom: $spacer;
+
+  &-body {
+    padding: 1.5 * $spacer;
+    background-color: $ash;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &-title {
+    font-weight: $font-weight-heavy;
+    margin-bottom: .5 * $spacer;
+  }
+
+  &-text {
+    margin-bottom: .5 * $spacer;
+  }
+
+  &-link {
+    text-transform: uppercase;
+    color: $red;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: .3px;
+  }
+
+  &-left {
+  }
+
+  &-right {
+
+  }
+
+  &-image {
+    width: 180px;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .18);
+    @media only screen
+      and (max-device-width: 414px) {
+        display: none;
+      }
+  }
+
+}
