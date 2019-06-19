@@ -54,6 +54,7 @@ gulp.task('js', function() {
       .pipe(hash.manifest("hash.json"))
       .pipe(gulp.dest("data/js"));
 
+    // The Vue app is no longer live. Leave this as reference
     gulp.src('./themes/vamp/static/js/apps.js')
       .pipe(rename({ suffix: '.min' }))
       .pipe(uglify())
