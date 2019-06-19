@@ -17,7 +17,7 @@ before_install:
 
 install:
   - npm install -g gulp
-  - curl -sSL https://github.com/gohugoio/hugo/releases/download/v0.25.1/hugo_0.25.1_Linux-64bit.tar.gz | tar -zxf - -C /tmp/
+  - curl -sSL https://github.com/gohugoio/hugo/releases/download/v0.52/hugo_0.52_Linux-64bit.tar.gz | tar -zxf - -C /tmp/
   - export PATH="/tmp:$PATH"
   - npm install
 

@@ -6,55 +6,25 @@ publishdate: 2019-04-29
 featured_image: "https://vamp.io/img/news/kubecon-vid-banner.png"
 ---
 
-*Amsterdam, 29 April 2019*
+*Amsterdam, 30 May 2019*
 
+Last week, the Vamp team was at KubeCon exploring DevOps maturity anno 2025! We’ve tinkered with today's DevOps CD tech long
+enough to have created a way of **releasing microservices safely and frequently** without crashing your whole dependency ecosystem.
+The key is smart canary-releasing. 
 
-**update 30 May 2019**
+But what happens when you add data models into the go-to production mix? Well, our engineers are confident that what happens
+**isn’t panic**; but a smooth continuous-delivery process of machine learning models.
 
-Last week, the Vamp team was at KubeCon exploring DevOps maturity anno 2025.What happens when you add data models to your
-continuous delivery process?
-
-Well, our engineers are confident that what happens isn’t panic. Watch below as our very own
-Vincent Lesierse and Mesosphere’s Jörg Schad present A Tale of TwoWorlds: Canary-Testing for Both ML Models and Microservices.
+Watch below as our very own Vincent Lesierse and Mesosphere’s Jörg Schad present A Tale of Two Worlds: Canary-Testing for Both Machine Learning Models and Microservices.
 
 {{< youtube ctATGBxDzRg >}}
 
-For those of you who missed the big event, we also have [a handy mini-conference guide](https://vamp.io/blog/kubecon-top4-must-sees/?utm_source=newsletter&utm_medium=newsletter&utm_campaign=20190529-KubeCon&utm_content=Video)
-for all your KubeCon catch-up needs.
+For those of you who missed the big event, see our handy **true confessions of cloud-native addicts** [mini-conference guide here](https://vamp.io/blog/kubecon-top4-must-sees/?utm_source=newsletter&utm_medium=newsletter&utm_campaign=20190529-KubeCon&utm_content=Video). It's been specially prepared to serve all your KubeCon catch-up needs.
 
 <!--more-->
 
-**original message below**
+For those of you wanting to read more about our presentation, check the [Kubecon schedule here](https://kccnceu19.sched.com/event/MPau/a-tale-of-two-worlds-canary-testing-for-both-ml-models-and-microservices-jorg-schad-mesosphere-vincent-lesierse-vampio)
 
-Come with us on a journey through time and space as Vamp explores what DevOps maturity anno 2025 might look like at this
-year's KubeCon 2019. You might be on roll or just getting started on your journey to cloud-native with tools like Kubernetes and crew.
-At Vamp, we get it – it’s cool, but complex.
+At Vamp, we eat, sleep and breathe containerization to cloud, so we see it as our mission to share knowledge wherever we can. Subscribe to our newsletter and stay up-to-date on all things related to releasing microservices safely, frequently and at scale.
 
-Your engineering teams might already be overworked at DevOps maturity 0 or 1, so why are we talking about DevOps maturity
-‘the space age’? Because the future is coming and it’s a bright, shiny CI/CD pipeline powered by machine-learning.
-
-We’ve tinkered with the CD tech long enough to create a way of releasing microservices fast and frequently without
-crashing your whole dependency ecosystem. The key is smart canary-releasing. But what happens when you add data models
-into the go-to production mix? Well, our engineers are confident that what happens isn’t panic; but a smooth
-continuous-delivery process of ML models.
-
-Join us at this year’s KubeCon for [A Tale of Two Worlds: Canary-Testing for Both ML Models and Microservices](https://kccnceu19.sched.com/event/MPau/a-tale-of-two-worlds-canary-testing-for-both-ml-models-and-microservices-jorg-schad-mesosphere-vincent-lesierse-vampio) as Mesosphere’s
-technical lead Jörg Schad teams up with our very own technical product manager Vincent Lesierse for the most integrated
-of mash-ups.
-
-## Talk details
-- Thursday, May 23 • 11:55 - 12:30
-- Fira Gran Via, Barcelona
-- Hall 8.0 C1
-- Check the Kubecon schedule [here](https://kccnceu19.sched.com/event/MPau/a-tale-of-two-worlds-canary-testing-for-both-ml-models-and-microservices-jorg-schad-mesosphere-vincent-lesierse-vampio)
-
- Whether you can or can’t make it to this year’s KubeCon, stay tuned as we’ll be keeping you informed on the future of
-DevOps and all that good stuff with KubeCon event summaries, videos, mini-conference guides and more.
-
-<a class="button button--red" style="color: white;" href="http://eepurl.com/dkyWQz" target="_blank">Subscribe to our newsletter</a>
-
-Or **[meet our team] (https://calendly.com/richard-vamp/meeting-kubecon)** in Barcelona! Our CTO and tech team will be on hand. At Vamp, we eat, sleep and breath containerization to cloud, so we see it as our mission to share knowledge wherever we can.
-
-
-
-
+<a class="button button--red" style="color: white;" href="http://eepurl.com/dkyWQz" target="_blank">Keep me informed</a>
