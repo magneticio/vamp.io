@@ -1,10 +1,11 @@
 ---
-date: 2019-06-17T09:00:00+00:00
+date: 2019-06-24T09:00:00+00:00
 title: "Schrödingers Canary"
 author: "Agnes"
 draft: true
 avatar: "agnes.jpg"
 tags: ["Microservices", "Canary Releasing", "Testing-in-Production"]
+publishdate: 2019-06-24
 featured_image: "/images/blog/schrodinger_canary.png"
 ---
 
