@@ -20,7 +20,7 @@ even more nerve-wracking when releasing microservices.
 By applying the right methodologies, like canary releasing, you can minimize some of the risk of testing in production. 
 But even if you do that, how do you know when to scale up the rollout or what to do if it fails? Gathering telemetry, or 
 looking inside Schrödinger's box, is not enough. In this blog, we explore how by setting objectives around the health of 
-your canary release, and automating those objectives, you can ensure frequent, safe and scalable software release of microservices.
+your canary release, and [automating](https://vamp.io/blog/everything-a-machine/?utm_source=blog&utm_content=schrodingercanary) those objectives, you can ensure frequent, safe and scalable software release of microservices.
 
 ## Schrödinger’s cat box
 Schrödinger's cat is a thought experiment that asks us to imagine a cat in a box with a flask of poison. It illustrates a 
