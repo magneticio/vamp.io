@@ -1,10 +1,60 @@
 .announcement {
-  display: block;
-  top: 0;
-  height: 60px;
-  overflow: hidden;
-  background-color: $white;
-  border-bottom: 2px solid #f05485;
+  $breakpoint: 667px;
+  $breakpoint2: 768px;
+
+  &-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid $red;
+  }
+
+  &-title {
+    color: $gray;
+    font-weight: $font-weight-heavy;
+    margin-right: .5rem;
+    font-size: 14px;
+
+    @media all and (max-width: $breakpoint) {
+      display: none;
+    }
+  }
+
+  &-text {
+    color: $gray;
+    margin-right: .5rem;
+    font-size: 13px;
+
+    @media all and (max-width: $breakpoint2) {
+      display: none;
+    }
+  }
+
+  &-link {
+    text-transform: uppercase;
+    color: $red;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: .3px;
+    @media all and (max-width: $breakpoint) {
+      display: none;
+    }
+  }
+
+  &-mobile {
+    text-transform: uppercase;
+    color: $red;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: .3px;
+    display: none;
+    @media all and (max-width: $breakpoint) {
+      display: block;
+    }
+  }
+
   &.announcement-kubecon {
     color: $blue-dark;
     font-weight: 500;
