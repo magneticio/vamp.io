@@ -17,7 +17,7 @@ the move to microservices-based architecture is [”the new black”] (https://w
 <!--more-->
 
 Last month, our team was at KubeCon talking about [the future of
-DevOps](https://vamp.io/news/vamp-at-kubecon-2019/?utm_source=blog&utm_medium=blog2&utm_campaign=20190529-KubeCon&utm_content=EverythingAMachine)
+DevOps](https://vamp.io/news/vamp-at-kubecon-2019/?utm_source=blog&utm_medium=blog&utm_campaign=20190529-kubecon&utm_content=everything-a-machine)
 and canary-testing for machine-learning models. But what about the present of DevOps? For those of us entrusted with
 building that present, it can seem that rather than a bright, shiny CI/CD pipeline, we have a clunky juggernaut held
 together by a stick of tape and a paperclip. 

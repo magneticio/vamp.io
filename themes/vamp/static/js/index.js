@@ -17,21 +17,6 @@ function documentReady() {
   $('.top-nav-product-top').webuiPopover({url: '#productPopover', trigger: 'click', animation: 'pop', offsetTop: -20, padding: false, style: 'vamp'});
   $('.top-nav-developers-top').webuiPopover({url: '#developersPopover', trigger: 'click', animation: 'pop', offsetTop: -20, offsetLeft: 20, padding: false, style: 'vamp'});
 
-  // make the top menu light on all pages except the homepage
-  // make the menu smaller on scroll, only on the homepage
-  if (thePath !== '/') {
-    $("#header").addClass("navbar-light");
-  } else {
-    $(document).on("scroll", function() {
-      if($(document).scrollTop()>100) {
-        $("#header").addClass("navbar-small");
-      } else {
-        $("#header").removeClass("navbar-small");
-      }
-    });
-  }
-
-
   // Set mobile menu
   $('#menu-toggle').on('click', function (e) {
     $('.navbar-items').toggleClass('open');

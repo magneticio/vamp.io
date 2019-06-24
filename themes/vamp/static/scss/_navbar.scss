@@ -16,12 +16,6 @@
     height: 79px;
   }
 
-  &.navbar-sticky {
-    position: fixed;
-    width: 100%;
-    top: 60px; // 0px when no announcement, 60px otherwise
-  }
-
   &.navbar-light {
     background-color: $ash;
     border-bottom: $light-border;
