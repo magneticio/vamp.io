@@ -44,7 +44,7 @@ In the comparison to the Schrödinger's cat paradox, the operator causes the se
 to reduce to only one of the possible values by measuring the canary’s state: the operator knows for certain what state 
 the canary is in and can decide with a high level of certainty to increase or decrease the rollout.
 
-## Manually monitoring canary health: is the graph squiggly enough?
+## Manually monitoring canary health: is the graph wiggly enough?
 Manually monitoring each release increases the variation of human interpretation. Each operator in the team will watch
  different metrics, interpret the telemetry differently and have different triggers to increase or decrease rollout.
 
