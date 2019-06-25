@@ -31,7 +31,7 @@ to reduce to only one of the possible values immediately after the measurement.�
 
 ## Wait, wasn’t there a canary?
 In software release management, we often see a comparable paradox, albeit one that luckily has nothing to do with quantum 
-mechanics; that would make software development infinitely more difficult. The paradox in canary releases is about the 
+mechanics; that would make software development infinitely more difficult! The paradox in canary releases is about the 
 lack of measuring and the set of probabilities to reduce to only one of the possible values. You can do a canary release, 
 but you need to be able to “look inside the box” to see if your canary, or new version, is dead or alive.
 
@@ -68,3 +68,5 @@ release up or down based on actual production data.
 
 Interested in creating your own policy-based canary release? Go to [https://vamp.io/ee-trial-signup/]( https://vamp.io/ee-trial-signup/) for a install-yourself 
 or hosted environment of VAMP, and use the documentation [on our docs page](https://vamp.io/documentation/installation/v1.0.0/overview/) to help you walk through the process.
+
+Or learn more about how you can simplify your release management process by downloading our whitepaper below.
