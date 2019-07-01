@@ -20,6 +20,18 @@
     @media all and (max-width: $breakpoint) {
       display: none;
     }
+
+    &:before {
+      display: block;
+      content: '';
+      width: 20px;
+      height: 20px;
+      margin-left: -30px;
+      position: absolute;
+      background-image: url("data:image/svg+xml,%3Csvg height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m9.99966667.00006667c-5.5226 0-9.99966667 4.47726666-9.99966667 9.99986666 0 5.52259997 4.47706667 9.99979997 9.99966667 9.99979997 5.52260003 0 10.00020003-4.4774 10.00020003-9.99979997-.0000667-5.5228-4.4776-9.99986666-10.00020003-9.99986666zm4.48066663 14.48020003c0 .6710666-.5439333 1.215-1.2148666 1.215h-6.53113337c-.6712 0-1.215-.5439334-1.215-1.215v-8.96093337c0-.67106666.54393334-1.215 1.215-1.215h5.12613337v2.43h2.6198666zm-2.1011333-8.26480003v-1.91126667l2.1011333 1.91126667z' fill='%2317a2b8'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
   }
 
   &-text {
