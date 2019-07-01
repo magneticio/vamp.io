@@ -1,0 +1,5 @@
+[build]
+  command = "gulp build:prod && gulp hugo:prod"
+  publish = "public"
+[context.production.environment]
+  HUGO_VERSION = "0.52"
