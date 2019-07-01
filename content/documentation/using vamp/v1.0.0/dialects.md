@@ -7,8 +7,7 @@ menu:
     parent: "Using Vamp"
     weight: 90
 aliases:
-    - /documentation/using-vamp/dialects/
-    - /documentation/using-vamp/blueprints/#dialects
+    - /documentation/using-vamp/dialects/  
 ---
 
 A dialect is a set of native commands for the underlying container platform.  Vamp allows you to use container driver
