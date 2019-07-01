@@ -104,6 +104,12 @@ googleAnalytics = ""
 	weight = 20
 
 [[menu.main]]
+	name   = "Documentation"
+	url    = "/documentation/"
+	weight = 20
+
+
+[[menu.main]]
 	name   = "Support"
 	url    = "/support/"
 	weight = 30
@@ -119,6 +125,10 @@ googleAnalytics = ""
 	url    = "/news/"
 	weight = 50
 
+[[menu.main]]
+	name   = "Blog"
+	url    = "https://blog.vamp.io"
+	weight = 55
 
 [[menu.main]]
 	name = "Features"
