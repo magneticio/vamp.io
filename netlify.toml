@@ -18,6 +18,6 @@
 
 [[redirects]]
   from = "/blog/everything-a-machine/"
-  to = https://blog.vamp.io/everything-a-machine-automate-ci-cd-to-bend-even-when-code-breaks/
+  to = "https://blog.vamp.io/everything-a-machine-automate-ci-cd-to-bend-even-when-code-breaks/"
   status = 301
   force = true
