@@ -5,19 +5,19 @@
   HUGO_VERSION = "0.52"
 
 [[redirects]]
-  from = "https://vamp.io/blog/"
+  from = "/blog/"
   to = "https://blog.vamp.io/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://vamp.io/blog/schrodingers-canary/"
+  from = "/blog/schrodingers-canary/"
   to = "https://blog.vamp.io/schrodingers-canary/"
   status = 301
   force = true
 
 [[redirects]]
-  from = https://vamp.io/blog/everything-a-machine/
+  from = "/blog/everything-a-machine/"
   to = https://blog.vamp.io/everything-a-machine-automate-ci-cd-to-bend-even-when-code-breaks/
   status = 301
   force = true
