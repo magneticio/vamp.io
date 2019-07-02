@@ -21,3 +21,69 @@
   to = "https://blog.vamp.io/everything-a-machine-automate-ci-cd-to-bend-even-when-code-breaks/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/blog/kubecon-top4-must-sees/"
+  to = "https://blog.vamp.io/your-top-4-must-see-talks-at-kubecon-2019-true-confessions-of-cloud-native-addicts/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/custom-data-source-ab-testing/"
+  to = "https://blog.vamp.io/custom-data-sources-for-a-b-testing-with-vamp-lamia-and-istio-1-0-2/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/welch-ttest-ab-testing-istio/"
+  to = "https://blog.vamp.io/welchs-t-test-for-a-b-testing-with-vamp-lamia-and-istio-1-0-2/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/"
+  to = "https://blog.vamp.io/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/advanced-networking-with-istio-on-kubernetes/"
+  to = "https://blog.vamp.io/advanced-networking-with-istio-on-kubernetes/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/ab-testing-istio/"
+  to = "https://blog.vamp.io/a-b-testing-on-kubernetes-with-istio-0-8-2/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/putting-istio-to-work/"
+  to = "https://blog.vamp.io/putting-istio-to-work/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/taming-istio/"
+  to = "https://blog.vamp.io/taming-istio/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/vamps-gateway-agent/"
+  to = "https://blog.vamp.io/vamps-gateway-agent/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/mesoscon-europe-trend-2017/"
+  to = "https://blog.vamp.io/mesoscon-europe-2017-themes-and-trends/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/extend-marathonlb-with-canary-releasing/"
+  to = "https://blog.vamp.io/how-to-extend-marathon-lb-with-canary-releasing-features-using-vamp/"
+  status = 301
+  force = true
