@@ -1,0 +1,65 @@
+<div class="lander-row lander-row--white">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2 class="h2">Featured articles</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+
+        {{ range last 1 (where .Data.Pages.ByPublishDate "Section" "in" (slice "news")) }}
+
+          <div class="card featured-articles-card">
+            <a href="{{ .Permalink }}">
+              <div class="featured-articles-card-image-wrapper">
+                <picture class="card-image" data-type="background" style="background-image: url(&quot;{{ .Params.featured_image }}&quot;);"> <source srcset="{{ .Params.featured_image }}">
+                  <img src="{{ .Params.featured_image }}"  alt="">
+                </picture>
+              </div>
+            </a>
+            <div class="card-content">
+              <div class="featured-articles-badge">News</div>
+              <p class="text card-text featured-articles-card-text">{{ .Title }}</p>
+              <a href="{{ .Permalink }}" class="button button--red--ghost">Read article</a>
+            </div>
+          </div>
+
+        {{ end }}
+
+      </div>
+      <div class="col-sm-4">
+        <div class="card featured-articles-card">
+          <a id="featured-blog-article-0-image-link" href="#">
+            <div class="featured-articles-card-image-wrapper">
+              <picture id="featured-blog-article-0-image" class="card-image" data-type="background" style="background-image: url(#);"> <source srcset="#">
+                <img src="#" alt="">
+              </picture>
+            </div>
+          </a>
+          <div class="card-content">
+            <div class="featured-articles-badge">Blog</div>
+            <p id="featured-blog-article-0-text" class="text card-text featured-articles-card-text">...</p>
+            <a id="featured-blog-article-0-link" href="#" class="button button--red--ghost">Read article</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card featured-articles-card">
+          <a id="featured-blog-article-1-image-link" href="#">
+            <div class="featured-articles-card-image-wrapper">
+              <picture id="featured-blog-article-1-image" class="card-image" data-type="background" style="background-image: url(#);"> <source srcset="#">
+                <img src="#" alt="">
+              </picture>
+            </div>
+          </a>
+          <div class="card-content">
+            <div class="featured-articles-badge">Blog</div>
+            <p id="featured-blog-article-1-text" class="text card-text featured-articles-card-text">...</p>
+            <a id="featured-blog-article-1-link" href="#" class="button button--red--ghost">Read article</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -193,3 +193,34 @@ function setSideMenu() {
     return urlInfo && urlInfo.version && (((urlInfo.version.substring(0,1) === 'v') && !isNaN(urlInfo.version.substring(1,2))) || urlInfo.version === 'katana') ? urlInfo : false;
   }
 }
+
+/**
+ * Load Blog posts form Ghost API
+ **/
+
+$(document).ready(function() {
+  const api = new GhostContentAPI({
+    url: 'https://vamp.ghost.io',
+    key: '0c4b858e415cf12c4fc977101c',
+    version: 'v2'
+  });
+
+  // fetch 5 posts, including related tags and authors
+  api.posts
+    .browse({limit: 2 })
+    .then(posts => {
+      for (let i = 0; i < posts.length; i++) {
+        $(`#featured-blog-article-${i}-image`).css("background-image", `url(${posts[i].feature_image}`)
+        $(`#featured-blog-article-${i}-image > source`).attr("srcset", `${posts[i].feature_image} 1x`)
+        $(`#featured-blog-article-${i}-image > img`).attr("src", `${posts[i].feature_image}`)
+
+
+        $(`#featured-blog-article-${i}-image-link`).attr("href", posts[i].url)
+        $(`#featured-blog-article-${i}-link`).attr("href", posts[i].url)
+        $(`#featured-blog-article-${i}-text`).text(posts[i].meta_description)
+      }
+    })
+    .catch((err) => {
+      console.error(err)
+    });
+});

@@ -6,7 +6,7 @@ const merge = require('merge-stream');
 const concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
 const rename = require('gulp-rename');
-const uglify = require('gulp-uglify');
+const uglify = require('gulp-uglify-es').default;
 const hash = require('gulp-hash');
 const del = require('del')
 

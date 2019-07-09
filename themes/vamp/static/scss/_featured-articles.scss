@@ -1,93 +1,45 @@
 .featured-articles {
-  height: 30px;
-  background-color: $blue-dark;
-  padding: 4px 0 2px 0;
-  .featured-articles-content {
-    .featured-article {
+  color: $gray-darker;
+
+  &-card {
+    border: $gray-lighter;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+
+    .card-block {
+      padding: 2 * $spacer;
+    }
+
+    &-image-wrapper {
+      overflow: hidden;
+      max-height: 200px;
+      border-radius: 5px 5px 0 0;
+    }
+
+    &-text {
+      text-align: left;
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;
-      color: $white;
-      font-weight: $font-weight-lightest;
-      font-size: 15px;
-      a {
-        color: $white;
-        &:hover {
-          text-decoration: underline;
-        }
-
-        i {
-          font-size: 16px;
-          font-weight: $font-weight-light;
-        }
-      }
+      max-height: 120px;
+      min-height: 120px;
     }
   }
 
-  .slick-dots li button:before {
-    font-size: 30px;
+  &-badge {
+    text-align: left;
+    text-transform: uppercase;
+    color: $gray;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: .3px;
+    margin-bottom: .5 * $spacer;
   }
 
-  .slick-dots li.slick-active button:before {
-    color: $ash;
+  &-content {
+    font-size: 18px;
+    font-weight: 300;
+    padding: .5 * $spacer 0;
+    text-align: left;
+    margin-bottom: $spacer;
   }
-
-  .slick-dots {
-    position: absolute;
-    bottom: 32px;
-    display: block;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-align: right;
-  }
-
-  @media all and (max-width: 321px) {
-    margin-top: 0;
-    padding: 6px 0 2px 0;
-    .featured-articles-content {
-      .featured-article {
-        font-size: 13px;
-      }
-    }
-
-    .slick-dots {
-      bottom: 0;
-    }
-  }
-
-  @media all and (min-width: 321px) {
-    margin-top: 0;
-
-    .slick-dots {
-      bottom: 0;
-    }
-  }
-
-  @media all and (min-width: 641px) {
-    margin-top: 0;
-  }
-
-  @media all and (min-width: 769px) {
-    margin-top: 0;
-
-    .slick-dots {
-      bottom: 32px;
-    }
-  }
-
-  @media all and (min-width: 1025px) {
-    .slick-dots {
-      bottom: 32px;
-    }
-  }
-
-  @media all and (min-width: 1201px) {
-    .slick-dots {
-      bottom: 32px;
-    }
-  }
-
 }
 
