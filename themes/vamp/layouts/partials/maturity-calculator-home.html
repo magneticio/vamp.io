@@ -1,22 +1,22 @@
-<div class="lander-row lander-row--white">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 text-center">
-        <h2 class="h2 mb-3">Check your DevOps Maturity Level</h2>
-        <p class="text-lead">At Vamp we help customers put their DevOps strategy to work by
-          adding an average of 30% business value to their current setup. Take this two minute survey to find out how far your organisation is on the road to a fully realised DevOps & Cloud Native strategy.
+<!--<div class="lander-row lander-row&#45;&#45;white">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="col-sm-12 text-center">-->
+<!--        <h2 class="h2 mb-3">Check your DevOps Maturity Level</h2>-->
+<!--        <p class="text-lead">At Vamp we help customers put their DevOps strategy to work by-->
+<!--          adding an average of 30% business value to their current setup. Take this two minute survey to find out how far your organisation is on the road to a fully realised DevOps & Cloud Native strategy.-->
 
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
+<!--        </p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--      <div class="col-sm-12">-->
         <div class="container" id="app-maturity-calculator">
 
           <!--Start -->
 
           <transition name="drop-down" mode="out-in" appear>
-            <div key="survey" class="py-3">
+            <div key="survey" class="py-3 py-md-5">
 
               <!--Results -->
 
@@ -57,7 +57,7 @@
                             </li>
                           </ul>
                         </div>
-                        <a class="button button--red btn-block" href="/product/">Start a free trial</a>
+                        <a class="button button--red btn-block" href="/ee-trial-signup/">Start a free trial</a>
                       </div>
                     </div>
                     <a href="#" class="text-small" @click.prevent="startAgain()">Start the survey again</a>
@@ -70,7 +70,7 @@
                   <div class="row">
                     <div class="col-sm-8">
                       <div class="card">
-                        <div class="card-body">
+                        <div class="card-body text-left">
                           <div class="card-page-number">
                             ((step + 1)) / ((questions.length))
                           </div>
@@ -83,8 +83,8 @@
                               </b-form-radio-group>
                             </b-form-group>
                             <div class="button-bar">
-                              <button v-show="step !== 0" class="button button--grey--ghost back-button  " @click.prevent="previous()">Back</button>
-                              <button class="button button--red text-r" @click="next()">(( lastQuestion ? "See results" : "Next question"))</button>
+                              <button v-show="step !== 0" class="button button--grey--ghost back-button mb-sm-2" @click.prevent="previous()">Back</button>
+                              <button class="button button--red text-r mb-sm-2" @click="next()">(( lastQuestion ? "See results" : "Next question"))</button>
                             </div>
                           </div>
                         </div>
@@ -151,8 +151,8 @@
             </div>
           </b-modal>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 

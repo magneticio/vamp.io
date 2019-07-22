@@ -40,6 +40,7 @@
   <meta property="twitter:image" content='{{ if .IsPage }}{{if isset .Params "featured_image"}} {{with .Params.featured_image}}{{ . }}{{end}}{{else}}{{.Site.Params.og_image}}{{end}}{{else}}{{.Site.Params.og_image}}{{end}}'>
 
 
+
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" type="image/x-icon" href="{{ $.Site.BaseURL }}{{ with .Site.Params.favicon }}/{{ . }}{{ else }}/images/favicon.ico{{ end }}">
@@ -59,12 +60,18 @@
       font-style: normal;
     }
   </style>
+
+  <!--  Bootstrap, Vue & other 3rd party assets-->
+
   <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+  <!--   custom assets -->
 
   <link rel="stylesheet" href="/css/dist/{{ index .Site.Data.css.hash "style.min.css" }}">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
 
   <!--google analytics and google optimize-->
 

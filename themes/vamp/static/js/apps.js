@@ -2,7 +2,7 @@ const questions = [
   {
     q: 'How often do you deploy to production per week?',
     a: [
-      'Less then once per week',
+      'Less than once per week',
       'A couple of times per week',
       'Multiple times every day'
     ]

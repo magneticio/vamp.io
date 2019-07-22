@@ -95,8 +95,13 @@
   </div>
 </div>
 
+<script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
+<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+
 <script src="/js/dist/{{ index .Site.Data.js.hash "vendor.min.js" }}" ></script>
 <script src="/js/dist/{{ index .Site.Data.js.hash "index.min.js" }}" ></script>
+<script src="/js/dist/{{ index .Site.Data.js.hash "apps.min.js" }}" ></script>
+
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
 <script type="text/javascript"> docsearch({
@@ -129,16 +134,14 @@
 </script>
 
 
-{{ if .IsHome }}
+
 
 <!-- Start of Async BotSquad Code -->
 
-<script defer data-botsquad='{"id":"caad0a50-37d8-4896-94d4-c3d62b001c1b"}' src="https://bsqd.me/js/widget.js"></script>
+<!--<script defer data-botsquad='{"id":"caad0a50-37d8-4896-94d4-c3d62b001c1b"}' src="https://bsqd.me/js/widget.js"></script>-->
 
 <!-- End of Async Botsquad Code -->
 
-
-{{ else }}
 
 <!-- Start of Async Drift Code -->
 
@@ -171,9 +174,6 @@
 </script>
 
 <!-- End of Async Drift Code -->
-
-
-{{end}}
 
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
