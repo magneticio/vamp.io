@@ -29,7 +29,12 @@ A tenant can be thought of as a group of users who share access to a specific se
 Vamp Workflows are event-driven scripts or small applications that can be used to automate cloud-native deployment strategies, integrate with third-party service discovery registries or send notifications to interested parties, for example. Workflows can be run standalone or arranged into multi-stage pipelines.
 
 ### Gateways
-Vamp Gateways fulfill two essential roles in a microservice architecture: service discovery and exposing services at the cluster edge. Vamp Gateways provide a service mesh that allows services to discover the location of upstream services and then directly connect to them safely and reliably. Vamp Gateways are also function as API gateways, providing ingress with vhost support, request routing and API composition for microservices-based applications. 
+Vamp Gateways fulfill two essential roles in a microservice architecture: service discovery and exposing services at the cluster edge. Vamp Gateways provide a service mesh that allows services to discover the location of upstream services and then directly connect to them safely and reliably. Vamp Gateways are also function as API gateways, providing ingress with vhost support, request routing and API composition for microservices-based applications.
+
+### Release Policies
+Release polices are predefined plans for how a new version of a microservice should be released.
+
+A release policy consists of one or more steps. Each step must have one or more success conditions. A condition compares a named metric against a baseline value. Policies can use Vamp's out-of-the-box metrics or custom metrics based on any data accessible in Elasticsearch. A policy can also define success and failure hooks which are useful when integrating Vamp with CD pipelines. 
 
 ## Vamp Components
 
@@ -76,9 +81,7 @@ The Vamp Gateway Agent (VGA) uses confd to read the Vamp-generated HAProxy confi
 The VGAs have short-term resilience. Running VGAs will continue to function if they lose their connection to the secure key-value store and will continue to handle service traffic as normal but new instances cannot be started without a key-value store connection. To reduce the risk of traffic loss, you must always have a minimum of two VGAs running, load-balanced and on different nodes.
 
 ### Vamp Release Agent
-The Vamp Release Agent provides automated release management based on predefined plans, which we call release policies. 
-
-A release policy consists of one or more steps, for example a minimal canary release policy might have 3 steps.  Each step can have one or more success conditions. A condition compares a named metric against a baseline value. Policies can use Vamp's out-of-the-box metrics or custom metrics based on any data accessible in Elasticsearch including "business" metrics, for example basket value. 
+The Vamp Release Agent provides automated release management based on release policies. Each Vamp Gateway can have one or more policies associated with it. 
 
 {{< note title="What next?" >}}
 * Choose a [deployment model](/documentation/how-vamp-works/v1.0.0/deployment-models)
