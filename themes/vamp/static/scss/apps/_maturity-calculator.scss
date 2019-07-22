@@ -5,11 +5,12 @@
 
   .card {
     box-shadow: 0 10px 30px rgba(0,0,0,.08);
-    padding: 3rem 2rem;
+    padding: 2rem 2rem;
     border: none;
   }
 
   .card-page-number {
+    margin-left: 1rem;
     float: right;
     font-size: $font-size-small;
   }
