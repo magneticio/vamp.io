@@ -34,10 +34,13 @@ Vamp Gateways fulfill two essential roles in a microservice architecture: servic
 ## Vamp Components
 
 ### Dependencies
-Vamp has three dependencies a secure key-value store, a SQL database, and Elasticsearch for aggregated metrics.
+Vamp has four dependencies a secure key-value store, a SQL database, a secure data stream for events and Elasticsearch for aggregated metrics.
 
 #### Hashicorp Vault
 Vamp uses Hashicorp Vault as a secure key-value to store the namespaces configurations, workflow scripts and Vamp Gateway Agent (VGA) configuration.
+
+#### NATS Streaming Server
+Vamp uses NATS Streaming Server as a secure, durable data stream for events. This forms the core of Vamp's event-driven model and is principally used to communicate network topology changes within environments and to communicate release policy changes across environments.
 
 #### MySQL
 Vamp uses MySQL to store the definitions and current states of the services, gateways and workflows. The SQL database is also used to store the user role definitions and users. All data is securely stored.
@@ -47,6 +50,9 @@ Vamp uses Elasticsearch to store raw traffic logs and aggregated health and traf
 
 ### Vamp Lifter
 Vamp Lifter provides an API and UI for creating, configuring and managing tenants. It also includes an installer which is useful for bootstrapping a minimal, all-in-one topology for non-production purposes.
+
+### Vamp Forklift
+Forkift provides a CLI tool for creating, configuring and managing tenants. It also provides tooling for creating and managing release policies.
 
 ### Vamp
 Vamp is the main API endpoint, business logic and service coordinator. Vamp talks to the configured container scheduler (Kubernetes or DC/OS) and synchronizes it with Vamp Gateway Agent (VGA) via the secure key-value store.
@@ -65,9 +71,14 @@ Vamp workflows are script s or small applications that automate and optimise the
 We have included a set of useful "Vamp native" workflows out of the box, such as health and traffic metrics, which are used by the Vamp UI to report system status and to enable autoscaling and self-healing. We also provide a Node.js library to simplify the job of writing your own.
 
 ### Vamp Gateway Agent (VGA)
-Vamp Gateway Agent (VGA) uses confd to read the Vamp-generated HAProxy configuration from a secure key-value store and update HAProxy. Logs from HAProxy are read by Filebeat and shipped to Elasticsearch. 
+The Vamp Gateway Agent (VGA) uses confd to read the Vamp-generated HAProxy configuration from a secure key-value store and update HAProxy. Logs from HAProxy are read by Filebeat and shipped to Elasticsearch. 
 
-The VGAs have short-term resilience. Running VGAs will continue to function if they lose their connection to the secure key-value store and will continue to handle service traffic as normal but new instances cannot be started without a key-value store connection. To reduce the risk of traffic loss, you must always have a minimum of two VGAs running, load-balanced and on different nodes. 
+The VGAs have short-term resilience. Running VGAs will continue to function if they lose their connection to the secure key-value store and will continue to handle service traffic as normal but new instances cannot be started without a key-value store connection. To reduce the risk of traffic loss, you must always have a minimum of two VGAs running, load-balanced and on different nodes.
+
+### Vamp Release Agent
+The Vamp Release Agent provides automated release management based on predefined plans, which we call release policies. 
+
+A release policy consists of one or more steps, for example a minimal canary release policy might have 3 steps.  Each step can have one or more success conditions. A condition compares a named metric against a baseline value. Policies can use Vamp's out-of-the-box metrics or custom metrics based on any data accessible in Elasticsearch including "business" metrics, for example basket value. 
 
 {{< note title="What next?" >}}
 * Choose a [deployment model](/documentation/how-vamp-works/v1.0.0/deployment-models)
