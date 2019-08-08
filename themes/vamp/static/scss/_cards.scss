@@ -1,42 +1,15 @@
 .card {
-  background-color: white;
-  border-radius: 5px;
-  color: #536171;
-  display: block;
-  position: relative;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-  &.card-simple {
-    background-color: white;
-    box-shadow: none;
+  &.card-shadow {
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
   }
-}
-
-.card-title {
-  font-weight: 500 !important;
-}
-
-.card-text {
-  margin-bottom: $spacer;
-}
-
-.card-image {
-  width: 100%;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-.card-content {
-  text-align: center;
-  padding: $spacer $spacer 2 * $spacer $spacer;
-  margin-bottom: 2 * $spacer;
-  min-height: 120px;
-
-  .h2 {
-    color: $blue-dark !important;
+  .card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
   }
-}
-
-.card-footer {
-  display: block;
+  .card-text {
+    line-height: 1.8;
+    margin-bottom: $spacer;
+  }
 }

@@ -1,0 +1,41 @@
+{{ partial "head" . }}
+
+<div class="landing-page">
+  {{ partial "nav-home" . }}
+</div>
+
+<div class="page events container pt-5">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="content markdowned">
+        <h1 class="content-header">{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
+
+        {{ range (.Paginator 10).Pages }}
+
+
+        <div class="card-deck">
+          <div class="card">
+<!--            <img src="..." class="card-img-top" alt="...">-->
+            <div class="card-body">
+              <h2 class="card-title d-inline">{{ .Title }}</h2>
+              {{ if .Params.categories }}
+              <ul class="badges d-inline">
+                {{ range .Params.categories }}
+                <li class="badge">{{ . }}</li>
+                {{ end }}
+              </ul>
+              {{end}}
+              <p class="card-text">{{ .Summary | markdownify }}</p>
+              <a href="{{ .Permalink }}" class="button button--red--ghost">Learn more</a>
+            </div>
+          </div>
+        </div>
+
+        {{ end }}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ partial "footer" .}}

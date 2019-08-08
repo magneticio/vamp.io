@@ -210,11 +210,7 @@ $(document).ready(function() {
     .browse({limit: 2 })
     .then(posts => {
       for (let i = 0; i < posts.length; i++) {
-        $(`#featured-blog-article-${i}-image`).css("background-image", `url(${posts[i].feature_image}`)
-        $(`#featured-blog-article-${i}-image > source`).attr("srcset", `${posts[i].feature_image} 1x`)
-        $(`#featured-blog-article-${i}-image > img`).attr("src", `${posts[i].feature_image}`)
-
-
+        $(`#featured-blog-article-${i}-image`).attr("src", `${posts[i].feature_image}`)
         $(`#featured-blog-article-${i}-image-link`).attr("href", posts[i].url)
         $(`#featured-blog-article-${i}-link`).attr("href", posts[i].url)
         $(`#featured-blog-article-${i}-text`).text(posts[i].meta_description)
