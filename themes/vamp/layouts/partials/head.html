@@ -18,9 +18,8 @@
   <meta name="author" content="{{ . }}">
   {{ end }}
 
-
   <!--OPEN GRAPH-->
-  <meta property='og:title' content='{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | Vamp.io {{ end }}'>
+  <meta property='og:title' content='{{ .Title }} | Vamp '>
   <!--<meta property="og:image" content="/img/006-mock-ups/VAMP-light-laptop-v100-hero.png">-->
 
   <meta property="og:image" content='{{ if .IsPage }}{{if isset .Params "featured_image"}} {{with .Params.featured_image}}{{ . }}{{end}}{{else}}{{.Site.Params.og_image}}{{end}}{{else}}{{.Site.Params.og_image}}{{end}}'>
@@ -35,7 +34,7 @@
   <!--TWITTER CARD-->
 
   <meta property='twitter:card' content='summary'>
-  <meta property='twitter:title' content='{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | Vamp.io {{ end }}'>
+  <meta property='twitter:title' content='{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Page.Title }} | Vamp.io {{ end }}'>
   <meta property="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
   <meta property="twitter:image" content='{{ if .IsPage }}{{if isset .Params "featured_image"}} {{with .Params.featured_image}}{{ . }}{{end}}{{else}}{{.Site.Params.og_image}}{{end}}{{else}}{{.Site.Params.og_image}}{{end}}'>
 

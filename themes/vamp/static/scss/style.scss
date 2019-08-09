@@ -11,10 +11,9 @@
 @import 'transitions';
 @import 'animations';
 @import 'product';
-@import 'featured-articles';
 @import 'announcement';
 @import 'news';
-@import 'whitepaper-cta';
+@import 'top-banner-cta';
 @import 'chatbot-container';
 @import 'markdown';
 
@@ -204,7 +203,7 @@ a {
 }
 // Buttons
 
-.button {
+.button, a.button {
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: 0.1em;
@@ -262,6 +261,7 @@ a {
   }
 
   &:hover {
+    text-decoration: none;
     .button__icon--arrow {
       background-image: url('/img/003-Small-icons/White/Arrow-White.svg');
     }
@@ -1603,3 +1603,5 @@ img.screenshot {
 
 @import "marketing/landing/style";
 @import "careers/style";
+@import "events/style";
+
