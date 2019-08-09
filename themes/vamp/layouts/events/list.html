@@ -10,16 +10,16 @@
       <div class="content markdowned">
         <h1 class="content-header">{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
 
-        {{ range (.Paginator 10).Pages }}
 
 
-        <div class="card-deck">
-          <div class="card">
+        {{ range (.Paginator 10).Pages.ByDate.Reverse }}
+
+          <div class="card mb-3">
 <!--            <img src="..." class="card-img-top" alt="...">-->
             <div class="card-body">
               <h2 class="card-title d-inline">{{ .Title }}</h2>
               {{ if .Params.categories }}
-              <ul class="badges d-inline">
+              <ul class="badges d-inline ml-0 ml-md-3">
                 {{ range .Params.categories }}
                 <li class="badge">{{ . }}</li>
                 {{ end }}
@@ -29,7 +29,6 @@
               <a href="{{ .Permalink }}" class="button button--red--ghost">Learn more</a>
             </div>
           </div>
-        </div>
 
         {{ end }}
 

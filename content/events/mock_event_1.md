@@ -1,13 +1,13 @@
 ---
 date: 2019-08-08T09:00:00+00:00
-title: "Top 3 Epic Fails of Moving to a Microservices Architecture"
+title: "Five very awesome things to do"
 categories:
     - webinar
-publishdate: 2019-08-08
+publishdate: 2018-12-03
 featured_image: "https://vamp.io/img/news/ibc2018.png"
 ---
 
-**Tuesday, August 27th 2019 - 4:00 PM (CEST) About 45 minutes**
+**Tuesday, December 3rd 2018 - 4:00 PM (CEST) About 45 minutes**
 
 For many organizations, a move to a microservices architecture holds a lot of promise of increased velocity and 
 time-to-value in their application environment. But they quickly find that complexity across their environment stacks.
