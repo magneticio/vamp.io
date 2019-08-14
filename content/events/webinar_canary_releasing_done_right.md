@@ -7,7 +7,7 @@ publishdate: 2019-08-14
 featured_image: "https://vamp.io/img/news/ibc2018.png"
 ---
 
-**Tuesday, September 10th 2019 - 4:00 PM (CEST) About 45 minutes**
+**Tuesday, September 10th 2019 - 4:00 PM (CEST) About 45 minutes** If this time zone is not your favourite make sure you register to get access to the on-demand replay right after the webinar has finished. 
 
 **Canary releasing done right: the most useful tool in your release toolkit**
 
