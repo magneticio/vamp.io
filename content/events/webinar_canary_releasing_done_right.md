@@ -5,6 +5,7 @@ categories:
     - webinar
 publishdate: 2019-08-14
 featured_image: "https://vamp.io/img/news/ibc2018.png"
+draft: true
 ---
 
 **Tuesday, September 10th 2019 - 4:00 PM (CEST) About 45 minutes**
