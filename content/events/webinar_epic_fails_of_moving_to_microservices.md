@@ -1,5 +1,5 @@
 ---
-date: 2019-08-08T09:00:00+00:00
+date: 2019-08-14T09:00:00+00:00
 title: "Top 3 Epic Fails of Moving to a Microservices Architecture"
 categories:
     - webinar
