@@ -10,7 +10,7 @@ featured_image: "https://vamp.io/img/news/ibc2018.png"
 **Tuesday, September 10th 2019 - 4:00 PM (CEST) About 45 minutes** 
 
 
-**Canary releasing done right: the most useful tool in your release toolkit**
+**Canary releasing: the most useful tool in your release toolkit**
 
 You want to release great code, your team is smart, you want to scale, you want to go faster. But how do you and your team move faster without sacrificing stability and customer experience?
 
