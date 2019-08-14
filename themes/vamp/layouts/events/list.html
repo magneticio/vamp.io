@@ -7,7 +7,7 @@
 <div class="page events container pt-5">
   <div class="row">
     <div class="col-sm-12">
-      <div class="content markdowned">
+      <div class="content">
         <h1 class="content-header">{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
 
 
@@ -16,7 +16,7 @@
 
           <div class="card mb-3">
 <!--            <img src="..." class="card-img-top" alt="...">-->
-            <div class="card-body">
+            <div class="card-body markdowned">
               <h2 class="card-title d-inline">{{ .Title }}</h2>
               {{ if .Params.categories }}
               <ul class="badges d-inline ml-0 ml-md-3">
@@ -25,7 +25,7 @@
                 {{ end }}
               </ul>
               {{end}}
-              <p class="card-text">{{ .Summary | markdownify }}</p>
+              <div class="card-text markdowned">{{ .Summary | markdownify }}</div>
               <a href="{{ .Permalink }}" class="button button--red--ghost">Learn more</a>
             </div>
           </div>
