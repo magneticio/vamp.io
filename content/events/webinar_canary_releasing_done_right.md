@@ -1,5 +1,5 @@
 ---
-date: 2019-08-14 T09:00:00+00:00
+date: 2019-08-13 T09:00:00+00:00
 title: "Canary Releasing Done Right"
 categories:
     - webinar
