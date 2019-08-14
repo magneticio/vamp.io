@@ -18,7 +18,7 @@ avoid - or resolve them!
 
 We look at:
 
-- best practice considerations around how to avoid "mini monoliths
+- best practice considerations around how to avoid "mini monoliths"
 - the roadblocks you encounter when you overprioritize up-front testing
 - how you can safely test-in-production by relying on technical and business KPIs
 
