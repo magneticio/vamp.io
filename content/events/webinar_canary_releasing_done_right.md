@@ -23,15 +23,13 @@ Join us to learn:
 - How a policy-based approach overcomes common canary issues for reliable testing in production
 - How this approach to canary releasing aligns with Google’s Site Reliability Engineering best practices
 
-Instructor: Jason Griffin, Head of Customer Engineering
+Your guide is our Head of Customer Engineering, Jason Griffin, who will unpack the fundamentals and key learnings you need to make canary releasing the go-to tool in your release toolkit.
 
 At Vamp, it's our mission to share cloud-native knowledge wherever we can, so join us.
-
 
 If this time zone is not your favourite make sure you register to get access to the on-demand replay directly after the webinar has finished. 
 
 
 <iframe width="100%" height="360" frameborder="0" src="https://app.livestorm.co/p/0661adaf-9401-45cc-a7af-8263e373982b/form"></iframe>
-
 
 <iframe width="100%" height="400" frameborder="0" src="https://app.livestorm.co/vamp/upcoming?limit=3" title="Vamp events | Livestorm"></iframe>
