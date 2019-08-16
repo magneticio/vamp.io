@@ -22,6 +22,7 @@ We look at:
 - the roadblocks you encounter when you overprioritize up-front testing
 - how you can safely test-in-production by relying on technical and business KPIs
 
+Join our Head of Customer Engineering, Jason Griffin, as he unpacks the real-life advice he and our team share with organizations facing these issues every day.
 
 If this time zone is not your favourite make sure you register to get access to the on-demand replay directly after the webinar has finished. 
 
