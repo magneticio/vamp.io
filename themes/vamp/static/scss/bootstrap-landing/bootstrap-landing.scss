@@ -1,0 +1,58 @@
+.bootstrap-landing {
+	// Reset
+
+	h2 {
+		font-weight: 400;
+	}
+	h3 {
+		font-size:  1.25rem;
+		font-weight: 300;
+	}
+
+	h4 {
+		font-size: 1.125rem;
+	}
+
+	p {
+		line-height: 1.75rem;
+	}
+
+	.font-size-lg {
+		font-size: 1.2rem;
+	}
+
+	.font-size-xlg {
+		font-size: 1.5rem;
+	}
+
+	// Text
+
+	.text-primary {
+		color: $red !important;
+	}
+
+	.text-secondary {
+		color: $gray !important;
+	}
+
+	// Backgrounds
+
+	.bg-gradient-light {
+		background-image: linear-gradient(to bottom,$ash 0,#fff 100%);
+	}
+
+	.bg-ash {
+		background-color: $ash;
+	}
+
+	.bg-dark {
+		background-color: $blue-dark !important;
+		.text-muted {
+			color: $gray-lighter !important;
+		}
+	}
+
+	.bg-red {
+		background-color: $red;
+	}
+}
