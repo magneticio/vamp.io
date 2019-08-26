@@ -62,4 +62,25 @@
 	.bg-red {
 		background-color: $red;
 	}
+
+	// Botsquad hack to not take over full screen on mobile
+
+	#botsquad-frame {
+		&.mobile {
+			position: inherit !important;
+			left: inherit !important;
+			top: inherit !important;
+			right: inherit !important;
+			bottom: inherit !important;
+		}
+	}
+
+	// one off hack
+
+	.hero-background {
+		background: url(/img/stock/people-meeting-3-colorized.jpg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-blend-mode: darken;
+	}
 }
