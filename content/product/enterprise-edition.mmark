@@ -1,13 +1,13 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Vamp Enterprise Edition 1.0
+title: Vamp Enterprise Edition
 type: "page"
 layout: "enterprise-edition"
 aliases:
  - /product/enterprise-edition/
 menu:
   main:
-    parent: "Vamp Enterprise Edition 1.0"
+    parent: "Vamp Enterprise Edition"
     weight: 10
 ---
 
@@ -31,7 +31,7 @@ Vamp’s real time integration with monitoring systems enable real time workflow
 
 {{% left-section-half %}}
 
-## Vamp Enterprise 1.0 License
+## Vamp Enterprise License
 
 Vamp Enterprise is installed on any cloud platform, on-premise or bare metal. We offer a subscription pay-per-use model that caters for all these situations.
 
@@ -50,7 +50,7 @@ Please {{<contact-sales-link>}} to request a Vamp Enterprise subscription quote 
 
 {{% left-section-5 %}}
 
-## Vamp Enterprise 1.0 Support
+## Vamp Enterprise Support
 
 ### Vamp Support levels
 Vamp Enterprise is a licensed software product for which we offer three levels of support: Basic, Enterprise and Gold.
