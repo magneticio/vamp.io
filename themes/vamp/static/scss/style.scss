@@ -130,6 +130,11 @@ a {
   &:last-child {
     margin-bottom: $small-margin;
   }
+
+	&.hero-sub-text {
+		font-weight: 400;
+		font-size: 20px;
+	}
 }
 
 .h3 {
@@ -1604,4 +1609,4 @@ img.screenshot {
 @import "marketing/landing/style";
 @import "careers/style";
 @import "events/style";
-
+@import "bootstrap-landing/bootstrap-landing";
