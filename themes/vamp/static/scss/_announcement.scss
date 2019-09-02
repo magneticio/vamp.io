@@ -11,6 +11,16 @@
     border-bottom: 1px solid $red;
   }
 
+  &-image {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    margin-right: .5rem;
+    img {
+      max-height: 20px;
+    }
+  }
+
   &-title {
     color: $gray;
     font-weight: $font-weight-heavy;
