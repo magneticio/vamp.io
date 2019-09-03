@@ -83,4 +83,30 @@
 		background-repeat: no-repeat;
 		background-blend-mode: darken;
 	}
+
+	// over rides for botsquad widget
+
+
+	#botsquad-frame {
+		--botsquad-main-color: #ff405e;
+	}
+
+	#botsquad-frame .chat-input {
+		border-top: 0;
+		justify-content: center;
+	}
+
+	#botsquad-frame .quick-replies .button {
+		line-height: 1.4;
+		letter-spacing: normal;
+		white-space: normal;
+	}
+
+	#botsquad-frame .content {
+		min-height: initial
+	}
+
+	#botsquad-frame .button {
+		height: auto;
+	}
 }
