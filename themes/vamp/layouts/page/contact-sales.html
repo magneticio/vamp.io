@@ -1,0 +1,19 @@
+{{ partial "head" . }}
+
+{{ partial "nav-home" . }}
+
+<div class="page documentation container text-center">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 offset-md-1">
+      <div class="content">
+        <h1 class="content-header">{{ .Title }}</h1>
+        <div class="markdowned" style="margin-bottom: -5px">
+          {{ .Content }}
+        </div>
+        <div class="pipedriveWebForms card pricing-iframe" data-pd-webforms="https://pipedrivewebforms.com/form/ab3a32ec0da50b308a450ed88036c076810301"><script src="https://cdn.pipedriveassets.com/web-form-assets/webforms.min.js"></script></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ partial "footer" .}}

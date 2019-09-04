@@ -1,48 +1,33 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Vamp Enterprise Edition
+title: Vamp Enterprise license and pricing
 type: "page"
 layout: "enterprise-edition"
-aliases:
- - /product/enterprise-edition/
-menu:
-  main:
-    parent: "Vamp Enterprise Edition"
-    weight: 10
 ---
 
 {{% centered-section %}}
-# Release with confidence
-Vamp offers release, control and optimisation of your containerised apps.
-
-
-#### Increase release velocity of new features
-Limited blast radius with Vamp’s automated & segmented gradual canary rollouts in production.
-
-#### Optimise cloud costs performance
-Vamp optimises cloud usage through priorities and real time load control.
-
-#### Improve Quality of Experience
-Vamp’s real time integration with monitoring systems enable real time workflows for automatically actioning on issues with QoE.
-
-{{<contact-sales-button>}}
+# Vamp Enterprise License and Pricing
 
 {{% /centered-section %}}
 
 {{% left-section-half %}}
 
-## Vamp Enterprise License
+## How the model works
 
 Vamp Enterprise is installed on any cloud platform, on-premise or bare metal. We offer a subscription pay-per-use model that caters for all these situations.
 
 How a Vamp Enterprise subscription works:
 
-- You only pay for what you use as you grow based on the vCPU nodes in production environments.
+- You only pay for what you use as you grow based on the vCPU nodes in production environments that you deploy your software to with Vamp.
 - We bill per month based on the on last month’s actual usage of Vamp in production environments.
-- You choose your level of support as part of our contract available in three flavours: Basic/Enterprise & Gold.  More details about [support can be found here](/support).
+- A typical installation of Vamp for medium or large sized enterprise costs €2k to €5k in monthly fees - excluding the support charge of your choice.
+- We have startup rates available
+- You choose your level of support as part of our contract available in three flavours: Basic, Enterprise or Gold.  More details about [support can be found here](/support).
 - Vamp should be installed on your preferred cloud platform, on-premise, or both.
 
-Please {{<contact-sales-link>}} to request a Vamp Enterprise subscription quote that fits your requirements.
+Please contact sales to request a Vamp Enterprise subscription quote that fits your requirements.
+
+{{<contact-sales-button>}}
 
 {{% /left-section-half %}}
 
@@ -62,7 +47,7 @@ support from our product team is one click away.
 
 We have several global and industry focused implementation partners available for consulting, architecture and operational support.
 
-Contact us for pricing information and details on support here: {{<contact-sales-link>}}
+Contact us for pricing information and details on support.
 
 {{% /left-section-5 %}}
 

@@ -1,6 +1,6 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Pricing
+title: Contact sales
 type: page
-layout: pricing
+layout: contact-sales
 ---
