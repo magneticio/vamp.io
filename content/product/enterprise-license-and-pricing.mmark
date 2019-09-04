@@ -1,10 +1,10 @@
 ---
 date: 2016-09-13T09:00:00+00:00
-title: Vamp Enterprise Edition
+title: Vamp Enterprise-license-and-pricing
 type: "page"
-layout: "enterprise-edition"
+layout: "enterprise-license-and-pricing"
 aliases:
- - /product/enterprise-edition/
+ - /product/enterprise-license-and-pricing/
 menu:
   main:
     parent: "Vamp Enterprise Edition"
@@ -12,7 +12,7 @@ menu:
 ---
 
 {{% centered-section %}}
-# Vamp Enterprise License
+# Vamp Enterprise License and pricing
 
 {{% /centered-section %}}
 
