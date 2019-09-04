@@ -12,20 +12,9 @@ menu:
 ---
 
 {{% centered-section %}}
-# Release with confidence
-Vamp offers release, control and optimisation of your containerised apps.
+## Vamp Enterprise License
 
 
-#### Increase release velocity of new features
-Limited blast radius with Vamp’s automated & segmented gradual canary rollouts in production.
-
-#### Optimise cloud costs performance
-Vamp optimises cloud usage through priorities and real time load control.
-
-#### Improve Quality of Experience
-Vamp’s real time integration with monitoring systems enable real time workflows for automatically actioning on issues with QoE.
-
-{{<contact-sales-button>}}
 
 {{% /centered-section %}}
 
@@ -39,10 +28,12 @@ How a Vamp Enterprise subscription works:
 
 - You only pay for what you use as you grow based on the vCPU nodes in production environments.
 - We bill per month based on the on last month’s actual usage of Vamp in production environments.
-- You choose your level of support as part of our contract available in three flavours: Basic/Enterprise & Gold.  More details about [support can be found here](/support).
-- Vamp should be installed on your preferred cloud platform, on-premise, or both.
+- You choose your level of support as part of our contract available in three flavours: Basic, Enterprise or Gold.  More details about [support can be found here](/support).
+- Vamp can be installed on your preferred cloud platform, on-premise, or both.
 
-Please {{<contact-sales-link>}} to request a Vamp Enterprise subscription quote that fits your requirements.
+Please contact sales to request a Vamp Enterprise subscription quote that fits your requirements.
+
+{{<contact-sales-button>}}
 
 {{% /left-section-half %}}
 
