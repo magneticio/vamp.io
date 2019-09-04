@@ -3,12 +3,6 @@ date: 2016-09-13T09:00:00+00:00
 title: Vamp Enterprise license and pricing
 type: "page"
 layout: "enterprise-edition"
-aliases:
- - /product/enterprise-license-and-pricing/
-menu:
-  main:
-    parent: "Vamp Enterprise Edition"
-    weight: 10
 ---
 
 {{% centered-section %}}
@@ -26,7 +20,7 @@ How a Vamp Enterprise subscription works:
 
 - You only pay for what you use as you grow based on the vCPU nodes in production environments that you deploy your software to with Vamp.
 - We bill per month based on the on last month’s actual usage of Vamp in production environments.
-- A typical installation of Vamp for medium or large sized enterprise costs €2k to €5k in monthly fees - excluding the support charge of your choice. 
+- A typical installation of Vamp for medium or large sized enterprise costs €2k to €5k in monthly fees - excluding the support charge of your choice.
 - We have startup rates available
 - You choose your level of support as part of our contract available in three flavours: Basic, Enterprise or Gold.  More details about [support can be found here](/support).
 - Vamp should be installed on your preferred cloud platform, on-premise, or both.
