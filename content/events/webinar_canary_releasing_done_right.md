@@ -4,7 +4,6 @@ title: "Canary Releasing Done Right"
 categories:
     - webinar
 publishdate: 2019-08-13
-featured_image: "https://vamp.io/img/news/ibc2018.png"
 ---
 
 **Tuesday, September 10th 2019 - 4:00 PM (CEST) About 45 minutes** (register to get access to the on-demand replay after webinar has finished)
