@@ -6,7 +6,7 @@ categories:
 publishdate: 2019-08-13
 ---
 
-**Tuesday, September 10th 2019 - 4:00 PM (CEST) About 45 minutes** (register here to get access to the on-demand replay)
+**Tuesday, September 10th 2019 - 4:00 PM (CEST) About 45 minutes** - register here to get access to the on-demand replay
 
 **Canary releasing: the most useful tool in your release toolkit**
 
