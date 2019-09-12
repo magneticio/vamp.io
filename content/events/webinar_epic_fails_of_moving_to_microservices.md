@@ -8,7 +8,7 @@ publishdate: 2019-08-14
 
 **Tuesday, August 27th 2019 - 4:00 PM (CEST) About 45 minutes** 
 
-On-demand replay available: [Vamp webinar Top 3 Epic Fails of Moving to a Microservice Architecture Recording](https://youtu.be/SL6X8sKqBxE)
+On-demand replay available: [Vamp webinar Top 3 Epic Fails of Moving to a Microservice Architecture](https://youtu.be/SL6X8sKqBxE)
 
 For many organizations, a move to a microservices architecture holds a lot of promise of increased velocity and
 time-to-value in their application environment. But they quickly find that complexity across their environment stacks.
