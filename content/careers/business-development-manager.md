@@ -60,7 +60,7 @@ We are VC-funded and have a customer-base for our paid-for enterprise offering. 
 
 • work and report skills with a CRM system
 
-## Benefits
+## Benefits:
 • contributing to the international roll-out and market success of CloudNative platform Vamp 
 
 • working on and with cutting edge technologies and industry visionairs
