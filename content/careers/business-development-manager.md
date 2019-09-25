@@ -8,11 +8,25 @@ title: Business Development Manager
 
 ## About the role
 
-You have professional experience with JVM and functional programming (Java, Scala etc.) based development and tooling. You have experience with application development using “cloud-native” technologies (like Docker, Kubernetes, Mesos/Marathon, ElasticSearch, Prometheus, HAProxy, NGINX, Terraform, microservices, Akka) and cloud infrastructure.
+As a Business Development manager you will be working with the newest state of the art tools in the cloud, software development and release management. You will join a Sales team and be responsible for generating successes for Vamp. Vamp has customers world wide and your role is global. 
 
-Your ambition is to be a true software crafts(wo)man, and thus you are aiming for the perfect balance between elegance and pragmatism, focusing on quality and maintainability. DevOps tickles your fancy. 
+You will work either directly with the larger enterprise target customers or you will work with Vamp partners to generate deals at the enterprise customer for the licensed software platform of Vamp. You will develop working relationships and direct interactions with partners, partner customers like IT architects & C-level leaders where necessary in the DMU’s that are relevant for acquiring Vamp.
 
-You love coming into work and enjoy the people you work with. You love making quality software! You are quick to pick up on new stuff and enjoy the process of learning new things.
+You have developed an understanding of Cloud with Amazon, Azure or Google already. You have some affinity with Developer Operations (DevOps). Knowledge about containers and microservices is a pre. You will be stimulated to continue to develop your technical aptitude, leadership, knowledge, skills and business acumen.
+
+## Responsibilities in this role:
+• generate sales through prospecting and all other necessary sales actions
+• provide regular (minimum weekly) sales reporting and update of the sales CRM system on a continuous bases
+• turn Marketing Qualified Leads (MQL) into Sales Qualified Leads (SQL)
+• turn SQL’s into signed license deals including the implementation and support agreements where relevant 
+• interact closely with all internal stakeholders on improving sales activities
+• account management of customers post-implementation: Responsible for generating more use cases with Vamp at the customer
+• builds relationships with sales partners and architects & C-level roles at clients
+• be responsible for the development, execution, follow-up and continuous updating of the sales plan, communicates and actively aligns with Marketing
+• supports sales engineers and implementation engineers on successful implementations of customers
+• accountable for the customer success score (NPS)
+• actively feeds learnings from client conversations and implementations back into product development
+• work with Product Development team, Marketing and partners to drive further awareness of our joint solutions and further business growth.
 
 ## About Vamp
 
@@ -23,31 +37,17 @@ We’re dedicated to helping organisations and companies of all sizes increase e
 We are VC-funded and have a customer-base for our paid-for enterprise offering. We love to always learn and improve and share knowledge, while keeping a sane work-life balance with enough fun.
 
 ## What we’re looking for:
-• a minimum of 3 yrs professional JVM based software development experience, working in agile teams (using Scala/Java)
-
-• experience with using and/or building open source products and development
-
-• experience with developing and maintaining software that runs in production
-
-• experience with using/developing for docker, kubernetes, mesos/marathon and microservices ecosystems
-
-• experience and affinity with CI/CD/DevOps tooling
-
-• experience with cloud infrastructure/services and cloud-native tooling
-
-• able to self-manage in a flat and dynamic scale-up team setting using agile working methods
+• proven trackrecord of 3 years + in sales in cloud B2B services Enterprise DMU’s
+• experience with selling to e-Commerce or SaaS customers are a nice bonus
+• experience with international sales and making use of latest state-of-of-the -art sales tactics including social media 
+• able to self-manage in an international, flat and dynamic scale-up team setting using agile working methods
+• excellent written and verbal communication skills in English
+• work and report skills with a CRM system
 
 ## Benefits
-• contributing to internationally used CloudNative platform Vamp
-
-• working on and with cutting edge technologies
-
-• direct and lots of influence in a great team with smart and experienced colleagues
-
-• flat and agile organisational structure with lots of flexibility and responsibilities
-
+• contributing to the international roll-out and market success of CloudNative platform Vamp 
+• working on and with cutting edge technologies and industry visionairs
+• direct and lots of influence in a great (but still relatively small) team with smart and experienced colleagues
+• flat and agile organisational structure with lots of flexibility and responsibilities - we focus on fun and informal
 • international exposure, clients and partnerships in the container/microservices/cloud native and DevOps space
-
-• Amsterdam city centre offices with great lunch facilities
-
-• Powerful notebook (mac, linux or windows) with big monitor
+• Amsterdam city centre office with great lunch made by our own chef
