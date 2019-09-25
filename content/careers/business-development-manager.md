@@ -16,16 +16,27 @@ You have developed an understanding of Cloud with Amazon, Azure or Google alread
 
 ## Responsibilities in this role:
 • generate sales through prospecting and all other necessary sales actions
+
 • provide regular (minimum weekly) sales reporting and update of the sales CRM system on a continuous bases
+
 • turn Marketing Qualified Leads (MQL) into Sales Qualified Leads (SQL)
-• turn SQL’s into signed license deals including the implementation and support agreements where relevant 
+
+• turn SQL’s into signed license deals including the implementation and support agreements where relevant
+
 • interact closely with all internal stakeholders on improving sales activities
+
 • account management of customers post-implementation: Responsible for generating more use cases with Vamp at the customer
+
 • builds relationships with sales partners and architects & C-level roles at clients
+
 • be responsible for the development, execution, follow-up and continuous updating of the sales plan, communicates and actively aligns with Marketing
+
 • supports sales engineers and implementation engineers on successful implementations of customers
+
 • accountable for the customer success score (NPS)
+
 • actively feeds learnings from client conversations and implementations back into product development
+
 • work with Product Development team, Marketing and partners to drive further awareness of our joint solutions and further business growth.
 
 ## About Vamp
@@ -38,16 +49,26 @@ We are VC-funded and have a customer-base for our paid-for enterprise offering. 
 
 ## What we’re looking for:
 • proven trackrecord of 3 years + in sales in cloud B2B services Enterprise DMU’s
+
 • experience with selling to e-Commerce or SaaS customers are a nice bonus
-• experience with international sales and making use of latest state-of-of-the -art sales tactics including social media 
+
+• experience with international sales and making use of latest state-of-of-the -art sales tactics including social media
+
 • able to self-manage in an international, flat and dynamic scale-up team setting using agile working methods
+
 • excellent written and verbal communication skills in English
+
 • work and report skills with a CRM system
 
 ## Benefits
 • contributing to the international roll-out and market success of CloudNative platform Vamp 
+
 • working on and with cutting edge technologies and industry visionairs
+
 • direct and lots of influence in a great (but still relatively small) team with smart and experienced colleagues
+
 • flat and agile organisational structure with lots of flexibility and responsibilities - we focus on fun and informal
+
 • international exposure, clients and partnerships in the container/microservices/cloud native and DevOps space
+
 • Amsterdam city centre office with great lunch made by our own chef
