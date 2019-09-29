@@ -1,8 +1,8 @@
-<div class="lander-row lander-row--white">
+<section class="py-5">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 text-center">
-        <h2 class="h2">Featured articles</h2>
+        <h2 class="mb-5">Featured articles</h2>
       </div>
     </div>
     <div class="row">
@@ -13,7 +13,7 @@
           <div class="card card-shadow">
             <img src="{{ .Params.featured_image }}" class="card-img-top" alt="">
             <div class="card-body">
-              <div class="featured-articles-badge">News</div>
+              <h4 class="featured-articles-badge">News</h4>
               <p class="card-text">{{ .Title }}</p>
               <a href="{{ .Permalink }}" class="button button--red--ghost">Read article</a>
             </div>
@@ -24,7 +24,7 @@
         <div class="card card-shadow">
           <img id="featured-blog-article-0-image" class="card-img-top" src="#" alt="">
           <div class="card-body">
-            <div class="featured-articles-badge">Blog</div>
+            <h4 class="featured-articles-badge">Blog</h4>
             <p id="featured-blog-article-0-text" class="card-text">...</p>
             <a id="featured-blog-article-0-link" href="#" class="button button--red--ghost">Read article</a>
           </div>
@@ -32,7 +32,7 @@
         <div class="card card-shadow">
           <img id="featured-blog-article-1-image" class="card-img-top" src="#" alt="">
           <div class="card-body">
-            <div class="featured-articles-badge">Blog</div>
+            <h4 class="featured-articles-badge">Blog</h4>
             <p id="featured-blog-article-1-text" class="card-text">...</p>
             <a id="featured-blog-article-1-link" href="#" class="button button--red--ghost">Read article</a>
           </div>
@@ -40,4 +40,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>
