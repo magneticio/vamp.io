@@ -10,7 +10,7 @@
 
 
 <div class="page bootstrap-landing">
-  <section class="pt-5">
+  <section class="py-5">
     <div class="container">
       <div class="row mb-4">
         <div class="col-sm-12">
@@ -37,24 +37,31 @@
           </div>
         </div>
       </div>
-      <div class="row py-5">
-        <div class="col-sm-12 col-lg-4 text-center mb-4 mb-lg-0">
-          <i class="fa fa-rocket font-size-xlg mb-3 text-secondary"></i>
-          <h3>Faster time-to-market</h3>
-        </div>
-        <div class="col-sm-12 col-lg-4 text-center mb-4 mb-lg-0">
-          <i class="fa fa-road font-size-xlg mb-3 text-secondary"></i>
-          <h3>Keep projects on track</h3>
-        </div>
-        <div class="col-sm-12 col-lg-4 text-center mb-4 mb-lg-0">
-          <i class="fa fa-line-chart font-size-xlg mb-3 text-secondary"></i>
-          <h3>Make IT a business driver</h3>
+    </div>
+  </section>
+
+  <section>
+    <div class="py-5 bg-gradient-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-lg-4 text-center mb-4 mb-lg-0">
+            <i class="fa fa-rocket font-size-xlg mb-3 text-primary"></i>
+            <h3>Faster time-to-market</h3>
+          </div>
+          <div class="col-sm-12 col-lg-4 text-center mb-4 mb-lg-0">
+            <i class="fa fa-road font-size-xlg mb-3 text-primary"></i>
+            <h3>Keep projects on track</h3>
+          </div>
+          <div class="col-sm-12 col-lg-4 text-center mb-4 mb-lg-0">
+            <i class="fa fa-line-chart font-size-xlg mb-3 text-primary"></i>
+            <h3>Make IT a business driver</h3>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-5 bg-gradient-light">
+  <section class="py-5">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-md-10 text-center">
@@ -63,30 +70,24 @@
       </div>
       <div class="row pt-4">
         <div class="col-sm-4">
-          <div class="d-flex">
-            <i class="fa fa-arrow-circle-right text-primary pt-1"></i>
-            <div class="ml-3">
-              <h4>Smart Release Strategies</h4>
-              <p class="text-muted mb-4">Benefit from precisely-targeted user segments and phased release plans to control which users see what features and when.</p>
-            </div>
+          <div class="d-flex flex-column text-center">
+            <img src="img/001-Big-icons/illustration-01.svg" alt="Easy canary releasing" class="image--smaller mb-3">
+            <h4>Smart Release Strategies</h4>
+            <p class="text-muted mb-4">Benefit from precisely-targeted user segments and phased release plans to control which users see what features and when.</p>
           </div>
         </div>
         <div class="col-sm-4">
-          <div class="d-flex">
-            <i class="fa fa-arrow-circle-right text-primary pt-1"></i>
-            <div class="ml-3">
-              <h4>Continuous validation</h4>
-              <p class="text-muted mb-4">Validate the health and business success of your software release with Vamp’s built-in observability system.</p>
-            </div>
+          <div class="d-flex flex-column text-center">
+            <img src="img/001-Big-icons/illustration-02.svg" alt="Powerful autoscaling" class="image--smaller mb-3">
+            <h4>Continuous validation</h4>
+            <p class="text-muted mb-4">Validate the health and business success of your software release with Vamp’s built-in observability system.</p>
           </div>
         </div>
         <div class="col-sm-4">
-          <div class="d-flex">
-            <i class="fa fa-arrow-circle-right text-primary pt-1"></i>
-            <div class="ml-3">
-              <h4>Safety first</h4>
-              <p class="text-muted mb-4">Automatically rollback a failed release. Sleep soundly in the knowledge there is an automated safety net in place to protect your business.</p>
-            </div>
+          <div class="d-flex flex-column text-center">
+            <img src="img/001-Big-icons/illustration-03.svg" alt="Container agnostic deploys" class="image--smaller mb-3">
+            <h4>Safety first</h4>
+            <p class="text-muted mb-4">Automatically rollback a failed release. Sleep soundly in the knowledge there is an automated safety net in place to protect your business.</p>
           </div>
         </div>
       </div>
@@ -111,10 +112,7 @@
 
   {{ partial "roi-calculator-bot-row" . }}
 
-  {{ partial "testimonial-row" . }}
-
   {{ partial "featured-articles-row" . }}
-
 
   <!--FRIENDS-->
 
