@@ -9,28 +9,25 @@
 <!--HEROSPACE ROW-->
 
 
-<div class="page">
-  <div class="lander-row lander-row--white hero-space">
+<div class="page bootstrap-landing">
+  <section class="py-5">
     <div class="container">
       <div class="row mb-4">
         <div class="col-sm-12">
-          <div class="row">
-            <div class="col-md-12 text-center">
+          <div class="row align-items-center">
+            <div class="col-12 col-md-5 col-lg-6 order-md-2 text-center">
+              <img class="laptop mb-lg-0 mb-4" src="img/006-mock-ups/VAMP-light-laptop-v100-hero.png" alt="">
             </div>
-            <div class="col-md-8 offset-md-2 text-center">
-              <h1 class="h1 hero-text">
-                Release with confidence at any scale
-              </h1>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 offset-md-2">
-              <p class="h1 mb-4 text-center hero-sub-text">
-                Release management that lets you deliver great user experience by automating reliable release of microservices at scale and micro-frontend experimentation
+            <div class="col-12 col-md-7 col-lg-6 order-md-1">
+              <h1 class="display-4 text-center text-md-left">Release with confidence at any scale</h1>
+              <p class="lead text-center text-md-left text-muted mb-4">
+                Avoid the sleepless nights and pager duty panic with release management that gives you control over
+                software delivery every step of the way.
               </p>
             </div>
           </div>
-          <div class="text-center">
+
+          <div class="text-center text-md-left">
             <a href="/product" class="button button--blue--ghost mr-md-3 mb-3 mb-md-0">
               Learn More
             </a>
@@ -40,73 +37,90 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-12 text-center">
-        <a href="/product/"><img class="laptop" src="img/006-mock-ups/VAMP-light-laptop-v100-hero.png" alt=""></a>
+    </div>
+  </section>
+
+  <section>
+    <div class="py-5 bg-gradient-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-lg-4 text-center mb-4 mb-lg-0">
+            <i class="fa fa-rocket font-size-xlg mb-3 text-primary"></i>
+            <h3>Faster time-to-market</h3>
+          </div>
+          <div class="col-sm-12 col-lg-4 text-center mb-4 mb-lg-0">
+            <i class="fa fa-road font-size-xlg mb-3 text-primary"></i>
+            <h3>Keep projects on track</h3>
+          </div>
+          <div class="col-sm-12 col-lg-4 text-center mb-4 mb-lg-0">
+            <i class="fa fa-line-chart font-size-xlg mb-3 text-primary"></i>
+            <h3>Make IT a business driver</h3>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!--ABOUT VAMP ROW-->
-
-  <div id="about-vamp-row" class="lander-row lander-row--grey">
+  <section class="py-5">
     <div class="container">
-      <div class="row mb-4">
-        <div class="col-sm-12 text-center">
-          <h2 class="h2 mb-4">Releasing without the guesswork</h2>
-        </div>
-        <div class="col-sm-4 text-center">
-          <img src="img/001-Big-icons/illustration-01.svg" alt="Easy canary releasing"  class="image--smaller">
-          <h3 class="h3">Crank up release velocity</h3>
-          <p class="text">
-            Release often with 0 downtime and limited blast radius with Vamp's gradual rollouts and upgrades.
-          </p>
-        </div>
-        <div class="col-sm-4 text-center">
-          <img src="img/001-Big-icons/illustration-02.svg" alt="Powerful autoscaling" class="image--smaller">
-          <h3 class="h3">Drive decisions based on data</h3>
-          <p class="text">
-            Don’t trust your gut, trust the data. Vamp's built-in health monitoring instantly reacts to increases in traffic or error situations.
-          </p>
-        </div>
-        <div class="col-sm-4 text-center">
-          <img src="img/001-Big-icons/illustration-03.svg" alt="Container agnostic deploys" class="image--smaller">
-          <h3 class="h3">Avoid vendor lock-in</h3>
-          <p class="text">
-            Run Vamp on any cloud or on-prem. Vamp integrates with all major cloud and container suppliers.
-          </p>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 text-center">
+          <h2 class="mb-4">Test in production - The only way that works for cloud</h2>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-12 text-center">
-          <a href="/product/" class="button button--red--ghost"> Learn more
-              <span class="button__icon button__icon--arrow">
-              </span>
-          </a>
+      <div class="row pt-4">
+        <div class="col-sm-4">
+          <div class="d-flex flex-column text-center">
+            <img src="img/001-Big-icons/illustration-01.svg" alt="Easy canary releasing" class="image--smaller mb-3">
+            <h4>Smart Release Strategies</h4>
+            <p class="text-muted mb-4">Benefit from precisely-targeted user segments and phased release plans to control which users see what features and when.</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="d-flex flex-column text-center">
+            <img src="img/001-Big-icons/illustration-02.svg" alt="Powerful autoscaling" class="image--smaller mb-3">
+            <h4>Continuous validation</h4>
+            <p class="text-muted mb-4">Validate the health and business success of your software release with Vamp’s built-in observability system.</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="d-flex flex-column text-center">
+            <img src="img/001-Big-icons/illustration-03.svg" alt="Container agnostic deploys" class="image--smaller mb-3">
+            <h4>Safety first</h4>
+            <p class="text-muted mb-4">Automatically rollback a failed release. Sleep soundly in the knowledge there is an automated safety net in place to protect your business.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  {{ partial "maturity-calculator-home" . }}
-
-  {{ partial "vamp-istio-preview-row" . }}
-
-  {{ partial "testimonial-row" . }}
 
   {{ partial "use-cases-row" . }}
 
-  {{ partial "featured-articles-row" . }}
+  <section class="pt-5" id="roi-calculator">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
+          <h2 class="mb-5">Explore the cost benefits of analytics-based software releasing</h2>
+          <p class="text-muted">
+            At Vamp we help customers put their DevOps strategy to work by adding an average of 30% business value to their current setup. Take this two minute survey to find out how increasing your DevOps maturity with release automation can increase your DevOps ROI.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  {{ partial "roi-calculator-bot-row" . }}
+
+  {{ partial "featured-articles-row" . }}
 
   <!--FRIENDS-->
 
-  <div class="lander-row lander-row--white">
+  <section class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-sm-12 text-center">
-          <h2 class="h2 mb-4">Vamp friends</h2>
+          <h2 class="mb-5">Vamp friends</h2>
         </div>
       </div>
 
@@ -125,17 +139,15 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
 
-  <!--FEATURES LIST ROW 01-->
-
-  <div class="lander-row lander-row--grey features-top">
+  <section class="py-5 bg-gradient-light">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-12 text-center">
-          <h2 class="h2 mb-4">Developers love us</h2>
-          <p class="text-lead">Vamp provides developers with a cutting-edge working environment, combining proven standards with cutting-edge technology.</p>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
+          <h2 class="mb-5">Developers love us</h2>
+          <p class="text-muted mb-5 font-size-lg">Vamp provides developers with a cutting-edge working environment, combining proven standards with cutting-edge technology.</p>
         </div>
       </div>
 
@@ -190,15 +202,15 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
 
-  <div id="partners-row" class="lander-row lander-row--white">
+  <section id="partners-row" class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-sm-12 text-center">
-          <h2 class="h2">Technology partners</h2>
-          <h3 class="h3 mb-4">Vamp works with</h3>
+          <h2 class="mb-3">Technology partners</h2>
+          <p class="text-muted mb-5 font-size-lg">Vamp works with</p>
         </div>
       </div>
 
@@ -227,7 +239,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>
+
+<script data-botsquad='{"id":"caad0a50-37d8-4896-94d4-c3d62b001c1b", "socket": "wss://bsqd.me/socket", "container_id": "rio-calculator-chatbot", "layout": "contained"}' src="https://bsqd.me/js/host.js"></script>
 
 {{ partial "footer" .}}
