@@ -27,6 +27,9 @@ Your hosts for this webinar are Jason Griffin (Head of Customer Engineering) and
 The on-demand replay will be made available after the event.
 
 
+
 PS - all attendees make a chance to win a free Vamp t-shirt!🚀
+
+
 
 <iframe width="100%" height="360" frameborder="0" src="https://app.livestorm.co/p/2991f333-0c87-489c-a980-f1fd3c62061b/form" title="5 Release Strategies You Should Know for Continuous Delivery | Vamp"></iframe>
