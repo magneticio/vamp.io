@@ -10,15 +10,15 @@ publishdate: 2019-10-10
 
 
 Pushing the release button these days is a nail-biting experience; you roll the dice and it's all about staying alive and not hurting your customer experience. 
-There are, however, a few release strategies you can do to increase the (business) success of your release. 
+There are, however, a few release strategies you can use to increase the success of your release, for both tech and business. 
 
-Join us at this live webinar and learn the 5 release management strategies with each its pros and cons.
+Join us at this live webinar and learn the 5 release management strategies with pros and cons for each.
 
 <!--more-->
 
 Join this live webinar and learn:
 
-- the 5 release management strategies with each its pros and cons
+- the 5 release management strategies with pros and cons for each
 - the most used release strategies for mission-critical applications
 - how release management helps to test safely in production with minimal business impact
 
@@ -28,7 +28,7 @@ The on-demand replay will be made available after the event.
 
 
 
-PS - all attendees make a chance to win a free Vamp t-shirt!🚀
+PS - all attendees will have a chance to win a free Vamp t-shirt!🚀
 
 
 
