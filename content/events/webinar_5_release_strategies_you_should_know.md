@@ -14,7 +14,7 @@ There are, however, a few release strategies you can do to increase the (busines
 
 Join us at this on demand webinar and learn the 5 release management strategies with each its pros and cons.
 
-!! When viewing: please fast forward to 3.35 for the appropriate start of the webinar.!!
+!! When viewing: please fast forward to 3.35 to the appropriate start of the webinar !!
 
 <!--more-->
 
@@ -26,8 +26,7 @@ Join this live webinar and learn:
 
 Your hosts for this webinar are Jason Griffin (Head of Customer Engineering) and Joey Compeer (Marketing Manager).
 
-The on-demand replay will be made available after the event.
-
+The on-demand replay is available y registering here, when viewing please fast forward to 3.35 to the appropriate start of the webinar.
 
 
 PS - all attendees make a chance to win a free Vamp t-shirt!🚀
