@@ -2,7 +2,7 @@
 date: 2019-10-10 T09:00:00+00:00
 title: "5 Release Strategies You Should Know for Continuous Delivery"
 categories:
-    - on demand webinar
+    - on-demand webinar
 publishdate: 2019-10-10
 ---
 
