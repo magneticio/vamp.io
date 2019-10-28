@@ -95,11 +95,11 @@ You can complete the merge using either the Vamp UI.
 1. In the Vamp UI, select the environment *environment* and go to the **Blueprints** page and click **Add** (top right)
 2. Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment 
 3. Open the action menu on the **sava:1.3** blueprint and select **Merge to** 
-  ![](/images/screens/v100/tut4/vampee-environment-blueprints-sava13-mergeto.png)
+  ![](/images/screens/v120/tut4/vampee-environment-blueprints-sava13-mergeto.png)
 4. You'll be prompted to select the deployment you wish to merge the blueprint with - select **sava-new**
 5. Click **Merge** to deploy the **sava-fontend:1.3** and **sava-backend:1.3** services to the running sava deployment.  
   Vamp will work out the differences and update the deployment accordingly.
-  ![](/images/screens/v100/tut4/vampee-environment-deployments-savanew-5clusters.png)
+  ![](/images/screens/v120/tut4/vampee-environment-deployments-savanew-5clusters.png)
 
 So what happened here? Vamp worked out which parts of the blueprint were already in the deployment and which parts should be added. This is done based on naming. The sava cluster already existed, so Vamp simply added a service to it with 0% route weight. A cluster named "backend" didn't exist, so Vamp created it.
 
@@ -110,11 +110,11 @@ Notice we now have:
   
   If you open the **sava-new/sava/webport** internal gateway, you will see that the sava-frontend:1.2.0 route has a weight of 100% and the new sava-frontend:1.3.0 route has a weight of 0%. Whenever Vamp merges a new service to an existing cluster, the default weight of 0% is applied. This means **no traffic will be routed to the sava:1.3 services yet**.
 
-![](/images/screens/v100/tut4/vampee-environment-gateways-savanew-sava-internal-2routes.png)
+![](/images/screens/v120/tut4/vampee-environment-gateways-savanew-sava-internal-2routes.png)
 
 Now both blueprints are deployed, moving from the old to the new topology is just a question of “turning the weight dial”. You could do this in one go, or slowly adjust it.
 
-![](/images/screens/v100/tut4/vampee-environment-gateways-savanew-sava-internal-editweights.png)
+![](/images/screens/v120/tut4/vampee-environment-gateways-savanew-sava-internal-editweights.png)
 
 ## Decommission parts of the deployment
 
@@ -128,7 +128,7 @@ Once we are fully running on sava:1.3, we can decommission the old, over-enginee
 2. Open the action menu on the **sava:1.2** blueprint and select **Remove from** 
 3. You'll be prompted to select the deployment you wish to remove the blueprint from - select **sava-new**
 5. Click **Remove** to delete the sava-frontend:1.2, sava-backend1:1.2 and sava-backend2:1.2 services from the running sava-new deployment
-  ![](/images/screens/v100/tut4/vampee-environment-deployments-savanew-2clusters.png)
+  ![](/images/screens/v120/tut4/vampee-environment-deployments-savanew-2clusters.png)
 
 Vamp will update the running deployment, removing all elements described in the sava:1.2 blueprint. The result is that our running deployment **sava-new now contains no sava:1.2 services**.
 

@@ -30,7 +30,7 @@ Vamp supports DC/OS and DC/OS Enterprise 1.9.x and later. Supoort for DC/OS 1.11
 
 ## Dependencies
 
-![architecture](/images/diagram/v100/vampee-arch-mgnt-svc-ext-mysql.png)
+![architecture](/images/diagram/v120/vampee-arch-mgnt-svc-ext-mysql.png)
 
 Vamp has three dependencies: a secure key-value store, a SQL database, and Elasticsearch for aggregated metrics.
 
@@ -108,5 +108,5 @@ This topology is suitable for smaller, lower volume development clusters where c
 
 {{< note title="What next?" >}}
 
-- Find out how to [install Vamp](/documentation/installation/v1.0.0/overview)
+- Find out how to [install Vamp](/documentation/installation/v1.2.0/overview)
   {{< /note >}}

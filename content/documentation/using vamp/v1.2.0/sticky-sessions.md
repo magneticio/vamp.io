@@ -117,7 +117,7 @@ clusters:
 
 {{< note title="What next?" >}}
 
-- Read about [using Vamp with virtual hosts](/documentation/using-vamp/v1.0.0/virtual-hosts/)
+- Read about [using Vamp with virtual hosts](/documentation/using-vamp/v1.2.0/virtual-hosts/)
 - Check the [API documentation](/documentation/api/api-reference)
 - [Try Vamp](/documentation/installation/hello-world)
   {{< /note >}}

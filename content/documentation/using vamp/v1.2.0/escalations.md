@@ -20,9 +20,9 @@ Any escalation that is triggered should be handled by an escalation handler
 
 Vamp ships with three escalation handlers, these can be composed into intricate escalation systems:
 
-- [scale_instances](/documentation/using-vamp/v1.0.0/escalations/#scale-instances)
-- [scale_cpu](/documentation/using-vamp/v1.0.0/escalations/#scale-cpu)
-- [scale_memory](/documentation/using-vamp/v1.0.0/escalations/#scale-memory)
+- [scale_instances](/documentation/using-vamp/v1.2.0/escalations/#scale-instances)
+- [scale_cpu](/documentation/using-vamp/v1.2.0/escalations/#scale-cpu)
+- [scale_memory](/documentation/using-vamp/v1.2.0/escalations/#scale-memory)
 
 ### scale_instances
 
@@ -176,7 +176,7 @@ clusters:
 
 {{< note title="What next?" >}}
 
-- Read about [Vamp events](/documentation/using-vamp/v1.0.0/events/)
+- Read about [Vamp events](/documentation/using-vamp/v1.2.0/events/)
 - Check the [API documentation](/documentation/api/api-reference)
 - [Try Vamp](/documentation/installation/hello-world)
   {{< /note >}}

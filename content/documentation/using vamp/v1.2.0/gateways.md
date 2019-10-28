@@ -16,17 +16,17 @@ Gateways allows for programmable routing.
 - **Internal gateways** created automatically for each deployment cluster and shared by all services deployed within it. Used to distribute traffic for canary releasing and A/B testing across service variants.
 - **External gateways** explicitly declared either in a deployment blueprint or using the gateways API. Provide a stable entry point to a defined, existing route or routes.
 
-Each gateway defines a set of rules for filtering and distributing traffic across the included routes and can optionally be set as [sticky](/documentation/using-vamp/v1.0.0/sticky-sessions/). You can access internal and external gateways through [Vamp reverse proxy](/documentation/using-vamp/v1.0.0/reverse-proxy).
+Each gateway defines a set of rules for filtering and distributing traffic across the included routes and can optionally be set as [sticky](/documentation/using-vamp/v1.2.0/sticky-sessions/). You can access internal and external gateways through [Vamp reverse proxy](/documentation/using-vamp/v1.2.0/reverse-proxy).
 
 ### On this page:
 
-- [Route weight and condition strength](/documentation/using-vamp/v1.0.0/gateways/#route-weight-and-condition-strength)
-- [URL path rewrite](/documentation/using-vamp/v1.0.0/gateways/#url-path-rewrite)
-- [Vamp managed and external routes](/documentation/using-vamp/v1.0.0/gateways/#vamp-managed-and-external-routes)
+- [Route weight and condition strength](/documentation/using-vamp/v1.2.0/gateways/#route-weight-and-condition-strength)
+- [URL path rewrite](/documentation/using-vamp/v1.2.0/gateways/#url-path-rewrite)
+- [Vamp managed and external routes](/documentation/using-vamp/v1.2.0/gateways/#vamp-managed-and-external-routes)
 
 ## Route weight and condition strength
 
-Each route in a gateway has a weight and optionally one or more conditions with a `condition_strength` (used to target specific traffic for routing). Read more about [conditions](/documentation/using-vamp/v1.0.0/conditions)
+Each route in a gateway has a weight and optionally one or more conditions with a `condition_strength` (used to target specific traffic for routing). Read more about [conditions](/documentation/using-vamp/v1.2.0/conditions)
 
 Routing is calculated as followed:
 
@@ -173,7 +173,7 @@ routes:
 
 {{< note title="What next?" >}}
 
-- Read about [Vamp workflows](/documentation/using-vamp/v1.0.0/workflows/)
+- Read about [Vamp workflows](/documentation/using-vamp/v1.2.0/workflows/)
 - Check the [API documentation](/documentation/api/api-reference)
 - [Try Vamp](/documentation/installation/hello-world)
   {{< /note >}}

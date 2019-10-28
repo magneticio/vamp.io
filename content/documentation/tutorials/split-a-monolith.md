@@ -95,7 +95,7 @@ The **sava-backend1** and **sava-backend2** services only respond to requests fo
 ### From the Gateways page
 Open the internal gateway (`sava-new/sava/webport`) or the external gateway (`sava/9060`) and click the **HOST - PORT/TYPE** link.
 
-![](/images/screens/v100/tut3/vampee-environment-gateways-savanew-internal-fe2be.png)
+![](/images/screens/v120/tut3/vampee-environment-gateways-savanew-internal-fe2be.png)
 
 ### Via the Vamp Gateway Agent
 You can also use the Vamp Gateway Agent (VGA) to access the **sava-frontend** using the virtual host name **9060.sava-new.vamp**.
@@ -140,7 +140,7 @@ To find the `app-id` of the frontend service:
 3. Now click on **sava-frontend:1.2.0** to see all running instances
 4. Click an instance name to open the detail page
 5. Copy the first part of page title, before the dot (`.`)
-  ![](/images/screens/v100/tut3/vampee-environment-deployments-savanew-frontend-instance.png)
+  ![](/images/screens/v120/tut3/vampee-environment-deployments-savanew-frontend-instance.png)
 6. Paste the copied text into your favourite text editor and replace `_deployment` with `/deployment`, the resulting text is the `app-id`
 
 ```bash

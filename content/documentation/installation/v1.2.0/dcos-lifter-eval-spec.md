@@ -1,14 +1,14 @@
 ---
 date: 2018-08-31T14:00:00+00:00
-title: Vamp Enterprise Edition Trial for DC/OS 
-platforms: ["DCOS","Mesosphere"]
+title: Vamp Enterprise Edition Trial for DC/OS
+platforms: ["DCOS", "Mesosphere"]
 ---
 
 {{< note title="Vamp Enterprise for DC/OS" >}}
-Thank you for your interest in Vamp Enterprise! To start using Vamp Enterprise you need to setup and configure some dependencies and environments. To make this really easy we've created Vamp Lifter, our setup and configuration tool. You can read more about Vamp components, including Lifter [here.] (/documentation/how-vamp-works/v1.0.0/concepts-and-components/#vamp-components)
+Thank you for your interest in Vamp Enterprise! To start using Vamp Enterprise you need to setup and configure some dependencies and environments. To make this really easy we've created Vamp Lifter, our setup and configuration tool. You can read more about Vamp components, including Lifter [here.](/documentation/how-vamp-works/v1.2.0/concepts-and-components/#vamp-components)
 {{< /note >}}
 
-If you’re new to Vamp Enterprise Edition and you want a quick way to evaluate it, copy the Vamp Lifter application specification below and save it as file named **lifter-standalone.json**. Then follow the [DC/OS Quickstart](/documentation/installation/dcos) guide. 
+If you’re new to Vamp Enterprise Edition and you want a quick way to evaluate it, copy the Vamp Lifter application specification below and save it as file named **lifter-standalone.json**. Then follow the [DC/OS Quickstart](/documentation/installation/dcos) guide.
 
 ```json
 {
@@ -64,9 +64,10 @@ If you’re new to Vamp Enterprise Edition and you want a quick way to evaluate 
   }
 }
 ```
+
 {{< note title="What next?" >}}
 
-* If you want to evaluate Vamp, follow the [DC/OS Quickstart guide →](/documentation/installation/dcos)
-* If you’re curious how Vamp works, take a look at the Vamp [Concepts and Components](/documentation/how-vamp-works/).
+- If you want to evaluate Vamp, follow the [DC/OS Quickstart guide →](/documentation/installation/dcos)
+- If you’re curious how Vamp works, take a look at the Vamp [Concepts and Components](/documentation/how-vamp-works/).
 
 {{< /note >}}

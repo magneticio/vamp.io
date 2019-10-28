@@ -25,11 +25,11 @@ The following breeds are required by system workflows and should not be deleted:
 
 ### On this page:
 
-- [Track running workflows](/documentation/using-vamp/v1.0.0/workflows/#track-running-workflows)
-- [Create a workflow](/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow)
-  - [Workflow schedules](/documentation/using-vamp/v1.0.0/workflows/#workflow-schedules)
-  - [Workflow dialects](/documentation/using-vamp/v1.0.0/workflows/#workflow-dialects)
-- [JavaScript workflows](/documentation/using-vamp/v1.0.0/workflows/#javascript-workflows)
+- [Track running workflows](/documentation/using-vamp/v1.2.0/workflows/#track-running-workflows)
+- [Create a workflow](/documentation/using-vamp/v1.2.0/workflows/#create-a-workflow)
+  - [Workflow schedules](/documentation/using-vamp/v1.2.0/workflows/#workflow-schedules)
+  - [Workflow dialects](/documentation/using-vamp/v1.2.0/workflows/#workflow-dialects)
+- [JavaScript workflows](/documentation/using-vamp/v1.2.0/workflows/#javascript-workflows)
 
 ## Track running workflows
 
@@ -82,7 +82,7 @@ schedule:
 ### Workflow dialects
 
 You can use dialects to specify native commands for the underlying container platform in a workflow.
-[Read more about Vamp dialects](/documentation/using-vamp/v1.0.0/dialects/)
+[Read more about Vamp dialects](/documentation/using-vamp/v1.2.0/dialects/)
 
 ## JavaScript workflows
 
@@ -151,7 +151,7 @@ api.gateways().each(function (gateway) {
 {{< note title="What next?" >}}
 
 - Try the tutorial [Create a workflow that generates events](/documentation/tutorials/create-a-workflow/)
-- Read about [Vamp Blueprints](/documentation/using-vamp/v1.0.0/blueprints/)
+- Read about [Vamp Blueprints](/documentation/using-vamp/v1.2.0/blueprints/)
 - Check the [API documentation](/documentation/api/api-reference)
 - [Try Vamp](/documentation/installation/hello-world)
   {{< /note >}}

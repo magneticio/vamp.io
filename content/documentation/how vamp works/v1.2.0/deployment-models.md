@@ -42,7 +42,7 @@ The dependencies deployed by the Lifter installer does not include persistent st
 
 The all-in-one cluster model is only suitable for short-lived, lower volume development clusters where long-term durability is not a factor and costs are more important than data security.
 
-![quickstart model](/images/diagram/v100/vampee-arch-quickstart.png)
+![quickstart model](/images/diagram/v120/vampee-arch-quickstart.png)
 
 ### Separate management and service clusters models
 
@@ -50,11 +50,11 @@ We highly recommend separating the management-focused components (Lifter and Vam
 
 As a minimum, we highly recommend using a managed MySQL service rather than running MySQL in the management cluster with external storage.
 
-![mgnt-svc-ext-mysql model](/images/diagram/v100/vampee-arch-mgnt-svc-ext-mysql.png)
+![mgnt-svc-ext-mysql model](/images/diagram/v120/vampee-arch-mgnt-svc-ext-mysql.png)
 
 Vault should also be outside the management cluster but if you choose to run Vault in the management cluster we highly recommend using MySQL as the storage backend.
 
-![mgnt-svc-ext-mysql-vault model](/images/diagram/v100/vampee-arch-mgnt-svc-ext-mysql-vault.png)
+![mgnt-svc-ext-mysql-vault model](/images/diagram/v120/vampee-arch-mgnt-svc-ext-mysql-vault.png)
 
 In all cases, external storage should be used for Elasticsearch since it is used to store the Vamp audit logs.
 
@@ -62,7 +62,7 @@ A single node Elasticsearch cluster residing in the management cluster is suffic
 
 If some of the service clusters are located in a different data centre (cloud region) to the one used for the management cluster, then it may make sense to use an Elasticsearch that is located in the same cloud region. Different Elasticsearch clusters can be specified at the tenant (organization) level and also at the environment level.
 
-![vampee-arch-mgnt-svc-ext-mysql-vault-remote-es model](/images/diagram/v100/vampee-arch-mgnt-svc-ext-mysql-vault-remote-es.png)
+![vampee-arch-mgnt-svc-ext-mysql-vault-remote-es model](/images/diagram/v120/vampee-arch-mgnt-svc-ext-mysql-vault-remote-es.png)
 
 The VGAs use Elasticsearch to log extensive meta-data about the service traffic passing through each gateways. The Quantification Workflow then aggregates this data for use by other workflows and also for display in the Vamp UI. Since Vamp only makes use of the aggregated data, for high traffic volume applications it makes sense to store and process the VGA logs within the same region.
 
@@ -74,5 +74,5 @@ Vamp is designed to provide strong data security and only collects meta-data, it
 
 {{< note title="What next?" >}}
 
-- Read about the [requirements to run Vamp](/documentation/how-vamp-works/v1.0.0/requirements)
+- Read about the [requirements to run Vamp](/documentation/how-vamp-works/v1.2.0/requirements)
   {{< /note >}}

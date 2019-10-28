@@ -90,7 +90,7 @@ clusters:
 
 {{< note title="What next?" >}}
 
-- Read about [Vamp sticky sessions](/documentation/using-vamp/v1.0.0/sticky-sessions/)
+- Read about [Vamp sticky sessions](/documentation/using-vamp/v1.2.0/sticky-sessions/)
 - Check the [API documentation](/documentation/api/api-reference)
 - [Try Vamp](/documentation/installation/hello-world)
   {{< /note >}}

@@ -37,5 +37,5 @@ Vamp collects events on all running services. Vamp API actions (including those 
 
 {{< note title="What next?" >}}
 
-- Let's [install Vamp](/documentation/installation/v1.0.0/overview)
+- Let's [install Vamp](/documentation/installation/v1.2.0/overview)
   {{< /note >}}

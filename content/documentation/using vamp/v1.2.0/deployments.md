@@ -15,9 +15,9 @@ Existing deployments can be updated, merging new blueprints or removing parts fr
 
 ### On this page:
 
-- [Create a deployment](/documentation/using-vamp/v1.0.0/deployments/#create-a-deployment)
-- [Track running deployments](/documentation/using-vamp/v1.0.0/deployments/#track-deployments)
-- [Deployment scenarios](/documentation/using-vamp/v1.0.0/deployments/#deployment)
+- [Create a deployment](/documentation/using-vamp/v1.2.0/deployments/#create-a-deployment)
+- [Track running deployments](/documentation/using-vamp/v1.2.0/deployments/#track-deployments)
+- [Deployment scenarios](/documentation/using-vamp/v1.2.0/deployments/#deployment)
 
 ## Create a deployment
 
@@ -32,8 +32,8 @@ The name of the deployment will be automatically assigned as a UUID (e.g. `123e4
 
 ## Track deployments
 
-Deployments contain clusters (groups of services). Each service can have one or multiple instances, according to its scale. In the Vamp UI you can track health of the overall deployment and individual services - read [how health is reported](/documentation/using-vamp/v1.0.0/health/). Each instance of a service can be accessed individually (go to the **Deployments** page, open the service and select an instance to view), or you can access the deployment through the [exposed gateways](/documentation/using-vamp/v1.0.0/gateways/) with any applied conditions or route weights.
-[Read more about using Vamp as a reverse proxy to access deployment instances and gateways](/documentation/using-vamp/v1.0.0/reverse-proxy/).
+Deployments contain clusters (groups of services). Each service can have one or multiple instances, according to its scale. In the Vamp UI you can track health of the overall deployment and individual services - read [how health is reported](/documentation/using-vamp/v1.2.0/health/). Each instance of a service can be accessed individually (go to the **Deployments** page, open the service and select an instance to view), or you can access the deployment through the [exposed gateways](/documentation/using-vamp/v1.2.0/gateways/) with any applied conditions or route weights.
+[Read more about using Vamp as a reverse proxy to access deployment instances and gateways](/documentation/using-vamp/v1.2.0/reverse-proxy/).
 
 ## Deployment scenarios
 
@@ -219,7 +219,7 @@ We could also remove the newer version (monarch_1.1 with/without recommendation 
 
 {{< note title="What next?" >}}
 
-- Read about [Vamp gateways](/documentation/using-vamp/v1.0.0/gateways/)
+- Read about [Vamp gateways](/documentation/using-vamp/v1.2.0/gateways/)
 - Check the [API documentation](/documentation/api/api-reference)
 - [Try Vamp](/documentation/installation/hello-world)
   {{< /note >}}

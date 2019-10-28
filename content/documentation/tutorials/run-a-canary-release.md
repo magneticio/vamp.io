@@ -64,11 +64,11 @@ The merge adds a new route to the existing internal (`sava/sava/webport`) gatewa
 1. In the Vamp UI, select the environment *environment* and go to the **Blueprints** page and click **Add** (top right)
 2. Paste in the above blueprint and click **Save**. Vamp will store the blueprint and make it available for deployment 
 3. Open the action menu on the **sava:1.1** blueprint and select **Merge to** 
-  ![](/images/screens/v100/tut2/vampee-environment-blueprints-sava11-mergeto.png)
+  ![](/images/screens/v120/tut2/vampee-environment-blueprints-sava11-mergeto.png)
 4. You'll be prompted to select the deployment you wish to merge the blueprint with - select **sava**
 5. Click **Merge** to deploy the sava:1.1.0 service to the running sava deployment.  
   Vamp will work out the differences and update the deployment accordingly.
-  ![](/images/screens/v100/tut2/vampee-environment-deployments-sava.png)
+  ![](/images/screens/v120/tut2/vampee-environment-deployments-sava.png)
 
 ## Canary release
 
@@ -80,11 +80,11 @@ Let's adjust the weight and start to send traffic to our new sava:1.1.0 applicat
 
 1. Click the edit icon next to **WEIGHT**
 2. Adjust the weight slider to distribute traffic 50% / 50% between the two versions
-  ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editweights5050.png)
+  ![](/images/screens/v120/tut2/vampee-environment-gateways-sava-internal-editweights5050.png)
 3. Click **Save** and Vamp will adjust the route weights accordingly
 4. Click the **HOST - PORT/TYPE** to open the gateway.  
   Each time you do this the application will switch between a version 1.0 page (light background) and a version 1.1 page (dark background).
-  ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-mono-canary.png)
+  ![](/images/screens/v120/tut2/vampee-environment-gateways-sava-internal-mono-canary.png)
 
 You can also use send traffic to the different versions of the application using [ApacheBench](https://httpd.apache.org/docs/2.4/programs/ab.html):
 
@@ -92,7 +92,7 @@ You can also use send traffic to the different versions of the application using
 ab -c 7 -n 10000 -l -H "Host: 9050.sava.vamp" http://<vga-external-ip>/
 ```
 
-![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-2routes.png)
+![](/images/screens/v120/tut2/vampee-environment-gateways-sava-internal-2routes.png)
 
 ## Use conditions to target specific groups
 
@@ -110,15 +110,15 @@ Since we want only requests from Chrome users to use the sava/sava/sava:1.1.0/we
 
 1. In the Vamp UI, select the environment *environment* and go to the **Gateways** page and open the **sava/sava/webport** gateway
 * Click the edit condition icon for the **sava/sava/sava:1.1.0/webport** route and enter the condition `User-Agent = Chrome` 
-  ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editcondition.png)
+  ![](/images/screens/v120/tut2/vampee-environment-gateways-sava-internal-editcondition.png)
   Now we need to set a strength for the condition.  
   As we want all Chrome users to be sent to this route, we will set the condition strength to 100%.
 * Click the edit condition strength icon for the **sava/sava/sava:1.1.0/webport** route and move the slider to 100%.
-  ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editconditionweight.png)
+  ![](/images/screens/v120/tut2/vampee-environment-gateways-sava-internal-editconditionweight.png)
   Finally, we need to account for routing of traffic that does not match the condition (that is, all non-Chrome users). We do this using the route weight.
 * Click the edit icon next to **WEIGHT**
 * Adjust the weight slider to **0%** for the **sava/sava/sava:1.1.0/webport** route
-  ![](/images/screens/v100/tut2/vampee-environment-gateways-sava-internal-editweights1000.png)
+  ![](/images/screens/v120/tut2/vampee-environment-gateways-sava-internal-editweights1000.png)
 * Click **Save**
 
 As we are not actually deploying anything, just reconfiguring routes, the update should be almost instantaneous.

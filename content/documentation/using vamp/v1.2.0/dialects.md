@@ -19,8 +19,8 @@ Dialects can be used by adding the `dialects` tag, followed by the preferred dia
 
 We currently support the following dialects:
 
-- [DC/OS & Marathon](/documentation/using-vamp/v1.0.0/dialects/#dc-os-marathon-dialect)
-- [Docker](/documentation/using-vamp/v1.0.0/dialects/#docker-dialect)
+- [DC/OS & Marathon](/documentation/using-vamp/v1.2.0/dialects/#dc-os-marathon-dialect)
+- [Docker](/documentation/using-vamp/v1.2.0/dialects/#docker-dialect)
 
 A Kubernetes dialect is in the make.
 
@@ -77,7 +77,7 @@ for multiple environments and run times within one description.
 
 {{< note title="What next?" >}}
 
-- Read about [Vamp environment variables](/documentation/using-vamp/v1.0.0/environment-variables/)
+- Read about [Vamp environment variables](/documentation/using-vamp/v1.2.0/environment-variables/)
 - Check the [API documentation](/documentation/api/api-reference)
 - [Try Vamp](/documentation/installation/hello-world)
   {{< /note >}}

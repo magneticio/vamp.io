@@ -106,6 +106,6 @@ The Vamp Release Agent provides automated release management based on release po
 
 {{< note title="What next?" >}}
 
-- Choose a [deployment model](/documentation/how-vamp-works/v1.0.0/deployment-models)
-- Read about the [requirements to run Vamp](/documentation/how-vamp-works/v1.0.0/requirements)
+- Choose a [deployment model](/documentation/how-vamp-works/v1.2.0/deployment-models)
+- Read about the [requirements to run Vamp](/documentation/how-vamp-works/v1.2.0/requirements)
   {{< /note >}}

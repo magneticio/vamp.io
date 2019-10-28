@@ -130,10 +130,10 @@ Effective use of scope is completely dependent on your use case. The various sco
 
 ### Examples of scope use
 
-- [Run two of the same services with different configurations](/documentation/using-vamp/v1.0.0/environment-variables/#example-1)
-- [Override the JVM_HEAP_SIZE in production](/documentation/using-vamp/v1.0.0/environment-variables/#example-2)
-- [Use a place holder](/documentation/using-vamp/v1.0.0/environment-variables/#example-3)
-- Just for fun - [combine all scopes and references](/documentation/using-vamp/v1.0.0/environment-variables/#example-4)
+- [Run two of the same services with different configurations](/documentation/using-vamp/v1.2.0/environment-variables/#example-1)
+- [Override the JVM_HEAP_SIZE in production](/documentation/using-vamp/v1.2.0/environment-variables/#example-2)
+- [Use a place holder](/documentation/using-vamp/v1.2.0/environment-variables/#example-3)
+- Just for fun - [combine all scopes and references](/documentation/using-vamp/v1.2.0/environment-variables/#example-4)
 
 #### Example 1
 
@@ -297,7 +297,7 @@ clusters:
 
 {{< note title="What next?" >}}
 
-- Read about [Vamp escalations](/documentation/using-vamp/v1.0.0/escalations/)
+- Read about [Vamp escalations](/documentation/using-vamp/v1.2.0/escalations/)
 - Check the [API documentation](/documentation/api/api-reference)
 - [Try Vamp](/documentation/installation/hello-world)
   {{< /note >}}
