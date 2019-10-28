@@ -26,7 +26,7 @@ Join this live webinar and learn:
 
 Your hosts for this webinar are Jason Griffin (Head of Customer Engineering) and Joey Compeer (Marketing Manager).
 
-The on-demand replay is available y registering here, when viewing please fast forward to 3.35 to the appropriate start of the webinar.
+The on-demand replay is available by registering here, when viewing please fast forward to 3.35 to the appropriate start of the webinar.
 
 
 PS - all attendees make a chance to win a free Vamp t-shirt!🚀
