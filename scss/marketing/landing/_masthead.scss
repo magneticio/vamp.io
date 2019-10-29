@@ -1,0 +1,64 @@
+.masthead {
+  background: linear-gradient(45deg,#6991AA,#142D3C) ;
+  &.hero-background {
+    background: url('/img/marketing/landing/planes_cropped.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @media only screen
+    and (min-device-width : 375px)
+    and (max-device-width : 667px) {
+      background-position: 50%;
+    }
+  }
+  .hero-image {
+    background: url('/img/marketing/landing/slider_background2.png');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 350px;
+  }
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  text-align: center;
+  color: white;
+  .header-content {
+    padding: 150px 15px 100px;
+    text-align: center;
+    .header-content-inner {
+      text-align: left;
+      h1 {
+        font-size: 30px;
+        font-weight: 400;
+        margin-top: 0;
+        margin-bottom: 18px;
+      }
+      hr {
+        margin: 30px auto;
+      }
+      p {
+        font-size: 22px;
+        font-weight: 300;
+        margin-bottom: 24px;
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    background-position: center;
+    .header-content {
+      .header-content-inner {
+        max-width: 500px;
+        margin-right: auto;
+        margin-left: auto;
+        h1 {
+          font-size: 40px;
+        }
+        p {
+          font-size: 22px;
+          max-width: 90%;
+        }
+      }
+    }
+  }
+}

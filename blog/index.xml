@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Vamp | Automation and Controls for Enterprise Devops</title>
+    <link>https://vamp.io/blog/</link>
+    <description>Recent content in Blog on Vamp | Automation and Controls for Enterprise Devops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 19 Jul 2017 09:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vamp.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Schrödinger&#39;s Canary</title>
+      <link>https://vamp.io/blog/schrodingers-canary/</link>
+      <pubDate>Mon, 24 Jun 2019 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/blog/schrodingers-canary/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://vamp.io/images/blog/schrodinger_canary.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sometimes, releasing software to production is like Schrödinger&amp;rsquo;s cat. You don’t know how well the release performs until
+you observe it in a live production environment. That is already daunting if you have a monolithic application but becomes
+even more nerve-wracking when releasing microservices.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Everything a Machine: Automate CI/CD to Bend, Even When Code Breaks</title>
+      <link>https://vamp.io/blog/everything-a-machine/</link>
+      <pubDate>Wed, 05 Jun 2019 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/blog/everything-a-machine/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://vamp.io/images/blog/Code-bending.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fast! Microservices! Cloud! A bright, shiny CI/CD pipeline that pumps out innovative but reliable software at scale –
+how often have you thought “sure, I’ll get right on that!”  while in digital transformation meetings. We all know that
+the move to microservices-based architecture is &lt;a href=&#34;https://www.mindtree.com/blog/look-devops-microservices&#34;&gt;”the new black”&lt;/a&gt; for many enterprises. But being tasked with &lt;strong&gt;balancing flexible software release with reliable working software&lt;/strong&gt; in production can sometimes feel like being in the Twilight Zone. At least, you inevitably end up in the Outage Zone. Code that worked on someone’s machine is mysteriously broken in production. And now you’re in a post-mortem.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Your Top 4 Must-See Talks at KubeCon 2019: True Confessions of Cloud-Native Addicts</title>
+      <link>https://vamp.io/blog/kubecon-top4-must-sees/</link>
+      <pubDate>Tue, 14 May 2019 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/blog/kubecon-top4-must-sees/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://vamp.io/images/blog/KubeCon1M&amp;amp;Ms.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Lurid tales of failure, heartwarming stories of human triumph and big visions on the &lt;a href=&#34;https://vamp.io/news/vamp-at-kubecon-2019/&#34;&gt;future of DevOps&lt;/a&gt;, whoever dares claim that going cloud-native is dry has yet to see our top picks for this year&amp;rsquo;s KubeCon Europe in Barcelona.&lt;/p&gt;
+
+&lt;p&gt;As always, there are lots of cool talks by industry leaders and tons of content. So, to help you weed through the names and hype, here&amp;rsquo;s our list of top 4 talks.&lt;/p&gt;
+
+&lt;p&gt;And in true clickbait fashion, number 4 is the one not to miss!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Custom data sources for A/B testing with Vamp Lamia and Istio 1.0.2</title>
+      <link>https://vamp.io/blog/custom-data-source-ab-testing/</link>
+      <pubDate>Fri, 28 Sep 2018 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/blog/custom-data-source-ab-testing/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://vamp.io/images/blog/ab_testing.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Welcome to our ongoing series of post on our experiences in using Istio during the development of Vamp Lamia.&lt;/p&gt;
+
+&lt;p&gt;In &lt;a href=&#34;https://vamp.io/blog/welch-ttest-ab-testing-istio/&#34;&gt;our previous post&lt;/a&gt;, we presented Vamp Lamia&amp;rsquo;s approach to A/B testing and then delved deeper into how Experiments use Welch&amp;rsquo;s t-test to identify the test&amp;rsquo;s winner in a statistically sound way.&lt;/p&gt;
+
+&lt;p&gt;In both scenarios, however, we relied solely on Elasticsearch to gather the necessary statistics to calculate the A/B test outcome.
+This begs the question: what if we wanted to use a different source?
+In this post we will discuss the possibility of employing a custom data source, be it a different database or another application, deployed inside or outside the cluster.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Welch&#39;s t-test for A/B testing with Vamp Lamia and Istio 1.0.2</title>
+      <link>https://vamp.io/blog/welch-ttest-ab-testing-istio/</link>
+      <pubDate>Wed, 19 Sep 2018 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/blog/welch-ttest-ab-testing-istio/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://vamp.io/images/blog/ab_testing.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Welcome back to our ongoing series on the development of Vamp Lamia and our experiences in using Istio for traffic routing on Kubernetes.
+In &lt;a href=&#34;https://vamp.io/blog/ab-testing-istio/&#34;&gt;one of our previous posts&lt;/a&gt;, we presented our approach to A/B testing with Vamp Lamia through the use of Experiments, which enable the user to quickly create a complex Virtual Service configuration and set up a Policy that will redirect the traffic based on the users&amp;rsquo; behaviour, for example moving all visitors to the winning variant of an Experiment.
+As we stated at the end of the post, however, our implementation was, at that time, pretty simple. 
+Since then, we made quite a few improvements and we are now ready to share them.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Advanced Networking with Istio on Kubernetes</title>
+      <link>https://vamp.io/blog/advanced-networking-with-istio-on-kubernetes/</link>
+      <pubDate>Wed, 18 Jul 2018 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/blog/advanced-networking-with-istio-on-kubernetes/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/720/1*F05sDjQWQ0-YiDZ22RMSsQ.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Welcome to the third post in the ongoing series describing our experiences in adopting &lt;a href=&#34;https://istio.io&#34;&gt;Istio&lt;/a&gt; and the
+ development of Vamp Lamia. For more details on what we are trying to achieve with Vamp and why we choose Istio, please refer
+ to our &lt;a href=&#34;https://vamp.io/blog/putting-istio-to-work/&#34;&gt;first&lt;/a&gt; and &lt;a href=&#34;https://vamp.io/blog/ab-testing-istio/&#34;&gt;second&lt;/a&gt; posts.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Securing Ingress Services in Istio with Let’s Encrypt on Kubernetes</title>
+      <link>https://vamp.io/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/</link>
+      <pubDate>Wed, 18 Jul 2018 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/blog/securing-ingress-services-in-istio-with-lets-encrypt-on-kubernetes/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/720/1*rclb9okYbeFN-jJmgbT3bw.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is the third post in our series describing our experiences in adopting Istio for traffic routing on Kubernetes.
+For more details on what we are trying to achieve with Vamp Lamia and why we choose Istio, please refer to our
+&lt;a href=&#34;https://vamp.io/blog/putting-istio-to-work/&#34;&gt;first post&lt;/a&gt; and &lt;a href=&#34;https://vamp.io/blog/ab-testing-istio/&#34;&gt;second post&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>A/B testing on Kubernetes with Istio 0.8</title>
+      <link>https://vamp.io/blog/ab-testing-istio/</link>
+      <pubDate>Wed, 04 Jul 2018 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/blog/ab-testing-istio/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/720/1*SEDs0n1m8vhTPlxOhrudJA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is the second post in our ongoing series describing our experiences in adopting Istio for traffic routing on Kubernetes. For more details on what we are trying to achieve with Vamp and why we choose Istio, please refer to our &lt;a href=&#34;https://medium.com/vamp-io/putting-istio-to-work-8513f5218c51&#34;&gt;first post&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Putting Istio to work</title>
+      <link>https://vamp.io/blog/putting-istio-to-work/</link>
+      <pubDate>Mon, 15 Aug 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/blog/putting-istio-to-work/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/720/1*hHVBnftiViKepR6EMbG5RA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is part of an ongoing series of posts describing &lt;a href=&#34;https://medium.com/vamp-io/vamps-gateway-agent-9508ad5a5177&#34;&gt;Vamp’s Gateway Agent&lt;/a&gt; component and our experiences of adopting Istio for east-west traffic on Kubernetes. In this post we want to introduce &lt;strong&gt;&lt;em&gt;Lamia&lt;/em&gt;&lt;/strong&gt; and give you a first glimpse of the working code.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Taming Istio</title>
+      <link>https://vamp.io/blog/taming-istio/</link>
+      <pubDate>Mon, 15 Aug 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/blog/taming-istio/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/720/1*hHVBnftiViKepR6EMbG5RA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is part of an ongoing series of posts describing &lt;a href=&#34;https://medium.com/vamp-io/vamps-gateway-agent-9508ad5a5177&#34;&gt;Vamp’s Gateway Agent&lt;/a&gt; component and our experiences of adopting Istio for east-west traffic on Kubernetes. Join us as we continue discussing the architecture, implementation and evolution of this key component of Vamp.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vamp&#39;s Gateway Agent</title>
+      <link>https://vamp.io/blog/vamps-gateway-agent/</link>
+      <pubDate>Mon, 15 Aug 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/blog/vamps-gateway-agent/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/720/1*hHVBnftiViKepR6EMbG5RA.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This post is the start of a series of posts about Vamp’s Gateway Agent component and our experiences of adopting Istio for east-west traffic on Kubernetes. Join us as we discuss the architecture, implementation and evolution of this key component of Vamp.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>How to extend Marathon-LB with Canary releasing features using Vamp</title>
+      <link>https://vamp.io/blog/extend-marathonlb-with-canary-releasing/</link>
+      <pubDate>Sat, 15 Aug 2015 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/blog/extend-marathonlb-with-canary-releasing/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/720/1*Me6dc8wpHKcNf07XJsbpMw.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;At the Vamp HQ in Amsterdam we get to talk to a lot of Docker, DC/OS and Kubernetes users. For us, as a startup in this corner of the tech space, talking to the engineers and architects behind some pretty serious container based cloud environments is of course worth the proverbial gold. It’s also a lot of fun to just help people out.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MesosCon Europe 2017 Themes and trends</title>
+      <link>https://vamp.io/blog/mesoscon-europe-trend-2017/</link>
+      <pubDate>Sat, 15 Aug 2015 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/blog/mesoscon-europe-trend-2017/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/720/1*nxks34PDE35QNFOEQMjBig.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s look at some of the themes and trends at &lt;strong&gt;&lt;a href=&#34;http://events.linuxfoundation.org/events/mesoscon-europe&#34;&gt;MesosCon Europe 2017&lt;/a&gt;&lt;/strong&gt; in Prague. I’m interested in anything that has to do with &lt;strong&gt;adoption, security, state&lt;/strong&gt; and anything “day 2 operations” related.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

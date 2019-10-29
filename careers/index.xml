@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Careers on Vamp | Automation and Controls for Enterprise Devops</title>
+    <link>https://vamp.io/careers/</link>
+    <description>Recent content in Careers on Vamp | Automation and Controls for Enterprise Devops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 13 Sep 2016 09:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vamp.io/careers/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java Scala distributed systems software developer</title>
+      <link>https://vamp.io/careers/distributed-systems-software-engineer/</link>
+      <pubDate>Thu, 17 Jan 2019 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/careers/distributed-systems-software-engineer/</guid>
+      <description>Java/Scala distributed systems software developer About the role You have professional experience with JVM and functional programming (Java, Scala etc.) based development and tooling. You have experience with application development using “cloud-native” technologies (like Docker, Kubernetes, Mesos/Marathon, ElasticSearch, Prometheus, HAProxy, NGINX, Terraform, microservices, Akka) and cloud infrastructure.
+Your ambition is to be a true software crafts(wo)man, and thus you are aiming for the perfect balance between elegance and pragmatism, focusing on quality and maintainability.</description>
+    </item>
+    
+    <item>
+      <title>Frontend software developer</title>
+      <link>https://vamp.io/careers/frontend-sofware-developer/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/careers/frontend-sofware-developer/</guid>
+      <description>Frontend software developer About the role As a frontend software engineer, you are the linking pin between your backend co-workers, the visual designers and the end customer. Your work is critical to making a great first impression. Without good frontend code, neither the backend nor the visual design will stand a chance.
+What we’re looking for: • Experience in building Application pages with React/Angular/Insert a popular framework here in a professional (commercial/opensource project) project/product environment</description>
+    </item>
+    
+    <item>
+      <title>Business Development Manager</title>
+      <link>https://vamp.io/careers/business-development-manager/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/careers/business-development-manager/</guid>
+      <description>Business Development Manager About the role As a Business Development manager you will be working with the newest state of the art tools in the cloud, software development and release management. You will join a Sales team and be responsible for generating successes for Vamp. Vamp has customers world wide and your role is global.
+You will work either directly with the larger enterprise target customers or you will work with Vamp partners to generate deals at the enterprise customer for the licensed software platform of Vamp.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tutorials on Vamp | Automation and Controls for Enterprise Devops</title>
+    <link>https://vamp.io/documentation/tutorials/</link>
+    <description>Recent content in Tutorials on Vamp | Automation and Controls for Enterprise Devops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 13 Sep 2016 09:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vamp.io/documentation/tutorials/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>5. Smarter releasing on Kubernetes</title>
+      <link>https://vamp.io/documentation/tutorials/smarter-releasing-on-kubernetes/</link>
+      <pubDate>Fri, 17 Aug 2018 15:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/tutorials/smarter-releasing-on-kubernetes/</guid>
+      <description>In previous tutorials we&amp;rsquo;ve used Vamp blueprints to create deployments, this tutorial explains how to manually canary release a new version of a microservice deployed outside of Vamp.
+The most common use case would be canary releasing a Deployment made using a CD (Continuous Delivery) pipeline.
+To make this tutorial easy to follow, we are going to use kubectl to **simulate the actions of a CD pipeline deploying to our Kubernetes cluster.</description>
+    </item>
+    
+    <item>
+      <title>1. Deploy your first blueprint</title>
+      <link>https://vamp.io/documentation/tutorials/deploy-your-first-blueprint/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/tutorials/deploy-your-first-blueprint/</guid>
+      <description>Before you start this tutorial you should have your Vamp installation up and running. If not, please follow the Vamp Quickstart guide.
+Requirements:  A Kubernetes cluster with at least 4 nodes (8 vCPUs and 28GB memory); or A DC/OS cluster with at least 4 nodes (1 public agent, 16 vCPUs and 48GB memory)  In this tutorial we will check out some of Vamp&amp;rsquo;s features:
+ Deploy a monolith, using the Vamp UI Check out the deployed application</description>
+    </item>
+    
+    <item>
+      <title>2. Run a canary release</title>
+      <link>https://vamp.io/documentation/tutorials/run-a-canary-release/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/tutorials/run-a-canary-release/</guid>
+      <description>In the previous tutorial we deployed our app sava 1.0. If you haven&amp;rsquo;t walked through that part already, please do so before continuing.
+Now let&amp;rsquo;s say we have a new version of this great application that we want to canary release into production. We have it containerised as magneticio/sava:1.1.0 and are ready to go. In this tutorial we will:
+ Prepare our blueprint Deploy the new version of our application next to the old one Canary release the new application Use conditions to target specific groups Learn a bit more about conditions  Requirements:  A Kubernetes cluster with at least 4 nodes (8 vCPUs and 28GB memory); or A DC/OS cluster with at least 4 nodes (1 public agent, 16 vCPUs and 48GB memory)  Prepare our blueprint Vamp allows you to canary release application updates by merging new blueprints to a running deployment.</description>
+    </item>
+    
+    <item>
+      <title>3. Split a monolith</title>
+      <link>https://vamp.io/documentation/tutorials/split-a-monolith/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/tutorials/split-a-monolith/</guid>
+      <description>In the previous tutorial we did some basic canary releasing on two versions of a monolithic application. Very nice, but Vamp isn&amp;rsquo;t called the Very Awesome Microservices Platform for nothing. The next step is to split our monolithic Sava application into separate services. In this tutorial we will:
+ define a new service topology learn about Vamp environment variables and service discovery  Requirements:  A Kubernetes cluster with at least 4 nodes (8 vCPUs and 28GB memory); or A DC/OS cluster with at least 4 nodes (1 public agent, 16 vCPUs and 48GB memory)  Define a new service topology To prove our point, we are going to slightly &amp;ldquo;over-engineer&amp;rdquo; our services solution.</description>
+    </item>
+    
+    <item>
+      <title>4. Merge and delete</title>
+      <link>https://vamp.io/documentation/tutorials/merge-and-delete/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/tutorials/merge-and-delete/</guid>
+      <description>In the previous tutorial we &amp;ldquo;over-engineered&amp;rdquo; our service based solution a bit (on purpose of course). We don&amp;rsquo;t really need two backends services, so in this tutorial we will introduce our newly engineered solution and transition to it using Vamp blueprints and canary releasing methods. In this tutorial we will:
+ Get some background and theory on merging services Prepare our blueprint Merge the new topology with the running deployment Decommission parts of the deployment Answer the all important question when would I use this?</description>
+    </item>
+    
+  </channel>
+</rss>

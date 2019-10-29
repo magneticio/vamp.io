@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About us on Vamp | Automation and Controls for Enterprise Devops</title>
+    <link>https://vamp.io/about/</link>
+    <description>Recent content in About us on Vamp | Automation and Controls for Enterprise Devops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 13 Sep 2016 09:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vamp.io/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Contact</title>
+      <link>https://vamp.io/about/contact/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/about/contact/</guid>
+      <description>Vamp is being developed by vamp.io in the heart of Amsterdam.
+Our Amsterdam office:
+Raamgracht 8
+1011 KK Amsterdam
+The Netherlands
++31(0)88 555 33 99
+info@vamp.io
+Vamp Enterprise 1.0 Vamp Enterprise 1.0 can be licensed and includes features specifically tuned to enterprise usage. Contact us to get more information.
+Support Check our support page for SLA&amp;rsquo;s and other forms of support.
+Professional services and consultancy We provide in professional services and consultancy around the implementation and use of Vamp.</description>
+    </item>
+    
+    <item>
+      <title>Dogmas</title>
+      <link>https://vamp.io/about/dogmas/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/about/dogmas/</guid>
+      <description>1 Build revolutionarily Put your efforts towards creating the stuff that doesn’t exist yet. The rest we can just buy, borrow, fork or clone.
+2 Don&amp;rsquo;t predict, be reactive Nobody really knows what&amp;rsquo;s going to happen, so react to whatever comes your way.
+3 Compose with microservices Monolithic has been dead for a while. Keep it that way.
+4 Faster is always better The millisecond is the new second. Especially on mobile.</description>
+    </item>
+    
+  </channel>
+</rss>

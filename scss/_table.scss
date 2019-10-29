@@ -1,0 +1,21 @@
+table.vamp-table  {
+  thead > tr > th {
+    color: $ash;
+    background-color: $blue-darker;
+    border-bottom: 0;
+    font-weight: $font-weight-default;
+    padding: .6 * $spacer !important;
+  }
+  tbody > tr > td {
+    color: $blue-darker;
+    border-bottom: 1px solid $ash;
+    font-weight: $font-weight-default;
+    padding: .6 * $spacer;
+  }
+
+  &.table-striped {
+    tbody > tr:nth-of-type(odd) {
+      background-color: $ash;
+    }
+  }
+}

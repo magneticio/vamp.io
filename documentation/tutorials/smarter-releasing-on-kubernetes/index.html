@@ -1,0 +1,2645 @@
+<!DOCTYPE html>
+
+
+
+
+ <html class="no-js"> 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+  <title>5. Smarter releasing on Kubernetes | Vamp </title>
+  <meta name="generator" content="Hugo 0.52" />
+
+  
+  <meta name="description" content="Vamp gives you all the tools to release, control and optimize your containerised apps on cloud native platforms.">
+  
+  <link rel="canonical" href="https://vamp.io/documentation/tutorials/smarter-releasing-on-kubernetes/">
+  
+  <meta name="author" content="magnetic.io">
+  
+
+  
+  <meta property='og:title' content='5. Smarter releasing on Kubernetes | Vamp '>
+  
+
+  <meta property="og:image" content='https://vamp.io/img/006-mock-ups/VAMP-light-laptop-v100-hero.png'>
+  <meta property="og:description" content="In previous tutorials we&rsquo;ve used Vamp blueprints to create deployments, this tutorial explains how to manually canary release a new version of a microservice deployed outside of Vamp.
+The most common use case would be canary releasing a Deployment made using a CD (Continuous Delivery) pipeline.
+To make this tutorial easy to follow, we are going to use kubectl to **simulate the actions of a CD pipeline deploying to our Kubernetes cluster." />
+  <meta property="og:url" content="https://vamp.io/documentation/tutorials/smarter-releasing-on-kubernetes/">
+  <meta property="og:type" content="article" />
+  
+  <meta name="apple-mobile-web-app-title" content="Vamp | Automation and Controls for Enterprise Devops">
+  
+
+
+  
+
+  <meta property='twitter:card' content='summary'>
+  <meta property='twitter:title' content='5. Smarter releasing on Kubernetes | Vamp.io '>
+  <meta property="twitter:description" content="In previous tutorials we&rsquo;ve used Vamp blueprints to create deployments, this tutorial explains how to manually canary release a new version of a microservice deployed outside of Vamp.
+The most common use case would be canary releasing a Deployment made using a CD (Continuous Delivery) pipeline.
+To make this tutorial easy to follow, we are going to use kubectl to **simulate the actions of a CD pipeline deploying to our Kubernetes cluster." />
+  <meta property="twitter:image" content='https://vamp.io/img/006-mock-ups/VAMP-light-laptop-v100-hero.png'>
+
+
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" type="image/x-icon" href="https://vamp.io/images/favicon.png?v=1.0">
+  <style>
+    @font-face {
+      font-family: 'Icon';
+      src: url('/fonts/icon.eot?52m981');
+      src: url('/fonts/icon.eot?#iefix52m981')
+      format('embedded-opentype'),
+      url('/fonts/icon.woff?52m981')
+      format('woff'),
+      url('/fonts/icon.ttf?52m981')
+      format('truetype'),
+      url('/fonts/icon.svg?52m981#icon')
+      format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+
+  
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+  
+
+  <link rel="stylesheet" href="https://vamp.io/css/dist/style.min-24d00513.css">
+
+
+  
+
+  <style>.async-hide { opacity: 0 !important} </style>
+  <script>
+    if (location.host === 'www.vamp.io' || location.host === 'vamp.io') {
+
+      (function (a, s, y, n, c, h, i, d, e) {
+        s.className += ' ' + y;
+        h.start = 1 * new Date;
+        h.end = i = function () {
+          s.className = s.className.replace(RegExp(' ?' + y), '')
+        };
+        (a[n] = a[n] || []).hide = h;
+        setTimeout(function () {
+          i();
+          h.end = null
+        }, c);
+        h.timeout = c;
+      })(window, document.documentElement, 'async-hide', 'dataLayer', 4000,
+        {'GTM-TN6W53W': true});
+    }
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      if (location.host === 'www.vamp.io' || location.host === 'vamp.io') {
+        (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r;
+          i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+          }, i[r].l = 1 * new Date();
+          a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-59948816-1', 'auto');
+        ga('require', 'GTM-TN6W53W');
+        ga('send', 'pageview');
+      }
+    })
+  </script>
+  
+  <script>
+    if (location.host === 'www.vamp.io' || location.host === 'vamp.io') {
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-K55QZJQ');
+    }
+  </script>
+  
+
+  
+
+</head>
+<body class="palette-primary-pink palette-accent-pink">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K55QZJQ"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+
+
+<nav aria-label="Header" id="header" class="navbar navbar-light">
+  <div class="container">
+    <div class="left">
+      <a href="https://vamp.io/">
+        <div id="logo" class="logo"></div>
+      </a>
+    </div>
+    <div class="right">
+      <div class="navbar-items" id="navbar-items">
+        <a href="https://vamp.io/product/" data-parenturl="/product/" class="navbar-item top-nav-product-top" data-target="webuiPopover0">Product <i class="ml-2 fa fa-angle-down"></i></a>
+        <a href="https://blog.vamp.io" target="_blank" data-parenturl="/blog/" class="navbar-item">Blog</a>
+        <a href="https://vamp.io/news/" data-parenturl="/news/" class="navbar-item">News</a>
+        <a href="https://vamp.io/documentation/" data-parenturl="/documentation/" class="navbar-item top-nav-developers-top" data-target="webuiPopover1">Resources <i class="ml-2 fa fa-angle-down"></i></a>
+        <a href="https://vamp.io/support/" data-parenturl="/support/" class="navbar-item">Support</a>
+        <a href="https://vamp.io/pricing/" data-parenturl="/pricing/" class="navbar-item">Pricing</a>
+      </div>
+      <div id="productPopover" style="display: none">
+  <div class="popover-menu-body">
+    <a href="https://vamp.io/product/" class="popover-menu-item">Features
+      <i class="fa fa-caret-right"></i>
+    </a>
+    <a href="https://vamp.io/product/use-cases/overview" class="popover-menu-item">Use cases
+      <i class="fa fa-caret-right"></i>
+    </a>
+    <a href="https://vamp.io/product/vamp-compared-to/" class="popover-menu-item">Vamp compared to…
+      <i class="fa fa-caret-right"></i>
+    </a>
+  </div>
+</div>
+
+      <div id="developersPopover" style="display: none">
+  <div class="popover-menu-body popover-menu-body-wide">
+    <a href="https://vamp.io/events" class="popover-menu-item">Events
+      <i class="fa fa-caret-right"></i>
+    </a>
+    <a href="https://vamp.io/documentation/" class="popover-menu-item">Documentation
+      <i class="fa fa-caret-right"></i>
+    </a>
+    <a href="https://vamp.io/documentation/installation/" class="popover-menu-item">Installation
+      <i class="fa fa-caret-right"></i>
+    </a>
+    <a href="https://vamp.io/documentation/api/api-reference/" class="popover-menu-item">API Reference
+      <i class="fa fa-caret-right"></i>
+    </a>
+    <a href="https://vamp.io/documentation/cli/using-the-cli/" class="popover-menu-item">CLI Reference
+      <i class="fa fa-caret-right"></i>
+    </a>
+    <div class="popover-menu-header">By Platform</div>
+    <a href="https://vamp.io/documentation/installation/kubernetes/" class="popover-menu-item">
+      <img src="https://vamp.io/img/vendor/kubernetes_small.png" alt="kubernetes">
+      Kubernetes</a>
+
+    <a href="https://vamp.io/documentation/installation/dcos/" class="popover-menu-item">
+      <img src="https://vamp.io/img/vendor/dcos_small.png" alt="dcos">
+
+      DCOS</a>
+  </div>
+</div>
+
+      <div class="search">
+        <i class="fa fa-search"></i>
+        <input type="search" placeholder="search the docs..." class="search-input" autofocus="autofocus">
+      </div>
+    </div>
+  </div>
+</nav>
+
+<nav aria-label="Header" id="mobile-header">
+  <a href="https://vamp.io/" class="logo">
+    <img id="logo" class="logo" src="https://vamp.io/img/005-vamp/Logo/logo-long-colour.svg" alt="">
+  </a>
+  <div class="right">
+    <div class="hamburger">
+      <i class="fa fa-lg fa-bars" aria-hidden="true"></i>
+    </div>
+  </div>
+
+</nav>
+
+<ul id="mobile-menu">
+  
+  
+  
+  
+
+    <li>
+      <a href="https://vamp.io/product/" data-url="/product/">Product</a>
+      
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      
+    </li>
+    <ul>
+      
+        <li>
+          <a href="https://vamp.io/product/">Features</a>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/product/">
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/product/use-cases/overview">Use cases</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/product/use-cases/overview">
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/overview/" data-url="/product/use-cases/overview/">Overview </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/create-responsive-website/" data-url="/product/use-cases/create-responsive-website/">Create a responsive website </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/resolve-incompatibilities-after-upgrade/" data-url="/product/use-cases/resolve-incompatibilities-after-upgrade/">Resolve incompatibilities </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/modernise-architecture/" data-url="/product/use-cases/modernise-architecture/">Modernising your architecture </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/refactor-monolithic-to-microsystems/" data-url="/product/use-cases/refactor-monolithic-to-microsystems/">Refactor to microservices </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/simulate-and-test-scaling-behaviour/" data-url="/product/use-cases/simulate-and-test-scaling-behaviour/">Simulate and test scaling behaviour </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/self-healing-and-self-optimising/" data-url="/product/use-cases/self-healing-and-self-optimising/">Self-healing and self-optimising </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/service-discovery/" data-url="/product/use-cases/service-discovery/">Service discovery </a>
+              </li>
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/product/enterprise-edition/">Vamp Enterprise 1.0</a>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/product/enterprise-edition/">
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/product/vamp-compared-to/proxies-and-load-balancers/">Vamp compared to...</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/product/vamp-compared-to/proxies-and-load-balancers/">
+          
+            
+              <li>
+                <a href="https://vamp.io/product/vamp-compared-to/proxies-and-load-balancers/" data-url="/product/vamp-compared-to/proxies-and-load-balancers/">Proxies and load balancers </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/vamp-compared-to/paas-and-container-systems/" data-url="/product/vamp-compared-to/paas-and-container-systems/">PaaS and container systems </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/vamp-compared-to/frameworks-and-tools/" data-url="/product/vamp-compared-to/frameworks-and-tools/">Frameworks and tools </a>
+              </li>
+            
+          
+        </ul>
+      
+    </ul>
+
+  
+
+    <li>
+      <a href="https://vamp.io/documentation/" data-url="/documentation/">Documentation</a>
+      
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      
+    </li>
+    <ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/how-vamp-works/">How Vamp works</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/how-vamp-works/">
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/how-vamp-works/v1.0.0/concepts-and-components/" data-url="/documentation/how-vamp-works/v1.0.0/concepts-and-components/">Concepts and components </a>
+                </li>
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/how-vamp-works/v1.0.0/deployment-models/" data-url="/documentation/how-vamp-works/v1.0.0/deployment-models/">Deployment Models </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/how-vamp-works/v1.0.0/requirements/" data-url="/documentation/how-vamp-works/v1.0.0/requirements/">Requirements </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/how-vamp-works/v1.0.0/vamp-and-kubernetes/" data-url="/documentation/how-vamp-works/v1.0.0/vamp-and-kubernetes/">Vamp and Kubernetes </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/how-vamp-works/v1.0.0/events-and-metrics/" data-url="/documentation/how-vamp-works/v1.0.0/events-and-metrics/">Events and metrics </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/installation/overview">Installation</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/installation/overview">
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/installation/v1.0.0/overview/" data-url="/documentation/installation/v1.0.0/overview/">Overview </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/installation/v1.0.0/kubernetes/" data-url="/documentation/installation/v1.0.0/kubernetes/">Kubernetes Quickstart </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/installation/v1.0.0/dcos/" data-url="/documentation/installation/v1.0.0/dcos/">DC/OS Quickstart </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/tutorials/">Tutorials</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/tutorials/">
+          
+            
+              <li>
+                <a href="https://vamp.io/documentation/tutorials/" data-url="/documentation/tutorials/">Overview </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/documentation/tutorials/deploy-your-first-blueprint/" data-url="/documentation/tutorials/deploy-your-first-blueprint/">1. Deploy your first blueprint </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/documentation/tutorials/run-a-canary-release/" data-url="/documentation/tutorials/run-a-canary-release/">2. Run a canary release </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/documentation/tutorials/split-a-monolith/" data-url="/documentation/tutorials/split-a-monolith/">3. Split a monolith </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/documentation/tutorials/merge-and-delete/" data-url="/documentation/tutorials/merge-and-delete/">4. Merge and delete </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/documentation/tutorials/smarter-releasing-on-kubernetes/" data-url="/documentation/tutorials/smarter-releasing-on-kubernetes/">5. Smarter releasing on Kubernetes </a>
+              </li>
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/using-vamp/">Using Vamp</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/using-vamp/">
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/artifacts/" data-url="/documentation/using-vamp/v1.0.0/artifacts/">Artifacts </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/deployments/" data-url="/documentation/using-vamp/v1.0.0/deployments/">Deployments </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/gateways/" data-url="/documentation/using-vamp/v1.0.0/gateways/">Gateways </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/workflows/" data-url="/documentation/using-vamp/v1.0.0/workflows/">Workflows </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/blueprints/" data-url="/documentation/using-vamp/v1.0.0/blueprints/">Blueprints </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/breeds/" data-url="/documentation/using-vamp/v1.0.0/breeds/">Breeds </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/conditions/" data-url="/documentation/using-vamp/v1.0.0/conditions/">Conditions </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/dialects/" data-url="/documentation/using-vamp/v1.0.0/dialects/">Dialects </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/environment-variables/" data-url="/documentation/using-vamp/v1.0.0/environment-variables/">Environment variables </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/escalations/" data-url="/documentation/using-vamp/v1.0.0/escalations/">Escalations </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/events/" data-url="/documentation/using-vamp/v1.0.0/events/">Events </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/health/" data-url="/documentation/using-vamp/v1.0.0/health/">Health checks </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/references/" data-url="/documentation/using-vamp/v1.0.0/references/">Referencing artifacts </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/reverse-proxy/" data-url="/documentation/using-vamp/v1.0.0/reverse-proxy/">Reverse proxy </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/service-discovery/" data-url="/documentation/using-vamp/v1.0.0/service-discovery/">Service discovery </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/sla/" data-url="/documentation/using-vamp/v1.0.0/sla/">SLA (Service Level Agreement) </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/sticky-sessions/" data-url="/documentation/using-vamp/v1.0.0/sticky-sessions/">Sticky Sessions </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/virtual-hosts/" data-url="/documentation/using-vamp/v1.0.0/virtual-hosts/">Virtual Hosts </a>
+                </li>
+              
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/configure">Configure</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/configure">
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/configure/v1.0.0/configure-tenant/" data-url="/documentation/configure/v1.0.0/configure-tenant/">Create a Tenant </a>
+                </li>
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/configure/v1.0.0/configure-database/" data-url="/documentation/configure/v1.0.0/configure-database/">Configure MySQL </a>
+                </li>
+              
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/api/api-reference">API documentation</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/api/api-reference">
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/cli/using-the-cli/">CLI documentation</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/cli/using-the-cli/">
+          
+            
+              <li>
+                <a href="https://vamp.io/documentation/cli/using-the-cli/" data-url="/documentation/cli/using-the-cli/">Using the Vamp CLI </a>
+              </li>
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/troubleshoot">Troubleshoot</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/troubleshoot">
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+        </ul>
+      
+    </ul>
+
+  
+
+    <li>
+      <a href="https://vamp.io/support/" data-url="/support/">Support</a>
+      
+    </li>
+    <ul>
+      
+    </ul>
+
+  
+
+    <li>
+      <a href="https://vamp.io/about/" data-url="/about/">About</a>
+      
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      
+    </li>
+    <ul>
+      
+        <li>
+          <a href="https://vamp.io/about/">About us</a>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/about/">
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/about/dogmas/">Dogmas</a>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/about/dogmas/">
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/about/contact/">Contact</a>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/about/contact/">
+          
+        </ul>
+      
+    </ul>
+
+  
+
+    <li>
+      <a href="https://vamp.io/news/" data-url="/news/">News</a>
+      
+    </li>
+    <ul>
+      
+    </ul>
+
+  
+
+    <li>
+      <a href="https://blog.vamp.io" data-url="https://blog.vamp.io">Blog</a>
+      
+    </li>
+    <ul>
+      
+    </ul>
+
+  
+
+    <li>
+      <a href="" data-url="">Vamp version comparison</a>
+      
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      
+    </li>
+    <ul>
+      
+        <li>
+          <a href="https://vamp.io/product/vamp-version-comparison/">Vamp Enterprise Edition vs. Vamp Community Edition</a>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/product/vamp-version-comparison/">
+          
+        </ul>
+      
+    </ul>
+
+  
+
+  <li>
+    <a href="https://vamp.io/events/" data-parenturl="/events/"  class="navbar-item">Events</a>
+  </li>
+  <li>
+    <a href="https://vamp.io/pricing/" data-parenturl="/pricing/"  class="navbar-item" >Pricing</a>
+  </li>
+</ul>
+
+
+
+<div class="page documentation container">
+  <div class="row">
+    <div class="col-sm-3 ">
+      <div class="side-menu" id="side-menu">
+        
+
+        
+          <ul class="side-menu-list" data-parenturl="/product/" style="display: none;">
+            
+            <li class="side-menu__item">
+            <a href="https://vamp.io/product/" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">Features</p>
+            </a>
+
+            
+            </li>
+            
+            <li class="side-menu__item">
+            <a href="https://vamp.io/product/use-cases/overview" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">Use cases</p>
+            </a>
+
+            
+            
+            
+            </li>
+            
+            <li class="side-menu__item">
+            <a href="https://vamp.io/product/enterprise-edition/" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">Vamp Enterprise 1.0</p>
+            </a>
+
+            
+            </li>
+            
+            <li class="side-menu__item">
+            <a href="https://vamp.io/product/vamp-compared-to/proxies-and-load-balancers/" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">Vamp compared to...</p>
+            </a>
+
+            
+            
+            
+            </li>
+            
+          </ul>
+        
+          <ul class="side-menu-list" data-parenturl="/documentation/" style="display: none;">
+            
+            <li class="side-menu__item">
+            <a href="https://vamp.io/documentation/how-vamp-works/" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">How Vamp works</p>
+            </a>
+
+            
+            
+            
+            </li>
+            
+            <li class="side-menu__item">
+            <a href="https://vamp.io/documentation/installation/overview" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">Installation</p>
+            </a>
+
+            
+            
+            
+            </li>
+            
+            <li class="side-menu__item active">
+            <a href="https://vamp.io/documentation/tutorials/" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">Tutorials</p>
+            </a>
+
+            
+            
+            <ul class="side-menu__sub">
+              
+              <li class="side-menu__sub__item">
+              <a id="menu-link-/documentation/tutorials/" class="side-menu__sub__item__text" href="https://vamp.io/documentation/tutorials/" data-url="/documentation/tutorials/">Overview</a>
+              </li>
+              
+              <li class="side-menu__sub__item">
+              <a id="menu-link-/documentation/tutorials/deploy-your-first-blueprint/" class="side-menu__sub__item__text" href="https://vamp.io/documentation/tutorials/deploy-your-first-blueprint/" data-url="/documentation/tutorials/deploy-your-first-blueprint/">1. Deploy your first blueprint</a>
+              </li>
+              
+              <li class="side-menu__sub__item">
+              <a id="menu-link-/documentation/tutorials/run-a-canary-release/" class="side-menu__sub__item__text" href="https://vamp.io/documentation/tutorials/run-a-canary-release/" data-url="/documentation/tutorials/run-a-canary-release/">2. Run a canary release</a>
+              </li>
+              
+              <li class="side-menu__sub__item">
+              <a id="menu-link-/documentation/tutorials/split-a-monolith/" class="side-menu__sub__item__text" href="https://vamp.io/documentation/tutorials/split-a-monolith/" data-url="/documentation/tutorials/split-a-monolith/">3. Split a monolith</a>
+              </li>
+              
+              <li class="side-menu__sub__item">
+              <a id="menu-link-/documentation/tutorials/merge-and-delete/" class="side-menu__sub__item__text" href="https://vamp.io/documentation/tutorials/merge-and-delete/" data-url="/documentation/tutorials/merge-and-delete/">4. Merge and delete</a>
+              </li>
+              
+              <li class="side-menu__sub__item active">
+              <a id="menu-link-/documentation/tutorials/smarter-releasing-on-kubernetes/" class="side-menu__sub__item__text" href="https://vamp.io/documentation/tutorials/smarter-releasing-on-kubernetes/" data-url="/documentation/tutorials/smarter-releasing-on-kubernetes/">5. Smarter releasing on Kubernetes</a>
+              </li>
+              
+            </ul>
+            
+            
+            </li>
+            
+            <li class="side-menu__item">
+            <a href="https://vamp.io/documentation/using-vamp/" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">Using Vamp</p>
+            </a>
+
+            
+            
+            
+            </li>
+            
+            <li class="side-menu__item">
+            <a href="https://vamp.io/documentation/configure" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">Configure</p>
+            </a>
+
+            
+            
+            
+            </li>
+            
+            <li class="side-menu__item">
+            <a href="https://vamp.io/documentation/api/api-reference" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">API documentation</p>
+            </a>
+
+            
+            
+            
+            </li>
+            
+            <li class="side-menu__item">
+            <a href="https://vamp.io/documentation/cli/using-the-cli/" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">CLI documentation</p>
+            </a>
+
+            
+            
+            
+            </li>
+            
+            <li class="side-menu__item">
+            <a href="https://vamp.io/documentation/troubleshoot" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">Troubleshoot</p>
+            </a>
+
+            
+            
+            
+            </li>
+            
+          </ul>
+        
+          <ul class="side-menu-list" data-parenturl="/support/" style="display: none;">
+            
+          </ul>
+        
+          <ul class="side-menu-list" data-parenturl="/about/" style="display: none;">
+            
+            <li class="side-menu__item">
+            <a href="https://vamp.io/about/" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">About us</p>
+            </a>
+
+            
+            </li>
+            
+            <li class="side-menu__item">
+            <a href="https://vamp.io/about/dogmas/" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">Dogmas</p>
+            </a>
+
+            
+            </li>
+            
+            <li class="side-menu__item">
+            <a href="https://vamp.io/about/contact/" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">Contact</p>
+            </a>
+
+            
+            </li>
+            
+          </ul>
+        
+          <ul class="side-menu-list" data-parenturl="/news/" style="display: none;">
+            
+          </ul>
+        
+          <ul class="side-menu-list" data-parenturl="https://blog.vamp.io" style="display: none;">
+            
+          </ul>
+        
+          <ul class="side-menu-list" data-parenturl="" style="display: none;">
+            
+            <li class="side-menu__item">
+            <a href="https://vamp.io/product/vamp-version-comparison/" class="side-menu__item__link">
+              <p class="side-menu__item__link__text">Vamp Enterprise Edition vs. Vamp Community Edition</p>
+            </a>
+
+            
+            </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="content">
+        <h1 class="content-header">5. Smarter releasing on Kubernetes </h1>
+        <div class="badges-wrapper">
+          
+          
+        </div>
+        <div id="versions-dropdown" class="dropdown">
+          <div class="dropdown__core">
+            <div class="dropdown__selected">
+              Selected version
+            </div>
+            <div class="dropdown__chevon">
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <div class="dropdown__items">
+
+          </div>
+        </div>
+
+        <div class="markdowned">
+          
+
+<p>In previous tutorials we&rsquo;ve used Vamp blueprints to create deployments, this tutorial explains how to manually canary release a new version of a microservice deployed outside of Vamp.</p>
+
+<p>The most common use case would be canary releasing a Deployment made using a CD (Continuous Delivery) pipeline.</p>
+
+<p>To make this tutorial easy to follow, we are going to use <code>kubectl</code> to **simulate the actions of a CD pipeline deploying to our Kubernetes cluster.</p>
+
+<div class="admonition note">
+  <p class="admonition-title">Note!</p>
+  <p>The commands shown in this tutorial assume you are using the <a href="https://vamp.io/documentation/installation/kubernetes">Kubernetes Quickstart</a> and that there is an existing namespace called <strong>vampio-organization-environment</strong>.</p>
+</div>
+
+<p>In this tutorial we will:</p>
+
+<ul>
+<li><a href="#deploy-the-sava-product-service">Deploy and release an internal microservice</a></li>
+<li><a href="#deploy-sava-cart-store-front">Deploy and release a public-facing microservice</a></li>
+<li><a href="#canary-release">Canary release a new version of a microservice</a></li>
+<li><a href="#api-versioning-using-conditional-routing">API versioning using conditional routing</a></li>
+</ul>
+
+<h2 id="deploying-versus-releasing">Deploying versus releasing</h2>
+
+<h3 id="deploy">Deploy</h3>
+
+<p>We define <strong>deployment</strong> as the process of installing a new version of <strong>software on production</strong> infrastructure. In Kubernetes terms, one or more containers have been created from the newly published Docker image and are running in pods on your production Kubernetes cluster. The Docker containers have started successfully, they are passing their health checks and are <strong>ready to handle production traffic</strong> but may not actually be receiving any.</p>
+
+<h3 id="release">Release</h3>
+
+<p>We define a deployed version of your software as being <strong>released</strong> when it is <strong>responsible for serving production traffic</strong>. And we define <strong>releasing</strong> as <strong>the process of moving production traffic to the new version</strong>.</p>
+
+<h2 id="microservices-topology">Microservices topology</h2>
+
+<p>In the previous tutorials, we&rsquo;ve used &ldquo;lab only&rdquo; service topologies that are great for demonstrating the core concepts and features of Vamp but those topologies are not well suited to production use. In this tutorial and the ones that follow, we will be using a fictitious e-commerce application that highlights some of the best practices of real world micro-service projects.</p>
+
+<h3 id="minimum-viable-product">Minimum Viable Product</h3>
+
+<p>Our fictitious <strong>sava</strong> e-commerce application allows users to engage in fantasy shopping for awesome <a href="https://hipsum.co/">hipster ipsum</a> inspired products.</p>
+
+<p>The <a href="http://theleanstartup.com/principles">MVP</a> provides a responsive store front (<strong>sava-cart</strong>) which depends on a product service (<strong>sava-product</strong>). The store will initially be available in the Republic of Ireland (ie. sub-domain) and the product service API will exposed on a separate (api.) sub-domain.</p>
+
+<p><img src="https://vamp.io/images/diagram/v100/tut5/k8s-arch-mvp-product-crelease.png" alt="architecture" /></p>
+
+<h4 id="sava-product-service">sava-product service</h4>
+
+<p>The <strong>sava-product</strong> service is implemented using a Dockerized <a href="https://github.com/typicode/json-server">typicode/json-server</a> forked from <a href="https://github.com/clue/docker-json-server">clue/docker-json-server</a>.</p>
+
+<p>The service provides a REST API that returns a list (array) of products in JSON format for the specified locale, for example: <code>/products/ie</code> will return a list of products available in the Republic of Ireland store.</p>
+
+<h4 id="sava-cart-store-front">sava-cart store front</h4>
+
+<p>The <strong>sava-cart</strong> store front is a fork of <a href="https://github.com/gtsopour/nodejs-shopping-cart">gtsopour/nodejs-shopping-cart</a></p>
+
+<p>The store front provides a responsive web app consisting of a products page, a shopping cart and a checkout page.</p>
+
+<p>It tries to isolate users from realtime dependency failures by showing cached or stubbed data. For example, if the sava-product service is unavailable users can choose from a list of fruit (a throw back to the original project).</p>
+
+<p>The store front locale is configured by setting the <code>LOCALE</code> environment variable.</p>
+
+<h2 id="initial-deployment-and-release">Initial Deployment and Release</h2>
+
+<p>So the DevOps team has been working hard and after a few interations <strong>we are now ready to deploy the MVP on production</strong>. The MVP consists of <strong>sava-product version 1.0.3</strong> and <strong>sava-cart version 1.0.5</strong>.</p>
+
+<h3 id="deploy-the-sava-product-service">Deploy the sava-product service</h3>
+
+<p>To <strong>deploy the initial version of sava-product</strong> (v1.0.3):</p>
+
+<ul>
+<li>Copy the deployment specification below and save it in a file called <strong>sava-product-1.0.3.yml</strong>.</li>
+</ul>
+
+<pre><code class="language-yaml">  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: sava-product-1.0.3
+  spec:
+    selector:
+      matchLabels:
+        app: sava-product
+    replicas: 1
+    template:
+      metadata:
+        labels:
+          app: sava-product
+          version: 1.0.3
+      spec:
+        containers:
+        - name: sava-product
+          image: vampio/sava-product:1.0.3
+          ports:
+          - containerPort: 8080
+</code></pre>
+
+<ul>
+<li>Create the Deployment on your Kubernetes cluster.</li>
+</ul>
+
+<pre><code class="language-bash">  kubectl --namespace vampio-organization-environment create -f sava-product-1.0.3.yml
+</code></pre>
+
+<ul>
+<li><p>If you have <code>kubectl proxy</code> running on port 8001 (the default port), you check the deployment by:</p>
+
+<ul>
+<li>Creating a link to the <strong>sava-product</strong> proxy
+<br /></li>
+</ul>
+
+<pre><code class="language-bash"> kubectl --namespace vampio-organization-environment get pods -l app=sava-product -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/{{.metadata.name}}/proxy/products/ie{{&quot;\n&quot;}}{{end}}'
+</code></pre>
+
+<ul>
+<li>Open the link in your web browser and you should see the following output:
+<img src="https://vamp.io/images/screens/v100/tut5/sava-product-products-ie-v1.png" alt="sava-product/products/ie" /></li>
+</ul></li>
+</ul>
+
+<h3 id="release-the-sava-product-service">Release the sava-product service</h3>
+
+<p>At this point version 1.0 of the <strong>sava-product is deployed but not released</strong>. The deployment is healthy but cannot yet be found by the clients that depend on it.</p>
+
+<h4 id="kubernetes-services">Kubernetes Services</h4>
+
+<p>Since we only have one sava-product <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod/">Pod</a> (Docker container) running, we could pass the IP address and port of that Pod to sava-cart but that would be a bad idea.</p>
+
+<p>Kubernetes will maintain the requested number of Pods over time but individual <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod/#durability-of-pods-or-lack-thereof">Pods can be destroyed at any time and new Pods created to replace them</a>. So whilst sava-product will get its own IP address, that address cannot be relied upon to be stable over time.</p>
+
+<p>To avoid this tight coupling, Kubernetes provides the <a href="https://kubernetes.io/docs/concepts/services-networking/service/">Service</a> abstraction. <strong>Creating a Kubernetes Service for our sava-product service will provide a stable address which our sava-cart frontend can then use.</strong></p>
+
+<p>If we were going to create a Kubernetes Service for our sava-product service, it would look something like this:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: sava-product
+spec:
+  ports:
+  - port: 9070
+    protocol: TCP
+    targetPort: 8080
+  type: NodePort
+  selector:
+    app: sava-product
+</code></pre>
+
+<h4 id="vamp-gateways">Vamp gateways</h4>
+
+<p>Instead of using a Kubernetes Service for our sava-product service, we&rsquo;re going to use a Vamp gateway.</p>
+
+<p>Vamp gateways provide <a href="https://vamp.io/documentation/how-vamp-works/v1.0.0/vamp-and-kubernetes/#vamp-deployments">a super set of Kubernetes Service and Ingress controller features</a> and allow you to do fine-grained, automated or manual blue/green or canary releases of your internal-facing and external-facing microservices.</p>
+
+<pre><code class="language-yaml">name: sava-product
+port: 9070
+selector: label(app)(sava-product) &amp;&amp; label(version)((.*))
+</code></pre>
+
+<ol>
+<li>In the Vamp UI, select the environment <em>environment</em> and go to the <strong>Gateways</strong> page and click <strong>Add</strong> (top right)</li>
+<li>Paste in the above gateway config and click <strong>Save</strong>.
+Vamp will create a Service of type NodePort.</li>
+<li>You can check that the gateway Service has be created correctly using:
+<br /></li>
+</ol>
+
+<pre><code>  kubectl --namespace vampio-organization-environment get service sava-product
+</code></pre>
+
+<p>Great! <strong>You&rsquo;ve released the sava-product service!</strong></p>
+
+<h3 id="debugging-gateways">Debugging gateways</h3>
+
+<p>The <strong>sava-product</strong> Service created by Vamp behaves exactly like a normal Kubernetes Service but it <strong>points to the vamp-gateway-agent Pods</strong> (Selector: io.vamp=vamp-gateway-agent) <strong>instead of the sava-product Pod</strong> (selector: app=sava-product).</p>
+
+<p>The Kubernetes <a href="https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services">service discovery</a> mechanisms work like normal but URLs like <a href="http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/">http://localhost:8001/api/v1/namespaces/vampio-organization-environment/services/sava-product/proxy/</a> don&rsquo;t work.</p>
+
+<div class="admonition note">
+  <p class="admonition-title">Note!</p>
+  <p><p><strong>If you need to debug a Service created by Vamp, you should use port forwarding</strong>, like this:</p>
+
+<pre><code class="language-bash">kubectl port-forward --namespace vampio-organization-environment $(kubectl get pod --namespace vampio-organization-environment --selector=&quot;io.vamp=vamp-gateway-agent&quot; --output jsonpath='{.items[0].metadata.name}') 9070:9070
+</code></pre>
+
+<p>The <strong>sava-product</strong> Service can then be accessed on <a href="http://localhost:9070/products/ie">http://localhost:9070/products/ie</a>.</p>
+</p>
+</div>
+
+<h3 id="deploy-sava-cart-store-front">Deploy sava-cart store front</h3>
+
+<p>To <strong>deploy the initial version of sava-cart for the Republic of Ireland</strong> (v1.0.5):</p>
+
+<ul>
+<li>Copy the deployment specification below and save it in a file called <strong>sava-cart-1.0.5-ie.yml</strong>.</li>
+</ul>
+
+<pre><code class="language-yaml">  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: sava-cart-1.0.5-ie
+  spec:
+    selector:
+      matchLabels:
+        app: sava-cart
+    replicas: 1
+    template:
+      metadata:
+        labels:
+          app: sava-cart
+          version: 1.0.5
+          locale: IE
+      spec:
+        containers:
+        - name: sava-cart
+          image: vampio/sava-cart:1.0.5
+          ports:
+          - containerPort: 3000
+          env:
+          - name: LOCALE
+            value: IE
+</code></pre>
+
+<ul>
+<li>Create the Deployment on your Kubernetes cluster.</li>
+</ul>
+
+<pre><code class="language-bash">  kubectl --namespace vampio-organization-environment create -f sava-cart-1.0.5-ie.yml
+</code></pre>
+
+<ul>
+<li><p>If you have <code>kubectl proxy</code> running on port 8001, you check the deployment by:</p>
+
+<ul>
+<li>Creating a link to the <strong>IE sava-cart</strong> proxy
+<br /></li>
+</ul>
+
+<pre><code class="language-bash"> kubectl --namespace vampio-organization-environment get pods -l app=sava-cart,locale=UK -o go-template --template '{{range .items}}http://localhost:8001/api/v1/namespaces/vampio-organization-environment/pods/{{.metadata.name}}/proxy/{{&quot;\n&quot;}}{{end}}'
+</code></pre>
+
+<ul>
+<li>Open the link in your web browser and you should see the IE product page:
+<img src="https://vamp.io/images/screens/v100/tut5/sava-cart-ie-v1.png" alt="sava-cart-ie-v1" /></li>
+</ul></li>
+</ul>
+
+<h3 id="release-the-sava-cart-store-front">Release the sava-cart store front</h3>
+
+<p>At this point version 1.0 of the <strong>sava-cart-ie is deployed but not released</strong>. Once again, the deployment is healthy but cannot yet be found by the customers.</p>
+
+<p>We want the store front to be available to customers in the Republic of Ireland using an <strong>ie.</strong> sub-domain, so we need an external IP address we can use in our public DNS A record.</p>
+
+<p>To get an external IP address we could use a (<a href="https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer">Service.Type=LoadBalancer</a>) or we could use a Kubernetes <a href="https://kubernetes.io/docs/concepts/services-networking/ingress/">Ingress</a> controller.</p>
+
+<p>If we were going to create a Kubernetes Service for our sava-cart-ie store front, it would look something like this:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: sava-cart-ie
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000
+  type: ClusterIP
+  selector:
+    app: sava-cart
+    locale: IE
+</code></pre>
+
+<p>And the Kubernetes Ingress would look something like this:</p>
+
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sava-cart-ie
+spec:
+  rules:
+  - host: ie.tutorials.vamp.cloud
+    http:
+      paths:
+      - backend:
+          serviceName: sava-cart-ie
+          servicePort: 80
+</code></pre>
+
+<p>The <code>host</code> rule isn&rsquo;t strictly necessary but is included for completeness.</p>
+
+<p>Instead of using a Kubernetes Service and an Ingress controller, we&rsquo;re going to use a Vamp gateway.</p>
+
+<pre><code class="language-yaml">name: sava-cart-ie
+virtual_hosts:
+- ie.tutorial5.vamp.cloud
+selector: label(app)(sava-cart) &amp;&amp; label(locale)(IE) &amp;&amp; label(version)((.*))
+</code></pre>
+
+<ol>
+<li>In the Vamp UI, select the environment <em>environment</em> and go to the <strong>Gateways</strong> page and click <strong>Add</strong> (top right)</li>
+<li>Paste in the above gateway config and click <strong>Save</strong>.
+Vamp will create a Service of type NodePort.</li>
+<li>You can check that the gateway Service has be created correctly using:
+<br /></li>
+</ol>
+
+<pre><code>  kubectl --namespace vampio-organization-environment get service sava-cart-ie
+</code></pre>
+
+<p>Great! <strong>You&rsquo;ve released the sava-cart store front for the Republic of Ireland using Vamp!</strong></p>
+
+<p>You can now access the store front through the Vamp Gateway Agent (VGA) using the virtual host name <strong>ie.tutorial5.vamp.cloud</strong>.</p>
+
+<p>If you are using Kubernetes, you can find the external IP address of the VGA using <code>kubectl</code>:</p>
+
+<pre><code>kubectl --namespace vampio-organization-environment get service vamp-gateway-agent
+</code></pre>
+
+<p>Once you have the external IP address for the VGA, you can access the application using <code>curl</code>:</p>
+
+<pre><code>curl -H &quot;Host: ie.tutorial5.vamp.cloud&quot; http://&lt;vga-external-ip&gt;/
+</code></pre>
+
+<h2 id="canary-release">Canary release</h2>
+
+<p>The MVP store front is &ldquo;good enough&rdquo; but our hister customers are always looking for something new.</p>
+
+<p>In prepartion for the version 2.0 store front, the DevOps team want to <strong>release a new version of the sava-product service and canary test it in production</strong>.</p>
+
+<p>To <strong>deploy the new version of sava-product</strong> (v2.0.1):</p>
+
+<ul>
+<li>Copy the deployment specification below and save it in a file called <strong>sava-product-2.0.1.yml</strong>.</li>
+</ul>
+
+<pre><code class="language-yaml">  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: sava-product-2.0.1
+  spec:
+    selector:
+      matchLabels:
+        app: sava-product
+    replicas: 1
+    template:
+      metadata:
+        labels:
+          app: sava-product
+          version: 2.0.1
+      spec:
+        containers:
+        - name: sava-product
+          image: vampio/sava-product:2.0.1
+          ports:
+          - containerPort: 8080
+    ```
+
+* Create the Deployment on your Kubernetes cluster.
+
+  ```bash
+  kubectl --namespace vampio-organization-environment create -f sava-product-2.0.1.yml
+</code></pre>
+
+<p>As soon as the new version has been deployed it will be automatically detected and a new route added to the gateway. The weight of the newly added route is set to 0%, this means that no traffic is currently being routed there. Whenever Vamp adds a new route to a gateway, it applies the default weight of 0%.</p>
+
+<p>As we did in <a href="https://vamp.io/documentation/tutorials/run-a-canary-release/">tutorial 2</a>, let&rsquo;s adjust the weight and <strong>start to send traffic to the new version of sava-product</strong>:</p>
+
+<ol>
+<li>In the Vamp UI, select the environment <em>environment</em> and go to the <strong>Gateways</strong> page and open the <strong>sava-product</strong> gateway</li>
+<li>Click the edit icon next to <strong>WEIGHT</strong></li>
+<li>Adjust the weight slider to distribute traffic 50% / 50% between the two versions
+<img src="https://vamp.io/images/screens/v100/tut5/vampee-environment-gateways-sava-product-editweights5050.png" alt="" /></li>
+<li>Click <strong>Save</strong> and Vamp will adjust the route weights accordingly</li>
+</ol>
+
+<p>The store front is implemented as a <a href="http://servicedesignpatterns.com/WebServiceEvolution/TolerantReader">Tolerant Reader</a> that expects changes to occur in the messages and media types it receives.</p>
+
+<h3 id="api-versioning-using-conditional-routing">API versioning using conditional routing</h3>
+
+<p><strong>Versioning of the sava-product API is done by media type</strong>. The API defaults to the latest version and clients that care about the stability of the API can request a specific version in the HTTP <code>Accept</code> header - <a href="https://developer.github.com/v3/media/">GitHub&rsquo;s approach</a>.</p>
+
+<p>For example, <strong>version 1.0 of sava-cart requests version 1 of the sava-product service using <code>Accept: application/vnd.sava.v1+json</code></strong> but will try to work with later versions.</p>
+
+<p>If you <code>curl</code> the store front a few times and check the results, you won&rsquo;t see any difference but if you look at the metrics on the <strong>sava-product</strong> gateway page, you&rsquo;ll see that the requests were distributed equally between the two versions.</p>
+
+<p>Now let&rsquo;s add conditions to the two routes, so that client requests are correctly handled based on what is set in the HTTP Accept header.</p>
+
+<ol>
+<li>In the Vamp UI, select the environment <em>environment</em> and go to the <strong>Gateways</strong> page and open the <strong>sava-product</strong> gateway</li>
+<li>Click the edit condition icon for the <strong>(1.0.3)</strong> route and enter the condition <code>Header Accept Contains v1</code>.</li>
+<li>Click the edit condition strength icon for the <strong>(1.0.3)</strong> route and move the slider to 100%, so that all requests for version 1 of the API to be sent to this route.</li>
+<li>Next, click the edit condition icon for the <strong>(2.0.1)</strong> route and enter the condition <code>Header Accept Contains v2</code>.</li>
+<li>Click the edit condition strength icon for the <strong>(2.0.1)</strong> route and move the slider to 100%, so that all requests for version 2 of the API to be sent to this route.</li>
+<li>Finally, we want version 2 of the API to be the default for all requests that don&rsquo;t specify a version. We do this using the route weight:
+
+<ul>
+<li>Click the edit icon next to <strong>WEIGHT</strong></li>
+<li>Adjust the weight slider to <strong>100%</strong> for the <strong>(2.0.1)</strong> route.</li>
+<li>Click <strong>Save</strong></li>
+</ul></li>
+</ol>
+
+<p>If you <code>curl</code> the store front a few more times and check the metrics on the <strong>sava-product</strong> gateway page, you&rsquo;ll see that all the requests are now correctly routed to version 1 of the API.</p>
+
+<div class="admonition note">
+  <p class="admonition-title">What next?</p>
+  <p><ul>
+<li>Find out more about the synergy between <a href="https://vamp.io/documentation/how-vamp-works/v1.0.0/vamp-and-kubernetes/">Vamp and Kubernetes</a></li>
+</ul>
+</p>
+</div>
+
+          <p class="text-muted text">Last updated on June 24, 2019</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lander-row lander-row--blue footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h3 class="h3">Address</h3>
+        <address class="text">
+          Raamgracht 8<br>
+          1011 KK Amsterdam<br>
+          The Netherlands<br>
+          +31(0)88 555 33 99<br>
+          info@vamp.io<br>
+        </address>
+        <div class="social-buttons mt-3">
+          <div class="social-icons">
+            <a href="https://twitter.com/vamp_io" target="_blank">
+              <i class="fa fa-2x fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/magnetic-io" target="_blank">
+              <i class="fa fa-2x fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <h3 class="h3">Learn more</h3>
+        <a href="https://vamp.io/product/">
+          <p class="text">Product</p>
+        </a>
+        <a href="https://vamp.io/documentation/">
+          <p class="text">Documentation</p>
+        </a>
+        <a href="https://blog.vamp.io" target="_blank">
+          <p class="text">Blog</p>
+        </a>
+        <a href="https://vamp.io/about/">
+          <p class="text">About us</p>
+        </a>
+        <a href="https://vamp.io/careers/">
+          <p class="text">Careers
+            <span class="badge d-inline ml-2">we are hiring!</span>
+          </p>
+        </a>
+        <a href="https://vamp.io/about/contact/">
+          <p class="text">Contact</p>
+        </a>
+        <a href="https://vamp.io/news/">
+          <p class="text">News</p>
+        </a>
+      </div>
+        <div class="col-sm-3">
+        <h3 class="h3">All things code</h3>
+          <a href="https://vamp.io/documentation/installation/">
+            <p class="text">Installation</p>
+          </a>
+          <a href="https://vamp.io/documentation/api/api-reference/">
+            <p class="text">API docs</p>
+          </a>
+          <a href="https://vamp.io/support/">
+            <p class="text">Support</p>
+          </a>
+          <a href="https://github.com/magneticio/vamp" target="_blank">
+            <p class="text">GitHub</p>
+          </a>
+          <a href="https://gitter.im/magneticio/vamp" target="_blank">
+            <p class="text">Gitter</p>
+          </a>
+      </div>
+      <div class="col-sm-3">
+        <h3 class="h3">Stay up to date</h3>
+        <p class="text">
+          Leave your email for the latest news: We won’t spam you and won’t go off topic.
+        </p>
+
+        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&id=c1465e21d0&" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate="">
+          <div class="input-group">
+            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email">
+            <a onclick="$(this).closest('form').submit()" class="button button--red not-active">
+              <div class="button__icon button__icon--mail">
+              </div>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom lander-row--blue">
+  <div class="container">
+    <div class="part">
+    </div>
+    <div class="part">
+      <img class="vamp-bat" src="https://vamp.io/img/003-Small-icons/Medium-blue/VAMP-Medium.svg" alt="">
+      <p class="text">© 2019 <a href="https://vamp.io/about/">vamp.io</a></p>
+    </div>
+  </div>
+</div>
+
+<script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
+<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+
+<script src="https://vamp.io/js/dist/vendor.min-16301782.js" ></script>
+<script src="https://vamp.io/js/dist/index.min-edd0077d.js" ></script>
+<script src="https://vamp.io/js/dist/apps.min-03c09287.js" ></script>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+  apiKey: '6336564d11d0f76c3ef2521947b97f54',
+  indexName: 'vamp',
+  inputSelector: '.search-input',
+  debug: false 
+});
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+<script>
+  if (location.host === 'www.vamp.io' || location.host === 'vamp.io') {
+
+    (function (h, o, t, j, a, r) {
+      h.hj = h.hj || function () {
+        (h.hj.q = h.hj.q || []).push(arguments)
+      };
+      h._hjSettings = {hjid: 637837, hjsv: 5};
+      a = o.getElementsByTagName('head')[0];
+      r = o.createElement('script');
+      r.async = 1;
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  if (location.host === 'www.vamp.io' || location.host === 'vamp.io' || location.host === 'staging.vamp.io') {
+    !function () {
+      var t = window.driftt = window.drift = window.driftt || [];
+      if (!t.init) {
+        if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+        t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+          t.factory = function (e) {
+            return function () {
+              var n = Array.prototype.slice.call(arguments);
+              return n.unshift(e), t.push(n), t;
+            };
+          }, t.methods.forEach(function (e) {
+          t[e] = t.factory(e);
+        }), t.load = function (t) {
+          var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+          o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+          var i = document.getElementsByTagName("script")[0];
+          i.parentNode.insertBefore(o, i);
+        };
+      }
+    }();
+    drift.SNIPPET_VERSION = '0.3.1';
+    drift.load('y5f3mtg4w6nd');
+  }
+</script>
+
+
+
+
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b3cc10130bbdb11"></script>
+
+<div class="modal fade" id="contactFormModal" tabindex="-1" role="dialog" aria-labelledby="contactFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" style="height: 875px !important;">
+        <div class="float-right">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; right: 18px; z-index: 9999;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="pipedriveWebForms" data-pd-webforms="https://pipedrivewebforms.com/form/ab3a32ec0da50b308a450ed88036c076810301"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://unpkg.com/@tryghost/content-api@1.2.5/umd/content-api.min.js"></script>
+

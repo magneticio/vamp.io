@@ -1,0 +1,199 @@
+.navbar {
+  display: none;
+  position: relative;
+  justify-content: space-between;
+  height: 80px;
+  background-color: $ash;
+  padding: 0 10px;
+  z-index: 999;
+  transition: height .4s;
+
+  &.navbar-small {
+    height: 60px !important;
+  }
+
+  > .container {
+    height: 79px;
+  }
+
+  &.navbar-light {
+    background-color: $ash;
+    border-bottom: $light-border;
+    .logo {
+      background-image: url('/img/005-vamp/Logo/logo-long-colour.svg');
+      background-repeat: no-repeat;
+    }
+
+    .navbar-item {
+      color: $blue-darker;
+
+      &:hover {
+        color: $red;
+      }
+    }
+
+    .search {
+      .fa-search {
+        position: absolute;
+        top: 32px;
+        left: 11px;
+        font-size: 15px;
+        color: $gray-lighter;
+      }
+      .search-input {
+        padding: 1.25rem;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        font-size: $font-size-default;
+        letter-spacing: 0.05em;
+        font-weight: 300;
+        background: white;
+        border: none;
+        height: 1rem;
+        border-radius: 4px;
+        text-indent: 16px;
+        width: 300px;
+      }
+    }
+  }
+
+  @media all and (min-width: 1025px) {
+    display: flex;
+  }
+
+  // Remove all text decoration on links
+  a {
+    text-decoration: none;
+  }
+
+  // Left - Logo part
+  .left {
+    display: flex;
+    align-items: center;
+    float: left;
+    height: 100%;
+  }
+
+  .logo {
+    height: 40px;
+    width: 120px;
+    background-image: url('/img/005-vamp/Logo/logo-long-white.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  // Right - Menu Items part
+  .right {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    float: right;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .navbar-items, .download, .github-logo, .search {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    margin: 0 20px;
+    height: 100%;
+  }
+
+  .navbar-items {
+    margin: 0;
+    height: 100%;
+  }
+
+  .navbar-item {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+
+    color: $ash;
+    font-size: 15px;
+    font-weight: 300;
+    text-decoration: none;
+    height: 100%;
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+      color: white;
+    }
+
+    &.active {
+      border-bottom: 3px solid $red;
+      font-weight: 500;
+      margin-bottom: -2px;
+    }
+  }
+
+  .search {
+    .fa-search {
+      position: relative;
+      left: 30px;
+      top: 10px;
+      z-index: 1000;
+      font-size: 15px;
+      color: $gray-lighter;
+    }
+    .search-input {
+      padding: 1.25rem;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      font-size: $font-size-default;
+      letter-spacing: 0.05em;
+      font-weight: 300;
+      background: white;
+      border: none;
+      height: 1rem;
+      border-radius: 4px;
+      text-indent: 16px;
+      //width: 300px;
+    }
+  }
+
+  .hiring-popover {
+    position: relative;
+    background: $gray;
+    font-size: .75rem;
+    padding: .5rem .5rem;
+    margin-left: 1rem;
+    border-radius: 2px;
+    &:after {
+      right: 100%;
+      top: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0px;
+      width: 0px;
+      position: absolute;
+      pointer-events: none;
+      border-right-color: $gray;
+      border-width: 8px;
+      margin-top: -9px
+    }
+
+    a {
+      color: $ash;
+    }
+  }
+}
+
+// mobile menu
+.slicknav_menu {
+  display: block;
+  position: fixed;
+  top:0;
+  width: 100%;
+  z-index: 9999;
+  @media all and (min-width: 1025px) {
+    display: none;
+  }
+
+  border-bottom: 1px solid $gray-lighter;
+}

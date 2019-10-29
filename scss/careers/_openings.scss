@@ -1,0 +1,43 @@
+.openings {
+  padding: 30px 0;
+
+  .openings-header {
+    @include section-header()
+  }
+
+  .openings-list {
+    padding: 20px;
+    color: $blue-dark;
+    text-align: left;
+  }
+
+  .openings-body {
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 32px;
+    font-weight: 400;
+
+    h1 {
+      color: $blue-light;
+      font-size: $font-size-medium;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      color: $blue-dark;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+    }
+  }
+
+  .openings-cta {
+    padding: 2rem;
+    border-radius: 5px;
+    background-color: $ash;
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+}

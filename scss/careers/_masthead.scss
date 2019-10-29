@@ -1,0 +1,59 @@
+.career-masthead {
+  background: linear-gradient(45deg,#6991AA,#142D3C) ;
+  &.hero-background {
+    background: url('/img/careers/raamgracht_background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    @media only screen
+    and (min-device-width : 375px)
+    and (max-device-width : 667px) {
+      background-position: 50%;
+    }
+  }
+
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  text-align: center;
+  color: white;
+  .header-content {
+    padding: 150px 15px 100px;
+    text-align: center;
+    .header-content-inner {
+      text-align: center;
+      h1 {
+        font-size: 30px;
+        font-weight: 400;
+        margin-top: 0;
+        margin-bottom: 18px;
+      }
+      hr {
+        margin: 30px auto;
+      }
+      p {
+        font-size: 22px;
+        font-weight: 200;
+        margin-bottom: 24px;
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    background-position: center;
+    .header-content {
+      .header-content-inner {
+        text-align: center;
+        max-width: 768px;
+        margin-right: auto;
+        margin-left: auto;
+        h1 {
+          font-size: 40px;
+        }
+        p {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}

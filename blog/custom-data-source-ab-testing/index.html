@@ -1,0 +1,2135 @@
+<!DOCTYPE html>
+
+
+
+
+ <html class="no-js"> 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+  <title>Custom data sources for A/B testing with Vamp Lamia and Istio 1.0.2 | Vamp </title>
+  <meta name="generator" content="Hugo 0.52" />
+
+  
+  <meta name="description" content="Vamp gives you all the tools to release, control and optimize your containerised apps on cloud native platforms.">
+  
+  <link rel="canonical" href="https://vamp.io/blog/custom-data-source-ab-testing/">
+  
+  <meta name="author" content="magnetic.io">
+  
+
+  
+  <meta property='og:title' content='Custom data sources for A/B testing with Vamp Lamia and Istio 1.0.2 | Vamp '>
+  
+
+  <meta property="og:image" content=' /images/blog/ab_testing.png'>
+  <meta property="og:description" content="
+
+Welcome to our ongoing series of post on our experiences in using Istio during the development of Vamp Lamia.
+
+In our previous post, we presented Vamp Lamia&rsquo;s approach to A/B testing and then delved deeper into how Experiments use Welch&rsquo;s t-test to identify the test&rsquo;s winner in a statistically sound way.
+
+In both scenarios, however, we relied solely on Elasticsearch to gather the necessary statistics to calculate the A/B test outcome.
+This begs the question: what if we wanted to use a different source?
+In this post we will discuss the possibility of employing a custom data source, be it a different database or another application, deployed inside or outside the cluster." />
+  <meta property="og:url" content="https://vamp.io/blog/custom-data-source-ab-testing/">
+  <meta property="og:type" content="article" />
+  
+  <meta name="apple-mobile-web-app-title" content="Vamp | Automation and Controls for Enterprise Devops">
+  
+
+
+  
+
+  <meta property='twitter:card' content='summary'>
+  <meta property='twitter:title' content='Custom data sources for A/B testing with Vamp Lamia and Istio 1.0.2 | Vamp.io '>
+  <meta property="twitter:description" content="
+
+Welcome to our ongoing series of post on our experiences in using Istio during the development of Vamp Lamia.
+
+In our previous post, we presented Vamp Lamia&rsquo;s approach to A/B testing and then delved deeper into how Experiments use Welch&rsquo;s t-test to identify the test&rsquo;s winner in a statistically sound way.
+
+In both scenarios, however, we relied solely on Elasticsearch to gather the necessary statistics to calculate the A/B test outcome.
+This begs the question: what if we wanted to use a different source?
+In this post we will discuss the possibility of employing a custom data source, be it a different database or another application, deployed inside or outside the cluster." />
+  <meta property="twitter:image" content=' /images/blog/ab_testing.png'>
+
+
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" type="image/x-icon" href="https://vamp.io/images/favicon.png?v=1.0">
+  <style>
+    @font-face {
+      font-family: 'Icon';
+      src: url('/fonts/icon.eot?52m981');
+      src: url('/fonts/icon.eot?#iefix52m981')
+      format('embedded-opentype'),
+      url('/fonts/icon.woff?52m981')
+      format('woff'),
+      url('/fonts/icon.ttf?52m981')
+      format('truetype'),
+      url('/fonts/icon.svg?52m981#icon')
+      format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+
+  
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+  
+
+  <link rel="stylesheet" href="https://vamp.io/css/dist/style.min-24d00513.css">
+
+
+  
+
+  <style>.async-hide { opacity: 0 !important} </style>
+  <script>
+    if (location.host === 'www.vamp.io' || location.host === 'vamp.io') {
+
+      (function (a, s, y, n, c, h, i, d, e) {
+        s.className += ' ' + y;
+        h.start = 1 * new Date;
+        h.end = i = function () {
+          s.className = s.className.replace(RegExp(' ?' + y), '')
+        };
+        (a[n] = a[n] || []).hide = h;
+        setTimeout(function () {
+          i();
+          h.end = null
+        }, c);
+        h.timeout = c;
+      })(window, document.documentElement, 'async-hide', 'dataLayer', 4000,
+        {'GTM-TN6W53W': true});
+    }
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      if (location.host === 'www.vamp.io' || location.host === 'vamp.io') {
+        (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r;
+          i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+          }, i[r].l = 1 * new Date();
+          a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-59948816-1', 'auto');
+        ga('require', 'GTM-TN6W53W');
+        ga('send', 'pageview');
+      }
+    })
+  </script>
+  
+  <script>
+    if (location.host === 'www.vamp.io' || location.host === 'vamp.io') {
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-K55QZJQ');
+    }
+  </script>
+  
+
+  
+
+</head>
+<body class="palette-primary-pink palette-accent-pink">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K55QZJQ"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+
+
+<div class="landing-page">
+  
+<nav aria-label="Header" id="header" class="navbar navbar-light">
+  <div class="container">
+    <div class="left">
+      <a href="https://vamp.io/">
+        <div id="logo" class="logo"></div>
+      </a>
+    </div>
+
+    <div class="right">
+      <div class="navbar-items" id="navbar-items">
+        <a href="https://vamp.io/product/" data-parenturl="/product/" class="navbar-item top-nav-product-top" data-target="webuiPopover0">Product <i class="ml-2 fa fa-angle-down"></i></a>
+        <a href="https://blog.vamp.io/" target="_blank" data-parenturl="/blog/" class="navbar-item">Blog</a>
+        <a href="https://vamp.io/news/" data-parenturl="/news/" class="navbar-item">News</a>
+        <a href="https://vamp.io/documentation/" data-parenturl="/documentation/" class="navbar-item top-nav-developers-top" data-target="webuiPopover1">Resources <i class="ml-2 fa fa-angle-down"></i></a>
+        <a href="https://vamp.io/support/" data-parenturl="/support/" class="navbar-item">Support</a>
+        <a href="https://vamp.io/pricing/" data-parenturl="/pricing/" class="navbar-item">Pricing</a>
+      </div>
+      <div id="productPopover" style="display: none">
+  <div class="popover-menu-body">
+    <a href="https://vamp.io/product/" class="popover-menu-item">Features
+      <i class="fa fa-caret-right"></i>
+    </a>
+    <a href="https://vamp.io/product/use-cases/overview" class="popover-menu-item">Use cases
+      <i class="fa fa-caret-right"></i>
+    </a>
+    <a href="https://vamp.io/product/vamp-compared-to/" class="popover-menu-item">Vamp compared to…
+      <i class="fa fa-caret-right"></i>
+    </a>
+  </div>
+</div>
+
+      <div id="developersPopover" style="display: none">
+  <div class="popover-menu-body popover-menu-body-wide">
+    <a href="https://vamp.io/events" class="popover-menu-item">Events
+      <i class="fa fa-caret-right"></i>
+    </a>
+    <a href="https://vamp.io/documentation/" class="popover-menu-item">Documentation
+      <i class="fa fa-caret-right"></i>
+    </a>
+    <a href="https://vamp.io/documentation/installation/" class="popover-menu-item">Installation
+      <i class="fa fa-caret-right"></i>
+    </a>
+    <a href="https://vamp.io/documentation/api/api-reference/" class="popover-menu-item">API Reference
+      <i class="fa fa-caret-right"></i>
+    </a>
+    <a href="https://vamp.io/documentation/cli/using-the-cli/" class="popover-menu-item">CLI Reference
+      <i class="fa fa-caret-right"></i>
+    </a>
+    <div class="popover-menu-header">By Platform</div>
+    <a href="https://vamp.io/documentation/installation/kubernetes/" class="popover-menu-item">
+      <img src="https://vamp.io/img/vendor/kubernetes_small.png" alt="kubernetes">
+      Kubernetes</a>
+
+    <a href="https://vamp.io/documentation/installation/dcos/" class="popover-menu-item">
+      <img src="https://vamp.io/img/vendor/dcos_small.png" alt="dcos">
+
+      DCOS</a>
+  </div>
+</div>
+
+      <div class="search" style="display: none;">
+        <i class="fa fa-search"></i>
+        <input type="search" placeholder="search the docs..." class="search-input" autofocus="autofocus">
+      </div>
+    </div>
+  </div>
+
+</nav>
+
+<nav aria-label="Header" id="mobile-header">
+  <a href="https://vamp.io/" class="logo">
+    <img id="logo" class="logo" src="https://vamp.io/img/005-vamp/Logo/logo-long-colour.svg" alt="">
+  </a>
+  <div class="right">
+    <div class="hamburger">
+      <i class="fa fa-lg fa-bars" aria-hidden="true"></i>
+    </div>
+  </div>
+
+</nav>
+
+<ul id="mobile-menu">
+  
+  
+  
+  
+
+    <li>
+      <a href="https://vamp.io/product/" data-url="/product/">Product</a>
+      
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      
+    </li>
+    <ul>
+      
+        <li>
+          <a href="https://vamp.io/product/">Features</a>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/product/">
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/product/use-cases/overview">Use cases</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/product/use-cases/overview">
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/overview/" data-url="/product/use-cases/overview/">Overview </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/create-responsive-website/" data-url="/product/use-cases/create-responsive-website/">Create a responsive website </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/resolve-incompatibilities-after-upgrade/" data-url="/product/use-cases/resolve-incompatibilities-after-upgrade/">Resolve incompatibilities </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/modernise-architecture/" data-url="/product/use-cases/modernise-architecture/">Modernising your architecture </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/refactor-monolithic-to-microsystems/" data-url="/product/use-cases/refactor-monolithic-to-microsystems/">Refactor to microservices </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/simulate-and-test-scaling-behaviour/" data-url="/product/use-cases/simulate-and-test-scaling-behaviour/">Simulate and test scaling behaviour </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/self-healing-and-self-optimising/" data-url="/product/use-cases/self-healing-and-self-optimising/">Self-healing and self-optimising </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/use-cases/service-discovery/" data-url="/product/use-cases/service-discovery/">Service discovery </a>
+              </li>
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/product/enterprise-edition/">Vamp Enterprise 1.0</a>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/product/enterprise-edition/">
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/product/vamp-compared-to/proxies-and-load-balancers/">Vamp compared to...</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/product/vamp-compared-to/proxies-and-load-balancers/">
+          
+            
+              <li>
+                <a href="https://vamp.io/product/vamp-compared-to/proxies-and-load-balancers/" data-url="/product/vamp-compared-to/proxies-and-load-balancers/">Proxies and load balancers </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/vamp-compared-to/paas-and-container-systems/" data-url="/product/vamp-compared-to/paas-and-container-systems/">PaaS and container systems </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/product/vamp-compared-to/frameworks-and-tools/" data-url="/product/vamp-compared-to/frameworks-and-tools/">Frameworks and tools </a>
+              </li>
+            
+          
+        </ul>
+      
+    </ul>
+
+  
+
+    <li>
+      <a href="https://vamp.io/documentation/" data-url="/documentation/">Documentation</a>
+      
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      
+    </li>
+    <ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/how-vamp-works/">How Vamp works</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/how-vamp-works/">
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/how-vamp-works/v1.0.0/concepts-and-components/" data-url="/documentation/how-vamp-works/v1.0.0/concepts-and-components/">Concepts and components </a>
+                </li>
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/how-vamp-works/v1.0.0/deployment-models/" data-url="/documentation/how-vamp-works/v1.0.0/deployment-models/">Deployment Models </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/how-vamp-works/v1.0.0/requirements/" data-url="/documentation/how-vamp-works/v1.0.0/requirements/">Requirements </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/how-vamp-works/v1.0.0/vamp-and-kubernetes/" data-url="/documentation/how-vamp-works/v1.0.0/vamp-and-kubernetes/">Vamp and Kubernetes </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/how-vamp-works/v1.0.0/events-and-metrics/" data-url="/documentation/how-vamp-works/v1.0.0/events-and-metrics/">Events and metrics </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/installation/overview">Installation</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/installation/overview">
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/installation/v1.0.0/overview/" data-url="/documentation/installation/v1.0.0/overview/">Overview </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/installation/v1.0.0/kubernetes/" data-url="/documentation/installation/v1.0.0/kubernetes/">Kubernetes Quickstart </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/installation/v1.0.0/dcos/" data-url="/documentation/installation/v1.0.0/dcos/">DC/OS Quickstart </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/tutorials/">Tutorials</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/tutorials/">
+          
+            
+              <li>
+                <a href="https://vamp.io/documentation/tutorials/" data-url="/documentation/tutorials/">Overview </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/documentation/tutorials/deploy-your-first-blueprint/" data-url="/documentation/tutorials/deploy-your-first-blueprint/">1. Deploy your first blueprint </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/documentation/tutorials/run-a-canary-release/" data-url="/documentation/tutorials/run-a-canary-release/">2. Run a canary release </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/documentation/tutorials/split-a-monolith/" data-url="/documentation/tutorials/split-a-monolith/">3. Split a monolith </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/documentation/tutorials/merge-and-delete/" data-url="/documentation/tutorials/merge-and-delete/">4. Merge and delete </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://vamp.io/documentation/tutorials/smarter-releasing-on-kubernetes/" data-url="/documentation/tutorials/smarter-releasing-on-kubernetes/">5. Smarter releasing on Kubernetes </a>
+              </li>
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/using-vamp/">Using Vamp</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/using-vamp/">
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/artifacts/" data-url="/documentation/using-vamp/v1.0.0/artifacts/">Artifacts </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/deployments/" data-url="/documentation/using-vamp/v1.0.0/deployments/">Deployments </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/gateways/" data-url="/documentation/using-vamp/v1.0.0/gateways/">Gateways </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/workflows/" data-url="/documentation/using-vamp/v1.0.0/workflows/">Workflows </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/blueprints/" data-url="/documentation/using-vamp/v1.0.0/blueprints/">Blueprints </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/breeds/" data-url="/documentation/using-vamp/v1.0.0/breeds/">Breeds </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/conditions/" data-url="/documentation/using-vamp/v1.0.0/conditions/">Conditions </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/dialects/" data-url="/documentation/using-vamp/v1.0.0/dialects/">Dialects </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/environment-variables/" data-url="/documentation/using-vamp/v1.0.0/environment-variables/">Environment variables </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/escalations/" data-url="/documentation/using-vamp/v1.0.0/escalations/">Escalations </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/events/" data-url="/documentation/using-vamp/v1.0.0/events/">Events </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/health/" data-url="/documentation/using-vamp/v1.0.0/health/">Health checks </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/references/" data-url="/documentation/using-vamp/v1.0.0/references/">Referencing artifacts </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/reverse-proxy/" data-url="/documentation/using-vamp/v1.0.0/reverse-proxy/">Reverse proxy </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/service-discovery/" data-url="/documentation/using-vamp/v1.0.0/service-discovery/">Service discovery </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/sla/" data-url="/documentation/using-vamp/v1.0.0/sla/">SLA (Service Level Agreement) </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/sticky-sessions/" data-url="/documentation/using-vamp/v1.0.0/sticky-sessions/">Sticky Sessions </a>
+                </li>
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/using-vamp/v1.0.0/virtual-hosts/" data-url="/documentation/using-vamp/v1.0.0/virtual-hosts/">Virtual Hosts </a>
+                </li>
+              
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/configure">Configure</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/configure">
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/configure/v1.0.0/configure-tenant/" data-url="/documentation/configure/v1.0.0/configure-tenant/">Create a Tenant </a>
+                </li>
+              
+            
+          
+            
+              
+                <li>
+                  <a href="https://vamp.io/documentation/configure/v1.0.0/configure-database/" data-url="/documentation/configure/v1.0.0/configure-database/">Configure MySQL </a>
+                </li>
+              
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/api/api-reference">API documentation</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/api/api-reference">
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/cli/using-the-cli/">CLI documentation</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/cli/using-the-cli/">
+          
+            
+              <li>
+                <a href="https://vamp.io/documentation/cli/using-the-cli/" data-url="/documentation/cli/using-the-cli/">Using the Vamp CLI </a>
+              </li>
+            
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/documentation/troubleshoot">Troubleshoot</a>
+          
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/documentation/troubleshoot">
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+            
+              
+            
+          
+        </ul>
+      
+    </ul>
+
+  
+
+    <li>
+      <a href="https://vamp.io/support/" data-url="/support/">Support</a>
+      
+    </li>
+    <ul>
+      
+    </ul>
+
+  
+
+    <li>
+      <a href="https://vamp.io/about/" data-url="/about/">About</a>
+      
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      
+    </li>
+    <ul>
+      
+        <li>
+          <a href="https://vamp.io/about/">About us</a>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/about/">
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/about/dogmas/">Dogmas</a>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/about/dogmas/">
+          
+        </ul>
+      
+        <li>
+          <a href="https://vamp.io/about/contact/">Contact</a>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/about/contact/">
+          
+        </ul>
+      
+    </ul>
+
+  
+
+    <li>
+      <a href="https://vamp.io/news/" data-url="/news/">News</a>
+      
+    </li>
+    <ul>
+      
+    </ul>
+
+  
+
+    <li>
+      <a href="https://blog.vamp.io" data-url="https://blog.vamp.io">Blog</a>
+      
+    </li>
+    <ul>
+      
+    </ul>
+
+  
+
+    <li>
+      <a href="" data-url="">Vamp version comparison</a>
+      
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      
+    </li>
+    <ul>
+      
+        <li>
+          <a href="https://vamp.io/product/vamp-version-comparison/">Vamp Enterprise Edition vs. Vamp Community Edition</a>
+          
+        </li>
+        <ul class="mobile-menu-list" data-parenturl="/product/vamp-version-comparison/">
+          
+        </ul>
+      
+    </ul>
+
+  
+
+  <li>
+    <a href="https://vamp.io/events/" data-parenturl="/events/"  class="navbar-item">Events</a>
+  </li>
+  <li>
+    <a href="https://vamp.io/pricing/" data-parenturl="/pricing/"  class="navbar-item" >Pricing</a>
+  </li>
+</ul>
+
+
+</div>
+
+<div class="page documentation container blog mb-3 pt-5">
+  <div class="row">
+    <div class="col-sm-12 col-lg-8 offset-lg-2">
+      <div class="content blog-content">
+
+        <div class="blog-meta-data">
+  <img src="https://vamp.io/img/avatars/alessandrov.jpg" class="blog-meta-data-avatar" alt="alessandrov.jpg">
+  <div class="blog-meta-data-author-container mb-3 mb-md-0">
+    <div class="blog-meta-data-author-name">Alessandro Valcepina</div>
+    <div class="blog-meta-data-published-date">September 28, 2018 &middot; 4 min read</div>
+  </div>
+  <div class="blog-meta-data-tags">
+    
+    <ul class="badges d-inline ml-md-3">
+      
+      <li class="badge mb-md-0 mb-2">
+        Kubernetes
+      </li>
+      
+      <li class="badge mb-md-0 mb-2">
+        Istio
+      </li>
+      
+      <li class="badge mb-md-0 mb-2">
+        Microservices
+      </li>
+      
+      <li class="badge mb-md-0 mb-2">
+        AB Testing
+      </li>
+      
+    </ul>
+    
+  </div>
+</div>
+
+
+        <h1 class="blog-header">Custom data sources for A/B testing with Vamp Lamia and Istio 1.0.2 </h1>
+
+        <div class="markdowned blog-body mb-md-3">
+          <p><img src="https://vamp.io/images/blog/ab_testing.png" alt="" /></p>
+
+<p>Welcome to our ongoing series of post on our experiences in using Istio during the development of Vamp Lamia.</p>
+
+<p>In <a href="https://vamp.io/blog/welch-ttest-ab-testing-istio/">our previous post</a>, we presented Vamp Lamia&rsquo;s approach to A/B testing and then delved deeper into how Experiments use Welch&rsquo;s t-test to identify the test&rsquo;s winner in a statistically sound way.</p>
+
+<p>In both scenarios, however, we relied solely on Elasticsearch to gather the necessary statistics to calculate the A/B test outcome.
+This begs the question: what if we wanted to use a different source?
+In this post we will discuss the possibility of employing a custom data source, be it a different database or another application, deployed inside or outside the cluster.</p>
+
+<h2 id="custom-data-source">Custom Data Source</h2>
+
+<p>Vamp Lamia has been developed with the clear goal of making it as modular as possible. For that reason its architecture is based on the usage of Drivers, that is components that can be easily replaced for each of the entities that Vamp Lamia is managing. 
+In this specific case we want to replace the Driver responsible for gathering metrics from Elasticsearch with another one that can interface with a custom data source.
+That can be very easily done, provided the data source meets some requirements. 
+Let&rsquo;s see how that can be achieved.</p>
+
+<p>First of all we have to figure out what to use as our source of data.
+For the sake of simplicity we will rely on a simple nodejs webservice that will return random values at each requests.
+Everything we require from this webservice is that it exposes a &ldquo;/stats&rdquo; endpoint that will respond to a request of the kind &ldquo;/stats?subset=subset1&rdquo; with the data pertaining to subset1 presented in json format. 
+You can see below an example of such a json.</p>
+
+<pre><code>{
+  average: 1.2,
+  standardDeviation: 0.8,
+  numberOfElements: 3875
+}
+</code></pre>
+
+<p>In this sample the number of elements is the number of users that got to the landing page of the service we are testing, while the average and standard deviation are calculated over the number of successful interactions of each user, i.e. the interactions that reached the specified target.
+Of course it is also possible for those number to have a different meaning. There&rsquo;s nothing preventing us, for example, from calculating the required statistics over the amount of each order submitted on an e-commerce or the time spent on the target page by each user.</p>
+
+<p>Exposing the endpoint we just described is basically the only requirement a custom data source has to meet in order to be used as an Elasticsearch replacement for A/B testing with Vamp Lamia.
+There are however some more changes we have to make to the Experiment&rsquo;s configuration in order to specify which data source we want to use.
+To have a clearer idea of what these changes are are we will refer to the picture below.</p>
+
+<p><img src="https://vamp.io/images/blog/custom-data-source.png" alt="Experiment with custom data source configuration" /></p>
+
+<p>If you have read our previous blog post, you will notice that the configuration we are using here is very similar to the one used back then.
+We are configuring the names of the Service and Gateway that the Experiment will use, the time interval of each update and the amount by which the routes weights should be shifted, and, finally, we are defining three Subsets, each one with its own tags or features.
+In addition to all that, however we are also providing, through the Data Source path field, the uri towards our mock data source. This will allow the Experiment to query it for data at each interval.</p>
+
+<p>On its own, however, specifying this uri is not enough.  
+As we said earlier, we also have to tell Vamp Lamia to use a different implementation for the Driver responsible for querying Elasticsearch.
+We are doing that by adding a new key, <strong>complexmetricsdriver</strong>, in the metadata section, with value <strong>custom</strong>. 
+This tells Vamp Lamia to replace the default implementation of the Complex Metrics Driver with the predefined Custom Source implementation, which has the identifier <strong>custom</strong>.
+That is all.</p>
+
+<p>Once the form is submitted the Experiment will start and perform the same operations as the previous example, but, this time, all the data will be collected from the mock source we deployed.</p>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>Setting up this example was a useful test for us, because it proved that the goal we set for ourselves while first approaching Vamp Lamia development has been met, that is Vamp Lamia Drivers can be easily replaced in order to change its functionalities.
+In the future we plan to make use of this feature more and more in order to tackle specific requirements that our customers might have in the future.</p>
+
+<p>If you are curious about Vamp Lamia and want to check out its features more in depth we invite you to take a look at our <a href="https://github.com/magneticio/vamp2setup">Github repository</a> where you can find a more comprehensive tutorial and try it out on your own.
+And, of course, keep an eye on our blog for new updates!</p>
+        </div>
+
+        <section class="top-banner-cta">
+	<div class="top-banner-cta-body">
+		<div class="top-banner-cta-body-left">
+			<h3 class="top-banner-cta-title">Becoming the Frontrunner Organization</h3>
+			<p class="top-banner-cta-text">A 3-step framework to simpler release management for enterprise cloud</p>
+			<a class="top-banner-cta-link" href="https://pages.convertkit.com/a980d590e6/cb709441f4?utm_source=blog&utm_campaign=whitepaper&utm_content=custom-data-sources-for-a-b-testing-with-vamp-lamia-and-istio-1-0-2" target="_blank">
+				Download whitepaper →
+			</a>
+		</div>
+		<div class="top-banner-cta-body-right">
+			<a class="top-banner-cta-link" href="https://pages.convertkit.com/a980d590e6/cb709441f4?utm_source=blog&utm_medium=blog&utm_campaign=whitepaper&utm_content=custom-data-sources-for-a-b-testing-with-vamp-lamia-and-istio-1-0-2" target="_blank">
+				<img class="top-banner-cta-image" src="https://vamp.io/img/marketing/whitepaper/frontrunner_cover_720.png" alt="vamp.io whitepaper">
+			</a>
+		</div>
+	</div>
+</section>
+
+
+
+        
+<div class="addthis_inline_share_toolbox"></div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lander-row lander-row--blue footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h3 class="h3">Address</h3>
+        <address class="text">
+          Raamgracht 8<br>
+          1011 KK Amsterdam<br>
+          The Netherlands<br>
+          +31(0)88 555 33 99<br>
+          info@vamp.io<br>
+        </address>
+        <div class="social-buttons mt-3">
+          <div class="social-icons">
+            <a href="https://twitter.com/vamp_io" target="_blank">
+              <i class="fa fa-2x fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/magnetic-io" target="_blank">
+              <i class="fa fa-2x fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <h3 class="h3">Learn more</h3>
+        <a href="https://vamp.io/product/">
+          <p class="text">Product</p>
+        </a>
+        <a href="https://vamp.io/documentation/">
+          <p class="text">Documentation</p>
+        </a>
+        <a href="https://blog.vamp.io" target="_blank">
+          <p class="text">Blog</p>
+        </a>
+        <a href="https://vamp.io/about/">
+          <p class="text">About us</p>
+        </a>
+        <a href="https://vamp.io/careers/">
+          <p class="text">Careers
+            <span class="badge d-inline ml-2">we are hiring!</span>
+          </p>
+        </a>
+        <a href="https://vamp.io/about/contact/">
+          <p class="text">Contact</p>
+        </a>
+        <a href="https://vamp.io/news/">
+          <p class="text">News</p>
+        </a>
+      </div>
+        <div class="col-sm-3">
+        <h3 class="h3">All things code</h3>
+          <a href="https://vamp.io/documentation/installation/">
+            <p class="text">Installation</p>
+          </a>
+          <a href="https://vamp.io/documentation/api/api-reference/">
+            <p class="text">API docs</p>
+          </a>
+          <a href="https://vamp.io/support/">
+            <p class="text">Support</p>
+          </a>
+          <a href="https://github.com/magneticio/vamp" target="_blank">
+            <p class="text">GitHub</p>
+          </a>
+          <a href="https://gitter.im/magneticio/vamp" target="_blank">
+            <p class="text">Gitter</p>
+          </a>
+      </div>
+      <div class="col-sm-3">
+        <h3 class="h3">Stay up to date</h3>
+        <p class="text">
+          Leave your email for the latest news: We won’t spam you and won’t go off topic.
+        </p>
+
+        <form action="//magnetic.us9.list-manage.com/subscribe/post?u=c709b3ab8cce9e00d617e01b6&id=c1465e21d0&" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" style="display: inline" target="_blank" novalidate="">
+          <div class="input-group">
+            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Email">
+            <a onclick="$(this).closest('form').submit()" class="button button--red not-active">
+              <div class="button__icon button__icon--mail">
+              </div>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom lander-row--blue">
+  <div class="container">
+    <div class="part">
+    </div>
+    <div class="part">
+      <img class="vamp-bat" src="https://vamp.io/img/003-Small-icons/Medium-blue/VAMP-Medium.svg" alt="">
+      <p class="text">© 2019 <a href="https://vamp.io/about/">vamp.io</a></p>
+    </div>
+  </div>
+</div>
+
+<script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
+<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+
+<script src="https://vamp.io/js/dist/vendor.min-16301782.js" ></script>
+<script src="https://vamp.io/js/dist/index.min-edd0077d.js" ></script>
+<script src="https://vamp.io/js/dist/apps.min-03c09287.js" ></script>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+  apiKey: '6336564d11d0f76c3ef2521947b97f54',
+  indexName: 'vamp',
+  inputSelector: '.search-input',
+  debug: false 
+});
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+<script>
+  if (location.host === 'www.vamp.io' || location.host === 'vamp.io') {
+
+    (function (h, o, t, j, a, r) {
+      h.hj = h.hj || function () {
+        (h.hj.q = h.hj.q || []).push(arguments)
+      };
+      h._hjSettings = {hjid: 637837, hjsv: 5};
+      a = o.getElementsByTagName('head')[0];
+      r = o.createElement('script');
+      r.async = 1;
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  if (location.host === 'www.vamp.io' || location.host === 'vamp.io' || location.host === 'staging.vamp.io') {
+    !function () {
+      var t = window.driftt = window.drift = window.driftt || [];
+      if (!t.init) {
+        if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+        t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+          t.factory = function (e) {
+            return function () {
+              var n = Array.prototype.slice.call(arguments);
+              return n.unshift(e), t.push(n), t;
+            };
+          }, t.methods.forEach(function (e) {
+          t[e] = t.factory(e);
+        }), t.load = function (t) {
+          var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+          o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+          var i = document.getElementsByTagName("script")[0];
+          i.parentNode.insertBefore(o, i);
+        };
+      }
+    }();
+    drift.SNIPPET_VERSION = '0.3.1';
+    drift.load('y5f3mtg4w6nd');
+  }
+</script>
+
+
+
+
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b3cc10130bbdb11"></script>
+
+<div class="modal fade" id="contactFormModal" tabindex="-1" role="dialog" aria-labelledby="contactFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" style="height: 875px !important;">
+        <div class="float-right">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; right: 18px; z-index: 9999;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="pipedriveWebForms" data-pd-webforms="https://pipedrivewebforms.com/form/ab3a32ec0da50b308a450ed88036c076810301"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://unpkg.com/@tryghost/content-api@1.2.5/umd/content-api.min.js"></script>
+

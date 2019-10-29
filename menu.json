@@ -1,0 +1,526 @@
+{
+  "children": [
+    {
+      "path": "about",
+      "text": "About",
+      "visible": false
+    },
+    {
+      "path": "community",
+      "text": "Community",
+      "visible": false
+    },
+    {
+      "path": "contact",
+      "text": "Contact",
+      "visible": false
+    },
+    {
+      "path": "draft",
+      "children": [
+        {
+          "path": "draft/api",
+          "children": [
+            {
+              "path": "draft/api/0.8.5",
+              "children": [
+                {
+                  "path": "draft/api/0.8.5/example1",
+                  "text": "Example1",
+                  "visible": true
+                },
+                {
+                  "path": "draft/api/0.8.5/index",
+                  "text": "Index",
+                  "visible": false
+                }
+              ],
+              "text": "0.8.5",
+              "visible": true
+            },
+            {
+              "path": "draft/api/0.9.0",
+              "children": [
+                {
+                  "path": "draft/api/0.9.0/example2",
+                  "text": "Example2",
+                  "visible": true
+                },
+                {
+                  "path": "draft/api/0.9.0/index",
+                  "text": "Index",
+                  "visible": false
+                }
+              ],
+              "text": "0.9.0",
+              "visible": true
+            },
+            {
+              "path": "draft/api/master",
+              "children": [
+                {
+                  "path": "draft/api/master/example1",
+                  "text": "Example1",
+                  "visible": true
+                },
+                {
+                  "path": "draft/api/master/example2",
+                  "text": "Example2",
+                  "visible": true
+                },
+                {
+                  "path": "draft/api/master/index",
+                  "text": "Index",
+                  "visible": false
+                }
+              ],
+              "text": "Master",
+              "visible": true
+            }
+          ],
+          "text": "Api",
+          "visible": true
+        },
+        {
+          "path": "draft/blueprint",
+          "text": "Blueprint",
+          "visible": true
+        },
+        {
+          "path": "draft/downloads",
+          "text": "Downloads",
+          "visible": true
+        }
+      ],
+      "text": "Draft",
+      "visible": false
+    },
+    {
+      "path": "index.json",
+      "text": "Index.json",
+      "visible": false
+    },
+    {
+      "path": "index",
+      "text": "Index",
+      "visible": false
+    },
+    {
+      "path": "instructions",
+      "children": [
+        {
+          "path": "instructions/index",
+          "text": "Index",
+          "visible": false
+        }
+      ],
+      "text": "Instructions",
+      "visible": false
+    },
+    {
+      "path": "why-use-vamp",
+      "text": "Why use Vamp? ",
+      "visible": true,
+      "children": [
+        {
+          "path": "why-use-vamp",
+          "text": "Why use Vamp?",
+          "visible": true
+        },
+        {
+          "path": "why-use-vamp/use-cases",
+          "children": [
+            {
+              "path": "index",
+              "text": "Index",
+              "visible": false
+            },
+            {
+              "path": "why-use-vamp/use-cases/create-responsive-website",
+              "text": "Create a responsive website",
+              "visible": true
+            },
+            {
+              "path": "why-use-vamp/use-cases/resolve-incompatibilities-after-upgrade",
+              "text": "Resolve incompatibilities",
+              "visible": true
+            },
+            {
+              "path": "why-use-vamp/use-cases/refactor-monolithic-to-microsystems",
+              "text": "Refactor to microservices",
+              "visible": true
+            },
+            {
+              "path": "why-use-vamp/use-cases/modernise-architecture",
+              "text": "Modernise architecture",
+              "visible": true
+            },
+            {
+              "path": "why-use-vamp/use-cases/simulate-and-test-scaling-behaviour",
+              "text": "Simulate and test scaling behaviour",
+              "visible": true
+            },
+            {
+              "path": "why-use-vamp/use-cases/self-healing-and-self-optimising",
+              "text": "Self-healing and self-optimising",
+              "visible": true
+            },
+            {
+              "path": "why-use-vamp/use-cases/service-discovery",
+              "text": "Service discovery",
+              "visible": true
+            }
+            ],
+          "text": "Use cases",
+          "visible": true
+        },
+        {
+          "path": "why-use-vamp/vamp-compared-to/proxies-and-load-balancers",
+          "children": [
+            {
+              "path": "why-use-vamp/vamp-compared-to/proxies-and-load-balancers",
+              "text": "Proxies and load balancers",
+              "visible": true
+            },
+            {
+              "path": "why-use-vamp/vamp-compared-to/paas-and-container-systems",
+              "text": "PaaS and container systems",
+              "visible": true
+            },
+            {
+              "path": "why-use-vamp/vamp-compared-to/frameworks-and-tools",
+              "text": "Frameworks and tools",
+              "visible": true
+            }
+            ],
+          "text": "Vamp compared to...",
+          "visible": true
+        },
+        {
+          "path": "why-use-vamp/see-vamp-in-action",
+          "text": "See Vamp in action",
+          "visible": true
+        },
+        {
+          "path": "why-use-vamp/feature-list",
+          "text": "Feature list",
+          "visible": true
+        },
+        {
+          "path": "why-use-vamp/enterprise-edition",
+          "text": "Enterprise edition",
+          "visible": true
+        },
+        {
+          "path": "why-use-vamp/get-started",
+          "text": "Get started",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "path": "documentation/how-vamp-works/architecture-and-components",
+      "children": [
+        {
+          "path": "documentation/how-vamp-works/architecture-and-components",
+          "children": [
+            {
+              "path": "documentation/how-vamp-works/architecture-and-components",
+              "text": "Architecture and components",
+              "visible": true
+            },
+            {
+              "path": "documentation/how-vamp-works/requirements",
+              "text": "Requirements",
+              "visible": true
+            },
+            {
+              "path": "documentation/how-vamp-works/which-container-scheduler",
+              "text": "Which container scheduler?",
+              "visible": true
+            },
+            {
+              "path": "documentation/how-vamp-works/service-discovery",
+              "text": "Service discovery",
+              "visible": true
+            },
+            {
+              "path": "documentation/how-vamp-works/persistence-key-value-store",
+              "text": "Persistence and key-value (KV) store",
+              "visible": false
+            },
+            {
+              "path": "documentation/how-vamp-works/routing-and-load-balancing",
+              "text": "Routing and load balancing",
+              "visible": true
+            },
+            {
+              "path": "documentation/how-vamp-works/events-and-metrics",
+              "text": "Events and metrics",
+              "visible": true
+            }
+          ],
+          "text": "How Vamp works",
+          "visible": true
+        },
+        {
+          "path": "documentation/installation",
+          "children":
+          [
+            {
+              "path": "documentation/installation",
+              "text": "Overview",
+              "visible": true
+            },
+            {
+              "path": "documentation/installation/hello-world",
+              "text": "Hello world",
+              "visible": true
+            },
+            {
+              "path": "documentation/installation/dcos",
+              "text": "DC/OS 1.7 and 1.8",
+              "visible": true
+            },
+            {
+              "path": "documentation/installation/mesos-marathon",
+              "text": "Mesos/Marathon",
+              "visible": true
+            },
+            {
+              "path": "documentation/installation/kubernetes",
+              "text": "Kubernetes 1.x",
+              "visible": true
+            },
+            {
+              "path": "documentation/installation/rancher",
+              "text": "Rancher",
+              "visible": true
+            },
+            {
+              "path": "documentation/installation/docker",
+              "text": "Docker",
+              "visible": true
+            },
+            {
+              "path": "documentation/installation/azure-container-service",
+              "text": "Azure Container Service",
+              "visible": true
+            },
+            {
+              "path": "documentation/installation/configure-vamp",
+              "text": "Configure Vamp",
+              "visible": true
+            }
+          ],
+          "text": "Installation",
+          "visible": true
+        },
+        {
+          "path": "documentation/tutorials",
+          "children": [
+            {
+              "path": "documentation/tutorials",
+              "text": "Overview",
+              "visible": true
+            },
+            {
+              "path": "documentation/tutorials/deploy-your-first-blueprint",
+              "text": "Deploy your first blueprint",
+              "visible": true
+            },
+            {
+              "path": "documentation/tutorials/run-a-canary-release",
+              "text": "Run a canary release",
+              "visible": true
+            },
+            {
+              "path": "documentation/tutorials/split-a-monolith",
+              "text": "Split a monolith",
+              "visible": true
+            },
+            {
+              "path": "documentation/tutorials/merge-and-delete",
+              "text": "Merge and delete",
+              "visible": true
+            },
+            {
+              "path": "documentation/tutorials/deploy-wordpress-and-mysql",
+              "text": "Run a Wordpress deployment",
+              "visible": true
+            }
+          ],
+          "text": "Tutorials",
+          "visible": true
+        },
+        {
+          "path": "documentation/using-vamp/artifacts",
+          "children": [
+            {
+              "path": "documentation/using-vamp/artifacts",
+              "text": "Artifacts",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/breeds",
+              "text": "Breeds",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/blueprints",
+              "text": "Blueprints",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/deployments",
+              "text": "Deployments",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/environment-variables",
+              "text": "Environment variables",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/gateways",
+              "text": "Gateways",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/conditions",
+              "text": "Conditions",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/events",
+              "text": "Events",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/sla",
+              "text": "SLA (Service Level Agreement)",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/escalations",
+              "text": "Escalations",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/references",
+              "text": "Referencing artifacts",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/workflows",
+              "text": "Workflows",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/sticky-sessions",
+              "text": "Sticky sessions",
+              "visible": true
+            },
+            {
+              "path": "documentation/using-vamp/virtual-hosts",
+              "text": "Virtual hosts",
+              "visible": true
+            }
+          ],
+          "text": "Using Vamp",
+          "visible": true
+        },
+        {
+          "path": "documentation/api/api-reference",
+          "children": [
+            {
+              "path": "documentation/api/api-reference",
+              "text": "API reference",
+              "visible": true
+            },
+            {
+              "path": "documentation/api/using-the-api",
+              "text": "Using the Vamp API",
+              "visible": true
+            }
+          ],
+          "text": "API",
+          "visible": true
+        },
+        {
+          "path": "documentation/cli/cli-reference",
+          "children": [
+            {
+              "path": "documentation/cli/cli-reference",
+              "text": "CLI reference",
+              "visible": true
+            },
+            {
+              "path": "documentation/cli/using-the-cli",
+              "text": "Using the Vamp CLI",
+              "visible": true
+            }
+          ],
+          "text": "CLI",
+          "visible": true
+        },
+        {
+          "path": "documentation/release-notes/version-0-9-1",
+          "children": [
+            {
+              "path": "documentation/release-notes/katana",
+              "text": "katana",
+              "visible": true
+            },
+            {
+              "path": "documentation/release-notes/version-0-9-1",
+              "text": "version 0.9.1",
+              "visible": true
+            },
+            {
+              "path": "documentation/release-notes/version-0-9-0",
+              "text": "version 0.9.0",
+              "visible": true
+            },
+            {
+              "path": "documentation/release-notes/older-versions",
+              "text": "older versions",
+              "visible": true
+            }
+          ],
+          "text": "Release notes",
+          "visible": true
+        }
+        ],
+      "text": "Documentation",
+      "visible": true
+    },
+    {
+      "path": "resources/downloads",
+      "children": [
+        {
+          "path": "resources/downloads",
+          "text": "Downloads",
+          "visible": true
+        },
+        {
+          "path": "resources/community",
+          "text": "Community",
+          "visible": true
+        },
+        {
+          "path": "resources/news",
+          "text": "News",
+          "visible": true
+        }
+      ],
+      "text": "Resources",
+      "visible": true
+    },
+    {
+      "path": "support",
+      "text": "Support",
+      "visible": true
+    }
+  ]
+}

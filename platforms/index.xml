@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Platforms on Vamp | Automation and Controls for Enterprise Devops</title>
+    <link>https://vamp.io/platforms/</link>
+    <description>Recent content in Platforms on Vamp | Automation and Controls for Enterprise Devops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 30 Sep 2016 12:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vamp.io/platforms/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Azure</title>
+      <link>https://vamp.io/platforms/azure/</link>
+      <pubDate>Fri, 30 Sep 2016 12:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/platforms/azure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dcos</title>
+      <link>https://vamp.io/platforms/dcos/</link>
+      <pubDate>Fri, 31 Aug 2018 14:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/platforms/dcos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://vamp.io/platforms/docker/</link>
+      <pubDate>Fri, 30 Sep 2016 12:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/platforms/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>https://vamp.io/platforms/kubernetes/</link>
+      <pubDate>Fri, 31 Aug 2018 14:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/platforms/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mesosphere</title>
+      <link>https://vamp.io/platforms/mesosphere/</link>
+      <pubDate>Fri, 31 Aug 2018 14:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/platforms/mesosphere/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rancher</title>
+      <link>https://vamp.io/platforms/rancher/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/platforms/rancher/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

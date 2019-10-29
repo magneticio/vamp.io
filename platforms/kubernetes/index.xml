@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on Vamp | Automation and Controls for Enterprise Devops</title>
+    <link>https://vamp.io/platforms/kubernetes/</link>
+    <description>Recent content in Kubernetes on Vamp | Automation and Controls for Enterprise Devops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 31 Aug 2018 14:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vamp.io/platforms/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Vamp Enterprise Edition Trial for Kubernetes</title>
+      <link>https://vamp.io/documentation/installation/v1.0.0/kubernetes-lifter-eval-spec/</link>
+      <pubDate>Fri, 31 Aug 2018 14:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/installation/v1.0.0/kubernetes-lifter-eval-spec/</guid>
+      <description>Vamp Enterprise for Kubernetes
+Thank you for your interest in Vamp Enterprise! To start using Vamp Enterprise you need to setup and configure some dependencies and environments. To make this really easy we&amp;rsquo;ve created Vamp Lifter, our setup and configuration tool. You can read more about Vamp components, including Lifter here.
+ If you’re new to Vamp Enterprise Edition and you want a quick way to evaluate it, copy the Vamp Lifter application specification below and save it as file named lifter-standalone.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>https://vamp.io/documentation/installation/v0.9.5/kubernetes/</link>
+      <pubDate>Tue, 04 Oct 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/installation/v0.9.5/kubernetes/</guid>
+      <description>Azure Container Service Please refer to our dedicated Azure Kubernetes installation guide for deploying Vamp and Kubernetes on Azure Container Service
+Google Container Engine The installation will run Vamp together with etcd and Elasticsearch on Google container engine and kubernetes. Before you begin, it is advisable to try out the official Quickstart for Google Container Engine tutorial first (google.com - container engine quickstart).
+Tested against This guide has been tested on Kubernetes 1.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Quickstart</title>
+      <link>https://vamp.io/documentation/installation/v1.0.0/kubernetes/</link>
+      <pubDate>Tue, 04 Oct 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/installation/v1.0.0/kubernetes/</guid>
+      <description>This section describes how to quickly install Vamp 1.0 on Kubernetes so you can evaluate it. The installation uses an installer built into the Vamp Lifter application to bootstrap a full Vamp installation.
+After a successful installation, you will be able to login to Vamp EE as an admin user and deploy services.
+Note!
+Do not run this default installation in production! It does not include persistent storage and makes use of a Hashicorp Vault &amp;lsquo;dev&amp;rsquo; server.</description>
+    </item>
+    
+    <item>
+      <title>Azure Container Service</title>
+      <link>https://vamp.io/documentation/installation/v0.9.5/azure-container-service/</link>
+      <pubDate>Fri, 30 Sep 2016 12:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/installation/v0.9.5/azure-container-service/</guid>
+      <description>You can run Vamp on Azure Container Service with either the DC/OS or Kubernetes orchestrator.
+DC/OS Orchestrator To install DC/OS on ACS you should follow these steps:
+ Follow the instructions in the ACS DC/OS quickstart. After you have activated your ACS setup with DC/OS, go to your DC/OS admin environment and install Vamp using our DC/OS installation instructions.  What next?
+ Once you have Vamp up and running you can jump into the getting started tutorials.</description>
+    </item>
+    
+  </channel>
+</rss>

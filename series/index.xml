@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Series on Vamp | Automation and Controls for Enterprise Devops</title>
+    <link>https://vamp.io/series/</link>
+    <description>Recent content in Series on Vamp | Automation and Controls for Enterprise Devops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://vamp.io/series/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

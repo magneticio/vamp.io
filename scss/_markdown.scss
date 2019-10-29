@@ -1,0 +1,254 @@
+// Markdown implementation
+.markdowned {
+
+  h1 {
+    font-size: $font-size-biggest;
+    font-weight: $font-weight-lightest;
+    color: $red;
+    line-height: $line-height-default;
+    letter-spacing: $letter-spacing-default;
+    margin-bottom: $spacer;
+  }
+
+  h2 {
+    font-size: $font-size-big;
+    font-weight: $font-weight-heavy;
+    color: $blue-darker;
+    line-height: $line-height-default;
+    letter-spacing: $letter-spacing-wide;
+    margin-bottom: $spacer;
+  }
+
+  h2 + p {
+    margin-top: 0;
+  }
+
+  h2 + ul {
+    margin-top: 0;
+  }
+
+  h3 {
+    font-size: $font-size-default;
+    font-weight: $font-weight-heavy;
+    color: $blue-darker;
+    line-height: $line-height-default;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-default;
+    margin-bottom: $spacer;
+
+  }
+
+  h3 + h4 {
+    margin-top: 0;
+  }
+
+  h3 + p {
+    margin-top: 0;
+  }
+
+  h3 + ul {
+    margin-top: 0;
+  }
+
+  h4 {
+    font-size: $font-size-small;
+    font-weight: $font-weight-heavy;
+    color: $blue-darker;
+    line-height: $line-height-default;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-default;
+    margin-bottom:  .5 * $spacer;
+  }
+
+  h4 + h5 {
+    margin-top: 0;
+  }
+
+  h4 + p {
+    margin-top: 0;
+  }
+
+  h4 + ul {
+    margin-top: 0;
+  }
+
+  h5 {
+    font-size: 13px;
+    font-weight: 500;
+    color: $red;
+    line-height: 1.8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 25px 0 0 0;
+  }
+
+  h5 + h6 {
+    margin-top: 0;
+  }
+
+  h5 + p {
+    margin-top: 0;
+  }
+
+  h5 + ul {
+    margin-top: 0;
+  }
+
+  h6 {
+    font-size: 15px;
+    font-weight: 500;
+    color: $blue-darker;
+    line-height: 1.7;
+    letter-spacing: 0.025em;
+    margin: 25px 0;
+
+  }
+
+  p {
+    font-size: $font-size-default;
+    font-weight: $font-weight-default;
+    color: $blue-darker;
+    line-height: $line-height-default;
+    letter-spacing: $letter-spacing-default;
+    margin-bottom: $spacer;
+  }
+
+  p + ul {
+    margin-top: 0;
+  }
+
+  p + ol {
+    margin-top: 0;
+  }
+
+  a {
+    color: $blue-light;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+
+  }
+
+  ol {
+    margin: $spacer $spacer;
+  }
+
+  ul {
+    list-style-type: square;
+    margin: $spacer $spacer;
+  }
+
+  li {
+    font-weight: inherit;
+    margin: auto;
+    @extend .text;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+
+  em {
+    color: $blue-darker;
+    font-family: "PT Serif", serif;
+    font-weight: inherit;
+  }
+
+  blockquote {
+    p {
+      color: $gray;
+      font-weight: inherit;
+      font-size: $font-size-medium;
+    }
+  }
+
+  strong {
+    font-weight: 500;
+  }
+
+  pre {
+    margin-bottom: $spacer;
+  }
+  code {
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  p > code, li > code {
+    background-color: #F7F8F9;
+    padding: 0 5px;
+  }
+
+  .hljs {
+    padding: 40px 20px 40px 20px;
+    font-size: 14px;
+    background-color: #F7F8F9;
+    span {
+      font-weight: 300;
+    }
+  }
+
+  table {
+    margin: .5 * $spacer 0;
+    width: 100%;
+  }
+
+  th {
+    @extend .text-header;
+    text-transform: capitalize;
+  }
+
+  td, th {
+    text-align: left;
+    padding: 20px 40px;
+
+    &:first-of-type {
+      padding-left: 10px;
+    }
+
+    &:last-of-type {
+      padding-right: 10px;
+    }
+
+    border-bottom: 1px solid $ash;
+  }
+
+  td {
+    @extend .text;
+  }
+
+  tr {
+    &:last-of-type {
+      td {
+        transition: 0.1s ease-in background-color;
+        border-bottom: none;
+      }
+    }
+  }
+
+  blockquote {
+    border-left: 3px solid $gray;
+    padding-left: 1rem
+  }
+
+  &.markdowned-h2-as-h1 {
+    h2 {
+      font-size: $font-size-big;
+      font-weight: $font-weight-default;
+      color: $red;
+      line-height: $line-height-default;
+      letter-spacing: $letter-spacing-wide;
+      margin-bottom: $spacer;
+      text-transform: uppercase;
+    }
+  }
+}

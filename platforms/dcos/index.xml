@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dcos on Vamp | Automation and Controls for Enterprise Devops</title>
+    <link>https://vamp.io/platforms/dcos/</link>
+    <description>Recent content in Dcos on Vamp | Automation and Controls for Enterprise Devops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 31 Aug 2018 14:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vamp.io/platforms/dcos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Vamp Enterprise Edition Trial for DC/OS</title>
+      <link>https://vamp.io/documentation/installation/v1.0.0/dcos-lifter-eval-spec/</link>
+      <pubDate>Fri, 31 Aug 2018 14:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/installation/v1.0.0/dcos-lifter-eval-spec/</guid>
+      <description>Vamp Enterprise for DC/OS
+Thank you for your interest in Vamp Enterprise! To start using Vamp Enterprise you need to setup and configure some dependencies and environments. To make this really easy we&amp;rsquo;ve created Vamp Lifter, our setup and configuration tool. You can read more about Vamp components, including Lifter here.
+ If you’re new to Vamp Enterprise Edition and you want a quick way to evaluate it, copy the Vamp Lifter application specification below and save it as file named lifter-standalone.</description>
+    </item>
+    
+    <item>
+      <title>DC/OS</title>
+      <link>https://vamp.io/documentation/installation/v0.9.5/dcos/</link>
+      <pubDate>Tue, 07 Feb 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/installation/v0.9.5/dcos/</guid>
+      <description>There are different ways to install Vamp on DC.OS. On this page we start out with the most common setup, but if you are interested in doing a custom install or working with public and private nodes you should jump to that section.
+ Universe package Manual install Custom install Public and private nodes  Universe package Vamp is available in the DC/OS Universe. Navigate to Universe in the DC/OS UI and search for Vamp and click &amp;ldquo;Install Package&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>DC/OS Quickstart</title>
+      <link>https://vamp.io/documentation/installation/v1.0.0/dcos/</link>
+      <pubDate>Tue, 07 Feb 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/installation/v1.0.0/dcos/</guid>
+      <description>This section describes how to quickly install Vamp 1.0 on DC/OS so you can evaluate it. The installation uses an installer built into the Vamp Lifter application to bootstrap a full Vamp installation.
+After a successful installation, you will be able to login to Vamp EE as an admin user and deploy services.
+Note!
+Do not run this default installation in production! It does not include persistent storage and makes use of a Hashicorp Vault &amp;lsquo;dev&amp;rsquo; server.</description>
+    </item>
+    
+    <item>
+      <title>Azure Container Service</title>
+      <link>https://vamp.io/documentation/installation/v0.9.5/azure-container-service/</link>
+      <pubDate>Fri, 30 Sep 2016 12:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/installation/v0.9.5/azure-container-service/</guid>
+      <description>You can run Vamp on Azure Container Service with either the DC/OS or Kubernetes orchestrator.
+DC/OS Orchestrator To install DC/OS on ACS you should follow these steps:
+ Follow the instructions in the ACS DC/OS quickstart. After you have activated your ACS setup with DC/OS, go to your DC/OS admin environment and install Vamp using our DC/OS installation instructions.  What next?
+ Once you have Vamp up and running you can jump into the getting started tutorials.</description>
+    </item>
+    
+    <item>
+      <title>Mesos/Marathon</title>
+      <link>https://vamp.io/documentation/installation/v0.9.5/mesos-marathon/</link>
+      <pubDate>Fri, 30 Sep 2016 12:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/installation/v0.9.5/mesos-marathon/</guid>
+      <description>Vamp can use the full power of Marathon running on either a DCOS cluster or custom Mesos cluster. You can use Vamp&amp;rsquo;s DSL, or you can pass native Marathon options by using a dialect in a blueprint.
+Install The instructions included on the DC/OS installation page will also work with Mesos/Marathon.
+Set Marathon as the Vamp container driver  Set up a DCOS cluster using Mesosphere&amp;rsquo;s assisted install on AWS (mesosphere.</description>
+    </item>
+    
+  </channel>
+</rss>

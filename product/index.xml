@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Product on Vamp | Automation and Controls for Enterprise Devops</title>
+    <link>https://vamp.io/product/</link>
+    <description>Recent content in Product on Vamp | Automation and Controls for Enterprise Devops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 13 Sep 2016 09:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vamp.io/product/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Canary test and release a responsive frontend</title>
+      <link>https://vamp.io/product/use-cases/create-responsive-website/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/product/use-cases/create-responsive-website/</guid>
+      <description>“We need to upgrade our website frontend to make it responsive”
+ Developing a responsive web frontend is often a major undertaking, requiring a large investment of hours and extensive testing. Until you go live, it&amp;rsquo;s difficult to predict how the upgrade will be received by users - will it actually improve important metrics, will it work on all browser, devices and resolutions, etc.?
+But why develop this new responsive frontend in one go, having to go for the dreaded and risky big-bang release?</description>
+    </item>
+    
+    <item>
+      <title>Frameworks and tools</title>
+      <link>https://vamp.io/product/vamp-compared-to/frameworks-and-tools/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/product/vamp-compared-to/frameworks-and-tools/</guid>
+      <description>Vamp compared to CI/CD tools Spinnaker, Jenkins, Wercker, Travis, Bamboo
+Vamp closes the loop between the development and operations elements of a CI/CD pipeline by enabling the controlled introduction of a deployable into production (canary-test and canary-release) and feeding back runtime technical and business metrics to power automated optimisation workflows (such as autoscalers). Vamp integrates with CI/CD tools like Travis, Jenkins or Wercker to canary-release and scale the built deployables they provide.</description>
+    </item>
+    
+    <item>
+      <title>Move from monoliths and VM&#39;s to microservices</title>
+      <link>https://vamp.io/product/use-cases/refactor-monolithic-to-microsystems/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/product/use-cases/refactor-monolithic-to-microsystems/</guid>
+      <description>“We want to move to microservices, but we can’t upgrade all components at once and want to do a gradual migration”
+ Refactoring a monolithic application to a microservice architecture is a major project. A big bang style re-write to upgrade all components at once is a risky approach and requires a large investment in development, testing and refactoring.
+Why not work incrementally? Using Vamp&amp;rsquo;s routing you could introduce new services for specific application tiers like the frontend or business logic layers, and move traffic with specific conditions to these new services.</description>
+    </item>
+    
+    <item>
+      <title>PaaS and container systems</title>
+      <link>https://vamp.io/product/vamp-compared-to/paas-and-container-systems/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/product/vamp-compared-to/paas-and-container-systems/</guid>
+      <description>Vamp compared to container schedulers and container clouds (CPaaS) Docker Swarm, DC/OS, Mesos/Marathon, Kubernetes, Nomad, Rancher, AWS ECS, Azure CS, Mantl, Apollo
+Container cluster managers and schedulers like Marathon, DC/OS, Kubernetes, Nomad or Docker Swarm provide great features to run containers in clustered setups. What they don&amp;rsquo;t provide are features to manage the lifecycle of a microservices or container based system. How to do continuous delivery, how to gradually introduce and upgrade versions in a controlled and risk-free way, how to aggregate metrics and how to use these metrics to optimise and scale your running system.</description>
+    </item>
+    
+    <item>
+      <title>Proxies and load balancers</title>
+      <link>https://vamp.io/product/vamp-compared-to/proxies-and-load-balancers/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/product/vamp-compared-to/proxies-and-load-balancers/</guid>
+      <description>Vamp compared to software based proxies and load balancers HAProxy, NGINX, linkerd, Traefik
+Vamp adds programmable routing (percentage and condition based) and load balancing to the battle-tested HAProxy proxy, as well as a REST API, graphical UI and CLI. This means you can use Vamp together with all common container-schedulers to provide continuous delivery and auto-scaling features using automatic load balancing and clustering of scaled out container instances. By default Vamp is packaged with HAProxy, but you could also integrate the Vamp magic with other programmable proxies such as NGINX, linkerd or Traefik.</description>
+    </item>
+    
+    <item>
+      <title>Resolve client-side incompatibilities after an upgrade</title>
+      <link>https://vamp.io/product/use-cases/resolve-incompatibilities-after-upgrade/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/product/use-cases/resolve-incompatibilities-after-upgrade/</guid>
+      <description>“We upgraded our website self-management portal, but our biggest client is running an unsupported old browser version”
+ Leaving an important client unable to access your services after a major upgrade is a big and potentially costly problem. The traditional response would be to rollback the upgrade asap - if that&amp;rsquo;s even possible.
+Why rollback? Using Vamp&amp;rsquo;s smart conditional routing you could send specific clients or browser-versions to an older version of your portal while others can enjoy the benefits of your new upgraded portal.</description>
+    </item>
+    
+    <item>
+      <title>Self-healing and self-optimising</title>
+      <link>https://vamp.io/product/use-cases/self-healing-and-self-optimising/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/product/use-cases/self-healing-and-self-optimising/</guid>
+      <description>&amp;ldquo;Our website traffic can be unpredictable, it&amp;rsquo;s hard to plan and dimension the exact resources we&amp;rsquo;re going to need to run within SLA&amp;rsquo;s&amp;rdquo;
+ Why overdimension your whole system? Using Vamp you can auto-scale individual services based on clearly defined SLAs (Service Level Agreements). It&amp;rsquo;s also easy to create advanced workflows for up and down scaling, based on your application or business specific requirements. Vamp can also make sure that unhealthy and failing services are corrected based on clearly defined metrics and thresholds.</description>
+    </item>
+    
+    <item>
+      <title>Service discovery</title>
+      <link>https://vamp.io/product/use-cases/service-discovery/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/product/use-cases/service-discovery/</guid>
+      <description>Vamp uses a service discovery pattern called server-side service discovery. This pattern allows service discovery without the need to change your code or run any other service-discovery daemon or agent. In addition to service discovery, Vamp also functions as a service registry. We recognise the following benefits of this pattern:
+ No code injection needed No extra libraries or agents needed Platform/language agnostic: it’s just HTTP Easy integration using ENV variables  Vamp doesn&amp;rsquo;t need point-to-point wiring.</description>
+    </item>
+    
+    <item>
+      <title>Simulate and test scaling behaviour</title>
+      <link>https://vamp.io/product/use-cases/simulate-and-test-scaling-behaviour/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/product/use-cases/simulate-and-test-scaling-behaviour/</guid>
+      <description>&amp;ldquo;How would our system react if&amp;hellip; the number of users increased x10 &amp;hellip; the response time of a service increased with 20 seconds &amp;hellip; an entire tier of our application would be killed &amp;hellip;&amp;rdquo;
+ Your company might dream of overnight success, but what if it actually happened? Stress tests rarely cater to extreme real world circumstances and usage patterns, and are often done on systems that are not identical to production environments.</description>
+    </item>
+    
+    <item>
+      <title>Test and modernise architecture</title>
+      <link>https://vamp.io/product/use-cases/modernise-architecture/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/product/use-cases/modernise-architecture/</guid>
+      <description>&amp;ldquo;We want to switch to a NoSQL database for our microservices, but don&amp;rsquo;t know which solution will run best for our purposes&amp;rdquo;
+ With multiple NoSQL database options available, it&amp;rsquo;s hard to know which is the best fit for your specific circumstances. You can try things out in a test lab, but the real test comes when you go live with production load.
+Why guess? Using Vamp you could A/B test different versions of your services with different NoSQL backends, in production, and then use real data to make an informed and data-driven decision.</description>
+    </item>
+    
+    <item>
+      <title>Use cases</title>
+      <link>https://vamp.io/product/use-cases/overview/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/product/use-cases/overview/</guid>
+      <description>The integrated deployment, routing and workflow features of Vamp support a broad range of scenarios and industry verticals. We specifically see powerful use cases in the areas of testing in production, migrating to microservices, and realtime system optimisation. In this section we describe specific scenarios and how Vamp can effectively solve these.
+Testing in production  Use canary testing and releasing to introduce a responsive web frontend. Read more &amp;hellip; Resolve client-side incompatibilities after an upgrade.</description>
+    </item>
+    
+    <item>
+      <title>Vamp Enterprise Edition vs. Vamp Community Edition</title>
+      <link>https://vamp.io/product/vamp-version-comparison/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/product/vamp-version-comparison/</guid>
+      <description>The Vamp Enterprise Edition (EE) extends the features available in the open source Vamp Community Edition.
+Contact us for further details and pricing: info@vamp.io or call +31(0)88 555 33 99</description>
+    </item>
+    
+  </channel>
+</rss>

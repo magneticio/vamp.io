@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vamp in the news on Vamp | Automation and Controls for Enterprise Devops</title>
+    <link>https://vamp.io/news/</link>
+    <description>Recent content in Vamp in the news on Vamp | Automation and Controls for Enterprise Devops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 19 Jul 2017 09:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vamp.io/news/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Vamp.io raises € 2.5 million in series A funding led by Vortex Capital Partners to fuel international expansion</title>
+      <link>https://vamp.io/news/vamp_raises_series_a/</link>
+      <pubDate>Thu, 09 May 2019 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/vamp_raises_series_a/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 09 May 2019&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://vamp.io/img/news/series_a.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Smart DevOps release management solution Vamp.io announced today a series A investment of 2.5 million euros led by European
+technology growth investor &lt;a href=&#34;https://www.vortexcp.com&#34;&gt;Vortex Capital Partners&lt;/a&gt;. Vortex is heading the investment round with additional funding coming
+from existing investors &lt;a href=&#34;https://www.volta.ventures/&#34;&gt;Volta Ventures venture capital fund&lt;/a&gt;, as well as web hosting service
+&lt;a href=&#34;https://www.mijndomein.nl/&#34;&gt;MijnDomein&lt;/a&gt; and cloud migration specialist &lt;a href=&#34;https://merapar.com/&#34;&gt;Merapar&lt;/a&gt;.
+The financing will be used to fuel the development and international launch of Vamp.io’s smart solution that makes cloud-native,
+container-based software delivery faster, safer and more scalable.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Forecasting the Future of DevOps at KubeCon 2019</title>
+      <link>https://vamp.io/news/vamp-at-kubecon-2019/</link>
+      <pubDate>Mon, 29 Apr 2019 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/vamp-at-kubecon-2019/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 30 May 2019&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Last week, the Vamp team was at KubeCon exploring DevOps maturity anno 2025! We’ve tinkered with today&#39;s DevOps CD tech long
+enough to have created a way of &lt;strong&gt;releasing microservices safely and frequently&lt;/strong&gt; without crashing your whole dependency ecosystem.
+The key is smart canary-releasing.&lt;/p&gt;
+
+&lt;p&gt;But what happens when you add data models into the go-to production mix? Well, our engineers are confident that what happens
+&lt;strong&gt;isn’t panic&lt;/strong&gt;; but a smooth continuous-delivery process of machine learning models.&lt;/p&gt;
+
+&lt;p&gt;Watch below as our very own Vincent Lesierse and Mesosphere’s Jörg Schad present A Tale of Two Worlds: Canary-Testing for Both Machine Learning Models and Microservices.&lt;/p&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/ctATGBxDzRg&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;For those of you who missed the big event, see our handy &lt;strong&gt;true confessions of cloud-native addicts&lt;/strong&gt; &lt;a href=&#34;https://vamp.io/blog/kubecon-top4-must-sees/?utm_source=newsletter&amp;amp;utm_medium=newsletter&amp;amp;utm_campaign=20190529-KubeCon&amp;amp;utm_content=Video&#34;&gt;mini-conference guide here&lt;/a&gt;. It&#39;s been specially prepared to serve all your KubeCon catch-up needs.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vamp.io demonstrates how GrandVision speeds-up digital innovation</title>
+      <link>https://vamp.io/news/vamp-demonstrates-how-grandvision-speeds-up/</link>
+      <pubDate>Fri, 28 Sep 2018 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/vamp-demonstrates-how-grandvision-speeds-up/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 21 September 2018&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://vamp.io/img/news/grandvision1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;GrandVision invited us to their Friday afternoon Beer &amp;amp; Learn session where Olaf Molenveld presented how Vamp helps to
+improve GrandVision’s digital transformation by enabling safeguarded experimentation with new services in production.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vamp.io and Merapar announce strategic partnership to help cloud native adopters to increase velocity and minimize blast radius</title>
+      <link>https://vamp.io/news/vamp_merapar_partnership/</link>
+      <pubDate>Mon, 17 Sep 2018 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/vamp_merapar_partnership/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam / Eindhoven, 17 September 2018&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://vamp.io/img/news/merapar.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Merapar’s cloud expertise and Vamp.io’s smart canary releasing and cloud optimization tooling joining forces, will benefit customers to release faster, smarter, and with less issues, while optimizing cost and performance.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Meet Vamp at IBC 2018 in Amsterdam</title>
+      <link>https://vamp.io/news/vamp_at_ibc_2018/</link>
+      <pubDate>Thu, 06 Sep 2018 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/vamp_at_ibc_2018/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 6 September 2018&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://vamp.io/img/news/ibc2018.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Vamp team will be attending the IBC 2018 trade show together with our partner &lt;a href=&#34;https://merapar.com/&#34;&gt;Merapar&lt;/a&gt;. Drop
+by the booth to talk containers, deployment and smart releasing patterns for cloud native stacks.&lt;/p&gt;
+
+&lt;p&gt;Use the link below to register and use the &lt;strong&gt;customer code 22501&lt;/strong&gt; for complimentary access to IBC.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://ibc.itnint.com/IBC18/Online/CreateAccount.aspx?wf=attendee&amp;amp;stream=attendee&amp;amp;sourceCode=&amp;amp;cart=&#34;&gt;Vamp IBC Customer Registration&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can find more details on the &lt;a href=&#34;https://show.ibc.org/visit-ibc2018&#34;&gt;official IBC website&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>New Hackernoon: Exploring new frontiers in CI/CD and DevOps</title>
+      <link>https://vamp.io/news/hackernoon_exploring_frontiers_devops/</link>
+      <pubDate>Wed, 28 Feb 2018 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/hackernoon_exploring_frontiers_devops/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 28 February 2018&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Ten years ago, the idea of DevOps sprang from the minds of Andrew Shafer and Patrick Debois (source).
+A year later they actually named it “DevOps”. This tenth anniversary marks a good time to look at where DevOps has taken us as an industry and where we are heading.&lt;/p&gt;
+
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Meanwhile at Vamp HQ, we looked at 10 years of DevOps and where it’s going&lt;a href=&#34;https://t.co/EnBjzuWRdq&#34;&gt;https://t.co/EnBjzuWRdq&lt;/a&gt;&lt;/p&gt;&amp;mdash; vamp (@vamp_io) &lt;a href=&#34;https://twitter.com/vamp_io/status/968924614066831361?ref_src=twsrc%5Etfw&#34;&gt;February 28, 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Read the full article on &lt;a href=&#34;https://hackernoon.com/azure-container-instances-vs-aws-fargate-3216607f63f4&#34;&gt;hackernoon.com&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vamp.io appoints Nico Vierhout as new CEO</title>
+      <link>https://vamp.io/news/vamp.io_appoints_nico_vierhout_as_new_ceo/</link>
+      <pubDate>Thu, 01 Feb 2018 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/vamp.io_appoints_nico_vierhout_as_new_ceo/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 1 February 2018&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Nico Vierhout, formerly VP Engineering, Online and VP Product
+Development at KPNQwest and Liberty Global, has been appointed as
+the new CEO of software company Vamp.io.
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;nl&#34; dir=&#34;ltr&#34;&gt;Volta Ventures steekt ‘nieuw startkapitaal’ in &lt;a href=&#34;https://t.co/Mglswl7ZFC&#34;&gt;https://t.co/Mglswl7ZFC&lt;/a&gt; en stelt Nico Vierhout als CEO &lt;a href=&#34;https://t.co/Ezec0TcuZS&#34;&gt;https://t.co/Ezec0TcuZS&lt;/a&gt;&lt;/p&gt;&amp;mdash; Golden Egg Check (@goldeneggcheck) &lt;a href=&#34;https://twitter.com/goldeneggcheck/status/960505447110365184?ref_src=twsrc%5Etfw&#34;&gt;February 5, 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Vierhout has extensive experience in the
+enterprise software development arena. At Liberty Global, he was
+responsible for all software development for Ziggo, Virgin Media,
+Telenet, UPC and UnityMedia.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>New on Hackernoon: AWS Lambda Go vs. Node.js</title>
+      <link>https://vamp.io/news/hackernoon_aws_fargate_ecs/</link>
+      <pubDate>Wed, 17 Jan 2018 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/hackernoon_aws_fargate_ecs/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 17 Jan 2018&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We geeked out a bit and looked at how the newly added Go language compares to Node.js on Amazon Web Services
+Lambda platform. We look at straight compute performance, but also more real life use cases.&lt;/p&gt;
+
+&lt;figure&gt;&lt;a href=&#34;https://hackernoon.com/aws-lambda-go-vs-node-js-performance-benchmark-1c8898341982&#34;&gt;
+    &lt;img src=&#34;https://cdn-images-1.medium.com/max/1600/1*dW_FBqoUjyIWkOhDcvl9nA.png&#34; width=&#34;50%&#34;/&gt; &lt;/a&gt;
+&lt;/figure&gt;
+
+
+&lt;p&gt;Read the full article on &lt;a href=&#34;https://hackernoon.com/aws-lambda-go-vs-node-js-performance-benchmark-1c8898341982&#34;&gt;hackernoon.com&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>New eBook on Containers and Microservices by The New Stack</title>
+      <link>https://vamp.io/news/newstack_ebook_microservices_containers/</link>
+      <pubDate>Wed, 20 Dec 2017 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/newstack_ebook_microservices_containers/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 20 December 2017&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The recently release eBook series &amp;ldquo;Applications &amp;amp; Microservices with Docker &amp;amp; Containers&amp;rdquo; by  tech publication
+&lt;a href=&#34;https://thenewstack.io&#34;&gt;The New Stack&lt;/a&gt; is a great resource for getting to grips with all the trends, players and products
+in this expanding industry. Part 2 of the series mentions Vamp.&lt;/p&gt;
+
+&lt;p&gt;Get the ebook on &lt;a href=&#34;https://thenewstack.io/ebooks/docker-and-containers/applications-microservices-docker-containers/&#34;&gt;thenewstack.io&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>New on Hackernoon: Azure Container Instances vs. AWS Fargate </title>
+      <link>https://vamp.io/news/hackernoon_aws_lambda_go_vs_node/</link>
+      <pubDate>Mon, 04 Dec 2017 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/hackernoon_aws_lambda_go_vs_node/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 4 Dec 2017&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Cloud providers are coming out with new container based solutions at a rapid pace. We looked at how
+Azure Container Instances compares to the recently launched AWS Fargate service.&lt;/p&gt;
+
+&lt;figure&gt;&lt;a href=&#34;https://hackernoon.com/azure-container-instances-vs-aws-fargate-3216607f63f4&#34;&gt;
+    &lt;img src=&#34;https://cdn-images-1.medium.com/max/1600/1*sHwjEadMpmPaw_bHcURM6g.jpeg&#34; width=&#34;50%&#34;/&gt; &lt;/a&gt;
+&lt;/figure&gt;
+
+
+&lt;p&gt;Read the full article on &lt;a href=&#34;https://hackernoon.com/azure-container-instances-vs-aws-fargate-3216607f63f4&#34;&gt;hackernoon.com&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>New on DZone: extending Marathon-LB with Canary Releasing</title>
+      <link>https://vamp.io/news/new_on_dzone_extending_marathon_lb/</link>
+      <pubDate>Wed, 18 Oct 2017 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/new_on_dzone_extending_marathon_lb/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 18 October 2017&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;At the Vamp HQ in Amsterdam, we get to talk to a lot of Mesos and DC/OS users. Many
+users ask us how to extend their existing Marathon-LB setups with canary releasing. We recentlhy posted
+an article on DZone about exactly that topic.&lt;/p&gt;
+
+&lt;figure&gt;&lt;a href=&#34;https://dzone.com/articles/how-to-extend-marathon-lb-with-canary-releasing-fe&#34;&gt;
+    &lt;img src=&#34;https://dzone.com/storage/temp/6924387-marathon-lb-vamp.png&#34; width=&#34;50%&#34;/&gt; &lt;/a&gt;
+&lt;/figure&gt;
+
+
+&lt;p&gt;Read the full article on &lt;a href=&#34;https://dzone.com/articles/how-to-extend-marathon-lb-with-canary-releasing-fe&#34;&gt;dzone.com&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Zero Downtime Deployments Webinar with Mesosphere</title>
+      <link>https://vamp.io/news/mesosphere_webinar_zero_downtime/</link>
+      <pubDate>Tue, 21 Mar 2017 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/mesosphere_webinar_zero_downtime/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 27 March 2017&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Recently Olaf Molenveld, co-founder of Magnetic.io, hosted a webinar together with Mesosphere on Zero Downtime
+Deployments using Docker and microservices.&lt;/p&gt;
+
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Watch a recording of the &amp;#39;Zero downtime deployments&amp;#39; webinar we did with &lt;a href=&#34;https://twitter.com/mesosphere?ref_src=twsrc%5Etfw&#34;&gt;@mesosphere&lt;/a&gt; &lt;a href=&#34;https://twitter.com/dcos?ref_src=twsrc%5Etfw&#34;&gt;@dcos&lt;/a&gt; &lt;a href=&#34;https://t.co/gehZJ6HpEJ&#34;&gt;https://t.co/gehZJ6HpEJ&lt;/a&gt;&lt;/p&gt;&amp;mdash; vamp (@vamp_io) &lt;a href=&#34;https://twitter.com/vamp_io/status/844299130281345025?ref_src=twsrc%5Etfw&#34;&gt;March 21, 2017&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;</description>
+    </item>
+    
+    <item>
+      <title>Microsoft Technet: Enabling Vamp on Azure Container Service (DC/OS)</title>
+      <link>https://vamp.io/news/vamp_microsoft_azure_technet/</link>
+      <pubDate>Thu, 08 Dec 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/vamp_microsoft_azure_technet/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 12 December 2016&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The Microsoft Azure team in Japan recently had a workshop on how to run Vamp on Azure Container Service and
+the DC/OS platform. The also did a blog post on their experiences with an easy to follow tutorial tutorial
+that should get anyone up and running in no time.&lt;/p&gt;
+
+&lt;figure&gt;&lt;a href=&#34;https://blogs.technet.microsoft.com/livedevopsinjapan/2016/12/08/enable-vamp-on-azure-container-service-dcos/&#34;&gt;
+    &lt;img src=&#34;https://msdnshared.blob.core.windows.net/media/2016/12/agentoverview-1024x512.jpg&#34; width=&#34;50%&#34;/&gt; &lt;/a&gt;
+&lt;/figure&gt;
+
+
+&lt;p&gt;Read the full article on &lt;a href=&#34;https://blogs.technet.microsoft.com/livedevopsinjapan/2016/12/08/enable-vamp-on-azure-container-service-dcos/&#34;&gt;technet.microsoft.com&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Canary Releasing with DC/OS and Vamp on Mesosphere</title>
+      <link>https://vamp.io/news/mesosphere_dcos_vamp_canary_releasing/</link>
+      <pubDate>Mon, 15 Aug 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/mesosphere_dcos_vamp_canary_releasing/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 15 August 2016&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Recently Olaf Molenveld, co-founder of Magnetic.io recorded a video together with Mesosphere on canary releasing
+strategies for the Mesosphere DC/OS platform. The recording is now on Youtube.&lt;/p&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/wxuTInVT3Pk&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=wxuTInVT3Pk&#34;&gt;Watch this video on Youtube&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vamp on Gartner blog on operating Docker container</title>
+      <link>https://vamp.io/news/vamp_on_gartner_blog/</link>
+      <pubDate>Thu, 14 Jul 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/vamp_on_gartner_blog/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 14 July 2016&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Gartner posted an interesting blog on how to operationalize Docker container. Vamp is mentioned as a product
+that provides an advanced routing solution to operational Docker environments.&lt;/p&gt;
+
+&lt;p&gt;Read the full article on &lt;a href=&#34;https://blogs.gartner.com/joerg-fritsch/can-you-operationalize-docker-containers/&#34;&gt;blogs.gartner.com&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>No More Voodo Testing: Vamp on thenewstack.io</title>
+      <link>https://vamp.io/news/vamp_on_new_stack/</link>
+      <pubDate>Thu, 02 Jun 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/vamp_on_new_stack/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 2 June 2016&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Tech blog &lt;a href=&#34;https://thenewstack.io&#34;&gt;The New Stack&lt;/a&gt; wrote piece on Vamp and how it tackles canary releasing
+in complex, microservices based architectures.&lt;/p&gt;
+
+&lt;p&gt;Read the full article on &lt;a href=&#34;https://thenewstack.io/no-voodoo-testing-vamp-brings-canary-releases-container-orchestration/&#34;&gt;thenewstack.io&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Q&amp;A with Vamp founder on InfoQ</title>
+      <link>https://vamp.io/news/vamp_qa_infoq/</link>
+      <pubDate>Sun, 15 May 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/vamp_qa_infoq/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 15 May 2016&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We recently did a very interesting Q&amp;amp;A session with the folks at InfoQ.com on architecting and building
+microservices platforms. Topics discussed were rise of microservices platforms over the last years and
+how Vamp fits into this ecosystem.&lt;/p&gt;
+
+&lt;p&gt;Read the full article on &lt;a href=&#34;https://www.infoq.com/news/2016/05/vamp-microservices-platform&#34;&gt;infoq.com&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Voxxed: Vamp and the Container Race</title>
+      <link>https://vamp.io/news/the_container_race_vamp_on_voxxed/</link>
+      <pubDate>Thu, 17 Mar 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/the_container_race_vamp_on_voxxed/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 17 March 2016&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Founder Olaf Molenveld recently spoke to &lt;a href=&#34;https://www.voxxed.com&#34;&gt;Voxxed&lt;/a&gt; about all things cloud, microservices,
+containers and everything in between. We also discussed why vendor neutraliy matters and what Vamp&amp;rsquo;s roadmap
+looks like.&lt;/p&gt;
+
+&lt;p&gt;Read the full article on &lt;a href=&#34;https://www.voxxed.com/2016/03/vamp/&#34;&gt;voxxed.com&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Jaxenter on Vamp Microservics platform</title>
+      <link>https://vamp.io/news/jaxenter_on_vamp_microservices_platform/</link>
+      <pubDate>Tue, 15 Mar 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/jaxenter_on_vamp_microservices_platform/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 15 March 2016&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Founder Olaf Molenveld spoke to Java-focused publication Jaxenter on Vamp as a microservices platform and why
+Vamp is not strictly for microservices only.&lt;/p&gt;
+
+&lt;p&gt;Read the full article on &lt;a href=&#34;https://jaxenter.de/very-awesome-microservices-platform-36375&#34;&gt;jaxenter.de&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Magnetic.io founder on Fast Moving Targets</title>
+      <link>https://vamp.io/news/magnetic_founder_on_fast_moving_targets/</link>
+      <pubDate>Wed, 27 Jan 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/magnetic_founder_on_fast_moving_targets/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 27 January 2016&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Olaf Molenveld, co-founder of Magnetic.io, talked with the folks at entrepreneur channel Fast Moving Target about
+the speed of digital and how Vamp enables business to &amp;ldquo;keep the shop open&amp;rdquo; while refactoring and rebuilding
+their architectures.&lt;/p&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/42PrlZPTAxw&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;You can view to the full show on &lt;a href=&#34;https://www.youtube.com/watch?v=42PrlZPTAxw&#34;&gt;Fast Moving Target&amp;rsquo;s Youtube channel&lt;/a&gt; (Dutch)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Magnetic.io founder on digital complexity on BNR radio</title>
+      <link>https://vamp.io/news/magnetic_founder_talking_digital_on_bnr/</link>
+      <pubDate>Thu, 08 Jan 2015 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/magnetic_founder_talking_digital_on_bnr/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 8 January 2015&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Tim Nolet, co-founder of Magnetic.io, will be appearing on BNR&amp;rsquo;s radio show &amp;ldquo;De Nieuwe Onderneming&amp;rdquo; to dicuss
+the rise of complexity in digital trends like microservices.&lt;/p&gt;
+
+&lt;p&gt;You can listen to the full show on &lt;a href=&#34;https://www.bnr.nl/programmas/de-nieuwe-onderneming/10039569/8-januari-digitaal-is-koning-in-2015&#34;&gt;BNR Radio&lt;/a&gt; (Dutch)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>2015: Year of the Experimental Enterprise</title>
+      <link>https://vamp.io/news/2015_the_year_of_the_experimental_enterprise/</link>
+      <pubDate>Tue, 30 Dec 2014 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/news/2015_the_year_of_the_experimental_enterprise/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Amsterdam, 30 December 2014&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;IT news blog AGconnect.nl interviewed Magnetic.io founder Olaf Molenveld on digital trends for 2015.
+&lt;a href=&#34;https://www.agconnect.nl/artikel/2015-het-jaar-van-de-experimental-enterprise&#34;&gt;AGconnect: 2015: het jaar van de experimental enterprise&lt;/a&gt; (Dutch)&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

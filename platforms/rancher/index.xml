@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rancher on Vamp | Automation and Controls for Enterprise Devops</title>
+    <link>https://vamp.io/platforms/rancher/</link>
+    <description>Recent content in Rancher on Vamp | Automation and Controls for Enterprise Devops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 13 Sep 2016 09:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vamp.io/platforms/rancher/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rancher</title>
+      <link>https://vamp.io/documentation/installation/v0.9.5/rancher/</link>
+      <pubDate>Tue, 13 Sep 2016 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/installation/v0.9.5/rancher/</guid>
+      <description>Note!
+Vamp v0.9.5 support coming soon.
+Installation instructions for Vamp v0.9.2
+ </description>
+    </item>
+    
+  </channel>
+</rss>

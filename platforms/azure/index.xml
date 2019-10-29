@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Azure on Vamp | Automation and Controls for Enterprise Devops</title>
+    <link>https://vamp.io/platforms/azure/</link>
+    <description>Recent content in Azure on Vamp | Automation and Controls for Enterprise Devops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 30 Sep 2016 12:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vamp.io/platforms/azure/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Azure Container Service</title>
+      <link>https://vamp.io/documentation/installation/v0.9.5/azure-container-service/</link>
+      <pubDate>Fri, 30 Sep 2016 12:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/installation/v0.9.5/azure-container-service/</guid>
+      <description>You can run Vamp on Azure Container Service with either the DC/OS or Kubernetes orchestrator.
+DC/OS Orchestrator To install DC/OS on ACS you should follow these steps:
+ Follow the instructions in the ACS DC/OS quickstart. After you have activated your ACS setup with DC/OS, go to your DC/OS admin environment and install Vamp using our DC/OS installation instructions.  What next?
+ Once you have Vamp up and running you can jump into the getting started tutorials.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,56 @@
+/* Variables */
+
+$spacer: 20px;
+
+/* Grid */
+$container-width-desktop: 1160px;
+$container-width-laptop: 1018px;
+$container-width-tablet: 650px;
+$container-width-mobile: 636px;
+$container-width-mobile-small: 316px;
+
+$columns: 15;
+$gutter-size: 40px;
+
+/* Colors */
+$red: #FF405E;
+$red-dark: #C33750;
+$blue-light: #4EB6F6;
+$blue-darker: #142D3C;
+$blue-dark: #234B5F;
+$gray-darker: #37647D;
+$gray: #6991AA;
+$gray-lighter: #C3D2DC;
+$gray-light: #96ADAA;
+$ash: #F0F5FA;
+$white: #FFF;
+$green: #5cca7c;
+
+/* Typography */
+$font-size-biggest: 32px;
+$font-size-big: 24px;
+$font-size-medium: 20px;
+$font-size-medium-small: 15px;
+$font-size-small: 14px;
+$font-size-default: 16px;
+
+$line-height-default: 1.9;
+
+$font-weight-lightest: 100;
+$font-weight-light: 300;
+$font-weight-default: 400;
+$font-weight-heavy: 500;
+
+$letter-spacing-default: 0.01em;
+$letter-spacing-wide: 0.05em;
+
+$font-color-muted: $gray-light;
+
+/* Margins */
+$small-margin: $spacer;
+$medium-margin: 2 * $spacer;
+$big-margin: 3 * $spacer;
+
+/* Borders */
+$light-border-color: transparentize($gray-lighter, .5);
+$light-border: 1px solid $light-border-color;

@@ -1,0 +1,93 @@
+$product-feature-col-height: 250px;
+$product-headers-font-size: 20px;
+.product {
+
+  .product-role {
+    box-shadow:  rgba(0, 0, 0, 0.08) 0 10px 30px 0;
+    padding: 1rem 2rem;
+
+    &.product-role-1 {
+      border-top: 3px solid $red;
+    }
+
+    &.product-role-2 {
+      border-top: 3px solid $gray;
+    }
+
+    &.product-role-3 {
+      border-top: 3px solid $blue-dark;
+    }
+  }
+
+  .product-role-title {
+    font-size: $product-headers-font-size;
+  }
+
+  ul.product-roles {
+    list-style: disc;
+    padding-left: 1rem;
+    li {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .product-features {
+    .product-features-text-col {
+      min-height: $product-feature-col-height;
+      margin-bottom: 3rem;
+      .product-features-title {
+        font-size: $product-headers-font-size;
+        margin-bottom: $spacer;
+        letter-spacing: .05em;
+        color: $blue-darker;
+        font-weight: $font-weight-heavy;
+      }
+    }
+
+    @for $i from 0 through 12 {
+      .product-features-img-col-#{$i} {
+        min-height: $product-feature-col-height;
+        margin-bottom: 3rem;
+        background-image: url('/img/product/feature-#{$i}-static.png');
+        background-repeat: no-repeat;
+        height: 100%;
+
+        .video-play-button {
+          color: #6891ab;
+          font-size: 56px !important;
+          position: absolute;
+          left: 36%;
+          top: 50%;
+        }
+
+        &:hover, &:focus {
+          cursor: pointer;
+          background-image: url('/img/product/feature-#{$i}-anim.gif');
+
+          .video-play-button {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  // override some markdown settings so we can create product pages with markdown
+  .markdowned {
+
+    h1 {
+      @include hero-text();
+      color: $blue-dark;
+      margin-bottom: .5 * $spacer;
+      line-height: 1.5;
+    }
+
+    h2 {
+      margin-bottom: .5 * $spacer;
+    }
+
+    h4 {
+      margin-bottom: 0;
+    }
+  }
+}

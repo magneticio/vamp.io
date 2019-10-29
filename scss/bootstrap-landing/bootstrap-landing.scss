@@ -1,0 +1,112 @@
+.bootstrap-landing {
+	// Reset
+
+	h2 {
+		font-weight: 400;
+	}
+	h3 {
+		font-size:  1.25rem;
+		font-weight: 300;
+	}
+
+	h4 {
+		font-size: 1.125rem;
+	}
+
+	p {
+		line-height: 1.75rem;
+	}
+
+	.font-size-lg {
+		font-size: 1.2rem;
+	}
+
+	.font-size-xlg {
+		font-size: 1.5rem;
+	}
+
+	// Text
+
+	.text-primary {
+		color: $red !important;
+	}
+
+	.text-secondary {
+		color: $gray !important;
+	}
+
+	// Buttons
+
+	.btn-primary {
+		background-color: $red !important;
+		border-color: $red !important;
+	}
+
+	// Backgrounds
+
+	.bg-gradient-light {
+		background-image: linear-gradient(to bottom,$ash 0,#fff 100%);
+	}
+
+	.bg-ash {
+		background-color: $ash;
+	}
+
+	.bg-dark {
+		background-color: $blue-dark !important;
+		.text-muted {
+			color: $gray-lighter !important;
+		}
+	}
+
+	.bg-red {
+		background-color: $red;
+	}
+
+	// Botsquad hack to not take over full screen on mobile
+
+	#botsquad-frame {
+		&.mobile {
+			position: inherit !important;
+			left: inherit !important;
+			top: inherit !important;
+			right: inherit !important;
+			bottom: inherit !important;
+		}
+	}
+
+	// one off hack
+
+	.hero-background {
+		background: url(/img/stock/people-meeting-3-colorized.jpg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-blend-mode: darken;
+	}
+
+	// over rides for botsquad widget
+
+
+	#botsquad-frame {
+		--botsquad-main-color: #ff405e;
+	}
+
+	#botsquad-frame .chat-input {
+		border-top: 0;
+		justify-content: center;
+	}
+
+	#botsquad-frame .quick-replies .button {
+		line-height: 1.4;
+		letter-spacing: normal;
+		white-space: normal;
+	}
+
+	#botsquad-frame .content {
+		min-height: initial
+	}
+
+	#botsquad-frame .button {
+		height: auto;
+	}
+}

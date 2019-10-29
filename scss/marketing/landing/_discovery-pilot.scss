@@ -1,0 +1,96 @@
+.discovery-pilot {
+  .hero-background {
+    background: url('/img/stock/people-meeting-colorized.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .message-item {
+    margin-bottom: 25px;
+    margin-left: 75px;
+    position: relative;
+  }
+
+  .message-item .avatar {
+    position: absolute;
+    left: -75px;
+  }
+  .message-item .message-inner {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 1.5 * $spacer 2 * $spacer;
+    position: relative;
+  }
+  .message-item .message-inner:before {
+    border-right: 10px solid #ddd;
+    border-style: solid;
+    border-width: 10px;
+    color: rgba(0,0,0,0);
+    content: "";
+    display: block;
+    height: 0;
+    position: absolute;
+    left: -20px;
+    top: 6px;
+    width: 0;
+  }
+  .message-item .message-inner:after {
+    border-right: 10px solid #fff;
+    border-style: solid;
+    border-width: 10px;
+    color: rgba(0,0,0,0);
+    content: "";
+    display: block;
+    height: 0;
+    position: absolute;
+    left: -18px;
+    top: 6px;
+    width: 0;
+  }
+  .clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+  }
+  .message-item .message-head {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+  }
+  .message-item .message-head .user-detail {
+    overflow: hidden;
+  }
+  .message-item .message-head .user-detail h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  .message-item .message-head .post-meta {
+    float: left;
+    padding: 0 15px 0 0;
+  }
+  .message-item .message-head .post-meta >div {
+    color: #333;
+    font-weight: bold;
+    text-align: right;
+  }
+  .post-meta > div {
+    color: #777;
+    font-size: 12px;
+    line-height: 22px;
+  }
+  .message-item .message-head .post-meta >div {
+    color: #333;
+    font-weight: bold;
+    text-align: right;
+  }
+  .post-meta > div {
+    color: #777;
+    font-size: 12px;
+    line-height: 22px;
+  }
+  img {
+    min-height: 40px;
+    max-height: 40px;
+  }
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Vamp | Automation and Controls for Enterprise Devops</title>
+    <link>https://vamp.io/platforms/docker/</link>
+    <description>Recent content in Docker on Vamp | Automation and Controls for Enterprise Devops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 30 Sep 2016 12:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vamp.io/platforms/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker</title>
+      <link>https://vamp.io/documentation/installation/v0.9.5/docker/</link>
+      <pubDate>Fri, 30 Sep 2016 12:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/documentation/installation/v0.9.5/docker/</guid>
+      <description>Note!
+Vamp v0.9.5 has not been tested on the latest local version of Docker. Docker Swarm support is coming soon, see github.com - issue #690: Docker swarm support
+ Vamp can talk directly to a Docker daemon and its driver is configured by default. This is useful for local testing. Vamp can even run inside Docker while deploying to Docker. You can pass native Docker options by using the Docker dialect in a Vamp blueprint.</description>
+    </item>
+    
+  </channel>
+</rss>

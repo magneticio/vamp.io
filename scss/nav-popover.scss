@@ -1,0 +1,57 @@
+.popover-menu-body {
+  width: 256px;
+  padding: .75 * $spacer;
+  &.popover-menu-body-wide {
+    width: 350px;
+  }
+}
+
+.popover-menu-item {
+  display: block;
+  padding: .5 * $spacer $spacer;
+  margin-left: -0.75 * $spacer;
+  margin-right: -0.75 * $spacer;
+  text-decoration: none;
+  font-weight: $font-weight-default;
+  color: inherit;
+  &:hover {
+    color: $red;
+    background: transparentize($red, .9);
+    text-decoration: none;
+    i {
+      transition: margin-left .5s ease;
+      margin-left: .4 * $spacer;
+    }
+  }
+  i {
+    transition: margin-left .5s ease;
+    margin-left: .25 * $spacer;
+  }
+
+  img {
+    height: 20px;
+    display: inline;
+    vertical-align: text-bottom;
+    margin-right: .5rem;
+  }
+}
+
+.popover-menu-header {
+  margin-left: -0.75 * $spacer;
+  margin-right: -0.75 * $spacer;
+  padding: .75 * $spacer $spacer;
+  display: block;
+  color: $gray;
+  background: transparentize($ash, .6);
+}
+
+// style the stock webui popover
+
+
+.webui-popover-vamp {
+  box-shadow: 0 0 20px 0 rgba(178, 194, 212, .3) !important;
+  border: $light-border !important;
+  .webui-arrow {
+    border-bottom-color: $light-border-color !important;
+  }
+}

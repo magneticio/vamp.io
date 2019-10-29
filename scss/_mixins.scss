@@ -1,0 +1,27 @@
+@mixin section-header() {
+  text-align: center;
+  font-size: 34px;
+  color: $red;
+  margin: 2rem;
+  letter-spacing: 1px;
+}
+
+@mixin hero-text() {
+  font-weight: 400;
+  font-size: 50px;
+  color: white;
+  padding-top: $spacer;
+  margin-bottom: 2 * $spacer;
+
+  @media (max-width: 321px) {
+    font-size: 22px;
+    padding-top: $spacer;
+    margin-bottom: $spacer;
+  }
+
+  @media all and (max-width: 769px) {
+    padding-top: $spacer;
+    margin-bottom: $spacer;
+    font-size: 26px;
+  }
+}

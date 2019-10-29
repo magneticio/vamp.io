@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Events on Vamp | Automation and Controls for Enterprise Devops</title>
+    <link>https://vamp.io/events/</link>
+    <description>Recent content in Events on Vamp | Automation and Controls for Enterprise Devops</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 19 Jul 2017 09:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vamp.io/events/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>5 Release Strategies You Should Know for Continuous Delivery</title>
+      <link>https://vamp.io/events/webinar_5_release_strategies_you_should_know/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/events/webinar_5_release_strategies_you_should_know/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Tuesday, October 24th 2019 - 4:00 PM (CEST) About 45 minutes&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Pushing the release button these days is a nail-biting experience; you roll the dice and it&amp;rsquo;s all about staying alive and not hurting your customer experience.
+There are, however, a few release strategies you can do to increase the (business) success of your release.&lt;/p&gt;
+
+&lt;p&gt;Join us at this on demand webinar and learn the 5 release management strategies with each its pros and cons.&lt;/p&gt;
+
+&lt;p&gt;!! When viewing: please fast forward to 3.35 to the appropriate start of the webinar !!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>IBC 2019</title>
+      <link>https://vamp.io/events/ibc_2019/</link>
+      <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/events/ibc_2019/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;September 13 - 17 2019, Amsterdam RAI, hall 2 - 2.B25&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The future of media lies firmly in digital and as cloud-native fans, we’re at IBC in Amsterdam to help broadcast and
+digital publishers thrive as part of the platform revolution.&lt;/p&gt;
+
+&lt;p&gt;Join us as at our booth as we talk IT media tech and share our insights on how to deliver great Quality of Experience
+for a future of microservices and cloud – simply, safely and at scale.&lt;/p&gt;
+
+&lt;p&gt;More details at &lt;a href=&#34;https://show.ibc.org/&#34;&gt;show.ibc.org&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Community Days</title>
+      <link>https://vamp.io/events/kubernetes_community_days/</link>
+      <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/events/kubernetes_community_days/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;September 13th, Pakhuis de Zwijger, Amsterdam&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Getting techy with it! Meet Vamp at Kubernetes Community Days. Join us at this CNCF sponsored event as
+we get in-depth on all things cloud, microservices and, of course, the industry keystone that is Kubernetes!&lt;/p&gt;
+
+&lt;p&gt;More details at &lt;a href=&#34;https://cloudnative.amsterdam/&#34;&gt;cloudnative.amsterdam&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Canary Releasing Done Right</title>
+      <link>https://vamp.io/events/webinar_canary_releasing_done_right/</link>
+      <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/events/webinar_canary_releasing_done_right/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Tuesday, September 10th 2019 - 4:00 PM (CEST) About 45 minutes&lt;/strong&gt; - register here to get access to the on-demand replay&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Canary releasing: the most useful tool in your release toolkit&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;You want to release great code, your team is smart, you want to scale, you want to go faster. But how do you and your team move faster without sacrificing stability and customer experience?&lt;/p&gt;
+
+&lt;p&gt;Canary releasing is often put forward as one possible methodology for fast, safe, scalable release of microservices. In this webinar, you will learn an advanced practice approach to canary releasing that will be your go-to method for rolling out software safely, at velocity and for great user experience.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Top 3 Epic Fails of Moving to a Microservices Architecture</title>
+      <link>https://vamp.io/events/webinar_epic_fails_of_moving_to_microservices/</link>
+      <pubDate>Mon, 12 Aug 2019 09:00:00 +0000</pubDate>
+      
+      <guid>https://vamp.io/events/webinar_epic_fails_of_moving_to_microservices/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Tuesday, August 27th 2019 - 4:00 PM (CEST) About 45 minutes&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;On-demand replay available: &lt;a href=&#34;https://youtu.be/SL6X8sKqBxE&#34;&gt;Vamp webinar Top 3 Epic Fails of Moving to a Microservice Architecture&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For many organizations, a move to a microservices architecture holds a lot of promise of increased velocity and
+time-to-value in their application environment. But they quickly find that complexity across their environment stacks.&lt;/p&gt;
+
+&lt;p&gt;In this webinar, we unpack the real-world issues of organizations making the journey to cloud-native and how you can
+avoid - or resolve them!&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
