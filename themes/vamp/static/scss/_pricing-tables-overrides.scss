@@ -1,0 +1,222 @@
+// core overrides
+
+.crpt-plain#crpt-plain-vamp {
+  $side-col-width: 300px;
+  margin-top: 3rem;
+  .pt-cols {
+    padding-left: $side-col-width;
+  }
+  .pt-cols-side {
+    width: $side-col-width;
+    background-color: $white;
+    font-size: 14px;
+    font-weight: 400;
+
+    .pt-list-block {
+      padding-left: 0;
+    }
+  }
+  .pt-block {
+    text-align: left;
+    color: $blue-darker;
+    font-size: 16px;
+  }
+
+  .pt-title {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 0;
+    color: $red;
+    text-transform: uppercase;
+  }
+
+  .pt-price {
+    font-weight: 200;
+    padding-top: .5rem;
+    margin-bottom: 1rem;
+    font-size: 22px;
+  }
+
+  @media (max-width: 1199px) {
+    .pt-cols-4 .pt-list .pt-list-item .pt-value {
+      font-weight: normal;
+    }
+  }
+
+  .pt-list-item-spacer {
+    height: 36px;
+  }
+}
+
+/*! Comparative Responsive Pricing Tables.3.0 - 2017-03-14 */
+#crpt-plain-vamp .pt-back:before,
+.crpt-plain #crpt-plain-vamp .pt-back:before {
+  background-color: #fdfdfd;
+}
+#crpt-plain-vamp .pt-back:after,
+.crpt-plain #crpt-plain-vamp .pt-back:after {
+  background-color: #fff;
+}
+#crpt-plain-vamp .pt-title,
+.crpt-plain #crpt-plain-vamp .pt-title {
+  color: $blue-darker;
+}
+#crpt-plain-vamp .pt-price,
+.crpt-plain #crpt-plain-vamp .pt-price {
+  color: $blue-darker;
+}
+#crpt-plain-vamp .pt-btn,
+.crpt-plain #crpt-plain-vamp .pt-btn {
+  background-color: #fecd0f;
+  color: #fff;
+}
+#crpt-plain-vamp .pt-btn:hover,
+.crpt-plain #crpt-plain-vamp .pt-btn:hover,
+#crpt-plain-vamp .pt-btn:focus,
+.crpt-plain #crpt-plain-vamp .pt-btn:focus {
+  background-color: #e8b901;
+}
+#crpt-plain-vamp .pt-list,
+.crpt-plain #crpt-plain-vamp .pt-list {
+  color: $blue-darker;
+}
+#crpt-plain-vamp .pt-list-item:nth-child(odd),
+.crpt-plain #crpt-plain-vamp .pt-list-item:nth-child(odd) {
+  background-color: $ash;
+}
+#crpt-plain-vamp .pt-cols-side {
+  background-color: #fff;
+  outline: 1px solid #fdfdfd;
+}
+#crpt-plain-vamp .pt-side-text {
+  color: $blue-darker;
+}
+#crpt-plain-vamp .pt-list-block {
+  text-align: left;
+  color: $blue-darker;
+}
+#crpt-plain-vamp .pt-selected .pt-back:before,
+.crpt-plain #crpt-plain-vamp .pt-selected .pt-back:before,
+#crpt-plain-vamp[class*='pt-animation-'] .pt-col .pt-block:hover .pt-back:before,
+.crpt-plain[class*='pt-animation-'] #crpt-plain-vamp.pt-col .pt-block:hover .pt-back:before {
+  background-color: #fecd0f;
+  -webkit-box-shadow: 0 0 10px 1px #e6e6e6;
+  box-shadow: 0 0 10px 1px #e6e6e6;
+}
+#crpt-plain-vamp .pt-selected .pt-back:after,
+.crpt-plain #crpt-plain-vamp .pt-selected .pt-back:after,
+#crpt-plain-vamp[class*='pt-animation-'] .pt-col .pt-block:hover .pt-back:after,
+.crpt-plain[class*='pt-animation-'] #crpt-plain-vamp.pt-col .pt-block:hover .pt-back:after {
+  background-color: #fecd0f;
+}
+#crpt-plain-vamp .pt-selected .pt-title,
+.crpt-plain #crpt-plain-vamp .pt-selected .pt-title,
+#crpt-plain-vamp[class*='pt-animation-'] .pt-col .pt-block:hover .pt-title,
+.crpt-plain[class*='pt-animation-'] #crpt-plain-vamp.pt-col .pt-block:hover .pt-title {
+  color: #2b2b33;
+}
+#crpt-plain-vamp .pt-selected .pt-price,
+.crpt-plain #crpt-plain-vamp .pt-selected .pt-price,
+#crpt-plain-vamp[class*='pt-animation-'] .pt-col .pt-block:hover .pt-price,
+.crpt-plain[class*='pt-animation-'] #crpt-plain-vamp.pt-col .pt-block:hover .pt-price {
+  color: #2b2b33;
+}
+#crpt-plain-vamp .pt-selected .pt-list,
+.crpt-plain #crpt-plain-vamp .pt-selected .pt-list,
+#crpt-plain-vamp[class*='pt-animation-'] .pt-col .pt-block:hover .pt-list,
+.crpt-plain[class*='pt-animation-'] #crpt-plain-vamp.pt-col .pt-block:hover .pt-list {
+  color: #2b2b33;
+}
+#crpt-plain-vamp .pt-selected .pt-list .pt-list-item:nth-child(odd),
+.crpt-plain #crpt-plain-vamp .pt-selected .pt-list .pt-list-item:nth-child(odd),
+#crpt-plain-vamp[class*='pt-animation-'] .pt-col .pt-block:hover .pt-list .pt-list-item:nth-child(odd),
+.crpt-plain[class*='pt-animation-'] #crpt-plain-vamp.pt-col .pt-block:hover .pt-list .pt-list-item:nth-child(odd) {
+  background-color: #fdd63d;
+}
+#crpt-plain-vamp .pt-selected .pt-btn,
+.crpt-plain #crpt-plain-vamp .pt-selected .pt-btn,
+#crpt-plain-vamp[class*='pt-animation-'] .pt-col .pt-block:hover .pt-btn,
+.crpt-plain[class*='pt-animation-'] #crpt-plain-vamp.pt-col .pt-block:hover .pt-btn {
+  background-color: #d8ac05;
+  color: #fff;
+}
+#crpt-plain-vamp .pt-selected .pt-btn:hover,
+.crpt-plain #crpt-plain-vamp .pt-selected .pt-btn:hover,
+#crpt-plain-vamp[class*='pt-animation-'] .pt-col .pt-block:hover .pt-btn:hover,
+.crpt-plain[class*='pt-animation-'] #crpt-plain-vamp.pt-col .pt-block:hover .pt-btn:hover,
+#crpt-plain-vamp .pt-selected .pt-btn:focus,
+.crpt-plain #crpt-plain-vamp .pt-selected .pt-btn:focus,
+#crpt-plain-vamp[class*='pt-animation-'] .pt-col .pt-block:hover .pt-btn:focus,
+.crpt-plain[class*='pt-animation-'] #crpt-plain-vamp.pt-col .pt-block:hover .pt-btn:focus {
+  background-color: #b59004;
+}
+#crpt-plain-vamp .pt-cols .pt-col:nth-child(n) .pt-block.pt-not-available:nth-child(n) .pt-back:before,
+.crpt-plain .pt-cols #crpt-plain-vamp.pt-col:nth-child(n) .pt-block.pt-not-available:nth-child(n) .pt-back:before,
+#crpt-plain-vamp[class*='pt-animation-']:hover .pt-selected .pt-back:before,
+.crpt-plain[class*='pt-animation-']:hover #crpt-plain-vamp .pt-selected .pt-back:before {
+  background-color: #fdfdfd;
+}
+#crpt-plain-vamp .pt-cols .pt-col:nth-child(n) .pt-block.pt-not-available:nth-child(n) .pt-back:after,
+.crpt-plain .pt-cols #crpt-plain-vamp.pt-col:nth-child(n) .pt-block.pt-not-available:nth-child(n) .pt-back:after,
+#crpt-plain-vamp[class*='pt-animation-']:hover .pt-selected .pt-back:after,
+.crpt-plain[class*='pt-animation-']:hover #crpt-plain-vamp .pt-selected .pt-back:after {
+  background-color: #fff;
+}
+#crpt-plain-vamp .pt-cols .pt-col:nth-child(n) .pt-block.pt-not-available:nth-child(n) .pt-title,
+.crpt-plain .pt-cols #crpt-plain-vamp.pt-col:nth-child(n) .pt-block.pt-not-available:nth-child(n) .pt-title,
+#crpt-plain-vamp[class*='pt-animation-']:hover .pt-selected .pt-title,
+.crpt-plain[class*='pt-animation-']:hover #crpt-plain-vamp .pt-selected .pt-title {
+  color: $blue-darker;
+}
+#crpt-plain-vamp .pt-cols .pt-col:nth-child(n) .pt-block.pt-not-available:nth-child(n) .pt-price,
+.crpt-plain .pt-cols #crpt-plain-vamp.pt-col:nth-child(n) .pt-block.pt-not-available:nth-child(n) .pt-price,
+#crpt-plain-vamp[class*='pt-animation-']:hover .pt-selected .pt-price,
+.crpt-plain[class*='pt-animation-']:hover #crpt-plain-vamp .pt-selected .pt-price {
+  color: #fecd0f;
+}
+#crpt-plain-vamp .pt-cols .pt-col:nth-child(n) .pt-block.pt-not-available:nth-child(n) .pt-list,
+.crpt-plain .pt-cols #crpt-plain-vamp.pt-col:nth-child(n) .pt-block.pt-not-available:nth-child(n) .pt-list,
+#crpt-plain-vamp[class*='pt-animation-']:hover .pt-selected .pt-list,
+.crpt-plain[class*='pt-animation-']:hover #crpt-plain-vamp .pt-selected .pt-list {
+  color: $blue-darker;
+}
+#crpt-plain-vamp .pt-cols .pt-col:nth-child(n) .pt-block.pt-not-available:nth-child(n) .pt-list .pt-list-item:nth-child(odd),
+.crpt-plain .pt-cols #crpt-plain-vamp.pt-col:nth-child(n) .pt-block.pt-not-available:nth-child(n) .pt-list .pt-list-item:nth-child(odd),
+#crpt-plain-vamp[class*='pt-animation-']:hover .pt-selected .pt-list .pt-list-item:nth-child(odd),
+.crpt-plain[class*='pt-animation-']:hover #crpt-plain-vamp .pt-selected .pt-list .pt-list-item:nth-child(odd) {
+  background-color: $ash;
+}
+#crpt-plain-vamp .pt-cols .pt-col:nth-child(n) .pt-block.pt-not-available:nth-child(n) .pt-btn,
+.crpt-plain .pt-cols #crpt-plain-vamp.pt-col:nth-child(n) .pt-block.pt-not-available:nth-child(n) .pt-btn,
+#crpt-plain-vamp[class*='pt-animation-']:hover .pt-selected .pt-btn,
+.crpt-plain[class*='pt-animation-']:hover #crpt-plain-vamp .pt-selected .pt-btn {
+  color: #fff;
+}
+#crpt-plain-vamp[class*='pt-animation-']:hover .pt-selected .pt-btn,
+.crpt-plain[class*='pt-animation-']:hover #crpt-plain-vamp .pt-selected .pt-btn {
+  background-color: #fecd0f;
+}
+#crpt-plain-vamp[class*='pt-animation-']:hover .pt-selected .pt-btn:hover,
+.crpt-plain[class*='pt-animation-']:hover #crpt-plain-vamp .pt-selected .pt-btn:hover,
+#crpt-plain-vamp[class*='pt-animation-']:hover .pt-selected .pt-btn:focus,
+.crpt-plain[class*='pt-animation-']:hover #crpt-plain-vamp .pt-selected .pt-btn:focus {
+  background-color: #e8b901;
+}
+#crpt-plain-vamp .pt-tooltip .pt-tooltip-content,
+.crpt-plain #crpt-plain-vamp .pt-tooltip .pt-tooltip-content {
+  //background-color: $gray-dark;
+  //border-color: $gray-dark;
+  //border-radius: $border-radius;
+  //padding: $spacer;
+  //@include screen-shadow();
+}
+#crpt-plain-vamp .pt-tooltip .pt-tooltip-content .pt-tooltip-heading,
+.crpt-plain #crpt-plain-vamp .pt-tooltip .pt-tooltip-content .pt-tooltip-heading {
+  border-bottom-color: $white;
+}
+#crpt-plain-vamp .pt-tooltip .pt-tooltip-content .pt-tooltip-center-line span:before,
+.crpt-plain #crpt-plain-vamp .pt-tooltip .pt-tooltip-content .pt-tooltip-center-line span:before,
+#crpt-plain-vamp .pt-tooltip .pt-tooltip-content .pt-tooltip-center-line span:after,
+.crpt-plain #crpt-plain-vamp .pt-tooltip .pt-tooltip-content .pt-tooltip-center-line span:after {
+  background-color: #5b4900;
+}
