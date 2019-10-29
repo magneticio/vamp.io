@@ -16,6 +16,7 @@
 @import 'top-banner-cta';
 @import 'chatbot-container';
 @import 'markdown';
+@import "pricing-tables-overrides";
 
 // apps
 @import 'apps/maturity-calculator';
@@ -31,8 +32,6 @@ body {
   position: relative;
 
   &.documentation {
-
-    margin-top: $spacer;
     margin-top: $spacer;
 
     .header {
